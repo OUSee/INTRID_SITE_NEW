@@ -1,0 +1,663 @@
+@import url(../src/fonts/icons/css/INTRID_ICONS.css);
+
+/* VARIABLES */
+
+:root {
+    /* colors */
+    --bg-main: #0A0A0A;
+    --color-white: #FFFFFF;
+    --color-grey: #ffffffb7;
+    --color-black: #000000;
+    --blue-main: #00eaff;
+    --blue-bg: #06272a;
+    --highlight-bg: #c3f3f8;
+    --navbar-bg: #0d0e0e;
+    --footer-bg: #232323;
+
+    /* breakpoints */
+    --pc: 1440px;
+    --laptop: 1200px;
+    --tab: 600px;
+    --mobile: 360px;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../src/fonts/roboto/Roboto-Regular.woff2') format('woff2'),
+        url('../src/fonts/roboto/Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
+/* BASE STYLES */
+
+*{
+    box-sizing: border-box !important;
+    transition: all 0.3s ease-in-out;
+}
+
+body{
+ background-color: var(--bg-main);
+ color: var(--color-white);
+ background-image: url('../src/images/bg-main.webp');
+ background-size: 100% auto;
+ background-position: top;
+ background-repeat: no-repeat;
+}
+h1,h2,h3,h4,h5,p,span{
+    font-family: 'Roboto';
+    display: block;
+    margin: 0;
+    line-height: 140%;
+}
+
+span{
+    display: inline;
+}
+
+h1,.title_h1{
+    font-weight: 700;
+    font-size: 40px;
+}
+h2,
+.title_h2,
+h3,
+.title_h3{
+    font-weight: 700;
+    font-size: 36px;
+}
+h4,.title_h4{
+    font-weight: 700;
+    font-size: 24px;
+}
+h5,.title_h5{
+    font-weight: 700;
+    font-size: 16px;
+}
+p.p_big{
+    font-weight: 400px;
+    font-size: 16px;
+}
+p{
+    font-weight: 400px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    h1,.title_h1{
+        font-size: 30px;
+    }
+    h2,.title_h2,h3,.title_h3{
+        font-size: 26px;
+    }
+    h4,.title_h4{
+        font-size: 20px;
+    }
+    p.p_big,h5,.title_h5{
+        font-size: 16px;
+    }
+    p{
+        font-size: 14px;
+    }
+}
+@media (max-width: 360px) {
+    h1,.title_h1{
+        font-size: 25px;
+    }
+    h2,.title_h2{
+        font-size: 22px;
+    }
+    h3,.title_h3{
+        font-size: 20px;
+    }
+    h4,.title_h4{
+        font-size: 16px;
+    }
+    .title_h5,h5{
+        font-size: 16px;
+        font-weight: 400;
+    }
+    p.p_big{
+        font-size: 13px;
+    }
+    p{
+        font-size: 13x;
+    }
+}
+
+a{
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--blue-main);
+}
+
+hr{
+    width: 80%;
+    border-color: var(--blue-bg);
+    background-color: var(--blue-bg);
+}
+
+section{
+    padding: 62px 0;
+}
+section:first-of-type{
+    padding: 160px 0px;
+}
+
+.container{
+    max-width: 1442px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1500px) {
+    .container{
+        margin: 0 40px;
+    }
+}
+
+/* buttons and checkboxes */
+
+button, 
+label.radioButton, 
+.button-link, 
+.button-highlight{
+    display: flex;
+    border-radius: 30px;
+    background-color: transparent;
+    padding: 10px 25px;
+    font-weight: 500;
+    width: fit-content;
+    font-size: 14px;
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    line-height: 140%;
+    text-wrap: nowrap;
+    gap: 8px;
+
+    &.big{
+        padding: 22px 41px;
+    }
+}
+
+
+button:hover, 
+label.radioButton:hover, 
+label.radioButton:has(input:checked),
+.button-link:hover,
+.button-highlight
+{
+    border: 1px solid var(--blue-main);
+    background-color: var(--blue-main);
+    color: var(--color-black);
+    box-shadow: 0px 0px 15px var(--blue-main);
+}
+label.radioButton:has(input:checked),
+.button-highlight
+{
+    box-shadow: none;
+}
+
+.button-link i{
+    color: var(--blue-main);
+}
+.button-link:hover i{
+    color: var(--color-black);
+}
+
+label.radioButton input{
+    display: none;
+}
+label.radioButton:has(input:checked)::after{
+    font-family: 'INTRID_ICONS';
+    content: '\0049';
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* INLINE STYLES */
+
+.fd-row{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.fd-col{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.height-fit{
+    height: fit-content;
+}
+
+.width-fit{
+    width: fit-content;
+}
+
+.mr-6{
+    margin-right: 6px;
+}
+.ml-6{
+    margin-left: 6px;
+}
+.ml-16{
+    margin-left: 16px;
+}
+.ml-32{
+    margin-left: 32px;
+}
+
+.mb-32{
+    margin-bottom: 32px;
+}
+
+.mt-32{
+    margin-top: 32px;
+}
+
+.color-blue{
+    color: var(--blue-main);
+}
+
+.color-white{
+    color: var(--color-white);
+}
+
+.gap-8{
+    gap: 8px;
+} 
+
+.gap-32{
+    gap: 32px;
+}
+
+.fz-26{
+    font-size: 26px;
+}
+
+.flex-nowrap{
+    flex-wrap: nowrap;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.a-self-end{
+    align-self: flex-end;
+}
+.copyright-sign{
+    margin-right: 0.5em;
+}
+.copyright-sign::after{
+    content: '\00A9';
+    font-size: 0.5em;
+    position: absolute;
+    transform: translateY(-1em);
+}
+
+/* OTHER STYLES */
+
+.main-header{
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+}
+
+.navbar{
+    z-index: 4;
+    width: 100%;
+    height: 85px;
+    background-color: var(--navbar-bg);
+    padding: 26px 0;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+}
+
+.navbar i.logo{
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background-color: var(--navbar-bg);
+  position: relative;
+  display: block;
+  z-index: 2;
+  padding: 10px;
+  border: 5px solid var(--blue-main);
+}
+
+.navbar .logo_text{
+    font-size: 31px;
+    font-weight: bold;
+}
+
+.navbar i.logo::after{ 
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--blue-main);
+}
+
+.work-time{
+    color: var(--color-grey);
+}
+.work-time::before{
+    content: '\2022';
+    color: #9be97f;
+    position: absolute;
+    transform: translate(-7px, -5px);
+}
+
+.nav-link{
+    cursor: pointer;
+    padding: 12px 0px 12px 12px;
+    background-color: transparent;
+    color: var(--color-white);
+}
+.nav-link::before{
+    position: absolute;
+    content: '\2022';
+    transform: translateX(-10px);
+    color: var(--blue-main);
+}
+
+/* uikit page */
+.dropbtn {
+    cursor: pointer;
+    border: none;
+}
+.dropbtn:hover{
+    color: var(--blue-main);
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+  
+.dropdown, .burger {
+  position: relative;
+  display: inline-block;
+  background-color: var(--navbar-bg);
+  border-radius: none;
+  width: fit-content;
+}
+
+
+
+.dropdown-content, .burger-content {
+  color: var(--color-white);
+  display: none;
+  position: absolute;
+  background-color: var(--navbar-bg);
+  z-index: 1;
+  padding: 20px 16px;
+  border-bottom-left-radius: 46px;
+  border-bottom-right-radius: 46px;
+}
+
+.burger-content{
+    transform: translateX(-150px);
+}
+
+.dropdown-content a, .burger-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: var(--color-white);
+  text-wrap: nowrap;
+}
+.dropdown-content hr, .burger-content hr {
+    margin: 0 12px
+}
+
+
+.dropdown-content a:hover, .burger-content a:hover {
+    color: var(--blue-main);
+}
+
+
+#menuToggle:has( input:checked ) ~ .burger-content{
+    display: block;
+}
+
+.dropdown.second{
+    background-color: var(--navbar-bg);
+}
+.dropdown.second:hover .nav-link{
+    text-decoration: underline var(--blue-main);
+    text-underline-offset: 3px;
+}
+
+.dropdown.second:hover .dropdown-content{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dropdown.second .dropdown-content{
+  top: 30px;
+  color: var(--color-white);
+  flex-direction: column;
+  gap: 10px;
+  display: none;
+  position: absolute;
+  background-color: var(--blue-bg);
+  z-index: 1;
+  padding: 12px 20px;
+  border-radius: 0;
+}
+
+.dropdown.second .dropdown-content::before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: var(--blue-bg);
+    top: -8px;
+    transform: rotate(45deg);
+}
+
+
+
+.dropdown.second .dropdown-content a{
+    padding: 0px;
+}
+.dropdown.second .dropdown-content hr{
+    margin: 0;
+    border-color: var(--color-white);
+}
+
+.icons-table{
+    gap: 16px;
+}
+
+.icons-table i{
+    font-size: 50px;
+}
+
+nav.icon-menu{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon-menu i{
+    font-size: 30px;
+    color: var(--color-white);
+}
+.icon-menu i:hover{
+    color: var(--blue-main);
+}
+
+/* burger */
+
+#menuToggle
+{
+  display: block;
+  /* You can also use relative/absolute here if you want to stay on the top */
+  position: relative;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; 
+  z-index: 2; 
+  
+  -webkit-touch-callout: none;
+}
+
+
+#menuToggle span
+{
+  display: block;
+  width: 31px;
+  height: 3px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: var(--color-white);
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(-45deg) translate(-1px, -2px);
+  background: var(--blue-main);
+}
+
+
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.1, 0.1);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  transform: rotate(45deg) translate(0, -1px);
+}
+
+.flying-orb{
+    position: absolute;
+    top: 180px;
+    left: 55%;
+    z-index: 3;
+}
+
+.flying-orb::before{
+    display: block;
+    position: absolute;
+    background-color: var(--blue-main);
+    border-radius: 50%;
+    transform: translate(24px, 19px);
+    content: "";
+    width: 230px;
+    height: 230px;
+    z-index: -1;
+    animation: orb-glow 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 30px var(--blue-main));
+}
+
+@keyframes orb-glow {
+    0% {
+        filter: drop-shadow(0 0 10px var(--blue-main));
+    }
+    50% {
+        filter: drop-shadow(0 0 50px var(--blue-main));
+    }
+    100% {
+        filter: drop-shadow(0 0 10px var(--blue-main));
+    }
+  }
+
+.water-ripple {
+    z-index: -2;
+    transform: translate(-7px, -300px);
+    position: absolute;
+    width: 300px;
+    height: 300px;
+}
+  
+.ripple-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 5px solid var(--blue-main);
+  border-radius: 50%;
+  opacity: 0;
+  animation: ripple 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -2;
+  filter: drop-shadow(0 0 10px var(--blue-main));
+}
+
+@keyframes ripple {
+  0% {
+    border: 8px solid var(--blue-main);
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
+  100% {
+    border: 1px solid white;
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Задержки для каждого кольца */
+.ripple-circle:nth-child(1) { animation-delay: 0s; }
+.ripple-circle:nth-child(2) { animation-delay: 1s; }
+.ripple-circle:nth-child(3) { animation-delay: 2s; }
+.ripple-circle:nth-child(3) { animation-delay: 3s; }
