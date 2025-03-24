@@ -1,3 +1,5 @@
+@import url(../src/fonts/icons/css/INTRID_ICONS.css);
+
 /* VARIABLES */
 
 :root {
@@ -19,6 +21,25 @@
     --mobile: 360px;
 }
 
+@font-face {
+    font-family: 'Roboto';
+    src: url('../src/fonts/roboto/Roboto-Regular.woff2') format('woff2'),
+        url('../src/fonts/roboto/Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Icons';
+    src: url('../src/fonts/icons/INTRID_ICONS.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
 
 /* BASE STYLES */
 
@@ -31,6 +52,7 @@ body{
  color: var(--color-white);
 }
 h1,h2,h3,h4,h5,p,span{
+    font-family: 'Roboto';
     display: inline;
     margin: 0;
     line-height: 140%;
@@ -139,7 +161,7 @@ label.radioButton,
     height: 44px;
     border-radius: 30px;
     background-color: transparent;
-    padding: 14px 25px;
+    padding: 10px 25px;
     font-weight: 500;
     width: fit-content;
     font-size: 14px;
@@ -169,19 +191,19 @@ label.radioButton:has(input:checked),
     box-shadow: none;
 }
 
-.button-link::after{
+.button-link i{
     color: var(--blue-main);
 }
-.button-link:hover::after{
+.button-link:hover i{
     color: var(--color-black);
 }
 
 label.radioButton input{
     display: none;
 }
-label.radioButton:has(input:checked)::after, 
-.button-link::after{
-    content: '  \27F6';
+label.radioButton:has(input:checked)::after{
+    font-family: 'INTRID_ICONS';
+    content: '\0049';
     font-weight: 700;
     font-size: 14px;
 }
@@ -403,4 +425,12 @@ label.radioButton:has(input:checked)::after,
 .dropdown.second .dropdown-content hr{
     margin: 0;
     border-color: var(--color-white);
+}
+
+.icons-table{
+    gap: 16px;
+}
+
+.icons-table i{
+    font-size: 50px;
 }
