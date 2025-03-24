@@ -76,12 +76,12 @@ h5, .title_h5 {
 }
 
 p.p_big {
-  font-weight: 400px;
+  font-weight: 400;
   font-size: 16px;
 }
 
 p {
-  font-weight: 400px;
+  font-weight: 400;
   font-size: 14px;
 }
 
@@ -130,6 +130,13 @@ a {
   cursor: pointer;
   text-decoration: none;
   color: var(--blue-main);
+}
+
+i {
+  display: inline-block;
+}
+i.left {
+  transform: rotate(180deg) translateY(0.3em);
 }
 
 hr {
@@ -643,7 +650,6 @@ nav.icon-menu {
     opacity: 0;
   }
 }
-/* Задержки для каждого кольца */
 .ripple-circle:nth-child(1) {
   animation-delay: 0s;
 }
@@ -658,4 +664,96 @@ nav.icon-menu {
 
 .ripple-circle:nth-child(3) {
   animation-delay: 3s;
+}
+
+div.slider-test, .achievements-slider {
+  width: 250px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+div.slider-test div.slides, .achievements-slider div.slides {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s ease;
+}
+div.slider-test div.slides div.slide, .achievements-slider div.slides div.slide {
+  min-width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+}
+
+button.prev, button.next {
+  position: absolute;
+  left: calc(50% - 20px);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+button.prev:hover, button.next:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+.prev {
+  top: -10px;
+  transform: rotate(270deg);
+}
+
+.next {
+  left: calc(50% - 30px);
+  bottom: -10px;
+  transform: rotate(90deg);
+}
+
+.achievements-slider {
+  position: absolute;
+  top: 160px;
+  right: 250px;
+}
+.achievements-slider button {
+  color: var(--blue-main);
+  position: absolute;
+  left: calc(50% - 20px);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.achievements-slider button:hover {
+  background: transparent;
+  box-shadow: none;
+}
+.achievements-slider button i {
+  font-size: 30px;
+}
+.achievements-slider button.prev {
+  top: -10px;
+  transform: rotate(270deg);
+}
+.achievements-slider button.next {
+  left: calc(50% - 30px);
+  bottom: -10px;
+  transform: rotate(90deg);
+}
+.achievements-slider .slides .slide {
+  flex-direction: column;
+  text-align: center;
+  gap: 12px;
+}
+.achievements-slider .slides hr {
+  width: 70%;
+  margin: 0 auto;
+  border-color: var(--color-grey);
+}
+.achievements-slider .slides .slide .img-placeholder {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background-color: var(--blue-bg);
 }
