@@ -11,8 +11,10 @@
     --blue-main: #00eaff;
     --blue-bg: #06272a;
     --highlight-bg: #c3f3f8;
-    --navbar-bg: #0d0e0e;
+    --navbar-bg-op: #0d0e0ee1;
     --footer-bg: #232323;
+    --navbar-bg: #0d0e0e;
+    --blue-clouds: #00eaff31;
 
     /* breakpoints */
     --pc: 1440px;
@@ -137,6 +139,7 @@ a{
 
 i{
     display: inline-block;
+    position: relative;
     
     &.left{
         transform: rotate(180deg) translateY(0.3em);
@@ -147,6 +150,12 @@ hr{
     width: 80%;
     border-color: var(--blue-bg);
     background-color: var(--blue-bg);
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 section{
@@ -233,12 +242,14 @@ label.radioButton:has(input:checked)::after{
 .fd-row{
     display: flex;
     flex-direction: row;
-    gap: 6px;
 }
 
 .fd-col{
     display: flex;
     flex-direction: column;
+}
+
+.gap-6{
     gap: 6px;
 }
 
@@ -295,8 +306,28 @@ label.radioButton:has(input:checked)::after{
     gap: 32px;
 }
 
+.capitalize{
+    text-transform: capitalize;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
 .fz-26{
     font-size: 26px;
+}
+
+.fz-24{
+    font-size: 24px;
+}
+
+.fw-bold{
+    font-weight: bold;
+}
+
+.text-center{
+    text-align: center;
 }
 
 .flex-nowrap{
@@ -331,24 +362,23 @@ label.radioButton:has(input:checked)::after{
 .navbar{
     z-index: 4;
     width: 100%;
-    height: 85px;
-    background-color: var(--navbar-bg);
-    padding: 26px 0;
+    height: 60px;
+    background-color: var(--navbar-bg-op);
     display: flex;
     flex-direction: row;
     position: fixed;
 }
 
 .navbar i.logo{
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  background-color: var(--navbar-bg);
   position: relative;
   display: block;
   z-index: 2;
-  padding: 10px;
-  border: 5px solid var(--blue-main);
+  height: fit-content;
+  display: flex;
+
+  img{
+    align-self: center;
+  }
 }
 
 .navbar .logo_text{
@@ -356,26 +386,8 @@ label.radioButton:has(input:checked)::after{
     font-weight: bold;
 }
 
-.navbar i.logo::after{ 
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background-color: var(--blue-main);
-}
-
 .work-time{
     color: var(--color-grey);
-}
-.work-time::before{
-    content: '\2022';
-    color: #9be97f;
-    position: absolute;
-    transform: translate(-7px, -5px);
 }
 
 .nav-link{
@@ -417,15 +429,18 @@ label.radioButton:has(input:checked)::after{
   color: var(--color-white);
   display: none;
   position: absolute;
+  height: 0px;
   background-color: var(--navbar-bg);
   z-index: 1;
   padding: 20px 16px;
   border-bottom-left-radius: 46px;
   border-bottom-right-radius: 46px;
+  transition: height 0.5s ease-in-out;
 }
 
 .burger-content{
-    transform: translateX(-150px);
+    right: 0;
+    opacity: 0;
 }
 
 .dropdown-content a, .burger-content a {
@@ -446,7 +461,23 @@ label.radioButton:has(input:checked)::after{
 
 
 #menuToggle:has( input:checked ) ~ .burger-content{
+    opacity: 1;
+    height: fit-content;
     display: block;
+    transform-origin: top;
+    animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes burgerAppear {
+    0%{
+       display: block;
+       opacity: 0;
+       transform:  scale(1, 0);
+    }
+    100%{
+        opacity: 1;
+        transform:  scale(1, 1);
+    }
 }
 
 .dropdown.second{
@@ -460,6 +491,7 @@ label.radioButton:has(input:checked)::after{
 .dropdown.second:hover .dropdown-content{
   display: flex;
   flex-direction: column;
+  height: fit-content;
   gap: 10px;
 }
 
@@ -713,7 +745,7 @@ button.prev, button.next {
     transform: rotate(270deg);
 }
 .next { 
-    left: calc(50% - 30px);
+    left: 102px;
     bottom: -10px; 
     transform: rotate(90deg); 
 }
@@ -726,7 +758,7 @@ button.prev, button.next {
     button{
         color: var(--blue-main);
         position: absolute;
-        left: calc(50% - 20px) ;
+        left: 100px ;
         border: none;
         padding: 10px;
         cursor: pointer;
@@ -745,7 +777,7 @@ button.prev, button.next {
             transform: rotate(270deg);
         }
         &.next { 
-            left: calc(50% - 30px);
+            left: 100px;
             bottom: -10px; 
             transform: rotate(90deg); 
         }
@@ -760,12 +792,247 @@ button.prev, button.next {
         width: 70%;
         margin: 0 auto;
         border-color: var(--color-grey);
+    } 
+}
+
+.img-placeholder{
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background-color: var(--blue-bg);
+    padding: 10px;
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// TABS
+
+.tabs-buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+    .tab-button{
+        padding:  24px 80px 18px 100px ;
+        background-color: var(--blue-bg);
+        border-top: 2px solid transparent;
+        border-top-left-radius: 49px;
+        border-top-right-radius: 49px;
+        flex-grow: 1;
+        flex-basis: 0;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+
+        &::before{
+            content: "";
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background-color: var(--bg-main);
+            border-radius: 50%;
+            top: 0;
+            left: -80px;
+        }
+
+        &::after{
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            font-family: 'INTRID_ICONS';
+            font-size: 52px;
+            content: "\6d";
+            color: var(--blue-main);
+        }
+
+        .tab-button-content{
+            margin-top: 8px;
+            color: var(--color-grey);
+        }
+        
+        input{
+            display: none;
+        }
+        
+        &:has(input:checked){
+            background-color: var(--bg-main);
+            border-top: 2px solid var(--blue-bg); 
+
+            &::before{
+                background-color: var(--blue-main);
+            }
+
+            &::after{
+                color: var(--color-white);
+            }
+
+            .tab-content{
+                color: var(--color-white);
+            }
+        }
+    }
+}
+
+.tabs-content{
+    width: 100%;
+    background-color: var(--bg-main);
+    .tab-content{
+        display: none;
+        padding: 62px 0px;
+        transform-origin: top;
+    }
+}
+
+.tabs-buttons:has(#tab-1:checked)  ~ .tabs-content .tab-content:nth-child(1),
+.tabs-buttons:has(#tab-2:checked)  ~ .tabs-content .tab-content:nth-child(2),
+.tabs-buttons:has(#tab-3:checked)  ~ .tabs-content .tab-content:nth-child(3) {
+    display: block;
+    animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) ;
+}
+
+.under-title{
+    text-align: center;
+    color: var(--color-grey);
+    width: 40%;
+    margin: auto;
+    margin-top: 28px;
+}
+
+.block-buttons{
+    margin-top: 15px;
+    gap: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.tab-content-webDev{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.webDev-benefits{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 640px;
+    position: relative;
+
+    &::before{
+        position: absolute;
+        top: 20px;
+        left: 125px;
+        z-index: 0;
+        content: "";
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 100px 80px var(--blue-clouds),
+        inset 0px 0px 100px 2px var(--blue-clouds);
     }
 
-    .slides .slide .img-placeholder{
-        width: 62px;
-        height: 62px;
-        border-radius: 50%;
+    li{
+        z-index: 1;
+        padding: 14px 30px;
         background-color: var(--blue-bg);
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        position: relative;
+        overflow: hidden;
+        
+        &::after{
+            position: absolute;
+            top: calc(50% - 77px / 2);
+            left: -40px;
+            font-family: 'INTRID_ICONS';
+            font-size: 77px;
+            content: "\6d";
+            color: rgba(255, 255, 255, 0.02);
+        }
+
+
+        .webDev-benefits-highlight{
+            display: block;
+            font-size: 40px;
+            color: var(--blue-main);
+            text-wrap: nowrap;
+            flex-basis: 25%;
+        }
+
+        .webDev-benefits-description{
+            display: block;
+            flex-basis: 75%;
+            flex-grow: 1;
+            color: var(--color-grey);
+        }
+    }
+}
+
+.achievements-group{
+    display: flex;
+    flex-wrap: wrap;
+    width: 420px;
+    gap: 30px 60px ;
+    position: relative;
+
+    &::before{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        content: "";
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 100px 80px var(--blue-clouds),
+        inset 0px 0px 100px 2px var(--blue-clouds);
+    }
+
+    .achievement{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-basis: 160px;
+        align-items: center;
+        gap: 10px;
+
+        p{
+            text-align: center;
+        }
+    }
+}
+
+.icms-note{
+    margin: 26px 0;
+    display: flex;
+    align-items: center;
+    
+
+    img{
+        width: auto;
+        height: 35px;
+        margin-right: 8px;
+    }
+}
+
+
+@keyframes appear {
+    0% {
+        display: block;
+        opacity: 0;
+        transform: scale(1, 0);
+    }
+    
+    100% {
+        display: block;
+        opacity: 1;
+        transform: scale(1, 1);
     }
 }

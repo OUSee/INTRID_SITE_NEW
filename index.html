@@ -10,12 +10,11 @@
 </head>
 
 <body>
+    <!-- NAVBAR -->
     <div class="navbar">
         <div class="container main-header">
             <a class="fd-row align-center color-white">
-                <i class="logo">
-                </i>
-                <span class="logo_text copyright-sign">INTRID</span>
+                <img src="./src/images/logo 2.svg" />
             </a>
             <nav class="fd-row gap-8 align-center">
                 <div class="dropdown second">
@@ -67,22 +66,22 @@
             <a href="./html/uikit.html" class="button-highlight">Заказать сайт</a>
             <div class="fd-col ml-6 ">
                 <a class="title_h5 color-white fd-row flex-nowrap align-center" href="tel:74732540796">
-                    <i class="icon-phone fz-26 color-blue"></i>
+                    <i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
                     <span>+7 (473) 254 0796</span>
                 </a>
                 <span class="work-time a-self-end">Пн-Пт: 9:00-18:00</span>
             </div>
             <nav class="icon-menu">
-                <a class="nav-icon-link">
+                <a class="nav-icon-link" title="Почта">
                     <i class="icon-mail"></i>
                 </a>
-                <a class="nav-icon-link">
+                <a class="nav-icon-link" title="Whatsapp">
                     <i class="icon-whatsapp"></i>
                 </a>
                 <a class="nav-icon">
-                    <i class="icon-tg"></i>
+                    <i class="icon-tg" title="Telegram"></i>
                 </a>
-                <a class="nav-icon-link">
+                <a class="nav-icon-link" title="Личный кабинет">
                     <i class="icon-person"></i>
                 </a>
             </nav>
@@ -95,19 +94,23 @@
                 </div>
                 <div class="burger-content">
                     <a href="#" class="bold">
-                        <span class="title_h5">Link 1</span>
+                        <span class="title_h5">Портфолио</span>
                     </a>
                     <hr>
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                    <a href="#">О Компании</a>
+                    <a href="#">Клиентам</a>
+                    <a href="#">Отзывы</a>
+                    <a href="#">Блог</a>
+                    <a href="#">Вакансии</a>
+                    <a href="#">Контакты</a>
                     <button class="button-highlight mt-32">
-                        Кнопка внизу
+                        Заказать сайт
                     </button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- MAIN PAGE -->
     <section class="container main-page">
         <h1 style="max-width: 766px;" class="mb-32">
             <span class="title_h2">Создаём</span><br>
@@ -131,34 +134,289 @@
             <div class="slides">
                 <div class="slide">
                     <div class="img-placeholder">
-                        <img src="" alt="herb">
+                        <img src="./src/images/herb.png" alt="herb">
                     </div>
                     <p>Государственная аккредитация в области информационных технологий</p>
                 </div>
                 <hr>
                 <div class="slide">
                     <div class="img-placeholder">
-                        <img src="" alt="herb">
+                        <img src="./src/images/herb.png" alt="herb">
                     </div>
                     <p>1-е место в рейтинге разработчиков интернет-магазинов по региону</p>
                 </div>
                 <hr>
                 <div class="slide">
                     <div class="img-placeholder">
-                        <img src="" alt="herb">
+                        <img src="./src/images/herb.png" alt="herb">
                     </div>
                     <p>Государственная аккредитация в области информационных технологий</p>
                 </div>
                 <hr>
                 <div class="slide">
                     <div class="img-placeholder">
-                        <img src="" alt="herb">
+                        <img src="./src/images/herb.png" alt="herb">
                     </div>
                     <p>Государственная аккредитация в области информационных технологий</p>
                 </div>
             </div>
             <button class="prev"><i class="icon-shevrone"></i></button>
             <button class="next"><i class="icon-shevrone"></i></button>
+        </div>
+    </section>
+    <section class="tabs">
+        <div class="tabs-buttons container">
+            <label for="tab-1" class="tab-button">
+                <input type="radio" name="tab-radio" id="tab-1" checked>
+                <span class="tab-header title_h5">Разработка и продвижение сайтов</span>
+                <p class="tab-button-content">
+                    <span class="color-blue fz-24 fw-bold">на треть лучше</span>
+                    показатель конверсии на сайтах наших клиентов, чем у аналогичных сайтов конкурентов
+                </p>
+            </label>
+            <label for="tab-2" class="tab-button">
+                <input type="radio" name="tab-radio" id="tab-2">
+                <span class="tab-header title_h5">Внедрение ИИ в интернет-магазин</span>
+                <p class="tab-button-content"><span class="color-blue fz-24 fw-bold">+20%</span> к эффективности продаж
+                    в интернет-магазине после внедрения Искусственного Интеллекта</p>
+            </label>
+            <label for="tab-3" class="tab-button">
+                <input type="radio" name="tab-radio" id="tab-3">
+                <span class="tab-header title_h5">Разработка тендерных порталов</span>
+                <p class="tab-button-content"><span class="color-blue fz-24 fw-bold">500 000 ₽</span> в месяц - средняя
+                    экономия
+                    для крупных предприятий при внедрении тендерных порталов и систем автоматизации бизнес-процессов</p>
+            </label>
+        </div>
+        <div class="tabs-content">
+            <div class="tab-content container">
+                <h2 class="text-center">Веб-разработка и продвижение сайтов</h2>
+                <p class="under-title">Проанализируем задачи и нюансы Вашего бизнеса и найдём оптимальное решение для
+                    запуска онлайн-продаж</p>
+                <div class="tab-content-webDev">
+                    <ul class="webDev-benefits">
+                        <li>
+                            <span class="webDev-benefits-highlight">
+                                4,2%
+                            </span>
+                            <p class="webDev-benefits-description">
+                                Средняя конверсия посетителей в покупатели на разработанных нами сайтах
+                            </p>
+                        </li>
+                        <li>
+                            <span class="webDev-benefits-highlight">
+                                6 мес
+                            </span>
+                            <p class="webDev-benefits-description">
+                                Средний срок достижения топовых позиций
+                                в результатах поиска
+                            </p>
+                        </li>
+                        <li>
+                            <span class="webDev-benefits-highlight">
+                                iCMS
+                            </span>
+                            <p class="webDev-benefits-description">
+                                Система управления контентом собственной разработки на фреймворке Yii 2.0
+                            </p>
+                        </li>
+                    </ul>
+                    <ul class="achievements-group">
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>1-е место в рейтинге разработчиков интернет-магазинов по региону</p>
+                        </li>
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>2-е место в рейтинге агентств по созданию и продвижению сайтов в Воронеже</p>
+                        </li>
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>90% положительных отзывов</p>
+                            <p class="icons-partners">partners</p>
+                        </li>
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>85% клиентов работают с нами на постоянной основе</p>
+                        </li>
+                </div>
+                <div class="icms-note">
+                    <img src="./src/images/herb.png" alt="herb" class="icms-herb" />
+                    <p>iCMS зарегистрирована в Российском реестре программного обеспечения под <span
+                            class="color-blue">№14267</span><br>
+                        <a href="#">Подробнее об iCMS <i class="icon-arrow_wide"></i></a>
+                    </p>
+                </div>
+                <div class="block-buttons">
+                    <a href="#" class="button-link button-highlight">
+                        Заказать сайт
+                    </a>
+                    <a href="#" class="button-link">
+                        Заказать SEO
+                        <i class="icon-arrow_wide"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="tab-content container">
+                <h2 class="text-center">Внедрение ИИ в интернет-магазин</h2>
+                <p class="under-title">Проанализируем задачи и нюансы Вашего бизнеса и найдём оптимальное решение для
+                    запуска онлайн-продаж</p>
+                <div class="tab-content-webDev">
+                    <ul class="webDev-benefits">
+                        <li>
+                            <span class="webDev-benefits-highlight">
+                                4,2%
+                            </span>
+                            <p class="webDev-benefits-description">
+                                Средняя конверсия посетителей в покупатели на разработанных нами сайтах
+                            </p>
+                        </li>
+                        <li>
+                            <span class="webDev-benefits-highlight">
+                                6 мес
+                            </span>
+                            <p class="webDev-benefits-description">
+                                Средний срок достижения топовых позиций
+                                в результатах поиска
+                            </p>
+                        </li>
+                        <li>
+                            <span class="webDev-benefits-highlight">
+                                iCMS
+                            </span>
+                            <p class="webDev-benefits-description">
+                                Система управления контентом собственной разработки на фреймворке Yii 2.0
+                            </p>
+                        </li>
+                    </ul>
+                    <ul class="achievements-group">
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>1-е место в рейтинге разработчиков интернет-магазинов по региону</p>
+                        </li>
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>2-е место в рейтинге агентств по созданию и продвижению сайтов в Воронеже</p>
+                        </li>
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>90% положительных отзывов</p>
+                            <p class="icons-partners">partners</p>
+                        </li>
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>85% клиентов работают с нами на постоянной основе</p>
+                        </li>
+                </div>
+                <div class="icms-note">
+                    <img src="./src/images/herb.png" alt="herb" class="icms-herb" />
+                    <p>iCMS зарегистрирована в Российском реестре программного обеспечения под <span
+                            class="color-blue">№14267</span><br>
+                        <a href="#">Подробнее об iCMS <i class="icon-arrow_wide"></i></a>
+                    </p>
+                </div>
+                <div class="block-buttons">
+                    <a href="#" class="button-link button-highlight">
+                        Тест кнопки
+                    </a>
+                    <a href="#" class="button-link">
+                        Тест кнопки
+                        <i class="icon-arrow_wide"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="tab-content container">
+                <h2 class="text-center">Разработка тендерных порталов</h2>
+                <p class="under-title">Проанализируем задачи и нюансы Вашего бизнеса и найдём оптимальное решение для
+                    запуска онлайн-продаж</p>
+                <div class="tab-content-webDev">
+                    <ul class="webDev-benefits">
+                        <li>
+                            <span class="webDev-benefits-highlight">
+                                4,2%
+                            </span>
+                            <p class="webDev-benefits-description">
+                                Средняя конверсия посетителей в покупатели на разработанных нами сайтах
+                            </p>
+                        </li>
+                        <li>
+                            <span class="webDev-benefits-highlight">
+                                6 мес
+                            </span>
+                            <p class="webDev-benefits-description">
+                                Средний срок достижения топовых позиций
+                                в результатах поиска
+                            </p>
+                        </li>
+                        <li>
+                            <span class="webDev-benefits-highlight">
+                                iCMS
+                            </span>
+                            <p class="webDev-benefits-description">
+                                Система управления контентом собственной разработки на фреймворке Yii 2.0
+                            </p>
+                        </li>
+                    </ul>
+                    <ul class="achievements-group">
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>1-е место в рейтинге разработчиков интернет-магазинов по региону</p>
+                        </li>
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>2-е место в рейтинге агентств по созданию и продвижению сайтов в Воронеже</p>
+                        </li>
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>90% положительных отзывов</p>
+                            <p class="icons-partners">partners</p>
+                        </li>
+                        <li class="achievement">
+                            <div class="img-placeholder">
+                                <img src="./src/images/herb.png" alt="herb">
+                            </div>
+                            <p>85% клиентов работают с нами на постоянной основе</p>
+                        </li>
+                </div>
+                <div class="icms-note">
+                    <img src="./src/images/herb.png" alt="herb" class="icms-herb" />
+                    <p>iCMS зарегистрирована в Российском реестре программного обеспечения под <span
+                            class="color-blue">№14267</span><br>
+                        <a href="#">Подробнее об iCMS <i class="icon-arrow_wide"></i></a>
+                    </p>
+                </div>
+                <div class="block-buttons">
+                    <a href="#" class="button-link button-highlight">
+                        Тест кнопки
+                    </a>
+                    <a href="#" class="button-link">
+                        Тест кнопки
+                        <i class="icon-arrow_wide"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
     <script src="./js/script.js"></script>
