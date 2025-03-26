@@ -52,6 +52,7 @@ body{
  background-position: top;
  background-repeat: no-repeat;
  position: relative;
+ overflow-x: hidden;
 }
 h1,h2,h3,h4,h5,p,span,a{
     font-family: 'Roboto';
@@ -799,6 +800,7 @@ button.prev, button.next {
     position: absolute;
     top: 160px;
     right: 5%;
+    z-index: 3;
 
     button{
         color: var(--blue-main);
@@ -1055,7 +1057,7 @@ button.prev, button.next {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        flex-basis: 160px;
+        flex-basis: 40%;
         align-items: center;
         gap: 10px;
 
@@ -1377,7 +1379,7 @@ button.prev, button.next {
         }
 
         .achievements-slider{
-            top: 350px;
+            top: 390px;
         }
     }
     
@@ -1501,4 +1503,72 @@ button.prev, button.next {
             }
         }
     }
+}
+
+
+@media (min-width: 360px) {
+    
+    .container{
+        margin: 0 16px;
+    }
+
+    .button-link.big{
+        font-size: 12px;
+        padding: 20px 25px;
+        gap: 4px;
+    }
+
+    header .main-header{
+        justify-content: space-between;
+        gap: 0;
+
+        .main-logo img{
+            height: 24px;
+        }
+
+        .icon-menu{
+            margin: 0;
+            gap: 12px;
+        }
+    }
+
+    .main-page{
+        padding-bottom: 1000px !important;
+
+        .achievements-slider{
+            display: none;
+        }
+
+        .flying-orb{
+           scale: (-1);
+           left: 95px;
+        }
+    }
+
+    .recent-work-card{
+        flex-direction: column;
+        padding: 33px;
+
+        .work-testimonial{
+            gap: 5px;
+        }
+    }
+
+    .calc-section{
+        .calc-spacer{
+            display: none;
+        }
+    
+        .prices-services-list{
+            display: none;
+        }
+
+        a.button-highlight.m-center{
+            display: none;
+        }
+    }
+
+    
+
+
 }

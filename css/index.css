@@ -44,6 +44,7 @@ body {
   background-position: top;
   background-repeat: no-repeat;
   position: relative;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, p, span, a {
@@ -785,6 +786,7 @@ button.prev:hover, button.next:hover {
   position: absolute;
   top: 160px;
   right: 5%;
+  z-index: 3;
 }
 .achievements-slider button {
   color: var(--blue-main);
@@ -1012,7 +1014,7 @@ button.prev:hover, button.next:hover {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  flex-basis: 160px;
+  flex-basis: 40%;
   align-items: center;
   gap: 10px;
 }
@@ -1279,7 +1281,7 @@ button.prev:hover, button.next:hover {
     width: 250px;
   }
   .main-page .achievements-slider {
-    top: 350px;
+    top: 390px;
   }
   .tabs-buttons {
     gap: 11px;
@@ -1377,5 +1379,52 @@ button.prev:hover, button.next:hover {
   }
   .prices-services-list-item:hover img {
     top: 15px;
+  }
+}
+@media (min-width: 360px) {
+  .container {
+    margin: 0 16px;
+  }
+  .button-link.big {
+    font-size: 12px;
+    padding: 20px 25px;
+    gap: 4px;
+  }
+  header .main-header {
+    justify-content: space-between;
+    gap: 0;
+  }
+  header .main-header .main-logo img {
+    height: 24px;
+  }
+  header .main-header .icon-menu {
+    margin: 0;
+    gap: 12px;
+  }
+  .main-page {
+    padding-bottom: 1000px !important;
+  }
+  .main-page .achievements-slider {
+    display: none;
+  }
+  .main-page .flying-orb {
+    scale: -1;
+    left: 95px;
+  }
+  .recent-work-card {
+    flex-direction: column;
+    padding: 33px;
+  }
+  .recent-work-card .work-testimonial {
+    gap: 5px;
+  }
+  .calc-section .calc-spacer {
+    display: none;
+  }
+  .calc-section .prices-services-list {
+    display: none;
+  }
+  .calc-section a.button-highlight.m-center {
+    display: none;
   }
 }
