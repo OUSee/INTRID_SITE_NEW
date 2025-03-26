@@ -43,9 +43,10 @@ body {
   background-size: 100% auto;
   background-position: top;
   background-repeat: no-repeat;
+  position: relative;
 }
 
-h1, h2, h3, h4, h5, p, span {
+h1, h2, h3, h4, h5, p, span, a {
   font-family: "Roboto";
   display: block;
   margin: 0;
@@ -53,6 +54,7 @@ h1, h2, h3, h4, h5, p, span {
 }
 
 span {
+  font-size: 14px;
   display: inline;
 }
 
@@ -127,10 +129,11 @@ p {
     font-size: 13px;
   }
   p {
-    font-size: 13x;
+    font-size: 13px;
   }
 }
 a {
+  font-size: 14px;
   cursor: pointer;
   text-decoration: none;
   color: var(--blue-main);
@@ -151,7 +154,7 @@ hr {
 }
 
 hr.section-spacer {
-  width: 100%;
+  width: auto;
   border: 0.5px solid var(--section-spacer);
 }
 
@@ -379,6 +382,18 @@ label.radioButton:has(input:checked)::after {
   justify-content: space-between;
   align-items: center;
 }
+.main-header #mobilemenuToggle {
+  display: none;
+}
+.main-header .header-links-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+.main-header .header-links-nav .mobile-visible {
+  display: none;
+}
 
 .navbar {
   z-index: 4;
@@ -520,7 +535,7 @@ label.radioButton:has(input:checked)::after {
 }
 
 .dropdown.second .dropdown-content {
-  top: 30px;
+  top: 44px;
   color: var(--color-white);
   flex-direction: column;
   gap: 10px;
@@ -560,7 +575,7 @@ label.radioButton:has(input:checked)::after {
   font-size: 50px;
 }
 
-nav.icon-menu {
+div.icon-menu {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -635,11 +650,20 @@ nav.icon-menu {
   transform: rotate(45deg) translate(0, -1px);
 }
 
+@keyframes baloon {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg) scale(1.01);
+  }
+}
 .flying-orb {
   position: absolute;
   top: 180px;
   left: 55%;
   z-index: 3;
+  animation: baloon 8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 
 .flying-orb::before {
@@ -669,7 +693,8 @@ nav.icon-menu {
 }
 .water-ripple {
   z-index: -2;
-  transform: translate(-7px, -300px);
+  left: 0;
+  top: 0;
   position: absolute;
   width: 300px;
   height: 300px;
@@ -764,7 +789,7 @@ button.prev:hover, button.next:hover {
 .achievements-slider {
   position: absolute;
   top: 160px;
-  right: 250px;
+  right: 5%;
 }
 .achievements-slider button {
   color: var(--blue-main);
@@ -830,6 +855,12 @@ button.prev:hover, button.next:hover {
   position: relative;
   cursor: pointer;
 }
+.tabs-buttons .tab-button:hover::before {
+  background-color: var(--blue-main);
+}
+.tabs-buttons .tab-button:hover::after {
+  color: var(--color-white);
+}
 .tabs-buttons .tab-button::before {
   content: "";
   position: absolute;
@@ -839,6 +870,7 @@ button.prev:hover, button.next:hover {
   border-radius: 50%;
   top: 0;
   left: -80px;
+  transition: all 0.3s ease-in-out;
 }
 .tabs-buttons .tab-button::after {
   position: absolute;
@@ -848,6 +880,7 @@ button.prev:hover, button.next:hover {
   font-size: 52px;
   content: "m";
   color: var(--blue-main);
+  transition: all 0.3s ease-in-out;
 }
 .tabs-buttons .tab-button .tab-button-content {
   margin-top: 8px;
@@ -1117,7 +1150,7 @@ button.prev:hover, button.next:hover {
   padding: 0px;
   top: -35px;
   overflow: visible;
-  box-shadow: 0px 0px 100px 10px var(--blue-clouds), inset 0px 0px 100px -20px var(--blue-clouds);
+  box-shadow: 0px 0px 50px 10px var(--blue-clouds), inset 0px 0px 160px -20px var(--blue-clouds);
 }
 .prices-services-list-item span {
   text-wrap: nowrap;
@@ -1139,4 +1172,215 @@ button.prev:hover, button.next:hover {
   display: block;
   transform: translateY(0px);
   animation: priceAppear 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.calc-spacer {
+  display: none;
+}
+
+@media (max-width: 1400px) {
+  header .main-header a.button-highlight {
+    display: none;
+  }
+}
+@media (max-width: 1201px) {
+  header .main-header {
+    justify-content: unset;
+    gap: 27px;
+  }
+  header .main-header .main-logo {
+    height: 24px;
+    width: auto;
+  }
+  header .main-header a.button-highlight, header .main-header div.header-contacts {
+    display: none;
+  }
+  header .main-header nav.header-links-nav {
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+  header .main-header .burger {
+    margin: 0;
+  }
+  .flying-orb {
+    top: 270px;
+    left: 60%;
+    right: 300px;
+    width: 176px;
+    height: 176px;
+  }
+  .flying-orb img {
+    height: 212px;
+    width: auto;
+  }
+  .flying-orb::before {
+    width: 167px;
+    height: 167px;
+  }
+  .flying-orb .water-ripple {
+    height: 212px;
+    width: 212px;
+  }
+  .achievements-slider {
+    top: 130px;
+    right: 40px;
+  }
+  .tabs {
+    padding-top: 0px;
+  }
+  .tabs-buttons {
+    margin: 0 8px;
+    gap: 14px;
+  }
+  .tabs-buttons .tab-button {
+    padding: 18px 33px 18px 100px;
+  }
+  .tabs-buttons .tab-button .title_h5 {
+    display: block;
+  }
+  .recent-work-card {
+    flex-basis: 60%;
+  }
+  .calc-spacer {
+    margin-top: 64px;
+    display: block;
+    width: 100%;
+  }
+  .prices-services-list {
+    margin-top: 40px;
+  }
+}
+@media (max-width: 601px) {
+  body {
+    background-image: none;
+  }
+  header .main-header nav.header-links-nav {
+    display: none;
+  }
+  header .main-header .icon-menu {
+    margin-left: auto;
+  }
+  .main-page {
+    padding-top: 90px !important;
+    padding-bottom: 480px !important;
+  }
+  .main-page .flying-orb {
+    top: 450px;
+    left: 40px;
+    width: 202px;
+    height: 202px;
+  }
+  .main-page .flying-orb img {
+    height: 250px;
+    width: auto;
+    transform: scaleX(-1) rotate(10deg);
+  }
+  .main-page .flying-orb::before {
+    width: 202px;
+    height: 202px;
+  }
+  .main-page .flying-orb .water-ripple {
+    height: 250px;
+    width: 250px;
+  }
+  .main-page .achievements-slider {
+    top: 350px;
+  }
+  .tabs-buttons {
+    gap: 11px;
+    margin: 0 11px;
+  }
+  .tabs-buttons .tab-button {
+    padding: 14px 20px;
+  }
+  .tabs-buttons .tab-button .tab-header {
+    position: relative;
+    font-size: 14px;
+    z-index: 1;
+  }
+  .tabs-buttons .tab-button::before {
+    display: none;
+  }
+  .tabs-buttons .tab-button:hover::after, .tabs-buttons .tab-button:has(input:checked)::after {
+    z-index: 0;
+    color: var(--blue-clouds);
+  }
+  .tabs-buttons .tab-button::after {
+    font-size: 75px;
+    top: -5px;
+    left: -35px;
+    color: var(--blue-clouds);
+  }
+  .tabs-buttons .tab-button .tab-button-content {
+    display: none;
+  }
+  .tab-content {
+    padding-bottom: 0px;
+  }
+  .tab-content .under-title {
+    width: 90%;
+  }
+  .tab-content .tab-content-webDev {
+    flex-wrap: wrap;
+  }
+  .tab-content .tab-content-webDev .webDev-benefits {
+    flex-grow: 1;
+    flex-basis: 80%;
+  }
+  .tab-content .tab-content-webDev .icms-note {
+    align-items: start;
+  }
+  .tab-content .tab-content-webDev .achievements-group {
+    margin-top: 56px;
+    margin-bottom: 56px;
+    flex-grow: 1;
+    flex-basis: 90%;
+  }
+  .web-count {
+    margin: 0 auto;
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+  .web-count span.title_h4 {
+    flex-grow: 1;
+    flex-basis: 80%;
+    text-align: center;
+    margin: 0;
+  }
+  .recent-work-card {
+    margin: 0;
+    flex-basis: 100%;
+    padding: 26px 16px;
+    gap: 10px;
+  }
+  .recent-work-card img {
+    height: 100px;
+    width: auto;
+    align-self: center;
+  }
+  .recent-work-card .work-testimonial {
+    gap: 0px;
+  }
+  .recent-work-card .work-testimonial a {
+    margin-top: 5px;
+  }
+  .prices-services-list {
+    flex-wrap: wrap;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .prices-services-list-item {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .prices-services-list-item span.color-blue {
+    transform: translateY(0px);
+    display: block;
+  }
+  .prices-services-list-item:hover {
+    padding: 165px 20px 32px 20px;
+  }
+  .prices-services-list-item:hover img {
+    top: 15px;
+  }
 }

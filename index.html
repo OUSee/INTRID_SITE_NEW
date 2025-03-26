@@ -13,65 +13,83 @@
     <!-- NAVBAR -->
     <header class="navbar">
         <div class="container main-header">
-            <a class="fd-row align-center color-white">
+            <a href="#" class="main-logo">
                 <img src="./src/images/logoMain.svg" alt="logo">
             </a>
-            <nav class="fd-row gap-8 align-center">
-                <div class="dropdown second">
-                    <a class="nav-link">Разработка сайтов</a>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <hr>
-                        <a href="#">Link 3</a>
-                    </div>
+            <div class="mobile-burger">
+                <div id="mobilemenuToggle">
+                    <input type="checkbox" id="menuCheckbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="dropdown second">
-                    <a class="nav-link">IT для бизнеса</a>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <hr>
-                        <a href="#">Link 3</a>
+                <nav class="header-links-nav">
+                    <div class="dropdown second">
+                        <a class="nav-link">Разработка сайтов</a>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <hr>
+                            <a href="#">Link 3</a>
+                        </div>
                     </div>
-                </div>
-                <div class="dropdown second">
-                    <a class="nav-link">Продвижение</a>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <hr>
-                        <a href="#">Link 3</a>
+                    <div class="dropdown second">
+                        <a class="nav-link">IT для бизнеса</a>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <hr>
+                            <a href="#">Link 3</a>
+                        </div>
                     </div>
-                </div>
-                <div class="dropdown second">
-                    <a class="nav-link">Дизайн</a>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <hr>
-                        <a href="#">Link 3</a>
+                    <div class="dropdown second">
+                        <a class="nav-link">Продвижение</a>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <hr>
+                            <a href="#">Link 3</a>
+                        </div>
                     </div>
-                </div>
-                <div class="dropdown second">
-                    <a class="nav-link">Хостинг</a>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <hr>
-                        <a href="#">Link 3</a>
+                    <div class="dropdown second">
+                        <a class="nav-link">Дизайн</a>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <hr>
+                            <a href="#">Link 3</a>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                    <div class="dropdown second">
+                        <a class="nav-link">Хостинг</a>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <hr>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <a class="mobile-visible" href="#" class="bold">
+                        <span class="title_h5">Портфолио</span>
+                    </a>
+                    <hr class="mobile-visible">
+                    <a class="mobile-visible" href="#">О Компании</a>
+                    <a class="mobile-visible" href="#">Клиентам</a>
+                    <a class="mobile-visible" href="#">Отзывы</a>
+                    <a class="mobile-visible" href="#">Блог</a>
+                    <a class="mobile-visible" href="#">Вакансии</a>
+                    <a class="mobile-visible" href="#">Контакты</a>
+                </nav>
+            </div>
             <a href="./html/uikit.html" class="button-highlight">Заказать сайт</a>
-            <div class="fd-col ml-6 ">
+            <div class="fd-col ml-6 header-contacts">
                 <a class="title_h5 color-white fd-row flex-nowrap align-center" href="tel:74732540796">
                     <i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
                     <span>+7 (473) 254 0796</span>
                 </a>
                 <span class="work-time a-self-end">Пн-Пт: 9:00-18:00</span>
             </div>
-            <nav class="icon-menu">
+            <div class="icon-menu">
                 <a class="nav-icon-link" title="Почта">
                     <i class="icon-mail"></i>
                 </a>
@@ -84,7 +102,7 @@
                 <a class="nav-icon-link" title="Личный кабинет">
                     <i class="icon-person"></i>
                 </a>
-            </nav>
+            </div>
             <div class="burger ml-32">
                 <div id="menuToggle">
                     <input type="checkbox" id="menuCheckbox" />
@@ -114,7 +132,7 @@
     <section class="container main-page">
         <h1 style="max-width: 766px;" class="mb-32">
             <span class="title_h2">Создаём</span><br>
-            <span style="font-size: 44px;" class="title_h1">качественные сайты и IT-продукты,</span>
+            <span class="title_h1">качественные сайты и IT-продукты,</span>
             <span class="title_h2">эффективно решающие бизнес-задачи</span>
         </h1>
         <a class="button-link big" href="#">
@@ -170,7 +188,7 @@
                 <input type="radio" name="tab-radio" id="tab-1" checked>
                 <span class="tab-header title_h5">Разработка и продвижение сайтов</span>
                 <span class="tab-button-content">
-                    <span class="color-blue fz-24 fw-bold">на треть лучше</span>
+                    <span class="color-blue fz-24 fw-bold">на треть лучше </span>
                     показатель конверсии на сайтах наших клиентов, чем у аналогичных сайтов конкурентов
                 </span>
             </label>
@@ -228,6 +246,13 @@
                             </p>
                         </li>
                     </ul>
+                    <div class="icms-note">
+                        <img src="./src/images/herb.png" alt="herb" class="icms-herb" />
+                        <p>iCMS зарегистрирована в Российском реестре программного обеспечения под <span
+                                class="color-blue">№14267</span><br>
+                            <a href="#">Подробнее об iCMS <i class="icon-arrow_wide"></i></a>
+                        </p>
+                    </div>
                     <ul class="achievements-group">
                         <li class="achievement">
                             <div class="img-placeholder">
@@ -255,13 +280,6 @@
                             <p>85% клиентов работают с нами на постоянной основе</p>
                         </li>
                     </ul>
-                </div>
-                <div class="icms-note">
-                    <img src="./src/images/herb.png" alt="herb" class="icms-herb" />
-                    <p>iCMS зарегистрирована в Российском реестре программного обеспечения под <span
-                            class="color-blue">№14267</span><br>
-                        <a href="#">Подробнее об iCMS <i class="icon-arrow_wide"></i></a>
-                    </p>
                 </div>
                 <div class="block-buttons">
                     <a href="#" class="button-link button-highlight big">
@@ -451,6 +469,7 @@
                     <a href="https://kinospartak.ru">https://kinospartak.ru</a>
                 </div>
             </div>
+            <hr class="calc-spacer">
             <ul class="prices-services-list">
                 <li class="prices-services-list-item">
                     <img src='./src/images/landig-page.svg' alt="landig-page"></img>
