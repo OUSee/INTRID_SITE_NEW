@@ -15,6 +15,8 @@
     --footer-bg: #232323;
     --navbar-bg: #0d0e0e;
     --blue-clouds: #00eaff31;
+    --section-spacer: #06272A;
+    --blue-tag: #11A2AA;
 
     /* breakpoints */
     --pc: 1440px;
@@ -152,6 +154,11 @@ hr{
     background-color: var(--blue-bg);
 }
 
+hr.section-spacer{
+    width: 100%;
+    border: 0.5px solid var(--section-spacer);
+}
+
 ul{
     list-style: none;
     margin: 0;
@@ -198,6 +205,7 @@ label.radioButton,
     gap: 8px;
 
     &.big{
+        border-radius: 41px;
         padding: 22px 41px;
     }
 }
@@ -275,6 +283,9 @@ label.radioButton:has(input:checked)::after{
 .ml-6{
     margin-left: 6px;
 }
+.ml-8{
+    margin-left: 8px;
+}
 .ml-16{
     margin-left: 16px;
 }
@@ -288,6 +299,10 @@ label.radioButton:has(input:checked)::after{
 
 .mt-32{
     margin-top: 32px;
+}
+
+.m-center{
+    margin: 0 auto;
 }
 
 .color-blue{
@@ -1035,5 +1050,149 @@ button.prev, button.next {
         display: block;
         opacity: 1;
         transform: scale(1, 1);
+    }
+}
+
+.web-count {
+    display: flex;
+    align-items: center;
+    width: 380px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    position: relative;
+
+    span.ml-6{
+        flex-shrink: 1;
+        flex-basis: 100px;
+    }
+
+    .large-number{
+        color: var(--blue-main);
+        font-size: 70px;
+        font-weight: bold;
+    }
+    img{
+        height: 70px;
+        width: auto;
+
+        &.olive-right{
+            transform: scaleX(-1);
+        }
+    }
+
+    &::before{
+        position: absolute;
+        top: 40px;
+        left: 90px;
+        z-index: 0;
+        content: "";
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 100px 80px var(--blue-clouds),
+        inset 0px 0px 100px 2px var(--blue-clouds);
+    }
+    
+}
+
+.recent-work-card{
+    display: flex;
+    gap: 20px;
+    padding: 24px 30px;
+    background-color: var(--blue-bg);
+    border-radius: 50px;
+    margin-left: auto;
+
+    .work-testimonial{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .card-tag{
+            color: var(--blue-tag);
+            font-size: 16px;
+        }
+
+        .card-description{
+            color: var(--color-grey);
+        }
+
+        a{
+            margin-top: 16px;
+        }
+    }
+}
+
+@keyframes priceAppear {
+    0%{
+        transform: translateY(-30px), scale(1, 0);
+        display: block;
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px), scale(1, 1);
+        display: block;
+        opacity: 1;
+    }
+}
+
+.prices-services-list{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 130px;
+    height: 290px;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &-item{
+        border: 2px solid var(--blue-clouds);
+        border-radius: 50px;
+        padding: 125px 20px 32px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        flex-basis: 230px;
+        height: fit-content;
+        
+        img{
+            box-sizing: border-box;
+            position: absolute;
+            border-radius: 50%;
+            padding: 0px;
+            top: -35px;
+            overflow: visible;
+            box-shadow: 0px 0px 100px 10px var(--blue-clouds), 
+                        inset 0px 0px 100px -20px var(--blue-clouds)
+        }
+
+        span{
+            text-wrap: nowrap;
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        span.color-blue{
+            display: none;
+            transform: translateY(-20px);
+        }
+
+        &:hover{
+            padding: 165px  20px 32px 20px;
+
+            img{
+                top: 15px;
+            }
+
+            span.color-blue{
+                display: block;
+                transform: translateY(0px);
+                animation: priceAppear 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            }
+        }
     }
 }
