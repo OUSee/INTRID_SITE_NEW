@@ -17,6 +17,7 @@
     --blue-clouds: #00eaff31;
     --section-spacer: #06272A;
     --blue-tag: #11A2AA;
+    --blue-bg-icon: #00EAFF08;
 
     /* breakpoints */
     --pc: 1440px;
@@ -1384,6 +1385,17 @@ button.prev, button.next {
         }
 
         .header-links-nav{
+
+            &::after{
+                position: absolute;
+                top: 25%;
+                right: -40%;
+                color: var(--blue-bg-icon);
+                font-family: 'INTRID_ICONS';
+                content: "\6d";
+                font-size: 500px;
+                transition: all 0.3s ease;
+            }
 
             hr{
                 margin: 0;
