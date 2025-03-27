@@ -4,16 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTRID</title>
+    <link rel="icon" type="x-icon" href="./src/images/favicon.ico">
+    <title>
+        Разработка и продвижение сайтов в Воронеже. Закажите сайт в веб-студии INTRID
+    </title>
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
     <!-- NAVBAR -->
-    <header class="navbar">
+    <header class="navbar" id="header">
         <div class="container main-header">
-            <a href="#" class="main-logo">
+            <a href="/" title="INTRID – Создание сайтов / Инновации в интернете" class="main-logo">
                 <img src="./src/images/logoMain.svg" alt="logo">
             </a>
             <div class="mobile-burger">
@@ -27,46 +30,50 @@
                     <div class="dropdown second">
                         <a class="nav-link">Разработка сайтов</a>
                         <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
+                            <a href="#">Разработка Landing page</a>
+                            <a href="#">Корпоративный сайт</a>
+                            <a href="#">Интернет-магазин</a>
                             <hr>
-                            <a href="#">Link 3</a>
+                            <a href="#">Веб-порталы</a>
                         </div>
                     </div>
                     <div class="dropdown second">
                         <a class="nav-link">IT для бизнеса</a>
                         <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
+                            <a href="#">Искусственный интеллект</a>
+                            <a href="#">Разработка CRM и ERP</a>
+                            <a href="#">Тендерные порталы</a>
                             <hr>
-                            <a href="#">Link 3</a>
+                            <a href="#">Интеграция IT-систем</a>
                         </div>
                     </div>
                     <div class="dropdown second">
                         <a class="nav-link">Продвижение</a>
                         <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
+                            <a href="#">SEO-аудиты и аналитика</a>
+                            <a href="#">Раскрутка с гарантией</a>
+                            <a href="#">Улучшение репутации в сети</a>
                             <hr>
-                            <a href="#">Link 3</a>
+                            <a href="#">Таргет-реклама в социальных сетях</a>
                         </div>
                     </div>
                     <div class="dropdown second">
                         <a class="nav-link">Дизайн</a>
                         <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
+                            <a href="#">UI/UX-разработка интерфейсов</a>
+                            <a href="#">Разработка логотипа</a>
                             <hr>
-                            <a href="#">Link 3</a>
+                            <a href="#">Создание бренда</a>
                         </div>
                     </div>
                     <div class="dropdown second">
                         <a class="nav-link">Хостинг</a>
                         <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
+                            <a href="#">Бюджетный хостинг</a>
+                            <a href="#">VDS - виртуальный сервер</a>
+                            <a href="#">Регистрация доменов</a>
                             <hr>
-                            <a href="#">Link 3</a>
+                            <a href="#">SSL-сертификаты</a>
                         </div>
                     </div>
                     <hr class="mobile-visible">
@@ -83,9 +90,9 @@
                     <a class="button-highlight mobile-visible" href="./html/uikit.html">Заказать сайт</a>
                 </nav>
             </div>
-            <a href="./html/uikit.html" class="button-highlight">Заказать сайт</a>
+            <a href="./html/uikit.html" class="button-highlight pc-visible">Заказать сайт</a>
             <div class="fd-col ml-6 header-contacts">
-                <a class="title_h5 color-white fd-row flex-nowrap align-center" href="tel:74732540796">
+                <a class="title_h5 phone-line" href="tel:+74732540796">
                     <i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
                     <span>+7 (473) 254 0796</span>
                 </a>
@@ -132,15 +139,17 @@
     </header>
     <!-- MAIN PAGE -->
     <section class="container main-page">
-        <h1 style="max-width: 766px;" class="mb-32">
-            <span class="title_h2">Создаём</span><br>
-            <span class="title_h1">качественные сайты и IT-продукты,</span><br>
-            <span class="title_h2">эффективно решающие бизнес-задачи</span>
-        </h1>
-        <a class="button-link big" href="#">
-            РАССЧИТАТЬ СТОИМОСТЬ ПРОЕКТА ОНЛАЙН
-            <i class="icon-arrow_wide"></i>
-        </a>
+        <div class="left-block">
+            <h1>
+                <span class="title_h2">Создаём</span><br>
+                качественные сайты и IT-продукты,
+            </h1>
+            <span class="title_h2 mb-32 fd-row">эффективно решающие бизнес-задачи</span>
+            <a class="button-link big" href="#">
+                РАССЧИТАТЬ СТОИМОСТЬ ПРОЕКТА ОНЛАЙН
+                <i class="icon-arrow_wide"></i>
+            </a>
+        </div>
         <div class="flying-orb">
             <img src="./src/images/orb.webp" alt="">
             <div class="water-ripple">
@@ -196,10 +205,14 @@
             </label>
             <label for="tab-2" class="tab-button">
                 <input type="radio" name="tab-radio" id="tab-2">
-                <span class="tab-header title_h5">Внедрение ИИ в интернет-магазин</span>
+                <span class="tab-header title_h5">
+                    Внедрение ИИ в интернет-магазин
+
+                </span>
                 <span class="tab-button-content"><span class="color-blue fz-24 fw-bold">+20%</span> к эффективности
                     продаж
-                    в интернет-магазине после внедрения Искусственного Интеллекта</span>
+                    в интернет-магазине после внедрения Искусственного Интеллекта
+                </span>
             </label>
             <label for="tab-3" class="tab-button">
                 <input type="radio" name="tab-radio" id="tab-3">
@@ -208,7 +221,8 @@
                     средняя
                     экономия
                     для крупных предприятий при внедрении тендерных порталов и систем автоматизации
-                    бизнес-процессов</span>
+                    бизнес-процессов
+                </span>
             </label>
         </div>
         <div class="tabs-content">

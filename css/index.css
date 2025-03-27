@@ -10,7 +10,7 @@
   --blue-main: #00eaff;
   --blue-bg: #06272a;
   --highlight-bg: #c3f3f8;
-  --navbar-bg-op: #0d0e0ee1;
+  --navbar-bg-op: #0d0e0e85;
   --footer-bg: #232323;
   --navbar-bg: #0d0e0e;
   --blue-clouds: #00eaff31;
@@ -32,6 +32,10 @@
   font-display: swap;
 }
 /* BASE STYLES */
+html {
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box !important;
   transition: all 0.3s ease-in-out;
@@ -110,7 +114,7 @@ p {
     font-size: 14px;
   }
 }
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   h1, .title_h1 {
     font-size: 25px;
   }
@@ -227,6 +231,10 @@ label.radioButton:has(input:checked),
 label.radioButton:has(input:checked),
 .button-highlight {
   box-shadow: none;
+}
+
+.button-highlight:hover {
+  box-shadow: 0px 0px 15px var(--blue-main);
 }
 
 .button-link i {
@@ -396,7 +404,36 @@ label.radioButton:has(input:checked)::after {
 .main-header .header-links-nav .mobile-visible {
   display: none;
 }
+.main-header a.main-logo {
+  min-width: 29px;
+  max-width: 29px;
+  max-height: 29px;
+  margin-right: 100px;
+  border-radius: 20px;
+}
+.main-header a.main-logo:hover {
+  animation: logo-hover 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+  box-shadow: 0px 0px 25px 15px var(--blue-clouds);
+}
+.main-header .header-contacts a.phone-line {
+  color: var(--color-white);
+  display: flex;
+  flex-direction: row;
+  text-wrap: nowrap;
+  align-items: center;
+}
+.main-header .header-contacts a.phone-line:hover {
+  text-shadow: var(--blue-main) 0px 0px 10px;
+}
 
+@keyframes logo-hover {
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0px 0px 25px 15px var(--blue-clouds);
+  }
+}
 .navbar {
   z-index: 4;
   width: 100%;
@@ -406,8 +443,11 @@ label.radioButton:has(input:checked)::after {
   flex-direction: row;
   position: fixed;
 }
+.navbar.scrolled {
+  background-color: var(--navbar-bg);
+}
 
-.navbar i.logo {
+.navbar .logo {
   position: relative;
   display: block;
   z-index: 2;
@@ -415,7 +455,7 @@ label.radioButton:has(input:checked)::after {
   height: fit-content;
   display: flex;
 }
-.navbar i.logo img {
+.navbar .logo img {
   align-self: center;
 }
 
@@ -458,9 +498,15 @@ label.radioButton:has(input:checked)::after {
 .dropdown, .burger, .mobile-burger {
   position: relative;
   display: inline-block;
-  border-radius: none;
+  border-radius: 0px;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+@media (max-width: 1000px) {
+  .burger {
+    display: none;
+  }
 }
 
 .dropdown-content, .burger-content {
@@ -750,7 +796,7 @@ div.slider-test div.slides, .achievements-slider div.slides {
   transition: transform 0.5s ease;
 }
 div.slider-test div.slides div.slide, .achievements-slider div.slides div.slide {
-  min-width: 100%;
+  width: 250px;
   height: 200px;
   display: flex;
   align-items: center;
@@ -784,10 +830,10 @@ button.prev:hover, button.next:hover {
 }
 
 .achievements-slider {
-  position: absolute;
-  top: 160px;
-  right: 5%;
+  position: relative;
   z-index: 3;
+  margin: 0;
+  margin-left: auto;
 }
 .achievements-slider button {
   color: var(--blue-main);
@@ -834,6 +880,13 @@ button.prev:hover, button.next:hover {
 .img-placeholder img {
   width: 100%;
   height: 100%;
+}
+
+.main-page {
+  display: flex;
+}
+.main-page h1 {
+  max-width: 766px;
 }
 
 .tabs-buttons {
@@ -1179,96 +1232,42 @@ button.prev:hover, button.next:hover {
 }
 
 @media (max-width: 1400px) {
-  header .main-header a.button-highlight {
+  header .main-header .header-contacts {
     display: none;
   }
 }
-@media (max-width: 1201px) {
-  header .main-header {
-    justify-content: unset;
-    gap: 27px;
+@media (max-width: 1200px) {
+  .pc-visible {
+    display: none;
   }
+}
+@media (max-width: 1000px) {
   header .main-header .main-logo {
+    max-height: 24px;
+    max-width: 24px;
+    min-width: 24px;
+    margin-right: 76px;
+  }
+  header .main-header .main-logo img {
     height: 24px;
-    width: auto;
-  }
-  header .main-header a.button-highlight, header .main-header div.header-contacts {
-    display: none;
-  }
-  header .main-header nav.header-links-nav {
-    flex-grow: 1;
-    justify-content: space-between;
-  }
-  header .main-header .burger {
-    margin: 0;
-  }
-  .flying-orb {
-    top: 270px;
-    left: 60%;
-    right: 300px;
-    width: 176px;
-    height: 176px;
-  }
-  .flying-orb img {
-    height: 212px;
-    width: auto;
-  }
-  .flying-orb::before {
-    width: 167px;
-    height: 167px;
-  }
-  .flying-orb .water-ripple {
-    height: 212px;
-    width: 212px;
-  }
-  .achievements-slider {
-    top: 130px;
-    right: 40px;
-  }
-  .tabs {
-    padding-top: 0px;
-  }
-  .tabs-buttons {
-    margin: 0 8px;
-    gap: 14px;
-  }
-  .tabs-buttons .tab-button {
-    padding: 18px 33px 18px 100px;
-  }
-  .tabs-buttons .tab-button .title_h5 {
-    display: block;
-  }
-  .recent-work-card {
-    flex-basis: 60%;
-  }
-  .calc-spacer {
-    margin-top: 64px;
-    display: block;
-    width: 100%;
-  }
-  .prices-services-list {
-    margin-top: 40px;
-  }
-}
-@media (max-width: 601px) {
-  body {
-    background-image: none;
   }
   header .main-header nav.header-links-nav {
     display: none;
   }
-  header .main-header .icon-menu {
+  header .main-header div.icon-menu {
     margin-left: auto;
   }
   header .main-header #menuToggle {
     display: none;
   }
-  header .main-header .mobile-burger {
+  header .main-header div.mobile-burger {
+    flex-grow: 0;
     order: 3;
   }
   header .main-header .mobile-burger, header .main-header #mobilemenuToggle {
     display: block;
     position: static;
+    margin-left: 10px;
   }
   header .main-header #mobilemenuToggle input {
     top: 11px;
@@ -1299,15 +1298,25 @@ button.prev:hover, button.next:hover {
   }
   header .main-header .header-links-nav hr {
     margin: 0;
-    width: 20%;
+    width: 125px;
+  }
+  header .main-header .header-links-nav .dropdown.second {
+    position: static;
   }
   header .main-header .header-links-nav .dropdown.second .nav-link {
+    position: relative;
     padding: 10px;
     padding-right: 15px;
     padding-left: 0;
   }
   header .main-header .header-links-nav .dropdown.second .nav-link::before {
-    display: none;
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    font-family: "INTRID_ICONS";
+    content: "c";
+    font-size: 0.9em;
+    transition: all 0.3s ease;
   }
   header .main-header .header-links-nav .dropdown.second .nav-link::after {
     position: absolute;
@@ -1321,22 +1330,202 @@ button.prev:hover, button.next:hover {
   header .main-header .header-links-nav .dropdown.second:hover {
     color: var(--blue-main);
   }
-  header .main-header .header-links-nav .dropdown.second:hover::after {
+  header .main-header .header-links-nav .dropdown.second:hover .nav-link {
+    color: var(--blue-main);
+    text-underline-offset: 17px;
+    text-decoration-color: var(--blue-clouds);
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .nav-link::after {
     transform: translateX(5px);
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content {
+    transform-origin: left;
+    animation: burger-links-appear 0.5s ease-in-out;
+    background-color: transparent;
+    left: 195px;
+    top: 19px;
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content::before {
+    display: none;
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content a {
+    color: var(--color-grey);
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content a:hover {
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--blue-main);
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content hr {
+    width: 80%;
+  }
+  header .main-header .header-links-nav .mobile-visible {
+    display: block;
+  }
+  header .main-header .header-links-nav .mobile-visible:not(.button-highlight) {
+    color: var(--color-white);
+  }
+  header .main-header .header-links-nav .mobile-visible:not(.button-highlight):hover {
+    color: var(--blue-main);
+  }
+  header .main-header .header-links-nav .mobile-visible.button-highlight {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--color-black);
+  }
+  .flying-orb {
+    top: 270px;
+    left: 60%;
+    right: 300px;
+    width: 176px;
+    height: 176px;
+  }
+  .flying-orb img {
+    height: 212px;
+    width: auto;
+  }
+  .flying-orb::before {
+    width: 167px;
+    height: 167px;
+  }
+  .flying-orb .water-ripple {
+    height: 212px;
+    width: 212px;
+  }
+  .achievements-slider {
+    top: -50px;
+  }
+  .tabs {
+    padding-top: 0px;
+  }
+  .tabs-buttons {
+    margin: 0 8px;
+    gap: 14px;
+  }
+  .tabs-buttons .tab-button {
+    padding: 18px 33px 18px 100px;
+  }
+  .tabs-buttons .tab-button .title_h5 {
+    display: block;
+  }
+  .recent-work-card {
+    flex-basis: 60%;
+  }
+  .calc-spacer {
+    margin-top: 64px;
+    display: block;
+    width: 100%;
+  }
+  .prices-services-list {
+    margin-top: 40px;
+  }
+}
+@media (max-width: 601px) {
+  body {
+    background-image: none;
+  }
+  .container {
+    margin: 0px 20px;
+  }
+  header .main-header .main-logo img {
+    height: 24px;
+  }
+  header .main-header nav.header-links-nav {
+    display: none;
+  }
+  header .main-header div.icon-menu {
+    margin-left: auto;
+  }
+  header .main-header #menuToggle {
+    display: none;
+  }
+  header .main-header div.mobile-burger {
+    flex-grow: 0;
+    order: 3;
+  }
+  header .main-header .mobile-burger, header .main-header #mobilemenuToggle {
+    display: block;
+    position: static;
+  }
+  header .main-header #mobilemenuToggle input {
+    top: 11px;
+    right: 16px;
+    left: unset;
+  }
+  header .main-header #mobilemenuToggle:has(input:checked) ~ .header-links-nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 60px);
+    padding: 10px 20px;
+    left: 0;
+    top: 60px;
+    background-color: var(--navbar-bg);
+    align-items: flex-start;
+  }
+  header .main-header .header-links-nav::after {
+    position: absolute;
+    top: 25%;
+    right: -40%;
+    color: var(--blue-bg-icon);
+    font-family: "INTRID_ICONS";
+    content: "m";
+    font-size: 500px;
+    transition: all 0.3s ease;
+  }
+  header .main-header .header-links-nav hr {
+    margin: 0;
+    width: 20%;
+  }
+  header .main-header .header-links-nav .dropdown.second {
+    position: static;
+  }
+  header .main-header .header-links-nav .dropdown.second .nav-link {
+    position: relative;
+    padding: 10px;
+    padding-right: 15px;
+    padding-left: 0;
+  }
+  header .main-header .header-links-nav .dropdown.second .nav-link::before {
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    font-family: "INTRID_ICONS";
+    content: "c";
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+  }
+  header .main-header .header-links-nav .dropdown.second .nav-link::after {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    font-family: "INTRID_ICONS";
+    content: "c";
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+  }
+  header .main-header .header-links-nav .dropdown.second:hover {
+    color: var(--blue-main);
   }
   header .main-header .header-links-nav .dropdown.second:hover .nav-link {
     color: var(--blue-main);
     text-underline-offset: 17px;
     text-decoration-color: var(--blue-clouds);
   }
+  header .main-header .header-links-nav .dropdown.second:hover .nav-link::after {
+    transform: translateX(5px);
+  }
   header .main-header .header-links-nav .dropdown.second:hover .dropdown-content {
     transform-origin: left;
     animation: burger-links-appear 0.5s ease-in-out;
     background-color: transparent;
-    left: unset;
-    padding-left: 40px;
-    right: -120px;
-    top: -2px;
+    left: 175px;
+    right: unset;
+    top: 7px;
   }
   header .main-header .header-links-nav .dropdown.second:hover .dropdown-content::before {
     display: none;
@@ -1346,17 +1535,6 @@ button.prev:hover, button.next:hover {
   }
   header .main-header .header-links-nav .dropdown.second:hover .dropdown-content hr {
     width: 80%;
-  }
-  header .main-header .header-links-nav .dropdown.second:has(.nav-link:hover)::after {
-    color: var(--blue-main);
-  }
-  header .main-header .header-links-nav .dropdown.second::after {
-    position: absolute;
-    top: 13px;
-    right: 0;
-    font-family: "INTRID_ICONS";
-    content: "c";
-    font-size: 0.8em;
   }
   header .main-header .header-links-nav .mobile-visible {
     display: block;
@@ -1374,7 +1552,13 @@ button.prev:hover, button.next:hover {
   }
   .main-page {
     padding-top: 90px !important;
-    padding-bottom: 480px !important;
+    padding-bottom: 180px !important;
+    flex-wrap: wrap;
+  }
+  .main-page .button-link.big {
+    font-size: 12px;
+    padding: 20px 25px;
+    gap: 4px;
   }
   .main-page .flying-orb {
     top: 450px;
@@ -1396,7 +1580,7 @@ button.prev:hover, button.next:hover {
     width: 250px;
   }
   .main-page .achievements-slider {
-    top: 390px;
+    top: 50px;
   }
   .tabs-buttons {
     gap: 11px;
@@ -1500,24 +1684,52 @@ button.prev:hover, button.next:hover {
     gap: 4px;
   }
   header .main-header {
-    justify-content: space-between;
-    gap: 0;
+    justify-content: unset;
+  }
+  header .main-header .main-logo {
+    margin-right: 75px;
   }
   header .main-header .main-logo img {
     height: 24px;
   }
-  header .main-header .icon-menu {
-    margin: 0;
+  header .main-header div.icon-menu {
+    margin-left: auto;
     gap: 12px;
   }
+  header .main-header .mobile-burger {
+    margin-left: auto;
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content {
+    top: 20px;
+    padding: 0px;
+  }
   .main-page {
-    padding-bottom: 1000px !important;
+    padding-bottom: 290px !important;
   }
   .main-page .achievements-slider {
-    display: none;
+    top: 300px;
+    margin: auto;
+    height: 100vw;
+    transform: rotate(90deg);
+  }
+  .main-page .achievements-slider .slides hr {
+    border-color: transparent;
+    background-color: transparent;
+  }
+  .main-page .achievements-slider .slides .slide {
+    padding: 0 32px;
+    transform: rotate(-90deg) translateY(35px);
+    height: calc(50vw - 2px);
+    width: calc(50vw - 2px);
+  }
+  .main-page .achievements-slider .prev {
+    top: 5px;
+  }
+  .main-page .achievements-slider .next {
+    bottom: 5px;
   }
   .main-page .flying-orb {
-    scale: -1;
+    scale: -1 1;
     left: 95px;
   }
   .recent-work-card {
