@@ -21,3 +21,4 @@ prevBtn.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + slideCount) % slideCount;
     updateSlider();
 });
+

@@ -454,7 +454,7 @@ label.radioButton:has(input:checked)::after {
   box-shadow: none;
 }
 
-.dropdown, .burger {
+.dropdown, .burger, .mobile-burger {
   position: relative;
   display: inline-block;
   border-radius: none;
@@ -587,7 +587,7 @@ div.icon-menu {
 }
 
 /* burger */
-#menuToggle {
+#menuToggle, #mobilemenuToggle {
   display: block;
   /* You can also use relative/absolute here if you want to stay on the top */
   position: relative;
@@ -597,7 +597,7 @@ div.icon-menu {
        user-select: none;
 }
 
-#menuToggle input {
+#menuToggle input, #mobilemenuToggle input {
   display: block;
   width: 40px;
   height: 32px;
@@ -610,7 +610,7 @@ div.icon-menu {
   -webkit-touch-callout: none;
 }
 
-#menuToggle span {
+#menuToggle span, #mobilemenuToggle span {
   display: block;
   width: 31px;
   height: 3px;
@@ -623,26 +623,26 @@ div.icon-menu {
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
 }
 
-#menuToggle span:first-child {
+#menuToggle span:first-child, #mobilemenuToggle span:first-child {
   transform-origin: 0% 0%;
 }
 
-#menuToggle span:nth-last-child(2) {
+#menuToggle span:nth-last-child(2), #mobilemenuToggle span:nth-last-child(2) {
   transform-origin: 0% 100%;
 }
 
-#menuToggle input:checked ~ span {
+#menuToggle input:checked ~ span, #mobilemenuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(-45deg) translate(-1px, -2px);
   background: var(--blue-main);
 }
 
-#menuToggle input:checked ~ span:nth-last-child(2) {
+#menuToggle input:checked ~ span:nth-last-child(2), #mobilemenuToggle input:checked ~ span:nth-last-child(2) {
   opacity: 0;
   transform: rotate(0deg) scale(0.1, 0.1);
 }
 
-#menuToggle input:checked ~ span:nth-last-child(3) {
+#menuToggle input:checked ~ span:nth-last-child(3), #mobilemenuToggle input:checked ~ span:nth-last-child(3) {
   transform: rotate(45deg) translate(0, -1px);
 }
 
@@ -692,8 +692,8 @@ div.icon-menu {
   left: 0;
   top: 0;
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 278px;
 }
 
 .ripple-circle {
@@ -1159,16 +1159,18 @@ button.prev:hover, button.next:hover {
   display: none;
   transform: translateY(-20px);
 }
-.prices-services-list-item:hover {
-  padding: 165px 20px 32px 20px;
-}
-.prices-services-list-item:hover img {
-  top: 15px;
-}
-.prices-services-list-item:hover span.color-blue {
-  display: block;
-  transform: translateY(0px);
-  animation: priceAppear 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+@media (min-width: 1200px) {
+  .prices-services-list-item:hover {
+    padding: 165px 20px 32px 20px;
+  }
+  .prices-services-list-item:hover img {
+    top: 15px;
+  }
+  .prices-services-list-item:hover span.color-blue {
+    display: block;
+    transform: translateY(0px);
+    animation: priceAppear 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
 }
 
 .calc-spacer {
@@ -1256,6 +1258,108 @@ button.prev:hover, button.next:hover {
   }
   header .main-header .icon-menu {
     margin-left: auto;
+  }
+  header .main-header #menuToggle {
+    display: none;
+  }
+  header .main-header .mobile-burger {
+    order: 3;
+  }
+  header .main-header .mobile-burger, header .main-header #mobilemenuToggle {
+    display: block;
+    position: static;
+  }
+  header .main-header #mobilemenuToggle input {
+    top: 11px;
+    right: 36px;
+    left: unset;
+  }
+  header .main-header #mobilemenuToggle:has(input:checked) ~ .header-links-nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 60px);
+    padding: 20px 40px;
+    left: 0;
+    top: 60px;
+    background-color: var(--navbar-bg);
+    align-items: flex-start;
+  }
+  header .main-header .header-links-nav hr {
+    margin: 0;
+    width: 20%;
+  }
+  header .main-header .header-links-nav .dropdown.second .nav-link {
+    padding: 10px;
+    padding-right: 15px;
+    padding-left: 0;
+  }
+  header .main-header .header-links-nav .dropdown.second .nav-link::before {
+    display: none;
+  }
+  header .main-header .header-links-nav .dropdown.second .nav-link::after {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    font-family: "INTRID_ICONS";
+    content: "c";
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+  }
+  header .main-header .header-links-nav .dropdown.second:hover {
+    color: var(--blue-main);
+  }
+  header .main-header .header-links-nav .dropdown.second:hover::after {
+    transform: translateX(5px);
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .nav-link {
+    color: var(--blue-main);
+    text-underline-offset: 17px;
+    text-decoration-color: var(--blue-clouds);
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content {
+    transform-origin: left;
+    animation: burger-links-appear 0.5s ease-in-out;
+    background-color: transparent;
+    left: unset;
+    padding-left: 40px;
+    right: -120px;
+    top: -2px;
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content::before {
+    display: none;
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content a {
+    color: var(--color-grey);
+  }
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content hr {
+    width: 80%;
+  }
+  header .main-header .header-links-nav .dropdown.second:has(.nav-link:hover)::after {
+    color: var(--blue-main);
+  }
+  header .main-header .header-links-nav .dropdown.second::after {
+    position: absolute;
+    top: 13px;
+    right: 0;
+    font-family: "INTRID_ICONS";
+    content: "c";
+    font-size: 0.8em;
+  }
+  header .main-header .header-links-nav .mobile-visible {
+    display: block;
+  }
+  header .main-header .header-links-nav .mobile-visible:not(.button-highlight) {
+    color: var(--color-white);
+  }
+  header .main-header .header-links-nav .mobile-visible:not(.button-highlight):hover {
+    color: var(--blue-main);
+  }
+  header .main-header .header-links-nav .mobile-visible.button-highlight {
+    width: 100%;
+    text-align: center;
+    color: var(--color-black);
   }
   .main-page {
     padding-top: 90px !important;
@@ -1374,14 +1478,8 @@ button.prev:hover, button.next:hover {
     transform: translateY(0px);
     display: block;
   }
-  .prices-services-list-item:hover {
-    padding: 165px 20px 32px 20px;
-  }
-  .prices-services-list-item:hover img {
-    top: 15px;
-  }
 }
-@media (min-width: 360px) {
+@media (max-width: 400px) {
   .container {
     margin: 0 16px;
   }
@@ -1426,5 +1524,16 @@ button.prev:hover, button.next:hover {
   }
   .calc-section a.button-highlight.m-center {
     display: none;
+  }
+}
+@keyframes burger-links-appear {
+  0% {
+    display: flex;
+    opacity: 0;
+    transform: scale(0, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
   }
 }

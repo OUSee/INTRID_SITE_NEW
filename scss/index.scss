@@ -452,7 +452,7 @@ label.radioButton:has(input:checked)::after{
     box-shadow: none;
 }
   
-.dropdown, .burger {
+.dropdown, .burger, .mobile-burger {
   position: relative;
   display: inline-block;
   border-radius: none;
@@ -587,7 +587,7 @@ div.icon-menu{
 
 /* burger */
 
-#menuToggle
+#menuToggle, #mobilemenuToggle
 {
   display: block;
   /* You can also use relative/absolute here if you want to stay on the top */
@@ -597,7 +597,7 @@ div.icon-menu{
   user-select: none;
 }
 
-#menuToggle input
+#menuToggle input, #mobilemenuToggle input
 {
   display: block;
   width: 40px;
@@ -615,7 +615,7 @@ div.icon-menu{
 }
 
 
-#menuToggle span
+#menuToggle span, #mobilemenuToggle span
 {
   display: block;
   width: 31px;
@@ -635,17 +635,17 @@ div.icon-menu{
               opacity 0.55s ease;
 }
 
-#menuToggle span:first-child
+#menuToggle span:first-child, #mobilemenuToggle span:first-child
 {
   transform-origin: 0% 0%;
 }
 
-#menuToggle span:nth-last-child(2)
+#menuToggle span:nth-last-child(2), #mobilemenuToggle span:nth-last-child(2)
 {
   transform-origin: 0% 100%;
 }
 
-#menuToggle input:checked ~ span
+#menuToggle input:checked ~ span, #mobilemenuToggle input:checked ~ span
 {
   opacity: 1;
   transform: rotate(-45deg) translate(-1px, -2px);
@@ -653,13 +653,13 @@ div.icon-menu{
 }
 
 
-#menuToggle input:checked ~ span:nth-last-child(2)
+#menuToggle input:checked ~ span:nth-last-child(2), #mobilemenuToggle input:checked ~ span:nth-last-child(2)
 {
   opacity: 0;
   transform: rotate(0deg) scale(0.1, 0.1);
 }
 
-#menuToggle input:checked ~ span:nth-last-child(3)
+#menuToggle input:checked ~ span:nth-last-child(3), #mobilemenuToggle input:checked ~ span:nth-last-child(3)
 {
   transform: rotate(45deg) translate(0, -1px);
 }
@@ -713,8 +713,8 @@ div.icon-menu{
     left: 0;
     top: 0;
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 278px;
 }
   
 .ripple-circle {
@@ -1223,17 +1223,19 @@ button.prev, button.next {
             transform: translateY(-20px);
         }
 
-        &:hover{
-            padding: 165px  20px 32px 20px;
-
-            img{
-                top: 15px;
-            }
-
-            span.color-blue{
-                display: block;
-                transform: translateY(0px);
-                animation: priceAppear 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        @media (min-width: 1200px) {
+            &:hover{
+                padding: 165px  20px 32px 20px;
+    
+                img{
+                    top: 15px;
+                }
+    
+                span.color-blue{
+                    display: block;
+                    transform: translateY(0px);
+                    animation: priceAppear 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+                }
             }
         }
     }
@@ -1340,6 +1342,7 @@ button.prev, button.next {
     }
 
     header .main-header{
+
         nav.header-links-nav{
             display: none;
         }
@@ -1347,6 +1350,143 @@ button.prev, button.next {
         .icon-menu{
             margin-left: auto;
         }
+
+        #menuToggle{
+            display: none;
+        }
+
+        .mobile-burger{
+            order: 3;
+        }
+        
+        .mobile-burger, #mobilemenuToggle{
+            display: block;
+            position: static;
+        }
+
+        #mobilemenuToggle input{
+            top: 11px;
+            right: 36px;
+            left: unset;
+        }
+
+        #mobilemenuToggle:has( input:checked ) ~ .header-links-nav{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+            height: calc(100vh - 60px);
+            padding: 20px 40px;
+            left: 0;
+            top: 60px;
+            background-color: var(--navbar-bg);
+            align-items: flex-start;
+        }
+
+        .header-links-nav{
+
+            hr{
+                margin: 0;
+                width: 20%;
+            }
+
+            .dropdown.second{
+                .nav-link{
+                    padding: 10px;
+                    padding-right: 15px;
+                    padding-left: 0;
+                    &::before{
+                        display: none;
+                    }
+
+                    &::after{
+                        position: absolute;
+                        top: 10px;
+                        right: 0;
+                        font-family: 'INTRID_ICONS';
+                        content: '\63';
+                        font-size: 0.9em;
+                        transition: all 0.3s ease;
+                    }
+                    
+                }
+
+                &:hover{
+                    color: var(--blue-main);
+                    &::after{
+                        transform: translateX(5px);
+                        
+                    }
+
+                    .nav-link{
+                        color: var(--blue-main);
+                        text-underline-offset: 17px;
+                        text-decoration-color: var(--blue-clouds);
+                    }
+
+                    .dropdown-content{
+                        transform-origin: left;
+                        animation: burger-links-appear 0.5s ease-in-out;
+                        background-color: transparent;
+                        left: unset;
+                        padding-left: 40px;
+                        right: -120px;
+                        top: -2px;
+
+                        &::before{
+                            display: none;
+                        }
+                        
+                        a{
+                            color: var(--color-grey);
+                        }
+                        
+                        hr{
+                            width: 80%;
+                        }
+                    }
+                }
+
+                &:has(.nav-link:hover){
+                    &::after{
+                        color: var(--blue-main);
+                    }
+                }
+
+                &::after{
+                    position: absolute;
+                    top: 13px;
+                    right: 0;
+                    font-family: 'INTRID_ICONS';
+                    content: '\63';
+                    font-size: 0.8em;
+                }
+            }
+
+
+            .mobile-visible{
+                display: block;
+
+                &:not(.button-highlight){
+                    color: var(--color-white);
+                    &:hover{
+                        color: var(--blue-main);
+                    }
+                }
+                
+
+                &.button-highlight{
+                   width: 100%;
+                   text-align: center;
+                   color: var(--color-black);
+                }
+
+                
+            }
+
+
+        }
+        
 
     } 
 
@@ -1493,20 +1633,20 @@ button.prev, button.next {
                 display: block;
             }   
             
-            &:hover{
-                padding: 165px  20px 32px 20px;
+            // &:hover{
+            //     padding: 165px  20px 32px 20px;
     
-                img{
-                    top: 15px;
-                }
+            //     img{
+            //         top: 15px;
+            //     }
                 
-            }
+            // }
         }
     }
 }
 
 
-@media (min-width: 360px) {
+@media (max-width: 400px) {
     
     .container{
         margin: 0 16px;
@@ -1571,4 +1711,16 @@ button.prev, button.next {
     
 
 
+}
+
+@keyframes burger-links-appear {
+    0%{
+        display: flex;
+        opacity: 0;
+        transform: scale(0, 1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 }
