@@ -98,7 +98,7 @@ p {
   font-size: 14px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   h1, .title_h1 {
     font-size: 30px;
   }
@@ -115,7 +115,7 @@ p {
     font-size: 14px;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   h1, .title_h1 {
     font-size: 25px;
   }
@@ -137,6 +137,22 @@ p {
   }
   p {
     font-size: 13px;
+  }
+}
+@media (max-width: 520px) {
+  h1, .title_h1 {
+    font-size: 20px;
+  }
+  h2,
+  .title_h2,
+  h3,
+  .title_h3 {
+    font-size: 16px;
+  }
+}
+@media (max-width: 375px) {
+  h1 {
+    font-size: 19px;
   }
 }
 a {
@@ -178,7 +194,8 @@ section {
 }
 
 section:first-of-type {
-  padding: 160px 0px;
+  padding-top: 160px;
+  padding-bottom: 20px;
 }
 
 .container {
@@ -494,6 +511,14 @@ label.radioButton:has(input:checked)::after {
   width: fit-content;
 }
 
+.burger .burger-content a.work-time {
+  padding: 12px 16px;
+  color: var(--color-grey);
+  text-wrap: wrap;
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+}
 @media (max-width: 1000px) {
   .burger {
     display: none;
@@ -527,7 +552,7 @@ label.radioButton:has(input:checked)::after {
 }
 
 .dropdown-content hr, .burger-content hr {
-  margin: 0 12px;
+  background-color: var(--color-white);
 }
 
 .dropdown-content a:hover, .burger-content a:hover {
@@ -752,6 +777,10 @@ div.slider-test div.slides a.slide, .achievements-slider div.slides a.slide {
   justify-content: center;
   font-size: 24px;
   color: white;
+}
+div.slider-test div.slides a.slide:hover .img-placeholder, .achievements-slider div.slides a.slide:hover .img-placeholder {
+  background-color: var(--blue-clouds);
+  box-shadow: 0px 0px 20px 20px var(--blue-clouds);
 }
 
 button.prev, button.next {
@@ -1327,7 +1356,7 @@ button.prev:hover, button.next:hover {
   }
   .flying-orb {
     top: 270px;
-    left: 60%;
+    left: 50%;
     right: 300px;
     width: 176px;
     height: 176px;
@@ -1370,6 +1399,11 @@ button.prev:hover, button.next:hover {
   }
   .prices-services-list {
     margin-top: 40px;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .flying-orb {
+    display: none;
   }
 }
 @media (max-width: 601px) {
@@ -1416,6 +1450,9 @@ button.prev:hover, button.next:hover {
     background-color: var(--navbar-bg);
     align-items: flex-start;
   }
+  header .main-header .header-links-nav a, header .main-header .header-links-nav div {
+    z-index: 3;
+  }
   header .main-header .header-links-nav::after {
     position: absolute;
     top: 25%;
@@ -1425,6 +1462,7 @@ button.prev:hover, button.next:hover {
     content: "m";
     font-size: 500px;
     transition: all 0.3s ease;
+    z-index: 0;
   }
   header .main-header .header-links-nav hr {
     margin: 0;
@@ -1511,8 +1549,8 @@ button.prev:hover, button.next:hover {
     gap: 4px;
   }
   .main-page .flying-orb {
-    top: 450px;
-    left: 40px;
+    top: 405px;
+    left: 0px;
     width: 202px;
     height: 202px;
   }
@@ -1626,7 +1664,7 @@ button.prev:hover, button.next:hover {
 }
 @media (max-width: 440px) {
   .container {
-    margin: 0 16px;
+    margin: 0 10px;
   }
   .button-link.big {
     font-size: 12px;
@@ -1635,6 +1673,9 @@ button.prev:hover, button.next:hover {
   }
   header .main-header {
     justify-content: unset;
+  }
+  header .main-header .header-links-nav {
+    padding: 10px !important;
   }
   header .main-header .main-logo {
     margin-right: 75px;
@@ -1654,10 +1695,10 @@ button.prev:hover, button.next:hover {
     padding: 0px;
   }
   .main-page {
-    padding-bottom: 290px !important;
+    padding-bottom: 220px !important;
   }
   .main-page .achievements-slider {
-    top: 300px;
+    top: 240px;
     margin: auto;
     height: 100vw;
     transform: rotate(90deg);
@@ -1667,20 +1708,21 @@ button.prev:hover, button.next:hover {
     background-color: transparent;
   }
   .main-page .achievements-slider .slides .slide {
-    padding: 0 32px;
+    padding: 0;
     transform: rotate(-90deg) translateY(35px);
-    height: calc(50vw - 2px);
-    width: calc(50vw - 2px);
+    height: calc(50vw - 1px);
+    width: calc(50vw - 1px);
   }
   .main-page .achievements-slider .prev {
-    top: 5px;
+    top: -10px;
   }
   .main-page .achievements-slider .next {
-    bottom: 5px;
+    bottom: -10px;
   }
   .main-page .flying-orb {
+    top: 310px;
     scale: -1 1;
-    left: 95px;
+    left: calc(50vw - 92px);
   }
   .recent-work-card {
     flex-direction: column;

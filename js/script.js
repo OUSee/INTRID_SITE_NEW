@@ -3,49 +3,78 @@
 const slides = document.querySelector('.slides');
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
-const slide = document.querySelector('.slide')
+const slideItems = document.querySelectorAll('.slide');
 
-let currentIndex = 0;
+// Clone first and last slides for infinite effect
+const firstClone = slideItems[0].cloneNode(true);
+const lastClone = slideItems[slideItems.length - 1].cloneNode(true);
 
-const slideCount = document.querySelectorAll('.slide').length;
-const height = slide.offsetHeight;
+// Add clones to the slides container
+slides.appendChild(firstClone);
+slides.insertBefore(lastClone, slideItems[0]);
+
+// Re-select all slides after cloning
+const allSlides = document.querySelectorAll('.slide');
+const slideCount = allSlides.length;
+const height = allSlides[0].offsetHeight;
+
+let currentIndex = 1; // Start at the first original slide (after clone)
+slides.style.transform = `translateY(-${currentIndex * height + 1}px)`;
+
+// Add transition for smooth sliding
+slides.style.transition = 'transform 0.5s ease';
 
 function updateSlider() {
-    slides.style.transform = `translateY(-${currentIndex * (height) + 1}px)`;
+    slides.style.transform = `translateY(-${currentIndex * height + 1}px)`;
+    
+    // If we're at a clone, instantly jump to the original without animation
+    if (currentIndex === 0) {
+        setTimeout(() => {
+            slides.style.transition = 'none';
+            currentIndex = slideCount - 2;
+            updateSlider();
+            setTimeout(() => slides.style.transition = 'transform 0.5s ease', 50);
+        }, 500);
+    }
+    
+    if (currentIndex === slideCount - 1) {
+        setTimeout(() => {
+            slides.style.transition = 'none';
+            currentIndex = 1;
+            updateSlider();
+            setTimeout(() => slides.style.transition = 'transform 0.5s ease', 50);
+        }, 500);
+    }
 }
 
 nextBtn.addEventListener('click', () => {
-  clearInterval(autoScrollIntervalId); // Stop autoscroll on manual navigation
-  if (currentIndex < slideCount - 2) { // Move to next slide if not at the end
-      currentIndex++;
-  } else { // Roll back to the start if at the end
-      currentIndex = 0;
-  }
-  updateSlider();
+    clearInterval(autoScrollIntervalId);
+    currentIndex++;
+    updateSlider();
 });
 
 prevBtn.addEventListener('click', () => {
-  clearInterval(autoScrollIntervalId); // Stop autoscroll on manual navigation
-  if (currentIndex > 0) { // Move to previous slide if not at the start
-      currentIndex--;
-  } else { // Roll back to the end if at the start
-      currentIndex = slideCount - 2; // Adjusted to show two slides at once
-  }
-  updateSlider();
+    clearInterval(autoScrollIntervalId);
+    currentIndex--;
+    updateSlider();
 });
 
+let autoScrollIntervalId;
+
 function startAutoScroll() {
-  autoScrollIntervalId = setInterval(() => {
-    if (currentIndex < slideCount - 2) { // Move to next slide if not at the end
-      currentIndex++;
-    } else { // Roll back to the start if at the end
-        currentIndex = 0;
-    }
-  updateSlider();
-  }, 5000);
+    autoScrollIntervalId = setInterval(() => {
+        currentIndex++;
+        updateSlider();
+    }, 3000);
 }
 
 startAutoScroll();
+
+// Reset slider position on window resize (optional)
+window.addEventListener('resize', () => {
+    const newHeight = allSlides[0].offsetHeight;
+    slides.style.transform = `translateY(-${currentIndex * newHeight}px)`;
+});
 
 // opacity header onscroll
 
