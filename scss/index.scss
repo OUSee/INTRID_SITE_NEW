@@ -11,9 +11,8 @@
     --blue-main: #00eaff;
     --blue-bg: #06272a;
     --highlight-bg: #c3f3f8;
-    --navbar-bg-op: #0d0e0e85;
+    --navbar-bg-op: #0A0A0A85;
     --footer-bg: #232323;
-    --navbar-bg: #0d0e0e;
     --blue-clouds: #00eaff31;
     --section-spacer: #06272A;
     --blue-tag: #11A2AA;
@@ -467,9 +466,15 @@ label.radioButton:has(input:checked)::after{
     display: flex;
     flex-direction: row;
     position: fixed;
+    .main-header .burger .burger-content{
+        background-color: var(--bg-main);
+        
+    }
 
     &.scrolled{
-        background-color: var(--navbar-bg);
+        background-color: var(--bg-main);
+
+        
     }
 }
 
@@ -546,8 +551,8 @@ label.radioButton:has(input:checked)::after{
   color: var(--color-white);
   display: none;
   position: absolute;
+  top: 42px;
   height: 0px;
-  background-color: var(--navbar-bg);
   z-index: 1;
   padding: 20px 16px;
   border-bottom-left-radius: 46px;
@@ -1025,6 +1030,7 @@ button.prev, button.next {
     justify-content: space-between;
     align-items: center;
     margin-top: 70px;
+    flex-wrap: wrap;
 }
 
 .webDev-benefits{
@@ -1124,6 +1130,9 @@ button.prev, button.next {
     margin: 26px 0;
     display: flex;
     align-items: center;
+    flex-grow: 1;
+    flex-basis: 50%;
+    order: 3;
     
 
     img{
@@ -1313,6 +1322,49 @@ button.prev, button.next {
             width: 212px;
         }
     }
+
+    .tabs{
+        padding-top: 0px;
+    }
+
+    .tabs-buttons{
+        margin: 0 8px;
+        gap: 14px;
+
+        .tab-button{
+            padding:  18px 33px 18px 100px ;
+
+            .title_h5{
+                display: block;
+            }
+        }
+    }
+
+    .tab-content-webDev{
+        flex-direction: column;
+    }
+
+    .icms-note{
+        margin: 26px 0;
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        flex-basis: 50%;
+        order: 2;
+        
+    
+        img{
+            width: auto;
+            height: 35px;
+            margin-right: 8px;
+        }
+    }
+
+    .achievements-group{
+        order: 3;
+        margin: 40px 0px;
+    }
+
 
 }
 
@@ -1962,13 +2014,25 @@ button.prev, button.next {
 
     .tabs{
         .tabs-buttons{
-            .tab-button:has(input:checked){
-                &:hover{
-
-                }
-            }
+            flex-direction: column-reverse;
+            gap: 0;
+            margin-top: 50px;
             .tab-button{
-
+                padding: 20px 40px 0px 60px;
+                height: fit-content;
+                flex-basis: unset;
+                display: block;
+                position: absolute;
+            }
+            .tab-button:has(input:checked){
+                z-index: 3;
+                display: block;
+                &:hover ~ label.tab-button{
+                    transform: translateY(-60px);
+                    z-index: 0;
+                    position: absolute;
+                    display: block;
+                }
             }
         }
     }
@@ -2105,9 +2169,9 @@ button.prev, button.next {
         transform: translateY(0) translateX(0px) scale(1);
     }
     50% {
-        transform: translateY(5px) translateX(5px) scale(1.01);
+        transform: translateY(-5px) translateX(5px) scale(1.01);
     }
     75%{
-        transform: translateY(5px) translateX(-5px) scale(1.01);
+        transform: translateY(-5px) translateX(-5px) scale(1.01);
     }
 }

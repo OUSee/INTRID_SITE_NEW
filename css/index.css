@@ -10,9 +10,8 @@
   --blue-main: #00eaff;
   --blue-bg: #06272a;
   --highlight-bg: #c3f3f8;
-  --navbar-bg-op: #0d0e0e85;
+  --navbar-bg-op: #0A0A0A85;
   --footer-bg: #232323;
-  --navbar-bg: #0d0e0e;
   --blue-clouds: #00eaff31;
   --section-spacer: #06272A;
   --blue-tag: #11A2AA;
@@ -450,8 +449,11 @@ label.radioButton:has(input:checked)::after {
   flex-direction: row;
   position: fixed;
 }
+.navbar .main-header .burger .burger-content {
+  background-color: var(--bg-main);
+}
 .navbar.scrolled {
-  background-color: var(--navbar-bg);
+  background-color: var(--bg-main);
 }
 
 .navbar .logo {
@@ -529,8 +531,8 @@ label.radioButton:has(input:checked)::after {
   color: var(--color-white);
   display: none;
   position: absolute;
+  top: 42px;
   height: 0px;
-  background-color: var(--navbar-bg);
   z-index: 1;
   padding: 20px 16px;
   border-bottom-left-radius: 46px;
@@ -971,6 +973,7 @@ button.prev:hover, button.next:hover {
   justify-content: space-between;
   align-items: center;
   margin-top: 70px;
+  flex-wrap: wrap;
 }
 
 .webDev-benefits {
@@ -1059,6 +1062,9 @@ button.prev:hover, button.next:hover {
   margin: 26px 0;
   display: flex;
   align-items: center;
+  flex-grow: 1;
+  flex-basis: 50%;
+  order: 3;
 }
 .icms-note img {
   width: auto;
@@ -1218,6 +1224,39 @@ button.prev:hover, button.next:hover {
   .flying-orb .water-ripple {
     height: 212px;
     width: 212px;
+  }
+  .tabs {
+    padding-top: 0px;
+  }
+  .tabs-buttons {
+    margin: 0 8px;
+    gap: 14px;
+  }
+  .tabs-buttons .tab-button {
+    padding: 18px 33px 18px 100px;
+  }
+  .tabs-buttons .tab-button .title_h5 {
+    display: block;
+  }
+  .tab-content-webDev {
+    flex-direction: column;
+  }
+  .icms-note {
+    margin: 26px 0;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 50%;
+    order: 2;
+  }
+  .icms-note img {
+    width: auto;
+    height: 35px;
+    margin-right: 8px;
+  }
+  .achievements-group {
+    order: 3;
+    margin: 40px 0px;
   }
 }
 @media (max-width: 1000px) {
@@ -1722,6 +1761,29 @@ button.prev:hover, button.next:hover {
     scale: -1 1;
     left: calc(50vw - 92px);
   }
+  .tabs .tabs-buttons {
+    flex-direction: column-reverse;
+    gap: 0;
+    margin-top: 50px;
+  }
+  .tabs .tabs-buttons .tab-button {
+    padding: 20px 40px 0px 60px;
+    height: -moz-fit-content;
+    height: fit-content;
+    flex-basis: unset;
+    display: block;
+    position: absolute;
+  }
+  .tabs .tabs-buttons .tab-button:has(input:checked) {
+    z-index: 3;
+    display: block;
+  }
+  .tabs .tabs-buttons .tab-button:has(input:checked):hover ~ label.tab-button {
+    transform: translateY(-60px);
+    z-index: 0;
+    position: absolute;
+    display: block;
+  }
   .recent-work-card {
     flex-direction: column;
     padding: 33px;
@@ -1829,9 +1891,9 @@ button.prev:hover, button.next:hover {
     transform: translateY(0) translateX(0px) scale(1);
   }
   50% {
-    transform: translateY(5px) translateX(5px) scale(1.01);
+    transform: translateY(-5px) translateX(5px) scale(1.01);
   }
   75% {
-    transform: translateY(5px) translateX(-5px) scale(1.01);
+    transform: translateY(-5px) translateX(-5px) scale(1.01);
   }
 }
