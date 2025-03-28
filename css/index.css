@@ -42,6 +42,7 @@ html {
 }
 
 body {
+  font-size: 14px;
   background-color: var(--bg-main);
   color: var(--color-white);
   background-image: url("../src/images/bg-main.webp");
@@ -155,6 +156,8 @@ i.left {
 
 hr {
   width: 80%;
+  border: 0px solid transparent;
+  height: 1px;
   border-color: var(--blue-bg);
   background-color: var(--blue-bg);
 }
@@ -183,11 +186,6 @@ section:first-of-type {
   margin: 0 auto;
 }
 
-@media (max-width: 1500px) {
-  .container {
-    margin: 0 40px;
-  }
-}
 /* buttons and checkboxes */
 button,
 label.radioButton,
@@ -426,14 +424,6 @@ label.radioButton:has(input:checked)::after {
   text-shadow: var(--blue-main) 0px 0px 10px;
 }
 
-@keyframes logo-hover {
-  0% {
-    box-shadow: none;
-  }
-  100% {
-    box-shadow: 0px 0px 25px 15px var(--blue-clouds);
-  }
-}
 .navbar {
   z-index: 4;
   width: 100%;
@@ -473,6 +463,7 @@ label.radioButton:has(input:checked)::after {
   padding: 12px 0px 12px 12px;
   background-color: transparent;
   color: var(--color-white);
+  font-size: 16px;
 }
 
 .nav-link::before {
@@ -552,17 +543,6 @@ label.radioButton:has(input:checked)::after {
   animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-@keyframes burgerAppear {
-  0% {
-    display: block;
-    opacity: 0;
-    transform: scale(1, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
-}
 .dropdown.second:hover .nav-link {
   -webkit-text-decoration: underline var(--blue-main);
           text-decoration: underline var(--blue-main);
@@ -693,14 +673,6 @@ div.icon-menu {
   transform: rotate(45deg) translate(0, -1px);
 }
 
-@keyframes baloon {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg) scale(1);
-  }
-  50% {
-    transform: translateY(-15px) rotate(2deg) scale(1.01);
-  }
-}
 .flying-orb {
   position: absolute;
   top: 180px;
@@ -723,17 +695,6 @@ div.icon-menu {
   filter: drop-shadow(0 0 30px var(--blue-main));
 }
 
-@keyframes orb-glow {
-  0% {
-    filter: drop-shadow(0 0 10px var(--blue-main));
-  }
-  50% {
-    filter: drop-shadow(0 0 50px var(--blue-main));
-  }
-  100% {
-    filter: drop-shadow(0 0 10px var(--blue-main));
-  }
-}
 .water-ripple {
   z-index: -2;
   left: 0;
@@ -755,18 +716,6 @@ div.icon-menu {
   filter: drop-shadow(0 0 10px var(--blue-main));
 }
 
-@keyframes ripple {
-  0% {
-    border: 8px solid var(--blue-main);
-    transform: scale(0.7);
-    opacity: 0.8;
-  }
-  100% {
-    border: 1px solid white;
-    transform: scale(1.5);
-    opacity: 0;
-  }
-}
 .ripple-circle:nth-child(1) {
   animation-delay: 0s;
 }
@@ -795,7 +744,7 @@ div.slider-test div.slides, .achievements-slider div.slides {
   flex-direction: column;
   transition: transform 0.5s ease;
 }
-div.slider-test div.slides div.slide, .achievements-slider div.slides div.slide {
+div.slider-test div.slides a.slide, .achievements-slider div.slides a.slide {
   width: 250px;
   height: 200px;
   display: flex;
@@ -1087,18 +1036,6 @@ button.prev:hover, button.next:hover {
   margin-right: 8px;
 }
 
-@keyframes appear {
-  0% {
-    display: block;
-    opacity: 0;
-    transform: scale(1, 0);
-  }
-  100% {
-    display: block;
-    opacity: 1;
-    transform: scale(1, 1);
-  }
-}
 .web-count {
   display: flex;
   align-items: center;
@@ -1159,18 +1096,6 @@ button.prev:hover, button.next:hover {
   margin-top: 16px;
 }
 
-@keyframes priceAppear {
-  0% {
-    transform: translateY(-30px), scale(1, 0);
-    display: block;
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0px), scale(1, 1);
-    display: block;
-    opacity: 1;
-  }
-}
 .prices-services-list {
   width: 100%;
   display: flex;
@@ -1231,6 +1156,11 @@ button.prev:hover, button.next:hover {
   display: none;
 }
 
+@media (max-width: 1500px) {
+  .container {
+    margin: 0 40px;
+  }
+}
 @media (max-width: 1400px) {
   header .main-header .header-contacts {
     display: none;
@@ -1239,6 +1169,25 @@ button.prev:hover, button.next:hover {
 @media (max-width: 1200px) {
   .pc-visible {
     display: none;
+  }
+  .flying-orb {
+    top: 270px;
+    left: 60%;
+    right: 300px;
+    width: 176px;
+    height: 176px;
+  }
+  .flying-orb img {
+    height: 212px;
+    width: auto;
+  }
+  .flying-orb::before {
+    width: 167px;
+    height: 167px;
+  }
+  .flying-orb .water-ripple {
+    height: 212px;
+    width: 212px;
   }
 }
 @media (max-width: 1000px) {
@@ -1485,6 +1434,7 @@ button.prev:hover, button.next:hover {
     position: static;
   }
   header .main-header .header-links-nav .dropdown.second .nav-link {
+    pointer-events: none;
     position: relative;
     padding: 10px;
     padding-right: 15px;
@@ -1508,18 +1458,18 @@ button.prev:hover, button.next:hover {
     font-size: 0.9em;
     transition: all 0.3s ease;
   }
-  header .main-header .header-links-nav .dropdown.second:hover {
+  header .main-header .header-links-nav .dropdown.second:hover, header .main-header .header-links-nav .dropdown.second:active {
     color: var(--blue-main);
   }
-  header .main-header .header-links-nav .dropdown.second:hover .nav-link {
+  header .main-header .header-links-nav .dropdown.second:hover .nav-link, header .main-header .header-links-nav .dropdown.second:active .nav-link {
     color: var(--blue-main);
     text-underline-offset: 17px;
     text-decoration-color: var(--blue-clouds);
   }
-  header .main-header .header-links-nav .dropdown.second:hover .nav-link::after {
+  header .main-header .header-links-nav .dropdown.second:hover .nav-link::after, header .main-header .header-links-nav .dropdown.second:active .nav-link::after {
     transform: translateX(5px);
   }
-  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content {
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content, header .main-header .header-links-nav .dropdown.second:active .dropdown-content {
     transform-origin: left;
     animation: burger-links-appear 0.5s ease-in-out;
     background-color: transparent;
@@ -1527,13 +1477,13 @@ button.prev:hover, button.next:hover {
     right: unset;
     top: 7px;
   }
-  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content::before {
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content::before, header .main-header .header-links-nav .dropdown.second:active .dropdown-content::before {
     display: none;
   }
-  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content a {
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content a, header .main-header .header-links-nav .dropdown.second:active .dropdown-content a {
     color: var(--color-grey);
   }
-  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content hr {
+  header .main-header .header-links-nav .dropdown.second:hover .dropdown-content hr, header .main-header .header-links-nav .dropdown.second:active .dropdown-content hr {
     width: 80%;
   }
   header .main-header .header-links-nav .mobile-visible {
@@ -1674,7 +1624,7 @@ button.prev:hover, button.next:hover {
     display: block;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 440px) {
   .container {
     margin: 0 16px;
   }
@@ -1749,11 +1699,85 @@ button.prev:hover, button.next:hover {
     display: none;
   }
 }
+@keyframes orb-glow {
+  0% {
+    filter: drop-shadow(0 0 10px var(--blue-main));
+  }
+  50% {
+    filter: drop-shadow(0 0 50px var(--blue-main));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px var(--blue-main));
+  }
+}
+@keyframes baloon {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg) scale(1.01);
+  }
+}
 @keyframes burger-links-appear {
   0% {
     display: flex;
     opacity: 0;
     transform: scale(0, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+@keyframes ripple {
+  0% {
+    border: 8px solid var(--blue-main);
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
+  100% {
+    border: 1px solid white;
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+@keyframes logo-hover {
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0px 0px 25px 15px var(--blue-clouds);
+  }
+}
+@keyframes priceAppear {
+  0% {
+    transform: translateY(-30px), scale(1, 0);
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px), scale(1, 1);
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes appear {
+  0% {
+    display: block;
+    opacity: 0;
+    transform: scale(1, 0);
+  }
+  100% {
+    display: block;
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+@keyframes burgerAppear {
+  0% {
+    display: block;
+    opacity: 0;
+    transform: scale(1, 0);
   }
   100% {
     opacity: 1;

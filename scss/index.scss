@@ -50,15 +50,17 @@ html{
 }
 
 body{
- background-color: var(--bg-main);
- color: var(--color-white);
- background-image: url('../src/images/bg-main.webp');
- background-size: 100% auto;
- background-position: top;
- background-repeat: no-repeat;
- position: relative;
- overflow-x: hidden;
+    font-size: 14px;
+    background-color: var(--bg-main);
+    color: var(--color-white);
+    background-image: url('../src/images/bg-main.webp');
+    background-size: 100% auto;
+    background-position: top;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow-x: hidden;
 }
+
 h1,h2,h3,h4,h5,p,span,a{
     font-family: 'Roboto';
     display: block;
@@ -70,7 +72,6 @@ span{
     font-size: 14px;
     display: inline;
 }
-
 h1,.title_h1{
     font-weight: 700;
     font-size: 40px;
@@ -160,6 +161,8 @@ i{
 
 hr{
     width: 80%;
+    border: 0px solid transparent;
+    height: 1px;
     border-color: var(--blue-bg);
     background-color: var(--blue-bg);
 }
@@ -178,6 +181,7 @@ ul{
 section{
     padding: 62px 0;
 }
+
 section:first-of-type{
     padding: 160px 0px;
 }
@@ -185,12 +189,6 @@ section:first-of-type{
 .container{
     max-width: 1442px;
     margin: 0 auto;
-}
-
-@media (max-width: 1500px) {
-    .container{
-        margin: 0 40px;
-    }
 }
 
 /* buttons and checkboxes */
@@ -220,7 +218,6 @@ label.radioButton,
     }
 }
 
-
 button:hover, 
 label.radioButton:hover, 
 label.radioButton:has(input:checked),
@@ -232,6 +229,7 @@ label.radioButton:has(input:checked),
     color: var(--color-black);
     box-shadow: 0px 0px 15px var(--blue-main); 
 }
+
 label.radioButton:has(input:checked),
 .button-highlight
 {
@@ -245,6 +243,7 @@ label.radioButton:has(input:checked),
 .button-link i{
     color: var(--blue-main);
 }
+
 .button-link:hover i{
     color: var(--color-black);
 }
@@ -252,6 +251,7 @@ label.radioButton:has(input:checked),
 label.radioButton input{
     display: none;
 }
+
 label.radioButton:has(input:checked)::after{
     font-family: 'INTRID_ICONS';
     content: '\0049';
@@ -294,15 +294,19 @@ label.radioButton:has(input:checked)::after{
 .mr-6{
     margin-right: 6px;
 }
+
 .ml-6{
     margin-left: 6px;
 }
+
 .ml-8{
     margin-left: 8px;
 }
+
 .ml-16{
     margin-left: 16px;
 }
+
 .ml-32{
     margin-left: 32px;
 }
@@ -362,6 +366,7 @@ label.radioButton:has(input:checked)::after{
 .flex-nowrap{
     flex-wrap: nowrap;
 }
+
 .flex-wrap{
     flex-wrap: wrap;
 }
@@ -369,9 +374,11 @@ label.radioButton:has(input:checked)::after{
 .a-self-end{
     align-self: flex-end;
 }
+
 .copyright-sign{
     margin-right: 0.5em;
 }
+
 .copyright-sign::after{
     content: '\00A9';
     font-size: 0.5em;
@@ -380,7 +387,6 @@ label.radioButton:has(input:checked)::after{
 }
 
 /* OTHER STYLES */
-
 
 .main-header{
     display: flex;
@@ -432,15 +438,6 @@ label.radioButton:has(input:checked)::after{
 
 }
 
-@keyframes logo-hover {
-    0%{
-        box-shadow:  none;
-    }
-    100%{
-        box-shadow:  0px 0px 25px 15px var(--blue-clouds);
-    }
-}
-
 .navbar{
     z-index: 4;
     width: 100%;
@@ -481,7 +478,9 @@ label.radioButton:has(input:checked)::after{
     padding: 12px 0px 12px 12px;
     background-color: transparent;
     color: var(--color-white);
+    font-size: 16px;
 }
+
 .nav-link::before{
     position: absolute;
     content: '\2022';
@@ -494,6 +493,7 @@ label.radioButton:has(input:checked)::after{
     cursor: pointer;
     border: none;
 }
+
 .dropbtn:hover{
     color: var(--blue-main);
     background-color: transparent;
@@ -513,7 +513,6 @@ label.radioButton:has(input:checked)::after{
         display: none;
     }
 }
-
 
 .dropdown-content, .burger-content {
   color: var(--color-white);
@@ -540,15 +539,14 @@ label.radioButton:has(input:checked)::after{
   color: var(--color-white);
   text-wrap: nowrap;
 }
+
 .dropdown-content hr, .burger-content hr {
     margin: 0 12px
 }
 
-
 .dropdown-content a:hover, .burger-content a:hover {
     color: var(--blue-main);
 }
-
 
 #menuToggle:has( input:checked ) ~ .burger-content{
     opacity: 1;
@@ -557,19 +555,6 @@ label.radioButton:has(input:checked)::after{
     transform-origin: top;
     animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-
-@keyframes burgerAppear {
-    0%{
-       display: block;
-       opacity: 0;
-       transform:  scale(1, 0);
-    }
-    100%{
-        opacity: 1;
-        transform:  scale(1, 1);
-    }
-}
-
 
 .dropdown.second:hover .nav-link{
     text-decoration: underline var(--blue-main);
@@ -607,11 +592,10 @@ label.radioButton:has(input:checked)::after{
     transform: rotate(45deg);
 }
 
-
-
 .dropdown.second .dropdown-content a{
     padding: 0px;
 }
+
 .dropdown.second .dropdown-content hr{
     margin: 0;
     border-color: var(--color-white);
@@ -635,6 +619,7 @@ div.icon-menu{
     font-size: 30px;
     color: var(--color-white);
 }
+
 .icon-menu i:hover{
     color: var(--blue-main);
 }
@@ -718,15 +703,7 @@ div.icon-menu{
   transform: rotate(45deg) translate(0, -1px);
 }
 
-
-@keyframes baloon {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg) scale(1);
-    }
-    50% {
-        transform: translateY(-15px) rotate(2deg) scale(1.01);
-    }
-}
+// orb
 
 .flying-orb{
     position: absolute;
@@ -750,17 +727,6 @@ div.icon-menu{
     filter: drop-shadow(0 0 30px var(--blue-main));
 }
 
-@keyframes orb-glow {
-    0% {
-        filter: drop-shadow(0 0 10px var(--blue-main));
-    }
-    50% {
-        filter: drop-shadow(0 0 50px var(--blue-main));
-    }
-    100% {
-        filter: drop-shadow(0 0 10px var(--blue-main));
-    }
-  }
 
 .water-ripple {
     z-index: -2;
@@ -783,18 +749,6 @@ div.icon-menu{
   filter: drop-shadow(0 0 10px var(--blue-main));
 }
 
-@keyframes ripple {
-  0% {
-    border: 8px solid var(--blue-main);
-    transform: scale(0.7);
-    opacity: 0.8;
-  }
-  100% {
-    border: 1px solid white;
-    transform: scale(1.5);
-    opacity: 0;
-  }
-}
 
 .ripple-circle:nth-child(1) { animation-delay: 0s; }
 .ripple-circle:nth-child(2) { animation-delay: 1s; }
@@ -802,6 +756,7 @@ div.icon-menu{
 .ripple-circle:nth-child(3) { animation-delay: 3s; }
 
 // slider
+
 div.slider-test, .achievements-slider {
     width: 250px;
     height: 400px;
@@ -814,7 +769,7 @@ div.slider-test, .achievements-slider {
         flex-direction: column;
         transition: transform 0.5s ease;
 
-        div.slide {
+        a.slide {
             width: 250px;
             height: 200px;
             display: flex;
@@ -825,7 +780,6 @@ div.slider-test, .achievements-slider {
         }
     }
 }
-
 
 button.prev, button.next {
     position: absolute;
@@ -840,10 +794,12 @@ button.prev, button.next {
         box-shadow: none;
     }
 }
+
 .prev { 
     top: -10px; 
     transform: rotate(270deg);
 }
+
 .next { 
     left: 102px;
     bottom: -10px; 
@@ -1142,19 +1098,6 @@ button.prev, button.next {
 }
 
 
-@keyframes appear {
-    0% {
-        display: block;
-        opacity: 0;
-        transform: scale(1, 0);
-    }
-    
-    100% {
-        display: block;
-        opacity: 1;
-        transform: scale(1, 1);
-    }
-}
 
 .web-count {
     display: flex;
@@ -1226,18 +1169,7 @@ button.prev, button.next {
     }
 }
 
-@keyframes priceAppear {
-    0%{
-        transform: translateY(-30px), scale(1, 0);
-        display: block;
-        opacity: 0;
-    }
-    100%{
-        transform: translateY(0px), scale(1, 1);
-        display: block;
-        opacity: 1;
-    }
-}
+
 
 .prices-services-list{
     width: 100%;
@@ -1308,6 +1240,12 @@ button.prev, button.next {
 
 //  BREAKPOINTS
 
+@media (max-width: 1500px) {
+    .container{
+        margin: 0 40px;
+    }
+}
+
 @media (max-width: 1400px) {
     header .main-header .header-contacts{
         display: none;
@@ -1318,8 +1256,29 @@ button.prev, button.next {
     .pc-visible{
         display: none;
     }
-}
+   
+    .flying-orb{
+        top: 270px;
+        left: 60%;
+        right: 300px;
+        width: 176px;
+        height: 176px;
+        img{
+            height: 212px;
+            width: auto;
+        }
+        &::before{
+            width: 167px;
+            height: 167px;
+        }
 
+        .water-ripple{
+            height: 212px;
+            width: 212px;
+        }
+    }
+
+}
 
 @media (max-width: 1000px) {
     header .main-header{
@@ -1628,6 +1587,7 @@ button.prev, button.next {
             .dropdown.second{
                 position: static;
                 .nav-link{
+                    pointer-events: none;
                     position: relative;
                     padding: 10px;
                     padding-right: 15px;
@@ -1654,7 +1614,7 @@ button.prev, button.next {
                     
                 }
 
-                &:hover{
+                &:hover, &:active{
                     color: var(--blue-main);
 
                     .nav-link{
@@ -1879,7 +1839,7 @@ button.prev, button.next {
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 440px) {
     
     .container{
         margin: 0 16px;
@@ -1990,6 +1950,30 @@ button.prev, button.next {
     }
 }
 
+// animations
+
+@keyframes orb-glow {
+    0% {
+        filter: drop-shadow(0 0 10px var(--blue-main));
+    }
+    50% {
+        filter: drop-shadow(0 0 50px var(--blue-main));
+    }
+    100% {
+        filter: drop-shadow(0 0 10px var(--blue-main));
+    }
+}
+
+@keyframes baloon {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translateY(-15px) rotate(2deg) scale(1.01);
+    }
+}
+
+
 @keyframes burger-links-appear {
     0%{
         display: flex;
@@ -1999,5 +1983,69 @@ button.prev, button.next {
     100%{
         opacity: 1;
         transform: scale(1, 1);
+    }
+}
+
+@keyframes ripple {
+    0% {
+      border: 8px solid var(--blue-main);
+      transform: scale(0.7);
+      opacity: 0.8;
+    }
+    100% {
+      border: 1px solid white;
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+
+@keyframes logo-hover {
+    0%{
+        box-shadow:  none;
+    }
+    100%{
+        box-shadow:  0px 0px 25px 15px var(--blue-clouds);
+    }
+}
+
+@keyframes priceAppear {
+    0%{
+        transform: translateY(-30px), scale(1, 0);
+        display: block;
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px), scale(1, 1);
+        display: block;
+        opacity: 1;
+    }
+}
+
+
+@keyframes appear {
+    0% {
+        display: block;
+        opacity: 0;
+        transform: scale(1, 0);
+    }
+    
+    100% {
+        display: block;
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+
+@keyframes burgerAppear {
+    0%{
+       display: block;
+       opacity: 0;
+       transform:  scale(1, 0);
+    }
+    100%{
+        opacity: 1;
+        transform:  scale(1, 1);
     }
 }
