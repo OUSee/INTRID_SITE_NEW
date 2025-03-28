@@ -46,7 +46,7 @@ body {
   background-color: var(--bg-main);
   color: var(--color-white);
   background-image: url("../src/images/bg-main.webp");
-  background-size: 100% auto;
+  background-size: auto 944px;
   background-position: top;
   background-repeat: no-repeat;
   position: relative;
@@ -873,9 +873,9 @@ button.prev:hover, button.next:hover {
   gap: 30px;
 }
 .tabs-buttons .tab-button {
-  padding: 24px 80px 18px 100px;
+  padding: 24px 60px 18px 100px;
   background-color: var(--blue-bg);
-  border-top: 2px solid transparent;
+  border-top: 2px solid var(--bg-main);
   border-top-left-radius: 49px;
   border-top-right-radius: 49px;
   flex-grow: 1;
@@ -893,12 +893,12 @@ button.prev:hover, button.next:hover {
 .tabs-buttons .tab-button::before {
   content: "";
   position: absolute;
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   background-color: var(--bg-main);
   border-radius: 50%;
-  top: 0;
-  left: -80px;
+  top: -25px;
+  left: -90px;
   transition: all 0.3s ease-in-out;
 }
 .tabs-buttons .tab-button::after {
@@ -910,6 +910,7 @@ button.prev:hover, button.next:hover {
   content: "m";
   color: var(--blue-main);
   transition: all 0.3s ease-in-out;
+  animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 .tabs-buttons .tab-button .tab-button-content {
   margin-top: 8px;
@@ -1401,15 +1402,12 @@ button.prev:hover, button.next:hover {
     margin-top: 40px;
   }
 }
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 601px) and (max-width: 900px) {
   .flying-orb {
     display: none;
   }
 }
 @media (max-width: 601px) {
-  body {
-    background-image: none;
-  }
   .container {
     margin: 0px 20px;
   }
@@ -1824,5 +1822,16 @@ button.prev:hover, button.next:hover {
   100% {
     opacity: 1;
     transform: scale(1, 1);
+  }
+}
+@keyframes eye {
+  0%, 100% {
+    transform: translateY(0) translateX(0px) scale(1);
+  }
+  50% {
+    transform: translateY(5px) translateX(5px) scale(1.01);
+  }
+  75% {
+    transform: translateY(5px) translateX(-5px) scale(1.01);
   }
 }
