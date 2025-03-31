@@ -1169,10 +1169,23 @@ button.prev, button.next {
         flex-grow: 1;
         flex-basis: 40%;
         align-items: center;
-        gap: 10px;
 
         p{
+            margin-top: 10px;
             text-align: center;
+        }
+        .icons-partners{
+            display: flex;
+            gap: 5px;
+            a.lg-partner{
+                width: 1.7em;
+                height: 1.7em;
+
+                img{
+                    height: 100%;
+                    width: auto;
+                }
+            }
         }
     }
 }
@@ -1193,77 +1206,81 @@ button.prev, button.next {
     }
 }
 
-
-
-.web-count {
+.count-n-card{
     display: flex;
-    align-items: center;
-    width: 380px;
-    flex-wrap: wrap;
-    row-gap: 10px;
-    position: relative;
 
-    span.ml-6{
-        flex-shrink: 1;
-        flex-basis: 100px;
-    }
-
-    .large-number{
-        color: var(--blue-main);
-        font-size: 70px;
-        font-weight: bold;
-    }
-    img{
-        height: 70px;
-        width: auto;
-
-        &.olive-right{
-            transform: scaleX(-1);
+    .web-count {
+        display: flex;
+        align-items: center;
+        width: 380px;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        position: relative;
+    
+        span.ml-6{
+            flex-shrink: 1;
+            flex-basis: 100px;
         }
-    }
-
-    &::before{
-        position: absolute;
-        top: 40px;
-        left: 90px;
-        z-index: 0;
-        content: "";
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        box-shadow: 0px 0px 100px 80px var(--blue-clouds),
-        inset 0px 0px 100px 2px var(--blue-clouds);
+    
+        .large-number{
+            color: var(--blue-main);
+            font-size: 70px;
+            font-weight: bold;
+        }
+        img{
+            height: 70px;
+            width: auto;
+    
+            &.olive-right{
+                transform: scaleX(-1);
+            }
+        }
+    
+        &::before{
+            position: absolute;
+            top: 40px;
+            left: 90px;
+            z-index: 0;
+            content: "";
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 100px 80px var(--blue-clouds),
+            inset 0px 0px 100px 2px var(--blue-clouds);
+        }
+        
     }
     
-}
-
-.recent-work-card{
-    display: flex;
-    gap: 20px;
-    padding: 24px 30px;
-    background-color: var(--blue-bg);
-    border-radius: 50px;
-    margin-left: auto;
-
-    .work-testimonial{
+    .recent-work-card{
         display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        .card-tag{
-            color: var(--blue-tag);
-            font-size: 16px;
-        }
-
-        .card-description{
-            color: var(--color-grey);
-        }
-
-        a{
-            margin-top: 16px;
+        gap: 20px;
+        padding: 24px 30px;
+        background-color: var(--blue-bg);
+        border-radius: 50px;
+        margin-left: auto;
+    
+        .work-testimonial{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+    
+            .card-tag{
+                color: var(--blue-tag);
+                font-size: 16px;
+            }
+    
+            .card-description{
+                color: var(--color-grey);
+            }
+    
+            a{
+                margin-top: 16px;
+            }
         }
     }
 }
+
+
 
 
 
@@ -1931,18 +1948,25 @@ button.prev, button.next {
         }
     }
 
-    .web-count{
-        margin: 0 auto;
-        margin-bottom: 40px;
-        justify-content: center;
+    .count-n-card{
+        display: flex;
+        flex-direction: column;
 
-        span.title_h4{
-            flex-grow: 1;
-            flex-basis: 80%;
-            text-align: center;
-            margin: 0;
+        .web-count{
+            width: 100%;
+            margin: 0 auto;
+            margin-bottom: 40px;
+            justify-content: center;
+    
+            span.title_h4{
+                flex-grow: 1;
+                flex-basis: 80%;
+                text-align: center;
+                margin: 0;
+            }
         }
     }
+    
 
     .recent-work-card{
         margin: 0;

@@ -1104,10 +1104,22 @@ button.prev:hover, button.next:hover {
   flex-grow: 1;
   flex-basis: 40%;
   align-items: center;
-  gap: 10px;
 }
 .achievements-group .achievement p {
+  margin-top: 10px;
   text-align: center;
+}
+.achievements-group .achievement .icons-partners {
+  display: flex;
+  gap: 5px;
+}
+.achievements-group .achievement .icons-partners a.lg-partner {
+  width: 1.7em;
+  height: 1.7em;
+}
+.achievements-group .achievement .icons-partners a.lg-partner img {
+  height: 100%;
+  width: auto;
 }
 
 .icms-note {
@@ -1124,7 +1136,10 @@ button.prev:hover, button.next:hover {
   margin-right: 8px;
 }
 
-.web-count {
+.count-n-card {
+  display: flex;
+}
+.count-n-card .web-count {
   display: flex;
   align-items: center;
   width: 380px;
@@ -1132,23 +1147,23 @@ button.prev:hover, button.next:hover {
   row-gap: 10px;
   position: relative;
 }
-.web-count span.ml-6 {
+.count-n-card .web-count span.ml-6 {
   flex-shrink: 1;
   flex-basis: 100px;
 }
-.web-count .large-number {
+.count-n-card .web-count .large-number {
   color: var(--blue-main);
   font-size: 70px;
   font-weight: bold;
 }
-.web-count img {
+.count-n-card .web-count img {
   height: 70px;
   width: auto;
 }
-.web-count img.olive-right {
+.count-n-card .web-count img.olive-right {
   transform: scaleX(-1);
 }
-.web-count::before {
+.count-n-card .web-count::before {
   position: absolute;
   top: 40px;
   left: 90px;
@@ -1159,8 +1174,7 @@ button.prev:hover, button.next:hover {
   border-radius: 50%;
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
 }
-
-.recent-work-card {
+.count-n-card .recent-work-card {
   display: flex;
   gap: 20px;
   padding: 24px 30px;
@@ -1168,19 +1182,19 @@ button.prev:hover, button.next:hover {
   border-radius: 50px;
   margin-left: auto;
 }
-.recent-work-card .work-testimonial {
+.count-n-card .recent-work-card .work-testimonial {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.recent-work-card .work-testimonial .card-tag {
+.count-n-card .recent-work-card .work-testimonial .card-tag {
   color: var(--blue-tag);
   font-size: 16px;
 }
-.recent-work-card .work-testimonial .card-description {
+.count-n-card .recent-work-card .work-testimonial .card-description {
   color: var(--color-grey);
 }
-.recent-work-card .work-testimonial a {
+.count-n-card .recent-work-card .work-testimonial a {
   margin-top: 16px;
 }
 
@@ -1711,12 +1725,17 @@ button.prev:hover, button.next:hover {
     -moz-column-gap: unset;
          column-gap: unset;
   }
-  .web-count {
+  .count-n-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .count-n-card .web-count {
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 40px;
     justify-content: center;
   }
-  .web-count span.title_h4 {
+  .count-n-card .web-count span.title_h4 {
     flex-grow: 1;
     flex-basis: 80%;
     text-align: center;
