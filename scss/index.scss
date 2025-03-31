@@ -75,7 +75,9 @@ h1,.title_h1{
     font-weight: 700;
     font-size: 40px;
     position: relative;
-    &.underlined::after{
+    &.underlined{
+        position: relative;
+        &::after{
         display: block;
         position: absolute;
         content: '';
@@ -86,7 +88,7 @@ h1,.title_h1{
         height: auto;
         min-height: 1em;
         bottom: -0.4em;
-    }
+    }}
 }
 h2,
 .title_h2,
@@ -94,7 +96,9 @@ h3,
 .title_h3{
     font-weight: 700;
     font-size: 36px;
-    &.underlined::after{
+    &.underlined{
+        position: relative;
+        &::after{
         display: block;
         position: absolute;
         content: '';
@@ -105,7 +109,7 @@ h3,
         height: auto;
         min-height: 1em;
         bottom: -0.4em;
-    }
+    }}
 }
 h4,.title_h4{
     font-weight: 700;
@@ -377,6 +381,10 @@ label.radioButton:has(input:checked)::after{
     margin: 0 auto;
 }
 
+.w-fit{
+    width: fit-content;
+}
+
 .color-blue{
     color: var(--blue-main);
 }
@@ -500,6 +508,11 @@ label.radioButton:has(input:checked)::after{
     display: flex;
     flex-direction: row;
     position: fixed;
+
+    &:has(#menuCheckbox:checked), &:has(#menuToggle:checked){
+        background-color: var(--bg-main);
+    }
+    
     .main-header .burger .burger-content{
         background-color: var(--bg-main);
         
@@ -1280,10 +1293,6 @@ button.prev, button.next {
     }
 }
 
-
-
-
-
 .prices-services-list{
     width: 100%;
     display: flex;
@@ -1345,6 +1354,10 @@ button.prev, button.next {
             }
         }
     }
+}
+
+#more-about-web-dev{
+    display: none;
 }
 
 .calc-spacer{
@@ -1479,6 +1492,8 @@ button.prev, button.next {
             right: 36px;
             left: unset;
         }
+
+        
 
         #mobilemenuToggle:has( input:checked ) ~ .header-links-nav{
             display: flex;
@@ -2181,6 +2196,7 @@ button.prev, button.next {
     }
 
     #more-about-web-dev{
+        display: flex;
         margin-bottom: 40px;
     }
 
@@ -2197,7 +2213,25 @@ button.prev, button.next {
 }
 
 @media (max-width: 540px) {
+    .prices-services-list{
+        display: none !important;
+    }
 
+    hr.calc-spacer{
+        display: none !important;
+    }
+
+    #calc-web-price, #more-about-web-dev{
+        width: 100%;
+        margin: 15px 0px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #more-about-web-dev{
+        display: flex;
+        margin-bottom: 40px;
+    }
 }
 
 // animations

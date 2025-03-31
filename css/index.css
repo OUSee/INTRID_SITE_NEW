@@ -69,6 +69,9 @@ h1, .title_h1 {
   font-size: 40px;
   position: relative;
 }
+h1.underlined, .title_h1.underlined {
+  position: relative;
+}
 h1.underlined::after, .title_h1.underlined::after {
   display: block;
   position: absolute;
@@ -88,6 +91,12 @@ h3,
 .title_h3 {
   font-weight: 700;
   font-size: 36px;
+}
+h2.underlined,
+.title_h2.underlined,
+h3.underlined,
+.title_h3.underlined {
+  position: relative;
 }
 h2.underlined::after,
 .title_h2.underlined::after,
@@ -372,6 +381,11 @@ label.radioButton:has(input:checked)::after {
   margin: 0 auto;
 }
 
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .color-blue {
   color: var(--blue-main);
 }
@@ -485,6 +499,9 @@ label.radioButton:has(input:checked)::after {
   display: flex;
   flex-direction: row;
   position: fixed;
+}
+.navbar:has(#menuCheckbox:checked), .navbar:has(#menuToggle:checked) {
+  background-color: var(--bg-main);
 }
 .navbar .main-header .burger .burger-content {
   background-color: var(--bg-main);
@@ -1254,6 +1271,10 @@ button.prev:hover, button.next:hover {
   }
 }
 
+#more-about-web-dev {
+  display: none;
+}
+
 .calc-spacer {
   display: none;
 }
@@ -1906,6 +1927,7 @@ button.prev:hover, button.next:hover {
     justify-content: center;
   }
   #more-about-web-dev {
+    display: flex;
     margin-bottom: 40px;
   }
   .recent-work-card {
@@ -1914,6 +1936,24 @@ button.prev:hover, button.next:hover {
   }
   .recent-work-card .work-testimonial {
     gap: 5px;
+  }
+}
+@media (max-width: 540px) {
+  .prices-services-list {
+    display: none !important;
+  }
+  hr.calc-spacer {
+    display: none !important;
+  }
+  #calc-web-price, #more-about-web-dev {
+    width: 100%;
+    margin: 15px 0px;
+    align-items: center;
+    justify-content: center;
+  }
+  #more-about-web-dev {
+    display: flex;
+    margin-bottom: 40px;
   }
 }
 @keyframes orb-glow {
