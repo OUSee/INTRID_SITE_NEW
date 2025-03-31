@@ -59,10 +59,10 @@
                     <div class="dropdown second">
                         <a class="nav-link" href="/design">Дизайн</a>
                         <div class="dropdown-content">
+                            <a href="/">Дизайн сайтов</a>
                             <a href="/">UI/UX-разработка интерфейсов</a>
                             <a href="/logo">Разработка логотипа</a>
                             <a href="/brand">Создание бренда</a>
-                            <a href="/">Дизайн сайтов</a>
                         </div>
                     </div>
                     <div class="dropdown second">
@@ -106,7 +106,7 @@
                 <a class="nav-icon" title="Telegram" href="">
                     <i class="icon-tg"></i>
                 </a>
-                <a class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/">
+                <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/">
                     <i class="icon-person"></i>
                 </a>
             </div>
@@ -144,7 +144,7 @@
     <!-- MAIN PAGE -->
     <section class="container main-page">
         <div class="left-block">
-            <h1>
+            <h1 class="underlined">
                 <span class="title_h2">Создаём</span><br>
                 качественные сайты и IT-продукты,
             </h1>
@@ -230,17 +230,22 @@
             <label for="tab-3" class="tab-button">
                 <input type="radio" name="tab-radio" id="tab-3">
                 <span class="tab-header title_h5">Разработка тендерных порталов</span><br>
-                <span class="tab-button-content"><span class="color-blue fz-24 fw-bold">500 000 ₽</span> в месяц -
-                    средняя
-                    экономия
-                    для крупных предприятий при внедрении тендерных порталов и систем автоматизации
-                    бизнес-процессов
+                <span class="tab-button-content"><span class="color-blue fz-24 fw-bold">500 000 ₽</span>
+                    в месяц - средняя экономия для крупных предприятий при внедрении тендерных порталов
                 </span>
             </label>
         </div>
         <div class="tabs-content">
             <div class="tab-content container">
-                <h2 class="text-center">
+                <label for="mobile-tab-1" class="tab-button mobile">
+                    <input type="checkbox" name="tab-radio-mobile" id="mobile-tab-1" checked>
+                    <span class="tab-header title_h5">Разработка и продвижение сайтов</span><br>
+                    <span class="tab-button-content">
+                        <span class="color-blue fz-24 fw-bold">на треть лучше </span>
+                        показатель конверсии на сайтах наших клиентов, чем у аналогичных сайтов конкурентов
+                    </span>
+                </label>
+                <h2 class="text-center underline">
                     Веб-разработка и продвижение сайтов
                 </h2>
                 <p class="under-title">
@@ -250,7 +255,7 @@
                 <div class="tab-content-webDev">
                     <ul class="webDev-benefits">
                         <li>
-                            <span class="webDev-benefits-highlight">
+                            <span class="webDev-benefits-highlight title_h1">
                                 4,2%
                             </span>
                             <p class="webDev-benefits-description">
@@ -258,7 +263,7 @@
                             </p>
                         </li>
                         <li>
-                            <span class="webDev-benefits-highlight">
+                            <span class="webDev-benefits-highlight title_h1">
                                 6 мес
                             </span>
                             <p class="webDev-benefits-description">
@@ -267,7 +272,7 @@
                             </p>
                         </li>
                         <li>
-                            <span class="webDev-benefits-highlight">
+                            <span class="webDev-benefits-highlight title_h1">
                                 iCMS
                             </span>
                             <p class="webDev-benefits-description">
@@ -319,8 +324,67 @@
                         <i class="icon-arrow_wide"></i>
                     </a>
                 </div>
+                <hr class="section-spacer">
+                <div class="web-count">
+                    <img src="./src/images/olive-left.png" alt="olive-left" class="olive-left">
+                    <span class="large-number">280</span>
+                    <img src="./src/images/olive-left.png" alt="olive-right" class="olive-right">
+                    <span class="ml-6 title_h4">сайтов разработано</span>
+                    <button class="button-link">
+                        смотреть Портфолио <i class="icon-arrow_wide"></i>
+                    </button>
+                </div>
+                <div class="recent-work-card">
+                    <img src="./src/images/demo-project.webp" alt="recent-work-demo">
+                    <div class="work-testimonial">
+                        <span class="card-tag">
+                            <i class="icon-fire"></i>
+                            Свежая работа
+                        </span>
+                        <span class="title_h4">Сайт для кинотеатра «Спартак»</span>
+                        <p class="card-description">Гордимся разработкой сайта для центрального кинотеатра Воронежа</p>
+                        <a href="https://kinospartak.ru">https://kinospartak.ru</a>
+                    </div>
+                </div>
+                <hr class="calc-spacer">
+                <ul class="prices-services-list">
+                    <li class="prices-services-list-item">
+                        <img src='./src/images/landig-page.svg' alt="landig-page"></img>
+                        <span>Landing Page</span>
+                        <span class="color-blue">от 120 000 ₽</span>
+                    </li>
+                    <li class="prices-services-list-item">
+                        <img src='./src/images/corp-site.svg' alt="corp-site"></img>
+                        <span>Корпоративный сайт</span>
+                        <span class="color-blue">от 120 000 ₽</span>
+                    </li>
+                    <li class="prices-services-list-item">
+                        <img src='./src/images/web-shop.svg' alt="web-shop"></img>
+                        <span>Интернет-магазин</span>
+                        <span class="color-blue">от 120 000 ₽</span>
+                    </li>
+                    <li class="prices-services-list-item">
+                        <img src='./src/images/site-ai.svg' alt="site-ai"></img>
+                        <span>Искусственный интеллект</span>
+                        <span class="color-blue">от 120 000 ₽</span>
+                    </li>
+                </ul>
+                <a id="calc-web-price" class="button-link button-highlight m-center big" href="#">
+                    Калькулятор стоимости сайта
+                </a>
+                <a id="more-about-web-dev" class="button-link m-center big" href="#">
+                    Подробнее о разработке сайтов <i class="icon-arrow_wide color-blue"></i>
+                </a>
             </div>
             <div class="tab-content container">
+                <label for="mobile-tab-2" class="tab-button mobile">
+                    <input type="checkbox" name="tab-radio-mobile" id="mobile-tab-2">
+                    <span class="tab-header title_h5">Разработка и продвижение сайтов</span><br>
+                    <span class="tab-button-content">
+                        <span class="color-blue fz-24 fw-bold">на треть лучше </span>
+                        показатель конверсии на сайтах наших клиентов, чем у аналогичных сайтов конкурентов
+                    </span>
+                </label>
                 <h2 class="text-center">Внедрение ИИ в интернет-магазин</h2>
                 <p class="under-title">Проанализируем задачи и нюансы Вашего бизнеса и найдём оптимальное решение для
                     запуска онлайн-продаж</p>
@@ -397,6 +461,14 @@
                 </div>
             </div>
             <div class="tab-content container">
+                <label for="mobile-tab-3" class="tab-button mobile">
+                    <input type="checkbox" name="tab-radio-mobile" id="mobile-tab-3">
+                    <span class="tab-header title_h5">Разработка и продвижение сайтов</span><br>
+                    <span class="tab-button-content">
+                        <span class="color-blue fz-24 fw-bold">на треть лучше </span>
+                        показатель конверсии на сайтах наших клиентов, чем у аналогичных сайтов конкурентов
+                    </span>
+                </label>
                 <h2 class="text-center">Разработка тендерных порталов</h2>
                 <p class="under-title">Проанализируем задачи и нюансы Вашего бизнеса и найдём оптимальное решение для
                     запуска онлайн-продаж</p>
@@ -474,59 +546,7 @@
             </div>
         </div>
     </section>
-    <hr class="section-spacer container">
-    <!-- CALC -->
-    <section class="calc-section">
-        <div class="container fd-row flex-wrap">
-            <div class="web-count">
-                <img src="./src/images/olive-left.png" alt="olive-left" class="olive-left">
-                <span class="large-number">280</span>
-                <img src="./src/images/olive-left.png" alt="olive-right" class="olive-right">
-                <span class="ml-6 title_h4">сайтов разработано</span>
-                <button class="button-link">
-                    смотреть Портфолио <i class="icon-arrow_wide"></i>
-                </button>
-            </div>
-            <div class="recent-work-card">
-                <img src="./src/images/demo-project.webp" alt="recent-work-demo">
-                <div class="work-testimonial">
-                    <span class="card-tag">
-                        <i class="icon-fire"></i>
-                        Свежая работа
-                    </span>
-                    <span class="title_h4">Сайт для кинотеатра «Спартак»</span>
-                    <p class="card-description">Гордимся разработкой сайта для центрального кинотеатра Воронежа</p>
-                    <a href="https://kinospartak.ru">https://kinospartak.ru</a>
-                </div>
-            </div>
-            <hr class="calc-spacer">
-            <ul class="prices-services-list">
-                <li class="prices-services-list-item">
-                    <img src='./src/images/landig-page.svg' alt="landig-page"></img>
-                    <span>Landing Page</span>
-                    <span class="color-blue">от 120 000 ₽</span>
-                </li>
-                <li class="prices-services-list-item">
-                    <img src='./src/images/corp-site.svg' alt="corp-site"></img>
-                    <span>Корпоративный сайт</span>
-                    <span class="color-blue">от 120 000 ₽</span>
-                </li>
-                <li class="prices-services-list-item">
-                    <img src='./src/images/web-shop.svg' alt="web-shop"></img>
-                    <span>Интернет-магазин</span>
-                    <span class="color-blue">от 120 000 ₽</span>
-                </li>
-                <li class="prices-services-list-item">
-                    <img src='./src/images/site-ai.svg' alt="site-ai"></img>
-                    <span>Искусственный интеллект</span>
-                    <span class="color-blue">от 120 000 ₽</span>
-                </li>
-            </ul>
-            <a class="button-link button-highlight m-center big" href="#">
-                Калькулятор стоимости сайта
-            </a>
-        </div>
-    </section>
+
     <script src="./js/script.js"></script>
 </body>
 

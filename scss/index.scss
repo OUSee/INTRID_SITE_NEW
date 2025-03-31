@@ -74,6 +74,19 @@ span{
 h1,.title_h1{
     font-weight: 700;
     font-size: 40px;
+    position: relative;
+    &.underlined::after{
+        display: block;
+        position: absolute;
+        content: '';
+        background-image: url('../src/images/h1-underline.svg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        height: auto;
+        min-height: 1em;
+        bottom: -0.4em;
+    }
 }
 h2,
 .title_h2,
@@ -81,6 +94,18 @@ h3,
 .title_h3{
     font-weight: 700;
     font-size: 36px;
+    &.underlined::after{
+        display: block;
+        position: absolute;
+        content: '';
+        background-image: url('../src/images/h1-underline.svg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        height: auto;
+        min-height: 1em;
+        bottom: -0.4em;
+    }
 }
 h4,.title_h4{
     font-weight: 700;
@@ -98,6 +123,8 @@ p{
     font-weight: 400;
     font-size: 14px;
 }
+
+
 
 @media (max-width: 1000px) {
     h1,.title_h1{
@@ -189,6 +216,7 @@ hr{
 hr.section-spacer{
     width: auto;
     border: 0.5px solid var(--section-spacer);
+    margin: 62px 0;
 }
 
 ul{
@@ -233,8 +261,14 @@ label.radioButton,
     gap: 8px;
 
     &.big{
-        border-radius: 41px;
-        padding: 22px 41px;
+        border-radius: 30px;
+        padding: 15px 25px;
+        justify-items: center;
+        align-items: center;
+
+        i.icon-arrow_wide{
+            font-size: 2em;
+        }
     }
 }
 
@@ -475,6 +509,13 @@ label.radioButton:has(input:checked)::after{
         background-color: var(--bg-main);
 
         
+    }
+}
+
+#lk-link i{
+    color: var(--blue-main);
+    &:hover{
+        text-shadow:  var(--blue-main) 1px 0 10px;;
     }
 }
 
@@ -855,7 +896,7 @@ button.prev, button.next {
     button{
         color: var(--blue-main);
         position: absolute;
-        left: 100px ;
+        left: 100px;
         border: none;
         padding: 10px;
         cursor: pointer;
@@ -919,75 +960,85 @@ button.prev, button.next {
     flex-direction: row;
     gap: 30px;
 
-    .tab-button{
-        padding:  24px 60px 18px 100px ;
-        background-color: var(--blue-bg);
-        border-top: 2px solid var(--bg-main);
-        border-top-left-radius: 49px;
-        border-top-right-radius: 49px;
-        flex-grow: 1;
-        flex-basis: 0;
-        overflow: hidden;
-        position: relative;
-        cursor: pointer;
+    
+}
 
-        &:hover {
-            &::before{
-                background-color: var(--blue-main);
-            }
-            &::after{
-                color: var(--color-white);
-            }
+.tab-button{
+    padding:  24px 60px 18px 100px ;
+    background-color: var(--blue-bg);
+    border-top: 2px solid var(--bg-main);
+    border-top-left-radius: 39px;
+    border-top-right-radius: 39px;
+    flex-grow: 1;
+    flex-basis: 0;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    &.mobile{
+        display: none;
+
+        @media (max-width: 440px) {
+            display: block;
         }
+    }
+
+    &:hover {
+        &::before{
+            background-color: var(--blue-main);
+        }
+        &::after{
+            color: var(--color-white);
+        }
+    }
+
+    &::before{
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        background-color: var(--bg-main);
+        border-radius: 50%;
+        top: -25px;
+        left: -90px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &::after{
+        position: absolute;
+        top: 60px;
+        left: 20px;
+        font-family: 'INTRID_ICONS';
+        font-size: 52px;
+        content: "\6d";
+        color: var(--blue-main);
+        transition: all 0.3s ease-in-out;
+        animation: eye 4s  cubic-bezier(0.37, 0, 0.63, 1)  infinite;
+    }
+
+    .tab-button-content{
+        margin-top: 8px;
+        color: var(--color-grey);
+    }
+    
+    input{
+        display: none;
+    }
+    
+    &:has(input:checked){
+        background-color: var(--bg-main);
+        border-top: 2px solid var(--blue-bg); 
 
         &::before{
-            content: "";
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            background-color: var(--bg-main);
-            border-radius: 50%;
-            top: -25px;
-            left: -90px;
-            transition: all 0.3s ease-in-out;
+            background-color: var(--blue-main);
         }
 
         &::after{
-            position: absolute;
-            top: 60px;
-            left: 20px;
-            font-family: 'INTRID_ICONS';
-            font-size: 52px;
-            content: "\6d";
-            color: var(--blue-main);
-            transition: all 0.3s ease-in-out;
-            animation: eye 4s  cubic-bezier(0.37, 0, 0.63, 1)  infinite;
+            color: var(--color-white);
         }
 
-        .tab-button-content{
-            margin-top: 8px;
-            color: var(--color-grey);
-        }
-        
-        input{
-            display: none;
-        }
-        
-        &:has(input:checked){
-            background-color: var(--bg-main);
-            border-top: 2px solid var(--blue-bg); 
-
-            &::before{
-                background-color: var(--blue-main);
-            }
-
-            &::after{
-                color: var(--color-white);
-            }
-
-            .tab-content{
-                color: var(--color-white);
-            }
+        .tab-content{
+            color: var(--color-white);
         }
     }
 }
@@ -1001,6 +1052,7 @@ button.prev, button.next {
         transform-origin: top;
     }
 }
+
 
 .tabs-buttons:has(#tab-1:checked)  ~ .tabs-content .tab-content:nth-child(1),
 .tabs-buttons:has(#tab-2:checked)  ~ .tabs-content .tab-content:nth-child(2),
@@ -1077,7 +1129,6 @@ button.prev, button.next {
 
         .webDev-benefits-highlight{
             display: block;
-            font-size: 40px;
             color: var(--blue-main);
             text-wrap: nowrap;
             flex-basis: 25%;
@@ -1331,12 +1382,14 @@ button.prev, button.next {
         margin: 0 8px;
         gap: 14px;
 
-        .tab-button{
-            padding:  18px 33px 18px 100px ;
+        
+    }
 
-            .title_h5{
-                display: block;
-            }
+    .tab-button{
+        padding:  18px 33px 18px 100px ;
+
+        .title_h5{
+            display: block;
         }
     }
 
@@ -1419,7 +1472,7 @@ button.prev, button.next {
             padding: 20px 40px;
             left: 0;
             top: 60px;
-            background-color: var(--navbar-bg);
+            background-color: var(--bg-main);
             align-items: flex-start;
         }
 
@@ -1573,12 +1626,14 @@ button.prev, button.next {
         margin: 0 8px;
         gap: 14px;
 
-        .tab-button{
-            padding:  18px 33px 18px 100px ;
+        
+    }
 
-            .title_h5{
-                display: block;
-            }
+    .tab-button{
+        padding:  18px 33px 18px 100px ;
+
+        .title_h5{
+            display: block;
         }
     }
 
@@ -1652,7 +1707,6 @@ button.prev, button.next {
             padding: 10px 20px;
             left: 0;
             top: 60px;
-            background-color: var(--bg-main);
             align-items: flex-start;
         }
 
@@ -1813,38 +1867,40 @@ button.prev, button.next {
         gap: 11px;
         margin: 0 11px;
 
-        .tab-button{
-            padding: 14px 20px;
+        
+    }
 
-            .tab-header{
-                position: relative;
-                font-size: 14px;
-                z-index: 1;
-            }
+    .tab-button{
+        padding: 14px 20px;
 
-            &::before{
-                display: none;
-            }
+        .tab-header{
+            position: relative;
+            font-size: 14px;
+            z-index: 1;
+        }
 
-            &:hover, &:has(input:checked){
-                &::after{
-                    z-index: 0;
-                    color: var(--blue-clouds);
-                }
-            }
+        &::before{
+            display: none;
+        }
 
+        &:hover, &:has(input:checked){
             &::after{
-                font-size: 75px;
-                top: -5px;
-                left: -35px;
+                z-index: 0;
                 color: var(--blue-clouds);
             }
+        }
 
-            .tab-button-content{
-                display: none;
-            }
-    }
-    }
+        &::after{
+            font-size: 75px;
+            top: -5px;
+            left: -35px;
+            color: var(--blue-clouds);
+        }
+
+        .tab-button-content{
+            display: none;
+        }
+}
 
     .tab-content{
         padding-bottom: 0px;
@@ -1855,19 +1911,22 @@ button.prev, button.next {
         .tab-content-webDev{
             flex-wrap: wrap;
             .webDev-benefits{
-                flex-grow: 1;
-                flex-basis: 80%;
+                width: 100%;
             }
 
             .icms-note{
                 align-items: start;
+                padding: 14px 30px;
             }
 
             .achievements-group{
+                width: 100%;
                 margin-top: 56px;
                 margin-bottom: 56px;
                 flex-grow: 1;
                 flex-basis: 90%;
+                column-gap: unset;
+
             }
         }
     }
@@ -1940,8 +1999,9 @@ button.prev, button.next {
 
     .button-link.big{
         font-size: 12px;
-        padding: 20px 25px;
+        padding: 15px 25px;
         gap: 4px;
+        max-height: 50px;
     }
 
     header .main-header{
@@ -2003,6 +2063,10 @@ button.prev, button.next {
           .next{
             bottom: -10px;
           }
+
+          button{
+            left: 85px;
+          }
         }
 
         .flying-orb{
@@ -2015,26 +2079,85 @@ button.prev, button.next {
     .tabs{
         .tabs-buttons{
             flex-direction: column-reverse;
-            gap: 0;
-            margin-top: 50px;
-            .tab-button{
-                padding: 20px 40px 0px 60px;
-                height: fit-content;
-                flex-basis: unset;
-                display: block;
-                position: absolute;
+            gap: 10px;
+            margin: 0;
+            margin-bottom: 50px;
+            position: relative;
+            display: none;
+        }
+
+        .tab-button{
+            display: flex;
+            flex-basis: unset;
+            height: fit-content;
+            border-radius: 39px;
+            align-items: center;
+
+            &:has( input:checked ){
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                span.tab-header::after{
+                    transform: rotate(90deg);
+                }
             }
-            .tab-button:has(input:checked){
-                z-index: 3;
-                display: block;
-                &:hover ~ label.tab-button{
-                    transform: translateY(-60px);
-                    z-index: 0;
+
+            span.tab-header{
+                width: 100%;
+                &::after{
                     position: absolute;
-                    display: block;
+                    color: var(--blue-main);
+                    right: 0;
+                    font-family: "INTRID_ICONS";
+                    content: "\63";
+                    font-size: 1.5em;
+                    transform: rotate(270deg);
                 }
             }
         }
+
+        .tab-content{
+            display: block;
+            padding:  5px 0;
+            transform: translateY(-54px);
+
+            label ~ *{
+                display: none;
+                transform-origin: top;
+                transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+
+            label:has(input:checked) ~ *{
+                display: flex;
+            }
+
+            h2{
+                margin-top: 50px;
+                justify-self: center;
+            }
+        }
+    }
+
+    .web-count{
+        width: 100%;
+    }
+
+    .prices-services-list{
+        display: none !important;
+    }
+
+    hr.calc-spacer{
+        display: none !important;
+    }
+
+    #calc-web-price, #more-about-web-dev{
+        width: 100%;
+        margin: 15px 0px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #more-about-web-dev{
+        margin-bottom: 40px;
     }
 
     .recent-work-card{
@@ -2046,19 +2169,7 @@ button.prev, button.next {
         }
     }
 
-    .calc-section{
-        .calc-spacer{
-            display: none;
-        }
     
-        .prices-services-list{
-            display: none;
-        }
-
-        a.button-highlight.m-center{
-            display: none;
-        }
-    }
 }
 
 @media (max-width: 540px) {

@@ -67,6 +67,19 @@ span {
 h1, .title_h1 {
   font-weight: 700;
   font-size: 40px;
+  position: relative;
+}
+h1.underlined::after, .title_h1.underlined::after {
+  display: block;
+  position: absolute;
+  content: "";
+  background-image: url("../src/images/h1-underline.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: auto;
+  min-height: 1em;
+  bottom: -0.4em;
 }
 
 h2,
@@ -75,6 +88,21 @@ h3,
 .title_h3 {
   font-weight: 700;
   font-size: 36px;
+}
+h2.underlined::after,
+.title_h2.underlined::after,
+h3.underlined::after,
+.title_h3.underlined::after {
+  display: block;
+  position: absolute;
+  content: "";
+  background-image: url("../src/images/h1-underline.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: auto;
+  min-height: 1em;
+  bottom: -0.4em;
 }
 
 h4, .title_h4 {
@@ -180,6 +208,7 @@ hr {
 hr.section-spacer {
   width: auto;
   border: 0.5px solid var(--section-spacer);
+  margin: 62px 0;
 }
 
 ul {
@@ -227,8 +256,16 @@ button.big,
 label.radioButton.big,
 .button-link.big,
 .button-highlight.big {
-  border-radius: 41px;
-  padding: 22px 41px;
+  border-radius: 30px;
+  padding: 15px 25px;
+  justify-items: center;
+  align-items: center;
+}
+button.big i.icon-arrow_wide,
+label.radioButton.big i.icon-arrow_wide,
+.button-link.big i.icon-arrow_wide,
+.button-highlight.big i.icon-arrow_wide {
+  font-size: 2em;
 }
 
 button:hover,
@@ -454,6 +491,13 @@ label.radioButton:has(input:checked)::after {
 }
 .navbar.scrolled {
   background-color: var(--bg-main);
+}
+
+#lk-link i {
+  color: var(--blue-main);
+}
+#lk-link i:hover {
+  text-shadow: var(--blue-main) 1px 0 10px;
 }
 
 .navbar .logo {
@@ -874,25 +918,34 @@ button.prev:hover, button.next:hover {
   flex-direction: row;
   gap: 30px;
 }
-.tabs-buttons .tab-button {
+
+.tab-button {
   padding: 24px 60px 18px 100px;
   background-color: var(--blue-bg);
   border-top: 2px solid var(--bg-main);
-  border-top-left-radius: 49px;
-  border-top-right-radius: 49px;
+  border-top-left-radius: 39px;
+  border-top-right-radius: 39px;
   flex-grow: 1;
   flex-basis: 0;
   overflow: hidden;
   position: relative;
   cursor: pointer;
 }
-.tabs-buttons .tab-button:hover::before {
+.tab-button.mobile {
+  display: none;
+}
+@media (max-width: 440px) {
+  .tab-button.mobile {
+    display: block;
+  }
+}
+.tab-button:hover::before {
   background-color: var(--blue-main);
 }
-.tabs-buttons .tab-button:hover::after {
+.tab-button:hover::after {
   color: var(--color-white);
 }
-.tabs-buttons .tab-button::before {
+.tab-button::before {
   content: "";
   position: absolute;
   width: 180px;
@@ -903,7 +956,7 @@ button.prev:hover, button.next:hover {
   left: -90px;
   transition: all 0.3s ease-in-out;
 }
-.tabs-buttons .tab-button::after {
+.tab-button::after {
   position: absolute;
   top: 60px;
   left: 20px;
@@ -914,24 +967,24 @@ button.prev:hover, button.next:hover {
   transition: all 0.3s ease-in-out;
   animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
-.tabs-buttons .tab-button .tab-button-content {
+.tab-button .tab-button-content {
   margin-top: 8px;
   color: var(--color-grey);
 }
-.tabs-buttons .tab-button input {
+.tab-button input {
   display: none;
 }
-.tabs-buttons .tab-button:has(input:checked) {
+.tab-button:has(input:checked) {
   background-color: var(--bg-main);
   border-top: 2px solid var(--blue-bg);
 }
-.tabs-buttons .tab-button:has(input:checked)::before {
+.tab-button:has(input:checked)::before {
   background-color: var(--blue-main);
 }
-.tabs-buttons .tab-button:has(input:checked)::after {
+.tab-button:has(input:checked)::after {
   color: var(--color-white);
 }
-.tabs-buttons .tab-button:has(input:checked) .tab-content {
+.tab-button:has(input:checked) .tab-content {
   color: var(--color-white);
 }
 
@@ -1016,7 +1069,6 @@ button.prev:hover, button.next:hover {
 }
 .webDev-benefits li .webDev-benefits-highlight {
   display: block;
-  font-size: 40px;
   color: var(--blue-main);
   text-wrap: nowrap;
   flex-basis: 25%;
@@ -1232,10 +1284,10 @@ button.prev:hover, button.next:hover {
     margin: 0 8px;
     gap: 14px;
   }
-  .tabs-buttons .tab-button {
+  .tab-button {
     padding: 18px 33px 18px 100px;
   }
-  .tabs-buttons .tab-button .title_h5 {
+  .tab-button .title_h5 {
     display: block;
   }
   .tab-content-webDev {
@@ -1301,7 +1353,7 @@ button.prev:hover, button.next:hover {
     padding: 20px 40px;
     left: 0;
     top: 60px;
-    background-color: var(--navbar-bg);
+    background-color: var(--bg-main);
     align-items: flex-start;
   }
   header .main-header .header-links-nav::after {
@@ -1423,10 +1475,10 @@ button.prev:hover, button.next:hover {
     margin: 0 8px;
     gap: 14px;
   }
-  .tabs-buttons .tab-button {
+  .tab-button {
     padding: 18px 33px 18px 100px;
   }
-  .tabs-buttons .tab-button .title_h5 {
+  .tab-button .title_h5 {
     display: block;
   }
   .recent-work-card {
@@ -1484,7 +1536,6 @@ button.prev:hover, button.next:hover {
     padding: 10px 20px;
     left: 0;
     top: 60px;
-    background-color: var(--bg-main);
     align-items: flex-start;
   }
   header .main-header .header-links-nav a, header .main-header .header-links-nav div {
@@ -1611,28 +1662,28 @@ button.prev:hover, button.next:hover {
     gap: 11px;
     margin: 0 11px;
   }
-  .tabs-buttons .tab-button {
+  .tab-button {
     padding: 14px 20px;
   }
-  .tabs-buttons .tab-button .tab-header {
+  .tab-button .tab-header {
     position: relative;
     font-size: 14px;
     z-index: 1;
   }
-  .tabs-buttons .tab-button::before {
+  .tab-button::before {
     display: none;
   }
-  .tabs-buttons .tab-button:hover::after, .tabs-buttons .tab-button:has(input:checked)::after {
+  .tab-button:hover::after, .tab-button:has(input:checked)::after {
     z-index: 0;
     color: var(--blue-clouds);
   }
-  .tabs-buttons .tab-button::after {
+  .tab-button::after {
     font-size: 75px;
     top: -5px;
     left: -35px;
     color: var(--blue-clouds);
   }
-  .tabs-buttons .tab-button .tab-button-content {
+  .tab-button .tab-button-content {
     display: none;
   }
   .tab-content {
@@ -1645,17 +1696,20 @@ button.prev:hover, button.next:hover {
     flex-wrap: wrap;
   }
   .tab-content .tab-content-webDev .webDev-benefits {
-    flex-grow: 1;
-    flex-basis: 80%;
+    width: 100%;
   }
   .tab-content .tab-content-webDev .icms-note {
     align-items: start;
+    padding: 14px 30px;
   }
   .tab-content .tab-content-webDev .achievements-group {
+    width: 100%;
     margin-top: 56px;
     margin-bottom: 56px;
     flex-grow: 1;
     flex-basis: 90%;
+    -moz-column-gap: unset;
+         column-gap: unset;
   }
   .web-count {
     margin: 0 auto;
@@ -1705,8 +1759,9 @@ button.prev:hover, button.next:hover {
   }
   .button-link.big {
     font-size: 12px;
-    padding: 20px 25px;
+    padding: 15px 25px;
     gap: 4px;
+    max-height: 50px;
   }
   header .main-header {
     justify-content: unset;
@@ -1756,6 +1811,9 @@ button.prev:hover, button.next:hover {
   .main-page .achievements-slider .next {
     bottom: -10px;
   }
+  .main-page .achievements-slider button {
+    left: 85px;
+  }
   .main-page .flying-orb {
     top: 310px;
     scale: -1 1;
@@ -1763,26 +1821,73 @@ button.prev:hover, button.next:hover {
   }
   .tabs .tabs-buttons {
     flex-direction: column-reverse;
-    gap: 0;
-    margin-top: 50px;
+    gap: 10px;
+    margin: 0;
+    margin-bottom: 50px;
+    position: relative;
+    display: none;
   }
-  .tabs .tabs-buttons .tab-button {
-    padding: 20px 40px 0px 60px;
+  .tabs .tab-button {
+    display: flex;
+    flex-basis: unset;
     height: -moz-fit-content;
     height: fit-content;
-    flex-basis: unset;
-    display: block;
-    position: absolute;
+    border-radius: 39px;
+    align-items: center;
   }
-  .tabs .tabs-buttons .tab-button:has(input:checked) {
-    z-index: 3;
-    display: block;
+  .tabs .tab-button:has(input:checked) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
-  .tabs .tabs-buttons .tab-button:has(input:checked):hover ~ label.tab-button {
-    transform: translateY(-60px);
-    z-index: 0;
+  .tabs .tab-button:has(input:checked) span.tab-header::after {
+    transform: rotate(90deg);
+  }
+  .tabs .tab-button span.tab-header {
+    width: 100%;
+  }
+  .tabs .tab-button span.tab-header::after {
     position: absolute;
+    color: var(--blue-main);
+    right: 0;
+    font-family: "INTRID_ICONS";
+    content: "c";
+    font-size: 1.5em;
+    transform: rotate(270deg);
+  }
+  .tabs .tab-content {
     display: block;
+    padding: 5px 0;
+    transform: translateY(-54px);
+  }
+  .tabs .tab-content label ~ * {
+    display: none;
+    transform-origin: top;
+    transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .tabs .tab-content label:has(input:checked) ~ * {
+    display: flex;
+  }
+  .tabs .tab-content h2 {
+    margin-top: 50px;
+    justify-self: center;
+  }
+  .web-count {
+    width: 100%;
+  }
+  .prices-services-list {
+    display: none !important;
+  }
+  hr.calc-spacer {
+    display: none !important;
+  }
+  #calc-web-price, #more-about-web-dev {
+    width: 100%;
+    margin: 15px 0px;
+    align-items: center;
+    justify-content: center;
+  }
+  #more-about-web-dev {
+    margin-bottom: 40px;
   }
   .recent-work-card {
     flex-direction: column;
@@ -1790,15 +1895,6 @@ button.prev:hover, button.next:hover {
   }
   .recent-work-card .work-testimonial {
     gap: 5px;
-  }
-  .calc-section .calc-spacer {
-    display: none;
-  }
-  .calc-section .prices-services-list {
-    display: none;
-  }
-  .calc-section a.button-highlight.m-center {
-    display: none;
   }
 }
 @keyframes orb-glow {
