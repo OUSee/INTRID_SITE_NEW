@@ -86,3 +86,32 @@ window.addEventListener('scroll', function() {
       header.classList.remove('scrolled');
     }
   });
+
+// popup logic
+
+const popupTriggers = document.querySelectorAll('.popup-trigger')
+console.log(popupTriggers[0].dataset.popup)
+popupTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', ()=> {
+        const popupId = trigger.dataset.popup;
+        openPopup(popupId)
+
+    })
+})
+
+const openPopup = (id) => {
+    console.log('open ', id)
+    const popup = document.getElementById(id);
+    console.log(popup)
+    popup.classList.add('open');
+
+    popup.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        e.preventDefault();
+        console.log('dialog -', e.target)
+        if(e.target.classList.contains('close-button') || e.target.id == id){
+            popup.classList.remove('open');
+        }  
+    })
+}
+

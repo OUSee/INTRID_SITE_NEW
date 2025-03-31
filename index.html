@@ -173,12 +173,12 @@
                     <p>2-е место в рейтинге агентств по созданию и продвижению сайтов в Воронеже</p>
                 </a>
                 <hr>
-                <a href="#" class="slide">
+                <div class="slide popup-trigger" data-popup="accreditation-view">
                     <div class="img-placeholder">
                         <img src="./src/images/herb-gold-ru.webp" alt="herb">
                     </div>
                     <p>Государственная аккредитация в области информационных технологий</p>
-                </a>
+                </div>
                 <hr>
                 <a href="https://ratingruneta.ru/e-commerce/voronezh/2024/" target="_blank" class="slide">
                     <div class="img-placeholder">
@@ -194,12 +194,12 @@
                     <p>2-е место в рейтинге агентств по созданию и продвижению сайтов в Воронеже</p>
                 </a>
                 <hr>
-                <a href="#" class="slide">
+                <div href="#" class="slide popup-trigger" data-popup="accreditation-view">
                     <div class="img-placeholder">
                         <img src="./src/images/herb-gold-ru.webp" alt="herb">
                     </div>
                     <p>Государственная аккредитация в области информационных технологий</p>
-                </a>
+                </div>
                 <hr>
             </div>
             <button class="prev"><i class="icon-shevrone"></i></button>
@@ -390,7 +390,7 @@
                 <a id="calc-web-price" class="button-link button-highlight m-center big" href="#">
                     Калькулятор стоимости сайта
                 </a>
-                <a id="more-about-web-dev" class="button-link m-center big" href="#">
+                <a class="button-link m-center big more-about-web-dev" href="#">
                     Подробнее о разработке сайтов <i class="icon-arrow_wide color-blue"></i>
                 </a>
             </div>
@@ -564,7 +564,11 @@
             </div>
         </div>
     </section>
-
+    <dialog class="popup" id="accreditation-view">
+        <div class="popup-body">
+            <img src="./src/images/accreditation.webp" alt="accrediattion">
+        </div>
+    </dialog>
     <script src="./js/script.js"></script>
 </body>
 

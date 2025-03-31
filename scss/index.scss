@@ -58,6 +58,11 @@ body{
     background-repeat: no-repeat;
     position: relative;
     overflow-x: hidden;
+
+    @media (max-width: 601px){
+        background-image: url('../src/images/bg-main-vert.webp');
+        background-size: 100% auto;
+    }
 }
 
 h1,h2,h3,h4,h5,p,span,a{
@@ -512,7 +517,7 @@ label.radioButton:has(input:checked)::after{
     &:has(#menuCheckbox:checked), &:has(#menuToggle:checked){
         background-color: var(--bg-main);
     }
-    
+
     .main-header .burger .burger-content{
         background-color: var(--bg-main);
         
@@ -856,7 +861,7 @@ div.slider-test, .achievements-slider {
         flex-direction: column;
         transition: transform 0.5s ease;
 
-        a.slide {
+        .slide {
             width: 250px;
             height: 200px;
             display: flex;
@@ -1364,6 +1369,39 @@ button.prev, button.next {
     display: none;
 }
 
+.popup{
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--navbar-bg-op);
+    opacity: 1;
+    z-index: 5;
+    top: 0;
+
+    &.open{
+        display: block;
+    }
+
+    &-body{
+        position: absolute;
+        width: 360px;
+        height: fit-content;
+        background-color: var(--bg-main);
+        border-radius: 39px;
+        padding: 30px 10px;
+        z-index: 9;
+        top: 10%;
+        left: calc(((100vw - 360px) / 2) /2);
+
+        img{
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    }
+}
+
 //  BREAKPOINTS
 
 @media (max-width: 1500px) {
@@ -1691,6 +1729,8 @@ button.prev, button.next {
 }
 
 @media (max-width: 601px) {
+
+    .more-about-web-dev{display: none;}
 
     .container{
         margin: 0px 20px;
@@ -2154,10 +2194,19 @@ button.prev, button.next {
             }
         }
 
+        .tabs-content{
+            background: transparent;
+
+            &:has(input:checked){
+                background-color: var(--bg-main);
+            }
+        }
+
         .tab-content{
             display: block;
             padding:  5px 0;
             transform: translateY(-54px);
+            background-color: transparent;
 
             label ~ *{
                 display: none;
@@ -2196,7 +2245,6 @@ button.prev, button.next {
     }
 
     #more-about-web-dev{
-        display: flex;
         margin-bottom: 40px;
     }
 
@@ -2221,16 +2269,11 @@ button.prev, button.next {
         display: none !important;
     }
 
-    #calc-web-price, #more-about-web-dev{
+    #calc-web-price, .more-about-web-dev{
         width: 100%;
         margin: 15px 0px;
         align-items: center;
         justify-content: center;
-    }
-
-    #more-about-web-dev{
-        display: flex;
-        margin-bottom: 40px;
     }
 }
 

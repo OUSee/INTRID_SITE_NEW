@@ -51,6 +51,12 @@ body {
   position: relative;
   overflow-x: hidden;
 }
+@media (max-width: 601px) {
+  body {
+    background-image: url("../src/images/bg-main-vert.webp");
+    background-size: 100% auto;
+  }
+}
 
 h1, h2, h3, h4, h5, p, span, a {
   font-family: "Roboto";
@@ -832,7 +838,7 @@ div.slider-test div.slides, .achievements-slider div.slides {
   flex-direction: column;
   transition: transform 0.5s ease;
 }
-div.slider-test div.slides a.slide, .achievements-slider div.slides a.slide {
+div.slider-test div.slides .slide, .achievements-slider div.slides .slide {
   width: 250px;
   height: 200px;
   display: flex;
@@ -841,7 +847,7 @@ div.slider-test div.slides a.slide, .achievements-slider div.slides a.slide {
   font-size: 24px;
   color: white;
 }
-div.slider-test div.slides a.slide:hover .img-placeholder, .achievements-slider div.slides a.slide:hover .img-placeholder {
+div.slider-test div.slides .slide:hover .img-placeholder, .achievements-slider div.slides .slide:hover .img-placeholder {
   background-color: var(--blue-clouds);
   box-shadow: 0px 0px 20px 20px var(--blue-clouds);
 }
@@ -1279,6 +1285,37 @@ button.prev:hover, button.next:hover {
   display: none;
 }
 
+.popup {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--navbar-bg-op);
+  opacity: 1;
+  z-index: 5;
+  top: 0;
+}
+.popup.open {
+  display: block;
+}
+.popup-body {
+  position: absolute;
+  width: 360px;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: var(--bg-main);
+  border-radius: 39px;
+  padding: 30px 10px;
+  z-index: 9;
+  top: 10%;
+  left: calc((100vw - 360px) / 2 / 2);
+}
+.popup-body img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
 @media (max-width: 1500px) {
   .container {
     margin: 0 40px;
@@ -1534,6 +1571,9 @@ button.prev:hover, button.next:hover {
   }
 }
 @media (max-width: 601px) {
+  .more-about-web-dev {
+    display: none;
+  }
   .container {
     margin: 0px 20px;
   }
@@ -1894,10 +1934,17 @@ button.prev:hover, button.next:hover {
     font-size: 1.5em;
     transform: rotate(270deg);
   }
+  .tabs .tabs-content {
+    background: transparent;
+  }
+  .tabs .tabs-content:has(input:checked) {
+    background-color: var(--bg-main);
+  }
   .tabs .tab-content {
     display: block;
     padding: 5px 0;
     transform: translateY(-54px);
+    background-color: transparent;
   }
   .tabs .tab-content label ~ * {
     display: none;
@@ -1927,7 +1974,6 @@ button.prev:hover, button.next:hover {
     justify-content: center;
   }
   #more-about-web-dev {
-    display: flex;
     margin-bottom: 40px;
   }
   .recent-work-card {
@@ -1945,15 +1991,11 @@ button.prev:hover, button.next:hover {
   hr.calc-spacer {
     display: none !important;
   }
-  #calc-web-price, #more-about-web-dev {
+  #calc-web-price, .more-about-web-dev {
     width: 100%;
     margin: 15px 0px;
     align-items: center;
     justify-content: center;
-  }
-  #more-about-web-dev {
-    display: flex;
-    margin-bottom: 40px;
   }
 }
 @keyframes orb-glow {
