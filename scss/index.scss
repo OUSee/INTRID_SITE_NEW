@@ -268,7 +268,7 @@ label.radioButton,
     line-height: 140%;
     text-wrap: nowrap;
     gap: 8px;
-
+    max-height: 50px;
     &.big{
         border-radius: 30px;
         padding: 15px 25px;
@@ -880,6 +880,11 @@ div.slider-test, .achievements-slider {
     }
 }
 
+.img-placeholder:hover{
+    background-color: var(--blue-clouds);
+    box-shadow:  0px 0px 20px 20px var(--blue-clouds);
+}
+
 button.prev, button.next {
     position: absolute;
     left: calc(50% - 20px) ;
@@ -1374,31 +1379,59 @@ button.prev, button.next {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: var(--navbar-bg-op);
+    background-color: transparent;
+    //background-color: var(--bg-main);
     opacity: 1;
     z-index: 5;
     top: 0;
+    backdrop-filter: blur(5px) brightness(60%);
+    transform-origin: center;
+    min-width: 360px;
+    
 
     &.open{
         display: block;
+        animation: popupAppear  0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
 
     &-body{
-        position: absolute;
-        width: 360px;
-        height: fit-content;
+        position: relative;
+        width: fit-content;
+        height: auto;
         background-color: var(--bg-main);
-        border-radius: 39px;
-        padding: 30px 10px;
+        border-radius: 20px;
+        padding: 10px;
         z-index: 9;
-        top: 10%;
-        left: calc(((100vw - 360px) / 2) /2);
+        margin: 20px auto ;
 
         img{
-            width: 100%;
+            width: auto;
             height: auto;
+            max-height: 900px;
             border-radius: 10px;
         }
+
+        @media (max-width: 601px) {
+            width: fit-content;
+            img{
+                width: 80vw;
+            }
+        }
+    }
+}
+
+@keyframes popupAppear {
+    0%{
+        display: block;
+        backdrop-filter: blur(0px) brightness(0%);
+    }
+    50%{
+        display: block;
+        backdrop-filter: blur(3px) brightness(30%);
+    }
+    100%{
+        display: block;
+        backdrop-filter: blur(6px) brightness(60%);
     }
 }
 

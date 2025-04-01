@@ -266,6 +266,7 @@ label.radioButton,
   line-height: 140%;
   text-wrap: nowrap;
   gap: 8px;
+  max-height: 50px;
 }
 button.big,
 label.radioButton.big,
@@ -852,6 +853,11 @@ div.slider-test div.slides .slide:hover .img-placeholder, .achievements-slider d
   box-shadow: 0px 0px 20px 20px var(--blue-clouds);
 }
 
+.img-placeholder:hover {
+  background-color: var(--blue-clouds);
+  box-shadow: 0px 0px 20px 20px var(--blue-clouds);
+}
+
 button.prev, button.next {
   position: absolute;
   left: calc(50% - 20px);
@@ -1290,32 +1296,63 @@ button.prev:hover, button.next:hover {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: var(--navbar-bg-op);
+  background-color: transparent;
   opacity: 1;
   z-index: 5;
   top: 0;
+  -webkit-backdrop-filter: blur(5px) brightness(60%);
+          backdrop-filter: blur(5px) brightness(60%);
+  transform-origin: center;
+  min-width: 360px;
 }
 .popup.open {
   display: block;
+  animation: popupAppear 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 .popup-body {
-  position: absolute;
-  width: 360px;
-  height: -moz-fit-content;
-  height: fit-content;
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: auto;
   background-color: var(--bg-main);
-  border-radius: 39px;
-  padding: 30px 10px;
+  border-radius: 20px;
+  padding: 10px;
   z-index: 9;
-  top: 10%;
-  left: calc((100vw - 360px) / 2 / 2);
+  margin: 20px auto;
 }
 .popup-body img {
-  width: 100%;
+  width: auto;
   height: auto;
+  max-height: 900px;
   border-radius: 10px;
 }
+@media (max-width: 601px) {
+  .popup-body {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .popup-body img {
+    width: 80vw;
+  }
+}
 
+@keyframes popupAppear {
+  0% {
+    display: block;
+    -webkit-backdrop-filter: blur(0px) brightness(0%);
+            backdrop-filter: blur(0px) brightness(0%);
+  }
+  50% {
+    display: block;
+    -webkit-backdrop-filter: blur(3px) brightness(30%);
+            backdrop-filter: blur(3px) brightness(30%);
+  }
+  100% {
+    display: block;
+    -webkit-backdrop-filter: blur(6px) brightness(60%);
+            backdrop-filter: blur(6px) brightness(60%);
+  }
+}
 @media (max-width: 1500px) {
   .container {
     margin: 0 40px;
