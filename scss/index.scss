@@ -1094,10 +1094,19 @@ button.prev, button.next {
 
 .block-buttons{
     margin-top: 15px;
-    gap: 24px;
+    gap: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    @media (max-width: 600px) {
+        flex-wrap: wrap;
+
+        *{
+            justify-content: center;
+            flex-grow: 1;
+            flex-basis: 0;
+        }
+    }
 }
 
 .tab-content-webDev{
