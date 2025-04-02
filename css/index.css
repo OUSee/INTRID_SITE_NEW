@@ -211,6 +211,9 @@ i {
 i.left {
   transform: rotate(180deg) translateY(0.3em);
 }
+i.down {
+  transform: rotate(90deg) translate(-0.3em, -0.3em);
+}
 
 hr {
   width: 80%;
@@ -691,6 +694,7 @@ label.radioButton:has(input:checked)::after {
 
 .icons-table {
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .icons-table i {
@@ -1308,6 +1312,7 @@ button.prev:hover, button.next:hover {
 
 .benefits-n-video {
   position: relative;
+  margin-bottom: 340px;
 }
 
 .benefits-left {
@@ -1319,6 +1324,7 @@ button.prev:hover, button.next:hover {
   position: absolute;
   left: 0;
   top: 100px;
+  margin-left: 100px;
 }
 .benefits-left .benefit-card:first-child, .benefits-left .benefit-card:last-child {
   margin-left: 30px;
@@ -1333,6 +1339,7 @@ button.prev:hover, button.next:hover {
   position: absolute;
   top: 100px;
   right: 0;
+  margin-right: 100px;
 }
 .benefits-right .benefit-card {
   align-self: end;
@@ -1348,7 +1355,7 @@ button.prev:hover, button.next:hover {
   width: fit-content;
   gap: 18px;
   position: absolute;
-  bottom: -220px;
+  bottom: -280px;
   left: calc(50% - 180px);
 }
 .benefits-bottom .benefit-card {
@@ -1475,15 +1482,34 @@ button.prev:hover, button.next:hover {
   transform: rotate(0deg);
 }
 .video-diagramm .connections .line:nth-child(2) {
-  transform: rotate(25deg);
+  transform: rotate(30deg);
 }
 .video-diagramm .connections .line:nth-child(3) {
-  transform: rotate(-25deg);
+  transform: rotate(-30deg);
 }
 .video-diagramm .connections .line:nth-child(4) {
   width: 200px;
   top: 320px;
   transform: rotate(90deg);
+}
+.video-diagramm .connections .line:nth-child(4)::after {
+  display: none;
+}
+.video-diagramm .connections .line:nth-child(4):before {
+  animation: links-last 3s ease-in-out infinite;
+}
+
+.benefits-accordion .accordion-header {
+  display: block;
+}
+.benefits-accordion .accordion-content .benefit-card {
+  max-width: unset;
+  min-height: unset;
+  width: 100%;
+  height: auto;
+}
+.benefits-accordion .accordion-content .benefit-card::before {
+  top: unset;
 }
 
 .popup {
@@ -1531,49 +1557,55 @@ button.prev:hover, button.next:hover {
   }
 }
 
-@keyframes links-before {
-  0% {
-    left: 50%;
-  }
-  100% {
-    left: 0%;
-  }
+.accordion {
+  width: 100%;
+  margin: 0 auto;
 }
-@keyframes links-after {
-  0% {
-    right: 50%;
-  }
-  100% {
-    right: 0%;
-  }
+.accordion-item {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  overflow: hidden;
 }
-@keyframes planet {
-  0% {
-    background-size: auto 240px;
-    background-position: bottom;
-  }
-  100% {
-    background-size: auto 300px;
-    background-position: bottom;
-  }
+.accordion-header {
+  padding: 15px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
 }
-@keyframes popupAppear {
-  0% {
-    display: block;
-    -webkit-backdrop-filter: blur(0px) brightness(0%);
-            backdrop-filter: blur(0px) brightness(0%);
-  }
-  50% {
-    display: block;
-    -webkit-backdrop-filter: blur(3px) brightness(30%);
-            backdrop-filter: blur(3px) brightness(30%);
-  }
-  100% {
-    display: block;
-    -webkit-backdrop-filter: blur(6px) brightness(60%);
-            backdrop-filter: blur(6px) brightness(60%);
-  }
+.accordion-header::after {
+  color: var(--blue-main);
+  bottom: 1em;
+  right: -30px;
+  display: flex;
+  position: absolute;
+  font-family: "INTRID_ICONS";
+  letter-spacing: -12px;
+  width: 30px;
+  content: "cc";
+  font-size: 20px;
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease;
 }
+.accordion-content {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.accordion-checkbox {
+  display: none;
+}
+.accordion-checkbox:checked + .accordion-header::after {
+  transform: rotate(90deg);
+}
+.accordion-checkbox:checked + .accordion-header + .accordion-content {
+  max-height: unset;
+  padding: 15px;
+}
+
 @media (max-width: 1500px) {
   .container {
     margin: 0 40px;
@@ -1582,6 +1614,12 @@ button.prev:hover, button.next:hover {
 @media (max-width: 1400px) {
   header .main-header .header-contacts {
     display: none;
+  }
+  .benefits-left {
+    margin-left: 0;
+  }
+  .benefits-right {
+    margin-right: 0;
   }
 }
 @media (max-width: 1200px) {
@@ -1821,6 +1859,9 @@ button.prev:hover, button.next:hover {
   }
   .prices-services-list {
     margin-top: 40px;
+  }
+  .video-diagramm .connections, .benefits-left, .benefits-right, .benefits-bottom {
+    display: none;
   }
 }
 @media (min-width: 601px) and (max-width: 900px) {
@@ -2254,6 +2295,57 @@ button.prev:hover, button.next:hover {
     margin: 15px 0px;
     align-items: center;
     justify-content: center;
+  }
+}
+@keyframes links-last {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes links-before {
+  0% {
+    left: 50%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+@keyframes links-after {
+  0% {
+    right: 50%;
+  }
+  100% {
+    right: 0%;
+  }
+}
+@keyframes planet {
+  0% {
+    background-size: auto 240px;
+    background-position: bottom;
+  }
+  100% {
+    background-size: auto 300px;
+    background-position: bottom;
+  }
+}
+@keyframes popupAppear {
+  0% {
+    display: block;
+    -webkit-backdrop-filter: blur(0px) brightness(0%);
+            backdrop-filter: blur(0px) brightness(0%);
+  }
+  50% {
+    display: block;
+    -webkit-backdrop-filter: blur(3px) brightness(30%);
+            backdrop-filter: blur(3px) brightness(30%);
+  }
+  100% {
+    display: block;
+    -webkit-backdrop-filter: blur(6px) brightness(60%);
+            backdrop-filter: blur(6px) brightness(60%);
   }
 }
 @keyframes orb-glow {
