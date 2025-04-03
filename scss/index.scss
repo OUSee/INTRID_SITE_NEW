@@ -34,9 +34,6 @@
     font-display: swap;
 }
 
-
-
-
 /* BASE STYLES */
 
 html{
@@ -55,7 +52,7 @@ body{
     background-image: url('../src/images/bg-main.webp');
     background-size: auto 944px;
     background-position: top;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     position: relative;
     overflow-x: hidden;
 
@@ -132,8 +129,6 @@ p{
     font-weight: 400;
     font-size: 14px;
 }
-
-
 
 @media (max-width: 1000px) {
     h1,.title_h1{
@@ -273,6 +268,21 @@ label.radioButton,
     text-wrap: nowrap;
     gap: 8px;
     max-height: 50px;
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    &:has(input[type="radio"]:checked){
+        border: 1px solid var(--blue-main);
+        background-color: var(--blue-main);
+        color: var(--color-black);
+
+        i{
+            color: var(--color-black);
+        }
+    }
+
     &.big{
         border-radius: 30px;
         padding: 15px 25px;
@@ -459,6 +469,12 @@ label.radioButton:has(input:checked)::after{
     font-size: 0.5em;
     position: absolute;
     transform: translateY(-1em);
+}
+
+.br1000{
+    @media (max-width: 1000px) {
+        display: none;
+    }
 }
 
 /* OTHER STYLES */
@@ -725,6 +741,139 @@ div.icon-menu{
     color: var(--blue-main);
 }
 
+.accordion {
+    width: 100%;
+    margin: 0 auto;
+
+    &-item{
+        margin-bottom: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    &-header{
+        padding: 15px;
+        background-color: transparent;
+        cursor: pointer;
+        position: relative;
+
+        i{
+            color: var(--blue-main);
+            transform: rotate(90deg) translate(-0.3em, -0.3em);
+        }
+
+        // &::after{
+        //     color: var(--blue-main);
+        //     bottom: 1em;
+        //     right: -30px;
+        //     display: flex;
+        //     position: absolute;
+        //     font-family: 'INTRID_ICONS';
+        //     letter-spacing: -12px;
+        //     width: 30px;
+        //     content: "\63" + "\63";
+        //     font-size: 20px;
+        //     transform: rotate(-90deg);
+        //     transition: transform 0.3s ease;
+        // }
+    }
+
+    &-content{
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &-checkbox{
+        display: none;
+
+        &:checked + .accordion-header i{
+            transform: rotate(-90deg) translate(-0.3em, 0.6em);
+        }
+
+        &:checked + .accordion-header + .accordion-content {
+            max-height: unset;
+            padding: 15px;
+        }
+    }
+}
+
+.slider-with-tabs{
+    display: flex;
+    gap: 35px;
+
+    &_tabs-buttons{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .tab-view{
+        flex: 1;
+        overflow: hidden;
+
+        .tab-slider {
+            display: none;
+            gap: 20px;
+            animation: fadeIn 1s ease-in;
+            padding: 30px;
+
+            .tab-slider-card {
+                border-radius: 39px;
+                padding: 20px;
+                transition: all 0.3s ease;
+                display: flex;
+                flex-direction: column;
+
+                &-image{
+                    align-self: center;
+                    width: auto;
+                    height: 62px;
+                    padding: 0px;
+                    margin: 55px 0px;
+                    object-fit: contain;
+                    overflow: visible;
+                    border-radius: 50%;
+                    box-shadow: 0px 0px 60px 45px var(--blue-clouds), 
+                        inset 0px 0px 75px -20px var(--blue-clouds);
+                    
+                }
+
+                &:hover{
+                    transform: scale(1.03);
+                    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+
+                    img{
+                        transform: scale(1.5);
+                        box-shadow: 0px 0px 50px 10px var(--blue-clouds), 
+                        inset 0px 0px 75px -20px var(--blue-clouds);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-1:checked) ~ .tab-view #tab-slide-1,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-2:checked) ~ .tab-view #tab-slide-2,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-3:checked) ~ .tab-view #tab-slide-3,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-4:checked) ~ .tab-view #tab-slide-4,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-5:checked) ~ .tab-view #tab-slide-5 {
+    display: flex;
+    justify-content: space-between;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
 /* burger */
 
 #menuToggle, #mobilemenuToggle
@@ -858,7 +1007,7 @@ div.icon-menu{
 
 // slider
 
-div.slider-test, .achievements-slider {
+div.slider-test, .achievements-slider, .slider-horizontal {
     width: 250px;
     height: 400px;
     position: relative;
@@ -873,6 +1022,36 @@ div.slider-test, .achievements-slider {
         .slide {
             width: 250px;
             height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+
+            &:hover{
+                .img-placeholder{
+                    background-color: var(--blue-clouds);
+                    box-shadow:  0px 0px 20px 20px var(--blue-clouds);
+                }
+            }
+        }
+    }
+}
+
+.slider-horizontal{
+    width: 100%;
+    height: 400px;
+
+    div.slides {
+        display: flex;
+        flex-direction: row;
+        transition: transform 0.5s ease;
+
+        .slide {
+            flex: 1 1;
+            width: unset;
+            height: unset;
+            min-height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -991,8 +1170,6 @@ button.prev, button.next {
     display: flex;
     flex-direction: row;
     gap: 30px;
-
-    
 }
 
 .tab-button{
@@ -1077,7 +1254,10 @@ button.prev, button.next {
 
 .tabs-content{
     width: 100%;
-    background-color: var(--bg-main);
+    background: rgb(10,10,10);
+    background: linear-gradient(180deg, rgba(10,10,10,1) 0%, 
+              rgba(10,10,10,1) 82%, rgba(10,10,10,0.8) 91%,
+              rgba(10,10,10,0.6) 96%, rgba(10,10,10,0) 100%);
     .tab-content{
         display: none;
         padding: 62px 0px;
@@ -1396,6 +1576,18 @@ button.prev, button.next {
 .benefits-n-video{
     position: relative;
     margin-bottom: 340px;
+
+    @media (max-width: 1000px){
+        margin-bottom: 60px;
+
+        h2{
+            display: none;
+        }
+
+        .video-diagramm{
+            margin: 0 auto;
+        }
+    }
 }
 
 .benefits-left{
@@ -1521,6 +1713,10 @@ button.prev, button.next {
         justify-content: center;
         background-color: var(--blue-clouds);
 
+        i.icon-play{
+            height: 1em;
+        }
+
         &:hover{
             color: var(--blue-main);
         }
@@ -1619,6 +1815,10 @@ button.prev, button.next {
             top: unset;
         }
     }
+
+    @media (min-width: 999px) {
+        display: none;
+    }
 }
 
 .popup{
@@ -1667,61 +1867,6 @@ button.prev, button.next {
     }
 }
 
-.accordion {
-    width: 100%;
-    margin: 0 auto;
-
-    &-item{
-        margin-bottom: 10px;
-        border-radius: 5px;
-        overflow: hidden;
-    }
-
-    &-header{
-        padding: 15px;
-        background-color: transparent;
-        cursor: pointer;
-        position: relative;
-
-        &::after{
-            color: var(--blue-main);
-            bottom: 1em;
-            right: -30px;
-            display: flex;
-            position: absolute;
-            font-family: 'INTRID_ICONS';
-            letter-spacing: -12px;
-            width: 30px;
-            content: "\63" + "\63";
-            font-size: 20px;
-            transform: rotate(-90deg);
-            transition: transform 0.3s ease;
-        }
-    }
-
-    &-content{
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease, padding 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    &-checkbox{
-        display: none;
-
-        &:checked + .accordion-header::after{
-            transform: rotate(90deg);
-        }
-
-        &:checked + .accordion-header + .accordion-content {
-            max-height: unset;
-            padding: 15px;
-        }
-    }
-}
 
 //  BREAKPOINTS
 
@@ -2019,6 +2164,7 @@ button.prev, button.next {
 
     .tabs{
         padding-top: 0px;
+        padding-bottom: 0px;
     }
 
     .tabs-buttons{

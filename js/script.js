@@ -70,6 +70,10 @@ function startAutoScroll() {
 
 startAutoScroll();
 
+// horizontal slider
+
+
+
 // Reset slider position on window resize (optional)
 window.addEventListener('resize', () => {
     const newHeight = allSlides[0].offsetHeight;

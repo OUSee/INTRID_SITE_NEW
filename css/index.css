@@ -47,7 +47,7 @@ body {
   background-image: url("../src/images/bg-main.webp");
   background-size: auto 944px;
   background-position: top;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   position: relative;
   overflow-x: hidden;
 }
@@ -271,6 +271,26 @@ label.radioButton,
   gap: 8px;
   max-height: 50px;
 }
+button input[type=radio],
+label.radioButton input[type=radio],
+.button-link input[type=radio],
+.button-highlight input[type=radio] {
+  display: none;
+}
+button:has(input[type=radio]:checked),
+label.radioButton:has(input[type=radio]:checked),
+.button-link:has(input[type=radio]:checked),
+.button-highlight:has(input[type=radio]:checked) {
+  border: 1px solid var(--blue-main);
+  background-color: var(--blue-main);
+  color: var(--color-black);
+}
+button:has(input[type=radio]:checked) i,
+label.radioButton:has(input[type=radio]:checked) i,
+.button-link:has(input[type=radio]:checked) i,
+.button-highlight:has(input[type=radio]:checked) i {
+  color: var(--color-black);
+}
 button.big,
 label.radioButton.big,
 .button-link.big,
@@ -461,6 +481,12 @@ label.radioButton:has(input:checked)::after {
   font-size: 0.5em;
   position: absolute;
   transform: translateY(-1em);
+}
+
+@media (max-width: 1000px) {
+  .br1000 {
+    display: none;
+  }
 }
 
 /* OTHER STYLES */
@@ -716,6 +742,110 @@ div.icon-menu {
   color: var(--blue-main);
 }
 
+.accordion {
+  width: 100%;
+  margin: 0 auto;
+}
+.accordion-item {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.accordion-header {
+  padding: 15px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+}
+.accordion-header i {
+  color: var(--blue-main);
+  transform: rotate(90deg) translate(-0.3em, -0.3em);
+}
+.accordion-content {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.accordion-checkbox {
+  display: none;
+}
+.accordion-checkbox:checked + .accordion-header i {
+  transform: rotate(-90deg) translate(-0.3em, 0.6em);
+}
+.accordion-checkbox:checked + .accordion-header + .accordion-content {
+  max-height: unset;
+  padding: 15px;
+}
+
+.slider-with-tabs {
+  display: flex;
+  gap: 35px;
+}
+.slider-with-tabs_tabs-buttons {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.slider-with-tabs .tab-view {
+  flex: 1;
+  overflow: hidden;
+}
+.slider-with-tabs .tab-view .tab-slider {
+  display: none;
+  gap: 20px;
+  animation: fadeIn 1s ease-in;
+  padding: 30px;
+}
+.slider-with-tabs .tab-view .tab-slider .tab-slider-card {
+  border-radius: 39px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.slider-with-tabs .tab-view .tab-slider .tab-slider-card-image {
+  align-self: center;
+  width: auto;
+  height: 62px;
+  padding: 0px;
+  margin: 55px 0px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  overflow: visible;
+  border-radius: 50%;
+  box-shadow: 0px 0px 60px 45px var(--blue-clouds), inset 0px 0px 75px -20px var(--blue-clouds);
+}
+.slider-with-tabs .tab-view .tab-slider .tab-slider-card:hover {
+  transform: scale(1.03);
+  background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+}
+.slider-with-tabs .tab-view .tab-slider .tab-slider-card:hover img {
+  transform: scale(1.5);
+  box-shadow: 0px 0px 50px 10px var(--blue-clouds), inset 0px 0px 75px -20px var(--blue-clouds);
+}
+
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-1:checked) ~ .tab-view #tab-slide-1,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-2:checked) ~ .tab-view #tab-slide-2,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-3:checked) ~ .tab-view #tab-slide-3,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-4:checked) ~ .tab-view #tab-slide-4,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-5:checked) ~ .tab-view #tab-slide-5 {
+  display: flex;
+  justify-content: space-between;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* burger */
 #menuToggle, #mobilemenuToggle {
   display: block;
@@ -835,19 +965,19 @@ div.icon-menu {
   animation-delay: 3s;
 }
 
-div.slider-test, .achievements-slider {
+div.slider-test, .achievements-slider, .slider-horizontal {
   width: 250px;
   height: 400px;
   position: relative;
   overflow: hidden;
   margin: 0 auto;
 }
-div.slider-test div.slides, .achievements-slider div.slides {
+div.slider-test div.slides, .achievements-slider div.slides, .slider-horizontal div.slides {
   display: flex;
   flex-direction: column;
   transition: transform 0.5s ease;
 }
-div.slider-test div.slides .slide, .achievements-slider div.slides .slide {
+div.slider-test div.slides .slide, .achievements-slider div.slides .slide, .slider-horizontal div.slides .slide {
   width: 250px;
   height: 200px;
   display: flex;
@@ -856,7 +986,32 @@ div.slider-test div.slides .slide, .achievements-slider div.slides .slide {
   font-size: 24px;
   color: white;
 }
-div.slider-test div.slides .slide:hover .img-placeholder, .achievements-slider div.slides .slide:hover .img-placeholder {
+div.slider-test div.slides .slide:hover .img-placeholder, .achievements-slider div.slides .slide:hover .img-placeholder, .slider-horizontal div.slides .slide:hover .img-placeholder {
+  background-color: var(--blue-clouds);
+  box-shadow: 0px 0px 20px 20px var(--blue-clouds);
+}
+
+.slider-horizontal {
+  width: 100%;
+  height: 400px;
+}
+.slider-horizontal div.slides {
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.5s ease;
+}
+.slider-horizontal div.slides .slide {
+  flex: 1 1;
+  width: unset;
+  height: unset;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+}
+.slider-horizontal div.slides .slide:hover .img-placeholder {
   background-color: var(--blue-clouds);
   box-shadow: 0px 0px 20px 20px var(--blue-clouds);
 }
@@ -1027,7 +1182,8 @@ button.prev:hover, button.next:hover {
 
 .tabs-content {
   width: 100%;
-  background-color: var(--bg-main);
+  background: rgb(10, 10, 10);
+  background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
 }
 .tabs-content .tab-content {
   display: none;
@@ -1314,6 +1470,17 @@ button.prev:hover, button.next:hover {
   position: relative;
   margin-bottom: 340px;
 }
+@media (max-width: 1000px) {
+  .benefits-n-video {
+    margin-bottom: 60px;
+  }
+  .benefits-n-video h2 {
+    display: none;
+  }
+  .benefits-n-video .video-diagramm {
+    margin: 0 auto;
+  }
+}
 
 .benefits-left {
   display: flex;
@@ -1428,6 +1595,9 @@ button.prev:hover, button.next:hover {
   justify-content: center;
   background-color: var(--blue-clouds);
 }
+.video-diagramm .play-video-button i.icon-play {
+  height: 1em;
+}
 .video-diagramm .play-video-button:hover {
   color: var(--blue-main);
 }
@@ -1511,6 +1681,11 @@ button.prev:hover, button.next:hover {
 .benefits-accordion .accordion-content .benefit-card::before {
   top: unset;
 }
+@media (min-width: 999px) {
+  .benefits-accordion {
+    display: none;
+  }
+}
 
 .popup {
   display: none;
@@ -1555,55 +1730,6 @@ button.prev:hover, button.next:hover {
   .popup-body img {
     width: 80vw;
   }
-}
-
-.accordion {
-  width: 100%;
-  margin: 0 auto;
-}
-.accordion-item {
-  margin-bottom: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.accordion-header {
-  padding: 15px;
-  background-color: transparent;
-  cursor: pointer;
-  position: relative;
-}
-.accordion-header::after {
-  color: var(--blue-main);
-  bottom: 1em;
-  right: -30px;
-  display: flex;
-  position: absolute;
-  font-family: "INTRID_ICONS";
-  letter-spacing: -12px;
-  width: 30px;
-  content: "cc";
-  font-size: 20px;
-  transform: rotate(-90deg);
-  transition: transform 0.3s ease;
-}
-.accordion-content {
-  padding: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.accordion-checkbox {
-  display: none;
-}
-.accordion-checkbox:checked + .accordion-header::after {
-  transform: rotate(90deg);
-}
-.accordion-checkbox:checked + .accordion-header + .accordion-content {
-  max-height: unset;
-  padding: 15px;
 }
 
 @media (max-width: 1500px) {
@@ -1838,6 +1964,7 @@ button.prev:hover, button.next:hover {
   }
   .tabs {
     padding-top: 0px;
+    padding-bottom: 0px;
   }
   .tabs-buttons {
     margin: 0 8px;
