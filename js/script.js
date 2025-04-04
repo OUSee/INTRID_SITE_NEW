@@ -25,97 +25,95 @@ slides.style.transform = `translateY(-${currentIndex * height + 1}px)`;
 slides.style.transition = 'transform 0.5s ease';
 
 function updateSlider() {
-    slides.style.transform = `translateY(-${currentIndex * height + 1}px)`;
-    
-    // If we're at a clone, instantly jump to the original without animation
-    if (currentIndex === 0) {
-        setTimeout(() => {
-            slides.style.transition = 'none';
-            currentIndex = slideCount - 2;
-            updateSlider();
-            setTimeout(() => slides.style.transition = 'transform 0.5s ease', 50);
-        }, 500);
-    }
-    
-    if (currentIndex === slideCount - 1) {
-        setTimeout(() => {
-            slides.style.transition = 'none';
-            currentIndex = 1;
-            updateSlider();
-            setTimeout(() => slides.style.transition = 'transform 0.5s ease', 50);
-        }, 500);
-    }
+  slides.style.transform = `translateY(-${currentIndex * height + 1}px)`;
+
+  // If we're at a clone, instantly jump to the original without animation
+  if (currentIndex === 0) {
+    setTimeout(() => {
+      slides.style.transition = 'none';
+      currentIndex = slideCount - 2;
+      updateSlider();
+      setTimeout(() => (slides.style.transition = 'transform 0.5s ease'), 50);
+    }, 500);
+  }
+
+  if (currentIndex === slideCount - 1) {
+    setTimeout(() => {
+      slides.style.transition = 'none';
+      currentIndex = 1;
+      updateSlider();
+      setTimeout(() => (slides.style.transition = 'transform 0.5s ease'), 50);
+    }, 500);
+  }
 }
 
 nextBtn.addEventListener('click', () => {
-    clearInterval(autoScrollIntervalId);
-    currentIndex++;
-    updateSlider();
+  clearInterval(autoScrollIntervalId);
+  currentIndex++;
+  updateSlider();
 });
 
 prevBtn.addEventListener('click', () => {
-    clearInterval(autoScrollIntervalId);
-    currentIndex--;
-    updateSlider();
+  clearInterval(autoScrollIntervalId);
+  currentIndex--;
+  updateSlider();
 });
 
 let autoScrollIntervalId;
 
 function startAutoScroll() {
-    autoScrollIntervalId = setInterval(() => {
-        currentIndex++;
-        updateSlider();
-    }, 3000);
+  autoScrollIntervalId = setInterval(() => {
+    currentIndex++;
+    updateSlider();
+  }, 3000);
 }
 
 startAutoScroll();
 
 // horizontal slider
 
-
-
 // Reset slider position on window resize (optional)
 window.addEventListener('resize', () => {
-    const newHeight = allSlides[0].offsetHeight;
-    slides.style.transform = `translateY(-${currentIndex * newHeight}px)`;
+  const newHeight = allSlides[0].offsetHeight;
+  slides.style.transform = `translateY(-${currentIndex * newHeight}px)`;
 });
 
 // opacity header onscroll
 
-window.addEventListener('scroll', function() {
-    const header = document.getElementById('header');
-    if (window.scrollY > 50) { 
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
+window.addEventListener('scroll', function () {
+  const header = document.getElementById('header');
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
 
 // popup logic
 
-const popupTriggers = document.querySelectorAll('.popup-trigger')
-console.log(popupTriggers[0].dataset.popup)
+const popupTriggers = document.querySelectorAll('.popup-trigger');
+console.log(popupTriggers[0].dataset.popup);
 popupTriggers.forEach((trigger) => {
-    trigger.addEventListener('click', ()=> {
-        const popupId = trigger.dataset.popup;
-        openPopup(popupId)
-
-    })
-})
+  trigger.addEventListener('click', () => {
+    const popupId = trigger.dataset.popup;
+    openPopup(popupId);
+  });
+});
 
 const openPopup = (id) => {
-    console.log('open ', id)
-    const popup = document.getElementById(id);
-    console.log(popup)
-    popup.classList.add('open');
+  console.log('open ', id);
+  const popup = document.getElementById(id);
+  console.log(popup);
+  popup.classList.add('open');
 
-    popup.addEventListener('click', (e)=>{
-        e.stopPropagation();
-        e.preventDefault();
-        console.log('dialog -', e.target)
-        if(e.target.classList.contains('close-button') || e.target.id == id){
-            popup.classList.remove('open');
-        }  
-    })
-}
+  popup.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log('dialog -', e.target);
+    if (e.target.classList.contains('close-button') || e.target.id == id) {
+      popup.classList.remove('open');
+    }
+  });
+};
 
+console.log(1);
