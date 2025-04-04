@@ -809,23 +809,69 @@ div.icon-menu{
 .slider-with-tabs{
     display: flex;
     gap: 35px;
+    position: static;
 
     &_tabs-buttons{
         margin-top: 30px;
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        .button-link{
+            width: 100%;
+            justify-content: space-between;
+        }
     }
 
     .tab-view{
         flex: 1;
         overflow: hidden;
+        position: relative;
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--blue-bg);
+            color: var(--blue-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            border: none;
+            font-size: 20px;
+            display: none;
+
+            i{
+                
+            }
+
+            @media (max-width: 1440px) {
+                display: flex;
+            }
+        }
+
+        .slider-arrow.prev {
+            left: 0px;
+        }
+        
+        .slider-arrow.next {
+            left: unset;
+            right: 0px;
+        }
 
         .tab-slider {
             display: none;
-            gap: 20px;
+            gap: 10px;
             animation: fadeIn 1s ease-in;
             padding: 30px;
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
 
             .tab-slider-card {
                 border-radius: 39px;
@@ -834,6 +880,11 @@ div.icon-menu{
                 display: flex;
                 flex-direction: column;
                 flex: 1 1;
+                
+                &:not(:last-child){
+                    margin-right: 15px;
+                }
+                
 
                 p.title_h4{
                     font-size: 20px;
@@ -862,6 +913,11 @@ div.icon-menu{
                         box-shadow: 0px 0px 50px 10px var(--blue-clouds), 
                         inset 0px 0px 75px -20px var(--blue-clouds);
                     }
+                }
+
+                @media (max-width: 1440px) {
+                    display: flex;
+                    min-width: 255px;
                 }
             }
         }

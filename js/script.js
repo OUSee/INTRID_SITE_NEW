@@ -70,9 +70,103 @@ function startAutoScroll() {
 
 startAutoScroll();
 
-// horizontal slider
+// horizontal slider tab-slider
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const sliderContainer = document.getElementById('tab-slider');
+    const sliderWrapper = document.getElementById('tab-view');
+    const cards = document.querySelectorAll('.tab-slider-card');
+    const prevBtn = document.querySelector('.slider-arrow.prev');
+    const nextBtn = document.querySelector('.slider-arrow.next');
+    
+    let currentIndex = 0;
+    let visibleCards = 1;
+    const cardMinWidth = 480;
+    const cardMargin = 15;
+    
+    // Рассчитываем количество видимых карточек
+    function calculateVisibleCards() {
+        const containerWidth = sliderContainer.offsetWidth;
+        visibleCards = Math.max(1, Math.floor(containerWidth / (cardMinWidth + cardMargin)));
+        
+        // Обновляем ширину карточек
+        const cardWidth = (containerWidth / visibleCards) - cardMargin;
+        cards.forEach(card => {
+            card.style.minWidth = '0';
+            card.style.width = `${cardWidth}px`;
+        });
+        
+        updateSlider();
+    }
+    
+    // Обновляем позицию слайдера
+    function updateSlider() {
+        const cardWidth = cards[0].offsetWidth + cardMargin;
+        const offset = -currentIndex * cardWidth * visibleCards;
+        sliderWrapper.style.transform = `translateX(${offset}px)`;
+        
+        // Обновляем точки навигации
+        updateDots();
+        
+        // Управляем видимостью кнопок
+        prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+        nextBtn.style.display = currentIndex >= Math.ceil(cards.length / visibleCards) - 1 ? 'none' : 'flex';
+    }
+    
+    // Обновляем активные точки
+    function updateDots() {
+        const totalGroups = Math.ceil(cards.length / visibleCards);
+        dots.forEach((dot, index) => {
+            dot.style.display = index < totalGroups ? 'block' : 'none';
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    // Следующая группа слайдов
+    function nextSlide() {
+        const totalGroups = Math.ceil(cards.length / visibleCards);
+        if (currentIndex < totalGroups - 1) {
+            currentIndex++;
+            updateSlider();
+        }
+    }
+    
+    // Предыдущая группа слайдов
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    }
+    
+    // Обработчики событий
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    // Навигация по точкам
+    dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            currentIndex = parseInt(this.getAttribute('data-index'));
+            updateSlider();
+        });
+    });
+    
+    // Навигация с клавиатуры
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+    
+    // Обработчик изменения размера окна
+    window.addEventListener('resize', function() {
+        calculateVisibleCards();
+    });
+    
+    // Инициализация
+    calculateVisibleCards();
+    updateSlider();
+});
 
 // Reset slider position on window resize (optional)
 window.addEventListener('resize', () => {
