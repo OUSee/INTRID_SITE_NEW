@@ -81,53 +81,91 @@ window.addEventListener('resize', () => {
 
 // HORIZONTAL SLIDER
 
+const SliderInIt = () => {}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const sliders = document.querySelectorAll('.tab-slider');
 
-  sliders.forEach((slider) => {
+  const tabButtons = document.querySelector('.slider-with-tabs_tabs-buttons');
+  const tabButtonsList = tabButtons.querySelectorAll('label.button-link');
+
+  tabButtonsList.forEach((tabButton, index) => {
+    const input = tabButton.querySelector(`#tab-slide-btn-${index+1}`)
+    input.addEventListener('click', () => {
+      const activeSlider = document.querySelector(`#tab-slide-${index+1}`)
+      SliderHandler(activeSlider)
+    })
+  });
+
+  
+  const SliderHandler = (slider) => {
       const cards = slider.querySelectorAll('.tab-slider-card');
       const prevButton = document.querySelector(`.slider-arrow.prev`);
       const nextButton = document.querySelector(`.slider-arrow.next`);
-
-      console.log('Slider:', slider);
-      console.log('Cards:', cards);
-      console.log('Prev Button:', prevButton);
-      console.log('Next Button:', nextButton);
-
+      
       let currentIndex = 0;
 
       const updateSlider = () => {
-          const sliderWidth = slider.offsetWidth;
-          const cardWidth = cards[0].offsetWidth;
-          const slidesPerPage = Math.floor(sliderWidth / cardWidth);
-          const maxIndex = Math.max(0, cards.length - slidesPerPage);
+        const sliderWidth = slider.offsetWidth;
+        const slidesPerPage = Math.floor(sliderWidth / 255);
+        const maxIndex = cards.length - slidesPerPage;
+        const cardWidth = sliderWidth / slidesPerPage - ((slidesPerPage - 1 ) * 15);
 
-          slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        console.log('sliderWidth', sliderWidth)
+        console.log('cards', cards.length)
+        console.log('maxIndex', maxIndex)
+        console.log('slidesPerPage', slidesPerPage)
+        console.log('current index: ', currentIndex)
 
-          prevButton.disabled = currentIndex === 0;
-          nextButton.disabled = currentIndex === maxIndex;
+  
+        cards.forEach((card) => {
+          card.style.minWidth = `${cardWidth}px`;
+        })
+        
+        slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+        if(currentIndex === 0 || cards.length <= slidesPerPage){
+          prevButton.style.display = 'none';
+        }
+        else{
+          prevButton.style.display = 'block';
+        }
+    
+        if(currentIndex === maxIndex || maxIndex <= 0 || cards.length <= slidesPerPage){
+          nextButton.style.display = 'none'
+        }
+        else{
+          nextButton.style.display = 'block';
+        }
       };
 
       prevButton.addEventListener('click', () => {
-          currentIndex = Math.max(0, currentIndex - 1);
+          currentIndex--;
           updateSlider();
       });
 
       nextButton.addEventListener('click', () => {
-          const sliderWidth = slider.offsetWidth;
-          const cardWidth = cards[0].offsetWidth;
-          const slidesPerPage = Math.floor(sliderWidth / cardWidth);
-          const maxIndex = Math.max(0, cards.length - slidesPerPage);
+        const sliderWidth = slider.offsetWidth;
+        const slidesPerPage = Math.floor(sliderWidth / 255);
+        const maxIndex = Math.max(0, cards.length - slidesPerPage);
+        const cardWidth = sliderWidth / slidesPerPage - ((slidesPerPage - 1 ) * 15) - 30;
 
-          currentIndex = Math.min(maxIndex, currentIndex + 1);
-          updateSlider();
+        cards.forEach((card) => {
+          card.style.minWidth = `${cardWidth}px`;
+        })
+
+        currentIndex++;
+        updateSlider();
       });
 
       window.addEventListener('resize', updateSlider);
       updateSlider();
+    }
+
+    SliderHandler(document.querySelector(`#tab-slide-${1}`))
+
   });
-});
 
 
 // opacity header onscroll
