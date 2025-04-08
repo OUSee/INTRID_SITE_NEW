@@ -87,8 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sliders.forEach((slider) => {
       const cards = slider.querySelectorAll('.tab-slider-card');
-      const prevButton = document.querySelector(`.slider-arrow.prev[data-slider="${slider.id}"]`);
-      const nextButton = document.querySelector(`.slider-arrow.next[data-slider="${slider.id}"]`);
+      const prevButton = document.querySelector(`.slider-arrow.prev`);
+      const nextButton = document.querySelector(`.slider-arrow.next`);
+
+      console.log('Slider:', slider);
+      console.log('Cards:', cards);
+      console.log('Prev Button:', prevButton);
+      console.log('Next Button:', nextButton);
 
       let currentIndex = 0;
 
