@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabButtons = document.querySelector('.slider-with-tabs_tabs-buttons');
   const tabButtonsList = tabButtons.querySelectorAll('label.button-link');
 
-  tabButtonsList.forEach((tabButton, index) => {
+
+  if(window.innerWidth > 600){tabButtonsList.forEach((tabButton, index) => {
     const input = tabButton.querySelector(`#tab-slide-btn-${index+1}`)
     input.addEventListener('click', () => {
       const activeSlider = document.querySelector(`#tab-slide-${index+1}`)
@@ -110,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sliderWidth = slider.offsetWidth;
         const slidesPerPage = Math.floor(sliderWidth / 255);
         const maxIndex = cards.length - slidesPerPage;
-        const cardWidth = sliderWidth / slidesPerPage - ((slidesPerPage - 1 ) * 15);
+        const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
 
         console.log('sliderWidth', sliderWidth)
         console.log('cards', cards.length)
@@ -149,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sliderWidth = slider.offsetWidth;
         const slidesPerPage = Math.floor(sliderWidth / 255);
         const maxIndex = Math.max(0, cards.length - slidesPerPage);
-        const cardWidth = sliderWidth / slidesPerPage - ((slidesPerPage - 1 ) * 15) - 30;
+        const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
 
         cards.forEach((card) => {
           card.style.minWidth = `${cardWidth}px`;
@@ -161,9 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       window.addEventListener('resize', updateSlider);
       updateSlider();
-    }
+  }
 
-    SliderHandler(document.querySelector(`#tab-slide-${1}`))
+  SliderHandler(document.querySelector(`#tab-slide-${1}`))}
 
   });
 

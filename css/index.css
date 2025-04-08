@@ -804,14 +804,14 @@ div.icon-menu {
   flex: 1;
   overflow: hidden;
   position: relative;
+  padding: 0 15px;
 }
 .slider-with-tabs .tab-view .slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  background: var(--blue-bg);
+  min-width: 60px;
+  min-height: 60px;
   color: var(--blue-main);
   border-radius: 50%;
   display: flex;
@@ -823,17 +823,27 @@ div.icon-menu {
   font-size: 20px;
   display: none;
 }
+.slider-with-tabs .tab-view .slider-arrow i.left {
+  transform: rotate(180deg) translateY(0em);
+}
+.slider-with-tabs .tab-view .slider-arrow i {
+  font-size: 40px;
+}
 @media (max-width: 1440px) {
   .slider-with-tabs .tab-view .slider-arrow {
     display: flex;
   }
 }
+.slider-with-tabs .tab-view .slider-arrow:hover {
+  outline: 1px solid var(--blue-main);
+  background-color: var(--navbar-bg-op);
+}
 .slider-with-tabs .tab-view .slider-arrow.prev {
-  left: 0px;
+  left: 1px;
 }
 .slider-with-tabs .tab-view .slider-arrow.next {
   left: unset;
-  right: 0px;
+  right: 1px;
 }
 .slider-with-tabs .tab-view .tab-slider {
   display: none;
@@ -852,7 +862,7 @@ div.icon-menu {
   flex: 1 1;
 }
 .slider-with-tabs .tab-view .tab-slider .tab-slider-card:not(:last-child) {
-  margin-right: 15px;
+  margin-right: 25px;
 }
 .slider-with-tabs .tab-view .tab-slider .tab-slider-card p.title_h4 {
   font-size: 20px;
@@ -874,7 +884,7 @@ div.icon-menu {
   background: color-mix(in srgb, var(--bg-main) 70%, transparent);
 }
 .slider-with-tabs .tab-view .tab-slider .tab-slider-card:hover img {
-  transform: scale(1.5);
+  transform: scale(1.3);
   box-shadow: 0px 0px 50px 10px var(--blue-clouds), inset 0px 0px 75px -20px var(--blue-clouds);
 }
 @media (max-width: 1440px) {
@@ -2312,6 +2322,42 @@ button.prev:hover, button.next:hover {
   .prices-services-list-item span.color-blue {
     transform: translateY(0px);
     display: block;
+  }
+  .slider-with-tabs {
+    flex-direction: column;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons {
+    flex-direction: row;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link {
+    display: flex;
+    flex-direction: column;
+    max-height: unset;
+    justify-content: center;
+    align-items: center;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link img {
+    width: 30px;
+    height: auto;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link i {
+    display: none;
+  }
+  .slider-with-tabs .tab-view .slider-arrow {
+    display: none !important;
+  }
+  .slider-with-tabs .tab-view .tab-slider {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .slider-with-tabs .tab-view .tab-slider-card {
+    margin-right: 0 !important;
+  }
+  .slider-with-tabs .tab-view .tab-slider-card .title_h4 {
+    text-align: center;
+  }
+  .slider-with-tabs .tab-view .tab-slider-card p:not(.title_h4) {
+    display: none;
   }
 }
 @media (max-width: 440px) {
