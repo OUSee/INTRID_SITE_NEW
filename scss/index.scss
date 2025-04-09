@@ -55,6 +55,7 @@ body{
     background-repeat: repeat;
     position: relative;
     overflow-x: hidden;
+    overflow-y: visible;
 
     @media (max-width: 601px){
         background-image: url('../src/images/bg-main-vert.webp');
@@ -820,6 +821,14 @@ div.icon-menu{
         .button-link{
             width: 100%;
             justify-content: space-between;
+
+            span.seo-mobile{
+                display: none;
+            }
+
+            img{
+                display: none;
+            }
         }
     }
 
@@ -888,6 +897,8 @@ div.icon-menu{
                 display: flex;
                 flex-direction: column;
                 flex: 1 1;
+
+                color: var(--color-white);
                 
                 &:not(:last-child){
                     margin-right: 25px;
@@ -941,10 +952,7 @@ div.icon-menu{
     justify-content: space-between;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+
 
 
 /* burger */
@@ -1894,6 +1902,24 @@ button.prev, button.next {
     }
 }
 
+.for-buisness-offers{
+    position: relative;
+    min-height: 400px;
+    div.orb-bottom{
+        position: absolute;
+        top: 0;
+        left: -110px;
+        width: 388px;
+        height: auto;
+
+        img{
+            width: 100%;
+            opacity: 1;
+            transform: scale(-1, 1) rotate(-15deg);
+        }
+    }
+}
+
 .popup{
     display: none;
     position: fixed;
@@ -2622,6 +2648,7 @@ button.prev, button.next {
 
         aside.slider-with-tabs_tabs-buttons{
             flex-direction: row;
+            gap: 2px;
 
             label.button-link{
                 display: flex;
@@ -2629,12 +2656,51 @@ button.prev, button.next {
                 max-height: unset;
                 justify-content: center;
                 align-items: center;
+                padding: 10px 5px;
+                border-radius: 15px;
+                border: 1px solid transparent;
+                span{
+                    text-wrap: wrap;
+                    text-align: center;
+                }
                 img{
-                    width: 30px;
+                    display: block;
+                    width: 50px;
                     height: auto;
                 }
                 i{
                     display: none;
+                }
+
+                // &:nth-child(1), &:nth-child(5){
+                //     margin-top: 20px;
+                // }
+
+                // &:nth-child(2), &:nth-child(4){
+                //     margin-top: 10px;
+                //     margin-bottom: 10px;
+                // }
+
+                // &:nth-child(3){
+                //     margin-bottom: 20px;
+                // }
+
+                &:hover{
+                    // transform: scale(1.1);
+                    background-color: transparent;
+                    // &:not(:has(input[type=radio]:checked)){
+                    //     img{
+                    //         filter: brightness(0%);
+                    //     }
+                    // }
+                }
+
+                &:has(input[type=radio]:checked){
+                    transform: scale(1.2);
+                    background-color: var(--bg-main);
+                    color: var(--blue-main);
+                    border: 1px solid transparent;
+                    
                 }
             }
         }
@@ -2648,7 +2714,9 @@ button.prev, button.next {
                 flex-wrap: wrap;
 
                 &-card{
+                    min-width: unset !important;
                     margin-right: 0 !important;
+                    flex: 1 1 40% !important;
                     .title_h4{
                         text-align: center;
                     }
@@ -2866,6 +2934,79 @@ button.prev, button.next {
         align-items: center;
         justify-content: center;
     }
+
+    .slider-with-tabs{
+        gap: 0;
+
+        aside.slider-with-tabs_tabs-buttons{
+            gap: 0;
+            label.button-link{
+                height: 100px;
+                justify-content: start;
+                img{
+                    width: 30px;
+                }
+                span{
+                    text-transform: none;
+                    font-size: 14px;
+                }
+                span.seo-desktop{
+                    display: none;
+                }
+
+                span.seo-mobile{
+                    display: inline;
+                }
+
+                &:hover{
+                    box-shadow: none;
+                }
+
+                &:has(input[type=radio]:checked){
+                    transform: scale(1);
+                    background-color: var(--bg-main);
+                    color: var(--blue-main);
+                    border: 1px solid transparent;
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+        }
+
+        .tab-view{
+            background:  linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(10,10,10,0.5522584033613445) 15%, rgba(10,10,10,0) 31%);
+
+            .tab-slider{
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                &-card{
+                    min-width: unset !important;
+                    margin-right: 0 !important;
+                    flex: 1 1 40% !important;
+
+                    &:hover{
+                        img{
+                            box-shadow: 0px 0px 20px 10px var(--blue-clouds), inset 0px 0px 75px 20px var(--blue-clouds) !important;
+                        }
+                       
+                    }
+                    img{
+                        box-shadow: 0px 0px 60px 20px var(--blue-clouds), inset 0px 0px 75px 20px var(--blue-clouds) !important;
+                    }
+                    .title_h4{
+                        font-size: 13px !important;
+                        font-weight: bold;
+                    }
+                    p:not(.title_h4){
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    
 }
 
 // animations
@@ -3028,4 +3169,9 @@ button.prev, button.next {
     75%{
         transform: translateY(-5px) translateX(-5px) scale(1.01);
     }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

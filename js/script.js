@@ -91,13 +91,93 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabButtonsList = tabButtons.querySelectorAll('label.button-link');
 
 
-  if(window.innerWidth > 600){tabButtonsList.forEach((tabButton, index) => {
-    const input = tabButton.querySelector(`#tab-slide-btn-${index+1}`)
-    input.addEventListener('click', () => {
-      const activeSlider = document.querySelector(`#tab-slide-${index+1}`)
-      SliderHandler(activeSlider)
-    })
-  });
+  window.addEventListener('resize', ()=>{
+    if(window.innerWidth > 600){
+      tabButtonsList.forEach((tabButton, index) => {
+        const input = tabButton.querySelector(`#tab-slide-btn-${index+1}`)
+        input.addEventListener('click', () => {
+          const activeSlider = document.querySelector(`#tab-slide-${index+1}`)
+          SliderHandler(activeSlider)
+        })
+      });
+  
+    
+    const SliderHandler = (slider) => {
+        const cards = slider.querySelectorAll('.tab-slider-card');
+        const prevButton = document.querySelector(`.slider-arrow.prev`);
+        const nextButton = document.querySelector(`.slider-arrow.next`);
+        
+        let currentIndex = 0;
+  
+        const updateSlider = () => {
+          const sliderWidth = slider.offsetWidth;
+          const slidesPerPage = Math.floor(sliderWidth / 255);
+          const maxIndex = cards.length - slidesPerPage;
+          const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
+  
+          console.log('sliderWidth', sliderWidth)
+          console.log('cards', cards.length)
+          console.log('maxIndex', maxIndex)
+          console.log('slidesPerPage', slidesPerPage)
+          console.log('current index: ', currentIndex)
+  
+    
+          cards.forEach((card) => {
+            card.style.minWidth = `${cardWidth}px`;
+          })
+          
+          slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+  
+          if(currentIndex === 0 || cards.length <= slidesPerPage){
+            prevButton.style.display = 'none';
+          }
+          else{
+            prevButton.style.display = 'block';
+          }
+      
+          if(currentIndex === maxIndex || maxIndex <= 0 || cards.length <= slidesPerPage){
+            nextButton.style.display = 'none'
+          }
+          else{
+            nextButton.style.display = 'block';
+          }
+        };
+  
+        prevButton.addEventListener('click', () => {
+            currentIndex--;
+            updateSlider();
+        });
+  
+        nextButton.addEventListener('click', () => {
+          const sliderWidth = slider.offsetWidth;
+          const slidesPerPage = Math.floor(sliderWidth / 255);
+          const maxIndex = Math.max(0, cards.length - slidesPerPage);
+          const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
+  
+          cards.forEach((card) => {
+            card.style.minWidth = `${cardWidth}px`;
+          })
+  
+          currentIndex++;
+          updateSlider();
+        });
+  
+        window.addEventListener('resize', updateSlider);
+        updateSlider();
+    }
+  
+    SliderHandler(document.querySelector(`#tab-slide-${1}`))
+    }
+  })
+
+  if(window.innerWidth > 600){
+    tabButtonsList.forEach((tabButton, index) => {
+      const input = tabButton.querySelector(`#tab-slide-btn-${index+1}`)
+      input.addEventListener('click', () => {
+        const activeSlider = document.querySelector(`#tab-slide-${index+1}`)
+        SliderHandler(activeSlider)
+      })
+    });
 
   
   const SliderHandler = (slider) => {
@@ -164,7 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
       updateSlider();
   }
 
-  SliderHandler(document.querySelector(`#tab-slide-${1}`))}
+  SliderHandler(document.querySelector(`#tab-slide-${1}`))
+  }
 
   });
 
