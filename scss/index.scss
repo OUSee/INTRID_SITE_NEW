@@ -214,6 +214,31 @@ i{
     }
 }
 
+.icon-star:before{
+    min-width: 12px;
+    min-height: 12px;
+    content: '';
+    display: inline-block;
+    background-color: #FDF41F;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.icon-star-4_4:before{
+    min-width: 12px;
+    min-height: 12px;
+    content: '';
+    display: inline-block;
+    background: linear-gradient(90deg, rgba(253,244,31,1) 0%, rgba(253,244,31,1) 40%, rgb(147, 147, 147) 40%, rgb(147, 147, 147) 100%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.icon-star-4_7:before{
+    min-width: 12px;
+    min-height: 12px;
+    content: '';
+    display: inline-block;
+    background:  linear-gradient(90deg, rgba(253,244,31,1) 0%, rgba(253,244,31,1) 70%, rgb(147, 147, 147) 70%, rgb(147, 147, 147) 100%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
 hr{
     width: 80%;
     border: 0px solid transparent;
@@ -2068,11 +2093,25 @@ button.prev, button.next {
     .about-wrapper{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        column-gap: 200px;
+
+        @media (max-width: 1400px) {
+            justify-content: space-between;
+            column-gap: 0;
+        }
         flex-wrap: wrap;
         .about-info{
             flex: 1 1 500px;
             max-width: 500px;
+
+            @media (max-width: 1100px){
+                flex: 1 1 80%;
+                max-width: unset;
+
+                .button-link{
+                    margin-bottom: 50px;
+                }
+            }
 
             p{
                 margin-bottom: 29px;
@@ -2086,6 +2125,13 @@ button.prev, button.next {
             flex: 1 1 500px;
             max-width: 500px;
             
+            @media (max-width: 1100px) {
+                flex: 1 1 80%;
+                max-width: unset;
+                margin: 0 auto;
+            }
+
+           
 
             .employes-n-experience{
                 display: flex;
@@ -2101,6 +2147,15 @@ button.prev, button.next {
                         line-height: 70px;
                     }
                 }
+
+                @media (max-width: 1100px) {
+                    justify-content: space-around;
+                }
+
+                @media (max-width: 520px) {
+                    justify-content: space-between;
+                    gap: 10px;
+                }
             }
 
             .rating{
@@ -2108,6 +2163,15 @@ button.prev, button.next {
                 flex-direction: row;
                 gap: 60px;
                 margin-bottom: 30px;
+
+                @media (max-width: 1100px) {
+                    justify-content: space-around;
+                }
+
+                @media (max-width: 520px) {
+                    justify-content: space-between;
+                    gap: 10px;
+                }
 
                 &-item{
                     display: flex;
@@ -2133,12 +2197,20 @@ button.prev, button.next {
                 flex-direction: row;
                 gap: 20px;
 
+                @media (max-width: 520px) {
+                    flex-wrap: wrap;
+                }
+
                 &-btn{
                     background-color: var(--blue-bg);
                     border: 1px solid transparent;
                     text-transform: none;
                     justify-content: center;
                     align-items: center;
+
+                    @media (max-width: 1100px) {
+                        flex: 1 1 0%;
+                    }
 
                     img{
                         display: inline-block;
@@ -2166,6 +2238,23 @@ button.prev, button.next {
                 flex-direction: row;
                 justify-content: space-between;
 
+                @media (max-width: 1000px) {
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+                    column-gap: 20px;
+                    row-gap: 30px;
+                    li{
+                        flex: 1 1 45%;
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    li{
+                        flex: 1 1 90%;
+                    }
+                }
+
                 li{
                     display: flex;
                     flex-direction: row;
@@ -2190,6 +2279,8 @@ button.prev, button.next {
         .tech-we-use{
             flex: 1 1 100%;
 
+            
+
             .title_h2{
                 margin-top: 80px;
                 margin-bottom: 50px;
@@ -2205,6 +2296,12 @@ button.prev, button.next {
                 align-items: center;
                 max-width: 1000px;
                 margin: 0 auto;
+
+                @media (max-width: 520px) {
+                    column-gap: 10px;
+                    row-gap: 10px;
+                    justify-content: start;
+                }
 
                 li{
                     background-color: var(--blue-bg);
@@ -2222,6 +2319,46 @@ button.prev, button.next {
         }
     }
    
+}
+
+.clients-cases{
+    .blocks{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        .cases-tabs{
+            flex: 1 1 80%;
+            flex-direction: row;
+            border-radius: 39px;
+
+            .cases-buttons{
+                display: flex;
+                flex-direction: column;
+
+                &:has(#cases-tab-1:checked) ~ .cases-content .tab-content:nth-child(1),
+                &:has(#cases-tab-2:checked) ~ .cases-content .tab-content:nth-child(2),
+                &:has(#cases-tab-3:checked) ~ .cases-content .tab-content:nth-child(3),
+                &:has(#cases-tab-4:checked) ~ .cases-content .tab-content:nth-child(4),
+                &:has(#cases-tab-5:checked) ~ .cases-content .tab-content:nth-child(5), 
+                &:has(#cases-tab-6:checked) ~ .cases-content .tab-content:nth-child(6) {
+                    display: block;
+                    animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) ;
+                }
+            }
+
+            .cases-content{
+                .tab-content{
+                    display: none;
+                }
+            }
+        }
+
+        .cases-counts{
+            flex-basis: 20%;
+            
+        }
+    }
 }
 
 .popup{
@@ -3313,6 +3450,8 @@ button.prev, button.next {
                     min-width: unset !important;
                     margin-right: 0 !important;
                     flex: 1 1 40% !important;
+                    padding: 10px !important;
+                    border-radius: 15px !important;
 
                     &:hover{
                         img{
