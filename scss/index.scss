@@ -251,6 +251,7 @@ section:first-of-type{
 /* buttons and checkboxes */
 
 button, 
+.button,
 label.radioButton, 
 .button-link, 
 .button-highlight{
@@ -297,6 +298,7 @@ label.radioButton,
 }
 
 button:hover, 
+.button:hover,
 label.radioButton:hover, 
 label.radioButton:has(input:checked),
 .button-link:hover,
@@ -2023,6 +2025,7 @@ button.prev, button.next {
 
     &-mobile-accordion{
         width: auto;
+        display: none;
         .accordion-item{
            
             label.accordion-header{
@@ -2054,7 +2057,171 @@ button.prev, button.next {
                 border-bottom-right-radius: 25px;
             }
         }
+
+        @media (max-width: 520px) {
+            display: block;
+        }
     }
+}
+
+.about-section{
+    .about-wrapper{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .about-info{
+            flex: 1 1 500px;
+            max-width: 500px;
+
+            p{
+                margin-bottom: 29px;
+            }
+
+            a{
+                margin-top: 50px;
+            }
+        }
+        .comunity-info{
+            flex: 1 1 500px;
+            max-width: 500px;
+            
+
+            .employes-n-experience{
+                display: flex;
+                flex-direction: row;
+                gap: 70px;
+                margin-bottom: 30px;
+                &-item{
+                    display: flex;
+                    flex-direction: column;
+                    span{
+                        font-weight: bold;
+                        font-size: 70px;
+                        line-height: 70px;
+                    }
+                }
+            }
+
+            .rating{
+                display: flex;
+                flex-direction: row;
+                gap: 60px;
+                margin-bottom: 30px;
+
+                &-item{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+
+                    img{
+                        width: 98px;
+                        height: auto;
+                    }
+
+                    p{
+                        color: var(--color-white);
+                        opacity: 70%;
+                    }
+                }
+            }
+
+            .places-btns{
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+
+                &-btn{
+                    background-color: var(--blue-bg);
+                    border: 1px solid transparent;
+                    text-transform: none;
+                    justify-content: center;
+                    align-items: center;
+
+                    img{
+                        display: inline-block;
+                        width: 26px;
+                        height: auto;
+                    }
+
+                    &:hover{
+                        color: var(--blue-main);
+                        border-color: 1px solid var(--blue-main);
+                    }
+                }
+            }
+        }
+        .why-cooperate{
+            flex: 1 1 100%;
+
+            .title_h2{
+                margin-top: 80px;
+                margin-bottom: 50px;
+            }
+            
+            &-list{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                li{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 15px;
+                    i{
+                        border-radius: 50px;
+                        color: var(--blue-main);
+                        font-size: 32px;
+                        max-height: 32px;
+                        line-height: 32px; 
+                        box-shadow:  0px 0px 50px 10px var(--blue-clouds), 
+                        inset 0px 0px 30px -10px var(--blue-clouds);
+                    }
+                    p{
+                        max-width: 250px;
+                    }
+                }
+            }
+        }
+
+        .tech-we-use{
+            flex: 1 1 100%;
+
+            .title_h2{
+                margin-top: 80px;
+                margin-bottom: 50px;
+            }
+            
+            &-list{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                column-gap: 30px;
+                row-gap: 20px;
+                justify-content: center;
+                align-items: center;
+                max-width: 1000px;
+                margin: 0 auto;
+
+                li{
+                    background-color: var(--blue-bg);
+                    border: 1px solid transparent;
+                    text-transform: none;
+                    justify-content: center;
+                    align-items: center;
+
+                    &:hover{
+                        color: var(--blue-main);
+                        border-color: 1px solid var(--blue-main);
+                    }
+                }
+            }
+        }
+    }
+   
 }
 
 .popup{
