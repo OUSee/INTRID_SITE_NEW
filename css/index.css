@@ -304,6 +304,25 @@ section:first-of-type {
   max-width: 1442px;
   margin: 0 auto;
 }
+.container-full {
+  width: 100%;
+  margin: 0 auto !important;
+}
+@media (max-width: 1500px) {
+  .container-full {
+    padding: 0 40px;
+  }
+}
+@media (max-width: 601px) {
+  .container-full {
+    padding: 0px 20px;
+  }
+}
+@media (max-width: 440px) {
+  .container-full {
+    padding: 0 10px;
+  }
+}
 
 /* buttons and checkboxes */
 button,
@@ -2301,6 +2320,86 @@ button.next:hover {
   justify-self: end;
   width: 100%;
   justify-content: center;
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--bg-main);
+}
+.footer-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--footer-bg);
+}
+.footer-middle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0;
+}
+.footer-logo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 0 0 auto;
+  width: 132px;
+  height: 32px;
+  margin-right: 114px;
+}
+@media (max-width: 1200px) {
+  .footer-logo {
+    width: 100px;
+    height: 24px;
+  }
+}
+.footer-logo > * {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer-categories {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 32px;
+  margin-right: auto;
+}
+.footer-categories > a {
+  position: relative;
+  padding-left: 10px;
+  color: var(--color-white);
+}
+.footer-categories > a:hover {
+  color: var(--blue-main);
+}
+.footer-categories > a::before {
+  content: "•";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  color: var(--blue-main);
+  transform: translate(0, -50%);
+}
+.footer-contacts {
+  display: flex;
+  margin-left: auto;
+}
+.footer-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0;
+  background-color: var(--footer-bg);
 }
 
 .popup {
