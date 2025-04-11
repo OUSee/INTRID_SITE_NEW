@@ -274,12 +274,15 @@ popupTriggers.forEach((trigger) => {
 const toggleVideoPLay = (videoElement, init) => {
   if (videoElement) {
     init === true ? videoElement.play() : videoElement.pause();
-    init !== true ? (videoElement.currentTime = 0) : false;
     videoElement.setAttribute('playinline', init === true ? true : false);
     videoElement.autoplay = init === true ? true : false;
     videoElement.controls = init === true ? true : false;
     videoElement.loop = init === true ? true : false;
     videoElement.muted = init === true ? false : true;
+
+    if (init === false) {
+      videoElement.currentTime = 0;
+    }
   }
 };
 
