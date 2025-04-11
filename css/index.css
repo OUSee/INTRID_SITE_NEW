@@ -2159,13 +2159,55 @@ button.prev:hover, button.next:hover {
   gap: 20px;
 }
 .clients-cases .blocks .cases-tabs {
+  display: flex;
   flex: 1 1 80%;
   flex-direction: row;
   border-radius: 39px;
+  background-color: var(--bg-main);
+  overflow: hidden;
 }
 .clients-cases .blocks .cases-tabs .cases-buttons {
   display: flex;
   flex-direction: column;
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  gap: 15px;
+  min-height: 100px;
+  height: -moz-fit-content;
+  height: fit-content;
+  align-items: center;
+  background-color: var(--highlight-bg);
+  color: var(--bg-main);
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:not(:last-child) {
+  border-bottom: 1px solid rgba(10, 10, 10, 0.25);
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:has(input:checked) {
+  background-color: transparent;
+  color: var(--color-white);
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:has(input:checked) span.case-number {
+  color: var(--color-grey);
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button input {
+  display: none;
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button img {
+  width: 100px;
+  height: auto;
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button p {
+  font-size: 16px;
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button span.case-number {
+  color: var(--bg-main);
+  opacity: 25%;
+  font-size: 14px;
+  transform: rotate(90deg);
+  text-wrap: nowrap;
 }
 .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-1:checked) ~ .cases-content .tab-content:nth-child(1), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-2:checked) ~ .cases-content .tab-content:nth-child(2), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-3:checked) ~ .cases-content .tab-content:nth-child(3), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-4:checked) ~ .cases-content .tab-content:nth-child(4), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-5:checked) ~ .cases-content .tab-content:nth-child(5), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-6:checked) ~ .cases-content .tab-content:nth-child(6) {
   display: block;
@@ -2173,6 +2215,7 @@ button.prev:hover, button.next:hover {
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content {
   display: none;
+  padding: 20px;
 }
 .clients-cases .blocks .cases-counts {
   flex-basis: 20%;
