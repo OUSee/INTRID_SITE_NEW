@@ -3,19 +3,19 @@
 /* VARIABLES */
 :root {
   /* colors */
-  --bg-main: #0A0A0A;
-  --color-white: #FFFFFF;
+  --bg-main: #0a0a0a;
+  --color-white: #ffffff;
   --color-grey: #ffffffb7;
   --color-black: #000000;
   --blue-main: #00eaff;
   --blue-bg: #06272a;
   --highlight-bg: #c3f3f8;
-  --navbar-bg-op: #0A0A0A85;
+  --navbar-bg-op: #0a0a0a85;
   --footer-bg: #232323;
   --blue-clouds: #00eaff31;
-  --section-spacer: #06272A;
-  --blue-tag: #11A2AA;
-  --blue-bg-icon: #00EAFF08;
+  --section-spacer: #06272a;
+  --blue-tag: #11a2aa;
+  --blue-bg-icon: #00eaff08;
   /* breakpoints */
   --pc: 1440px;
   --laptop: 1200px;
@@ -59,7 +59,14 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, p, span, a {
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span,
+a {
   font-family: "Roboto";
   display: block;
   margin: 0;
@@ -71,15 +78,18 @@ span {
   display: inline;
 }
 
-h1, .title_h1 {
+h1,
+.title_h1 {
   font-weight: 700;
   font-size: 40px;
   position: relative;
 }
-h1.underlined, .title_h1.underlined {
+h1.underlined,
+.title_h1.underlined {
   position: relative;
 }
-h1.underlined::after, .title_h1.underlined::after {
+h1.underlined::after,
+.title_h1.underlined::after {
   display: block;
   position: absolute;
   content: "";
@@ -121,12 +131,14 @@ h3.underlined::after,
   bottom: -0.4em;
 }
 
-h4, .title_h4 {
+h4,
+.title_h4 {
   font-weight: 700;
   font-size: 24px;
 }
 
-h5, .title_h5 {
+h5,
+.title_h5 {
   font-weight: 700;
   font-size: 16px;
 }
@@ -142,16 +154,23 @@ p {
 }
 
 @media (max-width: 1000px) {
-  h1, .title_h1 {
+  h1,
+  .title_h1 {
     font-size: 30px;
   }
-  h2, .title_h2, h3, .title_h3 {
+  h2,
+  .title_h2,
+  h3,
+  .title_h3 {
     font-size: 26px;
   }
-  h4, .title_h4 {
+  h4,
+  .title_h4 {
     font-size: 20px;
   }
-  p.p_big, h5, .title_h5 {
+  p.p_big,
+  h5,
+  .title_h5 {
     font-size: 16px;
   }
   p {
@@ -159,19 +178,24 @@ p {
   }
 }
 @media (max-width: 600px) {
-  h1, .title_h1 {
+  h1,
+  .title_h1 {
     font-size: 25px;
   }
-  h2, .title_h2 {
+  h2,
+  .title_h2 {
     font-size: 22px;
   }
-  h3, .title_h3 {
+  h3,
+  .title_h3 {
     font-size: 20px;
   }
-  h4, .title_h4 {
+  h4,
+  .title_h4 {
     font-size: 16px;
   }
-  .title_h5, h5 {
+  .title_h5,
+  h5 {
     font-size: 16px;
     font-weight: 400;
   }
@@ -183,7 +207,8 @@ p {
   }
 }
 @media (max-width: 520px) {
-  h1, .title_h1 {
+  h1,
+  .title_h1 {
     font-size: 20px;
   }
   h2,
@@ -221,7 +246,7 @@ i.down {
   min-height: 12px;
   content: "";
   display: inline-block;
-  background-color: #FDF41F;
+  background-color: #fdf41f;
   -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
           clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
@@ -648,7 +673,9 @@ label.radioButton:has(input:checked)::after {
   box-shadow: none;
 }
 
-.dropdown, .burger, .mobile-burger {
+.dropdown,
+.burger,
+.mobile-burger {
   position: relative;
   display: inline-block;
   border-radius: 0px;
@@ -670,7 +697,8 @@ label.radioButton:has(input:checked)::after {
   }
 }
 
-.dropdown-content, .burger-content {
+.dropdown-content,
+.burger-content {
   color: var(--color-white);
   display: none;
   position: absolute;
@@ -688,7 +716,8 @@ label.radioButton:has(input:checked)::after {
   opacity: 0;
 }
 
-.dropdown-content a, .burger-content a {
+.dropdown-content a,
+.burger-content a {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -696,11 +725,13 @@ label.radioButton:has(input:checked)::after {
   text-wrap: nowrap;
 }
 
-.dropdown-content hr, .burger-content hr {
+.dropdown-content hr,
+.burger-content hr {
   background-color: var(--color-white);
 }
 
-.dropdown-content a:hover, .burger-content a:hover {
+.dropdown-content a:hover,
+.burger-content a:hover {
   color: var(--blue-main);
 }
 
@@ -950,7 +981,8 @@ div.icon-menu {
 }
 
 /* burger */
-#menuToggle, #mobilemenuToggle {
+#menuToggle,
+#mobilemenuToggle {
   display: block;
   /* You can also use relative/absolute here if you want to stay on the top */
   position: relative;
@@ -960,7 +992,8 @@ div.icon-menu {
        user-select: none;
 }
 
-#menuToggle input, #mobilemenuToggle input {
+#menuToggle input,
+#mobilemenuToggle input {
   display: block;
   width: 40px;
   height: 32px;
@@ -973,7 +1006,8 @@ div.icon-menu {
   -webkit-touch-callout: none;
 }
 
-#menuToggle span, #mobilemenuToggle span {
+#menuToggle span,
+#mobilemenuToggle span {
   display: block;
   width: 31px;
   height: 3px;
@@ -986,26 +1020,31 @@ div.icon-menu {
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
 }
 
-#menuToggle span:first-child, #mobilemenuToggle span:first-child {
+#menuToggle span:first-child,
+#mobilemenuToggle span:first-child {
   transform-origin: 0% 0%;
 }
 
-#menuToggle span:nth-last-child(2), #mobilemenuToggle span:nth-last-child(2) {
+#menuToggle span:nth-last-child(2),
+#mobilemenuToggle span:nth-last-child(2) {
   transform-origin: 0% 100%;
 }
 
-#menuToggle input:checked ~ span, #mobilemenuToggle input:checked ~ span {
+#menuToggle input:checked ~ span,
+#mobilemenuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(-45deg) translate(-1px, -2px);
   background: var(--blue-main);
 }
 
-#menuToggle input:checked ~ span:nth-last-child(2), #mobilemenuToggle input:checked ~ span:nth-last-child(2) {
+#menuToggle input:checked ~ span:nth-last-child(2),
+#mobilemenuToggle input:checked ~ span:nth-last-child(2) {
   opacity: 0;
   transform: rotate(0deg) scale(0.1, 0.1);
 }
 
-#menuToggle input:checked ~ span:nth-last-child(3), #mobilemenuToggle input:checked ~ span:nth-last-child(3) {
+#menuToggle input:checked ~ span:nth-last-child(3),
+#mobilemenuToggle input:checked ~ span:nth-last-child(3) {
   transform: rotate(45deg) translate(0, -1px);
 }
 
@@ -1068,19 +1107,25 @@ div.icon-menu {
   animation-delay: 3s;
 }
 
-div.slider-test, .achievements-slider, .slider-horizontal {
+div.slider-test,
+.achievements-slider,
+.slider-horizontal {
   width: 250px;
   height: 400px;
   position: relative;
   overflow: hidden;
   margin: 0 auto;
 }
-div.slider-test div.slides, .achievements-slider div.slides, .slider-horizontal div.slides {
+div.slider-test div.slides,
+.achievements-slider div.slides,
+.slider-horizontal div.slides {
   display: flex;
   flex-direction: column;
   transition: transform 0.5s ease;
 }
-div.slider-test div.slides .slide, .achievements-slider div.slides .slide, .slider-horizontal div.slides .slide {
+div.slider-test div.slides .slide,
+.achievements-slider div.slides .slide,
+.slider-horizontal div.slides .slide {
   width: 250px;
   height: 200px;
   display: flex;
@@ -1089,7 +1134,9 @@ div.slider-test div.slides .slide, .achievements-slider div.slides .slide, .slid
   font-size: 24px;
   color: white;
 }
-div.slider-test div.slides .slide:hover .img-placeholder, .achievements-slider div.slides .slide:hover .img-placeholder, .slider-horizontal div.slides .slide:hover .img-placeholder {
+div.slider-test div.slides .slide:hover .img-placeholder,
+.achievements-slider div.slides .slide:hover .img-placeholder,
+.slider-horizontal div.slides .slide:hover .img-placeholder {
   background-color: var(--blue-clouds);
   box-shadow: 0px 0px 20px 20px var(--blue-clouds);
 }
@@ -1124,7 +1171,8 @@ div.slider-test div.slides .slide:hover .img-placeholder, .achievements-slider d
   box-shadow: 0px 0px 20px 20px var(--blue-clouds);
 }
 
-button.prev, button.next {
+button.prev,
+button.next {
   position: absolute;
   left: calc(50% - 20px);
   color: white;
@@ -1132,7 +1180,8 @@ button.prev, button.next {
   padding: 10px;
   cursor: pointer;
 }
-button.prev:hover, button.next:hover {
+button.prev:hover,
+button.next:hover {
   background: transparent;
   box-shadow: none;
 }
@@ -1649,7 +1698,8 @@ button.prev:hover, button.next:hover {
   width: 44px;
   height: 44px;
 }
-.benefit-card img, .benefit-card div {
+.benefit-card img,
+.benefit-card div {
   position: relative;
   z-index: 1;
 }
@@ -2260,15 +2310,20 @@ button.prev:hover, button.next:hover {
   height: 100vh;
   background-color: transparent;
   opacity: 1;
-  z-index: 5;
+  z-index: 1050;
   top: 0;
   -webkit-backdrop-filter: blur(5px) brightness(60%);
           backdrop-filter: blur(5px) brightness(60%);
   transform-origin: center;
   min-width: 360px;
 }
+.popup-opened {
+  position: static;
+  touch-action: none;
+  overflow: hidden;
+}
 .popup.open {
-  display: block;
+  display: flex;
   animation: popupAppear 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 .popup-body {
@@ -2280,13 +2335,20 @@ button.prev:hover, button.next:hover {
   border-radius: 20px;
   padding: 10px;
   z-index: 9;
-  margin: 20px auto;
+  margin: auto;
 }
 .popup-body img {
   width: auto;
   height: auto;
   max-height: 900px;
   border-radius: 10px;
+}
+.popup-body video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 2/1;
 }
 @media (max-width: 601px) {
   .popup-body {
@@ -2409,7 +2471,8 @@ button.prev:hover, button.next:hover {
     flex-grow: 0;
     order: 3;
   }
-  header .main-header .mobile-burger, header .main-header #mobilemenuToggle {
+  header .main-header .mobile-burger,
+  header .main-header #mobilemenuToggle {
     display: block;
     position: static;
     margin-left: 10px;
@@ -2568,7 +2631,10 @@ button.prev:hover, button.next:hover {
   .prices-services-list {
     margin-top: 40px;
   }
-  .video-diagramm .connections, .benefits-left, .benefits-right, .benefits-bottom {
+  .video-diagramm .connections,
+  .benefits-left,
+  .benefits-right,
+  .benefits-bottom {
     display: none;
   }
 }
@@ -2600,7 +2666,8 @@ button.prev:hover, button.next:hover {
     flex-grow: 0;
     order: 3;
   }
-  header .main-header .mobile-burger, header .main-header #mobilemenuToggle {
+  header .main-header .mobile-burger,
+  header .main-header #mobilemenuToggle {
     display: block;
     position: static;
   }
@@ -2620,7 +2687,8 @@ button.prev:hover, button.next:hover {
     top: 60px;
     align-items: flex-start;
   }
-  header .main-header .header-links-nav a, header .main-header .header-links-nav div {
+  header .main-header .header-links-nav a,
+  header .main-header .header-links-nav div {
     z-index: 3;
   }
   header .main-header .header-links-nav::after {
@@ -3030,7 +3098,8 @@ button.prev:hover, button.next:hover {
   hr.calc-spacer {
     display: none !important;
   }
-  #calc-web-price, #more-about-web-dev {
+  #calc-web-price,
+  #more-about-web-dev {
     width: 100%;
     margin: 15px 0px;
     align-items: center;
@@ -3054,7 +3123,8 @@ button.prev:hover, button.next:hover {
   hr.calc-spacer {
     display: none !important;
   }
-  #calc-web-price, .more-about-web-dev {
+  #calc-web-price,
+  .more-about-web-dev {
     width: 100%;
     margin: 15px 0px;
     align-items: center;
