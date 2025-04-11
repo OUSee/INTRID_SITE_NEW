@@ -2186,11 +2186,12 @@ button.prev:hover, button.next:hover {
   border-bottom: 1px solid rgba(10, 10, 10, 0.25);
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:has(input:checked) {
-  background-color: transparent;
+  background-color: var(--blue-tag);
   color: var(--color-white);
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:has(input:checked) span.case-number {
-  color: var(--color-grey);
+  opacity: 0.5;
+  color: var(--color-white);
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button input {
   display: none;
@@ -2198,6 +2199,9 @@ button.prev:hover, button.next:hover {
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button img {
   width: 100px;
   height: auto;
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button img::before {
+  content: "aboba";
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button p {
   font-size: 16px;
@@ -2219,6 +2223,34 @@ button.prev:hover, button.next:hover {
 }
 .clients-cases .blocks .cases-counts {
   flex-basis: 20%;
+  padding: 30px 45px;
+  border-radius: 39px;
+  background-color: var(--bg-main);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
+  background-image: url("../src/images/planet-test.webp");
+  background-size: 100% auto;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+.clients-cases .blocks .cases-counts-list li {
+  margin: 19px 0;
+}
+.clients-cases .blocks .cases-counts-list li span {
+  font-size: 36px;
+  font-weight: bold;
+}
+.clients-cases .blocks .cases-counts img {
+  margin: 0 auto;
+  margin-top: auto;
+  width: 100%;
+}
+.clients-cases .blocks .cases-counts .button-highlight {
+  justify-self: end;
+  width: 100%;
+  justify-content: center;
 }
 
 .popup {

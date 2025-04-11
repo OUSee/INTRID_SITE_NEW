@@ -2356,10 +2356,11 @@ button.prev, button.next {
 
                         
                     &:has(input:checked){
-                        background-color: transparent;
+                        background-color: var(--blue-tag);
                         color: var(--color-white);
                         span.case-number{
-                            color: var(--color-grey);
+                            opacity: 0.5;
+                            color: var(--color-white);
                         }
                     }
 
@@ -2370,6 +2371,10 @@ button.prev, button.next {
                     img{
                         width: 100px;
                         height: auto;
+
+                        &::before{
+                            content: 'aboba';
+                        }
                     }
 
                     p{
@@ -2409,7 +2414,40 @@ button.prev, button.next {
 
         .cases-counts{
             flex-basis: 20%;
-            
+            padding:30px 45px  ;
+            border-radius: 39px;
+            background-color: var(--bg-main);
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 20px;
+            background-image: url('../src/images/planet-test.webp');
+            background-size:  100% auto;
+            background-position: top;
+            background-repeat: no-repeat;
+
+            &-list li{
+                margin: 19px 0 ;
+                span{
+                    font-size: 36px;
+                    font-weight: bold;
+                    
+                }
+            }
+
+            img{
+                margin: 0 auto;
+                margin-top: auto;
+                width: 100%;
+
+                
+            }
+
+            .button-highlight{
+               justify-self: end;
+               width: 100%;
+               justify-content: center;
+            }
         }
     }
 }
