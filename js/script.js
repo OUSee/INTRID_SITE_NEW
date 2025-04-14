@@ -115,11 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const maxIndex = cards.length - slidesPerPage;
           const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
   
-          console.log('sliderWidth', sliderWidth)
-          console.log('cards', cards.length)
-          console.log('maxIndex', maxIndex)
-          console.log('slidesPerPage', slidesPerPage)
-          console.log('current index: ', currentIndex)
   
     
           cards.forEach((card) => {
@@ -192,12 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const slidesPerPage = Math.floor(sliderWidth / 255);
         const maxIndex = cards.length - slidesPerPage;
         const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
-
-        console.log('sliderWidth', sliderWidth)
-        console.log('cards', cards.length)
-        console.log('maxIndex', maxIndex)
-        console.log('slidesPerPage', slidesPerPage)
-        console.log('current index: ', currentIndex)
+        
 
   
         cards.forEach((card) => {
@@ -243,11 +233,63 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('resize', updateSlider);
       updateSlider();
   }
-
+  
   SliderHandler(document.querySelector(`#tab-slide-${1}`))
   }
 
+  const tabSliderWithPagination = () => {
+    const slider = document.querySelector('#cases-tabs-slider');
+    const pagination = document.querySelector('#cases-pagination');
+    const prevBtn = pagination.querySelector('.pagination--prev-btn')
+    const nextBtn = pagination.querySelector('.pagination--next-btn')
+    const navButtons = pagination.querySelectorAll('.pagination--btn-dot')
+    const tabs = slider.querySelectorAll('.tab-content')
+    const tabsHeaders = slider.querySelectorAll('.case-tab-button')
+    let currentIndex = 0;
+
+    console.log(currentIndex)
+  
+    const updateSlider = () => {
+      const gap = window.innerWidth > 600 ? 40 : window.innerWidth > 440 ? 20 : 10;
+      console.log('=> window', window.innerWidth)
+      const transfotmTo = Math.floor(window.innerWidth > 440 ? window.innerWidth - 15 : window.innerWidth) * currentIndex ;
+      console.log(currentIndex);
+      slider.style.transform = `translateX(-${transfotmTo}px)`;
+      console.log('slider', slider.style.transform, 'tr' , transfotmTo)
+    }
+  
+    navButtons.forEach((button, index) => {
+      button.addEventListener('click', ()=> {
+        navButtons[currentIndex].classList.remove('highlight')
+        button.classList.add('highlight')
+        currentIndex = index;
+        updateSlider();
+      })
+    });
+  
+    prevBtn.addEventListener('click', () => {
+      navButtons[currentIndex].classList.remove('highlight')
+      currentIndex = currentIndex > 1 ? currentIndex - 1 : 0;
+      navButtons[currentIndex].classList.add('highlight')
+      updateSlider();
+    })
+  
+    nextBtn.addEventListener('click', () => {
+      navButtons[currentIndex].classList.remove('highlight')
+      currentIndex = currentIndex === navButtons.length - 1  ? navButtons.length - 1 : currentIndex + 1  ;
+      navButtons[currentIndex].classList.add('highlight')
+      updateSlider()
+    })
+
+    window.addEventListener('resize', updateSlider)
+  }
+
+  tabSliderWithPagination();
+
   });
+
+// tabslider with pagination  
+
 
 
 // opacity header onscroll
@@ -264,7 +306,6 @@ window.addEventListener('scroll', function () {
 // popup logic
 
 const popupTriggers = document.querySelectorAll('.popup-trigger');
-console.log(popupTriggers[0].dataset.popup);
 popupTriggers.forEach((trigger) => {
   trigger.addEventListener('click', () => {
     const popupId = trigger.dataset.popup;
@@ -273,19 +314,14 @@ popupTriggers.forEach((trigger) => {
 });
 
 const openPopup = (id) => {
-  console.log('open ', id);
   const popup = document.getElementById(id);
-  console.log(popup);
   popup.classList.add('open');
 
   popup.addEventListener('click', (e) => {
     e.stopPropagation();
     e.preventDefault();
-    console.log('dialog -', e.target);
     if (e.target.classList.contains('close-button') || e.target.id == id) {
       popup.classList.remove('open');
     }
   });
 };
-
-console.log(1);

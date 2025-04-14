@@ -1946,7 +1946,9 @@ button.prev, button.next {
 
 .for-buisness-offers{
     position: relative;
-    
+    @media (max-width: 1100px) {
+        padding: 0;
+    }
 
     .blocks-wrapper{
         display: flex;
@@ -1954,7 +1956,7 @@ button.prev, button.next {
         justify-content: end;
         gap: 100px;
         position: relative;
-        min-height: 400px;
+        margin-bottom: 40px;
 
         @media (max-width: 520px) {
             display: none;
@@ -2340,6 +2342,13 @@ button.prev, button.next {
         display: flex;
         flex-direction: row;
         gap: 20px;
+        
+        @media (max-width: 900px) {
+            width: 100%;
+            min-width: calc(100vw * 5);
+            flex: 1 1 0px;
+            overflow-x: visible;
+        }
 
         .cases-tabs{
             display: flex;
@@ -2350,14 +2359,29 @@ button.prev, button.next {
             overflow: hidden;
 
             @media (max-width: 900px) {
+                width: 100%;
                 flex-direction: column;
-                
+                background-color: transparent;
             }
 
             .cases-buttons{
                 display: flex;
                 flex-direction: column;
                 flex: 1 1 30%;
+
+                @media (max-width: 900px) {
+                    flex-direction: row;
+                    flex: unset;
+                    gap: 80px;
+                }
+
+                @media (max-width: 601px) {
+                    gap: 40px;
+                }
+
+                @media (max-width: 440px) {
+                    gap: 20px;
+                }
 
                 .case-tab-button{
                     display: flex;
@@ -2370,14 +2394,35 @@ button.prev, button.next {
                     background-color: var(--highlight-bg);
                     color: var(--bg-main);
 
+                    @media (max-width: 900px) {
+                        flex: unset;
+                        min-width: calc(100vw - 80px - 15px);
+                        border-top-right-radius: 39px;
+                        border-top-left-radius: 39px;
+                        justify-content: center;
+                    }
+
+                    @media (max-width: 601px) {
+                        max-width: calc(100vw - 40px - 15px);
+                        min-width: calc(100vw - 40px - 15px);
+                    }
+
+                    @media (max-width: 440px) {
+                        max-width: calc(100vw - 20px);
+                        min-width: calc(100vw - 20px);
+                    }
+    
+
                     &:not(:last-child){
                         border-bottom: 1px solid transparentize(#0a0a0a, 0.75);
                     }
 
                         
                     &:has(input:checked){
-                        background-color: var(--blue-tag);
-                        color: var(--color-white);
+                        @media (min-width: 901px) {
+                            background-color: var(--blue-tag);
+                            color: var(--color-white);
+                        }
                         span.case-number{
                             opacity: 0.5;
                             color: var(--color-white);
@@ -2407,6 +2452,10 @@ button.prev, button.next {
                         max-height: unset;
                         transform: rotate(90deg);
                         text-wrap: nowrap;
+
+                        @media (max-width: 900px) {
+                            display: none;
+                        }        
                     }  
                 }
 
@@ -2424,11 +2473,45 @@ button.prev, button.next {
             .cases-content{
                 display: flex;
                 flex: 1 1 70%;
+
+                @media (max-width: 900px) {
+                    flex-direction: row;
+                    flex: unset;
+                    gap: 80px;
+                }
+
+                @media (max-width: 601px) {
+                    gap: 40px;
+                }
+
+                @media (max-width: 440px) {
+                    gap: 20px;
+                }
+
                 .tab-content{
                     display: none;
                     padding: 20px;
                     flex-grow: 1;
                     flex-direction: column;
+
+                    @media (max-width: 900px) {
+                        display: flex;
+                        min-width: calc(100vw - 80px - 15px);
+                        background-color: var(--bg-main);
+                        border-bottom-right-radius: 39px;
+                        border-bottom-left-radius: 39px;
+                    }
+
+                    
+                    @media (max-width: 601px) {
+                        max-width: calc(100vw - 40px - 15px);
+                        min-width: calc(100vw - 40px - 15px);
+                    }
+
+                    @media (max-width: 440px) {
+                        max-width: calc(100vw - 20px);
+                        min-width: calc(100vw - 20px);
+                    }
 
                     p.title_h4{
                         max-width: 390px;
@@ -2449,8 +2532,12 @@ button.prev, button.next {
                     .main-content{
                         display: flex;
                         flex-direction: row;
+                        margin-bottom: 30px;
+
+                        
 
                         .card{
+                            flex: 1 1 0px;
                             display: flex;
                             flex-direction: column;
                             border-radius: 25px;
@@ -2518,6 +2605,22 @@ button.prev, button.next {
                                 font-size: 25px;
                             }
                         }
+
+                        @media (max-width: 601px) {
+                            flex-direction: column;
+
+                            .from-to-arrows{
+                                margin: 15px 0;
+                                flex-direction: row;
+                                i{
+                                    transform: rotate(90deg);
+                                }
+                            }
+
+                            .card{
+
+                            }
+                        }
                     }
                 }
             }
@@ -2564,6 +2667,96 @@ button.prev, button.next {
                justify-self: end;
                width: 100%;
                justify-content: center;
+            }
+        }
+    }
+    .pagination{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-top: 30px;
+
+        @media (min-width: 901px){
+            display: none;
+        }
+        button{
+            padding: 5px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+        }
+
+        &--prev-btn, &--next-btn {
+
+            &:hover{
+                background-color: transparent;
+                box-shadow: none;
+                color: var(--color-white);
+                border: 2px solid var(--color-white);
+            }
+
+            i{
+                font-size: 24px;
+                line-height: 24px;
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        &--prev-btn i.left{
+            transform: rotate(180deg) translateY(0);
+        }
+
+        &--buttons-dots{
+            display: flex;
+            gap: 2px;
+
+            button{
+                max-height: 5px;
+                max-width: 5px;
+                border: 2px solid var(--color-white);
+
+                &.highlight{
+                    border-color: var(--blue-main);
+                    background-color: var(--blue-main);
+                }
+            }
+        }
+    }
+}
+
+.use-service{
+    .title_h2{
+        margin-bottom: 60px;
+        @media (max-width: 520px) {
+            margin-bottom: 30px;
+        }
+    }
+
+    &-list.prices-services-list{
+        @media (max-width: 520px) {
+            display: flex !important;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 10px;
+
+            .prices-services-list-item{
+                flex: 1 1 20%;
+                padding: 60px 10px 10px 10px;
+                border: none;
+                span{
+                    font-size: 12px;
+                    text-wrap: wrap;
+                }
+                img{
+                    top: 5px;
+                    width: 45%;
+                    height: auto;
+                    box-shadow: none;
+                }
+                i{
+                    display: none;
+                }
             }
         }
     }
