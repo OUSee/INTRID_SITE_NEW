@@ -78,11 +78,9 @@ window.addEventListener('resize', () => {
 
 // SLIDER END
 
-
 // HORIZONTAL SLIDER
 
-const SliderInIt = () => {}
-
+const SliderInIt = () => {};
 
 document.addEventListener('DOMContentLoaded', () => {
   const sliders = document.querySelectorAll('.tab-slider');
@@ -90,141 +88,146 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabButtons = document.querySelector('.slider-with-tabs_tabs-buttons');
   const tabButtonsList = tabButtons.querySelectorAll('label.button-link');
 
-
-  window.addEventListener('resize', ()=>{
-    if(window.innerWidth > 600){
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 600) {
       tabButtonsList.forEach((tabButton, index) => {
-        const input = tabButton.querySelector(`#tab-slide-btn-${index+1}`)
+        const input = tabButton.querySelector(`#tab-slide-btn-${index + 1}`);
         input.addEventListener('click', () => {
-          const activeSlider = document.querySelector(`#tab-slide-${index+1}`)
-          SliderHandler(activeSlider)
-        })
+          const activeSlider = document.querySelector(
+            `#tab-slide-${index + 1}`
+          );
+          SliderHandler(activeSlider);
+        });
       });
-  
-    
-    const SliderHandler = (slider) => {
+
+      const SliderHandler = (slider) => {
         const cards = slider.querySelectorAll('.tab-slider-card');
         const prevButton = document.querySelector(`.slider-arrow.prev`);
         const nextButton = document.querySelector(`.slider-arrow.next`);
-        
+
         let currentIndex = 0;
-  
+
         const updateSlider = () => {
           const sliderWidth = slider.offsetWidth;
           const slidesPerPage = Math.floor(sliderWidth / 255);
           const maxIndex = cards.length - slidesPerPage;
-          const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
-  
-  
-    
+          const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
+
+         
+
+
           cards.forEach((card) => {
             card.style.minWidth = `${cardWidth}px`;
-          })
-          
+          });
+
           slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-  
-          if(currentIndex === 0 || cards.length <= slidesPerPage){
+
+          if (currentIndex === 0 || cards.length <= slidesPerPage) {
             prevButton.style.display = 'none';
-          }
-          else{
+          } else {
             prevButton.style.display = 'block';
           }
-      
-          if(currentIndex === maxIndex || maxIndex <= 0 || cards.length <= slidesPerPage){
-            nextButton.style.display = 'none'
-          }
-          else{
+
+          if (
+            currentIndex === maxIndex ||
+            maxIndex <= 0 ||
+            cards.length <= slidesPerPage
+          ) {
+            nextButton.style.display = 'none';
+          } else {
             nextButton.style.display = 'block';
           }
         };
-  
+
         prevButton.addEventListener('click', () => {
-            currentIndex--;
-            updateSlider();
+          currentIndex--;
+          updateSlider();
         });
-  
+
         nextButton.addEventListener('click', () => {
           const sliderWidth = slider.offsetWidth;
           const slidesPerPage = Math.floor(sliderWidth / 255);
           const maxIndex = Math.max(0, cards.length - slidesPerPage);
-          const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
-  
+          const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
+
           cards.forEach((card) => {
             card.style.minWidth = `${cardWidth}px`;
-          })
-  
+          });
+
           currentIndex++;
           updateSlider();
         });
-  
+
         window.addEventListener('resize', updateSlider);
         updateSlider();
-    }
-  
-    SliderHandler(document.querySelector(`#tab-slide-${1}`))
-    }
-  })
+      };
 
-  if(window.innerWidth > 600){
+      SliderHandler(document.querySelector(`#tab-slide-${1}`));
+    }
+  });
+
+  if (window.innerWidth > 600) {
     tabButtonsList.forEach((tabButton, index) => {
-      const input = tabButton.querySelector(`#tab-slide-btn-${index+1}`)
+      const input = tabButton.querySelector(`#tab-slide-btn-${index + 1}`);
       input.addEventListener('click', () => {
-        const activeSlider = document.querySelector(`#tab-slide-${index+1}`)
-        SliderHandler(activeSlider)
-      })
+        const activeSlider = document.querySelector(`#tab-slide-${index + 1}`);
+        SliderHandler(activeSlider);
+      });
     });
 
-  
-  const SliderHandler = (slider) => {
+    const SliderHandler = (slider) => {
       const cards = slider.querySelectorAll('.tab-slider-card');
       const prevButton = document.querySelector(`.slider-arrow.prev`);
       const nextButton = document.querySelector(`.slider-arrow.next`);
-      
+
       let currentIndex = 0;
 
       const updateSlider = () => {
         const sliderWidth = slider.offsetWidth;
         const slidesPerPage = Math.floor(sliderWidth / 255);
         const maxIndex = cards.length - slidesPerPage;
-        const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
+        const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
+
         
 
-  
+
         cards.forEach((card) => {
           card.style.minWidth = `${cardWidth}px`;
-        })
-        
+        });
+
         slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 
-        if(currentIndex === 0 || cards.length <= slidesPerPage){
+        if (currentIndex === 0 || cards.length <= slidesPerPage) {
           prevButton.style.display = 'none';
-        }
-        else{
+        } else {
           prevButton.style.display = 'block';
         }
-    
-        if(currentIndex === maxIndex || maxIndex <= 0 || cards.length <= slidesPerPage){
-          nextButton.style.display = 'none'
-        }
-        else{
+
+        if (
+          currentIndex === maxIndex ||
+          maxIndex <= 0 ||
+          cards.length <= slidesPerPage
+        ) {
+          nextButton.style.display = 'none';
+        } else {
           nextButton.style.display = 'block';
         }
       };
 
       prevButton.addEventListener('click', () => {
-          currentIndex--;
-          updateSlider();
+        currentIndex--;
+        updateSlider();
       });
 
       nextButton.addEventListener('click', () => {
         const sliderWidth = slider.offsetWidth;
         const slidesPerPage = Math.floor(sliderWidth / 255);
         const maxIndex = Math.max(0, cards.length - slidesPerPage);
-        const cardWidth = Math.floor(sliderWidth / slidesPerPage -25) ;
+        const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
 
         cards.forEach((card) => {
           card.style.minWidth = `${cardWidth}px`;
-        })
+        });
 
         currentIndex++;
         updateSlider();
@@ -232,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       window.addEventListener('resize', updateSlider);
       updateSlider();
+
   }
   
   SliderHandler(document.querySelector(`#tab-slide-${1}`))
@@ -291,7 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // tabslider with pagination  
 
 
-
 // opacity header onscroll
 
 window.addEventListener('scroll', function () {
@@ -305,7 +308,11 @@ window.addEventListener('scroll', function () {
 
 // popup logic
 
-const popupTriggers = document.querySelectorAll('.popup-trigger');
+
+// const popupTriggers = document.querySelectorAll('.popup-trigger');
+// console.log(popupTriggers[0].dataset.popup);
+const popupTriggers = document.querySelectorAll('[data-popup]');
+
 popupTriggers.forEach((trigger) => {
   trigger.addEventListener('click', () => {
     const popupId = trigger.dataset.popup;
@@ -313,15 +320,47 @@ popupTriggers.forEach((trigger) => {
   });
 });
 
+// Специально, для видео из кружочка
+const toggleVideoPLay = (videoElement, init) => {
+  if (videoElement) {
+    init === true ? videoElement.play() : videoElement.pause();
+    videoElement.setAttribute('playinline', init === true ? true : false);
+    videoElement.autoplay = init === true ? true : false;
+    videoElement.controls = init === true ? true : false;
+    videoElement.loop = init === true ? true : false;
+    videoElement.muted = init === true ? false : true;
+
+    if (init === false) {
+      videoElement.currentTime = 0;
+    }
+  }
+};
+
 const openPopup = (id) => {
+
+  // console.log('open ', id);
   const popup = document.getElementById(id);
+  let videoPopup = popup.querySelector('video');
+  // console.log(popup);
+
   popup.classList.add('open');
+
+  // Приостанавливаем прокрутку страницы, когда окно открыто
+  document.documentElement.classList.add('popup-opened');
+  videoPopup ? toggleVideoPLay(videoPopup, true) : false;
 
   popup.addEventListener('click', (e) => {
     e.stopPropagation();
     e.preventDefault();
     if (e.target.classList.contains('close-button') || e.target.id == id) {
+      let videoPopup = popup.querySelector('video');
+
       popup.classList.remove('open');
+
+      // Возвращаем прокрутку страницы, когда окно закрыто
+      document.documentElement.classList.remove('popup-opened');
+
+      videoPopup ? toggleVideoPLay(videoPopup, false) : false;
     }
   });
 };
