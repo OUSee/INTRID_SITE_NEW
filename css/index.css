@@ -2534,17 +2534,18 @@ button.next:hover {
     flex-wrap: wrap;
   }
 }
-.footer-bottom > .container > span {
+.footer-bottom > .container > * {
   opacity: 0.7;
 }
-.footer-bottom > .container > span:first-of-type {
+.footer-bottom > .container > a {
   position: relative;
   padding-left: 34px;
   margin-right: auto;
   text-align: left;
+  color: #ffffff;
   cursor: pointer;
 }
-.footer-bottom > .container > span:first-of-type::before {
+.footer-bottom > .container > a::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -2557,12 +2558,12 @@ button.next:hover {
   background-repeat: no-repeat;
   transform: translate(0, -50%);
 }
-.footer-bottom > .container > span:last-of-type {
+.footer-bottom > .container > span {
   margin-left: auto;
   text-align: right;
 }
 @media (max-width: 359.98px) {
-  .footer-bottom > .container > span:last-of-type {
+  .footer-bottom > .container > span {
     margin-left: 0;
     text-align: left;
   }

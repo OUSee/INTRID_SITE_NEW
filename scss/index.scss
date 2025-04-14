@@ -2734,38 +2734,40 @@ button.next {
         flex-wrap: wrap;
       }
 
-      & > span {
+      & > * {
         opacity: 0.7;
-        &:first-of-type {
-          position: relative;
-          padding-left: 34px;
-          margin-right: auto;
-          text-align: left;
-          cursor: pointer;
+      }
 
-          &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 26px;
-            height: 26px;
-            background-image: url('../src/images/herb.svg');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            transform: translate(0, -50%);
-          }
+      & > a {
+        position: relative;
+        padding-left: 34px;
+        margin-right: auto;
+        text-align: left;
+        color: #ffffff;
+        cursor: pointer;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 26px;
+          height: 26px;
+          background-image: url('../src/images/herb.svg');
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          transform: translate(0, -50%);
         }
+      }
 
-        &:last-of-type {
-          margin-left: auto;
-          text-align: right;
+      & > span {
+        margin-left: auto;
+        text-align: right;
 
-          @media (max-width: 359.98px) {
-            margin-left: 0;
-            text-align: left;
-          }
+        @media (max-width: 359.98px) {
+          margin-left: 0;
+          text-align: left;
         }
       }
     }
