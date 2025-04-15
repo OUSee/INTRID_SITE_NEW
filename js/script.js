@@ -5,29 +5,24 @@ const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const slideItems = document.querySelectorAll('.slide');
 
-// Clone first and last slides for infinite effect
 const firstClone = slideItems[0].cloneNode(true);
 const lastClone = slideItems[slideItems.length - 1].cloneNode(true);
 
-// Add clones to the slides container
 slides.appendChild(firstClone);
 slides.insertBefore(lastClone, slideItems[0]);
 
-// Re-select all slides after cloning
 const allSlides = document.querySelectorAll('.slide');
 const slideCount = allSlides.length;
 const height = allSlides[0].offsetHeight;
 
-let currentIndex = 1; // Start at the first original slide (after clone)
+let currentIndex = 1; 
 slides.style.transform = `translateY(-${currentIndex * height + 1}px)`;
-
-// Add transition for smooth sliding
 slides.style.transition = 'transform 0.5s ease';
 
 function updateSlider() {
-  slides.style.transform = `translateY(-${currentIndex * height + 1}px)`;
+  const currheight = allSlides[0].offsetHeight;
+  slides.style.transform = `translateY(-${currentIndex * currheight + 1}px)`;
 
-  // If we're at a clone, instantly jump to the original without animation
   if (currentIndex === 0) {
     setTimeout(() => {
       slides.style.transition = 'none';
@@ -72,8 +67,7 @@ startAutoScroll();
 
 // Reset slider position on window resize (optional)
 window.addEventListener('resize', () => {
-  const newHeight = allSlides[0].offsetHeight;
-  slides.style.transform = `translateY(-${currentIndex * newHeight}px)`;
+  updateSlider()
 });
 
 // SLIDER END
