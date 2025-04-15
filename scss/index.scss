@@ -1039,8 +1039,10 @@ div.icon-menu {
                     object-fit: contain;
                     overflow: visible;
                     border-radius: 50%;
+                    position: relative;
                     box-shadow: 0px 0px 60px 45px var(--blue-clouds),
                         inset 0px 0px 75px 20px var(--blue-clouds);
+
 
                 }
 
@@ -2119,6 +2121,7 @@ section.tabs {
                 width: 100%;
                 opacity: 1;
                 transform: scale(-1, 1) rotate(-15deg);
+                animation: baloon-right 8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
             }
         }
 
@@ -2492,7 +2495,6 @@ section.tabs {
             }
         }
     }
-
 }
 
 .clients-cases {
@@ -4596,6 +4598,16 @@ section.tabs {
 
     50% {
         transform: translateY(-15px) rotate(2deg) scale(1.01);
+    }
+}
+
+@keyframes baloon-right {
+    100% {
+        transform: translateY(0) rotate(15deg) scale(-1, 1);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(17deg) scale(-1.01, 1.01);
     }
 }
 
