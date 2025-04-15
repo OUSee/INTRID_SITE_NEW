@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabsHeaders = slider.querySelectorAll('.case-tab-button')
     let currentIndex = 0;
 
-    console.log(currentIndex)
+    
   
     const updateSlider = () => {
       const gap = window.innerWidth > 600 ? 40 : window.innerWidth > 440 ? 20 : 10;
@@ -254,6 +254,21 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(currentIndex);
       slider.style.transform = `translateX(-${transfotmTo}px)`;
       console.log('slider', slider.style.transform, 'tr' , transfotmTo)
+    }
+
+    const nextSlide = ( ) => {
+      navButtons[currentIndex].classList.remove('highlight')
+      currentIndex = currentIndex === navButtons.length - 1  ? navButtons.length - 1 : currentIndex + 1  ;
+      navButtons[currentIndex].classList.add('highlight')
+      updateSlider();
+    }
+
+    const prevSlide = () => {
+      navButtons[currentIndex].classList.remove('highlight')
+      currentIndex = currentIndex > 1 ? currentIndex - 1 : 0;
+      navButtons[currentIndex].classList.add('highlight')
+      
+      updateSlider()
     }
   
     navButtons.forEach((button, index) => {
@@ -264,20 +279,43 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlider();
       })
     });
+
+    function handleTouchStart(evt) {
+      const firstTouch = evt.touches[0];
+      xDown = firstTouch.clientX;
+      yDown = firstTouch.clientY;
+    }
+    
+    function handleTouchMove(evt) {
+      if (!xDown || !yDown) {
+        return;
+      }
+    
+      const xUp = evt.touches[0].clientX;
+      const yUp = evt.touches[0].clientY;
+    
+      const xDiff = xDown - xUp;
+      const yDiff = yDown - yUp;
+    
+      if (Math.abs(xDiff) > Math.abs(yDiff)) { // горизонтальный свайп
+        if (xDiff > 0) {
+          // свайп влево — следующий слайд
+          nextSlide();
+        } else {
+          // свайп вправо — предыдущий слайд
+          prevSlide();
+        }
+      }
+      // сброс координат
+      xDown = null;
+      yDown = null;
+    }
+
+    slider.addEventListener('touchstart', handleTouchStart, false)
+    slider.addEventListener('touchmove', handleTouchMove, false)
   
-    prevBtn.addEventListener('click', () => {
-      navButtons[currentIndex].classList.remove('highlight')
-      currentIndex = currentIndex > 1 ? currentIndex - 1 : 0;
-      navButtons[currentIndex].classList.add('highlight')
-      updateSlider();
-    })
-  
-    nextBtn.addEventListener('click', () => {
-      navButtons[currentIndex].classList.remove('highlight')
-      currentIndex = currentIndex === navButtons.length - 1  ? navButtons.length - 1 : currentIndex + 1  ;
-      navButtons[currentIndex].classList.add('highlight')
-      updateSlider()
-    })
+    prevBtn.addEventListener('click', prevSlide )
+    nextBtn.addEventListener('click', nextSlide )
 
     window.addEventListener('resize', updateSlider)
   }
