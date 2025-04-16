@@ -515,6 +515,10 @@ label.radioButton:has(input:checked)::after {
   width: fit-content;
 }
 
+.w-fill {
+  width: 100%;
+}
+
 .color-blue {
   color: var(--blue-main);
 }
@@ -1454,6 +1458,31 @@ section.tabs {
   }
 }
 
+.under-title-group {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 900px;
+  flex-wrap: wrap;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  align-items: center;
+  margin: 30px auto 0px auto;
+}
+.under-title-group .title_h2 {
+  flex-basis: 0%;
+}
+.under-title-group .under-title {
+  margin: 0;
+  flex-grow: 1;
+  flex-basis: auto;
+  text-align: start;
+}
+.under-title-group .under-number {
+  max-width: 500px;
+  flex-basis: 100%;
+}
+
 .tab-content-webDev {
   display: flex;
   justify-content: space-between;
@@ -1461,6 +1490,344 @@ section.tabs {
   margin-top: 70px;
   flex-wrap: wrap;
   margin-bottom: 50px;
+}
+.tab-content-webDev.store {
+  row-gap: 50px;
+}
+.tab-content-webDev.store .webDev-benefits {
+  margin-left: auto;
+}
+@media (max-width: 1200px) {
+  .tab-content-webDev.store .webDev-benefits {
+    margin: 0 auto;
+  }
+}
+.tab-content-webDev.store .achievements-group {
+  margin-left: 50px;
+  margin-right: auto;
+}
+@media (max-width: 1200px) {
+  .tab-content-webDev.store .achievements-group {
+    order: unset;
+    margin: 0 auto;
+  }
+}
+.tab-content-webDev.store .count-n-card {
+  gap: 50px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media (max-width: 900px) {
+  .tab-content-webDev.store .count-n-card {
+    flex-direction: column;
+  }
+}
+.tab-content-webDev.store .count-n-card .web-count {
+  width: unset;
+  flex-basis: 35%;
+  margin-left: auto;
+}
+.tab-content-webDev.store .count-n-card .web-count span.ml-6 {
+  flex-basis: 300px;
+  text-wrap: wrap;
+}
+.tab-content-webDev.store .count-n-card .recent-work-card {
+  margin-right: auto;
+  margin-left: 0;
+}
+.tab-content-webDev.store .store-testimonials {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.tab-content-webDev.store .block-buttons {
+  margin-top: 0px;
+  width: 100%;
+}
+@media (max-width: 720px) {
+  .tab-content-webDev.store .block-buttons {
+    flex-wrap: wrap;
+  }
+  .tab-content-webDev.store .block-buttons .button-link {
+    flex: 1 1 0;
+  }
+}
+.tab-content-webDev .web-shop-diagram,
+.tab-content-webDev .tender-diagram {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: -moz-fit-content;
+  height: fit-content;
+  gap: 0;
+}
+.tab-content-webDev .web-shop-diagram .benefits-left,
+.tab-content-webDev .web-shop-diagram .benefits-right,
+.tab-content-webDev .tender-diagram .benefits-left,
+.tab-content-webDev .tender-diagram .benefits-right {
+  height: 420px;
+  justify-content: space-between;
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev .web-shop-diagram .benefits-left,
+  .tab-content-webDev .web-shop-diagram .benefits-right,
+  .tab-content-webDev .tender-diagram .benefits-left,
+  .tab-content-webDev .tender-diagram .benefits-right {
+    display: flex;
+    position: static;
+    height: -moz-fit-content;
+    height: fit-content;
+    justify-content: unset;
+    gap: 30px;
+    width: 100%;
+    margin: 0;
+  }
+  .tab-content-webDev .web-shop-diagram .benefits-left .benefit-card,
+  .tab-content-webDev .web-shop-diagram .benefits-right .benefit-card,
+  .tab-content-webDev .tender-diagram .benefits-left .benefit-card,
+  .tab-content-webDev .tender-diagram .benefits-right .benefit-card {
+    width: 100%;
+    max-width: unset;
+    margin: 0;
+  }
+}
+.tab-content-webDev .web-shop-diagram .benefits-left,
+.tab-content-webDev .tender-diagram .benefits-left {
+  order: 2;
+  margin-bottom: 30px;
+}
+.tab-content-webDev .web-shop-diagram .benefits-right,
+.tab-content-webDev .tender-diagram .benefits-right {
+  order: 3;
+}
+.tab-content-webDev .web-shop-diagram .video-diagramm,
+.tab-content-webDev .tender-diagram .video-diagramm {
+  order: 0;
+}
+.tab-content-webDev .web-shop-diagram .benefit-card,
+.tab-content-webDev .tender-diagram .benefit-card {
+  width: 100%;
+  padding: 20px;
+  min-height: unset;
+}
+.tab-content-webDev .web-shop-diagram .benefit-card img,
+.tab-content-webDev .tender-diagram .benefit-card img {
+  width: 34px;
+  height: 34px;
+}
+.tab-content-webDev .web-shop-diagram .benefit-card:before,
+.tab-content-webDev .tender-diagram .benefit-card:before {
+  top: -35px;
+}
+.tab-content-webDev .web-shop-diagram .video-diagramm .water-ripple-video,
+.tab-content-webDev .tender-diagram .video-diagramm .water-ripple-video {
+  z-index: 0;
+}
+.tab-content-webDev .web-shop-diagram .video-diagramm .store-text,
+.tab-content-webDev .tender-diagram .video-diagramm .store-text {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: var(--blue-main);
+  z-index: 2;
+  text-align: center;
+  border-radius: 50%;
+  padding: 80px 20px;
+  color: var(--bg-main);
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev .web-shop-diagram .video-diagramm,
+  .tab-content-webDev .tender-diagram .video-diagramm {
+    margin: 50px auto;
+  }
+}
+.tab-content-webDev.tender .tender-explanation-group {
+  padding-left: 60px;
+  position: relative;
+  display: flex;
+  gap: 100px;
+}
+.tab-content-webDev.tender .tender-explanation-group::before {
+  content: "";
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--blue-main);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.tab-content-webDev.tender .tender-explanation-group .tender-testimonial {
+  max-width: 780px;
+}
+.tab-content-webDev.tender .tender-explanation-group .tender-testimonial .title_h4 {
+  margin-bottom: 20px;
+}
+.tab-content-webDev.tender .tender-diagram {
+  padding: 50px 0px;
+}
+.tab-content-webDev.tender .tender-diagram .title_h4 {
+  margin-bottom: 50px;
+}
+.tab-content-webDev.tender .tender-diagram .benefits-top {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 18px;
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 126px);
+  order: 4;
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev.tender .tender-diagram .benefits-top {
+    display: flex;
+    position: static;
+    height: -moz-fit-content;
+    height: fit-content;
+    justify-content: unset;
+    gap: 30px;
+    width: 100%;
+    margin: 0;
+    margin-top: 30px;
+  }
+  .tab-content-webDev.tender .tender-diagram .benefits-top .benefit-card {
+    width: 100%;
+    max-width: unset;
+    margin: 0;
+  }
+}
+.tab-content-webDev.tender .tender-diagram .benefits-bottom {
+  order: 5;
+  bottom: 0px;
+  left: calc(50% - 150px);
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev.tender .tender-diagram .benefits-bottom {
+    display: flex;
+    position: static;
+    height: -moz-fit-content;
+    height: fit-content;
+    justify-content: unset;
+    gap: 30px;
+    width: 100%;
+    margin: 0;
+    margin-top: 30px;
+  }
+  .tab-content-webDev.tender .tender-diagram .benefits-bottom .benefit-card {
+    width: 100%;
+    max-width: unset;
+    margin: 0;
+  }
+}
+.tab-content-webDev.tender .tender-diagram .video-diagramm .tender-text {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  padding: 70px;
+  background-color: var(--blue-main);
+  color: var(--bg-main);
+  border-radius: 50%;
+  z-index: 2;
+  top: -80px;
+  left: -80px;
+}
+.tab-content-webDev.tender .tender-diagram .video-diagramm .tender-text li {
+  list-style: "✓";
+  padding-left: 10px;
+}
+.tab-content-webDev.tender .tender-diagram .video-diagramm .connections .line:nth-child(4) {
+  top: 120px;
+  width: 530px;
+}
+.tab-content-webDev.tender .tender-diagram .video-diagramm .connections .line:nth-child(4)::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  background-color: var(--blue-main);
+  border-radius: 50%;
+  left: 0;
+  top: -3px;
+  animation: links-before 3s ease-in-out infinite;
+}
+.tab-content-webDev.tender .tender-diagram .video-diagramm .connections .line:nth-child(4)::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  background-color: var(--blue-main);
+  border-radius: 50%;
+  left: 0;
+  top: -3px;
+  animation: links-before 3s ease-in-out infinite;
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev.tender .tender-diagram .video-diagramm {
+    margin: 100px auto;
+  }
+}
+.tab-content-webDev.tender .block-buttons {
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev.tender .block-buttons {
+    margin-top: 0;
+  }
+}
+.tab-content-webDev.tender .tender-types-group {
+  width: 100%;
+}
+.tab-content-webDev.tender .tender-types-group .title_h4 {
+  margin: 40px 0;
+}
+.tab-content-webDev.tender .tender-types-group .tender-table {
+  width: 100%;
+  background-color: var(--blue-bg);
+  border-radius: 25px;
+  overflow: hidden;
+}
+.tab-content-webDev.tender .tender-types-group .tender-table tr:first-child td,
+.tab-content-webDev.tender .tender-types-group .tender-table tr:first-child th {
+  padding: 18px 30px;
+}
+.tab-content-webDev.tender .tender-types-group .tender-table tr:last-child td {
+  text-align: end;
+  color: var(--blue-main) !important;
+}
+.tab-content-webDev.tender .tender-types-group .tender-table tr:last-child td:not(:first-child) {
+  font-size: 24px;
+}
+.tab-content-webDev.tender .tender-types-group .tender-table tr td,
+.tab-content-webDev.tender .tender-types-group .tender-table tr th {
+  padding: 10px 30px;
+}
+.tab-content-webDev.tender .tender-types-group .tender-table tr td:not(:first-child) {
+  text-align: center;
+  color: var(--blue-main) !important;
+}
+.tab-content-webDev.tender .tender-types-group .tender-table tr:nth-child(even) td,
+.tab-content-webDev.tender .tender-types-group .tender-table tr th {
+  background-color: var(--blue-clouds);
+  color: var(--color-white);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-left: 2px solid var(--bg-main);
+  border-right: 2px solid var(--bg-main);
+}
+.tab-content-webDev.tender .tender-types-group .tender-table tr:nth-child(odd) td {
+  background-color: var(--blue-bg);
+  color: var(--color-white);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-left: 2px solid var(--bg-main);
+  border-right: 2px solid var(--bg-main);
+}
+body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-card > div.recent-work-card > img {
+  width: 227px;
+  height: 141px;
 }
 
 .webDev-benefits {
@@ -1744,6 +2111,7 @@ section.tabs {
   left: 0;
   top: 100px;
   margin-left: 100px;
+  z-index: 1;
 }
 .benefits-left .benefit-card:first-child, .benefits-left .benefit-card:last-child {
   margin-left: 30px;
@@ -1759,6 +2127,7 @@ section.tabs {
   top: 100px;
   right: 0;
   margin-right: 100px;
+  z-index: 1;
 }
 .benefits-right .benefit-card {
   align-self: end;
@@ -1832,6 +2201,7 @@ section.tabs {
   background-position: bottom;
 }
 .video-diagramm .play-video-button {
+  z-index: 1;
   max-height: unset;
   border-radius: 50%;
   width: 240px;
@@ -1856,7 +2226,7 @@ section.tabs {
 }
 .video-diagramm .water-ripple-video {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   top: 0;
   left: 0;
   width: 240px;
@@ -1864,7 +2234,7 @@ section.tabs {
 }
 .video-diagramm .connections {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   top: 0;
   left: 0;
   width: 240px;

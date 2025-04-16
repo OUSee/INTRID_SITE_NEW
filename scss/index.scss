@@ -518,6 +518,10 @@ label.radioButton:has(input:checked)::after {
     width: fit-content;
 }
 
+.w-fill {
+    width: 100%;
+}
+
 .color-blue {
     color: var(--blue-main);
 }
@@ -1563,6 +1567,34 @@ section.tabs {
     }
 }
 
+.under-title-group {
+    display: flex;
+    width: fit-content;
+    max-width: 900px;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    align-items: center;
+    margin: 30px auto 0px auto;
+
+
+    .title_h2 {
+        flex-basis: 0%;
+
+    }
+
+    .under-title {
+        margin: 0;
+        flex-grow: 1;
+        flex-basis: auto;
+        text-align: start;
+    }
+
+    .under-number {
+        max-width: 500px;
+        flex-basis: 100%;
+    }
+}
+
 .tab-content-webDev {
     display: flex;
     justify-content: space-between;
@@ -1570,6 +1602,384 @@ section.tabs {
     margin-top: 70px;
     flex-wrap: wrap;
     margin-bottom: 50px;
+
+    &.store {
+        row-gap: 50px;
+
+        .webDev-benefits {
+            margin-left: auto;
+
+            @media (max-width: 1200px) {
+                margin: 0 auto;
+            }
+        }
+
+        .achievements-group {
+            margin-left: 50px;
+            margin-right: auto;
+
+            @media (max-width: 1200px) {
+                order: unset;
+                margin: 0 auto;
+            }
+        }
+
+        .count-n-card {
+            gap: 50px;
+            width: fit-content;
+
+            @media (max-width: 900px) {
+                flex-direction: column;
+            }
+
+            .web-count {
+                width: unset;
+                flex-basis: 35%;
+                margin-left: auto;
+
+
+
+                span.ml-6 {
+                    flex-basis: 300px;
+                    text-wrap: wrap;
+                }
+            }
+
+            .recent-work-card {
+                margin-right: auto;
+                margin-left: 0;
+            }
+        }
+
+        .store-testimonials {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+
+        .block-buttons {
+            margin-top: 0px;
+            width: 100%;
+
+            @media (max-width: 720px) {
+                flex-wrap: wrap;
+
+                .button-link {
+                    flex: 1 1 0;
+                }
+            }
+        }
+    }
+
+    .web-shop-diagram,
+    .tender-diagram {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        gap: 0;
+
+        .benefits-left,
+        .benefits-right {
+            height: 420px;
+            justify-content: space-between;
+
+            @media (max-width: 1000px) {
+                display: flex;
+                position: static;
+                height: fit-content;
+                justify-content: unset;
+                gap: 30px;
+                width: 100%;
+                margin: 0;
+
+                .benefit-card {
+                    width: 100%;
+                    max-width: unset;
+                    margin: 0;
+                }
+            }
+        }
+
+        .benefits-left {
+            order: 2;
+            margin-bottom: 30px;
+        }
+
+        .benefits-right {
+            order: 3;
+        }
+
+        .video-diagramm {
+            order: 0;
+        }
+
+
+        .benefit-card {
+            width: 100%;
+            padding: 20px;
+            min-height: unset;
+
+            img {
+                width: 34px;
+                height: 34px;
+            }
+
+            &:before {
+                top: -35px;
+            }
+        }
+
+
+        .video-diagramm {
+            .water-ripple-video {
+                z-index: 0;
+            }
+
+            .store-text {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                background-color: var(--blue-main);
+                z-index: 2;
+                text-align: center;
+                border-radius: 50%;
+                padding: 80px 20px;
+                color: var(--bg-main);
+            }
+
+            @media (max-width: 1000px) {
+                margin: 50px auto;
+            }
+        }
+
+    }
+
+    &.tender {
+        .tender-explanation-group {
+            padding-left: 60px;
+            position: relative;
+            display: flex;
+            gap: 100px;
+
+            &::before {
+                content: '';
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background-color: var(--blue-main);
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+
+            .tender-testimonial {
+                .title_h4 {
+                    margin-bottom: 20px;
+                }
+
+                max-width: 780px;
+            }
+        }
+
+        .tender-diagram {
+            padding: 50px 0px;
+
+            .title_h4 {
+                margin-bottom: 50px;
+            }
+
+            .benefits-top {
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                width: -moz-fit-content;
+                width: fit-content;
+                gap: 18px;
+                position: absolute;
+                top: 0px;
+                left: calc(50% - 126px);
+                order: 4;
+
+                @media (max-width: 1000px) {
+                    display: flex;
+                    position: static;
+                    height: fit-content;
+                    justify-content: unset;
+                    gap: 30px;
+                    width: 100%;
+                    margin: 0;
+                    margin-top: 30px;
+
+                    .benefit-card {
+                        width: 100%;
+                        max-width: unset;
+                        margin: 0;
+                    }
+                }
+            }
+
+            .benefits-bottom {
+                order: 5;
+                bottom: 0px;
+                left: calc(50% - 150px);
+
+                @media (max-width: 1000px) {
+                    display: flex;
+                    position: static;
+                    height: fit-content;
+                    justify-content: unset;
+                    gap: 30px;
+                    width: 100%;
+                    margin: 0;
+                    margin-top: 30px;
+
+                    .benefit-card {
+                        width: 100%;
+                        max-width: unset;
+                        margin: 0;
+                    }
+                }
+            }
+
+            .video-diagramm {
+                .tender-text {
+                    position: relative;
+                    width: 400px;
+                    height: 400px;
+                    padding: 70px;
+                    background-color: var(--blue-main);
+                    color: var(--bg-main);
+                    border-radius: 50%;
+                    z-index: 2;
+                    top: -80px;
+                    left: -80px;
+
+                    li {
+                        list-style: '\2713';
+                        padding-left: 10px;
+                    }
+                }
+
+                .connections .line:nth-child(4) {
+                    top: 120px;
+                    width: 530px;
+
+                    &::before {
+                        content: "";
+                        width: 8px;
+                        height: 8px;
+                        position: absolute;
+                        background-color: var(--blue-main);
+                        border-radius: 50%;
+                        left: 0;
+                        top: -3px;
+                        animation: links-before 3s ease-in-out infinite;
+                    }
+
+                    &::after {
+                        content: "";
+                        width: 8px;
+                        height: 8px;
+                        position: absolute;
+                        background-color: var(--blue-main);
+                        border-radius: 50%;
+                        left: 0;
+                        top: -3px;
+                        animation: links-before 3s ease-in-out infinite;
+                    }
+                }
+
+                @media (max-width: 1000px) {
+                    margin: 100px auto;
+                }
+            }
+        }
+
+        .block-buttons {
+            width: 100%;
+
+            @media (max-width: 1000px) {
+                margin-top: 0;
+            }
+        }
+
+        .tender-types-group {
+            width: 100%;
+
+            .title_h4 {
+                margin: 40px 0;
+            }
+
+            .tender-table {
+                width: 100%;
+                background-color: var(--blue-bg);
+                border-radius: 25px;
+                overflow: hidden;
+
+                tr {
+                    &:first-child {
+
+                        td,
+                        th {
+                            padding: 18px 30px;
+                        }
+                    }
+
+                    &:last-child {
+                        td {
+                            text-align: end;
+                            color: var(--blue-main) !important;
+                        }
+
+                        td:not(:first-child) {
+                            font-size: 24px;
+                        }
+                    }
+
+                    td,
+                    th {
+                        padding: 10px 30px;
+                    }
+
+                    td:not(:first-child) {
+                        text-align: center;
+                        color: var(--blue-main) !important;
+                    }
+
+                    &:nth-child(even) td,
+                    th {
+                        background-color: var(--blue-clouds);
+                        color: var(--color-white);
+                        border-top: 1px solid transparent;
+                        border-bottom: 1px solid transparent;
+                        border-left: 2px solid var(--bg-main);
+                        border-right: 2px solid var(--bg-main);
+                    }
+
+                    &:nth-child(odd) td {
+                        background-color: var(--blue-bg);
+                        color: var(--color-white);
+                        border-top: 1px solid transparent;
+                        border-bottom: 1px solid transparent;
+                        border-left: 2px solid var(--bg-main);
+                        border-right: 2px solid var(--bg-main);
+                    }
+                }
+
+                @media (max-width: 900px) {}
+            }
+        }
+
+
+    }
+}
+
+body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.recent-work-card>img {
+    width: 227px;
+    height: 141px;
 }
 
 .webDev-benefits {
@@ -1892,6 +2302,7 @@ section.tabs {
     left: 0;
     top: 100px;
     margin-left: 100px;
+    z-index: 1;
 
 
     .benefit-card {
@@ -1912,6 +2323,7 @@ section.tabs {
     top: 100px;
     right: 0;
     margin-right: 100px;
+    z-index: 1;
 
 
     .benefit-card {
@@ -1996,6 +2408,7 @@ section.tabs {
     }
 
     .play-video-button {
+        z-index: 1;
         max-height: unset;
         border-radius: 50%;
         width: 240px;
@@ -2022,7 +2435,7 @@ section.tabs {
 
     .water-ripple-video {
         position: absolute;
-        z-index: -1;
+        z-index: 0;
         top: 0;
         left: 0;
         width: 240px;
@@ -2031,7 +2444,7 @@ section.tabs {
 
     .connections {
         position: absolute;
-        z-index: -1;
+        z-index: 0;
         top: 0;
         left: 0;
         width: 240px;
