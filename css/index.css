@@ -1350,6 +1350,17 @@ section.tabs {
   left: -90px;
   transition: all 0.3s ease-in-out;
 }
+@media (min-width: 1420px) {
+  .tab-button::before {
+    top: -43px;
+    left: -90px;
+  }
+}
+@media (max-width: 900px) {
+  .tab-button::before {
+    display: none;
+  }
+}
 .tab-button::after {
   position: absolute;
   top: 60px;
@@ -1361,9 +1372,26 @@ section.tabs {
   transition: all 0.3s ease-in-out;
   animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
+@media (min-width: 1420px) {
+  .tab-button::after {
+    top: 50px;
+    left: 20px;
+  }
+}
+@media (max-width: 900px) {
+  .tab-button::after {
+    top: 25px;
+    left: 20px;
+  }
+}
 .tab-button .tab-button-content {
   margin-top: 8px;
   color: var(--color-grey);
+}
+@media (max-width: 900px) {
+  .tab-button .tab-button-content {
+    display: none;
+  }
 }
 .tab-button input {
   display: none;
@@ -1477,7 +1505,7 @@ section.tabs {
   display: block;
   color: var(--blue-main);
   text-wrap: nowrap;
-  flex-basis: auto;
+  flex-basis: 15%;
   flex-grow: 1;
 }
 @media (max-width: 420px) {
@@ -1573,6 +1601,11 @@ section.tabs {
 .count-n-card .web-count span.ml-6 {
   flex-shrink: 1;
   flex-basis: 100px;
+}
+@media (max-width: 1250px) {
+  .count-n-card .web-count span.ml-6 {
+    text-wrap: nowrap;
+  }
 }
 .count-n-card .web-count .large-number {
   color: var(--blue-main);
@@ -2296,16 +2329,62 @@ section.tabs {
     justify-content: start;
   }
 }
-.about-section .about-wrapper .tech-we-use-list .tech-tag {
+.about-section .about-wrapper .tech-we-use-list li .tech-tag {
   background-color: var(--blue-bg);
   border: 1px solid transparent;
   text-transform: none;
   justify-content: center;
   align-items: center;
+  animation: list-glow 9s linear infinite;
 }
-.about-section .about-wrapper .tech-we-use-list .tech-tag:hover {
+.about-section .about-wrapper .tech-we-use-list li .tech-tag:hover {
   color: var(--blue-main);
   border-color: 1px solid var(--blue-main);
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(1) .tech-tag {
+  animation-delay: 0s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(2) .tech-tag {
+  animation-delay: 0.6s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(3) .tech-tag {
+  animation-delay: 1.2s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(4) .tech-tag {
+  animation-delay: 1.8s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(5) .tech-tag {
+  animation-delay: 2.4s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(6) .tech-tag {
+  animation-delay: 3s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(7) .tech-tag {
+  animation-delay: 3.6s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(8) .tech-tag {
+  animation-delay: 4.2s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(9) .tech-tag {
+  animation-delay: 4.8s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(10) .tech-tag {
+  animation-delay: 5.4s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(11) .tech-tag {
+  animation-delay: 6s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(12) .tech-tag {
+  animation-delay: 6.6s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(13) .tech-tag {
+  animation-delay: 7.2s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(14) .tech-tag {
+  animation-delay: 7.8s;
+}
+.about-section .about-wrapper .tech-we-use-list li:nth-child(15) .tech-tag {
+  animation-delay: 8.4s;
 }
 
 .clients-cases {
@@ -3378,7 +3457,7 @@ section.tabs {
     gap: 14px;
   }
   .tab-button {
-    padding: 18px 33px 18px 100px;
+    padding: 18px 33px 0px 100px;
   }
   .tab-button .title_h5 {
     display: block;
@@ -3576,7 +3655,7 @@ section.tabs {
     margin: 0 11px;
   }
   .tab-button {
-    padding: 14px 20px;
+    padding: 14px 20px 0px 20px;
   }
   .tab-button .tab-header {
     position: relative;
@@ -3595,9 +3674,6 @@ section.tabs {
     top: -5px;
     left: -35px;
     color: var(--blue-clouds);
-  }
-  .tab-button .tab-button-content {
-    display: none;
   }
   .tab-content {
     padding-bottom: 0px;
@@ -3808,6 +3884,7 @@ section.tabs {
     height: fit-content;
     border-radius: 39px;
     align-items: center;
+    padding: 14px 20px;
   }
   .tabs .tab-button:has(input:checked) {
     border-bottom-left-radius: 0;
@@ -4101,13 +4178,13 @@ section.tabs {
 }
 @keyframes eye {
   0%, 100% {
-    transform: translateY(0) translateX(0px) scale(1);
+    transform: translateY(-5px) translateX(0px) scale(1);
   }
   50% {
-    transform: translateY(-5px) translateX(5px) scale(1.01);
+    transform: translateY(-7px) translateX(5px) scale(1.01);
   }
   75% {
-    transform: translateY(-5px) translateX(-5px) scale(1.01);
+    transform: translateY(-5px) translateX(0px) scale(1.01);
   }
 }
 @keyframes fadeIn {
@@ -4116,5 +4193,23 @@ section.tabs {
   }
   to {
     opacity: 1;
+  }
+}
+@keyframes list-glow {
+  0%, 100% {
+    box-shadow: none;
+    border: 1px solid transparent;
+  }
+  45% {
+    box-shadow: none;
+    border: 1px solid transparent;
+  }
+  50% {
+    border: 1px solid var(--blue-main);
+    box-shadow: 0px 0px 15px var(--blue-main);
+  }
+  65% {
+    box-shadow: none;
+    border: 1px solid transparent;
   }
 }
