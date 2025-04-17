@@ -1588,6 +1588,12 @@ section.tabs {
   height: fit-content;
   gap: 0;
 }
+@media (max-width: 1000px) {
+  .tab-content-webDev .web-shop-diagram .title_h4,
+  .tab-content-webDev .tender-diagram .title_h4 {
+    margin-bottom: 50px;
+  }
+}
 .tab-content-webDev .web-shop-diagram .benefits-left,
 .tab-content-webDev .web-shop-diagram .benefits-right,
 .tab-content-webDev .tender-diagram .benefits-left,
@@ -1631,6 +1637,12 @@ section.tabs {
 .tab-content-webDev .tender-diagram .video-diagramm {
   order: 0;
 }
+@media (max-width: 1000px) {
+  .tab-content-webDev .web-shop-diagram .video-diagramm,
+  .tab-content-webDev .tender-diagram .video-diagramm {
+    display: none;
+  }
+}
 .tab-content-webDev .web-shop-diagram .benefit-card,
 .tab-content-webDev .tender-diagram .benefit-card {
   width: 100%;
@@ -1646,10 +1658,37 @@ section.tabs {
 .tab-content-webDev .tender-diagram .benefit-card:has(input:checked)::before {
   background-color: var(--blue-main);
 }
+.tab-content-webDev .web-shop-diagram .benefit-card .content-hidden,
+.tab-content-webDev .tender-diagram .benefit-card .content-hidden {
+  display: none;
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev .web-shop-diagram .benefit-card .content-hidden,
+  .tab-content-webDev .tender-diagram .benefit-card .content-hidden {
+    display: block;
+    color: var(--color-grey);
+    margin-top: 10px;
+  }
+  .tab-content-webDev .web-shop-diagram .benefit-card .content-hidden li,
+  .tab-content-webDev .tender-diagram .benefit-card .content-hidden li {
+    padding-left: 5px;
+    margin-top: 5px;
+  }
+  .tab-content-webDev .web-shop-diagram .benefit-card .content-hidden li::marker,
+  .tab-content-webDev .tender-diagram .benefit-card .content-hidden li::marker {
+    content: "•";
+  }
+}
 .tab-content-webDev .web-shop-diagram .benefit-card img,
 .tab-content-webDev .tender-diagram .benefit-card img {
   width: 34px;
   height: 34px;
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev .web-shop-diagram .benefit-card img,
+  .tab-content-webDev .tender-diagram .benefit-card img {
+    align-self: flex-start;
+  }
 }
 .tab-content-webDev .web-shop-diagram .benefit-card:before,
 .tab-content-webDev .tender-diagram .benefit-card:before {

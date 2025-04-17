@@ -1712,6 +1712,12 @@ section.tabs {
         height: fit-content;
         gap: 0;
 
+        @media (max-width: 1000px) {
+            .title_h4 {
+                margin-bottom: 50px;
+            }
+        }
+
         .benefits-left,
         .benefits-right {
             height: 420px;
@@ -1737,6 +1743,8 @@ section.tabs {
         .benefits-left {
             order: 2;
             margin-bottom: 30px;
+
+
         }
 
         .benefits-right {
@@ -1745,6 +1753,10 @@ section.tabs {
 
         .video-diagramm {
             order: 0;
+
+            @media (max-width: 1000px) {
+                display: none;
+            }
         }
 
 
@@ -1753,6 +1765,7 @@ section.tabs {
             padding: 20px;
             min-height: unset;
             cursor: pointer;
+
 
             &:has(input:checked) {
                 img {
@@ -1764,10 +1777,33 @@ section.tabs {
                 }
             }
 
+            .content-hidden {
+                display: none;
+
+                @media (max-width: 1000px) {
+                    display: block;
+                    color: var(--color-grey);
+                    margin-top: 10px;
+
+                    li {
+                        padding-left: 5px;
+                        margin-top: 5px;
+
+                        &::marker {
+                            content: '\2022';
+                        }
+                    }
+                }
+            }
+
 
             img {
                 width: 34px;
                 height: 34px;
+
+                @media (max-width: 1000px) {
+                    align-self: flex-start;
+                }
             }
 
             &:before {
