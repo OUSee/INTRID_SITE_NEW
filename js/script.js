@@ -7,21 +7,20 @@ const slideItems = document.querySelectorAll('.slide');
 
 const firstClone = slideItems[0].cloneNode(true);
 const lastClone = slideItems[slideItems.length - 1].cloneNode(true);
-
+const hr = document.createElement('hr') 
 slides.appendChild(firstClone);
+slides.appendChild(hr)
 slides.insertBefore(lastClone, slideItems[0]);
 
-const allSlides = document.querySelectorAll('.slide');
-const slideCount = allSlides.length;
-const height = allSlides[0].offsetHeight;
+const slideCount = slideItems.length;
+const height = slideItems[0].offsetHeight;
 
-let currentIndex = 1; 
-slides.style.transform = `translateY(-${currentIndex * height + 1}px)`;
-slides.style.transition = 'transform 0.5s ease';
+let currentIndex = 0; 
+slides.style.transform = `translateY(-${currentIndex * (height + 1)}px)`;
 
 function updateSlider() {
-  const currheight = allSlides[0].offsetHeight;
-  slides.style.transform = `translateY(-${currentIndex * currheight + 1}px)`;
+  const currheight = slideItems[0].offsetHeight;
+  slides.style.transform = `translateY(-${currentIndex * (currheight + 1)}px)`;
 
   if (currentIndex === 0) {
     setTimeout(() => {

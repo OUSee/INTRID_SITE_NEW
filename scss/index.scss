@@ -140,6 +140,10 @@ h4,
     font-weight: 700;
     font-size: 24px;
 
+    * {
+        font-size: 1em;
+    }
+
     &.underlined {
         position: relative;
 
@@ -532,6 +536,10 @@ label.radioButton:has(input:checked)::after {
 
 .color-grey {
     color: var(--color-grey);
+}
+
+.color-blue-tag {
+    color: var(--blue-tag)
 }
 
 .gap-8 {
@@ -1271,6 +1279,19 @@ div.slider-test,
     }
 }
 
+.achievements-slider {
+    .slides .slide {
+        .icons-partners {
+            height: 1.7em;
+
+            img {
+                width: 1.7em;
+                height: auto;
+            }
+        }
+    }
+}
+
 .slider-horizontal {
     width: 100%;
     height: 400px;
@@ -1758,29 +1779,42 @@ section.tabs {
 
     &.tender {
         .tender-explanation-group {
-            padding-left: 60px;
-            position: relative;
             display: flex;
             gap: 100px;
 
-            &::before {
-                content: '';
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                background-color: var(--blue-main);
-                position: absolute;
-                top: 0;
-                left: 0;
+            .achievements-group {
+                flex: 1 1 80%;
             }
 
+            @media (max-width: 900px) {
+                flex-wrap: wrap;
+                gap: 50px;
+
+                .achievements-group {
+                    margin: 0 auto;
+                }
+            }
 
             .tender-testimonial {
+                padding-left: 60px;
+                position: relative;
+
                 .title_h4 {
                     margin-bottom: 20px;
                 }
 
-                max-width: 780px;
+                max-width: 840px;
+
+                &::before {
+                    content: '';
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    background-color: var(--blue-main);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
             }
         }
 
@@ -1898,11 +1932,23 @@ section.tabs {
             }
         }
 
+        p.title_h4 {
+            margin: 30px 0;
+        }
+
         .block-buttons {
             width: 100%;
 
             @media (max-width: 1000px) {
                 margin-top: 0;
+            }
+
+            @media (max-width: 800px) {
+                flex-wrap: wrap;
+
+                .button-link {
+                    flex: 1 1 0;
+                }
             }
         }
 
@@ -1919,16 +1965,23 @@ section.tabs {
                 border-radius: 25px;
                 overflow: hidden;
 
+
                 tr {
                     &:first-child {
 
                         td,
-                        th {
+                        th label {
                             padding: 18px 30px;
+
+                            @media (max-width: 600px) {
+                                font-size: 12px;
+                                padding: 8px 15px;
+                            }
                         }
                     }
 
                     &:last-child {
+
                         td {
                             text-align: end;
                             color: var(--blue-main) !important;
@@ -1940,8 +1993,16 @@ section.tabs {
                     }
 
                     td,
-                    th {
+                    th label {
                         padding: 10px 30px;
+
+                        input {
+                            display: none;
+                        }
+                    }
+
+                    th label {
+                        cursor: pointer;
                     }
 
                     td:not(:first-child) {
@@ -1950,7 +2011,7 @@ section.tabs {
                     }
 
                     &:nth-child(even) td,
-                    th {
+                    th label {
                         background-color: var(--blue-clouds);
                         color: var(--color-white);
                         border-top: 1px solid transparent;
@@ -1969,7 +2030,113 @@ section.tabs {
                     }
                 }
 
-                @media (max-width: 900px) {}
+                @media (max-width: 900px) {
+                    // tender tarif table with tabs
+                    position: relative;
+                    margin-top: 93px;
+                    border-top-left-radius: 0px;
+                    border-top-right-radius: 0px;
+                    overflow-x: hidden;
+                    overflow-y: visible;
+
+                    &:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2),
+                    &:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3),
+                    &:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
+                        display: table-cell !important;
+                    }
+
+
+                    thead {
+                        position: absolute;
+                        top: -53px;
+                        right: 0;
+                        width: 100%;
+                        border-top-left-radius: 25px;
+                        border-top-right-radius: 25px;
+                        display: flex;
+                        overflow: hidden;
+
+                        @media (max-width: 600px) {
+                            top: -32px;
+                        }
+
+                        tr {
+                            width: 100%;
+                            display: flex;
+                        }
+
+                        th {
+                            flex: 1 1 30%;
+                            display: flex;
+
+                            &:has(input:checked) {
+                                order: 3;
+                                animation: append-order 2s ease-in-out;
+                            }
+                        }
+
+                        th label {
+                            width: 100%;
+
+                            &:has(input:checked) {
+                                background-color: var(--blue-tag);
+                            }
+                        }
+                    }
+
+
+                    tbody {
+                        tr {
+                            td:not(:first-child) {
+                                display: none;
+                                width: calc(100% / 3);
+                                color: var(--color-white);
+                            }
+
+                            &:nth-child(even) td:not(:first-child) {
+                                background-color: var(--blue-tag);
+                                color: var(--color-white) !important;
+                                border-top: 1px solid transparent;
+                                border-bottom: 1px solid transparent;
+                                border-left: 2px solid var(--bg-main);
+                                border-right: 2px solid var(--bg-main);
+                            }
+
+                            &:nth-child(odd) td {
+                                background-color: var(--blue-bg);
+                                color: var(--color-white);
+                                border-top: 1px solid transparent;
+                                border-bottom: 1px solid transparent;
+                                border-left: 2px solid var(--bg-main);
+                                border-right: 2px solid var(--bg-main);
+                            }
+                        }
+                    }
+
+                    tr {
+                        th:first-child {
+                            display: none;
+                        }
+
+                        &:last-child {
+                            border-bottom-left-radius: 25px;
+                            border-bottom-right-radius: 25px;
+                        }
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    tr:last-child {
+                        td {
+                            text-align: end;
+                            color: var(--blue-main) !important;
+                        }
+
+                        td:not(:first-child) {
+                            font-size: 12px;
+                        }
+                    }
+                }
             }
         }
 
@@ -2091,21 +2258,21 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             }
         }
     }
+}
 
-    .icons-partners {
-        justify-content: center;
-        display: flex;
-        gap: 5px;
-        margin-top: 5px;
+.icons-partners {
+    justify-content: center;
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
 
-        a.lg-partner {
+    a.lg-partner {
+        width: 1.7em;
+        height: 1.7em;
+
+        img {
+            height: auto;
             width: 1.7em;
-            height: 1.7em;
-
-            img {
-                height: 100%;
-                width: auto;
-            }
         }
     }
 }
@@ -3224,6 +3391,14 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                                     font-weight: bold;
                                 }
 
+                                .link {
+                                    color: var(--blue-main);
+
+                                    &:hover {
+                                        text-decoration: underline;
+                                    }
+                                }
+
                                 li::marker {
                                     color: var(--blue-tag);
                                 }
@@ -3238,9 +3413,13 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                                 background-color: var(--blue-main);
                             }
 
+
+
                             &-list {
-                                .highlight {
-                                    font-weight: bold;
+                                li {
+                                    .highlight {
+                                        font-weight: bold;
+                                    }
                                 }
 
                             }
@@ -5158,13 +5337,13 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
 @keyframes appear {
     0% {
-        display: flex;
+        display: block;
         opacity: 0;
         transform: scale(1, 0);
     }
 
     100% {
-        display: flex;
+        display: block;
         opacity: 1;
         transform: scale(1, 1);
     }
@@ -5206,6 +5385,16 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
     to {
         opacity: 1;
+    }
+}
+
+@keyframes append-order {
+    0% {
+        color: transparent;
+    }
+
+    100% {
+        color: var(--color-white);
     }
 }
 
