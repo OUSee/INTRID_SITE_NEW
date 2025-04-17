@@ -355,7 +355,7 @@
                         </p>
                     </div>
                     <div class="achievements-group">
-                        <a class="achievement" href="javascript://">
+                        <a class="achievement" href="javascript://" data-popup="sertificate-webStore-view">
                             <div class="img-placeholder">
                                 <img src="./src/images/prize-gold.webp" alt="herb">
                             </div>
@@ -479,7 +479,7 @@
                         </li>
                     </ul>
                     <div class="achievements-group">
-                        <a class="achievement" href="https://ratingruneta.ru/e-commerce/voronezh/2024/" target="_blank">
+                        <a class="achievement" href="javascript://" data-popup="sertificate-webStore-view">
                             <div class="img-placeholder" target="_blank">
                                 <img src="./src/images/prize-gold.webp" alt="herb">
                             </div>
@@ -491,27 +491,30 @@
                             Что даёт внедрение искусственного интеллекта в интернет-магазин:
                         </p>
                         <aside class="benefits-left">
-                            <div class="benefit-card">
+                            <label for="ai-benefit-1" class="benefit-card">
+                                <input type="radio" name="ai-benefits" id="ai-benefit-1" checked>
                                 <img src="./src/icons/store-growth.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Рост конверсии и продаж</p>
                                 </div>
-                            </div>
-                            <div class="benefit-card"><img src="./src/icons/store-head-higher.svg" alt="img">
+                            </label>
+                            <label for="ai-benefit-2" class="benefit-card">
+                                <input type="radio" name="ai-benefits" id="ai-benefit-2"><img
+                                    src="./src/icons/store-head-higher.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">На голову выше конкурентов</p>
                                 </div>
-                            </div>
-                            <div class="benefit-card"><img src="./src/icons/store-med-cache.svg" alt="img">
+                            </label>
+                            <label for="ai-benefit-3" class="benefit-card">
+                                <input type="radio" name="ai-benefits" id="ai-benefit-3"><img
+                                    src="./src/icons/store-med-cache.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Увеличение среднего чека</p>
                                 </div>
-                            </div>
+                            </label>
                         </aside>
                         <div class="video-diagramm">
                             <p class="store-text">
-                                Подбирает сопутствующие товары, которые покупатели часто добавляют в корзину, тем самым
-                                увеличивают средний чек
                             </p>
                             <div class="water-ripple-video">
                                 <div class="ripple-circle"></div>
@@ -526,24 +529,27 @@
                             </div>
                         </div>
                         <aside class="benefits-right">
-                            <div class="benefit-card">
+                            <label for="ai-benefit-4" class="benefit-card">
+                                <input type="radio" name="ai-benefits" id="ai-benefit-4">
                                 <img src="./src/icons/store-buy-probability.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Повышение вероятности покупки</p>
                                 </div>
-                            </div>
-                            <div class="benefit-card">
+                            </label>
+                            <label for="ai-benefit-5" class="benefit-card">
+                                <input type="radio" name="ai-benefits" id="ai-benefit-5">
                                 <img src="./src/icons/store-voice-search.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Голосовой поиск</p>
                                 </div>
-                            </div>
-                            <div class="benefit-card">
+                            </label>
+                            <label for="ai-benefit-6" class="benefit-card">
+                                <input type="radio" name="ai-benefits" id="ai-benefit-6">
                                 <img src="./src/icons/store-tg-bot.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Телеграм-бот</p>
                                 </div>
-                            </div>
+                            </label>
                         </aside>
                     </div>
                     <div class="count-n-card">
@@ -630,44 +636,39 @@
                     <p class="title_h4 w-fill text-center">Преимущества тендерных порталов</p>
                     <div class="tender-diagram">
                         <aside class="benefits-left">
-                            <div class="benefit-card">
+                            <label class="benefit-card" for="tender-radio-1">
+                                <input type="radio" name="tender-radio" id="tender-radio-1" checked>
                                 <img src="./src/icons/tender-budget.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Экономия бюджета</p>
                                 </div>
-                            </div>
-                            <div class="benefit-card"><img src="./src/icons/tender-usability.svg" alt="img">
+                            </label>
+                            <label class="benefit-card" for="tender-radio-2">
+                                <input type="radio" name="tender-radio" id="tender-radio-2"><img
+                                    src="./src/icons/tender-usability.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Простота использования</p>
                                 </div>
-                            </div>
-                            <div class="benefit-card"><img src="./src/icons/tender-integration.svg" alt="img">
+                            </label>
+                            <label class="benefit-card" for="tender-radio-3">
+                                <input type="radio" name="tender-radio" id="tender-radio-3"><img
+                                    src="./src/icons/tender-integration.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Интеграция с 1с и другими базами данных </p>
                                 </div>
-                            </div>
+                            </label>
                         </aside>
                         <aside class="benefits-top">
-                            <div class="benefit-card">
+                            <label class="benefit-card" for="tender-radio-4">
+                                <input type="radio" name="tender-radio" id="tender-radio-4">
                                 <img src="./src/icons/tender-time.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Экономия времени</p>
                                 </div>
-                            </div>
+                            </label>
                         </aside>
                         <div class="video-diagramm">
                             <ul class="tender-text">
-                                <li>Менеджерам больше не нужно обзванивать сотни поставщиков и изучать их прайсы и КП.
-                                </li>
-                                <li>Формирование тендеров в автоматическом режиме исходя из текущих потребностей
-                                    компании.</li>
-                                <li>Синхронизация с бухгалтерией поставщиков.</li>
-                                <li>Выбор лучших предложений по цене, условиям поставки и качеству продукции для тысяч
-                                    наименований от сотен поставщиков.</li>
-                                <li>
-                                    Автоматически генерируется необходимый пакет документов.
-                                    Полностью автоматизированный процесс закупок
-                                </li>
                             </ul>
                             <div class="water-ripple-video">
                                 <div class="ripple-circle"></div>
@@ -683,32 +684,36 @@
                             </div>
                         </div>
                         <aside class="benefits-right">
-                            <div class="benefit-card">
+                            <label class="benefit-card" for="tender-radio-5">
+                                <input type="radio" name="tender-radio" id="tender-radio-5">
                                 <img src="./src/icons/tender-adaptation.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Адаптация под особенности бизнеса</p>
                                 </div>
-                            </div>
-                            <div class="benefit-card">
+                            </label>
+                            <label class="benefit-card" for="tender-radio-6">
+                                <input type="radio" name="tender-radio" id="tender-radio-6">
                                 <img src="./src/icons/tender-archive.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Архивация данных, статистика и отчёты</p>
                                 </div>
-                            </div>
-                            <div class="benefit-card">
+                            </label>
+                            <label class="benefit-card" for="tender-radio-7">
+                                <input type="radio" name="tender-radio" id="tender-radio-7">
                                 <img src="./src/icons/tender-optimisation.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Оптимизация штата сотрудников</p>
                                 </div>
-                            </div>
+                            </label>
                         </aside>
                         <aside class="benefits-bottom">
-                            <div class="benefit-card">
+                            <label class="benefit-card" for="tender-radio-8">
+                                <input type="radio" name="tender-radio" id="tender-radio-8">
                                 <img src="./src/icons/tender-safety.svg" alt="img">
                                 <div class="benefit-card-info">
                                     <p class="title_h5">Защита от мошенничества</p>
                                 </div>
-                            </div>
+                            </label>
                         </aside>
                     </div>
                     <div class="block-buttons">
@@ -1845,7 +1850,7 @@
     </dialog>
     <dialog class="popup" id="sertificate-webStore-view">
         <div class="popup-body">
-            <img src="./src/images/accreditation.webp" alt="accrediattion">
+            <img src="./src/images/sert-webstore.webp" alt="accrediattion">
         </div>
     </dialog>
     <dialog class="popup" id="sertificate-seo-view">

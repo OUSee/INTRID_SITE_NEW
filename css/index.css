@@ -59,6 +59,10 @@ body {
   }
 }
 
+input[type=radio] {
+  display: none;
+}
+
 h1,
 h2,
 h3,
@@ -1632,6 +1636,15 @@ section.tabs {
   width: 100%;
   padding: 20px;
   min-height: unset;
+  cursor: pointer;
+}
+.tab-content-webDev .web-shop-diagram .benefit-card:has(input:checked) img,
+.tab-content-webDev .tender-diagram .benefit-card:has(input:checked) img {
+  filter: brightness(0.3);
+}
+.tab-content-webDev .web-shop-diagram .benefit-card:has(input:checked)::before,
+.tab-content-webDev .tender-diagram .benefit-card:has(input:checked)::before {
+  background-color: var(--blue-main);
 }
 .tab-content-webDev .web-shop-diagram .benefit-card img,
 .tab-content-webDev .tender-diagram .benefit-card img {
@@ -1655,7 +1668,7 @@ section.tabs {
   z-index: 2;
   text-align: center;
   border-radius: 50%;
-  padding: 80px 20px;
+  padding: 55px 20px;
   color: var(--bg-main);
 }
 @media (max-width: 1000px) {
