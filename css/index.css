@@ -826,6 +826,15 @@ label.radioButton:has(input:checked)::after {
   padding: 12px 20px;
   border-radius: 0;
 }
+.dropdown.second .dropdown-content .burger-hidden.highlight {
+  color: var(--color-white) !important;
+  font-size: 16px;
+}
+@media (min-width: 1000px) {
+  .dropdown.second .dropdown-content .burger-hidden {
+    display: none;
+  }
+}
 
 .dropdown.second .dropdown-content::before {
   content: "";
@@ -1887,6 +1896,25 @@ section.tabs {
   border-radius: 25px;
   overflow: hidden;
 }
+@media (min-width: 900px) {
+  .tab-content-webDev.tender .tender-types-group .tender-table thead tr td,
+  .tab-content-webDev.tender .tender-types-group .tender-table thead tr th {
+    padding: 18px 30px;
+    background-color: var(--blue-clouds);
+    color: var(--color-white);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-left: 2px solid var(--bg-main);
+    border-right: 2px solid var(--bg-main);
+  }
+  .tab-content-webDev.tender .tender-types-group .tender-table thead tr th label {
+    padding: 0 !important;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+  }
+}
 .tab-content-webDev.tender .tender-types-group .tender-table tr:first-child td,
 .tab-content-webDev.tender .tender-types-group .tender-table tr:first-child th label {
   padding: 18px 30px;
@@ -2171,6 +2199,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 @media (max-width: 1250px) {
   .count-n-card .web-count span.ml-6 {
     text-wrap: nowrap;
+    margin-left: 0;
   }
 }
 .count-n-card .web-count .large-number {
@@ -3087,7 +3116,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-1:checked) ~ .cases-content .tab-content:nth-child(1), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-2:checked) ~ .cases-content .tab-content:nth-child(2), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-3:checked) ~ .cases-content .tab-content:nth-child(3), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-4:checked) ~ .cases-content .tab-content:nth-child(4), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-5:checked) ~ .cases-content .tab-content:nth-child(5), .clients-cases .blocks .cases-tabs .cases-buttons:has(#cases-tab-6:checked) ~ .cases-content .tab-content:nth-child(6) {
   display: flex;
-  animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation: flex-appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .clients-cases .blocks .cases-tabs .cases-content {
   display: flex;
@@ -3140,10 +3169,10 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .clients-cases .blocks .cases-tabs .cases-content .tab-content p.title_h4 {
   max-width: 390px;
   text-wrap: wrap;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .description {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   max-width: 500px;
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .button-link {
@@ -3153,7 +3182,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .main-content {
   display: flex;
   flex-direction: row;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .main-content .card {
   flex: 1 1 0px;
@@ -3769,10 +3798,14 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   z-index: 9;
   margin: 20px auto;
 }
+.popup-body hr {
+  width: 97%;
+  margin: 20px auto;
+}
 .popup-body img {
   width: auto;
   height: auto;
-  max-height: 820px;
+  max-height: 745px;
   border-radius: 10px;
 }
 @media (max-width: 601px) {
@@ -3783,6 +3816,14 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   .popup-body img {
     width: 80vw;
   }
+}
+.popup .map-container {
+  overflow: hidden;
+  border-radius: 15px;
+}
+.popup .map-container iframe {
+  width: 70vw;
+  height: 80vh;
 }
 
 @media (max-width: 1500px) {
@@ -4746,6 +4787,18 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
   100% {
     display: block;
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+@keyframes flex-appear {
+  0% {
+    display: flex;
+    opacity: 0;
+    transform: scale(1, 0);
+  }
+  100% {
+    display: flex;
     opacity: 1;
     transform: scale(1, 1);
   }
