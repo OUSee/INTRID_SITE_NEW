@@ -403,6 +403,7 @@ const webShopTarget = webShopDiagram.querySelector('.store-text')
 webShopDiagram.querySelectorAll('input').forEach((input)=>
   input.addEventListener('click', ()=>{
     setTabContent(input.id)
+    toggleLine(input.id)
   })
 )
 const tenderDiagram = document.querySelector('.tender-diagram')
@@ -413,6 +414,42 @@ tenderDiagram.querySelectorAll('input').forEach((input)=>
     setTenderTabContent(input.id)
   })
 )
+
+const toggleLineShopAI = (id) => {
+  const lines = webShopDiagram.querySelectorAll('.line')
+  lines.forEach(line => {
+    line.classList.remove('active-left');
+    line.classList.remove('active-right');
+  });
+  const lastChar = id.slice(-1);
+  switch (lastChar){
+    default:{
+      lines[1].classList.add('active-left')
+      break
+    }
+    case '2':{
+      lines[0].classList.add('active-left')
+      break
+    }
+    case '3':{
+      lines[2].classList.add('active-left')
+      break
+    }
+    case '4':{
+      lines[2].classList.add('active-right')
+      break
+    }
+    case '5':{
+      lines[0].classList.add('active-right')
+      break
+    }
+    case '6':{
+      lines[1].classList.add('active-right')
+      break
+    }
+  }
+  console.log('=> liens and id', lastChar, lines)
+}
 
 
 const setTabContent = (tabId) => {
@@ -430,6 +467,7 @@ const setTabContent = (tabId) => {
 }
 
 setTabContent('ai-benefit-1')
+toggleLineShopAI('1')
 
 const setTenderTabContent = (tabId) => {
   console.log('=> target', tabId)

@@ -1633,82 +1633,72 @@ section.tabs {
     margin: 0;
   }
 }
-.tab-content-webDev .web-shop-diagram .benefits-left,
-.tab-content-webDev .tender-diagram .benefits-left {
+.tab-content-webDev .web-shop-diagram div.video-diagramm .connections .line {
+  background-color: var(--blue-bg);
+}
+.tab-content-webDev .web-shop-diagram div.video-diagramm .connections .line:before, .tab-content-webDev .web-shop-diagram div.video-diagramm .connections .line:after {
+  background-color: transparent;
+}
+.tab-content-webDev .benefits-left {
   order: 2;
   margin-bottom: 30px;
 }
-.tab-content-webDev .web-shop-diagram .benefits-right,
-.tab-content-webDev .tender-diagram .benefits-right {
+.tab-content-webDev .benefits-right {
   order: 3;
 }
-.tab-content-webDev .web-shop-diagram .video-diagramm,
-.tab-content-webDev .tender-diagram .video-diagramm {
+.tab-content-webDev .video-diagramm {
   order: 0;
 }
 @media (max-width: 1000px) {
-  .tab-content-webDev .web-shop-diagram .video-diagramm,
-  .tab-content-webDev .tender-diagram .video-diagramm {
+  .tab-content-webDev .video-diagramm {
     display: none;
   }
 }
-.tab-content-webDev .web-shop-diagram .benefit-card,
-.tab-content-webDev .tender-diagram .benefit-card {
+.tab-content-webDev .benefit-card {
   width: 100%;
   padding: 20px;
   min-height: unset;
   cursor: pointer;
 }
-.tab-content-webDev .web-shop-diagram .benefit-card:has(input:checked) img,
-.tab-content-webDev .tender-diagram .benefit-card:has(input:checked) img {
+.tab-content-webDev .benefit-card:has(input:checked) img {
   filter: brightness(0.3);
 }
-.tab-content-webDev .web-shop-diagram .benefit-card:has(input:checked)::before,
-.tab-content-webDev .tender-diagram .benefit-card:has(input:checked)::before {
+.tab-content-webDev .benefit-card:has(input:checked)::before {
   background-color: var(--blue-main);
 }
-.tab-content-webDev .web-shop-diagram .benefit-card .content-hidden,
-.tab-content-webDev .tender-diagram .benefit-card .content-hidden {
+.tab-content-webDev .benefit-card .content-hidden {
   display: none;
 }
 @media (max-width: 1000px) {
-  .tab-content-webDev .web-shop-diagram .benefit-card .content-hidden,
-  .tab-content-webDev .tender-diagram .benefit-card .content-hidden {
+  .tab-content-webDev .benefit-card .content-hidden {
     display: block;
     color: var(--color-grey);
     margin-top: 10px;
   }
-  .tab-content-webDev .web-shop-diagram .benefit-card .content-hidden li,
-  .tab-content-webDev .tender-diagram .benefit-card .content-hidden li {
+  .tab-content-webDev .benefit-card .content-hidden li {
     padding-left: 5px;
     margin-top: 5px;
   }
-  .tab-content-webDev .web-shop-diagram .benefit-card .content-hidden li::marker,
-  .tab-content-webDev .tender-diagram .benefit-card .content-hidden li::marker {
+  .tab-content-webDev .benefit-card .content-hidden li::marker {
     content: "•";
   }
 }
-.tab-content-webDev .web-shop-diagram .benefit-card img,
-.tab-content-webDev .tender-diagram .benefit-card img {
+.tab-content-webDev .benefit-card img {
   width: 34px;
   height: 34px;
 }
 @media (max-width: 1000px) {
-  .tab-content-webDev .web-shop-diagram .benefit-card img,
-  .tab-content-webDev .tender-diagram .benefit-card img {
+  .tab-content-webDev .benefit-card img {
     align-self: flex-start;
   }
 }
-.tab-content-webDev .web-shop-diagram .benefit-card:before,
-.tab-content-webDev .tender-diagram .benefit-card:before {
+.tab-content-webDev .benefit-card:before {
   top: -35px;
 }
-.tab-content-webDev .web-shop-diagram .video-diagramm .water-ripple-video,
-.tab-content-webDev .tender-diagram .video-diagramm .water-ripple-video {
+.tab-content-webDev .video-diagramm .water-ripple-video {
   z-index: 0;
 }
-.tab-content-webDev .web-shop-diagram .video-diagramm .store-text,
-.tab-content-webDev .tender-diagram .video-diagramm .store-text {
+.tab-content-webDev .video-diagramm .store-text {
   width: 100%;
   height: 100%;
   position: relative;
@@ -1720,8 +1710,7 @@ section.tabs {
   color: var(--bg-main);
 }
 @media (max-width: 1000px) {
-  .tab-content-webDev .web-shop-diagram .video-diagramm,
-  .tab-content-webDev .tender-diagram .video-diagramm {
+  .tab-content-webDev .video-diagramm {
     margin: 50px auto;
   }
 }
@@ -2476,6 +2465,24 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   width: 305%;
   height: 2px;
   background-color: var(--blue-main);
+}
+.video-diagramm .connections .line.active-left {
+  background: linear-gradient(270deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 52%, rgb(0, 234, 255) 52%, rgb(0, 234, 255) 100%);
+}
+.video-diagramm .connections .line.active-left::before {
+  background-color: var(--blue-main) !important;
+}
+.video-diagramm .connections .line.active-left:after {
+  background-color: transparent;
+}
+.video-diagramm .connections .line.active-right {
+  background: linear-gradient(90deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 52%, rgb(0, 234, 255) 52%, rgb(0, 234, 255) 100%);
+}
+.video-diagramm .connections .line.active-right::before {
+  background-color: transparent;
+}
+.video-diagramm .connections .line.active-right:after {
+  background-color: var(--blue-main) !important;
 }
 .video-diagramm .connections .line::before {
   content: "";

@@ -1750,102 +1750,113 @@ section.tabs {
                 }
             }
         }
+    }
 
-        .benefits-left {
-            order: 2;
-            margin-bottom: 30px;
+    .web-shop-diagram div.video-diagramm .connections .line {
+        background-color: var(--blue-bg);
+
+        &:before,
+        &:after {
+            background-color: transparent;
+        }
+    }
 
 
+    .benefits-left {
+        order: 2;
+        margin-bottom: 30px;
+
+
+    }
+
+    .benefits-right {
+        order: 3;
+    }
+
+    .video-diagramm {
+        order: 0;
+
+        @media (max-width: 1000px) {
+            display: none;
+        }
+    }
+
+
+    .benefit-card {
+        width: 100%;
+        padding: 20px;
+        min-height: unset;
+        cursor: pointer;
+
+
+        &:has(input:checked) {
+            img {
+                filter: brightness(0.3);
+            }
+
+            &::before {
+                background-color: var(--blue-main);
+            }
         }
 
-        .benefits-right {
-            order: 3;
-        }
-
-        .video-diagramm {
-            order: 0;
+        .content-hidden {
+            display: none;
 
             @media (max-width: 1000px) {
-                display: none;
-            }
-        }
+                display: block;
+                color: var(--color-grey);
+                margin-top: 10px;
 
+                li {
+                    padding-left: 5px;
+                    margin-top: 5px;
 
-        .benefit-card {
-            width: 100%;
-            padding: 20px;
-            min-height: unset;
-            cursor: pointer;
-
-
-            &:has(input:checked) {
-                img {
-                    filter: brightness(0.3);
-                }
-
-                &::before {
-                    background-color: var(--blue-main);
-                }
-            }
-
-            .content-hidden {
-                display: none;
-
-                @media (max-width: 1000px) {
-                    display: block;
-                    color: var(--color-grey);
-                    margin-top: 10px;
-
-                    li {
-                        padding-left: 5px;
-                        margin-top: 5px;
-
-                        &::marker {
-                            content: '\2022';
-                        }
+                    &::marker {
+                        content: '\2022';
                     }
                 }
             }
-
-
-            img {
-                width: 34px;
-                height: 34px;
-
-                @media (max-width: 1000px) {
-                    align-self: flex-start;
-                }
-            }
-
-            &:before {
-                top: -35px;
-            }
         }
 
 
-        .video-diagramm {
-            .water-ripple-video {
-                z-index: 0;
-            }
-
-            .store-text {
-                width: 100%;
-                height: 100%;
-                position: relative;
-                background-color: var(--blue-main);
-                z-index: 2;
-                text-align: center;
-                border-radius: 50%;
-                padding: 55px 20px;
-                color: var(--bg-main);
-            }
+        img {
+            width: 34px;
+            height: 34px;
 
             @media (max-width: 1000px) {
-                margin: 50px auto;
+                align-self: flex-start;
             }
         }
 
+        &:before {
+            top: -35px;
+        }
     }
+
+
+    .video-diagramm {
+        .water-ripple-video {
+            z-index: 0;
+        }
+
+        .store-text {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: var(--blue-main);
+            z-index: 2;
+            text-align: center;
+            border-radius: 50%;
+            padding: 55px 20px;
+            color: var(--bg-main);
+        }
+
+        @media (max-width: 1000px) {
+            margin: 50px auto;
+        }
+    }
+
+
 
     &.tender {
         .tender-explanation-group {
@@ -2076,7 +2087,6 @@ section.tabs {
                     }
 
                     &:last-child {
-
                         td {
                             text-align: end;
                             color: var(--blue-main) !important;
@@ -2234,10 +2244,9 @@ section.tabs {
                 }
             }
         }
-
-
     }
 }
+
 
 body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.recent-work-card>img {
     width: 227px;
@@ -2721,6 +2730,32 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             width: 305%;
             height: 2px;
             background-color: var(--blue-main);
+
+            &.active {
+                &-left {
+                    &::before {
+                        background-color: var(--blue-main) !important;
+                    }
+
+                    &:after {
+                        background-color: transparent;
+                    }
+
+                    background: linear-gradient(270deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 52%, rgba(0, 234, 255, 1) 52%, rgba(0, 234, 255, 1) 100%);
+                }
+
+                &-right {
+                    &::before {
+                        background-color: transparent;
+                    }
+
+                    &:after {
+                        background-color: var(--blue-main) !important;
+                    }
+
+                    background: linear-gradient(90deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 52%, rgba(0, 234, 255, 1) 52%, rgba(0, 234, 255, 1) 100%);
+                }
+            }
 
             &::before {
                 content: '';
