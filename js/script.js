@@ -399,15 +399,15 @@ const openPopup = (id) => {
 // in tab webshop content show
 
 const webShopDiagram = document.querySelector('.web-shop-diagram')
-const webShopTarget = webShopDiagram.querySelector('.store-text')
+const webShopTarget = webShopDiagram.querySelector('.store-text-target')
 webShopDiagram.querySelectorAll('input').forEach((input)=>
   input.addEventListener('click', ()=>{
     setTabContent(input.id)
-    toggleLine(input.id)
+    toggleLineShopAI(input.id)
   })
 )
 const tenderDiagram = document.querySelector('.tender-diagram')
-const tenderTarget = tenderDiagram.querySelector('.tender-text')
+const tenderTarget = tenderDiagram.querySelector('.tender-text-target')
 tenderDiagram.querySelectorAll('input').forEach((input)=>
   input.addEventListener('click', ()=>{
     console.log('=> added click', input.id)
@@ -454,12 +454,12 @@ const toggleLineShopAI = (id) => {
 
 const setTabContent = (tabId) => {
   const content = [
-    {id: 'ai-benefit-1', content: 'Подбирает сопутствующие товары, которые покупатели часто добавляют в корзину, тем самым увеличивают средний чек'},
-    {id: 'ai-benefit-2', content: 'На голову выше конкурентов - Персонализированные рекомендации, умный поиск и автоматизированная поддержка выделят вас среди конкурентов'},
-    {id: 'ai-benefit-3', content: 'Рост конверсии и продаж - ИИ анализирует поведение пользователей и предлагает релевантные товары в нужный момент'},
-    {id: 'ai-benefit-4', content: 'Повышение вероятности покупки - Умные системы предсказывают потребности клиента и показывают ему именно то, что он ищет'},
-    {id: 'ai-benefit-5', content: 'Голосовой поиск - Покупатели могут искать товары голосом, что ускоряет процесс и делает магазин удобнее для пользователей смартфонов и умных устройств'},
-    {id: 'ai-benefit-6', content: 'Телеграм-бот - Телеграм-бот помогает с подбором товаров, оформлением заказов и отвечает на вопросы 24/7, увеличивая вовлеченность и лояльность клиентов'},
+    {id: 'ai-benefit-1', content: 'ИИ анализирует поведение пользователей и предлагает релевантные товары в нужный момент'},
+    {id: 'ai-benefit-2', content: 'Персонализированные рекомендации, умный поиск и автоматизированная поддержка выделят вас среди конкурентов'},
+    {id: 'ai-benefit-3', content: 'Подбирает сопутствующие товары, которые покупатели часто добавляют в корзину, тем самым увеличивают средний чек'},
+    {id: 'ai-benefit-4', content: 'Умные системы предсказывают потребности клиента и показывают ему именно то, что он ищет'},
+    {id: 'ai-benefit-5', content: 'Покупатели могут искать товары голосом, что ускоряет процесс и делает магазин удобнее для пользователей смартфонов и умных устройств'},
+    {id: 'ai-benefit-6', content: 'Телеграм-бот помогает с подбором товаров, оформлением заказов и отвечает на вопросы 24/7, увеличивая вовлеченность и лояльность клиентов'},
   ]
 
   const newText = content.find((item)=> item.id === tabId).content
