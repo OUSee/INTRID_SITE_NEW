@@ -641,7 +641,7 @@ label.radioButton:has(input:checked)::after {
 
 @media (max-width: 1000px) {
   .br1000 {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -1441,24 +1441,24 @@ button.next:hover {
   background-color: var(--blue-bg);
   border-radius: 50px;
   align-items: center;
-  max-width: 400px;
+  max-width: 330px;
 }
 .main-page.site .left-block .site-benefit-highlight {
   display: block;
   color: var(--blue-main);
   text-wrap: nowrap;
-  flex-basis: 25%;
+  flex-basis: 30%;
   flex-grow: 1;
 }
 @media (max-width: 420px) {
   .main-page.site .left-block .site-benefit-highlight {
-    flex-basis: 25%;
+    flex-basis: 30%;
     font-size: 25px;
   }
 }
 .main-page.site .left-block .site-benefit-description {
   display: block;
-  flex-basis: 75%;
+  flex-basis: 70%;
   flex-grow: 1;
 }
 .main-page.site .flying-orb {
@@ -3560,48 +3560,49 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   width: 100%;
   justify-content: center;
 }
-.clients-cases .pagination {
+@media (min-width: 901px) {
+  .clients-cases .pagination {
+    display: none;
+  }
+}
+
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   margin-top: 30px;
 }
-@media (min-width: 901px) {
-  .clients-cases .pagination {
-    display: none;
-  }
-}
-.clients-cases .pagination button {
+.pagination button {
   padding: 5px;
   border-radius: 50%;
   border: 2px solid transparent;
 }
-.clients-cases .pagination--prev-btn:hover, .clients-cases .pagination--next-btn:hover {
+.pagination--prev-btn:hover, .pagination--next-btn:hover {
   background-color: transparent;
   box-shadow: none;
   color: var(--color-white);
   border: 2px solid var(--color-white);
 }
-.clients-cases .pagination--prev-btn i, .clients-cases .pagination--next-btn i {
+.pagination--prev-btn i, .pagination--next-btn i {
   font-size: 24px;
   line-height: 24px;
   width: 24px;
   height: 24px;
 }
-.clients-cases .pagination--prev-btn i.left {
+.pagination--prev-btn i.left {
   transform: rotate(180deg) translateY(0);
 }
-.clients-cases .pagination--buttons-dots {
+.pagination--buttons-dots {
   display: flex;
   gap: 2px;
 }
-.clients-cases .pagination--buttons-dots button {
+.pagination--buttons-dots button {
   max-height: 5px;
   max-width: 5px;
   border: 2px solid var(--color-white);
 }
-.clients-cases .pagination--buttons-dots button.highlight {
+.pagination--buttons-dots button.highlight {
   border-color: var(--blue-main);
   background-color: var(--blue-main);
 }
@@ -4330,6 +4331,14 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   .sites-prices-card img {
     display: none;
   }
+}
+.sites-portfolio-slider {
+  margin-top: 50px;
+  gap: 10px;
+  display: flex;
+}
+.sites-portfolio-slider .recent-work-card {
+  flex-direction: column;
 }
 
 @media (max-width: 1500px) {

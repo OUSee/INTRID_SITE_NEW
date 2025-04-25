@@ -648,7 +648,7 @@ label.radioButton:has(input:checked)::after {
 
 .br1000 {
     @media (max-width: 1000px) {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -1559,24 +1559,24 @@ button.next {
                 background-color: var(--blue-bg);
                 border-radius: 50px;
                 align-items: center;
-                max-width: 400px;
+                max-width: 330px;
 
                 &-highlight {
                     display: block;
                     color: var(--blue-main);
                     text-wrap: nowrap;
-                    flex-basis: 25%;
+                    flex-basis: 30%;
                     flex-grow: 1;
 
                     @media (max-width: 420px) {
-                        flex-basis: 25%;
+                        flex-basis: 30%;
                         font-size: 25px;
                     }
                 }
 
                 &-description {
                     display: block;
-                    flex-basis: 75%;
+                    flex-basis: 70%;
                     flex-grow: 1;
                 }
             }
@@ -3931,57 +3931,59 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     }
 
     .pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        margin-top: 30px;
-
         @media (min-width: 901px) {
             display: none;
         }
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 30px;
+
+    button {
+        padding: 5px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+    }
+
+    &--prev-btn,
+    &--next-btn {
+
+        &:hover {
+            background-color: transparent;
+            box-shadow: none;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+        }
+
+        i {
+            font-size: 24px;
+            line-height: 24px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &--prev-btn i.left {
+        transform: rotate(180deg) translateY(0);
+    }
+
+    &--buttons-dots {
+        display: flex;
+        gap: 2px;
 
         button {
-            padding: 5px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-        }
+            max-height: 5px;
+            max-width: 5px;
+            border: 2px solid var(--color-white);
 
-        &--prev-btn,
-        &--next-btn {
-
-            &:hover {
-                background-color: transparent;
-                box-shadow: none;
-                color: var(--color-white);
-                border: 2px solid var(--color-white);
-            }
-
-            i {
-                font-size: 24px;
-                line-height: 24px;
-                width: 24px;
-                height: 24px;
-            }
-        }
-
-        &--prev-btn i.left {
-            transform: rotate(180deg) translateY(0);
-        }
-
-        &--buttons-dots {
-            display: flex;
-            gap: 2px;
-
-            button {
-                max-height: 5px;
-                max-width: 5px;
-                border: 2px solid var(--color-white);
-
-                &.highlight {
-                    border-color: var(--blue-main);
-                    background-color: var(--blue-main);
-                }
+            &.highlight {
+                border-color: var(--blue-main);
+                background-color: var(--blue-main);
             }
         }
     }
@@ -4793,6 +4795,18 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                 @media (max-width: 540px) {
                     display: none;
                 }
+            }
+        }
+    }
+
+    &-portfolio {
+        &-slider {
+            margin-top: 50px;
+            gap: 10px;
+            display: flex;
+
+            .recent-work-card {
+                flex-direction: column;
             }
         }
     }

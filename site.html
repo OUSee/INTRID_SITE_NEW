@@ -178,7 +178,7 @@
                     принесёт проект в перспективе.
                 </span>
             </p>
-            <div class="fd-row gap-10 align-center flex-wrap">
+            <div class="fd-row gap-10 align-center">
                 <a class="button-highlight big" href="/calculator">
                     РАССЧИТАТЬ СТОИМОСТЬ ПРОЕКТА <span class="br420">ОНЛАЙН</span>
                     <i class="icon-arrow_wide"></i>
@@ -187,7 +187,7 @@
                     Портфолио
                     <i class="icon-arrow_wide"></i>
                 </a>
-                <div class="site-benefit">
+                <div class="site-benefit br1000">
                     <p class="site-benefit-highlight title_h1">90%</p>
                     <p class="site-benefit-description">Клиентов работают с нами на постоянной основе</p>
                 </div>
@@ -345,7 +345,7 @@
     <!--  -->
     <section class="sites-portfolio container">
         <p class="title_h3 underlined w-fit m-center">Портфолио</p>
-        <div class="portfolio-slider">
+        <div class="sites-portfolio-slider" id="portfolio-slider">
             <div class="recent-work-card">
                 <img src="./src/images/demo-project.webp" alt="recent-work-demo">
                 <div class="work-testimonial">
@@ -398,6 +398,21 @@
                     <a href="https://kinospartak.ru" target="_blank">https://kinospartak.ru</a>
                 </div>
             </div>
+        </div>
+        <div id="sites-portfoli-pagination" class="pagination">
+            <button class="pagination--prev-btn">
+                <i class="icon-shevrone left"></i>
+            </button>
+            <div class="pagination--buttons-dots">
+                <button class="pagination--btn-dot highlight"></button>
+                <button class="pagination--btn-dot"></button>
+                <button class="pagination--btn-dot"></button>
+                <button class="pagination--btn-dot"></button>
+                <button class="pagination--btn-dot"></button>
+            </div>
+            <button class="pagination--next-btn">
+                <i class="icon-shevrone"></i>
+            </button>
         </div>
     </section>
     <!--  -->
@@ -785,7 +800,6 @@
                 <button class="pagination--btn-dot"></button>
                 <button class="pagination--btn-dot"></button>
                 <button class="pagination--btn-dot"></button>
-                <button class="pagination--btn-dot"></button>
             </div>
             <button class="pagination--next-btn">
                 <i class="icon-shevrone"></i>
@@ -872,7 +886,7 @@
 
     <!-- scripts -->
     <script src="./js/header-opacity.js"></script>
-    <script src="./js/slider.js"></script>
+    <script src="./js/slider-with-pagination.js"></script>
 </body>
 
 </html>
