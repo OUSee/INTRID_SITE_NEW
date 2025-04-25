@@ -1838,7 +1838,7 @@ section.tabs {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 70px;
+    margin-top: 50px;
     flex-wrap: wrap;
     margin-bottom: 50px;
 
@@ -5601,9 +5601,20 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
                 .slide {
                     padding: 0;
+                    gap: 0;
+                    justify-content: unset;
+                    padding-top: 20px;
                     transform: rotate(-90deg) translateY(35px);
                     height: calc(100vw / 2 - 1px);
                     width: calc(100vw / 2 - 1px);
+
+                    .img-placeholder {
+                        margin-bottom: 12px;
+                    }
+
+                    p {
+                        max-width: 80%;
+                    }
                 }
             }
 

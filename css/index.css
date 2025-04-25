@@ -1697,7 +1697,7 @@ section.tabs {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 50px;
   flex-wrap: wrap;
   margin-bottom: 50px;
 }
@@ -4902,9 +4902,18 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
   .main-page .achievements-slider .slides .slide {
     padding: 0;
+    gap: 0;
+    justify-content: unset;
+    padding-top: 20px;
     transform: rotate(-90deg) translateY(35px);
     height: calc(50vw - 1px);
     width: calc(50vw - 1px);
+  }
+  .main-page .achievements-slider .slides .slide .img-placeholder {
+    margin-bottom: 12px;
+  }
+  .main-page .achievements-slider .slides .slide p {
+    max-width: 80%;
   }
   .main-page .achievements-slider .prev {
     top: -10px;
