@@ -652,6 +652,25 @@ label.radioButton:has(input:checked)::after {
     }
 }
 
+.br420 {
+    @media (max-width: 420px) {
+        display: none;
+    }
+}
+
+.back-glow {
+    border-radius: 50%;
+    box-shadow: 0px 0px 100px 80px var(--blue-clouds),
+        inset 0px 0px 100px 10px var(--blue-clouds);
+}
+
+.hover-glow {
+    &:hover {
+        outline: 1px solid var(--blue-main);
+        box-shadow: 0px 0px 15px var(--blue-main);
+    }
+}
+
 /* OTHER STYLES */
 
 .main-header {
@@ -1536,7 +1555,7 @@ button.next {
             .site-benefit {
                 display: flex;
                 width: fit-content;
-                padding: 14px 30px;
+                padding: 20px 30px;
                 background-color: var(--blue-bg);
                 border-radius: 50px;
                 align-items: center;
@@ -1550,17 +1569,15 @@ button.next {
                     flex-grow: 1;
 
                     @media (max-width: 420px) {
-                        flex-basis: 30%;
+                        flex-basis: 25%;
                         font-size: 25px;
                     }
                 }
 
                 &-description {
                     display: block;
-                    flex-basis: 70%;
+                    flex-basis: 75%;
                     flex-grow: 1;
-                    color: var(--color-grey);
-
                 }
             }
         }
@@ -2225,6 +2242,10 @@ section.tabs {
 
         p.title_h4 {
             margin: 30px 0;
+
+            @media (max-width: 900px) {
+                margin: 60px 0px 0px 0px;
+            }
         }
 
         .block-buttons {
@@ -2420,10 +2441,6 @@ section.tabs {
                             display: flex;
                             flex-grow: 1;
                             width: 100%;
-
-                            &:has(input:checked) {
-                                order: 3;
-                            }
                         }
 
                         th label {
@@ -2433,12 +2450,16 @@ section.tabs {
                             background-color: var(--blue-clouds);
                             border-left: 1px solid var(--bg-main);
                             border-right: 1px solid var(-bg-main);
+                            order: unset;
 
 
                             &:has(input:checked) {
-                                order: 3;
                                 background-color: var(--blue-tag);
-                                // border-left: 2px solid var(--blue-tag);
+                            }
+
+                            &.fade-out {
+                                color: transparent;
+                                background-color: var(--blue-clouds) !important;
                             }
                         }
                     }
@@ -2709,31 +2730,34 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
     }
 
-    .recent-work-card {
+
+}
+
+.recent-work-card {
+    display: flex;
+    gap: 20px;
+    padding: 24px 30px;
+    background-color: var(--blue-bg);
+    border-radius: 50px;
+    margin-left: auto;
+    height: fit-content;
+
+    .work-testimonial {
         display: flex;
-        gap: 20px;
-        padding: 24px 30px;
-        background-color: var(--blue-bg);
-        border-radius: 50px;
-        margin-left: auto;
+        flex-direction: column;
+        gap: 10px;
 
-        .work-testimonial {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .card-tag {
+            color: var(--blue-tag);
+            font-size: 16px;
+        }
 
-            .card-tag {
-                color: var(--blue-tag);
-                font-size: 16px;
-            }
+        .card-description {
+            color: var(--color-grey);
+        }
 
-            .card-description {
-                color: var(--color-grey);
-            }
-
-            a {
-                margin-top: 16px;
-            }
+        a {
+            margin-top: 16px;
         }
     }
 }
@@ -2897,6 +2921,12 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     max-width: 360px;
     align-items: center;
     min-height: 150px;
+
+    &:hover {
+        border: 2px solid var(--blue-main);
+        // background-color: var(--blue-main);
+        box-shadow: 0px 0px 15px var(--blue-main);
+    }
 
     img {
         width: 44px;
@@ -4499,6 +4529,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     }
 }
 
+.portfolio-slider {
+    display: flex;
+}
+
 // pages styles
 
 .sites {
@@ -4519,7 +4553,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         &-content {
             display: flex;
             gap: 50px;
-            padding: 0px 0px 120px 0px;
+            padding: 0px 0px 180px 0px;
 
 
             hr {
@@ -4634,6 +4668,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     }
 
     &-prices {
+        padding-top: 0;
+
         .tab-view {
             height: fit-content;
 
@@ -5400,6 +5436,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
         .under-title {
             width: 90%;
+
+            &.type2 {
+                width: 40%;
+            }
         }
 
         .tab-content-webDev {
@@ -6131,4 +6171,20 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         box-shadow: none;
         border: 1px solid transparent;
     }
+}
+
+@keyframes table-switch {
+
+    0% {
+        color: var(--color-white);
+    }
+
+    33% {
+        color: transparent;
+    }
+
+    100% {
+        color: var(--color-white);
+    }
+
 }

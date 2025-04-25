@@ -12,7 +12,6 @@ const tenderDiagram = document.querySelector('.tender-diagram')
 const tenderTarget = tenderDiagram.querySelector('.tender-text-target')
 tenderDiagram.querySelectorAll('input').forEach((input)=>
   input.addEventListener('click', ()=>{
-    console.log('=> added click', input.id)
     setTenderTabContent(input.id)
   })
 )
@@ -50,7 +49,6 @@ const toggleLineShopAI = (id) => {
       break
     }
   }
-  console.log('=> liens and id', lastChar, lines)
 }
 
 
@@ -72,7 +70,6 @@ setTabContent('ai-benefit-1')
 toggleLineShopAI('1')
 
 const setTenderTabContent = (tabId) => {
-  console.log('=> target', tabId)
   
   const content = [
     {

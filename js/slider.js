@@ -248,11 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
     const updateSlider = () => {
       const gap = window.innerWidth > 600 ? 40 : window.innerWidth > 440 ? 20 : 10;
-      console.log('=> window', window.innerWidth)
       const transfotmTo = Math.floor(window.innerWidth > 440 ? window.innerWidth - 15 : window.innerWidth) * currentIndex ;
-      console.log(currentIndex);
       slider.style.transform = `translateX(-${transfotmTo}px)`;
-      console.log('slider', slider.style.transform, 'tr' , transfotmTo)
     }
 
     const nextSlide = ( ) => {
