@@ -2387,38 +2387,52 @@ section.tabs {
 
                     thead {
                         position: absolute;
-                        top: -53px;
+                        top: -42px;
                         right: 0;
                         width: 100%;
                         border-top-left-radius: 25px;
                         border-top-right-radius: 25px;
                         display: flex;
                         overflow: hidden;
+                        max-width: 100%;
 
                         @media (max-width: 600px) {
-                            top: -32px;
+                            top: -42px;
                         }
 
                         tr {
+                            max-width: 100%;
                             width: 100%;
                             display: flex;
+
+                            td {
+                                padding: 1px0;
+                            }
                         }
 
                         th {
-                            flex: 1 1 30%;
                             display: flex;
+                            flex-grow: 1;
+                            width: 100%;
 
                             &:has(input:checked) {
                                 order: 3;
-                                animation: append-order 2s ease-in-out;
                             }
                         }
 
                         th label {
+                            cursor: pointer;
                             width: 100%;
+                            padding: 12px 5px;
+                            background-color: var(--blue-clouds);
+                            border-left: 1px solid var(--bg-main);
+                            border-right: 1px solid var(-bg-main);
+
 
                             &:has(input:checked) {
+                                order: 3;
                                 background-color: var(--blue-tag);
+                                // border-left: 2px solid var(--blue-tag);
                             }
                         }
                     }
@@ -2426,6 +2440,8 @@ section.tabs {
 
                     tbody {
                         tr {
+                            max-width: 100%;
+
                             td:not(:first-child) {
                                 display: none;
                                 width: calc(100% / 3);
@@ -2453,6 +2469,10 @@ section.tabs {
                     }
 
                     tr {
+                        td {
+                            padding: 10px !important;
+                        }
+
                         th:first-child {
                             display: none;
                         }

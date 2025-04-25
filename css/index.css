@@ -2169,38 +2169,52 @@ section.tabs {
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead {
     position: absolute;
-    top: -53px;
+    top: -42px;
     right: 0;
     width: 100%;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     display: flex;
     overflow: hidden;
+    max-width: 100%;
   }
 }
 @media (max-width: 900px) and (max-width: 600px) {
   .tab-content-webDev.tender .tender-types-group .tender-table thead {
-    top: -32px;
+    top: -42px;
   }
 }
 @media (max-width: 900px) {
   .tab-content-webDev.tender .tender-types-group .tender-table thead tr {
+    max-width: 100%;
     width: 100%;
     display: flex;
   }
+  .tab-content-webDev.tender .tender-types-group .tender-table thead tr td {
+    padding: 1px0;
+  }
   .tab-content-webDev.tender .tender-types-group .tender-table thead th {
-    flex: 1 1 30%;
     display: flex;
+    flex-grow: 1;
+    width: 100%;
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead th:has(input:checked) {
     order: 3;
-    animation: append-order 2s ease-in-out;
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead th label {
+    cursor: pointer;
     width: 100%;
+    padding: 12px 5px;
+    background-color: var(--blue-clouds);
+    border-left: 1px solid var(--bg-main);
+    border-right: 1px solid var(-bg-main);
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead th label:has(input:checked) {
+    order: 3;
     background-color: var(--blue-tag);
+  }
+  .tab-content-webDev.tender .tender-types-group .tender-table tbody tr {
+    max-width: 100%;
   }
   .tab-content-webDev.tender .tender-types-group .tender-table tbody tr td:not(:first-child) {
     display: none;
@@ -2222,6 +2236,9 @@ section.tabs {
     border-bottom: 1px solid transparent;
     border-left: 2px solid var(--bg-main);
     border-right: 2px solid var(--bg-main);
+  }
+  .tab-content-webDev.tender .tender-types-group .tender-table tr td {
+    padding: 10px !important;
   }
   .tab-content-webDev.tender .tender-types-group .tender-table tr th:first-child {
     display: none;
