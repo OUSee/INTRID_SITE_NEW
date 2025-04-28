@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextBtn = pagination.querySelector('.pagination--next-btn')
         // добавить кнопки слева справа
         const navButtons = pagination.querySelectorAll('.pagination--btn-dot')
+        
         const tabs = slider.querySelectorAll('.tab-content')
         const tabsHeaders = slider.querySelectorAll('.case-tab-button')
         let slides = slider.children;
@@ -21,16 +22,20 @@ document.addEventListener('DOMContentLoaded', () => {
       
         const updateSlider = () => {
           const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
-          console.log('=> slider', slider)
-          console.log('=> slides', slides)
-          console.log('=> gap', gap)
-          console.log('=> slides[0].offsetWidth', slides[0].offsetWidth)
+          // console.log('=> slider', slider)
+          // console.log('=> slides', slides)
+          // console.log('=> gap', gap)
+          // console.log('=> slides[0].offsetWidth', slides[0].offsetWidth)
           
           slider.style.transform = `translateX(-${moveAmmount}px)`;
         }
     
         const nextSlide = ( ) => {
+          if(navButtons[currentIndex + 1] && window.getComputedStyle(navButtons[currentIndex + 1]).display === 'none'){
+            return
+          }
           navButtons[currentIndex].classList.remove('highlight')
+          console.log('=> navButtons[currentIndex + 1].display', window.getComputedStyle(navButtons[currentIndex + 1]).display)
           currentIndex = currentIndex === navButtons.length - 1  ? navButtons.length - 1 : currentIndex + 1  ;
           navButtons[currentIndex].classList.add('highlight')
           updateSlider();

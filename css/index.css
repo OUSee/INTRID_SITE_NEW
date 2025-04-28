@@ -4337,8 +4337,40 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   gap: 10px;
   display: flex;
 }
+.sites-portfolio-slider + .pagination {
+  display: none;
+}
+@media (max-width: 1200px) {
+  .sites-portfolio-slider .recent-work-card {
+    min-width: calc((100vw - 20px - 80px) / 3);
+  }
+  .sites-portfolio-slider + .pagination {
+    display: flex;
+  }
+  .sites-portfolio-slider + .pagination .pagination--btn-dot:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .sites-portfolio-slider .recent-work-card {
+    min-width: calc((100vw - 10px - 80px) / 2);
+  }
+  .sites-portfolio-slider + .pagination .pagination--btn-dot:nth-child(3) {
+    display: flex;
+  }
+}
 .sites-portfolio-slider .recent-work-card {
   flex-direction: column;
+}
+@media (max-width: 600px) {
+  .sites-portfolio-slider .recent-work-card {
+    min-width: calc((100vw - 10px - 40px) / 2);
+  }
+}
+@media (max-width: 440px) {
+  .sites-portfolio-slider .recent-work-card {
+    min-width: calc((100vw - 10px - 20px) / 2);
+  }
 }
 
 @media (max-width: 1500px) {
