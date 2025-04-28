@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const tabSliderWithPagination = (id) => {
-        const slider = document.querySelector(`#${id}`);
+        let slider = document.querySelector(`#${id}`);
         const pagination = document.querySelector(`#${id} + .pagination`);
         const prevBtn = pagination.querySelector('.pagination--prev-btn')
         const nextBtn = pagination.querySelector('.pagination--next-btn')
@@ -9,15 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const navButtons = pagination.querySelectorAll('.pagination--btn-dot')
         const tabs = slider.querySelectorAll('.tab-content')
         const tabsHeaders = slider.querySelectorAll('.case-tab-button')
-        const slides = slider.childNodes;
-        console.log('=> slides', slides)
-        // доделать слайдер чтобы был универсальным
+        let slides = slider.children;
+        let gap = parseInt(window.getComputedStyle(slider).gap)
+
+        if(id === `cases-tabs-slider`){
+          slides = slider.querySelectorAll('.tab-content')
+          gap =  parseInt(window.getComputedStyle(slider.querySelector('.cases-content')).gap)
+        }
+
         let currentIndex = 0;
       
         const updateSlider = () => {
-          const gap = window.innerWidth > 600 ? 40 : window.innerWidth > 440 ? 20 : 10;
-          const transfotmTo = Math.floor(window.innerWidth > 440 ? window.innerWidth - 15 : window.innerWidth) * currentIndex ;
-          slider.style.transform = `translateX(-${transfotmTo}px)`;
+          const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
+          console.log('=> slider', slider)
+          console.log('=> slides', slides)
+          console.log('=> gap', gap)
+          console.log('=> slides[0].offsetWidth', slides[0].offsetWidth)
+          
+          slider.style.transform = `translateX(-${moveAmmount}px)`;
         }
     
         const nextSlide = ( ) => {
@@ -31,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
           navButtons[currentIndex].classList.remove('highlight')
           currentIndex = currentIndex > 1 ? currentIndex - 1 : 0;
           navButtons[currentIndex].classList.add('highlight')
-          
           updateSlider()
         }
       
