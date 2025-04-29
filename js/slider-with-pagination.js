@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let slider = document.querySelector(`#${id}`);
         // console.log('=> slider found', slider)
         const pagination = document.querySelector(`#${id} + .pagination`);
-        console.log('=> slider exec', id, `${!!slider ? 'found: ' + slider.id : 'not-found'}`, `${!!pagination ? 'pagination found: ' + pagination : 'no pagination'}`)
+        // console.log('=> slider exec', id, `${!!slider ? 'found: ' + slider.id : 'not-found'}`, `${!!pagination ? 'pagination found: ' + pagination : 'no pagination'}`)
         // console.log('=> pagination found', pagination)
         let prevBtn
         let nextBtn
@@ -108,6 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', updateSlider)
       }
     
+
+      window.addEventListener('resize', ()=>{
+        tabSliderWithPagination('cases-tabs-slider');
+        tabSliderWithPagination('portfolio-slider')
+      })
       tabSliderWithPagination('cases-tabs-slider');
       tabSliderWithPagination('portfolio-slider')
 })
