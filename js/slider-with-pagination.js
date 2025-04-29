@@ -1,13 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const tabSliderWithPagination = (id) => {
-        let slider = document.querySelector(`#${id}`);
-        const pagination = document.querySelector(`#${id} + .pagination`);
-        const prevBtn = pagination.querySelector('.pagination--prev-btn')
-        const nextBtn = pagination.querySelector('.pagination--next-btn')
-        // добавить кнопки слева справа
-        const navButtons = pagination.querySelectorAll('.pagination--btn-dot')
         
+        let slider = document.querySelector(`#${id}`);
+        // console.log('=> slider found', slider)
+        const pagination = document.querySelector(`#${id} + .pagination`);
+        console.log('=> slider exec', id, `${!!slider ? 'found: ' + slider.id : 'not-found'}`, `${!!pagination ? 'pagination found: ' + pagination : 'no pagination'}`)
+        // console.log('=> pagination found', pagination)
+        let prevBtn
+        let nextBtn
+        let navButtons
+
+        if(!!pagination){
+           prevBtn = pagination?.querySelector('.pagination--prev-btn')
+           nextBtn = pagination?.querySelector('.pagination--next-btn')
+       
+        // добавить кнопки слева справа
+         navButtons = pagination.querySelectorAll('.pagination--btn-dot')
+        }
+
         const tabs = slider.querySelectorAll('.tab-content')
         const tabsHeaders = slider.querySelectorAll('.case-tab-button')
         let slides = slider.children;
@@ -35,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return
           }
           navButtons[currentIndex].classList.remove('highlight')
-          console.log('=> navButtons[currentIndex + 1].display', window.getComputedStyle(navButtons[currentIndex + 1]).display)
-          currentIndex = currentIndex === navButtons.length - 1  ? navButtons.length - 1 : currentIndex + 1  ;
+          currentIndex = currentIndex === navButtons.length - 1  ? navButtons.length - 1 : currentIndex + 1 ;
+          // console.log('=> curIndex', currentIndex )
           navButtons[currentIndex].classList.add('highlight')
           updateSlider();
         }
