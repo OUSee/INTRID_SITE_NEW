@@ -4387,7 +4387,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   .sites-portfolio-slider + .pagination {
     display: flex;
   }
-  .sites-portfolio-slider + .pagination .pagination--btn-dot:nth-child(3) {
+  .sites-portfolio-slider + .pagination .pagination--btn-dot:nth-child(3), .sites-portfolio-slider + .pagination .pagination--btn-dot:nth-child(4) {
     display: none;
   }
 }
@@ -4399,19 +4399,24 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     display: flex;
   }
 }
+@media (max-width: 600px) {
+  .sites-portfolio-slider + .pagination .pagination--btn-dot:nth-child(4) {
+    display: flex;
+  }
+}
 .sites-portfolio-slider .recent-work-card {
   flex-direction: column;
 }
 @media (max-width: 600px) {
   .sites-portfolio-slider .recent-work-card {
-    min-width: calc((100vw - 10px - 40px) / 2);
+    min-width: calc(100vw - 40px);
   }
 }
 @media (max-width: 440px) {
   .sites-portfolio-slider .recent-work-card {
     padding: 20px 5px;
     border-radius: 25px;
-    min-width: calc((100vw - 10px - 20px) / 2);
+    min-width: calc(100vw - 20px);
   }
 }
 .sites-roadmap {

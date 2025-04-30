@@ -4865,8 +4865,12 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                 &+.pagination {
                     display: flex;
 
-                    .pagination--btn-dot:nth-child(3) {
-                        display: none;
+                    .pagination--btn-dot {
+
+                        &:nth-child(3),
+                        &:nth-child(4) {
+                            display: none;
+                        }
                     }
                 }
             }
@@ -4884,17 +4888,25 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                 }
             }
 
+            @media (max-width: 600px) {
+                &+.pagination {
+                    .pagination--btn-dot:nth-child(4) {
+                        display: flex;
+                    }
+                }
+            }
+
             .recent-work-card {
                 flex-direction: column;
 
                 @media (max-width: 600px) {
-                    min-width: calc((100vw - 10px - 40px) / 2);
+                    min-width: calc((100vw - 40px));
                 }
 
                 @media (max-width: 440px) {
                     padding: 20px 5px;
                     border-radius: 25px;
-                    min-width: calc((100vw - 10px - 20px) / 2);
+                    min-width: calc((100vw - 20px));
                 }
             }
         }
