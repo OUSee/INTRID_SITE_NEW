@@ -111,8 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       window.addEventListener('resize', ()=>{
         tabSliderWithPagination('cases-tabs-slider');
-        tabSliderWithPagination('portfolio-slider')
+        tabSliderWithPagination('portfolio-slider');
+        tabSliderWithPagination('reviews-slider');
+        
       })
       tabSliderWithPagination('cases-tabs-slider');
-      tabSliderWithPagination('portfolio-slider')
+      tabSliderWithPagination('portfolio-slider');
+      tabSliderWithPagination('reviews-slider');
 })
