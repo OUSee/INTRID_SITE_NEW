@@ -461,7 +461,7 @@ label.radioButton:has(input:checked),
     color: var(--bg-main);
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 }
 
@@ -493,6 +493,10 @@ label.radioButton:has(input:checked)::after {
 
 .text-dotted {
     text-decoration: dotted;
+}
+
+.d-flex {
+    display: flex;
 }
 
 .fd-row {
@@ -529,6 +533,10 @@ label.radioButton:has(input:checked)::after {
     width: fit-content;
 }
 
+.m-center {
+    margin: 0 auto;
+}
+
 .ml-auto {
     margin-left: auto;
 }
@@ -561,6 +569,10 @@ label.radioButton:has(input:checked)::after {
     margin-bottom: 32px;
 }
 
+.mb-50 {
+    margin-bottom: 50px;
+}
+
 .mt-32 {
     margin-top: 32px;
 }
@@ -573,13 +585,16 @@ label.radioButton:has(input:checked)::after {
     margin-top: 20px;
 }
 
+.mt-50 {
+    margin-top: 50px;
+}
+
+
 .mt-60 {
     margin-top: 60px;
 }
 
-.m-center {
-    margin: 0 auto;
-}
+
 
 .w-fit {
     width: fit-content;
@@ -666,6 +681,10 @@ label.radioButton:has(input:checked)::after {
     font-size: 0.5em;
     position: absolute;
     transform: translateY(-1em);
+}
+
+.flex-50 {
+    flex: 1 1 40%;
 }
 
 .br1000 {
@@ -4581,6 +4600,44 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     }
 }
 
+form {
+    display: flex;
+    flex-shrink: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    input {
+        width: 100%;
+        background-color: transparent;
+        padding: 15px 30px;
+        border-radius: 25px;
+        border: 2px solid var(--color-white);
+
+        &:focus {
+            border: 2px dashed var(--color-white);
+            outline: none;
+        }
+
+        &::placeholder {
+            color: var(--color-white);
+        }
+    }
+
+    .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .button:hover {
+        background-color: var(--color-white);
+    }
+
+
+}
+
+// sites page
+
 .sites {
     &-leaders {
         padding: 120px 0px 0px 0px;
@@ -4654,7 +4711,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                     align-items: center;
                     gap: 10px;
 
-                    input {
+                    input,
+                    textarea {
                         width: 100%;
                         background-color: transparent;
                         padding: 15px 30px;
@@ -5293,7 +5351,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
                     &:before {
                         content: ',,';
-                        font-size: 3em;
+                        font-size: 2.5em;
                         color: var(--blue-main);
                         position: absolute;
                         left: 0px;
@@ -5302,10 +5360,22 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
                     &:after {
                         content: ',,';
-                        font-size: 3em;
+                        font-size: 2.5em;
                         line-height: 0px;
                         color: var(--blue-main);
                         position: relative;
+                    }
+
+                    @media (max-width: 600px) {
+                        padding-left: 0px;
+
+                        &:before {
+                            display: none;
+                        }
+
+                        &:after {
+                            display: none;
+                        }
                     }
                 }
 
@@ -5413,6 +5483,274 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             @media (max-width: 600px) {
                 margin: 0 auto;
                 margin-top: 30px;
+            }
+        }
+    }
+}
+
+// landing-page page
+
+.landing {
+    &-main {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        @media (max-width: 900px) {}
+
+        &-left {
+            max-width: 767px;
+
+            h1 {
+                margin-bottom: 30px;
+            }
+
+            .description {
+                margin-bottom: 10px;
+            }
+
+            div {
+                margin-top: 50px;
+
+                @media (max-width: 900px) {
+                    margin-top: 250px;
+                }
+            }
+        }
+
+        .achievements-group {
+            margin: 0 auto;
+            min-width: 30%;
+
+            @media (max-width: 900px) {
+                position: absolute;
+                width: 30%;
+                left: calc(50% - 15%);
+                bottom: 150px;
+            }
+
+            @media (max-width: 600px) {
+                bottom: 200px;
+                width: 60%;
+                left: calc(50% - 30%);
+            }
+        }
+    }
+
+    &-benefits {
+        .sites-reviews-slider {
+            .review-card {
+                background-color: var(--bg-main);
+                z-index: 0;
+                overflow: hidden;
+                position: relative;
+                border: 2px solid var(--blue-bg);
+
+                &::before {
+                    font-family: "INTRID_ICONS";
+                    content: "\6d";
+                    height: 177px;
+                    width: 177px;
+                    font-size: 177px;
+                    line-height: 177px;
+                    color: var(--blue-clouds);
+                    position: absolute;
+                    right: -50px;
+                    bottom: -50px;
+                    z-index: 2;
+                }
+            }
+
+            .review-card-body {
+                padding-left: 0px !important;
+                margin-bottom: 0px !important;
+                margin-top: 15px;
+
+
+
+
+                &:after,
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &-steps {
+        background: linear-gradient(0deg, rgba(0, 234, 255, 0.1) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
+
+
+
+        .description {
+            margin-top: 20px;
+        }
+
+        .sites-roadmap-list {
+            margin-top: 50px;
+            margin-bottom: 30px;
+
+            &+.description {
+                text-align: center;
+                max-width: 70%;
+            }
+        }
+    }
+
+    &-portfolio {
+        background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0.1) 100%);
+    }
+
+    &-creation {
+        .title_h3 {
+            margin-bottom: 20px;
+        }
+
+        .description {
+            margin-bottom: 50px;
+        }
+
+        form {
+            padding: 40px 30px;
+            border-radius: 49px;
+            background-color: var(--blue-tag);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 900px;
+            position: relative;
+
+            @media (max-width: 600px) {
+                border-radius: 30px;
+                padding: 20px;
+            }
+
+            input {
+                flex: 1 1 90%;
+                min-width: 90%;
+
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5) {
+                    flex: 1 1 45%;
+                    min-width: 35%;
+                }
+
+                @media (max-width: 520px) {
+
+                    &:nth-child(4),
+                    &:nth-child(5) {
+                        flex: 1 1 90%;
+                        min-width: 90%;
+                    }
+                }
+            }
+
+            textarea {
+                width: 100%;
+                height: 100px;
+                resize: none;
+                background-color: transparent;
+                padding: 15px 30px;
+                border-radius: 25px;
+                border: 2px solid var(--color-white);
+                scrollbar-gutter: stable both-edges;
+
+                &:focus {
+                    border: 2px dashed var(--color-white);
+                    outline: none;
+                }
+
+                &::-webkit-scrollbar {
+                    width: 10px;
+                    padding-right: 5px;
+                    background-color: transparent;
+                }
+
+                &::placeholder {
+                    color: var(--color-white);
+                }
+
+                &::-webkit-scrollbar-button {
+                    display: none;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background-color: transparent;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    width: 5px;
+                    border-radius: 5px;
+                    border: 2px solid transparent;
+                    background-color: var(--color-white);
+                    background-clip: content-box;
+                }
+            }
+
+            label {
+                margin-top: 20px;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                position: relative;
+                cursor: pointer;
+
+                &:hover {
+
+                    text-shadow: var(--blue-main) 0px 0px 10px;
+
+                    &:before {
+                        border: 2px solid var(--blue-main) !important;
+                        text-decoration-color: transparent;
+                    }
+                }
+
+                &:before {
+                    box-sizing: border-box;
+                    content: "\2714";
+                    font-size: 0.9em;
+                    width: 20px;
+                    height: 20px;
+                    color: transparent;
+                    border: 2px solid var(--color-white);
+                    border-radius: 5px;
+                    padding-bottom: 4px;
+                    padding-left: 2px;
+                    margin-right: 10px;
+                    transition: all 0.2s ease-in;
+                }
+
+                &:has(input:checked) {
+                    &:before {
+                        content: "\2714";
+                        font-size: 0.9em;
+                        width: 20px;
+                        height: 20px;
+                        color: var(--color-white);
+                        border: 2px solid var(--color-white);
+                        border-radius: 5px;
+                        padding-bottom: 4px;
+                        padding-left: 2px;
+                    }
+                }
+            }
+
+            #personal-data {
+                position: absolute;
+                opacity: 0%;
+                width: 20px;
+                min-width: 20px;
+                cursor: pointer;
+            }
+
+            button {
+                margin-top: 50px;
+                width: 100%;
+                justify-content: center;
             }
         }
     }

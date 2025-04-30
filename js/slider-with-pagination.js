@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let nextBtn
         let navButtons
 
+        console.log('=> slider init', id, 'found: ', slider)
+
         if(!!pagination){
            prevBtn = pagination?.querySelector('.pagination--prev-btn')
            nextBtn = pagination?.querySelector('.pagination--next-btn')
@@ -110,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
       window.addEventListener('resize', ()=>{
-        tabSliderWithPagination('cases-tabs-slider');
-        tabSliderWithPagination('portfolio-slider');
-        tabSliderWithPagination('reviews-slider');
-        
+        try{tabSliderWithPagination('cases-tabs-slider');}catch{console.log('=> no slider or error')}
+        try{tabSliderWithPagination('portfolio-slider');}catch{console.log('=> no slider or error')}
+        try{tabSliderWithPagination('reviews-slider');}catch{console.log('=> no slider or error')}
       })
-      tabSliderWithPagination('cases-tabs-slider');
-      tabSliderWithPagination('portfolio-slider');
-      tabSliderWithPagination('reviews-slider');
+      
+      try{tabSliderWithPagination('cases-tabs-slider');}catch{console.log('=> no slider or error')}
+      try{tabSliderWithPagination('portfolio-slider');}catch{console.log('=> no slider or error')}
+      try{tabSliderWithPagination('reviews-slider');}catch{console.log('=> no slider or error')}
 })
