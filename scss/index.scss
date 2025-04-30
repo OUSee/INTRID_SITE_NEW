@@ -4575,6 +4575,12 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
 // pages styles
 
+.client-web-diferences {
+    @media (max-width: 1000px) {
+        padding-bottom: 0;
+    }
+}
+
 .sites {
     &-leaders {
         padding: 120px 0px 0px 0px;
@@ -5205,8 +5211,18 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         &-head {
             display: flex;
 
+            @media (max-width: 900px) {
+                flex-direction: column;
+
+                .title_h3 {
+                    margin-left: auto;
+                    margin-bottom: 50px;
+                }
+            }
+
             .title_h3 {
                 max-height: 1.4em;
+                margin-right: auto;
             }
         }
 
@@ -5216,12 +5232,39 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             overflow-y: visible;
             width: fit-content;
 
+            @media (max-width: 900px) {
+                gap: 10px;
+            }
+
+            @media (max-width: 900px) {
+                gap: 20px;
+            }
+
             .review-card {
                 background-color: var(--blue-bg);
                 border-radius: 49px;
                 padding: 25px 40px;
-                flex: 1 1 45%;
+                flex: 1 1 0;
                 min-width: calc((1442px - 30px) / 2);
+
+
+                @media (max-width: 1500px) {
+                    min-width: calc((100vw - 80px - 30px) / 2);
+                }
+
+                @media (max-width: 900px) {
+                    border-radius: 25px;
+                    padding: 15px 20px;
+                    min-width: calc((100vw - 80px - 10px) / 2);
+                }
+
+                @media (max-width: 600px) {
+                    min-width: calc((100vw - 40px));
+                }
+
+                @media (max-width: 440px) {
+                    min-width: calc((100vw - 20px));
+                }
 
 
                 &-header {}
@@ -5248,6 +5291,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                     &:after {
                         content: ',,';
                         font-size: 3em;
+                        line-height: 0px;
                         color: var(--blue-main);
                         position: relative;
                     }
@@ -5265,17 +5309,99 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             }
         }
 
+        .pagination {
+            margin-bottom: 30px;
 
+            @media (min-width: 600px) {
+                .pagination--btn-dot:last-child {
+                    display: none;
+                }
+            }
+        }
+
+        .button-link {
+            @media (max-width: 600px) {
+                margin-right: auto;
+            }
+
+        }
     }
 
     &-bottom {
+        position: relative;
+
         &-left {
             max-width: 762px;
+
+            @media (max-width: 1200px) {
+                max-width: 60%;
+            }
+
+            @media (max-width: 900px) {
+                max-width: 70%;
+            }
+
+            @media (max-width: 600px) {
+                max-width: 100%;
+
+                .title_h3 {
+                    margin: 0 auto;
+                    margin-bottom: 200px;
+                }
+            }
         }
 
         .flying-orb {
+            left: unset;
             top: unset;
-            bottom: 250px;
+            right: 150px;
+            bottom: 50px;
+
+            @media (max-width: 1400px) {
+                right: 100px;
+            }
+
+            @media (max-width: 1200px) {
+                right: 100px;
+                bottom: 100px;
+            }
+
+            @media (max-width: 900px) {
+                right: 50px;
+                bottom: 150px;
+                display: block;
+
+                width: 100px;
+                height: 100px;
+
+                &::before {
+                    height: 112px;
+                    width: 112px;
+                }
+
+                img {
+                    height: 150px;
+                    width: auto;
+                }
+
+                .water-ripple {
+                    height: 150px;
+                    width: 150px;
+                }
+            }
+
+            @media (max-width: 600px) {
+                bottom: unset;
+                top: 120px;
+                right: calc(50% - 25px);
+            }
+        }
+
+        .button-link {
+            @media (max-width: 600px) {
+                margin: 0 auto;
+                margin-top: 30px;
+            }
         }
     }
 }
@@ -6127,7 +6253,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
                 span {
                     text-transform: none;
-                    font-size: 14px;
+                    font-size: 13px;
                 }
 
                 span.seo-desktop {

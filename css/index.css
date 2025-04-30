@@ -4132,6 +4132,12 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   display: flex;
 }
 
+@media (max-width: 1000px) {
+  .client-web-diferences {
+    padding-bottom: 0;
+  }
+}
+
 .sites-leaders {
   padding: 120px 0px 0px 0px;
   background-image: url("../src/images/planet-site-bg.webp");
@@ -4660,8 +4666,18 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .sites-reviews-head {
   display: flex;
 }
+@media (max-width: 900px) {
+  .sites-reviews-head {
+    flex-direction: column;
+  }
+  .sites-reviews-head .title_h3 {
+    margin-left: auto;
+    margin-bottom: 50px;
+  }
+}
 .sites-reviews-head .title_h3 {
   max-height: 1.4em;
+  margin-right: auto;
 }
 .sites-reviews-slider {
   display: flex;
@@ -4670,12 +4686,44 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   width: -moz-fit-content;
   width: fit-content;
 }
+@media (max-width: 900px) {
+  .sites-reviews-slider {
+    gap: 10px;
+  }
+}
+@media (max-width: 900px) {
+  .sites-reviews-slider {
+    gap: 20px;
+  }
+}
 .sites-reviews-slider .review-card {
   background-color: var(--blue-bg);
   border-radius: 49px;
   padding: 25px 40px;
-  flex: 1 1 45%;
+  flex: 1 1 0;
   min-width: 706px;
+}
+@media (max-width: 1500px) {
+  .sites-reviews-slider .review-card {
+    min-width: calc((100vw - 80px - 30px) / 2);
+  }
+}
+@media (max-width: 900px) {
+  .sites-reviews-slider .review-card {
+    border-radius: 25px;
+    padding: 15px 20px;
+    min-width: calc((100vw - 80px - 10px) / 2);
+  }
+}
+@media (max-width: 600px) {
+  .sites-reviews-slider .review-card {
+    min-width: calc(100vw - 40px);
+  }
+}
+@media (max-width: 440px) {
+  .sites-reviews-slider .review-card {
+    min-width: calc(100vw - 20px);
+  }
 }
 .sites-reviews-slider .review-card p.color-blue {
   margin-bottom: 15px;
@@ -4697,6 +4745,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .sites-reviews-slider .review-card .review-card-body:after {
   content: ",,";
   font-size: 3em;
+  line-height: 0px;
   color: var(--blue-main);
   position: relative;
 }
@@ -4709,12 +4758,94 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .sites-reviews-slider .review-card .review-card-link i {
   top: 0.2em;
 }
+.sites-reviews .pagination {
+  margin-bottom: 30px;
+}
+@media (min-width: 600px) {
+  .sites-reviews .pagination .pagination--btn-dot:last-child {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .sites-reviews .button-link {
+    margin-right: auto;
+  }
+}
+.sites-bottom {
+  position: relative;
+}
 .sites-bottom-left {
   max-width: 762px;
 }
+@media (max-width: 1200px) {
+  .sites-bottom-left {
+    max-width: 60%;
+  }
+}
+@media (max-width: 900px) {
+  .sites-bottom-left {
+    max-width: 70%;
+  }
+}
+@media (max-width: 600px) {
+  .sites-bottom-left {
+    max-width: 100%;
+  }
+  .sites-bottom-left .title_h3 {
+    margin: 0 auto;
+    margin-bottom: 200px;
+  }
+}
 .sites-bottom .flying-orb {
+  left: unset;
   top: unset;
-  bottom: 250px;
+  right: 150px;
+  bottom: 50px;
+}
+@media (max-width: 1400px) {
+  .sites-bottom .flying-orb {
+    right: 100px;
+  }
+}
+@media (max-width: 1200px) {
+  .sites-bottom .flying-orb {
+    right: 100px;
+    bottom: 100px;
+  }
+}
+@media (max-width: 900px) {
+  .sites-bottom .flying-orb {
+    right: 50px;
+    bottom: 150px;
+    display: block;
+    width: 100px;
+    height: 100px;
+  }
+  .sites-bottom .flying-orb::before {
+    height: 112px;
+    width: 112px;
+  }
+  .sites-bottom .flying-orb img {
+    height: 150px;
+    width: auto;
+  }
+  .sites-bottom .flying-orb .water-ripple {
+    height: 150px;
+    width: 150px;
+  }
+}
+@media (max-width: 600px) {
+  .sites-bottom .flying-orb {
+    bottom: unset;
+    top: 120px;
+    right: calc(50% - 25px);
+  }
+}
+@media (max-width: 600px) {
+  .sites-bottom .button-link {
+    margin: 0 auto;
+    margin-top: 30px;
+  }
 }
 
 @media (max-width: 1500px) {
@@ -5355,7 +5486,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
   .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link span {
     text-transform: none;
-    font-size: 14px;
+    font-size: 13px;
   }
   .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link span.seo-desktop {
     display: none;
