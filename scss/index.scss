@@ -491,6 +491,10 @@ label.radioButton:has(input:checked)::after {
 
 /* INLINE STYLES */
 
+.z-2 {
+    z-index: 2;
+}
+
 .text-dotted {
     text-decoration: dotted;
 }
@@ -547,6 +551,10 @@ label.radioButton:has(input:checked)::after {
 
 .mr-6 {
     margin-right: 6px;
+}
+
+.mr-20 {
+    margin-right: 20px;
 }
 
 .ml-6 {
@@ -1546,31 +1554,6 @@ button.next {
     &.site {
 
 
-        .breadcrumbs {
-            display: flex;
-            position: absolute;
-            top: 80px;
-            gap: 10px;
-            color: var(--color-white);
-
-            @media (max-width: 600px) {
-                top: 60px;
-            }
-
-            a {
-                color: var(--color-white);
-
-                &.link-disabled {
-                    opacity: 0.6;
-                    pointer-events: none;
-                }
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-        }
-
         .left-block {
             p.site-description {
                 max-width: 770px;
@@ -1698,6 +1681,31 @@ button.next {
         }
 
 
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    position: absolute;
+    top: 80px;
+    gap: 10px;
+    color: var(--color-white);
+
+    @media (max-width: 600px) {
+        top: 60px;
+    }
+
+    a {
+        color: var(--color-white);
+
+        &.link-disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 
@@ -4636,6 +4644,8 @@ form {
 
 }
 
+// PAGES
+
 // sites page
 
 .sites {
@@ -5775,6 +5785,61 @@ form {
     }
 }
 
+//corporate page
+
+.corporate {
+    &-main {
+        .left-block {
+            div.fd-row.flex-wrap {
+                margin-top: 20px;
+                max-width: 800px;
+                row-gap: 20px;
+            }
+
+            .site-benefit:hover {
+                text-shadow: var(--blue-main) 0px 0px 10px;
+            }
+        }
+    }
+
+    &-howdone {
+        &-additional {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+
+            .img-wrapper {
+                border-radius: 50%;
+                width: 62px;
+                height: 62px
+            }
+
+            @media (max-width: 440px) {
+                flex-direction: column;
+                align-items: center;
+
+                p {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+//store page
+
+.store {
+    &-main {}
+}
+
+//web-portal page
+
+.portal {
+    &-main {}
+}
+
 //  BREAKPOINTS
 
 @media (max-width: 1500px) {
@@ -5899,6 +5964,17 @@ form {
 }
 
 @media (max-width: 1000px) {
+    .footer-logo {
+        max-height: 24px;
+        max-width: 24px;
+        min-width: 24px;
+        margin-right: 76px;
+
+        img {
+            height: 24px;
+        }
+    }
+
     header .main-header {
 
         .main-logo {
