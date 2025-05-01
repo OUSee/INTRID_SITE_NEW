@@ -4917,7 +4917,12 @@ form {
 
             @media (max-width: 1200px) {
                 .recent-work-card {
-                    min-width: calc((100vw - 20px - 80px) / 3);
+                    min-width: calc((100vw - 80px) / 3 - 10px);
+                    opacity: 0.3;
+
+                    &.active {
+                        opacity: 1;
+                    }
                 }
 
                 &+.pagination {
@@ -4935,7 +4940,7 @@ form {
 
             @media (max-width: 900px) {
                 .recent-work-card {
-                    min-width: calc((100vw - 10px - 80px) / 2);
+                    min-width: calc((100vw - 80px) / 2 - 10px);
                 }
 
                 &+.pagination {
@@ -5316,6 +5321,11 @@ form {
                 padding: 25px 40px;
                 flex: 1 1 0;
                 min-width: calc((1442px - 30px) / 2);
+                opacity: 0.3;
+
+                &.active {
+                    opacity: 1;
+                }
 
 
                 @media (max-width: 1500px) {

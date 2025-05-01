@@ -4433,7 +4433,11 @@ form .button:hover {
 }
 @media (max-width: 1200px) {
   .sites-portfolio-slider .recent-work-card {
-    min-width: calc((100vw - 20px - 80px) / 3);
+    min-width: calc((100vw - 80px) / 3 - 10px);
+    opacity: 0.3;
+  }
+  .sites-portfolio-slider .recent-work-card.active {
+    opacity: 1;
   }
   .sites-portfolio-slider + .pagination {
     display: flex;
@@ -4444,7 +4448,7 @@ form .button:hover {
 }
 @media (max-width: 900px) {
   .sites-portfolio-slider .recent-work-card {
-    min-width: calc((100vw - 10px - 80px) / 2);
+    min-width: calc((100vw - 80px) / 2 - 10px);
   }
   .sites-portfolio-slider + .pagination .pagination--btn-dot:nth-child(3) {
     display: flex;
@@ -4758,6 +4762,10 @@ form .button:hover {
   padding: 25px 40px;
   flex: 1 1 0;
   min-width: 706px;
+  opacity: 0.3;
+}
+.sites-reviews-slider .review-card.active {
+  opacity: 1;
 }
 @media (max-width: 1500px) {
   .sites-reviews-slider .review-card {

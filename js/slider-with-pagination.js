@@ -25,22 +25,45 @@ document.addEventListener('DOMContentLoaded', () => {
         const tabsHeaders = slider.querySelectorAll('.case-tab-button')
         let slides = slider.children;
         let gap = parseInt(window.getComputedStyle(slider).gap)
+        const visibleWidth = slider.parentElement.clientWidth;
+        const visibleSlidesCount = Math.floor(visibleWidth / (slides[0].offsetWidth));
 
+        console.log(`=> dimensions: slider.visible-width=${visibleWidth}, slide.width=${slides[0].offsetWidth}, gap=${gap}, visbleSlides=${visibleSlidesCount}`)
+        
         if(id === `cases-tabs-slider`){
           slides = slider.querySelectorAll('.tab-content')
           gap =  parseInt(window.getComputedStyle(slider.querySelector('.cases-content')).gap)
         }
 
         let currentIndex = 0;
+
+        for(let i = currentIndex; i < currentIndex + visibleSlidesCount && i < slides.length; i++) {
+          slides[i].classList.add('active');
+        }
       
         const updateSlider = () => {
           const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
-          // console.log('=> slider', slider)
-          // console.log('=> slides', slides)
-          // console.log('=> gap', gap)
-          // console.log('=> slides[0].offsetWidth', slides[0].offsetWidth)
+          console.log('=> active index', currentIndex)
           
-          slider.style.transform = `translateX(-${moveAmmount}px)`;
+          // Remove .active class from all slides
+          try{
+            // slides.forEach(slide => slide.classList.remove('active'));
+
+            [].forEach.call(slides, function(slide) {
+              slide.classList.remove('active')
+            });
+            
+
+            // Add .active class to visible slides based on currentIndex and visibleSlidesCount
+            for(let i = currentIndex; i < currentIndex + visibleSlidesCount && i < slides.length; i++) {
+              slides[i].classList.add('active');
+            }
+
+            slider.style.transform = `translateX(-${moveAmmount}px)`;
+          }
+          catch(err){
+            console.log('=> err', err)
+          }
         }
     
         const nextSlide = ( ) => {
