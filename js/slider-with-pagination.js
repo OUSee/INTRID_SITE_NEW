@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let nextBtn
         let navButtons
 
-        console.log('=> slider init', id, 'found: ', slider)
-
         if(!!pagination){
            prevBtn = pagination?.querySelector('.pagination--prev-btn')
            nextBtn = pagination?.querySelector('.pagination--next-btn')
@@ -28,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const visibleWidth = slider.parentElement.clientWidth;
         const visibleSlidesCount = Math.floor(visibleWidth / (slides[0].offsetWidth));
 
-        console.log(`=> dimensions: slider.visible-width=${visibleWidth}, slide.width=${slides[0].offsetWidth}, gap=${gap}, visbleSlides=${visibleSlidesCount}`)
         
         if(id === `cases-tabs-slider`){
           slides = slider.querySelectorAll('.tab-content')
@@ -43,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
       
         const updateSlider = () => {
           const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
-          console.log('=> active index', currentIndex)
           
           // Remove .active class from all slides
           try{

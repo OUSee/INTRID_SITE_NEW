@@ -573,6 +573,14 @@ label.radioButton:has(input:checked)::after {
     margin-left: 32px;
 }
 
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
 .mb-32 {
     margin-bottom: 32px;
 }
@@ -5907,7 +5915,209 @@ form {
 //store page
 
 .store {
-    &-main {}
+    &-main {
+        .left-block {
+            width: 100%;
+
+            .site-description {
+                margin-bottom: 20px !important;
+                max-width: 950px;
+            }
+        }
+
+        .achievements-group {
+            height: fit-content;
+            margin: auto 0;
+            min-width: 30%;
+
+            .achievement {
+                .img-placeholder {
+                    max-width: 90px;
+                    max-height: 90px;
+                    min-width: 90px;
+                    min-height: 90px;
+                    background-color: transparent;
+                }
+
+                height: fit-content;
+            }
+        }
+    }
+
+    &-help {
+        .pagination--btn-dot:nth-child(7) {
+            @media (min-width: 600px) {
+                display: none;
+            }
+        }
+    }
+
+    &-benefits {
+        .web-shop-diagram {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            gap: 0;
+
+            @media (max-width: 1000px) {
+                .title_h4 {
+                    margin-bottom: 50px;
+                }
+            }
+
+            .benefits-left,
+            .benefits-right {
+                height: 420px;
+                justify-content: space-between;
+
+                @media (max-width: 1000px) {
+                    display: flex;
+                    position: static;
+                    height: fit-content;
+                    justify-content: unset;
+                    gap: 30px;
+                    width: 100%;
+                    margin: 0;
+
+                    .benefit-card {
+                        width: 100%;
+                        max-width: unset;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        .web-shop-diagram div.video-diagramm .connections .line {
+            background-color: var(--blue-bg);
+
+            &:before,
+            &:after {
+                background-color: transparent;
+            }
+        }
+
+        .benefits-left {
+            order: 2;
+            margin-bottom: 30px;
+
+
+        }
+
+        .benefits-right {
+            order: 3;
+        }
+
+        .video-diagramm {
+            order: 0;
+
+            @media (max-width: 1000px) {
+                display: none;
+            }
+        }
+
+
+        .benefit-card {
+            width: 100%;
+            padding: 20px;
+            min-height: unset;
+            cursor: pointer;
+
+
+            &:has(input:checked) {
+                img {
+                    filter: brightness(0.3);
+                }
+
+                &::before {
+                    background-color: var(--blue-main);
+                }
+            }
+
+            .content-hidden {
+                display: none;
+
+                @media (max-width: 1000px) {
+                    display: block;
+                    color: var(--color-grey);
+                    margin-top: 10px;
+
+                    li {
+                        padding-left: 5px;
+                        margin-top: 5px;
+
+                        &::marker {
+                            content: '\2022';
+                        }
+                    }
+                }
+            }
+
+
+            img {
+                width: 34px;
+                height: 34px;
+
+                @media (max-width: 1000px) {
+                    align-self: flex-start;
+                }
+            }
+
+            &:before {
+                top: -35px;
+            }
+        }
+
+        .video-diagramm {
+            .water-ripple-video {
+                z-index: 1 !important;
+            }
+
+            .connections {
+                z-index: 0;
+            }
+
+            .store-text {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                background-color: var(--blue-main);
+                z-index: 2;
+                text-align: center;
+                border-radius: 50%;
+                padding: 55px 20px;
+                color: var(--bg-main);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            @media (max-width: 1000px) {
+                margin: 50px auto;
+            }
+        }
+    }
+
+    &-integration {
+        ul {
+            padding-left: 10px;
+
+            li {
+                padding-left: 10px;
+                margin-bottom: 10px;
+
+                &::marker {
+                    color: var(--blue-main);
+                    content: '\2022';
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        &-schema {}
+    }
 }
 
 //web-portal page

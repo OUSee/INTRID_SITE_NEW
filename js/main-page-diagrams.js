@@ -1,23 +1,21 @@
 // in tab webshop content show
+document.addEventListener('DOMContentLoaded', () => {
 
-const webShopDiagram = document.querySelector('.web-shop-diagram')
+  const webShopDiagram = document.querySelector('.web-shop-diagram')
 const webShopTarget = webShopDiagram.querySelector('.store-text-target')
+console.log('=> webshop', webShopDiagram, webShopTarget)
 webShopDiagram.querySelectorAll('input').forEach((input)=>
   input.addEventListener('click', ()=>{
+    console.log('=> input', input)
     setTabContent(input.id)
     toggleLineShopAI(input.id)
   })
 )
-const tenderDiagram = document.querySelector('.tender-diagram')
-const tenderTarget = tenderDiagram.querySelector('.tender-text-target')
-tenderDiagram.querySelectorAll('input').forEach((input)=>
-  input.addEventListener('click', ()=>{
-    setTenderTabContent(input.id)
-  })
-)
 
 const toggleLineShopAI = (id) => {
+  console.log('=> enter', )
   const lines = webShopDiagram.querySelectorAll('.line')
+  console.log('=> lines', lines)
   lines.forEach(line => {
     line.classList.remove('active-left');
     line.classList.remove('active-right');
@@ -68,6 +66,14 @@ const setTabContent = (tabId) => {
 
 setTabContent('ai-benefit-1')
 toggleLineShopAI('1')
+
+const tenderDiagram = document.querySelector('.tender-diagram')
+const tenderTarget = tenderDiagram.querySelector('.tender-text-target')
+tenderDiagram.querySelectorAll('input').forEach((input)=>
+  input.addEventListener('click', ()=>{
+    setTenderTabContent(input.id)
+  })
+)
 
 const setTenderTabContent = (tabId) => {
   
@@ -149,3 +155,5 @@ const setTenderTabContent = (tabId) => {
 }
 
 setTenderTabContent('tender-radio-1')
+
+})

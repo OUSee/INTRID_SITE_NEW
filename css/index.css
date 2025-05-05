@@ -563,6 +563,14 @@ label.radioButton:has(input:checked)::after {
   margin-left: 32px;
 }
 
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
 .mb-32 {
   margin-bottom: 32px;
 }
@@ -5246,6 +5254,172 @@ form .button:hover {
   padding-top: 0px;
 }
 
+.store-main .left-block {
+  width: 100%;
+}
+.store-main .left-block .site-description {
+  margin-bottom: 20px !important;
+  max-width: 950px;
+}
+.store-main .achievements-group {
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto 0;
+  min-width: 30%;
+}
+.store-main .achievements-group .achievement {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.store-main .achievements-group .achievement .img-placeholder {
+  max-width: 90px;
+  max-height: 90px;
+  min-width: 90px;
+  min-height: 90px;
+  background-color: transparent;
+}
+@media (min-width: 600px) {
+  .store-help .pagination--btn-dot:nth-child(7) {
+    display: none;
+  }
+}
+.store-benefits .web-shop-diagram {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: -moz-fit-content;
+  height: fit-content;
+  gap: 0;
+}
+@media (max-width: 1000px) {
+  .store-benefits .web-shop-diagram .title_h4 {
+    margin-bottom: 50px;
+  }
+}
+.store-benefits .web-shop-diagram .benefits-left,
+.store-benefits .web-shop-diagram .benefits-right {
+  height: 420px;
+  justify-content: space-between;
+}
+@media (max-width: 1000px) {
+  .store-benefits .web-shop-diagram .benefits-left,
+  .store-benefits .web-shop-diagram .benefits-right {
+    display: flex;
+    position: static;
+    height: -moz-fit-content;
+    height: fit-content;
+    justify-content: unset;
+    gap: 30px;
+    width: 100%;
+    margin: 0;
+  }
+  .store-benefits .web-shop-diagram .benefits-left .benefit-card,
+  .store-benefits .web-shop-diagram .benefits-right .benefit-card {
+    width: 100%;
+    max-width: unset;
+    margin: 0;
+  }
+}
+.store-benefits .web-shop-diagram div.video-diagramm .connections .line {
+  background-color: var(--blue-bg);
+}
+.store-benefits .web-shop-diagram div.video-diagramm .connections .line:before, .store-benefits .web-shop-diagram div.video-diagramm .connections .line:after {
+  background-color: transparent;
+}
+.store-benefits .benefits-left {
+  order: 2;
+  margin-bottom: 30px;
+}
+.store-benefits .benefits-right {
+  order: 3;
+}
+.store-benefits .video-diagramm {
+  order: 0;
+}
+@media (max-width: 1000px) {
+  .store-benefits .video-diagramm {
+    display: none;
+  }
+}
+.store-benefits .benefit-card {
+  width: 100%;
+  padding: 20px;
+  min-height: unset;
+  cursor: pointer;
+}
+.store-benefits .benefit-card:has(input:checked) img {
+  filter: brightness(0.3);
+}
+.store-benefits .benefit-card:has(input:checked)::before {
+  background-color: var(--blue-main);
+}
+.store-benefits .benefit-card .content-hidden {
+  display: none;
+}
+@media (max-width: 1000px) {
+  .store-benefits .benefit-card .content-hidden {
+    display: block;
+    color: var(--color-grey);
+    margin-top: 10px;
+  }
+  .store-benefits .benefit-card .content-hidden li {
+    padding-left: 5px;
+    margin-top: 5px;
+  }
+  .store-benefits .benefit-card .content-hidden li::marker {
+    content: "•";
+  }
+}
+.store-benefits .benefit-card img {
+  width: 34px;
+  height: 34px;
+}
+@media (max-width: 1000px) {
+  .store-benefits .benefit-card img {
+    align-self: flex-start;
+  }
+}
+.store-benefits .benefit-card:before {
+  top: -35px;
+}
+.store-benefits .video-diagramm .water-ripple-video {
+  z-index: 1 !important;
+}
+.store-benefits .video-diagramm .connections {
+  z-index: 0;
+}
+.store-benefits .video-diagramm .store-text {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: var(--blue-main);
+  z-index: 2;
+  text-align: center;
+  border-radius: 50%;
+  padding: 55px 20px;
+  color: var(--bg-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 1000px) {
+  .store-benefits .video-diagramm {
+    margin: 50px auto;
+  }
+}
+.store-integration ul {
+  padding-left: 10px;
+}
+.store-integration ul li {
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+.store-integration ul li::marker {
+  color: var(--blue-main);
+  content: "•";
+  margin-right: 10px;
+}
 @media (max-width: 1500px) {
   .container {
     max-width: 100%;
