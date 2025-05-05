@@ -3175,20 +3175,21 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .about-section .about-wrapper .why-cooperate-list li p {
   max-width: 250px;
 }
-.about-section .about-wrapper .tech-we-use {
+
+.tech-we-use {
   flex: 1 1 100%;
   padding-bottom: 270px;
 }
 @media (max-width: 600px) {
-  .about-section .about-wrapper .tech-we-use {
+  .tech-we-use {
     padding-bottom: 40px;
   }
 }
-.about-section .about-wrapper .tech-we-use .title_h2 {
+.tech-we-use .title_h2 {
   margin-top: 80px;
   margin-bottom: 50px;
 }
-.about-section .about-wrapper .tech-we-use-list {
+.tech-we-use-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -3201,14 +3202,14 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   margin: 0 auto;
 }
 @media (max-width: 520px) {
-  .about-section .about-wrapper .tech-we-use-list {
+  .tech-we-use-list {
     -moz-column-gap: 10px;
          column-gap: 10px;
     row-gap: 10px;
     justify-content: start;
   }
 }
-.about-section .about-wrapper .tech-we-use-list li .tech-tag {
+.tech-we-use-list li .tech-tag {
   background-color: var(--blue-bg);
   border: 1px solid transparent;
   text-transform: none;
@@ -3216,53 +3217,53 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   align-items: center;
   animation: list-glow 9s linear infinite;
 }
-.about-section .about-wrapper .tech-we-use-list li .tech-tag:hover {
+.tech-we-use-list li .tech-tag:hover {
   color: var(--blue-main);
   border-color: 1px solid var(--blue-main);
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(1) .tech-tag {
+.tech-we-use-list li:nth-child(1) .tech-tag {
   animation-delay: 0s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(2) .tech-tag {
+.tech-we-use-list li:nth-child(2) .tech-tag {
   animation-delay: 0.6s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(3) .tech-tag {
+.tech-we-use-list li:nth-child(3) .tech-tag {
   animation-delay: 1.2s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(4) .tech-tag {
+.tech-we-use-list li:nth-child(4) .tech-tag {
   animation-delay: 1.8s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(5) .tech-tag {
+.tech-we-use-list li:nth-child(5) .tech-tag {
   animation-delay: 2.4s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(6) .tech-tag {
+.tech-we-use-list li:nth-child(6) .tech-tag {
   animation-delay: 3s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(7) .tech-tag {
+.tech-we-use-list li:nth-child(7) .tech-tag {
   animation-delay: 3.6s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(8) .tech-tag {
+.tech-we-use-list li:nth-child(8) .tech-tag {
   animation-delay: 4.2s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(9) .tech-tag {
+.tech-we-use-list li:nth-child(9) .tech-tag {
   animation-delay: 4.8s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(10) .tech-tag {
+.tech-we-use-list li:nth-child(10) .tech-tag {
   animation-delay: 5.4s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(11) .tech-tag {
+.tech-we-use-list li:nth-child(11) .tech-tag {
   animation-delay: 6s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(12) .tech-tag {
+.tech-we-use-list li:nth-child(12) .tech-tag {
   animation-delay: 6.6s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(13) .tech-tag {
+.tech-we-use-list li:nth-child(13) .tech-tag {
   animation-delay: 7.2s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(14) .tech-tag {
+.tech-we-use-list li:nth-child(14) .tech-tag {
   animation-delay: 7.8s;
 }
-.about-section .about-wrapper .tech-we-use-list li:nth-child(15) .tech-tag {
+.tech-we-use-list li:nth-child(15) .tech-tag {
   animation-delay: 8.4s;
 }
 
@@ -4503,6 +4504,7 @@ form .button:hover {
 .sites-roadmap-list li {
   flex: 1 1 30%;
   position: relative;
+  max-width: 30%;
 }
 .sites-roadmap-list li:after {
   position: absolute;
@@ -4525,6 +4527,9 @@ form .button:hover {
   position: absolute;
   top: 40px;
   right: -30px;
+}
+.sites-roadmap-list li:last-child {
+  margin-left: none;
 }
 .sites-roadmap-list li:last-child:after {
   display: none;
@@ -4556,6 +4561,10 @@ form .button:hover {
 @media (max-width: 1000px) {
   .sites-roadmap-list li {
     flex: 1 1 40%;
+    max-width: 50%;
+  }
+  .sites-roadmap-list li:last-child {
+    margin-left: auto;
   }
   .sites-roadmap-list li:nth-child(1) {
     order: 1;
@@ -4644,6 +4653,9 @@ form .button:hover {
   }
 }
 @media (max-width: 600px) {
+  .sites-roadmap-list li {
+    max-width: unset;
+  }
   .sites-roadmap-list li:after {
     display: none;
   }
@@ -4712,6 +4724,11 @@ form .button:hover {
   .sites-roadmap-list-item .header p:not(.title_h5) {
     font-size: 48px;
     top: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .sites-roadmap-list-item p.color-grey {
+    padding-left: 28px;
   }
 }
 @media (max-width: 1000px) {
@@ -5184,6 +5201,25 @@ form .button:hover {
     text-align: center;
   }
 }
+.corporate-portfolio {
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%);
+}
+.corporate-icms .img-handler {
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
+}
+.corporate-icms .sites-leaders-content {
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+.corporate-icms .sites-leaders-content-right img {
+  width: 100px;
+}
+.corporate-icms .sites-leaders-content-left {
+  flex: 1 1 60%;
+}
+.corporate-tech {
+  padding-top: 0px;
+}
 
 @media (max-width: 1500px) {
   .container {
@@ -5249,19 +5285,6 @@ form .button:hover {
   .tab-content-webDev {
     flex-direction: column;
   }
-  .icms-note {
-    margin: 26px 0;
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    flex-basis: 50%;
-    order: 2;
-  }
-  .icms-note img {
-    width: auto;
-    height: 35px;
-    margin-right: 8px;
-  }
   .achievements-group {
     order: 3;
     margin: 40px 0px;
@@ -5274,6 +5297,20 @@ form .button:hover {
     margin-left: 0;
   }
 }
+.icms-note {
+  margin: 26px 0;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  flex-basis: 50%;
+  order: 2;
+}
+.icms-note img {
+  width: auto;
+  height: 35px;
+  margin-right: 8px;
+}
+
 @media (max-width: 1000px) {
   .footer-logo {
     max-height: 24px;

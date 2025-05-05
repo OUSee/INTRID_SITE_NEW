@@ -3542,59 +3542,59 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                 }
             }
         }
+    }
+}
 
-        .tech-we-use {
-            flex: 1 1 100%;
-            padding-bottom: 270px;
+.tech-we-use {
+    flex: 1 1 100%;
+    padding-bottom: 270px;
 
-            @media (max-width: 600px) {
-                padding-bottom: 40px;
-            }
+    @media (max-width: 600px) {
+        padding-bottom: 40px;
+    }
 
 
-            .title_h2 {
-                margin-top: 80px;
-                margin-bottom: 50px;
-            }
+    .title_h2 {
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
 
-            &-list {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                column-gap: 30px;
-                row-gap: 20px;
+    &-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 30px;
+        row-gap: 20px;
+        justify-content: center;
+        align-items: center;
+        max-width: 1000px;
+        margin: 0 auto;
+
+        @media (max-width: 520px) {
+            column-gap: 10px;
+            row-gap: 10px;
+            justify-content: start;
+        }
+
+        li {
+            .tech-tag {
+                background-color: var(--blue-bg);
+                border: 1px solid transparent;
+                text-transform: none;
                 justify-content: center;
                 align-items: center;
-                max-width: 1000px;
-                margin: 0 auto;
+                animation: list-glow $list-length * $interval linear infinite;
 
-                @media (max-width: 520px) {
-                    column-gap: 10px;
-                    row-gap: 10px;
-                    justify-content: start;
+                &:hover {
+                    color: var(--blue-main);
+                    border-color: 1px solid var(--blue-main);
                 }
+            }
+        }
 
-                li {
-                    .tech-tag {
-                        background-color: var(--blue-bg);
-                        border: 1px solid transparent;
-                        text-transform: none;
-                        justify-content: center;
-                        align-items: center;
-                        animation: list-glow $list-length * $interval linear infinite;
-
-                        &:hover {
-                            color: var(--blue-main);
-                            border-color: 1px solid var(--blue-main);
-                        }
-                    }
-                }
-
-                @for $i from 1 through $list-length {
-                    li:nth-child(#{$i}) .tech-tag {
-                        animation-delay: ($i - 1) * $interval ;
-                    }
-                }
+        @for $i from 1 through $list-length {
+            li:nth-child(#{$i}) .tech-tag {
+                animation-delay: ($i - 1) * $interval ;
             }
         }
     }
@@ -5005,6 +5005,7 @@ form {
             li {
                 flex: 1 1 30%;
                 position: relative;
+                max-width: 30%;
 
                 &:after {
                     position: absolute;
@@ -5037,6 +5038,8 @@ form {
                     &:before {
                         display: none;
                     }
+
+                    margin-left: none;
                 }
 
                 @media (min-width: 999px) {
@@ -5073,7 +5076,11 @@ form {
 
                 @media (max-width: 1000px) {
                     flex: 1 1 40%;
+                    max-width: 50%;
 
+                    &:last-child {
+                        margin-left: auto;
+                    }
 
                     &:nth-child(1) {
                         order: 1;
@@ -5184,6 +5191,7 @@ form {
                 }
 
                 @media (max-width: 600px) {
+                    max-width: unset;
 
                     &:after {
                         display: none;
@@ -5231,6 +5239,7 @@ form {
                 display: flex;
                 flex-direction: column;
 
+
                 &::after {
                     content: '';
                     position: absolute;
@@ -5264,7 +5273,12 @@ form {
                     }
                 }
 
+                p.color-grey {
+                    @media (max-width: 600px) {
+                        padding-left: 28px;
+                    }
 
+                }
 
                 @media (max-width: 1000px) {
                     border-radius: 39px;
@@ -5826,6 +5840,38 @@ form {
             }
         }
     }
+
+    &-portfolio {
+        background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%);
+        ;
+    }
+
+    &-icms {
+
+        .img-handler {
+            background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
+        }
+
+        .sites-leaders-content {
+            flex-wrap: wrap;
+            row-gap: 20px;
+
+            &-right {
+                img {
+                    width: 100px;
+                }
+            }
+
+            &-left {
+                flex: 1 1 60%;
+            }
+        }
+
+    }
+
+    &-tech {
+        padding-top: 0px;
+    }
 }
 
 //store page
@@ -5928,22 +5974,6 @@ form {
         flex-direction: column;
     }
 
-    .icms-note {
-        margin: 26px 0;
-        display: flex;
-        align-items: center;
-        flex-grow: 1;
-        flex-basis: 50%;
-        order: 2;
-
-
-        img {
-            width: auto;
-            height: 35px;
-            margin-right: 8px;
-        }
-    }
-
     .achievements-group {
         order: 3;
         margin: 40px 0px;
@@ -5960,6 +5990,22 @@ form {
                 margin-left: 0;
             }
         }
+    }
+}
+
+.icms-note {
+    margin: 26px 0;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 50%;
+    order: 2;
+
+
+    img {
+        width: auto;
+        height: 35px;
+        margin-right: 8px;
     }
 }
 
