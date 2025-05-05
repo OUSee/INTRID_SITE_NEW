@@ -1591,6 +1591,7 @@ button.next {
                     text-wrap: nowrap;
                     flex-basis: 30%;
                     flex-grow: 1;
+                    max-height: 54px;
 
                     @media (max-width: 420px) {
                         flex-basis: 30%;
@@ -5556,6 +5557,17 @@ form {
             margin: 0 auto;
             min-width: 30%;
 
+            .achievement {
+                .img-placeholder {
+                    max-width: 90px;
+                    max-height: 90px;
+                    min-width: 90px;
+                    min-height: 90px;
+                    background-color: transparent;
+                }
+            }
+
+
             @media (max-width: 900px) {
                 position: absolute;
                 width: 30%;
@@ -5812,6 +5824,24 @@ form {
 
             .site-benefit:hover {
                 text-shadow: var(--blue-main) 0px 0px 10px;
+            }
+        }
+
+        .achievements-group {
+            height: fit-content;
+            margin: auto 0;
+            min-width: 30%;
+
+            .achievement {
+                .img-placeholder {
+                    max-width: 90px;
+                    max-height: 90px;
+                    min-width: 90px;
+                    min-height: 90px;
+                    background-color: transparent;
+                }
+
+                height: fit-content;
             }
         }
     }

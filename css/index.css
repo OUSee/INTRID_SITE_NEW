@@ -1471,6 +1471,7 @@ button.next:hover {
   text-wrap: nowrap;
   flex-basis: 30%;
   flex-grow: 1;
+  max-height: 54px;
 }
 @media (max-width: 420px) {
   .main-page.site .left-block .site-benefit-highlight {
@@ -4975,6 +4976,13 @@ form .button:hover {
   margin: 0 auto;
   min-width: 30%;
 }
+.landing-main .achievements-group .achievement .img-placeholder {
+  max-width: 90px;
+  max-height: 90px;
+  min-width: 90px;
+  min-height: 90px;
+  background-color: transparent;
+}
 @media (max-width: 900px) {
   .landing-main .achievements-group {
     position: absolute;
@@ -5179,6 +5187,23 @@ form .button:hover {
 }
 .corporate-main .left-block .site-benefit:hover {
   text-shadow: var(--blue-main) 0px 0px 10px;
+}
+.corporate-main .achievements-group {
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto 0;
+  min-width: 30%;
+}
+.corporate-main .achievements-group .achievement {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.corporate-main .achievements-group .achievement .img-placeholder {
+  max-width: 90px;
+  max-height: 90px;
+  min-width: 90px;
+  min-height: 90px;
+  background-color: transparent;
 }
 .corporate-howdone-additional {
   max-width: 800px;
