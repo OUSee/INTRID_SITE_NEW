@@ -699,6 +699,10 @@ label.radioButton:has(input:checked)::after {
     transform: translateY(-1em);
 }
 
+.transparent {
+    color: transparent;
+}
+
 .flex-50 {
     flex: 1 1 40%;
 }
@@ -5656,6 +5660,17 @@ form {
     }
 
     &-creation {
+        .form-limitter {
+            max-width: 900px;
+            margin-right: auto;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: relative;
+        }
+
         .title_h3 {
             margin-bottom: 20px;
         }
@@ -5665,19 +5680,24 @@ form {
         }
 
         form {
+            background-color: var(--blue-tag);
             padding: 40px 30px;
             border-radius: 49px;
-            background-color: var(--blue-tag);
+            position: relative;
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-            max-width: 900px;
-            position: relative;
 
             @media (max-width: 600px) {
                 border-radius: 30px;
                 padding: 20px;
+            }
+
+            img {
+                margin: 0 auto;
+
+                @media (max-width: 900px) {
+                    display: none;
+                }
             }
 
             input {
@@ -6116,7 +6136,100 @@ form {
             }
         }
 
-        &-schema {}
+        .flying-orb {
+            top: 50px;
+            bottom: unset;
+        }
+
+        &-schema {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-evenly;
+            margin-top: 50px;
+            margin-bottom: 30px;
+
+            @media (max-width: 900px) {
+                flex-wrap: wrap;
+
+                .block:nth-child(1),
+                .block:nth-child(3) {
+                    flex: 1 1 48%;
+                }
+
+                .block:last-child {
+                    flex: 1 1 30%;
+                }
+
+                .separator:nth-child(4) {
+                    flex: 1 1 100%;
+                    margin: 20px 0px;
+                    min-height: 1px;
+                    background-color: var(--blue-clouds);
+                }
+
+                .block {
+                    flex: 1 1 0%;
+                }
+            }
+
+            @media (max-width: 420px) {
+
+                .block:nth-child(1),
+                .block:nth-child(3),
+                .block:last-child {
+                    flex: 1 1 90%;
+                }
+
+                .separator:nth-child(4),
+                .separator:nth-child(2),
+                .separator:nth-child(8) {
+                    flex: 1 1 100%;
+                    margin: 20px 0px;
+                    min-height: 1px;
+                    background-color: var(--blue-clouds);
+                }
+            }
+
+            .separator {
+
+                min-height: 120px;
+                height: 100%;
+                width: 1px;
+                background-color: var(--blue-main);
+            }
+
+            .block {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+
+                @media (max-width: 600px) {
+                    column-gap: 5px;
+                }
+
+                .title_h5 {
+                    flex: 1 1 90%;
+                    margin: 0 auto;
+                }
+
+                .item {
+                    flex: 1 1 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: start;
+                    align-items: center;
+                    text-align: center;
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
     }
 }
 
