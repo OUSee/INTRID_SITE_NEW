@@ -3180,14 +3180,17 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   align-items: center;
   gap: 15px;
 }
-.why-cooperate-list li i,
-.why-cooperate-list li img {
+.why-cooperate-list li i {
   border-radius: 50px;
   color: var(--blue-main);
   font-size: 32px;
   max-height: 32px;
   line-height: 32px;
   box-shadow: 0px 0px 50px 10px var(--blue-clouds), inset 0px 0px 30px -10px var(--blue-clouds);
+}
+.why-cooperate-list li img {
+  height: 32px;
+  width: 32px;
 }
 .why-cooperate-list li p {
   max-width: 250px;
@@ -5539,6 +5542,11 @@ form .button:hover {
   border-collapse: collapse;
   border: 1px solid var(--blue-main);
 }
+@media (max-width: 600px) {
+  .portal-diferenses table {
+    border-radius: 25px;
+  }
+}
 .portal-diferenses table tr td:nth-child(2) {
   background-color: var(--blue-tag);
 }
@@ -5550,6 +5558,59 @@ form .button:hover {
   border: 1px solid var(--blue-main);
   padding: 18px 30px;
   text-align: center;
+}
+.portal-benefits-accordion {
+  display: flex;
+  gap: 10px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.portal-benefits-card {
+  flex: 30%;
+  max-width: 30%;
+}
+@media (max-width: 1000px) {
+  .portal-benefits-card {
+    flex: 45%;
+    max-width: unset;
+  }
+}
+@media (max-width: 600px) {
+  .portal-benefits-card {
+    flex: 90%;
+  }
+}
+.portal-benefits-card:has(input:checked) .accordion-header .title_h5::after {
+  transform: rotate(-90deg);
+}
+.portal-benefits-card:has(input:checked) .accordion-content {
+  padding: 10px;
+  border-radius: 29px;
+  border: 2px solid var(--blue-main);
+}
+.portal-benefits-card .accordion-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.portal-benefits-card .accordion-header .title_h5::after {
+  font-family: "INTRID_ICONS";
+  content: "c";
+  color: var(--blue-main);
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: all 0.3s ease-in-out;
+}
+.portal-benefits-card .accordion-content ul {
+  padding-left: 10px;
+}
+.portal-benefits-card .accordion-content ul li {
+  padding-left: 10px;
+}
+.portal-benefits-card .accordion-content ul li::marker {
+  content: "•";
+  color: var(--blue-main);
 }
 
 @media (max-width: 1500px) {

@@ -3545,8 +3545,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             align-items: center;
             gap: 15px;
 
-            i,
-            img {
+            i {
                 border-radius: 50px;
                 color: var(--blue-main);
                 font-size: 32px;
@@ -3555,6 +3554,12 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                 box-shadow: 0px 0px 50px 10px var(--blue-clouds),
                     inset 0px 0px 30px -10px var(--blue-clouds);
             }
+
+            img {
+                height: 32px;
+                width: 32px;
+            }
+
 
             p {
                 max-width: 250px;
@@ -6260,6 +6265,10 @@ form {
             border-collapse: collapse;
             border: 1px solid var(--blue-main);
 
+            @media (max-width: 600px) {
+                border-radius: 25px;
+            }
+
             tr {
                 td:first-child {}
 
@@ -6277,6 +6286,77 @@ form {
                 border: 1px solid var(--blue-main);
                 padding: 18px 30px;
                 text-align: center;
+            }
+        }
+    }
+
+    &-benefits {
+        &-accordion {
+            display: flex;
+            gap: 10px;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        &-card {
+            flex: 30%;
+            max-width: 30%;
+
+            @media (max-width: 1000px) {
+                flex: 45%;
+                max-width: unset;
+            }
+
+            @media (max-width: 600px) {
+                flex: 90%;
+            }
+
+            &:has(input:checked) {
+                .accordion-header .title_h5::after {
+                    transform: rotate(-90deg);
+                }
+
+                .accordion-content {
+                    padding: 10px;
+                    border-radius: 29px;
+                    border: 2px solid var(--blue-main);
+                }
+            }
+
+            .accordion-header {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+
+                .title_h5::after {
+                    font-family: "INTRID_ICONS";
+                    content: "\63";
+                    color: var(--blue-main);
+                    display: inline-block;
+                    transform: rotate(90deg);
+                    transition: all 0.3s ease-in-out;
+                }
+
+
+            }
+
+            .accordion-content {
+
+                ul {
+                    padding-left: 10px;
+
+                    li {
+                        padding-left: 10px;
+
+                        &::marker {
+                            content: '\2022';
+                            color: var(--blue-main)
+                        }
+                    }
+
+
+                }
             }
         }
     }
