@@ -53,6 +53,7 @@ html {
 }
 
 body {
+    font-family: 'Roboto' !important;
     font-size: 14px;
     background-color: var(--bg-main);
     color: var(--color-white);
@@ -3495,64 +3496,68 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             }
         }
 
-        .why-cooperate {
-            flex: 1 1 100%;
 
-            .title_h2 {
-                margin-top: 80px;
-                margin-bottom: 50px;
+    }
+}
+
+.why-cooperate {
+    flex: 1 1 100%;
+
+    .title_h2 {
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
+
+    &-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+
+        @media (max-width: 1000px) {
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            column-gap: 20px;
+            row-gap: 30px;
+
+            li {
+                flex: 1 1 45%;
+            }
+        }
+
+        @media (max-width: 60px) {
+            li {
+                flex: 1 1 45%;
+            }
+        }
+
+        @media (max-width: 520px) {
+            li {
+                flex: 1 1 90%;
+                justify-content: center;
+            }
+        }
+
+        li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+
+            i,
+            img {
+                border-radius: 50px;
+                color: var(--blue-main);
+                font-size: 32px;
+                max-height: 32px;
+                line-height: 32px;
+                box-shadow: 0px 0px 50px 10px var(--blue-clouds),
+                    inset 0px 0px 30px -10px var(--blue-clouds);
             }
 
-            &-list {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-
-                @media (max-width: 1000px) {
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: center;
-                    column-gap: 20px;
-                    row-gap: 30px;
-
-                    li {
-                        flex: 1 1 45%;
-                    }
-                }
-
-                @media (max-width: 60px) {
-                    li {
-                        flex: 1 1 45%;
-                    }
-                }
-
-                @media (max-width: 520px) {
-                    li {
-                        flex: 1 1 90%;
-                        justify-content: center;
-                    }
-                }
-
-                li {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 15px;
-
-                    i {
-                        border-radius: 50px;
-                        color: var(--blue-main);
-                        font-size: 32px;
-                        max-height: 32px;
-                        line-height: 32px;
-                        box-shadow: 0px 0px 50px 10px var(--blue-clouds),
-                            inset 0px 0px 30px -10px var(--blue-clouds);
-                    }
-
-                    p {
-                        max-width: 250px;
-                    }
-                }
+            p {
+                max-width: 250px;
             }
         }
     }
@@ -6237,6 +6242,44 @@ form {
 
 .portal {
     &-main {}
+
+    &-types {
+        .tab-slider {
+            display: flex;
+        }
+    }
+
+    &-diferenses {
+        table {
+            overflow: hidden;
+            border-radius: 39px;
+            background-color: var(--blue-bg);
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: 1px solid var(--blue-main);
+
+            tr {
+                td:first-child {}
+
+                td:nth-child(2) {
+                    background-color: var(--blue-tag);
+                }
+            }
+
+            th {
+                background-color: var(--blue-clouds);
+            }
+
+            td,
+            th {
+                border: 1px solid var(--blue-main);
+                padding: 18px 30px;
+                text-align: center;
+            }
+        }
+    }
 }
 
 //  BREAKPOINTS
