@@ -203,6 +203,14 @@ p,
 .p {
     font-weight: 400;
     font-size: 14px;
+
+    a {
+        display: inline;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 @media (max-width: 1000px) {
@@ -730,6 +738,12 @@ label.radioButton:has(input:checked)::after {
 .br1000 {
     @media (max-width: 1000px) {
         display: none !important;
+    }
+}
+
+.br-900 {
+    @media (max-width: 900px) {
+        display: none;
     }
 }
 
@@ -3864,7 +3878,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                     p.title_h4 {
                         max-width: 390px;
                         text-wrap: wrap;
-                        margin-bottom: 40px;
+                        margin-bottom: 30px;
                     }
 
                     .description {
@@ -5951,7 +5965,7 @@ form {
 
         .achievements-group {
             height: fit-content;
-            margin: auto 0;
+            margin: auto auto;
             min-width: 30%;
 
             .achievement {
@@ -5991,6 +6005,16 @@ form {
                 }
             }
         }
+
+        .sites-roadmap-list {
+
+            @media (max-width: 1000px) {
+                li:last-child {
+                    margin-left: auto;
+                }
+            }
+
+        }
     }
 
     &-portfolio {
@@ -5999,9 +6023,12 @@ form {
     }
 
     &-icms {
-
         .img-handler {
             background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
+        }
+
+        &.sites-leaders {
+            mix-blend-mode: lighten;
         }
 
         .sites-leaders-content {
@@ -6011,6 +6038,18 @@ form {
             &-right {
                 img {
                     width: 100px;
+
+                    &:not(.br900) {
+                        display: none;
+                    }
+
+                    @media (max-width: 900px) {
+                        &:not(.br900) {
+                            display: inline;
+                            height: 1.4em;
+                            width: auto
+                        }
+                    }
                 }
             }
 
@@ -6066,7 +6105,8 @@ form {
         }
     }
 
-    &-benefits {
+    &-benefits,
+    &-ai {
         .web-shop-diagram {
             position: relative;
             width: 100%;
@@ -6084,6 +6124,7 @@ form {
             .benefits-left,
             .benefits-right {
                 height: 420px;
+                top: 200px;
                 justify-content: space-between;
 
                 @media (max-width: 1000px) {
@@ -6131,7 +6172,6 @@ form {
                 display: none;
             }
         }
-
 
         .benefit-card {
             width: 100%;
@@ -6210,6 +6250,30 @@ form {
 
             @media (max-width: 1000px) {
                 margin: 50px auto;
+            }
+        }
+
+        .sites-roadmap-list {
+            justify-content: center;
+
+            &-item {
+                .header {
+                    p.title_h5 {
+                        color: var(--blue-main);
+                    }
+
+                    p:not(.title_h5) {
+                        color: var(--blue-tag);
+                    }
+                }
+            }
+
+            li {
+
+                &:before,
+                &:after {
+                    display: none;
+                }
             }
         }
     }
@@ -6335,6 +6399,52 @@ form {
     &-types {
         .tab-slider {
             display: flex;
+
+
+            @media (max-width: 1200px) {
+                flex-wrap: wrap;
+
+                .tab-slider-card {
+                    flex: 1 1 45%;
+                }
+            }
+        }
+
+        .sites-prices-card {
+            img {
+                min-width: 150px;
+            }
+
+            &-info {
+                flex-direction: column;
+            }
+
+            @media (max-width: 900px) {
+                img {
+                    top: 3.7em;
+                    max-width: 90px;
+                    min-width: 90px;
+                }
+
+                &-info .color-grey {
+                    padding-left: 115px;
+                }
+            }
+
+            @media (max-width: 540px) {
+                flex-direction: column;
+
+                img {
+                    position: static;
+                    display: block;
+                    max-width: 110px;
+                    min-width: 110px;
+                }
+
+                &-info .color-grey {
+                    padding-left: 0px;
+                }
+            }
         }
     }
 
@@ -6344,7 +6454,7 @@ form {
             border-radius: 39px;
             background-color: var(--blue-bg);
             width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             border-collapse: collapse;
             border: 1px solid var(--blue-main);

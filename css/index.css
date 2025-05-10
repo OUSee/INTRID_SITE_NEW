@@ -195,6 +195,14 @@ p,
   font-weight: 400;
   font-size: 14px;
 }
+p a,
+.p a {
+  display: inline;
+}
+p a:hover,
+.p a:hover {
+  text-decoration: underline;
+}
 
 @media (max-width: 1000px) {
   h1,
@@ -716,6 +724,12 @@ label.radioButton:has(input:checked)::after {
 @media (max-width: 1000px) {
   .br1000 {
     display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .br-900 {
+    display: none;
   }
 }
 
@@ -3523,7 +3537,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .clients-cases .blocks .cases-tabs .cases-content .tab-content p.title_h4 {
   max-width: 390px;
   text-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .description {
   margin-bottom: 40px;
@@ -5296,7 +5310,7 @@ form .button:hover {
 .corporate-main .achievements-group {
   height: -moz-fit-content;
   height: fit-content;
-  margin: auto 0;
+  margin: auto auto;
   min-width: 30%;
 }
 .corporate-main .achievements-group .achievement {
@@ -5331,11 +5345,19 @@ form .button:hover {
     text-align: center;
   }
 }
+@media (max-width: 1000px) {
+  .corporate-howdone .sites-roadmap-list li:last-child {
+    margin-left: auto;
+  }
+}
 .corporate-portfolio {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%);
 }
 .corporate-icms .img-handler {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
+}
+.corporate-icms.sites-leaders {
+  mix-blend-mode: lighten;
 }
 .corporate-icms .sites-leaders-content {
   flex-wrap: wrap;
@@ -5343,6 +5365,16 @@ form .button:hover {
 }
 .corporate-icms .sites-leaders-content-right img {
   width: 100px;
+}
+.corporate-icms .sites-leaders-content-right img:not(.br900) {
+  display: none;
+}
+@media (max-width: 900px) {
+  .corporate-icms .sites-leaders-content-right img:not(.br900) {
+    display: inline;
+    height: 1.4em;
+    width: auto;
+  }
 }
 .corporate-icms .sites-leaders-content-left {
   flex: 1 1 60%;
@@ -5380,7 +5412,7 @@ form .button:hover {
     display: none;
   }
 }
-.store-benefits .web-shop-diagram {
+.store-benefits .web-shop-diagram, .store-ai .web-shop-diagram {
   position: relative;
   width: 100%;
   display: flex;
@@ -5390,18 +5422,21 @@ form .button:hover {
   gap: 0;
 }
 @media (max-width: 1000px) {
-  .store-benefits .web-shop-diagram .title_h4 {
+  .store-benefits .web-shop-diagram .title_h4, .store-ai .web-shop-diagram .title_h4 {
     margin-bottom: 50px;
   }
 }
 .store-benefits .web-shop-diagram .benefits-left,
-.store-benefits .web-shop-diagram .benefits-right {
+.store-benefits .web-shop-diagram .benefits-right, .store-ai .web-shop-diagram .benefits-left,
+.store-ai .web-shop-diagram .benefits-right {
   height: 420px;
+  top: 200px;
   justify-content: space-between;
 }
 @media (max-width: 1000px) {
   .store-benefits .web-shop-diagram .benefits-left,
-  .store-benefits .web-shop-diagram .benefits-right {
+  .store-benefits .web-shop-diagram .benefits-right, .store-ai .web-shop-diagram .benefits-left,
+  .store-ai .web-shop-diagram .benefits-right {
     display: flex;
     position: static;
     height: -moz-fit-content;
@@ -5412,81 +5447,82 @@ form .button:hover {
     margin: 0;
   }
   .store-benefits .web-shop-diagram .benefits-left .benefit-card,
-  .store-benefits .web-shop-diagram .benefits-right .benefit-card {
+  .store-benefits .web-shop-diagram .benefits-right .benefit-card, .store-ai .web-shop-diagram .benefits-left .benefit-card,
+  .store-ai .web-shop-diagram .benefits-right .benefit-card {
     width: 100%;
     max-width: unset;
     margin: 0;
   }
 }
-.store-benefits .web-shop-diagram div.video-diagramm .connections .line {
+.store-benefits .web-shop-diagram div.video-diagramm .connections .line, .store-ai .web-shop-diagram div.video-diagramm .connections .line {
   background-color: var(--blue-bg);
 }
-.store-benefits .web-shop-diagram div.video-diagramm .connections .line:before, .store-benefits .web-shop-diagram div.video-diagramm .connections .line:after {
+.store-benefits .web-shop-diagram div.video-diagramm .connections .line:before, .store-benefits .web-shop-diagram div.video-diagramm .connections .line:after, .store-ai .web-shop-diagram div.video-diagramm .connections .line:before, .store-ai .web-shop-diagram div.video-diagramm .connections .line:after {
   background-color: transparent;
 }
-.store-benefits .benefits-left {
+.store-benefits .benefits-left, .store-ai .benefits-left {
   order: 2;
   margin-bottom: 30px;
 }
-.store-benefits .benefits-right {
+.store-benefits .benefits-right, .store-ai .benefits-right {
   order: 3;
 }
-.store-benefits .video-diagramm {
+.store-benefits .video-diagramm, .store-ai .video-diagramm {
   order: 0;
 }
 @media (max-width: 1000px) {
-  .store-benefits .video-diagramm {
+  .store-benefits .video-diagramm, .store-ai .video-diagramm {
     display: none;
   }
 }
-.store-benefits .benefit-card {
+.store-benefits .benefit-card, .store-ai .benefit-card {
   width: 100%;
   padding: 20px;
   min-height: unset;
   cursor: pointer;
 }
-.store-benefits .benefit-card:has(input:checked) img {
+.store-benefits .benefit-card:has(input:checked) img, .store-ai .benefit-card:has(input:checked) img {
   filter: brightness(0.3);
 }
-.store-benefits .benefit-card:has(input:checked)::before {
+.store-benefits .benefit-card:has(input:checked)::before, .store-ai .benefit-card:has(input:checked)::before {
   background-color: var(--blue-main);
 }
-.store-benefits .benefit-card .content-hidden {
+.store-benefits .benefit-card .content-hidden, .store-ai .benefit-card .content-hidden {
   display: none;
 }
 @media (max-width: 1000px) {
-  .store-benefits .benefit-card .content-hidden {
+  .store-benefits .benefit-card .content-hidden, .store-ai .benefit-card .content-hidden {
     display: block;
     color: var(--color-grey);
     margin-top: 10px;
   }
-  .store-benefits .benefit-card .content-hidden li {
+  .store-benefits .benefit-card .content-hidden li, .store-ai .benefit-card .content-hidden li {
     padding-left: 5px;
     margin-top: 5px;
   }
-  .store-benefits .benefit-card .content-hidden li::marker {
+  .store-benefits .benefit-card .content-hidden li::marker, .store-ai .benefit-card .content-hidden li::marker {
     content: "•";
   }
 }
-.store-benefits .benefit-card img {
+.store-benefits .benefit-card img, .store-ai .benefit-card img {
   width: 34px;
   height: 34px;
 }
 @media (max-width: 1000px) {
-  .store-benefits .benefit-card img {
+  .store-benefits .benefit-card img, .store-ai .benefit-card img {
     align-self: flex-start;
   }
 }
-.store-benefits .benefit-card:before {
+.store-benefits .benefit-card:before, .store-ai .benefit-card:before {
   top: -35px;
 }
-.store-benefits .video-diagramm .water-ripple-video {
+.store-benefits .video-diagramm .water-ripple-video, .store-ai .video-diagramm .water-ripple-video {
   z-index: 1 !important;
 }
-.store-benefits .video-diagramm .connections {
+.store-benefits .video-diagramm .connections, .store-ai .video-diagramm .connections {
   z-index: 0;
 }
-.store-benefits .video-diagramm .store-text {
+.store-benefits .video-diagramm .store-text, .store-ai .video-diagramm .store-text {
   width: 100%;
   height: 100%;
   position: relative;
@@ -5501,9 +5537,21 @@ form .button:hover {
   align-items: center;
 }
 @media (max-width: 1000px) {
-  .store-benefits .video-diagramm {
+  .store-benefits .video-diagramm, .store-ai .video-diagramm {
     margin: 50px auto;
   }
+}
+.store-benefits .sites-roadmap-list, .store-ai .sites-roadmap-list {
+  justify-content: center;
+}
+.store-benefits .sites-roadmap-list-item .header p.title_h5, .store-ai .sites-roadmap-list-item .header p.title_h5 {
+  color: var(--blue-main);
+}
+.store-benefits .sites-roadmap-list-item .header p:not(.title_h5), .store-ai .sites-roadmap-list-item .header p:not(.title_h5) {
+  color: var(--blue-tag);
+}
+.store-benefits .sites-roadmap-list li:before, .store-benefits .sites-roadmap-list li:after, .store-ai .sites-roadmap-list li:before, .store-ai .sites-roadmap-list li:after {
+  display: none;
 }
 .store-integration ul {
   padding-left: 10px;
@@ -5604,12 +5652,50 @@ form .button:hover {
 .portal-types .tab-slider {
   display: flex;
 }
+@media (max-width: 1200px) {
+  .portal-types .tab-slider {
+    flex-wrap: wrap;
+  }
+  .portal-types .tab-slider .tab-slider-card {
+    flex: 1 1 45%;
+  }
+}
+.portal-types .sites-prices-card img {
+  min-width: 150px;
+}
+.portal-types .sites-prices-card-info {
+  flex-direction: column;
+}
+@media (max-width: 900px) {
+  .portal-types .sites-prices-card img {
+    top: 3.7em;
+    max-width: 90px;
+    min-width: 90px;
+  }
+  .portal-types .sites-prices-card-info .color-grey {
+    padding-left: 115px;
+  }
+}
+@media (max-width: 540px) {
+  .portal-types .sites-prices-card {
+    flex-direction: column;
+  }
+  .portal-types .sites-prices-card img {
+    position: static;
+    display: block;
+    max-width: 110px;
+    min-width: 110px;
+  }
+  .portal-types .sites-prices-card-info .color-grey {
+    padding-left: 0px;
+  }
+}
 .portal-diferenses table {
   overflow: hidden;
   border-radius: 39px;
   background-color: var(--blue-bg);
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   border-collapse: collapse;
   border: 1px solid var(--blue-main);
