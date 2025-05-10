@@ -190,7 +190,8 @@ p.p_big {
   font-size: 16px;
 }
 
-p {
+p,
+.p {
   font-weight: 400;
   font-size: 14px;
 }
@@ -486,6 +487,22 @@ label.radioButton:has(input:checked)::after {
 .text-dotted {
   -webkit-text-decoration: dotted;
           text-decoration: dotted;
+}
+
+.text-unbreakable {
+  text-wrap: nowrap;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+}
+
+.d-inline {
+  display: inline;
 }
 
 .d-flex {
@@ -3431,7 +3448,8 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   width: 100px;
   height: auto;
 }
-.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button p {
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button p,
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button span.text-unbreakable {
   font-size: 16px;
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button span.case-number {
@@ -4179,6 +4197,14 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   display: flex;
 }
 
+#privacy-policy {
+  overflow-y: scroll;
+}
+#privacy-policy p {
+  max-width: 900px;
+  color: var(--color-white);
+}
+
 @media (max-width: 1000px) {
   .client-web-diferences {
     padding-bottom: 0;
@@ -4585,7 +4611,7 @@ form .button:hover {
     max-width: 50%;
   }
   .sites-roadmap-list li:last-child {
-    margin-left: auto;
+    margin-left: none;
   }
   .sites-roadmap-list li:nth-child(1) {
     order: 1;
@@ -4765,6 +4791,9 @@ form .button:hover {
   .sites-roadmap-list-item::after {
     display: none;
   }
+  .sites-roadmap-list-item .header {
+    margin-bottom: 0;
+  }
   .sites-roadmap-list-item .header p:not(.title_h5) {
     position: static;
     font-size: 30px;
@@ -4809,7 +4838,7 @@ form .button:hover {
   padding: 25px 40px;
   flex: 1 1 0;
   min-width: 706px;
-  opacity: 0.3;
+  opacity: 0;
 }
 .sites-reviews-slider .review-card.active {
   opacity: 1;

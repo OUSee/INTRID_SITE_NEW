@@ -199,7 +199,8 @@ p.p_big {
     font-size: 16px;
 }
 
-p {
+p,
+.p {
     font-weight: 400;
     font-size: 14px;
 }
@@ -498,6 +499,24 @@ label.radioButton:has(input:checked)::after {
 
 .text-dotted {
     text-decoration: dotted;
+}
+
+.text-unbreakable {
+    text-wrap: nowrap;
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.hover-underline {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.d-inline {
+    display: inline;
 }
 
 .d-flex {
@@ -3766,7 +3785,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                         height: auto;
                     }
 
-                    p {
+                    p,
+                    span.text-unbreakable {
                         font-size: 16px;
                     }
 
@@ -4624,6 +4644,16 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     display: flex;
 }
 
+#privacy-policy {
+    overflow-y: scroll;
+
+    p {
+        max-width: 900px;
+        color: var(--color-white);
+    }
+}
+
+
 // pages styles
 
 .client-web-diferences {
@@ -4667,6 +4697,7 @@ form {
 
 
 }
+
 
 // PAGES
 
@@ -5096,6 +5127,7 @@ form {
                             left: -30px;
                         }
                     }
+
                 }
 
                 @media (max-width: 1000px) {
@@ -5103,7 +5135,7 @@ form {
                     max-width: 50%;
 
                     &:last-child {
-                        margin-left: auto;
+                        margin-left: none;
                     }
 
                     &:nth-child(1) {
@@ -5319,6 +5351,8 @@ form {
                     }
 
                     .header {
+                        margin-bottom: 0;
+
                         p:not(.title_h5) {
                             position: static;
                             font-size: 30px;
@@ -5369,7 +5403,7 @@ form {
                 padding: 25px 40px;
                 flex: 1 1 0;
                 min-width: calc((1442px - 30px) / 2);
-                opacity: 0.3;
+                opacity: 0;
 
                 &.active {
                     opacity: 1;
