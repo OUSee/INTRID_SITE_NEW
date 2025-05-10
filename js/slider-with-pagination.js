@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let slides = slider.children;
         let gap = parseInt(window.getComputedStyle(slider).gap)
         const visibleWidth = slider.parentElement.clientWidth;
-        const visibleSlidesCount = Math.floor(visibleWidth / (slides[0].offsetWidth));
+        const visibleSlidesCount = Math.round(visibleWidth / (slides[0].offsetWidth));
+        
+       
 
         
         if(id === `cases-tabs-slider`){

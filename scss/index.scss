@@ -5608,6 +5608,13 @@ form {
                     margin-top: 250px;
                 }
             }
+
+            .button-highlight,
+            .button-link {
+                @media (max-width: 540px) {
+                    margin: 0 auto;
+                }
+            }
         }
 
         .achievements-group {
@@ -5624,18 +5631,24 @@ form {
                 }
             }
 
-
             @media (max-width: 900px) {
                 position: absolute;
-                width: 30%;
-                left: calc(50% - 15%);
-                bottom: 150px;
+                width: 280px;
+                left: calc(50% - 140px);
+                bottom: 115px;
+
+                .achievement {
+                    flex-basis: unset;
+                }
             }
 
             @media (max-width: 600px) {
-                bottom: 200px;
-                width: 60%;
-                left: calc(50% - 30%);
+                bottom: 125px;
+                left: calc(50% - 140px);
+            }
+
+            @media (max-width: 540px) {
+                bottom: 185px;
             }
         }
     }
@@ -5683,8 +5696,6 @@ form {
     &-steps {
         background: linear-gradient(0deg, rgba(0, 234, 255, 0.1) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
 
-
-
         .description {
             margin-top: 20px;
         }
@@ -5692,10 +5703,48 @@ form {
         .sites-roadmap-list {
             margin-top: 50px;
             margin-bottom: 30px;
+            justify-content: center;
+
 
             &+.description {
                 text-align: center;
                 max-width: 70%;
+            }
+
+            @media (max-width: 1000px) {
+                gap: 12px 8px;
+
+                li {
+                    max-width: unset;
+
+                    &::before,
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                &-item {
+                    padding: 9px 13px;
+                    border-radius: 25px;
+
+                    &::before,
+                    &::after {
+                        display: none;
+                    }
+
+                    .header {
+                        margin-bottom: 0;
+
+                        p:not(.title_h5) {
+                            position: static;
+                            font-size: 30px;
+                        }
+                    }
+
+                    p.color-grey {
+                        padding-left: 28px;
+                    }
+                }
             }
         }
     }
