@@ -541,6 +541,10 @@ label.radioButton:has(input:checked)::after {
     flex-direction: column;
 }
 
+.gap-4 {
+    gap: 4px;
+}
+
 .gap-6 {
     gap: 6px;
 }
@@ -638,7 +642,9 @@ label.radioButton:has(input:checked)::after {
     margin-top: 60px;
 }
 
-
+.w-900 {
+    max-width: 900px;
+}
 
 .w-fit {
     width: fit-content;
@@ -2843,6 +2849,11 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     margin-left: auto;
     height: fit-content;
 
+    img {
+        max-width: 225px;
+        height: 141px;
+    }
+
     .work-testimonial {
         display: flex;
         flex-direction: column;
@@ -3705,7 +3716,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
         @media (max-width: 900px) {
             width: 100%;
-            min-width: calc(100vw * 5);
+            min-width: calc(100vw * 5.8);
             flex: 1 1 0px;
             overflow-x: visible;
         }
@@ -4878,11 +4889,12 @@ form {
                         flex: 1 1 45%;
                     }
 
-                    p.title_h4 {
+                    p.title_h4,
+                    .title_h5 {
                         text-align: center;
                     }
 
-                    p:not(.title_h4) {
+                    p:not(.title_h5, .title_h4) {
                         display: none;
                     }
                 }
@@ -5951,6 +5963,8 @@ form {
 
 .corporate {
     &-main {
+        position: relative;
+
         .left-block {
             div.fd-row.flex-wrap {
                 margin-top: 20px;
@@ -5978,6 +5992,30 @@ form {
                 }
 
                 height: fit-content;
+            }
+
+            @media (max-width: 1000px) {
+                position: absolute;
+                width: 280px;
+                left: calc(50% - 140px);
+                bottom: 200px;
+
+                .achievement {
+                    flex-basis: unset;
+                }
+            }
+
+            @media (max-width: 900px) {
+                bottom: 300px;
+            }
+
+            @media (max-width: 600px) {
+                bottom: 280px;
+                left: calc(50% - 140px);
+            }
+
+            @media (max-width: 540px) {
+                bottom: 300px;
             }
         }
     }
@@ -6039,16 +6077,9 @@ form {
                 img {
                     width: 100px;
 
-                    &:not(.br900) {
-                        display: none;
-                    }
-
                     @media (max-width: 900px) {
-                        &:not(.br900) {
-                            display: inline;
-                            height: 1.4em;
-                            width: auto
-                        }
+                        display: block;
+                        width: 50px;
                     }
                 }
             }
@@ -6069,12 +6100,20 @@ form {
 
 .store {
     &-main {
+        position: relative;
+
         .left-block {
             width: 100%;
 
             .site-description {
                 margin-bottom: 20px !important;
                 max-width: 950px;
+            }
+
+            .title_h4.color-blue {
+                @media (max-width: 1000px) {
+                    margin-bottom: 300px;
+                }
             }
         }
 
@@ -6094,6 +6133,27 @@ form {
 
                 height: fit-content;
             }
+
+            @media (max-width: 1000px) {
+                position: absolute;
+                width: 280px;
+                left: calc(50% - 140px);
+                bottom: 165px;
+
+                .achievement {
+                    flex-basis: unset;
+                }
+            }
+
+            @media (max-width: 900px) {
+                bottom: 220px;
+            }
+
+            @media (max-width: 600px) {
+                bottom: 200px;
+                left: calc(50% - 140px);
+            }
+
         }
     }
 
@@ -6103,6 +6163,10 @@ form {
                 display: none;
             }
         }
+    }
+
+    &-icms {
+        padding-top: 0px;
     }
 
     &-benefits,
@@ -6394,7 +6458,37 @@ form {
 //web-portal page
 
 .portal {
-    &-main {}
+    &-main {
+        .left-block {
+            .title_h5.color-blue {
+                @media (max-width: 1000px) {
+                    margin-bottom: 300px;
+                }
+            }
+        }
+
+        .achievements-group {
+            @media (max-width: 1000px) {
+                position: absolute;
+                width: 280px;
+                left: calc(50% - 140px);
+                bottom: 165px;
+
+                .achievement {
+                    flex-basis: unset;
+                }
+            }
+
+            @media (max-width: 900px) {
+                bottom: 220px;
+            }
+
+            @media (max-width: 600px) {
+                bottom: 200px;
+                left: calc(50% - 140px);
+            }
+        }
+    }
 
     &-types {
         .tab-slider {
@@ -6550,6 +6644,16 @@ form {
                     }
 
 
+                }
+            }
+        }
+    }
+
+    &-whyUs {
+        .why-cooperate-list {
+            @media (max-width: 520px) {
+                li {
+                    justify-content: flex-start;
                 }
             }
         }

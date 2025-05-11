@@ -527,6 +527,10 @@ label.radioButton:has(input:checked)::after {
   flex-direction: column;
 }
 
+.gap-4 {
+  gap: 4px;
+}
+
 .gap-6 {
   gap: 6px;
 }
@@ -623,6 +627,10 @@ label.radioButton:has(input:checked)::after {
 
 .mt-60 {
   margin-top: 60px;
+}
+
+.w-900 {
+  max-width: 900px;
 }
 
 .w-fit {
@@ -2565,6 +2573,10 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   height: -moz-fit-content;
   height: fit-content;
 }
+.recent-work-card img {
+  max-width: 225px;
+  height: 141px;
+}
 .recent-work-card .work-testimonial {
   display: flex;
   flex-direction: column;
@@ -3367,7 +3379,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 @media (max-width: 900px) {
   .clients-cases .blocks {
     width: 100%;
-    min-width: 500vw;
+    min-width: 580vw;
     flex: 1 1 0px;
     overflow-x: visible;
   }
@@ -4402,10 +4414,11 @@ form .button:hover {
     min-width: 45%;
     flex: 1 1 45%;
   }
-  .sites-prices .tab-view .tab-slider p.title_h4 {
+  .sites-prices .tab-view .tab-slider p.title_h4,
+  .sites-prices .tab-view .tab-slider .title_h5 {
     text-align: center;
   }
-  .sites-prices .tab-view .tab-slider p:not(.title_h4) {
+  .sites-prices .tab-view .tab-slider p:not(.title_h5, .title_h4) {
     display: none;
   }
 }
@@ -5299,6 +5312,9 @@ form .button:hover {
   text-decoration-thickness: 2px;
 }
 
+.corporate-main {
+  position: relative;
+}
 .corporate-main .left-block div.fd-row.flex-wrap {
   margin-top: 20px;
   max-width: 800px;
@@ -5323,6 +5339,33 @@ form .button:hover {
   min-width: 90px;
   min-height: 90px;
   background-color: transparent;
+}
+@media (max-width: 1000px) {
+  .corporate-main .achievements-group {
+    position: absolute;
+    width: 280px;
+    left: calc(50% - 140px);
+    bottom: 200px;
+  }
+  .corporate-main .achievements-group .achievement {
+    flex-basis: unset;
+  }
+}
+@media (max-width: 900px) {
+  .corporate-main .achievements-group {
+    bottom: 300px;
+  }
+}
+@media (max-width: 600px) {
+  .corporate-main .achievements-group {
+    bottom: 280px;
+    left: calc(50% - 140px);
+  }
+}
+@media (max-width: 540px) {
+  .corporate-main .achievements-group {
+    bottom: 300px;
+  }
 }
 .corporate-howdone-additional {
   max-width: 800px;
@@ -5366,14 +5409,10 @@ form .button:hover {
 .corporate-icms .sites-leaders-content-right img {
   width: 100px;
 }
-.corporate-icms .sites-leaders-content-right img:not(.br900) {
-  display: none;
-}
 @media (max-width: 900px) {
-  .corporate-icms .sites-leaders-content-right img:not(.br900) {
-    display: inline;
-    height: 1.4em;
-    width: auto;
+  .corporate-icms .sites-leaders-content-right img {
+    display: block;
+    width: 50px;
   }
 }
 .corporate-icms .sites-leaders-content-left {
@@ -5383,12 +5422,20 @@ form .button:hover {
   padding-top: 0px;
 }
 
+.store-main {
+  position: relative;
+}
 .store-main .left-block {
   width: 100%;
 }
 .store-main .left-block .site-description {
   margin-bottom: 20px !important;
   max-width: 950px;
+}
+@media (max-width: 1000px) {
+  .store-main .left-block .title_h4.color-blue {
+    margin-bottom: 300px;
+  }
 }
 .store-main .achievements-group {
   height: -moz-fit-content;
@@ -5407,10 +5454,35 @@ form .button:hover {
   min-height: 90px;
   background-color: transparent;
 }
+@media (max-width: 1000px) {
+  .store-main .achievements-group {
+    position: absolute;
+    width: 280px;
+    left: calc(50% - 140px);
+    bottom: 165px;
+  }
+  .store-main .achievements-group .achievement {
+    flex-basis: unset;
+  }
+}
+@media (max-width: 900px) {
+  .store-main .achievements-group {
+    bottom: 220px;
+  }
+}
+@media (max-width: 600px) {
+  .store-main .achievements-group {
+    bottom: 200px;
+    left: calc(50% - 140px);
+  }
+}
 @media (min-width: 600px) {
   .store-help .pagination--btn-dot:nth-child(7) {
     display: none;
   }
+}
+.store-icms {
+  padding-top: 0px;
 }
 .store-benefits .web-shop-diagram, .store-ai .web-shop-diagram {
   position: relative;
@@ -5649,6 +5721,33 @@ form .button:hover {
   margin-bottom: 10px;
 }
 
+@media (max-width: 1000px) {
+  .portal-main .left-block .title_h5.color-blue {
+    margin-bottom: 300px;
+  }
+}
+@media (max-width: 1000px) {
+  .portal-main .achievements-group {
+    position: absolute;
+    width: 280px;
+    left: calc(50% - 140px);
+    bottom: 165px;
+  }
+  .portal-main .achievements-group .achievement {
+    flex-basis: unset;
+  }
+}
+@media (max-width: 900px) {
+  .portal-main .achievements-group {
+    bottom: 220px;
+  }
+}
+@media (max-width: 600px) {
+  .portal-main .achievements-group {
+    bottom: 200px;
+    left: calc(50% - 140px);
+  }
+}
 .portal-types .tab-slider {
   display: flex;
 }
@@ -5769,6 +5868,11 @@ form .button:hover {
 .portal-benefits-card .accordion-content ul li::marker {
   content: "•";
   color: var(--blue-main);
+}
+@media (max-width: 520px) {
+  .portal-whyUs .why-cooperate-list li {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 1500px) {
