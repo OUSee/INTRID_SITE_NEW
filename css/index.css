@@ -38,6 +38,7 @@ html {
 * {
   box-sizing: border-box !important;
   transition: all 0.3s ease-in-out;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -3270,7 +3271,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     -moz-column-gap: 10px;
          column-gap: 10px;
     row-gap: 10px;
-    justify-content: start;
   }
 }
 .tech-we-use-list li .tech-tag {
@@ -5625,6 +5625,12 @@ form .button:hover {
 .store-benefits .sites-roadmap-list li:before, .store-benefits .sites-roadmap-list li:after, .store-ai .sites-roadmap-list li:before, .store-ai .sites-roadmap-list li:after {
   display: none;
 }
+@media (max-width: 1000px) {
+  .store-ai .benefits-right,
+  .store-ai .benefits-left {
+    margin-top: 30px !important;
+  }
+}
 .store-integration ul {
   padding-left: 10px;
 }
@@ -5638,8 +5644,13 @@ form .button:hover {
   margin-right: 10px;
 }
 .store-integration .flying-orb {
-  top: 50px;
+  top: 115px;
   bottom: unset;
+}
+@media (max-width: 600px) {
+  .store-integration .flying-orb {
+    top: 100px;
+  }
 }
 .store-integration-schema {
   display: flex;
@@ -5748,15 +5759,58 @@ form .button:hover {
     left: calc(50% - 140px);
   }
 }
-.portal-types .tab-slider {
+.portal-types .tab-view .slider-arrow {
+  display: none !important;
+}
+.portal-types .tab-view .tab-slider {
+  flex-direction: row;
   display: flex;
 }
 @media (max-width: 1200px) {
-  .portal-types .tab-slider {
+  .portal-types .tab-view .tab-slider {
     flex-wrap: wrap;
   }
-  .portal-types .tab-slider .tab-slider-card {
+  .portal-types .tab-view .tab-slider-card p {
+    text-align: center;
+  }
+}
+.portal-types .tab-view .tab-slider-card {
+  min-width: unset !important;
+  margin-right: 0 !important;
+  flex: 1 1 40% !important;
+}
+@media (max-width: 900px) {
+  .portal-types .tab-view .tab-slider-card p:not(.title_h4) {
+    display: none;
+  }
+}
+@media (max-width: 1200px) {
+  .portal-types .tab-view .tab-slider {
+    flex-wrap: wrap;
+  }
+  .portal-types .tab-view .tab-slider .tab-slider-card {
     flex: 1 1 45%;
+  }
+}
+@media (max-width: 600px) {
+  .portal-types .tab-view .tab-slider {
+    margin: 0;
+  }
+  .portal-types .tab-view .tab-slider .tab-slider-card {
+    flex: 1 1 40%;
+    max-width: 50%;
+  }
+}
+@media (max-width: 600px) and (max-width: 520px) {
+  .portal-types .tab-view .tab-slider .tab-slider-card-image {
+    height: 42px;
+  }
+  .portal-types .tab-view .tab-slider .tab-slider-card-image img {
+    height: 42px;
+    width: auto;
+  }
+  .portal-types .tab-view .tab-slider .tab-slider-card .title_h4 {
+    font-size: 14px;
   }
 }
 .portal-types .sites-prices-card img {
@@ -5870,7 +5924,17 @@ form .button:hover {
   color: var(--blue-main);
 }
 @media (max-width: 520px) {
+  .portal-whyUs .why-cooperate-list {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: start;
+  }
   .portal-whyUs .why-cooperate-list li {
+    flex: unset;
+    width: -moz-fit-content;
+    width: fit-content;
     justify-content: flex-start;
   }
 }

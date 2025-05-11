@@ -50,6 +50,7 @@ html {
 * {
     box-sizing: border-box !important;
     transition: all 0.3s ease-in-out;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -69,6 +70,8 @@ body {
         background-image: url('../src/images/bg-main-vert.webp');
         background-size: 100% auto;
     }
+
+
 }
 
 input[type=radio] {
@@ -3641,7 +3644,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         @media (max-width: 520px) {
             column-gap: 10px;
             row-gap: 10px;
-            justify-content: start;
         }
 
         li {
@@ -6342,6 +6344,19 @@ form {
         }
     }
 
+    &-ai {
+        @media (max-width: 1000px) {
+
+            .benefits-right,
+            .benefits-left {
+                margin-top: 30px !important;
+
+            }
+
+        }
+
+    }
+
     &-integration {
         ul {
             padding-left: 10px;
@@ -6359,12 +6374,12 @@ form {
         }
 
         .flying-orb {
-            top: 50px;
+            top: 115px;
             bottom: unset;
 
-@media (max-width: 600px){
-  top: 100px;
-}
+            @media (max-width: 600px) {
+                top: 100px;
+            }
         }
 
         &-schema {
@@ -6495,18 +6510,73 @@ form {
     }
 
     &-types {
-        .tab-slider {
-            display: flex;
+
+        .tab-view {
+            .slider-arrow {
+                display: none !important;
+            }
+
+            .tab-slider {
+                flex-direction: row;
+                display: flex;
+
+                @media (max-width: 1200px) {
+                    flex-wrap: wrap;
+
+                    &-card p {
+                        text-align: center;
+                    }
+                }
+
+                &-card {
+                    min-width: unset !important;
+                    margin-right: 0 !important;
+                    flex: 1 1 40% !important;
 
 
-            @media (max-width: 1200px) {
-                flex-wrap: wrap;
 
-                .tab-slider-card {
-                    flex: 1 1 45%;
+                    @media (max-width: 900px) {
+
+                        p:not(.title_h4) {
+                            display: none;
+                        }
+                    }
+                }
+
+                @media (max-width: 1200px) {
+                    flex-wrap: wrap;
+
+                    .tab-slider-card {
+                        flex: 1 1 45%;
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    margin: 0;
+
+                    .tab-slider-card {
+                        flex: 1 1 40%;
+                        max-width: 50%;
+
+                        @media (max-width: 520px) {
+                            &-image {
+                                height: 42px;
+
+                                img {
+                                    height: 42px;
+                                    width: auto;
+                                }
+                            }
+
+                            .title_h4 {
+                                font-size: 14px;
+                            }
+                        }
+                    }
                 }
             }
         }
+
 
         .sites-prices-card {
             img {
@@ -6655,8 +6725,16 @@ form {
 
     &-whyUs {
         .why-cooperate-list {
+
             @media (max-width: 520px) {
+                width: fit-content;
+                margin: 0 auto;
+                flex-direction: column;
+                align-items: start;
+
                 li {
+                    flex: unset;
+                    width: fit-content;
                     justify-content: flex-start;
                 }
             }
