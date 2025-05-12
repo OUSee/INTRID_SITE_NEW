@@ -412,12 +412,15 @@ section:first-of-type {
 @keyframes onload {
   0% {
     opacity: 1;
+    display: block;
   }
   50% {
     opacity: 1;
+    display: block;
   }
   100% {
     opacity: 0;
+    display: none;
   }
 }
 /* buttons and checkboxes */
@@ -2676,6 +2679,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   height: -moz-fit-content;
   height: fit-content;
 }
+.prices-services-list-item span:not(.color-blue) {
+  color: white;
+}
 .prices-services-list-item .img-wrapper {
   box-sizing: border-box;
   position: absolute;
@@ -3491,6 +3497,10 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   align-items: center;
   background-color: var(--highlight-bg);
   color: var(--bg-main);
+  cursor: pointer;
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:hover span.case-number {
+  opacity: 1;
 }
 @media (max-width: 900px) {
   .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button {
@@ -3521,6 +3531,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     background-color: var(--blue-tag);
     color: var(--color-white);
   }
+}
+.clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:has(input:checked):hover span.case-number {
+  opacity: 1;
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:has(input:checked) span.case-number {
   opacity: 0.5;

@@ -413,7 +413,9 @@ section:first-of-type {
     background-position: top;
     background-repeat: repeat;
     overflow: hidden;
+
     animation: onload 3s forwards;
+
 
     .flying-orb {
         // offset-path: path("M0,110 С68,100 0,0 128,136");
@@ -444,15 +446,17 @@ section:first-of-type {
 @keyframes onload {
     0% {
         opacity: 1;
-
+        display: block;
     }
 
     50% {
         opacity: 1;
+        display: block;
     }
 
     100% {
         opacity: 0;
+        display: none;
     }
 }
 
@@ -2969,6 +2973,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         flex-basis: 230px;
         height: fit-content;
 
+        span:not(.color-blue) {
+            color: white;
+        }
+
         .img-wrapper {
             box-sizing: border-box;
             position: absolute;
@@ -3836,6 +3844,13 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                     align-items: center;
                     background-color: var(--highlight-bg);
                     color: var(--bg-main);
+                    cursor: pointer;
+
+                    &:hover {
+                        span.case-number {
+                            opacity: 1;
+                        }
+                    }
 
                     @media (max-width: 900px) {
                         flex: unset;
@@ -3867,9 +3882,15 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                             color: var(--color-white);
                         }
 
+                        &:hover span.case-number {
+                            opacity: 1;
+                        }
+
                         span.case-number {
                             opacity: 0.5;
                             color: var(--color-white);
+
+
                         }
                     }
 
@@ -4204,6 +4225,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
 
         .prices-services-list-item {
+            &:hover {}
 
             i.icon-arrow_wide {
                 position: relative;

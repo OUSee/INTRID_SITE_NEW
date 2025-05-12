@@ -1,5 +1,6 @@
 // opacity header onscroll
 const header = document.getElementById('header');
+const preloader = document.getElementById('preloader')
 
 window.addEventListener('scroll', function () {
     if (window.scrollY > 50) {
@@ -8,3 +9,6 @@ window.addEventListener('scroll', function () {
       header.classList.remove('scrolled');
     }
   });
+ 
+  
+  
