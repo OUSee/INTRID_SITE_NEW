@@ -559,6 +559,57 @@ label.radioButton:has(input:checked)::after {
     font-size: 14px;
 }
 
+.tooltip {
+    position: relative;
+    cursor: help;
+    /* shows help cursor on hover */
+
+    &::after {
+        content: attr(data-tooltip);
+        /* get tooltip text from data attribute */
+        position: absolute;
+        bottom: 125%;
+        /* position above the element */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 4px;
+        white-space: nowrap;
+        font-size: 14px;
+        opacity: 0;
+        pointer-events: none;
+        /* ignore mouse events */
+        transition: opacity 0.3s ease;
+        z-index: 10;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 115%;
+        /* slightly below tooltip box */
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 6px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+        /* arrow */
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 10;
+    }
+
+    &:hover::after,
+    &:hover::before {
+        opacity: 1;
+    }
+}
+
+
+
 /* INLINE STYLES */
 
 .z-2 {
