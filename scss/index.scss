@@ -4738,6 +4738,10 @@ form {
         background-repeat: no-repeat;
         background-size: contain;
 
+        @media (max-width: 900px) {
+            background-size: 1400px;
+        }
+
         .img-handler {
             background: $section-clouds-bg ;
         }
@@ -6222,9 +6226,6 @@ form {
 
         .benefits-left {
             order: 2;
-            margin-bottom: 30px;
-
-
         }
 
         .benefits-right {
@@ -6345,19 +6346,34 @@ form {
     }
 
     &-ai {
+        @media (max-width: 1250px) {
+
+            .benefits-right,
+            .benefits-left {
+                top: 220px !important;
+            }
+        }
+
+        @media (max-width: 1100px) {
+
+            .benefits-right,
+            .benefits-left {
+                top: 275px !important;
+            }
+        }
+
         @media (max-width: 1000px) {
 
             .benefits-right,
             .benefits-left {
                 margin-top: 30px !important;
-
             }
-
         }
 
     }
 
     &-integration {
+
         ul {
             padding-left: 10px;
 
@@ -6374,8 +6390,23 @@ form {
         }
 
         .flying-orb {
-            top: 115px;
+            top: 40px;
             bottom: unset;
+
+            img {
+                width: 282px;
+                height: auto;
+
+                @media (max-width: 1200px) {
+                    width: 212px;
+                    height: auto;
+                }
+
+                @media (max-width: 900px) {
+                    width: 152px;
+                    height: auto;
+                }
+            }
 
             @media (max-width: 600px) {
                 top: 100px;

@@ -4276,6 +4276,11 @@ form .button:hover {
   background-repeat: no-repeat;
   background-size: contain;
 }
+@media (max-width: 900px) {
+  .sites-leaders {
+    background-size: 1400px;
+  }
+}
 .sites-leaders .img-handler {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
 }
@@ -5534,7 +5539,6 @@ form .button:hover {
 }
 .store-benefits .benefits-left, .store-ai .benefits-left {
   order: 2;
-  margin-bottom: 30px;
 }
 .store-benefits .benefits-right, .store-ai .benefits-right {
   order: 3;
@@ -5625,6 +5629,18 @@ form .button:hover {
 .store-benefits .sites-roadmap-list li:before, .store-benefits .sites-roadmap-list li:after, .store-ai .sites-roadmap-list li:before, .store-ai .sites-roadmap-list li:after {
   display: none;
 }
+@media (max-width: 1250px) {
+  .store-ai .benefits-right,
+  .store-ai .benefits-left {
+    top: 220px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .store-ai .benefits-right,
+  .store-ai .benefits-left {
+    top: 275px !important;
+  }
+}
 @media (max-width: 1000px) {
   .store-ai .benefits-right,
   .store-ai .benefits-left {
@@ -5644,8 +5660,24 @@ form .button:hover {
   margin-right: 10px;
 }
 .store-integration .flying-orb {
-  top: 115px;
+  top: 40px;
   bottom: unset;
+}
+.store-integration .flying-orb img {
+  width: 282px;
+  height: auto;
+}
+@media (max-width: 1200px) {
+  .store-integration .flying-orb img {
+    width: 212px;
+    height: auto;
+  }
+}
+@media (max-width: 900px) {
+  .store-integration .flying-orb img {
+    width: 152px;
+    height: auto;
+  }
 }
 @media (max-width: 600px) {
   .store-integration .flying-orb {
