@@ -16,7 +16,10 @@
 
 <body>
     <script>
-        document.addEventListener('load', () => { window.scrollTo(0, 0) })
+        history.scrollRestoration = 'manual';
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
     </script>
     <div id="preloader">
         <div class="flying-orb">
