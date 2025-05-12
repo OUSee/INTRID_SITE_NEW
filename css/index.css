@@ -376,6 +376,50 @@ section:first-of-type {
   }
 }
 
+#preloader {
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-image: url("../src/images/bg-main.webp");
+  background-size: auto 944px;
+  background-position: top;
+  background-repeat: repeat;
+  overflow: hidden;
+  animation: onload 3s forwards;
+}
+#preloader .flying-orb {
+  offset-path: path("M -100 -100 Q 200 0, 133 139");
+  offset-distance: 0%;
+  transform: scale(1);
+  animation: onload-orb 3s ease-out forwards;
+}
+
+@keyframes onload-orb {
+  0% {
+    transform: scale(0.1);
+    offset-distance: 0%;
+  }
+  50% {
+    transform: scale(1) rotate(-120deg);
+    offset-distance: 100%;
+  }
+  100% {
+    transform: scale(1) rotate(-120deg);
+    offset-distance: 100%;
+  }
+}
+@keyframes onload {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 /* buttons and checkboxes */
 button,
 .button,
@@ -1277,7 +1321,7 @@ div.icon-menu {
   top: 180px;
   left: 55%;
   z-index: 3;
-  animation: baloon 8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  animation-delay: 3s;
 }
 .flying-orb img {
   width: 282px;
