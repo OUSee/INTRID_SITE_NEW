@@ -538,43 +538,34 @@ label.radioButton:has(input:checked)::after {
 .tooltip {
   position: relative;
   cursor: help;
+  display: inline-block;
   /* shows help cursor on hover */
 }
 .tooltip::after {
   content: attr(data-tooltip);
   /* get tooltip text from data attribute */
   position: absolute;
-  bottom: 125%;
+  top: 125%;
   /* position above the element */
   left: 50%;
   transform: translateX(-50%);
-  background-color: #333;
+  background-color: var(--blue-bg);
   color: #fff;
   padding: 6px 10px;
+  border: 1px solid var(--blue-main);
   border-radius: 4px;
-  white-space: nowrap;
+  white-space: wrap;
   font-size: 14px;
   opacity: 0;
   pointer-events: none;
   /* ignore mouse events */
   transition: opacity 0.3s ease;
   z-index: 10;
-}
-.tooltip::before {
-  content: "";
-  position: absolute;
-  bottom: 115%;
-  /* slightly below tooltip box */
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: #333 transparent transparent transparent;
-  /* arrow */
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 10;
+  max-width: 360px;
+  width: 200px;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  z-index: 5;
 }
 .tooltip:hover::after, .tooltip:hover::before {
   opacity: 1;
@@ -636,8 +627,16 @@ label.radioButton:has(input:checked)::after {
   align-items: center;
 }
 
+.align-bottom {
+  align-self: flex-end;
+}
+
 .justify-center {
   justify-content: center;
+}
+
+.justify-sb {
+  justify-content: space-between;
 }
 
 .height-fit {
@@ -1133,7 +1132,7 @@ div.icon-menu {
   cursor: pointer;
   position: relative;
 }
-.accordion-header i {
+.accordion-header i.icon-shevrone {
   display: inline-block;
   color: var(--blue-main);
   transform: rotate(90deg) translate(-0.3em, 0em);
@@ -1150,7 +1149,7 @@ div.icon-menu {
 .accordion-checkbox {
   display: none;
 }
-.accordion-checkbox:checked + .accordion-header i {
+.accordion-checkbox:checked + .accordion-header i.icon-shevrone {
   transform: rotate(-90deg) translate(-0.3em, 0.3em);
 }
 .accordion-checkbox:checked + .accordion-header + .accordion-content {
@@ -2682,7 +2681,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 @media (max-width: 1250px) {
   .recent-work-card img {
     width: 100%;
-    height: auto;
+    max-height: 141px;
   }
 }
 .recent-work-card .work-testimonial {
@@ -5170,7 +5169,7 @@ form .button:hover {
     margin-top: 250px;
   }
 }
-@media (max-width: 540px) {
+@media (max-width: 750px) {
   .landing-main-left .button-highlight,
   .landing-main-left .button-link {
     margin: 0 auto;
@@ -5198,9 +5197,15 @@ form .button:hover {
     flex-basis: unset;
   }
 }
+@media (max-width: 750px) {
+  .landing-main .achievements-group {
+    bottom: 190px;
+    left: calc(50% - 140px);
+  }
+}
 @media (max-width: 600px) {
   .landing-main .achievements-group {
-    bottom: 125px;
+    bottom: 190px;
     left: calc(50% - 140px);
   }
 }
@@ -5257,7 +5262,7 @@ form .button:hover {
     gap: 12px 8px;
   }
   .landing-steps .sites-roadmap-list li {
-    max-width: unset;
+    max-width: 420px;
   }
   .landing-steps .sites-roadmap-list li::before, .landing-steps .sites-roadmap-list li::after {
     display: none;
@@ -6075,6 +6080,33 @@ form .button:hover {
   content: "•";
   color: var(--blue-main);
 }
+@media (max-width: 1000px) {
+  .portal-whyUs .why-cooperate-list {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto;
+    -moz-column-gap: 100px;
+         column-gap: 100px;
+  }
+  .portal-whyUs .why-cooperate-list li {
+    flex: 0 0 30%;
+    width: -moz-fit-content;
+    width: fit-content;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 750px) {
+  .portal-whyUs .why-cooperate-list {
+    -moz-column-gap: 50px;
+         column-gap: 50px;
+  }
+  .portal-whyUs .why-cooperate-list li {
+    flex: 1 1 45%;
+    width: -moz-fit-content;
+    width: fit-content;
+    justify-content: flex-start;
+  }
+}
 @media (max-width: 520px) {
   .portal-whyUs .why-cooperate-list {
     width: -moz-fit-content;
@@ -6089,6 +6121,128 @@ form .button:hover {
     width: fit-content;
     justify-content: flex-start;
   }
+}
+
+.calculator-main-offer {
+  display: flex;
+  gap: 20px;
+}
+.calculator-main-offer .left-side,
+.calculator-main-offer .right-side {
+  padding: 20px;
+  border: 1px solid var(--blue-main);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 39px;
+}
+.calculator-calculator .accordion-item {
+  padding: 10px;
+  border-radius: 29px;
+  border: 2px solid var(--blue-bg);
+  background-color: var(--bg-main);
+}
+.calculator-calculator .accordion-item:first-child .accordion-content {
+  position: relative;
+}
+.calculator-calculator .accordion-item:first-child .accordion-content .button-white {
+  position: absolute;
+  bottom: 130px;
+  right: 20px;
+}
+.calculator-calculator .accordion-header {
+  display: flex;
+  align-items: center;
+}
+.calculator-calculator .accordion-header i:not(.icon-shevrone) {
+  font-size: 40px;
+  max-height: 41px;
+  line-height: 1em;
+}
+.calculator-calculator .accordion-content {
+  padding-left: 30px !important;
+}
+.calculator-calculator .accordion-content .toggle-line {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.calculator-calculator .accordion-content .toggle-line label {
+  display: flex;
+  align-items: center;
+}
+.calculator-calculator .accordion-content .title_h5 {
+  margin-top: 10px;
+}
+.calculator-calculator .accordion-content input {
+  width: 100%;
+  background-color: transparent;
+  padding: 15px 30px;
+  border-radius: 25px;
+  border: 2px solid var(--color-white);
+}
+.calculator-calculator .accordion-content input:focus {
+  border: 2px dashed var(--color-white);
+  outline: none;
+}
+.calculator-calculator .accordion-content input::-moz-placeholder {
+  color: var(--color-white);
+}
+.calculator-calculator .accordion-content input::placeholder {
+  color: var(--color-white);
+}
+.calculator-list {
+  padding-left: 30px;
+}
+.calculator-list li {
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+.calculator-list li::marker {
+  content: "•";
+  color: var(--blue-main);
+}
+
+.toggle-checkbox {
+  display: none;
+}
+.toggle-checkbox:checked + label {
+  position: relative;
+}
+.toggle-checkbox:checked + label::before {
+  content: "";
+  background-color: var(--blue-tag);
+  border: 2px solid var(--color-white);
+}
+.toggle-checkbox:checked + label:after {
+  background-color: var(--color-white);
+  transform: translateX(26px);
+}
+.toggle-checkbox + label {
+  position: relative;
+  cursor: pointer;
+}
+.toggle-checkbox + label::before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  border-radius: 20px;
+  background-color: var(--blue-bg);
+  border: 2px solid var(--blue-main);
+  margin-right: 10px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.toggle-checkbox + label:after {
+  content: "";
+  left: 4px;
+  top: 4px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: var(--blue-main);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 @media (max-width: 1500px) {
