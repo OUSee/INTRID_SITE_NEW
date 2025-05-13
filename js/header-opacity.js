@@ -9,6 +9,8 @@ window.addEventListener('scroll', function () {
       header.classList.remove('scrolled');
     }
   });
- 
-  
+
+document.addEventListener('DOMContentLoaded', () => {
+   preloader.style.display = 'none'
+})  
   
