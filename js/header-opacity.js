@@ -11,6 +11,8 @@ window.addEventListener('scroll', function () {
   });
 
 document.addEventListener('DOMContentLoaded', () => {
-   preloader.style.display = 'none'
+  setTimeout(()=>{
+    preloader.style.display = 'none' 
+  }, 3000)
 })  
   

@@ -92,6 +92,10 @@ a {
     line-height: 140%;
 }
 
+a {
+    font-size: 14px;
+}
+
 span {
     font-size: 14px;
     display: inline;
@@ -117,7 +121,7 @@ span {
 
 h1,
 .title_h1 {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 40px;
     position: relative;
 
@@ -143,7 +147,7 @@ h2,
 .title_h2,
 h3,
 .title_h3 {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 36px;
 
     &.underlined {
@@ -166,7 +170,7 @@ h3,
 
 h4,
 .title_h4 {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 24px;
 
     * {
@@ -193,7 +197,7 @@ h4,
 
 h5,
 .title_h5 {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 16px;
 }
 
@@ -241,7 +245,9 @@ p,
         font-size: 16px;
     }
 
-    p {
+    p,
+    span,
+    a {
         font-size: 14px;
     }
 }
@@ -275,11 +281,13 @@ p,
     }
 
     p.p_big {
-        font-size: 13px;
+        font-size: 12px;
     }
 
-    p {
-        font-size: 13px;
+    p,
+    span,
+    a {
+        font-size: 12px;
     }
 }
 
@@ -363,7 +371,7 @@ hr {
 hr.section-spacer {
     width: auto;
     border: 0.5px solid var(--section-spacer);
-    margin: 62px 0;
+    margin: 50px 0;
 }
 
 ul {
@@ -470,7 +478,7 @@ label.radioButton,
     display: flex;
     border-radius: 30px;
     background-color: transparent;
-    padding: 10px 25px;
+    padding: 14px 24px 12px 24px;
     font-weight: 500;
     width: fit-content;
     font-size: 14px;
@@ -478,10 +486,11 @@ label.radioButton,
     border: 1px solid var(--color-white);
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
-    line-height: 140%;
+    line-height: 1em;
     text-wrap: nowrap;
     gap: 8px;
     max-height: 50px;
+    align-items: center;
 
     input[type="radio"] {
         display: none;
@@ -499,13 +508,19 @@ label.radioButton,
 
     &.big {
         border-radius: 30px;
-        padding: 15px 25px;
+        padding: 16px 24px 14px 24px;
         justify-items: center;
         align-items: center;
 
         i.icon-arrow_wide {
             font-size: 2em;
+            line-height: 16px;
         }
+    }
+
+    i.icon-arrow_wide {
+        font-size: 1.4em;
+        line-height: 14px;
     }
 }
 
@@ -555,7 +570,7 @@ label.radioButton input {
 label.radioButton:has(input:checked)::after {
     font-family: 'INTRID_ICONS';
     content: '\0049';
-    font-weight: 700;
+    font-weight: 600;
     font-size: 14px;
 }
 
@@ -766,6 +781,10 @@ label.radioButton:has(input:checked)::after {
 
 .mt-60 {
     margin-top: 60px;
+}
+
+.mt-auto {
+    margin-top: auto;
 }
 
 .w-900 {
@@ -1248,8 +1267,12 @@ div.icon-menu {
 
 .slider-with-tabs {
     display: flex;
-    gap: 35px;
+    gap: 36px;
     position: static;
+
+    @media (max-width: 600px) {
+        gap: 0px;
+    }
 
     &_tabs-buttons {
         margin-top: 100px;
@@ -1259,6 +1282,7 @@ div.icon-menu {
 
         @media (max-width: 600px) {
             margin-top: 30px;
+
         }
 
         .button-link {
@@ -1357,6 +1381,10 @@ div.icon-menu {
 
             p.title_h4 {
                 font-size: 20px;
+
+                @media (max-width: 600px) {
+                    font-size: 16px;
+                }
             }
 
             &-image {
@@ -1364,13 +1392,17 @@ div.icon-menu {
                 width: auto;
                 height: 62px;
                 padding: 0px;
-                margin: 55px 0px;
+                margin: 50px 0px;
                 object-fit: contain;
                 overflow: visible;
                 border-radius: 50%;
                 position: relative;
                 box-shadow: 0px 0px 60px 45px var(--blue-clouds),
                     inset 0px 0px 75px 20px var(--blue-clouds);
+
+                @media (max-width: 600px) {
+                    margin: 50px 0px 20px 0px;
+                }
 
                 img {
                     width: 62px;
@@ -2039,11 +2071,11 @@ section.tabs {
     color: var(--color-grey);
     width: 40%;
     margin: auto;
-    margin-top: 28px;
+    margin-top: 30px;
 }
 
 .block-buttons {
-    margin-top: 65px;
+    margin-top: 50px;
     gap: 20px;
     display: flex;
     flex-direction: row;
@@ -2888,7 +2920,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 .icons-partners {
     justify-content: center;
     display: flex;
-    gap: 5px;
+    gap: 6px;
     margin-top: 5px;
 
     a.lg-partner {
@@ -3664,7 +3696,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                 }
 
                 &-btn {
-                    background-color: var(--blue-bg);
+                    background-color: var(--blue-tag);
                     border: 1px solid transparent;
                     text-transform: none;
                     justify-content: center;
@@ -3678,11 +3710,16 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                         display: inline-block;
                         width: 26px;
                         height: auto;
+                        filter: grayscale(100%) brightness(5);
                     }
 
                     &:hover {
                         color: var(--blue-main);
                         border-color: 1px solid var(--blue-main);
+
+                        img {
+                            filter: grayscale(0%) brightness(1);
+                        }
                     }
                 }
             }
@@ -3763,6 +3800,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 .tech-we-use {
     flex: 1 1 100%;
     padding-bottom: 270px;
+
+    @media (max-width: 1200px) {
+        padding-bottom: 100px;
+    }
 
     @media (max-width: 600px) {
         padding-bottom: 40px;
@@ -4230,7 +4271,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
     margin-top: 30px;
 
     button {
@@ -4280,7 +4321,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
 .use-service {
     .title_h2 {
-        margin-bottom: 60px;
+        margin-bottom: 80px;
 
         @media (max-width: 520px) {
             margin-bottom: 30px;
@@ -4387,7 +4428,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                 font-weight: normal !important;
                 font-variant: normal !important;
                 text-transform: none !important;
-                font-size: 16px;
                 color: var(--blue-main);
                 speak: none;
                 line-height: 1;
@@ -4461,7 +4501,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         &>a {
             position: relative;
             display: flex;
-            font-size: 16px;
             padding-left: 24px;
             color: #ffffff;
 
@@ -4572,7 +4611,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         justify-content: flex-start;
         gap: 32px;
         margin-right: auto;
-        font-size: 16px;
 
         @media (max-width: 1400px) {
             gap: 24px;
@@ -4585,7 +4623,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         &>a {
             position: relative;
             padding-left: 10px;
-            font-size: 16px;
             color: var(--color-white);
             white-space: nowrap;
 
@@ -5510,7 +5547,7 @@ form {
                         top: 5px;
                         left: 20px;
                         z-index: 2;
-                        font-weight: 700;
+                        font-weight: 600;
 
                         @media (max-width: 1000px) {
                             font-size: 48px;
@@ -7018,7 +7055,7 @@ form {
 
                 .toggle-line {
                     display: flex;
-                    gap: 5px;
+                    gap: 6px;
                     align-items: center;
 
                     label {
@@ -7896,6 +7933,7 @@ form {
 
                 &:hover {
                     // transform: scale(1.1);
+                    color: var(--blue-main);
                     background-color: transparent;
                     // &:not(:has(input[type=radio]:checked)){
                     //     img{
@@ -8243,7 +8281,7 @@ form {
         padding: 33px;
 
         .work-testimonial {
-            gap: 5px;
+            gap: 6px;
         }
     }
 
