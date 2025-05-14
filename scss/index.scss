@@ -6742,6 +6742,7 @@ form {
             }
 
             li {
+                order: unset !important;
 
                 &:before,
                 &:after {
@@ -6795,9 +6796,12 @@ form {
             }
         }
 
+        .description {}
+
         .flying-orb {
             top: 40px;
             bottom: unset;
+
 
             img {
                 width: 282px;
@@ -6806,6 +6810,7 @@ form {
                 @media (max-width: 1200px) {
                     width: 212px;
                     height: auto;
+
                 }
 
                 @media (max-width: 900px) {
@@ -6814,8 +6819,16 @@ form {
                 }
             }
 
+            @media (max-width: 1200px) {
+                top: 90px;
+            }
+
+            @media (max-width: 900px) {
+                top: 140px;
+            }
+
             @media (max-width: 600px) {
-                top: 100px;
+                display: none;
             }
         }
 
@@ -6907,6 +6920,16 @@ form {
                     }
                 }
             }
+        }
+    }
+
+    &-icms {
+        .description {
+            @media (max-width: 900px) {
+                max-width: 85%;
+            }
+
+
         }
     }
 }
@@ -7147,6 +7170,37 @@ form {
                     padding-left: 10px;
 
                     li {
+                        padding-left: 10px;
+
+                        &::marker {
+                            content: '\2022';
+                            color: var(--blue-main)
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+        .sites-roadmap-list {
+            justify-content: center;
+
+            li {
+                .header img {
+                    width: 40px;
+                    height: 40px;
+                }
+
+                &:before,
+                &:after {
+                    display: none;
+                }
+
+                ul {
+
+                    li {
+                        max-width: unset;
                         padding-left: 10px;
 
                         &::marker {

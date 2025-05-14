@@ -5955,6 +5955,9 @@ form .button:hover {
 .store-benefits .sites-roadmap-list-item .header p:not(.title_h5), .store-ai .sites-roadmap-list-item .header p:not(.title_h5) {
   color: var(--blue-tag);
 }
+.store-benefits .sites-roadmap-list li, .store-ai .sites-roadmap-list li {
+  order: unset !important;
+}
 .store-benefits .sites-roadmap-list li:before, .store-benefits .sites-roadmap-list li:after, .store-ai .sites-roadmap-list li:before, .store-ai .sites-roadmap-list li:after {
   display: none;
 }
@@ -6008,9 +6011,19 @@ form .button:hover {
     height: auto;
   }
 }
+@media (max-width: 1200px) {
+  .store-integration .flying-orb {
+    top: 90px;
+  }
+}
+@media (max-width: 900px) {
+  .store-integration .flying-orb {
+    top: 140px;
+  }
+}
 @media (max-width: 600px) {
   .store-integration .flying-orb {
-    top: 100px;
+    display: none;
   }
 }
 .store-integration-schema {
@@ -6091,6 +6104,11 @@ form .button:hover {
   width: 40px;
   height: 40px;
   margin-bottom: 10px;
+}
+@media (max-width: 900px) {
+  .store-icms .description {
+    max-width: 85%;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -6284,6 +6302,24 @@ form .button:hover {
   padding-left: 10px;
 }
 .portal-benefits-card .accordion-content ul li::marker {
+  content: "•";
+  color: var(--blue-main);
+}
+.portal-benefits .sites-roadmap-list {
+  justify-content: center;
+}
+.portal-benefits .sites-roadmap-list li .header img {
+  width: 40px;
+  height: 40px;
+}
+.portal-benefits .sites-roadmap-list li:before, .portal-benefits .sites-roadmap-list li:after {
+  display: none;
+}
+.portal-benefits .sites-roadmap-list li ul li {
+  max-width: unset;
+  padding-left: 10px;
+}
+.portal-benefits .sites-roadmap-list li ul li::marker {
   content: "•";
   color: var(--blue-main);
 }
