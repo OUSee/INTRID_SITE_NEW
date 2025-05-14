@@ -92,8 +92,12 @@ a {
     line-height: 140%;
 }
 
+
 a {
     font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--blue-main);
 }
 
 span {
@@ -281,7 +285,7 @@ p,
     }
 
     p.p_big {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     p,
@@ -313,12 +317,6 @@ p,
 
 }
 
-a {
-    font-size: 14px;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--blue-main);
-}
 
 i {
     display: inline-block;
@@ -530,6 +528,7 @@ label.radioButton:hover,
 label.radioButton:has(input:checked),
 .button-link:hover,
 .button-highlight {
+    cursor: pointer;
     border: 1px solid var(--blue-main);
     background-color: var(--blue-main);
     color: var(--color-black);
@@ -644,6 +643,10 @@ label.radioButton:has(input:checked)::after {
 
 .text-unbreakable {
     text-wrap: nowrap;
+}
+
+.text-wrap-balance {
+    text-wrap: balance;
 }
 
 .text-underline {
@@ -898,8 +901,27 @@ label.radioButton:has(input:checked)::after {
     }
 }
 
+.br600 {
+    @media (max-width: 600px) {
+        display: none !important;
+    }
+}
+
+
 .br420 {
     @media (max-width: 420px) {
+        display: none;
+    }
+}
+
+.br470 {
+    @media (max-width: 470px) {
+        display: none;
+    }
+}
+
+.br420min {
+    @media (min-width: 420px) {
         display: none;
     }
 }
@@ -1219,12 +1241,13 @@ div.icon-menu {
     }
 
     &-header {
-        padding: 15px;
+        padding: 14px;
         background-color: transparent;
         cursor: pointer;
         position: relative;
 
-        i.icon-shevrone {
+        i.icon-shevrone,
+        i.icon-shevrone_double {
             display: inline-block;
             color: var(--blue-main);
             transform: rotate(90deg) translate(-0.3em, -0em);
@@ -1259,13 +1282,14 @@ div.icon-menu {
     &-checkbox {
         display: none;
 
-        &:checked+.accordion-header i.icon-shevrone {
+        &:checked+.accordion-header i.icon-shevrone,
+        &:checked+.accordion-header i.icon-shevrone_double {
             transform: rotate(-90deg) translate(-0.3em, 0.3em)
         }
 
         &:checked+.accordion-header+.accordion-content {
             max-height: unset;
-            padding: 15px;
+            padding: 14px;
         }
     }
 }
@@ -1393,7 +1417,7 @@ div.icon-menu {
     flex: 1;
     overflow: hidden;
     position: relative;
-    padding: 0 15px;
+    padding: 0 14px;
 
     .slider-arrow {
         position: absolute;
@@ -1865,7 +1889,7 @@ button.next {
                 }
 
                 @media(max-width: 900px) {
-                    margin-bottom: 350px;
+                    margin-bottom: 310px;
                 }
             }
 
@@ -1878,7 +1902,7 @@ button.next {
             .site-benefit {
                 display: flex;
                 width: fit-content;
-                padding: 15px 25px;
+                padding: 14px 24px;
                 background-color: var(--blue-bg);
                 border-radius: 50px;
                 align-items: center;
@@ -1895,7 +1919,7 @@ button.next {
 
                     @media (max-width: 420px) {
                         flex-basis: 30%;
-                        font-size: 25px;
+                        font-size: 24px;
                     }
                 }
 
@@ -2390,7 +2414,7 @@ section.tabs {
                 margin-top: 10px;
 
                 li {
-                    padding-left: 5px;
+                    padding-left: 6px;
                     margin-top: 5px;
 
                     &::marker {
@@ -2709,7 +2733,7 @@ section.tabs {
 
                             @media (max-width: 600px) {
                                 font-size: 12px;
-                                padding: 8px 15px;
+                                padding: 8px 16px;
                             }
                         }
                     }
@@ -2800,7 +2824,7 @@ section.tabs {
                             display: flex;
 
                             td {
-                                padding: 1px0;
+                                padding: 2px 0;
                             }
                         }
 
@@ -2813,7 +2837,7 @@ section.tabs {
                         th label {
                             cursor: pointer;
                             width: 100%;
-                            padding: 12px 5px;
+                            padding: 12px 6px;
                             background-color: var(--blue-clouds);
                             border-left: 1px solid var(--bg-main);
                             border-right: 1px solid var(-bg-main);
@@ -3167,13 +3191,18 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     flex-direction: row;
     justify-content: center;
     gap: 30px;
-    margin-top: 130px;
+    margin-top: 30px;
     height: 290px;
     align-items: center;
     margin-bottom: 20px;
 
+    @media (max-width: 900px) {
+        flex-wrap: wrap;
+        height: 400px;
+    }
+
     &-item {
-        border: 2px solid var(--blue-clouds);
+        border: 1px solid var(--blue-clouds);
         border-radius: 50px;
         padding: 125px 20px 32px 20px;
         display: flex;
@@ -3218,7 +3247,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
         @media (min-width: 1200px) {
             &:hover {
-                padding: 165px 20px 32px 20px;
+                padding: 166px 20px 32px 20px;
 
                 .img-wrapper {
                     top: 15px;
@@ -3319,10 +3348,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
 .benefit-card {
     border-radius: 39px;
-    border: 2px solid var(--blue-bg);
+    border: 1px solid var(--blue-bg);
     background-color: var(--bg-main);
     position: relative;
-    padding: 20px 15px;
+    padding: 20px 14px;
     overflow: hidden;
     display: flex;
     gap: 30px;
@@ -3332,7 +3361,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     cursor: pointer;
 
     &:hover {
-        border: 2px solid var(--blue-main);
+        border: 1px solid var(--blue-main);
         // background-color: var(--blue-main);
         box-shadow: 0px 0px 15px var(--blue-main);
     }
@@ -4387,9 +4416,9 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     margin-top: 30px;
 
     button {
-        padding: 5px;
+        padding: 4px;
         border-radius: 50%;
-        border: 2px solid transparent;
+        border: 1px solid transparent;
     }
 
     &--prev-btn,
@@ -4399,7 +4428,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             background-color: transparent;
             box-shadow: none;
             color: var(--color-white);
-            border: 2px solid var(--color-white);
+            border: 1px solid var(--color-white);
         }
 
         i {
@@ -4421,7 +4450,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         button {
             max-height: 5px;
             max-width: 5px;
-            border: 2px solid var(--color-white);
+            border: 1px solid var(--color-white);
 
             &.highlight {
                 border-color: var(--blue-main);
@@ -4433,18 +4462,26 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
 .use-service {
     .title_h2 {
-        margin-bottom: 80px;
+        margin-bottom: 50px;
 
         @media (max-width: 520px) {
             margin-bottom: 30px;
         }
     }
 
-    &-list.prices-services-list {
+    &-list {
+        margin-bottom: 0;
+    }
 
+    &-list.prices-services-list {
+        margin-top: 0;
 
         .prices-services-list-item {
-            &:hover {}
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+            }
 
             i.icon-arrow_wide {
                 position: relative;
@@ -4616,8 +4653,13 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             padding-left: 24px;
             color: #ffffff;
 
+            @media (max-width: 600px) {
+                margin-left: 20px;
+                padding-left: 16px;
+            }
+
             &:hover {
-                color: var(--color-white);
+                color: var(--blue-main);
                 text-shadow: var(--blue-main) 0px 0px 10px;
             }
         }
@@ -4681,7 +4723,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             align-items: flex-end;
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 600px) {
             align-items: flex-start;
         }
     }
@@ -4969,7 +5011,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
         iframe {
             width: 70vw;
-            height: 80vh;
+            height: 70vh;
         }
     }
 }
@@ -5006,17 +5048,34 @@ form {
     input {
         width: 100%;
         background-color: transparent;
-        padding: 15px 30px;
+        padding: 14px 30px;
         border-radius: 25px;
-        border: 2px solid var(--color-white);
+        border: 1px solid var(--color-white);
+        position: relative;
+
+        &:before {
+            content: '*';
+            font-size: 100px;
+            color: white;
+            position: absolute;
+            z-index: 10;
+        }
 
         &:focus {
-            border: 2px dashed var(--color-white);
+            border: 1px dashed var(--color-white);
             outline: none;
         }
 
         &::placeholder {
             color: var(--color-white);
+        }
+
+        &:required {
+            &:invalid {
+                border-bottom-color: #EE5D55;
+            }
+
+            &:valid {}
         }
     }
 
@@ -5118,12 +5177,12 @@ form {
                     textarea {
                         width: 100%;
                         background-color: transparent;
-                        padding: 15px 30px;
+                        padding: 14px 30px;
                         border-radius: 25px;
-                        border: 2px solid var(--color-white);
+                        border: 1px solid var(--color-white);
 
                         &:focus {
-                            border: 2px dashed var(--color-white);
+                            border: 1px dashed var(--color-white);
                             outline: none;
                         }
 
@@ -5145,13 +5204,13 @@ form {
                 }
 
                 .testimonials {
-                    color: var(--blue-main);
+                    color: var(--color-grey);
 
                     a {
                         text-decoration: underline dashed !important;
                         text-underline-offset: 4px;
                         text-decoration-thickness: 2px;
-
+                        color: var(--color-white);
                     }
 
                 }
@@ -5175,6 +5234,10 @@ form {
         }
 
 
+    }
+
+    &-differences {
+        padding-bottom: 0px;
     }
 
     &-prices {
@@ -5231,7 +5294,6 @@ form {
             display: flex;
             align-items: center;
             gap: 50px;
-            max-width: 1150px;
             margin: 0 auto;
             position: relative;
 
@@ -5245,6 +5307,10 @@ form {
                 justify-content: space-between;
                 flex-wrap: wrap;
                 gap: 10px;
+
+                @media (max-width: 900px) {
+                    gap: 20px;
+                }
 
                 .title_h5 {
                     flex: 1 1 90%;
@@ -5265,7 +5331,7 @@ form {
 
                     @media (max-width: 900px) {
                         flex: 1 1 90%;
-                        padding-left: 137px;
+                        padding-left: 136px;
 
                         &:last-child {
                             display: flex;
@@ -5371,7 +5437,7 @@ form {
                 }
 
                 @media (max-width: 440px) {
-                    padding: 20px 5px;
+                    padding: 20px 6px;
                     border-radius: 25px;
                     min-width: calc((100vw - 20px));
                 }
@@ -5682,7 +5748,7 @@ form {
 
 
                 @media (max-width: 600px) {
-                    padding: 9px 13px;
+                    padding: 10px 14px;
                     border-radius: 25px;
 
                     &::after {
@@ -5704,6 +5770,8 @@ form {
     }
 
     &-reviews {
+        position: relative;
+
         &-head {
             display: flex;
 
@@ -5739,7 +5807,7 @@ form {
             .review-card {
                 background-color: var(--blue-bg);
                 border-radius: 49px;
-                padding: 25px 40px;
+                padding: 24px 40px;
                 flex: 1 1 0;
                 min-width: calc((1442px - 30px) / 2);
                 opacity: 0;
@@ -5750,14 +5818,14 @@ form {
 
 
                 @media (max-width: 1500px) {
-                    min-width: calc((100vw - 80px - 30px) / 2);
+                    min-width: calc((100vw - 80px - 40px) / 2);
                 }
 
-                @media (max-width: 900px) {
-                    border-radius: 25px;
-                    padding: 15px 20px;
-                    min-width: calc((100vw - 80px - 10px) / 2);
-                }
+                // @media (max-width: 900px) {
+                //     border-radius: 25px;
+                //     padding: 14px 20px;
+                //     min-width: calc((100vw - 80px - 10px) / 2);
+                // }
 
                 @media (max-width: 600px) {
                     min-width: calc((100vw - 40px));
@@ -5832,6 +5900,16 @@ form {
             }
         }
 
+        .button-link.big {
+            position: absolute;
+            bottom: 84px;
+            right: 0px;
+
+            @media (max-width: 900px) {
+                position: static;
+            }
+        }
+
         .button-link {
             @media (max-width: 600px) {
                 margin-right: auto;
@@ -5857,9 +5935,13 @@ form {
             @media (max-width: 600px) {
                 max-width: 100%;
 
+                .description {
+                    text-align: center;
+                }
+
                 .title_h3 {
                     margin: 0 auto;
-                    margin-bottom: 200px;
+                    margin-bottom: 30px;
                 }
             }
         }
@@ -6004,7 +6086,7 @@ form {
                 z-index: 0;
                 overflow: hidden;
                 position: relative;
-                border: 2px solid var(--blue-bg);
+                border: 1px solid var(--blue-bg);
 
                 &::before {
                     font-family: "INTRID_ICONS";
@@ -6068,7 +6150,7 @@ form {
                 }
 
                 &-item {
-                    padding: 9px 13px;
+                    padding: 10px 14px;
                     border-radius: 25px;
 
                     &::before,
@@ -6110,11 +6192,11 @@ form {
         }
 
         .title_h3 {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .description {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         form {
@@ -6165,19 +6247,19 @@ form {
                 height: 100px;
                 resize: none;
                 background-color: transparent;
-                padding: 15px 30px;
+                padding: 14px 30px;
                 border-radius: 25px;
-                border: 2px solid var(--color-white);
+                border: 1px solid var(--color-white);
                 scrollbar-gutter: stable both-edges;
 
                 &:focus {
-                    border: 2px dashed var(--color-white);
+                    border: 1px dashed var(--color-white);
                     outline: none;
                 }
 
                 &::-webkit-scrollbar {
                     width: 10px;
-                    padding-right: 5px;
+                    padding-right: 6px;
                     background-color: transparent;
                 }
 
@@ -6196,7 +6278,7 @@ form {
                 &::-webkit-scrollbar-thumb {
                     width: 5px;
                     border-radius: 5px;
-                    border: 2px solid transparent;
+                    border: 1px solid transparent;
                     background-color: var(--color-white);
                     background-clip: content-box;
                 }
@@ -6216,7 +6298,7 @@ form {
                     text-shadow: var(--blue-main) 0px 0px 10px;
 
                     &:before {
-                        border: 2px solid var(--blue-main) !important;
+                        border: 1px solid var(--blue-main) !important;
                         text-decoration-color: transparent;
                     }
                 }
@@ -6228,7 +6310,7 @@ form {
                     width: 20px;
                     height: 20px;
                     color: transparent;
-                    border: 2px solid var(--color-white);
+                    border: 1px solid var(--color-white);
                     border-radius: 5px;
                     padding-bottom: 4px;
                     padding-left: 2px;
@@ -6243,7 +6325,7 @@ form {
                         width: 20px;
                         height: 20px;
                         color: var(--color-white);
-                        border: 2px solid var(--color-white);
+                        border: 1px solid var(--color-white);
                         border-radius: 5px;
                         padding-bottom: 4px;
                         padding-left: 2px;
@@ -6259,18 +6341,20 @@ form {
             }
 
             button {
-                margin-top: 20px;
+                margin-top: 10px;
                 width: 100%;
                 justify-content: center;
             }
 
             .testimonials {
-                color: var(--blue-main);
+                color: var(--color-grey);
 
                 a {
+                    color: var(--color-white);
                     text-decoration: underline dashed !important;
                     text-underline-offset: 4px;
                     text-decoration-thickness: 2px;
+
                 }
             }
         }
@@ -6383,6 +6467,8 @@ form {
     }
 
     &-icms {
+        padding-top: 62px;
+
         .img-handler {
             background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
         }
@@ -6415,6 +6501,10 @@ form {
 
     &-tech {
         padding-top: 0px;
+
+        .title_h2 {
+            margin-top: 0;
+        }
     }
 }
 
@@ -6582,7 +6672,7 @@ form {
                     margin-top: 10px;
 
                     li {
-                        padding-left: 5px;
+                        padding-left: 6px;
                         margin-top: 5px;
 
                         &::marker {
@@ -6624,7 +6714,7 @@ form {
                 z-index: 2;
                 text-align: center;
                 border-radius: 50%;
-                padding: 55px 20px;
+                padding: 56px 20px;
                 color: var(--bg-main);
                 display: flex;
                 justify-content: center;
@@ -6857,6 +6947,7 @@ form {
     }
 
     &-types {
+        padding-top: 120px;
 
         .tab-view {
             .slider-arrow {
@@ -6942,7 +7033,7 @@ form {
                 }
 
                 &-info .color-grey {
-                    padding-left: 115px;
+                    padding-left: 116px;
                 }
             }
 
@@ -7028,7 +7119,7 @@ form {
                 .accordion-content {
                     padding: 10px;
                     border-radius: 29px;
-                    border: 2px solid var(--blue-main);
+                    border: 1px solid var(--blue-main);
                 }
             }
 
@@ -7137,7 +7228,7 @@ form {
             &-item {
                 padding: 10px;
                 border-radius: 29px;
-                border: 2px solid var(--blue-bg);
+                border: 1px solid var(--blue-bg);
                 background-color: var(--bg-main);
 
                 &:first-child .accordion-content {
@@ -7185,10 +7276,10 @@ form {
                     background-color: transparent;
                     padding: 15px 30px;
                     border-radius: 25px;
-                    border: 2px solid var(--color-white);
+                    border: 1px solid var(--color-white);
 
                     &:focus {
-                        border: 2px dashed var(--color-white);
+                        border: 1px dashed var(--color-white);
                         outline: none;
                     }
 
@@ -7225,7 +7316,7 @@ form {
             &::before {
                 content: "";
                 background-color: var(--blue-tag);
-                border: 2px solid var(--color-white);
+                border: 1px solid var(--color-white);
             }
 
             &:after {
@@ -7246,7 +7337,7 @@ form {
             height: 24px;
             border-radius: 20px;
             background-color: var(--blue-bg);
-            border: 2px solid var(--blue-main);
+            border: 1px solid var(--blue-main);
             margin-right: 10px;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
@@ -7342,7 +7433,7 @@ form {
     }
 
     .tab-button {
-        padding: 18px 33px 18px 100px;
+        padding: 18px 32px 18px 100px;
 
         .title_h5 {
             display: block;
@@ -7481,7 +7572,7 @@ form {
                 .nav-link {
                     position: relative;
                     padding: 10px;
-                    padding-right: 15px;
+                    padding-right: 14px;
                     padding-left: 0;
 
                     &::before {
@@ -7616,7 +7707,7 @@ form {
     }
 
     .tab-button {
-        padding: 18px 33px 0px 100px;
+        padding: 18px 32px 0px 100px;
 
         .title_h5 {
             display: block;
@@ -7739,7 +7830,7 @@ form {
                     pointer-events: none;
                     position: relative;
                     padding: 10px;
-                    padding-right: 15px;
+                    padding-right: 14px;
                     padding-left: 0;
 
                     &::before {
@@ -7832,13 +7923,13 @@ form {
     }
 
     .main-page {
-        padding-top: 90px !important;
+        padding-top: 90px;
         padding-bottom: 180px !important;
         flex-wrap: wrap;
 
         .button-link.big {
             font-size: 12px;
-            padding: 20px 25px;
+            padding: 20px 24px;
             gap: 4px;
         }
 
@@ -8119,7 +8210,7 @@ form {
 
     .button-link.big {
         font-size: 12px;
-        padding: 15px 25px;
+        padding: 14px 24px;
         gap: 4px;
         max-height: 50px;
     }
@@ -8262,7 +8353,7 @@ form {
 
         .tab-content {
             display: block;
-            padding: 5px 0;
+            padding: 6px 0;
             transform: translateY(-54px);
             background-color: transparent;
 
@@ -8309,7 +8400,7 @@ form {
 
     .recent-work-card {
         flex-direction: column;
-        padding: 33px;
+        padding: 32px;
 
         .work-testimonial {
             gap: 6px;

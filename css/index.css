@@ -81,6 +81,9 @@ a {
 
 a {
   font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--blue-main);
 }
 
 span {
@@ -258,7 +261,7 @@ p a:hover,
     font-weight: 400;
   }
   p.p_big {
-    font-size: 12px;
+    font-size: 14px;
   }
   p,
   span,
@@ -283,13 +286,6 @@ p a:hover,
     font-size: 19px;
   }
 }
-a {
-  font-size: 14px;
-  cursor: pointer;
-  text-decoration: none;
-  color: var(--blue-main);
-}
-
 i {
   display: inline-block;
   position: relative;
@@ -511,6 +507,7 @@ label.radioButton:hover,
 label.radioButton:has(input:checked),
 .button-link:hover,
 .button-highlight {
+  cursor: pointer;
   border: 1px solid var(--blue-main);
   background-color: var(--blue-main);
   color: var(--color-black);
@@ -601,6 +598,10 @@ label.radioButton:has(input:checked)::after {
 
 .text-unbreakable {
   text-wrap: nowrap;
+}
+
+.text-wrap-balance {
+  text-wrap: balance;
 }
 
 .text-underline {
@@ -855,8 +856,26 @@ label.radioButton:has(input:checked)::after {
   }
 }
 
+@media (max-width: 600px) {
+  .br600 {
+    display: none !important;
+  }
+}
+
 @media (max-width: 420px) {
   .br420 {
+    display: none;
+  }
+}
+
+@media (max-width: 470px) {
+  .br470 {
+    display: none;
+  }
+}
+
+@media (min-width: 420px) {
+  .br420min {
     display: none;
   }
 }
@@ -1153,12 +1172,13 @@ div.icon-menu {
   overflow: hidden;
 }
 .accordion-header {
-  padding: 15px;
+  padding: 14px;
   background-color: transparent;
   cursor: pointer;
   position: relative;
 }
-.accordion-header i.icon-shevrone {
+.accordion-header i.icon-shevrone,
+.accordion-header i.icon-shevrone_double {
   display: inline-block;
   color: var(--blue-main);
   transform: rotate(90deg) translate(-0.3em, 0em);
@@ -1175,12 +1195,12 @@ div.icon-menu {
 .accordion-checkbox {
   display: none;
 }
-.accordion-checkbox:checked + .accordion-header i.icon-shevrone {
+.accordion-checkbox:checked + .accordion-header i.icon-shevrone, .accordion-checkbox:checked + .accordion-header i.icon-shevrone_double {
   transform: rotate(-90deg) translate(-0.3em, 0.3em);
 }
 .accordion-checkbox:checked + .accordion-header + .accordion-content {
   max-height: unset;
-  padding: 15px;
+  padding: 14px;
 }
 
 .slider-with-tabs {
@@ -1277,7 +1297,7 @@ div.icon-menu {
   flex: 1;
   overflow: hidden;
   position: relative;
-  padding: 0 15px;
+  padding: 0 14px;
 }
 .tab-view .slider-arrow {
   position: absolute;
@@ -1691,7 +1711,7 @@ button.next:hover {
 }
 @media (max-width: 900px) {
   .main-page.site .left-block p.site-description {
-    margin-bottom: 350px;
+    margin-bottom: 310px;
   }
 }
 @media (max-width: 900px) {
@@ -1703,7 +1723,7 @@ button.next:hover {
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 15px 25px;
+  padding: 14px 24px;
   background-color: var(--blue-bg);
   border-radius: 50px;
   align-items: center;
@@ -1721,7 +1741,7 @@ button.next:hover {
 @media (max-width: 420px) {
   .main-page.site .left-block .site-benefit-highlight {
     flex-basis: 30%;
-    font-size: 25px;
+    font-size: 24px;
   }
 }
 .main-page.site .left-block .site-benefit-description {
@@ -2174,7 +2194,7 @@ section.tabs {
     margin-top: 10px;
   }
   .tab-content-webDev .benefit-card .content-hidden li {
-    padding-left: 5px;
+    padding-left: 6px;
     margin-top: 5px;
   }
   .tab-content-webDev .benefit-card .content-hidden li::marker {
@@ -2445,7 +2465,7 @@ section.tabs {
   .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:first-child td,
   .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:first-child th label {
     font-size: 12px;
-    padding: 8px 15px;
+    padding: 8px 16px;
   }
 }
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:last-child td {
@@ -2523,7 +2543,7 @@ section.tabs {
     display: flex;
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead tr td {
-    padding: 1px0;
+    padding: 2px 0;
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead th {
     display: flex;
@@ -2533,7 +2553,7 @@ section.tabs {
   .tab-content-webDev.tender .tender-types-group .tender-table thead th label {
     cursor: pointer;
     width: 100%;
-    padding: 12px 5px;
+    padding: 12px 6px;
     background-color: var(--blue-clouds);
     border-left: 1px solid var(--bg-main);
     border-right: 1px solid var(-bg-main);
@@ -2829,13 +2849,19 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   flex-direction: row;
   justify-content: center;
   gap: 30px;
-  margin-top: 130px;
+  margin-top: 30px;
   height: 290px;
   align-items: center;
   margin-bottom: 20px;
 }
+@media (max-width: 900px) {
+  .prices-services-list {
+    flex-wrap: wrap;
+    height: 400px;
+  }
+}
 .prices-services-list-item {
-  border: 2px solid var(--blue-clouds);
+  border: 1px solid var(--blue-clouds);
   border-radius: 50px;
   padding: 125px 20px 32px 20px;
   display: flex;
@@ -2874,7 +2900,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 @media (min-width: 1200px) {
   .prices-services-list-item:hover {
-    padding: 165px 20px 32px 20px;
+    padding: 166px 20px 32px 20px;
   }
   .prices-services-list-item:hover .img-wrapper {
     top: 15px;
@@ -2961,10 +2987,10 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 
 .benefit-card {
   border-radius: 39px;
-  border: 2px solid var(--blue-bg);
+  border: 1px solid var(--blue-bg);
   background-color: var(--bg-main);
   position: relative;
-  padding: 20px 15px;
+  padding: 20px 14px;
   overflow: hidden;
   display: flex;
   gap: 30px;
@@ -2974,7 +3000,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   cursor: pointer;
 }
 .benefit-card:hover {
-  border: 2px solid var(--blue-main);
+  border: 1px solid var(--blue-main);
   box-shadow: 0px 0px 15px var(--blue-main);
 }
 .benefit-card img {
@@ -3942,15 +3968,15 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   margin-top: 30px;
 }
 .pagination button {
-  padding: 5px;
+  padding: 4px;
   border-radius: 50%;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
 }
 .pagination--prev-btn:hover, .pagination--next-btn:hover {
   background-color: transparent;
   box-shadow: none;
   color: var(--color-white);
-  border: 2px solid var(--color-white);
+  border: 1px solid var(--color-white);
 }
 .pagination--prev-btn i, .pagination--next-btn i {
   font-size: 24px;
@@ -3968,7 +3994,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .pagination--buttons-dots button {
   max-height: 5px;
   max-width: 5px;
-  border: 2px solid var(--color-white);
+  border: 1px solid var(--color-white);
 }
 .pagination--buttons-dots button.highlight {
   border-color: var(--blue-main);
@@ -3976,12 +4002,21 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 
 .use-service .title_h2 {
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 @media (max-width: 520px) {
   .use-service .title_h2 {
     margin-bottom: 30px;
   }
+}
+.use-service-list {
+  margin-bottom: 0;
+}
+.use-service-list.prices-services-list {
+  margin-top: 0;
+}
+.use-service-list.prices-services-list .prices-services-list-item:hover img {
+  transform: scale(1.1);
 }
 .use-service-list.prices-services-list .prices-services-list-item i.icon-arrow_wide {
   position: relative;
@@ -4136,8 +4171,14 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   padding-left: 24px;
   color: #ffffff;
 }
+@media (max-width: 600px) {
+  .contact-block--content > a {
+    margin-left: 20px;
+    padding-left: 16px;
+  }
+}
 .contact-block--content > a:hover {
-  color: var(--color-white);
+  color: var(--blue-main);
   text-shadow: var(--blue-main) 0px 0px 10px;
 }
 .contact-block--schedule {
@@ -4191,7 +4232,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     align-items: flex-end;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 600px) {
   .footer-middle {
     align-items: flex-start;
   }
@@ -4460,7 +4501,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .popup .map-container iframe {
   width: 70vw;
-  height: 80vh;
+  height: 70vh;
 }
 
 .portfolio-slider {
@@ -4491,12 +4532,20 @@ form {
 form input {
   width: 100%;
   background-color: transparent;
-  padding: 15px 30px;
+  padding: 14px 30px;
   border-radius: 25px;
-  border: 2px solid var(--color-white);
+  border: 1px solid var(--color-white);
+  position: relative;
+}
+form input:before {
+  content: "*";
+  font-size: 100px;
+  color: white;
+  position: absolute;
+  z-index: 10;
 }
 form input:focus {
-  border: 2px dashed var(--color-white);
+  border: 1px dashed var(--color-white);
   outline: none;
 }
 form input::-moz-placeholder {
@@ -4504,6 +4553,9 @@ form input::-moz-placeholder {
 }
 form input::placeholder {
   color: var(--color-white);
+}
+form input:required:invalid {
+  border-bottom-color: #EE5D55;
 }
 form .button {
   width: 100%;
@@ -4586,13 +4638,13 @@ form .button:hover {
 .sites-leaders-content-right form textarea {
   width: 100%;
   background-color: transparent;
-  padding: 15px 30px;
+  padding: 14px 30px;
   border-radius: 25px;
-  border: 2px solid var(--color-white);
+  border: 1px solid var(--color-white);
 }
 .sites-leaders-content-right form input:focus,
 .sites-leaders-content-right form textarea:focus {
-  border: 2px dashed var(--color-white);
+  border: 1px dashed var(--color-white);
   outline: none;
 }
 .sites-leaders-content-right form input::-moz-placeholder, .sites-leaders-content-right form textarea::-moz-placeholder {
@@ -4610,13 +4662,14 @@ form .button:hover {
   background-color: var(--color-white);
 }
 .sites-leaders-content-right .testimonials {
-  color: var(--blue-main);
+  color: var(--color-grey);
 }
 .sites-leaders-content-right .testimonials a {
   -webkit-text-decoration: underline dashed !important;
           text-decoration: underline dashed !important;
   text-underline-offset: 4px;
   text-decoration-thickness: 2px;
+  color: var(--color-white);
 }
 @media (max-width: 1000px) {
   .sites-leaders-content-right {
@@ -4637,6 +4690,9 @@ form .button:hover {
   .sites-leaders-content {
     flex-direction: column;
   }
+}
+.sites-differences {
+  padding-bottom: 0px;
 }
 .sites-prices {
   padding-top: 0;
@@ -4686,7 +4742,6 @@ form .button:hover {
   display: flex;
   align-items: center;
   gap: 50px;
-  max-width: 1150px;
   margin: 0 auto;
   position: relative;
 }
@@ -4701,6 +4756,11 @@ form .button:hover {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+}
+@media (max-width: 900px) {
+  .sites-prices-card-info {
+    gap: 20px;
+  }
 }
 .sites-prices-card-info .title_h5 {
   flex: 1 1 90%;
@@ -4718,7 +4778,7 @@ form .button:hover {
 @media (max-width: 900px) {
   .sites-prices-card-info .color-grey {
     flex: 1 1 90%;
-    padding-left: 137px;
+    padding-left: 136px;
   }
   .sites-prices-card-info .color-grey:last-child {
     display: flex;
@@ -4802,7 +4862,7 @@ form .button:hover {
 }
 @media (max-width: 440px) {
   .sites-portfolio-slider .recent-work-card {
-    padding: 20px 5px;
+    padding: 20px 6px;
     border-radius: 25px;
     min-width: calc(100vw - 20px);
   }
@@ -5061,7 +5121,7 @@ form .button:hover {
 }
 @media (max-width: 600px) {
   .sites-roadmap-list-item {
-    padding: 9px 13px;
+    padding: 10px 14px;
     border-radius: 25px;
   }
   .sites-roadmap-list-item::after {
@@ -5074,6 +5134,9 @@ form .button:hover {
     position: static;
     font-size: 30px;
   }
+}
+.sites-reviews {
+  position: relative;
 }
 .sites-reviews-head {
   display: flex;
@@ -5111,7 +5174,7 @@ form .button:hover {
 .sites-reviews-slider .review-card {
   background-color: var(--blue-bg);
   border-radius: 49px;
-  padding: 25px 40px;
+  padding: 24px 40px;
   flex: 1 1 0;
   min-width: 706px;
   opacity: 0;
@@ -5121,14 +5184,7 @@ form .button:hover {
 }
 @media (max-width: 1500px) {
   .sites-reviews-slider .review-card {
-    min-width: calc((100vw - 80px - 30px) / 2);
-  }
-}
-@media (max-width: 900px) {
-  .sites-reviews-slider .review-card {
-    border-radius: 25px;
-    padding: 15px 20px;
-    min-width: calc((100vw - 80px - 10px) / 2);
+    min-width: calc((100vw - 80px - 40px) / 2);
   }
 }
 @media (max-width: 600px) {
@@ -5193,6 +5249,16 @@ form .button:hover {
     display: none;
   }
 }
+.sites-reviews .button-link.big {
+  position: absolute;
+  bottom: 84px;
+  right: 0px;
+}
+@media (max-width: 900px) {
+  .sites-reviews .button-link.big {
+    position: static;
+  }
+}
 @media (max-width: 600px) {
   .sites-reviews .button-link {
     margin-right: auto;
@@ -5218,9 +5284,12 @@ form .button:hover {
   .sites-bottom-left {
     max-width: 100%;
   }
+  .sites-bottom-left .description {
+    text-align: center;
+  }
   .sites-bottom-left .title_h3 {
     margin: 0 auto;
-    margin-bottom: 200px;
+    margin-bottom: 30px;
   }
 }
 .sites-bottom .flying-orb {
@@ -5347,7 +5416,7 @@ form .button:hover {
   z-index: 0;
   overflow: hidden;
   position: relative;
-  border: 2px solid var(--blue-bg);
+  border: 1px solid var(--blue-bg);
 }
 .landing-benefits .sites-reviews-slider .review-card::before {
   font-family: "INTRID_ICONS";
@@ -5396,7 +5465,7 @@ form .button:hover {
     display: none;
   }
   .landing-steps .sites-roadmap-list-item {
-    padding: 9px 13px;
+    padding: 10px 14px;
     border-radius: 25px;
   }
   .landing-steps .sites-roadmap-list-item::before, .landing-steps .sites-roadmap-list-item::after {
@@ -5426,10 +5495,10 @@ form .button:hover {
   position: relative;
 }
 .landing-creation .title_h3 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .landing-creation .description {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 .landing-creation form {
   background-color: var(--blue-tag);
@@ -5472,18 +5541,18 @@ form .button:hover {
   height: 100px;
   resize: none;
   background-color: transparent;
-  padding: 15px 30px;
+  padding: 14px 30px;
   border-radius: 25px;
-  border: 2px solid var(--color-white);
+  border: 1px solid var(--color-white);
   scrollbar-gutter: stable both-edges;
 }
 .landing-creation form textarea:focus {
-  border: 2px dashed var(--color-white);
+  border: 1px dashed var(--color-white);
   outline: none;
 }
 .landing-creation form textarea::-webkit-scrollbar {
   width: 10px;
-  padding-right: 5px;
+  padding-right: 6px;
   background-color: transparent;
 }
 .landing-creation form textarea::-moz-placeholder {
@@ -5501,7 +5570,7 @@ form .button:hover {
 .landing-creation form textarea::-webkit-scrollbar-thumb {
   width: 5px;
   border-radius: 5px;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   background-color: var(--color-white);
   background-clip: content-box;
 }
@@ -5518,7 +5587,7 @@ form .button:hover {
   text-shadow: var(--blue-main) 0px 0px 10px;
 }
 .landing-creation form label:hover:before {
-  border: 2px solid var(--blue-main) !important;
+  border: 1px solid var(--blue-main) !important;
   text-decoration-color: transparent;
 }
 .landing-creation form label:before {
@@ -5528,7 +5597,7 @@ form .button:hover {
   width: 20px;
   height: 20px;
   color: transparent;
-  border: 2px solid var(--color-white);
+  border: 1px solid var(--color-white);
   border-radius: 5px;
   padding-bottom: 4px;
   padding-left: 2px;
@@ -5541,7 +5610,7 @@ form .button:hover {
   width: 20px;
   height: 20px;
   color: var(--color-white);
-  border: 2px solid var(--color-white);
+  border: 1px solid var(--color-white);
   border-radius: 5px;
   padding-bottom: 4px;
   padding-left: 2px;
@@ -5553,14 +5622,15 @@ form .button:hover {
   cursor: pointer;
 }
 .landing-creation form button {
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100%;
   justify-content: center;
 }
 .landing-creation form .testimonials {
-  color: var(--blue-main);
+  color: var(--color-grey);
 }
 .landing-creation form .testimonials a {
+  color: var(--color-white);
   -webkit-text-decoration: underline dashed !important;
           text-decoration: underline dashed !important;
   text-underline-offset: 4px;
@@ -5654,6 +5724,9 @@ form .button:hover {
 .corporate-portfolio .recent-work-card {
   width: 100%;
 }
+.corporate-icms {
+  padding-top: 62px;
+}
 .corporate-icms .img-handler {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
 }
@@ -5678,6 +5751,9 @@ form .button:hover {
 }
 .corporate-tech {
   padding-top: 0px;
+}
+.corporate-tech .title_h2 {
+  margin-top: 0;
 }
 
 .store-main {
@@ -5826,7 +5902,7 @@ form .button:hover {
     margin-top: 10px;
   }
   .store-benefits .benefit-card .content-hidden li, .store-ai .benefit-card .content-hidden li {
-    padding-left: 5px;
+    padding-left: 6px;
     margin-top: 5px;
   }
   .store-benefits .benefit-card .content-hidden li::marker, .store-ai .benefit-card .content-hidden li::marker {
@@ -5859,7 +5935,7 @@ form .button:hover {
   z-index: 2;
   text-align: center;
   border-radius: 50%;
-  padding: 55px 20px;
+  padding: 56px 20px;
   color: var(--bg-main);
   display: flex;
   justify-content: center;
@@ -6044,6 +6120,9 @@ form .button:hover {
     left: calc(50% - 140px);
   }
 }
+.portal-types {
+  padding-top: 120px;
+}
 .portal-types .tab-view .slider-arrow {
   display: none !important;
 }
@@ -6111,7 +6190,7 @@ form .button:hover {
     min-width: 90px;
   }
   .portal-types .sites-prices-card-info .color-grey {
-    padding-left: 115px;
+    padding-left: 116px;
   }
 }
 @media (max-width: 540px) {
@@ -6182,7 +6261,7 @@ form .button:hover {
 .portal-benefits-card:has(input:checked) .accordion-content {
   padding: 10px;
   border-radius: 29px;
-  border: 2px solid var(--blue-main);
+  border: 1px solid var(--blue-main);
 }
 .portal-benefits-card .accordion-header {
   display: flex;
@@ -6267,7 +6346,7 @@ form .button:hover {
 .calculator-calculator .accordion-item {
   padding: 10px;
   border-radius: 29px;
-  border: 2px solid var(--blue-bg);
+  border: 1px solid var(--blue-bg);
   background-color: var(--bg-main);
 }
 .calculator-calculator .accordion-item:first-child .accordion-content {
@@ -6307,10 +6386,10 @@ form .button:hover {
   background-color: transparent;
   padding: 15px 30px;
   border-radius: 25px;
-  border: 2px solid var(--color-white);
+  border: 1px solid var(--color-white);
 }
 .calculator-calculator .accordion-content input:focus {
-  border: 2px dashed var(--color-white);
+  border: 1px dashed var(--color-white);
   outline: none;
 }
 .calculator-calculator .accordion-content input::-moz-placeholder {
@@ -6340,7 +6419,7 @@ form .button:hover {
 .toggle-checkbox:checked + label::before {
   content: "";
   background-color: var(--blue-tag);
-  border: 2px solid var(--color-white);
+  border: 1px solid var(--color-white);
 }
 .toggle-checkbox:checked + label:after {
   background-color: var(--color-white);
@@ -6357,7 +6436,7 @@ form .button:hover {
   height: 24px;
   border-radius: 20px;
   background-color: var(--blue-bg);
-  border: 2px solid var(--blue-main);
+  border: 1px solid var(--blue-main);
   margin-right: 10px;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -6429,7 +6508,7 @@ form .button:hover {
     gap: 14px;
   }
   .tab-button {
-    padding: 18px 33px 18px 100px;
+    padding: 18px 32px 18px 100px;
   }
   .tab-button .title_h5 {
     display: block;
@@ -6538,7 +6617,7 @@ form .button:hover {
   header .main-header .header-links-nav .dropdown.second .nav-link {
     position: relative;
     padding: 10px;
-    padding-right: 15px;
+    padding-right: 14px;
     padding-left: 0;
   }
   header .main-header .header-links-nav .dropdown.second .nav-link::before {
@@ -6640,7 +6719,7 @@ form .button:hover {
     gap: 14px;
   }
   .tab-button {
-    padding: 18px 33px 0px 100px;
+    padding: 18px 32px 0px 100px;
   }
   .tab-button .title_h5 {
     display: block;
@@ -6738,7 +6817,7 @@ form .button:hover {
     pointer-events: none;
     position: relative;
     padding: 10px;
-    padding-right: 15px;
+    padding-right: 14px;
     padding-left: 0;
   }
   header .main-header .header-links-nav .dropdown.second .nav-link::before {
@@ -6804,13 +6883,13 @@ form .button:hover {
     color: var(--color-black);
   }
   .main-page {
-    padding-top: 90px !important;
+    padding-top: 90px;
     padding-bottom: 180px !important;
     flex-wrap: wrap;
   }
   .main-page .button-link.big {
     font-size: 12px;
-    padding: 20px 25px;
+    padding: 20px 24px;
     gap: 4px;
   }
   .main-page .flying-orb {
@@ -7013,7 +7092,7 @@ form .button:hover {
   }
   .button-link.big {
     font-size: 12px;
-    padding: 15px 25px;
+    padding: 14px 24px;
     gap: 4px;
     max-height: 50px;
   }
@@ -7126,7 +7205,7 @@ form .button:hover {
   }
   .tabs .tab-content {
     display: block;
-    padding: 5px 0;
+    padding: 6px 0;
     transform: translateY(-54px);
     background-color: transparent;
   }
@@ -7163,7 +7242,7 @@ form .button:hover {
   }
   .recent-work-card {
     flex-direction: column;
-    padding: 33px;
+    padding: 32px;
   }
   .recent-work-card .work-testimonial {
     gap: 6px;
