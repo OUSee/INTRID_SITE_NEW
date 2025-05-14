@@ -801,7 +801,7 @@ label.radioButton:has(input:checked)::after {
 }
 
 .fw-bold {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .text-center {
@@ -954,7 +954,7 @@ label.radioButton:has(input:checked)::after {
 
 .navbar .logo_text {
   font-size: 31px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .work-time {
@@ -1188,9 +1188,64 @@ div.icon-menu {
   gap: 36px;
   position: static;
 }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .slider-with-tabs {
     gap: 0px;
+    flex-direction: column;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons {
+    flex-direction: row;
+    gap: 2px;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link {
+    display: flex;
+    flex-direction: column;
+    max-height: unset;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+    border-radius: 15px;
+    border: 1px solid transparent;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link span {
+    text-wrap: wrap;
+    text-align: center;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link img {
+    display: block;
+    width: 50px;
+    height: auto;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link i {
+    display: none;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link:hover {
+    color: var(--blue-main);
+    background-color: transparent;
+  }
+  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link:has(input[type=radio]:checked) {
+    transform: scale(1.2);
+    background-color: var(--bg-main);
+    color: var(--blue-main);
+    border: 1px solid transparent;
+  }
+  .slider-with-tabs .tab-view .slider-arrow {
+    display: none !important;
+  }
+  .slider-with-tabs .tab-view .tab-slider {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .slider-with-tabs .tab-view .tab-slider-card {
+    min-width: unset !important;
+    margin-right: 0 !important;
+    flex: 1 1 40% !important;
+  }
+  .slider-with-tabs .tab-view .tab-slider-card .title_h4 {
+    text-align: center;
+  }
+  .slider-with-tabs .tab-view .tab-slider-card p:not(.title_h4) {
+    display: none;
   }
 }
 .slider-with-tabs_tabs-buttons {
@@ -1304,7 +1359,7 @@ div.icon-menu {
   position: relative;
   box-shadow: 0px 0px 60px 45px var(--blue-clouds), inset 0px 0px 75px 20px var(--blue-clouds);
 }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .tab-view .tab-slider .tab-slider-card-image {
     margin: 50px 0px 20px 0px;
   }
@@ -1998,9 +2053,15 @@ section.tabs {
   flex-basis: 300px;
   text-wrap: wrap;
 }
-.tab-content-webDev.store .count-n-card .recent-work-card {
+.tab-content-webDev.store .count-n-card a.recent-work-card {
   margin-right: auto;
   margin-left: 0;
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev.store .count-n-card a.recent-work-card img {
+    width: 30%;
+    height: auto;
+  }
 }
 .tab-content-webDev.store .store-testimonials {
   max-width: 720px;
@@ -2685,7 +2746,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .count-n-card .web-count .large-number {
   color: var(--blue-main);
   font-size: 70px;
-  font-weight: bold;
+  font-weight: 600;
 }
 .count-n-card .web-count img {
   height: 70px;
@@ -2704,6 +2765,21 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   height: 50px;
   border-radius: 50%;
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
+}
+@media (max-width: 1000px) {
+  .count-n-card .recent-work-card {
+    flex-direction: column;
+  }
+  .count-n-card .recent-work-card img {
+    width: 181px;
+    height: 101px;
+  }
+}
+@media (max-width: 600px) {
+  .count-n-card .recent-work-card img {
+    width: auto;
+    height: 141px;
+  }
 }
 
 .recent-work-card {
@@ -3291,7 +3367,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   flex-direction: column;
 }
 .about-section .about-wrapper .comunity-info .employes-n-experience-item span {
-  font-weight: bold;
+  font-weight: 600;
   font-size: 70px;
   line-height: 70px;
 }
@@ -3744,7 +3820,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   gap: 13px;
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .main-content .card-title {
-  font-weight: bold;
+  font-weight: 600;
   padding: 18px 40px;
   border-radius: 30px;
 }
@@ -3766,7 +3842,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .main-content .from-card-list .highlight {
   color: var(--blue-tag);
-  font-weight: bold;
+  font-weight: 600;
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .main-content .from-card-list .link {
   color: var(--blue-main);
@@ -3785,7 +3861,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   background-color: var(--blue-main);
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .main-content .to-card-list li .highlight {
-  font-weight: bold;
+  font-weight: 600;
 }
 .clients-cases .blocks .cases-tabs .cases-content .tab-content .main-content .from-to-arrows {
   display: flex;
@@ -3840,7 +3916,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .clients-cases .blocks .cases-counts-list li span {
   font-size: 36px;
-  font-weight: bold;
+  font-weight: 600;
 }
 .clients-cases .blocks .cases-counts img {
   margin: 0 auto;
@@ -6859,63 +6935,6 @@ form .button:hover {
     transform: translateY(0px);
     display: block;
   }
-  .slider-with-tabs {
-    flex-direction: column;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons {
-    flex-direction: row;
-    gap: 2px;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link {
-    display: flex;
-    flex-direction: column;
-    max-height: unset;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 5px;
-    border-radius: 15px;
-    border: 1px solid transparent;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link span {
-    text-wrap: wrap;
-    text-align: center;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link img {
-    display: block;
-    width: 50px;
-    height: auto;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link i {
-    display: none;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link:hover {
-    color: var(--blue-main);
-    background-color: transparent;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link:has(input[type=radio]:checked) {
-    transform: scale(1.2);
-    background-color: var(--bg-main);
-    color: var(--blue-main);
-    border: 1px solid transparent;
-  }
-  .slider-with-tabs .tab-view .slider-arrow {
-    display: none !important;
-  }
-  .slider-with-tabs .tab-view .tab-slider {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .slider-with-tabs .tab-view .tab-slider-card {
-    min-width: unset !important;
-    margin-right: 0 !important;
-    flex: 1 1 40% !important;
-  }
-  .slider-with-tabs .tab-view .tab-slider-card .title_h4 {
-    text-align: center;
-  }
-  .slider-with-tabs .tab-view .tab-slider-card p:not(.title_h4) {
-    display: none;
-  }
 }
 @media (max-width: 540px) {
   .prices-services-list {
@@ -6982,7 +7001,7 @@ form .button:hover {
   }
   .slider-with-tabs .tab-view .tab-slider-card .title_h4 {
     font-size: 13px !important;
-    font-weight: bold;
+    font-weight: 600;
   }
   .slider-with-tabs .tab-view .tab-slider-card p:not(.title_h4) {
     display: none;

@@ -106,14 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
           const maxIndex = cards.length - slidesPerPage;
           const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
 
-         
-
 
           cards.forEach((card) => {
             card.style.minWidth = `${cardWidth}px`;
           });
 
-          slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+          slider.style.transform = `translateX(-${currentIndex * (cardWidth + 25)}px)`;
 
           if (currentIndex === 0 || cards.length <= slidesPerPage) {
             prevButton.style.display = 'none';

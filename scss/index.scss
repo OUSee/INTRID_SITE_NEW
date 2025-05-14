@@ -844,7 +844,7 @@ label.radioButton:has(input:checked)::after {
 }
 
 .fw-bold {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .text-center {
@@ -1020,7 +1020,7 @@ label.radioButton:has(input:checked)::after {
 
 .navbar .logo_text {
     font-size: 31px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .work-time {
@@ -1275,8 +1275,87 @@ div.icon-menu {
     gap: 36px;
     position: static;
 
-    @media (max-width: 600px) {
+    @media (max-width: 900px) {
         gap: 0px;
+
+        flex-direction: column;
+
+        aside.slider-with-tabs_tabs-buttons {
+            flex-direction: row;
+            gap: 2px;
+
+            label.button-link {
+                display: flex;
+                flex-direction: column;
+                max-height: unset;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 5px;
+                border-radius: 15px;
+                border: 1px solid transparent;
+
+                span {
+                    text-wrap: wrap;
+                    text-align: center;
+                }
+
+                img {
+                    display: block;
+                    width: 50px;
+                    height: auto;
+                }
+
+                i {
+                    display: none;
+                }
+
+
+
+                &:hover {
+                    // transform: scale(1.1);
+                    color: var(--blue-main);
+                    background-color: transparent;
+                    // &:not(:has(input[type=radio]:checked)){
+                    //     img{
+                    //         filter: brightness(0%);
+                    //     }
+                    // }
+                }
+
+                &:has(input[type=radio]:checked) {
+                    transform: scale(1.2);
+                    background-color: var(--bg-main);
+                    color: var(--blue-main);
+                    border: 1px solid transparent;
+
+                }
+            }
+        }
+
+        .tab-view {
+            .slider-arrow {
+                display: none !important;
+            }
+
+            .tab-slider {
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                &-card {
+                    min-width: unset !important;
+                    margin-right: 0 !important;
+                    flex: 1 1 40% !important;
+
+                    .title_h4 {
+                        text-align: center;
+                    }
+
+                    p:not(.title_h4) {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
 
     &_tabs-buttons {
@@ -1287,7 +1366,6 @@ div.icon-menu {
 
         @media (max-width: 600px) {
             margin-top: 30px;
-
         }
 
         .button-link {
@@ -1405,7 +1483,7 @@ div.icon-menu {
                 box-shadow: 0px 0px 60px 45px var(--blue-clouds),
                     inset 0px 0px 75px 20px var(--blue-clouds);
 
-                @media (max-width: 600px) {
+                @media (max-width: 900px) {
                     margin: 50px 0px 20px 0px;
                 }
 
@@ -2179,9 +2257,16 @@ section.tabs {
                 }
             }
 
-            .recent-work-card {
+            a.recent-work-card {
                 margin-right: auto;
                 margin-left: 0;
+
+                @media (max-width: 1000px) {
+                    img {
+                        width: 30%;
+                        height: auto;
+                    }
+                }
             }
         }
 
@@ -2985,7 +3070,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         .large-number {
             color: var(--blue-main);
             font-size: 70px;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         img {
@@ -3012,7 +3097,23 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
     }
 
+    .recent-work-card {
+        @media (max-width: 1000px) {
+            flex-direction: column;
 
+            img {
+                width: 181px;
+                height: 101px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            img {
+                width: auto;
+                height: 141px;
+            }
+        }
+    }
 }
 
 .recent-work-card {
@@ -3679,7 +3780,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                     flex-direction: column;
 
                     span {
-                        font-weight: bold;
+                        font-weight: 600;
                         font-size: 70px;
                         line-height: 70px;
                     }
@@ -4126,7 +4227,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                             gap: 13px;
 
                             &-title {
-                                font-weight: bold;
+                                font-weight: 600;
                                 padding: 18px 40px;
                                 border-radius: 30px;
                             }
@@ -4152,7 +4253,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                             &-list {
                                 .highlight {
                                     color: var(--blue-tag);
-                                    font-weight: bold;
+                                    font-weight: 600;
                                 }
 
                                 .link {
@@ -4182,7 +4283,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
                             &-list {
                                 li {
                                     .highlight {
-                                        font-weight: bold;
+                                        font-weight: 600;
                                     }
                                 }
 
@@ -4250,7 +4351,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
                 span {
                     font-size: 36px;
-                    font-weight: bold;
+                    font-weight: 600;
 
                 }
             }
@@ -7907,87 +8008,6 @@ form {
             // }
         }
     }
-
-    .slider-with-tabs {
-        flex-direction: column;
-
-        aside.slider-with-tabs_tabs-buttons {
-            flex-direction: row;
-            gap: 2px;
-
-            label.button-link {
-                display: flex;
-                flex-direction: column;
-                max-height: unset;
-                justify-content: center;
-                align-items: center;
-                padding: 10px 5px;
-                border-radius: 15px;
-                border: 1px solid transparent;
-
-                span {
-                    text-wrap: wrap;
-                    text-align: center;
-                }
-
-                img {
-                    display: block;
-                    width: 50px;
-                    height: auto;
-                }
-
-                i {
-                    display: none;
-                }
-
-
-
-                &:hover {
-                    // transform: scale(1.1);
-                    color: var(--blue-main);
-                    background-color: transparent;
-                    // &:not(:has(input[type=radio]:checked)){
-                    //     img{
-                    //         filter: brightness(0%);
-                    //     }
-                    // }
-                }
-
-                &:has(input[type=radio]:checked) {
-                    transform: scale(1.2);
-                    background-color: var(--bg-main);
-                    color: var(--blue-main);
-                    border: 1px solid transparent;
-
-                }
-            }
-        }
-
-        .tab-view {
-            .slider-arrow {
-                display: none !important;
-            }
-
-            .tab-slider {
-                flex-direction: row;
-                flex-wrap: wrap;
-
-                &-card {
-                    min-width: unset !important;
-                    margin-right: 0 !important;
-                    flex: 1 1 40% !important;
-
-                    .title_h4 {
-                        text-align: center;
-                    }
-
-                    p:not(.title_h4) {
-                        display: none;
-                    }
-                }
-            }
-        }
-    }
 }
 
 @media (max-width: 540px) {
@@ -8077,7 +8097,7 @@ form {
 
                     .title_h4 {
                         font-size: 13px !important;
-                        font-weight: bold;
+                        font-weight: 600;
                     }
 
                     p:not(.title_h4) {

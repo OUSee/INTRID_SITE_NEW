@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let navButtons
 
         if(!!pagination){
-           prevBtn = pagination?.querySelector('.pagination--prev-btn')
-           nextBtn = pagination?.querySelector('.pagination--next-btn')
+           prevBtn = pagination?.querySelectorAll('.pagination--prev-btn')
+           nextBtn = pagination?.querySelectorAll('.pagination--next-btn')
        
         // добавить кнопки слева справа
          navButtons = pagination.querySelectorAll('.pagination--btn-dot')
@@ -125,20 +125,29 @@ document.addEventListener('DOMContentLoaded', () => {
         slider.addEventListener('touchstart', handleTouchStart, false)
         slider.addEventListener('touchmove', handleTouchMove, false)
       
-        prevBtn.addEventListener('click', prevSlide )
-        nextBtn.addEventListener('click', nextSlide )
+        prevBtn.forEach(btn => btn.addEventListener('click', prevSlide ))
+        nextBtn.forEach(btn => btn.addEventListener('click', nextSlide ))
     
         window.addEventListener('resize', updateSlider)
-      }
+    }
     
 
       window.addEventListener('resize', ()=>{
-        try{tabSliderWithPagination('cases-tabs-slider');}catch{console.log('=> no slider or error')}
-        try{tabSliderWithPagination('portfolio-slider');}catch{console.log('=> no slider or error')}
-        try{tabSliderWithPagination('reviews-slider');}catch{console.log('=> no slider or error')}
+        sliders.forEach((slider) => {
+          try{
+            tabSliderWithPagination(slider.id);
+          }catch(err){
+            console.log('=> err seting slider: ', err);
+          }})
       })
-      
-      try{tabSliderWithPagination('cases-tabs-slider');}catch{console.log('=> no slider or error')}
-      try{tabSliderWithPagination('portfolio-slider');}catch{console.log('=> no slider or error')}
-      try{tabSliderWithPagination('reviews-slider');}catch{console.log('=> no slider or error')}
+
+      const sliders = document.querySelectorAll('[data-slider]');
+      if(sliders){
+        sliders.forEach((slider) => {
+          try{
+            tabSliderWithPagination(slider.id);
+          }catch(err){
+            console.log('=> err seting slider: ', err);
+          }})
+      }
 })
