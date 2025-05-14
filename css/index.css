@@ -676,6 +676,10 @@ label.radioButton:has(input:checked)::after {
   margin-left: auto;
 }
 
+.ml-10 {
+  margin-left: 10px;
+}
+
 .mr-auto {
   margin-right: auto;
 }
@@ -929,6 +933,18 @@ label.radioButton:has(input:checked)::after {
   align-items: center;
 }
 .main-header .header-contacts a.phone-line:hover {
+  color: var(--blue-main);
+  text-shadow: var(--blue-main) 0px 0px 10px;
+}
+
+.phone-line {
+  color: var(--color-white);
+  display: flex;
+  flex-direction: row;
+  text-wrap: nowrap;
+  align-items: center;
+}
+.phone-line:hover {
   color: var(--blue-main);
   text-shadow: var(--blue-main) 0px 0px 10px;
 }
@@ -2255,22 +2271,11 @@ section.tabs {
   }
 }
 .tab-content-webDev.tender .tender-explanation-group .tender-testimonial {
-  padding-left: 60px;
   position: relative;
   max-width: 840px;
 }
 .tab-content-webDev.tender .tender-explanation-group .tender-testimonial .title_h4 {
   margin-bottom: 20px;
-}
-.tab-content-webDev.tender .tender-explanation-group .tender-testimonial::before {
-  content: "";
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: var(--blue-main);
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 .tab-content-webDev.tender .tender-diagram {
   padding: 50px 0px;
@@ -2290,7 +2295,7 @@ section.tabs {
   left: calc(50% - 126px);
   order: 4;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   .tab-content-webDev.tender .tender-diagram .benefits-top {
     display: flex;
     position: static;
@@ -2307,13 +2312,16 @@ section.tabs {
     max-width: unset;
     margin: 0;
   }
+  .tab-content-webDev.tender .tender-diagram .benefits-top .benefit-card .content-hidden {
+    display: block;
+  }
 }
 .tab-content-webDev.tender .tender-diagram .benefits-bottom {
   order: 5;
   bottom: 0px;
   left: calc(50% - 150px);
 }
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   .tab-content-webDev.tender .tender-diagram .benefits-bottom {
     display: flex;
     position: static;
@@ -2329,6 +2337,38 @@ section.tabs {
     width: 100%;
     max-width: unset;
     margin: 0;
+  }
+  .tab-content-webDev.tender .tender-diagram .benefits-bottom .benefit-card .content-hidden {
+    display: block;
+  }
+}
+@media (max-width: 1200px) {
+  .tab-content-webDev.tender .tender-diagram .benefits-left,
+  .tab-content-webDev.tender .tender-diagram .benefits-right {
+    display: flex;
+    position: static;
+    height: -moz-fit-content;
+    height: fit-content;
+    justify-content: unset;
+    gap: 30px;
+    width: 100%;
+    margin: 0;
+    margin-top: 30px;
+  }
+  .tab-content-webDev.tender .tender-diagram .benefits-left .benefit-card,
+  .tab-content-webDev.tender .tender-diagram .benefits-right .benefit-card {
+    width: 100%;
+    max-width: unset;
+    margin: 0;
+  }
+  .tab-content-webDev.tender .tender-diagram .benefits-left .benefit-card .content-hidden,
+  .tab-content-webDev.tender .tender-diagram .benefits-right .benefit-card .content-hidden {
+    display: block;
+  }
+}
+@media (max-width: 1200px) {
+  .tab-content-webDev.tender .tender-diagram .video-diagramm {
+    display: none;
   }
 }
 .tab-content-webDev.tender .tender-diagram .video-diagramm .tender-text {
@@ -2379,6 +2419,11 @@ section.tabs {
 @media (max-width: 1000px) {
   .tab-content-webDev.tender .tender-diagram .video-diagramm {
     margin: 100px auto;
+  }
+}
+@media (max-width: 1200px) {
+  .tab-content-webDev.tender .tender-diagram {
+    padding: 0px;
   }
 }
 .tab-content-webDev.tender p.title_h4 {
@@ -3419,22 +3464,28 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
 }
 .about-section .about-wrapper .comunity-info .places-btns-btn {
-  background-color: var(--blue-main);
-  color: var(--bg-main);
-  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid var(--blue-main);
   text-transform: none;
   justify-content: center;
   align-items: center;
+}
+.about-section .about-wrapper .comunity-info .places-btns-btn img {
+  display: inline-block;
+  width: 26px;
+  height: auto;
 }
 @media (max-width: 1100px) {
   .about-section .about-wrapper .comunity-info .places-btns-btn {
     flex: 1 1 0%;
   }
 }
-.about-section .about-wrapper .comunity-info .places-btns-btn img {
-  display: inline-block;
-  width: 26px;
-  height: auto;
+.about-section .about-wrapper .comunity-info .places-btns-btn:hover {
+  background-color: var(--blue-main);
+  color: var(--bg-main);
+}
+.about-section .about-wrapper .comunity-info .places-btns-btn:hover img {
   filter: grayscale(100%) brightness(0);
 }
 
