@@ -910,6 +910,7 @@ label.radioButton:has(input:checked)::after {
   align-items: center;
 }
 .main-header .header-contacts a.phone-line:hover {
+  color: var(--blue-main);
   text-shadow: var(--blue-main) 0px 0px 10px;
 }
 
@@ -1006,6 +1007,9 @@ label.radioButton:has(input:checked)::after {
   width: -moz-fit-content;
   width: fit-content;
 }
+.burger .burger-content a.work-time:hover {
+  color: var(--blue-main);
+}
 @media (max-width: 1000px) {
   .burger {
     display: none;
@@ -1033,7 +1037,7 @@ label.radioButton:has(input:checked)::after {
 
 .dropdown-content a,
 .burger-content a {
-  padding: 12px 16px;
+  padding: 8px 16px;
   text-decoration: none;
   display: block;
   color: var(--color-white);
@@ -2058,6 +2062,12 @@ section.tabs {
     width: 100%;
     max-width: unset;
     margin: 0;
+  }
+}
+@media (max-width: 1000px) {
+  .tab-content-webDev .web-shop-diagram .benefits-left,
+  .tab-content-webDev .tender-diagram .benefits-left {
+    margin-bottom: 30px;
   }
 }
 .tab-content-webDev .web-shop-diagram div.video-diagramm .connections .line {

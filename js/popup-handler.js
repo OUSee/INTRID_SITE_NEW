@@ -41,9 +41,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
         videoPopup ? toggleVideoPLay(videoPopup, true) : false;
       
         popup.addEventListener('click', (e) => {
-          e.stopPropagation();
-          e.preventDefault();
+         
           if (e.target.classList.contains('close-button') || e.target.id == id) {
+            e.stopPropagation();
+            e.preventDefault();
+
             let videoPopup = popup.querySelector('video');
       
             popup.classList.remove('open');

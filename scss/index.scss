@@ -963,6 +963,7 @@ label.radioButton:has(input:checked)::after {
             align-items: center;
 
             &:hover {
+                color: var(--blue-main);
                 text-shadow: var(--blue-main) 0px 0px 10px;
             }
         }
@@ -1070,6 +1071,10 @@ label.radioButton:has(input:checked)::after {
         text-wrap: wrap;
         display: block;
         width: fit-content;
+
+        &:hover {
+            color: var(--blue-main);
+        }
     }
 
     @media (max-width: 1000px) {
@@ -1098,7 +1103,7 @@ label.radioButton:has(input:checked)::after {
 
 .dropdown-content a,
 .burger-content a {
-    padding: 12px 16px;
+    padding: 8px 16px;
     text-decoration: none;
     display: block;
     color: var(--color-white);
@@ -2234,6 +2239,12 @@ section.tabs {
                     max-width: unset;
                     margin: 0;
                 }
+            }
+        }
+
+        .benefits-left {
+            @media (max-width: 1000px) {
+                margin-bottom: 30px;
             }
         }
     }
