@@ -1194,6 +1194,9 @@ div.icon-menu {
   color: var(--blue-main);
   transform: rotate(90deg) translate(-0.3em, 0em);
 }
+.accordion-header.title_h4 i.icon-shevrone {
+  transform: rotate(90deg) translate(0em, 0);
+}
 .accordion-content {
   padding: 0;
   max-height: 0;
@@ -1208,6 +1211,9 @@ div.icon-menu {
 }
 .accordion-checkbox:checked + .accordion-header i.icon-shevrone, .accordion-checkbox:checked + .accordion-header i.icon-shevrone_double {
   transform: rotate(-90deg) translate(-0.3em, 0.3em);
+}
+.accordion-checkbox:checked + .accordion-header.title_h4 i.icon-shevrone {
+  transform: rotate(-90deg) translate(0, 0.3em);
 }
 .accordion-checkbox:checked + .accordion-header + .accordion-content {
   max-height: unset;
@@ -6436,6 +6442,24 @@ form .button:hover {
   flex-direction: column;
   gap: 20px;
   border-radius: 39px;
+  flex: 1 1 45%;
+}
+@media (max-width: 900px) {
+  .calculator-main-offer {
+    flex-direction: column;
+  }
+}
+.calculator-calculator {
+  padding-bottom: 200px;
+}
+.calculator-calculator .accordion .accordion-header {
+  display: flex;
+  align-items: center;
+}
+.calculator-calculator .accordion .accordion-header i:not(.icon-shevrone) {
+  font-size: 40px;
+  max-height: 41px;
+  line-height: 1em;
 }
 .calculator-calculator .accordion-item {
   padding: 10px;
@@ -6451,22 +6475,18 @@ form .button:hover {
   bottom: 130px;
   right: 20px;
 }
-.calculator-calculator .accordion-header {
-  display: flex;
-  align-items: center;
-}
-.calculator-calculator .accordion-header i:not(.icon-shevrone) {
-  font-size: 40px;
-  max-height: 41px;
-  line-height: 1em;
-}
-.calculator-calculator .accordion-content {
-  padding-left: 30px !important;
+@media (max-width: 900px) {
+  .calculator-calculator .accordion-item:first-child .accordion-content .button-white {
+    position: relative;
+    bottom: unset;
+    right: unset;
+  }
 }
 .calculator-calculator .accordion-content .toggle-line {
   display: flex;
   gap: 6px;
   align-items: center;
+  margin-left: 6px;
 }
 .calculator-calculator .accordion-content .toggle-line label {
   display: flex;
@@ -6503,6 +6523,40 @@ form .button:hover {
   content: "•";
   color: var(--blue-main);
 }
+.calculator-total {
+  width: 100%;
+  position: relative;
+  background-color: var(--blue-bg);
+  padding: 20px 0px;
+}
+.calculator-total.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  transition: all 0;
+}
+@media (max-width: 900px) {
+  .calculator-total .mobile-hidden {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .calculator-total .title_h1.color-blue {
+    display: block;
+  }
+}
+.calculator-total .button-highlight.big {
+  gap: 4px;
+}
+@media (max-width: 420px) {
+  .calculator-total .container {
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+  }
+  .calculator-total .container .title_h1 {
+    text-align: center;
+  }
+}
 
 .toggle-checkbox {
   display: none;
@@ -6517,7 +6571,7 @@ form .button:hover {
 }
 .toggle-checkbox:checked + label:after {
   background-color: var(--color-white);
-  transform: translateX(26px);
+  transform: translateX(26px) translateY(-50%);
 }
 .toggle-checkbox + label {
   position: relative;
@@ -6526,7 +6580,7 @@ form .button:hover {
 .toggle-checkbox + label::before {
   content: "";
   display: inline-block;
-  width: 50px;
+  min-width: 50px;
   height: 24px;
   border-radius: 20px;
   background-color: var(--blue-bg);
@@ -6536,14 +6590,47 @@ form .button:hover {
 }
 .toggle-checkbox + label:after {
   content: "";
+  top: 50%;
+  transform: translateY(-50%);
   left: 3px;
-  top: 3px;
   position: absolute;
   width: 20px;
   height: 20px;
   border-radius: 20px;
   background-color: var(--blue-main);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.form-popup form .form-limitter {
+  max-width: 900px;
+  padding: 15px;
+  border-radius: 25px;
+  background-color: var(--blue-tag);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-popup form .form-limitter .testimonials {
+  color: white;
+  width: 90%;
+}
+.form-popup form .form-limitter textarea {
+  width: 100%;
+  background-color: transparent;
+  padding: 14px 30px;
+  border-radius: 25px;
+  border: 1px solid var(--color-white);
+  resize: none;
+}
+.form-popup form .form-limitter textarea:focus {
+  border: 1px dashed var(--color-white);
+  outline: none;
+}
+.form-popup form .form-limitter textarea::-moz-placeholder {
+  color: var(--color-white);
+}
+.form-popup form .form-limitter textarea::placeholder {
+  color: var(--color-white);
 }
 
 @media (max-width: 1500px) {

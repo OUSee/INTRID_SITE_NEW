@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.querySelectorAll('[data-tooltip]').forEach((el)=>{
         el.addEventListener('mouseenter', ()=> {
             let text = el.getAttribute('data-tooltip')
-            console.log(text)
 
             let tooltip = document.getElementById('custom-tooltip');
             if(!tooltip) {
