@@ -1,3 +1,5 @@
+const target = document.getElementById('calculator-total-target');
+
 document.addEventListener('DOMContentLoaded', function() {
     const calcTotal = document.getElementById('calculator-total');
     const footer = document.querySelector('.footer');
@@ -58,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('DOMContentLoaded', function() {
     const calculator_body = document.getElementById('calculator')
     const inputs = calculator_body.querySelectorAll('.accordion-content input');
-    const target = document.getElementById('calculator-total-target');
     const reset_button = document.getElementById('reset-options-btn');
     const sentButton = document.getElementById('send-calculator-total');
 
@@ -67,14 +68,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     inputs.forEach(input => {
         input.addEventListener('change', ()=>{
-            if(input.checked){
-                total++;
+            if(input.checked && input?.dataset?.price){
+                if(input.id === 'promotion-seo' || input.id === 'promotion-max_start'){
+                    return
+                }
+                total = parseInt(total) + parseInt(input.dataset.price)
             }
             else if(input.value !== ''){
                 additional = additional + input.id + ': ' + input.value + '; ' 
             }
-            else{
-                total--;
+            else if(input?.dataset?.price){
+                total = parseInt(total) - parseInt(input.dataset.price)
             }
 
             target.innerText = total + ' ₽';
@@ -100,7 +104,132 @@ document.addEventListener('DOMContentLoaded', function() {
         const info = additional + inputs_total
         console.log('=> inputs total', info)
 
-        
+
     })
 
   })
+
+  const handleChangeSeoPromotion = (e) => {
+    const seo = document.getElementById('promotion-seo')
+    const max = document.getElementById('promotion-max_start')
+    const reg = document.getElementById('promotion-region')
+    const ctr = document.getElementById('promotion-country')
+    let total = parseInt(target.innerText.replace('₽', ''))
+    const price = parseInt(seo.dataset.price);
+    switch (seo.checked){
+        case true :{
+            max.checked = false
+            reg.checked = true
+            target.innerText = total + price + ' ₽'
+            break
+        }
+        default:{
+            if(max.checked){
+                break
+            }    
+            else{
+                if(ctr.checked){
+                    ctr.checked = false
+                    target.innerText = total - price*2 + ' ₽'
+                }
+                else{
+                    reg.checked = false
+                    target.innerText = total - price + ' ₽'
+                }
+            }
+        }
+    }
+  }
+
+  const handleChangeMaxPromotion = (e) => {
+    const seo = document.getElementById('promotion-seo')
+    const max = document.getElementById('promotion-max_start')
+    const reg = document.getElementById('promotion-region')
+    const ctr = document.getElementById('promotion-country')
+    let total = parseInt(target.innerText.replace('₽', ''))
+    const price = parseInt(seo.dataset.price);
+    switch (max.checked){
+        case true :{
+            seo.checked = false
+            reg.checked = true
+            target.innerText = total + price + ' ₽'
+            break
+        }
+        default:{
+            if(seo.checked){
+                break
+            }    
+            else{
+                if(ctr.checked){
+                    ctr.checked = false
+                    target.innerText = total - price*2 + ' ₽'
+                }
+                else{
+                    reg.checked = false
+                    target.innerText = total - price + ' ₽'
+                }
+            }
+        }
+    }
+  }
+
+  const handleChangeRegion = (e) => {
+    const seo = document.getElementById('promotion-seo')
+    const max = document.getElementById('promotion-max_start')
+    const reg = document.getElementById('promotion-region')
+    const ctr = document.getElementById('promotion-country')
+    let total = parseInt(target.innerText.replace('₽', ''))
+    const seo_price = parseInt(seo.dataset.price);
+    const max_price = parseInt(max.dataset.price);
+    if(e === 1)
+        switch (reg.checked){
+            case true: {
+                if(ctr.checked){
+                    ctr.checked = false
+                    if(seo.checked){
+
+                    }
+                    else if(max{
+
+                    }
+                    target.innerText = total - 
+                }
+                else{
+                    seo.checked = true;
+                    target.innerText = total + seo_price + ' ₽';
+                }
+            }
+            default: {
+                if(seo.checked){
+                    target.innerText = total - seo_price + ' ₽';
+                    seo.checked = false
+                }
+                else if(max.checked){
+                    target.innerText = total - max_price + ' ₽';
+                    max.checked = false
+                }
+            }
+        }
+    
+    else
+        switch (ctr.checked) {
+            case true: {
+                reg.checked = false
+                if(seo.checked){
+                    target.innerText = total - seo_price + ' ₽';
+                }
+                else if(max.checked){
+                    target.innerText = total - max_price + ' ₽';
+                }
+            }
+            default: {
+                if(seo.checked){
+                    target.innerText = total - seo_price + ' ₽';
+                }
+                else if(max.checked){
+                    target.innerText = total - max_price + ' ₽';
+                }
+            }
+        }
+    
+  }
