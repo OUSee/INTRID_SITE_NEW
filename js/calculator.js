@@ -181,55 +181,54 @@ document.addEventListener('DOMContentLoaded', function() {
     let total = parseInt(target.innerText.replace('₽', ''))
     const seo_price = parseInt(seo.dataset.price);
     const max_price = parseInt(max.dataset.price);
-    if(e === 1)
-        switch (reg.checked){
-            case true: {
-                if(ctr.checked){
-                    ctr.checked = false
-                    if(seo.checked){
-
-                    }
-                    else if(max{
-
-                    }
-                    target.innerText = total - 
-                }
-                else{
-                    seo.checked = true;
-                    target.innerText = total + seo_price + ' ₽';
-                }
+    if(e === 1){
+        if(reg.checked){
+            ctr.checked = false
+            if(seo.checked){
+                target.innerText = total - seo_price + ' ₽'
             }
-            default: {
-                if(seo.checked){
-                    target.innerText = total - seo_price + ' ₽';
-                    seo.checked = false
-                }
-                else if(max.checked){
-                    target.innerText = total - max_price + ' ₽';
-                    max.checked = false
-                }
+            else if(max.checked){
+                target.innerText = total - max_price + ' ₽'
+            }
+            else{
+                seo.checked = true;
+                target.innerText = total + seo_price + ' ₽'
             }
         }
-    
-    else
-        switch (ctr.checked) {
-            case true: {
-                reg.checked = false
-                if(seo.checked){
-                    target.innerText = total - seo_price + ' ₽';
-                }
-                else if(max.checked){
-                    target.innerText = total - max_price + ' ₽';
-                }
+        else{
+            if(seo.checked){
+                target.innerText = total - seo_price + ' ₽';
+                seo.checked = false
             }
-            default: {
-                if(seo.checked){
-                    target.innerText = total - seo_price + ' ₽';
-                }
-                else if(max.checked){
-                    target.innerText = total - max_price + ' ₽';
-                }
+            else if(max.checked){
+                target.innerText = total - max_price + ' ₽';
+                max.checked = false
             }
         }
-    
+    }
+    else{
+        if (ctr.checked){
+            reg.checked = false
+            if(seo.checked){
+                target.innerText = total + seo_price + ' ₽';
+            }
+            else if (max.checked){
+                target.innerText = total + max_price + ' ₽'
+            }
+            else{
+                seo.checked = true;
+                target.innerText = total + seo_price*2 + ' ₽'
+            }
+        }
+        else{
+            if(seo.checked){
+                target.innerText = total - seo_price*2 + ' ₽';
+                seo.checked = false
+            }
+            if(max.checked){
+                target.innerText = total - max_price*2 + ' ₽';
+                seo.checked = false
+            }
+        }
+    } 
   }
