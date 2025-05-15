@@ -580,12 +580,7 @@ label.radioButton:has(input:checked)::after {
     /* shows help cursor on hover */
 
     &-after {
-        /* get tooltip text from data attribute */
         position: absolute;
-        top: 125%;
-        /* position above the element */
-        left: 50%;
-        transform: translateX(-50%);
         background-color: var(--blue-bg);
         color: #fff;
         padding: 6px 10px;
@@ -593,15 +588,18 @@ label.radioButton:has(input:checked)::after {
         border-radius: 4px;
         white-space: wrap;
         font-size: 14px;
-        opacity: 0;
         pointer-events: none;
-        /* ignore mouse events */
+        opacity: 0;
         transition: opacity 0.3s ease;
         z-index: 10;
-        max-width: 360px;
-        width: 200px;
-        min-width: fit-content;
-        z-index: 5;
+        max-width: 300px;
+        z-index: -1;
+        transition: opacity 0.3s ease-in-out;
+
+        &.visible {
+            opacity: 1;
+            z-index: 5;
+        }
     }
 
     &::before {
@@ -7470,8 +7468,8 @@ form {
 
         &:after {
             content: "";
-            left: 4px;
-            top: 4px;
+            left: 3px;
+            top: 3px;
             position: absolute;
             width: 20px;
             height: 20px;
