@@ -307,8 +307,8 @@
                                         class="icon-tooltip"></i></span>
                             </p>
                         </label>
-
                     </div>
+                    <input type="text" id="type-unique_text" placeholder="Опишите свой проект" class="hidden">
                     <button id="reset-options-btn" class="button button-white">Обнулить пакет опций</button>
                     <p class="title_h5">Сайты с подобным функционалом</p>
                     <input type="text" id="type-similar_cites" placeholder="Введите текст">
@@ -322,37 +322,57 @@
                 <div class="accordion-content">
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="design-landing" name="design-landing"
-                            data-price="9000">
+                            data-price="0" data-reveal="landig-bloks-input" data-radio="design-base;design-premium">
                         <label for="design-landing">
                             <p>
                                 LandingPage
                                 <span class="tooltip"
-                                    data-tooltip="Уникальный продуманныйный дизайн посадочной страницы для максимальной конверсии (цена за блок)"><i
+                                    data-tooltip="Уникальный продуманныйный дизайн посадочной страницы для максимальной конверсии"><i
                                         class="icon-tooltip"></i></span>
+                            <div class="counter hidden" id="landig-bloks-input">
+                                <button class="counter-btn minus">-</button>
+                                <input type="number" class="counter-input" value="5" data-price="9000"
+                                    data-intendfor="design-landing">
+                                <button class="counter-btn plus">+</button>
+                            </div>
                             </p>
                         </label>
                     </div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="design-base" name="design-base"
-                            data-price="25000">
+                            data-price="25000" data-reveal="design-base-input"
+                            data-radio="design-landing;design-premium">
                         <label for="design-base">
                             <p>
                                 Современный уникальный дизайн
                                 <span class="tooltip"
                                     data-tooltip="Предоставляется 1-2 варианта дизайна, возможность внести три последовательные корректировки в выбранный дизайн макет. Включает в себя дизайн главной и двух внутренних страниц"><i
                                         class="icon-tooltip"></i></span>
+                            <div class="counter hidden" id="design-base-input">
+                                <button class="counter-btn minus">-</button>
+                                <input type="number" class="counter-input" data-price="12000" value="2"
+                                    data-intendfor="design-base">
+                                <button class="counter-btn plus">+</button>
+                            </div>
                             </p>
                         </label>
                     </div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="design-premium" name="design-premium"
-                            data-price="40000">
+                            data-price="40000" data-reveal="design-premium-input"
+                            data-radio="design-landing;design-base">
                         <label for="design-premium">
                             <p>
                                 Премиум-дизайн
                                 <span class="tooltip"
                                     data-tooltip="Неограниченное количество вариантов и правок, до полного одобрения Заказчиком. Включает в себя дизайн главной и двух внутренних страниц"><i
                                         class="icon-tooltip"></i></span>
+                            <div class="counter hidden" id="design-premium-input">
+                                <button class="counter-btn minus">-</button>
+                                <input type="number" class="counter-input" data-price="15000" value="2"
+                                    data-intendfor="design-premium">
+                                <button class="counter-btn plus">+</button>
+                            </div>
                             </p>
                         </label>
                     </div>
@@ -361,12 +381,14 @@
                     <p class="title_h5 color-blue quote">Дополнительно необходимо разработать:</p>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="design-additional-logobook"
-                            data-price="15000" name="design-additional-logobook">
+                            data-price="15000" name="design-additional-logobook"
+                            data-radio="design-additional-firmstyle">
                         <label for="design-additional-logobook">Логотип + логобук</label>
                     </div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="design-additional-firmstyle"
-                            data-price="25000" name="design-additional-firmstyle">
+                            data-price="25000" name="design-additional-firmstyle"
+                            data-radio="design-additional-logobook">
                         <label for="design-additional-firmstyle">Фирменный стиль + Логотип + логобук</label>
                     </div>
                     <div class="toggle-line">
@@ -406,9 +428,9 @@
                 </label>
                 <div class="accordion-content">
                     <div class="toggle-line">
-                        <input type="checkbox" checked class="toggle-checkbox" id="management-icms"
-                            name="management-icms" data-price="0">
-                        <label for="management-icms">
+                        <input type="checkbox" checked class="toggle-checkbox" id="management-none"
+                            name="management-none" data-price="0" data-radio="management-icms;management-custom">
+                        <label for="management-none">
                             <p>
                                 Без системы управления
                             </p>
@@ -416,7 +438,7 @@
                     </div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="management-icms" name="management-icms"
-                            data-price="25000">
+                            data-price="25000" data-radio="management-none;management-custom">
                         <label for="management-icms">
                             <p>
                                 Стандартная система администрирования и управления контентом
@@ -431,7 +453,8 @@
                     </div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="management-custom" name="management-custom"
-                            data-price="50000">
+                            data-price="50000" data-radio="management-icms;management-none"
+                            data-reveal="custom-cms-extra">
                         <label for="management-custom">
                             <p>
                                 Уникальная разработка под индивидуальные задачи и нестандартные
@@ -442,6 +465,8 @@
                             </p>
                         </label>
                     </div>
+                    <input type="text" class="hidden" placeholder="Опишите требования и пожелания"
+                        id="custom-cms-extra">
                 </div>
             </div>
             <div class="accordion-item">
@@ -601,36 +626,48 @@
                     <p class="title_h5 color-blue quote">Каталог товаров (Услуг)</span></p>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="modules-catalogue_1" data-price="15000"
-                            name="modules-catalogue_1">
+                            name="modules-catalogue_1"
+                            data-radio="modules-catalogue_2;modules-catalogue_3;modules-catalogue_4"
+                            data-reveal="preview_1">
                         <label for="modules-catalogue_1">
                             Рубрика/товар
                         </label>
                     </div>
+                    <div class="catalogue-preview hidden" id="preview_1">preview_1</div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="modules-catalogue_2" data-price="25000"
-                            name="modules-catalogue_2">
+                            name="modules-catalogue_2"
+                            data-radio="modules-catalogue_1;modules-catalogue_3;modules-catalogue_4"
+                            data-reveal="preview_2">
                         <label for="modules-catalogue_2">
                             Рубрика/подрубрика/товар
                         </label>
                     </div>
+                    <div class="catalogue-preview hidden" id="preview_2">preview_2</div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="modules-catalogue_3" data-price="35000"
-                            name="modules-catalogue_3">
+                            name="modules-catalogue_3"
+                            data-radio="modules-catalogue_1;modules-catalogue_2;modules-catalogue_4"
+                            data-reveal="preview_3">
                         <label for="modules-catalogue_3">
                             Рубрика/подрубрика/раздел/товар
                         </label>
                     </div>
+                    <div class="catalogue-preview hidden" id="preview_3">preview_3</div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="modules-catalogue_4" data-price="45000"
-                            name="modules-catalogue_4">
+                            name="modules-catalogue_4"
+                            data-radio="modules-catalogue_1;modules-catalogue_2;modules-catalogue_3"
+                            data-reveal="preview_4">
                         <label for="modules-catalogue_4">
                             Больше вложений и/или плавающая вложннность
                         </label>
                     </div>
+                    <div class="catalogue-preview hidden" id="preview_4">preview_4</div>
                     <p class="title_h5 color-blue quote">Стандартные модули</p>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="modules-search_base" data-price="10000"
-                            name="modules-search_base">
+                            name="modules-search_base" data-radio="modules-search_advanced">
                         <label for="modules-search_base">
                             <p>
                                 Поиск по сайту
@@ -642,7 +679,7 @@
                     </div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="modules-search_advanced" data-price="24000"
-                            name="modules-search_advanced">
+                            name="modules-search_advanced" data-radio="modules-search_base">
                         <label for="modules-search_advanced">Интеллектуальный поиск с подсказками и морфологией</label>
                     </div>
                     <div class="toggle-line">
@@ -1099,9 +1136,7 @@
             <div class="accordion-item">
                 <input type="checkbox" id="section-promotion" class="accordion-checkbox">
                 <label for="section-promotion" class="accordion-header w-fit title_h4">
-                    <i class="icon-rocket"></i> Продвижение и раскрутка Сайта&nbsp;
-                    <a href="/seo" class="title_h5 hover-underline d-inline">Узнайте больше</a><i
-                        class="icon-shevrone"></i>
+                    <i class="icon-rocket"></i> Продвижение и раскрутка Сайта<i class="icon-shevrone"></i>
                 </label>
                 <div class="accordion-content">
                     <div class="toggle-line">
@@ -1130,19 +1165,24 @@
                     </div>
                     <p className="title_h5 color-blue quote">Выберите регион раскрутки</p>
                     <div class="toggle-line">
-                        <input type="checkbox" onchange="handleChangeRegion(1)" class="toggle-checkbox"
-                            id="promotion-region" name="promotion-region">
+                        <input type="checkbox" onchange="handleChangeRegion('reg')" class="toggle-checkbox"
+                            data-price="0" id="promotion-region" name="promotion-region">
                         <label for="promotion-region">
                             Город, область
                         </label>
                     </div>
                     <div class="toggle-line">
-                        <input type="checkbox" onchange="handleChangeRegion(2)" class="toggle-checkbox"
-                            id="promotion-country" name="promotion-country">
+                        <input type="checkbox" onchange="handleChangeCountry('ctr')" class="toggle-checkbox"
+                            data-price="0" id="promotion-country" name="promotion-country">
                         <label for="promotion-country">
                             По всей России
                         </label>
                     </div>
+                    <ul class="calculator-list">
+                        <li>
+                            <a href="/seo" class="hover-underline d-inline">Узнайте больше</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="accordion-item">
@@ -1184,7 +1224,8 @@
     <section id="calculator-total" class="calculator-total">
         <div class="container d-flex justify-sb align-center">
             <p class="title_h1 w-fit">Стоимость сайта <span class="mobile-hidden title_h1">по выбранным
-                    параметрам</span>: <span class="color-blue title_h1" id="calculator-total-target">0 ₽</span></p>
+                    параметрам</span>: <span class="color-blue title_h1" id="calculator-total-target">0</span><span
+                    class="color-blue title_h1">&nbsp;₽</span></p>
             <a href="javascript://" data-popup="fast-req-form" id="send-calculator-total" class="button-highlight big">
                 получить проект<span class="br600">сайта</span>
             </a>

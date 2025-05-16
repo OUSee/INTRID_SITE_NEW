@@ -1,5 +1,3 @@
-const target = document.getElementById('calculator-total-target');
-
 document.addEventListener('DOMContentLoaded', function() {
     const calcTotal = document.getElementById('calculator-total');
     const footer = document.querySelector('.footer');
@@ -57,178 +55,358 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const calculator_body = document.getElementById('calculator')
-    const inputs = calculator_body.querySelectorAll('.accordion-content input');
+  document.addEventListener('DOMContentLoaded', ()=> {
+    const inputs= document.getElementById('calculator')?.querySelectorAll('.accordion-content input');
     const reset_button = document.getElementById('reset-options-btn');
     const sentButton = document.getElementById('send-calculator-total');
+    const target = document.getElementById('calculator-total-target');
 
-    let total = 0;
-    let additional = ''
-
-    inputs.forEach(input => {
-        input.addEventListener('change', ()=>{
-            if(input.checked && input?.dataset?.price){
-                if(input.id === 'promotion-seo' || input.id === 'promotion-max_start'){
-                    return
+    const toggleConverter = (inputs) => {
+        const toggles = [];
+        const counters = [];
+        const texts = [];
+        inputs.forEach((input) => {
+            switch (input.type) {
+                case 'checkbox':{
+                    toggles.push({
+                        id: input.id,
+                        elementref: input,
+                        price: parseInt(input.dataset.price || ''),
+                        nested: input.dataset.nested?.split(';'),
+                        reveal: document.getElementById(input.dataset.reveal || ''),
+                        radioid: input.dataset.radio?.split(';')  
+                    })
+                    break
                 }
-                total = parseInt(total) + parseInt(input.dataset.price)
+                case 'number': {
+                    counters.push({
+                        id: input.id,
+                        elementref: input,
+                        price: parseInt(input.dataset.price),
+                        total: parseInt(input.dataset.price) * input.value,
+                        intendfor: input.dataset.intendfor
+                    })
+                    break
+                }
+                default:{
+                    texts.push({
+                        id: input.id,
+                        elementref: input,
+                    })
+                    break
+                }
             }
-            else if(input.value !== ''){
-                additional = additional + input.id + ': ' + input.value + '; ' 
-            }
-            else if(input?.dataset?.price){
-                total = parseInt(total) - parseInt(input.dataset.price)
-            }
-
-            target.innerText = total + ' ₽';
         })
-    })
 
-    reset_button.addEventListener('click', ()=>{
-        inputs.forEach(input => {
-            input.checked = false; 
-            input.value = ''
-            total = 0;
-            target.innerText = total + ' ₽';
+        toggles.forEach(toggle => {
+            counters.forEach(counter => {
+                if(counter.intendfor === toggle.id){
+                    toggle.counter = counter
+                }
+            })
+        });
+        
+        return ({toggles: toggles, counters: counters, texts: texts});
+    }
+
+    if(inputs && target){
+        const {toggles, counters, texts} = toggleConverter(inputs);
+        console.log('=> ', toggleConverter(inputs))
+        target.innerText = `0`;
+        reset_button?.addEventListener('click', () => {
+            toggles.map((toggle) => {
+                toggle.elementref.checked = false;
+            })
+            target.innerText = `0`;
         })
-    })
-
-    sentButton.addEventListener('click', ()=>{
-        let inputs_total = ''
-        inputs.forEach(input =>{
-            if(input.checked){
-                inputs_total =  inputs_total + (input.id + ': ' + true + '; ');
-            }
+        toggles.forEach(toggle => {
+            toggle.elementref.addEventListener('change', () => {
+                switch (toggle.id) {
+                    default : {
+                        console.log('=> def', target.innerText)
+                        if(toggle.elementref.checked){
+                            console.log('=> def ++')
+                            if(toggle.reveal){
+                                toggle.reveal.classList.remove('hidden');
+                            }
+                            if(toggle.counter?.total){
+                                target.innerText = `${parseInt(target.innerText) + toggle.counter.total}`;
+                                console.log('=> text', target.innerText, `(+${toggle.counter.total}`)
+                            }
+                            if(toggle.radioid && toggle.radioid.length > 0){
+                                toggles.map((el) => {
+                                    toggle.radioid?.forEach(id => {
+                                        if(el.id === id){
+                                            if(el.counter && el.elementref.checked){
+                                                target.innerText = `${parseInt(target.innerText) - el.counter.total - el.price}`
+                                                console.log('=> text', target.innerText, `(-${el.counter.total + el.price}`)
+                                                el.elementref.checked = false
+                                                el.reveal?.classList.add('hidden')
+                                            }
+                                            else if(el.elementref.checked){
+                                              target.innerText = `${parseInt(target.innerText) - el.price}`
+                                              el.elementref.checked = false
+                                              el.reveal?.classList.add('hidden')
+                                            }
+                                        }
+                                    });
+                                })
+                            }
+                            target.innerText = `${parseInt(target.innerText) + toggle.price}`
+                            console.log('=> text', target.innerText, `(+${toggle.price}`)
+                            break
+                        }
+                        else{
+                            console.log('=> def --')
+                            if(toggle.reveal){
+                                toggle.reveal.classList.add('hidden');
+                            }
+                            if(toggle.counter?.total){
+                              console.log('=> text', target.innerText)
+                                target.innerText = `${parseInt(target.innerText) - toggle.counter.total}`
+                            }
+                            console.log('=> text', target.innerText)
+                             target.innerText = `${parseInt(target.innerText) - toggle.price}`
+                            break
+                        }
+                    }
+                }
+            })
         })
-        const info = additional + inputs_total
-        console.log('=> inputs total', info)
-
-
-    })
-
-  })
-
-  const handleChangeSeoPromotion = (e) => {
-    const seo = document.getElementById('promotion-seo')
-    const max = document.getElementById('promotion-max_start')
-    const reg = document.getElementById('promotion-region')
-    const ctr = document.getElementById('promotion-country')
-    let total = parseInt(target.innerText.replace('₽', ''))
-    const price = parseInt(seo.dataset.price);
-    switch (seo.checked){
-        case true :{
-            max.checked = false
-            reg.checked = true
-            target.innerText = total + price + ' ₽'
-            break
-        }
-        default:{
-            if(max.checked){
-                break
-            }    
-            else{
-                if(ctr.checked){
-                    ctr.checked = false
-                    target.innerText = total - price*2 + ' ₽'
-                }
-                else{
-                    reg.checked = false
-                    target.innerText = total - price + ' ₽'
-                }
+        counters.forEach(counter => {
+            counter.elementref.addEventListener('input', () => {
+              console.log('=> text', target.innerText)
+                target.innerText = `${parseInt(target.innerText) - counter.total}`
+                counter.total = (parseInt(counter.elementref.value)) * counter.price;
+                target.innerText = `${parseInt(target.innerText) + counter.total}`
+            })
+        })
+        sentButton?.addEventListener('click', ()=> {
+            const review = {
+                options: toggles.filter(toggle => toggle.elementref.checked),
+                extra: texts.filter(text => text.elementref.value !== ''),
+                preprice: target.innerText,
             }
-        }
+            console.log(review)
+        })
     }
-  }
+})
 
-  const handleChangeMaxPromotion = (e) => {
-    const seo = document.getElementById('promotion-seo')
-    const max = document.getElementById('promotion-max_start')
-    const reg = document.getElementById('promotion-region')
-    const ctr = document.getElementById('promotion-country')
-    let total = parseInt(target.innerText.replace('₽', ''))
-    const price = parseInt(seo.dataset.price);
-    switch (max.checked){
-        case true :{
-            seo.checked = false
-            reg.checked = true
-            target.innerText = total + price + ' ₽'
-            break
-        }
-        default:{
-            if(seo.checked){
-                break
-            }    
-            else{
-                if(ctr.checked){
-                    ctr.checked = false
-                    target.innerText = total - price*2 + ' ₽'
-                }
-                else{
-                    reg.checked = false
-                    target.innerText = total - price + ' ₽'
-                }
-            }
-        }
-    }
-  }
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   const calculator_body = document.getElementById('calculator')
+  //   const inputs = calculator_body.querySelectorAll('.accordion-content input');
+  //   const reset_button = document.getElementById('reset-options-btn');
+  //   const sentButton = document.getElementById('send-calculator-total');
 
-  const handleChangeRegion = (e) => {
-    const seo = document.getElementById('promotion-seo')
-    const max = document.getElementById('promotion-max_start')
-    const reg = document.getElementById('promotion-region')
-    const ctr = document.getElementById('promotion-country')
-    let total = parseInt(target.innerText.replace('₽', ''))
-    const seo_price = parseInt(seo.dataset.price);
-    const max_price = parseInt(max.dataset.price);
-    if(e === 1){
-        if(reg.checked){
-            ctr.checked = false
-            if(seo.checked){
-                target.innerText = total - seo_price + ' ₽'
-            }
-            else if(max.checked){
-                target.innerText = total - max_price + ' ₽'
-            }
-            else{
-                seo.checked = true;
-                target.innerText = total + seo_price + ' ₽'
-            }
-        }
-        else{
-            if(seo.checked){
-                target.innerText = total - seo_price + ' ₽';
-                seo.checked = false
-            }
-            else if(max.checked){
-                target.innerText = total - max_price + ' ₽';
-                max.checked = false
-            }
-        }
-    }
-    else{
-        if (ctr.checked){
-            reg.checked = false
-            if(seo.checked){
-                target.innerText = total + seo_price + ' ₽';
-            }
-            else if (max.checked){
-                target.innerText = total + max_price + ' ₽'
-            }
-            else{
-                seo.checked = true;
-                target.innerText = total + seo_price*2 + ' ₽'
-            }
-        }
-        else{
-            if(seo.checked){
-                target.innerText = total - seo_price*2 + ' ₽';
-                seo.checked = false
-            }
-            if(max.checked){
-                target.innerText = total - max_price*2 + ' ₽';
-                seo.checked = false
-            }
-        }
-    } 
-  }
+    
+  //   let additional = ''
+
+  //   inputs.forEach(input => {
+  //       input.addEventListener('change', ()=>{
+  //           let total = parseInt(target.innerText.replace(' ₽',''));
+  //           switch (input.id){
+  //             // package blocks
+  //             case 'type-landing':{
+  //               break
+  //             }  
+  //             case 'type-portfolio':{
+  //               break
+  //             } 
+  //             case 'type-corporate':{
+  //               break
+  //             } 
+  //             case 'type-corporate_catalogue':{
+  //               break
+  //             } 
+  //             case 'type-store':{
+  //               break
+  //             }
+  //             case 'type-store_ai':{
+  //               break
+  //             }
+  //             case 'type-portal':{
+  //               break 
+  //             }
+  //             case 'type-unique':{
+  //               const field = document.getElementById('type-unique_text')
+  //               if (input.checked){
+  //                   field.classList.remove('hidden')
+  //               }
+  //               else{
+  //                   field.classList.add('hidden')
+  //               }
+  //               break
+  //             }
+  //             // design block
+  //             case 'design-landing': {
+  //               const div = document.getElementById('landig-bloks-input')
+  //               const field = div.querySelector('input');
+  //               let count = field.value
+  //               if (input.checked){
+  //                   div.classList.remove('hidden')
+  //                   total = parseInt(input.dataset.price) * count;
+  //                   field.addEventListener('change', ()=>{
+  //                       total = total - parseInt(input.dataset.price) * (count - field.value)
+  //                   })
+  //               }
+  //               else{
+  //                   div.classList.add('hidden')
+  //                   field.removeEventListener('change', ()=>{})
+  //                   total = total - parseInt(input.dataset.price) * (count - field.value)
+  //               }
+  //               break
+  //             }
+  //             case 'design-base': {
+  //               const div = document.getElementById('design-base-input')
+  //               const field = div.querySelector('input');
+  //               let count = field.value
+
+  //               if (input.checked){
+  //                   const landing = document.getElementById('design-landing');
+  //                   const prem = document.getElementById('design-premium');
+  //                   div.classList.remove('hidden')
+  //                   total = parseInt(input.dataset.price) + count * parseInt(field.dataset.price);
+  //                   field.addEventListener('change', ()=>{
+  //                       total = (total - parseInt(field.dataset.price) * (count - field.value))
+  //                   })
+                    
+  //               }
+  //               else{
+  //                   div.classList.add('hidden')
+  //                   field.removeEventListener('change', ()=>{})
+  //                   total = (total - parseInt(field.dataset.price) * (count - field.value)) 
+  //               }
+  //               break
+  //             }
+  //             case 'design-premium': {
+  //               const div = document.getElementById('design-premium-input')
+  //               const field = div.querySelector('input');
+  //               let count = field.value
+                
+  //               if (input.checked){
+  //                   div.classList.remove('hidden')
+  //                   total = parseInt(input.dataset.price) + count * parseInt(field.dataset.price);
+  //                   field.addEventListener('change', ()=>{
+  //                       total = (total - parseInt(field.dataset.price) * (count - field.value)) + ' ₽'
+  //                   })
+  //               }
+  //               else{
+  //                   div.classList.add('hidden')
+  //                   field.removeEventListener('change', ()=>{})
+  //                   total= (total - parseInt(field.dataset.price) * (count - field.value)) + ' ₽'
+
+  //               }
+  //               break
+  //             }
+  //             // default toggles
+  //             default: {
+  //               console.log('=> def', total)
+  //               if(input.checked && input?.dataset?.price){
+  //                   console.log('=> def ++')
+  //                   total = total + parseInt(input.dataset.price)
+  //                   break
+  //               }
+  //               else if(input.value !== '' && input.type === 'text'){
+  //                   console.log('=> def field')
+  //                   additional = additional + input.id + ': ' + input.value + '; ' 
+  //                   break
+  //               }
+  //               else if(input?.dataset?.price && input.checked === false){
+  //                   console.log('=> def --')
+  //                   total = total - parseInt(input.dataset.price)
+  //                   break
+  //               }
+  //             }
+  //           }
+  //           target.innerText = total + ' ₽';
+  //       })
+  //   })
+
+  //   reset_button.addEventListener('click', ()=>{
+  //       inputs.forEach(input => {
+  //           input.checked = false; 
+  //           input.value = ''
+  //           total = 0;
+  //           console.log('=> reset', )
+  //           target.innerText = total + ' ₽';
+  //       })
+  //   })
+
+  //   sentButton.addEventListener('click', ()=>{
+  //       let inputs_total = ''
+  //       inputs.forEach(input =>{
+  //           if(input.checked){
+  //               inputs_total =  inputs_total + (input.id + ': ' + true + '; ');
+  //           }
+  //       })
+  //       const info = additional + inputs_total
+  //       console.log('=> inputs total', info)
+
+
+  //   })
+
+  // })
+
+  // const handleChangeSeoPromotion = (e) => {
+  //   const seo = document.getElementById('promotion-seo')
+  //   const max = document.getElementById('promotion-max_start')
+  //   const reg = document.getElementById('promotion-region')
+  //   const ctr = document.getElementById('promotion-country')
+  //   let total = parseInt(target.innerText.replace('₽', ''))
+  //   const price = parseInt(seo.dataset.price);
+  //   if(seo.checked){
+  //       if(max.checked){
+  //           if(reg.checked){
+  //               total = total - price
+  //           }
+  //           else if(ctr.checked){
+  //               total = total - price*2
+  //           }
+  //           max.checked = false
+  //       }
+  //       else{
+  //           total = total + price
+  //           reg.checked = true
+  //       }
+  //   }
+  //   else{
+  //       total = total - price
+  //       reg.checked = false
+  //       ctr.checked = false
+  //   }
+  //   target.innerText = total + ' ₽';
+  // }
+
+  // const handleChangeMaxPromotion = (e) => {
+  //   const seo = document.getElementById('promotion-seo')
+  //   const max = document.getElementById('promotion-max_start')
+  //   const reg = document.getElementById('promotion-region')
+  //   const ctr = document.getElementById('promotion-country')
+  //   let total = parseInt(target.innerText.replace('₽', ''))
+  //   const price = parseInt(max.dataset.price);
+  //   if(max.checked){
+  //       if(seo.checked){
+  //           if(reg.checked){
+  //               total = total + price/2
+  //           }
+  //           else if(ctr.checked){
+  //               total = total + price
+  //           }
+  //           seo.checked = false
+  //       }
+  //       else{
+  //           total = total + price
+  //           reg.checked = true
+  //       }
+  //   }
+  //   else{
+  //       total = total - price
+  //       reg.checked = false
+  //       ctr.checked = false
+  //   }
+  //   target.innerText = total + ' ₽';
+  // }
+
+
+
+ 
