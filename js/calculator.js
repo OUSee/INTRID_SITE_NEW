@@ -203,13 +203,15 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('=> ctr', counter.elementref.nextSibling)
             counter.elementref.nextElementSibling?.addEventListener('click', ()=>{
                 console.log('=> ++', )
-              counter.elementref.value++  
-              counter.elementref.dispatchEvent(changeEvent)
+                counter.elementref.value++  
+                counter.elementref.dispatchEvent(changeEvent)
             })
             counter.elementref.previousElementSibling?.addEventListener('click', ()=>{
                 console.log('=> --', )
-              counter.elementref.value--  
-              counter.elementref.dispatchEvent(changeEvent)
+                if(counter.elementref.value > 0){
+                    counter.elementref.value--  
+                }
+                counter.elementref.dispatchEvent(changeEvent)
             })
             counter.elementref.addEventListener('input', () => {
               console.log('=> text', target.innerText)
