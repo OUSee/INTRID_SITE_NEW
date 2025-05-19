@@ -776,6 +776,10 @@ label.radioButton:has(input:checked)::after {
   gap: 8px;
 }
 
+.gap-20 {
+  gap: 20px;
+}
+
 .gap-32 {
   gap: 32px;
 }
@@ -6472,7 +6476,7 @@ form .button:hover {
 }
 .calculator-calculator .accordion-item:first-child .accordion-content .button-white {
   position: absolute;
-  bottom: 130px;
+  top: 330px;
   right: 20px;
 }
 @media (max-width: 900px) {
@@ -6492,6 +6496,30 @@ form .button:hover {
   display: flex;
   align-items: center;
 }
+.calculator-calculator .accordion-content .toggle-line .counter {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  gap: 6px;
+  /* For Firefox */
+}
+.calculator-calculator .accordion-content .toggle-line .counter.hidden {
+  display: none;
+}
+.calculator-calculator .accordion-content .toggle-line .counter input::-webkit-outer-spin-button,
+.calculator-calculator .accordion-content .toggle-line .counter input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.calculator-calculator .accordion-content .toggle-line .counter input[type=number] {
+  -moz-appearance: textfield;
+  width: 60px;
+}
+.calculator-calculator .accordion-content .toggle-line .counter button,
+.calculator-calculator .accordion-content .toggle-line .counter input {
+  height: 30px;
+  padding: 12px;
+}
 .calculator-calculator .accordion-content .title_h5 {
   margin-top: 10px;
 }
@@ -6510,6 +6538,32 @@ form .button:hover {
   color: var(--color-white);
 }
 .calculator-calculator .accordion-content input::placeholder {
+  color: var(--color-white);
+}
+.calculator-calculator .accordion-content .catalogue-preview {
+  padding-left: 10px;
+}
+.calculator-calculator .accordion-content .catalogue-preview ul {
+  padding-left: 10px;
+}
+.calculator-calculator .accordion-content .catalogue-preview ul li {
+  padding-left: 6px;
+  margin-bottom: 4px;
+}
+.calculator-calculator .accordion-content .catalogue-preview ul li.rubric::marker {
+  content: "•";
+  color: var(--blue-main);
+}
+.calculator-calculator .accordion-content .catalogue-preview ul li.podrubric::marker {
+  content: "☛";
+  color: var(--blue-main);
+}
+.calculator-calculator .accordion-content .catalogue-preview ul li.razdel::marker {
+  content: "⚬";
+  color: var(--blue-main);
+}
+.calculator-calculator .accordion-content .catalogue-preview ul li::marker {
+  content: "•";
   color: var(--color-white);
 }
 .calculator-calculator .hidden {

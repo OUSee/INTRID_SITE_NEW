@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
         return ({toggles: toggles, counters: counters, texts: texts});
     }
 
+    
+
     if(inputs && target){
         const {toggles, counters, texts} = toggleConverter(inputs);
         console.log('=> ', toggleConverter(inputs))
@@ -131,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                             if(toggle.counter?.total){
                                 target.innerText = `${parseInt(target.innerText) + toggle.counter.total}`;
-                                console.log('=> text', target.innerText, `(+${toggle.counter.total}`)
                             }
                             if(toggle.radioid && toggle.radioid.length > 0){
                                 toggles.map((el) => {
@@ -152,21 +153,45 @@ document.addEventListener('DOMContentLoaded', function() {
                                     });
                                 })
                             }
+                            if(toggle.nested && toggle.nested.length > 0){
+                                toggle.nested.forEach(nestedToggleid => {
+                                    const nestedToggle = toggles.find(t => t.id === nestedToggleid);
+                                    try{
+                                        if(nestedToggle){
+                                            nestedToggle.elementref.checked = true;
+                                        }
+                                        else{
+                                            console.error('=> ', nestedToggleid, 'not found')
+                                        }
+                                        if(nestedToggle?.reveal){
+                                            nestedToggle.reveal.classList.remove('hidden');
+                                        }
+                                    }catch(err){
+                                        console.error(nestedToggleid, err)
+                                    }
+                                    
+                                })
+                            }
                             target.innerText = `${parseInt(target.innerText) + toggle.price}`
-                            console.log('=> text', target.innerText, `(+${toggle.price}`)
                             break
                         }
                         else{
-                            console.log('=> def --')
                             if(toggle.reveal){
                                 toggle.reveal.classList.add('hidden');
                             }
                             if(toggle.counter?.total){
-                              console.log('=> text', target.innerText)
                                 target.innerText = `${parseInt(target.innerText) - toggle.counter.total}`
                             }
-                            console.log('=> text', target.innerText)
-                             target.innerText = `${parseInt(target.innerText) - toggle.price}`
+                            if(toggle.nested && toggle.nested.length > 0){
+                                toggle.nested.forEach(nestedToggleid => {
+                                    const nestedToggle = toggles.find(t => t.id === nestedToggleid);
+                                    nestedToggle.elementref.checked = false;
+                                    if(nestedToggle.reveal){
+                                        nestedToggle.reveal.classList.add('hidden');
+                                    }
+                                })
+                            }
+                            target.innerText = `${parseInt(target.innerText) - toggle.price}`
                             break
                         }
                     }
@@ -174,6 +199,18 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         })
         counters.forEach(counter => {
+            const changeEvent = new Event('input')
+            console.log('=> ctr', counter.elementref.nextSibling)
+            counter.elementref.nextElementSibling?.addEventListener('click', ()=>{
+                console.log('=> ++', )
+              counter.elementref.value++  
+              counter.elementref.dispatchEvent(changeEvent)
+            })
+            counter.elementref.previousElementSibling?.addEventListener('click', ()=>{
+                console.log('=> --', )
+              counter.elementref.value--  
+              counter.elementref.dispatchEvent(changeEvent)
+            })
             counter.elementref.addEventListener('input', () => {
               console.log('=> text', target.innerText)
                 target.innerText = `${parseInt(target.innerText) - counter.total}`
