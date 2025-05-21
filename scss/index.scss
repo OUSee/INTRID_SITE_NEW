@@ -5127,21 +5127,23 @@ form {
     align-items: center;
     gap: 10px;
 
-    input {
+    input,
+    textarea {
         width: 100%;
         background-color: transparent;
+        color: white;
         padding: 14px 30px;
         border-radius: 25px;
         border: 1px solid var(--color-white);
         position: relative;
 
-        &:before {
-            content: '*';
-            font-size: 100px;
-            color: white;
-            position: absolute;
-            z-index: 10;
-        }
+        // &:before {
+        //     content: '*';
+        //     font-size: 100px;
+        //     color: white;
+        //     position: absolute;
+        //     z-index: 10;
+        // }
 
         &:focus {
             border: 1px dashed var(--color-white);
@@ -5149,7 +5151,7 @@ form {
         }
 
         &::placeholder {
-            color: var(--color-white);
+            color: var(--color-grey);
         }
 
         &:required {
@@ -7501,12 +7503,14 @@ form {
                     margin-top: 10px;
                 }
 
-                input {
+                input,
+                textarea {
                     width: 100%;
                     background-color: transparent;
                     padding: 15px 30px;
                     border-radius: 25px;
                     border: 1px solid var(--color-white);
+                    resize: none;
 
                     &:focus {
                         border: 1px dashed var(--color-white);
@@ -7514,7 +7518,37 @@ form {
                     }
 
                     &::placeholder {
-                        color: var(--color-white);
+                        color: var(--color-grey);
+                    }
+                }
+
+                textarea {
+                    &::-webkit-scrollbar {
+                        width: 10px;
+                        padding-right: 6px;
+                        background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar-button {
+                        display: none;
+                        cursor: pointer;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        cursor: default;
+                        width: 5px;
+                        border-radius: 5px;
+                        border: 1px solid transparent;
+                        background-color: var(--color-grey);
+                        background-clip: content-box;
+
+                        &:hover {
+                            background-color: var(--color-white);
+                        }
                     }
                 }
 
@@ -7623,6 +7657,10 @@ form {
     }
 }
 
+.sitebrif {
+    padding-bottom: unset;
+}
+
 .toggle-checkbox {
     display: none;
 
@@ -7695,6 +7733,7 @@ form {
             border-radius: 25px;
             border: 1px solid var(--color-white);
             resize: none;
+            color: var(--color-white);
 
             &:focus {
                 border: 1px dashed var(--color-white);
@@ -7702,7 +7741,7 @@ form {
             }
 
             &::placeholder {
-                color: var(--color-white);
+                color: var(--color-grey);
             }
         }
     }

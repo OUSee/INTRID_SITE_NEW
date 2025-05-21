@@ -4595,32 +4595,30 @@ form {
   align-items: center;
   gap: 10px;
 }
-form input {
+form input,
+form textarea {
   width: 100%;
   background-color: transparent;
+  color: white;
   padding: 14px 30px;
   border-radius: 25px;
   border: 1px solid var(--color-white);
   position: relative;
 }
-form input:before {
-  content: "*";
-  font-size: 100px;
-  color: white;
-  position: absolute;
-  z-index: 10;
-}
-form input:focus {
+form input:focus,
+form textarea:focus {
   border: 1px dashed var(--color-white);
   outline: none;
 }
-form input::-moz-placeholder {
-  color: var(--color-white);
+form input::-moz-placeholder, form textarea::-moz-placeholder {
+  color: var(--color-grey);
 }
-form input::placeholder {
-  color: var(--color-white);
+form input::placeholder,
+form textarea::placeholder {
+  color: var(--color-grey);
 }
-form input:required:invalid {
+form input:required:invalid,
+form textarea:required:invalid {
   border-bottom-color: #EE5D55;
 }
 form .button {
@@ -6562,22 +6560,49 @@ form .button:hover {
 .calculator-calculator .accordion-content .title_h5 {
   margin-top: 10px;
 }
-.calculator-calculator .accordion-content input {
+.calculator-calculator .accordion-content input,
+.calculator-calculator .accordion-content textarea {
   width: 100%;
   background-color: transparent;
   padding: 15px 30px;
   border-radius: 25px;
   border: 1px solid var(--color-white);
+  resize: none;
 }
-.calculator-calculator .accordion-content input:focus {
+.calculator-calculator .accordion-content input:focus,
+.calculator-calculator .accordion-content textarea:focus {
   border: 1px dashed var(--color-white);
   outline: none;
 }
-.calculator-calculator .accordion-content input::-moz-placeholder {
-  color: var(--color-white);
+.calculator-calculator .accordion-content input::-moz-placeholder, .calculator-calculator .accordion-content textarea::-moz-placeholder {
+  color: var(--color-grey);
 }
-.calculator-calculator .accordion-content input::placeholder {
-  color: var(--color-white);
+.calculator-calculator .accordion-content input::placeholder,
+.calculator-calculator .accordion-content textarea::placeholder {
+  color: var(--color-grey);
+}
+.calculator-calculator .accordion-content textarea::-webkit-scrollbar {
+  width: 10px;
+  padding-right: 6px;
+  background-color: transparent;
+}
+.calculator-calculator .accordion-content textarea::-webkit-scrollbar-button {
+  display: none;
+  cursor: pointer;
+}
+.calculator-calculator .accordion-content textarea::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.calculator-calculator .accordion-content textarea::-webkit-scrollbar-thumb {
+  cursor: default;
+  width: 5px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background-color: var(--color-grey);
+  background-clip: content-box;
+}
+.calculator-calculator .accordion-content textarea::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-white);
 }
 .calculator-calculator .accordion-content .catalogue-preview {
   padding-left: 10px;
@@ -6655,6 +6680,10 @@ form .button:hover {
   }
 }
 
+.sitebrif {
+  padding-bottom: unset;
+}
+
 .toggle-checkbox {
   display: none;
 }
@@ -6717,16 +6746,17 @@ form .button:hover {
   border-radius: 25px;
   border: 1px solid var(--color-white);
   resize: none;
+  color: var(--color-white);
 }
 .form-popup form .form-limitter textarea:focus {
   border: 1px dashed var(--color-white);
   outline: none;
 }
 .form-popup form .form-limitter textarea::-moz-placeholder {
-  color: var(--color-white);
+  color: var(--color-grey);
 }
 .form-popup form .form-limitter textarea::placeholder {
-  color: var(--color-white);
+  color: var(--color-grey);
 }
 
 @media (max-width: 1500px) {
