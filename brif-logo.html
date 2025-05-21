@@ -242,7 +242,7 @@
             <!-- / general info -->
             <!-- elements -->
             <div class="accordion-item">
-                <input type="checkbox" id="section-elements" checked class="accordion-checkbox">
+                <input type="checkbox" id="section-elements" class="accordion-checkbox">
                 <label for="section-elements" class="accordion-header w-fit title_h4">
                     <img src="./src/icons/brush_icon.svg" alt=""> Элементы фирменного стиля<i class="icon-shevrone"></i>
                 </label>
@@ -319,56 +319,217 @@
             <!-- / elements -->
             <!-- structure -->
             <div class="accordion-item">
-                <input type="checkbox" id="section-elements" checked class="accordion-checkbox">
-                <label for="section-elements" class="accordion-header w-fit title_h4">
+                <input type="checkbox" id="section-style" class="accordion-checkbox">
+                <label for="section-style" class="accordion-header w-fit title_h4">
                     <img src="./src/icons/gear_icon.svg" alt="">Стилистика логотипа и цветовое решение<i
                         class="icon-shevrone"></i>
                 </label>
                 <div class="accordion-content">
                     <div class="logo-preview-grid">
                         <div class="logo-preview-grid-item">
-                            <img src="" alt="preview">
+                            <div class="img-wrapper"><img src="./src/images/logos-previews/strong-logo.png"
+                                    alt="preview"></div>
                             <div class="toggle-line">
-                                <input type="checkbox" class="toggle-checkbox" id="elements-logo" name="elements-logo">
-                                <label for="elements-logo">
+                                <input type="checkbox" class="toggle-checkbox" id="style-logo_formal"
+                                    name="style-logo_formal"
+                                    data-radio="style-logo_elegant;style-logo_3D;style-logo_herb;style-logo_maskot;style-logo_youth">
+                                <label for="style-logo_formal">
                                     <p>Строгий стиль</p>
                                 </label>
                             </div>
                         </div>
                         <div class="logo-preview-grid-item">
-                            <img src="" alt="preview">
+                            <div class="img-wrapper"><img src="./src/images/logos-previews/sleek-logo.png"
+                                    alt="preview"></div>
                             <div class="toggle-line">
-                                <input type="checkbox" class="toggle-checkbox" id="elements-logo" name="elements-logo">
-                                <label for="elements-logo">
+                                <input type="checkbox" class="toggle-checkbox" id="style-logo_elegant"
+                                    data-radio="style-logo_formal;style-logo_3D;style-logo_herb;style-logo_maskot;style-logo_youth"
+                                    name="style-logo_elegant">
+                                <label for="style-logo_elegant">
                                     <p>Изящный стиль</p>
                                 </label>
                             </div>
                         </div>
                         <div class="logo-preview-grid-item">
-                            <img src="" alt="preview">
+                            <div class="img-wrapper"><img src="./src/images/logos-previews/3d-logo.png" alt="preview">
+                            </div>
                             <div class="toggle-line">
-                                <input type="checkbox" class="toggle-checkbox" id="elements-logo" name="elements-logo">
-                                <label for="elements-logo">
+                                <input type="checkbox" class="toggle-checkbox" id="style-logo_3D"
+                                    data-radio="style-logo_formal;style-logo_elegant;style-logo_herb;style-logo_maskot;style-logo_youth"
+                                    name="style-logo_3D">
+                                <label for="style-logo_3D">
                                     <p>3D стиль, обьемный</p>
                                 </label>
                             </div>
                         </div>
+                        <div class="logo-preview-grid-item">
+                            <div class="img-wrapper"><img src="./src/images/logos-previews/herb-logo.png" alt="preview">
+                            </div>
+                            <div class="toggle-line">
+                                <input type="checkbox"
+                                    data-radio="style-logo_formal;style-logo_elegant;style-logo_3D;style-logo_maskot;style-logo_youth"
+                                    class="toggle-checkbox" id="style-logo_herb" name="style-logo_herb">
+                                <label for="style-logo_herb">
+                                    <p>Гербовый стиль</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="logo-preview-grid-item">
+                            <div class="img-wrapper"><img src="./src/images/logos-previews/modern-logo.png"
+                                    alt="preview"></div>
+                            <div class="toggle-line">
+                                <input type="checkbox" class="toggle-checkbox" id="style-logo_youth"
+                                    name="style-logo_youth"
+                                    data-radio="style-logo_formal;style-logo_elegant;style-logo_3D;style-logo_herb;style-logo_maskot">
+                                <label for="style-logo_youth">
+                                    <p>Молодежный стиль</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="logo-preview-grid-item">
+                            <div class="img-wrapper"><img src="./src/images/logos-previews/with-man-logo.png"
+                                    alt="preview"></div>
+                            <div class="toggle-line">
+                                <input type="checkbox" class="toggle-checkbox" id="style-logo_maskot"
+                                    name="style-logo_maskot"
+                                    data-radio="style-logo_formal;style-logo_elegant;style-logo_3D;style-logo_herb;style-logo_youth">
+                                <label for="style-logo_maskot">
+                                    <p>С персонажем</p>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-
                     <p class="title_h5">
-                        Сувенирная продукция
+                        Используемые цвета
                         <span class="color-grey">
-                            (перечислите элементы)
+                            (перечислите желаемые и не желаемые цвета)
                         </span>
                     </p>
-                    <textarea type="text" id="elements-souvenir"></textarea>
+                    <textarea type="text" id="style-colors"></textarea>
                     <p class="title_h5">
-                        Дополнительные элементы
-                        <span class="color-grey">
-                            (перечислите элементы)
-                        </span>
+                        Предпочтительная цветовая гамма
                     </p>
-                    <textarea type="text" id="elements-extra"></textarea>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-color_vibrant"
+                            name="style-color_vibrant"
+                            data-radio="style-color_neon;style-color_pastel;style-color_mono;style-color_none">
+                        <label for="style-color_vibrant">
+                            <p>Яркие, кричащие, динамические цвета (красный, синий, желтый, зелёный)</p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-color_neon" name="style-color_neon"
+                            data-radio="style-color_vibrant;style-color_pastel;style-color_mono;style-color_none">
+                        <label for="style-color_neon">
+                            <p>Кислотные флуорисцентные цвета </p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-color_pastel" name="style-color_pastel"
+                            data-radio="style-color_vibrant;style-color_neon;style-color_mono;style-color_none">
+                        <label for="style-color_pastel">
+                            <p>Только мягкие пастельные цвета </p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-color_mono" name="style-color_mono"
+                            data-radio="style-color_vibrant;style-color_neon;style-color_pastel;style-color_none">
+                        <label for="style-color_mono">
+                            <p>Монохромная: 2 основных цвета и их оттенки</p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-color_none" name="style-color_none"
+                            data-radio="style-color_vibrant;style-color_neon;style-color_pastel;style-color_mono">
+                        <label for="style-color_none">
+                            <p>На усмотрение дизайнера</p>
+                        </label>
+                    </div>
+                    <p class="title_h5">Формат логотипа</p>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-format_minimal"
+                            name="style-format_minimal" data-radio="style-format_icon">
+                        <label for="style-format_minimal">
+                            <p>Только модернизированный шрифт названия, минимализм</p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-format_icon" name="style-format_icon"
+                            data-radio="style-format_minimal">
+                        <label for="style-format_icon">
+                            <p>
+                                Логотип со значком/графической иконкой
+                            </p>
+                        </label>
+                    </div>
+                    <p class="title_h5">
+                        Дополнительные пожелания
+                    </p>
+                    <textarea type="text" id="style-extra"></textarea>
+                    <p class="title_h5">Шрифты логотипа</p>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-font_serif" name="style-font_serif"
+                            data-radio="style-font_sans;style-font_handwritten;style-font_fancy;style-font_gothic;style-font_slavic">
+                        <label for="style-font_serif">
+                            <p>
+                                Классические шрифты с засечками
+                            </p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-font_sans" name="style-font_sans"
+                            data-radio="style-font_serif;style-font_handwritten;style-font_fancy;style-font_gothic;style-font_slavic">
+                        <label for="style-font_sans">
+                            <p>
+                                Шрифты без засечек
+                            </p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-font_handwritten"
+                            name="style-font_handwritten"
+                            data-radio="style-font_serif;style-font_sans;style-font_fancy;style-font_gothic;style-font_slavic">
+                        <label for="style-font_handwritten">
+                            <p>
+                                Рукописные шрифты
+                            </p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-font_fancy" name="style-font_fancy"
+                            data-radio="style-font_serif;style-font_sans;style-font_handwritten;style-font_gothic;style-font_slavic">
+                        <label for="style-font_fancy">
+                            <p>
+                                Декоративные шрифты
+                            </p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-font_gothic" name="style-font_gothic"
+                            data-radio="style-font_serif;style-font_sans;style-font_handwritten;style-font_fancy;style-font_slavic">
+                        <label for="style-font_gothic">
+                            <p>
+                                Готические шрифты
+                            </p>
+                        </label>
+                    </div>
+                    <div class="toggle-line">
+                        <input type="checkbox" class="toggle-checkbox" id="style-font_slavic" name="style-font_slavic"
+                            data-radio="style-font_serif;style-font_sans;style-font_handwritten;style-font_fancy;style-font_gothic">
+                        <label for="style-font_slavic">
+                            <p>
+                                Старословянские шрифты
+                            </p>
+                        </label>
+                    </div>
+                    <p class="title_h5">
+                        Примеры логотипов которые вам нравятся
+                    </p>
+                    <textarea type="text" id="style-logo_good"></textarea>
+                    <p class="title_h5">
+                        Примеры логотипов которые вам НЕ нравятся
+                    </p>
+                    <textarea type="text" id="style-logo_bad"></textarea>
                 </div>
             </div>
             <!-- / structure -->

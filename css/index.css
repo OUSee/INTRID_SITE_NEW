@@ -6683,6 +6683,47 @@ form .button:hover {
 .sitebrif {
   padding-bottom: unset;
 }
+.sitebrif .logo-preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.sitebrif .logo-preview-grid-item {
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--blue-bg);
+  padding: 20px;
+  border-radius: 25px;
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .sitebrif .logo-preview-grid-item {
+    flex: 1 1 45%;
+  }
+}
+@media (max-width: 520px) {
+  .sitebrif .logo-preview-grid-item {
+    flex: 1 1 100%;
+  }
+}
+.sitebrif .logo-preview-grid-item .img-wrapper {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+  padding: 20px 30px;
+  border-radius: 15px;
+}
+.sitebrif .logo-preview-grid-item .img-wrapper img {
+  width: auto;
+  height: auto;
+  max-height: 160px;
+  max-width: 100%;
+}
 
 .toggle-checkbox {
   display: none;
