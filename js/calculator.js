@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let resetOriginalOffsetTop = reset_button.offsetTop;
     let resetHeight = reset_button.offsetTop;
+    let resetOriginalOffsetLeft = reset_button.offsetLeft
     let calcOriginalOffsetTop = calcTotal.offsetTop;
+    
     let calcHeight = calcTotal.offsetHeight;
   
     // Update measurements dynamically
@@ -26,11 +28,23 @@ document.addEventListener('DOMContentLoaded', function() {
       updateMeasurements();
 
       // add here
+      const headerBottom = headerRect.bottom;
+      if (scrollY + headerBottom > resetOriginalOffsetTop) {
+        // Make reset button sticky below header
+        reset_button.style.position = 'fixed';
+        reset_button.style.top = headerBottom + 10 + 'px';
+        reset_button.style.left = resetOriginalOffsetLeft + 'px';
+      } else {
+        reset_button.style.position = '';
+        reset_button.style.top = '';
+        reset_button.style.zIndex = '';
+      }
   
       if (scrollY + viewportHeight < calcOriginalOffsetTop + calcHeight) {
         // Stick block to bottom of viewport
         calcTotal.classList.add('fixed-bottom');
         calcTotal.style.bottom = '0px';
+        calcTotal.style.zIndex = '11'
       } else {
         if (footerRect.top < viewportHeight) {
           // Footer visible, shift block up to avoid overlap
@@ -147,6 +161,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                 toggles.map((el) => {
                                     toggle.radioid?.forEach(id => {
                                         if(el.id === id){
+                                            if(el?.nested?.length > 0 && el.elementref.checked){
+                                                console.log('=> nested are', el.nested)
+                                                el.nested.forEach(nested => {
+                                                    const nestedToggle = toggles.find(t => t.id === nested);
+                                                    nestedToggle.elementref.checked = false
+                                                })
+                                            }
                                             if(el.counter && el.elementref.checked){
                                                 target.innerText = `${parseInt(target.innerText) - el.counter.total - el.price}`
                                                 console.log('=> text', target.innerText, `(-${el.counter.total + el.price}`)
