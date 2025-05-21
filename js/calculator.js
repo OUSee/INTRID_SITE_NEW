@@ -136,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(inputs && target){
         const {toggles, counters, texts} = toggleConverter(inputs);
-        console.log('=> ', toggleConverter(inputs))
         target.innerText = `0`;
         const togglechange = new Event('change')
         reset_button?.addEventListener('click', () => {
@@ -149,9 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
             toggle.elementref.addEventListener('change', () => {
                 switch (toggle.id) {
                     default : {
-                        console.log('=> def', target.innerText)
                         if(toggle.elementref.checked){
-                            console.log('=> def ++')
                             if(toggle.reveal){
                                 toggle.reveal.classList.remove('hidden');
                             }
@@ -163,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                     toggle.radioid?.forEach(id => {
                                         if(el.id === id){
                                             if(el?.nested?.length > 0 && el.elementref.checked){
-                                                console.log('=> nested are', el.nested)
                                                 el.nested.forEach(nested => {
                                                     const nestedToggle = toggles.find(t => t.id === nested);
                                                     nestedToggle.elementref.checked = false
@@ -241,14 +237,11 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         counters.forEach(counter => {
             const changeEvent = new Event('input')
-            console.log('=> ctr', counter.elementref.nextSibling)
             counter.elementref.nextElementSibling?.addEventListener('click', ()=>{
-                console.log('=> ++', )
                 counter.elementref.value++  
                 counter.elementref.dispatchEvent(changeEvent)
             })
             counter.elementref.previousElementSibling?.addEventListener('click', ()=>{
-                console.log('=> --', counter.elementref)
                 if(counter.elementref.dataset?.intendfor === 'design-landing'){
                     if(counter.elementref.value > 1){
                         counter.elementref.value--  
@@ -259,7 +252,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 counter.elementref.dispatchEvent(changeEvent)
             })
             counter.elementref.addEventListener('input', () => {
-                console.log('=> text', target.innerText)
                 target.innerText = `${parseInt(target.innerText) - counter.total}`
                 counter.total = (parseInt(counter.elementref.value)) * counter.price;
                 target.innerText = `${parseInt(target.innerText) + counter.total}`
@@ -287,222 +279,3 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
 })
-
-  // document.addEventListener('DOMContentLoaded', function() {
-  //   const calculator_body = document.getElementById('calculator')
-  //   const inputs = calculator_body.querySelectorAll('.accordion-content input');
-  //   const reset_button = document.getElementById('reset-options-btn');
-  //   const sentButton = document.getElementById('send-calculator-total');
-
-    
-  //   let additional = ''
-
-  //   inputs.forEach(input => {
-  //       input.addEventListener('change', ()=>{
-  //           let total = parseInt(target.innerText.replace(' ₽',''));
-  //           switch (input.id){
-  //             // package blocks
-  //             case 'type-landing':{
-  //               break
-  //             }  
-  //             case 'type-portfolio':{
-  //               break
-  //             } 
-  //             case 'type-corporate':{
-  //               break
-  //             } 
-  //             case 'type-corporate_catalogue':{
-  //               break
-  //             } 
-  //             case 'type-store':{
-  //               break
-  //             }
-  //             case 'type-store_ai':{
-  //               break
-  //             }
-  //             case 'type-portal':{
-  //               break 
-  //             }
-  //             case 'type-unique':{
-  //               const field = document.getElementById('type-unique_text')
-  //               if (input.checked){
-  //                   field.classList.remove('hidden')
-  //               }
-  //               else{
-  //                   field.classList.add('hidden')
-  //               }
-  //               break
-  //             }
-  //             // design block
-  //             case 'design-landing': {
-  //               const div = document.getElementById('landig-bloks-input')
-  //               const field = div.querySelector('input');
-  //               let count = field.value
-  //               if (input.checked){
-  //                   div.classList.remove('hidden')
-  //                   total = parseInt(input.dataset.price) * count;
-  //                   field.addEventListener('change', ()=>{
-  //                       total = total - parseInt(input.dataset.price) * (count - field.value)
-  //                   })
-  //               }
-  //               else{
-  //                   div.classList.add('hidden')
-  //                   field.removeEventListener('change', ()=>{})
-  //                   total = total - parseInt(input.dataset.price) * (count - field.value)
-  //               }
-  //               break
-  //             }
-  //             case 'design-base': {
-  //               const div = document.getElementById('design-base-input')
-  //               const field = div.querySelector('input');
-  //               let count = field.value
-
-  //               if (input.checked){
-  //                   const landing = document.getElementById('design-landing');
-  //                   const prem = document.getElementById('design-premium');
-  //                   div.classList.remove('hidden')
-  //                   total = parseInt(input.dataset.price) + count * parseInt(field.dataset.price);
-  //                   field.addEventListener('change', ()=>{
-  //                       total = (total - parseInt(field.dataset.price) * (count - field.value))
-  //                   })
-                    
-  //               }
-  //               else{
-  //                   div.classList.add('hidden')
-  //                   field.removeEventListener('change', ()=>{})
-  //                   total = (total - parseInt(field.dataset.price) * (count - field.value)) 
-  //               }
-  //               break
-  //             }
-  //             case 'design-premium': {
-  //               const div = document.getElementById('design-premium-input')
-  //               const field = div.querySelector('input');
-  //               let count = field.value
-                
-  //               if (input.checked){
-  //                   div.classList.remove('hidden')
-  //                   total = parseInt(input.dataset.price) + count * parseInt(field.dataset.price);
-  //                   field.addEventListener('change', ()=>{
-  //                       total = (total - parseInt(field.dataset.price) * (count - field.value)) + ' ₽'
-  //                   })
-  //               }
-  //               else{
-  //                   div.classList.add('hidden')
-  //                   field.removeEventListener('change', ()=>{})
-  //                   total= (total - parseInt(field.dataset.price) * (count - field.value)) + ' ₽'
-
-  //               }
-  //               break
-  //             }
-  //             // default toggles
-  //             default: {
-  //               console.log('=> def', total)
-  //               if(input.checked && input?.dataset?.price){
-  //                   console.log('=> def ++')
-  //                   total = total + parseInt(input.dataset.price)
-  //                   break
-  //               }
-  //               else if(input.value !== '' && input.type === 'text'){
-  //                   console.log('=> def field')
-  //                   additional = additional + input.id + ': ' + input.value + '; ' 
-  //                   break
-  //               }
-  //               else if(input?.dataset?.price && input.checked === false){
-  //                   console.log('=> def --')
-  //                   total = total - parseInt(input.dataset.price)
-  //                   break
-  //               }
-  //             }
-  //           }
-  //           target.innerText = total + ' ₽';
-  //       })
-  //   })
-
-  //   reset_button.addEventListener('click', ()=>{
-  //       inputs.forEach(input => {
-  //           input.checked = false; 
-  //           input.value = ''
-  //           total = 0;
-  //           console.log('=> reset', )
-  //           target.innerText = total + ' ₽';
-  //       })
-  //   })
-
-  //   sentButton.addEventListener('click', ()=>{
-  //       let inputs_total = ''
-  //       inputs.forEach(input =>{
-  //           if(input.checked){
-  //               inputs_total =  inputs_total + (input.id + ': ' + true + '; ');
-  //           }
-  //       })
-  //       const info = additional + inputs_total
-  //       console.log('=> inputs total', info)
-
-
-  //   })
-
-  // })
-
-  // const handleChangeSeoPromotion = (e) => {
-  //   const seo = document.getElementById('promotion-seo')
-  //   const max = document.getElementById('promotion-max_start')
-  //   const reg = document.getElementById('promotion-region')
-  //   const ctr = document.getElementById('promotion-country')
-  //   let total = parseInt(target.innerText.replace('₽', ''))
-  //   const price = parseInt(seo.dataset.price);
-  //   if(seo.checked){
-  //       if(max.checked){
-  //           if(reg.checked){
-  //               total = total - price
-  //           }
-  //           else if(ctr.checked){
-  //               total = total - price*2
-  //           }
-  //           max.checked = false
-  //       }
-  //       else{
-  //           total = total + price
-  //           reg.checked = true
-  //       }
-  //   }
-  //   else{
-  //       total = total - price
-  //       reg.checked = false
-  //       ctr.checked = false
-  //   }
-  //   target.innerText = total + ' ₽';
-  // }
-
-  // const handleChangeMaxPromotion = (e) => {
-  //   const seo = document.getElementById('promotion-seo')
-  //   const max = document.getElementById('promotion-max_start')
-  //   const reg = document.getElementById('promotion-region')
-  //   const ctr = document.getElementById('promotion-country')
-  //   let total = parseInt(target.innerText.replace('₽', ''))
-  //   const price = parseInt(max.dataset.price);
-  //   if(max.checked){
-  //       if(seo.checked){
-  //           if(reg.checked){
-  //               total = total + price/2
-  //           }
-  //           else if(ctr.checked){
-  //               total = total + price
-  //           }
-  //           seo.checked = false
-  //       }
-  //       else{
-  //           total = total + price
-  //           reg.checked = true
-  //       }
-  //   }
-  //   else{
-  //       total = total - price
-  //       reg.checked = false
-  //       ctr.checked = false
-  //   }
-  //   target.innerText = total + ' ₽';
-  // }
-
-
-
- 
