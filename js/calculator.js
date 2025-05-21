@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const calcTotal = document.getElementById('calculator-total');
     const footer = document.querySelector('.footer');
-  
+    const reset_button = document.getElementById('reset-options-btn');
+    const header = document.getElementById('header')
+    
+    let resetOriginalOffsetTop = reset_button.offsetTop;
+    let resetHeight = reset_button.offsetTop;
     let calcOriginalOffsetTop = calcTotal.offsetTop;
     let calcHeight = calcTotal.offsetHeight;
   
@@ -9,14 +13,19 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateMeasurements() {
       calcOriginalOffsetTop = calcTotal.offsetTop;
       calcHeight = calcTotal.offsetHeight;
+      resetOriginalOffsetTop = reset_button.offsetTop;
+      resetHeight = reset_button.offsetHeight;
     }
   
     function onScroll() {
       const scrollY = window.scrollY || window.pageYOffset;
       const viewportHeight = window.innerHeight;
       const footerRect = footer.getBoundingClientRect();
+      const headerRect = header.getBoundingClientRect();
   
       updateMeasurements();
+
+      // add here
   
       if (scrollY + viewportHeight < calcOriginalOffsetTop + calcHeight) {
         // Stick block to bottom of viewport
@@ -156,6 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             if(toggle.nested && toggle.nested.length > 0){
                                 toggle.nested.forEach(nestedToggleid => {
                                     const nestedToggle = toggles.find(t => t.id === nestedToggleid);
+                                    console.log('=> nested', nestedToggleid.split('-')[0])
+                                    const section = document.querySelector(`#section-${nestedToggleid.split('-')?.[0]}`)
+                                    section.checked = true
                                     try{
                                         if(nestedToggle){
                                             nestedToggle.elementref.checked = true;
@@ -191,7 +203,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                     }
                                 })
                             }
-                            target.innerText = `${parseInt(target.innerText) - toggle.price}`
+                            const total = parseInt(target.innerText) - toggle.price;
+                            if(total < 0){
+                                target.innerText = "0"
+                            }
+                            else{
+                                target.innerText = `${parseInt(target.innerText) - toggle.price}`
+                            }
                             break
                         }
                     }
@@ -207,17 +225,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 counter.elementref.dispatchEvent(changeEvent)
             })
             counter.elementref.previousElementSibling?.addEventListener('click', ()=>{
-                console.log('=> --', )
-                if(counter.elementref.value > 0){
+                console.log('=> --', counter.elementref)
+                if(counter.elementref.dataset?.intendfor === 'design-landing'){
+                    if(counter.elementref.value > 1){
+                        counter.elementref.value--  
+                    }
+                } else if(counter.elementref.value > 0){
                     counter.elementref.value--  
                 }
                 counter.elementref.dispatchEvent(changeEvent)
             })
             counter.elementref.addEventListener('input', () => {
-              console.log('=> text', target.innerText)
+                console.log('=> text', target.innerText)
                 target.innerText = `${parseInt(target.innerText) - counter.total}`
                 counter.total = (parseInt(counter.elementref.value)) * counter.price;
                 target.innerText = `${parseInt(target.innerText) + counter.total}`
+            })
+            counter.elementref.addEventListener('keydown', (e) => {
+                const blockedkeys = ['-', ',', '.', '+']
+                if(blockedkeys.includes(e.key)){e.preventDefault();}
+            })
+            counter.elementref.addEventListener('blur', () => {
+                if(counter.elementref.value === ''){
+                    counter.elementref.value = 0
+                }
+                if(counter.elementref.dataset?.intendfor === 'design-landing' && counter.elementref.value < 1){
+                    counter.elementref.value = 1
+                }
             })
         })
         sentButton?.addEventListener('click', ()=> {

@@ -178,7 +178,7 @@
                     понять, сколько стоит ресурс, состоящий из нужных Вам модулей.
                 </p>
                 <a href="#calculator" class="button-link big mt-auto">
-                    Перейти к рассчету <i class="icon-arrow_wide"></i>
+                    Перейти к расчету <i class="icon-arrow_wide"></i>
                 </a>
             </div>
             <div class="right-side">
@@ -199,13 +199,16 @@
     </section>
     <!-- calculator self -->
     <section id="calculator" class="calculator-calculator container">
-        <p class="title_h3 w-fit m-center mb-50">
-            Расчёт стоимости разработки сайта по <span class="title_h3 underlined">индивидуальным параметрам</span>
-        </p>
+        <div class="calculator-calculator-header d-flex mb-50">
+            <p class="title_h3 w-fit m-center ">
+                Расчёт стоимости разработки сайта по <span class="title_h3 underlined">индивидуальным параметрам</span>
+            </p>
+            <button id="reset-options-btn" class="button big button-white ml-auto">Сбросить все</button>
+        </div>
         <div class="accordion">
             <!-- types packages-selector -->
             <div class="accordion-item">
-                <input type="checkbox" id="section-type" class="accordion-checkbox">
+                <input type="checkbox" id="section-type" checked class="accordion-checkbox">
                 <label for="section-type" class="accordion-header w-fit title_h4">
                     <i class="icon-target"></i> Предполагаемый тип сайта<i class="icon-shevrone"></i>
                 </label>
@@ -318,7 +321,6 @@
                         </label>
                     </div>
                     <input type="text" id="type-unique_text" placeholder="Опишите свой проект" class="hidden">
-                    <button id="reset-options-btn" class="button button-white">Обнулить пакет опций</button>
                     <p class="title_h5">Сайты с подобным функционалом</p>
                     <input type="text" id="type-similar_cites" placeholder="Введите текст">
                 </div>
@@ -328,7 +330,7 @@
             <div class="accordion-item">
                 <input type="checkbox" id="section-design" class="accordion-checkbox">
                 <label for="section-design" class="accordion-header w-fit title_h4">
-                    <i class="icon-target"></i> Дизайн сайта<i class="icon-shevrone"></i>
+                    <img src="./src/icons/brush_icon.svg" alt=""> Дизайн сайта<i class="icon-shevrone"></i>
                 </label>
                 <div class="accordion-content">
                     <div class="toggle-line">
@@ -341,6 +343,9 @@
                                     data-tooltip="Уникальный продуманныйный дизайн посадочной страницы для максимальной конверсии"><i
                                         class="icon-tooltip"></i></span>
                             <div class="counter hidden" id="landig-bloks-input">
+                                <p class="color-grey">
+                                    Количество блоков (экранов):
+                                </p>
                                 <button class="counter-btn minus">-</button>
                                 <input type="number" class="counter-input" value="5" data-price="9000"
                                     data-intendfor="design-landing">
@@ -360,6 +365,9 @@
                                     data-tooltip="Предоставляется 1-2 варианта дизайна, возможность внести три последовательные корректировки в выбранный дизайн макет. Включает в себя дизайн главной и двух внутренних страниц"><i
                                         class="icon-tooltip"></i></span>
                             <div class="counter hidden" id="design-base-input">
+                                <p class="color-grey">
+                                    Количество типовых внутренних страниц:
+                                </p>
                                 <button class="counter-btn minus">-</button>
                                 <input type="number" class="counter-input" data-price="12000" value="2"
                                     data-intendfor="design-base">
@@ -379,6 +387,9 @@
                                     data-tooltip="Неограниченное количество вариантов и правок, до полного одобрения Заказчиком. Включает в себя дизайн главной и двух внутренних страниц"><i
                                         class="icon-tooltip"></i></span>
                             <div class="counter hidden" id="design-premium-input">
+                                <p class="color-grey">
+                                    Количество типовых внутренних страниц:
+                                </p>
                                 <button class="counter-btn minus">-</button>
                                 <input type="number" class="counter-input" data-price="15000" value="2"
                                     data-intendfor="design-premium">
@@ -437,7 +448,8 @@
             <div class="accordion-item">
                 <input type="checkbox" id="section-management" class="accordion-checkbox">
                 <label for="section-management" class="accordion-header w-fit title_h4">
-                    <i class="icon-target"></i> Cистема управления сайтом<i class="icon-shevrone"></i>
+                    <img src="./src/icons/magnifier_glass.svg" alt=""> Cистема управления сайтом<i
+                        class="icon-shevrone"></i>
                 </label>
                 <div class="accordion-content">
                     <!-- <div class="toggle-line">
@@ -487,7 +499,7 @@
             <div class="accordion-item">
                 <input type="checkbox" id="section-functions" class="accordion-checkbox">
                 <label for="section-functions" class="accordion-header w-fit title_h4">
-                    <i class="icon-links"></i>Структура и функционал сайта<i class="icon-shevrone"></i>
+                    <img src="./src/icons/pc_icon.svg" alt=""> Структура и функционал сайта<i class="icon-shevrone"></i>
                 </label>
                 <div class="accordion-content">
                     <p class="title_h5 color-blue quote">Разделы сайта <span class="color-grey">(Выберите нужные Вам
@@ -1109,7 +1121,7 @@
             <div class="accordion-item">
                 <input type="checkbox" id="section-ai" class="accordion-checkbox">
                 <label for="section-ai" class="accordion-header w-fit title_h4">
-                    <i class="icon-target"></i> Искусственный интеллект<i class="icon-shevrone"></i>
+                    <img src="./src/icons/ai_icon.svg" alt=""> Искусственный интеллект<i class="icon-shevrone"></i>
                 </label>
                 <div class="accordion-content">
                     <p class="title_h5 color-blue quote">

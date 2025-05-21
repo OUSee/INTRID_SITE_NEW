@@ -6456,14 +6456,36 @@ form .button:hover {
 .calculator-calculator {
   padding-bottom: 200px;
 }
+.calculator-calculator-header {
+  overflow: visible;
+}
+.calculator-calculator-header .button {
+  align-self: flex-start;
+  height: auto;
+  position: sticky;
+  top: 100px;
+  z-index: 10;
+}
+@media (max-width: 900px) {
+  .calculator-calculator-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
 .calculator-calculator .accordion .accordion-header {
   display: flex;
   align-items: center;
+  width: 100%;
 }
-.calculator-calculator .accordion .accordion-header i:not(.icon-shevrone) {
+.calculator-calculator .accordion .accordion-header i:not(.icon-shevrone),
+.calculator-calculator .accordion .accordion-header img {
   font-size: 40px;
+  height: 40px;
+  width: 40px;
   max-height: 41px;
   line-height: 1em;
+  color: var(--blue-main);
+  margin-right: 6px;
 }
 .calculator-calculator .accordion-item {
   padding: 10px;
@@ -6492,11 +6514,24 @@ form .button:hover {
   align-items: center;
   margin-left: 6px;
 }
+.calculator-calculator .accordion-content .toggle-line:has(*.counter:not(.hidden)) label {
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .calculator-calculator .accordion-content .toggle-line:has(*.counter:not(.hidden)) label {
+    margin-bottom: 70px;
+  }
+  .calculator-calculator .accordion-content .toggle-line:has(*.counter:not(.hidden)) label .counter {
+    margin-top: 10px;
+  }
+}
 .calculator-calculator .accordion-content .toggle-line label {
   display: flex;
   align-items: center;
+  max-height: 26px;
 }
 .calculator-calculator .accordion-content .toggle-line .counter {
+  max-height: 26px;
   display: flex;
   align-items: center;
   margin-left: 20px;
@@ -6585,11 +6620,12 @@ form .button:hover {
   position: relative;
   background-color: var(--blue-bg);
   padding: 20px 0px;
+  transition: all 0s;
 }
 .calculator-total.fixed-bottom {
   position: fixed;
   bottom: 0;
-  transition: all 0;
+  transition: all 0s;
 }
 @media (max-width: 900px) {
   .calculator-total .mobile-hidden {
@@ -6628,7 +6664,7 @@ form .button:hover {
 }
 .toggle-checkbox:checked + label:after {
   background-color: var(--color-white);
-  transform: translateX(26px) translateY(-50%);
+  transform: translateX(26px);
 }
 .toggle-checkbox + label {
   position: relative;
@@ -6647,8 +6683,7 @@ form .button:hover {
 }
 .toggle-checkbox + label:after {
   content: "";
-  top: 50%;
-  transform: translateY(-50%);
+  top: calc(50% - 10px);
   left: 3px;
   position: absolute;
   width: 20px;
