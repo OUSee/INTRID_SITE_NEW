@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const {toggles, counters, texts} = toggleConverter(inputs);
         console.log('=> ', toggleConverter(inputs))
         target.innerText = `0`;
+        const togglechange = new Event('change')
         reset_button?.addEventListener('click', () => {
             toggles.map((toggle) => {
                 toggle.elementref.checked = false;
@@ -166,11 +167,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                                 el.nested.forEach(nested => {
                                                     const nestedToggle = toggles.find(t => t.id === nested);
                                                     nestedToggle.elementref.checked = false
+                                                    nestedToggle.reveal?.classList.add('hidden')
+                                                    nestedToggle.elementref.dispatchEvent(togglechange)
                                                 })
                                             }
                                             if(el.counter && el.elementref.checked){
-                                                target.innerText = `${parseInt(target.innerText) - el.counter.total - el.price}`
-                                                console.log('=> text', target.innerText, `(-${el.counter.total + el.price}`)
                                                 el.elementref.checked = false
                                                 el.reveal?.classList.add('hidden')
                                             }
@@ -186,12 +187,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             if(toggle.nested && toggle.nested.length > 0){
                                 toggle.nested.forEach(nestedToggleid => {
                                     const nestedToggle = toggles.find(t => t.id === nestedToggleid);
-                                    console.log('=> nested', nestedToggleid.split('-')[0])
                                     const section = document.querySelector(`#section-${nestedToggleid.split('-')?.[0]}`)
                                     section.checked = true
                                     try{
                                         if(nestedToggle){
                                             nestedToggle.elementref.checked = true;
+                                            nestedToggle.elementref.dispatchEvent(togglechange);
                                         }
                                         else{
                                             console.error('=> ', nestedToggleid, 'not found')
@@ -219,6 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 toggle.nested.forEach(nestedToggleid => {
                                     const nestedToggle = toggles.find(t => t.id === nestedToggleid);
                                     nestedToggle.elementref.checked = false;
+                                    nestedToggle.elementref.dispatchEvent(togglechange);
                                     if(nestedToggle.reveal){
                                         nestedToggle.reveal.classList.add('hidden');
                                     }
