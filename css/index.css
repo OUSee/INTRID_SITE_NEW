@@ -1727,7 +1727,7 @@ button.next:hover {
 .main-page.site .left-block p.site-description {
   max-width: 770px;
   margin-top: 32px;
-  margin-bottom: 52px;
+  margin-bottom: 50px;
 }
 @media (max-width: 1000px) {
   .main-page.site .left-block p.site-description {
@@ -1763,7 +1763,7 @@ button.next:hover {
   flex-grow: 1;
   max-height: 54px;
 }
-@media (max-width: 420px) {
+@media (max-width: 520px) {
   .main-page.site .left-block .site-benefit-highlight {
     flex-basis: 30%;
     font-size: 24px;
@@ -2863,8 +2863,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   background-color: var(--blue-bg);
   border-radius: 39px;
   margin-left: auto;
-  height: -moz-fit-content;
-  height: fit-content;
   position: relative;
 }
 .recent-work-card:hover {
@@ -4885,6 +4883,7 @@ form .button:hover {
   margin-top: 50px;
   gap: 10px;
   display: flex;
+  align-items: stretch;
 }
 .sites-portfolio-slider + .pagination {
   display: none;
@@ -4919,6 +4918,7 @@ form .button:hover {
 }
 .sites-portfolio-slider .recent-work-card {
   flex-direction: column;
+  flex: 1 1 20%;
 }
 @media (max-width: 600px) {
   .sites-portfolio-slider .recent-work-card {
@@ -5349,10 +5349,13 @@ form .button:hover {
   .sites-bottom-left {
     max-width: 100%;
   }
-  .sites-bottom-left .description {
+  .sites-bottom-left .description,
+  .sites-bottom-left .title_h5,
+  .sites-bottom-left p {
     text-align: center;
   }
-  .sites-bottom-left .title_h3 {
+  .sites-bottom-left .title_h3,
+  .sites-bottom-left h3 {
     margin: 0 auto;
     margin-bottom: 30px;
   }
@@ -5582,6 +5585,8 @@ form .button:hover {
 }
 .landing-creation form img {
   margin: 0 auto;
+  flex: 1 1;
+  max-width: 330px;
 }
 @media (max-width: 900px) {
   .landing-creation form img {
@@ -6395,6 +6400,21 @@ form .button:hover {
   content: "•";
   color: var(--blue-main);
 }
+.portal-portfolio .recent-work-card {
+  flex: 1 1 20%;
+  justify-content: space-between;
+  height: 100%;
+}
+@media (max-width: 1400px) {
+  .portal-portfolio .recent-work-card {
+    min-height: 330px;
+  }
+}
+@media (max-width: 1200px) {
+  .portal-portfolio .recent-work-card {
+    min-height: 350px;
+  }
+}
 @media (max-width: 1000px) {
   .portal-whyUs .why-cooperate-list {
     width: -moz-fit-content;
@@ -6436,6 +6456,271 @@ form .button:hover {
     width: fit-content;
     justify-content: flex-start;
   }
+}
+
+.it-services .tab-view {
+  padding: 0;
+}
+.it-services .tab-view .tab-slider {
+  display: flex;
+  gap: 25px;
+}
+.it-services .tab-view .tab-slider-card {
+  margin-right: 0 !important;
+}
+@media (max-width: 1400px) {
+  .it-services .tab-view .tab-slider-card {
+    min-width: calc((100vw - 80px - 75px) / 4 - 2px);
+  }
+}
+@media (max-width: 1200px) {
+  .it-services .tab-view .tab-slider-card {
+    min-width: calc((100vw - 80px - 50px) / 3 - 2px);
+  }
+}
+@media (max-width: 900px) {
+  .it-services .tab-view .tab-slider-card p {
+    display: none;
+  }
+  .it-services .tab-view .tab-slider-card p.title_h4 {
+    display: block;
+    text-align: center;
+  }
+  .it-services .tab-view .tab-slider-card p.title_h4.color-blue {
+    margin-top: auto;
+  }
+}
+.it-services .tab-view .pagination {
+  display: none;
+}
+@media (max-width: 1400px) {
+  .it-services .tab-view .pagination {
+    display: flex;
+  }
+}
+@media (min-width: 1200px) {
+  .it-services .tab-view .pagination--btn-dot:last-child {
+    display: none;
+  }
+}
+.it-prices {
+  padding-top: 62px;
+}
+.it-prices .sites-prices-card img {
+  width: 130px;
+  height: 130px;
+}
+.it-prices .sites-prices-card p.color-grey {
+  flex: 1 1 100%;
+}
+@media (max-width: 900px) {
+  .it-prices .sites-prices-card p {
+    padding-left: 180px;
+  }
+  .it-prices .sites-prices-card img {
+    width: 160px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+@media (max-width: 520px) {
+  .it-prices .sites-prices-card p {
+    padding-left: 0;
+  }
+}
+.it-ai {
+  background-image: url(../src/images/planets-aside.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.it-ai-web_count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.it-ai-web_count img {
+  width: auto;
+  height: 70px;
+}
+.it-ai-web_count img.olive-right {
+  transform: scaleX(-1);
+}
+.it-ai-web_count .large-number {
+  color: var(--blue-main);
+  font-size: 70px;
+  font-weight: 600;
+  line-height: 70px;
+  min-width: 264px;
+}
+.it-ai-web_count .title_h4 {
+  margin-left: 20px;
+  max-width: 600px;
+}
+@media (max-width: 900px) {
+  .it-ai-web_count .title_h4 {
+    margin-left: 0;
+    margin-top: 20px;
+    max-width: unset;
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 900px) {
+  .it-ai-web_count {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 520px) {
+  .it-ai-web_count .large-number {
+    font-size: 30px;
+    line-height: 30px;
+    min-width: unset;
+  }
+  .it-ai-web_count img {
+    width: auto;
+    height: 30px;
+  }
+}
+.it-ai .sites-roadmap-list {
+  justify-content: center;
+}
+.it-ai .sites-roadmap-list li .header img {
+  width: 40px;
+  height: 40px;
+}
+@media (max-width: 600px) {
+  .it-ai .sites-roadmap-list li .header img {
+    width: 20px;
+    height: 20px;
+  }
+}
+.it-ai .sites-roadmap-list li:before, .it-ai .sites-roadmap-list li:after {
+  display: none;
+}
+.it-ai .sites-roadmap-list li ul li {
+  max-width: unset;
+  padding-left: 10px;
+}
+.it-ai .sites-roadmap-list li ul li::marker {
+  content: "•";
+  color: var(--blue-main);
+}
+.it-crm {
+  position: relative;
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 15%, rgba(0, 234, 255, 0.09) 50%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%), url(../src/images/mountains_1.webp);
+  background-size: 100% auto;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 186px;
+}
+.it-crm-list {
+  padding-left: 40px;
+}
+@media (max-width: 600px) {
+  .it-crm-list {
+    padding-left: 20px;
+  }
+}
+.it-crm-list > li {
+  padding-left: 20px;
+  position: relative;
+}
+@media (max-width: 600px) {
+  .it-crm-list > li {
+    padding-left: 10px;
+  }
+}
+.it-crm-list > li::before {
+  content: "";
+  background-color: var(--blue-main);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  left: -37px;
+  z-index: -1;
+  font-size: 35px;
+  color: var(--bg-main);
+  font-weight: 600;
+  z-index: 2;
+  padding-left: 15px;
+  padding-top: 4px;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .it-crm-list > li::before {
+    padding-left: 7px;
+    font-size: 20px;
+    width: 25px;
+    height: 25px;
+    left: -20px;
+  }
+}
+.it-crm-list > li:nth-child(1)::before {
+  content: "1";
+}
+.it-crm-list > li:nth-child(2)::before {
+  content: "2";
+}
+.it-crm-list .sites-roadmap-list {
+  justify-content: center;
+}
+.it-crm-list .sites-roadmap-list li {
+  max-width: unset;
+}
+.it-crm-list .sites-roadmap-list li:before, .it-crm-list .sites-roadmap-list li:after {
+  display: none;
+}
+.it-crm-list .sites-roadmap-list-item {
+  padding-left: 30px;
+  gap: 6px;
+}
+.it-crm-list .sites-roadmap-list-item::after {
+  font-family: "INTRID_ICONS";
+  background-color: transparent;
+  content: "m";
+  height: 177px;
+  width: 177px;
+  font-size: 177px;
+  line-height: 177px;
+  color: var(--blue-clouds);
+  position: absolute;
+  right: -50px;
+  bottom: -50px;
+  left: unset;
+  top: unset;
+}
+.it-crm-list .sites-roadmap-list-item p.color-grey {
+  padding-left: 0;
+}
+.it-tender .sites-roadmap-list {
+  justify-content: center;
+}
+.it-tender .sites-roadmap-list li .header img {
+  width: 40px;
+  height: 40px;
+}
+@media (max-width: 600px) {
+  .it-tender .sites-roadmap-list li .header img {
+    width: 20px;
+    height: 20px;
+  }
+}
+.it-tender .sites-roadmap-list li:before, .it-tender .sites-roadmap-list li:after {
+  display: none;
+}
+.it-tender .sites-roadmap-list li ul li {
+  max-width: unset;
+  padding-left: 10px;
+}
+.it-tender .sites-roadmap-list li ul li::marker {
+  content: "•";
+  color: var(--blue-main);
+}
+.it-tender .sites-roadmap-list li ul li:last-child {
+  margin-bottom: 6px;
 }
 
 .calculator-main-offer {
@@ -6802,6 +7087,20 @@ form .button:hover {
   color: var(--color-grey);
 }
 
+.icms-note {
+  margin: 26px 0;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  flex-basis: 50%;
+  order: 2;
+}
+.icms-note img {
+  width: auto;
+  height: 35px;
+  margin-right: 8px;
+}
+
 @media (max-width: 1500px) {
   .container {
     max-width: 100%;
@@ -6878,20 +7177,6 @@ form .button:hover {
     margin-left: 0;
   }
 }
-.icms-note {
-  margin: 26px 0;
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  flex-basis: 50%;
-  order: 2;
-}
-.icms-note img {
-  width: auto;
-  height: 35px;
-  margin-right: 8px;
-}
-
 @media (max-width: 1000px) {
   .footer-logo {
     max-height: 24px;

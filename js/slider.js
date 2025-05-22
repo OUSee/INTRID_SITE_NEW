@@ -5,8 +5,8 @@ const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const slideItems = document.querySelectorAll('.slide');
 
-const firstClone = slideItems[0].cloneNode(true);
-const lastClone = slideItems[slideItems.length - 1].cloneNode(true);
+const firstClone = slideItems[0]?.cloneNode(true);
+const lastClone = slideItems[slideItems.length - 1]?.cloneNode(true);
 const hr = document.createElement('hr') 
 slides.appendChild(firstClone);
 slides.appendChild(hr)
