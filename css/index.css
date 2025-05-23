@@ -5514,27 +5514,65 @@ form .button:hover {
   align-items: center;
   position: relative;
 }
-.landing-main-left {
+.landing-main .left-block {
   max-width: 767px;
 }
-.landing-main-left h1 {
+.landing-main .left-block h1 {
   margin-bottom: 30px;
 }
-.landing-main-left .description {
-  margin-bottom: 10px;
-}
-.landing-main-left div {
-  margin-top: 50px;
-}
-@media (max-width: 900px) {
-  .landing-main-left div {
-    margin-top: 250px;
+@media (max-width: 750px) {
+  .landing-main .left-block .button-highlight,
+  .landing-main .left-block .button-link {
+    margin: 0 auto;
   }
 }
 @media (max-width: 750px) {
-  .landing-main-left .button-highlight,
-  .landing-main-left .button-link {
-    margin: 0 auto;
+  .landing-main .left-block .title_h4 {
+    text-align: center;
+  }
+}
+@media (max-width: 1000px) {
+  .landing-main .site-description {
+    margin-bottom: 340px !important;
+  }
+}
+.landing-main.main-page.site .flying-orb {
+  top: 200px;
+  right: -300px;
+}
+.landing-main.main-page.site .flying-orb img {
+  width: 700px;
+  top: -100px;
+}
+@media (max-width: 1200px) {
+  .landing-main.main-page.site .flying-orb {
+    right: 60px;
+  }
+  .landing-main.main-page.site .flying-orb img {
+    width: 500px;
+    top: -50px;
+  }
+}
+@media (max-width: 1200px) {
+  .landing-main.main-page.site .flying-orb {
+    right: calc(50% - 90px);
+    top: 340px;
+  }
+  .landing-main.main-page.site .flying-orb img {
+    width: 500px;
+    top: -50px;
+  }
+}
+@media (max-width: 440px) {
+  .landing-main.main-page.site .flying-orb img {
+    right: calc(50% + 73px);
+    left: unset;
+    transform: scaleX(-1) rotate(0deg);
+  }
+  .landing-main.main-page.site .flying-orb .water-ripple {
+    right: -20px;
+    top: 10px;
+    left: unset;
   }
 }
 .landing-main .achievements-group {
@@ -5944,11 +5982,11 @@ form .button:hover {
   margin: auto 0;
   min-width: 30%;
 }
-.store-main .achievements-group .achievement {
+.store-main .achievements-group la .achievement {
   height: -moz-fit-content;
   height: fit-content;
 }
-.store-main .achievements-group .achievement .img-placeholder {
+.store-main .achievements-group la .achievement .img-placeholder {
   max-width: 90px;
   max-height: 90px;
   min-width: 90px;
