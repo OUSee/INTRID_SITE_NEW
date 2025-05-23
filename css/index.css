@@ -1986,6 +1986,17 @@ section.tabs {
   padding: 62px 0px;
   transform-origin: top;
 }
+.tabs-content .count-n-card .recent-work-card {
+  margin-right: 0;
+  margin-left: auto;
+  width: 45%;
+}
+@media (max-width: 1000px) {
+  .tabs-content .count-n-card .recent-work-card img {
+    width: 30%;
+    height: auto;
+  }
+}
 
 .tabs-buttons:has(#tab-1:checked) ~ .tabs-content .tab-content:nth-child(1),
 .tabs-buttons:has(#tab-2:checked) ~ .tabs-content .tab-content:nth-child(2),
@@ -2098,12 +2109,13 @@ section.tabs {
   flex-basis: 300px;
   text-wrap: wrap;
 }
-.tab-content-webDev.store .count-n-card a.recent-work-card {
-  margin-right: auto;
-  margin-left: 0;
+.tab-content-webDev.store .count-n-card .recent-work-card {
+  margin-right: 0;
+  margin-left: auto;
+  width: 45%;
 }
 @media (max-width: 1000px) {
-  .tab-content-webDev.store .count-n-card a.recent-work-card img {
+  .tab-content-webDev.store .count-n-card .recent-work-card img {
     width: 30%;
     height: auto;
   }
@@ -4561,12 +4573,77 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .popup .map-container {
   overflow: hidden;
   border-radius: 25px;
-  width: 70vw;
+  width: 80vw;
   height: 60vh;
 }
 .popup .map-container iframe {
   width: 100%;
   height: 100%;
+}
+.popup .map-testimonials {
+  display: flex;
+  align-items: center;
+}
+.popup .map-testimonials p.color-white span.separator {
+  margin: 0px 12px;
+}
+@media (max-width: 900px) {
+  .popup .map-testimonials p.color-white span {
+    margin: 0px 12px;
+  }
+  .popup .map-testimonials p.color-white span.separator {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .popup .map-testimonials p.color-white {
+    max-width: 210px;
+  }
+}
+@media (max-width: 600px) {
+  .popup .map-testimonials p.color-white {
+    max-width: 200px;
+  }
+}
+.popup .map-testimonials i.icon-phone {
+  display: none;
+}
+@media (max-width: 900px) {
+  .popup .map-testimonials i.icon-phone {
+    display: block;
+    margin-left: 12px;
+  }
+}
+.popup .map-testimonials .button-link {
+  margin-left: auto;
+}
+@media (max-width: 750px) {
+  .popup .map-testimonials {
+    display: grid;
+    gap: 6px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .popup .map-testimonials .p.color-white {
+    grid-area: 1/1/2/2;
+  }
+  .popup .map-testimonials .phone-line {
+    grid-area: 2/1/3/2;
+  }
+  .popup .map-testimonials .button-link {
+    grid-area: 2/2/3/3;
+  }
+}
+@media (max-width: 520px) {
+  .popup .map-testimonials {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: start;
+  }
+  .popup .map-testimonials .button-link {
+    margin-left: 0;
+  }
 }
 
 .portfolio-slider {

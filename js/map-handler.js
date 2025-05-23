@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const container = map.querySelector('.map-container')
       const linkBtn = map.querySelector('.button-link')
       const paragraph = map.querySelector('p.color-white')
-      paragraph.innerHTML = mapData[value].adress + (mapData[value]?.schedule ? '<br>' + mapData[value].schedule : '');
+      paragraph.innerHTML = mapData[value].adress + (mapData[value]?.schedule ? '<span class="separator">|</span><span> ' + mapData[value].schedule + '</span><span class="separator">|</span>' : '<span class="separator">|</span>');
       container.innerHTML = mapData[value].frame
       linkBtn.href = mapData[value].link
 
