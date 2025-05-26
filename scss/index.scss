@@ -8243,6 +8243,7 @@ form {
 
 // tech page
 .tech-page {
+  position: relative;
   display: flex;
 
   h1 {
@@ -8325,14 +8326,14 @@ form {
 
       img {
         position: relative;
-        width: 453px;
-        left: -150px;
+        width: 325px;
+        left: -100px;
       }
 
       @media (max-width: 1440px) {
         img {
-          width: 400px;
-          left: -120px;
+          width: 300px;
+          left: -70px;
         }
       }
 
@@ -8340,9 +8341,9 @@ form {
         right: 40px;
 
         img {
-          width: 300px;
+          width: 200px;
           height: unset;
-          left: -110px;
+          left: -40px;
         }
       }
 
@@ -8351,15 +8352,23 @@ form {
         top: 400px;
 
         img {
-          width: 350px;
+          width: 300px;
           height: unset;
-          left: -110px;
+          left: -90px;
+          top: -50px;
         }
       }
 
       @media (max-width: 900px) {
         display: block;
         top: 440px;
+
+        img {
+          width: 260px;
+          height: unset;
+          left: -60px;
+          top: -30px;
+        }
       }
 
       @media (max-width: 600px) {
@@ -8373,8 +8382,8 @@ form {
         img {
           left: 50%;
           right: 50%;
-          top: 27px;
-          width: 280px;
+          top: 0;
+          width: 220px;
           transform: translate(-50%, 0);
         }
       }
@@ -8531,6 +8540,10 @@ form {
   background-color: var(--blue-bg);
   border-radius: 39px;
 
+  @media (max-width: 900px) {
+    padding: 24px;
+  }
+
   &:hover,
   &:active {
     outline: 1px solid var(--blue-main);
@@ -8570,6 +8583,10 @@ form {
     max-width: 90%;
     color: var(--color-white);
 
+    @media (max-width: 600px) {
+      max-width: 100%;
+    }
+
     & > div {
       display: flex;
       flex-direction: row;
@@ -8584,6 +8601,11 @@ form {
         border-radius: 10px;
         text-align: center;
         font-size: 24px;
+        white-space: nowrap;
+
+        @media (max-width: 600px) {
+          font-size: 16px;
+        }
       }
 
       & > * {
@@ -8591,9 +8613,9 @@ form {
           width: 100px;
           flex: 0 0 100px;
 
-          @media (max-width: 900px) {
-            width: 50px;
-            flex: 0 0 50px;
+          @media (max-width: 600px) {
+            width: 70px;
+            flex: 0 0 70px;
           }
         }
 
@@ -8618,6 +8640,10 @@ form {
       flex: 1 0 50%;
     }
 
+    @media (max-width: 720px) {
+      flex: 1 0 100%;
+    }
+
     &.active {
       opacity: 1;
     }
@@ -8633,8 +8659,8 @@ form {
 
   & .pagination--buttons-dots {
     & > .pagination--btn-dot {
-      @media (min-width: 1200px) {
-        &:nth-last-child(2) {
+      @media (min-width: 720px) and (max-width: 1199.98px) {
+        &:nth-child(3) {
           display: none;
         }
       }
