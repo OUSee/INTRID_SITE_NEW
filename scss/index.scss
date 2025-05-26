@@ -8682,6 +8682,258 @@ form {
   }
 }
 
+// integration
+.integration-page {
+  position: relative;
+  display: flex;
+
+  h1 {
+    max-width: 766px;
+  }
+
+  &.integration {
+    .left-block {
+      @media (max-width: 1000px) {
+        margin-bottom: 300px;
+      }
+
+      @media (max-width: 600px) {
+        margin-bottom: 280px;
+      }
+
+      @media (max-width: 420px) {
+        margin-bottom: 240px;
+      }
+
+      p.integration-description {
+        max-width: 770px;
+        margin-top: 16px;
+
+        &:first-of-type {
+          margin-top: 32px;
+        }
+
+        @media (max-width: 1200px) {
+          max-width: 630px;
+        }
+      }
+
+      div.fd-row {
+        @media (max-width: 900px) {
+          flex-direction: column;
+        }
+      }
+
+      .integration-benefit {
+        display: flex;
+        width: fit-content;
+        padding: 14px 24px;
+        background-color: var(--blue-bg);
+        border-radius: 50px;
+        align-items: center;
+        max-width: 330px;
+        max-height: 58px;
+
+        &-highlight {
+          display: block;
+          color: var(--blue-main);
+          text-wrap: nowrap;
+          flex-basis: 30%;
+          flex-grow: 1;
+          max-height: 54px;
+
+          @media (max-width: 520px) {
+            flex-basis: 30%;
+            font-size: 24px;
+          }
+        }
+
+        &-description {
+          display: block;
+          flex-basis: 70%;
+          flex-grow: 1;
+        }
+      }
+    }
+
+    .flying-orb {
+      left: unset;
+      right: 0px;
+      top: 150px;
+
+      &::before {
+        background-color: transparent;
+      }
+
+      img {
+        position: relative;
+        width: 325px;
+        left: -100px;
+      }
+
+      @media (max-width: 1440px) {
+        img {
+          width: 300px;
+          left: -70px;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        right: 40px;
+
+        img {
+          width: 200px;
+          height: unset;
+          left: -40px;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        right: calc(50% - 90px);
+        top: 400px;
+
+        img {
+          width: 300px;
+          height: unset;
+          left: -90px;
+          top: -50px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        display: block;
+        top: 440px;
+
+        img {
+          width: 260px;
+          height: unset;
+          left: -60px;
+          top: -30px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        right: 30%;
+        top: 400px;
+      }
+
+      @media (max-width: 420px) {
+        right: 30%;
+
+        img {
+          left: 50%;
+          right: 50%;
+          top: 0;
+          width: 220px;
+          transform: translate(-50%, 0);
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      padding-bottom: 0 !important;
+    }
+  }
+}
+
+// stages of integrations
+.integration-stages {
+  & > .title_h3 {
+    margin: 0 auto 50px;
+  }
+
+  & .sites-roadmap-list {
+    & li {
+      flex: 1 0 calc(50% - 16px);
+      max-width: 50%;
+
+      @media (max-width: 440px) {
+        flex: 1 0 auto;
+        max-width: 100%;
+      }
+
+      &:nth-child(1) {
+        order: 1;
+      }
+
+      &:nth-child(2) {
+        order: 2;
+
+        @media (min-width: 1000px) {
+          &::before {
+            top: calc(100% + 24px);
+            right: calc(50% + 16px);
+            transform: rotate(0deg);
+          }
+          &::after {
+            top: 110%;
+            right: 50%;
+            transform: rotate(90deg);
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        order: 4;
+
+        @media (min-width: 600px) {
+          &::before {
+            transform: rotate(90deg);
+            right: unset;
+            left: -30px;
+          }
+          &::after {
+            right: unset;
+            left: -50px;
+          }
+        }
+
+        @media (min-width: 999px) {
+          &::before {
+            top: 50%;
+            transform: rotate(90deg) translateX(-50%);
+            right: unset;
+            left: -30px;
+          }
+          &::after {
+            top: 50%;
+            right: unset;
+            left: -50px;
+            transform: translateY(-50%);
+          }
+        }
+
+        @media (max-width: 440px) {
+          order: 3;
+        }
+      }
+      &:nth-child(4) {
+        order: 3;
+
+        &::before,
+        &::after {
+          display: none;
+        }
+
+        @media (max-width: 440px) {
+          order: 4;
+        }
+      }
+    }
+  }
+}
+
+// integration stack
+.integration-stack {
+  & .tech-we-use {
+    padding: 0;
+
+    & > .title_h2 {
+      margin: 0 auto 50px;
+    }
+  }
+}
+
 //  BREAKPOINTS
 
 @media (max-width: 1500px) {
