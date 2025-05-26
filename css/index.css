@@ -460,7 +460,7 @@ label.radioButton,
   transition: all 0.3s ease-in-out;
   line-height: 1em;
   text-wrap: nowrap;
-  gap: 8px;
+  gap: 4px;
   max-height: 50px;
   align-items: center;
 }
@@ -504,6 +504,7 @@ label.radioButton.big i.icon-arrow_wide,
 .button-highlight.big i.icon-arrow_wide {
   font-size: 2em;
   line-height: 16px;
+  margin-left: 4px;
 }
 button span,
 .button span,
@@ -663,7 +664,7 @@ label.radioButton:has(input:checked)::after {
 }
 
 .align-bottom {
-  align-self: flex-end;
+  align-items: flex-end;
 }
 
 .justify-center {
@@ -690,6 +691,14 @@ label.radioButton:has(input:checked)::after {
 
 .ml-auto {
   margin-left: auto;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.ml-50 {
+  margin-left: 50px;
 }
 
 .ml-10 {
@@ -5518,27 +5527,65 @@ form .button:hover {
   align-items: center;
   position: relative;
 }
-.landing-main-left {
+.landing-main .left-block {
   max-width: 767px;
 }
-.landing-main-left h1 {
+.landing-main .left-block h1 {
   margin-bottom: 30px;
 }
-.landing-main-left .description {
-  margin-bottom: 10px;
-}
-.landing-main-left div {
-  margin-top: 50px;
-}
-@media (max-width: 900px) {
-  .landing-main-left div {
-    margin-top: 250px;
+@media (max-width: 750px) {
+  .landing-main .left-block .button-highlight,
+  .landing-main .left-block .button-link {
+    margin: 0 auto;
   }
 }
 @media (max-width: 750px) {
-  .landing-main-left .button-highlight,
-  .landing-main-left .button-link {
-    margin: 0 auto;
+  .landing-main .left-block .title_h4 {
+    text-align: center;
+  }
+}
+@media (max-width: 1000px) {
+  .landing-main .site-description {
+    margin-bottom: 340px !important;
+  }
+}
+.landing-main.main-page.site .flying-orb {
+  top: 200px;
+  right: -300px;
+}
+.landing-main.main-page.site .flying-orb img {
+  width: 700px;
+  top: -100px;
+}
+@media (max-width: 1200px) {
+  .landing-main.main-page.site .flying-orb {
+    right: 60px;
+  }
+  .landing-main.main-page.site .flying-orb img {
+    width: 500px;
+    top: -50px;
+  }
+}
+@media (max-width: 1200px) {
+  .landing-main.main-page.site .flying-orb {
+    right: calc(50% - 90px);
+    top: 340px;
+  }
+  .landing-main.main-page.site .flying-orb img {
+    width: 500px;
+    top: -50px;
+  }
+}
+@media (max-width: 440px) {
+  .landing-main.main-page.site .flying-orb img {
+    right: calc(50% + 73px);
+    left: unset;
+    transform: scaleX(-1) rotate(0deg);
+  }
+  .landing-main.main-page.site .flying-orb .water-ripple {
+    right: -20px;
+    top: 10px;
+    left: unset;
   }
 }
 .landing-main .achievements-group {
@@ -5683,15 +5730,43 @@ form .button:hover {
     padding: 20px;
   }
 }
-.landing-creation form img {
+.landing-creation form img,
+.landing-creation form .eye {
   margin: 0 auto;
   flex: 1 1;
   max-width: 330px;
 }
 @media (max-width: 900px) {
-  .landing-creation form img {
+  .landing-creation form img,
+  .landing-creation form .eye {
     display: none;
   }
+}
+.landing-creation form .eye {
+  width: 150px;
+  height: 150px;
+  max-width: 150px;
+  background-color: #fff;
+  box-shadow: inset 0 0 60px 0 white;
+  border-radius: 100%;
+  perspective: 500px;
+  overflow: hidden;
+}
+.landing-creation form .eye .iris {
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  transform: rotateX(-50deg) rotateY(15deg) translateZ(68px) scale(0.6);
+  background: radial-gradient(ellipse at center, #00EAFF 15%, #00EAFF 16%, #fff 16%, #fff 40%, #00EAFF 41%, #00EAFF 55%, #fff 56%, transparent 71%);
+  border-radius: 100%;
+  transition: none;
+}
+.landing-creation form .eye .iris.anim {
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-name: iris;
 }
 .landing-creation form input {
   flex: 1 1 90%;
@@ -5808,6 +5883,26 @@ form .button:hover {
   text-decoration-thickness: 2px;
 }
 
+@keyframes iris {
+  0%, 100% {
+    transform: rotateX(-10deg) rotateY(15deg) translateZ(68px) scale(0.6);
+  }
+  10% {
+    transform: rotateX(-50deg) rotateY(15deg) translateZ(68px) scale(0.6);
+  }
+  30% {
+    transform: rotateX(-30deg) rotateY(-5deg) translateZ(68px) scale(0.6);
+  }
+  45% {
+    transform: rotateX(-20deg) rotateY(-15deg) translateZ(68px) scale(0.6);
+  }
+  55%, 60% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(68px) scale(0.6);
+  }
+  90% {
+    transform: rotateX(30deg) rotateY(5deg) translateZ(68px) scale(0.6);
+  }
+}
 .corporate-main {
   position: relative;
 }
@@ -5861,6 +5956,57 @@ form .button:hover {
 @media (max-width: 540px) {
   .corporate-main .achievements-group {
     bottom: 300px;
+  }
+}
+.corporate-main.main-page.site .flying-orb {
+  max-width: 202px;
+  max-height: 202px;
+  right: 14%;
+  left: unset;
+}
+@media (max-width: 1400px) {
+  .corporate-main.main-page.site .flying-orb {
+    right: 7%;
+  }
+}
+@media (max-width: 1000px) {
+  .corporate-main.main-page.site .flying-orb {
+    top: unset;
+    bottom: 150px;
+    right: calc(50% - 88px);
+  }
+}
+@media (max-width: 900px) {
+  .corporate-main.main-page.site .flying-orb {
+    bottom: 215px;
+  }
+}
+@media (max-width: 600px) {
+  .corporate-main.main-page.site .flying-orb {
+    bottom: 190px;
+  }
+}
+.corporate-main.main-page.site .flying-orb img {
+  width: 700px;
+  top: -110px;
+  left: -210px;
+}
+@media (max-width: 1400px) {
+  .corporate-main.main-page.site .flying-orb img {
+    width: 500px;
+    top: -50px;
+    left: -110px;
+  }
+}
+@media (max-width: 1000px) {
+  .corporate-main.main-page.site .flying-orb img {
+    left: -145px;
+    top: -80px;
+  }
+}
+@media (max-width: 600px) {
+  .corporate-main.main-page.site .flying-orb img {
+    top: -70px;
   }
 }
 .corporate-howdone-additional {
@@ -5946,25 +6092,19 @@ form .button:hover {
   height: -moz-fit-content;
   height: fit-content;
   margin: auto 0;
-  min-width: 30%;
+  min-width: 40%;
 }
-.store-main .achievements-group .achievement {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.store-main .achievements-group .achievement .img-placeholder {
-  max-width: 90px;
-  max-height: 90px;
-  min-width: 90px;
-  min-height: 90px;
-  background-color: transparent;
+.store-main .achievements-group img {
+  width: 100%;
+  height: auto;
 }
 @media (max-width: 1000px) {
   .store-main .achievements-group {
     position: absolute;
-    width: 280px;
-    left: calc(50% - 140px);
-    bottom: 165px;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 85px;
   }
   .store-main .achievements-group .achievement {
     flex-basis: unset;
@@ -5972,13 +6112,13 @@ form .button:hover {
 }
 @media (max-width: 900px) {
   .store-main .achievements-group {
-    bottom: 220px;
+    bottom: 155px;
   }
 }
 @media (max-width: 600px) {
   .store-main .achievements-group {
-    bottom: 200px;
-    left: calc(50% - 140px);
+    bottom: 135px;
+    width: 360px;
   }
 }
 @media (min-width: 600px) {
@@ -6287,12 +6427,25 @@ form .button:hover {
     margin-bottom: 300px;
   }
 }
+.portal-main .achievements-group {
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto 0;
+  min-width: 40%;
+  max-height: 250px;
+}
+.portal-main .achievements-group img {
+  width: 100%;
+  height: auto;
+  transform: translateY(-60px);
+}
 @media (max-width: 1000px) {
   .portal-main .achievements-group {
     position: absolute;
-    width: 280px;
-    left: calc(50% - 140px);
-    bottom: 165px;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 85px;
   }
   .portal-main .achievements-group .achievement {
     flex-basis: unset;
@@ -6300,13 +6453,17 @@ form .button:hover {
 }
 @media (max-width: 900px) {
   .portal-main .achievements-group {
-    bottom: 220px;
+    width: 455px;
+    bottom: 155px;
   }
 }
 @media (max-width: 600px) {
   .portal-main .achievements-group {
-    bottom: 200px;
-    left: calc(50% - 140px);
+    bottom: 135px;
+    width: 360px;
+  }
+  .portal-main .achievements-group img {
+    transform: translateY(0);
   }
 }
 .portal-types {
@@ -6555,6 +6712,60 @@ form .button:hover {
     width: -moz-fit-content;
     width: fit-content;
     justify-content: flex-start;
+  }
+}
+
+.ai-integration .sites-roadmap-list {
+  justify-content: center;
+}
+.ai-integration .sites-roadmap-list-item .header p.title_h5 {
+  color: var(--blue-main);
+}
+.ai-integration .sites-roadmap-list-item .header p:not(.title_h5) {
+  color: var(--blue-tag);
+}
+.ai-integration .sites-roadmap-list-item p.color-grey {
+  margin-bottom: 10px;
+}
+.ai-integration .sites-roadmap-list-item p.color-blue {
+  margin-top: auto;
+}
+.ai-integration .sites-roadmap-list li {
+  order: unset !important;
+}
+.ai-integration .sites-roadmap-list li:before, .ai-integration .sites-roadmap-list li:after {
+  display: none;
+}
+.ai-tabs .tabs-content .tab-content-ai_store {
+  padding: 0 30px;
+}
+.ai-tabs .tabs-content .tab-content-ai_store ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ai-tabs .tabs-content .tab-content-ai_store ul li .title_h4 {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+.ai-tabs .tabs-content .tab-content-ai_store ul li .title_h4 img {
+  height: 2em;
+  width: auto;
+  margin-right: 10px;
+}
+.ai-tabs .tabs-content .tab-content-ai_store hr {
+  width: 100%;
+}
+@media (max-width: 440px) {
+  .ai-tabs .tabs-content .tab-content-ai_store {
+    padding: 30px 0px;
+  }
+}
+@media (max-width: 600px) {
+  .ai-tabs .tabs-content .tab-content .d-flex.justify-sb {
+    flex-direction: column;
+    gap: 20px;
   }
 }
 
