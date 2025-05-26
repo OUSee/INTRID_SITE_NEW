@@ -6031,25 +6031,19 @@ form .button:hover {
   height: -moz-fit-content;
   height: fit-content;
   margin: auto 0;
-  min-width: 30%;
+  min-width: 40%;
 }
-.store-main .achievements-group la .achievement {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.store-main .achievements-group la .achievement .img-placeholder {
-  max-width: 90px;
-  max-height: 90px;
-  min-width: 90px;
-  min-height: 90px;
-  background-color: transparent;
+.store-main .achievements-group img {
+  width: 100%;
+  height: auto;
 }
 @media (max-width: 1000px) {
   .store-main .achievements-group {
     position: absolute;
-    width: 280px;
-    left: calc(50% - 140px);
-    bottom: 165px;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 85px;
   }
   .store-main .achievements-group .achievement {
     flex-basis: unset;
@@ -6057,13 +6051,13 @@ form .button:hover {
 }
 @media (max-width: 900px) {
   .store-main .achievements-group {
-    bottom: 220px;
+    bottom: 155px;
   }
 }
 @media (max-width: 600px) {
   .store-main .achievements-group {
-    bottom: 200px;
-    left: calc(50% - 140px);
+    bottom: 135px;
+    width: 360px;
   }
 }
 @media (min-width: 600px) {
@@ -6372,12 +6366,25 @@ form .button:hover {
     margin-bottom: 300px;
   }
 }
+.portal-main .achievements-group {
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto 0;
+  min-width: 40%;
+  max-height: 250px;
+}
+.portal-main .achievements-group img {
+  width: 100%;
+  height: auto;
+  transform: translateY(-60px);
+}
 @media (max-width: 1000px) {
   .portal-main .achievements-group {
     position: absolute;
-    width: 280px;
-    left: calc(50% - 140px);
-    bottom: 165px;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 85px;
   }
   .portal-main .achievements-group .achievement {
     flex-basis: unset;
@@ -6385,13 +6392,17 @@ form .button:hover {
 }
 @media (max-width: 900px) {
   .portal-main .achievements-group {
-    bottom: 220px;
+    width: 455px;
+    bottom: 155px;
   }
 }
 @media (max-width: 600px) {
   .portal-main .achievements-group {
-    bottom: 200px;
-    left: calc(50% - 140px);
+    bottom: 135px;
+    width: 360px;
+  }
+  .portal-main .achievements-group img {
+    transform: translateY(0);
   }
 }
 .portal-types {

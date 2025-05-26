@@ -6755,25 +6755,19 @@ form {
     .achievements-group {
       height: fit-content;
       margin: auto 0;
-      min-width: 30%;
+      min-width: 40%;
 
-      la .achievement {
-        .img-placeholder {
-          max-width: 90px;
-          max-height: 90px;
-          min-width: 90px;
-          min-height: 90px;
-          background-color: transparent;
-        }
-
-        height: fit-content;
+      img {
+        width: 100%;
+        height: auto;
       }
 
       @media (max-width: 1000px) {
         position: absolute;
-        width: 280px;
-        left: calc(50% - 140px);
-        bottom: 165px;
+        width: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 85px;
 
         .achievement {
           flex-basis: unset;
@@ -6781,12 +6775,12 @@ form {
       }
 
       @media (max-width: 900px) {
-        bottom: 220px;
+        bottom: 155px;
       }
 
       @media (max-width: 600px) {
-        bottom: 200px;
-        left: calc(50% - 140px);
+        bottom: 135px;
+        width: 360px;
       }
     }
   }
@@ -7160,11 +7154,23 @@ form {
     }
 
     .achievements-group {
+      height: fit-content;
+      margin: auto 0;
+      min-width: 40%;
+      max-height: 250px;
+
+      img {
+        width: 100%;
+        height: auto;
+        transform: translateY(-60px);
+      }
+
       @media (max-width: 1000px) {
         position: absolute;
-        width: 280px;
-        left: calc(50% - 140px);
-        bottom: 165px;
+        width: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 85px;
 
         .achievement {
           flex-basis: unset;
@@ -7172,12 +7178,17 @@ form {
       }
 
       @media (max-width: 900px) {
-        bottom: 220px;
+        width: 455px;
+        bottom: 155px;
       }
 
       @media (max-width: 600px) {
-        bottom: 200px;
-        left: calc(50% - 140px);
+        bottom: 135px;
+        width: 360px;
+
+        img {
+          transform: translateY(0);
+        }
       }
     }
   }
