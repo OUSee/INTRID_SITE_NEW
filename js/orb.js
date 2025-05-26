@@ -4,9 +4,7 @@ class orbRotation {
     this.visionArea = orbElem.closest('form');
     this.currentAngle = 0;
 
-    if (window.getComputedStyle(orbElem).display === 'none') {
-      console.log('pee-pee poo-poo check');
-    } else {
+    if (window.getComputedStyle(orbElem).display !== 'none') {
       this.init();
     }
   }
