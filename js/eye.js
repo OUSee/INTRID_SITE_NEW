@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded',  () =>{
         		x: e.clientX - eye.x,
         		y: e.clientY - eye.y
         	};
-        	const dist = Math.min(60, Math.max(-60, Math.sqrt(m.x**2 + m.y**2) / 6));
+        	const dist = Math.min(70, Math.max(-70, Math.sqrt(m.x**2 + m.y**2) / 3));
         	const dir = Math.atan2(m.x, m.y);
         	m.rx = dist * -Math.cos(dir);
         	m.ry = dist * Math.sin(dir);
