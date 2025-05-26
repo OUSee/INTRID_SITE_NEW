@@ -51,8 +51,7 @@ body {
   background-position: top;
   background-repeat: repeat;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-x: clip;
 }
 @media (max-width: 601px) {
   body {
@@ -7735,6 +7734,183 @@ form .button:hover {
   .integration-page.integration {
     padding-bottom: 0 !important;
   }
+}
+
+.integration-popular {
+  position: relative;
+}
+.integration-popular > .popular-description {
+  margin: 32px auto;
+}
+.integration-popular .popular-description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+}
+@media (max-width: 600px) {
+  .integration-popular .popular-description {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+.integration-popular .popular-description > *:first-child {
+  flex: 1 0 auto;
+  max-width: 67%;
+}
+@media (max-width: 1000px) {
+  .integration-popular .popular-description > *:first-child {
+    flex: 1;
+    max-width: unset;
+  }
+}
+.integration-popular .popular-description > *:last-child {
+  margin: 0 0 0 auto;
+}
+@media (max-width: 600px) {
+  .integration-popular .popular-description > *:last-child {
+    margin: 0 auto;
+  }
+}
+.integration-popular .integrations {
+  margin: 32px auto 0;
+}
+
+.integrations--content {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  padding: 0;
+}
+.integrations--content hr {
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .integrations--content {
+    flex-direction: column;
+  }
+}
+.integrations--left {
+  padding: 30px;
+  flex: 1 1 70%;
+  border-radius: 35px;
+  background-color: var(--bg-main);
+}
+.integrations--left ul,
+.integrations--left li {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.integrations--right {
+  position: sticky;
+  top: 80px;
+  padding: 30px 52px;
+  flex: 1 1 30%;
+  border-radius: 35px;
+  background-color: var(--blue-tag);
+  display: flex;
+  flex-direction: column;
+}
+.integrations--right img {
+  width: 200px;
+  margin: auto;
+}
+@media (max-width: 900px) {
+  .integrations--right img {
+    display: none;
+  }
+}
+.integrations--right p {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.integrations--right p:last-child {
+  margin-bottom: 0px;
+}
+.integrations--right form {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.integrations--right form input,
+.integrations--right form textarea {
+  width: 100%;
+  background-color: transparent;
+  padding: 14px 30px;
+  border-radius: 25px;
+  border: 1px solid var(--color-white);
+}
+.integrations--right form input:focus,
+.integrations--right form textarea:focus {
+  border: 1px dashed var(--color-white);
+  outline: none;
+}
+.integrations--right form input::-moz-placeholder, .integrations--right form textarea::-moz-placeholder {
+  color: var(--color-white);
+}
+.integrations--right form input::placeholder,
+.integrations--right form textarea::placeholder {
+  color: var(--color-white);
+}
+.integrations--right form .button {
+  width: 100%;
+  justify-content: center;
+}
+.integrations--right form .button:hover {
+  background-color: var(--color-white);
+}
+.integrations--right .testimonials {
+  color: var(--color-grey);
+}
+.integrations--right .testimonials a {
+  -webkit-text-decoration: underline dashed !important;
+          text-decoration: underline dashed !important;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  color: var(--color-white);
+}
+@media (max-width: 1000px) {
+  .integrations--right {
+    padding: 30px;
+  }
+}
+@media (max-width: 900px) {
+  .integrations--right {
+    padding: 30px 62px;
+  }
+}
+@media (max-width: 600px) {
+  .integrations--right {
+    padding: 30px;
+  }
+}
+
+.integrations-list {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.integrations-list > .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  text-align: center;
+}
+.integrations-list > .item > img, .integrations-list > .item > picture, .integrations-list > .item > image, .integrations-list > .item > source {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .integration-stages > .title_h3 {
