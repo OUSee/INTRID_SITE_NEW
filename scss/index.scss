@@ -9752,6 +9752,200 @@ form {
   }
 }
 
+.tenders-keys {
+  & > .title_h4 {
+    margin: 0 0 20px 0;
+  }
+
+  & > p {
+    margin: 20px 0 0 0;
+  }
+
+  &--list {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 16px;
+    margin: 50px auto 0;
+
+    & > .tender-card {
+      flex: 1 0 50%;
+      max-width: 50%;
+
+      @media (max-width: 1200px) {
+        flex: 1 0 auto;
+        max-width: 100%;
+      }
+
+      &:not(.active) {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+#tenders-slider-pagination {
+  display: none;
+
+  @media (max-width: 1200px) {
+    display: flex;
+  }
+}
+
+.tender-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 39px;
+  background-color: var(--bg-main);
+  overflow: hidden;
+
+  & .header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 24px;
+    width: 100%;
+
+    @media (max-width: 600px) {
+      flex-direction: column-reverse;
+    }
+
+    & > div {
+      &:nth-child(2) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        max-width: 360px;
+        flex: 1;
+
+        @media (max-width: 600px) {
+          margin: 0 auto;
+        }
+
+        & > img {
+          width: 100px;
+          height: auto;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+  }
+
+  & .main-content {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+
+    .card {
+      flex: 1 1 0px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 25px;
+      gap: 13px;
+
+      &-title {
+        font-weight: 600;
+        padding: 18px 40px;
+        border-radius: 30px;
+      }
+
+      &-list {
+        padding: 0px 40px 20px 40px;
+        list-style: disc;
+
+        @media (max-width: 520px) {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .from-card {
+      background-color: var(--blue-bg);
+      color: var(--color-white);
+
+      &-title {
+        background-color: var(--blue-tag);
+      }
+
+      &-list {
+        .highlight {
+          color: var(--blue-tag);
+          font-weight: 600;
+        }
+
+        .link {
+          color: var(--blue-main);
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        li::marker {
+          color: var(--blue-tag);
+        }
+      }
+    }
+
+    .to-card {
+      background-color: var(--highlight-bg);
+      color: var(--color-black);
+
+      &-title {
+        background-color: var(--blue-main);
+      }
+
+      &-list {
+        li {
+          .highlight {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .from-to-arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 15px;
+
+      i {
+        color: var(--blue-main);
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 25px;
+      }
+    }
+
+    @media (max-width: 601px) {
+      flex-direction: column;
+
+      .from-to-arrows {
+        margin: 15px 0;
+        flex-direction: row;
+
+        i {
+          transform: rotate(90deg);
+        }
+      }
+
+      .card {
+      }
+    }
+  }
+}
+
 //  BREAKPOINTS
 
 @media (max-width: 1500px) {
