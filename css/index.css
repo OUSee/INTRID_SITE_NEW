@@ -8213,7 +8213,24 @@ form .button:hover {
   display: flex;
 }
 .crm-page--block {
-  max-width: 960px;
+  max-width: 70%;
+  margin-bottom: 100px;
+}
+@media (max-width: 1200px) {
+  .crm-page--block {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 1000px) {
+  .crm-page--block {
+    max-width: 100%;
+    margin-bottom: 300px;
+  }
+}
+@media (max-width: 420px) {
+  .crm-page--block {
+    margin-bottom: 220px;
+  }
 }
 .crm-page--block > h1 {
   margin: 0 0 32px 0;
@@ -8282,6 +8299,7 @@ form .button:hover {
 }
 @media (max-width: 420px) {
   .crm-page .flying-orb {
+    top: 430px;
     right: 30%;
   }
   .crm-page .flying-orb img {

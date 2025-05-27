@@ -9398,7 +9398,21 @@ form {
   display: flex;
 
   &--block {
-    max-width: 960px;
+    max-width: 70%;
+    margin-bottom: 100px;
+
+    @media (max-width: 1200px) {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 1000px) {
+      max-width: 100%;
+      margin-bottom: 300px;
+    }
+
+    @media (max-width: 420px) {
+      margin-bottom: 220px;
+    }
 
     & > h1 {
       margin: 0 0 32px 0;
@@ -9471,6 +9485,7 @@ form {
     }
 
     @media (max-width: 420px) {
+      top: 430px;
       right: 30%;
 
       img {
