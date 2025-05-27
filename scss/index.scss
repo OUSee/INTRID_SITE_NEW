@@ -5194,7 +5194,7 @@ form {
     width: 100%;
     background-color: transparent;
     color: white;
-    padding: 14px 30px;
+    padding: 14px 22px;
     border-radius: 25px;
     border: 1px solid var(--color-white);
     position: relative;
@@ -5319,7 +5319,7 @@ form {
           textarea {
             width: 100%;
             background-color: transparent;
-            padding: 14px 30px;
+            padding: 14px 22px;
             border-radius: 25px;
             border: 1px solid var(--color-white);
 
@@ -5329,7 +5329,7 @@ form {
             }
 
             &::placeholder {
-              color: var(--color-white);
+              color: var(--color-grey);
             }
           }
 
@@ -6467,10 +6467,10 @@ form {
         height: 100px;
         resize: none;
         background-color: transparent;
-        padding: 14px 30px;
+        padding: 14px 22px;
         border-radius: 25px;
         border: 1px solid var(--color-white);
-        scrollbar-gutter: stable both-edges;
+        scrollbar-gutter: stable;
 
         &:focus {
           border: 1px dashed var(--color-white);
@@ -6484,7 +6484,7 @@ form {
         }
 
         &::placeholder {
-          color: var(--color-white);
+          color: var(--color-grey);
         }
 
         &::-webkit-scrollbar-button {
@@ -7566,6 +7566,73 @@ form {
 //ai page
 
 .ai {
+  &-main {
+    div.flying-orb {
+      max-width: 200px;
+      max-height: 200px;
+      right: 300px !important;
+
+      img {
+        top: -10px !important;
+        left: -110px !important;
+        width: 500px !important;
+      }
+
+      @media (max-width: 1400px) {
+        max-width: 200px;
+        max-height: 200px;
+        right: 150px !important;
+
+        img {
+          top: 20px !important;
+          left: -60px !important;
+          width: 400px !important;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        max-width: 200px;
+        max-height: 200px;
+        right: 80px !important;
+        top: 200px !important;
+
+        img {
+          top: 20px !important;
+          left: -45px !important;
+          width: 300px !important;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        max-width: 200px;
+        max-height: 200px;
+        right: calc(50% - 90px) !important;
+        top: unset !important;
+        bottom: 170px;
+
+        img {
+          top: 10px !important;
+          left: -75px !important;
+          width: 360px !important;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        max-width: 200px;
+        max-height: 200px;
+        right: calc(50% - 90px) !important;
+        top: unset !important;
+        bottom: 150px;
+
+        img {
+          top: 25px !important;
+          left: -45px !important;
+          width: 340px !important;
+        }
+      }
+    }
+  }
+
   &-integration {
     .sites-roadmap-list {
       justify-content: center;
@@ -8393,7 +8460,7 @@ form {
     textarea {
       width: 100%;
       background-color: transparent;
-      padding: 14px 30px;
+      padding: 14px 22px;
       border-radius: 25px;
       border: 1px solid var(--color-white);
       resize: none;
@@ -8647,21 +8714,21 @@ form {
   width: 100%;
   margin-top: 32px;
 
-  & > span {
+  &>span {
     &.title_h4 {
       flex: 1 0 auto;
       width: 100%;
     }
   }
 
-  & > ul {
+  &>ul {
     margin: 20px 0 32px;
 
     @media (max-width: 600px) {
       margin: 20px 0;
     }
 
-    & > li {
+    &>li {
       padding-left: 10px;
       margin-bottom: 10px;
 
@@ -8677,7 +8744,7 @@ form {
     }
   }
 
-  & > div {
+  &>div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -8688,14 +8755,15 @@ form {
     width: 100%;
     margin-top: 20px;
 
-    & > p {
+    &>p {
       @media (max-width: 1200px) {
         width: 100%;
       }
     }
 
-    & > .button-link {
+    &>.button-link {
       margin-left: auto;
+
       @media (max-width: 1200px) {
         margin-left: 0;
       }
@@ -8740,7 +8808,7 @@ form {
     box-shadow: none;
   }
 
-  & > a {
+  &>a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8772,7 +8840,7 @@ form {
       max-width: 100%;
     }
 
-    & > div {
+    &>div {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -8780,7 +8848,7 @@ form {
       gap: 10px;
       min-height: 2em;
 
-      & > b {
+      &>b {
         padding: 10px;
         background-color: #031618;
         border-radius: 10px;
@@ -8793,7 +8861,7 @@ form {
         }
       }
 
-      & > * {
+      &>* {
         &:first-child {
           width: 100px;
           flex: 0 0 100px;
@@ -8817,7 +8885,7 @@ form {
   align-items: stretch;
   gap: 10px;
 
-  & > * {
+  &>* {
     flex: 1 0 33.333333%;
     opacity: 0;
 
@@ -8843,7 +8911,7 @@ form {
   }
 
   & .pagination--buttons-dots {
-    & > .pagination--btn-dot {
+    &>.pagination--btn-dot {
       @media (min-width: 720px) and (max-width: 1199.98px) {
         &:nth-child(3) {
           display: none;
@@ -8851,7 +8919,9 @@ form {
       }
     }
   }
+
   & .pagintaion {
+
     &--prev,
     &--next {
       &-btn {
@@ -9025,7 +9095,7 @@ form {
 .integration-popular {
   position: relative;
 
-  & > .popular-description {
+  &>.popular-description {
     margin: 32px auto;
   }
 
@@ -9040,7 +9110,7 @@ form {
       gap: 20px;
     }
 
-    & > * {
+    &>* {
       &:first-child {
         flex: 1 0 auto;
         max-width: 67%;
@@ -9135,7 +9205,7 @@ form {
       textarea {
         width: 100%;
         background-color: transparent;
-        padding: 14px 30px;
+        padding: 14px 22px;
         border-radius: 25px;
         border: 1px solid var(--color-white);
 
@@ -9145,7 +9215,7 @@ form {
         }
 
         &::placeholder {
-          color: var(--color-white);
+          color: var(--color-grey);
         }
       }
 
@@ -9192,7 +9262,7 @@ form {
   flex-wrap: wrap;
   gap: 16px;
 
-  & > .item {
+  &>.item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9201,10 +9271,10 @@ form {
     flex: 0 1 80px;
     text-align: center;
 
-    & > img,
-    & > picture,
-    & > image,
-    & > source {
+    &>img,
+    &>picture,
+    &>image,
+    &>source {
       width: 40px;
       height: 40px;
       object-fit: contain;
@@ -9215,7 +9285,7 @@ form {
 
 // stages of integrations
 .integration-stages {
-  & > .title_h3 {
+  &>.title_h3 {
     margin: 0 auto 50px;
   }
 
@@ -9242,6 +9312,7 @@ form {
             right: calc(50% + 16px);
             transform: rotate(0deg);
           }
+
           &::after {
             top: 110%;
             right: 50%;
@@ -9259,6 +9330,7 @@ form {
             right: unset;
             left: -30px;
           }
+
           &::after {
             right: unset;
             left: -50px;
@@ -9272,6 +9344,7 @@ form {
             right: unset;
             left: -30px;
           }
+
           &::after {
             top: 50%;
             right: unset;
@@ -9284,6 +9357,7 @@ form {
           order: 3;
         }
       }
+
       &:nth-child(4) {
         order: 3;
 
@@ -9305,7 +9379,7 @@ form {
   & .tech-we-use {
     padding: 0;
 
-    & > .title_h2 {
+    &>.title_h2 {
       margin: 0 auto 50px;
     }
   }
