@@ -9580,6 +9580,255 @@ form {
   }
 }
 
+// tender
+.tender-page {
+  position: relative;
+  display: flex;
+
+  &--block {
+    max-width: 65%;
+
+    @media (max-width: 1200px) {
+      max-width: 58%;
+    }
+
+    @media (max-width: 1000px) {
+      max-width: 100%;
+    }
+
+    & > h1 {
+      margin: 0 0 32px 0;
+    }
+
+    & > p {
+      margin: 32px 0 0 0;
+    }
+
+    & .tender-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 32px 0 0;
+
+      @media (max-width: 1000px) {
+        margin: 400px 0 0;
+      }
+
+      @media (max-width: 600px) {
+        margin: 300px 0 0;
+      }
+
+      @media (max-width: 420px) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  & .flying-orb {
+    position: absolute;
+    top: 160px;
+    right: 0;
+    left: unset;
+    bottom: unset;
+    z-index: 0;
+    display: flex;
+    // width: 280px; // example width
+    // height: 280px; // example height
+    width: 400px;
+    height: 280px;
+    aspect-ratio: 1 / 1;
+
+    @media (max-width: 1440px) {
+      top: 160px;
+      right: 0;
+    }
+
+    @media (max-width: 1200px) {
+      top: 160px;
+      right: 0;
+    }
+
+    @media (max-width: 1000px) {
+      top: 380px;
+      right: 50%;
+      transform: translate(50%, 0);
+    }
+
+    @media (max-width: 900px) {
+      top: 360px;
+      right: 50%;
+    }
+
+    @media (max-width: 720px) {
+      top: 400px;
+      right: 50%;
+    }
+
+    @media (max-width: 600px) {
+      top: 320px;
+      right: 50%;
+      width: 280px;
+      height: 280px;
+    }
+
+    @media (max-width: 420px) {
+      top: 380px;
+      right: 50%;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
+    }
+
+    & > img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
+    }
+
+    & > .water-ripple {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  // .flying-orb {
+  //   left: unset;
+  //   right: 0px;
+  //   top: 150px;
+
+  //   &::before {
+  //     background-color: transparent;
+  //   }
+
+  //   img {
+  //     position: relative;
+  //     width: 325px;
+  //     left: -20px;
+  //     top: 50px;
+  //   }
+
+  //   @media (max-width: 1440px) {
+  //     img {
+  //       width: 300px;
+  //       left: -10px;
+  //     }
+  //   }
+
+  //   @media (max-width: 1200px) {
+  //     right: 40px;
+
+  //     img {
+  //       width: 240px;
+  //       height: unset;
+  //       left: -10px;
+  //       top: 35px;
+  //     }
+  //   }
+
+  //   @media (max-width: 1000px) {
+  //     right: calc(50% - 90px);
+  //     top: 400px;
+
+  //     img {
+  //       width: 380px;
+  //       height: unset;
+  //       left: -90px;
+  //       top: -10px;
+  //     }
+  //   }
+
+  //   @media (max-width: 900px) {
+  //     display: block;
+  //     top: 400px;
+
+  //     img {
+  //       width: 260px;
+  //       height: unset;
+  //       left: -60px;
+  //       top: -30px;
+  //     }
+  //   }
+
+  //   @media (max-width: 600px) {
+  //     right: 30%;
+  //     top: 350px;
+  //   }
+
+  //   @media (max-width: 420px) {
+  //     top: 400px;
+  //     right: 30%;
+
+  //     img {
+  //       left: 50%;
+  //       right: 50%;
+  //       top: 0;
+  //       width: 220px;
+  //       transform: translate(-50%, 0);
+  //     }
+  //   }
+  // }
+}
+
+.tender-advantages {
+  & .tab-content-webDev {
+    margin: 0 auto;
+
+    & > p {
+      &.title_h4 {
+        margin: 0 auto 30px;
+
+        @media (max-width: 900px) {
+          margin: 0 auto 0px;
+        }
+      }
+    }
+
+    & .block-buttons {
+      @media (max-width: 1000px) {
+        margin-top: 32px;
+      }
+    }
+  }
+}
+
+.tender-selection {
+  & .tab-content-webDev {
+    margin: 0 auto;
+
+    & > p {
+      &.title_h4 {
+        margin: 0 auto 30px;
+
+        @media (max-width: 900px) {
+          margin: 0 auto 0px;
+        }
+      }
+    }
+  }
+}
+
 //  BREAKPOINTS
 
 @media (max-width: 1500px) {
