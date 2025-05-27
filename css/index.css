@@ -5758,7 +5758,7 @@ form .button:hover {
   left: 0%;
   position: absolute;
   transform: rotateX(-50deg) rotateY(15deg) translateZ(68px) scale(0.6);
-  background: radial-gradient(ellipse at center, #00EAFF 15%, #00EAFF 16%, #fff 16%, #fff 40%, #00EAFF 41%, #00EAFF 55%, #fff 56%, transparent 71%);
+  background: radial-gradient(ellipse at center, #00eaff 15%, #00eaff 16%, #fff 16%, #fff 40%, #00eaff 41%, #00eaff 55%, #fff 56%, transparent 71%);
   border-radius: 100%;
   transition: none;
 }
@@ -8206,6 +8206,171 @@ form .button:hover {
 }
 .integration-stack .tech-we-use > .title_h2 {
   margin: 0 auto 50px;
+}
+
+.crm-page {
+  position: relative;
+  display: flex;
+}
+.crm-page--block {
+  max-width: 960px;
+}
+.crm-page--block > h1 {
+  margin: 0 0 32px 0;
+}
+.crm-page--block > p {
+  margin: 32px 0 0 0;
+}
+.crm-page .flying-orb {
+  left: unset;
+  right: 0px;
+  top: 150px;
+}
+.crm-page .flying-orb::before {
+  background-color: transparent;
+}
+.crm-page .flying-orb img {
+  position: relative;
+  width: 325px;
+  left: -100px;
+}
+@media (max-width: 1440px) {
+  .crm-page .flying-orb img {
+    width: 300px;
+    left: -70px;
+  }
+}
+@media (max-width: 1200px) {
+  .crm-page .flying-orb {
+    right: 40px;
+  }
+  .crm-page .flying-orb img {
+    width: 200px;
+    height: unset;
+    left: -40px;
+  }
+}
+@media (max-width: 1000px) {
+  .crm-page .flying-orb {
+    right: calc(50% - 90px);
+    top: 400px;
+  }
+  .crm-page .flying-orb img {
+    width: 300px;
+    height: unset;
+    left: -90px;
+    top: -50px;
+  }
+}
+@media (max-width: 900px) {
+  .crm-page .flying-orb {
+    display: block;
+    top: 440px;
+  }
+  .crm-page .flying-orb img {
+    width: 260px;
+    height: unset;
+    left: -60px;
+    top: -30px;
+  }
+}
+@media (max-width: 600px) {
+  .crm-page .flying-orb {
+    right: 30%;
+    top: 400px;
+  }
+}
+@media (max-width: 420px) {
+  .crm-page .flying-orb {
+    right: 30%;
+  }
+  .crm-page .flying-orb img {
+    left: 50%;
+    right: 50%;
+    top: 0;
+    width: 220px;
+    transform: translate(-50%, 0);
+  }
+}
+
+.crm-benefits--list {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px 30px;
+}
+@media (max-width: 600px) {
+  .crm-benefits--list {
+    gap: 12px 8px;
+  }
+}
+.crm-benefits--list > li {
+  flex-basis: calc(50% - 20px);
+  max-width: 50%;
+}
+@media (max-width: 540px) {
+  .crm-benefits--list > li {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+.crm-advantages--list {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px 30px;
+}
+@media (max-width: 600px) {
+  .crm-advantages--list {
+    gap: 12px 8px;
+  }
+}
+.crm-advantages--list > li {
+  flex-basis: calc(33.333333% - 20px);
+  max-width: 33%;
+}
+@media (max-width: 1200px) {
+  .crm-advantages--list > li {
+    flex-basis: calc(50% - 20px);
+    max-width: 50%;
+  }
+}
+@media (max-width: 540px) {
+  .crm-advantages--list > li {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+.crm-advantages--list > li > div {
+  padding: 20px 30px;
+}
+@media (max-width: 600px) {
+  .crm-advantages--list > li > div {
+    padding: 10px 14px;
+  }
+}
+.crm-advantages--list > li > div::after {
+  content: "m";
+  position: absolute;
+  right: -50px;
+  bottom: -50px;
+  left: unset;
+  top: unset;
+  height: 177px;
+  width: 177px;
+  background-color: transparent;
+  font-family: "INTRID_ICONS";
+  font-size: 177px;
+  line-height: 177px;
+  color: var(--blue-clouds);
+}
+@media (max-width: 600px) {
+  .crm-advantages--list > li > div::after {
+    display: none;
+  }
 }
 
 @media (max-width: 1500px) {
