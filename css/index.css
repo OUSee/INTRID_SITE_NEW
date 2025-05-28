@@ -8277,22 +8277,10 @@ form .button:hover {
 }
 .crm-page--block {
   max-width: 70%;
-  margin-bottom: 100px;
-}
-@media (max-width: 1200px) {
-  .crm-page--block {
-    margin-bottom: 0;
-  }
 }
 @media (max-width: 1000px) {
   .crm-page--block {
     max-width: 100%;
-    margin-bottom: 300px;
-  }
-}
-@media (max-width: 420px) {
-  .crm-page--block {
-    margin-bottom: 220px;
   }
 }
 .crm-page--block > h1 {
@@ -8301,77 +8289,114 @@ form .button:hover {
 .crm-page--block > p {
   margin: 32px 0 0 0;
 }
-.crm-page .flying-orb {
-  left: unset;
-  right: 0px;
-  top: 150px;
-}
-.crm-page .flying-orb::before {
-  background-color: transparent;
-}
-.crm-page .flying-orb img {
+.crm-page .crm-actions {
   position: relative;
-  width: 325px;
-  left: -100px;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 32px 0 0;
+}
+@media (max-width: 1000px) {
+  .crm-page .crm-actions {
+    justify-content: center;
+    margin: 400px 0 0;
+  }
+}
+@media (max-width: 600px) {
+  .crm-page .crm-actions {
+    margin: 360px 0 0;
+  }
+}
+.crm-page .flying-orb {
+  position: absolute;
+  top: 160px;
+  right: 0;
+  left: unset;
+  bottom: unset;
+  z-index: 0;
+  display: flex;
+  width: 320px;
+  height: 320px;
+  aspect-ratio: 1/1;
 }
 @media (max-width: 1440px) {
-  .crm-page .flying-orb img {
-    width: 300px;
-    left: -70px;
+  .crm-page .flying-orb {
+    top: 160px;
+    right: 0;
   }
 }
 @media (max-width: 1200px) {
   .crm-page .flying-orb {
-    right: 40px;
-  }
-  .crm-page .flying-orb img {
-    width: 200px;
-    height: unset;
-    left: -40px;
+    top: 160px;
+    right: 0;
   }
 }
 @media (max-width: 1000px) {
   .crm-page .flying-orb {
-    right: calc(50% - 90px);
-    top: 400px;
-  }
-  .crm-page .flying-orb img {
-    width: 300px;
-    height: unset;
-    left: -90px;
-    top: -50px;
+    top: 380px;
+    right: 50%;
+    transform: translate(50%, 0);
   }
 }
 @media (max-width: 900px) {
   .crm-page .flying-orb {
-    display: block;
-    top: 440px;
+    top: 360px;
+    right: 50%;
   }
-  .crm-page .flying-orb img {
-    width: 260px;
-    height: unset;
-    left: -60px;
-    top: -30px;
+}
+@media (max-width: 720px) {
+  .crm-page .flying-orb {
+    top: 400px;
+    right: 50%;
   }
 }
 @media (max-width: 600px) {
   .crm-page .flying-orb {
-    right: 30%;
     top: 400px;
+    right: 50%;
+    width: 280px;
+    height: 280px;
   }
 }
 @media (max-width: 420px) {
   .crm-page .flying-orb {
-    top: 430px;
-    right: 30%;
-  }
-  .crm-page .flying-orb img {
-    left: 50%;
+    top: 440px;
     right: 50%;
-    top: 0;
-    width: 220px;
-    transform: translate(-50%, 0);
   }
+}
+.crm-page .flying-orb::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  aspect-ratio: 1/1;
+  transform: translate(-50%, -50%);
+}
+.crm-page .flying-orb > img {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  aspect-ratio: 1/1;
+  transform: translate(-50%, -50%);
+}
+.crm-page .flying-orb > .water-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  aspect-ratio: 1/1;
+  transform: translate(-50%, -50%);
 }
 
 .crm-benefits--list {
