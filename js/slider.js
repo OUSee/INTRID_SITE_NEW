@@ -1,9 +1,14 @@
 // SLIDER START
-
+document.addEventListener('DOMContentLoaded', () => {
+try{  
 const slides = document.querySelector('.slides');
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const slideItems = document.querySelectorAll('.slide');
+
+if(!slides || !slideItems){
+  return
+}
 
 const firstClone = slideItems[0]?.cloneNode(true);
 const lastClone = slideItems[slideItems.length - 1]?.cloneNode(true);
@@ -67,7 +72,7 @@ startAutoScroll();
 // Reset slider position on window resize (optional)
 window.addEventListener('resize', () => {
   updateSlider()
-});
+});}catch(err){console.log('=> err', err)}})
 
 // SLIDER END
 
@@ -79,7 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const sliders = document.querySelectorAll('.tab-slider');
 
   const tabButtons = document.querySelector('.slider-with-tabs_tabs-buttons');
+
+  if(!tabButtons){
+    return
+  }
+
   const tabButtonsList = tabButtons.querySelectorAll('label.button-link');
+
+  
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 600) {
