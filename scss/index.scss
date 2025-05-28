@@ -10010,6 +10010,136 @@ form {
   }
 }
 
+// seo page
+
+.seo_page {
+  &-ways {
+    background-image: url(../src/images/planets-aside.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &-portfolio {
+    .support-card--list>div>b {
+      width: 120px;
+      flex: 0 0 120px;
+    }
+  }
+}
+
+.caterpillar {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+
+  .left-block,
+  .right-block {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  .left-block {
+    text-align: right;
+    justify-content: space-between;
+  }
+
+  .right-block {
+    justify-content: space-evenly;
+  }
+
+  .number-pillar {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 70px;
+
+    .number-button {
+      flex: 1 1 0px;
+
+      p.counter {
+        font-size: 40px;
+        line-height: 70px;
+        color: var(--blue-main);
+        text-align: center;
+
+        width: 70px;
+        height: 70px;
+        min-height: 70px;
+        min-width: 70px;
+        max-height: 70px;
+        max-width: 70px;
+        border: 2px solid var(--blue-main);
+        border-radius: 50%;
+      }
+    }
+
+    .connector {
+      align-self: center;
+      flex: 1 1 0;
+      width: 2px;
+      height: 100%;
+      background-color: var(--blue-main);
+      min-height: 30px;
+    }
+  }
+
+  .mobile-block {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 600px) {
+    .number-pillar {
+      order: 1;
+
+      .number-button {
+        flex: 1 1 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        max-height: 70px;
+
+        .mobile-block {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+
+      .connector {
+        min-height: 50px;
+        align-self: flex-start;
+        margin-left: 35px;
+      }
+    }
+
+    .left-block,
+    .right-block {
+      display: none;
+    }
+
+
+  }
+
+  @media (max-width: 520px) {
+    .number-pillar .connector {
+      min-height: 90px;
+    }
+  }
+}
+
 //  BREAKPOINTS
 
 @media (max-width: 1500px) {
