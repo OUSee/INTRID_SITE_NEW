@@ -1,27 +1,31 @@
 // in tab webshop content show
 document.addEventListener('DOMContentLoaded', () => {
 
-  const webShopDiagram = document.querySelector('.web-shop-diagram')
-const webShopTarget = webShopDiagram.querySelector('.store-text-target')
-console.log('=> webshop', webShopDiagram, webShopTarget)
-webShopDiagram.querySelectorAll('input').forEach((input)=>
-  input.addEventListener('click', ()=>{
-    console.log('=> input', input)
-    setTabContent(input.id)
-    toggleLineShopAI(input.id)
-  })
-)
+  const webShopDiagramHandler = () => {
+    const webShopDiagram = document.querySelector('.web-shop-diagram')
+    if(!webShopDiagram){
+      return
+    }
+    else{
+      const webShopTarget = webShopDiagram.querySelector('.store-text-target')
+      // console.log('=> webshop', webShopDiagram, webShopTarget)
+      webShopDiagram.querySelectorAll('input').forEach((input)=>
+      input.addEventListener('click', ()=>{
+        // console.log('=> input', input)
+        setTabContent(input.id)
+        toggleLineShopAI(input.id)
+      }))
 
-const toggleLineShopAI = (id) => {
-  console.log('=> enter', )
-  const lines = webShopDiagram.querySelectorAll('.line')
-  console.log('=> lines', lines)
-  lines.forEach(line => {
-    line.classList.remove('active-left');
-    line.classList.remove('active-right');
-  });
-  const lastChar = id.slice(-1);
-  switch (lastChar){
+      const toggleLineShopAI = (id) => {
+        // console.log('=> enter', )
+        const lines = webShopDiagram.querySelectorAll('.line')
+        // console.log('=> lines', lines)
+        lines.forEach(line => {
+          line.classList.remove('active-left');
+          line.classList.remove('active-right');
+        });
+        const lastChar = id.slice(-1);
+        switch (lastChar){
     default:{
       lines[1].classList.add('active-left')
       break
@@ -46,11 +50,11 @@ const toggleLineShopAI = (id) => {
       lines[1].classList.add('active-right')
       break
     }
-  }
-}
+        }
+      }
 
 
-const setTabContent = (tabId) => {
+      const setTabContent = (tabId) => {
   const content = [
     {id: 'ai-benefit-1', content: 'ИИ анализирует поведение пользователей и предлагает релевантные товары в нужный момент'},
     {id: 'ai-benefit-2', content: 'Персонализированные рекомендации, умный поиск и автоматизированная поддержка выделят вас среди конкурентов'},
@@ -62,22 +66,30 @@ const setTabContent = (tabId) => {
 
   const newText = content.find((item)=> item.id === tabId).content
   webShopTarget.innerHTML = newText
-}
+      }
 
-setTabContent('ai-benefit-1')
-toggleLineShopAI('1')
+      setTabContent('ai-benefit-1')
+      toggleLineShopAI('1')
+          }
+  }
 
-const tenderDiagram = document.querySelector('.tender-diagram')
-const tenderTarget = tenderDiagram.querySelector('.tender-text-target')
-tenderDiagram.querySelectorAll('input').forEach((input)=>
-  input.addEventListener('click', ()=>{
-    setTenderTabContent(input.id)
-  })
-)
+  webShopDiagramHandler()
 
-const setTenderTabContent = (tabId) => {
+  const tenderDiagramHandler = ( ) => {
+    const tenderDiagram = document.querySelector('.tender-diagram')
+    if(!tenderDiagram){
+      return
+    }
+    else{
+      const tenderTarget = tenderDiagram.querySelector('.tender-text-target')
+      tenderDiagram.querySelectorAll('input').forEach((input)=>
+        input.addEventListener('click', ()=>{
+          setTenderTabContent(input.id)
+        })
+      )
+      const setTenderTabContent = (tabId) => {
   
-  const content = [
+        const content = [
     {
       id: 'tender-radio-1', 
       content: [
@@ -143,17 +155,20 @@ const setTenderTabContent = (tabId) => {
         'Невозможность использования “откатов” и прочих теневых схем'
       ]},
       
-  ]
+        ]
 
-  const newContent = content.find((item) => 
-    item.id === tabId
-  ).content
-  
-  tenderTarget.innerHTML = newContent.map((item) => {
-    return(`<li>${item}</li>`)
-  }).join('')
-}
+        const newContent = content.find((item) => 
+          item.id === tabId
+        ).content
+      
+        tenderTarget.innerHTML = newContent.map((item) => {
+          return(`<li>${item}</li>`)
+        }).join('')
+      }
+      
+      setTenderTabContent('tender-radio-1')
+    }
+  }
 
-setTenderTabContent('tender-radio-1')
-
+  tenderDiagramHandler()
 })
