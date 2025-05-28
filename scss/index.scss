@@ -8795,21 +8795,21 @@ form {
   width: 100%;
   margin-top: 32px;
 
-  &>span {
+  & > span {
     &.title_h4 {
       flex: 1 0 auto;
       width: 100%;
     }
   }
 
-  &>ul {
+  & > ul {
     margin: 20px 0 32px;
 
     @media (max-width: 600px) {
       margin: 20px 0;
     }
 
-    &>li {
+    & > li {
       padding-left: 10px;
       margin-bottom: 10px;
 
@@ -8825,7 +8825,7 @@ form {
     }
   }
 
-  &>div {
+  & > div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -8836,13 +8836,13 @@ form {
     width: 100%;
     margin-top: 20px;
 
-    &>p {
+    & > p {
       @media (max-width: 1200px) {
         width: 100%;
       }
     }
 
-    &>.button-link {
+    & > .button-link {
       margin-left: auto;
 
       @media (max-width: 1200px) {
@@ -8889,7 +8889,7 @@ form {
     box-shadow: none;
   }
 
-  &>a {
+  & > a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8921,7 +8921,7 @@ form {
       max-width: 100%;
     }
 
-    &>div {
+    & > div {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -8929,7 +8929,7 @@ form {
       gap: 10px;
       min-height: 2em;
 
-      &>b {
+      & > b {
         padding: 10px;
         background-color: #031618;
         border-radius: 10px;
@@ -8942,7 +8942,7 @@ form {
         }
       }
 
-      &>* {
+      & > * {
         &:first-child {
           width: 100px;
           flex: 0 0 100px;
@@ -8966,7 +8966,7 @@ form {
   align-items: stretch;
   gap: 10px;
 
-  &>* {
+  & > * {
     flex: 1 0 33.333333%;
     opacity: 0;
 
@@ -8992,7 +8992,7 @@ form {
   }
 
   & .pagination--buttons-dots {
-    &>.pagination--btn-dot {
+    & > .pagination--btn-dot {
       @media (min-width: 720px) and (max-width: 1199.98px) {
         &:nth-child(3) {
           display: none;
@@ -9002,7 +9002,6 @@ form {
   }
 
   & .pagintaion {
-
     &--prev,
     &--next {
       &-btn {
@@ -9176,7 +9175,7 @@ form {
 .integration-popular {
   position: relative;
 
-  &>.popular-description {
+  & > .popular-description {
     margin: 32px auto;
   }
 
@@ -9191,7 +9190,7 @@ form {
       gap: 20px;
     }
 
-    &>* {
+    & > * {
       &:first-child {
         flex: 1 0 auto;
         max-width: 67%;
@@ -9343,7 +9342,7 @@ form {
   flex-wrap: wrap;
   gap: 16px;
 
-  &>.item {
+  & > .item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9352,10 +9351,10 @@ form {
     flex: 0 1 80px;
     text-align: center;
 
-    &>img,
-    &>picture,
-    &>image,
-    &>source {
+    & > img,
+    & > picture,
+    & > image,
+    & > source {
       width: 40px;
       height: 40px;
       object-fit: contain;
@@ -9366,7 +9365,7 @@ form {
 
 // stages of integrations
 .integration-stages {
-  &>.title_h3 {
+  & > .title_h3 {
     margin: 0 auto 50px;
   }
 
@@ -9460,7 +9459,7 @@ form {
   & .tech-we-use {
     padding: 0;
 
-    &>.title_h2 {
+    & > .title_h2 {
       margin: 0 auto 50px;
     }
   }
@@ -9473,19 +9472,9 @@ form {
 
   &--block {
     max-width: 70%;
-    margin-bottom: 100px;
-
-    @media (max-width: 1200px) {
-      margin-bottom: 0;
-    }
 
     @media (max-width: 1000px) {
       max-width: 100%;
-      margin-bottom: 300px;
-    }
-
-    @media (max-width: 420px) {
-      margin-bottom: 220px;
     }
 
     & > h1 {
@@ -9497,80 +9486,185 @@ form {
     }
   }
 
-  .flying-orb {
-    left: unset;
-    right: 0px;
-    top: 150px;
-
-    &::before {
-      background-color: transparent;
-    }
-
-    img {
-      position: relative;
-      width: 325px;
-      left: -100px;
-    }
-
-    @media (max-width: 1440px) {
-      img {
-        width: 300px;
-        left: -70px;
-      }
-    }
-
-    @media (max-width: 1200px) {
-      right: 40px;
-
-      img {
-        width: 200px;
-        height: unset;
-        left: -40px;
-      }
-    }
+  & .crm-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 32px 0 0;
 
     @media (max-width: 1000px) {
-      right: calc(50% - 90px);
-      top: 400px;
-
-      img {
-        width: 300px;
-        height: unset;
-        left: -90px;
-        top: -50px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      display: block;
-      top: 440px;
-
-      img {
-        width: 260px;
-        height: unset;
-        left: -60px;
-        top: -30px;
-      }
+      justify-content: center;
+      margin: 400px 0 0;
     }
 
     @media (max-width: 600px) {
-      right: 30%;
+      margin: 360px 0 0;
+    }
+  }
+
+  & .flying-orb {
+    position: absolute;
+    top: 160px;
+    right: 0;
+    left: unset;
+    bottom: unset;
+    z-index: 0;
+    display: flex;
+    // width: 280px; // example width
+    // height: 280px; // example height
+    width: 320px;
+    height: 320px;
+    aspect-ratio: 1 / 1;
+
+    @media (max-width: 1440px) {
+      top: 160px;
+      right: 0;
+    }
+
+    @media (max-width: 1200px) {
+      top: 160px;
+      right: 0;
+    }
+
+    @media (max-width: 1000px) {
+      top: 380px;
+      right: 50%;
+      transform: translate(50%, 0);
+    }
+
+    @media (max-width: 900px) {
+      top: 360px;
+      right: 50%;
+    }
+
+    @media (max-width: 720px) {
       top: 400px;
+      right: 50%;
+    }
+
+    @media (max-width: 600px) {
+      top: 400px;
+      right: 50%;
+      width: 280px;
+      height: 280px;
     }
 
     @media (max-width: 420px) {
-      top: 430px;
-      right: 30%;
+      top: 440px;
+      right: 50%;
+    }
 
-      img {
-        left: 50%;
-        right: 50%;
-        top: 0;
-        width: 220px;
-        transform: translate(-50%, 0);
-      }
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
+    }
+
+    & > img {
+      position: absolute;
+      top: 50%;
+      left: 40%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
+    }
+
+    & > .water-ripple {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
     }
   }
+
+  // .flying-orb {
+  //   left: unset;
+  //   right: 0px;
+  //   top: 150px;
+
+  //   &::before {
+  //     background-color: transparent;
+  //   }
+
+  //   img {
+  //     position: relative;
+  //     width: 325px;
+  //     left: -100px;
+  //   }
+
+  //   @media (max-width: 1440px) {
+  //     img {
+  //       width: 300px;
+  //       left: -70px;
+  //     }
+  //   }
+
+  //   @media (max-width: 1200px) {
+  //     right: 40px;
+
+  //     img {
+  //       width: 200px;
+  //       height: unset;
+  //       left: -40px;
+  //     }
+  //   }
+
+  //   @media (max-width: 1000px) {
+  //     right: calc(50% - 90px);
+  //     top: 400px;
+
+  //     img {
+  //       width: 300px;
+  //       height: unset;
+  //       left: -90px;
+  //       top: -50px;
+  //     }
+  //   }
+
+  //   @media (max-width: 900px) {
+  //     display: block;
+  //     top: 440px;
+
+  //     img {
+  //       width: 260px;
+  //       height: unset;
+  //       left: -60px;
+  //       top: -30px;
+  //     }
+  //   }
+
+  //   @media (max-width: 600px) {
+  //     right: 30%;
+  //     top: 400px;
+  //   }
+
+  //   @media (max-width: 420px) {
+  //     top: 430px;
+  //     right: 30%;
+
+  //     img {
+  //       left: 50%;
+  //       right: 50%;
+  //       top: 0;
+  //       width: 220px;
+  //       transform: translate(-50%, 0);
+  //     }
+  //   }
+  // }
 }
 
 .crm-benefits {
