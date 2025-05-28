@@ -4,6 +4,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const table = document.querySelector('.tender-table')
+    if(!table){
+        return
+    }
     const buttons = table.querySelectorAll('th');
     buttons.forEach((button, index) => {
         if(index > 0){
