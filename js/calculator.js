@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const footer = document.querySelector('.footer');
     const reset_button = document.getElementById('reset-options-btn');
     const header = document.getElementById('header')
+    const accordions = document.querySelectorAll('.accordion-checkbox')
+    console.log('=> accordions', accordions)
     
     let resetOriginalOffsetTop = reset_button.offsetTop;
     let resetHeight = reset_button.offsetTop;
@@ -70,6 +72,21 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', () => {
       updateMeasurements();
       onScroll();
+    });
+
+    accordions.forEach(acc => {
+        acc.addEventListener('change', () => {
+            updateMeasurements();
+            onScroll();
+            setTimeout(()=>{
+                updateMeasurements();
+                onScroll();
+            }, 100)
+            setTimeout(()=>{
+                updateMeasurements();
+                onScroll();
+            }, 150)
+        })
     });
   
     // Initial setup
