@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabSliderWithPagination = (id) => {
         
         let slider = document.querySelector(`#${id}`);
-        console.log('=> slider found', slider)
+        // console.log('=> slider found', slider)
         const pagination = document.querySelector(`#${id} + .pagination`);
-        console.log('=> slider exec', id, `${!!slider ? 'found: ' + slider.id : 'not-found'}`, `${!!pagination ? 'pagination found: ' + pagination : 'no pagination'}`)
-        console.log('=> pagination found', pagination)
+        // console.log('=> slider exec', id, `${!!slider ? 'found: ' + slider.id : 'not-found'}`, `${!!pagination ? 'pagination found: ' + pagination : 'no pagination'}`)
+        // console.log('=> pagination found', pagination)
         let prevBtn
         let nextBtn
         let navButtons
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn = pagination?.querySelectorAll('.pagination--next-btn')
             navButtons = pagination.querySelectorAll('.pagination--btn-dot')
 
-            console.log('=> buttons and pagination found', prevBtn, nextBtn, navButtons)
+            // console.log('=> buttons and pagination found', prevBtn, nextBtn, navButtons)
         }
 
         const tabs = slider.querySelectorAll('.tab-content')
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             for(let i = currentIndex; i < currentIndex + visibleSlidesCount && i < slides.length; i++) {
               slides[i].classList.add('active');
             }
-            console.log('=> going to', `translateX(-${moveAmmount}px)`)
+            // console.log('=> going to', `translateX(-${moveAmmount}px)`)
             slider.style.transform = `translateX(-${moveAmmount}px)`;
           }
           catch(err){
