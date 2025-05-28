@@ -9022,151 +9022,124 @@ form {
   position: relative;
   display: flex;
 
-  h1 {
-    max-width: 766px;
-  }
+  &--block {
+    max-width: 70%;
 
-  &.integration {
-    .left-block {
-      @media (max-width: 1000px) {
-        margin-bottom: 300px;
-      }
-
-      @media (max-width: 600px) {
-        margin-bottom: 280px;
-      }
-
-      @media (max-width: 420px) {
-        margin-bottom: 240px;
-      }
-
-      p.integration-description {
-        max-width: 770px;
-        margin-top: 16px;
-
-        &:first-of-type {
-          margin-top: 32px;
-        }
-
-        @media (max-width: 1200px) {
-          max-width: 630px;
-        }
-      }
-
-      div.fd-row {
-        @media (max-width: 900px) {
-          flex-direction: column;
-        }
-      }
-
-      .integration-benefit {
-        display: flex;
-        width: fit-content;
-        padding: 14px 24px;
-        background-color: var(--blue-bg);
-        border-radius: 50px;
-        align-items: center;
-        max-width: 330px;
-        max-height: 58px;
-
-        &-highlight {
-          display: block;
-          color: var(--blue-main);
-          text-wrap: nowrap;
-          flex-basis: 30%;
-          flex-grow: 1;
-          max-height: 54px;
-
-          @media (max-width: 520px) {
-            flex-basis: 30%;
-            font-size: 24px;
-          }
-        }
-
-        &-description {
-          display: block;
-          flex-basis: 70%;
-          flex-grow: 1;
-        }
-      }
+    @media (max-width: 1000px) {
+      max-width: 100%;
     }
 
-    .flying-orb {
-      left: unset;
-      right: 0px;
-      top: 150px;
+    & > h1 {
+      margin: 0 0 32px 0;
+    }
 
-      &::before {
-        background-color: transparent;
-      }
+    & > p {
+      margin: 16px 0 0 0;
+    }
+  }
 
-      img {
-        position: relative;
-        width: 325px;
-        left: -100px;
-      }
+  & .integration-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 32px 0 0;
 
-      @media (max-width: 1440px) {
-        img {
-          width: 300px;
-          left: -70px;
-        }
-      }
-
-      @media (max-width: 1200px) {
-        right: 40px;
-
-        img {
-          width: 200px;
-          height: unset;
-          left: -40px;
-        }
-      }
-
-      @media (max-width: 1000px) {
-        right: calc(50% - 90px);
-        top: 400px;
-
-        img {
-          width: 300px;
-          height: unset;
-          left: -90px;
-          top: -50px;
-        }
-      }
-
-      @media (max-width: 900px) {
-        display: block;
-        top: 440px;
-
-        img {
-          width: 260px;
-          height: unset;
-          left: -60px;
-          top: -30px;
-        }
-      }
-
-      @media (max-width: 600px) {
-        right: 30%;
-        top: 400px;
-      }
-
-      @media (max-width: 420px) {
-        right: 30%;
-
-        img {
-          left: 50%;
-          right: 50%;
-          top: 0;
-          width: 220px;
-          transform: translate(-50%, 0);
-        }
-      }
+    @media (max-width: 1000px) {
+      justify-content: center;
+      margin: 400px 0 0;
     }
 
     @media (max-width: 600px) {
-      padding-bottom: 0 !important;
+      margin: 360px 0 0;
+    }
+  }
+
+  & .flying-orb {
+    position: absolute;
+    top: 160px;
+    right: 0;
+    left: unset;
+    bottom: unset;
+    z-index: 0;
+    display: flex;
+    // width: 280px; // example width
+    // height: 280px; // example height
+    width: 320px;
+    height: 320px;
+    aspect-ratio: 1 / 1;
+
+    @media (max-width: 1440px) {
+      top: 160px;
+      right: 0;
+    }
+
+    @media (max-width: 1200px) {
+      top: 160px;
+      right: 0;
+    }
+
+    @media (max-width: 1000px) {
+      top: 380px;
+      right: 50%;
+      transform: translate(50%, 0);
+    }
+
+    @media (max-width: 900px) {
+      top: 430px;
+      right: 50%;
+    }
+
+    @media (max-width: 720px) {
+      top: 440px;
+      right: 50%;
+    }
+
+    @media (max-width: 600px) {
+      top: 400px;
+      right: 50%;
+      width: 280px;
+      height: 280px;
+    }
+
+    @media (max-width: 420px) {
+      top: 440px;
+      right: 50%;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
+    }
+
+    & > img {
+      position: absolute;
+      top: 50%;
+      left: 40%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
+    }
+
+    & > .water-ripple {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
     }
   }
 }
