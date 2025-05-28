@@ -8426,17 +8426,13 @@ form .button:hover {
 }
 @media (max-width: 1000px) {
   .tender-page--block .tender-actions {
+    justify-content: center;
     margin: 400px 0 0;
   }
 }
 @media (max-width: 600px) {
   .tender-page--block .tender-actions {
     margin: 300px 0 0;
-  }
-}
-@media (max-width: 420px) {
-  .tender-page--block .tender-actions {
-    flex-direction: column;
   }
 }
 .tender-page .flying-orb {
@@ -8598,7 +8594,7 @@ form .button:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 20px;
   width: 100%;
   padding: 20px;
   border-radius: 39px;
@@ -8618,12 +8614,15 @@ form .button:hover {
     flex-direction: column-reverse;
   }
 }
+.tender-card .header > div:nth-child(1) [class*=title_h] {
+  margin-bottom: 20px;
+}
 .tender-card .header > div:nth-child(2) {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 16px;
-  max-width: 360px;
+  max-width: 200px;
   flex: 1;
 }
 @media (max-width: 600px) {
@@ -8720,6 +8719,9 @@ form .button:hover {
   .tender-card .main-content .from-to-arrows i {
     transform: rotate(90deg);
   }
+}
+.tender-card > a {
+  align-self: flex-end;
 }
 
 @media (max-width: 1500px) {
