@@ -834,6 +834,10 @@ label.radioButton:has(input:checked)::after {
   margin-bottom: 50px;
 }
 
+.mb-auto {
+  margin-bottom: auto;
+}
+
 .mt-32 {
   margin-top: 32px;
 }
@@ -924,6 +928,10 @@ label.radioButton:has(input:checked)::after {
 
 .text-center {
   text-align: center;
+}
+
+.text-end {
+  text-align: end;
 }
 
 .cursor-pointer {
@@ -6593,6 +6601,7 @@ form {
         justify-content: center;
         position: relative;
         cursor: pointer;
+        align-items: baseline;
 
         &:hover {
           text-shadow: var(--blue-main) 0px 0px 10px;
@@ -6609,6 +6618,8 @@ form {
           font-size: 0.9em;
           width: 20px;
           height: 20px;
+          min-width: 20px;
+          min-height: 20px;
           color: transparent;
           border: 1px solid var(--color-white);
           border-radius: 5px;
@@ -6616,6 +6627,13 @@ form {
           padding-left: 2px;
           margin-right: 10px;
           transition: all 0.2s ease-in;
+        }
+
+        input[type="checkbox"] {
+          position: absolute;
+          opacity: 0%;
+          width: 20px;
+          cursor: pointer;
         }
 
         &:has(input:checked) {
@@ -6628,17 +6646,12 @@ form {
             border: 1px solid var(--color-white);
             border-radius: 5px;
             padding-bottom: 4px;
-            padding-left: 2px;
+            padding-left: 4px;
           }
         }
       }
 
-      #personal-data {
-        position: absolute;
-        opacity: 0%;
-        width: 20px;
-        cursor: pointer;
-      }
+      #personal-data {}
 
       button {
         margin-top: 10px;
@@ -8886,10 +8899,10 @@ form {
     padding: 20px;
     text-align: center;
 
-    & > ul {
+    &>ul {
       margin: 0 0 20px;
 
-      & > li {
+      &>li {
         padding-left: 10px;
         margin-bottom: 10px;
         text-align: left;
@@ -8906,7 +8919,7 @@ form {
       }
     }
 
-    & > p {
+    &>p {
       margin-bottom: 16px;
 
       &:last-child {
@@ -8924,7 +8937,7 @@ form {
     width: 100%;
     margin-top: auto;
 
-    & > a {
+    &>a {
       justify-content: center;
       width: 100%;
     }
@@ -8942,7 +8955,7 @@ form {
     gap: 20px;
   }
 
-  & > a {
+  &>a {
     align-self: center;
     margin-top: auto;
   }
@@ -8971,7 +8984,7 @@ form {
     flex: 1;
     width: 100%;
 
-    & > p {
+    &>p {
       margin-bottom: 16px;
 
       &:last-child {
@@ -8989,7 +9002,7 @@ form {
     width: 100%;
     margin-top: auto;
 
-    & > a {
+    &>a {
       justify-content: center;
       width: 100%;
     }
@@ -10454,6 +10467,143 @@ form {
       min-height: 90px;
     }
   }
+}
+
+// smm
+
+.smm {
+  &-services {
+    .tech-list {
+      gap: 50px 20px;
+
+      li {
+        max-width: 50%;
+        flex-basis: calc(50% - 16px);
+
+        img {
+          align-self: start;
+        }
+
+        @media (max-width: 600px) {
+          max-width: 100%;
+          flex: 1 1 100%;
+        }
+      }
+    }
+  }
+
+  &-benefits {
+    &>ul>li>div>img {
+      width: 52px;
+      height: 52px;
+    }
+  }
+
+  &-tariffs {
+    .crm-advantages--list {
+      align-items: stretch;
+
+      &>li {
+        &>div::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &-form {
+    form {
+      .form-limitter .block {
+        display: flex;
+        gap: 10px;
+        flex: 1 1 100%;
+
+        .left-half {
+          flex: 1 1 50%;
+          min-width: 30%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-left: 10px;
+
+          gap: 10px;
+
+          label {
+            margin-top: 0;
+            justify-content: start;
+          }
+        }
+
+        textarea {
+          flex: 1 1 80%;
+
+          @media (max-width: 1200px) {
+            flex: 1 1 50%;
+          }
+        }
+
+        @media (max-width: 1000px) {
+          flex-wrap: wrap;
+
+          textarea {
+            flex: 1 1 100%;
+            order: 1;
+          }
+
+          .left-half {
+            order: 2;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.tariff-card {
+  padding: 0 !important;
+  background-color: var(--blue-bg);
+  border-radius: 30px 30px 25px 25px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  ::after {
+    display: none !important;
+  }
+
+  .header {
+    padding: 20px 30px;
+    background-color: var(--blue-clouds);
+    border-radius: 30px;
+  }
+
+  &-content {
+    padding: 30px 20px 30px 10px;
+    height: 100%;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ul {
+      padding-left: 15px;
+
+      li {
+        padding-left: 10px;
+        margin-bottom: 10px;
+
+        &::marker {
+          content: '\2022';
+
+          color: var(--blue-main)
+        }
+      }
+    }
+  }
+
+
 }
 
 //  BREAKPOINTS
