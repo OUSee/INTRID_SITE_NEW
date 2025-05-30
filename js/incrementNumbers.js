@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const animateCounters = (duration = 4000) => {
         counters.forEach((counter) => {
+          // Убираем пробелы и преобразуем в число
           const targetValue = parseInt(
-            counter.getAttribute('data-counter-value'),
+            counter.getAttribute('data-counter-value').replace(/\s+/g, ''),
             10
           );
           const blankValue = counter.getAttribute('data-counter-value').length;
@@ -23,15 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const progress = Math.min(elapsedTime / duration, 1);
 
             currentValue = Math.floor(progress * targetValue);
+            // Форматируем текущее значение с пробелами
             counter.textContent = currentValue
               .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ' ') // Добавляем пробелы
               .padStart(blankValue, '0'); // Добавляем нули слева
 
             if (progress < 1) {
               requestAnimationFrame(updateCounter);
             } else {
+              // Форматируем конечное значение с пробелами
               counter.textContent = targetValue
                 .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ' ') // Добавляем пробелы
                 .padStart(blankValue, '0'); // Устанавливаем конечное значение с нулями
             }
           };
