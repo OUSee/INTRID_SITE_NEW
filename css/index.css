@@ -9084,14 +9084,37 @@ form .button:hover {
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
 }
 
-.promotion-ways .crm-advantages--list .sites-roadmap-list-item:after {
-  right: unset;
-  left: -50px;
+.promotion-main .crm-page--block .flying-orb > img {
+  left: 50%;
+}
+@media (max-width: 600px) {
+  .promotion-ways > ul > li > div p.color-grey {
+    padding-left: 0;
+    margin-top: 10px;
+  }
 }
 .promotion-cases.tenders-keys p.title_h3 {
   margin: 0 auto;
 }
 
+@media (max-width: 1000px) {
+  .seo_page-main .crm-page--block .flying-orb {
+    top: unset;
+    bottom: 120px;
+  }
+}
+@media (max-width: 900px) {
+  .seo_page-main .crm-page--block .flying-orb {
+    top: unset;
+    bottom: 175px;
+  }
+}
+@media (max-width: 380px) {
+  .seo_page-main .crm-page--block .flying-orb {
+    top: unset;
+    bottom: 225px;
+  }
+}
 .seo_page-ways {
   background-image: url(../src/images/planets-aside.webp);
   background-size: cover;
@@ -9199,6 +9222,16 @@ form .button:hover {
   }
 }
 
+.seo_audit-main .crm-page--block .flying-orb > img {
+  left: 50%;
+}
+@media (max-width: 1000px) {
+  .seo_audit-main .crm-page--block .flying-orb {
+    top: unset;
+    bottom: 120px;
+  }
+}
+
 .smm-services .tech-list {
   gap: 50px 20px;
 }
@@ -9299,6 +9332,51 @@ form .button:hover {
 .tariff-card-content ul li::marker {
   content: "•";
   color: var(--blue-main);
+}
+
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card {
+  background-color: var(--bg-main);
+}
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card-header {
+  display: grid;
+  height: 60px;
+}
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card-header .title_h5 {
+  grid-area: 1/1/2/2;
+}
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card-header > a {
+  grid-area: 2/1/3/2;
+}
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card-header > img {
+  grid-area: 1/2/3/3;
+  width: auto;
+  height: 60px;
+  margin-left: auto;
+  max-width: 120px;
+}
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list {
+  max-width: unset;
+  flex: 1;
+}
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list > div {
+  width: 100%;
+}
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list > div i,
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list > div img {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  font-size: 32px;
+  color: var(--blue-main);
+}
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list > div > b {
+  margin-left: auto;
+  width: 130px;
+  flex: 0 0 130px;
+}
+.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card > .button-link {
+  align-self: end;
+  justify-self: end;
 }
 
 @media (max-width: 1500px) {
