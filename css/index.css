@@ -7959,17 +7959,20 @@ form .button:hover {
   gap: 10px;
 }
 .support-slider > * {
-  flex: 1 0 33.333333%;
+  flex-basis: 1 0 calc(33.333333% - 5px);
+  max-width: 33.333333%;
   opacity: 0;
 }
 @media (max-width: 1200px) {
   .support-slider > * {
-    flex: 1 0 50%;
+    flex-basis: 1 0 calc(50% - 5px);
+    max-width: 50%;
   }
 }
 @media (max-width: 720px) {
   .support-slider > * {
-    flex: 1 0 100%;
+    flex-basis: 1 0 100%;
+    max-width: 100%;
   }
 }
 .support-slider > *.active {
@@ -8948,30 +8951,66 @@ form .button:hover {
     align-items: center;
   }
 }
-.portfolio-keys > #site-slider, .portfolio-keys > #brand-slider, .portfolio-keys > #promotion-slider, .portfolio-keys > #group-slider {
+.portfolio-keys .slider-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+.portfolio-keys #site-slider, .portfolio-keys #brand-slider, .portfolio-keys #promotion-slider, .portfolio-keys #group-slider {
   display: flex;
   align-items: stretch;
   gap: 10px;
 }
-.portfolio-keys > #site-slider > *, .portfolio-keys > #brand-slider > *, .portfolio-keys > #promotion-slider > *, .portfolio-keys > #group-slider > * {
-  flex: 1 0 33.333333%;
+.portfolio-keys #site-slider > *, .portfolio-keys #brand-slider > *, .portfolio-keys #promotion-slider > *, .portfolio-keys #group-slider > * {
+  flex-basis: 1 0 calc(33.333333% - 5px);
+  max-width: 33.333333%;
   opacity: 0;
 }
 @media (max-width: 1200px) {
-  .portfolio-keys > #site-slider > *, .portfolio-keys > #brand-slider > *, .portfolio-keys > #promotion-slider > *, .portfolio-keys > #group-slider > * {
-    flex: 1 0 50%;
+  .portfolio-keys #site-slider > *, .portfolio-keys #brand-slider > *, .portfolio-keys #promotion-slider > *, .portfolio-keys #group-slider > * {
+    flex-basis: 1 0 calc(50% - 5px);
+    max-width: 50%;
   }
 }
 @media (max-width: 720px) {
-  .portfolio-keys > #site-slider > *, .portfolio-keys > #brand-slider > *, .portfolio-keys > #promotion-slider > *, .portfolio-keys > #group-slider > * {
-    flex: 1 0 100%;
+  .portfolio-keys #site-slider > *, .portfolio-keys #brand-slider > *, .portfolio-keys #promotion-slider > *, .portfolio-keys #group-slider > * {
+    flex-basis: 1 0 100%;
+    max-width: 100%;
   }
 }
-.portfolio-keys > #site-slider > *.active, .portfolio-keys > #brand-slider > *.active, .portfolio-keys > #promotion-slider > *.active, .portfolio-keys > #group-slider > *.active {
+.portfolio-keys #site-slider > *.active, .portfolio-keys #brand-slider > *.active, .portfolio-keys #promotion-slider > *.active, .portfolio-keys #group-slider > *.active {
   opacity: 1;
 }
+.portfolio-keys .pagination {
+  margin: 0;
+}
+.portfolio-keys .pagination .pagination--next-btn, .portfolio-keys .pagination .pagination--prev-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+.portfolio-keys .pagination .pagination--next-btn {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+.portfolio-keys .pagination .pagination--prev-btn {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+.portfolio-keys .pagination--buttons-dots {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
 .portfolio-keys > .button-link {
-  margin: 32px 0 0 auto;
+  margin: 0 0 0 auto;
 }
 .portfolio-count {
   position: relative;
@@ -9008,6 +9047,10 @@ form .button:hover {
 .portfolio-count img {
   height: 70px;
   width: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
 }
 .portfolio-count img.olive-right {
   transform: scaleX(-1);

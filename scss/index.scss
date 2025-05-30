@@ -9100,15 +9100,18 @@ form {
   gap: 10px;
 
   & > * {
-    flex: 1 0 33.333333%;
+    flex-basis: 1 0 calc(33.333333% - 5px);
+    max-width: 33.333333%;
     opacity: 0;
 
     @media (max-width: 1200px) {
-      flex: 1 0 50%;
+      flex-basis: 1 0 calc(50% - 5px);
+      max-width: 50%;
     }
 
     @media (max-width: 720px) {
-      flex: 1 0 100%;
+      flex-basis: 1 0 100%;
+      max-width: 100%;
     }
 
     &.active {
@@ -10174,24 +10177,35 @@ form {
       }
     }
 
-    & > #site-slider,
-    & > #brand-slider,
-    & > #promotion-slider,
-    & > #group-slider {
+    & .slider-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
+    }
+
+    & #site-slider,
+    & #brand-slider,
+    & #promotion-slider,
+    & #group-slider {
       display: flex;
       align-items: stretch;
       gap: 10px;
 
       & > * {
-        flex: 1 0 33.333333%;
+        flex-basis: 1 0 calc(33.333333% - 5px);
+        max-width: 33.333333%;
         opacity: 0;
 
         @media (max-width: 1200px) {
-          flex: 1 0 50%;
+          flex-basis: 1 0 calc(50% - 5px);
+          max-width: 50%;
         }
 
         @media (max-width: 720px) {
-          flex: 1 0 100%;
+          flex-basis: 1 0 100%;
+          max-width: 100%;
         }
 
         &.active {
@@ -10200,8 +10214,41 @@ form {
       }
     }
 
+    & .pagination {
+      margin: 0;
+
+      & .pagination {
+        &--next-btn,
+        &--prev-btn {
+          position: absolute;
+          top: 50%;
+          z-index: 1;
+        }
+
+        &--next-btn {
+          right: 0;
+          transform: translate(50%, -50%);
+        }
+
+        &--prev-btn {
+          left: 0;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      &--buttons-dots {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+        user-select: none;
+        pointer-events: none;
+      }
+    }
+
     & > .button-link {
-      margin: 32px 0 0 auto;
+      margin: 0 0 0 auto;
+      // margin: 32px 0 0 auto;
     }
   }
 
@@ -10241,6 +10288,8 @@ form {
     & img {
       height: 70px;
       width: auto;
+      user-select: none;
+      pointer-events: none;
 
       &.olive-right {
         transform: scaleX(-1);
