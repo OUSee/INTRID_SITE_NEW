@@ -9309,49 +9309,72 @@ form .button:hover {
   color: var(--blue-main);
 }
 
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card {
+.seo-portfolio-card {
   background-color: var(--bg-main);
 }
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card-header {
+.seo-portfolio-card-header {
   display: grid;
   height: 60px;
 }
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card-header .title_h5 {
+.seo-portfolio-card-header .title_h5 {
   grid-area: 1/1/2/2;
 }
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card-header > a {
+.seo-portfolio-card-header > a {
   grid-area: 2/1/3/2;
 }
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card-header > img {
+.seo-portfolio-card-header > img {
   grid-area: 1/2/3/3;
   width: auto;
   height: 60px;
   margin-left: auto;
   max-width: 120px;
 }
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list {
+.seo-portfolio-card .support-card--list {
   max-width: unset;
   flex: 1;
 }
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list > div {
+.seo-portfolio-card .support-card--list > div {
   width: 100%;
 }
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list > div i,
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list > div img {
+.seo-portfolio-card .support-card--list > div i,
+.seo-portfolio-card .support-card--list > div img {
   width: 32px;
   height: 32px;
   flex: 0 0 32px;
   font-size: 32px;
   color: var(--blue-main);
 }
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card .support-card--list > div > b {
+.seo-portfolio-card .support-card--list > div > b {
   margin-left: auto;
   width: 130px;
   flex: 0 0 130px;
 }
-.seo_page-portfolio .sites-portfolio-slider .seo-portfolio-card > .button-link {
+.seo-portfolio-card > .button-link {
   align-self: end;
   justify-self: end;
+}
+
+.design-portfolio-description {
+  display: flex;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+  row-gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+@media (max-width: 1000px) {
+  .design-portfolio-description {
+    flex-direction: column;
+  }
+  .design-portfolio-description .button-link {
+    margin-left: auto;
+  }
+}
+.design-portfolio-slider_title {
+  margin-bottom: 32px;
+}
+.design-portfolio .sites-portfolio-slider {
+  margin-top: unset;
 }
 
 @media (max-width: 1500px) {

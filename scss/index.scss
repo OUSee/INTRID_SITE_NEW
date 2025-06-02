@@ -10539,64 +10539,92 @@ form {
   }
 }
 
-.seo_page {
-  &-portfolio {
-    .sites-portfolio-slider .seo-portfolio-card {
-      background-color: var(--bg-main);
+.seo-portfolio-card {
+  background-color: var(--bg-main);
 
-      &-header {
-        display: grid;
-        //outline: 1px solid white;
-        height: 60px;
+  &-header {
+    display: grid;
+    //outline: 1px solid white;
+    height: 60px;
 
-        .title_h5 {
-          grid-area: 1 / 1 / 2 / 2;
-        }
+    .title_h5 {
+      grid-area: 1 / 1 / 2 / 2;
+    }
 
-        &>a {
-          grid-area: 2 / 1 / 3 / 2;
-        }
+    &>a {
+      grid-area: 2 / 1 / 3 / 2;
+    }
 
-        &>img {
-          grid-area: 1 / 2 / 3 / 3;
-          width: auto;
-          height: 60px;
-          //outline: 1px solid lightgreen;
-          margin-left: auto;
-          max-width: 120px;
-        }
+    &>img {
+      grid-area: 1 / 2 / 3 / 3;
+      width: auto;
+      height: 60px;
+      //outline: 1px solid lightgreen;
+      margin-left: auto;
+      max-width: 120px;
+    }
+  }
+
+  .support-card--list {
+    max-width: unset;
+    flex: 1;
+
+    &>div {
+      width: 100%;
+
+      i,
+      img {
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+        font-size: 32px;
+        color: var(--blue-main);
       }
 
-      .support-card--list {
-        max-width: unset;
-        flex: 1;
-
-        &>div {
-          width: 100%;
-
-          i,
-          img {
-            width: 32px;
-            height: 32px;
-            flex: 0 0 32px;
-            font-size: 32px;
-            color: var(--blue-main);
-          }
-
-          &>b {
-            margin-left: auto;
-            width: 130px;
-            flex: 0 0 130px;
-          }
-        }
-      }
-
-      &>.button-link {
-        align-self: end;
-        justify-self: end;
+      &>b {
+        margin-left: auto;
+        width: 130px;
+        flex: 0 0 130px;
       }
     }
   }
+
+  &>.button-link {
+    align-self: end;
+    justify-self: end;
+  }
+}
+
+// design-page
+
+.design {
+  &-portfolio {
+    &-description {
+      display: flex;
+      column-gap: 50px;
+      row-gap: 10px;
+      justify-content: space-between;
+      margin-bottom: 50px;
+
+      @media (max-width: 1000px) {
+        flex-direction: column;
+
+        .button-link {
+          margin-left: auto;
+        }
+      }
+    }
+
+    &-slider_title {
+      margin-bottom: 32px;
+    }
+
+    .sites-portfolio-slider {
+      margin-top: unset;
+    }
+  }
+
+
 }
 
 //  BREAKPOINTS
