@@ -3,17 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabSliderWithPagination = (id) => {
         
         let slider = document.querySelector(`#${id}`);
-        // console.log('=> slider found', slider)
         const pagination = document.querySelector(`#${id} + .pagination`);
         const navLeft = document.querySelector(`#navleft_for--${id}`)
         const navRight = document.querySelector(`#navright_for--${id}`)
 
-        // console.log('=> slider exec', id, `${!!slider ? 'found: ' + slider.id : 'not-found'}`, `${!!pagination ? 'pagination found: ' + pagination : 'no pagination'}`)
-        // console.log('=> pagination found', pagination)
         let prevBtn
         let nextBtn
         let navButtons
-        let newNavButtons
 
         let slides = slider.children;
         let gap = parseInt(window.getComputedStyle(slider).gap)
@@ -33,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const dotsContainer = pagination.querySelector('.pagination--buttons-dots')
 
-            console.log('=> navbtns', navButtons)
 
             navButtons.forEach((button)=>dotsContainer.removeChild(button))
 
@@ -43,12 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
               const btnDot = document.createElement('button')
               btnDot.classList.add('pagination--btn-dot');
               dotsContainer.appendChild(btnDot)
-              console.log('=> added', )
             }
 
             navButtons = pagination.querySelectorAll('.pagination--btn-dot')
             navButtons[currentIndex].classList.add('highlight')
-            // console.log('=> buttons and pagination found', prevBtn, nextBtn, navButtons)
         }
         
         if(id === `cases-tabs-slider`){
@@ -63,20 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateSlider = () => {
           const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
           
-          // Remove .active class from all slides
           try{
-            // slides.forEach(slide => slide.classList.remove('active'));
+           
 
             [].forEach.call(slides, function(slide) {
               slide.classList.remove('active')
             });
             
 
-            // Add .active class to visible slides based on currentIndex and visibleSlidesCount
             for(let i = currentIndex; i < currentIndex + visibleSlidesCount && i < slides.length; i++) {
               slides[i].classList.add('active');
             }
-            // console.log('=> going to', `translateX(-${moveAmmount}px)`)
             slider.style.transform = `translateX(-${moveAmmount}px)`;
           }
           catch(err){
@@ -90,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           navButtons[currentIndex].classList.remove('highlight')
           currentIndex = currentIndex === navButtons.length - 1  ? navButtons.length - 1 : currentIndex + 1 ;
-          // console.log('=> curIndex', currentIndex )
           navButtons[currentIndex].classList.add('highlight')
           updateSlider();
         }
@@ -128,20 +117,17 @@ document.addEventListener('DOMContentLoaded', () => {
           const xDiff = xDown - xUp;
           const yDiff = yDown - yUp;
         
-          if (Math.abs(xDiff) > Math.abs(yDiff)) { // горизонтальный свайп
+          if (Math.abs(xDiff) > Math.abs(yDiff)) { 
             evt.preventDefault();
             if (xDiff > 0) {
-              // свайп влево — следующий слайд
               nextSlide();
             } else {
-              // свайп вправо — предыдущий слайд
               prevSlide();
             }
           }
           else{
             return
           }
-          // сброс координат
           xDown = null;
           yDown = null;
         }
