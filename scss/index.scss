@@ -5538,14 +5538,6 @@ form {
 
         &+.pagination {
           display: flex;
-
-          .pagination--btn-dot {
-
-            &:nth-child(3),
-            &:nth-child(4) {
-              display: none;
-            }
-          }
         }
       }
 
@@ -5553,21 +5545,9 @@ form {
         .recent-work-card {
           min-width: calc((100vw - 80px) / 2 - 10px);
         }
-
-        &+.pagination {
-          .pagination--btn-dot:nth-child(3) {
-            display: flex;
-          }
-        }
       }
 
-      @media (max-width: 600px) {
-        &+.pagination {
-          .pagination--btn-dot:nth-child(4) {
-            display: flex;
-          }
-        }
-      }
+
 
       .recent-work-card {
         flex-direction: column;
@@ -6027,12 +6007,6 @@ form {
 
     .pagination {
       margin-bottom: 30px;
-
-      @media (min-width: 600px) {
-        .pagination--btn-dot:last-child {
-          display: none;
-        }
-      }
     }
 
     .button-link.big {
@@ -6869,14 +6843,6 @@ form {
       @media (max-width: 600px) {
         bottom: 135px;
         width: 360px;
-      }
-    }
-  }
-
-  &-help {
-    .pagination--btn-dot:nth-child(7) {
-      @media (min-width: 600px) {
-        display: none;
       }
     }
   }
@@ -7772,12 +7738,6 @@ form {
 
         @media (max-width: 1400px) {
           display: flex;
-        }
-
-        &--btn-dot:last-child {
-          @media (min-width: 1200px) {
-            display: none;
-          }
         }
       }
     }
@@ -9065,15 +9025,6 @@ form {
     display: flex;
   }
 
-  & .pagination--buttons-dots {
-    &>.pagination--btn-dot {
-      @media (min-width: 720px) and (max-width: 1199.98px) {
-        &:nth-child(3) {
-          display: none;
-        }
-      }
-    }
-  }
 
   & .pagintaion {
 

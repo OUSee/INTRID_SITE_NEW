@@ -5,36 +5,56 @@ document.addEventListener('DOMContentLoaded', () => {
         let slider = document.querySelector(`#${id}`);
         // console.log('=> slider found', slider)
         const pagination = document.querySelector(`#${id} + .pagination`);
+        const navLeft = document.querySelector(`#navleft_for--${id}`)
+        const navRight = document.querySelector(`#navright_for--${id}`)
+
         // console.log('=> slider exec', id, `${!!slider ? 'found: ' + slider.id : 'not-found'}`, `${!!pagination ? 'pagination found: ' + pagination : 'no pagination'}`)
         // console.log('=> pagination found', pagination)
         let prevBtn
         let nextBtn
         let navButtons
+        let newNavButtons
 
+        let slides = slider.children;
+        let gap = parseInt(window.getComputedStyle(slider).gap)
+        const visibleWidth = slider.parentElement.clientWidth;
+        const visibleSlidesCount = Math.round(visibleWidth / (slides[0].offsetWidth));
+        let currentIndex = 0;
+
+        if(!!navLeft && !!navRight){
+          prevBtn.push(navLeft)
+          nextBtn.push(navRight)
+        }
+        
         if(!!pagination){
             prevBtn = pagination?.querySelectorAll('.pagination--prev-btn')
             nextBtn = pagination?.querySelectorAll('.pagination--next-btn')
             navButtons = pagination.querySelectorAll('.pagination--btn-dot')
 
+            const dotsContainer = pagination.querySelector('.pagination--buttons-dots')
+
+            console.log('=> navbtns', navButtons)
+
+            navButtons.forEach((button)=>dotsContainer.removeChild(button))
+
+            const btncount = slides.length - (visibleSlidesCount - 1)
+
+            for (let index = 0; index < btncount; index++) {
+              const btnDot = document.createElement('button')
+              btnDot.classList.add('pagination--btn-dot');
+              dotsContainer.appendChild(btnDot)
+              console.log('=> added', )
+            }
+
+            navButtons = pagination.querySelectorAll('.pagination--btn-dot')
+            navButtons[currentIndex].classList.add('highlight')
             // console.log('=> buttons and pagination found', prevBtn, nextBtn, navButtons)
         }
-
-        const tabs = slider.querySelectorAll('.tab-content')
-        const tabsHeaders = slider.querySelectorAll('.case-tab-button')
-        let slides = slider.children;
-        let gap = parseInt(window.getComputedStyle(slider).gap)
-        const visibleWidth = slider.parentElement.clientWidth;
-        const visibleSlidesCount = Math.round(visibleWidth / (slides[0].offsetWidth));
-        
-       
-
         
         if(id === `cases-tabs-slider`){
           slides = slider.querySelectorAll('.tab-content')
           gap =  parseInt(window.getComputedStyle(slider.querySelector('.cases-content')).gap)
         }
-
-        let currentIndex = 0;
 
         for(let i = currentIndex; i < currentIndex + visibleSlidesCount && i < slides.length; i++) {
           slides[i].classList.add('active');
@@ -109,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const yDiff = yDown - yUp;
         
           if (Math.abs(xDiff) > Math.abs(yDiff)) { // горизонтальный свайп
+            evt.preventDefault();
             if (xDiff > 0) {
               // свайп влево — следующий слайд
               nextSlide();
@@ -116,6 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
               // свайп вправо — предыдущий слайд
               prevSlide();
             }
+          }
+          else{
+            return
           }
           // сброс координат
           xDown = null;
