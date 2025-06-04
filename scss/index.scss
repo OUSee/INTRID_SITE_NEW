@@ -10385,6 +10385,23 @@ form {
   }
 }
 
+// reputation
+
+.reputation {
+  &-main {
+    .flying-orb {
+      &>img {
+        left: 50%;
+      }
+
+      @media (max-width: 900px) {
+        top: unset;
+        bottom: 120px;
+      }
+    }
+  }
+}
+
 // seo-audit
 
 .seo_audit {
@@ -10445,7 +10462,9 @@ form {
       align-items: stretch;
 
       &>li {
-
+        &>a {
+          height: 100%
+        }
 
         &>div::after {
           display: none;
@@ -10661,6 +10680,7 @@ form {
     &-block {
       display: flex;
       gap: 50px;
+      justify-content: space-around;
 
       .webDev-benefits li .webDev-benefits-highlight {
         flex-basis: 5%;
@@ -10782,6 +10802,85 @@ form {
           }
         }
       }
+    }
+
+    @media (max-width: 900px) {
+
+      .tabs-buttons {
+        flex-direction: column-reverse;
+        gap: 10px;
+        margin: 0;
+        margin-bottom: 50px;
+        position: relative;
+        display: none;
+      }
+
+      .tab-button {
+        display: flex;
+        flex-basis: unset;
+        height: fit-content;
+        border-radius: 39px;
+        align-items: center;
+        padding: 14px 20px;
+
+        &::after {
+          display: none;
+        }
+
+        &:has(input:checked) {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+
+          span.tab-header::after {
+            transform: rotate(90deg);
+          }
+        }
+
+        span.tab-header {
+          width: calc(100% - 24px);
+
+          &::after {
+            position: absolute;
+            color: var(--blue-main);
+            right: 12px;
+            font-family: 'INTRID_ICONS';
+            content: '\63';
+            font-size: 1.5em;
+            transform: rotate(270deg);
+          }
+        }
+      }
+
+      .tabs-content {
+        background: transparent;
+
+        &:has(input:checked) {
+          background-color: var(--bg-main);
+        }
+      }
+
+      .tab-content {
+        display: block;
+        padding: 6px 0;
+        transform: translateY(-54px);
+        background-color: transparent;
+
+        label~* {
+          display: none;
+          transform-origin: top;
+          transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        label:has(input:checked)~* {
+          display: flex;
+        }
+
+        h2 {
+          margin-top: 50px;
+          justify-self: center;
+        }
+      }
+
     }
   }
 

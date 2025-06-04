@@ -9197,6 +9197,16 @@ form .button:hover {
   }
 }
 
+.reputation-main .flying-orb > img {
+  left: 50%;
+}
+@media (max-width: 900px) {
+  .reputation-main .flying-orb {
+    top: unset;
+    bottom: 120px;
+  }
+}
+
 .seo_audit-main .crm-page--block .flying-orb > img {
   left: 50%;
 }
@@ -9234,6 +9244,9 @@ form .button:hover {
 }
 .smm-tariffs .crm-advantages--list {
   align-items: stretch;
+}
+.smm-tariffs .crm-advantages--list > li > a {
+  height: 100%;
 }
 .smm-tariffs .crm-advantages--list > li > div::after {
   display: none;
@@ -9399,6 +9412,7 @@ form .button:hover {
 .design_site-importance-block {
   display: flex;
   gap: 50px;
+  justify-content: space-around;
 }
 .design_site-importance-block .webDev-benefits li .webDev-benefits-highlight {
   flex-basis: 5%;
@@ -9503,6 +9517,71 @@ form .button:hover {
 .ui_design-tabs .sites-roadmap-list li ul li::marker {
   content: "•";
   color: var(--blue-main);
+}
+@media (max-width: 900px) {
+  .ui_design-tabs .tabs-buttons {
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin: 0;
+    margin-bottom: 50px;
+    position: relative;
+    display: none;
+  }
+  .ui_design-tabs .tab-button {
+    display: flex;
+    flex-basis: unset;
+    height: -moz-fit-content;
+    height: fit-content;
+    border-radius: 39px;
+    align-items: center;
+    padding: 14px 20px;
+  }
+  .ui_design-tabs .tab-button::after {
+    display: none;
+  }
+  .ui_design-tabs .tab-button:has(input:checked) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .ui_design-tabs .tab-button:has(input:checked) span.tab-header::after {
+    transform: rotate(90deg);
+  }
+  .ui_design-tabs .tab-button span.tab-header {
+    width: calc(100% - 24px);
+  }
+  .ui_design-tabs .tab-button span.tab-header::after {
+    position: absolute;
+    color: var(--blue-main);
+    right: 12px;
+    font-family: "INTRID_ICONS";
+    content: "c";
+    font-size: 1.5em;
+    transform: rotate(270deg);
+  }
+  .ui_design-tabs .tabs-content {
+    background: transparent;
+  }
+  .ui_design-tabs .tabs-content:has(input:checked) {
+    background-color: var(--bg-main);
+  }
+  .ui_design-tabs .tab-content {
+    display: block;
+    padding: 6px 0;
+    transform: translateY(-54px);
+    background-color: transparent;
+  }
+  .ui_design-tabs .tab-content label ~ * {
+    display: none;
+    transform-origin: top;
+    transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .ui_design-tabs .tab-content label:has(input:checked) ~ * {
+    display: flex;
+  }
+  .ui_design-tabs .tab-content h2 {
+    margin-top: 50px;
+    justify-self: center;
+  }
 }
 .ui_design-whyUs .why-cooperate-list {
   justify-content: space-evenly;
