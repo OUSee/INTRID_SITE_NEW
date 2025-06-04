@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function sliderInitialise(){
 
     const tabSliderWithPagination = (id) => {
         
@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pagination = document.querySelector(`#${id} + .pagination`);
         const navLeft = document.querySelector(`#navleft_for--${id}`)
         const navRight = document.querySelector(`#navright_for--${id}`)
+        console.log('=> slider initiated', slider.id)
 
         let prevBtn
         let nextBtn
@@ -28,20 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
             navButtons = pagination.querySelectorAll('.pagination--btn-dot')
 
             const dotsContainer = pagination.querySelector('.pagination--buttons-dots')
-
-
-            navButtons.forEach((button)=>dotsContainer.removeChild(button))
-
             const btncount = slides.length - (visibleSlidesCount - 1)
 
-            for (let index = 0; index < btncount; index++) {
-              const btnDot = document.createElement('button')
-              btnDot.classList.add('pagination--btn-dot');
-              dotsContainer.appendChild(btnDot)
-            }
+            if(navButtons.length !== btncount && visibleSlidesCount > 0){
+              console.log('=> navbts', navButtons, 'btncount', btncount)
+              navButtons.forEach((button)=>dotsContainer.removeChild(button))
 
-            navButtons = pagination.querySelectorAll('.pagination--btn-dot')
-            navButtons[currentIndex].classList.add('highlight')
+              for (let index = 0; index < btncount; index++) {
+                const btnDot = document.createElement('button')
+                btnDot.classList.add('pagination--btn-dot');
+                dotsContainer.appendChild(btnDot)
+              }
+
+              navButtons = pagination.querySelectorAll('.pagination--btn-dot')
+              navButtons[currentIndex].classList.add('highlight')
+            }
+            else{
+              console.log('slider is hidden unable to count slides')
+            }
         }
         
         if(id === `cases-tabs-slider`){
@@ -62,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             [].forEach.call(slides, function(slide) {
               slide.classList.remove('active')
             });
-            
 
             for(let i = currentIndex; i < currentIndex + visibleSlidesCount && i < slides.length; i++) {
               slides[i].classList.add('active');
@@ -140,14 +144,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
         window.addEventListener('resize', updateSlider)
     }
-    
 
       window.addEventListener('resize', ()=>{
         sliders.forEach((slider) => {
           try{
             tabSliderWithPagination(slider.id);
           }catch(err){
-            console.log('=> err seting slider: ', err);
+            console.log('=> err seting slider ', slider.id, ':', err);
           }})
       })
 
@@ -157,7 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
           try{
             tabSliderWithPagination(slider.id);
           }catch(err){
-            console.log('=> err seting slider: ', err);
+            console.log('=> err seting slider ', slider.id, ':', err);
           }})
       }
-})
+}
+
+document.addEventListener('DOMContentLoaded', sliderInitialise())
