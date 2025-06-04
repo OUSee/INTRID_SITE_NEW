@@ -9223,7 +9223,12 @@ form .button:hover {
     flex: 1 1 100%;
   }
 }
-.smm-benefits > ul > li > div > img {
+@media (min-width: 1000px) {
+  .smm-benefits > ul > li > div {
+    justify-content: center;
+  }
+}
+.smm-benefits > ul > li > div img {
   width: 52px;
   height: 52px;
 }
@@ -9239,13 +9244,20 @@ form .button:hover {
   flex: 1 1 100%;
 }
 .smm-form form .form-limitter .block .left-half {
-  flex: 1 1 50%;
+  flex: 1 1 30%;
   min-width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 10px;
+  padding: 14px 22px;
+  border: 1px solid var(--color-white);
+  border-radius: 25px;
   gap: 10px;
+}
+@media (max-width: 1200px) {
+  .smm-form form .form-limitter .block .left-half {
+    flex: 1 1 50%;
+  }
 }
 .smm-form form .form-limitter .block .left-half label {
   margin-top: 0;
@@ -9253,6 +9265,7 @@ form .button:hover {
 }
 .smm-form form .form-limitter .block textarea {
   flex: 1 1 80%;
+  height: 100%;
 }
 @media (max-width: 1200px) {
   .smm-form form .form-limitter .block textarea {
@@ -9266,6 +9279,7 @@ form .button:hover {
   .smm-form form .form-limitter .block textarea {
     flex: 1 1 100%;
     order: 1;
+    height: 100px;
   }
   .smm-form form .form-limitter .block .left-half {
     order: 2;
@@ -9288,6 +9302,7 @@ form .button:hover {
   padding: 20px 30px;
   background-color: var(--blue-clouds);
   border-radius: 30px;
+  color: var(--color-white);
 }
 .tariff-card-content {
   padding: 30px 20px 30px 10px;
@@ -9303,6 +9318,7 @@ form .button:hover {
 .tariff-card-content ul li {
   padding-left: 10px;
   margin-bottom: 10px;
+  color: var(--color-white);
 }
 .tariff-card-content ul li::marker {
   content: "•";
