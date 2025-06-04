@@ -145,24 +145,24 @@ function sliderInitialise(){
         window.addEventListener('resize', updateSlider)
     }
 
-      window.addEventListener('resize', ()=>{
+    window.addEventListener('resize', ()=>{
         sliders.forEach((slider) => {
           try{
             tabSliderWithPagination(slider.id);
           }catch(err){
             console.log('=> err seting slider ', slider.id, ':', err);
           }})
-      })
+    })
 
-      const sliders = document.querySelectorAll('[data-slider]');
-      if(sliders){
+    const sliders = document.querySelectorAll('[data-slider]');
+    if(sliders){
         sliders.forEach((slider) => {
           try{
             tabSliderWithPagination(slider.id);
           }catch(err){
             console.log('=> err seting slider ', slider.id, ':', err);
           }})
-      }
+    }
 }
 
 document.addEventListener('DOMContentLoaded', sliderInitialise())
