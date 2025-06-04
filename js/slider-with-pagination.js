@@ -6,7 +6,6 @@ function sliderInitialise(){
         const pagination = document.querySelector(`#${id} + .pagination`);
         const navLeft = document.querySelector(`#navleft_for--${id}`)
         const navRight = document.querySelector(`#navright_for--${id}`)
-        console.log('=> slider initiated', slider.id)
 
         let prevBtn
         let nextBtn
@@ -32,7 +31,6 @@ function sliderInitialise(){
             const btncount = slides.length - (visibleSlidesCount - 1)
 
             if(navButtons.length !== btncount && visibleSlidesCount > 0){
-              console.log('=> navbts', navButtons, 'btncount', btncount)
               navButtons.forEach((button)=>dotsContainer.removeChild(button))
 
               for (let index = 0; index < btncount; index++) {
@@ -45,7 +43,7 @@ function sliderInitialise(){
               navButtons[currentIndex].classList.add('highlight')
             }
             else{
-              console.log('slider is hidden unable to count slides')
+              return
             }
         }
         
