@@ -601,6 +601,35 @@
             </tbody>
         </table>
     </section>
+    <!--  -->
+    <section class="all-img-mockups-preview container" id="prewiew-target" data-dir_path="[]">
+        <input type="file" id="dirInput" webkitdirectory multiple>
+        <ul id="fileList"></ul>
+        <script>
+            document.getElementById('dirInput').addEventListener('change', function (event) {
+                const files = event.target.files;
+                const results = document.getElementById('fileList');
+                results.innerHTML = '';
+                Array.from(files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const img = new Image();
+                        img.onload = function () {
+                            const li = document.createElement('li');
+                            li.textContent = `${file.name}: ${img.width}px x ${img.height}px`;
+                            if (img.width > 1000 || img.height > 1000) {
+                                li.style = 'color: red;'
+                            }
+                            results.appendChild(li);
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                });
+            });
+        </script>
+    </section>
+
     <script src="../js/script.js"></script>
 </body>
 

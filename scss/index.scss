@@ -12156,3 +12156,24 @@ form {
     color: var(--color-white);
   }
 }
+
+// files preview
+
+.all-img-mockups-preview {
+  &>ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    &>li {
+      width: 25%;
+
+      img {
+        aspect-ratio: 1/ 1;
+        max-width: 25%;
+        height: auto;
+      }
+    }
+  }
+}
