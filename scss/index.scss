@@ -5008,7 +5008,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
           left: 0;
           width: 26px;
           height: 26px;
-          background-image: url('../src/images/herb.svg');
+          background-image: url('../src/images/herb.webp');
           background-size: contain;
           background-position: center;
           background-repeat: no-repeat;
@@ -5179,10 +5179,87 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       }
     }
   }
+
+  &-gallery {
+    .popup-body {
+      max-width: 100%;
+      background-color: transparent;
+
+      .gallery-card {
+        width: calc(100vw - 60px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          margin: 0 auto;
+          max-width: 100%;
+          max-height: auto;
+          width: auto;
+          height: auto;
+        }
+      }
+    }
+  }
 }
 
 .portfolio-slider {
   display: flex;
+}
+
+.slider-nav-button {
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  line-height: 25px;
+  border-radius: 50%;
+  padding: 4px 0 0 12px;
+  color: var(--blue-main);
+  border-color: var(--blue-main);
+
+  i {
+    max-width: 25px;
+    max-height: 25px;
+
+    &.left {
+      transform: rotate(180deg) translateY(0.1em);
+    }
+
+    &::before {
+      max-width: 25px;
+      max-height: 25px;
+    }
+  }
+
+  &.close-button {
+    position: absolute;
+    top: -25px;
+    right: 10px;
+    padding: 13px 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 15px;
+
+    i {
+      max-width: 15px;
+      max-height: 15px;
+
+      &::before {
+        max-width: 15px;
+        max-height: 15px;
+      }
+    }
+
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+
+    &.close-button {
+      display: block;
+    }
+  }
 }
 
 #privacy-policy {
@@ -10886,6 +10963,119 @@ form {
 
   &-whyUs .why-cooperate-list {
     justify-content: space-evenly;
+  }
+}
+
+// logo page
+
+.logotip {
+  &-portfolio {
+    background: transparent;
+    mix-blend-mode: lighten;
+
+    .sites-portfolio-slider {
+
+      .recent-work-card {
+        flex: 1 0 24%;
+        min-width: calc(100% / 4 - 40px);
+        opacity: 10%;
+        background-color: var(--blue-clouds);
+
+        a {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+
+        img {
+          border-radius: 25px;
+          max-width: 250px;
+          max-height: 200px;
+          width: 100%;
+          height: auto;
+          max-height: unset;
+          max-width: unset;
+          margin: 0 auto;
+        }
+
+        .work-testimonial {
+          text-align: center;
+          margin-bottom: 0;
+          margin-top: auto;
+        }
+
+        &.active {
+          opacity: 100%;
+        }
+      }
+
+      &+.pagination {
+        display: flex;
+      }
+
+      @media (min-width: 1400px) {
+        .recent-work-card {
+          flex: 1 0 19%;
+          min-width: calc(100% / 5 - 50px);
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .recent-work-card {
+          border-radius: 25px;
+          padding: 12px 15px;
+
+          img {
+            border-radius: 15px;
+          }
+        }
+      }
+
+      @media (max-width: 900px) {
+        .recent-work-card {
+          border-radius: 25px;
+          padding: 12px 15px;
+          flex: 1 0 33.333%;
+          min-width: calc(100% / 3 - 30px);
+
+          img {
+            border-radius: 15px;
+          }
+        }
+      }
+
+      @media (max-width: 600px) {
+        .recent-work-card {
+          flex: 1 0 50%;
+          min-width: calc(100% / 2 - 20px);
+
+          .work-testimonial {
+            margin-top: 10px;
+          }
+
+          img {
+            border-radius: 15px;
+          }
+        }
+      }
+
+      @media (max-width: 520px) {
+        .recent-work-card {
+          flex: 1 0 100%;
+          min-width: calc(100% / 1 - 10px);
+
+          .work-testimonial {
+            margin-top: 10px;
+          }
+
+          img {
+            border-radius: 15px;
+          }
+        }
+      }
+    }
   }
 }
 

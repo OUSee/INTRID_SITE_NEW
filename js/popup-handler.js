@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         openPopup(popupId);
       });
     });
+    
 
     // Специально, для видео из кружочка
     const toggleVideoPLay = (videoElement, init) => {
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
         // console.log('open ', id);
         const popup = document.getElementById(id);
+        const onLoad = popup.dataset.onload;
+        
         let videoPopup = popup.querySelector('video');
         // console.log(popup);
       
@@ -39,9 +42,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
         // Приостанавливаем прокрутку страницы, когда окно открыто
         document.documentElement.classList.add('popup-opened');
         videoPopup ? toggleVideoPLay(videoPopup, true) : false;
+
+        if(onLoad){
+          window[onLoad]()
+        }
       
         popup.addEventListener('click', (e) => {
-         
           if (e.target.classList.contains('close-button') || e.target.id == id) {
             e.stopPropagation();
             e.preventDefault();

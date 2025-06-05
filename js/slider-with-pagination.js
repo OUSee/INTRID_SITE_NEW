@@ -1,15 +1,15 @@
 function sliderInitialise(){
 
     const tabSliderWithPagination = (id) => {
-        
-        let slider = document.querySelector(`#${id}`);
+        let slider = document.getElementById(`${id}`);
         const pagination = document.querySelector(`#${id} + .pagination`);
-        const navLeft = document.querySelector(`#navleft_for--${id}`)
-        const navRight = document.querySelector(`#navright_for--${id}`)
+        const navLeft = document.getElementById(`navleft_for--${id}`)
+        const navRight = document.getElementById(`navright_for--${id}`)
+        slider.style.transform = `translateX(-0px)`;
 
-        let prevBtn
-        let nextBtn
-        let navButtons
+        let prevBtn = []
+        let nextBtn = []
+        let navButtons = []
 
         let slides = slider.children;
         let gap = parseInt(window.getComputedStyle(slider).gap)
@@ -20,11 +20,15 @@ function sliderInitialise(){
         if(!!navLeft && !!navRight){
           prevBtn.push(navLeft)
           nextBtn.push(navRight)
+
+          navLeft.style = 'position: absolute; left: 0; top: 50%; transform: translateY(-50%)'
+          navRight.style = `position: absolute; right: 0; top: 50%; transform: translateY(-50%)`
         }
         
         if(!!pagination){
-            prevBtn = pagination?.querySelectorAll('.pagination--prev-btn')
-            nextBtn = pagination?.querySelectorAll('.pagination--next-btn')
+            prevBtn = [...prevBtn, ...pagination?.querySelectorAll('.pagination--prev-btn')]
+            
+            nextBtn = [...nextBtn, ...pagination?.querySelectorAll('.pagination--next-btn')]
             navButtons = pagination.querySelectorAll('.pagination--btn-dot')
 
             const dotsContainer = pagination.querySelector('.pagination--buttons-dots')
@@ -41,9 +45,6 @@ function sliderInitialise(){
 
               navButtons = pagination.querySelectorAll('.pagination--btn-dot')
               navButtons[currentIndex].classList.add('highlight')
-            }
-            else{
-              return
             }
         }
         
@@ -119,7 +120,7 @@ function sliderInitialise(){
           const xDiff = xDown - xUp;
           const yDiff = yDown - yUp;
         
-          if (Math.abs(xDiff) > Math.abs(yDiff)) { 
+          if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 20) { 
             evt.preventDefault();
             if (xDiff > 0) {
               nextSlide();
@@ -163,4 +164,4 @@ function sliderInitialise(){
     }
 }
 
-document.addEventListener('DOMContentLoaded', sliderInitialise())
+document.addEventListener('DOMContentLoaded', sliderInitialise )
