@@ -9374,6 +9374,12 @@ form .button:hover {
   display: flex;
   flex-direction: column;
 }
+.tariff-card:hover .tariff-card-content > p {
+  transform: translate(-4px, -4px) scale(1.01);
+}
+.tariff-card:hover .tariff-card-content > hr {
+  transform: translate(-4px, -4px) scale(1.01);
+}
 .tariff-card ::after {
   display: none !important;
 }
@@ -9382,6 +9388,10 @@ form .button:hover {
   background-color: var(--blue-clouds);
   border-radius: 30px;
   color: var(--color-white);
+}
+.tariff-card.hover-glow:hover .header {
+  outline: 1px solid var(--blue-main);
+  box-shadow: 0px 5px 15px var(--blue-main);
 }
 .tariff-card-content {
   padding: 30px 20px 30px 10px;
@@ -9402,6 +9412,10 @@ form .button:hover {
 .tariff-card-content ul li::marker {
   content: "•";
   color: var(--blue-main);
+}
+.tariff-card-content hr {
+  border-color: var(--blue-main);
+  background-color: var(--blue-main);
 }
 
 .seo-portfolio-card {
@@ -9741,6 +9755,25 @@ form .button:hover {
   }
   .logotip-portfolio .sites-portfolio-slider .recent-work-card img {
     border-radius: 15px;
+  }
+}
+
+.hosting-main .calculator-main-offer {
+  flex-wrap: wrap;
+}
+.hosting-tariffs .crm-advantages--list > li {
+  flex: 1 0;
+  max-width: 50%;
+}
+@media (max-width: 900px) {
+  .hosting-tariffs .crm-advantages--list > li {
+    max-width: unset;
+  }
+}
+@media (max-width: 750px) {
+  .hosting-tariffs .crm-advantages--list > li {
+    flex: 1 0 100%;
+    max-width: unset;
   }
 }
 

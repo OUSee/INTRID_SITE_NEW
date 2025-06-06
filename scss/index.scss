@@ -10616,6 +10616,20 @@ form {
   display: flex;
   flex-direction: column;
 
+  &:hover {
+
+    .tariff-card-content {
+      &>p {
+        transform: translate(-4px, -4px) scale(1.01);
+      }
+
+
+      &>hr {
+        transform: translate(-4px, -4px) scale(1.01);
+      }
+    }
+  }
+
   ::after {
     display: none !important;
   }
@@ -10625,6 +10639,16 @@ form {
     background-color: var(--blue-clouds);
     border-radius: 30px;
     color: var(--color-white)
+  }
+
+  &.hover-glow {
+    &:hover {
+      .header {
+        outline: 1px solid var(--blue-main);
+        box-shadow: 0px 5px 15px var(--blue-main);
+      }
+    }
+
   }
 
   &-content {
@@ -10645,10 +10669,14 @@ form {
 
         &::marker {
           content: '\2022';
-
           color: var(--blue-main)
         }
       }
+    }
+
+    hr {
+      border-color: var(--blue-main);
+      background-color: var(--blue-main);
     }
   }
 }
@@ -11083,6 +11111,32 @@ form {
             border-radius: 15px;
           }
         }
+      }
+    }
+  }
+}
+
+// hosting page
+
+.hosting {
+  &-main {
+    .calculator-main-offer {
+      flex-wrap: wrap;
+    }
+  }
+
+  &-tariffs {
+    .crm-advantages--list>li {
+      flex: 1 0;
+      max-width: 50%;
+
+      @media (max-width: 900px) {
+        max-width: unset
+      }
+
+      @media (max-width: 750px) {
+        flex: 1 0 100%;
+        max-width: unset;
       }
     }
   }
