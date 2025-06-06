@@ -21,8 +21,8 @@ function sliderInitialise(){
           prevBtn.push(navLeft)
           nextBtn.push(navRight)
 
-          navLeft.style = 'position: absolute; left: 0; top: 50%; transform: translateY(-50%)'
-          navRight.style = `position: absolute; right: 0; top: 50%; transform: translateY(-50%)`
+          navLeft.style = 'position: absolute; left: 5px; top: 50%; transform: translateY(-50%)'
+          navRight.style = `position: absolute; right: 5px; top: 50%; transform: translateY(-50%)`
         }
         
         if(!!pagination){
