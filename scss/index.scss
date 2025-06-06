@@ -8741,7 +8741,11 @@ form {
       }
     }
 
-    &>img {
+    &>img,
+    i {
+      font-size: 32px;
+      line-height: 32px;
+      color: var(--blue-main);
       height: 32px;
       width: 32px;
       object-fit: contain;
@@ -11137,6 +11141,48 @@ form {
       @media (max-width: 750px) {
         flex: 1 0 100%;
         max-width: unset;
+      }
+    }
+  }
+}
+
+// domain
+
+.domain {
+  &-table {
+    .sites-leaders-content-left {
+      @media (max-width: 600px) {
+        border-radius: 25px;
+        padding: 15px 20px;
+
+        &>ul {
+          gap: 10px;
+        }
+      }
+
+      &>ul>li>div {
+        p {
+          flex: 1 1 33%;
+
+          &:not(:first-child) {
+            padding-left: 10px;
+            border-left: 1px solid var(--blue-bg);
+          }
+
+          @media (max-width: 900px) {
+            &:nth-child(1) {
+              flex: 1 1 45%;
+            }
+
+            &:nth-child(2) {
+              flex: 1 1 30%;
+            }
+
+            &:nth-child(3) {
+              flex: 1 1 25%;
+            }
+          }
+        }
       }
     }
   }

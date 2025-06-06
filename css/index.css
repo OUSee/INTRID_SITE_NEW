@@ -7709,7 +7709,11 @@ form .button:hover {
     max-width: 100%;
   }
 }
-.tech-list > li > img {
+.tech-list > li > img,
+.tech-list > li i {
+  font-size: 32px;
+  line-height: 32px;
+  color: var(--blue-main);
   height: 32px;
   width: 32px;
   -o-object-fit: contain;
@@ -9774,6 +9778,34 @@ form .button:hover {
   .hosting-tariffs .crm-advantages--list > li {
     flex: 1 0 100%;
     max-width: unset;
+  }
+}
+
+@media (max-width: 600px) {
+  .domain-table .sites-leaders-content-left {
+    border-radius: 25px;
+    padding: 15px 20px;
+  }
+  .domain-table .sites-leaders-content-left > ul {
+    gap: 10px;
+  }
+}
+.domain-table .sites-leaders-content-left > ul > li > div p {
+  flex: 1 1 33%;
+}
+.domain-table .sites-leaders-content-left > ul > li > div p:not(:first-child) {
+  padding-left: 10px;
+  border-left: 1px solid var(--blue-bg);
+}
+@media (max-width: 900px) {
+  .domain-table .sites-leaders-content-left > ul > li > div p:nth-child(1) {
+    flex: 1 1 45%;
+  }
+  .domain-table .sites-leaders-content-left > ul > li > div p:nth-child(2) {
+    flex: 1 1 30%;
+  }
+  .domain-table .sites-leaders-content-left > ul > li > div p:nth-child(3) {
+    flex: 1 1 25%;
   }
 }
 
