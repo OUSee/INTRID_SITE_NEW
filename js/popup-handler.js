@@ -49,8 +49,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
       
         popup.addEventListener('click', (e) => {
           if (e.target.classList.contains('close-button') || e.target.id == id) {
-            e.stopPropagation();
-            e.preventDefault();
+            if(e.target.tagName && e.target.tagName.toLowerCase() !== 'a'){
+              e.stopPropagation();
+              e.preventDefault();
+            }
+            
 
             let videoPopup = popup.querySelector('video');
       
