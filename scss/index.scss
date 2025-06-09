@@ -11130,19 +11130,26 @@ form {
   }
 
   &-tariffs {
-    .crm-advantages--list>li {
-      flex: 1 0;
-      max-width: 50%;
+    .crm-advantages--list {
+      justify-content: center;
 
-      @media (max-width: 900px) {
-        max-width: unset
-      }
+      &>li {
+        flex: 1 0;
+        max-width: 50%;
 
-      @media (max-width: 750px) {
-        flex: 1 0 100%;
-        max-width: unset;
+
+
+        @media (max-width: 900px) {
+          max-width: unset
+        }
+
+        @media (max-width: 750px) {
+          flex: 1 0 100%;
+          max-width: unset;
+        }
       }
     }
+
   }
 }
 
@@ -11150,41 +11157,104 @@ form {
 
 .domain {
   &-table {
-    .sites-leaders-content-left {
-      @media (max-width: 600px) {
-        border-radius: 25px;
-        padding: 15px 20px;
+    width: 100%;
+    border-radius: 25px;
+    outline: 1px solid var(--blue-main);
+    background-color: var(--blue-bg);
 
-        &>ul {
-          gap: 10px;
+    tr {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+
+      &:first-child {
+        border-bottom: 1px solid var(--blue-main);
+      }
+
+      td,
+      th {
+        padding: 10px 20px;
+        // border: 1px solid ;
+
+        &:not(:first-child) {
+          border-left: 1px solid var(--blue-main)
         }
       }
 
-      &>ul>li>div {
-        p {
-          flex: 1 1 33%;
 
-          &:not(:first-child) {
-            padding-left: 10px;
-            border-left: 1px solid var(--blue-bg);
+    }
+
+    thead tr {
+
+      td,
+      th {
+        &:first-child {
+          border-top-left-radius: 25px;
+        }
+
+        &:last-child {
+          border-top-right-radius: 25px;
+        }
+
+        @media (max-width: 600px) {
+          &:first-child {
+            border-top-left-radius: 15px;
           }
 
-          @media (max-width: 900px) {
-            &:nth-child(1) {
-              flex: 1 1 45%;
+          &:last-child {
+            border-top-right-radius: 15px;
+          }
+        }
+      }
+
+    }
+
+    tbody tr {
+      td {
+        background-color: var(--bg-main);
+      }
+
+      &:last-child {
+        td {
+          &:first-child {
+            border-bottom-left-radius: 25px;
+          }
+
+          &:last-child {
+            border-bottom-right-radius: 25px;
+          }
+
+          @media (max-width: 600px) {
+            &:first-child {
+              border-bottom-left-radius: 15px;
             }
 
-            &:nth-child(2) {
-              flex: 1 1 30%;
-            }
-
-            &:nth-child(3) {
-              flex: 1 1 25%;
+            &:last-child {
+              border-bottom-right-radius: 15px;
             }
           }
         }
+
+
       }
     }
+
+    @media (max-width: 600px) {
+      border-radius: 15px;
+
+      tr {
+
+        td,
+        th {
+          padding: 5px 5px;
+        }
+      }
+
+    }
+  }
+
+  &-form {
+    padding-top: 0px;
   }
 }
 

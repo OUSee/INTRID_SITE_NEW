@@ -9765,6 +9765,9 @@ form .button:hover {
 .hosting-main .calculator-main-offer {
   flex-wrap: wrap;
 }
+.hosting-tariffs .crm-advantages--list {
+  justify-content: center;
+}
 .hosting-tariffs .crm-advantages--list > li {
   flex: 1 0;
   max-width: 50%;
@@ -9781,32 +9784,74 @@ form .button:hover {
   }
 }
 
+.domain-table {
+  width: 100%;
+  border-radius: 25px;
+  outline: 1px solid var(--blue-main);
+  background-color: var(--blue-bg);
+}
+.domain-table tr {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+.domain-table tr:first-child {
+  border-bottom: 1px solid var(--blue-main);
+}
+.domain-table tr td,
+.domain-table tr th {
+  padding: 10px 20px;
+}
+.domain-table tr td:not(:first-child),
+.domain-table tr th:not(:first-child) {
+  border-left: 1px solid var(--blue-main);
+}
+.domain-table thead tr td:first-child,
+.domain-table thead tr th:first-child {
+  border-top-left-radius: 25px;
+}
+.domain-table thead tr td:last-child,
+.domain-table thead tr th:last-child {
+  border-top-right-radius: 25px;
+}
 @media (max-width: 600px) {
-  .domain-table .sites-leaders-content-left {
-    border-radius: 25px;
-    padding: 15px 20px;
+  .domain-table thead tr td:first-child,
+  .domain-table thead tr th:first-child {
+    border-top-left-radius: 15px;
   }
-  .domain-table .sites-leaders-content-left > ul {
-    gap: 10px;
+  .domain-table thead tr td:last-child,
+  .domain-table thead tr th:last-child {
+    border-top-right-radius: 15px;
   }
 }
-.domain-table .sites-leaders-content-left > ul > li > div p {
-  flex: 1 1 33%;
+.domain-table tbody tr td {
+  background-color: var(--bg-main);
 }
-.domain-table .sites-leaders-content-left > ul > li > div p:not(:first-child) {
-  padding-left: 10px;
-  border-left: 1px solid var(--blue-bg);
+.domain-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 25px;
 }
-@media (max-width: 900px) {
-  .domain-table .sites-leaders-content-left > ul > li > div p:nth-child(1) {
-    flex: 1 1 45%;
+.domain-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 25px;
+}
+@media (max-width: 600px) {
+  .domain-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
   }
-  .domain-table .sites-leaders-content-left > ul > li > div p:nth-child(2) {
-    flex: 1 1 30%;
+  .domain-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
   }
-  .domain-table .sites-leaders-content-left > ul > li > div p:nth-child(3) {
-    flex: 1 1 25%;
+}
+@media (max-width: 600px) {
+  .domain-table {
+    border-radius: 15px;
   }
+  .domain-table tr td,
+  .domain-table tr th {
+    padding: 5px 5px;
+  }
+}
+.domain-form {
+  padding-top: 0px;
 }
 
 @media (max-width: 1500px) {
