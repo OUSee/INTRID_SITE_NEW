@@ -8484,9 +8484,12 @@ form {
     transition: all 0s;
 
     &.fixed-bottom {
-      position: fixed;
-      bottom: 0;
+      // position: fixed;
+      // bottom: 0;
       transition: all 0s;
+      position: sticky !important;
+      bottom: 0 !important;
+      top: calc(100vh - 310px) !important;
     }
 
     .mobile-hidden {

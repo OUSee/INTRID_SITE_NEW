@@ -7456,9 +7456,10 @@ form .button:hover {
   transition: all 0s;
 }
 .calculator-total.fixed-bottom {
-  position: fixed;
-  bottom: 0;
   transition: all 0s;
+  position: sticky !important;
+  bottom: 0 !important;
+  top: calc(100vh - 310px) !important;
 }
 @media (max-width: 1400px) {
   .calculator-total .mobile-hidden {

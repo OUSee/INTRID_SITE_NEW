@@ -65,14 +65,14 @@ document.addEventListener('DOMContentLoaded', function() {
       onScroll();
     });
   
-    resizeObserver.observe(calcTotal);
+    // resizeObserver.observe(calcTotal);
   
     // Listen for scroll and resize events
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', () => {
-      updateMeasurements();
-      onScroll();
-    });
+    // window.addEventListener('scroll', onScroll);
+    // window.addEventListener('resize', () => {
+    //   updateMeasurements();
+    //   onScroll();
+    // });
 
     accordions.forEach(acc => {
         acc.addEventListener('change', () => {
@@ -90,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   
     // Initial setup
-    updateMeasurements();
-    onScroll();
+    // updateMeasurements();
+    // onScroll();
   });
   
 
