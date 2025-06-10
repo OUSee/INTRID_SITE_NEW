@@ -1489,6 +1489,46 @@ div.icon-menu {
 .tab-view .tab-slider .tab-slider-card:hover img {
   transform: scale(1.3);
 }
+.tab-view .tab-slider .tab-slider-card.crew-card {
+  outline: 1px solid var(--blue-bg);
+  cursor: default;
+}
+.tab-view .tab-slider .tab-slider-card.crew-card .tab-slider-card-image {
+  margin: 15px auto;
+  height: 200px;
+  box-shadow: 0px 0px 60px 25px var(--blue-clouds), inset 0px 0px 75px 10px var(--blue-clouds);
+  border-radius: 25px;
+}
+.tab-view .tab-slider .tab-slider-card.crew-card .tab-slider-card-image img {
+  border-radius: 15px;
+  height: 200px;
+  width: auto;
+}
+.tab-view .tab-slider .tab-slider-card.crew-card:hover .tab-slider-card-image > img {
+  transform: scale(1.1);
+}
+.tab-view .tab-slider .tab-slider-card.crew-card > .title_h4 {
+  white-space: normal;
+  /* Prevent breaking at hyphens */
+  word-break: normal;
+  overflow-wrap: normal;
+  /* Prevent breaking at hyphens */
+  -webkit-hyphens: manual;
+          hyphens: manual;
+}
+.tab-view .tab-slider .tab-slider-card.crew-card > .testimonials {
+  margin-top: 10px;
+}
+.tab-view .tab-slider .tab-slider-card.crew-card > .testimonials::before {
+  content: ",,";
+  position: relative;
+  top: -1em;
+  color: var(--blue-main);
+}
+.tab-view .tab-slider .tab-slider-card.crew-card > .testimonials::after {
+  content: ",,";
+  color: var(--blue-main);
+}
 @media (max-width: 1440px) {
   .tab-view .tab-slider .tab-slider-card {
     display: flex;
@@ -10032,6 +10072,38 @@ form .button:hover {
 }
 .o-nas-main .flying-orb > img {
   left: 50%;
+}
+.o-nas-testimonials {
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .o-nas-testimonials {
+    flex-direction: column;
+  }
+}
+.o-nas-testimonials > .text {
+  padding: 30px 20px;
+  border-radius: 25px;
+  border: 1px solid var(--blue-bg);
+  flex: 1 1 50%;
+  background-color: var(--bg-main);
+}
+.o-nas-testimonials > .map-wrapper {
+  overflow: hidden;
+  border-radius: 25px;
+  flex: 1 1 50%;
+  min-height: 270px;
+}
+.o-nas-testimonials > .map-wrapper iframe {
+  width: 100%;
+  min-height: 270px;
+  height: 100%;
+}
+@media (max-width: 1200px) {
+  .o-nas-crew > .tab-view > .tab-slider {
+    gap: 20px;
+  }
 }
 
 .numbers-grid {
