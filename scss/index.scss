@@ -11577,6 +11577,90 @@ form {
       }
     }
   }
+
+  &-portfolio {
+    background: transparent;
+
+    .sites-portfolio-slider {
+      .recent-work-card {
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+
+        &:hover {
+          outline: none;
+          box-shadow: none;
+
+          a>img {
+            outline: 1px solid var(--blue-main);
+            box-shadow: 0px 0px 15px var(--blue-main);
+          }
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            height: 200px;
+            max-height: 200px;
+            max-width: 100%;
+            width: auto;
+          }
+        }
+
+        @media (max-width: 1200px) {
+          min-width: calc((100vw - 80px) / 5 - 10px);
+        }
+
+        @media (max-width: 1000px) {
+          min-width: calc((100vw - 80px) / 4 - 10px);
+        }
+
+        @media (max-width: 600px) {
+          min-width: calc((100vw - 40px) / 3 - 10px);
+        }
+
+        @media (max-width: 520px) {
+          min-width: calc((100vw - 40px) / 2 - 10px);
+        }
+      }
+    }
+  }
+
+  &-principals {
+    .integrations--right {
+      border: 1px solid var(--blue-bg);
+      background-color: transparent;
+      padding: 0px;
+      border-radius: 25px;
+
+      .video-diagramm {
+        width: 100%;
+        min-width: 240px;
+        min-height: 240px;
+        height: auto;
+        margin: 0;
+        border-radius: 25px;
+        position: relative;
+        background-size: 100% auto;
+
+        &>button {
+          width: 100%;
+          height: 100%;
+          border-radius: 25px;
+        }
+
+        &:has(button:hover) {
+          animation: planet2 10s ease-in;
+          background-size: 120% auto;
+          background-position: bottom;
+        }
+      }
+    }
+  }
 }
 
 .numbers-grid {
@@ -12630,6 +12714,18 @@ form {
 
   100% {
     background-size: auto 300px;
+    background-position: bottom;
+  }
+}
+
+@keyframes planet2 {
+  0% {
+    background-size: 100% auto;
+    background-position: bottom;
+  }
+
+  100% {
+    background-size: 120% auto;
     background-position: bottom;
   }
 }
