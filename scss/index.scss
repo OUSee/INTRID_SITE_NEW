@@ -3196,7 +3196,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
   &.grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     width: 100%;
   }
 }
@@ -8490,6 +8490,14 @@ form {
       position: sticky !important;
       bottom: 0 !important;
       top: calc(100vh - 310px) !important;
+
+      @media (max-width: 580px) {
+        top: calc(100vh - 450px) !important
+      }
+
+      @media (max-width: 420px) {
+        top: calc(100vh - 600px) !important
+      }
     }
 
     .mobile-hidden {
@@ -8636,6 +8644,7 @@ form {
     }
 
     textarea {
+      min-height: 62px;
       width: 100%;
       background-color: transparent;
       padding: 14px 22px;
@@ -11448,6 +11457,27 @@ form {
   &-portfolio {
     background: linear-gradient(0deg, rgba(0, 234, 255, 0.1) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.09) 83%, rgba(0, 234, 255, 0) 100%);
   }
+}
+
+// o-nas page
+
+.o-nas {
+  &-main {
+    .flying-orb {
+      top: 50%;
+      transform: translateY(-50%);
+
+      &>img {
+        left: 50%
+      }
+    }
+  }
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
 }
 
 //  BREAKPOINTS

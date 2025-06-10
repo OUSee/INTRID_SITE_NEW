@@ -2891,7 +2891,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .achievements-group.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   width: 100%;
 }
 
@@ -7461,6 +7461,16 @@ form .button:hover {
   bottom: 0 !important;
   top: calc(100vh - 310px) !important;
 }
+@media (max-width: 580px) {
+  .calculator-total.fixed-bottom {
+    top: calc(100vh - 450px) !important;
+  }
+}
+@media (max-width: 420px) {
+  .calculator-total.fixed-bottom {
+    top: calc(100vh - 600px) !important;
+  }
+}
 @media (max-width: 1400px) {
   .calculator-total .mobile-hidden {
     display: none;
@@ -7586,6 +7596,7 @@ form .button:hover {
   width: 90%;
 }
 .form-popup form .form-limitter textarea {
+  min-height: 62px;
   width: 100%;
   background-color: transparent;
   padding: 14px 22px;
@@ -9999,6 +10010,21 @@ form .button:hover {
 
 .ai_store-portfolio {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0.1) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.09) 83%, rgba(0, 234, 255, 0) 100%);
+}
+
+.o-nas-main .flying-orb {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.o-nas-main .flying-orb > img {
+  left: 50%;
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  -moz-column-gap: 20px;
+       column-gap: 20px;
 }
 
 @media (max-width: 1500px) {
