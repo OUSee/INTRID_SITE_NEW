@@ -31,16 +31,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // add here
       const headerBottom = headerRect.bottom;
-      if (scrollY + headerBottom > resetOriginalOffsetTop) {
-        // Make reset button sticky below header
-        reset_button.style.position = 'fixed';
-        reset_button.style.top = headerBottom + 10 + 'px';
-        reset_button.style.left = resetOriginalOffsetLeft + 'px';
-      } else {
-        reset_button.style.position = '';
-        reset_button.style.top = '';
-        reset_button.style.zIndex = '';
-      }
+    //   if (scrollY + headerBottom > resetOriginalOffsetTop) {
+    //     // Make reset button sticky below header
+    //     reset_button.style.position = 'fixed';
+    //     reset_button.style.top = headerBottom + 10 + 'px';
+    //     reset_button.style.left = resetOriginalOffsetLeft + 'px';
+    //   } else {
+    //     reset_button.style.position = '';
+    //     reset_button.style.top = '';
+    //     reset_button.style.zIndex = '';
+    //   }
   
       if (scrollY + viewportHeight < calcOriginalOffsetTop + calcHeight) {
         // Stick block to bottom of viewport
