@@ -696,6 +696,10 @@ label.radioButton:has(input:checked)::after {
   align-items: flex-end;
 }
 
+.justify-self-end {
+  justify-self: end;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -10362,6 +10366,56 @@ form .button:hover {
   .icms-main .fd-row.gap-10.align-center.flex-wrap.mt-20 {
     justify-content: center;
   }
+}
+
+.kontakts-main {
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
+}
+.kontakts-main .slider-with-tabs_tabs-buttons {
+  margin-top: 0;
+  padding-top: 30px;
+}
+.kontakts-main .tab-slider {
+  gap: 50px;
+}
+.kontakts-main .tab-slider .description {
+  flex: 1 0 300px;
+}
+@media (max-width: 600px) {
+  .kontakts-main .tab-slider .description {
+    margin-top: 20px;
+  }
+}
+.kontakts-main .tab-slider iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 25px;
+}
+.kontakts-bottom {
+  padding-top: 62px;
+  background-image: url(../src/images/planets-aside.webp);
+  background-position: center;
+}
+.kontakts-bottom .sites-leaders-content {
+  padding-bottom: 62px;
+}
+.kontakts-bottom > div > div > div.sites-leaders-content-left {
+  flex: 1 1 60%;
+  background-color: var(--blue-tag);
+}
+.kontakts-bottom > div > div > div.sites-leaders-content-left form {
+  height: 100%;
+}
+.kontakts-bottom > div > div > div.sites-leaders-content-left .form-limitter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+.kontakts-bottom > div > div > div.sites-leaders-content-right {
+  flex: 1 1 35%;
+  background-color: var(--bg-main);
 }
 
 .numbers-grid {
