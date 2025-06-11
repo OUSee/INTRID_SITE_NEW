@@ -7791,13 +7791,21 @@ form {
       justify-content: center;
 
       li {
-        .header img {
-          width: 40px;
-          height: 40px;
+        .header {
 
-          @media (max-width: 600px) {
-            width: 20px;
-            height: 20px;
+          img,
+          i {
+            font-size: 40px;
+            line-height: 40px;
+            width: 40px;
+            height: 40px;
+
+            @media (max-width: 600px) {
+              width: 20px;
+              height: 20px;
+              font-size: 20px;
+              line-height: 20px;
+            }
           }
         }
 
@@ -11831,6 +11839,39 @@ form {
           animation: none;
           transition: background-position 5s ease-in
         }
+      }
+    }
+  }
+}
+
+// icms page
+
+.icms {
+  &-main {
+    .flying-orb>.water-ripple {
+      position: absolute;
+      top: 24%;
+      left: 50%;
+      width: auto;
+      height: 57%;
+      aspect-ratio: 1 / 1;
+      transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 1000px) {
+      .icms-note {
+        margin-top: 350px;
+      }
+
+      .flying-orb {
+        top: unset;
+        bottom: 145px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .fd-row.gap-10.align-center.flex-wrap.mt-20 {
+        justify-content: center;
       }
     }
   }
