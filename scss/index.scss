@@ -995,7 +995,7 @@ label.radioButton:has(input:checked)::after {
   }
 }
 
-.br-900 {
+.br900 {
   @media (max-width: 900px) {
     display: none;
   }
@@ -1003,6 +1003,12 @@ label.radioButton:has(input:checked)::after {
 
 .br600 {
   @media (max-width: 600px) {
+    display: none !important;
+  }
+}
+
+.br600min {
+  @media (min-width: 600px) {
     display: none !important;
   }
 }
@@ -1797,6 +1803,12 @@ div.icon-menu {
   // animation: baloon 8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
   animation-delay: 3s;
 
+  &.straight {
+    &>img {
+      left: 50% !important;
+    }
+  }
+
   img {
     width: 282px;
     height: auto;
@@ -1891,6 +1903,8 @@ div.slider-test,
 
 .achievements-slider {
   .slides .slide {
+    transform-style: preserve-3d;
+
     .icons-partners {
       height: 1.7em;
 
@@ -1898,6 +1912,102 @@ div.slider-test,
         width: 1.7em;
         height: auto;
       }
+    }
+  }
+
+  transform-style: preserve-3d;
+
+  &.early {
+    @media (max-width: 600px) {
+      top: 240px;
+      margin: 0 auto;
+      height: 100vw;
+
+      transform: rotate(90deg);
+
+      .slides {
+        hr {
+          border-color: transparent;
+          background-color: transparent;
+        }
+
+        .slide {
+          padding: 0;
+          gap: 0;
+          justify-content: unset;
+          padding-top: 20px;
+          transform: rotate(-90deg) translateY(35px);
+          height: calc(100vw / 2 - 1px);
+          width: calc(100vw / 2 - 1px);
+
+          .img-placeholder {
+            margin-bottom: 12px;
+          }
+
+          p {
+            max-width: 80%;
+          }
+        }
+      }
+
+      .prev {
+        top: -10px;
+      }
+
+      .next {
+        bottom: -10px;
+      }
+
+      button {
+        left: 85px;
+      }
+    }
+  }
+
+  @media (max-width: 440px) {
+    top: 170px !important;
+    margin: auto !important;
+    height: 100vw;
+
+    transform: rotate(90deg);
+    transform-style: preserve-3d;
+
+    .slides {
+      hr {
+        border-color: transparent;
+        background-color: transparent;
+      }
+
+      .slide {
+        padding: 0;
+        gap: 0;
+        justify-content: unset;
+        padding-top: 20px;
+        transform-style: preserve-3d;
+        transform: rotate(-90deg) translateY(35px);
+        height: calc(100vw / 2 - 1px);
+        width: calc(100vw / 2 - 1px);
+
+        .img-placeholder {
+          margin-bottom: 12px;
+        }
+
+        p {
+          max-width: 80%;
+        }
+      }
+    }
+
+    .prev {
+      top: -10px;
+    }
+
+    .next {
+      bottom: -10px;
+    }
+
+    button {
+      left: 85px;
     }
   }
 }
@@ -11530,12 +11640,63 @@ form {
 
 .o-nas {
   &-main {
+    position: relative;
+
     .flying-orb {
       top: 50%;
       transform: translateY(-50%);
 
       &>img {
         left: 50%
+      }
+    }
+
+    .achievements-slider {
+      position: absolute;
+      left: 150px;
+      top: unset;
+      bottom: -90px;
+
+      @media (max-width: 540px) {
+        left: 120px;
+        top: unset;
+        bottom: -65px;
+      }
+
+      @media (max-width: 520px) {
+        left: 115px;
+        top: unset;
+        bottom: -65px;
+      }
+
+      @media (max-width: 440px) {
+        left: 82px;
+        top: unset !important;
+        margin: 0 auto !important;
+        bottom: -15px;
+      }
+
+      @media (max-width: 420px) {
+        left: 19.5vw;
+        top: unset !important;
+        margin: 0 auto !important;
+        bottom: -10px;
+      }
+
+      @media (max-width: 380px) {
+        left: 13.5vw;
+        bottom: 5px;
+      }
+
+      @media (max-width: 361px) {
+        left: 11.5vw;
+        bottom: 15px;
+      }
+    }
+
+    .numbers-grid {
+      @media (max-width: 600px) {
+        margin-top: 250px;
       }
     }
   }
@@ -11574,6 +11735,17 @@ form {
     &>.tab-view>.tab-slider {
       @media (max-width: 1200px) {
         gap: 20px;
+      }
+
+      @media (max-width: 600px) {
+        .crew-card {
+          flex: 1 1 90%;
+
+          .testimonials {
+            display: block;
+            padding: 10px 20px;
+          }
+        }
       }
     }
   }
@@ -11636,6 +11808,7 @@ form {
       background-color: transparent;
       padding: 0px;
       border-radius: 25px;
+      width: 100%;
 
       .video-diagramm {
         width: 100%;
@@ -11645,7 +11818,8 @@ form {
         margin: 0;
         border-radius: 25px;
         position: relative;
-        background-size: 100% auto;
+
+        background-size: cover;
 
         &>button {
           width: 100%;
@@ -11654,9 +11828,8 @@ form {
         }
 
         &:has(button:hover) {
-          animation: planet2 10s ease-in;
-          background-size: 120% auto;
-          background-position: bottom;
+          animation: none;
+          transition: background-position 5s ease-in
         }
       }
     }
@@ -11717,6 +11890,7 @@ form {
     right: 300px;
     width: 176px;
     height: 176px;
+
 
     img {
       height: 212px;
@@ -12515,50 +12689,6 @@ form {
   .main-page {
     padding-bottom: 220px !important;
 
-    .achievements-slider {
-      top: 240px;
-      margin: auto;
-      height: 100vw;
-
-      transform: rotate(90deg);
-
-      .slides {
-        hr {
-          border-color: transparent;
-          background-color: transparent;
-        }
-
-        .slide {
-          padding: 0;
-          gap: 0;
-          justify-content: unset;
-          padding-top: 20px;
-          transform: rotate(-90deg) translateY(35px);
-          height: calc(100vw / 2 - 1px);
-          width: calc(100vw / 2 - 1px);
-
-          .img-placeholder {
-            margin-bottom: 12px;
-          }
-
-          p {
-            max-width: 80%;
-          }
-        }
-      }
-
-      .prev {
-        top: -10px;
-      }
-
-      .next {
-        bottom: -10px;
-      }
-
-      button {
-        left: 85px;
-      }
-    }
 
     .flying-orb {
       top: 310px;
@@ -12720,12 +12850,12 @@ form {
 
 @keyframes planet2 {
   0% {
-    background-size: 100% auto;
+    background-size: auto 100%;
     background-position: bottom;
   }
 
   100% {
-    background-size: 120% auto;
+    background-size: auto 120%;
     background-position: bottom;
   }
 }

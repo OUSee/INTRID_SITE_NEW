@@ -921,13 +921,19 @@ label.radioButton:has(input:checked)::after {
 }
 
 @media (max-width: 900px) {
-  .br-900 {
+  .br900 {
     display: none;
   }
 }
 
 @media (max-width: 600px) {
   .br600 {
+    display: none !important;
+  }
+}
+
+@media (min-width: 600px) {
+  .br600min {
     display: none !important;
   }
 }
@@ -1620,6 +1626,9 @@ div.icon-menu {
   z-index: 3;
   animation-delay: 3s;
 }
+.flying-orb.straight > img {
+  left: 50% !important;
+}
 .flying-orb img {
   width: 282px;
   height: auto;
@@ -1710,12 +1719,92 @@ div.slider-test div.slides .slide:hover .img-placeholder,
   box-shadow: 0px 0px 20px 20px var(--blue-clouds);
 }
 
+.achievements-slider {
+  transform-style: preserve-3d;
+}
+.achievements-slider .slides .slide {
+  transform-style: preserve-3d;
+}
 .achievements-slider .slides .slide .icons-partners {
   height: 1.7em;
 }
 .achievements-slider .slides .slide .icons-partners img {
   width: 1.7em;
   height: auto;
+}
+@media (max-width: 600px) {
+  .achievements-slider.early {
+    top: 240px;
+    margin: 0 auto;
+    height: 100vw;
+    transform: rotate(90deg);
+  }
+  .achievements-slider.early .slides hr {
+    border-color: transparent;
+    background-color: transparent;
+  }
+  .achievements-slider.early .slides .slide {
+    padding: 0;
+    gap: 0;
+    justify-content: unset;
+    padding-top: 20px;
+    transform: rotate(-90deg) translateY(35px);
+    height: calc(50vw - 1px);
+    width: calc(50vw - 1px);
+  }
+  .achievements-slider.early .slides .slide .img-placeholder {
+    margin-bottom: 12px;
+  }
+  .achievements-slider.early .slides .slide p {
+    max-width: 80%;
+  }
+  .achievements-slider.early .prev {
+    top: -10px;
+  }
+  .achievements-slider.early .next {
+    bottom: -10px;
+  }
+  .achievements-slider.early button {
+    left: 85px;
+  }
+}
+@media (max-width: 440px) {
+  .achievements-slider {
+    top: 170px !important;
+    margin: auto !important;
+    height: 100vw;
+    transform: rotate(90deg);
+    transform-style: preserve-3d;
+  }
+  .achievements-slider .slides hr {
+    border-color: transparent;
+    background-color: transparent;
+  }
+  .achievements-slider .slides .slide {
+    padding: 0;
+    gap: 0;
+    justify-content: unset;
+    padding-top: 20px;
+    transform-style: preserve-3d;
+    transform: rotate(-90deg) translateY(35px);
+    height: calc(50vw - 1px);
+    width: calc(50vw - 1px);
+  }
+  .achievements-slider .slides .slide .img-placeholder {
+    margin-bottom: 12px;
+  }
+  .achievements-slider .slides .slide p {
+    max-width: 80%;
+  }
+  .achievements-slider .prev {
+    top: -10px;
+  }
+  .achievements-slider .next {
+    bottom: -10px;
+  }
+  .achievements-slider button {
+    left: 85px;
+  }
 }
 
 .slider-horizontal {
@@ -10066,12 +10155,68 @@ form .button:hover {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0.1) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.09) 83%, rgba(0, 234, 255, 0) 100%);
 }
 
+.o-nas-main {
+  position: relative;
+}
 .o-nas-main .flying-orb {
   top: 50%;
   transform: translateY(-50%);
 }
 .o-nas-main .flying-orb > img {
   left: 50%;
+}
+.o-nas-main .achievements-slider {
+  position: absolute;
+  left: 150px;
+  top: unset;
+  bottom: -90px;
+}
+@media (max-width: 540px) {
+  .o-nas-main .achievements-slider {
+    left: 120px;
+    top: unset;
+    bottom: -65px;
+  }
+}
+@media (max-width: 520px) {
+  .o-nas-main .achievements-slider {
+    left: 115px;
+    top: unset;
+    bottom: -65px;
+  }
+}
+@media (max-width: 440px) {
+  .o-nas-main .achievements-slider {
+    left: 82px;
+    top: unset !important;
+    margin: 0 auto !important;
+    bottom: -15px;
+  }
+}
+@media (max-width: 420px) {
+  .o-nas-main .achievements-slider {
+    left: 19.5vw;
+    top: unset !important;
+    margin: 0 auto !important;
+    bottom: -10px;
+  }
+}
+@media (max-width: 380px) {
+  .o-nas-main .achievements-slider {
+    left: 13.5vw;
+    bottom: 5px;
+  }
+}
+@media (max-width: 361px) {
+  .o-nas-main .achievements-slider {
+    left: 11.5vw;
+    bottom: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .o-nas-main .numbers-grid {
+    margin-top: 250px;
+  }
 }
 .o-nas-testimonials {
   display: flex;
@@ -10103,6 +10248,15 @@ form .button:hover {
 @media (max-width: 1200px) {
   .o-nas-crew > .tab-view > .tab-slider {
     gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .o-nas-crew > .tab-view > .tab-slider .crew-card {
+    flex: 1 1 90%;
+  }
+  .o-nas-crew > .tab-view > .tab-slider .crew-card .testimonials {
+    display: block;
+    padding: 10px 20px;
   }
 }
 .o-nas-portfolio {
@@ -10158,6 +10312,7 @@ form .button:hover {
   background-color: transparent;
   padding: 0px;
   border-radius: 25px;
+  width: 100%;
 }
 .o-nas-principals .integrations--right .video-diagramm {
   width: 100%;
@@ -10167,7 +10322,7 @@ form .button:hover {
   margin: 0;
   border-radius: 25px;
   position: relative;
-  background-size: 100% auto;
+  background-size: cover;
 }
 .o-nas-principals .integrations--right .video-diagramm > button {
   width: 100%;
@@ -10175,9 +10330,8 @@ form .button:hover {
   border-radius: 25px;
 }
 .o-nas-principals .integrations--right .video-diagramm:has(button:hover) {
-  animation: planet2 10s ease-in;
-  background-size: 120% auto;
-  background-position: bottom;
+  animation: none;
+  transition: background-position 5s ease-in;
 }
 
 .numbers-grid {
@@ -10843,40 +10997,6 @@ form .button:hover {
   .main-page {
     padding-bottom: 220px !important;
   }
-  .main-page .achievements-slider {
-    top: 240px;
-    margin: auto;
-    height: 100vw;
-    transform: rotate(90deg);
-  }
-  .main-page .achievements-slider .slides hr {
-    border-color: transparent;
-    background-color: transparent;
-  }
-  .main-page .achievements-slider .slides .slide {
-    padding: 0;
-    gap: 0;
-    justify-content: unset;
-    padding-top: 20px;
-    transform: rotate(-90deg) translateY(35px);
-    height: calc(50vw - 1px);
-    width: calc(50vw - 1px);
-  }
-  .main-page .achievements-slider .slides .slide .img-placeholder {
-    margin-bottom: 12px;
-  }
-  .main-page .achievements-slider .slides .slide p {
-    max-width: 80%;
-  }
-  .main-page .achievements-slider .prev {
-    top: -10px;
-  }
-  .main-page .achievements-slider .next {
-    bottom: -10px;
-  }
-  .main-page .achievements-slider button {
-    left: 85px;
-  }
   .main-page .flying-orb {
     top: 310px;
     scale: -1 1;
@@ -11005,11 +11125,11 @@ form .button:hover {
 }
 @keyframes planet2 {
   0% {
-    background-size: 100% auto;
+    background-size: auto 100%;
     background-position: bottom;
   }
   100% {
-    background-size: 120% auto;
+    background-size: auto 120%;
     background-position: bottom;
   }
 }
