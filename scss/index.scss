@@ -3538,6 +3538,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       text-decoration: underline;
     }
   }
+
+  @media (max-width: 600px) {}
 }
 
 .prices-services-list {
@@ -4280,16 +4282,17 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       i {
         border-radius: 50px;
         color: var(--blue-main);
-        font-size: 32px;
-        max-height: 32px;
-        line-height: 32px;
+        font-size: 40px;
+        max-height: 40px;
+        line-height: 40px;
         box-shadow: 0px 0px 50px 10px var(--blue-clouds),
           inset 0px 0px 30px -10px var(--blue-clouds);
       }
 
       img {
-        height: 32px;
-        width: 32px;
+        border-radius: 25%;
+        height: 40px;
+        width: 40px;
         box-shadow: 0px 0px 50px 10px var(--blue-clouds),
           inset 0px 0px 30px -10px var(--blue-clouds);
       }
@@ -6286,6 +6289,7 @@ form {
         flex: 1 1 0;
         min-width: calc((1442px - 30px) / 2);
         opacity: 0;
+        transition: all 0.3s ease-in-out;
 
         &.active {
           opacity: 1;
@@ -9910,6 +9914,11 @@ form {
     gap: 10px;
     margin: 32px 0 0;
 
+    .site-benefit {
+      max-width: 365px;
+    }
+
+
     @media (max-width: 1000px) {
       justify-content: center;
       margin: 400px 0 0;
@@ -9934,42 +9943,16 @@ form {
     height: 320px;
     aspect-ratio: 1 / 1;
 
-    @media (max-width: 1440px) {
-      top: 160px;
-      right: 0;
-    }
-
-    @media (max-width: 1200px) {
-      top: 160px;
-      right: 0;
-    }
-
     @media (max-width: 1000px) {
-      top: 380px;
-      right: 50%;
-      transform: translate(50%, 0);
+      top: unset;
+      bottom: 115px;
+      right: unset;
+      left: 50%;
+      transform: translateX(-50%)
     }
 
-    @media (max-width: 900px) {
-      top: 360px;
-      right: 50%;
-    }
-
-    @media (max-width: 720px) {
-      top: 400px;
-      right: 50%;
-    }
-
-    @media (max-width: 600px) {
-      top: 400px;
-      right: 50%;
-      width: 280px;
-      height: 280px;
-    }
-
-    @media (max-width: 420px) {
-      top: 440px;
-      right: 50%;
+    @media (max-width: 601px) {
+      bottom: 140px;
     }
 
     &::before {
@@ -10041,6 +10024,7 @@ form {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 40px 30px;
+    justify-content: center;
 
     @media (max-width: 600px) {
       gap: 12px 8px;
@@ -10466,6 +10450,18 @@ form {
 }
 
 .portfolio {
+  // [data-slider] {
+  //   &>div {
+  //     &.support-card {
+  //       @media (max-width: 1200px) {
+  //         
+  //       }
+  //     }
+
+
+  //   }
+  // }
+
   &-keys {
     & .header {
       display: flex;
@@ -10502,17 +10498,49 @@ form {
       gap: 10px;
 
       &>* {
-        flex-basis: 1 0 calc(33.333333% - 5px);
-        max-width: 33.333333%;
-        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        flex: 1 1 20%;
+        min-width: 20%;
+
+        &.seo-portfolio-card {
+          @media (max-width: 1400px) {
+            flex: 1 1 calc(33.333333% - 5px);
+            min-width: 33.333333%;
+            opacity: 0;
+          }
+
+          @media (max-width: 1200px) {
+            flex: 1 1 calc(33.333333% - 5px);
+            min-width: 33.333333%;
+            opacity: 0;
+
+          }
+
+          @media (max-width: 1000px) {
+            flex: 1 1 50%;
+            min-width: 50%;
+          }
+
+          @media (max-width: 720px) {
+            flex: 1 0 100%;
+            max-width: 100%;
+          }
+        }
 
         @media (max-width: 1200px) {
-          flex-basis: 1 0 calc(50% - 5px);
-          max-width: 50%;
+          flex: 1 1 calc(33.333333% - 5px);
+          min-width: 33.333333%;
+          opacity: 0;
+
+        }
+
+        @media (max-width: 1000px) {
+          flex: 1 1 50%;
+          min-width: 50%;
         }
 
         @media (max-width: 720px) {
-          flex-basis: 1 0 100%;
+          flex: 1 0 100%;
           max-width: 100%;
         }
 
@@ -10522,8 +10550,18 @@ form {
       }
     }
 
+    & .sites-portfolio-slider+.pagination {
+      @media (max-width: 1400px) {
+        display: flex;
+      }
+    }
+
     & .pagination {
       margin: 0;
+
+      @media (min-width: 1200px) {
+        display: none;
+      }
 
       & .pagination {
 
@@ -10890,6 +10928,7 @@ form {
   &-tariffs {
     .crm-advantages--list {
       align-items: stretch;
+      justify-content: center;
 
       &>li {
         &>a {
@@ -10967,6 +11006,7 @@ form {
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
 
@@ -11085,6 +11125,7 @@ form {
       //outline: 1px solid lightgreen;
       margin-left: auto;
       max-width: 120px;
+      max-height: 100px;
     }
   }
 
@@ -11399,11 +11440,15 @@ form {
         opacity: 10%;
         background-color: var(--blue-clouds);
 
-        a {
+        &>a {
           height: 100%;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+
+          &.button-link {
+            flex-direction: row;
+          }
         }
 
 
@@ -12646,8 +12691,18 @@ form {
     gap: 10px;
     flex-direction: column;
 
+    a {
+      display: flex;
+      flex-direction: column;
+
+      &.button-link {
+        flex-direction: row;
+      }
+    }
+
     img {
-      height: 100px;
+      align-self: center;
+      height: 200px;
       width: auto;
       align-self: center;
     }

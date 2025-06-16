@@ -3182,7 +3182,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .recent-work-card .absolute-link:hover {
   text-decoration: underline;
 }
-
 .prices-services-list {
   width: 100%;
   display: flex;
@@ -3835,14 +3834,15 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .why-cooperate-list li i {
   border-radius: 50px;
   color: var(--blue-main);
-  font-size: 32px;
-  max-height: 32px;
-  line-height: 32px;
+  font-size: 40px;
+  max-height: 40px;
+  line-height: 40px;
   box-shadow: 0px 0px 50px 10px var(--blue-clouds), inset 0px 0px 30px -10px var(--blue-clouds);
 }
 .why-cooperate-list li img {
-  height: 32px;
-  width: 32px;
+  border-radius: 25%;
+  height: 40px;
+  width: 40px;
   box-shadow: 0px 0px 50px 10px var(--blue-clouds), inset 0px 0px 30px -10px var(--blue-clouds);
 }
 .why-cooperate-list li p {
@@ -5658,6 +5658,7 @@ form .button:hover {
   flex: 1 1 0;
   min-width: 706px;
   opacity: 0;
+  transition: all 0.3s ease-in-out;
 }
 .sites-reviews-slider .review-card.active {
   opacity: 1;
@@ -8756,6 +8757,9 @@ form .button:hover {
   gap: 10px;
   margin: 32px 0 0;
 }
+.crm-page .crm-actions .site-benefit {
+  max-width: 365px;
+}
 @media (max-width: 1000px) {
   .crm-page .crm-actions {
     justify-content: center;
@@ -8779,49 +8783,18 @@ form .button:hover {
   height: 320px;
   aspect-ratio: 1/1;
 }
-@media (max-width: 1440px) {
-  .crm-page .flying-orb {
-    top: 160px;
-    right: 0;
-  }
-}
-@media (max-width: 1200px) {
-  .crm-page .flying-orb {
-    top: 160px;
-    right: 0;
-  }
-}
 @media (max-width: 1000px) {
   .crm-page .flying-orb {
-    top: 380px;
-    right: 50%;
-    transform: translate(50%, 0);
+    top: unset;
+    bottom: 115px;
+    right: unset;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 601px) {
   .crm-page .flying-orb {
-    top: 360px;
-    right: 50%;
-  }
-}
-@media (max-width: 720px) {
-  .crm-page .flying-orb {
-    top: 400px;
-    right: 50%;
-  }
-}
-@media (max-width: 600px) {
-  .crm-page .flying-orb {
-    top: 400px;
-    right: 50%;
-    width: 280px;
-    height: 280px;
-  }
-}
-@media (max-width: 420px) {
-  .crm-page .flying-orb {
-    top: 440px;
-    right: 50%;
+    bottom: 140px;
   }
 }
 .crm-page .flying-orb::before {
@@ -8888,6 +8861,7 @@ form .button:hover {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 40px 30px;
+  justify-content: center;
 }
 @media (max-width: 600px) {
   .crm-advantages--list {
@@ -9306,27 +9280,70 @@ form .button:hover {
   gap: 10px;
 }
 .portfolio-keys #site-slider > *, .portfolio-keys #brand-slider > *, .portfolio-keys #promotion-slider > *, .portfolio-keys #group-slider > * {
-  flex-basis: 1 0 calc(33.333333% - 5px);
-  max-width: 33.333333%;
-  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  flex: 1 1 20%;
+  min-width: 20%;
+}
+@media (max-width: 1400px) {
+  .portfolio-keys #site-slider > *.seo-portfolio-card, .portfolio-keys #brand-slider > *.seo-portfolio-card, .portfolio-keys #promotion-slider > *.seo-portfolio-card, .portfolio-keys #group-slider > *.seo-portfolio-card {
+    flex: 1 1 calc(33.333333% - 5px);
+    min-width: 33.333333%;
+    opacity: 0;
+  }
+}
+@media (max-width: 1200px) {
+  .portfolio-keys #site-slider > *.seo-portfolio-card, .portfolio-keys #brand-slider > *.seo-portfolio-card, .portfolio-keys #promotion-slider > *.seo-portfolio-card, .portfolio-keys #group-slider > *.seo-portfolio-card {
+    flex: 1 1 calc(33.333333% - 5px);
+    min-width: 33.333333%;
+    opacity: 0;
+  }
+}
+@media (max-width: 1000px) {
+  .portfolio-keys #site-slider > *.seo-portfolio-card, .portfolio-keys #brand-slider > *.seo-portfolio-card, .portfolio-keys #promotion-slider > *.seo-portfolio-card, .portfolio-keys #group-slider > *.seo-portfolio-card {
+    flex: 1 1 50%;
+    min-width: 50%;
+  }
+}
+@media (max-width: 720px) {
+  .portfolio-keys #site-slider > *.seo-portfolio-card, .portfolio-keys #brand-slider > *.seo-portfolio-card, .portfolio-keys #promotion-slider > *.seo-portfolio-card, .portfolio-keys #group-slider > *.seo-portfolio-card {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
 }
 @media (max-width: 1200px) {
   .portfolio-keys #site-slider > *, .portfolio-keys #brand-slider > *, .portfolio-keys #promotion-slider > *, .portfolio-keys #group-slider > * {
-    flex-basis: 1 0 calc(50% - 5px);
-    max-width: 50%;
+    flex: 1 1 calc(33.333333% - 5px);
+    min-width: 33.333333%;
+    opacity: 0;
+  }
+}
+@media (max-width: 1000px) {
+  .portfolio-keys #site-slider > *, .portfolio-keys #brand-slider > *, .portfolio-keys #promotion-slider > *, .portfolio-keys #group-slider > * {
+    flex: 1 1 50%;
+    min-width: 50%;
   }
 }
 @media (max-width: 720px) {
   .portfolio-keys #site-slider > *, .portfolio-keys #brand-slider > *, .portfolio-keys #promotion-slider > *, .portfolio-keys #group-slider > * {
-    flex-basis: 1 0 100%;
+    flex: 1 0 100%;
     max-width: 100%;
   }
 }
 .portfolio-keys #site-slider > *.active, .portfolio-keys #brand-slider > *.active, .portfolio-keys #promotion-slider > *.active, .portfolio-keys #group-slider > *.active {
   opacity: 1;
 }
+@media (max-width: 1400px) {
+  .portfolio-keys .sites-portfolio-slider + .pagination {
+    display: flex;
+  }
+}
 .portfolio-keys .pagination {
   margin: 0;
+}
+@media (min-width: 1200px) {
+  .portfolio-keys .pagination {
+    display: none;
+  }
 }
 .portfolio-keys .pagination .pagination--next-btn, .portfolio-keys .pagination .pagination--prev-btn {
   position: absolute;
@@ -9608,6 +9625,7 @@ form .button:hover {
 }
 .smm-tariffs .crm-advantages--list {
   align-items: stretch;
+  justify-content: center;
 }
 .smm-tariffs .crm-advantages--list > li > a {
   height: 100%;
@@ -9671,6 +9689,7 @@ form .button:hover {
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease-in-out;
 }
 .tariff-card:hover .tariff-card-content > p {
   transform: translate(-4px, -4px) scale(1.01);
@@ -9753,6 +9772,7 @@ form .button:hover {
   height: 60px;
   margin-left: auto;
   max-width: 120px;
+  max-height: 100px;
 }
 .seo-portfolio-card .support-card--list {
   max-width: unset;
@@ -9996,11 +10016,14 @@ form .button:hover {
   opacity: 10%;
   background-color: var(--blue-clouds);
 }
-.logotip-portfolio .sites-portfolio-slider .recent-work-card a {
+.logotip-portfolio .sites-portfolio-slider .recent-work-card > a {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.logotip-portfolio .sites-portfolio-slider .recent-work-card > a.button-link {
+  flex-direction: row;
 }
 .logotip-portfolio .sites-portfolio-slider .recent-work-card img {
   border-radius: 25px;
@@ -10976,8 +10999,16 @@ form .button:hover {
     gap: 10px;
     flex-direction: column;
   }
+  .recent-work-card a {
+    display: flex;
+    flex-direction: column;
+  }
+  .recent-work-card a.button-link {
+    flex-direction: row;
+  }
   .recent-work-card img {
-    height: 100px;
+    align-self: center;
+    height: 200px;
     width: auto;
     align-self: center;
   }

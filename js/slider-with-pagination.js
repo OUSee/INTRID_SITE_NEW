@@ -27,7 +27,6 @@ function sliderInitialise(){
         
         if(!!pagination){
             prevBtn = [...prevBtn, ...pagination?.querySelectorAll('.pagination--prev-btn')]
-            
             nextBtn = [...nextBtn, ...pagination?.querySelectorAll('.pagination--next-btn')]
             navButtons = pagination.querySelectorAll('.pagination--btn-dot')
 
@@ -45,6 +44,15 @@ function sliderInitialise(){
 
               navButtons = pagination.querySelectorAll('.pagination--btn-dot')
               navButtons[currentIndex].classList.add('highlight')
+              if(currentIndex === 0){
+                prevBtn.forEach((btn)=>{
+                  if (currentIndex === 0) {
+                    btn.style = 'opacity: 0;'
+                  } else {
+                    btn.style = 'opacity: 1;'
+                  }
+                })
+              }
             }
         }
         
@@ -61,8 +69,6 @@ function sliderInitialise(){
           const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
           
           try{
-           
-
             [].forEach.call(slides, function(slide) {
               slide.classList.remove('active')
             });
@@ -71,6 +77,24 @@ function sliderInitialise(){
               slides[i].classList.add('active');
             }
             slider.style.transform = `translateX(-${moveAmmount}px)`;
+
+            // Disable prev button if at start
+            prevBtn.forEach((btn)=>{
+              if (currentIndex === 0) {
+                btn.style = 'opacity: 0;'
+              } else {
+                btn.style = 'opacity: 1;'
+              }
+            })
+
+            // Disable next button if at end
+            nextBtn.forEach((btn)=> {
+              if (currentIndex + visibleSlidesCount >= slides.length) {
+                btn.style = 'opacity: 0;'
+              } else {
+                btn.style = 'opacity: 1;'
+              }
+            })
           }
           catch(err){
             console.log('=> err', err)
