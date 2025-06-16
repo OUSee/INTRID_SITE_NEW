@@ -50,7 +50,6 @@ html {
 
 * {
   box-sizing: border-box !important;
-  transition: all 0.3s ease-in-out;
   scroll-behavior: smooth;
 }
 
@@ -72,6 +71,10 @@ body {
     background-image: url('../src/images/bg-main-vert.webp');
     background-size: 100% auto;
   }
+}
+
+[data-slider] {
+  transition: all 0.3s ease-in-out;
 }
 
 input[type='radio'] {
@@ -573,6 +576,7 @@ label.radioButton,
   i.icon-arrow_wide {
     font-size: 1.4em;
     line-height: 14px;
+    transition: color 0.3s ease-in-out;
   }
 }
 
@@ -771,6 +775,14 @@ label.radioButton:has(input:checked)::after {
 
 .align-bottom {
   align-items: flex-end;
+}
+
+.align-self-start {
+  align-self: start;
+}
+
+.justify-self-start {
+  justify-self: start;
 }
 
 .justify-self-end {
@@ -1604,6 +1616,7 @@ div.icon-menu {
       display: flex;
       flex-direction: column;
       flex: 1 1;
+      transition: all 0.3s ease-in-out;
 
       color: var(--color-white);
 
@@ -1639,6 +1652,7 @@ div.icon-menu {
         img {
           width: 62px;
           height: 62px;
+          transition: all 0.3s ease-in-out;
         }
       }
 
@@ -1662,6 +1676,7 @@ div.icon-menu {
           height: 200px;
           box-shadow: 0px 0px 60px 25px var(--blue-clouds), inset 0px 0px 75px 10px var(--blue-clouds);
           border-radius: 25px;
+          transition: all 0.3s ease-in-out;
 
           img {
             border-radius: 15px;
@@ -3476,6 +3491,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
   margin-left: auto;
   position: relative;
   border: 1px solid var(--blue-clouds);
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     outline: 1px solid var(--blue-main);
@@ -3550,6 +3566,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     position: relative;
     flex-basis: 230px;
     height: fit-content;
+    transition: all 0.3s ease-in-out;
 
     span:not(.color-blue) {
       color: white;
@@ -3562,12 +3579,14 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       padding: 0px;
       top: -35px;
       overflow: visible;
+      transition: all 0.3s ease-in-out;
       box-shadow: 0px 0px 50px 10px var(--blue-clouds),
         inset 0px 0px 160px -20px var(--blue-clouds);
 
       img {
         width: 140px;
         height: 140px;
+        transition: all 0.3s ease-in-out;
       }
     }
 
