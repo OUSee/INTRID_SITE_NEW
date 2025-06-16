@@ -185,7 +185,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                                 })
                                             }
                                             if(el.counter && el.elementref.checked){
-                                                el.elementref.checked = false
+                                                el.elementref.checked = false;
+                                                target.innerText = `${parseInt(target.innerText) - el.price - el.counter.total}`
                                                 el.reveal?.classList.add('hidden')
                                             }
                                             else if(el.elementref.checked){
