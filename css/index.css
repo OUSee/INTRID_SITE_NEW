@@ -696,6 +696,10 @@ label.radioButton:has(input:checked)::after {
   align-items: center;
 }
 
+.align-baseline {
+  align-items: baseline;
+}
+
 .align-bottom {
   align-items: flex-end;
 }
@@ -939,6 +943,12 @@ label.radioButton:has(input:checked)::after {
 @media (max-width: 900px) {
   .br900 {
     display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .br900min {
+    display: none !important;
   }
 }
 
@@ -2181,7 +2191,7 @@ section.tabs {
   left: 20px;
   font-family: "INTRID_ICONS";
   font-size: 52px;
-  content: "m";
+  content: "d";
   color: var(--blue-main);
   transition: all 0.3s ease-in-out;
   animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
@@ -2975,7 +2985,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   left: -40px;
   font-family: "INTRID_ICONS";
   font-size: 77px;
-  content: "m";
+  content: "d";
   color: rgba(255, 255, 255, 0.02);
 }
 .webDev-benefits li .webDev-benefits-highlight {
@@ -3646,7 +3656,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .for-buisness-block p.title_h3::before {
   font-family: "INTRID_ICONS";
-  content: "m";
+  content: "d";
   height: 77px;
   width: 77px;
   font-size: 77px;
@@ -5938,7 +5948,7 @@ form .button:hover {
 }
 .landing-benefits .sites-reviews-slider .review-card::before {
   font-family: "INTRID_ICONS";
-  content: "m";
+  content: "d";
   height: 177px;
   width: 177px;
   font-size: 177px;
@@ -7378,7 +7388,7 @@ form .button:hover {
 .it-crm-list .sites-roadmap-list-item::after {
   font-family: "INTRID_ICONS";
   background-color: transparent;
-  content: "m";
+  content: "d";
   height: 177px;
   width: 177px;
   font-size: 177px;
@@ -7421,21 +7431,23 @@ form .button:hover {
   margin-bottom: 6px;
 }
 
-#reset-options-btn {
-  position: sticky;
-  top: 70px;
-  margin-top: -50px;
-  z-index: 3;
-}
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   #reset-options-btn {
-    margin-top: 20px;
+    font-family: "INTRID_ICONS";
+    content: "c";
+    font-size: 2em;
+    padding: 12px 9px 10px 8px;
+    max-height: 46px;
+    max-width: 46px;
   }
 }
 
-@media (min-width: 600px) {
-  #calc-header {
-    padding-right: 200px;
+#calculator-total-target {
+  font-size: 40px;
+}
+@media (max-width: 520px) {
+  #calculator-total-target {
+    font-size: 20px;
   }
 }
 
@@ -7626,7 +7638,7 @@ form .button:hover {
   width: 100%;
   position: relative;
   background-color: var(--blue-bg);
-  padding: 20px 0px;
+  padding: 10px 0px;
   transition: all 0s;
 }
 .calculator-total.fixed-bottom {
@@ -7650,15 +7662,10 @@ form .button:hover {
     display: none;
   }
 }
-@media (max-width: 900px) {
-  .calculator-total .title_h1.color-blue {
-    display: block;
-  }
-}
 .calculator-total .button-highlight.big {
   gap: 4px;
 }
-@media (max-width: 420px) {
+@media (max-width: 900px) {
   .calculator-total .container {
     flex-direction: column;
     row-gap: 10px;
@@ -8894,7 +8901,7 @@ form .button:hover {
   }
 }
 .crm-advantages--list > li > div::after {
-  content: "m";
+  content: "d";
   position: absolute;
   right: -50px;
   bottom: -50px;
@@ -10204,6 +10211,11 @@ form .button:hover {
   margin-left: auto;
 }
 
+@media (max-width: 785px) {
+  .ai_store-main .flying-orb {
+    bottom: 150px;
+  }
+}
 .ai_store-portfolio {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0.1) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.09) 83%, rgba(0, 234, 255, 0) 100%);
 }
@@ -10615,7 +10627,7 @@ form .button:hover {
     right: -40%;
     color: var(--blue-bg-icon);
     font-family: "INTRID_ICONS";
-    content: "m";
+    content: "d";
     font-size: 500px;
     transition: all 0.3s ease;
   }
@@ -10813,7 +10825,7 @@ form .button:hover {
     right: -40%;
     color: var(--blue-bg-icon);
     font-family: "INTRID_ICONS";
-    content: "m";
+    content: "d";
     font-size: 500px;
     transition: all 0.3s ease;
     z-index: 0;

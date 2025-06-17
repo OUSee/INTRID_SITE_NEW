@@ -201,12 +201,10 @@
     </section>
     <!-- calculator self -->
     <section id="calculator" class="calculator-calculator container">
-        <div class="calculator-calculator-header d-flex ">
-            <p class="title_h3 w-fit m-center" id='calc-header'>
-                Расчёт стоимости разработки сайта по <span class="title_h3 underlined">индивидуальным параметрам</span>
-            </p>
-        </div>
-        <button id="reset-options-btn" class="button big button-white ml-auto mb-50">Сбросить все</button>
+        <p class="title_h3 w-fit mb-50" id='calc-header'>
+            Расчёт стоимости разработки сайта по <span class="title_h3 underlined">индивидуальным параметрам</span>
+        </p>
+
         <div class="accordion">
             <!-- types packages-selector -->
             <div class="accordion-item">
@@ -1036,9 +1034,9 @@
                             каталога</label>
                     </div>
                     <div class="toggle-line">
-                        <input type="checkbox" class="toggle-checkbox" id="modules-integration-invoices"
-                            data-price="15000" name="modules-integration-invoices">
-                        <label for="modules-integration-invoices">Модуль "Рассылки"</label>
+                        <input type="checkbox" class="toggle-checkbox" id="modules-integration-newsletters"
+                            data-price="15000" name="modules-integration-newsletters">
+                        <label for="modules-integration-newsletters">Модуль "Рассылки"</label>
                     </div>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="modules-integration-invoices"
@@ -1189,7 +1187,7 @@
                             data-price="82500">
                         <label for="ai-design_check">
                             <p>
-                                Выбор дизайна карточки товара с наибольшей конверсией
+                                Подбор дизайна карточки товара с наибольшей конверсией
                                 <span class="tooltip"
                                     data-tooltip="ИИ тестирует несколько дизайнов и форматов карточки товара, показывая их различным пользователям в случайном порядке. Собирает статистику по конверсии и выбирает наилучшую"><i
                                         class="icon-tooltip"></i></span>
@@ -1273,7 +1271,7 @@
                             name="ai-dynamic_pricing">
                         <label for="ai-dynamic_pricing">
                             <p>
-                                Динамическое ценообразование
+                                Динамическое ценообразование на основе анализа цен конкурентов
                                 <span class="tooltip"
                                     data-tooltip="Мониторинг цен конкурентов, динамические предложения на их основе, оптимизация для максимизации прибыли, рекомендации по стратегии"><i
                                         class="icon-tooltip"></i></span>
@@ -1428,12 +1426,30 @@
     </section>
     <section id="calculator-total" class="calculator-total fixed-bottom">
         <div class="container d-flex justify-sb align-center">
-            <p class="title_h1 w-fit">Стоимость сайта <span class="mobile-hidden">по выбранным
-                    параметрам</span>: <span class="color-blue" id="calculator-total-target">0</span><span
-                    class="color-blue">&nbsp;₽</span></p>
-            <a href="javascript://" data-popup="fast-req-form" id="send-calculator-total" class="button-highlight big">
-                получить проект<span class="br600">сайта</span>
-            </a>
+            <div class="d-flex gap-10 align-baseline">
+                <p class="title_h4 w-fit">
+                    Стоимость сайта
+                    <span class="mobile-hidden title_h4">
+                        по выбранным параметрам
+                    </span>
+                    :
+                </p>
+                <p class="title_h1 w-fit color-blue">
+                    <span class="color-blue title_h1 w-fit" id="calculator-total-target">
+                        0
+                    </span>
+
+                    &nbsp;₽
+                </p>
+            </div>
+            <div class="d-flex gap-10">
+                <button id="reset-options-btn" class="button button-white"><span class="br900">Сбросить
+                        все</span><i class="icon-reset br900min"></i></button>
+                <a href="javascript://" data-popup="fast-req-form" id="send-calculator-total"
+                    class="button-highlight big">
+                    получить проект<span class="br600">сайта</span>
+                </a>
+            </div>
         </div>
     </section>
     <!-- footer -->
