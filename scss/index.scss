@@ -777,6 +777,10 @@ label.radioButton:has(input:checked)::after {
   align-items: baseline;
 }
 
+.align-self-baseline {
+  align-self: baseline;
+}
+
 .align-bottom {
   align-items: flex-end;
 }
@@ -12048,6 +12052,35 @@ form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
+}
+
+// comment
+
+.comment {
+  &-main {
+    justify-content: space-between;
+  }
+
+  &-comments {
+    .sites-reviews-slider {
+      &>div {
+        flex: 1 1 100%;
+        min-width: 66%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        opacity: 0;
+
+        &.active {
+          opacity: 1;
+        }
+
+        .review-card {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 //  BREAKPOINTS

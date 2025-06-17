@@ -700,6 +700,10 @@ label.radioButton:has(input:checked)::after {
   align-items: baseline;
 }
 
+.align-self-baseline {
+  align-self: baseline;
+}
+
 .align-bottom {
   align-items: flex-end;
 }
@@ -10488,6 +10492,24 @@ form .button:hover {
   grid-template-columns: repeat(4, 1fr);
   -moz-column-gap: 20px;
        column-gap: 20px;
+}
+
+.comment-main {
+  justify-content: space-between;
+}
+.comment-comments .sites-reviews-slider > div {
+  flex: 1 1 100%;
+  min-width: 66%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+}
+.comment-comments .sites-reviews-slider > div.active {
+  opacity: 1;
+}
+.comment-comments .sites-reviews-slider > div .review-card {
+  width: 100%;
 }
 
 @media (max-width: 1500px) {
