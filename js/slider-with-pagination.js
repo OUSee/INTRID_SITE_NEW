@@ -5,7 +5,9 @@ function sliderInitialise(){
         const pagination = document.querySelector(`#${id} + .pagination`);
         const navLeft = document.getElementById(`navleft_for--${id}`)
         const navRight = document.getElementById(`navright_for--${id}`)
+        const fill = slider.dataset.fill;
         slider.style.transform = `translateX(-0px)`;
+        let currentIndex = 0;
 
         let prevBtn = []
         let nextBtn = []
@@ -15,7 +17,6 @@ function sliderInitialise(){
         let gap = parseInt(window.getComputedStyle(slider).gap)
         const visibleWidth = slider.parentElement.clientWidth;
         const visibleSlidesCount = Math.round(visibleWidth / (slides[0].offsetWidth));
-        let currentIndex = 0;
 
         if(!!navLeft && !!navRight){
           prevBtn.push(navLeft)
@@ -23,37 +24,6 @@ function sliderInitialise(){
 
           navLeft.style = 'position: absolute; left: 5px; top: 50%; transform: translateY(-50%)'
           navRight.style = `position: absolute; right: 5px; top: 50%; transform: translateY(-50%)`
-        }
-        
-        if(!!pagination){
-            prevBtn = [...prevBtn, ...pagination?.querySelectorAll('.pagination--prev-btn')]
-            nextBtn = [...nextBtn, ...pagination?.querySelectorAll('.pagination--next-btn')]
-            navButtons = pagination.querySelectorAll('.pagination--btn-dot')
-
-            const dotsContainer = pagination.querySelector('.pagination--buttons-dots')
-            const btncount = slides.length - (visibleSlidesCount - 1)
-
-            if(navButtons.length !== btncount && visibleSlidesCount > 0){
-              navButtons.forEach((button)=>dotsContainer.removeChild(button))
-
-              for (let index = 0; index < btncount; index++) {
-                const btnDot = document.createElement('button')
-                btnDot.classList.add('pagination--btn-dot');
-                dotsContainer.appendChild(btnDot)
-              }
-
-              navButtons = pagination.querySelectorAll('.pagination--btn-dot')
-              navButtons[currentIndex].classList.add('highlight')
-              if(currentIndex === 0){
-                prevBtn.forEach((btn)=>{
-                  if (currentIndex === 0) {
-                    btn.style = 'opacity: 0;'
-                  } else {
-                    btn.style = 'opacity: 1;'
-                  }
-                })
-              }
-            }
         }
         
         if(id === `cases-tabs-slider`){
@@ -67,8 +37,37 @@ function sliderInitialise(){
       
         const updateSlider = () => {
           const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
-          
           try{
+            if(fill){
+              const breaks = fill.split(',');
+              const windowWidth = window.innerWidth;
+              
+
+              if (windowWidth > 1200){
+                const slideWidth = visibleWidth / breaks[0] - gap ;
+                [].forEach.call(slides, function(slide) {
+                  slide.style.minWidth = `${slideWidth}px`
+                });
+              }
+              else if(windowWidth > 900){
+                const slideWidth = visibleWidth / breaks[1] - gap ;
+                [].forEach.call(slides, function(slide) {
+                  slide.style.minWidth = `${slideWidth}px`
+                });
+              }
+              else if (windowWidth > 600){
+                const slideWidth = visibleWidth / breaks[2] - gap ;
+                [].forEach.call(slides, function(slide) {
+                  slide.style.minWidth = `${slideWidth}px`
+                });  
+              }
+              else{
+                const slideWidth = visibleWidth / breaks[3] - gap ;
+                [].forEach.call(slides, function(slide) {
+                  slide.style.minWidth = `${slideWidth}px`
+                });
+              }
+            }
             [].forEach.call(slides, function(slide) {
               slide.classList.remove('active')
             });
@@ -99,6 +98,40 @@ function sliderInitialise(){
           catch(err){
             console.log('=> err', err)
           }
+        }
+
+
+        if(!!pagination){
+            prevBtn = [...prevBtn, ...pagination?.querySelectorAll('.pagination--prev-btn')]
+            nextBtn = [...nextBtn, ...pagination?.querySelectorAll('.pagination--next-btn')]
+            navButtons = pagination.querySelectorAll('.pagination--btn-dot')
+
+            const dotsContainer = pagination.querySelector('.pagination--buttons-dots')
+            const btncount = slides.length - (visibleSlidesCount - 1)
+
+            if(navButtons.length !== btncount && visibleSlidesCount > 0){
+              navButtons.forEach((button)=>dotsContainer.removeChild(button))
+              for (let index = 0; index < btncount; index++) {
+                const btnDot = document.createElement('button')
+                btnDot.classList.add('pagination--btn-dot');
+                dotsContainer.appendChild(btnDot)
+              }
+
+              navButtons = pagination.querySelectorAll('.pagination--btn-dot')
+              navButtons.forEach(button=>{
+                button.classList.remove('highlight');
+              })
+              navButtons[currentIndex].classList.add('highlight')
+              if(currentIndex === 0){
+                prevBtn.forEach((btn)=>{
+                  if (currentIndex === 0) {
+                    btn.style = 'opacity: 0;'
+                  } else {
+                    btn.style = 'opacity: 1;'
+                  }
+                })
+              }
+            }
         }
     
         const nextSlide = ( ) => {
@@ -158,15 +191,20 @@ function sliderInitialise(){
           xDown = null;
           yDown = null;
         }
-    
+
+        updateSlider()
+        
         slider.addEventListener('touchstart', handleTouchStart, false)
         slider.addEventListener('touchmove', handleTouchMove, false)
       
         prevBtn.forEach(btn => btn.addEventListener('click', prevSlide ))
         nextBtn.forEach(btn => btn.addEventListener('click', nextSlide ))
     
-        window.addEventListener('resize', updateSlider)
+        window.addEventListener('resize', ()=>{updateSlider()})
     }
+    
+
+    const sliders = document.querySelectorAll('[data-slider]');
 
     window.addEventListener('resize', ()=>{
         sliders.forEach((slider) => {
@@ -177,10 +215,31 @@ function sliderInitialise(){
           }})
     })
 
-    const sliders = document.querySelectorAll('[data-slider]');
     if(sliders){
         sliders.forEach((slider) => {
           try{
+            // Listen for additions or removals of child elements
+            const config = { childList: true }; 
+                
+            let debounceTimeout = null;
+
+            const callback = function(mutationsList, observer) {
+              if (debounceTimeout) clearTimeout(debounceTimeout);
+
+              debounceTimeout = setTimeout(() => {
+                // Check if any mutation is of type 'childList'
+                const hasChildListMutation = mutationsList.some(mutation => mutation.type === 'childList');
+                if (hasChildListMutation) {
+                  tabSliderWithPagination(slider.id);
+                }
+              }, 250); 
+            };
+            
+            const observer = new MutationObserver(callback);
+            
+            observer.observe(slider, config);
+            // End of listen for additions or removals of child elements
+
             tabSliderWithPagination(slider.id);
           }catch(err){
             console.log('=> err seting slider ', slider.id, ':', err);

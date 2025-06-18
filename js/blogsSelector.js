@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/unikalnyj-kontent-dla-vasego-internet-magazina.html',
                 title: 'Уникальный контент для Вашего интернет-магазина',
                 description: `Интернет-магазин - удобная и современная платформа для реализации товаров. 
                               Однако, для удачной работы недостаточно просто создать сайт или страницу в соцсетях. 
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/vozmoznosti-nasej-cms-i-sms.html',
                 title: 'Возможности нашей CMS – "i-сms"',
                 description: `Наша компания разрабатывает и устанавливает уникальные CMS, под конкретные веб-ресурсы с индивидуальными функциональными возможностями. 
                               Каждый такой сайт оснащается также надёжной системой защиты от несанкционированного доступа.`
@@ -41,6 +41,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 link: './blog/{INSERT-LINK}',
                 title: 'Мануал для личного кабинета',
                 description: `В этой инструкции мы расскажем для чего нужен личный кабинет и как пользоваться его инструментами.`
+            }, 
+            {
+                img: './src/images/image-by-item-and-alias.webp',
+                link: './blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html',
+                title: 'Почему нельзя создавать интернет-магазины на шаблонах',
+                description: `Основные проблемы, с которыми сталкиваются пользователи при создании сайтов на шаблонах`
             }
         ],
         'digital-design': [
@@ -75,7 +81,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         'seo-promotion': [
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/etapy-seo-prodvijenia.html',
                 title: 'Этапы SEO-продвижения сайта',
                 description: `Чтобы стать успешным предпринимателем, просто создать сайт недостаточно. 
                               Интернет-ресурс должен быть заметен потенциальной клиентуре. 

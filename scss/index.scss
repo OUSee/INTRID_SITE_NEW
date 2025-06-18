@@ -12395,6 +12395,24 @@ form {
 .blog {
   &-portfolio {
     background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%);
+
+    .sites-portfolio-slider {
+      &>.newsletter-card {
+        opacity: 0;
+
+        @media (min-width: 1200px) {
+          min-width: calc((100%) / 4 - 10px)
+        }
+
+        &.active {
+          opacity: 1;
+        }
+      }
+
+      &+.pagination {
+        display: flex;
+      }
+    }
   }
 }
 
@@ -12407,8 +12425,9 @@ form {
     background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%);
 
     .img-wrapper {
-      margin: 50px 0;
+      margin: 50px auto;
       overflow: hidden;
+      max-width: 600px;
       border-radius: 25px;
 
       &:first-child {
@@ -12425,8 +12444,32 @@ form {
       margin-bottom: 20px;
     }
 
-    &>p.title_h3 {
+    &>p.title_h3,
+    &>p.title_h4 {
       margin-bottom: 32px;
+      margin-top: 50px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    &>.grid-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      row-gap: 32px;
+      margin-bottom: 32px;
+
+      .grid-group-item {
+        .title_h5 {
+          margin-bottom: 10px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     &>.ordinary-list {
