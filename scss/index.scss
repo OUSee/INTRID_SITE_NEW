@@ -781,6 +781,10 @@ label.radioButton:has(input:checked)::after {
   gap: 10px;
 }
 
+.gap-30 {
+  gap: 30px;
+}
+
 .align-center {
   align-items: center;
 }
@@ -7835,7 +7839,7 @@ form {
 
         .title_h5::after {
           font-family: 'INTRID_ICONS';
-          content: '\63';
+          content: '\6d';
           color: var(--blue-main);
           display: inline-block;
           transform: rotate(90deg);
@@ -8499,6 +8503,24 @@ form {
 
       @media (max-width: 900px) {
         flex-direction: column;
+      }
+    }
+
+    &-testimonial {
+      display: flex;
+      gap: 50px;
+      align-items: end;
+      margin-top: 50px;
+
+      @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        &>p {
+          text-align: center;
+        }
       }
     }
   }
@@ -11671,7 +11693,7 @@ form {
             color: var(--blue-main);
             right: 12px;
             font-family: 'INTRID_ICONS';
-            content: '\63';
+            content: '\6d';
             font-size: 1.5em;
             transform: rotate(270deg);
           }
@@ -12428,6 +12450,40 @@ form {
   }
 }
 
+// help-page
+
+.help {
+  &-faq {
+    .accordion-item {
+      background-color: var(--bg-main);
+      border-radius: 25px;
+
+
+      p.title_h5 {
+        padding-left: 60px;
+        padding-right: 30px;
+
+      }
+
+      .accordion-header {
+        position: relative;
+
+        i {
+          font-size: 2em;
+          position: absolute;
+          top: 40px;
+          right: -30px;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+
+      .accordion-checkbox:checked+.accordion-header i.icon-shevrone {
+        transform: rotate(-90deg) translate(0.2em, 0.3em);
+      }
+    }
+  }
+}
+
 
 //  BREAKPOINTS
 
@@ -12633,7 +12689,7 @@ form {
             top: 10px;
             right: -10px;
             font-family: 'INTRID_ICONS';
-            content: '\63';
+            content: '\6d';
             font-size: 0.9em;
             transition: all 0.3s ease;
           }
@@ -12643,7 +12699,7 @@ form {
             top: 10px;
             right: 0;
             font-family: 'INTRID_ICONS';
-            content: '\63';
+            content: '\6d';
             font-size: 0.9em;
             transition: all 0.3s ease;
           }
@@ -12881,7 +12937,7 @@ form {
             top: 10px;
             right: -10px;
             font-family: 'INTRID_ICONS';
-            content: '\63';
+            content: '\6d';
             font-size: 0.9em;
             transition: all 0.3s ease;
           }
@@ -12891,7 +12947,7 @@ form {
             top: 10px;
             right: 0;
             font-family: 'INTRID_ICONS';
-            content: '\63';
+            content: '\6d';
             font-size: 0.9em;
             transition: all 0.3s ease;
           }
@@ -13329,7 +13385,7 @@ form {
           color: var(--blue-main);
           right: 0;
           font-family: 'INTRID_ICONS';
-          content: '\63';
+          content: '\6d';
           font-size: 1.5em;
           transform: rotate(270deg);
         }

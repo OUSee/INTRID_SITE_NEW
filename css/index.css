@@ -705,6 +705,10 @@ label.radioButton:has(input:checked)::after {
   gap: 10px;
 }
 
+.gap-30 {
+  gap: 30px;
+}
+
 .align-center {
   align-items: center;
 }
@@ -6962,7 +6966,7 @@ form .button:hover {
 }
 .portal-benefits-card .accordion-header .title_h5::after {
   font-family: "INTRID_ICONS";
-  content: "c";
+  content: "m";
   color: var(--blue-main);
   display: inline-block;
   transform: rotate(90deg);
@@ -7503,6 +7507,23 @@ form .button:hover {
 @media (max-width: 900px) {
   .calculator-main-offer {
     flex-direction: column;
+  }
+}
+.calculator-main-testimonial {
+  display: flex;
+  gap: 50px;
+  align-items: end;
+  margin-top: 50px;
+}
+@media (max-width: 900px) {
+  .calculator-main-testimonial {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .calculator-main-testimonial > p {
+    text-align: center;
   }
 }
 .calculator-calculator-header {
@@ -10216,7 +10237,7 @@ form .button:hover {
     color: var(--blue-main);
     right: 12px;
     font-family: "INTRID_ICONS";
-    content: "c";
+    content: "m";
     font-size: 1.5em;
     transform: rotate(270deg);
   }
@@ -10790,6 +10811,28 @@ form .button:hover {
   color: var(--blue-main);
 }
 
+.help-faq .accordion-item {
+  background-color: var(--bg-main);
+  border-radius: 25px;
+}
+.help-faq .accordion-item p.title_h5 {
+  padding-left: 60px;
+  padding-right: 30px;
+}
+.help-faq .accordion-item .accordion-header {
+  position: relative;
+}
+.help-faq .accordion-item .accordion-header i {
+  font-size: 2em;
+  position: absolute;
+  top: 40px;
+  right: -30px;
+  transition: all 0.3s ease-in-out;
+}
+.help-faq .accordion-item .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
+  transform: rotate(-90deg) translate(0.2em, 0.3em);
+}
+
 @media (max-width: 1500px) {
   .container {
     max-width: 100%;
@@ -10949,7 +10992,7 @@ form .button:hover {
     top: 10px;
     right: -10px;
     font-family: "INTRID_ICONS";
-    content: "c";
+    content: "m";
     font-size: 0.9em;
     transition: all 0.3s ease;
   }
@@ -10958,7 +11001,7 @@ form .button:hover {
     top: 10px;
     right: 0;
     font-family: "INTRID_ICONS";
-    content: "c";
+    content: "m";
     font-size: 0.9em;
     transition: all 0.3s ease;
   }
@@ -11149,7 +11192,7 @@ form .button:hover {
     top: 10px;
     right: -10px;
     font-family: "INTRID_ICONS";
-    content: "c";
+    content: "m";
     font-size: 0.9em;
     transition: all 0.3s ease;
   }
@@ -11158,7 +11201,7 @@ form .button:hover {
     top: 10px;
     right: 0;
     font-family: "INTRID_ICONS";
-    content: "c";
+    content: "m";
     font-size: 0.9em;
     transition: all 0.3s ease;
   }
@@ -11491,7 +11534,7 @@ form .button:hover {
     color: var(--blue-main);
     right: 0;
     font-family: "INTRID_ICONS";
-    content: "c";
+    content: "m";
     font-size: 1.5em;
     transform: rotate(270deg);
   }
