@@ -394,6 +394,19 @@ section:first-of-type {
     padding: 0 10px;
   }
 }
+.container-blog {
+  max-width: 1170px !important;
+}
+@media (max-width: 1000px) {
+  .container-blog {
+    max-width: 970px !important;
+  }
+}
+@media (max-width: 600px) {
+  .container-blog {
+    max-width: 600px !important;
+  }
+}
 
 #preloader {
   z-index: 10;
@@ -9577,60 +9590,60 @@ form .button:hover {
 .seo-table .table-wrapper {
   flex: 1 1 80%;
 }
-.seo-table table {
+.seo-table .table-wrapper table {
   width: 100%;
   background-color: var(--blue-tag);
 }
-.seo-table table thead {
+.seo-table .table-wrapper table thead {
   background-color: var(--color-white);
   color: var(--bg-main);
   position: sticky;
   top: 0;
   border-color: var(--bg-main);
 }
-.seo-table table tbody {
+.seo-table .table-wrapper table tbody {
   border-color: var(--blue-bg);
 }
-.seo-table table th {
+.seo-table .table-wrapper table th {
   padding: 5px;
   border: 1px solid var(--blue-bg);
 }
-.seo-table table td {
+.seo-table .table-wrapper table td {
   border: 1px solid var(--blue-main);
   padding: 5px;
   padding-left: 10px;
 }
 @media (max-width: 900px) {
-  .seo-table {
+  .seo-table .table-wrapper {
     flex-direction: column;
     max-height: unset;
     overflow: hidden;
   }
-  .seo-table .info-panel {
+  .seo-table .table-wrapper .info-panel {
     position: static;
   }
-  .seo-table .info-panel .info-list {
+  .seo-table .table-wrapper .info-panel .info-list {
     margin-left: 50px;
   }
-  .seo-table .table-wrapper {
+  .seo-table .table-wrapper .table-wrapper {
     height: 500px;
     overflow-y: scroll;
   }
-  .seo-table .table-wrapper table {
+  .seo-table .table-wrapper .table-wrapper table {
     width: 100%;
   }
-  .seo-table .table-wrapper::-webkit-scrollbar {
+  .seo-table .table-wrapper .table-wrapper::-webkit-scrollbar {
     width: 10px;
     padding-right: 6px;
     background-color: transparent;
   }
-  .seo-table .table-wrapper::-webkit-scrollbar-button {
+  .seo-table .table-wrapper .table-wrapper::-webkit-scrollbar-button {
     display: none;
   }
-  .seo-table .table-wrapper::-webkit-scrollbar-track {
+  .seo-table .table-wrapper .table-wrapper::-webkit-scrollbar-track {
     background-color: transparent;
   }
-  .seo-table .table-wrapper::-webkit-scrollbar-thumb {
+  .seo-table .table-wrapper .table-wrapper::-webkit-scrollbar-thumb {
     width: 5px;
     border-radius: 5px;
     border: 1px solid transparent;
@@ -10735,6 +10748,46 @@ form .button:hover {
 
 .blog-portfolio {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%);
+}
+
+.blog_page-content {
+  padding-top: 0px;
+  padding: 0px 50px 62px 50px;
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%);
+}
+.blog_page-content .img-wrapper {
+  margin: 50px 0;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.blog_page-content .img-wrapper:first-child {
+  margin-top: 0;
+}
+.blog_page-content .img-wrapper img {
+  width: 100%;
+  height: auto;
+}
+.blog_page-content > p {
+  margin-bottom: 20px;
+}
+.blog_page-content > p.title_h3 {
+  margin-bottom: 32px;
+}
+.blog_page-content > .ordinary-list {
+  margin-bottom: 20px;
+}
+
+.ordinary-list {
+  padding-left: 15px;
+}
+.ordinary-list li {
+  padding-left: 10px;
+  margin-bottom: 5px;
+  color: var(--color-white);
+}
+.ordinary-list li::marker {
+  content: "•";
+  color: var(--blue-main);
 }
 
 @media (max-width: 1500px) {
