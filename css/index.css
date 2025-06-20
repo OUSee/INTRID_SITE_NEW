@@ -82,6 +82,10 @@
   --section-spacer: #06272a;
   --blue-tag: #11a2aa;
   --blue-bg-icon: #00eaff08;
+  --text-hl-blue: #0099cc;
+  --text-hl-yellow: rgb(251, 183, 53);
+  --text-hl-red: rgb(255, 88, 60);
+  --text-hl-green: rgb(116, 202, 53);
   /* breakpoints */
   --pc: 1440px;
   --laptop: 1200px;
@@ -745,6 +749,22 @@ label.radioButton:has(input:checked)::after {
   animation: infinite-glow 3s infinite;
 }
 
+.text-highlight-blue {
+  color: var(--text-hl-blue);
+}
+
+.text-highlight-yellow {
+  color: var(--text-hl-yellow);
+}
+
+.text-highlight-red {
+  color: var(--text-hl-red);
+}
+
+.text-highlight-green {
+  color: var(--text-hl-green);
+}
+
 .z-2 {
   z-index: 2;
 }
@@ -1048,6 +1068,24 @@ label.radioButton:has(input:checked)::after {
 
 .flex-50 {
   flex: 1 1 40%;
+}
+
+.grid-cols-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  row-gap: 32px;
+}
+@media (max-width: 1000px) {
+  .grid-cols-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -9648,7 +9686,7 @@ form .button:hover {
   display: flex;
   background-color: var(--bg-main);
   border-radius: 25px;
-  max-height: 600px;
+  max-height: 610px;
   border: 1px solid var(--blue-bg);
   overflow-x: hidden;
   overflow-y: scroll;
@@ -9675,6 +9713,7 @@ form .button:hover {
   padding: 30px 20px;
   position: sticky;
   top: 0;
+  min-width: 260px;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -9730,36 +9769,38 @@ form .button:hover {
   padding-left: 10px;
 }
 @media (max-width: 900px) {
-  .seo-table .table-wrapper {
+  .seo-table {
     flex-direction: column;
     max-height: unset;
     overflow: hidden;
+    max-height: unset;
   }
-  .seo-table .table-wrapper .info-panel {
+  .seo-table .info-panel {
     position: static;
   }
-  .seo-table .table-wrapper .info-panel .info-list {
+  .seo-table .info-panel .info-list {
     margin-left: 50px;
   }
-  .seo-table .table-wrapper .table-wrapper {
+  .seo-table .table-wrapper {
     height: 500px;
+    max-height: 500px;
     overflow-y: scroll;
   }
-  .seo-table .table-wrapper .table-wrapper table {
+  .seo-table .table-wrapper table {
     width: 100%;
   }
-  .seo-table .table-wrapper .table-wrapper::-webkit-scrollbar {
+  .seo-table .table-wrapper::-webkit-scrollbar {
     width: 10px;
     padding-right: 6px;
     background-color: transparent;
   }
-  .seo-table .table-wrapper .table-wrapper::-webkit-scrollbar-button {
+  .seo-table .table-wrapper::-webkit-scrollbar-button {
     display: none;
   }
-  .seo-table .table-wrapper .table-wrapper::-webkit-scrollbar-track {
+  .seo-table .table-wrapper::-webkit-scrollbar-track {
     background-color: transparent;
   }
-  .seo-table .table-wrapper .table-wrapper::-webkit-scrollbar-thumb {
+  .seo-table .table-wrapper::-webkit-scrollbar-thumb {
     width: 5px;
     border-radius: 5px;
     border: 1px solid transparent;
@@ -10900,13 +10941,17 @@ form .button:hover {
   margin: 50px auto;
   overflow: hidden;
   max-width: 600px;
+  width: -moz-fit-content;
+  width: fit-content;
   border-radius: 25px;
+  display: flex;
 }
 .blog_page-content .img-wrapper:first-child {
   margin-top: 0;
 }
 .blog_page-content .img-wrapper img {
-  width: 100%;
+  max-width: 100%;
+  width: auto;
   height: auto;
 }
 .blog_page-content > p {
@@ -10918,6 +10963,15 @@ form .button:hover {
 }
 .blog_page-content > p.title_h3:first-child, .blog_page-content > p.title_h4:first-child {
   margin-top: 0;
+}
+.blog_page-content > .highlighted-space {
+  background-color: var(--bg-main);
+  border-radius: 15px;
+  padding: 10px 20px;
+  border: 1px solid var(--blue-main);
+}
+.blog_page-content > .highlighted-space.d-flex {
+  align-items: start;
 }
 .blog_page-content > .grid-group {
   display: grid;

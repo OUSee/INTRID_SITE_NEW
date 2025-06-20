@@ -80,18 +80,18 @@ function sliderInitialise(){
             // Disable prev button if at start
             prevBtn.forEach((btn)=>{
               if (currentIndex === 0) {
-                btn.style = 'opacity: 0;'
+                btn.style.opacity = '0'
               } else {
-                btn.style = 'opacity: 1;'
+                btn.style.opacity = '1'
               }
             })
 
             // Disable next button if at end
             nextBtn.forEach((btn)=> {
               if (currentIndex + visibleSlidesCount >= slides.length) {
-                btn.style = 'opacity: 0;'
+                btn.style.opacity = '0'
               } else {
-                btn.style = 'opacity: 1;'
+                btn.style.opacity = '1'
               }
             })
           }
@@ -125,9 +125,9 @@ function sliderInitialise(){
               if(currentIndex === 0){
                 prevBtn.forEach((btn)=>{
                   if (currentIndex === 0) {
-                    btn.style = 'opacity: 0;'
+                    btn.style.opacity = '0'
                   } else {
-                    btn.style = 'opacity: 1;'
+                    btn.style.opacity = '1'
                   }
                 })
               }
