@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             counter.elementref.addEventListener('input', () => {
                 target.innerText = `${parseInt(target.innerText) - counter.total}`
-                counter.total = (parseInt(counter.elementref.value)) * counter.price;
+                counter.total = (parseInt(counter.elementref.value === '' ? 0 : counter.elementref.value)) * counter.price;
                 target.innerText = `${parseInt(target.innerText) + counter.total}`
             })
             counter.elementref.addEventListener('keydown', (e) => {
