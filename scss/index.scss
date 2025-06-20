@@ -31,13 +31,11 @@
 
 $list-length: 15;
 $interval: 0.6s;
-$section-clouds-bg: linear-gradient(
-  0deg,
-  rgba(0, 234, 255, 0) 0%,
-  rgba(0, 234, 255, 0.09) 15%,
-  rgba(0, 234, 255, 0.1) 83%,
-  rgba(10, 10, 10, 0) 100%
-);
+$section-clouds-bg: linear-gradient(0deg,
+    rgba(0, 234, 255, 0) 0%,
+    rgba(0, 234, 255, 0.09) 15%,
+    rgba(0, 234, 255, 0.1) 83%,
+    rgba(10, 10, 10, 0) 100%);
 
 @font-face {
   font-family: 'Roboto';
@@ -244,6 +242,7 @@ p,
 }
 
 @media (max-width: 1000px) {
+
   h1,
   .title_h1 {
     font-size: 30px;
@@ -275,6 +274,7 @@ p,
 }
 
 @media (max-width: 600px) {
+
   h1,
   .title_h1 {
     font-size: 25px;
@@ -313,6 +313,7 @@ p,
 }
 
 @media (max-width: 520px) {
+
   h1,
   .title_h1 {
     font-size: 20px;
@@ -351,18 +352,16 @@ i {
   content: '';
   display: inline-block;
   background-color: #fdf41f;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
+  clip-path: polygon(50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%);
 }
 
 .icon-star-4_4:before {
@@ -370,25 +369,21 @@ i {
   min-height: 12px;
   content: '';
   display: inline-block;
-  background: linear-gradient(
-    90deg,
-    rgba(253, 244, 31, 1) 0%,
-    rgba(253, 244, 31, 1) 40%,
-    rgb(147, 147, 147) 40%,
-    rgb(147, 147, 147) 100%
-  );
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
+  background: linear-gradient(90deg,
+      rgba(253, 244, 31, 1) 0%,
+      rgba(253, 244, 31, 1) 40%,
+      rgb(147, 147, 147) 40%,
+      rgb(147, 147, 147) 100%);
+  clip-path: polygon(50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%);
 }
 
 .icon-star-4_7:before {
@@ -396,25 +391,21 @@ i {
   min-height: 12px;
   content: '';
   display: inline-block;
-  background: linear-gradient(
-    90deg,
-    rgba(253, 244, 31, 1) 0%,
-    rgba(253, 244, 31, 1) 70%,
-    rgb(147, 147, 147) 70%,
-    rgb(147, 147, 147) 100%
-  );
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
+  background: linear-gradient(90deg,
+      rgba(253, 244, 31, 1) 0%,
+      rgba(253, 244, 31, 1) 70%,
+      rgb(147, 147, 147) 70%,
+      rgb(147, 147, 147) 100%);
+  clip-path: polygon(50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%);
 }
 
 hr {
@@ -519,9 +510,8 @@ section:first-of-type {
 
   .flying-orb {
     // offset-path: path("M0,110 С68,100 0,0 128,136");
-    offset-path: path(
-      'M -100 -100 Q 200 0, 133 139'
-    ); // Example cubic Bezier; replace with your hyperbola approximation
+    offset-path: path('M -100 -100 Q 200 0, 133 139'
+      ); // Example cubic Bezier; replace with your hyperbola approximation
     offset-distance: 0%;
     transform: scale(1);
     animation: onload-orb 2.5s ease-out forwards;
@@ -1375,7 +1365,7 @@ label.radioButton:has(input:checked)::after {
   color: var(--blue-main);
 }
 
-#menuToggle:has(input:checked) ~ .burger-content {
+#menuToggle:has(input:checked)~.burger-content {
   opacity: 1;
   height: fit-content;
   display: block;
@@ -1519,16 +1509,16 @@ div.icon-menu {
   &-checkbox {
     display: none;
 
-    &:checked + .accordion-header i.icon-shevrone,
-    &:checked + .accordion-header i.icon-shevrone_double {
+    &:checked+.accordion-header i.icon-shevrone,
+    &:checked+.accordion-header i.icon-shevrone_double {
       transform: rotate(-90deg) translate(-0.3em, 0.3em);
     }
 
-    &:checked + .accordion-header.title_h4 i.icon-shevrone {
+    &:checked+.accordion-header.title_h4 i.icon-shevrone {
       transform: rotate(-90deg) translate(0, 0.3em);
     }
 
-    &:checked + .accordion-header + .accordion-content {
+    &:checked+.accordion-header+.accordion-content {
       max-height: unset;
       padding: 14px;
     }
@@ -1785,12 +1775,12 @@ div.icon-menu {
         }
 
         &:hover {
-          .tab-slider-card-image > img {
+          .tab-slider-card-image>img {
             transform: scale(1.1);
           }
         }
 
-        & > .title_h4 {
+        &>.title_h4 {
           white-space: normal;
 
           /* Prevent breaking at hyphens */
@@ -1801,8 +1791,9 @@ div.icon-menu {
           hyphens: manual;
         }
 
-        & > .testimonials {
+        &>.testimonials {
           margin-top: 10px;
+          margin-bottom: auto;
 
           &::before {
             content: ',,';
@@ -1826,21 +1817,11 @@ div.icon-menu {
   }
 }
 
-.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-1:checked)
-  ~ .tab-view
-  #tab-slide-1,
-.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-2:checked)
-  ~ .tab-view
-  #tab-slide-2,
-.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-3:checked)
-  ~ .tab-view
-  #tab-slide-3,
-.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-4:checked)
-  ~ .tab-view
-  #tab-slide-4,
-.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-5:checked)
-  ~ .tab-view
-  #tab-slide-5 {
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-1:checked)~.tab-view #tab-slide-1,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-2:checked)~.tab-view #tab-slide-2,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-3:checked)~.tab-view #tab-slide-3,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-4:checked)~.tab-view #tab-slide-4,
+.slider-with-tabs_tabs-buttons:has(#tab-slide-btn-5:checked)~.tab-view #tab-slide-5 {
   display: flex;
   justify-content: space-between;
 }
@@ -1903,21 +1884,21 @@ div.icon-menu {
   transform-origin: 0% 100%;
 }
 
-#menuToggle input:checked ~ span,
-#mobilemenuToggle input:checked ~ span {
+#menuToggle input:checked~span,
+#mobilemenuToggle input:checked~span {
   opacity: 1;
   transform: rotate(-45deg) translate(-1px, -2px);
   background: var(--blue-main);
 }
 
-#menuToggle input:checked ~ span:nth-last-child(2),
-#mobilemenuToggle input:checked ~ span:nth-last-child(2) {
+#menuToggle input:checked~span:nth-last-child(2),
+#mobilemenuToggle input:checked~span:nth-last-child(2) {
   opacity: 0;
   transform: rotate(0deg) scale(0.1, 0.1);
 }
 
-#menuToggle input:checked ~ span:nth-last-child(3),
-#mobilemenuToggle input:checked ~ span:nth-last-child(3) {
+#menuToggle input:checked~span:nth-last-child(3),
+#mobilemenuToggle input:checked~span:nth-last-child(3) {
   transform: rotate(45deg) translate(0, -1px);
 }
 
@@ -1932,7 +1913,7 @@ div.icon-menu {
   animation-delay: 3s;
 
   &.straight {
-    & > img {
+    &>img {
       left: 50% !important;
     }
   }
@@ -2573,14 +2554,12 @@ section.tabs {
 .tabs-content {
   width: 100%;
   background: rgb(10, 10, 10);
-  background: linear-gradient(
-    180deg,
-    rgba(10, 10, 10, 1) 0%,
-    rgba(10, 10, 10, 1) 82%,
-    rgba(10, 10, 10, 0.8) 91%,
-    rgba(10, 10, 10, 0.6) 96%,
-    rgba(10, 10, 10, 0) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(10, 10, 10, 1) 0%,
+      rgba(10, 10, 10, 1) 82%,
+      rgba(10, 10, 10, 0.8) 91%,
+      rgba(10, 10, 10, 0.6) 96%,
+      rgba(10, 10, 10, 0) 100%);
 
   .tab-content {
     display: none;
@@ -2606,9 +2585,9 @@ section.tabs {
   }
 }
 
-.tabs-buttons:has(#tab-1:checked) ~ .tabs-content .tab-content:nth-child(1),
-.tabs-buttons:has(#tab-2:checked) ~ .tabs-content .tab-content:nth-child(2),
-.tabs-buttons:has(#tab-3:checked) ~ .tabs-content .tab-content:nth-child(3) {
+.tabs-buttons:has(#tab-1:checked)~.tabs-content .tab-content:nth-child(1),
+.tabs-buttons:has(#tab-2:checked)~.tabs-content .tab-content:nth-child(2),
+.tabs-buttons:has(#tab-3:checked)~.tabs-content .tab-content:nth-child(3) {
   display: block;
   animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -3125,34 +3104,16 @@ section.tabs {
         border-radius: 25px;
         overflow: hidden;
 
-        &:has(thead th:nth-child(2) label input:checked)
-          tbody
-          tr
-          td:nth-child(2),
-        &:has(thead th:nth-child(3) label input:checked)
-          tbody
-          tr
-          td:nth-child(3),
-        &:has(thead th:nth-child(4) label input:checked)
-          tbody
-          tr
-          td:nth-child(4) {
+        &:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2),
+        &:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3),
+        &:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
           border-left: 3px solid var(--blue-tag);
           border-right: 2px solid var(--blue-tag);
         }
 
-        &:has(thead th:nth-child(2) label input:checked)
-          tbody
-          tr:last-child
-          td:nth-child(2),
-        &:has(thead th:nth-child(3) label input:checked)
-          tbody
-          tr:last-child
-          td:nth-child(3),
-        &:has(thead th:nth-child(4) label input:checked)
-          tbody
-          tr:last-child
-          td:nth-child(4) {
+        &:has(thead th:nth-child(2) label input:checked) tbody tr:last-child td:nth-child(2),
+        &:has(thead th:nth-child(3) label input:checked) tbody tr:last-child td:nth-child(3),
+        &:has(thead th:nth-child(4) label input:checked) tbody tr:last-child td:nth-child(4) {
           color: var(--color-white) !important;
           background-color: var(--blue-tag);
           border-bottom: 2px solid var(--blue-tag);
@@ -3161,6 +3122,7 @@ section.tabs {
         thead {
           @media (min-width: 900px) {
             tr {
+
               td,
               th {
                 padding: 18px 30px;
@@ -3197,6 +3159,7 @@ section.tabs {
 
         tbody tr {
           &:first-child {
+
             td,
             th label {
               padding: 18px 30px;
@@ -3266,18 +3229,9 @@ section.tabs {
           overflow-x: hidden;
           overflow-y: visible;
 
-          &:has(thead th:nth-child(2) label input:checked)
-            tbody
-            tr
-            td:nth-child(2),
-          &:has(thead th:nth-child(3) label input:checked)
-            tbody
-            tr
-            td:nth-child(3),
-          &:has(thead th:nth-child(4) label input:checked)
-            tbody
-            tr
-            td:nth-child(4) {
+          &:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2),
+          &:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3),
+          &:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
             display: table-cell !important;
           }
 
@@ -3395,14 +3349,7 @@ section.tabs {
   }
 }
 
-body
-  > section.tabs
-  > div.tabs-content
-  > div:nth-child(2)
-  > div
-  > div.count-n-card
-  > div.recent-work-card
-  > img {
+body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.recent-work-card>img {
   width: 227px;
   height: 141px;
 }
@@ -3686,7 +3633,7 @@ body
     padding: 0px;
     overflow: hidden;
 
-    & > a {
+    &>a {
       overflow: hidden;
     }
 
@@ -3821,6 +3768,7 @@ body
   z-index: 1;
 
   .benefit-card {
+
     &:first-child,
     &:last-child {
       margin-left: 30px;
@@ -3986,13 +3934,11 @@ body
             background-color: transparent;
           }
 
-          background: linear-gradient(
-            270deg,
+          background: linear-gradient(270deg,
             rgba(0, 234, 255, 0) 0%,
             rgba(0, 234, 255, 0) 52%,
             rgba(0, 234, 255, 1) 52%,
-            rgba(0, 234, 255, 1) 100%
-          );
+            rgba(0, 234, 255, 1) 100%);
         }
 
         &-right {
@@ -4004,13 +3950,11 @@ body
             background-color: var(--blue-main) !important;
           }
 
-          background: linear-gradient(
-            90deg,
+          background: linear-gradient(90deg,
             rgba(0, 234, 255, 0) 0%,
             rgba(0, 234, 255, 0) 52%,
             rgba(0, 234, 255, 1) 52%,
-            rgba(0, 234, 255, 1) 100%
-          );
+            rgba(0, 234, 255, 1) 100%);
         }
       }
 
@@ -4093,25 +4037,21 @@ body
 }
 
 .services-n-prices {
-  background: linear-gradient(
-    0deg,
-    rgba(0, 234, 255, 0.1) 0%,
-    rgba(0, 234, 255, 0.09) 15%,
-    rgba(0, 234, 255, 0.1) 83%,
-    rgba(10, 10, 10, 0) 100%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 234, 255, 0.1) 0%,
+      rgba(0, 234, 255, 0.09) 15%,
+      rgba(0, 234, 255, 0.1) 83%,
+      rgba(10, 10, 10, 0) 100%);
 }
 
 .for-buisness-offers {
   position: relative;
-  background: linear-gradient(
-      0deg,
+  background: linear-gradient(0deg,
       rgba(0, 234, 255, 0) 0%,
       rgba(0, 234, 255, 0) 15%,
       rgba(0, 234, 255, 0.09) 50%,
       rgba(0, 234, 255, 0.1) 83%,
-      rgba(0, 234, 255, 0.1) 100%
-    ),
+      rgba(0, 234, 255, 0.1) 100%),
     url('../src/images/mountains_1.webp');
   background-size: 100% auto;
   background-position: bottom;
@@ -4280,13 +4220,11 @@ body
 }
 
 .about-section {
-  background: linear-gradient(
-      0deg,
+  background: linear-gradient(0deg,
       rgba(0, 234, 255, 0) 0%,
       rgba(0, 234, 255, 0) 15%,
       rgba(0, 234, 255, 0.1) 61%,
-      rgba(0, 234, 255, 0) 100%
-    ),
+      rgba(0, 234, 255, 0) 100%),
     url('../src/images/mountains_2.webp');
   background-size: 100% auto;
   background-position: bottom;
@@ -4704,12 +4642,12 @@ body
           }
         }
 
-        &:has(#cases-tab-1:checked) ~ .cases-content .tab-content:nth-child(1),
-        &:has(#cases-tab-2:checked) ~ .cases-content .tab-content:nth-child(2),
-        &:has(#cases-tab-3:checked) ~ .cases-content .tab-content:nth-child(3),
-        &:has(#cases-tab-4:checked) ~ .cases-content .tab-content:nth-child(4),
-        &:has(#cases-tab-5:checked) ~ .cases-content .tab-content:nth-child(5),
-        &:has(#cases-tab-6:checked) ~ .cases-content .tab-content:nth-child(6) {
+        &:has(#cases-tab-1:checked)~.cases-content .tab-content:nth-child(1),
+        &:has(#cases-tab-2:checked)~.cases-content .tab-content:nth-child(2),
+        &:has(#cases-tab-3:checked)~.cases-content .tab-content:nth-child(3),
+        &:has(#cases-tab-4:checked)~.cases-content .tab-content:nth-child(4),
+        &:has(#cases-tab-5:checked)~.cases-content .tab-content:nth-child(5),
+        &:has(#cases-tab-6:checked)~.cases-content .tab-content:nth-child(6) {
           display: flex;
           animation: flex-appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
@@ -4874,8 +4812,7 @@ body
                 }
               }
 
-              .card {
-              }
+              .card {}
             }
           }
         }
@@ -5141,7 +5078,7 @@ body
       height: fit-content;
 
       & .contact-block--content {
-        & > a {
+        &>a {
           width: 26px;
           height: 26px;
           font-size: 0;
@@ -5171,7 +5108,7 @@ body
       max-width: unset;
     }
 
-    & > a {
+    &>a {
       position: relative;
       display: flex;
       padding-left: 24px;
@@ -5273,8 +5210,7 @@ body
       }
     }
 
-    @media (max-width: 600px) {
-    }
+    @media (max-width: 600px) {}
 
     // &>* {
     //     width: 100%;
@@ -5299,7 +5235,7 @@ body
       display: none;
     }
 
-    & > a {
+    &>a {
       position: relative;
       padding-left: 10px;
       color: var(--color-white);
@@ -5374,7 +5310,7 @@ body
       gap: 6px 20px;
     }
 
-    & > a {
+    &>a {
       position: relative;
       color: var(--color-white);
       white-space: nowrap;
@@ -5410,7 +5346,7 @@ body
     padding: 20px 0;
     background-color: var(--footer-bg);
 
-    & > .container {
+    &>.container {
       display: flex;
       flex-wrap: nowrap;
       gap: 18px;
@@ -5420,11 +5356,11 @@ body
         flex-wrap: wrap;
       }
 
-      & > * {
+      &>* {
         opacity: 0.7;
       }
 
-      & > a {
+      &>a {
         position: relative;
         margin-right: auto;
         text-align: left;
@@ -5459,7 +5395,7 @@ body
         }
       }
 
-      & > span {
+      &>span {
         margin-left: auto;
         text-align: right;
 
@@ -5641,7 +5577,7 @@ body
   margin-top: 10px;
   margin-bottom: 10px;
 
-  & > li {
+  &>li {
     padding-left: 10px;
 
     &::marker {
@@ -6054,7 +5990,7 @@ form {
       display: flex;
       align-items: stretch;
 
-      & + .pagination {
+      &+.pagination {
         display: none;
       }
 
@@ -6068,7 +6004,7 @@ form {
           }
         }
 
-        & + .pagination {
+        &+.pagination {
           display: flex;
         }
       }
@@ -6097,13 +6033,11 @@ form {
   }
 
   &-roadmap {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(10, 10, 10, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.09) 15%,
+        rgba(0, 234, 255, 0.1) 83%,
+        rgba(10, 10, 10, 0) 100%);
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -6159,6 +6093,7 @@ form {
         }
 
         @media (min-width: 999px) {
+
           &:nth-child(3),
           &:nth-child(4) {
             &:after {
@@ -6483,8 +6418,7 @@ form {
           min-width: calc((100vw - 20px));
         }
 
-        &-header {
-        }
+        &-header {}
 
         p.color-blue {
           margin-bottom: 15px;
@@ -6654,8 +6588,7 @@ form {
     align-items: center;
     position: relative;
 
-    @media (max-width: 900px) {
-    }
+    @media (max-width: 900px) {}
 
     .left-block {
       max-width: 767px;
@@ -6806,13 +6739,11 @@ form {
   }
 
   &-steps {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0.1) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(10, 10, 10, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0.1) 0%,
+        rgba(0, 234, 255, 0.09) 15%,
+        rgba(0, 234, 255, 0.1) 83%,
+        rgba(10, 10, 10, 0) 100%);
 
     .description {
       margin-top: 20px;
@@ -6823,7 +6754,7 @@ form {
       margin-bottom: 30px;
       justify-content: center;
 
-      & + .description {
+      &+.description {
         text-align: center;
         max-width: 70%;
       }
@@ -6867,13 +6798,11 @@ form {
   }
 
   &-portfolio {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(0, 234, 255, 0.1) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.09) 15%,
+        rgba(0, 234, 255, 0.1) 83%,
+        rgba(0, 234, 255, 0.1) 100%);
   }
 
   &-creation {
@@ -6940,17 +6869,15 @@ form {
           left: 0%;
           position: absolute;
           transform: rotateX(-50deg) rotateY(15deg) translateZ(68px) scale(0.6);
-          background: radial-gradient(
-            ellipse at center,
-            #00eaff 15%,
-            #00eaff 16%,
-            #fff 16%,
-            #fff 40%,
-            #00eaff 41%,
-            #00eaff 55%,
-            #fff 56%,
-            transparent 71%
-          );
+          background: radial-gradient(ellipse at center,
+              #00eaff 15%,
+              #00eaff 16%,
+              #fff 16%,
+              #fff 40%,
+              #00eaff 41%,
+              #00eaff 55%,
+              #fff 56%,
+              transparent 71%);
           border-radius: 100%;
           transition: none;
 
@@ -6975,6 +6902,7 @@ form {
         }
 
         @media (max-width: 520px) {
+
           &:nth-child(4),
           &:nth-child(5) {
             flex: 1 1 90%;
@@ -7083,8 +7011,7 @@ form {
         }
       }
 
-      #personal-data {
-      }
+      #personal-data {}
 
       button {
         margin-top: 10px;
@@ -7107,6 +7034,7 @@ form {
 }
 
 @keyframes iris {
+
   0%,
   100% {
     transform: rotateX(-10deg) rotateY(15deg) translateZ(68px) scale(0.6);
@@ -7272,19 +7200,16 @@ form {
         }
       }
 
-      @media (max-width: 600px) {
-      }
+      @media (max-width: 600px) {}
     }
   }
 
   &-portfolio {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(0, 234, 255, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.09) 15%,
+        rgba(0, 234, 255, 0.1) 83%,
+        rgba(0, 234, 255, 0) 100%);
 
     .recent-work-card {
       width: 100%;
@@ -7295,12 +7220,10 @@ form {
     padding-top: 62px;
 
     .img-handler {
-      background: linear-gradient(
-        0deg,
-        rgba(0, 234, 255, 0) 0%,
-        rgba(0, 234, 255, 0.09) 15%,
-        rgba(10, 10, 10, 0) 30%
-      );
+      background: linear-gradient(0deg,
+          rgba(0, 234, 255, 0) 0%,
+          rgba(0, 234, 255, 0.09) 15%,
+          rgba(10, 10, 10, 0) 30%);
     }
 
     &.sites-leaders {
@@ -7566,6 +7489,7 @@ form {
 
   &-ai {
     @media (max-width: 1250px) {
+
       .benefits-right,
       .benefits-left {
         top: 220px !important;
@@ -7573,6 +7497,7 @@ form {
     }
 
     @media (max-width: 1100px) {
+
       .benefits-right,
       .benefits-left {
         top: 275px !important;
@@ -7580,6 +7505,7 @@ form {
     }
 
     @media (max-width: 1000px) {
+
       .benefits-right,
       .benefits-left {
         margin-top: 30px !important;
@@ -7603,8 +7529,7 @@ form {
       }
     }
 
-    .description {
-    }
+    .description {}
 
     .flying-orb {
       top: 40px;
@@ -7671,6 +7596,7 @@ form {
       }
 
       @media (max-width: 420px) {
+
         .block:nth-child(1),
         .block:nth-child(3),
         .block:last-child {
@@ -7908,8 +7834,7 @@ form {
       }
 
       tr {
-        td:first-child {
-        }
+        td:first-child {}
 
         td:nth-child(2) {
           background-color: var(--blue-tag);
@@ -7999,6 +7924,7 @@ form {
 
       li {
         .header {
+
           img,
           i {
             font-size: 40px;
@@ -8370,7 +8296,7 @@ form {
         line-height: 70px;
         min-width: 264px;
 
-        & > span {
+        &>span {
           font-size: 70px;
           font-weight: 600;
           line-height: 70px;
@@ -8400,7 +8326,7 @@ form {
           line-height: 30px;
           min-width: unset;
 
-          & > span {
+          &>span {
             font-size: 30px;
             line-height: 30px;
           }
@@ -8449,14 +8375,12 @@ form {
 
   &-crm {
     position: relative;
-    background: linear-gradient(
-        0deg,
+    background: linear-gradient(0deg,
         rgba(0, 234, 255, 0) 0%,
         rgba(0, 234, 255, 0) 15%,
         rgba(0, 234, 255, 0.09) 50%,
         rgba(0, 234, 255, 0.1) 83%,
-        rgba(0, 234, 255, 0) 100%
-      ),
+        rgba(0, 234, 255, 0) 100%),
       url(../src/images/mountains_1.webp);
     background-size: 100% auto;
     background-position: bottom;
@@ -8470,7 +8394,7 @@ form {
         padding-left: 20px;
       }
 
-      & > li {
+      &>li {
         padding-left: 20px;
         position: relative;
 
@@ -8649,7 +8573,7 @@ form {
         justify-content: center;
         gap: 20px;
 
-        & > p {
+        &>p {
           text-align: center;
         }
       }
@@ -8990,7 +8914,7 @@ form {
   display: none;
 
   &:checked {
-    & + label {
+    &+label {
       position: relative;
 
       &::before {
@@ -9006,7 +8930,7 @@ form {
     }
   }
 
-  & + label {
+  &+label {
     position: relative;
     cursor: pointer;
 
@@ -9100,11 +9024,11 @@ form {
       max-width: 100%;
     }
 
-    & > h1 {
+    &>h1 {
       margin: 0 0 32px 0;
     }
 
-    & > p {
+    &>p {
       margin: 16px 0 0 0;
     }
   }
@@ -9191,7 +9115,7 @@ form {
       transform: translate(-50%, -50%);
     }
 
-    & > img {
+    &>img {
       position: absolute;
       top: 50%;
       left: 40%;
@@ -9203,7 +9127,7 @@ form {
       transform: translate(-50%, -50%);
     }
 
-    & > .water-ripple {
+    &>.water-ripple {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -9235,7 +9159,7 @@ form {
     gap: 20px;
   }
 
-  & > li {
+  &>li {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -9258,7 +9182,7 @@ form {
       max-width: 100%;
     }
 
-    & > p {
+    &>p {
       max-width: 360px;
 
       @media (max-width: 540px) {
@@ -9266,7 +9190,7 @@ form {
       }
     }
 
-    & > img,
+    &>img,
     i {
       font-size: 32px;
       line-height: 32px;
@@ -9286,21 +9210,21 @@ form {
   width: 100%;
   margin-top: 32px;
 
-  & > span {
+  &>span {
     &.title_h4 {
       flex: 1 0 auto;
       width: 100%;
     }
   }
 
-  & > ul {
+  &>ul {
     margin: 20px 0 32px;
 
     @media (max-width: 600px) {
       margin: 20px 0;
     }
 
-    & > li {
+    &>li {
       padding-left: 10px;
       margin-bottom: 10px;
 
@@ -9316,7 +9240,7 @@ form {
     }
   }
 
-  & > div {
+  &>div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -9327,13 +9251,13 @@ form {
     width: 100%;
     margin-top: 20px;
 
-    & > p {
+    &>p {
       @media (max-width: 1200px) {
         width: 100%;
       }
     }
 
-    & > .button-link {
+    &>.button-link {
       margin-left: auto;
 
       @media (max-width: 1200px) {
@@ -9398,10 +9322,10 @@ form {
     padding: 20px;
     text-align: left;
 
-    & > ul {
+    &>ul {
       margin: 0 0 20px;
 
-      & > li {
+      &>li {
         padding-left: 10px;
         margin-bottom: 10px;
         text-align: left;
@@ -9418,7 +9342,7 @@ form {
       }
     }
 
-    & > p {
+    &>p {
       margin-bottom: 16px;
 
       &:last-child {
@@ -9437,7 +9361,7 @@ form {
     margin-top: auto;
     padding: 0 20px 20px;
 
-    & > a {
+    &>a {
       justify-content: flex-start;
     }
   }
@@ -9454,7 +9378,7 @@ form {
     gap: 20px;
   }
 
-  & > a {
+  &>a {
     align-self: center;
     margin-top: auto;
   }
@@ -9482,7 +9406,7 @@ form {
     flex: 1;
     width: 100%;
 
-    & > p {
+    &>p {
       margin-bottom: 16px;
 
       &:last-child {
@@ -9500,7 +9424,7 @@ form {
     width: 100%;
     margin-top: auto;
 
-    & > a {
+    &>a {
       justify-content: center;
       width: 100%;
     }
@@ -9533,7 +9457,7 @@ form {
     box-shadow: none;
   }
 
-  & > a {
+  &>a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9565,7 +9489,7 @@ form {
       max-width: 100%;
     }
 
-    & > div {
+    &>div {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -9573,7 +9497,7 @@ form {
       gap: 10px;
       min-height: 2em;
 
-      & > b {
+      &>b {
         padding: 10px;
         background-color: #031618;
         border-radius: 10px;
@@ -9586,7 +9510,7 @@ form {
         }
       }
 
-      & > * {
+      &>* {
         &:first-child {
           width: 100px;
           flex: 0 0 100px;
@@ -9610,7 +9534,7 @@ form {
   align-items: stretch;
   gap: 10px;
 
-  & > * {
+  &>* {
     flex-basis: 1 0 calc(33.333333% - 5px);
     max-width: 33.333333%;
     opacity: 0;
@@ -9639,6 +9563,7 @@ form {
   }
 
   & .pagintaion {
+
     &--prev,
     &--next {
       &-btn {
@@ -9666,11 +9591,11 @@ form {
       max-width: 100%;
     }
 
-    & > h1 {
+    &>h1 {
       margin: 0 0 32px 0;
     }
 
-    & > p {
+    &>p {
       margin: 16px 0 0 0;
     }
   }
@@ -9757,7 +9682,7 @@ form {
       transform: translate(-50%, -50%);
     }
 
-    & > img {
+    &>img {
       position: absolute;
       top: 50%;
       left: 40%;
@@ -9769,7 +9694,7 @@ form {
       transform: translate(-50%, -50%);
     }
 
-    & > .water-ripple {
+    &>.water-ripple {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -9785,7 +9710,7 @@ form {
 .integration-popular {
   position: relative;
 
-  & > .popular-description {
+  &>.popular-description {
     margin: 32px auto;
   }
 
@@ -9800,7 +9725,7 @@ form {
       gap: 20px;
     }
 
-    & > * {
+    &>* {
       &:first-child {
         flex: 1 0 auto;
         max-width: 67%;
@@ -9952,7 +9877,7 @@ form {
   flex-wrap: wrap;
   gap: 16px;
 
-  & > .item {
+  &>.item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9961,10 +9886,10 @@ form {
     flex: 0 1 80px;
     text-align: center;
 
-    & > img,
-    & > picture,
-    & > image,
-    & > source {
+    &>img,
+    &>picture,
+    &>image,
+    &>source {
       width: 40px;
       height: 40px;
       object-fit: contain;
@@ -9975,7 +9900,7 @@ form {
 
 // stages of integrations
 .integration-stages {
-  & > .title_h3 {
+  &>.title_h3 {
     margin: 0 auto 50px;
   }
 
@@ -10069,7 +9994,7 @@ form {
   & .tech-we-use {
     padding: 0;
 
-    & > .title_h2 {
+    &>.title_h2 {
       margin: 0 auto 50px;
     }
   }
@@ -10087,11 +10012,11 @@ form {
       max-width: 100%;
     }
 
-    & > h1 {
+    &>h1 {
       margin: 0 0 32px 0;
     }
 
-    & > p {
+    &>p {
       margin: 32px 0 0 0;
     }
   }
@@ -10156,7 +10081,7 @@ form {
       transform: translate(-50%, -50%);
     }
 
-    & > img {
+    &>img {
       position: absolute;
       top: 50%;
       left: 40%;
@@ -10168,7 +10093,7 @@ form {
       transform: translate(-50%, -50%);
     }
 
-    & > .water-ripple {
+    &>.water-ripple {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -10196,7 +10121,7 @@ form {
       gap: 12px 8px;
     }
 
-    & > li {
+    &>li {
       flex-basis: calc(50% - 20px);
       max-width: 50%;
 
@@ -10221,7 +10146,7 @@ form {
       gap: 12px 8px;
     }
 
-    & > li {
+    &>li {
       flex-basis: calc(33.333333% - 20px);
       max-width: 33%;
 
@@ -10235,7 +10160,7 @@ form {
         max-width: 100%;
       }
 
-      & > div {
+      &>div {
         padding: 20px 30px;
 
         @media (max-width: 600px) {
@@ -10282,11 +10207,11 @@ form {
       max-width: 100%;
     }
 
-    & > h1 {
+    &>h1 {
       margin: 0 0 32px 0;
     }
 
-    & > p {
+    &>p {
       margin: 32px 0 0 0;
     }
 
@@ -10373,7 +10298,7 @@ form {
       transform: translate(-50%, -50%);
     }
 
-    & > img {
+    &>img {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -10385,7 +10310,7 @@ form {
       transform: translate(-50%, -50%);
     }
 
-    & > .water-ripple {
+    &>.water-ripple {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -10401,7 +10326,7 @@ form {
   & .tab-content-webDev {
     margin: 0 auto;
 
-    & > p {
+    &>p {
       &.title_h4 {
         margin: 0 auto 30px;
 
@@ -10423,7 +10348,7 @@ form {
   & .tab-content-webDev {
     margin: 0 auto;
 
-    & > p {
+    &>p {
       &.title_h4 {
         margin: 0 auto 30px;
 
@@ -10436,11 +10361,11 @@ form {
 }
 
 .tenders-keys {
-  & > .title_h4 {
+  &>.title_h4 {
     margin: 0 0 20px 0;
   }
 
-  & > p {
+  &>p {
     margin: 20px 0 0 0;
   }
 
@@ -10451,7 +10376,7 @@ form {
     gap: 16px;
     margin: 50px auto 0;
 
-    & > .tender-card {
+    &>.tender-card {
       flex: 1 0 50%;
       max-width: 50%;
 
@@ -10499,7 +10424,7 @@ form {
       flex-direction: column-reverse;
     }
 
-    & > div {
+    &>div {
       &:nth-child(1) {
         & [class*='title_h'] {
           margin-bottom: 20px;
@@ -10518,7 +10443,7 @@ form {
           margin: 0 auto;
         }
 
-        & > img {
+        &>img {
           width: 100px;
           height: auto;
           object-fit: contain;
@@ -10630,12 +10555,11 @@ form {
         }
       }
 
-      .card {
-      }
+      .card {}
     }
   }
 
-  & > a {
+  &>a {
     align-self: flex-end;
     margin-top: auto;
   }
@@ -10688,7 +10612,7 @@ form {
       align-items: stretch;
       gap: 10px;
 
-      & > * {
+      &>* {
         transition: opacity 0.3s ease-in-out;
         flex: 1 1 20%;
         min-width: 20%;
@@ -10739,7 +10663,7 @@ form {
       }
     }
 
-    & .sites-portfolio-slider + .pagination {
+    & .sites-portfolio-slider+.pagination {
       @media (max-width: 1400px) {
         display: flex;
       }
@@ -10753,6 +10677,7 @@ form {
       }
 
       & .pagination {
+
         &--next-btn,
         &--prev-btn {
           position: absolute;
@@ -10781,7 +10706,7 @@ form {
       }
     }
 
-    & > .button-link {
+    &>.button-link {
       margin: 0 0 0 auto;
       // margin: 32px 0 0 auto;
     }
@@ -10798,7 +10723,7 @@ form {
       flex-direction: column;
     }
 
-    & > div {
+    &>div {
       display: flex;
       align-items: center;
       flex-wrap: nowrap;
@@ -10852,12 +10777,12 @@ form {
       column-gap: 20px;
       row-gap: 30px;
 
-      & > div {
+      &>div {
         flex: 1 1 0;
         max-width: unset;
         min-width: 19%;
 
-        & > a {
+        &>a {
           width: 100%;
 
           &.absolute-link {
@@ -11085,6 +11010,7 @@ form {
   color: #4285f4;
 
   span {
+
     &:nth-child(1),
     &:nth-child(4) {
       color: #ea4335;
@@ -11105,14 +11031,14 @@ form {
 .promotion {
   &-main {
     .crm-page--block .flying-orb {
-      & > img {
+      &>img {
         left: 50%;
       }
     }
   }
 
   &-ways {
-    & > ul > li > div {
+    &>ul>li>div {
       p.color-grey {
         @media (max-width: 600px) {
           padding-left: 0;
@@ -11159,7 +11085,7 @@ form {
   }
 
   &-portfolio {
-    .support-card--list > div > b {
+    .support-card--list>div>b {
       width: 120px;
       flex: 0 0 120px;
     }
@@ -11177,7 +11103,7 @@ form {
       }
 
       @media (max-width: 1400px) {
-        & + .pagination {
+        &+.pagination {
           display: flex;
         }
       }
@@ -11300,7 +11226,7 @@ form {
 .reputation {
   &-main {
     .flying-orb {
-      & > img {
+      &>img {
         left: 50%;
       }
 
@@ -11318,7 +11244,7 @@ form {
   &-main {
     .crm-page--block {
       .flying-orb {
-        & > img {
+        &>img {
           left: 50%;
         }
 
@@ -11355,7 +11281,7 @@ form {
   }
 
   &-benefits {
-    & > ul > li > div {
+    &>ul>li>div {
       @media (min-width: 1000px) {
         justify-content: center;
       }
@@ -11372,12 +11298,12 @@ form {
       align-items: stretch;
       justify-content: center;
 
-      & > li {
-        & > a {
+      &>li {
+        &>a {
           height: 100%;
         }
 
-        & > div::after {
+        &>div::after {
           display: none;
         }
       }
@@ -11451,11 +11377,11 @@ form {
 
   &:hover {
     .tariff-card-content {
-      & > p {
+      &>p {
         transform: translate(-4px, -4px) scale(1.01);
       }
 
-      & > hr {
+      &>hr {
         transform: translate(-4px, -4px) scale(1.01);
       }
     }
@@ -11524,7 +11450,7 @@ form {
       align-items: center;
     }
 
-    & > .tariff-card-content {
+    &>.tariff-card-content {
       padding: 10px 20px 30px 20px;
     }
 
@@ -11551,11 +11477,11 @@ form {
       grid-area: 1 / 1 / 2 / 2;
     }
 
-    & > a {
+    &>a {
       grid-area: 2 / 1 / 3 / 2;
     }
 
-    & > img {
+    &>img {
       grid-area: 1 / 2 / 3 / 3;
       width: auto;
       height: 60px;
@@ -11570,7 +11496,7 @@ form {
     max-width: unset;
     flex: 1;
 
-    & > div {
+    &>div {
       width: 100%;
 
       i,
@@ -11582,7 +11508,7 @@ form {
         color: var(--blue-main);
       }
 
-      & > b {
+      &>b {
         margin-left: auto;
         width: 130px;
         flex: 0 0 130px;
@@ -11590,7 +11516,7 @@ form {
     }
   }
 
-  & > .button-link {
+  &>.button-link {
     align-self: end;
     justify-self: end;
   }
@@ -11634,17 +11560,14 @@ form {
   }
 
   &-ways {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(0, 234, 255, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.09) 15%,
+        rgba(0, 234, 255, 0.1) 83%,
+        rgba(0, 234, 255, 0) 100%);
   }
 
-  &-portfolio {
-  }
+  &-portfolio {}
 
   &-importance {
     &-block {
@@ -11834,13 +11757,13 @@ form {
         transform: translateY(-54px);
         background-color: transparent;
 
-        label ~ * {
+        label~* {
           display: none;
           transform-origin: top;
           transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
 
-        label:has(input:checked) ~ * {
+        label:has(input:checked)~* {
           display: flex;
         }
 
@@ -11879,7 +11802,7 @@ form {
         opacity: 10%;
         background-color: var(--blue-clouds);
 
-        & > a {
+        &>a {
           height: 100%;
           display: flex;
           flex-direction: column;
@@ -11912,7 +11835,7 @@ form {
         }
       }
 
-      & + .pagination {
+      &+.pagination {
         display: flex;
       }
 
@@ -11993,7 +11916,7 @@ form {
     .crm-advantages--list {
       justify-content: center;
 
-      & > li {
+      &>li {
         flex: 1 0;
         max-width: 50%;
 
@@ -12040,6 +11963,7 @@ form {
     }
 
     thead tr {
+
       td,
       th {
         &:first-child {
@@ -12094,6 +12018,7 @@ form {
       border-radius: 15px;
 
       tr {
+
         td,
         th {
           padding: 5px 5px;
@@ -12118,11 +12043,11 @@ form {
 
       outline: 1px solid var(--blue-bg);
 
-      & > label {
+      &>label {
         width: 100%;
         display: flex;
 
-        & > i {
+        &>i {
           margin-left: auto;
         }
       }
@@ -12142,13 +12067,11 @@ form {
   }
 
   &-portfolio {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0.1) 0%,
-      rgba(0, 234, 255, 0.1) 15%,
-      rgba(0, 234, 255, 0.09) 83%,
-      rgba(0, 234, 255, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0.1) 0%,
+        rgba(0, 234, 255, 0.1) 15%,
+        rgba(0, 234, 255, 0.09) 83%,
+        rgba(0, 234, 255, 0) 100%);
   }
 }
 
@@ -12162,7 +12085,7 @@ form {
       top: 50%;
       transform: translateY(-50%);
 
-      & > img {
+      &>img {
         left: 50%;
       }
     }
@@ -12225,7 +12148,7 @@ form {
       flex-direction: column;
     }
 
-    & > .text {
+    &>.text {
       padding: 30px 20px;
       border-radius: 25px;
       border: 1px solid var(--blue-bg);
@@ -12233,7 +12156,7 @@ form {
       background-color: var(--bg-main);
     }
 
-    & > .map-wrapper {
+    &>.map-wrapper {
       overflow: hidden;
       border-radius: 25px;
       flex: 1 1 50%;
@@ -12248,10 +12171,10 @@ form {
   }
 
   &-crew {
-    & > .tab-view {
+    &>.tab-view {
       padding: 0px;
 
-      & > .tab-slider {
+      &>.tab-slider {
         @media (max-width: 1200px) {
           gap: 20px;
         }
@@ -12284,7 +12207,7 @@ form {
           outline: none;
           box-shadow: none;
 
-          a > img {
+          a>img {
             outline: 1px solid var(--blue-main);
             box-shadow: 0px 0px 15px var(--blue-main);
           }
@@ -12341,7 +12264,7 @@ form {
 
         background-size: cover;
 
-        & > button {
+        &>button {
           width: 100%;
           height: 100%;
           border-radius: 25px;
@@ -12360,7 +12283,7 @@ form {
 
 .icms {
   &-main {
-    .flying-orb > .water-ripple {
+    .flying-orb>.water-ripple {
       position: absolute;
       top: 24%;
       left: 50%;
@@ -12392,13 +12315,11 @@ form {
 
 .kontakts {
   &-main {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(10, 10, 10, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.09) 15%,
+        rgba(0, 234, 255, 0.1) 83%,
+        rgba(10, 10, 10, 0) 100%);
 
     .slider-with-tabs_tabs-buttons {
       margin-top: 0;
@@ -12434,7 +12355,7 @@ form {
       padding-bottom: 62px;
     }
 
-    & > div > div > div.sites-leaders-content-left {
+    &>div>div>div.sites-leaders-content-left {
       flex: 1 1 60%;
 
       background-color: var(--blue-tag);
@@ -12452,7 +12373,7 @@ form {
       }
     }
 
-    & > div > div > div.sites-leaders-content-right {
+    &>div>div>div.sites-leaders-content-right {
       flex: 1 1 35%;
 
       background-color: var(--bg-main);
@@ -12460,10 +12381,10 @@ form {
   }
 
   &-photo {
-    #reviews-slider > div {
+    #reviews-slider>div {
       padding: 0px;
 
-      & > img {
+      &>img {
         width: 100%;
         height: 100%;
         border-radius: 15px;
@@ -12487,7 +12408,7 @@ form {
 
   &-comments {
     .sites-reviews-slider {
-      & > div {
+      &>div {
         flex: 1 1 100%;
         min-width: 66%;
         display: flex;
@@ -12509,16 +12430,14 @@ form {
 
 .blog {
   &-portfolio {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(0, 234, 255, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.09) 15%,
+        rgba(0, 234, 255, 0.1) 83%,
+        rgba(0, 234, 255, 0) 100%);
 
     .sites-portfolio-slider {
-      & > .newsletter-card {
+      &>.newsletter-card {
         opacity: 0;
 
         @media (min-width: 1200px) {
@@ -12530,7 +12449,7 @@ form {
         }
       }
 
-      & + .pagination {
+      &+.pagination {
         display: flex;
       }
     }
@@ -12543,13 +12462,11 @@ form {
   &-content {
     padding-top: 0px;
     padding: 0px 50px 62px 50px;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(0, 234, 255, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.09) 15%,
+        rgba(0, 234, 255, 0.1) 83%,
+        rgba(0, 234, 255, 0) 100%);
 
     @media (max-width: 601px) {
       padding: 0 20px 40px;
@@ -12579,12 +12496,13 @@ form {
       }
     }
 
-    & > p {
+    &>p {
       margin-bottom: 20px;
     }
 
-    & > p.title_h3,
-    & > p.title_h4 {
+    &>h3,
+    &>p.title_h3,
+    &>p.title_h4 {
       margin-bottom: 32px;
       margin-top: 50px;
 
@@ -12623,7 +12541,7 @@ form {
       }
     }
 
-    & > .ordinary-list {
+    &>.ordinary-list {
       margin-bottom: 20px;
     }
   }
@@ -12669,7 +12587,7 @@ form {
         }
       }
 
-      .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
+      .accordion-checkbox:checked+.accordion-header i.icon-shevrone {
         transform: rotate(-90deg) translate(0.2em, 0.3em);
       }
     }
@@ -12691,7 +12609,7 @@ form {
       align-items: stretch;
     }
 
-    & > div {
+    &>div {
       &:first-child {
         flex: auto;
         width: 100%;
@@ -12701,18 +12619,18 @@ form {
           max-width: 100%;
         }
 
-        & > h1 {
+        &>h1 {
           margin-bottom: 32px;
         }
 
-        & > b {
+        &>b {
           display: block;
           margin-bottom: 20px;
         }
       }
     }
 
-    & > .card-case {
+    &>.card-case {
       flex: 1 0 auto;
       max-width: 50%;
 
@@ -12725,10 +12643,11 @@ form {
       }
     }
 
-    & > .case_page-cover {
+    &>.case_page-cover {
       flex: 1;
     }
   }
+
   &-cover {
     position: absolute;
     top: 0;
@@ -12744,11 +12663,9 @@ form {
     user-select: none;
     pointer-events: none;
     overflow: hidden;
-    mask-image: linear-gradient(
-      to left,
-      rgb(0, 0, 0) 40%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    mask-image: linear-gradient(to left,
+        rgb(0, 0, 0) 40%,
+        rgba(0, 0, 0, 0) 100%);
 
     @media (max-width: 1000px) {
       display: none;
@@ -12761,17 +12678,16 @@ form {
       object-position: center;
     }
   }
+
   &-content {
     position: relative;
     // margin: 0 auto;
     padding: 0 50px 62px;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(0, 234, 255, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.09) 15%,
+        rgba(0, 234, 255, 0.1) 83%,
+        rgba(0, 234, 255, 0) 100%);
 
     @media (max-width: 601px) {
       padding: 0 20px 40px;
@@ -12803,12 +12719,12 @@ form {
       }
     }
 
-    & > p {
+    &>p {
       margin-bottom: 20px;
     }
 
-    & > p.title_h3,
-    & > p.title_h4 {
+    &>p.title_h3,
+    &>p.title_h4 {
       margin-bottom: 32px;
       margin-top: 50px;
 
@@ -12817,7 +12733,7 @@ form {
       }
     }
 
-    & > .grid-group {
+    &>.grid-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 20px;
@@ -12835,10 +12751,11 @@ form {
       }
     }
 
-    & > .ordinary-list {
+    &>.ordinary-list {
       margin-bottom: 20px;
     }
   }
+
   &-bottom {
     display: flex;
     flex-direction: row;
@@ -12852,7 +12769,7 @@ form {
       align-items: stretch;
     }
 
-    & > div {
+    &>div {
       &:first-child {
         max-width: 50%;
 
@@ -12860,7 +12777,7 @@ form {
           max-width: 100%;
         }
 
-        & > .title_h3 {
+        &>.title_h3 {
           margin-bottom: 32px;
 
           @media (max-width: 1000px) {
@@ -12868,13 +12785,13 @@ form {
           }
         }
 
-        & > .card-case {
+        &>.card-case {
           width: 100%;
         }
       }
     }
 
-    & > .case_page-mockup {
+    &>.case_page-mockup {
       flex: 1;
       width: 100%;
       max-width: 470px;
@@ -12884,6 +12801,7 @@ form {
       }
     }
   }
+
   &-mockup {
     display: flex;
     width: 100%;
@@ -12977,8 +12895,9 @@ form {
     margin: 32px auto;
   }
 
-  & > div:not(.card) {
-    & > p {
+  &>div:not(.card) {
+    &>p {
+
       &:not(.title_h3),
       &:not(.underlined) {
         margin-bottom: 20px;
@@ -12990,7 +12909,8 @@ form {
     }
   }
 
-  & > p {
+  &>p {
+
     &:not(.title_h3),
     &:not(.underlined) {
       margin-bottom: 20px;
@@ -13012,13 +12932,13 @@ form {
   }
 
   &#case-molvest-itog {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 260px;
     }
   }
 
   &#case-molvest-data {
-    & > .img-wrapper {
+    &>.img-wrapper {
       margin: auto 0 auto -50px;
       max-width: 360px;
 
@@ -13033,7 +12953,7 @@ form {
   }
 
   &#case-molvest-monitor {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 320px;
     }
 
@@ -13048,7 +12968,7 @@ form {
   }
 
   &#case-molvest-review {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 320px;
       height: 100%;
       aspect-ratio: 10/16;
@@ -13065,7 +12985,7 @@ form {
   }
 
   &--min {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 400px;
     }
   }
@@ -13075,7 +12995,7 @@ form {
       flex-direction: column;
     }
 
-    & > * {
+    &>* {
       flex: calc(50% - 10px);
 
       @media (max-width: 1000px) {
@@ -13083,7 +13003,7 @@ form {
       }
     }
 
-    & > .img-wrapper {
+    &>.img-wrapper {
       margin: 0;
 
       // @media (max-width: 1000px) {
@@ -13103,7 +13023,7 @@ form {
   gap: 10px;
   text-align: center;
 
-  & > b {
+  &>b {
     position: relative;
     color: var(--blue-main);
     font-size: 100px;
@@ -13297,7 +13217,7 @@ form {
       left: unset;
     }
 
-    #mobilemenuToggle:has(input:checked) ~ .header-links-nav {
+    #mobilemenuToggle:has(input:checked)~.header-links-nav {
       display: flex;
       flex-direction: column;
       position: absolute;
@@ -13534,7 +13454,7 @@ form {
       left: unset;
     }
 
-    #mobilemenuToggle:has(input:checked) ~ .header-links-nav {
+    #mobilemenuToggle:has(input:checked)~.header-links-nav {
       display: flex;
       flex-direction: column;
       position: absolute;
@@ -13547,6 +13467,7 @@ form {
     }
 
     .header-links-nav {
+
       a,
       div {
         z-index: 3;
@@ -13903,12 +13824,10 @@ form {
     }
 
     .tab-view {
-      background: linear-gradient(
-        180deg,
-        rgba(10, 10, 10, 1) 0%,
-        rgba(10, 10, 10, 0.5522584033613445) 15%,
-        rgba(10, 10, 10, 0) 31%
-      );
+      background: linear-gradient(180deg,
+          rgba(10, 10, 10, 1) 0%,
+          rgba(10, 10, 10, 0.5522584033613445) 15%,
+          rgba(10, 10, 10, 0) 31%);
 
       .tab-slider {
         flex-direction: row;
@@ -14050,13 +13969,13 @@ form {
       transform: translateY(-54px);
       background-color: transparent;
 
-      label ~ * {
+      label~* {
         display: none;
         transform-origin: top;
         transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
       }
 
-      label:has(input:checked) ~ * {
+      label:has(input:checked)~* {
         display: flex;
       }
 
@@ -14189,6 +14108,7 @@ form {
 }
 
 @keyframes baloon {
+
   0%,
   100% {
     transform: translateY(0) rotate(0deg) scale(1);
@@ -14302,6 +14222,7 @@ form {
 }
 
 @keyframes eye {
+
   0%,
   100% {
     transform: translateY(-5px) translateX(0px) scale(1);
@@ -14337,6 +14258,7 @@ form {
 }
 
 @keyframes list-glow {
+
   0%,
   100% {
     box-shadow: none;
@@ -14376,13 +14298,13 @@ form {
 // files preview
 
 .all-img-mockups-preview {
-  & > ul {
+  &>ul {
     display: flex;
     flex-wrap: wrap;
 
     width: 100%;
 
-    & > li {
+    &>li {
       width: 25%;
 
       img {
@@ -14390,6 +14312,25 @@ form {
         max-width: 25%;
         height: auto;
       }
+    }
+  }
+}
+
+
+.ban {
+  &:hover {
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      content: 'БАН*';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-transform: uppercase;
+      color: var(--blue-main);
+      transform: scale(5);
     }
   }
 }
