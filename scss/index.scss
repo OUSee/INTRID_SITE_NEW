@@ -1,4 +1,5 @@
-@import url(../src/fonts/icons/css/INTRID_ICONS.css);
+@import '../src/fonts/icons/css/INTRID_ICONS.css';
+@import './variables';
 
 /* VARIABLES */
 
@@ -446,6 +447,19 @@ section:first-of-type {
   max-width: 1442px;
   margin: 0 auto;
 
+  @media (max-width: 1500px) {
+    max-width: 100%;
+    margin: 0 40px;
+  }
+
+  @media (max-width: 601px) {
+    margin: 0px 20px;
+  }
+
+  @media (max-width: 440px) {
+    margin: 0 10px;
+  }
+
   &-full {
     width: 100%;
     margin: 0 auto !important;
@@ -464,14 +478,25 @@ section:first-of-type {
   }
 
   &-blog {
-    max-width: 1170px !important;
+    max-width: 1170px;
+    margin: 0 auto;
+
+    @media (max-width: 1220px) {
+      max-width: 100%;
+      margin: 0 40px;
+    }
 
     @media (max-width: 1000px) {
-      max-width: 970px !important;
+      max-width: 970px;
     }
 
     @media (max-width: 600px) {
-      max-width: 600px !important;
+      margin: 0px 20px;
+      max-width: 600px;
+    }
+
+    @media (max-width: 440px) {
+      margin: 0 10px;
     }
   }
 }
@@ -12486,7 +12511,16 @@ form {
       rgba(0, 234, 255, 0) 100%
     );
 
+    @media (max-width: 601px) {
+      padding: 0 20px 40px;
+    }
+
+    @media (max-width: 440px) {
+      padding: 0 10px 40px;
+    }
+
     .img-wrapper {
+      display: flex;
       margin: 50px auto;
       overflow: hidden;
       max-width: 600px;
@@ -12641,14 +12675,25 @@ form {
     }
   }
   &-cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
     display: flex;
     width: 100%;
-    max-width: 600px;
-    height: 100%;
-    margin: 0 -50px 0 0;
+    max-width: 500px;
+    height: auto;
+    // max-width: 600px;
+    // height: 100%;
+    // margin: 0 -50px 0 0;
     user-select: none;
     pointer-events: none;
     overflow: hidden;
+    mask-image: linear-gradient(
+      to left,
+      rgb(0, 0, 0) 40%,
+      rgba(0, 0, 0, 0) 100%
+    );
 
     @media (max-width: 1000px) {
       display: none;
@@ -12662,7 +12707,8 @@ form {
     }
   }
   &-content {
-    margin: 0 auto;
+    position: relative;
+    // margin: 0 auto;
     padding: 0 50px 62px;
     background: linear-gradient(
       0deg,
@@ -12672,13 +12718,17 @@ form {
       rgba(0, 234, 255, 0) 100%
     );
 
-    @media (max-width: 720px) {
-      padding: 0 30px 62px;
+    @media (max-width: 601px) {
+      padding: 0 20px 40px;
+    }
+
+    @media (max-width: 440px) {
+      padding: 0 10px 40px;
     }
 
     .img-wrapper {
       display: flex;
-      margin: 50px auto;
+      margin: 30px auto;
       overflow: hidden;
       max-width: 600px;
       border-radius: 25px;
@@ -12837,12 +12887,33 @@ form {
       color: var(--blue-tag);
     }
   }
+
+  &--result {
+    background-color: var(--highlight-bg);
+    color: var(--color-black);
+
+    & .card-title {
+      background-color: var(--blue-main);
+    }
+
+    & .card-list {
+      & li {
+        &::marker {
+          color: currentColor;
+        }
+      }
+
+      & .highlight {
+        color: currentColor;
+      }
+    }
+  }
 }
 
 .case_layout {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 20px;
   margin: 50px auto;
@@ -12851,7 +12922,20 @@ form {
     margin: 32px auto;
   }
 
-  & p {
+  & > div:not(.card) {
+    & > p {
+      &:not(.title_h3),
+      &:not(.underlined) {
+        margin-bottom: 20px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  & > p {
     &:not(.title_h3),
     &:not(.underlined) {
       margin-bottom: 20px;
@@ -12872,9 +12956,56 @@ form {
     }
   }
 
-  &#team-tasks {
+  &#case-molvest-itog {
     & > .img-wrapper {
-      max-width: 342px;
+      max-width: 260px;
+    }
+  }
+
+  &#case-molvest-data {
+    & > .img-wrapper {
+      margin: auto 0 auto -50px;
+      max-width: 360px;
+
+      @media (max-width: 601px) {
+        margin: auto 0 auto -20px;
+      }
+
+      @media (max-width: 440px) {
+        margin: auto 0 auto -10px;
+      }
+    }
+  }
+
+  &#case-molvest-monitor {
+    & > .img-wrapper {
+      max-width: 320px;
+    }
+
+    & .img-wrapper {
+      margin: 0;
+    }
+
+    & .filled {
+      flex: 1 0 auto;
+      max-width: 100%;
+    }
+  }
+
+  &#case-molvest-review {
+    & > .img-wrapper {
+      max-width: 320px;
+      height: 100%;
+      aspect-ratio: 10/16;
+      margin: auto 0;
+
+      @media (max-width: 1000px) {
+        margin: 0 auto;
+      }
+
+      @media (max-width: 601px) {
+        max-width: 240px;
+      }
     }
   }
 
@@ -12907,14 +13038,59 @@ form {
   }
 }
 
+.big-count {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+
+  & > b {
+    position: relative;
+    color: var(--blue-main);
+    font-size: 100px;
+    line-height: 1.25;
+
+    @media (max-width: 1000px) {
+      font-size: 80px;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 60px;
+    }
+
+    @media (max-width: 520px) {
+      font-size: 40px;
+    }
+
+    & span {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 0;
+      content: '';
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      box-shadow: 0px 0px 100px 80px var(--blue-clouds),
+        inset 0px 0px 100px 2px var(--blue-clouds);
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
 //  BREAKPOINTS
 
 @media (max-width: 1500px) {
-  .container {
-    max-width: 100%;
-    margin: 0 40px;
-  }
-
   .for-buisness-offers {
     .blocks-wrapper .orb-bottom {
       left: 0;
@@ -13267,10 +13443,6 @@ form {
 @media (max-width: 601px) {
   .more-about-web-dev {
     display: none;
-  }
-
-  .container {
-    margin: 0px 20px;
   }
 
   header .main-header {
@@ -13720,10 +13892,6 @@ form {
 }
 
 @media (max-width: 440px) {
-  .container {
-    margin: 0 10px;
-  }
-
   .button-link.big {
     font-size: 12px;
     padding: 14px 24px;
