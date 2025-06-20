@@ -761,23 +761,21 @@ label.radioButton:has(input:checked)::after {
   animation: infinite-glow 3s infinite;
 }
 
-
 .text-highlight-blue {
-  color: var(--text-hl-blue)
+  color: var(--text-hl-blue);
 }
 
 .text-highlight-yellow {
-  color: var(--text-hl-yellow)
+  color: var(--text-hl-yellow);
 }
 
 .text-highlight-red {
-  color: var(--text-hl-red)
+  color: var(--text-hl-red);
 }
 
 .text-highlight-green {
-  color: var(--text-hl-green)
+  color: var(--text-hl-green);
 }
-
 
 .z-2 {
   z-index: 2;
@@ -11044,9 +11042,8 @@ form {
       overflow-y: scroll;
 
       table {
-        width: 100%
+        width: 100%;
       }
-
 
       &::-webkit-scrollbar {
         width: 10px;
@@ -12575,7 +12572,7 @@ form {
       img {
         max-width: 100%;
         width: auto;
-        height: auto
+        height: auto;
       }
     }
 
@@ -12593,8 +12590,7 @@ form {
       }
     }
 
-
-    &>.highlighted-space {
+    & > .highlighted-space {
       background-color: var(--bg-main);
       border-radius: 15px;
       padding: 10px 20px;
@@ -12605,7 +12601,7 @@ form {
       }
     }
 
-    &>.grid-group {
+    & > .grid-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 20px;
@@ -12900,6 +12896,9 @@ form {
       object-position: center;
     }
   }
+  &--web {
+    
+  }
 }
 
 .card-case {
@@ -13084,6 +13083,7 @@ form {
     }
 
     & > .img-wrapper {
+      align-self: flex-start;
       margin: 0;
 
       // @media (max-width: 1000px) {
@@ -13140,6 +13140,88 @@ form {
         inset 0px 0px 100px 2px var(--blue-clouds);
       transform: translate(-50%, -50%);
     }
+  }
+}
+
+.step-balls {
+  --number-ball-size: 70px;
+  --number-ball-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--number-ball-gap);
+
+  &--row {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--number-ball-gap);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: -1;
+      width: 2px;
+      height: calc(var(--number-ball-size) - var(--number-ball-gap));
+      background: var(--blue-main);
+      transform: translate(-50%, calc(var(--number-ball-size) / 2 * -1));
+    }
+
+    &:first-child {
+      &::before {
+        display: none;
+      }
+    }
+
+    &:nth-child(even) {
+      flex-direction: row;
+      justify-content: flex-end;
+
+      & .step-balls--number {
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      & .step-balls--content {
+        text-align: left;
+      }
+    }
+  }
+
+  &--number {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    width: var(--number-ball-size);
+    height: var(--number-ball-size);
+    font-size: 40px;
+    line-height: 1.25;
+    color: var(--blue-main);
+    border: 2px solid var(--blue-main);
+    border-radius: 50%;
+    margin-left: 0;
+    margin-right: auto;
+    backface-visibility: hidden;
+  }
+
+  &--content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: calc(
+      50% - (var(--number-ball-size) / 2 + var(--number-ball-gap))
+    );
+    min-height: 100px;
+    flex: 1;
+    text-align: right;
   }
 }
 

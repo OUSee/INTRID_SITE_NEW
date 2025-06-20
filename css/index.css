@@ -11231,7 +11231,6 @@ form .button:hover {
   -o-object-position: center;
      object-position: center;
 }
-
 .card-case {
   display: flex;
   flex-direction: column;
@@ -11375,6 +11374,7 @@ form .button:hover {
   }
 }
 .case_layout--2x > .img-wrapper {
+  align-self: flex-start;
   margin: 0;
 }
 
@@ -11425,6 +11425,76 @@ form .button:hover {
   border-radius: 50%;
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
   transform: translate(-50%, -50%);
+}
+
+.step-balls {
+  --number-ball-size: 70px;
+  --number-ball-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--number-ball-gap);
+}
+.step-balls--row {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--number-ball-gap);
+}
+.step-balls--row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+  width: 2px;
+  height: calc(var(--number-ball-size) - var(--number-ball-gap));
+  background: var(--blue-main);
+  transform: translate(-50%, calc(var(--number-ball-size) / 2 * -1));
+}
+.step-balls--row:first-child::before {
+  display: none;
+}
+.step-balls--row:nth-child(even) {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.step-balls--row:nth-child(even) .step-balls--number {
+  margin-left: auto;
+  margin-right: 0;
+}
+.step-balls--row:nth-child(even) .step-balls--content {
+  text-align: left;
+}
+.step-balls--number {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  width: var(--number-ball-size);
+  height: var(--number-ball-size);
+  font-size: 40px;
+  line-height: 1.25;
+  color: var(--blue-main);
+  border: 2px solid var(--blue-main);
+  border-radius: 50%;
+  margin-left: 0;
+  margin-right: auto;
+  backface-visibility: hidden;
+}
+.step-balls--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: calc(50% - (var(--number-ball-size) / 2 + var(--number-ball-gap)));
+  min-height: 100px;
+  flex: 1;
+  text-align: right;
 }
 
 @media (max-width: 1500px) {
