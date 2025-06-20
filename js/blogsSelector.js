@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/manual-dla-licnogo-kabineta.html',
                 title: 'Мануал для личного кабинета',
                 description: `В этой инструкции мы расскажем для чего нужен личный кабинет и как пользоваться его инструментами.`
             }, 
@@ -52,13 +52,13 @@ document.addEventListener('DOMContentLoaded', ()=> {
         'digital-design': [
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/uxui_design.html',
                 title: 'UX и UI-дизайн — что это и зачем нужно?',
                 description: `Доступно и кратко рассказываем о самой эффективной технологии web-дизайна.`
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/vizitka-vaznyj-element-delovogo-imidza.html',
                 title: 'Визитка – важный элемент делового имиджа',
                 description: `Облегчая общение, визитка служит неназойливым напоминанием о деловом человеке. 
                               Просматривая свою визитницу, ее обладатель будет постоянно видеть Вашу визитку, и не исключено, что, подыскивая деловых партнеров, вспомнит о Вашем существовании. 
@@ -66,14 +66,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/kreativ-v-reklamnom-dizajne.html',
                 title: 'Креатив в рекламном дизайне',
                 description: `Процесс рекламного дизайна заключается в непрерывном поиске новых средств, которые могли бы привлечь внимание читателя и заинтересовать его в предмете рекламы. 
                               Дизайн процесс творческий.`
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/ponatie-logotipa.html',
                 title: 'Понятие логотипа',
                 description: `Логотип это официально принятый термин, означающий зарегистрированное в порядке оригинально оформленное художественное изображение, для отличия товаров и услуг и их рекламы.`
             }

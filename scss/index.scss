@@ -17,7 +17,10 @@
   --section-spacer: #06272a;
   --blue-tag: #11a2aa;
   --blue-bg-icon: #00eaff08;
-
+  --text-hl-blue: #0099cc;
+  --text-hl-yellow: rgb(251, 183, 53);
+  --text-hl-red: rgb(255, 88, 60);
+  --text-hl-green: rgb(116, 202, 53);
   /* breakpoints */
   --pc: 1440px;
   --laptop: 1200px;
@@ -733,6 +736,24 @@ label.radioButton:has(input:checked)::after {
   animation: infinite-glow 3s infinite;
 }
 
+
+.text-highlight-blue {
+  color: var(--text-hl-blue)
+}
+
+.text-highlight-yellow {
+  color: var(--text-hl-yellow)
+}
+
+.text-highlight-red {
+  color: var(--text-hl-red)
+}
+
+.text-highlight-green {
+  color: var(--text-hl-green)
+}
+
+
 .z-2 {
   z-index: 2;
 }
@@ -1034,6 +1055,21 @@ label.radioButton:has(input:checked)::after {
 
 .flex-50 {
   flex: 1 1 40%;
+}
+
+.grid-cols-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 32px;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .br1000 {
@@ -10868,7 +10904,7 @@ form {
   display: flex;
   background-color: var(--bg-main);
   border-radius: 25px;
-  max-height: 600px;
+  max-height: 610px;
   border: 1px solid var(--blue-bg);
   overflow-x: hidden;
   overflow-y: scroll;
@@ -10899,6 +10935,7 @@ form {
     padding: 30px 20px;
     position: sticky;
     top: 0;
+    min-width: 260px;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
@@ -10960,49 +10997,52 @@ form {
         padding-left: 10px;
       }
     }
+  }
 
-    @media (max-width: 900px) {
-      flex-direction: column;
-      max-height: unset;
-      overflow: hidden;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    max-height: unset;
+    overflow: hidden;
+    max-height: unset;
 
-      .info-panel {
-        position: static;
+    .info-panel {
+      position: static;
 
-        .info-list {
-          margin-left: 50px;
-        }
+      .info-list {
+        margin-left: 50px;
+      }
+    }
+
+    .table-wrapper {
+      height: 500px;
+      max-height: 500px;
+      overflow-y: scroll;
+
+      table {
+        width: 100%
       }
 
-      .table-wrapper {
-        height: 500px;
-        overflow-y: scroll;
 
-        table {
-          width: 100%;
-        }
+      &::-webkit-scrollbar {
+        width: 10px;
+        padding-right: 6px;
+        background-color: transparent;
+      }
 
-        &::-webkit-scrollbar {
-          width: 10px;
-          padding-right: 6px;
-          background-color: transparent;
-        }
+      &::-webkit-scrollbar-button {
+        display: none;
+      }
 
-        &::-webkit-scrollbar-button {
-          display: none;
-        }
+      &::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
 
-        &::-webkit-scrollbar-track {
-          background-color: transparent;
-        }
-
-        &::-webkit-scrollbar-thumb {
-          width: 5px;
-          border-radius: 5px;
-          border: 1px solid transparent;
-          background-color: var(--color-white);
-          background-clip: content-box;
-        }
+      &::-webkit-scrollbar-thumb {
+        width: 5px;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        background-color: var(--color-white);
+        background-clip: content-box;
       }
     }
   }
@@ -12490,15 +12530,18 @@ form {
       margin: 50px auto;
       overflow: hidden;
       max-width: 600px;
+      width: fit-content;
       border-radius: 25px;
+      display: flex;
 
       &:first-child {
         margin-top: 0;
       }
 
       img {
-        width: 100%;
-        height: auto;
+        max-width: 100%;
+        width: auto;
+        height: auto
       }
     }
 
@@ -12516,7 +12559,19 @@ form {
       }
     }
 
-    & > .grid-group {
+
+    &>.highlighted-space {
+      background-color: var(--bg-main);
+      border-radius: 15px;
+      padding: 10px 20px;
+      border: 1px solid var(--blue-main);
+
+      &.d-flex {
+        align-items: start;
+      }
+    }
+
+    &>.grid-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 20px;
