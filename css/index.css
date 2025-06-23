@@ -1707,6 +1707,7 @@ div.icon-menu {
 }
 .tab-view .tab-slider .tab-slider-card.crew-card > .testimonials {
   margin-top: 10px;
+  margin-bottom: auto;
 }
 .tab-view .tab-slider .tab-slider-card.crew-card > .testimonials::before {
   content: ",,";
@@ -10957,11 +10958,11 @@ form .button:hover {
 .blog_page-content > p {
   margin-bottom: 20px;
 }
-.blog_page-content > p.title_h3, .blog_page-content > p.title_h4 {
+.blog_page-content > h3, .blog_page-content > p.title_h3, .blog_page-content > p.title_h4 {
   margin-bottom: 32px;
   margin-top: 50px;
 }
-.blog_page-content > p.title_h3:first-child, .blog_page-content > p.title_h4:first-child {
+.blog_page-content > h3:first-child, .blog_page-content > p.title_h3:first-child, .blog_page-content > p.title_h4:first-child {
   margin-top: 0;
 }
 .blog_page-content > .highlighted-space {
@@ -12633,4 +12634,19 @@ form .button:hover {
   aspect-ratio: 1/1;
   max-width: 25%;
   height: auto;
+}
+
+.ban:hover {
+  position: relative;
+  cursor: pointer;
+}
+.ban:hover::after {
+  content: "БАН*";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-transform: uppercase;
+  color: var(--blue-main);
+  transform: scale(5);
 }

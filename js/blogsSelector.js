@@ -89,21 +89,21 @@ document.addEventListener('DOMContentLoaded', ()=> {
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/kratkij-gajd-po-faktoram-ranzirovania-v-seo.html',
                 title: 'Краткий гайд по факторам ранжирования в SEO ',
                 description: `Факторы, на которые роботы смотрят при ранжировании сайтов в поисковой системе. 
                               Основная информация.`
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/filtry-andeksa-priznaki-popadania-sroki-sankcij-i-sposoby-vyhoda.html',
                 title: 'Фильтры Яндекса',
                 description: `Признаки попадания, сроки санкций и способы выхода.
                               Кратко о том, что такое санкции Яндекса и с чем их едят.`
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/linkbilding-v-2019-rabocie-metody.html',
                 title: 'Линкбилдинг в 2019: рабочие методы',
                 description: `Статья о том, как продвигать сайт с помощью ссылок в 2019 году и не попадать под фильтры.`
             }
