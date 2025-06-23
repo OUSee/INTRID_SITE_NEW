@@ -12897,7 +12897,29 @@ form {
     }
   }
   &--web {
-    
+    margin-top: unset;
+
+    & .video-diagramm {
+      margin: 100px auto;
+    }
+
+    & .benefits-left {
+      top: 0;
+      margin-left: unset;
+
+      @media (min-width: 1000px) and (max-width: 1200px) {
+        max-width: 280px;
+      }
+    }
+
+    & .benefits-right {
+      top: 0;
+      margin-right: unset;
+
+      @media (min-width: 1000px) and (max-width: 1200px) {
+        max-width: 280px;
+      }
+    }
   }
 }
 
@@ -12959,6 +12981,10 @@ form {
 
       & .highlight {
         color: currentColor;
+      }
+
+      & .link {
+        color: var(--blue-tag);
       }
     }
   }
@@ -13063,10 +13089,101 @@ form {
     }
   }
 
+  &#case-inkomed-data {
+    & > .img-wrapper {
+      margin: auto 0 auto -50px;
+      max-width: 360px;
+
+      @media (max-width: 601px) {
+        margin: auto 0 auto -20px;
+      }
+
+      @media (max-width: 440px) {
+        margin: auto 0 auto -10px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      margin-top: 70px;
+    }
+  }
+
+  &#case-inkomed-works {
+    & > .img-wrapper {
+      margin: auto 0 auto -50px;
+      max-width: 360px;
+
+      @media (max-width: 601px) {
+        margin: auto 0 auto -20px;
+      }
+
+      @media (max-width: 440px) {
+        margin: auto 0 auto -10px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      margin-top: 70px;
+    }
+  }
+
+  &#case-inkomed-care {
+    & .case_layout--filled {
+      margin: 0;
+
+      & > * {
+        display: flex;
+        flex-direction: column;
+
+        &:nth-child(1) {
+          & > .img-wrapper {
+            margin-top: 0;
+          }
+        }
+
+        & > .img-wrapper {
+          @media (max-width: 1030px) {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+
+    & > .img-wrapper {
+      max-width: 460px;
+      margin: 60px -50px auto auto;
+
+      @media (max-width: 601px) {
+        margin: auto -20px auto auto;
+      }
+
+      @media (max-width: 440px) {
+        margin: auto -10px auto auto;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      order: -1;
+    }
+  }
+
+  &#case-inkomed-economy {
+    & > .img-wrapper {
+      max-width: 260px;
+      margin: 0 auto;
+    }
+  }
+
   &--min {
     & > .img-wrapper {
       max-width: 400px;
     }
+  }
+
+  &--filled {
+    flex: 1 0 auto;
+    max-width: 100%;
+    width: 100%;
   }
 
   &--2x {
@@ -13085,10 +13202,6 @@ form {
     & > .img-wrapper {
       align-self: flex-start;
       margin: 0;
-
-      // @media (max-width: 1000px) {
-      //   display: none;
-      // }
     }
   }
 }
@@ -13149,29 +13262,36 @@ form {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--number-ball-gap);
 
   &--row {
     position: relative;
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
+    align-items: stretch;
     justify-content: flex-start;
     gap: var(--number-ball-gap);
+
+    @media (max-width: 720px) {
+      flex-direction: row;
+    }
 
     &::before {
       content: '';
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 50%;
       z-index: -1;
       width: 2px;
-      height: calc(var(--number-ball-size) - var(--number-ball-gap));
+      height: calc(100% - var(--number-ball-size));
       background: var(--blue-main);
-      transform: translate(-50%, calc(var(--number-ball-size) / 2 * -1));
+      transform: translate(-50%, 0);
+
+      @media (max-width: 720px) {
+        left: calc(var(--number-ball-size) / 2);
+      }
     }
 
-    &:first-child {
+    &:last-child {
       &::before {
         display: none;
       }
@@ -13181,9 +13301,18 @@ form {
       flex-direction: row;
       justify-content: flex-end;
 
+      @media (max-width: 720px) {
+        justify-content: flex-start;
+      }
+
       & .step-balls--number {
         margin-left: auto;
         margin-right: 0;
+
+        @media (max-width: 720px) {
+          margin-left: 0;
+          margin-right: 0;
+        }
       }
 
       & .step-balls--content {
@@ -13210,18 +13339,40 @@ form {
     margin-left: 0;
     margin-right: auto;
     backface-visibility: hidden;
+
+    @media (max-width: 720px) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    & > img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      object-position: center;
+      user-select: none;
+      pointer-events: none;
+    }
   }
 
   &--content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-self: center;
+    justify-content: flex-start;
+    gap: 6px;
     max-width: calc(
       50% - (var(--number-ball-size) / 2 + var(--number-ball-gap))
     );
     min-height: 100px;
     flex: 1;
     text-align: right;
+    padding: 6px 0;
+
+    @media (max-width: 720px) {
+      max-width: 100%;
+      text-align: left;
+    }
   }
 }
 
