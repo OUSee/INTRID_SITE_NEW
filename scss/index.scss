@@ -751,7 +751,6 @@ label.radioButton:has(input:checked)::after {
   animation: infinite-glow 3s infinite;
 }
 
-
 .text-highlight-blue {
   color: var(--text-hl-blue)
 }
@@ -767,7 +766,6 @@ label.radioButton:has(input:checked)::after {
 .text-highlight-green {
   color: var(--text-hl-green)
 }
-
 
 .z-2 {
   z-index: 2;
@@ -1152,6 +1150,10 @@ label.radioButton:has(input:checked)::after {
     outline: 1px solid var(--blue-main);
     box-shadow: 0px 0px 15px var(--blue-main);
   }
+}
+
+.wordbr-normal {
+  word-break: normal;
 }
 
 /* OTHER STYLES */
@@ -1696,6 +1698,7 @@ div.icon-menu {
     max-width: 100%;
     margin: 0 auto;
     overflow: visible;
+    transition: all 0.3s ease-in-out;
 
     .tab-slider-card {
       border-radius: 39px;
@@ -3637,12 +3640,24 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       overflow: hidden;
     }
 
-    img {
+    .img-wrapper {
       width: 100%;
-      height: auto;
-      max-width: unset;
-      max-height: unset;
+      max-height: 150px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        height: auto;
+        max-width: unset;
+        max-height: unset;
+
+      }
     }
+
+
 
     .work-testimonial {
       padding: 10px 30px 20px 30px;
@@ -4875,6 +4890,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
   align-items: center;
   gap: 6px;
   margin-top: 30px;
+  transition: all 0.3s ease-in-out;
 
   button {
     padding: 4px;
@@ -11026,6 +11042,34 @@ form {
   }
 }
 
+.default-table {
+  width: 100%;
+  background-color: var(--blue-tag);
+
+  thead {
+    background-color: var(--color-white);
+    color: var(--bg-main);
+    position: sticky;
+    top: 0;
+    border-color: var(--bg-main);
+  }
+
+  tbody {
+    border-color: var(--blue-bg);
+  }
+
+  th {
+    padding: 5px;
+    border: 1px solid var(--blue-bg);
+  }
+
+  td {
+    border: 1px solid var(--blue-main);
+    padding: 5px;
+    padding-left: 10px;
+  }
+}
+
 // promotion page
 
 .promotion {
@@ -12501,6 +12545,7 @@ form {
     }
 
     &>h3,
+    &>h4,
     &>p.title_h3,
     &>p.title_h4 {
       margin-bottom: 32px;
@@ -12541,7 +12586,44 @@ form {
       }
     }
 
+    &>.prices-services-list {
+
+      .prices-services-list-item {
+        flex: 1 1 45%;
+        max-width: 50%;
+        height: unset;
+        padding: 100px 20px 32px 20px;
+
+        .img-wrapper {
+          padding: 5px;
+          transform: translateY(50px);
+        }
+
+        span.color-blue {
+          display: block;
+          transform: translateY(0px);
+          text-wrap: unset;
+        }
+
+        &:hover {
+          .img-wrapper {
+            transform: translateY(0px);
+          }
+        }
+      }
+
+      @media (max-width: 1200px) {
+        flex-wrap: wrap;
+        height: unset;
+        align-items: stretch;
+      }
+    }
+
     &>.ordinary-list {
+      margin-bottom: 20px;
+    }
+
+    &>.default-table {
       margin-bottom: 20px;
     }
   }
@@ -12558,6 +12640,15 @@ form {
     &::marker {
       content: '\2022';
       color: var(--blue-main);
+    }
+  }
+
+  .ordinary-list {
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+    li::marker {
+      content: '-';
     }
   }
 }
