@@ -45,6 +45,7 @@ class orbRotation {
       this.orbElem.style.transition = `0.05s cubic-bezier(.78,.14,.59,1.04)`;
     }, 250);
   }
+  
   handleMouseLeave() {
     this.currentAngle = 0;
     this.orbElem.style.transform = `rotate(${this.currentAngle}deg)`;
