@@ -10186,6 +10186,90 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .portfolio-keys #site-slider > *.active, .portfolio-keys #brand-slider > *.active, .portfolio-keys #promotion-slider > *.active, .portfolio-keys #group-slider > *.active {
   opacity: 1;
 }
+.portfolio-keys #brand-slider > .recent-work-card {
+  flex: 1 0 24%;
+  min-width: calc(25% - 40px);
+  opacity: 10%;
+  background-color: var(--blue-clouds);
+}
+.portfolio-keys #brand-slider > .recent-work-card > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+.portfolio-keys #brand-slider > .recent-work-card > a.button-link {
+  flex-direction: row;
+}
+.portfolio-keys #brand-slider > .recent-work-card img {
+  border-radius: 25px;
+  max-width: 250px;
+  max-height: 200px;
+  width: 100%;
+  height: auto;
+  max-height: unset;
+  max-width: unset;
+  margin: 0 auto;
+}
+.portfolio-keys #brand-slider > .recent-work-card .work-testimonial {
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: auto;
+}
+.portfolio-keys #brand-slider > .recent-work-card.active {
+  opacity: 100%;
+}
+@media (min-width: 1400px) {
+  .portfolio-keys #brand-slider > .recent-work-card {
+    flex: 1 0 19%;
+    min-width: calc(20% - 50px);
+  }
+}
+@media (max-width: 1200px) {
+  .portfolio-keys #brand-slider > .recent-work-card {
+    border-radius: 25px;
+    padding: 12px 15px;
+  }
+  .portfolio-keys #brand-slider > .recent-work-card img {
+    border-radius: 15px;
+  }
+}
+@media (max-width: 900px) {
+  .portfolio-keys #brand-slider > .recent-work-card {
+    border-radius: 25px;
+    padding: 12px 15px;
+    flex: 1 0 33.333%;
+    min-width: calc(33.3333333333% - 30px);
+  }
+  .portfolio-keys #brand-slider > .recent-work-card img {
+    border-radius: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-keys #brand-slider > .recent-work-card {
+    flex: 1 0 50%;
+    min-width: calc(50% - 20px);
+  }
+  .portfolio-keys #brand-slider > .recent-work-card .work-testimonial {
+    margin-top: 10px;
+  }
+  .portfolio-keys #brand-slider > .recent-work-card img {
+    border-radius: 15px;
+  }
+}
+@media (max-width: 520px) {
+  .portfolio-keys #brand-slider > .recent-work-card {
+    flex: 1 0 100%;
+    min-width: calc(100% - 10px);
+  }
+  .portfolio-keys #brand-slider > .recent-work-card .work-testimonial {
+    margin-top: 10px;
+  }
+  .portfolio-keys #brand-slider > .recent-work-card img {
+    border-radius: 15px;
+  }
+}
 @media (max-width: 1400px) {
   .portfolio-keys .sites-portfolio-slider + .pagination {
     display: flex;
@@ -10221,7 +10305,12 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   pointer-events: none;
 }
 .portfolio-keys > .button-link {
-  margin: 0 0 0 auto;
+  margin: 32px 0 0 auto;
+}
+@media (max-width: 1200px) {
+  .portfolio-keys > .button-link {
+    margin: 0 0 0 auto;
+  }
 }
 .portfolio-count {
   position: relative;

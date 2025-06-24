@@ -7923,17 +7923,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 }
 
 .portfolio {
-  // [data-slider] {
-  //   &>div {
-  //     &.support-card {
-  //       @media (max-width: 1200px) {
-  //
-  //       }
-  //     }
-
-  //   }
-  // }
-
   &-keys {
     & .header {
       display: flex;
@@ -8020,6 +8009,99 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       }
     }
 
+    & #brand-slider {
+      &>.recent-work-card {
+        flex: 1 0 24%;
+        min-width: calc(100% / 4 - 40px);
+        opacity: 10%;
+        background-color: var(--blue-clouds);
+
+        &>a {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+
+          &.button-link {
+            flex-direction: row;
+          }
+        }
+
+        img {
+          border-radius: 25px;
+          max-width: 250px;
+          max-height: 200px;
+          width: 100%;
+          height: auto;
+          max-height: unset;
+          max-width: unset;
+          margin: 0 auto;
+        }
+
+        .work-testimonial {
+          text-align: center;
+          margin-bottom: 0;
+          margin-top: auto;
+        }
+
+        &.active {
+          opacity: 100%;
+        }
+
+        @media (min-width: 1400px) {
+          flex: 1 0 19%;
+          min-width: calc(100% / 5 - 50px);
+        }
+
+        @media (max-width: 1200px) {
+          border-radius: 25px;
+          padding: 12px 15px;
+
+          img {
+            border-radius: 15px;
+          }
+        }
+
+        @media (max-width: 900px) {
+          border-radius: 25px;
+          padding: 12px 15px;
+          flex: 1 0 33.333%;
+          min-width: calc(100% / 3 - 30px);
+
+          img {
+            border-radius: 15px;
+          }
+        }
+
+        @media (max-width: 600px) {
+          flex: 1 0 50%;
+          min-width: calc(100% / 2 - 20px);
+
+          .work-testimonial {
+            margin-top: 10px;
+          }
+
+          img {
+            border-radius: 15px;
+          }
+        }
+
+        @media (max-width: 520px) {
+          flex: 1 0 100%;
+          min-width: calc(100% / 1 - 10px);
+
+          .work-testimonial {
+            margin-top: 10px;
+          }
+
+          img {
+            border-radius: 15px;
+          }
+        }
+      }
+    }
+
     & .sites-portfolio-slider+.pagination {
       @media (max-width: 1400px) {
         display: flex;
@@ -8064,8 +8146,11 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     }
 
     &>.button-link {
-      margin: 0 0 0 auto;
-      // margin: 32px 0 0 auto;
+      margin: 32px 0 0 auto;
+
+      @media (max-width: 1200px) {
+        margin: 0 0 0 auto;
+      }
     }
   }
 
