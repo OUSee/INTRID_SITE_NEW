@@ -47,6 +47,13 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 link: './blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html',
                 title: 'Почему нельзя создавать интернет-магазины на шаблонах',
                 description: `Основные проблемы, с которыми сталкиваются пользователи при создании сайтов на шаблонах`
+            },
+            {
+                img: './src/images/image-by-item-and-alias.webp',
+                link: './blog/pamatka-zakazciku.html',
+                title: 'Памятка заказчику',
+                description: `Ни для кого не секрет, что коммерческий сайт – это современный инструмент бизнеса, позволяющий получать большой поток клиентов из сети. 
+                              Основные задачи сайта: привлекать клиентов, приносить прибыль, способствовать продвижению торговой марки, улучшать имидж компании, обеспечивать обратную связь с потребителями и т.д., и т.п.                        `
             }
         ],
         'digital-design': [
@@ -89,21 +96,21 @@ document.addEventListener('DOMContentLoaded', ()=> {
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/kratkij-gajd-po-faktoram-ranzirovania-v-seo.html',
                 title: 'Краткий гайд по факторам ранжирования в SEO ',
                 description: `Факторы, на которые роботы смотрят при ранжировании сайтов в поисковой системе. 
                               Основная информация.`
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/filtry-andeksa-priznaki-popadania-sroki-sankcij-i-sposoby-vyhoda.html',
                 title: 'Фильтры Яндекса',
                 description: `Признаки попадания, сроки санкций и способы выхода.
                               Кратко о том, что такое санкции Яндекса и с чем их едят.`
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/linkbilding-v-2019-rabocie-metody.html',
                 title: 'Линкбилдинг в 2019: рабочие методы',
                 description: `Статья о том, как продвигать сайт с помощью ссылок в 2019 году и не попадать под фильтры.`
             }
@@ -111,25 +118,25 @@ document.addEventListener('DOMContentLoaded', ()=> {
         'internet-marketing': [
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/upravlenie-reputaciej-v-internete-zacem-i-kak.html',
                 title: 'Управление репутацией в интернете: зачем и как',
                 description: `О том, почему так важно поддерживать репутацию бренда в интернете.`
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/korporativnyj-blog-dan-mode-ili-effektivnaa-reklama.html',
                 title: 'Корпоративный блог: дань моде или эффективная реклама?',
                 description: `Зачем нужно вести корпоративный блог и что он Вам даст?`
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/kontekstnaa-reklama-8-sovetov-novickam.html',
                 title: 'Контекстная реклама: 8 советов новичкам',
                 description: `Настройка КР для чайников – больше конверсии, меньше трат бюджета!`
             },
             {
                 img: './src/images/image-by-item-and-alias.webp',
-                link: './blog/{INSERT-LINK}',
+                link: './blog/intervu.html',
                 title: 'Интервью как способ громко заявить о своём бизнесе с помощью прессы',
                 description: `Одно хорошее интервью может быть эффективнее десяти щедро проплаченных рекламных кампаний. Почему? Читайте в этой статье.`
             },
@@ -149,8 +156,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
                     slide.classList.add('newsletter-card')
                     slide.classList.add('active')
                     const slideHtml = `
-                        <a href="${article.link}" target="_blank">
-                            <img src="${article.img}" alt="recent-work-demo">
+                        <a href="${article.link}">
+                            <div class="img-wrapper"><img src="${article.img}" alt="recent-work-demo"></div>
                             <div class="work-testimonial">
                                 <span class="title_h4 color-white">${article.title}</span>
                                 <p class="card-description">

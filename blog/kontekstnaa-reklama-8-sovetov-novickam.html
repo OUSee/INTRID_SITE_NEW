@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="x-icon" href="../src/images/favicon.ico">
+    <title>
+        Блог веб-студии INTRID| Веб-разработка по полочкам
+    </title>
+    <meta name="keywords" content="блог, веб-разработка, веб-блог, интрид, intrid">
+    <meta name="description"
+        content="Самые свежие и актуальные статьи на тему веб-разработки в блоге веб-студии INTRID" />
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div id="preloader">
+    </div>
+    <!-- NAVBAR -->
+    <header class="navbar" id="header">
+        <div class="container main-header">
+            <a href="../" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="main-logo">
+                <img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+            </a>
+            <div class="mobile-burger">
+                <div id="mobilemenuToggle">
+                    <input type="checkbox" id="menuCheckbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav class="header-links-nav">
+                    <div class="dropdown second">
+                        <a class="nav-link" href="../site.html">Разработка сайтов</a>
+                        <div class="dropdown-content">
+                            <a class="highlight burger-hidden" href="../site.html">Разработка сайтов</a>
+                            <a href="../landing-page.html">Разработка Landing page</a>
+                            <a href="../corporate.html">Корпоративный сайт</a>
+                            <a href="../store.html">Интернет-магазин</a><a
+                                href="../internet-magazin-s-ii.html">Интернет-магазин с
+                                ИИ</a>
+                            <a href="../web-portal.html">Веб-порталы</a>
+                            <hr>
+                            <a href="../portfolio/site.html">Портфолио</a>
+                        </div>
+                    </div>
+                    <div class="dropdown second">
+                        <a class="nav-link" href="../automation-business.html">IT для бизнеса</a>
+                        <div class="dropdown-content">
+                            <a class="highlight burger-hidden" href="../automation-business.html">IT для бизнеса</a>
+                            <a href="../ai.html">Искусственный интеллект</a>
+                            <a href="../crm-erp.html">Разработка CRM и ERP</a>
+                            <a href="../tender-portal.html">Тендерные порталы</a>
+                            <a href="../integration.html">Интеграция IT-систем</a>
+                            <a href="../tech.html">Cопровождение сайтов</a>
+                            <hr>
+                            <a href="../portfolio/site.html#web-portal">Портфолио</a>
+                        </div>
+                    </div>
+                    <div class="dropdown second">
+                        <a class="nav-link" href="../promotion.html">Продвижение</a>
+                        <div class="dropdown-content">
+                            <a class="highlight burger-hidden" href="../promotion.html">Продвижение</a>
+                            <a href="../seo-audit.html">SEO-аудиты и аналитика</a>
+                            <a href="../seo.html">Раскрутка с гарантией</a>
+                            <a href="../reputation.html">Улучшение репутации в сети</a>
+                            <a href="../smm.html">Таргет-реклама в социальных сетях</a>
+                            <hr>
+                            <a href="../portfolio/seo.html">Портфолио</a>
+                        </div>
+                    </div>
+                    <div class="dropdown second">
+                        <a class="nav-link" href="../design.html">Дизайн</a>
+                        <div class="dropdown-content">
+                            <a class="highlight burger-hidden" href="../promotion.html">Дизайн</a>
+                            <a href="../design-site.html">Дизайн сайтов</a>
+                            <a href="../ui-design.html">UI/UX-разработка интерфейсов</a>
+                            <a href="../logo.html">Разработка логотипа</a>
+                            <a href="../brand.html">Создание бренда</a>
+                            <hr>
+                            <a href="../portfolio/design.html">Портфолио</a>
+                        </div>
+                    </div>
+                    <div class="dropdown second">
+                        <a class="nav-link" href="../hosting.html">Хостинг</a>
+                        <div class="dropdown-content">
+                            <a class="highlight burger-hidden" href="../hosting.html">Хостинг</a>
+                            <a href="../hosting-tarify.html">Бюджетный хостинг</a>
+                            <a href="../vds.html">VDS - виртуальный сервер</a>
+                            <a href="../domain.html">Регистрация доменов</a>
+                            <a href="../ssl.html">SSL-сертификаты</a>
+                        </div>
+                    </div>
+                    <hr class="mobile-visible">
+                    <a class="mobile-visible" href="../portfolio.html" class="bold">
+                        <span class="title_h5">Портфолио</span>
+                    </a>
+                    <hr class="mobile-visible">
+                    <a class="mobile-visible" href="../o-nas.html">О Компании</a>
+                    <a class="mobile-visible" href="../klientam.html">Клиентам</a>
+                    <a class="mobile-visible" href="../comment.html">Отзывы</a>
+                    <a class="mobile-visible" href="../blog.html">Блог</a>
+                    <a class="mobile-visible" href="../vakansii.html">Вакансии</a>
+                    <a class="mobile-visible" href="../kontakty.html">Контакты</a>
+                    <a class="button-highlight mobile-visible" href="../calculator.html">Заказать сайт</a>
+                </nav>
+            </div>
+            <a href="../calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
+            <div class="fd-col ml-6 header-contacts">
+                <a class="title_h5 phone-line" href="tel:+74732540796">
+                    <i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
+                    <span>+7 (473) 254 0796</span>
+                </a>
+                <span class="work-time a-self-end">Пн-Пт: 9:00-18:00</span>
+            </div>
+            <div class="icon-menu">
+                <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+                    <i class="icon-mail"></i>
+                </a>
+                <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796" target="_blank">
+                    <i class="icon-whatsapp"></i>
+                </a>
+                <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+                    <i class="icon-tg"></i>
+                </a>
+                <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+                    target="_blank">
+                    <i class="icon-person"></i>
+                </a>
+            </div>
+            <div class="burger ml-32">
+                <div id="menuToggle">
+                    <input type="checkbox" id="menuCheckbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="burger-content">
+                    <a href="../portfolio.html" class="bold title_h5">
+                        Портфолио
+                    </a>
+                    <hr>
+                    <a href="../o-nas.html">О Компании</a>
+                    <a href="../klientam.html">Клиентам</a>
+                    <a href="../comment.html">Отзывы</a>
+                    <a href="../blog.html">Блог</a>
+                    <a href="../vakansii.html">Вакансии</a>
+                    <a href="../kontakty.html">Контакты</a>
+                    <hr>
+                    <a class="work-time a-self-end popup-trigger map-link" href="javascript://"
+                        title="Посмотреть на карте" data-popup="map" data-map="vrn">
+                        Воронеж ул.Пятницкого 40
+                    </a>
+                    <hr>
+                    <button class="button-highlight mt-32">
+                        Заказать сайт
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- MAIN PAGE -->
+    <section class="comment-main crm crm-page container">
+        <div class="breadcrumbs">
+            <a href="../">Главная</a>
+            <span>-</span>
+            <a href="../blog.html">Блог</a>
+            <span>-</span>
+            <a href="#" class="link-disabled">Интернет-маркетинг</a>
+        </div>
+
+        <h1 class="title_h1 w-fit underlined m-center">
+            Контекстная реклама: 8 советов новичкам
+        </h1>
+    </section>
+    <section class="container container-blog blog_page-content">
+        <p class="title_h5 mt-50">
+            <i>Здравствуй, дорогой читатель!</i>
+        </p>
+        <p>
+            Сегодня мы будем говорить о контекстной рекламе, а точнее о том, как настраивать её так,
+            чтобы бюджет не
+            улетал в трубу. В статье рассмотрим восемь простых рекомендаций, которые можно опробовать уже сегодня. Если
+            научитесь правильно ими пользоваться, то Ваши рекламные кампании станут гораздо рентабельнее и эффективнее.
+            Ну что, начнём?
+        </p>
+        <p class="title_h4 w-fit">
+            Содержание:
+        </p>
+        <ul class="ordinary-list">
+            <li>
+                <a href="#a1" class="hover-underline">
+                    Рекламные площадки
+                </a>
+            </li>
+            <li>
+                <a href="#a2" class="hover-underline">
+                    Аналитические инструменты
+                </a>
+            </li>
+            <li>
+                <a href="#a3" class="hover-underline">
+                    Релевантные страницы
+                </a>
+            </li>
+            <li>
+                <a href="#a4" class="hover-underline">
+                    Геотаргетинг
+                </a>
+            </li>
+            <li>
+                <a href="#a5" class="hover-underline">
+                    Минус-слова
+                </a>
+            </li>
+            <li>
+                <a href="#a6" class="hover-underline">
+                    "Универсальные объявления"
+                </a>
+            </li>
+            <li>
+                <a href="#a7" class="hover-underline">
+                    Аналитика конкурентов
+                </a>
+            </li>
+            <li>
+                <a href="#a8" class="hover-underline">
+                    Ночная реклама
+                </a>
+            </li>
+        </ul>
+        <h3 class="w-fit m-center underlined" id="a1">
+            1. Не помешивайтесь на одной рекламной площадке
+        </h3>
+        <p>
+            Среди «экспертов» можно услышать огромное количество мнений касательно того, что лучше – Директ или Google
+            Ads? Наш ответ: ничего не лучше. Обе площадки одинаково хороши и эффективны. Проблема лишь в том, какой
+            поисковой системой чаще пользуется Ваша целевая аудитория.
+        </p>
+        <p>
+            Итак, поступать рекомендуется следующим образом. В начале рекламной кампании тестируем обе площадки и
+            смотрим, с какой улов будет больше. Безусловно, это чревато дополнительными расходами, но будьте уверены – в
+            итоге это решение многократно себя окупит.
+        </p>
+        <p>
+            <b>Вывод:</b> перед запуском кампании тестируем обе площадки. В случае целесообразности и при наличии
+            достаточного
+            бюджета в дальнейшем ведём кампанию и на Яндексе, и на Google.
+        </p>
+        <div class="img-wrapper">
+            <img src="../src/images/blog/yandex-google.webp" alt="">
+        </div>
+        <h3 class="w-fit m-center underlined" id="a2">
+            2. Используйте инструменты аналитики контекстной рекламы
+        </h3>
+        <p>
+            Анализируйте результаты и фиксируйте изменения. В противном случае какого-либо успеха от рекламной кампании
+            вообще не ждите. Так что в первую очередь настраиваем Метрику и Analytics. Это бесплатные инструменты,
+            которые позволят точно оценить эффективность работы сайта. Вы получите очень важную информацию, например,
+            касательно поведения пользователей на ресурсе, самых «жирных» источников трафика и количества посетителей.
+        </p>
+        <p>
+            <b>Вывод:</b> обязательно подключаем и настраиваем <i>Google.Analytics</i> и <i>Яндекс.Метрику</i>, чтобы
+            отслеживать
+            эффективность рекламной кампании и вносить необходимые изменения.
+        </p>
+        <h3 class="w-fit m-center underlined" id="a3">
+            3. Настраивайте рекламу на интересные для ЦА страницы
+        </h3>
+        <p>
+            Частенько новички при настройке контекстного объявления дают ссылки на главную страницу сайта. Нет, это
+            далеко не всегда плохо, в ряде случаев даже правильно. Но рассмотрим отдельный пример.
+        </p>
+        <p>
+            Вы рекламируете отдельный товар или категорию товаров из ассортимента крупного интернет-магазина.
+            Пользователь переходит по объявлению и вместо того, чтобы попасть на страницу с интересующим наименованием,
+            попадает на главную. Естественно, в 90% самостоятельно продолжать поиск товара на сайте он не будет.
+        </p>
+        <div class="img-wrapper">
+            <img src="../src/images/blog/what_ppc.webp" alt="">
+        </div>
+        <p>
+            <b>Вывод:</b> ссылайте объявления на <b><i>страницы с продвигаемым товаром или услугой</i></b>. Продаёте
+            телевизоры – делайте ссылку
+            на раздел с телевизорами, а не на главную магазина домашней электроники.
+        </p>
+        <h3 class="w-fit m-center underlined" id="a4">
+            4. Настройте геотаргетинг
+        </h3>
+        <p>
+            Геотаргетинг — это прекрасная штука, которая позволяет цеплять целевую аудиторию с нужного региона и не
+            сливать бюджет рекламной кампании в бездну. Как это работает? Опять же разберём на примере.
+        </p>
+        <p>
+            Реклама настроена на всю Россию. В теории мы даже можем выслать наш товар покупателю в другой регион,
+            например, из Воронежа в Санкт-Петербург. Всё бы хорошо, но здесь есть две проблемы. Во-первых, стоимость
+            клика в Питере будет ощутимо дороже, чем в Воронеже. Во-вторых, подумайте, а будет ли покупатель заказывать
+            товар из Вашего региона, если он может купить его в своём? Если да, то можно попробовать настроить
+            геотаргетинг на всю страну. Если же нет… Не теряйте деньги впустую и цельтесь только по своему региону.
+        </p>
+        <p>
+            <b>Вывод:</b> не забывайте настраивать геотаргетинг только на те регионы, где возможны продажи. Это увеличит
+            рентабельность контекстной рекламы и спасёт от слива бюджета.
+        </p>
+        <h3 class="w-fit m-center underlined" id="a5">
+            5. Не забываем про минус-слова
+        </h3>
+        <p>
+            <i>Минус-слова</i> – это важный инструмент, который отсекает нецелевой трафик, то есть аудиторию, которая
+            нас не
+            интересует (и это взаимно). Как это работает?
+        </p>
+        <p>
+            Например, мы продвигаем какие-то платные курсы web-дизайна. Если добавим в минус-слова «бесплатно», мы
+            отбросим людей, которые не собираются записываться на платные курсы. Таким образом увеличивается процент
+            целевых переходов и снижается расход бюджета на показ рекламы пользователям, которые не собираются у нас
+            ничего покупать.
+        </p>
+        <p>
+            <b>Вывод:</b> тщательно подбираем минус-слова, чтобы избавить себя от нецелевого трафика, уберечь бюджет от
+            слива
+            на бесполезные показы и увеличить процент нужной аудитории.
+        </p>
+        <div class="img-wrapper">
+            <img src="../src/images/blog/magnifier-phones.webp" alt="">
+        </div>
+        <h3 class="w-fit m-center underlined" id="a6">
+            6. Не делаем «универсальные» объявления
+        </h3>
+        <p>
+            Самая эффективная реклама работает так — <b><i>под один запрос делается одно объявление</i></b>. Выходит
+            накладно (если много
+            разных запросов), но в итоге окупается, потому что человек находит именно то, что искал.
+        </p>
+        <p>
+            Многие новички пренебрегают этим правилом и пытаются засунуть под одно объявление десять, а то и сотню
+            запросов. Например, пользователь ищет «штукатурка стен» или «установка окон», а ему выводится «ремонт домов
+            под ключ», потому что объявление привязано ко всем запросам, так или иначе касающихся строительных услуг.
+        </p>
+        <p>
+            <b>Вывод:</b> Один целевой запрос – одно объявление. Одно объявление под несколько запросов можно делать
+            только в
+            том случае, если они очень схожи.
+        </p>
+        <h3 class="w-fit m-center underlined" id="a7">
+            7. Следим за рекламой конкурентов
+        </h3>
+        <p>
+            В первую очередь это касается высококонкурентных ниш, хотя знать врага своего нужно вообще в любой ситуации
+            на рынке, даже если Вы безусловный лидер в своей среде.
+        </p>
+        <p>
+            Существует огромное количество сервисов для мониторинга конкурентов. Они помогут понять, как работают другие
+            компании в Вашем сегменте. Вы узнаете, какие ключевые слова используют конкуренты, увидите их сниппеты,
+            позиции в поиске, сможете даже оценить эффективность кампаний и узнать примерный бюджет и трафик.
+        </p>
+        <p>
+            <b>Вывод:</b> не забываем анализировать конкурентов для сбора данных, которые помогут увеличить
+            эффективность
+            собственной рекламной кампании.
+        </p>
+        <div class="img-wrapper">
+            <img src="../src/images/blog/web-analitika.webp" alt="">
+        </div>
+        <h3 class="w-fit m-center underlined" id="a8">
+            8. Не всегда стоит отключать рекламу на ночь
+        </h3>
+        <p>
+            Многие новички в сфере контекстной рекламы отключают показ объявлений в ночное время. С одной стороны это
+            логично – экономится бюджет. Но с другой эта бережливость может выйти боком. Ночью даже в самых конкурентных
+            тематиках цена кликов может запросто свалиться в <b>2-3 раза</b>, а то и больше. А спят далеко не все.
+            Понимаете, к
+            чему это я?
+        </p>
+        <p>
+            Вы сможете получить <b>целевые переходы с огромной скидкой</b>. Только есть одно важное правило – в «ночных»
+            объявлениях пропишите время работы своей компании, а на сайте укажите, что обращение обработаем утром. Если,
+            конечно, спите ночью.
+        </p>
+        <p>
+            <b>Вывод:</b> отключение контекстной рекламы на ночь — не самая разумная экономия. Следите за ценой кликов в
+            ночное
+            время. Если она невысока, то не отключайте показы.
+        </p>
+        <h3 class="w-fit m-center underlined">
+            Вместо резюме
+        </h3>
+        <p>
+            Мы надеемся, что эти простые рекомендации значительно упростят Ваше обучение настройке и ведению рекламных
+            кампаний, а также помогут избежать глупых ошибок, которые сжигают бюджет и забирают время без малейшей
+            отдачи.
+        </p>
+        <p>
+            А если Вам вдруг стало лень самостоятельно настраивать контекстную рекламу, можете обратиться к нам. Это
+            сделает сертифицированный Яндексом специалист, а Вам останется лишь обрабатывать заказы и считать прибыль.
+            На этом пока всё. До новых встреч!
+        </p>
+        <a href="../promotion.html" class="button-link big m-center mt-50">
+            Заказать продвижение <span class="br420">в интернете</span> <i class="icon-arrow_wide"></i>
+        </a>
+    </section>
+    <!--  -->
+    <section class="use-service container">
+        <p class="title_h2 underlined w-fit m-center text-center">
+            Заказать разработку сайта или создание логотипа
+        </p>
+        <div class="use-service-list prices-services-list">
+            <a href="../calculator.html" class="prices-services-list-item">
+                <div class="img-wrapper"><img src="../src/icons/site-calc.svg" alt="landig-page"></div>
+                <span class="color-white">Калькулятор сайта&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
+            </a>
+            <a href="../brif-site.html" class="prices-services-list-item">
+                <div class="img-wrapper"><img src="../src/icons/brif-site.svg" alt="landig-page"></div>
+                <span class="color-white">Бриф на сайт&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
+            </a>
+            <a href="../brif-logo.html" class="prices-services-list-item">
+                <div class="img-wrapper"><img src="../src/icons/brif-logo.svg" alt="landig-page"></div>
+                <span class="color-white">Бриф на бренд<span class="br470"> и лого</span>&nbsp;<i
+                        class="icon-arrow_wide color-blue"></i></span>
+            </a>
+            <a href="../seo.html#seo_application" class="prices-services-list-item">
+                <div class="img-wrapper"><img src="../src/icons/promotion-request.svg" alt="landig-page"></div>
+                <span class="color-white">Заявка на раскрутку&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
+            </a>
+        </div>
+    </section>
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container container-full">
+            <div class="footer-inner">
+                <div class="footer-top">
+                    <a href="../" title="Создание и продвижение сайтов и IT-продуктов на заказ" class="footer-logo">
+                        <img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+                    </a>
+                    <div class="footer-categories">
+                        <a href="../site.html">Разработка</a>
+                        <a href="../automation-business.html">IT для бизнеса</a>
+                        <a href="../promotion.html">Продвижение</a>
+                        <a href="../hosting.html">Хостинг</a>
+                        <a href="../design.html">Дизайн</a>
+                    </div>
+
+                    <div class="footer-contacts">
+                        <div class="contact-block contact-block--address">
+                            <div class="contact-block--content">
+                                <a href="javascript://" target="_blank" title="Посмотреть на карте"
+                                    class="popup-trigger map-link" data-popup="map" data-map="vrn">
+                                    Воронеж,
+                                    ул.&nbsp;Пятницкого,&nbsp;д.&nbsp;40
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-block contact-block--phone">
+                            <div class="contact-block--content">
+                                <a href="tel:+74732540796" class="title_h5" title="Позвонить по номеру">
+                                    +7 (473) 254 0796
+                                </a>
+                                <div class="contact-block--schedule">
+                                    Пн-Пт: 9:00-18:00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-middle">
+                    <div class="footer-menu">
+                        <a href="../o-nas.html">О компании</a>
+                        <a href="../portfolio.html">Портфолио</a>
+                        <a href="../klientam.html">Клиентам</a>
+                        <a href="../comment.html">Отзывы</a>
+                        <a href="../blog.html">Блог</a>
+                        <a href="../vakansii.html">Вакансии</a>
+                        <a href="../kontakty.html">Контакты</a>
+                    </div>
+                    <div class="icon-menu">
+                        <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+                            <i class="icon-mail"></i>
+                        </a>
+                        <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796"
+                            target="_blank">
+                            <i class="icon-whatsapp"></i>
+                        </a>
+                        <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+                            <i class="icon-tg"></i>
+                        </a>
+                        <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+                            target="_blank">
+                            <i class="icon-person"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container container-full">
+                <a href="javascript://" data-popup="accreditation-view" title="Выписка">Государственная аккредитация в
+                    области информационных технологий</a>
+                <span>© 2004-2025 INTRID web-studio</span>
+            </div>
+        </div>
+    </footer>
+    <!-- MODAL WINDOWS -->
+    <dialog class="popup" id="map">
+        <div class="popup-body">
+            <div class="map-container"></div>
+            <hr>
+            <div class="map-testimonials">
+                <p class="color-white ml-10"></p>
+                <a class="title_h5 fz-20 phone-line gap-10" href="tel:+74732540796">
+                    <i class="icon-phone  color-blue" style="top: 4px;"></i>
+                    <span>+7 (473) 254 0796</span>
+                </a>
+                <a href="#" target="_blank" class="button-link">
+                    Перейти в карты <i class="icon-arrow_wide"></i>
+                </a>
+            </div>
+        </div>
+    </dialog>
+    <dialog class="popup form-popup" id="fast-req-form">
+        <div class="popup-body">
+            <form action="submit">
+                <div class="form-limitter">
+                    <input type="text" name="name" placeholder="Имя *" required>
+                    <input type="mail" name="mail" placeholder="E-mail *" required>
+                    <input type="tel" name="phone" placeholder="Телефон *" required>
+                    <textarea data-autosize="true" rows="1"
+                        placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
+                    <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
+                    <!-- <label for="personal-data">
+                        <input type="checkbox" name="agree" id="personal-data" required>
+                        Согласен на обработку персональных данных
+                    </label> -->
+                    <p class="testimonials text-center m-center">
+                        Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy">обработку
+                            своих персональных
+                            данных</a>
+                    </p>
+                    <button type="submit" class="button-white m-center mt-20">Отправить заявку</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+    <dialog class="popup" id="privacy-policy">
+        <div class="popup-body">
+            <p class="title_h3 text-center mb-20">
+                Политика конфиденциальности и защиты информации.
+            </p>
+            <p class="text-center mb-50">
+                Оставляя данные на сайте, Вы соглашаетесь с Политикой конфиденциальности и защиты
+                информации.
+            </p>
+            <p class="title_h5 mb-10">Защита данных</p>
+            <p class="mb-20">
+                Администрация сайта <a href="../" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт) не
+                может
+                передать или
+                раскрыть
+                информацию,
+                предоставленную пользователем (далее Пользователь) при регистрации и использовании функций
+                сайта третьим лицам, кроме случаев, описанных законодательством страны, на территории
+                которой пользователь ведет свою деятельность.
+            </p>
+            <p class="title_h5 mb-10">
+                Получение персональной информации
+            </p>
+            <p class="mb-20">
+                Для коммуникации на сайте пользователь обязан внести некоторую персональную информацию.
+                Для проверки предоставленных данных, сайт оставляет за собой право потребовать
+                доказательства идентичности в онлайн или офлайн режимах.
+            </p>
+            <p class="title_h5 mb-10">
+                Использование персональной информации
+            </p>
+            <p class="mb-20">
+                Сайт использует личную информацию Пользователя для обслуживания и для улучшения качества
+                предоставляемых услуг. Часть персональной информации может быть предоставлена банку или
+                платежной системе, в случае, если предоставление этой информации обусловлено процедурой
+                перевода средств платежной системе, услугами которой Пользователь желает воспользоваться.
+                Сайт прилагает все усилия для сбережения в сохранности личных данных Пользователя. Личная
+                информация может быть раскрыта в случаях, описанных законодательством, либо когда
+                администрация сочтет подобные действия необходимыми для соблюдения юридической
+                процедуры, судебного распоряжения или легального процесса необходимого для работы
+                Пользователя с Сайтом. В других случаях, ни при каких условиях, информация, которую
+                Пользователь передает Сайту, не будет раскрыта третьим лицам.
+            </p>
+            <p class="title_h5 mb-10">
+                Коммуникация
+            </p>
+            <p class="mb-20">
+                После того, как Пользователь оставил данные, он получает сообщение, подтверждающее его
+                успешную регистрацию. Пользователь имеет право в любой момент прекратить получение
+                информационных бюллетеней воспользовавшись соответствующим сервисом в Сайте.
+            </p>
+            <p class="title_h5 mb-10">
+                Ссылки
+            </p>
+            <p class="mb-20">
+                На сайте могут содержаться ссылки на другие сайты. Сайт не несет ответственности за
+                содержание, качество и политику безопасности этих сайтов. Данное заявление о
+                конфиденциальности относится только к информации, размещенной непосредственно на сайте.
+            </p>
+            <p class="title_h5 mb-10">
+                Безопасность
+            </p>
+            <p class="mb-20">
+                Сайт обеспечивает безопасность учетной записи Пользователя от несанкционированного доступа.
+            </p>
+            <p class="title_h5 mb-10">
+                Уведомления об изменениях
+            </p>
+            <p class="mb-20">
+                Сайт оставляет за собой право вносить изменения в Политику конфиденциальности без
+                дополнительных уведомлений. Нововведения вступают в силу с момента их опубликования.
+                Пользователи могут отслеживать изменения в Политике конфиденциальности самостоятельно.
+            </p>
+        </div>
+    </dialog>
+    <dialog class="popup" id="accreditation-view">
+        <div class="popup-body">
+            <img src="../src/images/accreditation.webp" alt="accrediattion">
+        </div>
+    </dialog>
+    <script src="../js/header-opacity.js"></script>
+    <script src="../js/popup-handler.js"></script>
+    <script src="../js/map-handler.js"></script>
+    <script src="../js/phoneFieldHandler.js"></script>
+    <script src="../js/slider-with-pagination.js"></script>
+    <script src="../js/blogsSelector.js"></script>
+</body>
+
+</html>

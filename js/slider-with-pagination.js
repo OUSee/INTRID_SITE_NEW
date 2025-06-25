@@ -94,6 +94,16 @@ function sliderInitialise(){
                 btn.style.opacity = '1'
               }
             })
+
+            if(!!pagination){
+              const btncount = slides.length - (visibleSlidesCount - 1)
+              if(btncount < 2){
+                pagination.style.display = 'none'
+              }
+              else if(pagination.style.display === 'none' && btncount > 1){
+                pagination.style.display = 'flex'  
+              }
+            }
           }
           catch(err){
             console.log('=> err', err)
@@ -116,7 +126,6 @@ function sliderInitialise(){
                 btnDot.classList.add('pagination--btn-dot');
                 dotsContainer.appendChild(btnDot)
               }
-
               navButtons = pagination.querySelectorAll('.pagination--btn-dot')
               navButtons.forEach(button=>{
                 button.classList.remove('highlight');
