@@ -686,10 +686,20 @@ button.next {
     flex-basis: 30%;
     flex-grow: 1;
     max-height: 54px;
+    font-size: 30px;
+    font-weight: 600;
+
+    &>* {
+      font-size: 30px;
+    }
 
     @media (max-width: 520px) {
       flex-basis: 30%;
       font-size: 24px;
+
+      &>* {
+        font-size: 24px;
+      }
     }
   }
 
@@ -1706,6 +1716,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
   .absolute-link {
     position: absolute;
     bottom: 24px;
+    flex-direction: row !important;
 
     &:hover {
       text-decoration: underline;
@@ -1835,6 +1846,19 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
     .video-diagramm {
       margin: 0 auto;
+
+      .connections {
+        display: none;
+      }
+    }
+
+    .benefits {
+
+      &-left,
+      &-right,
+      &-bottom {
+        display: none;
+      }
     }
   }
 }

@@ -3848,10 +3848,18 @@ button.next:hover {
   flex-basis: 30%;
   flex-grow: 1;
   max-height: 54px;
+  font-size: 30px;
+  font-weight: 600;
+}
+.site-benefit-highlight > * {
+  font-size: 30px;
 }
 @media (max-width: 520px) {
   .site-benefit-highlight {
     flex-basis: 30%;
+    font-size: 24px;
+  }
+  .site-benefit-highlight > * {
     font-size: 24px;
   }
 }
@@ -4754,6 +4762,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .recent-work-card .absolute-link {
   position: absolute;
   bottom: 24px;
+  flex-direction: row !important;
 }
 .recent-work-card .absolute-link:hover {
   text-decoration: underline;
@@ -4869,6 +4878,12 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
   .benefits-n-video .video-diagramm {
     margin: 0 auto;
+  }
+  .benefits-n-video .video-diagramm .connections {
+    display: none;
+  }
+  .benefits-n-video .benefits-left, .benefits-n-video .benefits-right, .benefits-n-video .benefits-bottom {
+    display: none;
   }
 }
 
