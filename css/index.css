@@ -1954,6 +1954,7 @@ form .button:hover {
   flex-basis: 0;
   overflow: hidden;
   position: relative;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 .tab-button.mobile {
@@ -7965,6 +7966,14 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     min-height: 350px;
   }
 }
+@media (max-width: 600px) {
+  .portal-portfolio .recent-work-card {
+    min-height: unset;
+  }
+  .portal-portfolio .recent-work-card .work-testimonial .card-description {
+    min-height: unset;
+  }
+}
 @media (max-width: 1000px) {
   .portal-whyUs .why-cooperate-list {
     width: -moz-fit-content;
@@ -11934,6 +11943,10 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   top: 40px;
   right: -30px;
   transition: all 0.3s ease-in-out;
+  transform-origin: center;
+}
+.help-faq .accordion-item .accordion-header i.icon-shevrone {
+  transform: rotate(90deg) translate(-0.5em, 0em);
 }
 @media (min-width: 1200px) {
   .help-faq .accordion-item .accordion-content > p {
@@ -11941,7 +11954,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
 }
 .help-faq .accordion-item .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
-  transform: rotate(-90deg) translate(0.2em, 0.3em);
+  transform: rotate(-90deg) translate(0.5em, 0.3em);
 }
 
 .case_page-top {

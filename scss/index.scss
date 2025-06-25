@@ -5378,6 +5378,16 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       @media (max-width: 1200px) {
         min-height: 350px;
       }
+
+      @media (max-width: 600px) {
+        min-height: unset;
+
+        .work-testimonial {
+          .card-description {
+            min-height: unset;
+          }
+        }
+      }
     }
   }
 
@@ -10098,6 +10108,12 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
           top: 40px;
           right: -30px;
           transition: all 0.3s ease-in-out;
+          transform-origin: center;
+
+          &.icon-shevrone {
+            transform: rotate(90deg) translate(-0.5em, 0em);
+          }
+
         }
       }
 
@@ -10110,7 +10126,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       }
 
       .accordion-checkbox:checked+.accordion-header i.icon-shevrone {
-        transform: rotate(-90deg) translate(0.2em, 0.3em);
+        transform: rotate(-90deg) translate(0.5em, 0.3em);
       }
     }
   }
@@ -10891,6 +10907,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
   .tab-button {
     padding: 18px 32px 18px 100px;
+
 
     .title_h5 {
       display: block;
