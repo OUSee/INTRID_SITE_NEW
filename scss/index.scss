@@ -2643,6 +2643,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
           color: var(--bg-main);
           cursor: pointer;
 
+          @media (min-width: 900px) {
+            flex: 1;
+          }
+
           &:hover {
             span.case-number {
               opacity: 1;
@@ -8831,6 +8835,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: 0.25s ease-in-out;
 
     ul {
       padding-left: 15px;
@@ -8850,6 +8855,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     hr {
       border-color: var(--blue-main);
       background-color: var(--blue-main);
+    }
+
+    &>* {
+      transition: 0.25s ease-in-out;
     }
   }
 
