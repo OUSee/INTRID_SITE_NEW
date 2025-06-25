@@ -1236,6 +1236,7 @@ button.next {
         thead {
           @media (min-width: 900px) {
             tr {
+
               td,
               th {
                 padding: 18px 30px;
@@ -1272,6 +1273,7 @@ button.next {
 
         tbody tr {
           &:first-child {
+
             td,
             th label {
               padding: 18px 30px;
@@ -9966,7 +9968,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       }
     }
 
-    & > .highlighted-space {
+    &>.highlighted-space {
       background-color: var(--bg-main);
       border-radius: 15px;
       padding: 10px 20px;
@@ -9977,7 +9979,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       }
     }
 
-    & > .grid-group {
+    &>.grid-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 20px;
@@ -10314,6 +10316,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       object-position: center;
     }
   }
+
   &--web {
     margin-top: unset;
 
@@ -10511,7 +10514,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
 
   &#case-inkomed-data {
-    & > .img-wrapper {
+    &>.img-wrapper {
       margin: auto 0 auto -50px;
       max-width: 360px;
 
@@ -10530,7 +10533,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
   }
 
   &#case-inkomed-works {
-    & > .img-wrapper {
+    &>.img-wrapper {
       margin: auto 0 auto -50px;
       max-width: 360px;
 
@@ -10552,17 +10555,17 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     & .case_layout--filled {
       margin: 0;
 
-      & > * {
+      &>* {
         display: flex;
         flex-direction: column;
 
         &:nth-child(1) {
-          & > .img-wrapper {
+          &>.img-wrapper {
             margin-top: 0;
           }
         }
 
-        & > .img-wrapper {
+        &>.img-wrapper {
           @media (max-width: 1030px) {
             margin: 0 auto;
           }
@@ -10570,7 +10573,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       }
     }
 
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 460px;
       margin: 60px -50px auto auto;
 
@@ -10589,7 +10592,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
   }
 
   &#case-inkomed-economy {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 260px;
       margin: 0 auto;
     }
@@ -10621,7 +10624,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     }
 
 
-    & > .img-wrapper {
+    &>.img-wrapper {
       align-self: flex-start;
       margin: 0;
     }
@@ -10767,7 +10770,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       margin-right: 0;
     }
 
-    & > img {
+    &>img {
       width: 42px;
       height: 42px;
       object-fit: contain;
@@ -10783,9 +10786,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     align-self: center;
     justify-content: flex-start;
     gap: 6px;
-    max-width: calc(
-      50% - (var(--number-ball-size) / 2 + var(--number-ball-gap))
-    );
+    max-width: calc(50% - (var(--number-ball-size) / 2 + var(--number-ball-gap)));
     min-height: 100px;
     flex: 1;
     text-align: right;
