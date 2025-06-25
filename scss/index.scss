@@ -9150,7 +9150,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
           border-bottom-right-radius: 0;
 
           span.tab-header::after {
-            transform: rotate(90deg);
+            transform: rotate(270deg);
+            // transform: rotate(90deg);
           }
         }
 
@@ -9164,7 +9165,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
             font-family: 'INTRID_ICONS';
             content: '\6d';
             font-size: 1.5em;
-            transform: rotate(270deg);
+            transform: rotate(90deg);
+            // transform: rotate(270deg);
           }
         }
       }
@@ -9994,6 +9996,14 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
           top: 40px;
           right: -30px;
           transition: all 0.3s ease-in-out;
+        }
+      }
+
+      & .accordion-content {
+        &>p {
+          @media (min-width: 1200px) {
+            font-size: 18px;
+          }
         }
       }
 
@@ -10975,7 +10985,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         border-bottom-right-radius: 0;
 
         span.tab-header::after {
-          transform: rotate(90deg);
+          // transform: rotate(90deg);
+          transform: rotate(270deg);
         }
       }
 
@@ -10989,7 +11000,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
           font-family: 'INTRID_ICONS';
           content: '\6d';
           font-size: 1.5em;
-          transform: rotate(270deg);
+          // transform: rotate(270deg);
+          transform: rotate(90deg);
         }
       }
     }
