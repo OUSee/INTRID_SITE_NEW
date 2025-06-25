@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach((counter) => {
       let hasAnimated = false;
 
-      const animateCounters = (duration = 4000) => {
-        counters.forEach((counter) => {
+      const animateCounter = (counter, duration = 4000) => {
           // Убираем пробелы и преобразуем в число
           const targetValue = parseInt(
             counter.getAttribute('data-counter-value').replace(/\s+/g, ''),
@@ -42,16 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
           };
 
           requestAnimationFrame(updateCounter);
-        });
+        
       };
 
-      const resetCounters = () => {
-        counters.forEach((counter) => {
-          counter.textContent = '0'.repeat(
-            counter.getAttribute('data-counter-value').length
-          ); // Сбрасываем к нулям
-        });
-      };
+      // const resetCounters = () => {
+      //   counters.forEach((counter) => {
+      //     counter.textContent = '0'.repeat(
+      //       counter.getAttribute('data-counter-value').length
+      //     ); // Сбрасываем к нулям
+      //   });
+      // };
 
       const observerOptions = {
         root: null,
@@ -64,16 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
           if (entry.isIntersecting) {
             if (!hasAnimated) {
               setTimeout(() => {
-                animateCounters(1200);
+                animateCounter(entry.target, 1200);
               }, 250);
               hasAnimated = true;
+              observer.unobserve(entry.target)
             }
-          } else {
-            if (hasAnimated) {
-              resetCounters();
-              hasAnimated = false;
-            }
-          }
+          } 
+          // else {
+          //   if (hasAnimated) {
+          //     resetCounters();
+          //     hasAnimated = false;
+          //   }
+          // }
         });
       };
 
