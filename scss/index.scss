@@ -8354,6 +8354,12 @@ body
           margin-bottom: 32px;
         }
       }
+
+      .recent-work-card {
+        & > .absolute-link {
+          padding-left: 0;
+        }
+      }
     }
 
     &-slate {
@@ -9959,6 +9965,60 @@ body
 .comment {
   &-main {
     justify-content: space-between;
+  }
+
+  // crm page
+  &-page {
+    position: relative;
+    display: flex;
+
+    &--block {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      max-width: 100%;
+      width: 100%;
+
+      @media (max-width: 1200px) {
+        flex-direction: column;
+      }
+
+      & > .title_h1 {
+        margin-right: auto;
+
+        @media (max-width: 1200px) {
+          margin-right: 0;
+        }
+      }
+
+      & > .rating {
+        flex: 1 0 48%;
+        justify-content: flex-end;
+        width: 100%;
+        margin-left: auto;
+        margin-bottom: 0;
+
+        @media (max-width: 1200px) {
+          flex: 1;
+          justify-content: flex-start;
+          margin-top: 20px;
+          margin-left: 0;
+        }
+
+        @media (max-width: 540px) {
+          justify-content: space-between;
+        }
+      }
+
+      & > .fd-row {
+        margin-top: 0;
+
+        @media (max-width: 1200px) {
+          margin-top: 30px;
+        }
+      }
+    }
   }
 
   &-comments {

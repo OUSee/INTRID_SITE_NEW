@@ -10547,6 +10547,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .portfolio-view-grid .newsletter-card .work-testimonial {
   margin-bottom: 32px;
 }
+.portfolio-view-grid .recent-work-card > .absolute-link {
+  padding-left: 0;
+}
 .portfolio-view-slate {
   display: flex;
   flex-direction: column;
@@ -11790,6 +11793,59 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 
 .comment-main {
   justify-content: space-between;
+}
+.comment-page {
+  position: relative;
+  display: flex;
+}
+.comment-page--block {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 100%;
+  width: 100%;
+}
+@media (max-width: 1200px) {
+  .comment-page--block {
+    flex-direction: column;
+  }
+}
+.comment-page--block > .title_h1 {
+  margin-right: auto;
+}
+@media (max-width: 1200px) {
+  .comment-page--block > .title_h1 {
+    margin-right: 0;
+  }
+}
+.comment-page--block > .rating {
+  flex: 1 0 48%;
+  justify-content: flex-end;
+  width: 100%;
+  margin-left: auto;
+  margin-bottom: 0;
+}
+@media (max-width: 1200px) {
+  .comment-page--block > .rating {
+    flex: 1;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+}
+@media (max-width: 540px) {
+  .comment-page--block > .rating {
+    justify-content: space-between;
+  }
+}
+.comment-page--block > .fd-row {
+  margin-top: 0;
+}
+@media (max-width: 1200px) {
+  .comment-page--block > .fd-row {
+    margin-top: 30px;
+  }
 }
 .comment-comments .sites-reviews-slider > div {
   flex: 1 1 100%;
