@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const counters = document.querySelectorAll('[data-counter-value]');
 
-  if (counters) {
+  const initInremet = () => {
+    if (counters) {
     counters.forEach((counter) => {
       let hasAnimated = false;
 
@@ -85,4 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
       observer.observe(counter);
     });
   }
+  }
+  
+  setTimeout(()=>{
+    initInremet()
+  }, 1000)
 });

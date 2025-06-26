@@ -3732,6 +3732,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
           border-radius: 50%;
         }
 
+
+
         .header {
           display: flex;
           margin-bottom: 10px;
@@ -3757,6 +3759,15 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         p.color-grey {
           @media (max-width: 600px) {
             padding-left: 28px;
+          }
+        }
+
+        &.small-fix {
+          @media (max-width: 600px) {
+            p.color-grey {
+              margin-top: 20px;
+              padding-left: 0px;
+            }
           }
         }
 
@@ -8764,14 +8775,28 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
   }
 
   &-benefits {
-    &>ul>li>div {
-      @media (min-width: 1000px) {
-        justify-content: center;
+    &>ul>li {
+      &>div {
+        @media (min-width: 1000px) {
+          justify-content: center;
+        }
+
+        img {
+          width: 52px;
+          height: 52px;
+        }
+
+        @media (max-width: 440px) {
+          gap: 20px
+        }
       }
 
-      img {
-        width: 52px;
-        height: 52px;
+      @media (max-width: 600px) {
+        max-width: 70%;
+      }
+
+      @media (max-width: 520px) {
+        max-width: unset;
       }
     }
   }
