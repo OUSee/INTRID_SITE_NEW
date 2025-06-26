@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="x-icon" href="../src/images/favicon.ico">
+	<title>
+		Разработка нового интернет-магазина климатической техники в Воронеже
+	</title>
+	<meta name="keywords" content="блог, веб-разработка, веб-блог, интрид, intrid">
+	<meta name="description"
+		content="В этом кейсе Вы сможете узнать о том, как мы разрабатывали удобный и технически продуманный интерфейс для интернет-магазина, расширяли функционал для администрирования и множество других полезных фишек." />
+	<link rel="stylesheet" href="../css/normalize.css">
+	<link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+	<div id="preloader">
+	</div>
+	<!-- NAVBAR -->
+	<header class="navbar" id="header">
+		<div class="container main-header">
+			<a href="../" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="main-logo">
+				<img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+			</a>
+			<div class="mobile-burger">
+				<div id="mobilemenuToggle">
+					<input type="checkbox" id="menuCheckbox" />
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<nav class="header-links-nav">
+					<div class="dropdown second">
+						<a class="nav-link" href="../site.html">Разработка сайтов</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../site.html">Разработка сайтов</a>
+							<a href="../landing-page.html">Разработка Landing page</a>
+							<a href="../corporate.html">Корпоративный сайт</a>
+							<a href="../store.html">Интернет-магазин</a><a
+								href="../internet-magazin-s-ii.html">Интернет-магазин с
+								ИИ</a>
+							<a href="../web-portal.html">Веб-порталы</a>
+							<hr>
+							<a href="../portfolio/site.html">Портфолио</a>
+						</div>
+					</div>
+					<div class="dropdown second">
+						<a class="nav-link" href="../automation-business.html">IT для бизнеса</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../automation-business.html">IT для бизнеса</a>
+							<a href="../ai.html">Искусственный интеллект</a>
+							<a href="../crm-erp.html">Разработка CRM и ERP</a>
+							<a href="../tender-portal.html">Тендерные порталы</a>
+							<a href="../integration.html">Интеграция IT-систем</a>
+							<a href="../tech.html">Cопровождение сайтов</a>
+							<hr>
+							<a href="../portfolio/site.html#web-portal">Портфолио</a>
+						</div>
+					</div>
+					<div class="dropdown second">
+						<a class="nav-link" href="../promotion.html">Продвижение</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../promotion.html">Продвижение</a>
+							<a href="../seo-audit.html">SEO-аудиты и аналитика</a>
+							<a href="../seo.html">Раскрутка с гарантией</a>
+							<a href="../reputation.html">Улучшение репутации в сети</a>
+							<a href="../smm.html">Таргет-реклама в социальных сетях</a>
+							<hr>
+							<a href="../portfolio/seo.html">Портфолио</a>
+						</div>
+					</div>
+					<div class="dropdown second">
+						<a class="nav-link" href="../design.html">Дизайн</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../promotion.html">Дизайн</a>
+							<a href="../design-site.html">Дизайн сайтов</a>
+							<a href="../ui-design.html">UI/UX-разработка интерфейсов</a>
+							<a href="../logo.html">Разработка логотипа</a>
+							<a href="../brand.html">Создание бренда</a>
+							<hr>
+							<a href="../portfolio/design.html">Портфолио</a>
+						</div>
+					</div>
+					<div class="dropdown second">
+						<a class="nav-link" href="../hosting.html">Хостинг</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../hosting.html">Хостинг</a>
+							<a href="../hosting-tarify.html">Бюджетный хостинг</a>
+							<a href="../vds.html">VDS - виртуальный сервер</a>
+							<a href="../domain.html">Регистрация доменов</a>
+							<a href="../ssl.html">SSL-сертификаты</a>
+						</div>
+					</div>
+					<hr class="mobile-visible">
+					<a class="mobile-visible" href="../portfolio.html" class="bold">
+						<span class="title_h5">Портфолио</span>
+					</a>
+					<hr class="mobile-visible">
+					<a class="mobile-visible" href="../o-nas.html">О Компании</a>
+					<a class="mobile-visible" href="../klientam.html">Клиентам</a>
+					<a class="mobile-visible" href="../comment.html">Отзывы</a>
+					<a class="mobile-visible" href="../blog.html">Блог</a>
+					<a class="mobile-visible" href="../vakansii.html">Вакансии</a>
+					<a class="mobile-visible" href="../kontakty.html">Контакты</a>
+					<a class="button-highlight mobile-visible" href="../calculator.html">Заказать сайт</a>
+				</nav>
+			</div>
+			<a href="../calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
+			<div class="fd-col ml-6 header-contacts">
+				<a class="title_h5 phone-line" href="tel:+74732540796">
+					<i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
+					<span>+7 (473) 254 0796</span>
+				</a>
+				<span class="work-time a-self-end">Пн-Пт: 9:00-18:00</span>
+			</div>
+			<div class="icon-menu">
+				<a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+					<i class="icon-mail"></i>
+				</a>
+				<a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796" target="_blank">
+					<i class="icon-whatsapp"></i>
+				</a>
+				<a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+					<i class="icon-tg"></i>
+				</a>
+				<a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+					target="_blank">
+					<i class="icon-person"></i>
+				</a>
+			</div>
+			<div class="burger ml-32">
+				<div id="menuToggle">
+					<input type="checkbox" id="menuCheckbox" />
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="burger-content">
+					<a href="../portfolio.html" class="bold title_h5">
+						Портфолио
+					</a>
+					<hr>
+					<a href="../o-nas.html">О Компании</a>
+					<a href="../klientam.html">Клиентам</a>
+					<a href="../comment.html">Отзывы</a>
+					<a href="../blog.html">Блог</a>
+					<a href="../vakansii.html">Вакансии</a>
+					<a href="../kontakty.html">Контакты</a>
+					<hr>
+					<a class="work-time a-self-end popup-trigger map-link" href="javascript://"
+						title="Посмотреть на карте" data-popup="map" data-map="vrn">
+						Воронеж ул.Пятницкого 40
+					</a>
+					<hr>
+					<button class="button-highlight mt-32">
+						Заказать сайт
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- MAIN PAGE -->
+	<section class="comment-main crm crm-page container">
+		<div class="breadcrumbs">
+			<a href="../">Главная</a>
+			<span>-</span>
+			<a href="../blog.html">Кейсы</a>
+			<span>-</span>
+			<a href="#" class="link-disabled">Интернет-магазинов климатической техники в Воронеже</a>
+		</div>
+	</section>
+	<!--  -->
+	<section class="container container-blog case_page-content">
+		<div class="case_page-top">
+			<div>
+				<h1 class="title_h1 underlined">
+					Создание и продвижение одного из крупнейших интернет-магазинов климатической техники в Воронеже.
+				</h1>
+
+				<b class="title_h4">
+					Из хаоса в порядок. Кейс длиною в год.
+				</b>
+
+				<p>
+					Это один из тех самых кейсов, когда в момент обращения в нашу компанию все аспекты интернет-маркетинга очень сильно
+					«хромали» и для того, чтобы сделать клиенту продажи из сети, было принято решение начинать все заново и поэтапно
+					добавлять инструменты.
+				</p>
+			</div>
+
+			<div class="case_page-cover">
+				<img src="../../src/images/case/mklimata/mklimata-maket.webp" alt="Макет Мир Климата">
+			</div>
+		</div>
+
+		<div class="case_layout case_layout--2x" id="case-mklimata-data">
+			<div class="img-wrapper">
+				<img src="../../src/images/case/mklimata/mklimata-data.webp" alt="Вводные данные">
+			</div>
+		
+			<div>
+				<p class="title_h4 mb-32">
+					Что было на старте:
+				</p>
+
+				<div class="card card-case mb-20">
+					<ul class="card-list">
+						<li>
+							Сайт: <span class="highlight">Максимально простой, с устаревшим дизайном и не продающий интернет-магазин</span>
+						</li>
+						<li>
+							SEO: <span class="highlight">Cайт продвигался в течение года в другой компании, но результат был весьма слабый</span>
+						</li>
+						<li>
+							Яндекс.Директ (тексто-графика): <span class="highlight">Не было</span>
+						</li>
+						<li>
+							Яндекс.Директ дополнительные источники: <span class="highlight">Не было</span>
+						</li>
+						<li>
+							Яндекс.Маркет или иные маркетплэйсы: <span class="highlight">Не было</span>
+						</li>
+						<li>
+							Социальные сети: <span class="highlight">Не было</span>
+						</li>
+						<li>
+							Иные источники трафика: <span class="highlight">Оффлайн реклама (вывеска над магазином)</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<p class="title_h3 w-fit mb-32 underlined">
+			Ну а теперь по порядку
+		</p>
+
+		<p>
+			Все началось с того, что компания «Мир Климата» обратилась к нам за услугой <a href="../seo.html" class="text-underline" target="_blank">«SEO-продвижение сайта»</a> Сайт был
+			устаревший, и сильно хромающий по ряду факторов, и, не смотря на долгое продвижение в предыдущей компании, результата
+			особо не давал.
+		</p>
+
+		<p class="title_h3 w-fit mb-32">
+			Почему предыдущий сайт был так плох?
+		</p>
+
+		<p>
+			Вот как выглядел старый сайт:
+		</p>
+
+		<div class="img-wrapper wider">
+			<img src="../../src/images/case/mklimata/mklimata-design-old.webp" alt="Дизайн старого сайта">
+		</div>
+
+		<ul class="ordinary-list">
+			<li>
+				<p>
+					Устаревший дизайн
+				</p>
+			</li>
+			<li>
+				<p>
+					Невозможность оптимизации кода согласно актуальным требованиям поисковых систем
+				</p>
+			</li>
+			<li>
+				<p>
+					Плохие продающие способности сайта (низкая конверсия)
+				</p>
+			</li>
+			<li>
+				<p>
+					Низкий поведенческий фактор (большой процент отказов)
+				</p>
+			</li>
+			<li>
+				<p>
+					Неудобный интерфейс и непродуманное юзабилити.
+				</p>
+			</li>
+		</ul>
+
+		<p>
+			Комплексный аудит, который выявил массу проблем, не только касательно СЕО, но и в плане структуры, юзабилити, контента и
+			т.д. Об этом же наглядно свидетельствовала и конверсия этого ИМ. Как вы знаете, актуальные алгоритмы поискового
+			ранжирования анализируют вышеперечисленные показатели в целом и СЕО-продвижение слабого и устаревшего сайта
+			затруднительно. А главное, даже вывод сайта в топ10 по ключевым запросам, абсолютно не гарантирует приток клиентов в
+			виду низкой конверсии.
+		</p>
+
+		<p>
+			Итак, как видите, работать с таким сайтом было нерентабельно, и, к нашему счастью, клиент адекватно оценил ситуацию и
+			сам задался вопросом о разработке нового современного сайта. А именно интернет-магазина с крутым ассоциативным дизайном,
+			удобной и продуманной навигацией, расширенным функционалом, а также адаптацией под последние требования поисковых
+			систем.
+		</p>
+
+		<p class="title_h3 w-fit mb-32">
+			Креатив, функционал и климатическая техника
+		</p>
+		
+		<p>
+			К сожалению, в современном вебе дизайн интернет-магазинов имеет тенденцию уходить в минимализм, выводя на первый план
+			именно удобство навигации (как пример, посмотрите на сайты титанов: DNS, Мвидео, Связной). Это все безусловно круто, но,
+			разнится с мнением Арт – директора нашей компании, так как у проекта теряется «своя фишка» и все они становятся
+			обезличенной серо-белой массой.
+		</p>
+
+		<p>
+			Нами было принято решение уйти от подобного подхода и внести ряд инновационных дайджестов в дизайн сайта, которые
+			выделят ресурс из сотни однообразных конкурентов.
+		</p>
+
+		<p class="title_h3 w-fit mb-32 underlined">
+			Фишки:
+		</p>
+
+		<ul class="ordinary-list">
+			<li>
+				<p>
+					Интернет-магазин по продаже широкого спектра климатической техники, а также специализированной мебели. Поэтому отличным
+					решением стало наглядная навигация по основным разделам сайта в виде 3D-модели жилого дома.
+				</p>
+			</li>
+			<li>
+				<p>
+					Разделить дизайн сайта на две ветки, в зависимости от сезонности. Летом позиционируются кондиционеры и охлаждение, зимой
+					– тепловая техника.
+				</p>
+			</li>
+			<li>
+				<p>
+					Инфографическое меню и навигация сайта.
+				</p>
+			</li>
+			<li>
+				<p>
+					Модули стимулирования к покупкам: рейтинг товаров, скидки за регистрацию, система промокодов, подсказки в поиске и
+					сопутствующие товары.
+				</p>
+			</li>
+		</ul>
+
+		<p class="title_h3 w-fit mb-32 underlined">
+			Новый. Крутой. Удобный.
+		</p>
+
+		<div class="img-wrapper wider">
+			<img src="../../src/images/case/mklimata/mklimata-design-new.webp" alt="Дизайн нового сайта">
+		</div>
+
+		<p class="title_h3 w-fit mb-32">
+			Дизайн – это безусловно важно. А что скрывается под ним?
+		</p>
+
+		<p>
+			А под инновационным и продающим дизайном скрывается не менее инновационный функционал сайта:
+		</p>
+
+		<ul class="ordinary-list">
+			<li>
+				<p>
+					Оптимизация кода под актуальные поисковые системы.
+				</p>
+			</li>
+			<li>
+				<p>
+					Автоматизация SEO-оптимизации тысяч страниц товаров согласно продуманным правилам.
+				</p>
+			</li>
+			<li>
+				<p>
+					Индивидуальный фильтр в каждой рубрике для быстрой выборки подходящих товаров по заданным параметрам.
+				</p>
+			</li>
+			<li>
+				<p>
+					Облегченный импорт и редактирование товаров.
+				</p>
+			</li>
+			<li>
+				<p>
+					Удобная система управления сайтом, созданная и продуманная под конкретный проект.
+				</p>
+			</li>
+		</ul>
+
+		<p class="title_h3 w-fit mb-32 underlined">
+			Сайт сделали. Пора ему продавать.
+		</p>
+		
+		<p>
+			Сразу после создания запустили плановые мероприятия СЕО-продвижения сайта, но для старта быстрых продаж запустили
+			классический Яндекс.Директ.
+		</p>
+
+		<p>
+			Благодаря потоку целевых посетителей отточили конверсию, скорректировали некоторые продающие технологии на сайте.
+			Сделали всё, чтобы конверсия посетителей в покупателей стала максимально возможной. Итоговая стоимость заявки 82 рубля
+			(категория – кондиционеры)
+		</p>
+
+		<div class="img-wrapper wider">
+			<img src="../../src/images/case/mklimata/mklimata-sell.webp" alt="Кейс 1">
+		</div>
+
+		<p class="title_h3 w-fit mb-32 underlined">
+			А там подтянулось и SEO
+		</p>
+		
+		<p>
+			После удачного «переезда» сайта начали быстро расти позиции. В частности, к сезону (май 2018 года) он уже занял ТОП10 по
+			тематике «кондиционеры» и начал приносить в разы больше трафика.
+		</p>
+		
+		<div class="img-wrapper wider">
+			<img src="../../src/images/case/mklimata/mklimata-seo.webp" alt="Кейс 1">
+		</div>
+
+		<p class="title_h3 w-fit mb-32 underlined">
+			Яндекс.Маркет
+		</p>
+		
+		<p>
+			В среднем выручка с Яндекс Маркета составляет 45 563 рублей в неделю (9-10 заказов) при средней стоимости заявки 583
+			рубля. Настроили выгрузку товаров на Я.Маркет исключительно стоимостью выше 2500 рублей. Стоит учитывать, что это
+			стоимость конверсии first-click, т.е. без учёта покупателей, которые совершили возврат на сайт, покупки в оффлайн
+			магазине, а также купили расходники и сопутствующие товары и услуги, которые обычно входят в заказ вместе с крупной
+			климатической техникой.
+		</p>
+
+		<p>
+			Более глубокий анализ средней CPO (стоимости продажи) с рекламных инструментов составил 210 руб.
+		</p>
+		
+		<div class="img-wrapper wider">
+			<img src="../../src/images/case/mklimata/mklimata-market.webp" alt="Кейс 1">
+		</div>
+
+		<p class="title_h3 w-fit mb-32">
+			Соцсети
+		</p>
+		
+		<p>
+			Из социальных сетей был выбрал Вконтакте, и не просто так. Климатическую технику продавать через другие площадки было не
+			то, что нереально, но менее рентабельно. Для Вконтакте было сделано оформление группы, привлечение целевой аудитории и
+			систематически начали пополнять интересным контентом.
+		</p>
+
+		<p>
+			В итоге сейчас с социальной сети падает 1-2 заявки в месяц (а если точнее, они переходят на сайт и заказывают там).
+		</p>
+
+		<div class="case_layout case_layout--2x" id="case-mklimata-process">
+			<div>
+				<p class="title_h3">
+					Продажи пошли, клиент вошёл во вкус и говорит: «Хочу больше, давайте все, что есть!»
+				</p>
+
+				<p>
+					<b class="color-blue">
+						Или как мы запускали новый инструмент от Яндекса «Смарт.Баннеры»
+					</b>
+				</p>
+
+				<p>
+					Смарт.баннеры — это отдельная история. Часы, проведенные при совместном анализе работы данного рекламного инструмента с
+					технической поддержкой Яндекс.Директа не измеряются классическим летоисчислением и должны для нас быть оплачены :)
+				</p>
+
+				<p>
+					Про конверсию 25%! И Метрику.
+				</p>
+				
+				<p>
+					Изначально инструмент был абсолютно нерабочий, однако с каждым днем и нашими комментариями улучшался и подходил к тому
+					состоянию, в котором он сейчас. Однако все равно, стоимость заявки относительно текстографики дорогая.
+				</p>
+			</div>
+
+			<div class="img-wrapper">
+				<img src="../../src/images/case/mklimata/mklimata-more.webp" alt="Что это дает">
+			</div>
+		</div>
+
+		<p class="title_h3">
+			Вот какие выводы мы сделали (и в этом выступили на крупнейшем региональном IT-форуме «РИФ Воронеж»):
+		</p>
+
+		<ul class="ordinary-list">
+			<li>
+				<p>
+					Задумка инструмента очень классная, но, пока что до конца еще не реализованная.
+				</p>
+			</li>
+			<li>
+				<p>
+					Непонятна логика работы инструмента.
+				</p>
+			</li>
+			<li>
+				<p>
+					Неправильная обратная связь между метрикой и рекламным кабинетом
+				</p>
+			</li>
+			<li>
+				<p>
+					Неудобная настройка (кроме креативов) и игра на ставках.
+				</p>
+			</li>
+			<li>
+				<p>
+					Сотрудники до конца еще сами не знакомы с данным инструментом.
+				</p>
+			</li>
+		</ul>
+
+		<div class="img-wrapper wider">
+			<img src="../../src/images/case/mklimata/mklimata-conclusion.webp" alt="Кейс 1">
+		</div>
+
+		<div class="case_page-bottom">
+			<div>
+				<p class="title_h3 w-fit underlined">
+					Подводя итог:
+				</p>
+		
+				<div class="card card-case card-case--result">
+					<ul class="card-list">
+						<li>
+							Сайт: <span class="highlight">Новый функциональный интернет-магазин с уникальным дизайном и средней конверсией 4.2% из посетителя в заявку.</span>
+						</li>
+						<li>
+							SEO: <span class="highlight">Более 1000 посетителей в месяц из естественной выдачи в поиске. Более 50% ключевых фраз в ТОП10 Яндекса.</span>
+						</li>
+						<li>
+							Яндекс.Директ (тексто-графика): <span class="highlight">Средняя стоимость заявки 95 рублей.</span>
+						</li>
+						<li>
+							Яндекс.Директ дополнительные источники: <span class="highlight">Смарт баннеры. Средняя стоимость заявки 186 рублей.</span>
+						</li>
+						<li>
+							Яндекс.Маркет или иные маркетплэйсы: <span class="highlight">Средняя стоимость заявки 210 рублей (но продается только высокомаржинальный дорогой товар). 9-10 покупок в неделю.</span>
+						</li>
+						<li>
+							Социальные сети: <span class="highlight">Группа. 256 подписчиков. 1-2 заявки в месяц.</span>
+						</li>
+						<li>
+							Иные источники трафика: <span class="highlight">Оффлайн реклама. (Вывеска над магазином)</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+			<div class="case_page-mockup">
+				<img src="../../src/images/case/mklimata/mklimata-mockup.webp" alt="Мокап сайта «Мир Климата»" />
+			</div>
+		</div>
+
+		<div class="big-count mt-50">
+			<b><span data-counter-value="200000">200 000</span>&nbsp;₽</b>
+			<span class="title_h2">
+				в месяц
+			</span>
+		</div>
+
+		<p class="title_h3 w-fit m-center underlined">
+			Отзыв довольного клиента!
+		</p>
+
+		<div class="case_layout case_layout--2x" id="case-review">
+			<div class="img-wrapper">
+				<img src="../../src/images/case/mklimata/mklimata-elena.webp"
+					alt="Елена Андропова Директор «Мир Климата»">
+			</div>
+			<div class="review-card">
+				<p class="card-header title_h5">
+					Елена Андропова
+				</p>
+				<p class="color-blue">
+					Директор 
+					<a target="_blank" href="https://mklimata.ru/" class="text-white text-underline">
+						«Мир Климата»
+					</a>
+				</p>
+				<p class="review-card-body">
+					Очень понравилось работать с компанией INTRID. У ребят креативный подход к дизайну, быстро реагируют на поставленные
+					новые задачи и никогда не стоят на месте. Очень довольна и продолжаю работать с ними дальше.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- corporate -->
+	<section class="corporate-creation landing-creation" id="case-creation">
+		<div class="container">
+			<form action="submit">
+				<div class="form-limitter">
+					<p class="title_h3 w-fit">
+						Вам понравился этот кейс?
+					</p>
+					<p class="description">
+						Просто заполните форму ниже, и мы предложим оптимальное решение для Вашего бизнеса!
+					</p>
+					<input type="text" name="name" placeholder="Имя *" required="">
+					<input type="mail" name="mail" placeholder="E-mail *" required="">
+					<input type="tel" name="phone" placeholder="Телефон *" required="">
+					<input type="text" placeholder="URL сайта" name="url">
+					<input type="text" placeholder="География интересов" name="target">
+					<textarea data-autosize="true" rows="1"
+						placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
+
+					<!-- <input type="checkbox" name="agree" id="personal-data" required> -->
+					<!-- <label for="personal-data">
+                                <input type="checkbox" name="agree" id="personal-data" required>
+                                Согласен на обработку персональных данных
+                            </label> -->
+					<button type="submit" class="button-white">Отправить заявку</button>
+					<p class="testimonials text-center m-center">
+						Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy">обработку
+							своих персональных
+							данных</a>
+					</p>
+				</div>
+				<img src="../src/images/orb.webp" alt="orb" vision-orb="">
+			</form>
+		</div>
+	</section>
+
+	<!--  -->
+	<section class="use-service container">
+		<p class="title_h2 underlined w-fit m-center text-center">
+			Заказать разработку сайта или создание логотипа
+		</p>
+		<div class="use-service-list prices-services-list">
+			<a href="../calculator.html" class="prices-services-list-item">
+				<div class="img-wrapper"><img src="../src/icons/site-calc.svg" alt="landig-page"></div>
+				<span class="color-white">Калькулятор сайта&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
+			</a>
+			<a href="../brif-site.html" class="prices-services-list-item">
+				<div class="img-wrapper"><img src="../src/icons/brif-site.svg" alt="landig-page"></div>
+				<span class="color-white">Бриф на сайт&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
+			</a>
+			<a href="../brif-logo.html" class="prices-services-list-item">
+				<div class="img-wrapper"><img src="../src/icons/brif-logo.svg" alt="landig-page"></div>
+				<span class="color-white">Бриф на бренд<span class="br470"> и лого</span>&nbsp;<i
+						class="icon-arrow_wide color-blue"></i></span>
+			</a>
+			<a href="../seo#seo_application" class="prices-services-list-item">
+				<div class="img-wrapper"><img src="../src/icons/promotion-request.svg" alt="landig-page"></div>
+				<span class="color-white">Заявка на раскрутку&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
+			</a>
+		</div>
+	</section>
+	<!-- footer -->
+	<footer class="footer">
+		<div class="container container-full">
+			<div class="footer-inner">
+				<div class="footer-top">
+					<a href="../" title="Создание и продвижение сайтов и IT-продуктов на заказ" class="footer-logo">
+						<img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+					</a>
+					<div class="footer-categories">
+						<a href="../site.html">Разработка</a>
+						<a href="../automation-business.html">IT для бизнеса</a>
+						<a href="../promotion.html">Продвижение</a>
+						<a href="../hosting.html">Хостинг</a>
+						<a href="../design.html">Дизайн</a>
+					</div>
+
+					<div class="footer-contacts">
+						<div class="contact-block contact-block--address">
+							<div class="contact-block--content">
+								<a href="javascript://" target="_blank" title="Посмотреть на карте"
+									class="popup-trigger map-link" data-popup="map" data-map="vrn">
+									Воронеж,
+									ул.&nbsp;Пятницкого,&nbsp;д.&nbsp;40
+								</a>
+							</div>
+						</div>
+
+						<div class="contact-block contact-block--phone">
+							<div class="contact-block--content">
+								<a href="tel:+74732540796" class="title_h5" title="Позвонить по номеру">
+									+7 (473) 254 0796
+								</a>
+								<div class="contact-block--schedule">
+									Пн-Пт: 9:00-18:00
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-middle">
+					<div class="footer-menu">
+						<a href="../o-nas.html">О компании</a>
+						<a href="../portfolio.html">Портфолио</a>
+						<a href="../klientam.html">Клиентам</a>
+						<a href="../comment.html">Отзывы</a>
+						<a href="../blog.html">Блог</a>
+						<a href="../vakansii.html">Вакансии</a>
+						<a href="../kontakty.html">Контакты</a>
+					</div>
+					<div class="icon-menu">
+						<a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+							<i class="icon-mail"></i>
+						</a>
+						<a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796"
+							target="_blank">
+							<i class="icon-whatsapp"></i>
+						</a>
+						<a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+							<i class="icon-tg"></i>
+						</a>
+						<a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+							target="_blank">
+							<i class="icon-person"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container container-full">
+				<a href="javascript://" data-popup="accreditation-view" title="Выписка">Государственная аккредитация в
+					области информационных технологий</a>
+				<span>© 2004-2025 INTRID web-studio</span>
+			</div>
+		</div>
+	</footer>
+	<!-- MODAL WINDOWS -->
+	<dialog class="popup" id="map">
+		<div class="popup-body">
+			<div class="map-container"></div>
+			<hr>
+			<div class="map-testimonials">
+				<p class="color-white ml-10"></p>
+				<a class="title_h5 fz-20 phone-line gap-10" href="tel:+74732540796">
+					<i class="icon-phone  color-blue" style="top: 4px;"></i>
+					<span>+7 (473) 254 0796</span>
+				</a>
+				<a href="#" target="_blank" class="button-link">
+					Перейти в карты <i class="icon-arrow_wide"></i>
+				</a>
+			</div>
+		</div>
+	</dialog>
+	<dialog class="popup form-popup" id="fast-req-form">
+		<div class="popup-body">
+			<form action="submit">
+				<div class="form-limitter">
+					<input type="text" name="name" placeholder="Имя *" required>
+					<input type="mail" name="mail" placeholder="E-mail *" required>
+					<input type="tel" name="phone" placeholder="Телефон *" required>
+					<textarea data-autosize="true" rows="1"
+						placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
+					<!-- <input type="checkbox" name="agree" id="personal-data" required> -->
+					<!-- <label for="personal-data">
+                        <input type="checkbox" name="agree" id="personal-data" required>
+                        Согласен на обработку персональных данных
+                    </label> -->
+					<p class="testimonials text-center m-center">
+						Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy">обработку
+							своих персональных
+							данных</a>
+					</p>
+					<button type="submit" class="button-white m-center mt-20">Отправить заявку</button>
+				</div>
+			</form>
+		</div>
+	</dialog>
+	<dialog class="popup" id="privacy-policy">
+		<div class="popup-body">
+			<p class="title_h3 text-center mb-20">
+				Политика конфиденциальности и защиты информации.
+			</p>
+			<p class="text-center mb-50">
+				Оставляя данные на сайте, Вы соглашаетесь с Политикой конфиденциальности и защиты
+				информации.
+			</p>
+			<p class="title_h5 mb-10">Защита данных</p>
+			<p class="mb-20">
+				Администрация сайта <a href="../" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт) не
+				может
+				передать или
+				раскрыть
+				информацию,
+				предоставленную пользователем (далее Пользователь) при регистрации и использовании функций
+				сайта третьим лицам, кроме случаев, описанных законодательством страны, на территории
+				которой пользователь ведет свою деятельность.
+			</p>
+			<p class="title_h5 mb-10">
+				Получение персональной информации
+			</p>
+			<p class="mb-20">
+				Для коммуникации на сайте пользователь обязан внести некоторую персональную информацию.
+				Для проверки предоставленных данных, сайт оставляет за собой право потребовать
+				доказательства идентичности в онлайн или офлайн режимах.
+			</p>
+			<p class="title_h5 mb-10">
+				Использование персональной информации
+			</p>
+			<p class="mb-20">
+				Сайт использует личную информацию Пользователя для обслуживания и для улучшения качества
+				предоставляемых услуг. Часть персональной информации может быть предоставлена банку или
+				платежной системе, в случае, если предоставление этой информации обусловлено процедурой
+				перевода средств платежной системе, услугами которой Пользователь желает воспользоваться.
+				Сайт прилагает все усилия для сбережения в сохранности личных данных Пользователя. Личная
+				информация может быть раскрыта в случаях, описанных законодательством, либо когда
+				администрация сочтет подобные действия необходимыми для соблюдения юридической
+				процедуры, судебного распоряжения или легального процесса необходимого для работы
+				Пользователя с Сайтом. В других случаях, ни при каких условиях, информация, которую
+				Пользователь передает Сайту, не будет раскрыта третьим лицам.
+			</p>
+			<p class="title_h5 mb-10">
+				Коммуникация
+			</p>
+			<p class="mb-20">
+				После того, как Пользователь оставил данные, он получает сообщение, подтверждающее его
+				успешную регистрацию. Пользователь имеет право в любой момент прекратить получение
+				информационных бюллетеней воспользовавшись соответствующим сервисом в Сайте.
+			</p>
+			<p class="title_h5 mb-10">
+				Ссылки
+			</p>
+			<p class="mb-20">
+				На сайте могут содержаться ссылки на другие сайты. Сайт не несет ответственности за
+				содержание, качество и политику безопасности этих сайтов. Данное заявление о
+				конфиденциальности относится только к информации, размещенной непосредственно на сайте.
+			</p>
+			<p class="title_h5 mb-10">
+				Безопасность
+			</p>
+			<p class="mb-20">
+				Сайт обеспечивает безопасность учетной записи Пользователя от несанкционированного доступа.
+			</p>
+			<p class="title_h5 mb-10">
+				Уведомления об изменениях
+			</p>
+			<p class="mb-20">
+				Сайт оставляет за собой право вносить изменения в Политику конфиденциальности без
+				дополнительных уведомлений. Нововведения вступают в силу с момента их опубликования.
+				Пользователи могут отслеживать изменения в Политике конфиденциальности самостоятельно.
+			</p>
+		</div>
+	</dialog>
+	<dialog class="popup" id="accreditation-view">
+		<div class="popup-body">
+			<img src="../src/images/accreditation.webp" alt="accrediattion">
+		</div>
+	</dialog>
+	<script src="../js/header-opacity.js"></script>
+	<script src="../js/popup-handler.js"></script>
+	<script src="../js/map-handler.js"></script>
+	<script src="../js/phoneFieldHandler.js"></script>
+	<script src="../js/diagrams.js"></script>
+	<script src="../js/slider-with-pagination.js"></script>
+	<script src="../js/orb.js"></script>
+	<script src="../js/incrementNumbers.js"></script>
+</body>
+
+</html>
