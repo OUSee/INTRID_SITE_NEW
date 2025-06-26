@@ -3457,8 +3457,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
       &.logo-slider {
         min-height: unset;
+        align-items: stretch;
 
         &>.recent-work-card {
+          background-color: var(--blue-clouds);
           opacity: 0.1;
 
           &.active {
@@ -3466,12 +3468,16 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
           }
 
           &>a {
+            height: 100%;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+
 
             .work-testimonial {
               margin-top: 20px;
               margin-bottom: 0px;
+              text-align: center;
             }
 
             img {
@@ -3479,6 +3485,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
               border-radius: 15px;
             }
           }
+        }
+
+        &+.pagination {
+          display: flex;
         }
       }
     }
@@ -9223,13 +9233,20 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         flex: 1 1 45%;
         max-width: unset;
 
-        .header img {
-          width: 40px;
-          height: 40px;
+        .header {
 
-          @media (max-width: 600px) {
-            width: 20px;
-            height: 20px;
+          img,
+          i {
+            font-size: 40px;
+            line-height: 1em;
+            width: 40px;
+            height: 40px;
+
+            @media (max-width: 600px) {
+              width: 20px;
+              height: 20px;
+              font-size: 20px;
+            }
           }
         }
 

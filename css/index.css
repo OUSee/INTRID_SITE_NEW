@@ -6357,24 +6357,32 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .sites-portfolio-slider.logo-slider {
   min-height: unset;
+  align-items: stretch;
 }
 .sites-portfolio-slider.logo-slider > .recent-work-card {
+  background-color: var(--blue-clouds);
   opacity: 0.1;
 }
 .sites-portfolio-slider.logo-slider > .recent-work-card.active {
   opacity: 1;
 }
 .sites-portfolio-slider.logo-slider > .recent-work-card > a {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .sites-portfolio-slider.logo-slider > .recent-work-card > a .work-testimonial {
   margin-top: 20px;
   margin-bottom: 0px;
+  text-align: center;
 }
 .sites-portfolio-slider.logo-slider > .recent-work-card > a img {
   align-self: center;
   border-radius: 15px;
+}
+.sites-portfolio-slider.logo-slider + .pagination {
+  display: flex;
 }
 .sites-roadmap {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
@@ -11273,14 +11281,19 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   flex: 1 1 45%;
   max-width: unset;
 }
-.ui_design-tabs .sites-roadmap-list li .header img {
+.ui_design-tabs .sites-roadmap-list li .header img,
+.ui_design-tabs .sites-roadmap-list li .header i {
+  font-size: 40px;
+  line-height: 1em;
   width: 40px;
   height: 40px;
 }
 @media (max-width: 600px) {
-  .ui_design-tabs .sites-roadmap-list li .header img {
+  .ui_design-tabs .sites-roadmap-list li .header img,
+  .ui_design-tabs .sites-roadmap-list li .header i {
     width: 20px;
     height: 20px;
+    font-size: 20px;
   }
 }
 .ui_design-tabs .sites-roadmap-list li:before, .ui_design-tabs .sites-roadmap-list li:after {
