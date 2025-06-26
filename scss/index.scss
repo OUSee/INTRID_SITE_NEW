@@ -3775,6 +3775,8 @@ body
           border-radius: 50%;
         }
 
+
+
         .header {
           display: flex;
           margin-bottom: 10px;
@@ -3800,6 +3802,15 @@ body
         p.color-grey {
           @media (max-width: 600px) {
             padding-left: 28px;
+          }
+        }
+
+        &.small-fix {
+          @media (max-width: 600px) {
+            p.color-grey {
+              margin-top: 20px;
+              padding-left: 0px;
+            }
           }
         }
 
@@ -5430,6 +5441,16 @@ body
 
       @media (max-width: 1200px) {
         min-height: 350px;
+      }
+
+      @media (max-width: 600px) {
+        min-height: unset;
+
+        .work-testimonial {
+          .card-description {
+            min-height: unset;
+          }
+        }
       }
     }
   }
@@ -8830,14 +8851,34 @@ body
   }
 
   &-benefits {
+<<<<<<< fixes-related
+    &>ul>li {
+      &>div {
+        @media (min-width: 1000px) {
+          justify-content: center;
+        }
+
+        img {
+          width: 52px;
+          height: 52px;
+        }
+
+        @media (max-width: 440px) {
+          gap: 20px
+        }
+=======
     & > ul > li > div {
       @media (min-width: 1000px) {
         justify-content: center;
+>>>>>>> main
       }
 
-      img {
-        width: 52px;
-        height: 52px;
+      @media (max-width: 600px) {
+        max-width: 70%;
+      }
+
+      @media (max-width: 520px) {
+        max-width: unset;
       }
     }
   }
@@ -10235,6 +10276,12 @@ body
           top: 40px;
           right: -30px;
           transition: all 0.3s ease-in-out;
+          transform-origin: center;
+
+          &.icon-shevrone {
+            transform: rotate(90deg) translate(-0.5em, 0em);
+          }
+
         }
       }
 
@@ -10245,9 +10292,9 @@ body
           }
         }
       }
+      .accordion-checkbox:checked+.accordion-header i.icon-shevrone {
+        transform: rotate(-90deg) translate(0.5em, 0.3em);
 
-      .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
-        transform: rotate(-90deg) translate(0.2em, 0.3em);
       }
     }
   }
@@ -11029,6 +11076,7 @@ body
 
   .tab-button {
     padding: 18px 32px 18px 100px;
+
 
     .title_h5 {
       display: block;

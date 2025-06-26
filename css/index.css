@@ -1954,6 +1954,7 @@ form .button:hover {
   flex-basis: 0;
   overflow: hidden;
   position: relative;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 .tab-button.mobile {
@@ -6601,6 +6602,12 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     padding-left: 28px;
   }
 }
+@media (max-width: 600px) {
+  .sites-roadmap-list-item.small-fix p.color-grey {
+    margin-top: 20px;
+    padding-left: 0px;
+  }
+}
 @media (max-width: 1000px) {
   .sites-roadmap-list-item {
     border-radius: 39px;
@@ -7963,6 +7970,14 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 @media (max-width: 1200px) {
   .portal-portfolio .recent-work-card {
     min-height: 350px;
+  }
+}
+@media (max-width: 600px) {
+  .portal-portfolio .recent-work-card {
+    min-height: unset;
+  }
+  .portal-portfolio .recent-work-card .work-testimonial .card-description {
+    min-height: unset;
   }
 }
 @media (max-width: 1000px) {
@@ -10928,6 +10943,21 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   width: 52px;
   height: 52px;
 }
+@media (max-width: 440px) {
+  .smm-benefits > ul > li > div {
+    gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .smm-benefits > ul > li {
+    max-width: 70%;
+  }
+}
+@media (max-width: 520px) {
+  .smm-benefits > ul > li {
+    max-width: unset;
+  }
+}
 .smm-tariffs .crm-advantages--list {
   align-items: stretch;
   justify-content: center;
@@ -12005,6 +12035,10 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   top: 40px;
   right: -30px;
   transition: all 0.3s ease-in-out;
+  transform-origin: center;
+}
+.help-faq .accordion-item .accordion-header i.icon-shevrone {
+  transform: rotate(90deg) translate(-0.5em, 0em);
 }
 @media (min-width: 1200px) {
   .help-faq .accordion-item .accordion-content > p {
@@ -12012,7 +12046,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
 }
 .help-faq .accordion-item .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
-  transform: rotate(-90deg) translate(0.2em, 0.3em);
+  transform: rotate(-90deg) translate(0.5em, 0.3em);
 }
 
 .case_page-top {
