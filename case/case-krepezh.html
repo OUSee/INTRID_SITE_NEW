@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="x-icon" href="../src/images/favicon.ico">
+	<title>
+		Разработка нового корпоративного тендерного портала &quot;Крепеж&quot;
+	</title>
+	<meta name="keywords" content="блог, веб-разработка, веб-блог, интрид, intrid">
+	<meta name="description"
+		content="В этом кейсе Вы сможете узнать о том, как мы разрабатывали удобный и технически продуманный интерфейс для корпоративного портала, расширяли функционал для администрирования и множество других полезных фишек." />
+	<link rel="stylesheet" href="../css/normalize.css">
+	<link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+	<div id="preloader">
+	</div>
+	<!-- NAVBAR -->
+	<header class="navbar" id="header">
+		<div class="container main-header">
+			<a href="../" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="main-logo">
+				<img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+			</a>
+			<div class="mobile-burger">
+				<div id="mobilemenuToggle">
+					<input type="checkbox" id="menuCheckbox" />
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<nav class="header-links-nav">
+					<div class="dropdown second">
+						<a class="nav-link" href="../site.html">Разработка сайтов</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../site.html">Разработка сайтов</a>
+							<a href="../landing-page.html">Разработка Landing page</a>
+							<a href="../corporate.html">Корпоративный сайт</a>
+							<a href="../store.html">Интернет-магазин</a><a
+								href="../internet-magazin-s-ii.html">Интернет-магазин с
+								ИИ</a>
+							<a href="../web-portal.html">Веб-порталы</a>
+							<hr>
+							<a href="../portfolio/site.html">Портфолио</a>
+						</div>
+					</div>
+					<div class="dropdown second">
+						<a class="nav-link" href="../automation-business.html">IT для бизнеса</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../automation-business.html">IT для бизнеса</a>
+							<a href="../ai.html">Искусственный интеллект</a>
+							<a href="../crm-erp.html">Разработка CRM и ERP</a>
+							<a href="../tender-portal.html">Тендерные порталы</a>
+							<a href="../integration.html">Интеграция IT-систем</a>
+							<a href="../tech.html">Cопровождение сайтов</a>
+							<hr>
+							<a href="../portfolio/site.html#web-portal">Портфолио</a>
+						</div>
+					</div>
+					<div class="dropdown second">
+						<a class="nav-link" href="../promotion.html">Продвижение</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../promotion.html">Продвижение</a>
+							<a href="../seo-audit.html">SEO-аудиты и аналитика</a>
+							<a href="../seo.html">Раскрутка с гарантией</a>
+							<a href="../reputation.html">Улучшение репутации в сети</a>
+							<a href="../smm.html">Таргет-реклама в социальных сетях</a>
+							<hr>
+							<a href="../portfolio/seo.html">Портфолио</a>
+						</div>
+					</div>
+					<div class="dropdown second">
+						<a class="nav-link" href="../design.html">Дизайн</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../promotion.html">Дизайн</a>
+							<a href="../design-site.html">Дизайн сайтов</a>
+							<a href="../ui-design.html">UI/UX-разработка интерфейсов</a>
+							<a href="../logo.html">Разработка логотипа</a>
+							<a href="../brand.html">Создание бренда</a>
+							<hr>
+							<a href="../portfolio/design.html">Портфолио</a>
+						</div>
+					</div>
+					<div class="dropdown second">
+						<a class="nav-link" href="../hosting.html">Хостинг</a>
+						<div class="dropdown-content">
+							<a class="highlight burger-hidden" href="../hosting.html">Хостинг</a>
+							<a href="../hosting-tarify.html">Бюджетный хостинг</a>
+							<a href="../vds.html">VDS - виртуальный сервер</a>
+							<a href="../domain.html">Регистрация доменов</a>
+							<a href="../ssl.html">SSL-сертификаты</a>
+						</div>
+					</div>
+					<hr class="mobile-visible">
+					<a class="mobile-visible" href="../portfolio.html" class="bold">
+						<span class="title_h5">Портфолио</span>
+					</a>
+					<hr class="mobile-visible">
+					<a class="mobile-visible" href="../o-nas.html">О Компании</a>
+					<a class="mobile-visible" href="../klientam.html">Клиентам</a>
+					<a class="mobile-visible" href="../comment.html">Отзывы</a>
+					<a class="mobile-visible" href="../blog.html">Блог</a>
+					<a class="mobile-visible" href="../vakansii.html">Вакансии</a>
+					<a class="mobile-visible" href="../kontakty.html">Контакты</a>
+					<a class="button-highlight mobile-visible" href="../calculator.html">Заказать сайт</a>
+				</nav>
+			</div>
+			<a href="../calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
+			<div class="fd-col ml-6 header-contacts">
+				<a class="title_h5 phone-line" href="tel:+74732540796">
+					<i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
+					<span>+7 (473) 254 0796</span>
+				</a>
+				<span class="work-time a-self-end">Пн-Пт: 9:00-18:00</span>
+			</div>
+			<div class="icon-menu">
+				<a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+					<i class="icon-mail"></i>
+				</a>
+				<a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796" target="_blank">
+					<i class="icon-whatsapp"></i>
+				</a>
+				<a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+					<i class="icon-tg"></i>
+				</a>
+				<a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+					target="_blank">
+					<i class="icon-person"></i>
+				</a>
+			</div>
+			<div class="burger ml-32">
+				<div id="menuToggle">
+					<input type="checkbox" id="menuCheckbox" />
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="burger-content">
+					<a href="../portfolio.html" class="bold title_h5">
+						Портфолио
+					</a>
+					<hr>
+					<a href="../o-nas.html">О Компании</a>
+					<a href="../klientam.html">Клиентам</a>
+					<a href="../comment.html">Отзывы</a>
+					<a href="../blog.html">Блог</a>
+					<a href="../vakansii.html">Вакансии</a>
+					<a href="../kontakty.html">Контакты</a>
+					<hr>
+					<a class="work-time a-self-end popup-trigger map-link" href="javascript://"
+						title="Посмотреть на карте" data-popup="map" data-map="vrn">
+						Воронеж ул.Пятницкого 40
+					</a>
+					<hr>
+					<button class="button-highlight mt-32">
+						Заказать сайт
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- MAIN PAGE -->
+	<section class="comment-main crm crm-page container">
+		<div class="breadcrumbs">
+			<a href="../">Главная</a>
+			<span>-</span>
+			<a href="../blog.html">Кейсы</a>
+			<span>-</span>
+			<a href="#" class="link-disabled">Тендерный портал &quot;Крепеж&quot;</a>
+		</div>
+	</section>
+	<!--  -->
+	<section class="container container-blog case_page-content">
+		<div class="case_page-top">
+			<div>
+				<h1 class="title_h1">
+					Как крупной компании <span class="underlined">экономить</span> на закупках более 500 000 рублей в месяц?
+				</h1>
+
+				<b class="title_h4">
+					Еще раз убедимся, что разработка и внедрение корпоративной тендерной площадки – это не только существенная экономия
+					времени и людских ресурсов, но и более полумиллиона к прибыли в месяц.
+				</b>
+
+				<p class="mb-20">
+					<a href="./case-molvest.html" class="link text-underline" title="Подробнее о первом кейсе">В первом кейсе</a>, посвященном разработке тендерного портала, мы убедились, как крупная компания-производственник может
+					экономить более 500 000 рублей на грузоперевозках.
+				</p>
+				<p class="mb-20">
+					Мы уже говорили о том, насколько универсален такой продукт, как тендерный портал. Он позволяет автоматизировать бизнес и
+					исключить из процессов рутинные ежедневные задачи. А теперь давайте в этой убедимся еще раз.
+				</p>
+				<p>
+					Знакомьтесь, компания «Крепеж СВ» – крупнейший поставщик метизной и крепёжной продукции в Центральном Черноземье.
+				</p>
+			</div>
+
+			<div class="case_page-cover">
+				<img src="../../src/images/case/krepezh/krepezh-maket.webp" alt="Макет Крепеж">
+			</div>
+		</div>
+
+		<p class="title_h3 w-fit underlined mb-32">
+			Если кратко описать цикл работы отдела закупок, то он выглядит следующим образом:
+		</p>
+
+		<div class="img-wrapper wider">
+			<img src="../../src/images/case/krepezh/krepezh-daily.webp" alt="цикл работы отдела закупок">
+		</div>
+
+		<ul class="ordinary-list">
+			<li>
+				<p>
+					Еженедельный аудит остатков и анализ потребительского спроса
+				</p>
+			</li>
+			<li>
+				<p>
+					На основании данных анализа формируется список сырья и продукции, которые необходимо закупить в течение недели. Список
+					получается довольно внушительный – несколько тысяч позиций
+				</p>
+			</li>
+			<li>
+				<p>
+					По каждой позиции важно выбрать оптимального поставщика исходя из критериев цены /качества и уровня сервиса.
+				</p>
+			</li>
+			<li>
+				<p>
+					Далее процесс заключения индивидуальных сделок с поставщиками и полный цикл документооборота.
+				</p>
+			</li>
+		</ul>
+
+		<p>
+			И так каждую неделю…
+		</p>
+
+		<div class="case_layout case_layout--2x" id="case-krepezh-data">
+			<div class="img-wrapper">
+				<img src="../../src/images/case/krepezh/krepezh-data.webp" alt="Вводные данные">
+			</div>
+		
+			<div>
+				<p class="title_h4 mb-32">
+					Итак, что было:
+				</p>
+
+				<div class="card card-case mb-20">
+					<ul class="card-list">
+						<li>
+							Отдел закупок: <span class="highlight">3 менеджера по работе с поставщиками</span>
+						</li>
+						<li>
+							Ежедневные задачи: <span class="highlight">Обзвон поставщиков и попытка найти лучшие предложения из тысяч наименований продукции</span>
+						</li>
+						<li>
+							Закупочные цены: <span class="highlight">Неоптимальные цены на закупочный материал, так как физически невозможно выбрать минимальные цены на тысячи позиций у
+							десятков поставщиков.</span>
+						</li>
+						<li>
+							Процесс закупки: <span class="highlight">Полуавтоматический: отдельная заявка каждому поставщику, заключение договоров и контроль на каждом этапе сделки</span>
+						</li>
+					</ul>
+				</div>
+		
+				<p class="title_h4 mb-32">
+					Очень важно, когда креативный дух живет в руководстве
+				</p>
+		
+				<p>
+					А директор компании «Крепёж-СВ» очень и очень большой поклонник современных технологий и оптимизации бизнес-процессов. И
+					это хорошо! И вот, как-то этот самый директор задался интересным вопросом: «А что если устраивать аукционы для
+					поставщиков?»
+				</p>
+			</div>
+		</div>
+
+		<p class="title_h3 w-fit mb-32">
+			Да, именно эта концепция и стала родителем создания корпоративного тендерного портала. <span class="underlined">Суть идеи такова:</span>
+		</p>
+
+		<ul class="ordinary-list">
+			<li>
+				<p>
+					Организовать закупку требуемой продукции через веб-сервис
+				</p>
+			</li>
+			<li>
+				<p>
+					Объединить всех поставщиков на тендерном портале, чтобы они могли торговаться онлайн на понижение цены за каждую позицию
+				</p>
+			</li>
+			<li>
+				<p>
+					Автоматизировать процесс создания тендеров: по остаткам из 1С в один клик выгрузить на портал лоты на закупку всей
+					необходимой продукции и материалов
+				</p>
+			</li>
+			<li>
+				<p>
+					Всем возможным поставщикам отправляется приглашение на тендер
+				</p>
+			</li>
+			<li>
+				<p>
+					Удобство торгов и для поставщиков: возможность импорта всех лотов тендера в свою базу данных (1С, Excel и др.),
+					синхронизация цены и количества товара, после чего обратный экспорт на портал в один клик.
+				</p>
+			</li>
+			<li>
+				<p>
+					На основании предложенных цен и уровня сервиса выбираются поставщики для каждой позиции на закупку
+				</p>
+			</li>
+			<li>
+				<p>
+					Автоматизировать процесс заключения сделок на поставку.
+				</p>
+			</li>
+		</ul>
+
+		<div class="case_layout case_layout--2x" id="case-krepezh-idea">
+			<div class="img-wrapper">
+				<img src="../../src/images/case/krepezh/krepezh-idea.webp" alt="Идея">
+			</div>
+		
+			<div>
+				<p class="title_h4">
+					Есть крутая идея, значит будет крутой проект!
+				</p>
+		
+				<p>
+					От слов перешли к делу. Вникли в суть проекта, предложили дополнительно свои идеи и улучшения функционала. Составили
+					чёткое ТЗ и слава нашим программистам, которые в течение двух месяцев реализовали такой сложный и крутой проект.
+					Тендерный портал zakupkisv.ru полностью отвечает всем требованиям заказчика, а также имеет:
+				</p>
+		
+				<ul class="ordinary-list">
+					<li>
+						<p>
+							Новый, стильный дизайн
+						</p>
+					</li>
+					<li>
+						<p>
+							Удобный интерфейс и юзабилити
+						</p>
+					</li>
+					<li>
+						<p>
+							Полная совместимость с 1С и другими базами данных
+						</p>
+					</li>
+					<li>
+						<p>
+							Прозрачные условия торгов
+						</p>
+					</li>
+					<li>
+						<p>
+							Высокую скорость работы ресурса.
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<p class="title_h3 w-fit underlined mb-32">
+			А что насчет экономии, про которую вы говорили?
+		</p>
+
+		<p>
+			Да, она была и сразу. Итак, в среднем компания публикует порядком 5 тендеров в неделю, то есть 22 тендера в месяц.
+			Каждый тендер содержит в среднем 100 лотов на закупку. Усреднённый демпинг цены на каждую позицию (лот) составляет 230
+			рублей. А теперь считаем: 22х100х230~500 000 рублей (это только по самым скромным расчётам).
+		</p>
+
+		<div class="img-wrapper wider">
+			<img src="../../src/images/case/krepezh/krepezh-economy.webp" alt="Кейс 1">
+		</div>
+
+		<div class="case_layout case_layout--2x" id="case-krepezh-cost">		
+			<div>
+				<p>
+					Говоря о затратах, нельзя забывать про то, что теперь процесс выбора и закупки полностью автоматизирован. Помните
+					сведение основных проблем в таблице в самом начале кейса? Вот, как теперь это выглядит.
+				</p>
+		
+				<div class="card card-case card-case--result mb-20">
+					<ul class="card-list">
+						<li>
+							Отдел закупок: <span class="highlight">1 менеджер по управлению тендерным порталом</span>
+						</li>
+						<li>
+							Ежедневные задачи: <span class="highlight">Отсутствуют. Раз в неделю выгрузка тендеров на закупку из 1С и организация торгов «в один клик»</span>
+						</li>
+						<li>
+							Закупочные цены: <span class="highlight">Минимально возможные, так как выбираются лучшие предложения по каждой позиции на онлайн-аукционе</span>
+						</li>
+						<li>
+							Процесс закупки: <span class="highlight">Полностью автоматизирован.</span>
+						</li>
+					</ul>
+				</div>
+		
+				<p class="title_h4 mb-32">
+					Очень важно, когда креативный дух живет в руководстве
+				</p>
+		
+				<p>
+					А директор компании «Крепёж-СВ» очень и очень большой поклонник современных технологий и оптимизации
+					бизнес-процессов. И
+					это хорошо! И вот, как-то этот самый директор задался интересным вопросом: «А что если устраивать аукционы
+					для
+					поставщиков?»
+				</p>
+			</div>
+
+			<div class="img-wrapper">
+				<img src="../../src/images/case/krepezh/krepezh-cost.webp" alt="Выгода">
+			</div>
+		</div>
+
+		<div class="case_layout case_layout--2x">
+			<div class="card card-case">
+				<p class="card-title">
+					Что было:
+				</p>
+				<ul class="card-list">
+					<li>
+						Отдел закупок: <span class="highlight">3 менеджера по работе с поставщиками</span>
+					</li>
+					<li>
+						Ежедневные задачи: <span class="highlight">Обзвон поставщиков и попытка найти лучшие предложения из тысяч наименований продукции</span>
+					</li>
+					<li>
+						Закупочные цены: <span class="highlight">Высокие, так как берутся по стандартному прайсу поставщиков</span>
+					</li>
+					<li>
+						Процесс закупки: <span class="highlight">Полуавтоматический: отдельная заявка каждому поставщику и контроль на каждом этапе</span>
+					</li>
+				</ul>
+			</div>
+		
+			<div class="card card-case card-case--result">
+				<p class="card-title">
+					Что стало:
+				</p>
+				<ul class="card-list">
+					<li>
+						Отдел закупок: <span class="highlight">1 менеджер по управлению тендерным порталом</span>
+					</li>
+					<li>
+						Ежедневные задачи: <span class="highlight">Отсутствуют. Раз в неделю выгрузка тендеров на закупку из 1С и
+							организация торгов «в один клик»</span>
+					</li>
+					<li>
+						Закупочные цены: <span class="highlight">Минимально возможные, так как выбираются лучшие предложения по каждой
+							позиции на онлайн-аукционе</span>
+					</li>
+					<li>
+						Процесс закупки: <span class="highlight">Полностью автоматизирован.</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<p>
+			Подводя итог: вот, мы еще раз показали Вам, как наши клиенты экономят благодаря разработки тендерных порталов.
+		</p>
+
+		<div class="big-count">
+			<b><span data-counter-value="500000">500 000</span>&nbsp;₽</b>
+			<span class="title_h2">
+				в месяц
+			</span>
+		</div>
+
+		<p class="title_h3 w-fit m-center underlined">
+			Отзыв довольного клиента!
+		</p>
+
+		<div class="case_layout case_layout--2x" id="case-review">
+			<div class="img-wrapper">
+				<img src="../../src/images/case/krepezh/krepezh-sergey.webp"
+					alt="Сергей Ермолов - Генеральный директор компании «Крепеж СВ»">
+			</div>
+			<div class="review-card">
+				<p class="card-header title_h5">
+					Сергей Ермолов
+				</p>
+				<p class="color-blue">
+					Генеральный директор компании
+					<a target="_blank" href="https://zakupkisv.ru/" class="text-white text-underline">
+						«Крепеж СВ»
+					</a>
+				</p>
+				<p class="review-card-body">
+					На рынке строительных материалов ЦЧР Компания «Крепёж СВ» работает 15 лет, зарекомендовав себя не только стабильным и
+					надежным поставщиком, но и настоящим генератором комплексных решений по крепежу для любых областей применения.
+					<br />
+					<br />
+					В последние три года по товарной группе «МЕТИЗЫ», которая является для нашей Компании наиболее значимой, наметился целый
+					комплекс проблем, вследствие которых стало достаточно проблематично быстро оценивать ценообразование и наличие товара у
+					поставщиков, что в нашей работе крайне важно.
+					<br />
+					<br />
+					Нам не удалось найти ни одной готовой тендерной площадки, с помощью которой удалось бы решить эти задачи, так как для
+					нас определение победителя торгов должно было быть реализовано при совокупном сравнении множества факторов, среди
+					которых лучшее ценовое предложение могло оказаться далеко не определяющим. С помощью разработчиков INTRID, нам в
+					кратчайшие сроки удалось решить все эти накопившиеся проблемы. После того, как для нас был реализован и запущен в работу
+					тендерный портал «Крепёж СВ», позволяющий автоматизировать процесс качественной оценки коммерческих предложений сразу
+					всех наших поставщиков и принимать правильные и логичные решения. По отзывам наших поставщиков, крайне важно и вдвойне
+					приятно, что они нашли и для себя плюсы в работе на портале.
+					<br />
+					<br />
+					Также хочется добавить, что при разработке нашего портала, компанией INTRID сразу был заложен функционал, который в
+					дальнейшем позволит нам решать и другие задачи: от закупки абсолютно любых товарных групп, как для дальнейшей продажи,
+					так и для конечного использования, до решения задач по оптимизации логистики. Разработка портала и его доработки,
+					согласно нашим пожеланиям, стоили нам денег, но спустя два месяца работы портала, он себя уже полностью окупил.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- corporate -->
+	<section class="corporate-creation landing-creation" id="case-creation">
+		<div class="container">
+			<form action="submit">
+				<div class="form-limitter">
+					<p class="title_h3 w-fit">
+						Вам понравился этот кейс?
+					</p>
+					<p class="description">
+						Просто заполните форму ниже, и мы предложим оптимальное решение для Вашего бизнеса!
+					</p>
+					<input type="text" name="name" placeholder="Имя *" required="">
+					<input type="mail" name="mail" placeholder="E-mail *" required="">
+					<input type="tel" name="phone" placeholder="Телефон *" required="">
+					<input type="text" placeholder="URL сайта" name="url">
+					<input type="text" placeholder="География интересов" name="target">
+					<textarea data-autosize="true" rows="1"
+						placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
+
+					<!-- <input type="checkbox" name="agree" id="personal-data" required> -->
+					<!-- <label for="personal-data">
+                                <input type="checkbox" name="agree" id="personal-data" required>
+                                Согласен на обработку персональных данных
+                            </label> -->
+					<button type="submit" class="button-white">Отправить заявку</button>
+					<p class="testimonials text-center m-center">
+						Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy">обработку
+							своих персональных
+							данных</a>
+					</p>
+				</div>
+				<img src="../src/images/orb.webp" alt="orb" vision-orb="">
+			</form>
+		</div>
+	</section>
+
+	<!--  -->
+	<section class="use-service container">
+		<p class="title_h2 underlined w-fit m-center text-center">
+			Заказать разработку сайта или создание логотипа
+		</p>
+		<div class="use-service-list prices-services-list">
+			<a href="../calculator.html" class="prices-services-list-item">
+				<div class="img-wrapper"><img src="../src/icons/site-calc.svg" alt="landig-page"></div>
+				<span class="color-white">Калькулятор сайта&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
+			</a>
+			<a href="../brif-site.html" class="prices-services-list-item">
+				<div class="img-wrapper"><img src="../src/icons/brif-site.svg" alt="landig-page"></div>
+				<span class="color-white">Бриф на сайт&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
+			</a>
+			<a href="../brif-logo.html" class="prices-services-list-item">
+				<div class="img-wrapper"><img src="../src/icons/brif-logo.svg" alt="landig-page"></div>
+				<span class="color-white">Бриф на бренд<span class="br470"> и лого</span>&nbsp;<i
+						class="icon-arrow_wide color-blue"></i></span>
+			</a>
+			<a href="../seo#seo_application" class="prices-services-list-item">
+				<div class="img-wrapper"><img src="../src/icons/promotion-request.svg" alt="landig-page"></div>
+				<span class="color-white">Заявка на раскрутку&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
+			</a>
+		</div>
+	</section>
+	<!-- footer -->
+	<footer class="footer">
+		<div class="container container-full">
+			<div class="footer-inner">
+				<div class="footer-top">
+					<a href="../" title="Создание и продвижение сайтов и IT-продуктов на заказ" class="footer-logo">
+						<img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+					</a>
+					<div class="footer-categories">
+						<a href="../site.html">Разработка</a>
+						<a href="../automation-business.html">IT для бизнеса</a>
+						<a href="../promotion.html">Продвижение</a>
+						<a href="../hosting.html">Хостинг</a>
+						<a href="../design.html">Дизайн</a>
+					</div>
+
+					<div class="footer-contacts">
+						<div class="contact-block contact-block--address">
+							<div class="contact-block--content">
+								<a href="javascript://" target="_blank" title="Посмотреть на карте"
+									class="popup-trigger map-link" data-popup="map" data-map="vrn">
+									Воронеж,
+									ул.&nbsp;Пятницкого,&nbsp;д.&nbsp;40
+								</a>
+							</div>
+						</div>
+
+						<div class="contact-block contact-block--phone">
+							<div class="contact-block--content">
+								<a href="tel:+74732540796" class="title_h5" title="Позвонить по номеру">
+									+7 (473) 254 0796
+								</a>
+								<div class="contact-block--schedule">
+									Пн-Пт: 9:00-18:00
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-middle">
+					<div class="footer-menu">
+						<a href="../o-nas.html">О компании</a>
+						<a href="../portfolio.html">Портфолио</a>
+						<a href="../klientam.html">Клиентам</a>
+						<a href="../comment.html">Отзывы</a>
+						<a href="../blog.html">Блог</a>
+						<a href="../vakansii.html">Вакансии</a>
+						<a href="../kontakty.html">Контакты</a>
+					</div>
+					<div class="icon-menu">
+						<a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+							<i class="icon-mail"></i>
+						</a>
+						<a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796"
+							target="_blank">
+							<i class="icon-whatsapp"></i>
+						</a>
+						<a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+							<i class="icon-tg"></i>
+						</a>
+						<a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+							target="_blank">
+							<i class="icon-person"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container container-full">
+				<a href="javascript://" data-popup="accreditation-view" title="Выписка">Государственная аккредитация в
+					области информационных технологий</a>
+				<span>© 2004-2025 INTRID web-studio</span>
+			</div>
+		</div>
+	</footer>
+	<!-- MODAL WINDOWS -->
+	<dialog class="popup" id="map">
+		<div class="popup-body">
+			<div class="map-container"></div>
+			<hr>
+			<div class="map-testimonials">
+				<p class="color-white ml-10"></p>
+				<a class="title_h5 fz-20 phone-line gap-10" href="tel:+74732540796">
+					<i class="icon-phone  color-blue" style="top: 4px;"></i>
+					<span>+7 (473) 254 0796</span>
+				</a>
+				<a href="#" target="_blank" class="button-link">
+					Перейти в карты <i class="icon-arrow_wide"></i>
+				</a>
+			</div>
+		</div>
+	</dialog>
+	<dialog class="popup form-popup" id="fast-req-form">
+		<div class="popup-body">
+			<form action="submit">
+				<div class="form-limitter">
+					<input type="text" name="name" placeholder="Имя *" required>
+					<input type="mail" name="mail" placeholder="E-mail *" required>
+					<input type="tel" name="phone" placeholder="Телефон *" required>
+					<textarea data-autosize="true" rows="1"
+						placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
+					<!-- <input type="checkbox" name="agree" id="personal-data" required> -->
+					<!-- <label for="personal-data">
+                        <input type="checkbox" name="agree" id="personal-data" required>
+                        Согласен на обработку персональных данных
+                    </label> -->
+					<p class="testimonials text-center m-center">
+						Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy">обработку
+							своих персональных
+							данных</a>
+					</p>
+					<button type="submit" class="button-white m-center mt-20">Отправить заявку</button>
+				</div>
+			</form>
+		</div>
+	</dialog>
+	<dialog class="popup" id="privacy-policy">
+		<div class="popup-body">
+			<p class="title_h3 text-center mb-20">
+				Политика конфиденциальности и защиты информации.
+			</p>
+			<p class="text-center mb-50">
+				Оставляя данные на сайте, Вы соглашаетесь с Политикой конфиденциальности и защиты
+				информации.
+			</p>
+			<p class="title_h5 mb-10">Защита данных</p>
+			<p class="mb-20">
+				Администрация сайта <a href="../" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт) не
+				может
+				передать или
+				раскрыть
+				информацию,
+				предоставленную пользователем (далее Пользователь) при регистрации и использовании функций
+				сайта третьим лицам, кроме случаев, описанных законодательством страны, на территории
+				которой пользователь ведет свою деятельность.
+			</p>
+			<p class="title_h5 mb-10">
+				Получение персональной информации
+			</p>
+			<p class="mb-20">
+				Для коммуникации на сайте пользователь обязан внести некоторую персональную информацию.
+				Для проверки предоставленных данных, сайт оставляет за собой право потребовать
+				доказательства идентичности в онлайн или офлайн режимах.
+			</p>
+			<p class="title_h5 mb-10">
+				Использование персональной информации
+			</p>
+			<p class="mb-20">
+				Сайт использует личную информацию Пользователя для обслуживания и для улучшения качества
+				предоставляемых услуг. Часть персональной информации может быть предоставлена банку или
+				платежной системе, в случае, если предоставление этой информации обусловлено процедурой
+				перевода средств платежной системе, услугами которой Пользователь желает воспользоваться.
+				Сайт прилагает все усилия для сбережения в сохранности личных данных Пользователя. Личная
+				информация может быть раскрыта в случаях, описанных законодательством, либо когда
+				администрация сочтет подобные действия необходимыми для соблюдения юридической
+				процедуры, судебного распоряжения или легального процесса необходимого для работы
+				Пользователя с Сайтом. В других случаях, ни при каких условиях, информация, которую
+				Пользователь передает Сайту, не будет раскрыта третьим лицам.
+			</p>
+			<p class="title_h5 mb-10">
+				Коммуникация
+			</p>
+			<p class="mb-20">
+				После того, как Пользователь оставил данные, он получает сообщение, подтверждающее его
+				успешную регистрацию. Пользователь имеет право в любой момент прекратить получение
+				информационных бюллетеней воспользовавшись соответствующим сервисом в Сайте.
+			</p>
+			<p class="title_h5 mb-10">
+				Ссылки
+			</p>
+			<p class="mb-20">
+				На сайте могут содержаться ссылки на другие сайты. Сайт не несет ответственности за
+				содержание, качество и политику безопасности этих сайтов. Данное заявление о
+				конфиденциальности относится только к информации, размещенной непосредственно на сайте.
+			</p>
+			<p class="title_h5 mb-10">
+				Безопасность
+			</p>
+			<p class="mb-20">
+				Сайт обеспечивает безопасность учетной записи Пользователя от несанкционированного доступа.
+			</p>
+			<p class="title_h5 mb-10">
+				Уведомления об изменениях
+			</p>
+			<p class="mb-20">
+				Сайт оставляет за собой право вносить изменения в Политику конфиденциальности без
+				дополнительных уведомлений. Нововведения вступают в силу с момента их опубликования.
+				Пользователи могут отслеживать изменения в Политике конфиденциальности самостоятельно.
+			</p>
+		</div>
+	</dialog>
+	<dialog class="popup" id="accreditation-view">
+		<div class="popup-body">
+			<img src="../src/images/accreditation.webp" alt="accrediattion">
+		</div>
+	</dialog>
+	<script src="../js/header-opacity.js"></script>
+	<script src="../js/popup-handler.js"></script>
+	<script src="../js/map-handler.js"></script>
+	<script src="../js/phoneFieldHandler.js"></script>
+	<script src="../js/diagrams.js"></script>
+	<script src="../js/slider-with-pagination.js"></script>
+	<script src="../js/orb.js"></script>
+	<script src="../js/incrementNumbers.js"></script>
+</body>
+
+</html>
