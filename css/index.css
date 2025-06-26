@@ -5994,6 +5994,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
   .use-service-list.prices-services-list .prices-services-list-item .img-wrapper {
     max-width: 61px;
+    min-width: 61px;
     margin: 0 auto;
     box-shadow: 0px 0px 50px 10px var(--blue-clouds), inset 0px 0px 80px -20px var(--blue-clouds);
   }
@@ -6479,7 +6480,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 @media (max-width: 1000px) {
   .sites-roadmap-list li {
     flex: 1 1 40%;
-    max-width: 50%;
+    max-width: calc(50% - 30px);
   }
   .sites-roadmap-list li:last-child {
     margin-left: none;
@@ -6570,9 +6571,17 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     order: 9;
   }
 }
+@media (max-width: 900px) {
+  .sites-roadmap-list li:after {
+    display: none;
+  }
+  .sites-roadmap-list li:before {
+    display: none;
+  }
+}
 @media (max-width: 600px) {
   .sites-roadmap-list li {
-    max-width: unset;
+    max-width: calc(50% - 8px);
   }
   .sites-roadmap-list li:after {
     display: none;
@@ -6581,7 +6590,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     display: none;
   }
 }
-@media (max-width: 440px) {
+@media (max-width: 520px) {
   .sites-roadmap-list li {
     flex: 1 1 90%;
   }
@@ -11810,6 +11819,11 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
   .icms-main .fd-row.gap-10.align-center.flex-wrap.mt-20 {
     justify-content: center;
+  }
+}
+@media (max-width: 540px) {
+  .icms-pricelist ul.prices-services-list {
+    display: flex !important;
   }
 }
 
