@@ -3775,8 +3775,6 @@ body
           border-radius: 50%;
         }
 
-
-
         .header {
           display: flex;
           margin-bottom: 10px;
@@ -8851,9 +8849,8 @@ body
   }
 
   &-benefits {
-<<<<<<< fixes-related
-    &>ul>li {
-      &>div {
+    & > ul > li {
+      & > div {
         @media (min-width: 1000px) {
           justify-content: center;
         }
@@ -8864,13 +8861,8 @@ body
         }
 
         @media (max-width: 440px) {
-          gap: 20px
+          gap: 20px;
         }
-=======
-    & > ul > li > div {
-      @media (min-width: 1000px) {
-        justify-content: center;
->>>>>>> main
       }
 
       @media (max-width: 600px) {
@@ -10281,7 +10273,6 @@ body
           &.icon-shevrone {
             transform: rotate(90deg) translate(-0.5em, 0em);
           }
-
         }
       }
 
@@ -10292,9 +10283,8 @@ body
           }
         }
       }
-      .accordion-checkbox:checked+.accordion-header i.icon-shevrone {
+      .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
         transform: rotate(-90deg) translate(0.5em, 0.3em);
-
       }
     }
   }
@@ -10705,7 +10695,24 @@ body
     }
   }
 
-  &#case-molvest-review {
+  &#case-krepezh-idea,
+  &#case-krepezh-cost {
+    & > .img-wrapper {
+      max-width: 320px;
+    }
+
+    & .img-wrapper {
+      margin: 0;
+    }
+
+    & .filled {
+      flex: 1 0 auto;
+      max-width: 100%;
+    }
+  }
+
+  &#case-molvest-review,
+  &#case-review {
     & > .img-wrapper {
       max-width: 320px;
       height: 100%;
@@ -10722,7 +10729,8 @@ body
     }
   }
 
-  &#case-inkomed-data {
+  &#case-inkomed-data,
+  &#case-krepezh-data {
     & > .img-wrapper {
       margin: auto 0 auto -50px;
       max-width: 360px;
@@ -11076,7 +11084,6 @@ body
 
   .tab-button {
     padding: 18px 32px 18px 100px;
-
 
     .title_h5 {
       display: block;
