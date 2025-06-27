@@ -1,6 +1,9 @@
 function sliderInitialise(){
 
     const tabSliderWithPagination = (id) => {
+        if(id === 'logo-slider'){
+          console.log('=> init', id)
+        }
         let slider = document.getElementById(`${id}`);
         const pagination = document.querySelector(`#${id} + .pagination`);
         const navLeft = document.getElementById(`navleft_for--${id}`)
@@ -16,7 +19,40 @@ function sliderInitialise(){
         let slides = slider.children;
         let gap = parseInt(window.getComputedStyle(slider).gap)
         const visibleWidth = slider.parentElement.clientWidth;
-        const visibleSlidesCount = Math.round(visibleWidth / (slides[0].offsetWidth));
+        
+
+        if(fill){
+              const breaks = fill.split(',');
+              const windowWidth = window.innerWidth;
+              
+
+              if (windowWidth > 1200){
+                const slideWidth = visibleWidth / breaks[0] - gap ;
+                [].forEach.call(slides, function(slide) {
+                  slide.style.minWidth = `${slideWidth}px`
+                });
+              }
+              else if(windowWidth > 900){
+                const slideWidth = visibleWidth / breaks[1] - gap ;
+                [].forEach.call(slides, function(slide) {
+                  slide.style.minWidth = `${slideWidth}px`
+                });
+              }
+              else if (windowWidth > 600){
+                const slideWidth = visibleWidth / breaks[2] - gap ;
+                [].forEach.call(slides, function(slide) {
+                  slide.style.minWidth = `${slideWidth}px`
+                });  
+              }
+              else{
+                const slideWidth = visibleWidth / breaks[3] - gap ;
+                [].forEach.call(slides, function(slide) {
+                  slide.style.minWidth = `${slideWidth}px`
+                });
+              }
+            }
+
+        const visibleSlidesCount = Math.round(visibleWidth / (slides[0].offsetWidth));    
 
         if(!!navLeft && !!navRight){
           prevBtn.push(navLeft)
@@ -98,6 +134,7 @@ function sliderInitialise(){
             if(!!pagination){
               const btncount = slides.length - (visibleSlidesCount - 1)
               if(btncount < 2){
+                
                 pagination.style.display = 'none'
               }
               else if(pagination.style.display === 'none' && btncount > 1){
@@ -109,7 +146,6 @@ function sliderInitialise(){
             console.log('=> err', err)
           }
         }
-
 
         if(!!pagination){
             prevBtn = [...prevBtn, ...pagination?.querySelectorAll('.pagination--prev-btn')]
@@ -220,7 +256,7 @@ function sliderInitialise(){
           try{
             tabSliderWithPagination(slider.id);
           }catch(err){
-            console.log('=> err seting slider ', slider.id, ':', err);
+            console.warn('=> err seting slider ', slider.id, ':', err);
           }})
     })
 
@@ -251,7 +287,7 @@ function sliderInitialise(){
 
             tabSliderWithPagination(slider.id);
           }catch(err){
-            console.log('=> err seting slider ', slider.id, ':', err);
+            console.warn('=> err seting slider ', slider.id, ':', err);
           }})
     }
 }
