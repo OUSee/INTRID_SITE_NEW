@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         ],
         'seo-promotion': [
             {
-                img: './src/images/blog/etapy-seo-prodvij.webp',
+                img: './src/images/blog/eseo.webp',
                 link: './blog/etapy-seo-prodvijenia.html',
                 title: 'Этапы SEO-продвижения сайта',
                 description: `Чтобы стать успешным предпринимателем, просто создать сайт недостаточно. 
@@ -117,25 +117,25 @@ document.addEventListener('DOMContentLoaded', ()=> {
         ],
         'internet-marketing': [
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/reputation-preview.webp',
                 link: './blog/upravlenie-reputaciej-v-internete-zacem-i-kak.html',
                 title: 'Управление репутацией в интернете: зачем и как',
                 description: `О том, почему так важно поддерживать репутацию бренда в интернете.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/typewriter.webp',
                 link: './blog/korporativnyj-blog-dan-mode-ili-effektivnaa-reklama.html',
                 title: 'Корпоративный блог: дань моде или эффективная реклама?',
                 description: `Зачем нужно вести корпоративный блог и что он Вам даст?`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/cursor-preview.webp',
                 link: './blog/kontekstnaa-reklama-8-sovetov-novickam.html',
                 title: 'Контекстная реклама: 8 советов новичкам',
                 description: `Настройка КР для чайников – больше конверсии, меньше трат бюджета!`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/mic-preview.webp',
                 link: './blog/intervu.html',
                 title: 'Интервью как способ громко заявить о своём бизнесе с помощью прессы',
                 description: `Одно хорошее интервью может быть эффективнее десяти щедро проплаченных рекламных кампаний. Почему? Читайте в этой статье.`
