@@ -58,7 +58,7 @@ h4,
 h5,
 .title_h5 {
   & * {
-    font-size: inherit !important;
+    font-size: inherit;
   }
 }
 
@@ -540,6 +540,25 @@ ul {
   position: relative;
   cursor: help;
   display: inline-block;
+
+  .icon-tooltip:before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: '?';
+    color: white;
+    font-size: 0.7em;
+    font-weight: 900 !important;
+    background-color: #00eaff;
+    min-width: 8px;
+    min-height: 8px;
+    max-width: 8px;
+    max-height: 8px;
+    border-radius: 8px;
+    padding: 3px;
+    z-index: 0;
+    position: relative;
+  }
 
   &-after {
     position: absolute;

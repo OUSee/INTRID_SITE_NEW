@@ -753,7 +753,7 @@ h4 *,
 .title_h4 *,
 h5 *,
 .title_h5 * {
-  font-size: inherit !important;
+  font-size: inherit;
 }
 
 .underlined {
@@ -1202,6 +1202,24 @@ ul.generic-list > li::marker {
   position: relative;
   cursor: help;
   display: inline-block;
+}
+.tooltip .icon-tooltip:before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: "?";
+  color: white;
+  font-size: 0.7em;
+  font-weight: 900 !important;
+  background-color: #00eaff;
+  min-width: 8px;
+  min-height: 8px;
+  max-width: 8px;
+  max-height: 8px;
+  border-radius: 8px;
+  padding: 3px;
+  z-index: 0;
+  position: relative;
 }
 .tooltip-after {
   position: absolute;
@@ -3570,7 +3588,7 @@ div.slider-test div.slides .slide:hover .img-placeholder,
     bottom: -10px;
   }
   .achievements-slider.early button {
-    left: 85px;
+    left: 100px;
   }
 }
 @media (max-width: 440px) {
@@ -5977,6 +5995,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
   .use-service-list.prices-services-list .prices-services-list-item .img-wrapper {
     max-width: 61px;
+    min-width: 61px;
     margin: 0 auto;
     box-shadow: 0px 0px 50px 10px var(--blue-clouds), inset 0px 0px 80px -20px var(--blue-clouds);
   }
@@ -6356,6 +6375,35 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     min-width: calc(100vw - 20px);
   }
 }
+.sites-portfolio-slider.logo-slider {
+  min-height: unset;
+  align-items: stretch;
+}
+.sites-portfolio-slider.logo-slider > .recent-work-card {
+  background-color: var(--blue-clouds);
+  opacity: 0.1;
+}
+.sites-portfolio-slider.logo-slider > .recent-work-card.active {
+  opacity: 1;
+}
+.sites-portfolio-slider.logo-slider > .recent-work-card > a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sites-portfolio-slider.logo-slider > .recent-work-card > a .work-testimonial {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+.sites-portfolio-slider.logo-slider > .recent-work-card > a img {
+  align-self: center;
+  border-radius: 15px;
+}
+.sites-portfolio-slider.logo-slider + .pagination {
+  display: flex;
+}
 .sites-roadmap {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
   display: flex;
@@ -6433,7 +6481,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 @media (max-width: 1000px) {
   .sites-roadmap-list li {
     flex: 1 1 40%;
-    max-width: 50%;
+    max-width: calc(50% - 30px);
   }
   .sites-roadmap-list li:last-child {
     margin-left: none;
@@ -6524,9 +6572,17 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     order: 9;
   }
 }
+@media (max-width: 900px) {
+  .sites-roadmap-list li:after {
+    display: none;
+  }
+  .sites-roadmap-list li:before {
+    display: none;
+  }
+}
 @media (max-width: 600px) {
   .sites-roadmap-list li {
-    max-width: unset;
+    max-width: calc(50% - 8px);
   }
   .sites-roadmap-list li:after {
     display: none;
@@ -6535,7 +6591,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     display: none;
   }
 }
-@media (max-width: 440px) {
+@media (max-width: 520px) {
   .sites-roadmap-list li {
     flex: 1 1 90%;
   }
@@ -11253,14 +11309,19 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   flex: 1 1 45%;
   max-width: unset;
 }
-.ui_design-tabs .sites-roadmap-list li .header img {
+.ui_design-tabs .sites-roadmap-list li .header img,
+.ui_design-tabs .sites-roadmap-list li .header i {
+  font-size: 40px;
+  line-height: 1em;
   width: 40px;
   height: 40px;
 }
 @media (max-width: 600px) {
-  .ui_design-tabs .sites-roadmap-list li .header img {
+  .ui_design-tabs .sites-roadmap-list li .header img,
+  .ui_design-tabs .sites-roadmap-list li .header i {
     width: 20px;
     height: 20px;
+    font-size: 20px;
   }
 }
 .ui_design-tabs .sites-roadmap-list li:before, .ui_design-tabs .sites-roadmap-list li:after {
@@ -11645,6 +11706,11 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .o-nas-crew > .tab-view {
   padding: 0px;
 }
+@media (max-width: 620px) {
+  .o-nas-crew > .tab-view {
+    overflow: visible;
+  }
+}
 @media (max-width: 1200px) {
   .o-nas-crew > .tab-view > .tab-slider {
     gap: 20px;
@@ -11754,6 +11820,11 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
   .icms-main .fd-row.gap-10.align-center.flex-wrap.mt-20 {
     justify-content: center;
+  }
+}
+@media (max-width: 540px) {
+  .icms-pricelist ul.prices-services-list {
+    display: flex !important;
   }
 }
 
