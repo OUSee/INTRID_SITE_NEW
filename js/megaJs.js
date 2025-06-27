@@ -289,13 +289,13 @@ document.addEventListener('DOMContentLoaded', ()=> {
         }
     }
 
+    
+
     // caluclator setup
     const calculator = document.getElementById('calculator');
-    
     if(calculator){
         new Calculator(calculator)
     }
-    
 
     // diagram (spider) setup
     const diagram = document.querySelector('.custom-diagram');

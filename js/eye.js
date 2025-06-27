@@ -12,9 +12,6 @@ document.addEventListener('DOMContentLoaded',  () =>{
         eye.x = rect.left + size / 2;
         eye.y = rect.top + size / 2;
         
-
-        
-        
         window.onresize = () => {
         	eye.x = n_eye.offsetLeft + size / 2;
         	eye.y = n_eye.offsetTop + size / 2;
