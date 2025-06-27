@@ -10500,9 +10500,28 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   row-gap: 30px;
 }
 .portfolio-view-grid > div {
-  flex: 1 1 0;
-  max-width: unset;
-  min-width: 19%;
+  width: 100%;
+  max-width: calc(25% - 15px);
+  flex-basis: calc(25% - 15px);
+  margin: 0;
+}
+@media (max-width: 1199.98px) {
+  .portfolio-view-grid > div {
+    max-width: calc(33.333333% - 13.3333333333px);
+    flex-basis: calc(33.333333% - 13.3333333333px);
+  }
+}
+@media (max-width: 899.98px) {
+  .portfolio-view-grid > div {
+    max-width: 50%;
+    flex-basis: calc(50% - 10px);
+  }
+}
+@media (max-width: 575.98px) {
+  .portfolio-view-grid > div {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
 }
 .portfolio-view-grid > div > a {
   width: 100%;
