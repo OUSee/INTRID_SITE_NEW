@@ -1762,6 +1762,8 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     align-items: center;
     position: relative;
     flex-basis: 230px;
+    max-width: 230px;
+    width: 100%;
     height: fit-content;
     transition: all 0.3s ease-in-out;
 
@@ -2993,6 +2995,10 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         top: 0.3em;
         height: 1.3em;
         font-size: 1.3em !important;
+      }
+
+      &>p {
+        min-height: 4em;
       }
 
       @media (max-width: 1000px) {
@@ -5724,7 +5730,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         }
       }
 
-      @media (max-width: 520px) {
+      @media (max-width: 540px) {
         p {
           padding-left: 0;
         }
@@ -8328,9 +8334,29 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       row-gap: 30px;
 
       &>div {
-        flex: 1 1 0;
-        max-width: unset;
-        min-width: 19%;
+        // flex: 1 1 0;
+        // max-width: unset;
+        // min-width: 19%;
+
+        width: 100%;
+        max-width: calc(25% - 15px);
+        flex-basis: calc(25% - 15px);
+        margin: 0;
+
+        @media (max-width: 1199.98px) {
+          max-width: calc(33.333333% - (20px / 1.5));
+          flex-basis: calc(33.333333% - (20px / 1.5));
+        }
+
+        @media (max-width: 899.98px) {
+          max-width: 50%;
+          flex-basis: calc(50% - (20px / 2));
+        }
+
+        @media (max-width: 575.98px) {
+          max-width: 100%;
+          flex-basis: 100%;
+        }
 
         &>a {
           width: 100%;
@@ -8412,8 +8438,9 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
   border-radius: 25px;
   max-height: 610px;
   border: 1px solid var(--blue-bg);
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
+  // overflow-x: hidden;
+  // overflow-y: scroll;
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -8475,6 +8502,30 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
   .table-wrapper {
     flex: 1 1 80%;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      padding-right: 6px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 5px;
+      border-radius: 5px;
+      border: 1px solid transparent;
+      background-color: var(--color-white);
+      background-clip: content-box;
+    }
 
     table {
       width: 100%;
@@ -8490,6 +8541,12 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
       tbody {
         border-color: var(--blue-bg);
+
+        & td {
+          & span {
+            font-size: inherit;
+          }
+        }
       }
 
       th {
@@ -11580,9 +11637,9 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 }
 
 @media (max-width: 540px) {
-  .prices-services-list {
-    display: none !important;
-  }
+  // .prices-services-list {
+  //   display: none !important;
+  // }
 
   hr.calc-spacer {
     display: none !important;
@@ -11777,9 +11834,9 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     width: 100%;
   }
 
-  .prices-services-list {
-    display: none !important;
-  }
+  // .prices-services-list {
+  //   display: none !important;
+  // }
 
   hr.calc-spacer {
     display: none !important;
