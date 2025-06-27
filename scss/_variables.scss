@@ -33,6 +33,19 @@ textarea[data-autosize] {
   overflow: hidden;
 }
 
+span {
+  display: inline;
+  font-size: 14px;
+
+  @media (max-width: 1000px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -42,7 +55,7 @@ p,
 span,
 a {
   font-family: 'Roboto';
-  display: block;
+  // display: block;
   margin: 0;
   line-height: 140%;
 }
@@ -175,19 +188,6 @@ a {
   cursor: pointer;
   text-decoration: none;
   color: var(--blue-main);
-
-  @media (max-width: 1000px) {
-    font-size: 14px;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 12px;
-  }
-}
-
-span {
-  display: inline;
-  font-size: 14px;
 
   @media (max-width: 1000px) {
     font-size: 14px;
@@ -1213,6 +1213,14 @@ form {
         border-color: var(--blue-main);
         background-color: var(--blue-main);
       }
+    }
+  }
+
+  &#cases-pagination {
+    display: none;
+
+    @media (max-width: 900px) {
+      display: flex;
     }
   }
 }
