@@ -2849,37 +2849,37 @@ form .button:hover {
     font-size: 0.9em;
     transition: all 0.3s ease;
   }
-  .main-header .header-links-nav .dropdown.second:hover {
+  .main-header .header-links-nav .dropdown.second:hover, .main-header .header-links-nav .dropdown.second:active {
     color: var(--blue-main);
   }
-  .main-header .header-links-nav .dropdown.second:hover .nav-link {
+  .main-header .header-links-nav .dropdown.second:hover .nav-link, .main-header .header-links-nav .dropdown.second:active .nav-link {
     color: var(--blue-main);
     text-underline-offset: 17px;
     text-decoration-color: var(--blue-clouds);
   }
-  .main-header .header-links-nav .dropdown.second:hover .nav-link::after {
+  .main-header .header-links-nav .dropdown.second:hover .nav-link::after, .main-header .header-links-nav .dropdown.second:active .nav-link::after {
     transform: translateX(5px);
   }
-  .main-header .header-links-nav .dropdown.second:hover .dropdown-content {
+  .main-header .header-links-nav .dropdown.second:hover .dropdown-content, .main-header .header-links-nav .dropdown.second:active .dropdown-content {
     transform-origin: left;
     animation: burger-links-appear 0.5s ease-in-out;
     background-color: transparent;
     left: 195px;
     top: 19px;
   }
-  .main-header .header-links-nav .dropdown.second:hover .dropdown-content::before {
+  .main-header .header-links-nav .dropdown.second:hover .dropdown-content::before, .main-header .header-links-nav .dropdown.second:active .dropdown-content::before {
     display: none;
   }
-  .main-header .header-links-nav .dropdown.second:hover .dropdown-content a {
+  .main-header .header-links-nav .dropdown.second:hover .dropdown-content a, .main-header .header-links-nav .dropdown.second:active .dropdown-content a {
     color: var(--color-grey);
   }
-  .main-header .header-links-nav .dropdown.second:hover .dropdown-content a:hover {
+  .main-header .header-links-nav .dropdown.second:hover .dropdown-content a:hover, .main-header .header-links-nav .dropdown.second:active .dropdown-content a:hover {
     color: var(--color-white);
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-color: var(--blue-main);
   }
-  .main-header .header-links-nav .dropdown.second:hover .dropdown-content hr {
+  .main-header .header-links-nav .dropdown.second:hover .dropdown-content hr, .main-header .header-links-nav .dropdown.second:active .dropdown-content hr {
     width: 80%;
   }
   .main-header .header-links-nav .mobile-visible {
@@ -3528,6 +3528,7 @@ div.slider-test div.slides .slide:hover .img-placeholder,
 }
 .achievements-slider .slides .slide .icons-partners {
   height: 1.7em;
+  max-height: 0px;
 }
 .achievements-slider .slides .slide .icons-partners img {
   width: 1.7em;
@@ -4546,6 +4547,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   flex-direction: column;
   gap: 20px;
   width: 640px;
+  max-width: 100%;
   position: relative;
 }
 .webDev-benefits::before {
@@ -4762,11 +4764,23 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .recent-work-card.newsletter-card > a {
   overflow: hidden;
 }
+.recent-work-card.newsletter-card .img-wrapper {
+  max-height: 200px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .recent-work-card.newsletter-card img {
   width: 100%;
   height: auto;
   max-width: unset;
   max-height: unset;
+  aspect-ratio: 16/9;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .recent-work-card.newsletter-card .work-testimonial {
   padding: 10px 30px 20px 30px;
