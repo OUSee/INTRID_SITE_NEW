@@ -1723,11 +1723,23 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       overflow: hidden;
     }
 
+    .img-wrapper {
+      max-height: 200px;
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     img {
       width: 100%;
       height: auto;
       max-width: unset;
       max-height: unset;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
     }
 
     .work-testimonial {
@@ -8354,6 +8366,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
 
         .img-wrapper {
           overflow: hidden;
+
         }
 
         .work-testimonial {

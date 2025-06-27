@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                               Выбор должен основываться на преследуемых целях и особенностей бизнеса.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/kontent_sayta.webp',
                 link: './blog/unikalnyj-kontent-dla-vasego-internet-magazina.html',
                 title: 'Уникальный контент для Вашего интернет-магазина',
                 description: `Интернет-магазин - удобная и современная платформа для реализации товаров. 
@@ -30,26 +30,26 @@ document.addEventListener('DOMContentLoaded', ()=> {
                               Нужно наполнить его качественным контентом: статьями, заметками и описаниями товаров.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/cms-blog-preview.webp',
                 link: './blog/vozmoznosti-nasej-cms-i-sms.html',
                 title: 'Возможности нашей CMS – "i-сms"',
                 description: `Наша компания разрабатывает и устанавливает уникальные CMS, под конкретные веб-ресурсы с индивидуальными функциональными возможностями. 
                               Каждый такой сайт оснащается также надёжной системой защиты от несанкционированного доступа.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/viz02.webp',
                 link: './blog/manual-dla-licnogo-kabineta.html',
                 title: 'Мануал для личного кабинета',
                 description: `В этой инструкции мы расскажем для чего нужен личный кабинет и как пользоваться его инструментами.`
             }, 
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/cms-zoom.webp',
                 link: './blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html',
                 title: 'Почему нельзя создавать интернет-магазины на шаблонах',
                 description: `Основные проблемы, с которыми сталкиваются пользователи при создании сайтов на шаблонах`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/list-preview.webp',
                 link: './blog/pamatka-zakazciku.html',
                 title: 'Памятка заказчику',
                 description: `Ни для кого не секрет, что коммерческий сайт – это современный инструмент бизнеса, позволяющий получать большой поток клиентов из сети. 
@@ -58,13 +58,13 @@ document.addEventListener('DOMContentLoaded', ()=> {
         ],
         'digital-design': [
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/UX_UI_dis.webp',
                 link: './blog/uxui_design.html',
                 title: 'UX и UI-дизайн — что это и зачем нужно?',
                 description: `Доступно и кратко рассказываем о самой эффективной технологии web-дизайна.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/visitka.webp',
                 link: './blog/vizitka-vaznyj-element-delovogo-imidza.html',
                 title: 'Визитка – важный элемент делового имиджа',
                 description: `Облегчая общение, визитка служит неназойливым напоминанием о деловом человеке. 
@@ -72,14 +72,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
                               Многие из нас к самому процессу изготовления визиток подходят не совсем ответственно и взвешенно, и напрасно.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/kreative-design.webp',
                 link: './blog/kreativ-v-reklamnom-dizajne.html',
                 title: 'Креатив в рекламном дизайне',
                 description: `Процесс рекламного дизайна заключается в непрерывном поиске новых средств, которые могли бы привлечь внимание читателя и заинтересовать его в предмете рекламы. 
                               Дизайн процесс творческий.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/ponyatie-logotipa.webp',
                 link: './blog/ponatie-logotipa.html',
                 title: 'Понятие логотипа',
                 description: `Логотип это официально принятый термин, означающий зарегистрированное в порядке оригинально оформленное художественное изображение, для отличия товаров и услуг и их рекламы.`
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         ],
         'seo-promotion': [
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/etapy-seo-prodvij.webp',
                 link: './blog/etapy-seo-prodvijenia.html',
                 title: 'Этапы SEO-продвижения сайта',
                 description: `Чтобы стать успешным предпринимателем, просто создать сайт недостаточно. 
@@ -95,21 +95,21 @@ document.addEventListener('DOMContentLoaded', ()=> {
                               Для этого требуется продвинуть его вверх в поисковых системах.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/seo-circle.webp',
                 link: './blog/kratkij-gajd-po-faktoram-ranzirovania-v-seo.html',
                 title: 'Краткий гайд по факторам ранжирования в SEO ',
                 description: `Факторы, на которые роботы смотрят при ранжировании сайтов в поисковой системе. 
                               Основная информация.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/orig.webp',
                 link: './blog/filtry-andeksa-priznaki-popadania-sroki-sankcij-i-sposoby-vyhoda.html',
                 title: 'Фильтры Яндекса',
                 description: `Признаки попадания, сроки санкций и способы выхода.
                               Кратко о том, что такое санкции Яндекса и с чем их едят.`
             },
             {
-                img: './src/images/image-by-item-and-alias.webp',
+                img: './src/images/blog/link-building.webp',
                 link: './blog/linkbilding-v-2019-rabocie-metody.html',
                 title: 'Линкбилдинг в 2019: рабочие методы',
                 description: `Статья о том, как продвигать сайт с помощью ссылок в 2019 году и не попадать под фильтры.`

@@ -4794,11 +4794,23 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .recent-work-card.newsletter-card > a {
   overflow: hidden;
 }
+.recent-work-card.newsletter-card .img-wrapper {
+  max-height: 200px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .recent-work-card.newsletter-card img {
   width: 100%;
   height: auto;
   max-width: unset;
   max-height: unset;
+  aspect-ratio: 16/9;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .recent-work-card.newsletter-card .work-testimonial {
   padding: 10px 30px 20px 30px;
