@@ -1,105 +1,38 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const calcTotal = document.getElementById('calculator-total');
-    const footer = document.querySelector('.footer');
-    const reset_button = document.getElementById('reset-options-btn');
-    const header = document.getElementById('header')
-    const accordions = document.querySelectorAll('.accordion-checkbox')
-    console.log('=> accordions', accordions)
-    
-    let resetOriginalOffsetTop = reset_button.offsetTop;
-    let resetHeight = reset_button.offsetTop;
-    let resetOriginalOffsetLeft = reset_button.offsetLeft
-    let calcOriginalOffsetTop = calcTotal.offsetTop;
-    
-    let calcHeight = calcTotal.offsetHeight;
-  
-    // Update measurements dynamically
-    function updateMeasurements() {
-      calcOriginalOffsetTop = calcTotal.offsetTop;
-      calcHeight = calcTotal.offsetHeight;
-      resetOriginalOffsetTop = reset_button.offsetTop;
-      resetHeight = reset_button.offsetHeight;
-    }
-  
-    function onScroll() {
-      const scrollY = window.scrollY || window.pageYOffset;
-      const viewportHeight = window.innerHeight;
-      const footerRect = footer.getBoundingClientRect();
-      const headerRect = header.getBoundingClientRect();
-  
-      updateMeasurements();
-
-      // add here
-      const headerBottom = headerRect.bottom;
-    //   if (scrollY + headerBottom > resetOriginalOffsetTop) {
-    //     // Make reset button sticky below header
-    //     reset_button.style.position = 'fixed';
-    //     reset_button.style.top = headerBottom + 10 + 'px';
-    //     reset_button.style.left = resetOriginalOffsetLeft + 'px';
-    //   } else {
-    //     reset_button.style.position = '';
-    //     reset_button.style.top = '';
-    //     reset_button.style.zIndex = '';
-    //   }
-  
-      if (scrollY + viewportHeight < calcOriginalOffsetTop + calcHeight) {
-        // Stick block to bottom of viewport
-        calcTotal.classList.add('fixed-bottom');
-        calcTotal.style.bottom = '0px';
-        calcTotal.style.zIndex = '11'
-      } else {
-        if (footerRect.top < viewportHeight) {
-          // Footer visible, shift block up to avoid overlap
-          const overlap = viewportHeight - footerRect.top;
-          calcTotal.classList.add('fixed-bottom');
-          calcTotal.style.bottom = overlap + 'px';
-        } else {
-          calcTotal.style.bottom = '';
-        }
-      }
-    }
-  
-    // Observe size changes of the calculator total block
-    const resizeObserver = new ResizeObserver(() => {
-      updateMeasurements();
-      onScroll();
-    });
-  
-    // resizeObserver.observe(calcTotal);
-  
-    // Listen for scroll and resize events
-    // window.addEventListener('scroll', onScroll);
-    // window.addEventListener('resize', () => {
-    //   updateMeasurements();
-    //   onScroll();
-    // });
-
-    accordions.forEach(acc => {
-        acc.addEventListener('change', () => {
-            updateMeasurements();
-            onScroll();
-            setTimeout(()=>{
-                updateMeasurements();
-                onScroll();
-            }, 100)
-            setTimeout(()=>{
-                updateMeasurements();
-                onScroll();
-            }, 150)
-        })
-    });
-  
-    // Initial setup
-    // updateMeasurements();
-    // onScroll();
-  });
-  
-
-  document.addEventListener('DOMContentLoaded', ()=> {
+document.addEventListener('DOMContentLoaded', ()=> {
     const inputs= document.getElementById('calculator')?.querySelectorAll('.accordion-content input');
     const reset_button = document.getElementById('reset-options-btn');
     const sentButton = document.getElementById('send-calculator-total');
     const target = document.getElementById('calculator-total-target');
+    const hash = window.location.hash
+    const togglechange = new Event('change')
+
+    Object.defineProperty(target, 'current_value', {
+        get(){
+            return this._current_value
+        },
+        set(val){
+            this._current_value = val;
+            this.innerText = val;
+            console.log('=> set new value', val)
+        },
+        configurable: true
+    })
+
+    
+
+    const handleToggleByHash = (hash, toggles) => {
+        const id = hash.replace('#','')
+        const handle_target = toggles.find(t => t.id === id);
+        if(handle_target){
+            try{
+                handle_target.elementref.checked = true;
+                handle_target.elementref.dispatchEvent(togglechange)
+                console.log('=> sucess', )
+             }catch(err){
+                console.log('=> error', err)
+             }
+        }
+    }
 
     const toggleConverter = (inputs) => {
         const toggles = [];
@@ -149,18 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return ({toggles: toggles, counters: counters, texts: texts});
     }
 
-    
-
     if(inputs && target){
         const {toggles, counters, texts} = toggleConverter(inputs);
         target.innerText = `0`;
-        const togglechange = new Event('change')
-        reset_button?.addEventListener('click', () => {
-            toggles.map((toggle) => {
-                toggle.elementref.checked = false;
-            })
-            target.innerText = `0`;
-        })
+        target.current_value = 'init';
+
         toggles.forEach(toggle => {
             toggle.elementref.addEventListener('change', () => {
                 switch (toggle.id) {
@@ -171,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                             if(toggle.counter?.total){
                                 target.innerText = `${parseInt(target.innerText) + toggle.counter.total}`;
+                                target.current_value = 97
                             }
                             if(toggle.radioid && toggle.radioid.length > 0){
                                 toggles.map((el) => {
@@ -187,10 +114,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                             if(el.counter && el.elementref.checked){
                                                 el.elementref.checked = false;
                                                 target.innerText = `${parseInt(target.innerText) - el.price - el.counter.total}`
+                                                target.current_value = 117
                                                 el.reveal?.classList.add('hidden')
                                             }
                                             else if(el.elementref.checked){
                                               target.innerText = `${parseInt(target.innerText) - el.price}`
+                                              target.current_value = 122
                                               el.elementref.checked = false
                                               el.reveal?.classList.add('hidden')
                                             }
@@ -221,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 })
                             }
                             target.innerText = `${parseInt(target.innerText) + toggle.price}`
+                            target.current_value = `150: ` + toggle.id
                             break
                         }
                         else{
@@ -229,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                             if(toggle.counter?.total){
                                 target.innerText = `${parseInt(target.innerText) - toggle.counter.total}`
+                                target.current_value = 162
                             }
                             if(toggle.nested && toggle.nested.length > 0){
                                 toggle.nested.forEach(nestedToggleid => {
@@ -243,9 +174,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             const total = parseInt(target.innerText) - toggle.price;
                             if(total < 0){
                                 target.innerText = "0"
+                                target.current_value = 177
                             }
                             else{
                                 target.innerText = `${parseInt(target.innerText) - toggle.price}`
+                                target.current_value = 181
                             }
                             break
                         }
@@ -253,6 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
         })
+
         counters.forEach(counter => {
             const changeEvent = new Event('input')
             counter.elementref.nextElementSibling?.addEventListener('click', ()=>{
@@ -287,6 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
         })
+
         sentButton?.addEventListener('click', ()=> {
             const review = {
                 options: toggles.filter(toggle => toggle.elementref.checked),
@@ -295,5 +230,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             console.log(review)
         })
+
+        reset_button?.addEventListener('click', () => {
+            toggles.map((toggle) => {
+                toggle.elementref.checked = false;
+            })
+            target.innerText = `0`;
+        })
+
+        if(hash){handleToggleByHash(hash, toggles)}
     }
 })

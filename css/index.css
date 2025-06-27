@@ -3393,7 +3393,7 @@ label.radioButton.big,
 .button-highlight.big {
   border-radius: 30px;
   padding: 16px 24px 14px 24px;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
 }
 button.big i.icon-arrow_wide,
@@ -4050,7 +4050,7 @@ button.next:hover {
   width: -moz-fit-content;
   width: fit-content;
 }
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .tab-content-webDev.store .count-n-card {
     flex-direction: column;
   }
@@ -4064,6 +4064,11 @@ button.next:hover {
   flex-basis: 300px;
   text-wrap: wrap;
 }
+@media (max-width: 1000px) {
+  .tab-content-webDev.store .count-n-card .web-count {
+    justify-content: center;
+  }
+}
 .tab-content-webDev.store .count-n-card .recent-work-card {
   margin-right: 0;
   margin-left: auto;
@@ -4075,6 +4080,12 @@ button.next:hover {
   }
 }
 @media (max-width: 1000px) {
+  .tab-content-webDev.store .count-n-card .recent-work-card {
+    margin-right: auto;
+    margin-left: auto;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
   .tab-content-webDev.store .count-n-card .recent-work-card img {
     width: 30%;
     height: auto;
@@ -4088,10 +4099,12 @@ button.next:hover {
   margin-top: 0px;
   width: 100%;
 }
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .tab-content-webDev.store .block-buttons {
     flex-wrap: wrap;
   }
+}
+@media (max-width: 900px) and (max-width: 600px) {
   .tab-content-webDev.store .block-buttons .button-link {
     flex: 1 1 0;
   }
@@ -4422,7 +4435,7 @@ button.next:hover {
 }
 @media (max-width: 1000px) {
   .tab-content-webDev.tender .block-buttons {
-    margin-top: 0;
+    margin-top: 20px;
   }
 }
 @media (max-width: 800px) {

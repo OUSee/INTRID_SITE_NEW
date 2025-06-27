@@ -24,7 +24,6 @@ function sliderInitialise(){
         if(fill){
               const breaks = fill.split(',');
               const windowWidth = window.innerWidth;
-              
 
               if (windowWidth > 1200){
                 const slideWidth = visibleWidth / breaks[0] - gap ;
@@ -50,7 +49,7 @@ function sliderInitialise(){
                   slide.style.minWidth = `${slideWidth}px`
                 });
               }
-            }
+        }
 
         const visibleSlidesCount = Math.round(visibleWidth / (slides[0].offsetWidth));    
 
@@ -151,9 +150,22 @@ function sliderInitialise(){
             prevBtn = [...prevBtn, ...pagination?.querySelectorAll('.pagination--prev-btn')]
             nextBtn = [...nextBtn, ...pagination?.querySelectorAll('.pagination--next-btn')]
             navButtons = pagination.querySelectorAll('.pagination--btn-dot')
-
             const dotsContainer = pagination.querySelector('.pagination--buttons-dots')
             const btncount = slides.length - (visibleSlidesCount - 1)
+
+            // adding absolute arrows for pagination
+            const handleSliderArrows = () => {
+              const sliderHeight = slider.offsetHeight / 2 + 30 + 17;
+              const paginationWidth = dotsContainer.offsetWidth + 12;
+              const relativeMoveOffset = window.innerWidth / 2 - paginationWidth - 17;
+
+              prevBtn.forEach(btn => {
+                btn.style = `position: relative; transform: translateY(-${sliderHeight}px) translateX(-${relativeMoveOffset}px); left: 5px; color: var(--blue-main);`
+              })
+              nextBtn.forEach(btn => {
+                btn.style = `position: relative; transform: translateY(-${sliderHeight}px) translateX(${relativeMoveOffset}px); right: 5px; color: var(--blue-main);`
+              })
+            }
 
             if(navButtons.length !== btncount && visibleSlidesCount > 0){
               navButtons.forEach((button)=>dotsContainer.removeChild(button))
@@ -177,6 +189,7 @@ function sliderInitialise(){
                 })
               }
             }
+            handleSliderArrows()
         }
     
         const nextSlide = ( ) => {
