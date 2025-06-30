@@ -1414,6 +1414,10 @@ ul.generic-list > li::marker {
   width: 100%;
 }
 
+.h-100 {
+  height: 100%;
+}
+
 .m-center {
   margin: 0 auto;
 }
@@ -4148,7 +4152,6 @@ button.next:hover {
   width: 100%;
   padding: 20px;
   min-height: unset;
-  cursor: pointer;
   transition: 0.25s ease-in-out;
 }
 .tab-content-webDev .benefit-card:has(input:checked) img {
@@ -5043,7 +5046,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   max-width: 360px;
   align-items: center;
   min-height: 150px;
-  cursor: pointer;
 }
 .benefit-card:hover {
   border: 1px solid var(--blue-main);
@@ -6220,6 +6222,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .sites-leaders-content-right .achievements-slider {
   top: unset;
   margin: 0 auto;
+  margin-bottom: auto;
 }
 @media (max-width: 440px) {
   .sites-leaders-content-right .achievements-slider {
@@ -6234,8 +6237,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
 }
 .sites-leaders--form {
+  display: flex;
+  flex-direction: column;
   padding: 30px 52px;
-  margin-top: auto;
   border-radius: 35px;
   background-color: var(--blue-tag);
 }

@@ -943,7 +943,7 @@ button.next {
     width: 100%;
     padding: 20px;
     min-height: unset;
-    cursor: pointer;
+    // cursor: pointer;
     transition: 0.25s ease-in-out;
 
     &:has(input:checked) {
@@ -2016,7 +2016,7 @@ body
   max-width: 360px;
   align-items: center;
   min-height: 150px;
-  cursor: pointer;
+  // cursor: pointer;
 
   &:hover {
     border: 1px solid var(--blue-main);
@@ -3322,6 +3322,7 @@ body
         & .achievements-slider {
           top: unset;
           margin: 0 auto;
+          margin-bottom: auto;
 
           @media (max-width: 440px) {
             top: unset !important;
@@ -3413,8 +3414,9 @@ body
     }
 
     &--form {
+      display: flex;
+      flex-direction: column;
       padding: 30px 52px;
-      margin-top: auto;
       border-radius: 35px;
       background-color: var(--blue-tag);
 
