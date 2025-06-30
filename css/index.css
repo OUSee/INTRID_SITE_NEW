@@ -1255,7 +1255,18 @@ ul.generic-list > li::marker {
   color: var(--text-hl-green);
 }
 .text-dotted {
-  text-decoration: dotted;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-style: dotted;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 4px;
+}
+.text-dashed {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-style: dashed;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 4px;
 }
 .text-unbreakable {
   text-wrap: nowrap;
@@ -8929,6 +8940,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .form-popup form .form-limitter .testimonials {
   color: white;
   width: 90%;
+}
+.form-popup form .form-limitter .testimonials > a:hover {
+  text-decoration: none;
 }
 .form-popup form .form-limitter textarea {
   min-height: 62px;
