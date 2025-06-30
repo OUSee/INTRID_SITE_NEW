@@ -4060,6 +4060,17 @@ body
         }
       }
     }
+
+    &--simple {
+      & .sites-roadmap-list {
+        & > li {
+          @media (max-width: 600px) {
+            max-width: 100%;
+            flex: 1 0 auto;
+          }
+        }
+      }
+    }
   }
 
   &-reviews {
