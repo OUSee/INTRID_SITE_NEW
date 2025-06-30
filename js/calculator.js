@@ -6,19 +6,24 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const hash = window.location.hash
     const togglechange = new Event('change')
 
+    const formatNumber = (num) => {
+        const [integer, decimal] = num.toString().split('.');
+        const formatted = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        console.log('=> formatted', formatted)
+        return formatted
+    }
+
     Object.defineProperty(target, 'current_value', {
         get(){
             return this._current_value
         },
         set(val){
             this._current_value = val;
-            this.innerText = val;
+            this.innerText = formatNumber(val);
             console.log('=> set new value', val)
         },
         configurable: true
     })
-
-    
 
     const handleToggleByHash = (hash, toggles) => {
         const id = hash.replace('#','')
@@ -27,6 +32,28 @@ document.addEventListener('DOMContentLoaded', ()=> {
             try{
                 handle_target.elementref.checked = true;
                 handle_target.elementref.dispatchEvent(togglechange)
+                if(handle_target.nested && handle_target.nested.length > 0){
+                                handle_target.nested.forEach(nestedToggleid => {
+                                    const nestedToggle = toggles.find(t => t.id === nestedToggleid);
+                                    const section = document.querySelector(`#section-${nestedToggleid.split('-')?.[0]}`)
+                                    section.checked = true
+                                    try{
+                                        if(nestedToggle){
+                                            nestedToggle.elementref.checked = true;
+                                            nestedToggle.elementref.dispatchEvent(togglechange);
+                                        }
+                                        else{
+                                            console.error('=> ', nestedToggleid, 'not found')
+                                        }
+                                        if(nestedToggle?.reveal){
+                                            nestedToggle.reveal.classList.remove('hidden');
+                                        }
+                                    }catch(err){
+                                        console.error(nestedToggleid, err)
+                                    }
+                                    
+                                })
+                            }
                 console.log('=> sucess', )
              }catch(err){
                 console.log('=> error', err)
@@ -84,8 +111,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     if(inputs && target){
         const {toggles, counters, texts} = toggleConverter(inputs);
-        target.innerText = `0`;
-        target.current_value = 'init';
+        target.innerText = 0;
+        target.current_value = 0;
 
         toggles.forEach(toggle => {
             toggle.elementref.addEventListener('change', () => {
@@ -96,8 +123,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                                 toggle.reveal.classList.remove('hidden');
                             }
                             if(toggle.counter?.total){
-                                target.innerText = `${parseInt(target.innerText) + toggle.counter.total}`;
-                                target.current_value = 97
+                                target.current_value = target.current_value + toggle.counter.total
                             }
                             if(toggle.radioid && toggle.radioid.length > 0){
                                 toggles.map((el) => {
@@ -113,13 +139,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
                                             }
                                             if(el.counter && el.elementref.checked){
                                                 el.elementref.checked = false;
-                                                target.innerText = `${parseInt(target.innerText) - el.price - el.counter.total}`
-                                                target.current_value = 117
+                                                target.current_value = target.current_value - el.price - el.counter.total
                                                 el.reveal?.classList.add('hidden')
                                             }
                                             else if(el.elementref.checked){
-                                              target.innerText = `${parseInt(target.innerText) - el.price}`
-                                              target.current_value = 122
+                                              target.current_value = target.current_value - el.price
                                               el.elementref.checked = false
                                               el.reveal?.classList.add('hidden')
                                             }
@@ -149,8 +173,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                                     
                                 })
                             }
-                            target.innerText = `${parseInt(target.innerText) + toggle.price}`
-                            target.current_value = `150: ` + toggle.id
+                            target.current_value = target.current_value + toggle.price
                             break
                         }
                         else{
@@ -158,7 +181,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                                 toggle.reveal.classList.add('hidden');
                             }
                             if(toggle.counter?.total){
-                                target.innerText = `${parseInt(target.innerText) - toggle.counter.total}`
+                                target.current_value = target.current_value - toggle.counter.total
                                 target.current_value = 162
                             }
                             if(toggle.nested && toggle.nested.length > 0){
@@ -171,14 +194,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
                                     }
                                 })
                             }
-                            const total = parseInt(target.innerText) - toggle.price;
+                            const total = parseInt(target.current_value) - toggle.price;
                             if(total < 0){
-                                target.innerText = "0"
-                                target.current_value = 177
+                                target.current_value = 0
                             }
                             else{
-                                target.innerText = `${parseInt(target.innerText) - toggle.price}`
-                                target.current_value = 181
+                                target.current_value = target.current_value - toggle.price
                             }
                             break
                         }
