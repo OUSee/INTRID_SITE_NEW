@@ -1993,6 +1993,34 @@ form {
   }
 }
 
+progress {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 8px;
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--blue-tag);
+  background-color: transparent;
+  transition: 0.25s ease-in-out;
+
+  &::-webkit-progress-bar {
+    background-color: transparent;
+    border-radius: 10px;
+  }
+
+  &::-webkit-progress-value {
+    background: var(--blue-main);
+    border-radius: 10px;
+  }
+
+  &::-moz-progress-bar {
+    background: var(--blue-main);
+    border-radius: 10px;
+  }
+}
+
 .review-card {
   background-color: var(--blue-bg);
   border-radius: 39px;
@@ -2066,6 +2094,100 @@ form {
 
     i {
       top: 0.2em;
+    }
+  }
+
+  &--advanced {
+    display: flex;
+    flex-direction: column;
+
+    & .review-card {
+      &-header {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 20px;
+
+        @media (max-width: 1360px) {
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+      }
+
+      &-name {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+
+        & > p {
+          margin: 0;
+        }
+      }
+
+      &-rate {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        // margin-left: auto;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.25;
+
+        & i {
+          display: flex;
+        }
+      }
+
+      &-footer {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: auto;
+      }
+
+      &-date {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
+      }
+
+      &-source {
+        position: relative;
+        display: flex;
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &.yandex {
+          background-image: url('../src/icons/reviews/min/yandex-min.svg');
+        }
+
+        &.doublegis {
+          background-image: url('../src/icons/reviews/min/2gis-min.svg');
+        }
+
+        &.google {
+          background-image: url('../src/icons/reviews/min/google-min.svg');
+        }
+
+        &.yell {
+          background-image: url('../src/icons/reviews/min/yell-min.svg');
+        }
+
+        &.runet {
+          background-image: url('../src/icons/reviews/min/runet-min.svg');
+        }
+      }
     }
   }
 }
