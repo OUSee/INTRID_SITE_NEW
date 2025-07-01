@@ -5080,6 +5080,8 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   max-width: 360px;
   align-items: center;
   min-height: 150px;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
 }
 .benefit-card:hover {
   border: 1px solid var(--blue-main);
@@ -6221,6 +6223,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   .client-web-diferences {
     padding-bottom: 0;
   }
+}
+.client-web-diferences .benefit-card {
+  cursor: default;
 }
 
 .sites-leaders {
@@ -7694,7 +7699,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   width: 100%;
   padding: 20px;
   min-height: unset;
-  cursor: pointer;
+  cursor: default;
 }
 .store-benefits .benefit-card:has(input:checked) img, .store-ai .benefit-card:has(input:checked) img {
   filter: brightness(0.3);

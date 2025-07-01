@@ -2016,7 +2016,8 @@ body
   max-width: 360px;
   align-items: center;
   min-height: 150px;
-  // cursor: pointer;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
 
   &:hover {
     border: 1px solid var(--blue-main);
@@ -3275,6 +3276,10 @@ body
 .client-web-diferences {
   @media (max-width: 1000px) {
     padding-bottom: 0;
+  }
+
+  & .benefit-card {
+    cursor: default;
   }
 }
 
@@ -5104,7 +5109,7 @@ body
       width: 100%;
       padding: 20px;
       min-height: unset;
-      cursor: pointer;
+      cursor: default;
 
       &:has(input:checked) {
         img {
