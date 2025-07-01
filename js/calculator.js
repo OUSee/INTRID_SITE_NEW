@@ -187,10 +187,22 @@ document.addEventListener('DOMContentLoaded', ()=> {
                             if(toggle.nested && toggle.nested.length > 0){
                                 toggle.nested.forEach(nestedToggleid => {
                                     const nestedToggle = toggles.find(t => t.id === nestedToggleid);
-                                    nestedToggle.elementref.checked = false;
-                                    nestedToggle.elementref.dispatchEvent(togglechange);
+                                    if(nestedToggle.elementref.checked){
+                                        nestedToggle.elementref.checked = false;
+                                        nestedToggle.elementref.dispatchEvent(togglechange);
+                                    }
                                     if(nestedToggle.reveal){
                                         nestedToggle.reveal.classList.add('hidden');
+                                    }
+                                })
+                            }
+                            if(toggle.id === 'promotion-seo' || toggle.id === 'promotion-max_start'){
+                                const inside_toggles = toggle.reveal.querySelectorAll('input[type=checkbox]')
+                                console.log('=> inside_toggles', inside_toggles)
+                                inside_toggles.forEach(toggle => {
+                                    if(toggle.checked){
+                                       toggle.checked = false;
+                                        toggle.dispatchEvent(togglechange)     
                                     }
                                 })
                             }
