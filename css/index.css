@@ -2515,7 +2515,7 @@ form .button:hover {
     display: grid;
     gap: 6px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: auto;
   }
   .popup .map-testimonials .p.color-white {
     grid-area: 1/1/2/2;
@@ -2523,8 +2523,11 @@ form .button:hover {
   .popup .map-testimonials .phone-line {
     grid-area: 2/1/3/2;
   }
+  .popup .map-testimonials #map-social {
+    grid-area: 3/1/4/2;
+  }
   .popup .map-testimonials .button-link {
-    grid-area: 2/2/3/3;
+    grid-area: 3/2/4/3;
   }
 }
 @media (max-width: 520px) {
@@ -5798,6 +5801,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   background-color: var(--highlight-bg);
   color: var(--bg-main);
   cursor: pointer;
+  transition: 0.25s ease-in-out;
 }
 @media (min-width: 900px) {
   .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button {
@@ -5806,6 +5810,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:hover span.case-number {
   opacity: 1;
+  transition: 0.25s ease-in-out;
 }
 @media (max-width: 900px) {
   .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button {
@@ -5840,10 +5845,12 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:has(input:checked):hover span.case-number {
   opacity: 1;
+  transition: 0.25s ease-in-out;
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button:has(input:checked) span.case-number {
   opacity: 0.5;
   color: var(--color-white);
+  transition: 0.25s ease-in-out;
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button input {
   display: none;
