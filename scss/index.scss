@@ -10346,7 +10346,25 @@ body
     & > div > div > div.sites-leaders-content-right {
       flex: 1 1 35%;
 
-      background-color: var(--bg-main);
+      & > .sites-leaders--card {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 52px;
+        border-radius: 35px;
+        background-color: var(--bg-main);
+
+        @media (max-width: 1280px) {
+          padding: 30px;
+        }
+
+        @media (max-width: 900px) {
+          padding: 30px 62px;
+        }
+
+        @media (max-width: 600px) {
+          padding: 30px;
+        }
+      }
     }
   }
 

@@ -12194,7 +12194,28 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .kontakts-bottom > div > div > div.sites-leaders-content-right {
   flex: 1 1 35%;
+}
+.kontakts-bottom > div > div > div.sites-leaders-content-right > .sites-leaders--card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 52px;
+  border-radius: 35px;
   background-color: var(--bg-main);
+}
+@media (max-width: 1280px) {
+  .kontakts-bottom > div > div > div.sites-leaders-content-right > .sites-leaders--card {
+    padding: 30px;
+  }
+}
+@media (max-width: 900px) {
+  .kontakts-bottom > div > div > div.sites-leaders-content-right > .sites-leaders--card {
+    padding: 30px 62px;
+  }
+}
+@media (max-width: 600px) {
+  .kontakts-bottom > div > div > div.sites-leaders-content-right > .sites-leaders--card {
+    padding: 30px;
+  }
 }
 .kontakts-photo #reviews-slider > div {
   padding: 0px;
