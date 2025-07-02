@@ -4579,9 +4579,11 @@ button.next:hover {
   border-radius: 25px;
   overflow: hidden;
 }
+.tab-content-webDev.tender .tender-types-group .tender-table th, .tab-content-webDev.tender .tender-types-group .tender-table td {
+  transition: 0.25s ease-in-out;
+}
 .tab-content-webDev.tender .tender-types-group .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2), .tab-content-webDev.tender .tender-types-group .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3), .tab-content-webDev.tender .tender-types-group .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
-  border-left: 3px solid var(--blue-tag);
-  border-right: 2px solid var(--blue-tag);
+  box-shadow: inset -2px 0 0 var(--blue-tag), inset 2px 0 0 var(--blue-tag);
 }
 .tab-content-webDev.tender .tender-types-group .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr:last-child td:nth-child(2), .tab-content-webDev.tender .tender-types-group .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr:last-child td:nth-child(3), .tab-content-webDev.tender .tender-types-group .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr:last-child td:nth-child(4) {
   color: var(--color-white) !important;
@@ -4594,10 +4596,6 @@ button.next:hover {
     padding: 18px 30px;
     background-color: var(--blue-clouds);
     color: var(--color-white);
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    border-left: 2px solid var(--bg-main);
-    border-right: 2px solid var(--bg-main);
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead tr td:not(:first-child),
   .tab-content-webDev.tender .tender-types-group .tender-table thead tr th:not(:first-child) {
@@ -4606,9 +4604,7 @@ button.next:hover {
   .tab-content-webDev.tender .tender-types-group .tender-table thead tr td:has(input:checked),
   .tab-content-webDev.tender .tender-types-group .tender-table thead tr th:has(input:checked) {
     background-color: var(--blue-tag);
-    border-top: 2px solid var(--blue-tag);
-    border-left: 3px solid var(--blue-tag);
-    border-right: 3px solid var(--blue-tag);
+    box-shadow: inset -2px 0 0 var(--blue-tag), inset 2px 0 0 var(--blue-tag);
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead tr th label {
     padding: 0 !important;
@@ -4656,23 +4652,15 @@ button.next:hover {
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr th label {
   background-color: var(--blue-clouds);
   color: var(--color-white);
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  border-left: 2px solid var(--bg-main);
-  border-right: 2px solid var(--bg-main);
 }
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:nth-child(odd) td {
   background-color: var(--blue-bg);
   color: var(--color-white);
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  border-left: 2px solid var(--bg-main);
-  border-right: 2px solid var(--bg-main);
 }
 @media (max-width: 900px) {
   .tab-content-webDev.tender .tender-types-group .tender-table {
     position: relative;
-    margin-top: 93px;
+    margin-top: 42px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     overflow-x: hidden;
@@ -4717,12 +4705,11 @@ button.next:hover {
     width: 100%;
     padding: 12px 6px;
     background-color: var(--blue-clouds);
-    border-left: 1px solid var(--bg-main);
-    border-right: 1px solid var(-bg-main);
     order: unset;
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead th label:has(input:checked) {
     background-color: var(--blue-tag);
+    box-shadow: inset -2px 0 0 var(--blue-tag), inset 2px 0 0 var(--blue-tag);
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead th label.fade-out {
     color: transparent;
@@ -4739,18 +4726,10 @@ button.next:hover {
   .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:nth-child(even) td:not(:first-child) {
     background-color: var(--blue-tag);
     color: var(--color-white) !important;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    border-left: 2px solid var(--bg-main);
-    border-right: 2px solid var(--bg-main);
   }
   .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:nth-child(odd) td {
     background-color: var(--blue-bg);
     color: var(--color-white);
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    border-left: 2px solid var(--bg-main);
-    border-right: 2px solid var(--bg-main);
   }
   .tab-content-webDev.tender .tender-types-group .tender-table tr td {
     padding: 10px !important;

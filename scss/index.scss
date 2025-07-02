@@ -1252,6 +1252,11 @@ button.next {
         border-radius: 25px;
         overflow: hidden;
 
+        & th,
+        & td {
+          transition: 0.25s ease-in-out;
+        }
+
         &:has(thead th:nth-child(2) label input:checked)
           tbody
           tr
@@ -1264,8 +1269,10 @@ button.next {
           tbody
           tr
           td:nth-child(4) {
-          border-left: 3px solid var(--blue-tag);
-          border-right: 2px solid var(--blue-tag);
+          // border-left: 3px solid var(--blue-tag);
+          // border-right: 2px solid var(--blue-tag);
+          box-shadow: inset -2px 0 0 var(--blue-tag),
+            inset 2px 0 0 var(--blue-tag);
         }
 
         &:has(thead th:nth-child(2) label input:checked)
@@ -1293,10 +1300,10 @@ button.next {
                 padding: 18px 30px;
                 background-color: var(--blue-clouds);
                 color: var(--color-white);
-                border-top: 1px solid transparent;
-                border-bottom: 1px solid transparent;
-                border-left: 2px solid var(--bg-main);
-                border-right: 2px solid var(--bg-main);
+                // border-top: 1px solid transparent;
+                // border-bottom: 1px solid transparent;
+                // border-left: 2px solid var(--bg-main);
+                // border-right: 2px solid var(--bg-main);
 
                 &:not(:first-child) {
                   cursor: pointer;
@@ -1304,9 +1311,11 @@ button.next {
 
                 &:has(input:checked) {
                   background-color: var(--blue-tag);
-                  border-top: 2px solid var(--blue-tag);
-                  border-left: 3px solid var(--blue-tag);
-                  border-right: 3px solid var(--blue-tag);
+                  // border-top: 2px solid var(--blue-tag);
+                  // border-left: 3px solid var(--blue-tag);
+                  // border-right: 3px solid var(--blue-tag);
+                  box-shadow: inset -2px 0 0 var(--blue-tag),
+                    inset 2px 0 0 var(--blue-tag);
                 }
               }
 
@@ -1368,26 +1377,27 @@ button.next {
           th label {
             background-color: var(--blue-clouds);
             color: var(--color-white);
-            border-top: 1px solid transparent;
-            border-bottom: 1px solid transparent;
-            border-left: 2px solid var(--bg-main);
-            border-right: 2px solid var(--bg-main);
+            // border-top: 1px solid transparent;
+            // border-bottom: 1px solid transparent;
+            // border-left: 2px solid var(--bg-main);
+            // border-right: 2px solid var(--bg-main);
           }
 
           &:nth-child(odd) td {
             background-color: var(--blue-bg);
             color: var(--color-white);
-            border-top: 1px solid transparent;
-            border-bottom: 1px solid transparent;
-            border-left: 2px solid var(--bg-main);
-            border-right: 2px solid var(--bg-main);
+            // border-top: 1px solid transparent;
+            // border-bottom: 1px solid transparent;
+            // border-left: 2px solid var(--bg-main);
+            // border-right: 2px solid var(--bg-main);
           }
         }
 
         @media (max-width: 900px) {
           // tender tarif table with tabs
           position: relative;
-          margin-top: 93px;
+          // margin-top: 93px;
+          margin-top: 42px;
           border-top-left-radius: 0px;
           border-top-right-radius: 0px;
           overflow-x: hidden;
@@ -1444,12 +1454,14 @@ button.next {
               width: 100%;
               padding: 12px 6px;
               background-color: var(--blue-clouds);
-              border-left: 1px solid var(--bg-main);
-              border-right: 1px solid var(-bg-main);
+              // border-left: 1px solid var(--bg-main);
+              // border-right: 1px solid var(--bg-main);
               order: unset;
 
               &:has(input:checked) {
                 background-color: var(--blue-tag);
+                box-shadow: inset -2px 0 0 var(--blue-tag),
+                  inset 2px 0 0 var(--blue-tag);
               }
 
               &.fade-out {
@@ -1472,19 +1484,19 @@ button.next {
               &:nth-child(even) td:not(:first-child) {
                 background-color: var(--blue-tag);
                 color: var(--color-white) !important;
-                border-top: 1px solid transparent;
-                border-bottom: 1px solid transparent;
-                border-left: 2px solid var(--bg-main);
-                border-right: 2px solid var(--bg-main);
+                // border-top: 1px solid transparent;
+                // border-bottom: 1px solid transparent;
+                // border-left: 2px solid var(--bg-main);
+                // border-right: 2px solid var(--bg-main);
               }
 
               &:nth-child(odd) td {
                 background-color: var(--blue-bg);
                 color: var(--color-white);
-                border-top: 1px solid transparent;
-                border-bottom: 1px solid transparent;
-                border-left: 2px solid var(--bg-main);
-                border-right: 2px solid var(--bg-main);
+                // border-top: 1px solid transparent;
+                // border-bottom: 1px solid transparent;
+                // border-left: 2px solid var(--bg-main);
+                // border-right: 2px solid var(--bg-main);
               }
             }
           }
