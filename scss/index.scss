@@ -10969,15 +10969,16 @@ body
         position: relative;
 
         i {
+          display: flex;
           font-size: 2em;
           position: absolute;
-          top: 40px;
+          top: 32px;
           right: -30px;
           transition: all 0.3s ease-in-out;
           transform-origin: center;
 
           &.icon-shevrone {
-            transform: rotate(90deg) translate(-0.5em, 0em);
+            transform: rotate(90deg);
           }
         }
       }
@@ -10985,13 +10986,21 @@ body
       & .accordion-content {
         & > p {
           @media (min-width: 1200px) {
-            font-size: 18px;
+            font-size: 16px;
+          }
+        }
+
+        & .ordinary-list {
+          & p {
+            @media (min-width: 1200px) {
+              font-size: 16px;
+            }
           }
         }
       }
 
       .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
-        transform: rotate(-90deg) translate(0.5em, 0.3em);
+        transform: rotate(-90deg);
       }
     }
   }

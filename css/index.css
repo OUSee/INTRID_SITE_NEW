@@ -12694,23 +12694,29 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   position: relative;
 }
 .help-faq .accordion-item .accordion-header i {
+  display: flex;
   font-size: 2em;
   position: absolute;
-  top: 40px;
+  top: 32px;
   right: -30px;
   transition: all 0.3s ease-in-out;
   transform-origin: center;
 }
 .help-faq .accordion-item .accordion-header i.icon-shevrone {
-  transform: rotate(90deg) translate(-0.5em, 0em);
+  transform: rotate(90deg);
 }
 @media (min-width: 1200px) {
   .help-faq .accordion-item .accordion-content > p {
-    font-size: 18px;
+    font-size: 16px;
+  }
+}
+@media (min-width: 1200px) {
+  .help-faq .accordion-item .accordion-content .ordinary-list p {
+    font-size: 16px;
   }
 }
 .help-faq .accordion-item .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
-  transform: rotate(-90deg) translate(0.5em, 0.3em);
+  transform: rotate(-90deg);
 }
 
 .case_page-top {
