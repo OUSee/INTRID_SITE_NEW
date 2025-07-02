@@ -178,18 +178,19 @@
   border-bottom-right-radius: 46px;
   transition: height 0.5s ease-in-out;
 
-  &>a {
+  & > a {
     text-decoration: none;
     display: block;
     color: var(--color-white);
     text-wrap: nowrap;
+    transition: 0.25s ease-in-out;
 
     &:hover {
       color: var(--blue-main);
     }
   }
 
-  &>hr {
+  & > hr {
     background-color: var(--color-white);
   }
 }
@@ -280,7 +281,7 @@
 #mobilemenuToggle {
   position: relative;
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     position: absolute;
     width: 30px;
     height: 25px;
@@ -321,15 +322,14 @@
   }
 }
 
-#menuToggle:has(input:checked)~.burger-content,
-#mobilemenuToggle:has(input:checked)~.header-links-nav {
+#menuToggle:has(input:checked) ~ .burger-content,
+#mobilemenuToggle:has(input:checked) ~ .header-links-nav {
   display: block;
   opacity: 1;
   height: fit-content;
   transform-origin: top center;
   animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-
 
 @media (max-width: 1400px) {
   .main-header .header-contacts {
@@ -384,7 +384,7 @@
       left: unset;
     }
 
-    #mobilemenuToggle:has(input:checked)~.header-links-nav {
+    #mobilemenuToggle:has(input:checked) ~ .header-links-nav {
       display: flex;
       flex-direction: column;
       position: absolute;
@@ -515,7 +515,6 @@
   .main-header {
     .main-logo img {
       height: 24px;
-
     }
 
     #mobilemenuToggle input {
