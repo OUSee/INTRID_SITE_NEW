@@ -10448,7 +10448,7 @@ body
     flex-wrap: wrap;
     gap: 50px;
 
-    @media (max-width: 999px) {
+    @media (max-width: 1000px) {
       gap: 40px;
     }
   }
@@ -10462,14 +10462,14 @@ body
     flex-wrap: wrap;
     width: 100%;
 
-    @media (max-width: 999px) {
+    @media (max-width: 1000px) {
       gap: 10px;
     }
 
     & > * {
       flex: 1;
 
-      @media (max-width: 999px) {
+      @media (max-width: 1000px) {
         flex-basis: calc(20% - 8px);
         max-width: calc(20% - 8px);
       }
@@ -10490,7 +10490,7 @@ body
     & > picture {
       transition: 0.25s ease-in-out;
 
-      @media (max-width: 999px) {
+      @media (max-width: 1000px) {
         filter: invert(1);
       }
     }
@@ -10511,12 +10511,12 @@ body
         border: 1px solid var(--blue-main);
         box-shadow: 0px 0px 15px var(--blue-main);
 
-        @media (max-width: 999px) {
+        @media (max-width: 1000px) {
           background-color: var(--blue-main);
         }
 
         & > picture {
-          @media (max-width: 999px) {
+          @media (max-width: 1000px) {
             filter: invert(0);
           }
         }
@@ -10529,10 +10529,10 @@ body
     flex-direction: row;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 60px;
+    gap: 32px;
     width: 100%;
 
-    @media (max-width: 999px) {
+    @media (max-width: 1000px) {
       flex-direction: column;
       align-items: center;
       flex-wrap: unset;
@@ -10556,7 +10556,6 @@ body
   &__rates {
     width: 100%;
     max-width: 238px;
-    margin-right: 10px;
 
     & > p {
       font-size: 24px;
@@ -10668,7 +10667,7 @@ body
     align-items: flex-start;
     gap: 35px;
 
-    @media (max-width: 999px) {
+    @media (max-width: 1000px) {
       gap: 30px;
     }
 
@@ -10681,22 +10680,40 @@ body
       flex-direction: row;
       flex-wrap: wrap;
       gap: 10px;
-      max-width: 440px;
+      max-width: 100%;
       width: 100%;
       justify-content: flex-start;
 
-      @media (max-width: 720px) {
+      @media (max-width: 1000px) {
         justify-content: center;
         gap: 4px;
-        max-width: 100%;
-        width: 100%;
       }
 
       & > .filter {
         padding: 4px 8px;
 
+        &:hover {
+          background-color: transparent;
+          color: var(--blue-main);
+          border: 1px solid var(--blue-main);
+          box-shadow: 0px 0px 15px var(--blue-main);
+        }
+
+        &.active {
+          background-color: var(--blue-main);
+          color: var(--color-black);
+          border: 1px solid var(--blue-main);
+          box-shadow: 0px 0px 15px var(--blue-main);
+
+          & > i {
+            &::before {
+              background-color: currentColor;
+            }
+          }
+        }
+
         & > i {
-          margin-left: 4px;
+          margin-left: 2px;
         }
       }
     }

@@ -226,35 +226,35 @@
         <div class="reviews__inner">
             <!-- Табы отзывов по сервисам  -->
             <div class="reviews__buttons">
-                <button type="button" class="big reviews__button reviews__button-main">
+                <button type="button" class="big reviews__button reviews__button-main" data-type="all">
                     Все отзывы
                     <i class="icon-arrow_wide"></i>
                 </button>
-                <button type="button" class="big reviews__button">
+                <button type="button" class="big reviews__button" data-type="1">
                     <picture>
                         <source srcset="./src/images/yandex-big-logo.webp" media="(min-width: 999px)" />
                         <img src="./src/icons/reviews/yandex.svg" />
                     </picture>
                 </button>
-                <button type="button" class="big reviews__button">
+                <button type="button" class="big reviews__button" data-type="2">
                     <picture>
                         <source srcset="./src/images/google-big-logo.webp" media="(min-width: 999px)" />
                         <img src="./src/icons/reviews/google.svg" />
                     </picture>
                 </button>
-                <button type="button" class="big reviews__button">
+                <button type="button" class="big reviews__button" data-type="3">
                     <picture>
                         <source srcset="./src/images/2-gis-big-logo.webp" media="(min-width: 999px)" />
                         <img src="./src/icons/reviews/2gis.svg" />
                     </picture>
                 </button>
-                <button type="button" class="big reviews__button">
+                <button type="button" class="big reviews__button" data-type="4">
                     <picture>
                         <source srcset="./src/images/yell-big-logo.webp" media="(min-width: 999px)" />
                         <img src="./src/icons/reviews/yell.svg" />
                     </picture>
                 </button>
-                <button type="button" class="big reviews__button">
+                <button type="button" class="big reviews__button" data-type="5">
                     <picture>
                         <source srcset="./src/images/runet-big-logo.webp" media="(min-width: 999px)" />
                         <img src="./src/icons/reviews/rating_runet.svg" />
@@ -263,7 +263,7 @@
             </div>
         
             <!-- Лейаут отзывов -->
-            <div class="reviews__layout">
+            <div class="reviews__layout" id="reviews-container" data-pjax-container="" data-pjax-push-state="" data-pjax-timeout="1000">
         
                 <!-- Рейтинг отзывов -->
                 <div class="reviews__rates">
@@ -530,61 +530,8 @@
                                         01.08.20
                                     </p>
                                 </div>
-                        
-                                
                             </div>
                         </div>
-                        <!-- <div class="review-card">
-                            <p class="review-card-header title_h5">
-                                СтронгМэн
-                            </p>
-                            <p class="color-blue">Директор СтронгМэн</p>
-                            <p class="review-card-body">
-                                Работаем с компанией Intrid более полугода. Разработали для меня интернет магазин. Качеством я
-                                остался доволен. Очень профессиональный подход и весьма ориентированы на клиента. Желаю им
-                                больших успехов и хороших заказов)
-                            </p>
-                            <p class="color-grey">
-                                20.01.22 <a target="_blank" href="https://strongmanpro.ru/"
-                                    class="color-blue hover-underline">https://strongmanpro.ru</a>
-                            </p>
-                        </div>
-                        <div class="review-card">
-                            <p class="review-card-header title_h5">
-                                Иванова С.В.
-                            </p>
-                            <p class="color-blue">Руководитель SpaceLove</p>
-                            <p class="review-card-body">
-                                Искала веб-студию для разработки интернет-магазина, решила остановиться на этой организации,
-                                опираясь на прочитанные отзывы, и не ошиблась. Работа была выполнена оперативно и в срок, в
-                                процессе разработки каждое пожелание было учитано и исполнено в самом лучшем варианте, сайтом
-                                полностью довольны. Дополнительно были предоставлены скидки, что очень порадовало. Отдельное
-                                спасибо Тимуру за полное сопровождение в процессе разработки, и всей организации за
-                                клиентоориентированный подход. Если Вы хотите крутой, современный и функциональный сайт, то Вам
-                                в INTRID.
-                            </p>
-                            <p class="color-grey">
-                                21.09.21 <a target="_blank" href="https://space-love.ru/"
-                                    class="color-blue hover-underline">https://space-love.ru</a>
-                            </p>
-                        </div>
-                        <div class="review-card">
-                            <p class="review-card-header title_h5">
-                                Татаринцев С.С.
-                            </p>
-                            <p class="color-blue">Руководитель Протект-Ковка</p>
-                            <p class="review-card-body">
-                                С компанией Intrid работаем полтора года. Сотрудничество началось с разработки сайта
-                                (protekt-kovka.ru), затем SEO и реклама. Качеством всех услуг мы довольны, все наши претензии и
-                                пожелания рассматриваем с project-менеджером в конструктивном диалоге. Цены ,по нашим
-                                наблюдениям, очень демократичные, то есть ниже, чем во всех коммерческих предложениях от других
-                                компаний. Неоднократно рекомендовали INTRID своим бизнес-партнёрам, все были довольны.
-                            </p>
-                            <p class="color-grey">
-                                07.07.21 <a target="_blank" href="https://protekt-kovka.ru/"
-                                    class="color-blue hover-underline">https://protekt-kovka.ru</a>
-                            </p>      
-                        </div> -->
                     </div>
 
                     <!-- Показать ещё -->
@@ -842,6 +789,7 @@
     <script src="./js/map-handler.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
     <script src="./js/slider-with-pagination.js"></script>
+    <script src="./js/reviews.js"></script>
     <script>
         window.addEventListener('hashchange', () => {
             console.log('=> ', location.hash)
