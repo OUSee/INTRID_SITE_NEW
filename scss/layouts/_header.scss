@@ -144,6 +144,12 @@
 
       a {
         padding: 0px;
+
+        &:not(.highlight, .button-highlight) {
+          @media (max-width: 1000px) {
+            padding: 2.5px 0;
+          }
+        }
       }
 
       hr {
@@ -489,6 +495,12 @@
 
       .mobile-visible {
         display: block;
+
+        &:is(a) {
+          &:not(.highlight, .button-highlight) {
+            padding: 2.5px 0;
+          }
+        }
 
         &:not(.button-highlight) {
           color: var(--color-white);

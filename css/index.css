@@ -2793,6 +2793,11 @@ progress::-moz-progress-bar {
 .dropdown.second .dropdown-content a {
   padding: 0px;
 }
+@media (max-width: 1000px) {
+  .dropdown.second .dropdown-content a:not(.highlight, .button-highlight) {
+    padding: 2.5px 0;
+  }
+}
 .dropdown.second .dropdown-content hr {
   margin: 0;
   border-color: var(--color-white);
@@ -3092,6 +3097,9 @@ progress::-moz-progress-bar {
   }
   .main-header .header-links-nav .mobile-visible {
     display: block;
+  }
+  .main-header .header-links-nav .mobile-visible:is(a):not(.highlight, .button-highlight) {
+    padding: 2.5px 0;
   }
   .main-header .header-links-nav .mobile-visible:not(.button-highlight) {
     color: var(--color-white);
