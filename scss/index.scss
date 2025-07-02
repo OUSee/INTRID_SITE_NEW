@@ -159,6 +159,7 @@ label.radioButton:has(input:checked)::after {
 
 .slider-with-tabs {
   display: flex;
+  flex-direction: column;
   gap: 36px;
   position: static;
 
@@ -245,7 +246,7 @@ label.radioButton:has(input:checked)::after {
   &_tabs-buttons {
     margin-top: 100px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
 
     @media (max-width: 600px) {
