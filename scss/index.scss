@@ -728,7 +728,7 @@ button.next {
   }
 }
 
-.site {
+.page {
   &-achievements {
     &-group {
       display: flex;
@@ -753,6 +753,12 @@ button.next {
 
       @media (max-width: 440px) {
         gap: 10px;
+      }
+
+      &--ai {
+        align-items: center;
+        gap: 30px;
+        margin: 0 auto;
       }
 
       & > .achievement {
@@ -5864,7 +5870,7 @@ body
         max-height: 200px;
         right: calc(50% - 90px) !important;
         top: unset !important;
-        bottom: 170px;
+        bottom: 370px;
 
         img {
           top: 10px !important;
@@ -5873,12 +5879,12 @@ body
         }
       }
 
-      @media (max-width: 1000px) {
+      @media (max-width: 600px) {
         max-width: 200px;
         max-height: 200px;
         right: calc(50% - 90px) !important;
         top: unset !important;
-        bottom: 150px;
+        bottom: 330px;
 
         img {
           top: 25px !important;
@@ -5886,6 +5892,24 @@ body
           width: 340px !important;
         }
       }
+    }
+
+    & .left-block {
+      max-width: 777px;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
     }
   }
 
