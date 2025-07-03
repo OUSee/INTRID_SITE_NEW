@@ -755,12 +755,6 @@ button.next {
         gap: 10px;
       }
 
-      &--ai {
-        align-items: center;
-        gap: 30px;
-        margin: 0 auto;
-      }
-
       & > .achievement {
         display: flex;
         flex-direction: column;
@@ -777,6 +771,23 @@ button.next {
           color: var(--color-white);
           margin-top: 10px;
           text-align: center;
+        }
+      }
+
+      &--ai {
+        align-items: center;
+        gap: 30px;
+        margin: 0 auto;
+      }
+
+      &--promotion {
+        align-items: center;
+        gap: 30px;
+        margin: 0 auto;
+
+        & > .achievement {
+          flex-grow: unset;
+          flex-basis: 200px;
         }
       }
     }
@@ -9042,8 +9053,35 @@ body
 .promotion {
   &-main {
     .crm-page--block .flying-orb {
+      @media (max-width: 1000px) {
+        bottom: 305px;
+      }
+
       & > img {
         left: 50%;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      gap: 10px;
+      width: 100%;
+
+      @media (max-width: 1000px) {
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      & .crm-actions {
+        flex-wrap: nowrap;
+
+        @media (max-width: 1000px) {
+          flex-wrap: wrap;
+        }
       }
     }
   }

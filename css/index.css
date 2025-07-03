@@ -4119,11 +4119,6 @@ button.next:hover {
     gap: 10px;
   }
 }
-.page-achievements-group--ai {
-  align-items: center;
-  gap: 30px;
-  margin: 0 auto;
-}
 .page-achievements-group > .achievement {
   display: flex;
   flex-direction: column;
@@ -4139,6 +4134,20 @@ button.next:hover {
   color: var(--color-white);
   margin-top: 10px;
   text-align: center;
+}
+.page-achievements-group--ai {
+  align-items: center;
+  gap: 30px;
+  margin: 0 auto;
+}
+.page-achievements-group--promotion {
+  align-items: center;
+  gap: 30px;
+  margin: 0 auto;
+}
+.page-achievements-group--promotion > .achievement {
+  flex-grow: unset;
+  flex-basis: 200px;
 }
 
 .under-title {
@@ -11170,8 +11179,36 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   padding-left: 10px;
 }
 
+@media (max-width: 1000px) {
+  .promotion-main .crm-page--block .flying-orb {
+    bottom: 305px;
+  }
+}
 .promotion-main .crm-page--block .flying-orb > img {
   left: 50%;
+}
+.promotion-main-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 10px;
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .promotion-main-actions {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+.promotion-main-actions .crm-actions {
+  flex-wrap: nowrap;
+}
+@media (max-width: 1000px) {
+  .promotion-main-actions .crm-actions {
+    flex-wrap: wrap;
+  }
 }
 @media (max-width: 600px) {
   .promotion-ways > ul > li > div p.color-grey {
