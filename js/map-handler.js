@@ -56,10 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
         mapData[value]?.wa || mapData[value]?.tg ? 'flex' : 'none';
 
       whatsapp.style.display = mapData[value].wa ? 'flex' : 'none';
-      whatsapp.setAttribute('href', mapData[value].wa ?? mapData[value]?.wa);
+      whatsapp.setAttribute('href', 'https://wa.me/' + mapData[value]?.wa);
+      whatsapp.setAttribute('target', '_blank');
 
       telegram.style.display = mapData[value].tg ? 'flex' : 'none';
-      telegram.setAttribute('href', mapData[value].tg ?? mapData[value]?.tg);
+      telegram.setAttribute('href', 'https://t.me/' + mapData[value]?.tg);
+      telegram.setAttribute('target', '_blank');
+
+      console.log(telegram.getAttribute('href'));
 
       linkBtn.href = mapData[value].link;
     }
