@@ -790,6 +790,31 @@ button.next {
           flex-basis: 200px;
         }
       }
+
+      &--aistore {
+        align-items: center;
+        gap: 30px;
+        margin: 0 auto;
+
+        & > .achievement {
+          flex-grow: unset;
+          flex-basis: 200px;
+          min-width: 200px;
+        }
+      }
+
+      &--design {
+        align-items: center;
+        gap: 30px;
+        width: unset;
+        margin: 0;
+
+        & > .achievement {
+          flex-grow: unset;
+          flex-basis: 200px;
+          min-width: 200px;
+        }
+      }
     }
   }
 }
@@ -9603,6 +9628,28 @@ body
 // design-page
 
 .design {
+  &-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 100%;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    & > .crm-actions {
+      flex-wrap: nowrap;
+
+      @media (max-width: 1000px) {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
   &-portfolio {
     &-description {
       display: flex;
@@ -9626,6 +9673,22 @@ body
 
     .sites-portfolio-slider {
       margin-top: unset;
+    }
+  }
+
+  &-page {
+    & .flying-orb {
+      @media (max-width: 1000px) {
+        bottom: 305px;
+      }
+
+      @media (max-width: 600px) {
+        bottom: 255px;
+      }
+
+      @media (max-width: 506px) {
+        bottom: 305px;
+      }
     }
   }
 }
@@ -10147,8 +10210,51 @@ body
 .ai_store {
   &-main {
     .flying-orb {
+      @media (max-width: 1000px) {
+        bottom: 305px;
+      }
+
       @media (max-width: 785px) {
-        bottom: 150px;
+        bottom: 350px;
+      }
+
+      @media (max-width: 600px) {
+        bottom: 320px;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      gap: 30px;
+      width: 100%;
+
+      @media (max-width: 1000px) {
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: unset;
+      }
+
+      & .crm-actions {
+        flex-wrap: nowrap;
+
+        @media (max-width: 1000px) {
+          flex-wrap: wrap;
+        }
+      }
+
+      & > .page-achievements-group {
+        max-width: unset;
+        margin: 0;
+
+        @media (max-width: 1000px) {
+          margin: 0 auto;
+          padding: 30px 0 0 0;
+        }
       }
     }
   }

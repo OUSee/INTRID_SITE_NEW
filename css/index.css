@@ -4149,6 +4149,27 @@ button.next:hover {
   flex-grow: unset;
   flex-basis: 200px;
 }
+.page-achievements-group--aistore {
+  align-items: center;
+  gap: 30px;
+  margin: 0 auto;
+}
+.page-achievements-group--aistore > .achievement {
+  flex-grow: unset;
+  flex-basis: 200px;
+  min-width: 200px;
+}
+.page-achievements-group--design {
+  align-items: center;
+  gap: 30px;
+  width: unset;
+  margin: 0;
+}
+.page-achievements-group--design > .achievement {
+  flex-grow: unset;
+  flex-basis: 200px;
+  min-width: 200px;
+}
 
 .under-title {
   text-align: center;
@@ -11609,6 +11630,28 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   justify-self: end;
 }
 
+.design-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 10px;
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .design-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.design-actions > .crm-actions {
+  flex-wrap: nowrap;
+}
+@media (max-width: 1000px) {
+  .design-actions > .crm-actions {
+    flex-wrap: wrap;
+  }
+}
 .design-portfolio-description {
   display: flex;
   column-gap: 50px;
@@ -11629,6 +11672,21 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .design-portfolio .sites-portfolio-slider {
   margin-top: unset;
+}
+@media (max-width: 1000px) {
+  .design-page .flying-orb {
+    bottom: 305px;
+  }
+}
+@media (max-width: 600px) {
+  .design-page .flying-orb {
+    bottom: 255px;
+  }
+}
+@media (max-width: 506px) {
+  .design-page .flying-orb {
+    bottom: 305px;
+  }
 }
 
 .design_site-ways {
@@ -12016,9 +12074,54 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   margin-left: auto;
 }
 
+@media (max-width: 1000px) {
+  .ai_store-main .flying-orb {
+    bottom: 305px;
+  }
+}
 @media (max-width: 785px) {
   .ai_store-main .flying-orb {
-    bottom: 150px;
+    bottom: 350px;
+  }
+}
+@media (max-width: 600px) {
+  .ai_store-main .flying-orb {
+    bottom: 320px;
+  }
+}
+.ai_store-main-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 30px;
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .ai_store-main-actions {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: unset;
+  }
+}
+.ai_store-main-actions .crm-actions {
+  flex-wrap: nowrap;
+}
+@media (max-width: 1000px) {
+  .ai_store-main-actions .crm-actions {
+    flex-wrap: wrap;
+  }
+}
+.ai_store-main-actions > .page-achievements-group {
+  max-width: unset;
+  margin: 0;
+}
+@media (max-width: 1000px) {
+  .ai_store-main-actions > .page-achievements-group {
+    margin: 0 auto;
+    padding: 30px 0 0 0;
   }
 }
 .ai_store-portfolio {
