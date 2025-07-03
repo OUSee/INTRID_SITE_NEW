@@ -11489,10 +11489,20 @@ body
     }
   }
 
+  &#inkomed-wishes {
+    & > .img-wrapper {
+      margin: 0 auto;
+    }
+  }
+
   &#case-inkomed-works {
     & > .img-wrapper {
       margin: auto 0;
       max-width: 360px;
+
+      @media (max-width: 1000px) {
+        margin: 0 auto;
+      }
     }
 
     @media (min-width: 1200px) {
