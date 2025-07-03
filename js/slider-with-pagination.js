@@ -11,6 +11,7 @@ function sliderInitialise(){
         const fill = slider.dataset.fill;
         slider.style.transform = `translateX(-0px)`;
         let currentIndex = 0;
+        // ]adwadwawdadsdawd
 
         let prevBtn = []
         let nextBtn = []
