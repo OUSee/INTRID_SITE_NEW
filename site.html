@@ -700,10 +700,10 @@
                         </p>
                     </div>
                 </a>
-                <a href="https://kinospartak.ru" target="_blank" class="absolute-link">https://kinospartak.ru</a>
+                <a href="javascript://" data-popup="site-preview" data-site-preview="https://kinospartak.ru" class="absolute-link">https://kinospartak.ru</a>
             </div>
             <div class="recent-work-card">
-                <a href="./case/case-stelecom" target="_blank">
+                <a href="javascript://" data-popup="site-preview" data-site-preview="https://s-telekom.ru">
                     <img src="./src/images/stelecom_portfolio.webp" alt="recent-work-demo">
                     <div class="work-testimonial">
 
@@ -713,10 +713,10 @@
                         </p>
                     </div>
                 </a>
-                <a href="https://s-telekom.ru" target="_blank" class="absolute-link">https://s-telekom.ru</a>
+                <a href="javascript://" class="absolute-link" data-popup-open="site-preview" data-site-preview="https://s-telekom.ru">https://s-telekom.ru</a>
             </div>
             <div class="recent-work-card">
-                <a href="./case/case-prodvijenie" target="_blank">
+                <a href="javascript://" data-popup="site-preview" data-site-preview="https://продукты-тамбов.рф/">
                     <img src="./src/images/prodvizh_portfolio.webp" alt="recent-work-demo">
                     <div class="work-testimonial">
 
@@ -726,11 +726,11 @@
                         </p>
                     </div>
                 </a>
-                <a href="https://продукты-тамбов.рф/" target="_blank"
+                <a href="javascript://" data-popup="site-preview" data-site-preview="https://продукты-тамбов.рф/"
                     class="absolute-link">https://продукты-тамбов.рф</a>
             </div>
             <div class="recent-work-card">
-                <a href="./case/case-medved" target="_blank">
+                <a href="javascript://" data-popup="site-preview" data-site-preview="https://technok.ru/">
                     <img src="./src/images/medved_portfolio.webp" alt="recent-work-demo">
                     <div class="work-testimonial">
 
@@ -740,7 +740,7 @@
                         </p>
                     </div>
                 </a>
-                <a href="https://technok.ru/" target="_blank" class="absolute-link">https://technok.ru</a>
+                <a href="javascript://" data-popup="site-preview" data-site-preview="https://technok.ru/" class="absolute-link">https://technok.ru</a>
             </div>
         </div>
         <div id="sites-portfoli-pagination" class="pagination">
@@ -1554,6 +1554,24 @@
             </div>
         </div>
     </dialog>
+    <dialog class="popup" id="site-preview">
+        <div class="popup-body">
+            <div class="iframe-container">
+                <div class="iframe-tab-bar">
+                    <div class="iframe-controls">
+                        <span class="iframe-control iframe-control--red"></span>
+                        <span class="iframe-control iframe-control--orange"></span>
+                        <span class="iframe-control iframe-control--green"></span>             
+                    </div>
+                    <div class="iframe-tab-link">Заголовок сайта</div>
+                </div>
+                <div class="iframe-url">
+                    <span class="iframe-url-input"></span>
+                </div>
+                <div class="iframe-window"></div>
+            </div>
+        </div>
+    </dialog>
     <dialog class="popup" id="privacy-policy">
         <div class="popup-body">
             <p class="title_h3 text-center mb-20">
@@ -1688,6 +1706,7 @@
     <script src="./js/popup-handler.js"></script>
     <script src="./js/map-handler.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/sitePreview.js"></script>
 </body>
 
 </html>
