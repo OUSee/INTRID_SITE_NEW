@@ -2570,6 +2570,16 @@ progress::-moz-progress-bar {
   border-radius: 25px;
   max-width: 650px;
 }
+.popup#site-preview .popup-body {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0;
+}
+@media (max-width: 600px) {
+  .popup#site-preview .popup-body {
+    margin: 50px 0 20px;
+  }
+}
 .popup .map-container {
   overflow: hidden;
   border-radius: 25px;
@@ -13820,6 +13830,108 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     max-width: 100%;
     text-align: left;
   }
+}
+
+.iframe-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  background-color: var(--footer-bg);
+  border-radius: 25px;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .iframe-container {
+    border-radius: 15px;
+  }
+}
+.iframe-tab-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 7px 14px 0;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+@media (max-width: 600px) {
+  .iframe-tab-bar {
+    display: none;
+  }
+}
+.iframe-tab-link {
+  display: flex;
+  width: fit-content;
+  padding: 6px 22px;
+  background-color: rgba(255, 255, 255, 0.2);
+  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  overflow: hidden;
+}
+.iframe-url {
+  display: flex;
+  width: 100%;
+  padding: 6px 6px 6px 60px;
+  background-color: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .iframe-url {
+    padding: 6px;
+  }
+}
+.iframe-url-input {
+  width: 100%;
+  padding: 6px 22px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.iframe-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+.iframe-control {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+.iframe-control--red {
+  background-color: #ee5c55;
+}
+.iframe-control--orange {
+  background-color: #f8bc32;
+}
+.iframe-control--green {
+  background-color: #62cb43;
+}
+.iframe-window {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 75vh;
+  height: 75svh;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.iframe-window > iframe {
+  width: 100%;
+  backface-visibility: hidden;
 }
 
 @media (max-width: 1500px) {
