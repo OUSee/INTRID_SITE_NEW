@@ -5067,7 +5067,15 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   overflow: hidden;
 }
 .recent-work-card.newsletter-card > a {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   overflow: hidden;
+}
+.recent-work-card.newsletter-card .card-date {
+  padding-top: 20px;
+  margin-top: auto;
+  margin-left: auto;
 }
 .recent-work-card.newsletter-card .img-wrapper {
   max-height: 200px;
@@ -5087,6 +5095,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   object-fit: cover;
 }
 .recent-work-card.newsletter-card .work-testimonial {
+  flex: 1;
   padding: 10px 30px 20px 30px;
   margin-bottom: 0px;
 }

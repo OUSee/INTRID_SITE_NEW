@@ -1888,7 +1888,16 @@ body
     overflow: hidden;
 
     & > a {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
       overflow: hidden;
+    }
+
+    & .card-date {
+      padding-top: 20px;
+      margin-top: auto;
+      margin-left: auto;
     }
 
     .img-wrapper {
@@ -1911,6 +1920,7 @@ body
     }
 
     .work-testimonial {
+      flex: 1;
       padding: 10px 30px 20px 30px;
       margin-bottom: 0px;
     }
