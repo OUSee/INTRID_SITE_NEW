@@ -194,43 +194,43 @@
 			<!-- slider -->
 			<div class="site-slider" id="site-slider" data-slider="site-slider">
 				<div class="recent-work-card active">
-					<a href="https://tipo.intrid.ru/">
+					<a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/">
 						<img src="./src/images/tipo_mockup.webp" alt="recent-work-demo">
 						<div class="work-testimonial">
 							<span class="title_h4 color-white">Типография 36</span>
 						</div>
 					</a>
-					<a href="https://tipo.intrid.ru/" target="_blank" class="absolute-link">https://tipo.intrid.ru</a>
+					<a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/" class="absolute-link">https://tipo.intrid.ru</a>
 				</div>
 
 				<div class="recent-work-card active">
-					<a href="https://vinlam.ru/">
+					<a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/">
 						<img src="./src/images/vinlam_mockup.webp" alt="recent-work-demo">
 						<div class="work-testimonial">
 							<span class="title_h4 color-white">VinLam</span>
 						</div>
 					</a>
-					<a href="https://vinlam.ru/" target="_blank" class="absolute-link">https://vinlam.ru</a>
+					<a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/" class="absolute-link">https://vinlam.ru</a>
 				</div>
 
 				<div class="recent-work-card active">
-					<a href="https://trastvrn.ru/">
+					<a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/">
 						<img src="./src/images/trast_mockup.webp" alt="recent-work-demo">
 						<div class="work-testimonial">
 							<span class="title_h4 color-white">ТРАСТ</span>
 						</div>
 					</a>
-					<a href="https://trastvrn.ru/" target="_blank" class="absolute-link">https://trastvrn.ru</a>
+					<a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/" class="absolute-link">https://trastvrn.ru</a>
 				</div>
 
 				<div class="recent-work-card active">
-					<a href="https://test.intrid.ru/yd/" target="_blank">
+					<a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/">
 						<img src="./src/images/yamnoe-mockup.webp" alt="recent-work-demo">
 						<div class="work-testimonial">
 							<span class="title_h4 color-white">YamnoeDynamics</span>
 						</div>
 					</a>
-					<a href="https://test.intrid.ru/yd/" target="_blank"
+					<a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/"
 						class="absolute-link">https://yamnoe_dynamics</a>
 				</div>
 			</div>
@@ -410,7 +410,7 @@
 							</b>
 						</div>
 					</div>
-					<a href="./case/case-ngprom" class="button-link">
+					<a href="./portfolio/seo.html" class="button-link">
 						Подробнее <i class="icon-arrow_wide"></i>
 					</a>
 				</div>
@@ -469,7 +469,7 @@
 							</b>
 						</div>
 					</div>
-					<a href="./case/case-medved" class="button-link">
+					<a href="./portfolio/seo.html" class="button-link">
 						Подробнее <i class="icon-arrow_wide"></i>
 					</a>
 				</div>
@@ -528,7 +528,7 @@
 							</b>
 						</div>
 					</div>
-					<a href="./case/case-okinava" class="button-link">
+					<a href="./portfolio/seo.html" class="button-link">
 						Подробнее <i class="icon-arrow_wide"></i>
 					</a>
 				</div>
@@ -587,7 +587,7 @@
 							</b>
 						</div>
 					</div>
-					<a href="./case/case-tc_grand" class="button-link">
+					<a href="./portfolio/seo.html" class="button-link">
 						Подробнее <i class="icon-arrow_wide"></i>
 					</a>
 				</div>
@@ -1057,6 +1057,24 @@
 
 		</div>
 	</dialog>
+	<dialog class="popup" id="site-preview">
+		<div class="popup-body">
+			<div class="iframe-container">
+				<div class="iframe-tab-bar">
+					<div class="iframe-controls">
+						<span class="iframe-control iframe-control--red"></span>
+						<span class="iframe-control iframe-control--orange"></span>
+						<span class="iframe-control iframe-control--green"></span>
+					</div>
+					<div class="iframe-tab-link">Заголовок сайта</div>
+				</div>
+				<div class="iframe-url">
+					<span class="iframe-url-input"></span>
+				</div>
+				<div class="iframe-window"></div>
+			</div>
+		</div>
+	</dialog>
 	<!-- gallery -->
 	<dialog class="popup popup-gallery" id="gallery-popup">
 		<div class="popup-body">
@@ -1064,9 +1082,9 @@
 				data-onload="sliderInitialise">
 			</div>
 			<div id="gallery-pagination" class="pagination">
-				<!-- <button class="pagination--prev-btn">
+				<button class="pagination--prev-btn">
 	                    <i class="icon-shevrone left"></i>
-	                </button> -->
+	                </button>
 				<div class="pagination--buttons-dots">
 					<button class="pagination--btn-dot highlight"></button>
 					<button class="pagination--btn-dot"></button>
@@ -1074,13 +1092,13 @@
 					<button class="pagination--btn-dot"></button>
 					<button class="pagination--btn-dot"></button>
 				</div>
-				<!-- <button class="pagination--next-btn">
+				<button class="pagination--next-btn">
 	                    <i class="icon-shevrone"></i>
-	                </button> -->
+	                </button>
 			</div>
-			<button class="slider-nav-button" id="navleft_for--gallery-slider"><i
+			<!-- <button class="slider-nav-button" id="navleft_for--gallery-slider"><i
 					class="icon-shevrone left"></i></button>
-			<button class="slider-nav-button" id="navright_for--gallery-slider"><i class="icon-shevrone"></i></button>
+			<button class="slider-nav-button" id="navright_for--gallery-slider"><i class="icon-shevrone"></i></button> -->
 
 		</div>
 	</dialog>
@@ -1091,6 +1109,7 @@
 	<script src="./js/slider-with-pagination.js"></script>
 	<script src="./js/incrementNumbers.js"></script>
 	<script src="./js/gallerySelector.js"></script>
+	<script src="./js/sitePreview.js"></script>
 </body>
 
 </html>

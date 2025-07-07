@@ -575,7 +575,7 @@
             </ul>
         </div>
         <div class="flying-orb">
-            <img src="./src/images/orb.webp" alt="">
+            <img src="./src/images/orb-with-logo.webp" alt="">
             <div class="water-ripple">
                 <div class="ripple-circle"></div>
                 <div class="ripple-circle"></div>
@@ -665,7 +665,7 @@
             </p>
             <div class="sites-portfolio-slider" data-slider="portfolio-slider" id="portfolio-slider">
                 <div class="recent-work-card">
-                    <a href="./case/case-stelecom">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://s-telekom.ru">
                         <img src="./src/images/stelecom_portfolio.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
 
@@ -675,10 +675,10 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://s-telekom.ru" target="_blank" class="absolute-link">https://s-telekom.ru</a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://s-telekom.ru" class="absolute-link">https://s-telekom.ru</a>
                 </div>
                 <div class="recent-work-card">
-                    <a href="./case/case-prodvijenie">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://продукты-тамбов.рф/">
                         <img src="./src/images/prodvizh_portfolio.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
 
@@ -688,11 +688,11 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://продукты-тамбов.рф/" target="_blank"
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://продукты-тамбов.рф/"
                         class="absolute-link">https://продукты-тамбов.рф</a>
                 </div>
                 <div class="recent-work-card">
-                    <a href="./case/case-vinlam">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/">
                         <img src="./src/images/vinlam_mockup.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
                             <span class="title_h4 color-white">VinLam </span>
@@ -701,10 +701,10 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://vinlam.ru/" target="_blank" class="absolute-link">https://vinlam.ru</a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/" class="absolute-link">https://vinlam.ru</a>
                 </div>
                 <div class="recent-work-card">
-                    <a href="./case/case-ngprom" target="_blank">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://ng-prom.ru/">
                         <img src="./src/images/ng_mockup.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
                             <span class="title_h4 color-white">НГ Пром</span>
@@ -713,7 +713,7 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://ng-prom.ru/" target="_blank" class="absolute-link">https://ng-prom.ru</a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://ng-prom.ru/" class="absolute-link">https://ng-prom.ru</a>
                 </div>
             </div>
             <div id="sites-portfoli-pagination" class="pagination mb-50">
@@ -1176,7 +1176,7 @@
                             данных</a>
                     </p>
                 </div>
-                <img src="./src/images/orb.webp" alt="orb">
+                <img src="./src/images/orb-with-logo.webp" alt="orb">
             </form>
         </div>
     </section>
@@ -1383,6 +1383,24 @@
             </p>
         </div>
     </dialog>
+    <dialog class="popup" id="site-preview">
+        <div class="popup-body">
+            <div class="iframe-container">
+                <div class="iframe-tab-bar">
+                    <div class="iframe-controls">
+                        <span class="iframe-control iframe-control--red"></span>
+                        <span class="iframe-control iframe-control--orange"></span>
+                        <span class="iframe-control iframe-control--green"></span>
+                    </div>
+                    <div class="iframe-tab-link">Заголовок сайта</div>
+                </div>
+                <div class="iframe-url">
+                    <span class="iframe-url-input"></span>
+                </div>
+                <div class="iframe-window"></div>
+            </div>
+        </div>
+    </dialog>
     <dialog class="popup" id="sert-web-dev-1-magazine">
         <div class="popup-body">
             <img src="./src/images/sertificates/sert-web-dev-1-magazine.webp" alt="serificate">
@@ -1407,6 +1425,7 @@
     <script src="./js/main-page-diagrams.js"></script>
     <script src="./js/incrementNumbers.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/sitePreview.js"></script>
 </body>
 
 </html>

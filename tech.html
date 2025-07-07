@@ -357,7 +357,7 @@
         </p>
         <div class="support-slider" id="support-slider" data-slider="support-slider" data-fill="4,3,2,1">
             <div class="support-card">
-                <a href="./case/case-lubyatovo" target="_blank">
+                <a href="javascript://" data-popup="site-preview" data-site-preview="https://transport.lubyatovo.ru/">
                     <img src="./src/images/lubatovo_mockup.webp" alt="support-demo">
                     <p class="title_h4 color-white">
                         Любятово
@@ -427,7 +427,7 @@
             </div>
 
             <div class="support-card">
-                <a href="./case/case-chern" target="_blank">
+                <a href="javascript://" data-popup="site-preview" data-site-preview="https://transport.chernogolovka.com">
                     <img src="./src/images/tech_chern_mockup_min.webp" alt="support-demo">
                     <p class="title_h4 color-white">
                         Черноголовка
@@ -540,7 +540,7 @@
                             данных</a>
                     </p>
                 </div>
-                <img src="./src/images/orb.webp" alt="orb"="">
+                <img src="./src/images/orb-with-logo.webp" alt="orb"="">
             </form>
         </div>
     </section>
@@ -746,6 +746,24 @@
             </a>
         </div>
     </dialog>
+    <dialog class="popup" id="site-preview">
+        <div class="popup-body">
+            <div class="iframe-container">
+                <div class="iframe-tab-bar">
+                    <div class="iframe-controls">
+                        <span class="iframe-control iframe-control--red"></span>
+                        <span class="iframe-control iframe-control--orange"></span>
+                        <span class="iframe-control iframe-control--green"></span>
+                    </div>
+                    <div class="iframe-tab-link">Заголовок сайта</div>
+                </div>
+                <div class="iframe-url">
+                    <span class="iframe-url-input"></span>
+                </div>
+                <div class="iframe-window"></div>
+            </div>
+        </div>
+    </dialog>
     <dialog class="popup" id="accreditation-view">
         <div class="popup-body">
             <img src="./src/images/accreditation.webp" alt="accrediattion">
@@ -759,6 +777,7 @@
     <script src="./js/slider-with-pagination.js"></script>
     <script src="./js/incrementNumbers.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/sitePreview.js"></script>
 </body>
 
 </html>

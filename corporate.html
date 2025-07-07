@@ -160,7 +160,7 @@
         </div>
     </header>
     <!-- MAIN AREA -->
-    <section class="corporate-main main-page site container store-main">
+    <section class="corporate-main container">
         <div class="breadcrumbs">
             <a href="./">Главная</a><span>-</span><a href="./site.html">Разработка сайтов</a><span>-</span><a href="#"
                 class="link-disabled"><span class="br420">Разработка корпоративных сайтов</span><span
@@ -181,7 +181,7 @@
             <p class="title_h4 color-blue mt-20">
                 Стоимость разработки корпоративного сайта от&nbsp;180&nbsp;000&nbsp;₽
             </p>
-            <div class="fd-row gap-10 align-center flex-wrap">
+            <div class="corporate-actions fd-row gap-10 align-center flex-wrap">
                 <a class="button-highlight big" href="./calculator.html">
                     РАССЧИТАТЬ СТОИМОСТЬ ПРОЕКТА <span class="br420">ОНЛАЙН</span>
                     <i class="icon-arrow_wide"></i>
@@ -833,7 +833,7 @@
             </p>
             <div class="sites-portfolio-slider" data-slider="portfolio-slider" id="portfolio-slider">
                 <div class="recent-work-card">
-                    <a href="./case/case-fakel">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://stomatfakel.ru/">
                         <img src="./src/images/stomat_mockup.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
                             <span class="title_h4 color-white">Факел</span>
@@ -842,10 +842,10 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://stomatfakel.ru/" target="_blank" class="absolute-link">https://stomatfakel.ru</a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://stomatfakel.ru/" class="absolute-link">https://stomatfakel.ru</a>
                 </div>
                 <div class="recent-work-card">
-                    <a href="./case/case-tipo">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/">
                         <img src="./src/images/tipo_mockup.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
                             <span class="title_h4 color-white">Типография 36 </span>
@@ -854,10 +854,10 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://tipo.intrid.ru/" target="_blank" class="absolute-link">https://tipo.intrid.ru</a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/" class="absolute-link">https://tipo.intrid.ru</a>
                 </div>
                 <div class="recent-work-card">
-                    <a href="./case/case-trast">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/">
                         <img src="./src/images/trast_mockup.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
                             <span class="title_h4 color-white">ТРАСТ</span>
@@ -866,10 +866,10 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://trastvrn.ru/" target="_blank" class="absolute-link">https://trastvrn.ru/</a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/" class="absolute-link">https://trastvrn.ru/</a>
                 </div>
                 <div class="recent-work-card">
-                    <a href="./case/case-priroda">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://nasha-priroda.ru/">
                         <img src="./src/images/priroda_mockup.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
                             <span class="title_h4 color-white">Наша природа</span>
@@ -878,8 +878,8 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://kinospartak.ru.aboba" target="_blank"
-                        class="absolute-link">https://kinospartak.ru</a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://nasha-priroda.ru/"
+                        class="absolute-link">https://nasha-priroda.ru/</a>
                 </div>
             </div>
             <div id="sites-portfoli-pagination" class="pagination mb-50">
@@ -1061,7 +1061,7 @@
                             данных</a>
                     </p>
                 </div>
-                <img src="./src/images/orb.webp" alt="orb">
+                <img src="./src/images/orb-with-logo.webp" alt="orb">
             </form>
         </div>
     </section>
@@ -1193,6 +1193,24 @@
             </div>
         </div>
     </dialog>
+    <dialog class="popup" id="site-preview">
+        <div class="popup-body">
+            <div class="iframe-container">
+                <div class="iframe-tab-bar">
+                    <div class="iframe-controls">
+                        <span class="iframe-control iframe-control--red"></span>
+                        <span class="iframe-control iframe-control--orange"></span>
+                        <span class="iframe-control iframe-control--green"></span>
+                    </div>
+                    <div class="iframe-tab-link">Заголовок сайта</div>
+                </div>
+                <div class="iframe-url">
+                    <span class="iframe-url-input"></span>
+                </div>
+                <div class="iframe-window"></div>
+            </div>
+        </div>
+    </dialog>
     <dialog class="popup" id="privacy-policy">
         <div class="popup-body">
             <p class="title_h3 text-center mb-20">
@@ -1281,6 +1299,7 @@
     <script src="./js/slider-with-pagination.js"></script>
     <script src="./js/incrementNumbers.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/sitePreview.js"></script>
 </body>
 
 </html>

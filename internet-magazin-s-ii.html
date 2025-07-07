@@ -472,7 +472,7 @@
             <div class="sites-portfolio-slider" data-slider="portfolio-slider" id="portfolio-slider"
                 style="transform: translateX(0px);">
                 <div class="recent-work-card active">
-                    <a href="./case/case-vinlam">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/">
                         <img src="./src/images/vinlam_mockup.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
                             <!-- <span class="card-tag">
@@ -486,10 +486,10 @@
 
                         </div>
                     </a>
-                    <a href="https://vinlam.ru/" target="_blank" class="absolute-link">https://vinlam.ru</a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/" class="absolute-link">https://vinlam.ru</a>
                 </div>
                 <div class="recent-work-card active">
-                    <a href="./case/case-vsya_nedvijimost">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vsya-nedvizhimost.ru/">
                         <img src="./src/images/vsya_nedv_mockup.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
 
@@ -499,11 +499,11 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://vsya-nedvizhimost.ru/" target="_blank"
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vsya-nedvizhimost.ru/"
                         class="absolute-link">https://vsya-nedvizhimost.ru</a>
                 </div>
                 <div class="recent-work-card active">
-                    <a href="./case/case-chernogolovka">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://transport.chernogolovka.com">
                         <img src="./src/images/tech_chern_mockup_min.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
                             <span class="title_h4 color-white">Черноголовка</span>
@@ -512,11 +512,11 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://transport.chernogolovka.com" target="_blank"
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://transport.chernogolovka.com"
                         class="absolute-link">https://transport.chernogolovka.com</a>
                 </div>
                 <div class="recent-work-card active">
-                    <a href="./case/case-ngprom" target="_blank">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://ng-prom.ru/">
                         <img src="./src/images/ng_mockup.webp" alt="recent-work-demo">
                         <div class="work-testimonial">
 
@@ -526,7 +526,7 @@
                             </p>
                         </div>
                     </a>
-                    <a href="https://ng-prom.ru/" target="_blank" class="absolute-link">https://ng-prom.ru</a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://ng-prom.ru/" class="absolute-link">https://ng-prom.ru</a>
                 </div>
             </div>
             <div id="sites-portfoli-pagination" class="pagination">
@@ -553,7 +553,7 @@
     <section class="for-buisness-offers">
         <div class="container blocks-wrapper">
             <div class="orb-bottom">
-                <img src="./src/images/orb.webp" alt="orb">
+                <img src="./src/images/orb-with-logo.webp" alt="orb">
             </div>
             <div class="for-buisness-block">
                 <p class="title_h5 color-blue">Для тех, кто ищет выгоду</p>
@@ -634,7 +634,7 @@
                             данных</a>
                     </p>
                 </div>
-                <img src="./src/images/orb.webp" alt="orb"="">
+                <img src="./src/images/orb-with-logo.webp" alt="orb"="">
             </form>
         </div>
     </section>
@@ -799,6 +799,24 @@
             </a>
         </div>
     </dialog>
+    <dialog class="popup" id="site-preview">
+        <div class="popup-body">
+            <div class="iframe-container">
+                <div class="iframe-tab-bar">
+                    <div class="iframe-controls">
+                        <span class="iframe-control iframe-control--red"></span>
+                        <span class="iframe-control iframe-control--orange"></span>
+                        <span class="iframe-control iframe-control--green"></span>
+                    </div>
+                    <div class="iframe-tab-link">Заголовок сайта</div>
+                </div>
+                <div class="iframe-url">
+                    <span class="iframe-url-input"></span>
+                </div>
+                <div class="iframe-window"></div>
+            </div>
+        </div>
+    </dialog>
     <dialog class="popup" id="privacy-policy">
         <div class="popup-body">
             <p class="title_h3 text-center mb-20">
@@ -886,6 +904,7 @@
     <script src="./js/main-page-diagrams.js"></script>
     <script src="./js/slider-with-pagination.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/sitePreview.js"></script>
 </body>
 
 </html>
