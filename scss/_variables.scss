@@ -861,7 +861,7 @@ ul {
     }
 
     &-start {
-      align-self: start;
+      align-self: flex-start;
     }
 
     &-end {
@@ -924,6 +924,10 @@ ul {
   &-fill {
     width: 100%;
   }
+
+  &-auto {
+    width: auto;
+  }
 }
 
 .h {
@@ -939,6 +943,10 @@ ul {
   }
 
   &t {
+    &-0 {
+      margin-top: 0;
+    }
+
     &-10 {
       margin-top: 10px;
     }
@@ -1033,6 +1041,10 @@ ul {
   }
 
   &b {
+    &-0 {
+      margin-bottom: 0;
+    }
+
     &-10 {
       margin-bottom: 10px;
     }
@@ -1055,6 +1067,15 @@ ul {
 
     &-auto {
       margin-bottom: auto;
+    }
+  }
+}
+
+// scroll-margin
+.scroll {
+  &-margin {
+    &-t {
+      scroll-margin-block-start: 80px;
     }
   }
 }
@@ -1781,6 +1802,119 @@ form {
     border-radius: 25px;
     border: 1px solid var(--blue-main);
     overflow: hidden;
+  }
+}
+
+.table {
+  width: 100%;
+  border-radius: 25px;
+  border-collapse: collapse;
+  background-color: transparent;
+  border: 1px solid var(--blue-main);
+
+  & thead {
+    background-color: var(--blue-bg);
+    color: var(--bg-main);
+    border: 1px solid var(--blue-main);
+  }
+
+  & tbody {
+    border: 1px solid var(--blue-main);
+
+    & td {
+      & span {
+        font-size: inherit;
+      }
+    }
+  }
+
+  & th {
+    padding: 5px 10px;
+    border: 1px solid var(--blue-main);
+    vertical-align: top;
+  }
+
+  & td {
+    padding: 5px 10px;
+    border: 1px solid var(--blue-main);
+    vertical-align: top;
+  }
+
+  & tr {
+    border: 1px solid var(--blue-main);
+  }
+
+  &--noborder {
+    border: none;
+
+    & thead,
+    & tbody,
+    & th,
+    & tr,
+    & td {
+      border: none;
+    }
+
+    & thead {
+      border: 1px solid var(--blue-main);
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+
+      & th {
+        border: 1px solid var(--blue-main);
+        border-top: 0;
+        border-bottom: 0;
+        border-left: 0;
+
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+
+    & tbody {
+      & tr {
+        border: 1px solid var(--blue-main);
+        border-left: 0;
+        border-right: 0;
+
+        &:first-child {
+          border-bottom: 0;
+        }
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        & td {
+          border: 1px solid var(--blue-main);
+          border-top: 0;
+          border-bottom: 0;
+          border-left: 0;
+
+          &:first-child {
+            border-left: 0;
+          }
+
+          &:last-child {
+            border-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &--wrap {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+  &--responsive {
+    table-layout: auto;
+    overflow: visible;
   }
 }
 

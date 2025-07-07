@@ -1399,7 +1399,7 @@ ul.generic-list > li::marker {
   align-self: baseline;
 }
 .align-self-start {
-  align-self: start;
+  align-self: flex-start;
 }
 .align-self-end {
   align-self: flex-end;
@@ -1444,6 +1444,9 @@ ul.generic-list > li::marker {
 .w-fill {
   width: 100%;
 }
+.w-auto {
+  width: auto;
+}
 
 .h-100 {
   height: 100%;
@@ -1451,6 +1454,9 @@ ul.generic-list > li::marker {
 
 .m-center {
   margin: 0 auto;
+}
+.mt-0 {
+  margin-top: 0;
 }
 .mt-10 {
   margin-top: 10px;
@@ -1518,6 +1524,9 @@ ul.generic-list > li::marker {
 .mr-32 {
   margin-right: 32px;
 }
+.mb-0 {
+  margin-bottom: 0;
+}
 .mb-10 {
   margin-bottom: 10px;
 }
@@ -1535,6 +1544,10 @@ ul.generic-list > li::marker {
 }
 .mb-auto {
   margin-bottom: auto;
+}
+
+.scroll-margin-t {
+  scroll-margin-block-start: 80px;
 }
 
 @media (max-width: 900px) {
@@ -2144,6 +2157,92 @@ form .button:hover {
   border-radius: 25px;
   border: 1px solid var(--blue-main);
   overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-radius: 25px;
+  border-collapse: collapse;
+  background-color: transparent;
+  border: 1px solid var(--blue-main);
+}
+.table thead {
+  background-color: var(--blue-bg);
+  color: var(--bg-main);
+  border: 1px solid var(--blue-main);
+}
+.table tbody {
+  border: 1px solid var(--blue-main);
+}
+.table tbody td span {
+  font-size: inherit;
+}
+.table th {
+  padding: 5px 10px;
+  border: 1px solid var(--blue-main);
+  vertical-align: top;
+}
+.table td {
+  padding: 5px 10px;
+  border: 1px solid var(--blue-main);
+  vertical-align: top;
+}
+.table tr {
+  border: 1px solid var(--blue-main);
+}
+.table--noborder {
+  border: none;
+}
+.table--noborder thead, .table--noborder tbody, .table--noborder th, .table--noborder tr, .table--noborder td {
+  border: none;
+}
+.table--noborder thead {
+  border: 1px solid var(--blue-main);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.table--noborder thead th {
+  border: 1px solid var(--blue-main);
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+}
+.table--noborder thead th:last-child {
+  border-right: 0;
+}
+.table--noborder tbody tr {
+  border: 1px solid var(--blue-main);
+  border-left: 0;
+  border-right: 0;
+}
+.table--noborder tbody tr:first-child {
+  border-bottom: 0;
+}
+.table--noborder tbody tr:last-child {
+  border-bottom: 0;
+}
+.table--noborder tbody tr td {
+  border: 1px solid var(--blue-main);
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+}
+.table--noborder tbody tr td:first-child {
+  border-left: 0;
+}
+.table--noborder tbody tr td:last-child {
+  border-right: 0;
+}
+.table--wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+.table--responsive {
+  table-layout: auto;
+  overflow: visible;
 }
 
 .icms-note {
@@ -13668,8 +13767,20 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     max-width: 100%;
   }
 }
+.case_layout .img-wrapper.m0 {
+  margin: 0;
+}
 .case_layout--min > .img-wrapper {
   max-width: 400px;
+}
+.case_layout--minified > .img-wrapper {
+  max-width: 320px;
+  margin: 0 auto;
+}
+@media (max-width: 1000px) {
+  .case_layout--minified > .img-wrapper {
+    max-width: 400px;
+  }
 }
 .case_layout--filled {
   flex: 1 0 auto;
@@ -13707,6 +13818,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     flex: 1 0 auto;
     max-width: 100%;
   }
+}
+.case_layout .wider {
+  max-width: 100%;
 }
 
 .owner-col {
@@ -14053,6 +14167,126 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   height: 100%;
   border: 0;
   overflow: hidden;
+}
+
+.pamatka_page-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.pamatka_page-content {
+  position: relative;
+  padding: 0 50px 62px;
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%);
+}
+@media (max-width: 601px) {
+  .pamatka_page-content {
+    padding: 0 20px 40px;
+  }
+}
+@media (max-width: 440px) {
+  .pamatka_page-content {
+    padding: 0 10px 40px;
+  }
+}
+.pamatka_page-content .img-wrapper {
+  display: flex;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.pamatka_page-content .img-wrapper:first-child {
+  margin-top: 0;
+}
+.pamatka_page-content .img-wrapper.wider {
+  max-width: 100%;
+}
+.pamatka_page-content .img-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.pamatka_page-content > p {
+  margin-bottom: 20px;
+}
+.pamatka_page-content > p.title_h3, .pamatka_page-content > p.title_h4 {
+  margin-bottom: 32px;
+  margin-top: 50px;
+}
+.pamatka_page-content > p.title_h3:first-child, .pamatka_page-content > p.title_h4:first-child {
+  margin-top: 0;
+}
+.pamatka_page-content > .ordinary-list {
+  margin-bottom: 20px;
+}
+.pamatka_page-content .prices-services-list .prices-services-list-item {
+  flex: 1 1 45%;
+  max-width: 50%;
+  height: unset;
+  padding: 100px 20px 32px 20px;
+}
+.pamatka_page-content .prices-services-list .prices-services-list-item .img-wrapper {
+  padding: 5px;
+  transform: translateY(50px);
+}
+.pamatka_page-content .prices-services-list .prices-services-list-item span.color-blue {
+  display: block;
+  transform: translateY(0px);
+  text-wrap: unset;
+}
+.pamatka_page-content .prices-services-list .prices-services-list-item:hover .img-wrapper {
+  transform: translateY(0px);
+}
+@media (max-width: 1200px) {
+  .pamatka_page-content .prices-services-list {
+    flex-wrap: wrap;
+    height: unset;
+    align-items: stretch;
+  }
+}
+.pamatka_page-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+@media (max-width: 1000px) {
+  .pamatka_page-bottom {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.pamatka_page-bottom > div:first-child {
+  max-width: 50%;
+}
+@media (max-width: 1000px) {
+  .pamatka_page-bottom > div:first-child {
+    max-width: 100%;
+  }
+}
+.pamatka_page-bottom > div:first-child > .title_h3 {
+  margin-bottom: 32px;
+}
+@media (max-width: 1000px) {
+  .pamatka_page-bottom > div:first-child > .title_h3 {
+    text-align: center;
+  }
+}
+.pamatka_page-bottom > div:first-child > .card-case {
+  width: 100%;
+}
+.pamatka_page-bottom > .case_page-mockup {
+  flex: 1;
+  width: 100%;
+  max-width: 470px;
+}
+@media (max-width: 1000px) {
+  .pamatka_page-bottom > .case_page-mockup {
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 1500px) {
