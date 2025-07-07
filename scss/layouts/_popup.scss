@@ -5,6 +5,7 @@
   height: 100vh;
   // background-color: transparent;
   //background-color: var(--bg-main);
+  padding: 60px 0 20px;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 1;
   z-index: 5;
@@ -23,8 +24,8 @@
 
   &.open {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
     animation: popupAppear 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
   }
 
@@ -80,7 +81,7 @@
     border-radius: 39px;
     padding: 15px;
     z-index: 9;
-    margin: 20px auto;
+    margin: auto;
     color: white;
 
     hr {
@@ -113,6 +114,12 @@
   }
 
   &#site-preview {
+    padding-top: 50px;
+
+    @media (max-width: 600px) {
+      padding-top: 20px;
+    }
+
     & .popup-body {
       width: 100%;
       max-width: 1500px;

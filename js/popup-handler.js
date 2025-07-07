@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-
   // Специально, для видео из кружочка
   const toggleVideoPLay = (videoElement, init) => {
     if (videoElement) {
@@ -27,9 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-
   const openPopup = (id) => {
-
     // console.log('open ', id);
     const popup = document.getElementById(id);
     const onLoad = popup.dataset.onload;
@@ -37,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let buttonClose = document.createElement('button');
 
     buttonClose.classList.add('popup-close');
+    buttonClose.setAttribute('data-close-popup', true);
     buttonClose.setAttribute('aria-label', 'close-popup');
 
     let videoPopup = popup.querySelector('video');
@@ -51,16 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
     videoPopup ? toggleVideoPLay(videoPopup, true) : false;
 
     if (onLoad) {
-      window[onLoad]()
+      window[onLoad]();
     }
 
     popup.addEventListener('click', (e) => {
-      if (e.target.classList.contains('popup-close') || e.target.id == id) {
+      if (
+        e.target.classList.contains('popup-close') ||
+        e.target.dataset.closePopup ||
+        e.target.id == id
+      ) {
         if (e.target.tagName && e.target.tagName.toLowerCase() !== 'a') {
           e.stopPropagation();
           e.preventDefault();
         }
-
 
         let videoPopup = popup.querySelector('video');
 
@@ -75,9 +76,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   };
-})
-
-
-
-
-
+});
