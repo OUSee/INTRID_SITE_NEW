@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                             }
                             if(toggle.counter?.total){
                                 target.current_value = target.current_value - toggle.counter.total
-                                target.current_value = 162
+                                // target.current_value = 162
                             }
                             if(toggle.nested && toggle.nested.length > 0){
                                 toggle.nested.forEach(nestedToggleid => {
@@ -237,9 +237,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 counter.elementref.dispatchEvent(changeEvent)
             })
             counter.elementref.addEventListener('input', () => {
-                target.innerText = `${parseInt(target.innerText) - counter.total}`
+                target.current_value = target.current_value - counter.total
                 counter.total = (parseInt(counter.elementref.value === '' ? 0 : counter.elementref.value)) * counter.price;
-                target.innerText = `${parseInt(target.innerText) + counter.total}`
+                target.current_value = target.current_value + counter.total
             })
             counter.elementref.addEventListener('keydown', (e) => {
                 const blockedkeys = ['-', ',', '.', '+']
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             toggles.map((toggle) => {
                 toggle.elementref.checked = false;
             })
-            target.innerText = `0`;
+            target.current_value = 0;
         })
 
         if(hash){handleToggleByHash(hash, toggles)}
