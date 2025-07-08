@@ -1354,6 +1354,16 @@ ul.generic-list > li::marker {
   display: flex;
   flex-direction: column;
 }
+@media (max-width: 600px) {
+  .fd-sm-col {
+    flex-direction: column;
+  }
+}
+@media (max-width: 440px) {
+  .fd-xs-col {
+    flex-direction: column;
+  }
+}
 
 .flex-nowrap {
   flex-wrap: nowrap;
@@ -1363,6 +1373,11 @@ ul.generic-list > li::marker {
 }
 .flex-50 {
   flex: 1 1 40%;
+}
+@media (max-width: 600px) {
+  .flex-sm-wrap {
+    flex-wrap: wrap;
+  }
 }
 
 .a-self-end {

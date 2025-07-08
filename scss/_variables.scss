@@ -792,6 +792,22 @@ ul {
     display: flex;
     flex-direction: column;
   }
+
+  &-sm {
+    &-col {
+      @media (max-width: 600px) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &-xs {
+    &-col {
+      @media (max-width: 440px) {
+        flex-direction: column;
+      }
+    }
+  }
 }
 
 // flex wrapping & sizes
@@ -806,6 +822,14 @@ ul {
 
   &-50 {
     flex: 1 1 40%;
+  }
+
+  &-sm {
+    &-wrap {
+      @media (max-width: 600px) {
+        flex-wrap: wrap;
+      }
+    }
   }
 }
 
