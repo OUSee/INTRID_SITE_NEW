@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const formatNumber = (num) => {
         const [integer, decimal] = num.toString().split('.');
         const formatted = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-        console.log('=> formatted', formatted)
+        // console.log('=> formatted', formatted)
         return formatted
     }
 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         set(val){
             this._current_value = val;
             this.innerText = formatNumber(val);
-            console.log('=> set new value', val)
+            // console.log('=> set new value', val)
         },
         configurable: true
     })
