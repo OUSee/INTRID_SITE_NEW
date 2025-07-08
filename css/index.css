@@ -2576,14 +2576,14 @@ progress::-moz-progress-bar {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  padding: 60px 0 20px;
+  padding: 60px 10px 20px;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 1;
   z-index: 5;
   top: 0;
   backdrop-filter: blur(5px);
   transform-origin: center;
-  min-width: 360px;
+  min-width: 200px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -5962,7 +5962,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   text-transform: none;
   justify-content: center;
   align-items: center;
-  animation: list-glow 9s linear infinite;
+  animation: list-glow 10.8s linear infinite;
 }
 .tech-we-use-list li .tech-tag:hover {
   color: var(--blue-main);
@@ -6012,6 +6012,15 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .tech-we-use-list li:nth-child(15) .tech-tag {
   animation-delay: 8.4s;
+}
+.tech-we-use-list li:nth-child(16) .tech-tag {
+  animation-delay: 9s;
+}
+.tech-we-use-list li:nth-child(17) .tech-tag {
+  animation-delay: 9.6s;
+}
+.tech-we-use-list li:nth-child(18) .tech-tag {
+  animation-delay: 10.2s;
 }
 
 .rating {
@@ -11617,13 +11626,26 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   width: 120px;
   flex: 0 0 120px;
 }
+.seo_page-portfolio .sites-portfolio-slider .recent-work-card {
+  flex: 1 0 calc(25% - 5px);
+  max-width: calc(25% - 5px);
+}
 @media (max-width: 1400px) {
   .seo_page-portfolio .sites-portfolio-slider .recent-work-card {
-    min-width: calc((100vw - 80px) / 3 - 10px);
-    opacity: 0.3;
+    flex: 1 0 calc(33.333333% - 5px);
+    max-width: calc(33.333333% - 5px);
   }
-  .seo_page-portfolio .sites-portfolio-slider .recent-work-card.active {
-    opacity: 1;
+}
+@media (max-width: 1100px) {
+  .seo_page-portfolio .sites-portfolio-slider .recent-work-card {
+    flex: 1 0 calc(50% - 5px);
+    max-width: calc(50% - 5px);
+  }
+}
+@media (max-width: 720px) {
+  .seo_page-portfolio .sites-portfolio-slider .recent-work-card {
+    flex: 1 0 100%;
+    max-width: 100%;
   }
 }
 @media (max-width: 1400px) {
