@@ -198,11 +198,16 @@ document.addEventListener('DOMContentLoaded', ()=> {
                             }
                             if(toggle.id === 'promotion-seo' || toggle.id === 'promotion-max_start'){
                                 const inside_toggles = toggle.reveal.querySelectorAll('input[type=checkbox]')
-                                console.log('=> inside_toggles', inside_toggles)
+                                // console.log('=> inside_toggles', inside_toggles)
+                                const new_toggleChange =  new Event('change')
                                 inside_toggles.forEach(toggle => {
                                     if(toggle.checked){
                                        toggle.checked = false;
-                                        toggle.dispatchEvent(togglechange)     
+                                       try{
+                                        toggle.dispatchEvent(new_toggleChange)     
+                                       }catch(e){
+                                        console.log('err: ', e)
+                                       }
                                     }
                                 })
                             }
