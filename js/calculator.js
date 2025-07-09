@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                                 toggle.nested.forEach(nestedToggleid => {
                                     const nestedToggle = toggles.find(t => t.id === nestedToggleid);
                                     const section = document.querySelector(`#section-${nestedToggleid.split('-')?.[0]}`)
-                                    section.checked = true
+                                    section ? section.checked = true : null
                                     try{
                                         if(nestedToggle){
                                             nestedToggle.elementref.checked = true;

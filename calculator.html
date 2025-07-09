@@ -305,12 +305,14 @@
                             </p>
                         </label>
                     </div>
-                    
+
                     <!-- tender-portal -->
                     <div class="toggle-line">
-                        <input type="checkbox" class="toggle-checkbox" id="tender-portal" name="tender-portal" data-price="0"
+                        <input type="checkbox" class="toggle-checkbox" id="tender-portal" name="tender-portal"
+                            data-price="0"
                             data-radio="type-portfolio;type-landing;type-corporate;type-corporate_catalogue;type-store;type-store_ai;type-portal;type-unique"
-                            data-reveal="tender-portal_where">
+                            data-reveal="tender-portal_where"
+                            data-nested="tender-portal_cust;tender-portal_toggle;tender-portal_logging;tender-portal_archive;tender-portal_priority">
                         <label for="tender-portal">
                             <p>
                                 Тендерный портал
@@ -328,33 +330,38 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="50000" id="tender-portal_cust"
                                 name="tender-portal_cust" data-radio="tender-portal_cbl">
                             <label for="tender-portal_cust">
-                                Настройка под бренд заказчика
-                                <span class="tooltip"
-                                    data-tooltip="Кастомизация логотипа, цветов, домена"><i
-                                        class="icon-tooltip"></i>
+                                <p>
+                                    Настройка под бренд заказчика <span class="tooltip"
+                                        data-tooltip="Кастомизация логотипа, цветов, домена"><i
+                                            class="icon-tooltip"></i>
                                     </span>
+                                </p>
                             </label>
                         </div>
 
                         <div class="toggle-line">
-                            <input type="checkbox" class="toggle-checkbox" data-price="20000" id="tender-portal_open" name="tender-portal_open"
-                                data-radio="tender-portal_sot">
+                            <input type="checkbox" class="toggle-checkbox" data-price="20000" id="tender-portal_open"
+                                name="tender-portal_open" data-radio="tender-portal_sot">
                             <label for="tender-portal_open">
-                                Проведение открытых тендеров и аукционов
-                                <span class="tooltip" data-tooltip="Организация тендеров и аукционов, где участвовать могут все желающие подрядчики"><i class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Проведение открытых тендеров и аукционов <span class="tooltip"
+                                        data-tooltip="Организация тендеров и аукционов, где участвовать могут все желающие подрядчики"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
                         <div class="toggle-line">
-                            <input type="checkbox" class="toggle-checkbox" data-price="300000" id="tender-portal_toggle" name="tender-portal_toggle"
-                                data-radio="tender-portal_oca">
+                            <input type="checkbox" class="toggle-checkbox" data-price="300000" id="tender-portal_toggle"
+                                name="tender-portal_toggle" data-radio="tender-portal_oca">
                             <label for="tender-portal_toggle">
-                                Проведение открытых/закрытых тендеров и аукционов
-                                <span class="tooltip"
-                                    data-tooltip="Организация тендеров и аукционов, где участвовать могут как все желающие подрядчики, так и только выбранные по предварительному отбору"><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Проведение открытых/закрытых тендеров и аукционов <span class="tooltip"
+                                        data-tooltip="Организация тендеров и аукционов, где участвовать могут как все желающие подрядчики, так и только выбранные по предварительному отбору"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -362,11 +369,11 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="80000" id="tender-portal_logging"
                                 name="tender-portal_logging" data-radio="tender-portal_log">
                             <label for="tender-portal_logging">
-                                Логирование действий пользователей
-                                <span class="tooltip"
-                                    data-tooltip="Фиксация всех событий в системе"><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Логирование действий пользователей <span class="tooltip"
+                                        data-tooltip="Фиксация всех событий в системе"><i class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -374,9 +381,12 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="90000" id="tender-portal_archive"
                                 name="tender-portal_archive" data-radio="tender-portal_arch">
                             <label for="tender-portal_archive">
-                                Архивация данных
-                                <span class="tooltip" data-tooltip="Хранение истории тендеров и сопутствующих документов"><i class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Архивация данных <span class="tooltip"
+                                        data-tooltip="Хранение истории тендеров и сопутствующих документов"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -384,7 +394,7 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="20000" id="tender-portal_auto"
                                 name="tender-portal_auto" data-radio="tender-portal_afdd">
                             <label for="tender-portal_auto">
-                                Автоматическое формирование и выгрузка документов
+                                <p> Автоматическое формирование и выгрузка документов</p>
                             </label>
                         </div>
 
@@ -392,21 +402,26 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="30000" id="tender-portal_click"
                                 name="tender-portal_click" data-radio="tender-portal_oct">
                             <label for="tender-portal_click">
-                                Торги в 1 клик
-                                <span class="tooltip" data-tooltip="Быстрое создание тендера с минимальными настройками"><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Торги в 1 клик <span class="tooltip"
+                                        data-tooltip="Быстрое создание тендера с минимальными настройками"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
                         <div class="toggle-line">
-                            <input type="checkbox" class="toggle-checkbox" data-price="90000" id="tender-portal_priority"
-                                name="tender-portal_priority" data-radio="tender-portal_ipb">
+                            <input type="checkbox" class="toggle-checkbox" data-price="90000"
+                                id="tender-portal_priority" name="tender-portal_priority"
+                                data-radio="tender-portal_ipb">
                             <label for="tender-portal_priority">
-                                Установка приоритетов для подрядчиков
-                                <span class="tooltip" data-tooltip="Ранжирование исполнителей по рейтингу, истории сотрудничества и другим настраиваемым факторам"><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Установка приоритетов для подрядчиков <span class="tooltip"
+                                        data-tooltip="Ранжирование исполнителей по рейтингу, истории сотрудничества и другим настраиваемым факторам"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -414,11 +429,11 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="50000" id="tender-portal_local"
                                 name="tender-portal_local" data-radio="tender-portal_ilb">
                             <label for="tender-portal_local">
-                                Интеграция с локальной базой заказчика
-                                <span class="tooltip"
-                                    data-tooltip="Синхронизация с внутренними CRM/ERP"><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Интеграция с локальной базой заказчика <span class="tooltip"
+                                        data-tooltip="Синхронизация с внутренними CRM/ERP"><i class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -426,9 +441,11 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="50000" id="tender-portal_i1crm"
                                 name="tender-portal_i1crm" data-radio="tender-portal_ioc">
                             <label for="tender-portal_i1crm">
-                                Интеграция с 1С
-                                <span class="tooltip" data-tooltip="заказчика и подрядчиков"><i class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Интеграция с 1С <span class="tooltip" data-tooltip="заказчика и подрядчиков"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -436,9 +453,13 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="80000" id="tender-portal_choose"
                                 name="tender-portal_choose" data-radio="tender-portal_acs">
                             <label for="tender-portal_choose">
-                                Автоматический подбор победителей тендеров по настроенным критериям
-                                <span class="tooltip" data-tooltip="ИИ анализирует заявки и выбирает лучшие предложения по ключевым для вас критериям"><i class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Автоматический подбор победителей тендеров по настроенным критериям <span
+                                        class="tooltip"
+                                        data-tooltip="ИИ анализирует заявки и выбирает лучшие предложения по ключевым для вас критериям"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -446,32 +467,40 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="20000" id="tender-portal_stat"
                                 name="tender-portal_stat" data-radio="tender-portal_dsg">
                             <label for="tender-portal_stat">
-                                Детальная статистика торгов в виде графиков и табличных отчетов
-                                <span class="tooltip"
-                                    data-tooltip="Аналитика по торгам, участникам, экономии и др."><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Детальная статистика торгов в виде графиков и табличных отчетов <span
+                                        class="tooltip"
+                                        data-tooltip="Аналитика по торгам, участникам, экономии и др."><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
                         <div class="toggle-line">
-                            <input type="checkbox" class="toggle-checkbox" data-price="70000" id="tender-portal_match" name="tender-portal_match"
-                                data-radio="tender-portal_mqp">
+                            <input type="checkbox" class="toggle-checkbox" data-price="70000" id="tender-portal_match"
+                                name="tender-portal_match" data-radio="tender-portal_mqp">
                             <label for="tender-portal_match">
-                                Оценка качества подрядчиков
-                                <span class="tooltip" data-tooltip="Рейтинги, отзывы, KPI и другие факторы"><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Оценка качества подрядчиков <span class="tooltip"
+                                        data-tooltip="Рейтинги, отзывы, KPI и другие факторы"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
                         <div class="toggle-line">
-                            <input type="checkbox" class="toggle-checkbox" data-price="50000" id="tender-portal_register"
-                                name="tender-portal_register" data-radio="tender-portal_mru">
+                            <input type="checkbox" class="toggle-checkbox" data-price="50000"
+                                id="tender-portal_register" name="tender-portal_register"
+                                data-radio="tender-portal_mru">
                             <label for="tender-portal_register">
-                                Многофакторная регистрация подрядчиков
-                                <span class="tooltip" data-tooltip="Верификация через несколько этапов, включая согласование с заказчиком"><i class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Многофакторная регистрация подрядчиков <span class="tooltip"
+                                        data-tooltip="Верификация через несколько этапов, включая согласование с заказчиком"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -479,10 +508,12 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="50000" id="tender-portal_multi"
                                 name="tender-portal_multi" data-radio="tender-portal_mls">
                             <label for="tender-portal_multi">
-                                Мультиязычная поддержка
-                                <span class="tooltip" data-tooltip="Верификация через несколько этапов, включая согласование с заказчиком"><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Мультиязычная поддержка <span class="tooltip"
+                                        data-tooltip="Верификация через несколько этапов, включая согласование с заказчиком"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -490,10 +521,12 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="60000" id="tender-portal_report"
                                 name="tender-portal_report" data-radio="tender-portal_rss">
                             <label for="tender-portal_report">
-                                Система претензий
-                                <span class="tooltip" data-tooltip="инструменты для урегулирования споров между заказчиком и подрядчиком"><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Система претензий <span class="tooltip"
+                                        data-tooltip="инструменты для урегулирования споров между заказчиком и подрядчиком"><i
+                                            class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
 
@@ -501,10 +534,11 @@
                             <input type="checkbox" class="toggle-checkbox" data-price="0" id="tender-portal_individual"
                                 name="tender-portal_individual" data-radio="tender-portal_idk">
                             <label for="tender-portal_individual">
-                                Индивидуальные доработки
-                                <span class="tooltip" data-tooltip="Уточняется по требованиям заказчика"><i
-                                        class="icon-tooltip"></i>
-                                </span>
+                                <p>
+                                    Индивидуальные доработки <span class="tooltip"
+                                        data-tooltip="Уточняется по требованиям заказчика"><i class="icon-tooltip"></i>
+                                    </span>
+                                </p>
                             </label>
                         </div>
                     </div>
@@ -517,8 +551,7 @@
                         <label for="type-unique">
                             <p>
                                 Уникальная разработка (Например:&nbsp;<a class="d-inline hover-underline"
-                                    href="./crm-erp.html"
-                                    title="CRM">CRM</a>,&nbsp;<a class="d-inline hover-underline"
+                                    href="./crm-erp.html" title="CRM">CRM</a>,&nbsp;<a class="d-inline hover-underline"
                                     href="./tender-portal.html" title="CRM">тендерный
                                     портал</a>&nbsp; и т.д.)
                                 <span class="tooltip"
@@ -1797,7 +1830,8 @@
                 </p>
                 <p class="title_h5 mb-10">Защита данных</p>
                 <p class="mb-20">
-                    Администрация сайта <a href="./" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт) не
+                    Администрация сайта <a href="./" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт)
+                    не
                     может
                     передать или
                     раскрыть
