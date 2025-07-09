@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
       list.style.setProperty('--list-length', items.length);
 
       items.forEach((item, index) => {
-        console.log(index);
         item.querySelector('.tech-tag').style.animation = `list-glow ${
           items.length * interval
         }s linear infinite`;

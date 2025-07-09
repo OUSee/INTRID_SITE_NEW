@@ -42,7 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     popup.classList.add('open');
 
-    popup.prepend(buttonClose);
+    popup.querySelector('.popup-wrapper')
+      ? popup?.querySelector('.popup-wrapper').prepend(buttonClose)
+      : popup.prepend(buttonClose);
 
     // Приостанавливаем прокрутку страницы, когда окно открыто
     document.documentElement.classList.add('popup-opened');
@@ -56,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (
         e.target.classList.contains('popup-close') ||
         e.target.dataset.closePopup ||
+        e.target.classList.contains('popup-wrapper') ||
         e.target.id == id
       ) {
         if (e.target.tagName && e.target.tagName.toLowerCase() !== 'a') {
