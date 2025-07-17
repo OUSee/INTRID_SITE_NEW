@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                               А также нужно разобраться, в чем его отличия от обычного сайте. 
                               Суть обоих понятий довольно близка - немного отличается лишь разнообразие. 
                               Выбор должен основываться на преследуемых целях и особенностей бизнеса.`,
+        date: '2022-01-01',
       },
       {
         img: './src/images/blog/kontent_sayta.webp',
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         description: `Интернет-магазин - удобная и современная платформа для реализации товаров. 
                               Однако, для удачной работы недостаточно просто создать сайт или страницу в соцсетях. 
                               Нужно наполнить его качественным контентом: статьями, заметками и описаниями товаров.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/cms-blog-preview.webp',
@@ -35,18 +37,21 @@ document.addEventListener('DOMContentLoaded', () => {
         title: 'Возможности нашей CMS – "i-сms"',
         description: `Наша компания разрабатывает и устанавливает уникальные CMS, под конкретные веб-ресурсы с индивидуальными функциональными возможностями. 
                               Каждый такой сайт оснащается также надёжной системой защиты от несанкционированного доступа.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/viz02.webp',
         link: './blog/manual-dla-licnogo-kabineta.html',
         title: 'Мануал для личного кабинета',
         description: `В этой инструкции мы расскажем для чего нужен личный кабинет и как пользоваться его инструментами.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/cms-zoom.webp',
         link: './blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html',
         title: 'Почему нельзя создавать интернет-магазины на шаблонах',
         description: `Основные проблемы, с которыми сталкиваются пользователи при создании сайтов на шаблонах`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/list-preview.webp',
@@ -54,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         title: 'Памятка заказчику',
         description: `Ни для кого не секрет, что коммерческий сайт – это современный инструмент бизнеса, позволяющий получать большой поток клиентов из сети. 
                               Основные задачи сайта: привлекать клиентов, приносить прибыль, способствовать продвижению торговой марки, улучшать имидж компании, обеспечивать обратную связь с потребителями и т.д., и т.п.                        `,
+        date: '2022-01-02',
       },
     ],
     'digital-design': [
@@ -62,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link: './blog/uxui_design.html',
         title: 'UX и UI-дизайн — что это и зачем нужно?',
         description: `Доступно и кратко рассказываем о самой эффективной технологии web-дизайна.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/visitka.webp',
@@ -70,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         description: `Облегчая общение, визитка служит неназойливым напоминанием о деловом человеке. 
                               Просматривая свою визитницу, ее обладатель будет постоянно видеть Вашу визитку, и не исключено, что, подыскивая деловых партнеров, вспомнит о Вашем существовании. 
                               Многие из нас к самому процессу изготовления визиток подходят не совсем ответственно и взвешенно, и напрасно.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/kreative-design.webp',
@@ -77,12 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
         title: 'Креатив в рекламном дизайне',
         description: `Процесс рекламного дизайна заключается в непрерывном поиске новых средств, которые могли бы привлечь внимание читателя и заинтересовать его в предмете рекламы. 
                               Дизайн процесс творческий.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/ponyatie-logotipa.webp',
         link: './blog/ponatie-logotipa.html',
         title: 'Понятие логотипа',
         description: `Логотип это официально принятый термин, означающий зарегистрированное в порядке оригинально оформленное художественное изображение, для отличия товаров и услуг и их рекламы.`,
+        date: '2022-01-02',
       },
     ],
     'seo-promotion': [
@@ -93,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         description: `Чтобы стать успешным предпринимателем, просто создать сайт недостаточно. 
                               Интернет-ресурс должен быть заметен потенциальной клиентуре. 
                               Для этого требуется продвинуть его вверх в поисковых системах.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/seo-circle.webp',
@@ -100,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         title: 'Краткий гайд по факторам ранжирования в SEO ',
         description: `Факторы, на которые роботы смотрят при ранжировании сайтов в поисковой системе. 
                               Основная информация.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/orig.webp',
@@ -107,12 +119,14 @@ document.addEventListener('DOMContentLoaded', () => {
         title: 'Фильтры Яндекса',
         description: `Признаки попадания, сроки санкций и способы выхода.
                               Кратко о том, что такое санкции Яндекса и с чем их едят.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/link-building.webp',
         link: './blog/linkbilding-v-2019-rabocie-metody.html',
         title: 'Линкбилдинг в 2019: рабочие методы',
         description: `Статья о том, как продвигать сайт с помощью ссылок в 2019 году и не попадать под фильтры.`,
+        date: '2022-01-02',
       },
     ],
     'internet-marketing': [
@@ -121,18 +135,21 @@ document.addEventListener('DOMContentLoaded', () => {
         link: './blog/upravlenie-reputaciej-v-internete-zacem-i-kak.html',
         title: 'Управление репутацией в интернете: зачем и как',
         description: `О том, почему так важно поддерживать репутацию бренда в интернете.`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/typewriter.webp',
         link: './blog/korporativnyj-blog-dan-mode-ili-effektivnaa-reklama.html',
         title: 'Корпоративный блог: дань моде или эффективная реклама?',
         description: `Зачем нужно вести корпоративный блог и что он Вам даст?`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/cursor-preview.webp',
         link: './blog/kontekstnaa-reklama-8-sovetov-novickam.html',
         title: 'Контекстная реклама: 8 советов новичкам',
         description: `Настройка КР для чайников – больше конверсии, меньше трат бюджета!`,
+        date: '2022-01-02',
       },
       {
         img: './src/images/blog/mic-preview.webp',
@@ -140,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         title:
           'Интервью как способ громко заявить о своём бизнесе с помощью прессы',
         description: `Одно хорошее интервью может быть эффективнее десяти щедро проплаченных рекламных кампаний. Почему? Читайте в этой статье.`,
+        date: '2022-01-02',
       },
     ],
   };
@@ -164,6 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="title_h4 color-white">${article.title}</span>
                                 <p class="card-description">
                                     ${article.description}
+                                </p>
+                                <p class="card-date">
+                                    ${article.date}
                                 </p>
                             </div>
                         </a>`;

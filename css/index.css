@@ -2922,15 +2922,18 @@ progress::-moz-progress-bar {
   margin-left: auto;
 }
 .card--newsletter .img-wrapper {
-  max-height: 200px;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: 200px;
+  width: 100%;
+  height: auto;
+  background-color: var(--color-white);
+  overflow: hidden;
 }
-.card--newsletter img {
+.card--newsletter .img-wrapper img {
   width: 100%;
   height: auto;
   max-width: unset;
