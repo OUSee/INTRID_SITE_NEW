@@ -1307,8 +1307,6 @@ button.next {
         &:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2),
         &:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3),
         &:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
-          // border-left: 3px solid var(--blue-tag);
-          // border-right: 2px solid var(--blue-tag);
           box-shadow: inset -2px 0 0 var(--blue-tag),
             inset 2px 0 0 var(--blue-tag);
         }
@@ -1327,13 +1325,9 @@ button.next {
 
               td,
               th {
-                padding: 18px 30px;
+                padding: 0;
                 background-color: var(--blue-clouds);
                 color: var(--color-white);
-                // border-top: 1px solid transparent;
-                // border-bottom: 1px solid transparent;
-                // border-left: 2px solid var(--bg-main);
-                // border-right: 2px solid var(--bg-main);
 
                 &:not(:first-child) {
                   cursor: pointer;
@@ -1341,16 +1335,14 @@ button.next {
 
                 &:has(input:checked) {
                   background-color: var(--blue-tag);
-                  // border-top: 2px solid var(--blue-tag);
-                  // border-left: 3px solid var(--blue-tag);
-                  // border-right: 3px solid var(--blue-tag);
                   box-shadow: inset -2px 0 0 var(--blue-tag),
                     inset 2px 0 0 var(--blue-tag);
                 }
               }
 
               th label {
-                padding: 0 !important;
+                display: block;
+                padding: 18px 30px;
                 width: 100%;
                 height: 100%;
                 background-color: transparent;
@@ -2802,7 +2794,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
 
         .tab-content {
           display: none;
-          padding: 20px;
+          // padding: 20px;
           flex-grow: 1;
           flex-direction: column;
 
@@ -2825,128 +2817,29 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
             min-width: calc(100vw - 20px);
           }
 
-          p.title_h4 {
-            max-width: 390px;
-            text-wrap: wrap;
-            margin-bottom: 20px;
+          // p.title_h4 {
+          //   max-width: 390px;
+          //   text-wrap: wrap;
+          //   margin-bottom: 20px;
 
-            @media (max-width: 1200px) {
-              max-width: 100%;
-            }
-          }
+          //   @media (max-width: 1200px) {
+          //     max-width: 100%;
+          //   }
+          // }
 
-          .description {
-            margin-bottom: 20px;
-            max-width: 500px;
+          // .description {
+          //   margin-bottom: 20px;
+          //   max-width: 500px;
 
-            @media (max-width: 1200px) {
-              max-width: 100%;
-            }
-          }
+          //   @media (max-width: 1200px) {
+          //     max-width: 100%;
+          //   }
+          // }
 
-          .button-link {
-            margin-left: auto;
-            margin-top: auto;
-          }
-
-          .main-content {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 10px;
-
-            .card {
-              flex: 1 1 0px;
-              display: flex;
-              flex-direction: column;
-              border-radius: 25px;
-              gap: 10px;
-
-              &-title {
-                font-weight: 600;
-                padding: 18px 40px;
-                border-radius: 30px;
-              }
-
-              &-list {
-                padding: 0px 40px 20px 40px;
-                list-style: disc;
-
-                @media (max-width: 520px) {
-                  font-size: 12px;
-                }
-              }
-            }
-
-            .from-card {
-              background-color: var(--blue-bg);
-              color: var(--color-white);
-
-              &-title {
-                background-color: var(--blue-tag);
-              }
-
-              .highlight {
-                color: var(--blue-main);
-                font-weight: 600;
-              }
-
-              &-list {
-                .link {
-                  color: var(--blue-main);
-
-                  &:hover {
-                    text-decoration: underline;
-                  }
-                }
-
-                li::marker {
-                  color: var(--blue-tag);
-                }
-              }
-            }
-
-            .to-card {
-              background-color: var(--highlight-bg);
-              color: var(--color-black);
-
-              &-title {
-                background-color: var(--blue-main);
-              }
-
-              .highlight {
-                font-weight: 600;
-              }
-            }
-
-            .from-to-arrows {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              margin: 0 15px;
-
-              i {
-                color: var(--blue-main);
-                width: 25px;
-                height: 25px;
-                line-height: 25px;
-                font-size: 25px;
-              }
-            }
-
-            @media (max-width: 601px) {
-              flex-direction: column;
-
-              .from-to-arrows {
-                margin: 15px 0;
-                flex-direction: row;
-
-                i {
-                  transform: rotate(90deg);
-                }
-              }
-            }
-          }
+          // .button-link {
+          //   margin-left: auto;
+          //   margin-top: auto;
+          // }
         }
       }
     }
@@ -6182,7 +6075,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
         flex-direction: column;
       }
 
-      & > * {
+      &>* {
         flex: 1 1 45%;
       }
     }
@@ -7881,17 +7774,13 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
     gap: 16px;
     margin: 50px auto 0;
 
-    &>.tender-card {
+    &>* {
       flex: 1 0 50%;
       max-width: 50%;
 
       @media (max-width: 1200px) {
         flex: 1 0 auto;
         max-width: 100%;
-      }
-
-      &:not(.active) {
-        opacity: 0;
       }
     }
   }
@@ -7902,171 +7791,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
 
   @media (max-width: 1200px) {
     display: flex;
-  }
-}
-
-.tender-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  width: 100%;
-  padding: 20px;
-  border-radius: 39px;
-  background-color: var(--bg-main);
-  overflow: hidden;
-
-  & .header {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    gap: 24px;
-    width: 100%;
-
-    @media (max-width: 600px) {
-      flex-direction: column-reverse;
-    }
-
-    &>div {
-      &:nth-child(1) {
-        & [class*='title_h'] {
-          margin-bottom: 20px;
-        }
-      }
-
-      &:nth-child(2) {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 16px;
-        max-width: 200px;
-        flex: 1;
-
-        @media (max-width: 600px) {
-          margin: 0 auto;
-        }
-
-        &>img {
-          width: 100px;
-          height: auto;
-          object-fit: contain;
-          object-position: center;
-        }
-      }
-    }
-  }
-
-  & .main-content {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    margin-bottom: 10px;
-
-    .card {
-      flex: 1 1 0px;
-      display: flex;
-      flex-direction: column;
-      border-radius: 25px;
-      gap: 13px;
-
-      &-title {
-        font-weight: 600;
-        padding: 18px 40px;
-        border-radius: 30px;
-      }
-
-      &-list {
-        padding: 0px 40px 20px 40px;
-        list-style: disc;
-
-        @media (max-width: 520px) {
-          font-size: 12px;
-        }
-      }
-    }
-
-    .from-card {
-      background-color: var(--blue-bg);
-      color: var(--color-white);
-
-      &-title {
-        background-color: var(--blue-tag);
-      }
-
-      &-list {
-        .highlight {
-          color: var(--blue-tag);
-          font-weight: 600;
-        }
-
-        .link {
-          color: var(--blue-main);
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-
-        li::marker {
-          color: var(--blue-tag);
-        }
-      }
-    }
-
-    .to-card {
-      background-color: var(--highlight-bg);
-      color: var(--color-black);
-
-      &-title {
-        background-color: var(--blue-main);
-      }
-
-      &-list {
-        li {
-          .highlight {
-            font-weight: 600;
-          }
-        }
-      }
-    }
-
-    .from-to-arrows {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 15px;
-
-      i {
-        color: var(--blue-main);
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
-        font-size: 25px;
-      }
-    }
-
-    @media (max-width: 601px) {
-      flex-direction: column;
-
-      .from-to-arrows {
-        margin: 15px 0;
-        flex-direction: row;
-
-        i {
-          transform: rotate(90deg);
-        }
-      }
-
-      .card {}
-    }
-  }
-
-  &>a {
-    align-self: flex-end;
-    margin-top: auto;
   }
 }
 
