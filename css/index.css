@@ -1559,9 +1559,18 @@ ul.generic-list > li::marker {
     flex-wrap: wrap;
   }
 }
-
-.a-self-end {
-  align-self: flex-end;
+.flex-layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flex-layout--2x > * {
+  flex: 1 1 0;
+}
+@media (max-width: 750px) {
+  .flex-layout--2x > * {
+    flex: 1 0 auto;
+  }
 }
 
 .gap-4 {
@@ -2520,12 +2529,16 @@ form .button:hover {
 }
 .accordion-header i.icon-shevrone,
 .accordion-header i.icon-shevrone_double {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--blue-main);
-  transform: rotate(90deg) translate(-0.3em, 0em);
+  transform-origin: center;
+  transform: rotate(90deg);
+  transition: 0.25s ease-in-out;
 }
 .accordion-header.title_h4 i.icon-shevrone {
-  transform: rotate(90deg) translate(0em, 0);
+  transform: rotate(90deg);
 }
 .accordion-content {
   padding: 0;
@@ -2540,10 +2553,10 @@ form .button:hover {
   display: none;
 }
 .accordion-checkbox:checked + .accordion-header i.icon-shevrone, .accordion-checkbox:checked + .accordion-header i.icon-shevrone_double {
-  transform: rotate(-90deg) translate(-0.3em, 0.3em);
+  transform: rotate(-90deg);
 }
 .accordion-checkbox:checked + .accordion-header.title_h4 i.icon-shevrone {
-  transform: rotate(-90deg) translate(0, 0.3em);
+  transform: rotate(-90deg);
 }
 .accordion-checkbox:checked + .accordion-header + .accordion-content {
   max-height: unset;
@@ -3247,6 +3260,72 @@ progress::-moz-progress-bar {
 }
 .card--result.fields .card-body fieldset {
   padding: 0 0 1em;
+}
+.card--tariff {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: var(--blue-bg);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.card--tariff > .card-header {
+  display: flex;
+  gap: 6px;
+  padding: 20px 30px;
+  background-color: var(--blue-clouds);
+  border-radius: 30px;
+  color: var(--color-white);
+  transition: 0.25s ease-in-out;
+}
+.card--tariff > .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 0;
+  height: 100%;
+  padding: 30px 20px 30px 10px;
+  transition: 0.25s ease-in-out;
+}
+.card--tariff > .card-body ul {
+  padding-left: 15px;
+}
+.card--tariff > .card-body ul li {
+  padding-left: 10px;
+  margin-bottom: 10px;
+  color: var(--color-white);
+}
+.card--tariff > .card-body ul li::marker {
+  content: "•";
+  color: var(--blue-main);
+}
+.card--tariff > .card-body hr {
+  border-color: var(--blue-main);
+  background-color: var(--blue-main);
+}
+.card--tariff > .card-body > * {
+  transition: 0.25s ease-in-out;
+}
+.card--tariff.hover-glow:hover .card-header {
+  outline: 1px solid var(--blue-main);
+  box-shadow: 0px 5px 15px var(--blue-main);
+}
+.card--vakancy > .card-header {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  background-color: transparent;
+  padding: 20px;
+}
+.card--vakancy > .card-body {
+  padding-top: 0;
+}
+.card--vakancy.hover-glow:hover .card-header {
+  outline: none;
+  box-shadow: none;
 }
 
 .popup {
@@ -11631,16 +11710,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     gap: 18px 8px;
   }
 }
-.smm-tariffs .crm-advantages--list {
-  align-items: stretch;
-  justify-content: center;
-}
-.smm-tariffs .crm-advantages--list > li > a {
-  height: 100%;
-}
-.smm-tariffs .crm-advantages--list > li > div::after {
-  display: none;
-}
 .smm-form form .form-limitter .block {
   display: flex;
   gap: 10px;
@@ -11687,82 +11756,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   .smm-form form .form-limitter .block .left-half {
     order: 2;
   }
-}
-
-.tariff-card {
-  padding: 0 !important;
-  background-color: var(--blue-bg);
-  border-radius: 30px 30px 25px 25px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease-in-out;
-}
-.tariff-card:hover .tariff-card-content > p {
-  transform: translate(-4px, -4px) scale(1.01);
-}
-.tariff-card:hover .tariff-card-content > hr {
-  transform: translate(-4px, -4px) scale(1.01);
-}
-.tariff-card ::after {
-  display: none !important;
-}
-.tariff-card .header {
-  padding: 20px 30px;
-  background-color: var(--blue-clouds);
-  border-radius: 30px;
-  color: var(--color-white);
-}
-.tariff-card.hover-glow:hover .header {
-  outline: 1px solid var(--blue-main);
-  box-shadow: 0px 5px 15px var(--blue-main);
-}
-.tariff-card-content {
-  padding: 30px 20px 30px 10px;
-  height: 100%;
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: 0.25s ease-in-out;
-}
-.tariff-card-content ul {
-  padding-left: 15px;
-}
-.tariff-card-content ul li {
-  padding-left: 10px;
-  margin-bottom: 10px;
-  color: var(--color-white);
-}
-.tariff-card-content ul li::marker {
-  content: "•";
-  color: var(--blue-main);
-}
-.tariff-card-content hr {
-  border-color: var(--blue-main);
-  background-color: var(--blue-main);
-}
-.tariff-card-content > * {
-  transition: 0.25s ease-in-out;
-}
-.tariff-card.vakancy-card {
-  border-radius: 25px;
-  border: 1px solid var(--blue-clouds);
-}
-.tariff-card.vakancy-card .header {
-  background-color: transparent;
-  border-radius: 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.tariff-card.vakancy-card > .tariff-card-content {
-  padding: 10px 20px 30px 20px;
-}
-.tariff-card.vakancy-card.hover-glow:hover .header {
-  outline: none;
-  box-shadow: none;
 }
 
 .seo-portfolio-card {
@@ -12068,24 +12061,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 
 .hosting-main .calculator-main-offer {
   flex-wrap: wrap;
-}
-.hosting-tariffs .crm-advantages--list {
-  justify-content: center;
-}
-.hosting-tariffs .crm-advantages--list > li {
-  flex: 1 0;
-  max-width: 50%;
-}
-@media (max-width: 900px) {
-  .hosting-tariffs .crm-advantages--list > li {
-    max-width: unset;
-  }
-}
-@media (max-width: 750px) {
-  .hosting-tariffs .crm-advantages--list > li {
-    flex: 1 0 100%;
-    max-width: unset;
-  }
 }
 
 .domain-table {

@@ -8547,23 +8547,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
     }
   }
 
-  &-tariffs {
-    .crm-advantages--list {
-      align-items: stretch;
-      justify-content: center;
-
-      &>li {
-        &>a {
-          height: 100%;
-        }
-
-        &>div::after {
-          display: none;
-        }
-      }
-    }
-  }
-
   &-form {
     form {
       .form-limitter .block {
@@ -8613,110 +8596,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
           .left-half {
             order: 2;
           }
-        }
-      }
-    }
-  }
-}
-
-.tariff-card {
-  padding: 0 !important;
-  background-color: var(--blue-bg);
-  border-radius: 30px 30px 25px 25px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    .tariff-card-content {
-      &>p {
-        transform: translate(-4px, -4px) scale(1.01);
-      }
-
-      &>hr {
-        transform: translate(-4px, -4px) scale(1.01);
-      }
-    }
-  }
-
-  ::after {
-    display: none !important;
-  }
-
-  .header {
-    padding: 20px 30px;
-    background-color: var(--blue-clouds);
-    border-radius: 30px;
-    color: var(--color-white);
-  }
-
-  &.hover-glow {
-    &:hover {
-      .header {
-        outline: 1px solid var(--blue-main);
-        box-shadow: 0px 5px 15px var(--blue-main);
-      }
-    }
-  }
-
-  &-content {
-    padding: 30px 20px 30px 10px;
-    height: 100%;
-    flex: 1 1 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: 0.25s ease-in-out;
-
-    ul {
-      padding-left: 15px;
-
-      li {
-        padding-left: 10px;
-        margin-bottom: 10px;
-        color: var(--color-white);
-
-        &::marker {
-          content: '\2022';
-          color: var(--blue-main);
-        }
-      }
-    }
-
-    hr {
-      border-color: var(--blue-main);
-      background-color: var(--blue-main);
-    }
-
-    &>* {
-      transition: 0.25s ease-in-out;
-    }
-  }
-
-  &.vakancy-card {
-    border-radius: 25px;
-
-    border: 1px solid var(--blue-clouds);
-
-    .header {
-      background-color: transparent;
-      border-radius: 25px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    &>.tariff-card-content {
-      padding: 10px 20px 30px 20px;
-    }
-
-    &.hover-glow {
-      &:hover {
-        .header {
-          outline: none;
-          box-shadow: none;
         }
       }
     }
@@ -9100,26 +8979,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
   &-main {
     .calculator-main-offer {
       flex-wrap: wrap;
-    }
-  }
-
-  &-tariffs {
-    .crm-advantages--list {
-      justify-content: center;
-
-      &>li {
-        flex: 1 0;
-        max-width: 50%;
-
-        @media (max-width: 900px) {
-          max-width: unset;
-        }
-
-        @media (max-width: 750px) {
-          flex: 1 0 100%;
-          max-width: unset;
-        }
-      }
     }
   }
 }
@@ -10002,7 +9861,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
 }
 
 // blog_page
-
 .blog_page {
   &-content {
     padding-top: 0px;
@@ -10140,7 +9998,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
 }
 
 // help-page
-
 .help {
   &-faq {
     .accordion-item {
