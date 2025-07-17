@@ -8,7 +8,7 @@ if (buttons.length > 0) {
       iframe.src = e.currentTarget.dataset.sitePreview;
       popup.querySelector('.iframe-window').appendChild(iframe);
       popup.querySelector('.iframe-tab-link').innerText = e.currentTarget
-        .closest('.recent-work-card, .support-card')
+        .closest('.recent-work-card, .support-card, .card--recent')
         .querySelector('.title_h4').innerText;
       popup.querySelector('.iframe-url-input').innerText =
         e.currentTarget.dataset.sitePreview;

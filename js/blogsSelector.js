@@ -153,8 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         articles[button.dataset.selector].forEach((article) => {
           const slide = document.createElement('div');
-          slide.classList.add('recent-work-card');
-          slide.classList.add('newsletter-card');
+          slide.classList.add('card');
+          slide.classList.add('card--recent');
+          slide.classList.add('card--newsletter');
           slide.classList.add('active');
           const slideHtml = `
                         <a href="${article.link}">
