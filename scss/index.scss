@@ -884,7 +884,6 @@ button.next {
         }
       }
 
-      // .recent-work-card,
       .card--recent {
         margin-right: 0;
         margin-left: auto;
@@ -1558,7 +1557,7 @@ button.next {
   }
 }
 
-body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.recent-work-card>img {
+body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.card--recent>img {
   width: 227px;
   height: 141px;
 }
@@ -3593,71 +3592,14 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       }
 
       @media (max-width: 1200px) {
-        // .recent-work-card {
-        //   min-width: calc((100vw - 80px) / 3 - 10px);
-        //   opacity: 0.3;
-
-        //   &.active {
-        //     opacity: 1;
-        //   }
-        // }
-
         &+.pagination {
           display: flex;
         }
       }
 
-      // @media (max-width: 900px) {
-      //   .recent-work-card {
-      //     min-width: calc((100vw - 80px) / 2 - 10px);
-      //   }
-      // }
-
-      // .recent-work-card {
-      //   flex-direction: column;
-      //   flex: 1 1 20%;
-
-      //   @media (max-width: 600px) {
-      //     min-width: calc((100vw - 40px));
-      //   }
-
-      //   @media (max-width: 440px) {
-      //     padding: 20px 6px;
-      //     border-radius: 25px;
-      //     min-width: calc((100vw - 20px));
-      //   }
-      // }
-
       &.logo-slider {
         min-height: unset;
         align-items: stretch;
-
-        // &>.recent-work-card {
-        //   background-color: var(--blue-clouds);
-        //   opacity: 0.1;
-
-        //   &.active {
-        //     opacity: 1;
-        //   }
-
-        //   &>a {
-        //     height: 100%;
-        //     display: flex;
-        //     flex-direction: column;
-        //     justify-content: space-between;
-
-        //     .work-testimonial {
-        //       margin-top: 20px;
-        //       margin-bottom: 0px;
-        //       text-align: center;
-        //     }
-
-        //     img {
-        //       align-self: center;
-        //       border-radius: 15px;
-        //     }
-        //   }
-        // }
 
         &+.pagination {
           display: flex;
@@ -4822,10 +4764,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         rgba(0, 234, 255, 0.09) 15%,
         rgba(0, 234, 255, 0.1) 83%,
         rgba(0, 234, 255, 0) 100%);
-
-    // .recent-work-card {
-    //   width: 100%;
-    // }
   }
 
   &-icms {
@@ -5667,32 +5605,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         }
       }
     }
-  }
-
-  &-portfolio {
-    // .recent-work-card {
-    //   flex: 1 1 20%;
-    //   justify-content: space-between;
-    //   height: 100%;
-
-    //   @media (max-width: 1400px) {
-    //     min-height: 330px;
-    //   }
-
-    //   @media (max-width: 1200px) {
-    //     min-height: 350px;
-    //   }
-
-    //   @media (max-width: 600px) {
-    //     min-height: unset;
-
-    //     .work-testimonial {
-    //       .card-description {
-    //         min-height: unset;
-    //       }
-    //     }
-    //   }
-    // }
   }
 
   &-whyUs {
@@ -9570,13 +9482,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       &+.pagination {
         display: flex;
       }
-
-      @media (min-width: 1400px) {
-        .recent-work-card {
-          flex: 1 0 19%;
-          min-width: calc(100% / 5 - 50px);
-        }
-      }
     }
   }
 }
@@ -12031,10 +11936,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
       display: block;
     }
   }
-
-  // .recent-work-card {
-  //   flex-basis: 60%;
-  // }
 }
 
 .calc-spacer {
@@ -12185,38 +12086,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
     }
   }
 
-  // .recent-work-card {
-  //   margin: 0;
-  //   flex-basis: 100%;
-  //   padding: 26px 16px;
-  //   gap: 10px;
-  //   flex-direction: column;
-
-  //   a {
-  //     display: flex;
-  //     flex-direction: column;
-
-  //     &.button-link {
-  //       flex-direction: row;
-  //     }
-  //   }
-
-  //   img {
-  //     align-self: center;
-  //     height: 200px;
-  //     width: auto;
-  //     align-self: center;
-  //   }
-
-  //   .work-testimonial {
-  //     gap: 0px;
-
-  //     a {
-  //       margin-top: 5px;
-  //     }
-  //   }
-  // }
-
   .prices-services-list {
     flex-wrap: wrap;
     height: fit-content;
@@ -12229,15 +12098,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
         transform: translateY(0px);
         display: block;
       }
-
-      // &:hover{
-      //     padding: 165px  20px 32px 20px;
-
-      //     img{
-      //         top: 15px;
-      //     }
-
-      // }
     }
   }
 }
@@ -12455,19 +12315,9 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.rec
   #more-about-web-dev {
     margin-bottom: 40px;
   }
-
-  // .recent-work-card {
-  //   flex-direction: column;
-  //   padding: 32px;
-
-  //   .work-testimonial {
-  //     gap: 6px;
-  //   }
-  // }
 }
 
 // files preview
-
 .all-img-mockups-preview {
   &>ul {
     display: flex;
