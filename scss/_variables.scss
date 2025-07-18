@@ -1474,11 +1474,16 @@ form {
 
 // breadcrumbs
 .breadcrumbs {
-  display: flex;
   position: absolute;
   top: 80px;
+  display: flex;
   gap: 10px;
+  width: 100%;
+  padding: 0 0 10px;
   color: var(--color-white);
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
 
   @media (max-width: 600px) {
     top: 60px;
@@ -1500,6 +1505,7 @@ form {
 
 // slider configs
 .pagination {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
