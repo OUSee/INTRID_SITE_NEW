@@ -181,8 +181,6 @@ function sliderInitialise() {
       // };
       const handleSliderArrows = () => {
         const sliderHeight = slider.offsetHeight / 2 + 40;
-        const paginationWidth = dotsContainer.offsetWidth + 12;
-        const relativeMoveOffset = window.innerWidth / 2 - paginationWidth - 17;
 
         prevBtn.forEach((btn) => {
           if (slider.id === 'gallery-slider') {

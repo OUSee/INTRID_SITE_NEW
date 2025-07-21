@@ -283,12 +283,12 @@
         </ul>
 
         <div class="terms-block">
-            <div class="condition-card">
-                <div class="card-title title_h5">
+            <div class="card--condition">
+                <div class="card-header title_h5">
                     Условия технической поддержки
                 </div>
 
-                <div class="card-content">
+                <div class="card-body">
                     <p class="title_h5 color-blue">
                         Техническая поддержка веб-сайта&nbsp;-&nbsp;от&nbsp;8000&nbsp;₽&nbsp;/&nbsp;месяц
                     </p>
@@ -319,12 +319,12 @@
             </div>
 
             <div class="tech-additionals">
-                <div class="additional-card">
-                    <p class="card-title title_h5 color-blue">
+                <div class="card card--additional">
+                    <p class="title_h5 color-blue">
                         Дополнительные&nbsp;работы по технической&nbsp;поддержке и&nbsp;модернизации
                     </p>
 
-                    <div class="card-content">
+                    <div class="card-body">
                         <p>
                             Помимо базового обслуживания, мы готовы выполнить дополнительные работы по&nbsp;технической
                             поддержке
@@ -338,13 +338,15 @@
                         <p>
                             Наша команда экспертов поможет вам адаптировать проекты под&nbsp;новые требования, улучшить
                             функциональность
-                            и&nbsp;обеспечить их соответствие современным стандартам.</p>
+                            и&nbsp;обеспечить их соответствие современным стандартам.
+                        </p>
                     </div>
                 </div>
 
                 <a href="./src/docs/шаблон_договор_тех_поддержка.rtf" class="button-link big" target="_blank"
                     title="Шаблон договора технической поддержки" download="">
-                    Скачать шаблон договора <i class="icon-arrow_wide"></i>
+                    Скачать шаблон договора
+                    <i class="icon-arrow_wide"></i>
                 </a>
             </div>
         </div>
@@ -355,112 +357,107 @@
         <p class="title_h3 mb-50">
             Проекты на нашем <span class="title_h3 underlined">техническом&nbsp;обслуживании</span>
         </p>
-        <div class="support-slider" id="support-slider" data-slider="support-slider" data-fill="4,3,2,1">
-            <div class="support-card">
-                <a href="javascript://" data-popup="site-preview" data-site-preview="https://transport.lubyatovo.ru/">
-                    <img src="./src/images/lubatovo_mockup.webp" alt="support-demo">
-                    <p class="title_h4 color-white">
-                        Любятово
-                    </p>
-                    <div class="support-card--list">
-                        <div>
-                            <b data-counter-value="4780">
-                                4780
-                            </b>
-                            <p>
-                                писем в день отправляется транспортным компаниям
-                            </p>
-                        </div>
-                        <div>
-                            <b data-counter-value="376">
-                                376
-                            </b>
-                            <p>
-                                ставок в день
-                            </p>
-                        </div>
-                        <div>
-                            <b data-counter-value="54">
-                                54
-                            </b>
-                            <p>
-                                разыгранных тендера в день
-                            </p>
-                        </div>
+        <div class="support-slider" id="support-slider" data-slider="support-slider">
+            <a href="javascript://" data-popup="site-preview" data-site-preview="https://transport.lubyatovo.ru/"
+                class="card card--recent card--support">
+                <img src="./src/images/lubatovo_mockup.webp" alt="support-demo">
+                <p class="title_h4 color-white">
+                    Любятово
+                </p>
+                <div class="card-body">
+                    <div>
+                        <b data-counter-value="4780">
+                            4780
+                        </b>
+                        <p>
+                            писем в день отправляется транспортным компаниям
+                        </p>
                     </div>
-                </a>
-            </div>
+                    <div>
+                        <b data-counter-value="376">
+                            376
+                        </b>
+                        <p>
+                            ставок в день
+                        </p>
+                    </div>
+                    <div>
+                        <b data-counter-value="54">
+                            54
+                        </b>
+                        <p>
+                            разыгранных тендера в день
+                        </p>
+                    </div>
+                </div>
+            </a>
 
-            <div class="support-card">
-                <a href="./case/case-molvest.html">
-                    <img src="./src/images/tech_molvest_mockup_min.webp" alt="support-demo">
-                    <p class="title_h4 color-white">
-                        Молвест
-                    </p>
-                    <div class="support-card--list">
-                        <div>
-                            <b data-counter-value="53 810">
-                                53 810
-                            </b>
-                            <p>
-                                писем в день отправляется транспортным компаниям
-                            </p>
-                        </div>
-                        <div>
-                            <b data-counter-value="700">
-                                700
-                            </b>
-                            <p>
-                                ставок в день
-                            </p>
-                        </div>
-                        <div>
-                            <b data-counter-value="90">
-                                90
-                            </b>
-                            <p>
-                                разыгранных тендера в день
-                            </p>
-                        </div>
+            <a href="./case/case-molvest.html" class="card card--recent card--support">
+                <img src="./src/images/tech_molvest_mockup_min.webp" alt="support-demo">
+                <p class="title_h4 color-white">
+                    Молвест
+                </p>
+                <div class="card-body">
+                    <div>
+                        <b data-counter-value="53 810">
+                            53 810
+                        </b>
+                        <p>
+                            писем в день отправляется транспортным компаниям
+                        </p>
                     </div>
-                </a>
-            </div>
+                    <div>
+                        <b data-counter-value="700">
+                            700
+                        </b>
+                        <p>
+                            ставок в день
+                        </p>
+                    </div>
+                    <div>
+                        <b data-counter-value="90">
+                            90
+                        </b>
+                        <p>
+                            разыгранных тендера в день
+                        </p>
+                    </div>
+                </div>
+            </a>
 
-            <div class="support-card">
-                <a href="javascript://" data-popup="site-preview"
-                    data-site-preview="https://transport.chernogolovka.com">
-                    <img src="./src/images/tech_chern_mockup_min.webp" alt="support-demo">
-                    <p class="title_h4 color-white">
-                        Черноголовка
-                    </p>
-                    <div class="support-card--list">
-                        <div>
-                            <b data-counter-value="3280">
-                                3280
-                            </b>
-                            <p>
-                                писем в день отправляется транспортным компаниям
-                            </p>
-                        </div>
-                        <div>
-                            <b data-counter-value="630">
-                                630
-                            </b>
-                            <p>
-                                ставок в день
-                            </p>
-                        </div>
-                        <div>
-                            <b data-counter-value="86">
-                                86
-                            </b>
-                            <p>
-                                разыгранных тендера в день
-                            </p>
-                        </div>
+            <a href="javascript://" data-popup="site-preview" data-site-preview="https://transport.chernogolovka.com"
+                class="card card--recent card--support">
+                <img src="./src/images/tech_chern_mockup_min.webp" alt="support-demo">
+                <p class="title_h4 color-white">
+                    Черноголовка
+                </p>
+                <div class="card-body">
+                    <div>
+                        <b data-counter-value="3280">
+                            3280
+                        </b>
+                        <p>
+                            писем в день отправляется транспортным компаниям
+                        </p>
                     </div>
-                </a>
-            </div>
+                    <div>
+                        <b data-counter-value="630">
+                            630
+                        </b>
+                        <p>
+                            ставок в день
+                        </p>
+                    </div>
+                    <div>
+                        <b data-counter-value="86">
+                            86
+                        </b>
+                        <p>
+                            разыгранных тендера в день
+                        </p>
+                    </div>
+                </div>
+            </a>
         </div>
 
         <div id="support-slider-pagination" class="pagination">
