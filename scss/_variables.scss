@@ -1047,6 +1047,21 @@ ul {
       }
     }
 
+    &--filled {
+      &>* {
+        flex: 1 1 0;
+
+        @media (max-width: 1000px) {
+          flex: 1 1 40%;
+        }
+
+        @media (max-width: 600px) {
+          flex: 1 0 100%;
+          width: 100%;
+        }
+      }
+    }
+
     &--advantages {
       gap: 40px 30px;
 
@@ -1075,6 +1090,7 @@ ul {
     }
 
     &--roadmap {
+      align-items: stretch;
       gap: 30px;
 
       @media (max-width: 600px) {
@@ -1104,6 +1120,32 @@ ul {
         &:last-child {
           &::after {
             display: none;
+          }
+        }
+      }
+
+      &-3x {
+        &>* {
+          @media (min-width: 1000px) {
+
+            // Первая строка из трёх
+            &:nth-child(6n + 1) {
+              --i: 1;
+            }
+
+            &:nth-child(6n + 2) {
+              --i: 2;
+            }
+
+            &:nth-child(6n + 3) {
+              --i: 3;
+            }
+          }
+
+          @media (max-width: 1000px) {
+            &::after {
+              display: none;
+            }
           }
         }
       }
@@ -1245,6 +1287,175 @@ ul {
             &::after {
               display: none;
             }
+          }
+        }
+      }
+
+      &-9x {
+        &>* {
+          @media (min-width: 1000px) {
+
+            // Первая строка из трёх
+            &:nth-child(6n + 1) {
+              --i: 1;
+            }
+
+            &:nth-child(6n + 2) {
+              --i: 2;
+            }
+
+            &:nth-child(6n + 3) {
+              --i: 3;
+
+              &::after {
+                top: auto;
+                left: 50%;
+                bottom: 0%;
+                transform: translate(-50%, 115%) rotate(90deg);
+              }
+            }
+
+            // Вторая строка из трех
+            &:nth-child(6n + 4) {
+              --i: 6;
+
+              &::after {
+                left: 0;
+                right: auto;
+                transform: translate(-100%, -50%) rotate(180deg);
+              }
+            }
+
+            &:nth-child(6n + 5) {
+              --i: 5;
+
+              &::after {
+                left: 0;
+                right: auto;
+                transform: translate(-100%, -50%) rotate(180deg);
+              }
+            }
+
+            &:nth-child(6n + 6) {
+              --i: 4;
+
+              &::after {
+                top: auto;
+                left: 50%;
+                bottom: 0%;
+                transform: translate(-50%, 115%) rotate(90deg);
+              }
+            }
+
+            //  Третья строка из трех
+            &:nth-child(6n + 7) {
+              --i: 7;
+            }
+
+            &:nth-child(6n + 8) {
+              --i: 8;
+            }
+
+            &:nth-child(6n + 9) {
+              --i: 9;
+            }
+          }
+
+          @media (max-width: 1000px) {
+
+            // Первая строка из двух
+            &:nth-child(6n + 1) {
+              --i: 1;
+            }
+
+            &:nth-child(6n + 2) {
+              --i: 2;
+
+              &::after {
+                top: auto;
+                left: 50%;
+                bottom: 0%;
+                transform: translate(-50%, 115%) rotate(90deg);
+              }
+            }
+
+            // Вторая строка из двух
+            &:nth-child(6n + 3) {
+              --i: 4;
+
+              &::after {
+                left: 0;
+                right: auto;
+                transform: translate(-100%, -50%) rotate(180deg);
+              }
+            }
+
+            &:nth-child(6n + 4) {
+              --i: 3;
+
+              &::after {
+                top: auto;
+                left: 50%;
+                bottom: 0%;
+                transform: translate(-50%, 115%) rotate(90deg);
+              }
+            }
+
+            //  Третья строка из двух
+            &:nth-child(6n + 5) {
+              --i: 5;
+            }
+
+            &:nth-child(6n + 6) {
+              --i: 6;
+
+              &::after {
+                top: auto;
+                left: 50%;
+                bottom: 0%;
+                transform: translate(-50%, 115%) rotate(90deg);
+              }
+            }
+
+            // Четвертая строка из двух
+            &:nth-child(6n + 7) {
+              --i: 8;
+
+              &::after {
+                left: 0;
+                right: auto;
+                transform: translate(-100%, -50%) rotate(180deg);
+              }
+            }
+
+            &:nth-child(6n + 8) {
+              --i: 7;
+
+              &::after {
+                top: auto;
+                left: 50%;
+                bottom: 0%;
+                transform: translate(-50%, 115%) rotate(90deg);
+              }
+            }
+
+            &:nth-child(6n + 9) {
+              --i: 9;
+            }
+          }
+
+          @media (max-width: 600px) {
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &-nothing {
+        &>* {
+          &::after {
+            display: none;
           }
         }
       }
@@ -2728,6 +2939,21 @@ progress {
       margin-top: 15px;
       color: var(--color-grey);
     }
+
+    &-minified {
+      @media (max-width: 600px) {
+        padding: 10px 14px;
+        border-radius: 25px;
+
+        &::before {
+          display: none;
+        }
+
+        &>p {
+          margin-top: 10px;
+        }
+      }
+    }
   }
 
   &--review {
@@ -3645,6 +3871,19 @@ progress {
       height: 34px;
       object-fit: contain;
       object-position: center;
+    }
+
+    & ul {
+      padding-left: 15px;
+      list-style-type: disc;
+
+      & li {
+        margin-bottom: 5px;
+
+        &::marker {
+          color: var(--blue-tag);
+        }
+      }
     }
 
     &>* {

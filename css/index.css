@@ -1573,6 +1573,20 @@ ul.generic-list > li::marker {
     width: 100%;
   }
 }
+.flex-layout--filled > * {
+  flex: 1 1 0;
+}
+@media (max-width: 1000px) {
+  .flex-layout--filled > * {
+    flex: 1 1 40%;
+  }
+}
+@media (max-width: 600px) {
+  .flex-layout--filled > * {
+    flex: 1 0 100%;
+    width: 100%;
+  }
+}
 .flex-layout--advantages {
   gap: 40px 30px;
 }
@@ -1603,6 +1617,7 @@ ul.generic-list > li::marker {
   }
 }
 .flex-layout--roadmap {
+  align-items: stretch;
   gap: 30px;
 }
 @media (max-width: 600px) {
@@ -1633,6 +1648,22 @@ ul.generic-list > li::marker {
 }
 .flex-layout--roadmap > *:last-child::after {
   display: none;
+}
+@media (min-width: 1000px) {
+  .flex-layout--roadmap-3x > *:nth-child(6n+1) {
+    --i: 1;
+  }
+  .flex-layout--roadmap-3x > *:nth-child(6n+2) {
+    --i: 2;
+  }
+  .flex-layout--roadmap-3x > *:nth-child(6n+3) {
+    --i: 3;
+  }
+}
+@media (max-width: 1000px) {
+  .flex-layout--roadmap-3x > *::after {
+    display: none;
+  }
 }
 @media (min-width: 1000px) {
   .flex-layout--roadmap-7x > *:nth-child(6n+1) {
@@ -1736,6 +1767,128 @@ ul.generic-list > li::marker {
   .flex-layout--roadmap-7x > *::after {
     display: none;
   }
+}
+@media (min-width: 1000px) {
+  .flex-layout--roadmap-9x > *:nth-child(6n+1) {
+    --i: 1;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+2) {
+    --i: 2;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+3) {
+    --i: 3;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+3)::after {
+    top: auto;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 115%) rotate(90deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+4) {
+    --i: 6;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+4)::after {
+    left: 0;
+    right: auto;
+    transform: translate(-100%, -50%) rotate(180deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+5) {
+    --i: 5;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+5)::after {
+    left: 0;
+    right: auto;
+    transform: translate(-100%, -50%) rotate(180deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+6) {
+    --i: 4;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+6)::after {
+    top: auto;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 115%) rotate(90deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+7) {
+    --i: 7;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+8) {
+    --i: 8;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+9) {
+    --i: 9;
+  }
+}
+@media (max-width: 1000px) {
+  .flex-layout--roadmap-9x > *:nth-child(6n+1) {
+    --i: 1;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+2) {
+    --i: 2;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+2)::after {
+    top: auto;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 115%) rotate(90deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+3) {
+    --i: 4;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+3)::after {
+    left: 0;
+    right: auto;
+    transform: translate(-100%, -50%) rotate(180deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+4) {
+    --i: 3;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+4)::after {
+    top: auto;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 115%) rotate(90deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+5) {
+    --i: 5;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+6) {
+    --i: 6;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+6)::after {
+    top: auto;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 115%) rotate(90deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+7) {
+    --i: 8;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+7)::after {
+    left: 0;
+    right: auto;
+    transform: translate(-100%, -50%) rotate(180deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+8) {
+    --i: 7;
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+8)::after {
+    top: auto;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 115%) rotate(90deg);
+  }
+  .flex-layout--roadmap-9x > *:nth-child(6n+9) {
+    --i: 9;
+  }
+}
+@media (max-width: 600px) {
+  .flex-layout--roadmap-9x > *::after {
+    display: none;
+  }
+}
+.flex-layout--roadmap-nothing > *::after {
+  display: none;
 }
 
 .gap-4 {
@@ -2933,6 +3086,18 @@ progress::-moz-progress-bar {
   margin-top: 15px;
   color: var(--color-grey);
 }
+@media (max-width: 600px) {
+  .card--testimonials-minified {
+    padding: 10px 14px;
+    border-radius: 25px;
+  }
+  .card--testimonials-minified::before {
+    display: none;
+  }
+  .card--testimonials-minified > p {
+    margin-top: 10px;
+  }
+}
 .card--review {
   background-color: var(--blue-bg);
   padding: 24px 40px;
@@ -3711,6 +3876,16 @@ progress::-moz-progress-bar {
   height: 34px;
   object-fit: contain;
   object-position: center;
+}
+.card--icon ul {
+  padding-left: 15px;
+  list-style-type: disc;
+}
+.card--icon ul li {
+  margin-bottom: 5px;
+}
+.card--icon ul li::marker {
+  color: var(--blue-tag);
 }
 .card--icon > *:last-child {
   margin-top: auto;
@@ -7779,287 +7954,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   flex-direction: column;
   gap: 50px;
 }
-.sites-roadmap-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px 30px;
-  position: relative;
-}
-@media (max-width: 600px) {
-  .sites-roadmap-list {
-    gap: 12px 8px;
-  }
-}
-.sites-roadmap-list li {
-  flex: 1 1 30%;
-  position: relative;
-  max-width: 30%;
-}
-.sites-roadmap-list li:after {
-  position: absolute;
-  content: "";
-  width: 50px;
-  height: 4px;
-  background-color: var(--blue-main);
-  top: 46px;
-  right: -50px;
-  z-index: -1;
-}
-.sites-roadmap-list li:before {
-  content: "";
-  width: 16px;
-  height: 16px;
-  background-color: var(--blue-main);
-  clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
-  transform: rotate(-90deg);
-  position: absolute;
-  top: 40px;
-  right: -30px;
-}
-.sites-roadmap-list li:last-child {
-  margin-left: none;
-}
-.sites-roadmap-list li:last-child:after {
-  display: none;
-}
-.sites-roadmap-list li:last-child:before {
-  display: none;
-}
-@media (min-width: 999px) {
-  .sites-roadmap-list li:nth-child(3):after, .sites-roadmap-list li:nth-child(4):after {
-    top: 110%;
-    right: 50%;
-    transform: rotate(90deg);
-  }
-  .sites-roadmap-list li:nth-child(3):before, .sites-roadmap-list li:nth-child(4):before {
-    top: calc(100% + 24px);
-    right: calc(50% + 16px);
-    transform: rotate(0deg);
-  }
-  .sites-roadmap-list li:nth-child(5):after, .sites-roadmap-list li:nth-child(6):after {
-    right: unset;
-    left: -50px;
-  }
-  .sites-roadmap-list li:nth-child(5):before, .sites-roadmap-list li:nth-child(6):before {
-    transform: rotate(90deg);
-    right: unset;
-    left: -30px;
-  }
-}
-@media (max-width: 1000px) {
-  .sites-roadmap-list li {
-    flex: 1 1 40%;
-    max-width: calc(50% - 30px);
-  }
-  .sites-roadmap-list li:last-child {
-    margin-left: none;
-  }
-  .sites-roadmap-list li:nth-child(1) {
-    order: 1;
-  }
-  .sites-roadmap-list li:nth-child(2) {
-    order: 2;
-  }
-  .sites-roadmap-list li:nth-child(2):after {
-    top: 110%;
-    right: 50%;
-    transform: rotate(90deg);
-  }
-  .sites-roadmap-list li:nth-child(2):before {
-    top: calc(100% + 24px);
-    right: calc(50% + 16px);
-    transform: rotate(0deg);
-  }
-  .sites-roadmap-list li:nth-child(3) {
-    order: 4;
-  }
-  .sites-roadmap-list li:nth-child(3):after {
-    right: unset;
-    left: -50px;
-  }
-  .sites-roadmap-list li:nth-child(3):before {
-    transform: rotate(90deg);
-    right: unset;
-    left: -30px;
-  }
-  .sites-roadmap-list li:nth-child(4) {
-    order: 6;
-  }
-  .sites-roadmap-list li:nth-child(4):after {
-    top: 110%;
-    right: 50%;
-    transform: rotate(90deg);
-  }
-  .sites-roadmap-list li:nth-child(4):before {
-    top: calc(100% + 24px);
-    right: calc(50% + 16px);
-    transform: rotate(0deg);
-  }
-  .sites-roadmap-list li:nth-child(5) {
-    order: 5;
-  }
-  .sites-roadmap-list li:nth-child(6) {
-    order: 3;
-  }
-  .sites-roadmap-list li:nth-child(6):after {
-    top: 110%;
-    right: 50%;
-    transform: rotate(90deg);
-  }
-  .sites-roadmap-list li:nth-child(6):before {
-    top: calc(100% + 24px);
-    right: calc(50% + 16px);
-    transform: rotate(0deg);
-  }
-  .sites-roadmap-list li:nth-child(7) {
-    order: 8;
-  }
-  .sites-roadmap-list li:nth-child(7):after {
-    right: unset;
-    left: -50px;
-  }
-  .sites-roadmap-list li:nth-child(7):before {
-    transform: rotate(90deg);
-    right: unset;
-    left: -30px;
-  }
-  .sites-roadmap-list li:nth-child(8) {
-    order: 7;
-  }
-  .sites-roadmap-list li:nth-child(8):after {
-    top: 110%;
-    right: 50%;
-    transform: rotate(90deg);
-  }
-  .sites-roadmap-list li:nth-child(8):before {
-    top: calc(100% + 24px);
-    right: calc(50% + 16px);
-    transform: rotate(0deg);
-  }
-  .sites-roadmap-list li:nth-child(9) {
-    order: 9;
-  }
-}
-@media (max-width: 900px) {
-  .sites-roadmap-list li:after {
-    display: none;
-  }
-  .sites-roadmap-list li:before {
-    display: none;
-  }
-}
-@media (max-width: 600px) {
-  .sites-roadmap-list li {
-    max-width: calc(50% - 8px);
-  }
-  .sites-roadmap-list li:after {
-    display: none;
-  }
-  .sites-roadmap-list li:before {
-    display: none;
-  }
-}
-@media (max-width: 520px) {
-  .sites-roadmap-list li {
-    flex: 1 1 90%;
-  }
-  .sites-roadmap-list li:nth-child(6) {
-    order: 4;
-  }
-  .sites-roadmap-list li:nth-child(3) {
-    order: 3;
-  }
-  .sites-roadmap-list li:nth-child(4) {
-    order: 6;
-  }
-  .sites-roadmap-list li:nth-child(7) {
-    order: 7;
-  }
-  .sites-roadmap-list li:nth-child(8) {
-    order: 8;
-  }
-}
-.sites-roadmap-list-item {
-  padding: 20px 30px;
-  padding-left: 80px;
-  border-radius: 39px;
-  background-color: var(--bg-main);
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.sites-roadmap-list-item::after {
-  content: "";
-  position: absolute;
-  left: -70px;
-  top: -14px;
-  background-color: var(--blue-bg);
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-}
-.sites-roadmap-list-item .header {
-  display: flex;
-  margin-bottom: 10px;
-  gap: 10px;
-  align-items: center;
-}
-.sites-roadmap-list-item .header p:not(.title_h5) {
-  position: absolute;
-  color: var(--blue-main);
-  font-size: 64px;
-  top: 5px;
-  left: 20px;
-  z-index: 2;
-  font-weight: 600;
-}
-@media (max-width: 1000px) {
-  .sites-roadmap-list-item .header p:not(.title_h5) {
-    font-size: 48px;
-    top: 10px;
-  }
-}
-@media (max-width: 600px) {
-  .sites-roadmap-list-item p.color-grey {
-    padding-left: 28px;
-  }
-}
-@media (max-width: 600px) {
-  .sites-roadmap-list-item.small-fix p.color-grey {
-    margin-top: 20px;
-    padding-left: 0px;
-  }
-}
-@media (max-width: 1000px) {
-  .sites-roadmap-list-item {
-    border-radius: 39px;
-  }
-}
-@media (max-width: 600px) {
-  .sites-roadmap-list-item {
-    padding: 10px 14px;
-    border-radius: 25px;
-  }
-  .sites-roadmap-list-item::after {
-    display: none;
-  }
-  .sites-roadmap-list-item .header {
-    margin-bottom: 0;
-  }
-  .sites-roadmap-list-item .header p:not(.title_h5) {
-    position: static;
-    font-size: 30px;
-  }
-}
-@media (max-width: 600px) {
-  .sites-roadmap--simple .sites-roadmap-list > li {
-    max-width: 100%;
-    flex: 1 0 auto;
-  }
-}
 .sites-reviews {
   position: relative;
 }
@@ -8312,43 +8206,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .landing-steps .description {
   margin-top: 20px;
-}
-.landing-steps .sites-roadmap-list {
-  margin-top: 50px;
-  margin-bottom: 30px;
-  justify-content: center;
-}
-.landing-steps .sites-roadmap-list + .description {
-  text-align: center;
-  max-width: 70%;
-}
-@media (max-width: 1000px) {
-  .landing-steps .sites-roadmap-list {
-    gap: 12px 8px;
-  }
-  .landing-steps .sites-roadmap-list li {
-    max-width: 420px;
-  }
-  .landing-steps .sites-roadmap-list li::before, .landing-steps .sites-roadmap-list li::after {
-    display: none;
-  }
-  .landing-steps .sites-roadmap-list-item {
-    padding: 10px 14px;
-    border-radius: 25px;
-  }
-  .landing-steps .sites-roadmap-list-item::before, .landing-steps .sites-roadmap-list-item::after {
-    display: none;
-  }
-  .landing-steps .sites-roadmap-list-item .header {
-    margin-bottom: 0;
-  }
-  .landing-steps .sites-roadmap-list-item .header p:not(.title_h5) {
-    position: static;
-    font-size: 30px;
-  }
-  .landing-steps .sites-roadmap-list-item p.color-grey {
-    padding-left: 28px;
-  }
 }
 .landing-portfolio {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0.1) 100%);
@@ -9049,21 +8906,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     margin: 50px auto;
   }
 }
-.store-benefits .sites-roadmap-list, .store-ai .sites-roadmap-list {
-  justify-content: center;
-}
-.store-benefits .sites-roadmap-list-item .header p.title_h5, .store-ai .sites-roadmap-list-item .header p.title_h5 {
-  color: var(--blue-main);
-}
-.store-benefits .sites-roadmap-list-item .header p:not(.title_h5), .store-ai .sites-roadmap-list-item .header p:not(.title_h5) {
-  color: var(--blue-tag);
-}
-.store-benefits .sites-roadmap-list li, .store-ai .sites-roadmap-list li {
-  order: unset !important;
-}
-.store-benefits .sites-roadmap-list li:before, .store-benefits .sites-roadmap-list li:after, .store-ai .sites-roadmap-list li:before, .store-ai .sites-roadmap-list li:after {
-  display: none;
-}
 @media (max-width: 1250px) {
   .store-ai .benefits-right,
   .store-ai .benefits-left {
@@ -9404,89 +9246,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   padding: 18px 30px;
   text-align: center;
 }
-.portal-benefits-accordion {
-  display: flex;
-  gap: 10px;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-.portal-benefits-card {
-  flex: 30%;
-  max-width: 30%;
-}
-@media (max-width: 1000px) {
-  .portal-benefits-card {
-    flex: 45%;
-    max-width: unset;
-  }
-}
-@media (max-width: 600px) {
-  .portal-benefits-card {
-    flex: 90%;
-  }
-}
-.portal-benefits-card:has(input:checked) .accordion-header .title_h5::after {
-  transform: rotate(-90deg);
-}
-.portal-benefits-card:has(input:checked) .accordion-content {
-  padding: 10px;
-  border-radius: 29px;
-  border: 1px solid var(--blue-main);
-}
-.portal-benefits-card .accordion-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-.portal-benefits-card .accordion-header .title_h5::after {
-  font-family: "INTRID_ICONS";
-  content: "m";
-  color: var(--blue-main);
-  display: inline-block;
-  transform: rotate(90deg);
-  transition: all 0.3s ease-in-out;
-}
-.portal-benefits-card .accordion-content ul {
-  padding-left: 10px;
-}
-.portal-benefits-card .accordion-content ul li {
-  padding-left: 10px;
-}
-.portal-benefits-card .accordion-content ul li::marker {
-  content: "•";
-  color: var(--blue-main);
-}
-.portal-benefits .sites-roadmap-list {
-  justify-content: center;
-}
-.portal-benefits .sites-roadmap-list li .header img,
-.portal-benefits .sites-roadmap-list li .header i {
-  font-size: 40px;
-  line-height: 40px;
-  width: 40px;
-  height: 40px;
-}
-@media (max-width: 600px) {
-  .portal-benefits .sites-roadmap-list li .header img,
-  .portal-benefits .sites-roadmap-list li .header i {
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-    line-height: 20px;
-  }
-}
-.portal-benefits .sites-roadmap-list li:before, .portal-benefits .sites-roadmap-list li:after {
-  display: none;
-}
-.portal-benefits .sites-roadmap-list li ul li {
-  max-width: unset;
-  padding-left: 10px;
-}
-.portal-benefits .sites-roadmap-list li ul li::marker {
-  content: "•";
-  color: var(--blue-main);
-}
 @media (max-width: 1000px) {
   .portal-whyUs .why-cooperate-list {
     width: fit-content;
@@ -9602,27 +9361,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     flex-direction: column;
     align-items: center;
   }
-}
-.ai-integration .sites-roadmap-list {
-  justify-content: center;
-}
-.ai-integration .sites-roadmap-list-item .header p.title_h5 {
-  color: var(--blue-main);
-}
-.ai-integration .sites-roadmap-list-item .header p:not(.title_h5) {
-  color: var(--blue-tag);
-}
-.ai-integration .sites-roadmap-list-item p.color-grey {
-  margin-bottom: 10px;
-}
-.ai-integration .sites-roadmap-list-item p.color-blue {
-  margin-top: auto;
-}
-.ai-integration .sites-roadmap-list li {
-  order: unset !important;
-}
-.ai-integration .sites-roadmap-list li:before, .ai-integration .sites-roadmap-list li:after {
-  display: none;
 }
 .ai-tabs .tabs-content .tab-content-ai_store {
   padding: 0 30px;
@@ -9799,30 +9537,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     height: 30px;
   }
 }
-.it-ai .sites-roadmap-list {
-  justify-content: center;
-}
-.it-ai .sites-roadmap-list li .header img {
-  width: 40px;
-  height: 40px;
-}
-@media (max-width: 600px) {
-  .it-ai .sites-roadmap-list li .header img {
-    width: 20px;
-    height: 20px;
-  }
-}
-.it-ai .sites-roadmap-list li:before, .it-ai .sites-roadmap-list li:after {
-  display: none;
-}
-.it-ai .sites-roadmap-list li ul li {
-  max-width: unset;
-  padding-left: 10px;
-}
-.it-ai .sites-roadmap-list li ul li::marker {
-  content: "•";
-  color: var(--blue-main);
-}
 .it-crm {
   position: relative;
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 15%, rgba(0, 234, 255, 0.09) 50%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%), url(../src/images/mountains_1.webp);
@@ -9880,64 +9594,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .it-crm-list > li:nth-child(2)::before {
   content: "2";
-}
-.it-crm-list .sites-roadmap-list {
-  justify-content: center;
-}
-.it-crm-list .sites-roadmap-list li {
-  max-width: unset;
-}
-.it-crm-list .sites-roadmap-list li:before, .it-crm-list .sites-roadmap-list li:after {
-  display: none;
-}
-.it-crm-list .sites-roadmap-list-item {
-  padding-left: 30px;
-  gap: 6px;
-}
-.it-crm-list .sites-roadmap-list-item::after {
-  font-family: "INTRID_ICONS";
-  background-color: transparent;
-  content: "d";
-  height: 177px;
-  width: 177px;
-  font-size: 177px;
-  line-height: 177px;
-  color: var(--blue-clouds);
-  position: absolute;
-  right: -50px;
-  bottom: -50px;
-  left: unset;
-  top: unset;
-}
-.it-crm-list .sites-roadmap-list-item p.color-grey {
-  padding-left: 0;
-}
-.it-tender .sites-roadmap-list {
-  justify-content: center;
-}
-.it-tender .sites-roadmap-list li .header img {
-  width: 40px;
-  height: 40px;
-}
-@media (max-width: 600px) {
-  .it-tender .sites-roadmap-list li .header img {
-    width: 20px;
-    height: 20px;
-  }
-}
-.it-tender .sites-roadmap-list li:before, .it-tender .sites-roadmap-list li:after {
-  display: none;
-}
-.it-tender .sites-roadmap-list li ul li {
-  max-width: unset;
-  padding-left: 10px;
-}
-.it-tender .sites-roadmap-list li ul li::marker {
-  content: "•";
-  color: var(--blue-main);
-}
-.it-tender .sites-roadmap-list li ul li:last-child {
-  margin-bottom: 6px;
 }
 
 @media (max-width: 900px) {
