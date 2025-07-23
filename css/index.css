@@ -1649,6 +1649,44 @@ ul.generic-list > li::marker {
 .flex-layout--roadmap > *:last-child::after {
   display: none;
 }
+@media (min-width: 600px) {
+  .flex-layout--roadmap-4x > * {
+    flex: 1 0 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+  }
+  .flex-layout--roadmap-4x > *:nth-child(6n+1) {
+    --i: 1;
+  }
+  .flex-layout--roadmap-4x > *:nth-child(6n+2) {
+    --i: 2;
+  }
+  .flex-layout--roadmap-4x > *:nth-child(6n+2)::after {
+    top: auto;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 115%) rotate(90deg);
+  }
+  .flex-layout--roadmap-4x > *:nth-child(6n+3) {
+    --i: 4;
+  }
+  .flex-layout--roadmap-4x > *:nth-child(6n+3)::after {
+    left: 0;
+    right: auto;
+    transform: translate(-100%, -50%) rotate(180deg);
+  }
+  .flex-layout--roadmap-4x > *:nth-child(6n+4) {
+    --i: 3;
+  }
+}
+@media (max-width: 600px) {
+  .flex-layout--roadmap-4x > * {
+    flex: 1 0 100%;
+    width: 100%;
+  }
+  .flex-layout--roadmap-4x > *::after {
+    display: none;
+  }
+}
 @media (min-width: 1000px) {
   .flex-layout--roadmap-3x > *:nth-child(6n+1) {
     --i: 1;
@@ -10769,102 +10807,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .crm-page .employes-n-experience {
   margin-bottom: auto;
-}
-
-.crm-benefits--list {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 40px 30px;
-}
-@media (max-width: 600px) {
-  .crm-benefits--list {
-    gap: 12px 8px;
-  }
-}
-.crm-benefits--list > li {
-  flex-basis: calc(50% - 20px);
-  max-width: 50%;
-}
-@media (max-width: 540px) {
-  .crm-benefits--list > li {
-    flex-basis: 100%;
-    max-width: 100%;
-  }
-}
-
-.crm-advantages--list {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 40px 30px;
-  justify-content: center;
-}
-@media (max-width: 600px) {
-  .crm-advantages--list {
-    gap: 12px 8px;
-  }
-}
-.crm-advantages--list > li {
-  flex-basis: calc(33.333333% - 20px);
-  max-width: 33%;
-}
-@media (max-width: 1200px) {
-  .crm-advantages--list > li {
-    flex-basis: calc(50% - 20px);
-    max-width: 50%;
-  }
-}
-@media (max-width: 540px) {
-  .crm-advantages--list > li {
-    flex-basis: 100%;
-    max-width: 100%;
-  }
-}
-.crm-advantages--list > li > div {
-  padding: 20px 30px;
-}
-@media (max-width: 600px) {
-  .crm-advantages--list > li > div {
-    padding: 10px 14px;
-  }
-}
-@media (max-width: 540px) {
-  .crm-advantages--list > li > div {
-    padding: 20px 30px;
-  }
-}
-@media (max-width: 600px) {
-  .crm-advantages--list > li > div > .header {
-    margin-bottom: 10px;
-  }
-}
-@media (max-width: 600px) {
-  .crm-advantages--list > li > div > p.color-grey {
-    padding-left: 0;
-  }
-}
-.crm-advantages--list > li > div::after {
-  content: "d";
-  position: absolute;
-  right: -50px;
-  bottom: -50px;
-  left: unset;
-  top: unset;
-  height: 177px;
-  width: 177px;
-  background-color: transparent;
-  font-family: "INTRID_ICONS";
-  font-size: 177px;
-  line-height: 177px;
-  color: var(--blue-clouds);
-}
-@media (max-width: 600px) {
-  .crm-advantages--list > li > div::after {
-    display: flex;
-  }
 }
 
 .tender-page {

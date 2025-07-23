@@ -1124,6 +1124,55 @@ ul {
         }
       }
 
+      &-4x {
+        &>* {
+          @media (min-width: 600px) {
+            flex: 1 0 calc(50% - 15px);
+            max-width: calc(50% - 15px);
+
+            // Первая строка из трёх
+            &:nth-child(6n + 1) {
+              --i: 1;
+            }
+
+            &:nth-child(6n + 2) {
+              --i: 2;
+
+              &::after {
+                top: auto;
+                left: 50%;
+                bottom: 0%;
+                transform: translate(-50%, 115%) rotate(90deg);
+              }
+            }
+
+            // Вторая строка
+            &:nth-child(6n + 3) {
+              --i: 4;
+
+              &::after {
+                left: 0;
+                right: auto;
+                transform: translate(-100%, -50%) rotate(180deg);
+              }
+            }
+
+            &:nth-child(6n + 4) {
+              --i: 3;
+            }
+          }
+
+          @media (max-width: 600px) {
+            flex: 1 0 100%;
+            width: 100%;
+
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+
       &-3x {
         &>* {
           @media (min-width: 1000px) {
