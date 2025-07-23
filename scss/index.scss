@@ -4631,14 +4631,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
         }
       }
     }
-
-    .sites-roadmap-list {
-      @media (max-width: 1000px) {
-        li:last-child {
-          margin-left: auto;
-        }
-      }
-    }
   }
 
   &-portfolio {
@@ -9942,7 +9934,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
       }
     }
 
-    &>.card-case {
+    &>.card--result {
       flex: 1 0 auto;
       max-width: 50%;
 
@@ -10097,7 +10089,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
           }
         }
 
-        &>.card-case {
+        &>.card--result {
           width: 100%;
         }
       }
@@ -10153,73 +10145,6 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
 
       @media (min-width: 1000px) and (max-width: 1200px) {
         max-width: 280px;
-      }
-    }
-  }
-}
-
-.card-case {
-  display: flex;
-  flex-direction: column;
-  border-radius: 25px;
-  gap: 0;
-  background-color: var(--blue-bg);
-  color: var(--color-white);
-
-  & .card-title {
-    font-weight: 600;
-    padding: 18px 40px;
-    border-radius: 30px;
-    background-color: var(--blue-tag);
-  }
-
-  & .card-list {
-    padding: 20px 40px;
-    list-style: disc;
-
-    @media (max-width: 520px) {
-      font-size: 12px;
-    }
-
-    & .highlight {
-      color: var(--blue-tag);
-      font-weight: 600;
-    }
-
-    & .link {
-      color: var(--blue-main);
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    & li::marker {
-      color: var(--blue-tag);
-    }
-  }
-
-  &--result {
-    background-color: var(--highlight-bg);
-    color: var(--color-black);
-
-    & .card-title {
-      background-color: var(--blue-main);
-    }
-
-    & .card-list {
-      & li {
-        &::marker {
-          color: currentColor;
-        }
-      }
-
-      & .highlight {
-        color: currentColor;
-      }
-
-      & .link {
-        color: var(--blue-tag);
       }
     }
   }
@@ -11099,7 +11024,7 @@ body>section.tabs>div.tabs-content>div:nth-child(2)>div>div.count-n-card>div.car
           }
         }
 
-        &>.card-case {
+        &>.card--result {
           width: 100%;
         }
       }
