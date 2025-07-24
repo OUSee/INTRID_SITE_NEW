@@ -687,6 +687,78 @@ button.next {
   }
 }
 
+.main-section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+
+  &--left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 70%;
+
+    @media (max-width: 1000px) {
+      max-width: 100%;
+    }
+
+    & > h1 {
+      margin-bottom: 32px;
+
+      @media (max-width: 600px) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &--actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      align-self: stretch;
+      margin-top: 50px;
+    }
+  }
+
+  &--achievements {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px 60px;
+    max-width: 420px;
+    width: 100%;
+
+    @media (max-width: 1000px) {
+      justify-content: center;
+      gap: 20px;
+    }
+
+    @media (max-width: 440px) {
+      gap: 10px;
+    }
+  }
+
+  & .flying-mockup {
+    margin-left: auto;
+
+    @media (max-width: 1000px) {
+      align-self: center;
+      margin-left: unset;
+    }
+  }
+}
+
 .site-benefit {
   display: flex;
   width: fit-content;
@@ -728,96 +800,96 @@ button.next {
   }
 }
 
-.page {
-  &-achievements {
-    &-group {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 30px 60px;
-      max-width: 420px;
-      width: 100%;
-      margin: 30px 0 50px;
+// .page {
+//   &-achievements {
+//     &-group {
+//       display: flex;
+//       flex-direction: row;
+//       align-items: center;
+//       flex-wrap: wrap;
+//       gap: 30px 60px;
+//       max-width: 420px;
+//       width: 100%;
+//       margin: 30px 0 50px;
 
-      @media (max-width: 1200px) {
-        margin: 30px 0 50px;
-      }
+//       @media (max-width: 1200px) {
+//         margin: 30px 0 50px;
+//       }
 
-      @media (max-width: 1000px) {
-        justify-content: center;
-        gap: 20px;
-        margin: 32px auto;
-        padding: 40px 0 0 0;
-      }
+//       @media (max-width: 1000px) {
+//         justify-content: center;
+//         gap: 20px;
+//         margin: 32px auto;
+//         padding: 40px 0 0 0;
+//       }
 
-      @media (max-width: 440px) {
-        gap: 10px;
-      }
+//       @media (max-width: 440px) {
+//         gap: 10px;
+//       }
 
-      & > .achievement {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        flex-basis: 40%;
-        align-items: center;
+//       & > .achievement {
+//         display: flex;
+//         flex-direction: column;
+//         flex-grow: 1;
+//         flex-basis: 40%;
+//         align-items: center;
 
-        & div {
-          flex-grow: 1;
-          flex-basis: 40%;
-        }
+//         & div {
+//           flex-grow: 1;
+//           flex-basis: 40%;
+//         }
 
-        & > p {
-          color: var(--color-white);
-          margin-top: 10px;
-          text-align: center;
-        }
-      }
+//         & > p {
+//           color: var(--color-white);
+//           margin-top: 10px;
+//           text-align: center;
+//         }
+//       }
 
-      &--ai {
-        align-items: center;
-        gap: 30px;
-        margin: 0 auto;
-      }
+//       &--ai {
+//         align-items: center;
+//         gap: 30px;
+//         margin: 0 auto;
+//       }
 
-      &--promotion {
-        align-items: center;
-        gap: 30px;
-        margin: 0 auto;
+//       &--promotion {
+//         align-items: center;
+//         gap: 30px;
+//         margin: 0 auto;
 
-        & > .achievement {
-          flex-grow: unset;
-          flex-basis: 200px;
-        }
-      }
+//         & > .achievement {
+//           flex-grow: unset;
+//           flex-basis: 200px;
+//         }
+//       }
 
-      &--aistore {
-        align-items: center;
-        gap: 30px;
-        margin: 0 auto;
+//       &--aistore {
+//         align-items: center;
+//         gap: 30px;
+//         margin: 0 auto;
 
-        & > .achievement {
-          flex-grow: unset;
-          flex-basis: 200px;
-          min-width: 200px;
-        }
-      }
+//         & > .achievement {
+//           flex-grow: unset;
+//           flex-basis: 200px;
+//           min-width: 200px;
+//         }
+//       }
 
-      &--design {
-        align-items: center;
-        gap: 30px;
-        width: unset;
-        margin: 0;
+//       &--design {
+//         align-items: center;
+//         gap: 30px;
+//         width: unset;
+//         margin: 0;
 
-        & > .achievement {
-          flex-grow: unset;
-          flex-basis: 200px;
-          min-width: 200px;
-        }
-      }
-    }
-  }
-}
+//         & > .achievement {
+//           flex-grow: unset;
+//           flex-basis: 200px;
+//           min-width: 200px;
+//         }
+//       }
+//     }
+//   }
+// }
 
 .block-buttons {
   margin-top: 50px;

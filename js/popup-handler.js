@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.classList.remove('popup-opened');
 
         videoPopup ? toggleVideoPLay(videoPopup, false) : false;
-        iframe.remove();
+        iframe ? iframe.remove() : false;
       }
     });
   };
