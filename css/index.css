@@ -1408,7 +1408,6 @@ ul.generic-list > li::marker {
   transition: opacity 0.3s ease;
   z-index: 10;
   max-width: 300px;
-  z-index: -1;
   transition: opacity 0.3s ease-in-out;
 }
 .tooltip-after.visible {
@@ -3180,7 +3179,7 @@ button:hover,
 .radioButton:hover,
 .radioButton:has(input:checked),
 .button-link:hover,
-.button-highlight {
+.button-highlight:hover {
   border: 1px solid var(--blue-main);
   background-color: var(--blue-main);
   color: var(--color-black);
@@ -3198,38 +3197,6 @@ button:hover,
   padding: 30px;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-}
-.card--additional {
-  align-items: flex-start;
-  gap: 20px;
-  width: 100%;
-  border-radius: 26px;
-  background-color: var(--bg-main);
-  color: var(--color-white);
-  border: 1px solid var(--bg-main);
-}
-.card--additional > .card-body {
-  flex: 1;
-  width: 100%;
-}
-.card--additional > .card-body > p {
-  margin-bottom: 16px;
-}
-.card--additional > .card-body > p:last-child {
-  margin-bottom: 0;
-}
-.card--additional > .card-footer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: stretch;
-  gap: 16px;
-  width: 100%;
-  margin-top: auto;
-}
-.card--additional > .card-footer > a {
-  justify-content: center;
-  width: 100%;
 }
 .card--photo {
   padding: 0px;
@@ -3842,7 +3809,6 @@ button:hover,
   height: 100%;
   background-color: var(--blue-bg);
   border-radius: 30px;
-  cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 .card--tariff > .card-header {
@@ -3885,6 +3851,9 @@ button:hover,
 .card--tariff.hover-glow:hover .card-header {
   outline: 1px solid var(--blue-main);
   box-shadow: 0px 5px 15px var(--blue-main);
+}
+.card--tariff.compact > .card-body {
+  padding: 20px;
 }
 .card--vakancy > .card-header {
   align-items: center;
@@ -3966,68 +3935,6 @@ button:hover,
 }
 .card--support .card-body > div > *:last-child {
   flex: 1;
-}
-.card--condition {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 0;
-  padding: 0;
-  border-radius: 25px;
-  background-color: var(--blue-bg);
-  color: var(--color-white);
-}
-.card--condition .card-header {
-  display: flex;
-  font-weight: 600;
-  padding: 18px 40px;
-  border-radius: 30px;
-  color: var(--color-white);
-  background-color: var(--blue-clouds);
-}
-.card--condition .card-body {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex: 1;
-  width: 100%;
-  padding: 20px;
-  text-align: left;
-}
-.card--condition .card-body > ul {
-  margin: 0 0 20px;
-}
-.card--condition .card-body > ul > li {
-  padding-left: 10px;
-  margin-bottom: 10px;
-  text-align: left;
-}
-.card--condition .card-body > ul > li:last-of-type {
-  margin-bottom: 0;
-}
-.card--condition .card-body > ul > li::marker {
-  color: var(--blue-main);
-  content: "•";
-  margin-right: 10px;
-}
-.card--condition .card-body > p {
-  margin-bottom: 16px;
-}
-.card--condition .card-body > p:last-child {
-  margin-bottom: 0;
-}
-.card--condition .card-footer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: stretch;
-  gap: 16px;
-  width: 100%;
-  margin-top: auto;
-  padding: 0 20px 20px;
-}
-.card--condition .card-footer > a {
-  justify-content: flex-start;
 }
 .card--icon {
   min-height: 130px;
