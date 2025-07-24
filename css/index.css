@@ -3004,10 +3004,9 @@ form .button:hover {
   height: 100%;
 }
 .flying-mockup img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  object-fit: cover;
-  aspect-ratio: 1/1;
+  object-fit: contain;
 }
 .flying-mockup::before {
   display: block;
@@ -4136,7 +4135,6 @@ button:hover,
 .card--achievement {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   flex-basis: 40%;
   align-items: center;
 }
@@ -4151,37 +4149,44 @@ button:hover,
 }
 
 .popup {
-  display: none;
+  display: flex;
   position: fixed;
   width: 100vw;
   height: 100vh;
   padding: 20px 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   opacity: 1;
   z-index: 5;
   top: 0;
-  backdrop-filter: blur(5px);
   transform-origin: center;
+  transform: scale(1.25);
   min-width: 200px;
+  visibility: hidden;
+  opacity: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  transition: 0.25s ease-in-out;
 }
 .popup video {
   border-radius: 10px;
   max-width: 90vw;
 }
 .popup.open {
-  display: flex;
   flex-direction: column;
   margin-top: auto;
   margin-bottom: auto;
-  animation: popupAppear 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
 }
 .popup-opened {
   position: static;
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+.popup-opened body > header, .popup-opened body > section, .popup-opened body > footer {
+  filter: blur(5px);
 }
 .popup-wrapper {
   position: relative;
