@@ -3893,11 +3893,13 @@ progress::-moz-progress-bar {
   justify-content: flex-start;
 }
 .card--icon {
+  min-height: 130px;
   gap: 10px;
   padding: 30px 30px 30px 100px;
 }
 @media (max-width: 600px) {
   .card--icon {
+    min-height: 100px;
     padding: 20px 20px 20px 70px;
   }
 }
@@ -3919,7 +3921,7 @@ progress::-moz-progress-bar {
     display: none;
   }
 }
-.card--icon > img {
+.card--icon > img, .card--icon > i {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -3927,6 +3929,8 @@ progress::-moz-progress-bar {
   display: flex;
   width: 34px;
   height: 34px;
+  font-size: 34px;
+  line-height: 1;
   object-fit: contain;
   object-position: center;
 }
