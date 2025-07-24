@@ -1079,6 +1079,21 @@ ul {
       }
     }
 
+    &--tab {
+      & > * {
+        flex: 1 1 0;
+
+        @media (max-width: 1200px) {
+          flex: 1 1 40%;
+        }
+
+        @media (max-width: 720px) {
+          flex: 1 0 100%;
+          width: 100%;
+        }
+      }
+    }
+
     &--advantages {
       gap: 40px 30px;
 
@@ -2916,6 +2931,139 @@ progress {
   }
 }
 
+// buttons
+// Базовые стили для всех кнопок
+button,
+.button,
+.button-link,
+.button-highlight,
+.radioButton {
+  display: flex;
+  border-radius: 30px;
+  background-color: transparent;
+  padding: 14px 24px 12px 24px;
+  font-weight: 500;
+  width: fit-content;
+  font-size: 14px;
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  line-height: 1em;
+  white-space: nowrap;
+  gap: 4px;
+  max-height: 50px;
+  align-items: center;
+  cursor: pointer;
+
+  // Общие элементы
+  span {
+    font-size: inherit !important;
+    line-height: 1em;
+  }
+
+  // Иконка стрелки (общая для всех кнопок)
+  i.icon-arrow_wide {
+    font-size: 1.4em;
+    line-height: 14px;
+    transition: color 0.3s ease-in-out;
+  }
+
+  // Модификаторы
+  &.big {
+    border-radius: 30px;
+    padding: 16px 24px 14px 24px;
+    justify-content: center;
+    align-items: center;
+
+    i.icon-arrow_wide {
+      font-size: 2em;
+      line-height: 16px;
+      margin-left: 4px;
+    }
+  }
+
+  &.no-border {
+    border-color: transparent;
+  }
+}
+
+// Специфичные стили для разных типов кнопок
+.button {
+  &-white {
+    background-color: var(--color-white);
+    color: var(--bg-main);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &-highlight {
+    border: 1px solid var(--blue-main);
+    background-color: var(--blue-main);
+    color: var(--color-black);
+
+    &:hover {
+      box-shadow: 0px 0px 15px var(--blue-main);
+    }
+  }
+}
+
+// Радио-кнопки
+.radioButton {
+  input[type='radio'] {
+    display: none;
+  }
+
+  &:has(input[type='radio']:checked) {
+    border: 1px solid var(--blue-main);
+    background-color: var(--blue-main);
+    color: var(--color-black);
+
+    i {
+      color: var(--color-black);
+    }
+  }
+
+  &:has(input:checked) {
+    box-shadow: none;
+
+    &::after {
+      font-family: 'INTRID_ICONS';
+      content: '\0049';
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+}
+
+// Ссылка-кнопка
+.button-link {
+  i {
+    color: var(--blue-main);
+  }
+
+  &:hover {
+    i {
+      color: var(--color-black);
+    }
+  }
+}
+
+// Общие hover-стили
+button:hover,
+.button:hover,
+.radioButton:hover,
+.radioButton:has(input:checked),
+.button-link:hover,
+.button-highlight {
+  border: 1px solid var(--blue-main);
+  background-color: var(--blue-main);
+  color: var(--color-black);
+  box-shadow: 0px 0px 15px var(--blue-main);
+}
+
 // cards
 .card {
   position: relative;
@@ -3969,7 +4117,41 @@ progress {
 
     & > * {
       &:last-child {
-        margin-top: auto;
+        &:not(ul) {
+          margin-top: auto;
+        }
+      }
+    }
+  }
+
+  &--benefit {
+    cursor: pointer;
+
+    @media (max-width: 600px) {
+      padding: 20px 20px 20px 85px;
+    }
+
+    &:hover {
+      border: 1px solid var(--blue-main);
+      box-shadow: 0px 0px 15px var(--blue-main);
+    }
+
+    &::before {
+      @media (max-width: 600px) {
+        top: -5px;
+        left: -15px;
+        display: flex;
+      }
+    }
+
+    &:has(input:checked) {
+      &::before {
+        background-color: var(--blue-main);
+        transition: 0.25s ease-in-out;
+      }
+
+      & > img {
+        filter: brightness(0.3);
       }
     }
   }

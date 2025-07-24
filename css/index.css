@@ -1590,6 +1590,20 @@ ul.generic-list > li::marker {
     width: 100%;
   }
 }
+.flex-layout--tab > * {
+  flex: 1 1 0;
+}
+@media (max-width: 1200px) {
+  .flex-layout--tab > * {
+    flex: 1 1 40%;
+  }
+}
+@media (max-width: 720px) {
+  .flex-layout--tab > * {
+    flex: 1 0 100%;
+    width: 100%;
+  }
+}
 .flex-layout--advantages {
   gap: 40px 30px;
 }
@@ -3050,6 +3064,129 @@ progress::-moz-progress-bar {
   }
 }
 
+button,
+.button,
+.button-link,
+.button-highlight,
+.radioButton {
+  display: flex;
+  border-radius: 30px;
+  background-color: transparent;
+  padding: 14px 24px 12px 24px;
+  font-weight: 500;
+  width: fit-content;
+  font-size: 14px;
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  line-height: 1em;
+  white-space: nowrap;
+  gap: 4px;
+  max-height: 50px;
+  align-items: center;
+  cursor: pointer;
+}
+button span,
+.button span,
+.button-link span,
+.button-highlight span,
+.radioButton span {
+  font-size: inherit !important;
+  line-height: 1em;
+}
+button i.icon-arrow_wide,
+.button i.icon-arrow_wide,
+.button-link i.icon-arrow_wide,
+.button-highlight i.icon-arrow_wide,
+.radioButton i.icon-arrow_wide {
+  font-size: 1.4em;
+  line-height: 14px;
+  transition: color 0.3s ease-in-out;
+}
+button.big,
+.button.big,
+.button-link.big,
+.button-highlight.big,
+.radioButton.big {
+  border-radius: 30px;
+  padding: 16px 24px 14px 24px;
+  justify-content: center;
+  align-items: center;
+}
+button.big i.icon-arrow_wide,
+.button.big i.icon-arrow_wide,
+.button-link.big i.icon-arrow_wide,
+.button-highlight.big i.icon-arrow_wide,
+.radioButton.big i.icon-arrow_wide {
+  font-size: 2em;
+  line-height: 16px;
+  margin-left: 4px;
+}
+button.no-border,
+.button.no-border,
+.button-link.no-border,
+.button-highlight.no-border,
+.radioButton.no-border {
+  border-color: transparent;
+}
+
+.button-white {
+  background-color: var(--color-white);
+  color: var(--bg-main);
+}
+.button-white:hover {
+  transform: scale(1.05);
+}
+.button-highlight {
+  border: 1px solid var(--blue-main);
+  background-color: var(--blue-main);
+  color: var(--color-black);
+}
+.button-highlight:hover {
+  box-shadow: 0px 0px 15px var(--blue-main);
+}
+
+.radioButton input[type=radio] {
+  display: none;
+}
+.radioButton:has(input[type=radio]:checked) {
+  border: 1px solid var(--blue-main);
+  background-color: var(--blue-main);
+  color: var(--color-black);
+}
+.radioButton:has(input[type=radio]:checked) i {
+  color: var(--color-black);
+}
+.radioButton:has(input:checked) {
+  box-shadow: none;
+}
+.radioButton:has(input:checked)::after {
+  font-family: "INTRID_ICONS";
+  content: "I";
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.button-link i {
+  color: var(--blue-main);
+}
+.button-link:hover i {
+  color: var(--color-black);
+}
+
+button:hover,
+.button:hover,
+.radioButton:hover,
+.radioButton:has(input:checked),
+.button-link:hover,
+.button-highlight {
+  border: 1px solid var(--blue-main);
+  background-color: var(--blue-main);
+  color: var(--color-black);
+  box-shadow: 0px 0px 15px var(--blue-main);
+}
+
 .card {
   position: relative;
   z-index: 1;
@@ -3944,8 +4081,34 @@ progress::-moz-progress-bar {
 .card--icon ul li::marker {
   color: var(--blue-tag);
 }
-.card--icon > *:last-child {
+.card--icon > *:last-child:not(ul) {
   margin-top: auto;
+}
+.card--benefit {
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .card--benefit {
+    padding: 20px 20px 20px 85px;
+  }
+}
+.card--benefit:hover {
+  border: 1px solid var(--blue-main);
+  box-shadow: 0px 0px 15px var(--blue-main);
+}
+@media (max-width: 600px) {
+  .card--benefit::before {
+    top: -5px;
+    left: -15px;
+    display: flex;
+  }
+}
+.card--benefit:has(input:checked)::before {
+  background-color: var(--blue-main);
+  transition: 0.25s ease-in-out;
+}
+.card--benefit:has(input:checked) > img {
+  filter: brightness(0.3);
 }
 .card--roadmap {
   overflow: unset;
@@ -5042,144 +5205,6 @@ body {
 }
 
 /* buttons and checkboxes */
-button,
-.button,
-label.radioButton,
-.button-link,
-.button-highlight {
-  display: flex;
-  border-radius: 30px;
-  background-color: transparent;
-  padding: 14px 24px 12px 24px;
-  font-weight: 500;
-  width: fit-content;
-  font-size: 14px;
-  color: var(--color-white);
-  border: 1px solid var(--color-white);
-  text-transform: uppercase;
-  transition: all 0.3s ease-in-out;
-  line-height: 1em;
-  text-wrap: nowrap;
-  gap: 4px;
-  max-height: 50px;
-  align-items: center;
-}
-button input[type=radio],
-.button input[type=radio],
-label.radioButton input[type=radio],
-.button-link input[type=radio],
-.button-highlight input[type=radio] {
-  display: none;
-}
-button:has(input[type=radio]:checked),
-.button:has(input[type=radio]:checked),
-label.radioButton:has(input[type=radio]:checked),
-.button-link:has(input[type=radio]:checked),
-.button-highlight:has(input[type=radio]:checked) {
-  border: 1px solid var(--blue-main);
-  background-color: var(--blue-main);
-  color: var(--color-black);
-}
-button:has(input[type=radio]:checked) i,
-.button:has(input[type=radio]:checked) i,
-label.radioButton:has(input[type=radio]:checked) i,
-.button-link:has(input[type=radio]:checked) i,
-.button-highlight:has(input[type=radio]:checked) i {
-  color: var(--color-black);
-}
-button.big,
-.button.big,
-label.radioButton.big,
-.button-link.big,
-.button-highlight.big {
-  border-radius: 30px;
-  padding: 16px 24px 14px 24px;
-  justify-content: center;
-  align-items: center;
-}
-button.big i.icon-arrow_wide,
-.button.big i.icon-arrow_wide,
-label.radioButton.big i.icon-arrow_wide,
-.button-link.big i.icon-arrow_wide,
-.button-highlight.big i.icon-arrow_wide {
-  font-size: 2em;
-  line-height: 16px;
-  margin-left: 4px;
-}
-button span,
-.button span,
-label.radioButton span,
-.button-link span,
-.button-highlight span {
-  font-size: inherit !important;
-  line-height: 1em;
-}
-button.no-border,
-.button.no-border,
-label.radioButton.no-border,
-.button-link.no-border,
-.button-highlight.no-border {
-  border-color: transparent;
-}
-button i.icon-arrow_wide,
-.button i.icon-arrow_wide,
-label.radioButton i.icon-arrow_wide,
-.button-link i.icon-arrow_wide,
-.button-highlight i.icon-arrow_wide {
-  font-size: 1.4em;
-  line-height: 14px;
-  transition: color 0.3s ease-in-out;
-}
-
-button:hover,
-.button:hover,
-label.radioButton:hover,
-label.radioButton:has(input:checked),
-.button-link:hover,
-.button-highlight {
-  cursor: pointer;
-  border: 1px solid var(--blue-main);
-  background-color: var(--blue-main);
-  color: var(--color-black);
-  box-shadow: 0px 0px 15px var(--blue-main);
-}
-
-label.radioButton:has(input:checked),
-.button-highlight {
-  box-shadow: none;
-}
-
-.button-white {
-  background-color: var(--color-white);
-  color: var(--bg-main);
-}
-.button-white:hover {
-  transform: scale(1.05);
-}
-
-.button-highlight:hover {
-  box-shadow: 0px 0px 15px var(--blue-main);
-}
-
-.button-link i {
-  color: var(--blue-main);
-}
-
-.button-link:hover i {
-  color: var(--color-black);
-}
-
-label.radioButton input {
-  display: none;
-}
-
-label.radioButton:has(input:checked)::after {
-  font-family: "INTRID_ICONS";
-  content: "I";
-  font-weight: 600;
-  font-size: 14px;
-}
-
 .slider-with-tabs {
   display: flex;
   flex-direction: column;
@@ -10618,78 +10643,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .integration-stages > .title_h3 {
   margin: 0 auto 50px;
 }
-.integration-stages .sites-roadmap-list li {
-  flex: 1 0 calc(50% - 16px);
-  max-width: 50%;
-}
-@media (max-width: 440px) {
-  .integration-stages .sites-roadmap-list li {
-    flex: 1 0 auto;
-    max-width: 100%;
-  }
-}
-.integration-stages .sites-roadmap-list li:nth-child(1) {
-  order: 1;
-}
-.integration-stages .sites-roadmap-list li:nth-child(2) {
-  order: 2;
-}
-@media (min-width: 1000px) {
-  .integration-stages .sites-roadmap-list li:nth-child(2)::before {
-    top: calc(100% + 24px);
-    right: calc(50% + 16px);
-    transform: rotate(0deg);
-  }
-  .integration-stages .sites-roadmap-list li:nth-child(2)::after {
-    top: 110%;
-    right: 50%;
-    transform: rotate(90deg);
-  }
-}
-.integration-stages .sites-roadmap-list li:nth-child(3) {
-  order: 4;
-}
-@media (min-width: 600px) {
-  .integration-stages .sites-roadmap-list li:nth-child(3)::before {
-    transform: rotate(90deg);
-    right: unset;
-    left: -30px;
-  }
-  .integration-stages .sites-roadmap-list li:nth-child(3)::after {
-    right: unset;
-    left: -50px;
-  }
-}
-@media (min-width: 999px) {
-  .integration-stages .sites-roadmap-list li:nth-child(3)::before {
-    top: 50%;
-    transform: rotate(90deg) translateX(-50%);
-    right: unset;
-    left: -30px;
-  }
-  .integration-stages .sites-roadmap-list li:nth-child(3)::after {
-    top: 50%;
-    right: unset;
-    left: -50px;
-    transform: translateY(-50%);
-  }
-}
-@media (max-width: 440px) {
-  .integration-stages .sites-roadmap-list li:nth-child(3) {
-    order: 3;
-  }
-}
-.integration-stages .sites-roadmap-list li:nth-child(4) {
-  order: 3;
-}
-.integration-stages .sites-roadmap-list li:nth-child(4)::before, .integration-stages .sites-roadmap-list li:nth-child(4)::after {
-  display: none;
-}
-@media (max-width: 440px) {
-  .integration-stages .sites-roadmap-list li:nth-child(4) {
-    order: 4;
-  }
-}
 
 .integration-stack .tech-we-use {
   padding: 0;
@@ -11626,52 +11579,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
 }
 
-.seo-portfolio-card {
-  background-color: var(--bg-main);
-}
-.seo-portfolio-card-header {
-  display: grid;
-  height: 60px;
-}
-.seo-portfolio-card-header .title_h5 {
-  grid-area: 1/1/2/2;
-}
-.seo-portfolio-card-header > a {
-  grid-area: 2/1/3/2;
-}
-.seo-portfolio-card-header > img {
-  grid-area: 1/2/3/3;
-  width: auto;
-  height: 60px;
-  margin-left: auto;
-  max-width: 120px;
-  max-height: 100px;
-}
-.seo-portfolio-card .support-card--list {
-  max-width: unset;
-  flex: 1;
-}
-.seo-portfolio-card .support-card--list > div {
-  width: 100%;
-}
-.seo-portfolio-card .support-card--list > div i,
-.seo-portfolio-card .support-card--list > div img {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
-  font-size: 32px;
-  color: var(--blue-main);
-}
-.seo-portfolio-card .support-card--list > div > b {
-  margin-left: auto;
-  width: 130px;
-  flex: 0 0 130px;
-}
-.seo-portfolio-card > .button-link {
-  align-self: end;
-  justify-self: end;
-}
-
 .design-actions {
   display: flex;
   flex-direction: row;
@@ -11813,40 +11720,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .ui_design-tabs .tabs-content .tab-content label.tab-button {
   margin-bottom: 20px;
-}
-.ui_design-tabs .sites-roadmap-list {
-  justify-content: center;
-  margin-bottom: 50px;
-}
-.ui_design-tabs .sites-roadmap-list li {
-  flex: 1 1 45%;
-  max-width: unset;
-}
-.ui_design-tabs .sites-roadmap-list li .header img,
-.ui_design-tabs .sites-roadmap-list li .header i {
-  font-size: 40px;
-  line-height: 1em;
-  width: 40px;
-  height: 40px;
-}
-@media (max-width: 600px) {
-  .ui_design-tabs .sites-roadmap-list li .header img,
-  .ui_design-tabs .sites-roadmap-list li .header i {
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-  }
-}
-.ui_design-tabs .sites-roadmap-list li:before, .ui_design-tabs .sites-roadmap-list li:after {
-  display: none;
-}
-.ui_design-tabs .sites-roadmap-list li ul li {
-  max-width: unset;
-  padding-left: 10px;
-}
-.ui_design-tabs .sites-roadmap-list li ul li::marker {
-  content: "•";
-  color: var(--blue-main);
 }
 @media (max-width: 900px) {
   .ui_design-tabs .tabs-buttons {
