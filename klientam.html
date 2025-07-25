@@ -160,18 +160,18 @@
         </div>
     </header>
     <!-- MAIN PAGE -->
-    <section class="crm crm-page container">
+    <section class="main-section container">
         <div class="breadcrumbs">
             <a href="./">Главная</a>
             <span>-</span>
             <a href="#" class="link-disabled">Клиентам</a>
         </div>
 
-        <div class="crm-page--block">
-            <h1 class="title_h1 w-fit underlined">
+        <div class="main-section--left">
+            <h1 class="w-fit underlined">
                 Информация для клиентов
             </h1>
-            <p class="integration-description">
+            <p class="mb-20">
                 Ни для кого не секрет, что коммерческий сайт – это современный инструмент бизнеса, позволяющий получать
                 большой поток клиентов из сети. Основные задачи сайта: привлекать клиентов, приносить прибыль,
                 способствовать продвижению торговой марки, улучшать имидж компании, обеспечивать обратную связь с
@@ -179,24 +179,29 @@
                 очередь, самому Заказчику нужно очень серьёзно и ответственно отнестись к процессу разработки
                 веб-ресурса.
             </p>
-            <div class="employes-n-experience mt-32">
-                <div class="employes-n-experience-item">
-                    <span>20<span class="color-blue">+</span></span>
-                    <p>лет опыта работы</p>
+
+            <div class="main-section--actions">
+                <div class="employes-n-experience mt-32 w-100">
+                    <div class="employes-n-experience-item">
+                        <span>20<span class="color-blue">+</span></span>
+                        <p>лет опыта работы</p>
+                    </div>
+                    <div class="employes-n-experience-item">
+                        <span>12</span>
+                        <p>разработчиков в штате</p>
+                    </div>
                 </div>
-                <div class="employes-n-experience-item">
-                    <span>12</span>
-                    <p>разработчиков в штате</p>
+                
+                <div>
+                    <a class="button-highlight big" href="./pamatka-zakazciku.html">
+                        Читать подробнее
+                        <i class="icon-arrow_wide"></i>
+                    </a>
                 </div>
-            </div>
-            <div class="fd-row gap-10 align-center flex-wrap mt-50">
-                <a class="button-highlight big" href="./pamatka-zakazciku.html">
-                    Читать подробнее
-                    <i class="icon-arrow_wide"></i>
-                </a>
             </div>
         </div>
-        <div class="flying-orb straight br1000">
+
+        <div class="flying-mockup">
             <img src="./src/images/orb-with-logo.webp" alt="">
             <div class="water-ripple">
                 <div class="ripple-circle"></div>
@@ -620,6 +625,7 @@
     <script src="./js/popup-handler.js"></script>
     <script src="./js/map-handler.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/dynamicMockup.js"></script>
     <script>
         window.addEventListener('hashchange', () => {
             console.log('=> ', location.hash)

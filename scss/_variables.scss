@@ -1023,6 +1023,10 @@ ul {
 
 // flex wrapping & sizes
 .flex {
+  &-column {
+    flex-direction: column !important;
+  }
+
   &-nowrap {
     flex-wrap: nowrap;
   }
@@ -1054,7 +1058,8 @@ ul {
 
     &--2x {
       & > * {
-        flex: 1 1 0;
+        // flex: 1 1 0;
+        flex: 1 0 calc(50% - 10px);
 
         @media (max-width: 750px) {
           flex: 1 0 100%;
@@ -1612,6 +1617,18 @@ ul {
     justify-content: center;
   }
 
+  &-around {
+    justify-content: space-around;
+  }
+
+  &-between {
+    justify-content: space-between;
+  }
+
+  &-evenly {
+    justify-content: space-evenly;
+  }
+
   &-sb {
     justify-content: space-between;
   }
@@ -1624,6 +1641,19 @@ ul {
     &-end {
       justify-self: end;
     }
+  }
+}
+
+// order
+.order {
+  &-1 {
+    order: 1;
+  }
+  &-2 {
+    order: 2;
+  }
+  &-3 {
+    order: 3;
   }
 }
 
@@ -1663,6 +1693,10 @@ ul {
 
   &-auto {
     width: auto;
+  }
+
+  &-100 {
+    width: 100%;
   }
 }
 
@@ -2680,12 +2714,8 @@ form {
 
 // icms-note
 .icms-note {
-  margin: 26px 0;
   display: flex;
   align-items: center;
-  flex-grow: 1;
-  flex-basis: 50%;
-  order: 3;
 
   img {
     width: auto;
@@ -2846,6 +2876,8 @@ form {
     width: 280px;
     height: 280px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     aspect-ratio: 1 / 1;
     animation-delay: 3s;
 
@@ -2865,7 +2897,8 @@ form {
 
     img {
       max-width: 100%;
-      height: auto;
+      // height: auto;
+      height: 100%;
       object-fit: contain;
       // aspect-ratio: 1 / 1;
     }
@@ -2882,6 +2915,26 @@ form {
       z-index: -1;
       animation: orb-glow 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
       filter: drop-shadow(0 0 30px var(--blue-main));
+    }
+
+    &--icms {
+      @media (max-width: 1000px) {
+        margin-top: -20px;
+      }
+
+      & img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        height: 300px;
+        transform: translate(-50%, -25%);
+
+        @media (max-width: 1000px) {
+          width: 190px;
+          height: 190px;
+        }
+      }
     }
   }
 }
@@ -4187,6 +4240,7 @@ button:hover,
     // flex-grow: 1;
     flex-basis: 40%;
     align-items: center;
+    max-width: 200px;
 
     & div {
       flex-grow: 1;
@@ -4197,6 +4251,13 @@ button:hover,
       color: var(--color-white);
       margin-top: 10px;
       text-align: center;
+    }
+
+    &:hover {
+      & > .img-placeholder {
+        background-color: var(--blue-clouds);
+        box-shadow: 0px 0px 20px 20px var(--blue-clouds);
+      }
     }
   }
 }

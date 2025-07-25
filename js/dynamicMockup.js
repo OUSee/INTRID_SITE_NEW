@@ -4,7 +4,7 @@ function updateMockupPlace() {
   const movementPlace = document.querySelector('.main-section--actions');
   const returnPlace = document.querySelector('.main-section');
 
-  if (window.innerWidth < 1000) {
+  if (window.innerWidth < 1001) {
     if (mockup && movementPlace) {
       movementPlace.before(mockup);
     }

@@ -692,6 +692,7 @@ button.next {
   z-index: 1;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 
   @media (max-width: 1000px) {
     flex-direction: column;
@@ -702,6 +703,10 @@ button.next {
     flex-direction: column;
     align-items: flex-start;
     max-width: 70%;
+
+    @media (max-width: 1200px) {
+      max-width: 65%;
+    }
 
     @media (max-width: 1000px) {
       max-width: 100%;
@@ -716,16 +721,35 @@ button.next {
     }
   }
 
+  &--block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    & > h1 {
+      margin-bottom: 32px;
+
+      @media (max-width: 600px) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
   &--actions {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 40px 20px;
     flex-wrap: wrap;
+    width: 100%;
 
     @media (max-width: 1000px) {
-      flex-direction: column;
+      // flex-direction: column;
+      align-items: center;
       align-self: stretch;
+      justify-content: center;
+      gap: 20px;
       margin-top: 50px;
     }
   }
@@ -733,11 +757,9 @@ button.next {
   &--achievements {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 30px 60px;
-    max-width: 420px;
-    width: 100%;
 
     @media (max-width: 1000px) {
       justify-content: center;
@@ -746,6 +768,21 @@ button.next {
 
     @media (max-width: 440px) {
       gap: 10px;
+    }
+  }
+
+  &--numbers {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
     }
   }
 
@@ -8347,34 +8384,6 @@ body
 
 // icms page
 .icms {
-  &-main {
-    .flying-orb > .water-ripple {
-      position: absolute;
-      top: 24%;
-      left: 50%;
-      width: auto;
-      height: 57%;
-      aspect-ratio: 1 / 1;
-      transform: translate(-50%, -50%);
-    }
-
-    @media (max-width: 1000px) {
-      .icms-note {
-        margin-top: 350px;
-        justify-content: center;
-      }
-
-      .flying-orb {
-        top: unset;
-        bottom: 145px;
-      }
-
-      .fd-row.gap-10.align-center.flex-wrap.mt-20 {
-        justify-content: center;
-      }
-    }
-  }
-
   &-pricelist {
     ul.prices-services-list {
       @media (max-width: 540px) {

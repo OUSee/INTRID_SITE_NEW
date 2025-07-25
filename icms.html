@@ -160,18 +160,19 @@
         </div>
     </header>
     <!-- MAIN PAGE -->
-    <section class="icms-main crm crm-page container">
+    <section class="main-section container">
         <div class="breadcrumbs">
             <a href="./">Главная</a>
             <span>-</span>
             <a href="#" class="link-disabled">ICMS</a>
         </div>
 
-        <div class="crm-page--block">
-            <h1 class="title_h1 w-fit underlined">
+        <div class="main-section--left">
+            <h1 class="w-fit underlined">
                 Система управления контентом "iCMS"
             </h1>
-            <p class="integration-description">
+
+            <p class="mb-20">
                 Специализированная модульная CMS для управления сайтами и интернет-магазинами. CMS или Система
                 Управления Контентом – комплексная программа, позволяющая администрировать веб-ресурс и не требующая
                 специальных знаний профессионального веб-мастера. Имеете навыки работы в MS Word? Тогда Вы без труда
@@ -180,21 +181,26 @@
                 <a href="https://www.yiiframework.com/" class="hover-underline" target="_blank">платформе
                     фреймворка&nbsp;Yii2</a>
             </p>
-            <div class="icms-note">
-                <img src="./src/images/herb.webp" alt="herb" class="icms-herb">
-                <p>
-                    iCMS зарегистрирована в Российском реестре программного обеспечения под <a href="javascript://"
-                        data-popup="icms-papers" class="color-blue hover-underline">№14267</a><br>
-                </p>
-            </div>
-            <div class="fd-row gap-10 align-center flex-wrap mt-20">
+
+            <div class="main-section--actions">
+                <div class="icms-note w-100">
+                    <img src="./src/images/herb.webp" alt="herb">
+                    <p>
+                        iCMS зарегистрирована в Российском реестре программного обеспечения под <a href="javascript://"
+                            data-popup="icms-papers" class="color-blue hover-underline">
+                            №14267
+                        </a>
+                    </p>
+                </div>
+
                 <a class="button-highlight big" href="#icms-pricelist">
                     Подключить в проект
                     <i class="icon-arrow_wide"></i>
                 </a>
             </div>
         </div>
-        <div class="flying-orb straight">
+
+        <div class="flying-mockup flying-mockup--icms">
             <img src="./src/icons/iCMS.svg" alt="">
             <div class="water-ripple">
                 <div class="ripple-circle"></div>
@@ -777,6 +783,7 @@
     <script src="./js/map-handler.js"></script>
     <script src="./js/slider-with-pagination.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/dynamicMockup.js"></script>
     <script>
         window.addEventListener('hashchange', () => {
             console.log('=> ', location.hash)
