@@ -159,8 +159,9 @@
             </div>
         </div>
     </header>
+
     <!-- hero-section -->
-    <section class="crm crm-page container">
+    <section class="main-section container">
         <div class="breadcrumbs">
             <a href="./">Главная</a>
             <span>-</span>
@@ -169,26 +170,29 @@
             <a href="#" class="link-disabled">UX / UI разработка</a>
         </div>
 
-        <div class="crm-page--block">
-            <h1 class="title_h1 w-fit underlined">
+        <div class="main-section--left">
+            <h1 class="w-fit underlined">
                 Пользовательский дизайн интерфейсов
             </h1>
-            <p class="integration-description">
+
+            <p class="mb-20">
                 UI (User Interface) — это визуальная часть интерфейса: кнопки, меню, цвета и шрифты. UX (User
                 Experience) — то, как пользователь взаимодействует с системой: логика, удобство и эмоции от
                 использования. Вместе они создают цифровой продукт, который не только выглядит привлекательно,
                 но и работает эффективно.
-                <br>
-                <br>
+            </p>
+
+            <p class="mb-20">
                 Создаем интуитивно понятные интерфейсы, которые точно учитывют потребности вашей целевой
                 аудитории, упрощают навигацию, увеличивают конверсию и работают на всех устройствах. Благодаря
                 этому пользователи легко находят то, что им нужно, и совершают целевые действия.
             </p>
+
             <p class="title_h4 color-blue mb-50">
                 Стоимость — от 35&nbsp;000&nbsp;₽
             </p>
 
-            <div class="crm-actions">
+            <div class="main-section--actions">
                 <a class="button-highlight big" href="#crm-creation">
                     Заказать
                 </a>
@@ -196,15 +200,15 @@
                     Портфолио <i class="icon-arrow_wide"></i>
                 </a>
             </div>
+        </div>
 
-            <div class="flying-orb straight">
-                <img src="./src/images/ui_ux-main-mokcup.webp" alt="">
-                <div class="water-ripple">
-                    <div class="ripple-circle"></div>
-                    <div class="ripple-circle"></div>
-                    <div class="ripple-circle"></div>
-                    <div class="ripple-circle"></div>
-                </div>
+        <div class="flying-mockup">
+            <img src="./src/images/ui_ux-main-mokcup.webp" alt="">
+            <div class="water-ripple">
+                <div class="ripple-circle"></div>
+                <div class="ripple-circle"></div>
+                <div class="ripple-circle"></div>
+                <div class="ripple-circle"></div>
             </div>
         </div>
     </section>
@@ -262,25 +266,14 @@
                 <span class="tab-header title_h5">
                     Для интернет-магазина
                 </span><br>
-                <!-- <span class="tab-button-content"><span class="color-blue fz-24 fw-bold">+20%</span> к эффективности
-                    продаж
-                    в интернет-магазине после внедрения Искусственного Интеллекта
-                </span> -->
             </label>
             <label for="tab-2" class="tab-button">
                 <input type="radio" name="tab-radio" id="tab-2" onchange="sliderInitialise()">
                 <span class="tab-header title_h5">Для корпоративного сайта</span><br>
-                <!-- <span class="tab-button-content">
-                    <span class="color-blue fz-24 fw-bold">+25%</span>
-                    к точности прогнозов и управлению ресурсами
-                </span> -->
             </label>
             <label for="tab-3" class="tab-button">
                 <input type="radio" name="tab-radio" id="tab-3" onchange="sliderInitialise()">
                 <span class="tab-header title_h5">Для веб-портала</span><br>
-                <!-- <span class="tab-button-content"><span class="color-blue fz-24 fw-bold">+30%</span>
-                    к скорости проведения торгов и числу выгодных сделок
-                </span> -->
             </label>
         </div>
         <div class="tabs-content">
@@ -290,9 +283,6 @@
                         onchange="sliderInitialise()">
                     <span class="tab-header title_h5">Для интернет-магазина</span><br>
                 </label>
-                
-                <!-- <h2 class="text-center w-fit underlined m-center">Интернет-магазин с Искусственным Интеллектом</h2> -->
-                <!--  -->
 
                 <p class="title_h4 mb-32">
                     Что входит в разработку интерфейсов для интернет-магазина?
@@ -641,7 +631,7 @@
                 </div>
 
                 <a href="#crm-creation" class="button-link m-center mt-20 ">
-                    Заказать дизайн 
+                    Заказать дизайн
                     <span class="br520">корпоративного сайта</span>
                     <i class="icon-arrow_wide"></i>
                 </a>
@@ -689,7 +679,7 @@
                         </ul>
                     </div>
                     <div class="card card--icon">
-                        <i class="icon-links"></i>
+                        <i class="icon-links color-blue"></i>
                         <b class="title_h5 color-blue">
                             Архитектура интерфейсов
                         </b>
@@ -826,7 +816,7 @@
                     </button>
                 </div>
                 <a href="#crm-creation" class="button-link m-center mt-20 ">
-                    Заказать дизайн 
+                    Заказать дизайн
                     <span class="br520">веб-портала</span>
                     <i class="icon-arrow_wide"></i>
                 </a>
@@ -1026,6 +1016,7 @@
             </a>
         </div>
     </section>
+
     <!-- footer -->
     <footer class="footer">
         <div class="container container-full">
@@ -1102,6 +1093,7 @@
             </div>
         </div>
     </footer>
+
     <!-- MODAL WINDOWS -->
     <dialog class="popup" id="privacy-policy">
         <div class="popup-wrapper">
@@ -1242,6 +1234,7 @@
     <script src="./js/incrementNumbers.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
     <script src="./js/sitePreview.js"></script>
+    <script src="./js/dynamicMockup.js"></script>
 </body>
 
 </html>

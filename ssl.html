@@ -162,7 +162,7 @@
         </div>
     </header>
     <!-- MAIN PAGE -->
-    <section class="crm crm-page container">
+    <section class="main-section container">
         <div class="breadcrumbs">
             <a href="./">Главная</a>
             <span>-</span>
@@ -171,36 +171,40 @@
             <a href="#" class="link-disabled">SSL-сертификаты</a>
         </div>
 
-        <div class="crm-page--block">
-            <h1 class="title_h1 w-fit underlined">
+        <div class="main-section--left">
+            <h1 class="w-fit underlined">
                 SSL-сертификат
             </h1>
-            <p class="integration-description">
+
+            <p class="mb-20">
                 Установив SSL-сертификат на сайт, Вы обеспечите пользователям защиту данных от злоумышленников и
                 заверите их в надежности ресурса. Подберем оптимальный вид сертификата и позаботимся о его своевременном
                 продлении, благодаря чему, Ваш сайт будет лучше ранжироваться в поисковых системах
             </p>
-            <p class="title_h5 color-blue mt-20 mb-32">
+
+            <p class="title_h5 color-blue mb-50">
                 Стоимость подключения SSL-сертификата от&nbsp;900&nbsp;руб
             </p>
-            <div class="crm-actions">
+
+            <div class="main-section--actions">
                 <a class="button-highlight big" href="#ssl-creation">
                     Получить КП
                     <i class="icon-arrow_wide"></i>
                 </a>
             </div>
+        </div>
 
-            <div class="flying-orb">
-                <img src="./src/images/ssl-main-mockup.webp" alt="">
-                <div class="water-ripple">
-                    <div class="ripple-circle"></div>
-                    <div class="ripple-circle"></div>
-                    <div class="ripple-circle"></div>
-                    <div class="ripple-circle"></div>
-                </div>
+        <div class="flying-mockup">
+            <img src="./src/images/ssl-main-mockup.webp" alt="">
+            <div class="water-ripple">
+                <div class="ripple-circle"></div>
+                <div class="ripple-circle"></div>
+                <div class="ripple-circle"></div>
+                <div class="ripple-circle"></div>
             </div>
         </div>
     </section>
+
     <!--  -->
     <section class="ssl-accordions design_site-benefits promotion-benfits ai-integration">
         <div class="container">
@@ -235,7 +239,7 @@
             </div>
             <div class="accordion-item">
                 <input type="checkbox" id="section1" class="accordion-checkbox">
-                <label for="section1" class="accordion-header w-fit m-center title_h4">
+                <label for="section1" class="accordion-header m-center title_h4">
                     Как понять, есть ли на сайте сертификат?<i class="icon-shevrone"></i>
                 </label>
                 <div class="accordion-content">
@@ -248,7 +252,7 @@
             </div>
             <div class="accordion-item">
                 <input type="checkbox" id="section2" class="accordion-checkbox">
-                <label for="section2" class="accordion-header w-fit m-center title_h4">
+                <label for="section2" class="accordion-header m-center title_h4">
                     Для чего нужно ставить сертификат тем, кто не продает через caйт товары?<i
                         class="icon-shevrone"></i>
                 </label>
@@ -265,7 +269,7 @@
             </div>
             <div class="accordion-item">
                 <input type="checkbox" id="section3" class="accordion-checkbox">
-                <label for="section3" class="accordion-header w-fit m-center title_h4">
+                <label for="section3" class="accordion-header m-center title_h4">
                     Как получить сертификат? <i class="icon-shevrone"></i>
                 </label>
                 <div class="accordion-content">
@@ -281,6 +285,7 @@
             </div>
         </div>
     </section>
+
     <!-- corporate -->
     <section class="domain-form corporate-creation landing-creation" id="ssl-creation">
         <div class="container">
@@ -318,6 +323,7 @@
             </form>
         </div>
     </section>
+
     <!--  -->
     <section class="use-service container">
         <p class="title_h2 underlined w-fit m-center text-center">
@@ -343,6 +349,7 @@
             </a>
         </div>
     </section>
+
     <!-- footer -->
     <footer class="footer">
         <div class="container container-full">
@@ -419,6 +426,7 @@
             </div>
         </div>
     </footer>
+
     <!-- MODAL WINDOWS -->
     <dialog class="popup" id="map">
         <div class="popup-wrapper">
@@ -455,11 +463,6 @@
                         <input type="tel" name="phone" placeholder="* Телефон" required>
                         <textarea data-autosize="true" rows="1"
                             placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
-                        <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
-                        <!-- <label for="personal-data">
-                            <input type="checkbox" name="agree" id="personal-data" required>
-                            Согласен на обработку персональных данных
-                        </label> -->
                         <p class="testimonials text-center m-center">
                             Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
                                 class="text-dashed color-white">обработку
@@ -562,6 +565,7 @@
     <script src="./js/popup-handler.js"></script>
     <script src="./js/map-handler.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/dynamicMockup.js"></script>
 </body>
 
 </html>

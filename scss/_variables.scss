@@ -204,6 +204,11 @@ $section-clouds-bg: linear-gradient(
   }
 }
 
+// for scroll-to-block
+[id] {
+  scroll-margin-block-start: 80px;
+}
+
 input[type='radio'] {
   display: none;
 }
@@ -961,7 +966,8 @@ ul {
 
   &-lg {
     &-none {
-      @media (max-width: 900px) {
+      // previosly was a 900px
+      @media (max-width: 1000px) {
         display: none !important;
       }
     }
@@ -1684,7 +1690,7 @@ ul {
   }
 
   &-fit {
-    width: fit-content;
+    width: fit-content !important;
   }
 
   &-fill {
@@ -3051,7 +3057,8 @@ button,
   line-height: 1em;
   white-space: nowrap;
   gap: 4px;
-  max-height: 50px;
+  // max-height: 50px;
+  max-height: 44px;
   align-items: center;
   cursor: pointer;
 
@@ -4241,6 +4248,7 @@ button:hover,
     flex-basis: 40%;
     align-items: center;
     max-width: 200px;
+    min-width: 180px;
 
     & div {
       flex-grow: 1;
