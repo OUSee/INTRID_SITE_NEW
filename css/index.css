@@ -3794,7 +3794,7 @@ button:hover,
   flex-direction: row;
   align-items: center;
   gap: 16px;
-  max-width: 200px;
+  max-width: 240px;
   flex: 1;
 }
 @media (max-width: 600px) {
@@ -3857,6 +3857,12 @@ button:hover,
 .card--result .card-body {
   display: block;
   padding: 20px 40px;
+  flex: 1;
+}
+@media (max-width: 600px) {
+  .card--result .card-body {
+    padding: 20px;
+  }
 }
 .card--result .card-body .highlight {
   color: var(--blue-tag);
@@ -3899,6 +3905,9 @@ button:hover,
 }
 .card--result.fields .card-body fieldset {
   padding: 0 0 1em;
+}
+.card--result.fields .card-body fieldset legend {
+  padding: 0 10px 5px 5px;
 }
 .card--tariff {
   position: relative;
@@ -9662,8 +9671,8 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   margin: 50px auto 0;
 }
 .tenders-keys--list > * {
-  flex: 1 0 50%;
-  max-width: 50%;
+  flex: 1 0 calc(50% - 8px);
+  max-width: calc(50% - 8px);
 }
 @media (max-width: 1200px) {
   .tenders-keys--list > * {
