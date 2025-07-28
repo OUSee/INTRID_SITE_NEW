@@ -734,12 +734,12 @@ ul {
   }
 
   &.generic-list {
-    padding-left: 10px;
+    padding-left: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
 
     & > li {
-      padding-left: 10px;
+      padding-left: 0;
 
       &::marker {
         content: "\2022";
@@ -1553,6 +1553,17 @@ ul {
           &::after {
             display: none;
           }
+        }
+      }
+    }
+
+    &--map {
+      & > * {
+        flex: 1 0 40%;
+
+        @media (max-width: 900px) {
+          flex: 1 0 100%;
+          width: 100%;
         }
       }
     }
@@ -3028,6 +3039,24 @@ progress {
   }
 }
 
+// map-wrapper
+.map {
+  &-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    min-height: 270px;
+    border-radius: 39px;
+    overflow: hidden;
+
+    & iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 // from-to arrows
 .from-to-arrows {
   display: flex;
@@ -3942,10 +3971,10 @@ button:hover,
       transition: 0.25s ease-in-out;
 
       & ul {
-        padding-left: 15px;
+        padding-left: 25px;
 
         & li {
-          padding-left: 10px;
+          padding-left: 0;
           margin-bottom: 10px;
           color: var(--color-white);
 
@@ -4359,6 +4388,17 @@ button:hover,
         }
       }
     }
+
+    &.compact {
+      & ul {
+        gap: 10px;
+
+        & li {
+          gap: 10px;
+        padding-bottom: 15px;
+        }
+      }
+    }
   }
 
   &--leaders {
@@ -4403,6 +4443,13 @@ button:hover,
       flex-direction: column;
       align-items: center;
       gap: 10px;
+
+      & .form-limitter {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
 
       input,
       textarea {

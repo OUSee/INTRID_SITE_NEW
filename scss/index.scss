@@ -3018,6 +3018,10 @@ body
       gap: 50px;
       padding: 0px 0px 180px 0px;
 
+      @media (max-width: 900px) {
+        flex-direction: column;
+      }
+
       hr {
         width: 100%;
       }
@@ -3026,7 +3030,7 @@ body
         display: flex;
         flex-direction: column;
         gap: 16px;
-        flex: 1 1 30%;
+        flex: 1 1 70%;
       }
 
       &-right {
@@ -3046,96 +3050,40 @@ body
             transform: rotate(90deg);
           }
         }
-      }
 
-      @media (max-width: 900px) {
-        flex-direction: column;
+        & .video-diagramm {
+          width: 100%;
+          min-height: unset;
+          max-height: unset;
+          height: unset;
+          border-radius: 25px;
+          margin: 0;
+          aspect-ratio: 16 / 9;
+          background-size: cover;
+          background-position: top;
+          transition: 0.25s ease-in-out;
+
+          & .play-video-button {
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            background-size: cover;
+            animation: unset;
+          }
+
+          &:has(button:hover) {
+            animation: unset;
+            background-size: cover;
+            background-position: bottom;
+          }
+
+          &:hover {
+            background-size: cover;
+            background-position: bottom;
+          }
+        }
       }
     }
-
-    // &--form {
-    //   display: flex;
-    //   flex-direction: column;
-    //   padding: 30px 52px;
-    //   border-radius: 35px;
-    //   background-color: var(--blue-tag);
-
-    //   img {
-    //     width: 200px;
-    //     margin: auto;
-
-    //     @media (max-width: 900px) {
-    //       display: none;
-    //     }
-    //   }
-
-    //   p {
-    //     margin-top: 14px;
-    //     margin-bottom: 14px;
-
-    //     &:last-child {
-    //       margin-bottom: 0px;
-    //     }
-    //   }
-
-    //   form {
-    //     display: flex;
-    //     flex-shrink: 1;
-    //     flex-direction: column;
-    //     align-items: center;
-    //     gap: 10px;
-
-    //     input,
-    //     textarea {
-    //       width: 100%;
-    //       background-color: transparent;
-    //       padding: 14px 22px;
-    //       border-radius: 25px;
-    //       border: 1px solid var(--color-white);
-
-    //       &:focus {
-    //         border: 1px dashed var(--color-white);
-    //         outline: none;
-    //       }
-
-    //       &::placeholder {
-    //         color: var(--color-grey);
-    //       }
-    //     }
-
-    //     .button {
-    //       width: 100%;
-    //       justify-content: center;
-    //     }
-
-    //     .button:hover {
-    //       background-color: var(--color-white);
-    //     }
-    //   }
-
-    //   .testimonials {
-    //     color: var(--color-grey);
-
-    //     a {
-    //       text-decoration: underline dashed !important;
-    //       text-underline-offset: 4px;
-    //       text-decoration-thickness: 2px;
-    //       color: var(--color-white);
-    //     }
-    //   }
-
-    //   @media (max-width: 1280px) {
-    //     padding: 30px;
-    //   }
-
-    //   @media (max-width: 900px) {
-    //     padding: 30px 62px;
-    //   }
-
-    //   @media (max-width: 600px) {
-    //     padding: 30px;
-    //   }
-    // }
   }
 
   &-differences {
@@ -3359,10 +3307,15 @@ body
     }
 
     .button-link.big {
-      margin-top: -50px;
+      position: absolute;
+      bottom: 60px;
+      right: 0;
 
-      @media (max-width: 600px) {
-        margin-top: unset;
+      @media (max-width: 720px) {
+        position: relative;
+        bottom: unset;
+        right: unset;
+        margin-right: auto;
       }
     }
 
@@ -6346,27 +6299,6 @@ body
     @media (max-width: 900px) {
       flex-direction: column;
     }
-
-    & > .text {
-      padding: 30px 20px;
-      border-radius: 25px;
-      border: 1px solid var(--blue-bg);
-      flex: 1 1 50%;
-      background-color: var(--bg-main);
-    }
-
-    & > .map-wrapper {
-      overflow: hidden;
-      border-radius: 25px;
-      flex: 1 1 50%;
-      min-height: 270px;
-
-      iframe {
-        width: 100%;
-        min-height: 270px;
-        height: 100%;
-      }
-    }
   }
 
   &-crew {
@@ -6455,6 +6387,40 @@ body
 
 // kontakts page
 .kontakts {
+  &-main {
+    background: linear-gradient(
+      0deg,
+      rgba(0, 234, 255, 0) 0%,
+      rgba(0, 234, 255, 0.09) 15%,
+      rgba(0, 234, 255, 0.1) 83%,
+      rgba(10, 10, 10, 0) 100%
+    );
+
+    .slider-with-tabs_tabs-buttons {
+      margin-top: 0;
+      padding-top: 30px;
+    }
+
+    .tab-slider {
+      // flex-direction: column;
+      gap: 50px;
+
+      .description {
+        flex: 1 0 300px;
+
+        @media (max-width: 600px) {
+          margin-top: 20px;
+        }
+      }
+
+      iframe {
+        width: 100%;
+        height: 450px;
+        border-radius: 25px;
+      }
+    }
+  }
+  
   &-bottom {
     padding-top: 62px;
     background-image: url(../src/images/planets-aside.webp);
@@ -6466,44 +6432,10 @@ body
 
     & > div > div > div.sites-leaders-content-left {
       flex: 1 1 60%;
-
-      background-color: var(--blue-tag);
-
-      form {
-        height: 100%;
-      }
-
-      .form-limitter {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        height: 100%;
-      }
     }
 
     & > div > div > div.sites-leaders-content-right {
       flex: 1 1 35%;
-
-      & > .sites-leaders--card {
-        display: flex;
-        flex-direction: column;
-        padding: 30px 52px;
-        border-radius: 35px;
-        background-color: var(--bg-main);
-
-        @media (max-width: 1280px) {
-          padding: 30px;
-        }
-
-        @media (max-width: 900px) {
-          padding: 30px 62px;
-        }
-
-        @media (max-width: 600px) {
-          padding: 30px;
-        }
-      }
     }
   }
 }

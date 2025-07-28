@@ -1351,12 +1351,12 @@ ul.ordinary-list li::marker {
   color: var(--blue-main);
 }
 ul.generic-list {
-  padding-left: 10px;
+  padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 ul.generic-list > li {
-  padding-left: 10px;
+  padding-left: 0;
 }
 ul.generic-list > li::marker {
   content: "•";
@@ -1957,6 +1957,15 @@ ul.generic-list > li::marker {
 }
 .flex-layout--roadmap-nothing > *::after {
   display: none;
+}
+.flex-layout--map > * {
+  flex: 1 0 40%;
+}
+@media (max-width: 900px) {
+  .flex-layout--map > * {
+    flex: 1 0 100%;
+    width: 100%;
+  }
 }
 
 .gap-4 {
@@ -3138,6 +3147,20 @@ progress::-moz-progress-bar {
   border-radius: 10px;
 }
 
+.map-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  min-height: 270px;
+  border-radius: 39px;
+  overflow: hidden;
+}
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
 .from-to-arrows {
   display: flex;
   flex-direction: column;
@@ -3938,10 +3961,10 @@ button:hover,
   transition: 0.25s ease-in-out;
 }
 .card--tariff > .card-body ul {
-  padding-left: 15px;
+  padding-left: 25px;
 }
 .card--tariff > .card-body ul li {
-  padding-left: 10px;
+  padding-left: 0;
   margin-bottom: 10px;
   color: var(--color-white);
 }
@@ -4282,6 +4305,13 @@ button:hover,
 .card--leads ul li:last-child {
   border-bottom: none;
 }
+.card--leads.compact ul {
+  gap: 10px;
+}
+.card--leads.compact ul li {
+  gap: 10px;
+  padding-bottom: 15px;
+}
 .card--leaders {
   padding: 30px 52px;
   border: 1px solid var(--blue-tag);
@@ -4325,6 +4355,12 @@ button:hover,
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+.card--leaders form .form-limitter {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
 }
 .card--leaders form input,
 .card--leaders form textarea {
@@ -7843,6 +7879,11 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   gap: 50px;
   padding: 0px 0px 180px 0px;
 }
+@media (max-width: 900px) {
+  .sites-leaders-content {
+    flex-direction: column;
+  }
+}
 .sites-leaders-content hr {
   width: 100%;
 }
@@ -7850,7 +7891,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   display: flex;
   flex-direction: column;
   gap: 16px;
-  flex: 1 1 30%;
+  flex: 1 1 70%;
 }
 .sites-leaders-content-right {
   display: flex;
@@ -7870,10 +7911,33 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     transform: rotate(90deg);
   }
 }
-@media (max-width: 900px) {
-  .sites-leaders-content {
-    flex-direction: column;
-  }
+.sites-leaders-content-right .video-diagramm {
+  width: 100%;
+  min-height: unset;
+  max-height: unset;
+  height: unset;
+  border-radius: 25px;
+  margin: 0;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: top;
+  transition: 0.25s ease-in-out;
+}
+.sites-leaders-content-right .video-diagramm .play-video-button {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-size: cover;
+  animation: unset;
+}
+.sites-leaders-content-right .video-diagramm:has(button:hover) {
+  animation: unset;
+  background-size: cover;
+  background-position: bottom;
+}
+.sites-leaders-content-right .video-diagramm:hover {
+  background-size: cover;
+  background-position: bottom;
 }
 .sites-differences {
   padding-bottom: 0px;
@@ -8066,11 +8130,16 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   margin-bottom: 30px;
 }
 .sites-reviews .button-link.big {
-  margin-top: -50px;
+  position: absolute;
+  bottom: 60px;
+  right: 0;
 }
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .sites-reviews .button-link.big {
-    margin-top: unset;
+    position: relative;
+    bottom: unset;
+    right: unset;
+    margin-right: auto;
   }
 }
 @media (max-width: 600px) {
@@ -10544,24 +10613,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     flex-direction: column;
   }
 }
-.o-nas-testimonials > .text {
-  padding: 30px 20px;
-  border-radius: 25px;
-  border: 1px solid var(--blue-bg);
-  flex: 1 1 50%;
-  background-color: var(--bg-main);
-}
-.o-nas-testimonials > .map-wrapper {
-  overflow: hidden;
-  border-radius: 25px;
-  flex: 1 1 50%;
-  min-height: 270px;
-}
-.o-nas-testimonials > .map-wrapper iframe {
-  width: 100%;
-  min-height: 270px;
-  height: 100%;
-}
 .o-nas-crew > .tab-view {
   padding: 0px;
 }
@@ -10626,6 +10677,29 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
 }
 
+.kontakts-main {
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
+}
+.kontakts-main .slider-with-tabs_tabs-buttons {
+  margin-top: 0;
+  padding-top: 30px;
+}
+.kontakts-main .tab-slider {
+  gap: 50px;
+}
+.kontakts-main .tab-slider .description {
+  flex: 1 0 300px;
+}
+@media (max-width: 600px) {
+  .kontakts-main .tab-slider .description {
+    margin-top: 20px;
+  }
+}
+.kontakts-main .tab-slider iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 25px;
+}
 .kontakts-bottom {
   padding-top: 62px;
   background-image: url(../src/images/planets-aside.webp);
@@ -10636,42 +10710,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .kontakts-bottom > div > div > div.sites-leaders-content-left {
   flex: 1 1 60%;
-  background-color: var(--blue-tag);
-}
-.kontakts-bottom > div > div > div.sites-leaders-content-left form {
-  height: 100%;
-}
-.kontakts-bottom > div > div > div.sites-leaders-content-left .form-limitter {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 100%;
 }
 .kontakts-bottom > div > div > div.sites-leaders-content-right {
   flex: 1 1 35%;
-}
-.kontakts-bottom > div > div > div.sites-leaders-content-right > .sites-leaders--card {
-  display: flex;
-  flex-direction: column;
-  padding: 30px 52px;
-  border-radius: 35px;
-  background-color: var(--bg-main);
-}
-@media (max-width: 1280px) {
-  .kontakts-bottom > div > div > div.sites-leaders-content-right > .sites-leaders--card {
-    padding: 30px;
-  }
-}
-@media (max-width: 900px) {
-  .kontakts-bottom > div > div > div.sites-leaders-content-right > .sites-leaders--card {
-    padding: 30px 62px;
-  }
-}
-@media (max-width: 600px) {
-  .kontakts-bottom > div > div > div.sites-leaders-content-right > .sites-leaders--card {
-    padding: 30px;
-  }
 }
 
 .numbers-grid {
