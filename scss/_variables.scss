@@ -1,6 +1,5 @@
 // import first
 @import "./colors";
-
 @import "./animation";
 
 // $list-length: 18;
@@ -1949,19 +1948,19 @@ ul {
 // colors
 .color {
   &-blue {
-    color: var(--blue-main);
+    color: var(--blue-main) !important;
 
     &-tag {
-      color: var(--blue-tag);
+      color: var(--blue-tag) !important;
     }
   }
 
   &-white {
-    color: var(--color-white);
+    color: var(--color-white) !important;
   }
 
   &-grey {
-    color: var(--color-grey);
+    color: var(--color-grey) !important;
   }
 }
 
@@ -3882,11 +3881,7 @@ button:hover,
       }
 
       & ul {
-        list-style-type: disc;
-
         & li {
-          margin-bottom: 5px;
-
           &::marker {
             color: var(--blue-tag);
           }
@@ -4168,6 +4163,10 @@ button:hover,
       }
     }
 
+    & > p {
+      color: var(--color-grey);
+    }
+
     & > * {
       &:last-child {
         &:not(ul) {
@@ -4367,7 +4366,7 @@ button:hover,
     background-color: var(--bg-main);
     border-radius: 35px;
     border-color: var(--bg-main);
-    
+
     & ul {
       display: flex;
       flex-direction: column;
@@ -4395,7 +4394,7 @@ button:hover,
 
         & li {
           gap: 10px;
-        padding-bottom: 15px;
+          padding-bottom: 15px;
         }
       }
     }

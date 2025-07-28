@@ -31,131 +31,12 @@ body {
   background-repeat: repeat;
   position: relative;
   overflow-x: clip;
-  // overflow-x: hidden;
-  // overflow-y: hidden;
 
   @media (max-width: 601px) {
     background-image: url("../src/images/bg-main-vert.webp");
     background-size: 100% auto;
   }
 }
-
-/* buttons and checkboxes */
-
-// button,
-// .button,
-// label.radioButton,
-// .button-link,
-// .button-highlight {
-//   display: flex;
-//   border-radius: 30px;
-//   background-color: transparent;
-//   padding: 14px 24px 12px 24px;
-//   font-weight: 500;
-//   width: fit-content;
-//   font-size: 14px;
-//   color: var(--color-white);
-//   border: 1px solid var(--color-white);
-//   text-transform: uppercase;
-//   transition: all 0.3s ease-in-out;
-//   line-height: 1em;
-//   text-wrap: nowrap;
-//   gap: 4px;
-//   max-height: 50px;
-//   align-items: center;
-
-//   input[type='radio'] {
-//     display: none;
-//   }
-
-//   &:has(input[type='radio']:checked) {
-//     border: 1px solid var(--blue-main);
-//     background-color: var(--blue-main);
-//     color: var(--color-black);
-
-//     i {
-//       color: var(--color-black);
-//     }
-//   }
-
-//   &.big {
-//     border-radius: 30px;
-//     padding: 16px 24px 14px 24px;
-//     justify-content: center;
-//     align-items: center;
-
-//     i.icon-arrow_wide {
-//       font-size: 2em;
-//       line-height: 16px;
-//       margin-left: 4px;
-//     }
-//   }
-
-//   span {
-//     font-size: inherit !important;
-//     line-height: 1em;
-//   }
-
-//   &.no-border {
-//     border-color: transparent;
-//   }
-
-//   i.icon-arrow_wide {
-//     font-size: 1.4em;
-//     line-height: 14px;
-//     transition: color 0.3s ease-in-out;
-//   }
-// }
-
-// button:hover,
-// .button:hover,
-// label.radioButton:hover,
-// label.radioButton:has(input:checked),
-// .button-link:hover,
-// .button-highlight {
-//   cursor: pointer;
-//   border: 1px solid var(--blue-main);
-//   background-color: var(--blue-main);
-//   color: var(--color-black);
-//   box-shadow: 0px 0px 15px var(--blue-main);
-// }
-
-// label.radioButton:has(input:checked),
-// .button-highlight {
-//   box-shadow: none;
-// }
-
-// .button-white {
-//   background-color: var(--color-white);
-//   color: var(--bg-main);
-
-//   &:hover {
-//     transform: scale(1.05);
-//   }
-// }
-
-// .button-highlight:hover {
-//   box-shadow: 0px 0px 15px var(--blue-main);
-// }
-
-// .button-link i {
-//   color: var(--blue-main);
-// }
-
-// .button-link:hover i {
-//   color: var(--color-black);
-// }
-
-// label.radioButton input {
-//   display: none;
-// }
-
-// label.radioButton:has(input:checked)::after {
-//   font-family: 'INTRID_ICONS';
-//   content: '\0049';
-//   font-weight: 600;
-//   font-size: 14px;
-// }
 
 .slider-with-tabs {
   display: flex;
@@ -2475,6 +2356,8 @@ body
     align-items: center;
     max-width: 1000px;
     margin: 0 auto;
+    padding: 0;
+    list-style: none;
 
     @media (max-width: 520px) {
       column-gap: 10px;
