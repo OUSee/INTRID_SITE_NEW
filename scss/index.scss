@@ -4042,18 +4042,28 @@ body
             display: flex;
             flex-direction: column;
             gap: 20px;
+            padding: 0;
+            list-style: none;
 
             li {
-              .title_h4 {
-                margin-bottom: 6px;
+              padding-bottom: 15px;
+              border-bottom: 1px solid var(--blue-bg);
+              & p {
                 display: flex;
                 align-items: center;
+                margin-bottom: 6px;
+                @include h4;
+                color: var(--blue-main);
 
-                img {
+                & img {
                   height: 2em;
                   width: auto;
                   margin-right: 10px;
                 }
+              }
+
+              & span {
+                color: var(--color-grey);
               }
             }
           }
