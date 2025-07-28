@@ -3549,21 +3549,60 @@ button:hover,
     max-height: 141px;
   }
 }
-.card--recent .work-testimonial {
+.card--recent .card-body {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 30px;
 }
-.card--recent .work-testimonial .card-tag {
+.card--recent .card-body .card-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
   color: var(--blue-tag);
   font-size: 16px;
 }
-.card--recent .work-testimonial .card-description {
+.card--recent .card-body .card-tag i {
+  display: flex;
+  font-size: larger;
+}
+.card--recent .card-body p {
   color: var(--color-grey);
   min-height: 41px;
 }
-.card--recent .work-testimonial a {
+.card--recent .card-body b {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--color-white);
+}
+@media (max-width: 1000px) {
+  .card--recent .card-body b {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .card--recent .card-body b {
+    font-size: 16px;
+  }
+}
+.card--recent .card-body span {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--color-white);
+}
+@media (max-width: 1000px) {
+  .card--recent .card-body span {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .card--recent .card-body span {
+    font-size: 16px;
+  }
+}
+.card--recent .card-body a {
   margin-top: 16px;
 }
 .card--recent .absolute-link {
@@ -3589,7 +3628,7 @@ button:hover,
   width: 100%;
   height: 100%;
 }
-.card--logo > a .work-testimonial {
+.card--logo > a .card-body {
   margin-top: 20px;
   margin-bottom: 0px;
   text-align: center;
@@ -3639,7 +3678,7 @@ button:hover,
   aspect-ratio: 16/9;
   object-fit: cover;
 }
-.card--newsletter .work-testimonial {
+.card--newsletter .card-body {
   flex: 1;
   padding: 10px 30px 20px 30px;
   margin-bottom: 0px;
@@ -4003,6 +4042,23 @@ button:hover,
 .card--support > p {
   text-align: center;
 }
+.card--support > b {
+  font-weight: 600;
+  font-size: 24px;
+  margin-top: 20px;
+  text-align: center;
+  color: var(--color-white);
+}
+@media (max-width: 1000px) {
+  .card--support > b {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .card--support > b {
+    font-size: 16px;
+  }
+}
 .card--support > a > img {
   align-self: center;
 }
@@ -4153,6 +4209,22 @@ button:hover,
 @media (max-width: 600px) {
   .card--roadmap {
     padding: 20px 20px 20px 50px;
+  }
+}
+.card--roadmap > b {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--blue-main);
+}
+@media (max-width: 1000px) {
+  .card--roadmap > b {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .card--roadmap > b {
+    font-size: 16px;
+    font-weight: 400;
   }
 }
 .card--roadmap::before {
@@ -7295,10 +7367,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .why-cooperate {
   flex: 1 1 100%;
 }
-.why-cooperate .title_h2 {
-  margin-top: 80px;
-  margin-bottom: 50px;
-}
 .why-cooperate-list {
   display: flex;
   flex-direction: row;
@@ -7371,10 +7439,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   .tech-we-use {
     padding-bottom: 40px;
   }
-}
-.tech-we-use .title_h2 {
-  margin-top: 80px;
-  margin-bottom: 50px;
 }
 .tech-we-use-list {
   display: flex;
