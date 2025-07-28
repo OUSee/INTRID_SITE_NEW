@@ -902,11 +902,22 @@ h2,
 h3,
 h4,
 h5,
+h6 {
+  font-family: "Roboto";
+  margin-block-start: 0;
+  margin-block-end: 1em;
+  line-height: 140%;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 1em;
+}
+
 p,
 span,
 a {
   font-family: "Roboto";
-  margin: 0;
   line-height: 140%;
 }
 
@@ -1967,6 +1978,23 @@ ul.generic-list > li::marker {
     width: 100%;
   }
 }
+.flex-layout--about {
+  gap: 100px;
+}
+@media (max-width: 1000px) {
+  .flex-layout--about {
+    gap: 40px;
+  }
+}
+.flex-layout--about > * {
+  flex: 1 1 40%;
+}
+@media (max-width: 750px) {
+  .flex-layout--about > * {
+    flex: 1 0 100%;
+    width: 100%;
+  }
+}
 
 .gap-4 {
   gap: 4px;
@@ -2088,7 +2116,8 @@ ul.generic-list > li::marker {
 }
 
 .m-center {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .mt-0 {
   margin-top: 0;
@@ -2260,6 +2289,15 @@ ul.generic-list > li::marker {
 .bg-glow {
   border-radius: 50%;
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 10px var(--blue-clouds);
+}
+.bg-gradient {
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0.1) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
+}
+.bg-mountains {
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 15%, rgba(0, 234, 255, 0.1) 61%, rgba(0, 234, 255, 0) 100%), url("../src/images/mountains_2.webp");
+  background-size: 100% auto;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 fieldset {
@@ -7169,10 +7207,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
 }
 
-.services-n-prices {
-  background: linear-gradient(0deg, rgba(0, 234, 255, 0.1) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
-}
-
 .for-buisness-offers {
   position: relative;
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 15%, rgba(0, 234, 255, 0.09) 50%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0.1) 100%), url("../src/images/mountains_1.webp");
@@ -7331,89 +7365,34 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
 }
 
-.about-section {
-  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 15%, rgba(0, 234, 255, 0.1) 61%, rgba(0, 234, 255, 0) 100%), url("../src/images/mountains_2.webp");
-  background-size: 100% auto;
-  background-position: bottom;
-  background-repeat: no-repeat;
-}
-.about-section .about-wrapper {
+.about-info {
   display: flex;
-  flex-direction: row;
-  column-gap: 200px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 40%;
 }
-@media (max-width: 1400px) {
-  .about-section .about-wrapper {
-    justify-content: space-between;
-    column-gap: 0;
+@media (max-width: 1000px) {
+  .about-info {
+    max-width: 100%;
   }
 }
-.about-section .about-wrapper .about-info {
-  flex: 1 1 500px;
-  max-width: 500px;
+.about-info .button-link {
+  margin-top: auto;
 }
-@media (max-width: 1100px) {
-  .about-section .about-wrapper .about-info {
-    flex: 1 1 80%;
-    max-width: unset;
-  }
-  .about-section .about-wrapper .about-info .button-link {
-    margin-bottom: 50px;
-  }
-}
-.about-section .about-wrapper .about-info p {
+.about-info p {
   margin-bottom: 29px;
 }
-.about-section .about-wrapper .about-info a {
-  margin-top: 50px;
-}
-.about-section .about-wrapper .comunity-info {
-  flex: 1 1 500px;
-  max-width: 500px;
-}
-@media (max-width: 1100px) {
-  .about-section .about-wrapper .comunity-info {
-    flex: 1 1 80%;
-    max-width: unset;
-    margin: 0 auto;
-  }
-}
-.about-section .about-wrapper .comunity-info .places-btns {
+
+.comunity-info {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-direction: column;
+  max-width: fit-content;
+  margin-left: auto;
 }
-@media (max-width: 520px) {
-  .about-section .about-wrapper .comunity-info .places-btns {
-    flex-wrap: wrap;
+@media (max-width: 1000px) {
+  .comunity-info {
+    max-width: 100%;
+    margin-left: unset;
   }
-}
-.about-section .about-wrapper .comunity-info .places-btns-btn {
-  background-color: transparent;
-  color: var(--color-white);
-  border: 1px solid var(--blue-main);
-  text-transform: none;
-  justify-content: center;
-  align-items: center;
-}
-.about-section .about-wrapper .comunity-info .places-btns-btn img {
-  display: inline-block;
-  width: 26px;
-  height: auto;
-  transition: 0.25s ease-in-out;
-}
-@media (max-width: 1100px) {
-  .about-section .about-wrapper .comunity-info .places-btns-btn {
-    flex: 1 1 0%;
-  }
-}
-.about-section .about-wrapper .comunity-info .places-btns-btn:hover {
-  background-color: var(--blue-main);
-  color: var(--bg-main);
-}
-.about-section .about-wrapper .comunity-info .places-btns-btn:hover img {
-  filter: grayscale(100%) brightness(0);
 }
 
 @media (max-width: 720px) {
