@@ -178,14 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
           const slideHtml = `
                         <a href="${article.link}">
                             <div class="img-wrapper"><img src="${article.img}" alt="recent-work-demo"></div>
-                            <div class="work-testimonial">
-                                <span class="title_h4 color-white">${article.title}</span>
-                                <p class="card-description">
+                            <div class="card-body">
+                                <b>${article.title}</b>
+                                <p>
                                     ${article.description}
                                 </p>
-                                <p class="card-date">
+                                <span class="card-date">
                                     ${article.date}
-                                </p>
+                                </span>
                             </div>
                         </a>`;
           slide.innerHTML = slideHtml;

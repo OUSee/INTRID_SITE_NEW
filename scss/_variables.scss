@@ -3588,12 +3588,6 @@ button:hover,
       overflow: hidden;
     }
 
-    & .card-date {
-      padding-top: 20px;
-      margin-top: auto;
-      margin-left: auto;
-    }
-
     & .img-wrapper {
       position: relative;
       z-index: 1;
@@ -3620,6 +3614,19 @@ button:hover,
       flex: 1;
       padding: 10px 30px 20px 30px;
       margin-bottom: 0px;
+
+      & > b {
+        @include h4;
+        line-height: 140%;
+      }
+
+      & .card-date {
+      padding-top: 20px;
+      margin-top: auto;
+      margin-left: auto;
+      @include h5;
+      font-weight: normal;
+    }
     }
   }
 

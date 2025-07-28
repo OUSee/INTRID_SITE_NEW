@@ -3653,11 +3653,6 @@ button:hover,
   min-height: 100%;
   overflow: hidden;
 }
-.card--newsletter .card-date {
-  padding-top: 20px;
-  margin-top: auto;
-  margin-left: auto;
-}
 .card--newsletter .img-wrapper {
   position: relative;
   z-index: 1;
@@ -3682,6 +3677,40 @@ button:hover,
   flex: 1;
   padding: 10px 30px 20px 30px;
   margin-bottom: 0px;
+}
+.card--newsletter .card-body > b {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 140%;
+}
+@media (max-width: 1000px) {
+  .card--newsletter .card-body > b {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .card--newsletter .card-body > b {
+    font-size: 16px;
+  }
+}
+.card--newsletter .card-body .card-date {
+  padding-top: 20px;
+  margin-top: auto;
+  margin-left: auto;
+  font-weight: 600;
+  font-size: 16px;
+  font-weight: normal;
+}
+@media (max-width: 1000px) {
+  .card--newsletter .card-body .card-date {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .card--newsletter .card-body .card-date {
+    font-size: 16px;
+    font-weight: 400;
+  }
 }
 .card--awards {
   max-width: 100%;
