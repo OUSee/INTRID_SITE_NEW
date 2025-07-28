@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
           slide.classList.add('active');
           const slideHtml = `
                         <a href="${article.link}">
-                            <div class="img-wrapper"><img src="${article.img}" alt="recent-work-demo"></div>
+                            <div class="img-wrapper"><img src="${article.img}" alt="${article.title}"></div>
                             <div class="card-body">
                                 <b>${article.title}</b>
                                 <p>
