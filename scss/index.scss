@@ -3023,17 +3023,10 @@ body
       }
 
       &-left {
-        padding: 30px;
-        flex: 1 1 70%;
-        border-radius: 35px;
-        background-color: var(--bg-main);
-
-        ul,
-        li {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        flex: 1 1 30%;
       }
 
       &-right {
@@ -5172,7 +5165,7 @@ body
 .integrations {
   &--content {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 50px;
     padding: 0;
 
@@ -5186,104 +5179,11 @@ body
   }
 
   &--left {
-    padding: 30px;
     flex: 1 1 70%;
-    border-radius: 35px;
-    background-color: var(--bg-main);
-
-    ul,
-    li {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
   }
 
   &--right {
-    position: sticky;
-    top: 80px;
-    padding: 30px 52px;
     flex: 1 1 30%;
-    border-radius: 35px;
-    background-color: var(--blue-tag);
-    display: flex;
-    flex-direction: column;
-
-    img {
-      width: 200px;
-      margin: auto;
-
-      @media (max-width: 900px) {
-        display: none;
-      }
-    }
-
-    p {
-      margin-top: 14px;
-      margin-bottom: 14px;
-
-      &:last-child {
-        margin-bottom: 0px;
-      }
-    }
-
-    form {
-      display: flex;
-      flex-shrink: 1;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-
-      input,
-      textarea {
-        width: 100%;
-        background-color: transparent;
-        padding: 14px 22px;
-        border-radius: 25px;
-        border: 1px solid var(--color-white);
-
-        &:focus {
-          border: 1px dashed var(--color-white);
-          outline: none;
-        }
-
-        &::placeholder {
-          color: var(--color-grey);
-        }
-      }
-
-      .button {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .button:hover {
-        background-color: var(--color-white);
-      }
-    }
-
-    .testimonials {
-      color: var(--color-grey);
-
-      a {
-        text-decoration: underline dashed !important;
-        text-underline-offset: 4px;
-        text-decoration-thickness: 2px;
-        color: var(--color-white);
-      }
-    }
-
-    @media (max-width: 1000px) {
-      padding: 30px;
-    }
-
-    @media (max-width: 900px) {
-      padding: 30px 62px;
-    }
-
-    @media (max-width: 600px) {
-      padding: 30px;
-    }
   }
 }
 

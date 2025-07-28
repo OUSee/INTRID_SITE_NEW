@@ -1927,6 +1927,14 @@ ul {
   }
 }
 
+// position
+.position {
+  &-sticky {
+    position: sticky !important;
+    top: 80px;
+  }
+}
+
 // colors
 .color {
   &-blue {
@@ -4316,6 +4324,35 @@ button:hover,
       display: block;
       flex-basis: 70%;
       flex-grow: 1;
+    }
+  }
+
+  &--leads {
+    z-index: 2;
+    padding: 30px;
+    background-color: var(--bg-main);
+    border-radius: 35px;
+    border-color: var(--bg-main);
+    
+    & ul {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      & li {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid var(--blue-bg);
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
     }
   }
 
