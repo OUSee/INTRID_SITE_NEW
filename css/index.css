@@ -5,7 +5,7 @@
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
  */
-@import '../src/fonts/icons/css/INTRID_ICONS.css';
+@import "../src/fonts/icons/css/INTRID_ICONS.css";
 html {
   font-family: sans-serif;
   /* 1 */
@@ -1327,9 +1327,16 @@ section.tabs {
 }
 
 ul {
-  list-style: none;
   margin: 0;
   padding: 0;
+  padding-left: 15px;
+  list-style-type: disc;
+}
+ul li {
+  margin-bottom: 5px;
+}
+ul li::marker {
+  color: var(--blue-tag);
 }
 ul.ordinary-list {
   padding-left: 15px;
@@ -4199,6 +4206,120 @@ button:hover,
   background-color: var(--blue-clouds);
   box-shadow: 0px 0px 20px 20px var(--blue-clouds);
 }
+.card--stripe {
+  flex-direction: row;
+  width: fit-content;
+  padding: 14px 24px;
+  background-color: var(--blue-bg);
+  border-radius: 50px;
+  align-items: center;
+  max-width: 330px;
+  max-height: 58px;
+}
+.card--stripe-highlight {
+  display: block;
+  color: var(--blue-main);
+  text-wrap: nowrap;
+  flex-basis: 30%;
+  flex-grow: 1;
+  max-height: 54px;
+  font-size: 30px;
+  font-weight: 600;
+}
+.card--stripe-highlight > * {
+  font-size: 30px;
+}
+@media (max-width: 520px) {
+  .card--stripe-highlight {
+    flex-basis: 30%;
+    font-size: 24px;
+  }
+  .card--stripe-highlight > * {
+    font-size: 24px;
+  }
+}
+.card--stripe > p {
+  display: block;
+  flex-basis: 70%;
+  flex-grow: 1;
+}
+.card--leaders {
+  padding: 30px 52px;
+  border: 1px solid var(--blue-tag);
+  border-radius: 35px;
+  background-color: var(--blue-tag);
+}
+@media (max-width: 1280px) {
+  .card--leaders {
+    padding: 30px;
+  }
+}
+@media (max-width: 900px) {
+  .card--leaders {
+    padding: 30px 62px;
+  }
+}
+@media (max-width: 600px) {
+  .card--leaders {
+    padding: 30px;
+  }
+}
+.card--leaders img {
+  width: 200px;
+  margin: auto;
+}
+@media (max-width: 900px) {
+  .card--leaders img {
+    display: none;
+  }
+}
+.card--leaders p {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.card--leaders p:last-child {
+  margin-bottom: 0px;
+}
+.card--leaders form {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.card--leaders form input,
+.card--leaders form textarea {
+  width: 100%;
+  background-color: transparent;
+  padding: 14px 22px;
+  border-radius: 25px;
+  border: 1px solid var(--color-white);
+}
+.card--leaders form input:focus,
+.card--leaders form textarea:focus {
+  border: 1px dashed var(--color-white);
+  outline: none;
+}
+.card--leaders form input::placeholder,
+.card--leaders form textarea::placeholder {
+  color: var(--color-grey);
+}
+.card--leaders form .button {
+  width: 100%;
+  justify-content: center;
+}
+.card--leaders form .button:hover {
+  background-color: var(--color-white);
+}
+.card--leaders .testimonials {
+  color: var(--color-grey);
+}
+.card--leaders .testimonials a {
+  text-decoration: underline dashed !important;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  color: var(--color-white);
+}
 
 .popup {
   display: flex;
@@ -5642,6 +5763,9 @@ button.next:hover {
     gap: 10px;
   }
 }
+.main-section--achievements-3x > * {
+  max-width: 25%;
+}
 .main-section--numbers {
   display: flex;
   flex-direction: row;
@@ -5679,44 +5803,6 @@ button.next:hover {
     margin-left: unset;
     margin-right: unset;
   }
-}
-
-.site-benefit {
-  display: flex;
-  width: fit-content;
-  padding: 14px 24px;
-  background-color: var(--blue-bg);
-  border-radius: 50px;
-  align-items: center;
-  max-width: 330px;
-  max-height: 58px;
-}
-.site-benefit-highlight {
-  display: block;
-  color: var(--blue-main);
-  text-wrap: nowrap;
-  flex-basis: 30%;
-  flex-grow: 1;
-  max-height: 54px;
-  font-size: 30px;
-  font-weight: 600;
-}
-.site-benefit-highlight > * {
-  font-size: 30px;
-}
-@media (max-width: 520px) {
-  .site-benefit-highlight {
-    flex-basis: 30%;
-    font-size: 24px;
-  }
-  .site-benefit-highlight > * {
-    font-size: 24px;
-  }
-}
-.site-benefit-description {
-  display: block;
-  flex-basis: 70%;
-  flex-grow: 1;
 }
 
 .block-buttons {
@@ -7505,6 +7591,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     display: none;
   }
 }
+.cases-counts-list {
+  list-style-type: none;
+}
 .cases-counts-list li {
   margin: 19px 0;
 }
@@ -7753,84 +7842,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     flex-direction: column;
   }
 }
-.sites-leaders--form {
-  display: flex;
-  flex-direction: column;
-  padding: 30px 52px;
-  border-radius: 35px;
-  background-color: var(--blue-tag);
-}
-.sites-leaders--form img {
-  width: 200px;
-  margin: auto;
-}
-@media (max-width: 900px) {
-  .sites-leaders--form img {
-    display: none;
-  }
-}
-.sites-leaders--form p {
-  margin-top: 14px;
-  margin-bottom: 14px;
-}
-.sites-leaders--form p:last-child {
-  margin-bottom: 0px;
-}
-.sites-leaders--form form {
-  display: flex;
-  flex-shrink: 1;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-.sites-leaders--form form input,
-.sites-leaders--form form textarea {
-  width: 100%;
-  background-color: transparent;
-  padding: 14px 22px;
-  border-radius: 25px;
-  border: 1px solid var(--color-white);
-}
-.sites-leaders--form form input:focus,
-.sites-leaders--form form textarea:focus {
-  border: 1px dashed var(--color-white);
-  outline: none;
-}
-.sites-leaders--form form input::placeholder,
-.sites-leaders--form form textarea::placeholder {
-  color: var(--color-grey);
-}
-.sites-leaders--form form .button {
-  width: 100%;
-  justify-content: center;
-}
-.sites-leaders--form form .button:hover {
-  background-color: var(--color-white);
-}
-.sites-leaders--form .testimonials {
-  color: var(--color-grey);
-}
-.sites-leaders--form .testimonials a {
-  text-decoration: underline dashed !important;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
-  color: var(--color-white);
-}
-@media (max-width: 1280px) {
-  .sites-leaders--form {
-    padding: 30px;
-  }
-}
-@media (max-width: 900px) {
-  .sites-leaders--form {
-    padding: 30px 62px;
-  }
-}
-@media (max-width: 600px) {
-  .sites-leaders--form {
-    padding: 30px;
-  }
-}
 .sites-differences {
   padding-bottom: 0px;
 }
@@ -8022,13 +8033,11 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   margin-bottom: 30px;
 }
 .sites-reviews .button-link.big {
-  position: absolute;
-  bottom: 84px;
-  right: 0px;
+  margin-top: -50px;
 }
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .sites-reviews .button-link.big {
-    position: static;
+    margin-top: unset;
   }
 }
 @media (max-width: 600px) {
