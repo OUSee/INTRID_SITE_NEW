@@ -24,3 +24,35 @@
     font-weight: 400;
   }
 }
+
+@mixin blockVideo {
+  width: 100%;
+  min-height: unset;
+  max-height: unset;
+  height: unset;
+  border-radius: 25px;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: top;
+  transition: 0.25s ease-in-out;
+
+  & .play-video-button {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background-size: cover;
+    animation: unset;
+  }
+
+  &:has(button:hover) {
+    animation: unset;
+    background-size: cover;
+    background-position: bottom;
+  }
+
+  &:hover {
+    background-size: cover;
+    background-position: bottom;
+  }
+}
