@@ -716,19 +716,7 @@ section {
 
 // lists
 ul {
-  // list-style: none;
-  margin: 0;
-  padding: 0;
-  padding-left: 15px;
   list-style-type: disc;
-
-  & li {
-    margin-bottom: 5px;
-
-    &::marker {
-      color: var(--blue-tag);
-    }
-  }
 
   &.ordinary-list {
     padding-left: 15px;
@@ -757,6 +745,29 @@ ul {
         content: '\2022';
         color: var(--blue-main);
       }
+    }
+  }
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  padding-left: 15px;
+
+  & li {
+    margin-bottom: 10px;
+
+    &::marker {
+      color: var(--blue-tag);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    & p {
+      margin-bottom: unset;
     }
   }
 }
@@ -1598,6 +1609,14 @@ ul {
     }
   }
 
+  &-lg {
+    &-column {
+      @media (max-width: 1000px) {
+        flex-direction: column;
+      }
+    }
+  }
+
   &-xl {
     &-column {
       @media (max-width: 1200px) {
@@ -1631,6 +1650,26 @@ ul {
 
   &-32 {
     gap: 32px;
+  }
+
+  &-50 {
+    gap: 50px;
+  }
+
+  &-lg {
+    &-70 {
+      @media (max-width: 1000px) {
+        gap: 70px;
+      }
+    }
+  }
+
+  &-xl {
+    &-70 {
+      @media (max-width: 1200px) {
+        gap: 70px;
+      }
+    }
   }
 }
 
@@ -1689,6 +1728,22 @@ ul {
   &-end {
     align-items: flex-end;
   }
+
+  &-lg {
+    &-center {
+      @media (max-width: 1000px) {
+        align-items: center;
+      }
+    }
+  }
+
+  &-xl {
+    &-center {
+      @media (max-width: 1200px) {
+        align-items: center;
+      }
+    }
+  }
 }
 
 // flex justify
@@ -1720,6 +1775,30 @@ ul {
 
     &-end {
       justify-self: end;
+    }
+  }
+
+  &-sm {
+    &-center {
+      @media (max-width: 600px) {
+        justify-content: center;
+      }
+    }
+  }
+
+  &-md {
+    &-center {
+      @media (max-width: 720px) {
+        justify-content: center;
+      }
+    }
+  }
+
+  &-lg {
+    &-center {
+      @media (max-width: 1000px) {
+        justify-content: center;
+      }
     }
   }
 
@@ -4237,6 +4316,10 @@ button:hover,
           &::marker {
             color: var(--blue-tag);
           }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
       }
     }
@@ -4263,6 +4346,10 @@ button:hover,
           & li {
             &::marker {
               color: var(--blue-bg);
+            }
+
+            &:last-child {
+              margin-bottom: 0;
             }
           }
         }
@@ -4328,6 +4415,10 @@ button:hover,
           &::marker {
             content: '\2022';
             color: var(--blue-main);
+          }
+
+          &:last-child {
+            margin-bottom: 0;
           }
         }
       }
@@ -4514,10 +4605,12 @@ button:hover,
       list-style-type: disc;
 
       & li {
-        margin-bottom: 5px;
-
         &::marker {
           color: var(--blue-tag);
+        }
+
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }
@@ -4729,6 +4822,7 @@ button:hover,
     & > p {
       color: var(--color-white);
       margin-top: 10px;
+      margin-bottom: unset;
       text-align: center;
     }
 
@@ -4816,6 +4910,10 @@ button:hover,
         & li {
           gap: 10px;
           padding-bottom: 15px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
       }
     }
@@ -4926,14 +5024,5 @@ button:hover,
       margin-bottom: 0;
       text-align: center;
     }
-  }
-
-  @media (max-width: 1100px) {
-    justify-content: space-around;
-  }
-
-  @media (max-width: 520px) {
-    justify-content: space-between;
-    gap: 10px;
   }
 }
