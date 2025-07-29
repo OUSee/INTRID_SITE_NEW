@@ -1051,38 +1051,14 @@ ul {
 
 // flex wrapping & sizes
 .flex {
-  &-column {
-    flex-direction: column !important;
-  }
-
-  &-nowrap {
-    flex-wrap: nowrap;
-  }
-
-  &-wrap {
-    flex-wrap: wrap;
-  }
-
-  &-50 {
-    flex: 1 1 40%;
-  }
-
-  &-sm {
-    &-wrap {
-      @media (max-width: 600px) {
-        flex-wrap: wrap;
-      }
-    }
-  }
-
   &-layout {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
-    & > * {
-      // flex: auto;
-    }
+    // & > * {
+    // flex: auto;
+    // }
 
     &--2x {
       & > * {
@@ -1597,6 +1573,38 @@ ul {
       }
     }
   }
+
+  &-column {
+    flex-direction: column !important;
+  }
+
+  &-nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+
+  &-50 {
+    flex: 1 1 40%;
+  }
+
+  &-sm {
+    &-wrap {
+      @media (max-width: 600px) {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  &-xl {
+    &-column {
+      @media (max-width: 1200px) {
+        flex-direction: column;
+      }
+    }
+  }
 }
 
 // gaps
@@ -1652,6 +1660,22 @@ ul {
     &-end {
       align-self: flex-end;
     }
+
+    &-lg {
+      &-center {
+        @media (max-width: 1000px) {
+          align-self: center;
+        }
+      }
+    }
+
+    &-sm {
+      &-center {
+        @media (max-width: 600px) {
+          align-self: center;
+        }
+      }
+    }
   }
 
   &-stretch {
@@ -1696,6 +1720,14 @@ ul {
 
     &-end {
       justify-self: end;
+    }
+  }
+
+  &-xl {
+    &-center {
+      @media (max-width: 1200px) {
+        justify-content: center;
+      }
     }
   }
 }
@@ -1988,6 +2020,9 @@ ul {
     position: sticky !important;
     top: 80px;
   }
+  &-relative {
+    position: relative;
+  }
 }
 
 // colors
@@ -2051,6 +2086,31 @@ ul {
     background-size: 100% auto;
     background-position: bottom;
     background-repeat: no-repeat;
+  }
+
+  &-lights {
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0px 0px 100px 80px var(--blue-clouds),
+        inset 0px 0px 100px 2px var(--blue-clouds);
+    }
+
+    &--top {
+      &::before {
+        top: 20px;
+      }
+    }
+
+    &--left {
+      &::before {
+        left: 125px;
+      }
+    }
   }
 }
 
@@ -2815,18 +2875,6 @@ form {
   }
 }
 
-// icms-note
-.icms-note {
-  display: flex;
-  align-items: center;
-
-  img {
-    width: auto;
-    height: 35px;
-    margin-right: 8px;
-  }
-}
-
 // yandex, google typed
 .yandex {
   color: var(--bg-main);
@@ -2851,6 +2899,26 @@ form {
 
     &:nth-child(3) {
       color: #34a853;
+    }
+  }
+}
+
+// icms herb
+.icms {
+  &-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+
+    & img {
+      width: auto;
+      height: 35px;
+      margin-right: 8px;
+    }
+
+    & p {
+      margin: 0;
     }
   }
 }
@@ -4485,27 +4553,73 @@ button:hover,
       padding: 20px 20px 20px 85px;
     }
 
-    &:hover {
-      border: 1px solid var(--blue-main);
-      box-shadow: 0px 0px 15px var(--blue-main);
-    }
-
-    &::before {
-      @media (max-width: 600px) {
-        top: -5px;
-        left: -15px;
-        display: flex;
+    &.webdev {
+      &:hover {
+        border: 1px solid var(--blue-main);
+        box-shadow: 0px 0px 15px var(--blue-main);
       }
-    }
 
-    &:has(input:checked) {
       &::before {
-        background-color: var(--blue-main);
-        transition: 0.25s ease-in-out;
+        @media (max-width: 600px) {
+          top: -5px;
+          left: -15px;
+          display: flex;
+        }
       }
 
-      & > img {
-        filter: brightness(0.3);
+      &:has(input:checked) {
+        &::before {
+          background-color: var(--blue-main);
+          transition: 0.25s ease-in-out;
+        }
+
+        & > img {
+          filter: brightness(0.3);
+        }
+      }
+    }
+
+    &.slim {
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 640px;
+      padding: 14px 30px;
+      background-color: var(--blue-bg);
+      border-radius: 50rem;
+      overflow: hidden;
+      cursor: default;
+
+      &::before {
+        content: 'd';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: -1;
+        font-family: 'INTRID_ICONS';
+        font-size: 77px;
+        color: hsla(0, 0%, 100%, 0.02);
+        transform: translate(-50%, -50%);
+      }
+
+      & > span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        flex-basis: 15%;
+        flex-grow: 1;
+        max-width: 100px;
+        text-align: center;
+        color: var(--blue-main);
+        white-space: nowrap;
+      }
+
+      & > p {
+        margin: 0;
+        color: var(--color-grey);
       }
     }
   }

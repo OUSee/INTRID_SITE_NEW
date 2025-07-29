@@ -1566,23 +1566,6 @@ ul.generic-list > li::marker {
   }
 }
 
-.flex-column {
-  flex-direction: column !important;
-}
-.flex-nowrap {
-  flex-wrap: nowrap;
-}
-.flex-wrap {
-  flex-wrap: wrap;
-}
-.flex-50 {
-  flex: 1 1 40%;
-}
-@media (max-width: 600px) {
-  .flex-sm-wrap {
-    flex-wrap: wrap;
-  }
-}
 .flex-layout {
   display: flex;
   flex-direction: row;
@@ -1992,6 +1975,28 @@ ul.generic-list > li::marker {
     width: 100%;
   }
 }
+.flex-column {
+  flex-direction: column !important;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-50 {
+  flex: 1 1 40%;
+}
+@media (max-width: 600px) {
+  .flex-sm-wrap {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 1200px) {
+  .flex-xl-column {
+    flex-direction: column;
+  }
+}
 
 .gap-4 {
   gap: 4px;
@@ -2030,6 +2035,16 @@ ul.generic-list > li::marker {
 .align-self-end {
   align-self: flex-end;
 }
+@media (max-width: 1000px) {
+  .align-self-lg-center {
+    align-self: center;
+  }
+}
+@media (max-width: 600px) {
+  .align-self-sm-center {
+    align-self: center;
+  }
+}
 .align-stretch {
   align-items: stretch;
 }
@@ -2060,6 +2075,11 @@ ul.generic-list > li::marker {
 }
 .justify-self-end {
   justify-self: end;
+}
+@media (max-width: 1200px) {
+  .justify-xl-center {
+    justify-content: center;
+  }
 }
 
 .order-1 {
@@ -2270,6 +2290,9 @@ ul.generic-list > li::marker {
   position: sticky !important;
   top: 80px;
 }
+.position-relative {
+  position: relative;
+}
 
 .color-blue {
   color: var(--blue-main) !important;
@@ -2304,6 +2327,21 @@ ul.generic-list > li::marker {
   background-size: 100% auto;
   background-position: bottom;
   background-repeat: no-repeat;
+}
+.bg-lights::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
+}
+.bg-lights--top::before {
+  top: 20px;
+}
+.bg-lights--left::before {
+  left: 125px;
 }
 
 fieldset {
@@ -2946,16 +2984,6 @@ form .button:hover {
   overflow: visible;
 }
 
-.icms-note {
-  display: flex;
-  align-items: center;
-}
-.icms-note img {
-  width: auto;
-  height: 35px;
-  margin-right: 8px;
-}
-
 .yandex {
   color: var(--bg-main);
 }
@@ -2974,6 +3002,21 @@ form .button:hover {
 }
 .google span:nth-child(3) {
   color: #34a853;
+}
+
+.icms-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+.icms-block img {
+  width: auto;
+  height: 35px;
+  margin-right: 8px;
+}
+.icms-block p {
+  margin: 0;
 }
 
 .phone-line {
@@ -4491,23 +4534,63 @@ button:hover img,
     padding: 20px 20px 20px 85px;
   }
 }
-.card--benefit:hover {
+.card--benefit.webdev:hover {
   border: 1px solid var(--blue-main);
   box-shadow: 0px 0px 15px var(--blue-main);
 }
 @media (max-width: 600px) {
-  .card--benefit::before {
+  .card--benefit.webdev::before {
     top: -5px;
     left: -15px;
     display: flex;
   }
 }
-.card--benefit:has(input:checked)::before {
+.card--benefit.webdev:has(input:checked)::before {
   background-color: var(--blue-main);
   transition: 0.25s ease-in-out;
 }
-.card--benefit:has(input:checked) > img {
+.card--benefit.webdev:has(input:checked) > img {
   filter: brightness(0.3);
+}
+.card--benefit.slim {
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 640px;
+  padding: 14px 30px;
+  background-color: var(--blue-bg);
+  border-radius: 50rem;
+  overflow: hidden;
+  cursor: default;
+}
+.card--benefit.slim::before {
+  content: "d";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: -1;
+  font-family: "INTRID_ICONS";
+  font-size: 77px;
+  color: hsla(0, 0%, 100%, 0.02);
+  transform: translate(-50%, -50%);
+}
+.card--benefit.slim > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-basis: 15%;
+  flex-grow: 1;
+  max-width: 100px;
+  text-align: center;
+  color: var(--blue-main);
+  white-space: nowrap;
+}
+.card--benefit.slim > p {
+  margin: 0;
+  color: var(--color-grey);
 }
 .card--roadmap {
   overflow: unset;
@@ -6383,29 +6466,6 @@ button.next:hover {
 .tab-content-webDev.store {
   row-gap: 50px;
 }
-.tab-content-webDev.store .webDev-benefits {
-  margin-left: auto;
-}
-@media (max-width: 1200px) {
-  .tab-content-webDev.store .webDev-benefits {
-    margin: 0 auto;
-  }
-}
-.tab-content-webDev.store .achievements-group {
-  margin-left: 50px;
-  margin-right: auto;
-}
-@media (max-width: 1200px) {
-  .tab-content-webDev.store .achievements-group {
-    order: unset;
-    margin: 0 auto;
-  }
-}
-@media (max-width: 600px) {
-  .tab-content-webDev.store .achievements-group {
-    margin: 0 !important;
-  }
-}
 .tab-content-webDev.store .count-n-card {
   gap: 50px;
   width: fit-content;
@@ -6935,65 +6995,6 @@ button.next:hover {
 body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-card > div.card--recent > img {
   width: 227px;
   height: 141px;
-}
-
-.webDev-benefits {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 640px;
-  max-width: 100%;
-  position: relative;
-}
-.webDev-benefits::before {
-  position: absolute;
-  top: 20px;
-  left: 125px;
-  z-index: 0;
-  content: "";
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
-}
-.webDev-benefits li {
-  z-index: 1;
-  padding: 14px 30px;
-  background-color: var(--blue-bg);
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  position: relative;
-  overflow: hidden;
-}
-.webDev-benefits li::after {
-  position: absolute;
-  top: calc(50% - 38.5px);
-  left: -40px;
-  font-family: "INTRID_ICONS";
-  font-size: 77px;
-  content: "d";
-  color: rgba(255, 255, 255, 0.02);
-}
-.webDev-benefits li .webDev-benefits-highlight {
-  display: block;
-  color: var(--blue-main);
-  text-wrap: nowrap;
-  flex-basis: 15%;
-  flex-grow: 1;
-}
-@media (max-width: 420px) {
-  .webDev-benefits li .webDev-benefits-highlight {
-    flex-basis: 30%;
-    font-size: 25px;
-  }
-}
-.webDev-benefits li .webDev-benefits-description {
-  display: block;
-  flex-basis: 70%;
-  flex-grow: 1;
-  color: var(--color-grey);
 }
 
 .count-n-card {
@@ -10494,51 +10495,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   display: flex;
   gap: 50px;
   justify-content: space-around;
-}
-.design_site-importance-block .webDev-benefits li .webDev-benefits-highlight {
-  flex-basis: 5%;
-}
-.design_site-importance-block .numbers-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: space-between;
-  align-items: start;
-}
-@media (max-width: 900px) {
-  .design_site-importance-block {
-    flex-direction: column;
-    align-items: center;
-  }
-  .design_site-importance-block .webDev-benefits {
-    width: 100%;
-    max-width: 640px;
-  }
-}
-@media (max-width: 900px) and (max-width: 600px) {
-  .design_site-importance-block .webDev-benefits li .webDev-benefits-highlight {
-    flex-basis: 15%;
-  }
-}
-@media (max-width: 900px) {
-  .design_site-importance-block .numbers-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  .design_site-importance-block .numbers-list .portfolio-count {
-    flex: 1 1 45%;
-  }
-}
-@media (max-width: 900px) and (max-width: 520px) {
-  .design_site-importance-block .numbers-list .portfolio-count {
-    flex: 1 1 100%;
-  }
-}
-@media (max-width: 900px) {
-  .design_site-importance-block .numbers-list .button-link {
-    margin: 0 auto;
-  }
 }
 
 .ui_design-tabs .tabs-buttons .tab-button::before {
