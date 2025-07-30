@@ -649,6 +649,10 @@ section {
   &:first-of-type {
     padding-top: 160px;
     padding-bottom: 20px;
+
+    @media (max-width: 600px) {
+      padding-top: 100px;
+    }
   }
 
   &.tabs {
@@ -1629,6 +1633,10 @@ ol {
 
 // gaps
 .gap {
+  &-0 {
+    gap: 0 !important;
+  }
+
   &-4 {
     gap: 4px;
   }
@@ -3131,6 +3139,7 @@ form {
     justify-content: center;
     aspect-ratio: 1 / 1;
     animation-delay: 3s;
+    transition: 0.25s ease-in-out;
 
     @media (max-width: 600px) {
       width: 240px;
@@ -3803,7 +3812,6 @@ button:hover,
       flex-direction: row;
       align-items: center;
       gap: 5px;
-      // margin-left: auto;
       font-weight: 600;
       font-size: 16px;
       line-height: 1.25;
@@ -4176,7 +4184,7 @@ button:hover,
   }
 
   &--outline {
-    gap: 20px;
+    gap: 0;
     padding: 20px;
     background-color: transparent;
     border: 1px solid var(--blue-main);
@@ -4873,35 +4881,56 @@ button:hover,
       display: block;
       flex-basis: 70%;
       flex-grow: 1;
+      margin: 0;
     }
   }
 
   &--leads {
     z-index: 2;
     padding: 30px;
+    color: var(--color-grey);
     background-color: var(--bg-main);
     border-radius: 35px;
     border-color: var(--bg-main);
 
-    & ul {
+    & ul,
+    & ol {
       display: flex;
       flex-direction: column;
       gap: 20px;
       margin: 0;
       padding: 0;
-      list-style: none;
 
       & li {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
         padding-bottom: 30px;
         border-bottom: 1px solid var(--blue-bg);
 
+        &::marker {
+          @include h4;
+          color: var(--blue-main);
+        }
+
         &:last-child {
           border-bottom: none;
+          padding-bottom: unset;
+        }
+
+        & > p {
+          margin-bottom: 20px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
       }
+    }
+
+    & ul {
+      list-style: none;
+    }
+
+    & ol {
+      padding-left: 30px;
     }
 
     &.compact {
@@ -4914,6 +4943,7 @@ button:hover,
 
           &:last-child {
             margin-bottom: 0;
+            padding-bottom: unset;
           }
         }
       }

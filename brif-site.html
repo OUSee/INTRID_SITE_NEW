@@ -173,7 +173,7 @@
                 <p class="title_h3 w-fit">
                     Заполнение брифа
                 </p>
-                <p>
+                <p class="mb-30">
                     <span class="color-blue">Бриф</span>– это анкета, с помощью которой Вы можете отразить свои
                     требования и пожелания к Вашему
                     будущему сайту. Для более четкого определения целей, стоящих перед Вашим будущим сайтом, необходимо
@@ -188,7 +188,7 @@
                 <p class="title_h3 w-fit">
                     Оформить быстрый предзаказ
                 </p>
-                <p>
+                <p class="mb-30">
                     Для тех, кто точно знает, что хочет и представляет, как это выглядит. Просто оставьте свои
                     контактные
                     данные. Свяжемся с Вами любым удобным способом, раскроем все подробности касательно цены, сроков и
@@ -215,21 +215,41 @@
                     <img src="./src/icons/magnifier_glass.svg" alt=""> Общая информация<i class="icon-shevrone"></i>
                 </label>
                 <div class="accordion-content">
-                    <p class="title_h5">Название компании <span class="color-grey">(полное)*</span></p>
+                    <label for="general-name" class="title_h5">
+                        Название компании <span class="color-grey">(полное)*</span>
+                    </label>
                     <input type="text" id="general-name">
-                    <p class="title_h5">Сфера деятельности компании</p>
+
+                    <label for="general-buisness_type" class="title_h5">
+                        Сфера деятельности компании
+                    </label>
                     <input type="text" id="general-buisness_type">
-                    <p class="title_h5">География компании</p>
+
+                    <label for="general-geography" class="title_h5">
+                        География компании
+                    </label>
                     <input type="text" id="general-geography">
-                    <p class="title_h5">Целевая аудитория</p>
+
+                    <label for="general-audience" class="title_h5">
+                        Целевая аудитория
+                    </label>
                     <input type="text" id="general-audience">
-                    <p class="title_h5">Основные продукты/услуги</p>
+
+                    <label for="general-services" class="title_h5">
+                        Основные продукты/услуги
+                    </label>
                     <input type="text" id="general-services">
-                    <p class="title_h5">Конкуренты <span class="color-grey">(оставьте ссылки на их сайты, если
-                            есть)</span></p>
+
+                    <label for="general-competitors" class="title_h5">
+                        Конкуренты <span class="color-grey">(оставьте ссылки на их сайты, если
+                            есть)</span>
+                    </label>
                     <textarea data-autosize="true" rows="1" type="text" id="general-competitors" data-autosize="true"
                         rows="1"></textarea>
-                    <p class="title_h5">Ссылки на текущий сайт/соцсети<span class="color-grey"> (если есть) </span></p>
+                    
+                    <label for="general-link" class="title_h5">
+                        Ссылки на текущий сайт/соцсети<span class="color-grey"> (если есть) </span>
+                    </label>
                     <textarea data-autosize="true" rows="1" type="text" id="general-link" data-autosize="true"
                         rows="1"></textarea>
                 </div>
@@ -300,12 +320,12 @@
                         </label>
                     </div>
 
-                    <p class="title_h5">
+                    <label for="strategy-aims" class="title_h5">
                         Целевая аудитория сайта
                         <span class="color-grey">
                             (Каких результатов Вы хотите добиться с помощью Вашего нового сайта?)
                         </span>
-                    </p>
+                    </label>
                     <textarea data-autosize="true" rows="1" type="text" id="strategy-aims"></textarea>
                 </div>
             </div>
@@ -355,9 +375,14 @@
                             </p>
                         </label>
                     </div>
-                    <p class="title_h5">Укажите сайты с понравившемся дизайном, сайты конкурентов</p>
+                    <label for="design-similar_cites" class="title_h5">
+                        Укажите сайты с понравившемся дизайном, сайты конкурентов
+                    </label>
                     <input type="text" placeholder="Введите текст" id="design-similar_cites">
-                    <p class="title_h5 color-blue quote">Дополнительно необходимо разработать:</p>
+
+                    <p class="title_h5 color-blue quote">
+                        Дополнительно необходимо разработать:
+                    </p>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="design-additional-logobook"
                             data-price="15000" name="design-additional-logobook"
@@ -530,8 +555,11 @@
                             Контакты
                         </label>
                     </div>
-                    <p class="title_h5">Укажите свои разделы</p>
+                    <label for="functions-section_custom" class="title_h5">
+                        Укажите свои разделы
+                    </label>
                     <input type="text" placeholder="Введите текст" id="functions-section_custom">
+
                     <p class="title_h5 color-blue quote">Блоки на главной</p>
                     <div class="toggle-line">
                         <input type="checkbox" class="toggle-checkbox" id="functions-blocks_promoslider"
@@ -596,7 +624,10 @@
                             Портфолио
                         </label>
                     </div>
-                    <p class="title_h5">Укажите свои блоки</p>
+
+                    <label for="functions-blocks_custom" class="title_h5">
+                        Укажите свои блоки
+                    </label>
                     <input type="text" placeholder="Введите текст" id="functions-blocks_custom">
                 </div>
             </div>
