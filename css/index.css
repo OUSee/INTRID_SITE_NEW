@@ -2397,11 +2397,46 @@ ol li p {
 .bg-gradient {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.1) 85%, rgba(0, 234, 255, 0) 100%);
 }
+.bg-icms {
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
+}
+.bg-icms--lighten {
+  mix-blend-mode: lighten;
+}
+.bg-icms--lighten::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  background-image: url("../src/images/planet-site-bg.webp");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 .bg-mountains {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0) 15%, rgba(0, 234, 255, 0.1) 61%, rgba(0, 234, 255, 0) 100%), url("../src/images/mountains_2.webp");
   background-size: 100% auto;
   background-position: bottom;
   background-repeat: no-repeat;
+}
+.bg-planets::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  background-image: url("../src/images/planets-aside.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: translateY(-50%);
 }
 .bg-lights::before {
   content: "";
@@ -7427,6 +7462,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 
 .for-buisness-offers {
   position: relative;
+  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.1) 85%, rgba(0, 234, 255, 0) 100%), url("../src/images/mountains_1.webp");
   background-size: 100% auto;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -7731,21 +7767,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .clients-cases {
   position: relative;
   z-index: 1;
-}
-.clients-cases::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-  background-image: url("../src/images/planets-aside.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transform: translateY(-50%);
 }
 .clients-cases .blocks {
   margin-top: 50px;
@@ -8152,28 +8173,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   cursor: default;
 }
 
-.sites-leaders {
-  padding: 120px 0px 0px 0px;
-  background-image: url("../src/images/planet-site-bg.webp");
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-@media (max-width: 900px) {
-  .sites-leaders {
-    background-size: 1400px;
-  }
-}
-.sites-leaders .img-handler {
-  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
-}
-.sites-leaders p.title_h2 {
-  margin-bottom: 52px;
-}
 .sites-leaders-content {
   display: flex;
   gap: 50px;
-  padding: 0px 0px 180px 0px;
 }
 @media (max-width: 900px) {
   .sites-leaders-content {
@@ -8338,20 +8340,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   display: flex;
   align-items: stretch;
 }
-.sites-portfolio-slider + .pagination {
-  display: none;
-}
-@media (max-width: 1200px) {
-  .sites-portfolio-slider + .pagination {
-    display: flex;
-  }
-}
 .sites-portfolio-slider.logo-slider {
   min-height: unset;
   align-items: stretch;
-}
-.sites-portfolio-slider.logo-slider + .pagination {
-  display: flex;
 }
 .sites-roadmap {
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
@@ -8620,28 +8611,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .corporate-icms {
   padding-top: 62px;
-}
-.corporate-icms .img-handler {
-  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
-}
-.corporate-icms.sites-leaders {
-  mix-blend-mode: lighten;
-}
-.corporate-icms .sites-leaders-content {
-  flex-wrap: wrap;
-  row-gap: 20px;
-}
-.corporate-icms .sites-leaders-content-right img {
-  width: 100px;
-}
-@media (max-width: 900px) {
-  .corporate-icms .sites-leaders-content-right img {
-    display: block;
-    width: 50px;
-  }
-}
-.corporate-icms .sites-leaders-content-left {
-  flex: 1 1 60%;
 }
 .corporate-tech {
   padding-top: 0px;
@@ -10035,11 +10004,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   gap: 30px;
   width: 100%;
 }
-@media (max-width: 1400px) {
-  .portfolio-keys .sites-portfolio-slider + .pagination {
-    display: flex;
-  }
-}
 .portfolio-keys .pagination {
   margin: 0;
 }
@@ -10406,11 +10370,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .seo_page-portfolio .support-card--list > div > b {
   width: 120px;
   flex: 0 0 120px;
-}
-@media (max-width: 1400px) {
-  .seo_page-portfolio .sites-portfolio-slider + .pagination {
-    display: flex;
-  }
 }
 
 .caterpillar {
@@ -10838,9 +10797,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .o-nas-portfolio .sites-portfolio-slider {
   position: relative;
 }
-.o-nas-portfolio .sites-portfolio-slider + .pagination {
-  display: flex;
-}
 .o-nas-principals .integrations--right {
   border: 1px solid var(--blue-bg);
   background-color: transparent;
@@ -10874,9 +10830,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
 }
 
-.kontakts-main {
-  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(10, 10, 10, 0) 100%);
-}
 .kontakts-main .slider-with-tabs_tabs-buttons {
   margin-top: 0;
   padding-top: 30px;
@@ -10896,11 +10849,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   width: 100%;
   height: 450px;
   border-radius: 25px;
-}
-.kontakts-bottom {
-  padding-top: 62px;
-  background-image: url(../src/images/planets-aside.webp);
-  background-position: center;
 }
 .kontakts-bottom .sites-leaders-content {
   padding-bottom: 62px;
@@ -11236,13 +11184,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   left: unset;
   right: unset;
   bottom: unset;
-}
-
-.blog-portfolio {
-  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(0, 234, 255, 0.1) 83%, rgba(0, 234, 255, 0) 100%);
-}
-.blog-portfolio .sites-portfolio-slider + .pagination {
-  display: flex;
 }
 
 .blog_page-content {
