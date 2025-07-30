@@ -9537,6 +9537,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .calculator-total .button-highlight.big {
   gap: 4px;
 }
+.calculator-total .container p {
+  margin: 0;
+}
 @media (max-width: 900px) {
   .calculator-total .container {
     flex-direction: column;
@@ -10370,102 +10373,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .seo_page-portfolio .support-card--list > div > b {
   width: 120px;
   flex: 0 0 120px;
-}
-
-.caterpillar {
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-}
-.caterpillar .left-block,
-.caterpillar .right-block {
-  flex: 1 1 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-.caterpillar .left-block-item,
-.caterpillar .right-block-item {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.caterpillar .left-block {
-  text-align: right;
-  justify-content: space-between;
-}
-.caterpillar .right-block {
-  justify-content: space-evenly;
-}
-.caterpillar .number-pillar {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 70px;
-}
-.caterpillar .number-pillar .number-button {
-  flex: 1 1 0px;
-}
-.caterpillar .number-pillar .number-button p.counter {
-  font-size: 40px;
-  line-height: 70px;
-  color: var(--blue-main);
-  text-align: center;
-  width: 70px;
-  height: 70px;
-  min-height: 70px;
-  min-width: 70px;
-  max-height: 70px;
-  max-width: 70px;
-  border: 2px solid var(--blue-main);
-  border-radius: 50%;
-}
-.caterpillar .number-pillar .connector {
-  align-self: center;
-  flex: 1 1 0;
-  width: 2px;
-  height: 100%;
-  background-color: var(--blue-main);
-  min-height: 30px;
-}
-.caterpillar .mobile-block {
-  display: none;
-}
-@media (max-width: 900px) {
-  .caterpillar {
-    gap: 30px;
-  }
-}
-@media (max-width: 600px) {
-  .caterpillar .number-pillar {
-    order: 1;
-  }
-  .caterpillar .number-pillar .number-button {
-    flex: 1 1 100%;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    max-height: 70px;
-  }
-  .caterpillar .number-pillar .number-button .mobile-block {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .caterpillar .number-pillar .connector {
-    min-height: 50px;
-    align-self: flex-start;
-    margin-left: 35px;
-  }
-  .caterpillar .left-block,
-  .caterpillar .right-block {
-    display: none;
-  }
-}
-@media (max-width: 520px) {
-  .caterpillar .number-pillar .connector {
-    min-height: 90px;
-  }
 }
 
 .smm-services .tech-list {
@@ -12709,17 +12616,4 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   #more-about-web-dev {
     margin-bottom: 40px;
   }
-}
-.all-img-mockups-preview > ul {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-.all-img-mockups-preview > ul > li {
-  width: 25%;
-}
-.all-img-mockups-preview > ul > li img {
-  aspect-ratio: 1/1;
-  max-width: 25%;
-  height: auto;
 }
