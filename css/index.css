@@ -2006,9 +2006,19 @@ ol li p {
 .flex-50 {
   flex: 1 1 40%;
 }
+@media (max-width: 720px) {
+  .flex-md-column {
+    flex-direction: column;
+  }
+}
 @media (max-width: 600px) {
   .flex-sm-wrap {
     flex-wrap: wrap;
+  }
+}
+@media (max-width: 600px) {
+  .flex-sm-column {
+    flex-direction: column;
   }
 }
 @media (max-width: 1000px) {
@@ -4501,6 +4511,9 @@ button:hover img,
   .card--support .card-body > div > b {
     font-size: 16px;
   }
+}
+.card--support .card-body > div > * {
+  margin: 0;
 }
 .card--support .card-body > div > *:first-child {
   width: 100px;
@@ -9820,32 +9833,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 @media (max-width: 1200px) {
   .tech-conditions > div > .button-link {
     margin-left: 0;
-  }
-}
-
-.terms-block {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  gap: 40px;
-  width: 100%;
-  margin: 80px auto 0;
-}
-@media (max-width: 1200px) {
-  .terms-block {
-    gap: 20px;
-  }
-}
-@media (max-width: 1000px) {
-  .terms-block {
-    margin: 50px auto 0;
-  }
-}
-@media (max-width: 720px) {
-  .terms-block {
-    flex-direction: column;
   }
 }
 

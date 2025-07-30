@@ -1606,10 +1606,24 @@ ol {
     flex: 1 1 40%;
   }
 
+  &-md {
+    &-column {
+      @media (max-width: 720px) {
+        flex-direction: column;
+      }
+    }
+  }
+
   &-sm {
     &-wrap {
       @media (max-width: 600px) {
         flex-wrap: wrap;
+      }
+    }
+
+    &-column {
+      @media (max-width: 600px) {
+        flex-direction: column;
       }
     }
   }
@@ -4550,6 +4564,8 @@ button:hover,
         }
 
         & > * {
+          margin: 0;
+
           &:first-child {
             width: 100px;
             flex: 0 0 100px;
