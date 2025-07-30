@@ -3188,6 +3188,8 @@ form .button:hover {
   justify-content: center;
   aspect-ratio: 1/1;
   animation-delay: 3s;
+  user-select: none;
+  pointer-events: none;
   transition: 0.25s ease-in-out;
 }
 @media (max-width: 600px) {
@@ -5057,7 +5059,7 @@ button:hover img,
   height: 100%;
   overflow: hidden;
 }
-.popup-opened body > header, .popup-opened body > section, .popup-opened body > footer {
+.popup-opened body > header, .popup-opened body > main, .popup-opened body > section, .popup-opened body > footer {
   filter: blur(5px);
 }
 .popup-wrapper {
@@ -7377,6 +7379,9 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   position: relative;
   z-index: 1;
 }
+.benefit-card p {
+  margin: 0;
+}
 .benefit-card::before {
   content: "";
   z-index: 0;
@@ -7633,15 +7638,17 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 .tech-we-use {
   position: relative;
   z-index: 1;
+}
+.tech-we-use.main {
   padding-bottom: 270px;
 }
 @media (max-width: 1200px) {
-  .tech-we-use {
+  .tech-we-use.main {
     padding-bottom: 100px;
   }
 }
 @media (max-width: 600px) {
-  .tech-we-use {
+  .tech-we-use.main {
     padding-bottom: 40px;
   }
 }
@@ -7710,10 +7717,23 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 
 .clients-cases {
+  position: relative;
+  z-index: 1;
+}
+.clients-cases::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
   background-image: url("../src/images/planets-aside.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transform: translateY(-50%);
 }
 .clients-cases .blocks {
   margin-top: 50px;
@@ -12753,7 +12773,7 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
     transform: translateY(-54px);
     background-color: transparent;
   }
-  .tabs .tab-content label ~ * {
+  .tabs .tab-content label ~ *:not(.benefit-card) {
     display: none;
     transform-origin: top;
     transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
