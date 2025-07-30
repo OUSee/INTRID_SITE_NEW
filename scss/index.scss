@@ -2935,26 +2935,10 @@ body
       }
     }
   }
-
-  &-icms {
-    padding-top: 62px;
-  }
-
-  &-tech {
-    padding-top: 0px;
-
-    .title_h2 {
-      margin-top: 0;
-    }
-  }
 }
 
 //store page
 .store {
-  &-icms {
-    padding-top: 0px;
-  }
-
   &-benefits,
   &-ai {
     .web-shop-diagram {
@@ -3258,49 +3242,6 @@ body
       }
     }
   }
-
-  &-icms {
-    .description {
-      @media (max-width: 900px) {
-        max-width: 85%;
-      }
-    }
-  }
-
-  &-actions {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 10px;
-    width: 100%;
-
-    @media (max-width: 1000px) {
-      flex-direction: column;
-    }
-
-    & > div {
-      &:first-child {
-        flex-wrap: nowrap;
-
-        @media (max-width: 1200px) {
-          flex-wrap: wrap;
-        }
-
-        @media (max-width: 790px) {
-          flex-direction: column;
-        }
-      }
-    }
-
-    & > .crm-actions {
-      flex-wrap: nowrap;
-
-      @media (max-width: 1000px) {
-        flex-wrap: wrap;
-      }
-    }
-  }
 }
 
 //web-portal page
@@ -3505,51 +3446,6 @@ body
 
 // it for business
 .it {
-  &-services {
-    .tab-view {
-      padding: 0;
-
-      .tab-slider {
-        display: flex;
-        gap: 25px;
-
-        &-card {
-          margin-right: 0 !important;
-
-          @media (max-width: 1400px) {
-            min-width: calc((100vw - 80px - 75px) / 4 - 2px);
-          }
-
-          @media (max-width: 1200px) {
-            min-width: calc((100vw - 80px - 50px) / 3 - 2px);
-          }
-
-          @media (max-width: 900px) {
-            p {
-              display: none;
-
-              &.title_h4 {
-                display: block;
-                text-align: center;
-
-                &.color-blue {
-                  margin-top: auto;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .pagination {
-        display: none;
-
-        @media (max-width: 1400px) {
-          display: flex;
-        }
-      }
-    }
-  }
 
   &-prices {
     padding-top: 62px;
