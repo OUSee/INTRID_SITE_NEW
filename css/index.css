@@ -3731,22 +3731,42 @@ button:hover img,
   pointer-events: none;
 }
 .card--testimonials > p {
-  margin-top: 15px;
   color: var(--color-grey);
 }
-.card--testimonials > b {
+.card--testimonials > h1, .card--testimonials > h2, .card--testimonials > h3, .card--testimonials > h4, .card--testimonials > h5, .card--testimonials > h6, .card--testimonials > b {
   font-weight: 600;
   font-size: 16px;
   color: var(--color-white);
   line-height: 140%;
 }
 @media (max-width: 1000px) {
-  .card--testimonials > b {
+  .card--testimonials > h1, .card--testimonials > h2, .card--testimonials > h3, .card--testimonials > h4, .card--testimonials > h5, .card--testimonials > h6, .card--testimonials > b {
     font-size: 16px;
   }
 }
 @media (max-width: 600px) {
-  .card--testimonials > b {
+  .card--testimonials > h1, .card--testimonials > h2, .card--testimonials > h3, .card--testimonials > h4, .card--testimonials > h5, .card--testimonials > h6, .card--testimonials > b {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+.card--testimonials > b {
+  margin-bottom: 1em;
+}
+.card--testimonials-minified > b {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-white);
+  line-height: 140%;
+  margin-bottom: 1em;
+}
+@media (max-width: 1000px) {
+  .card--testimonials-minified > b {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .card--testimonials-minified > b {
     font-size: 16px;
     font-weight: 400;
   }
@@ -3758,9 +3778,6 @@ button:hover img,
   }
   .card--testimonials-minified::before {
     display: none;
-  }
-  .card--testimonials-minified > p {
-    margin-top: 10px;
   }
 }
 .card--review {
@@ -4455,6 +4472,9 @@ button:hover img,
 .card--tariff > .card-body > * {
   transition: 0.25s ease-in-out;
 }
+.card--tariff > .card-body > *:last-child {
+  margin-bottom: unset;
+}
 .card--tariff.hover-glow:hover .card-header {
   outline: 1px solid var(--blue-main);
   box-shadow: 0px 5px 15px var(--blue-main);
@@ -4565,7 +4585,6 @@ button:hover img,
 }
 .card--icon {
   min-height: 130px;
-  gap: 10px;
   padding: 30px 30px 30px 100px;
 }
 @media (max-width: 600px) {
@@ -4591,6 +4610,26 @@ button:hover img,
   .card--icon::before {
     display: none;
   }
+}
+.card--icon > h1, .card--icon > h2, .card--icon > h3, .card--icon > h4, .card--icon > h5, .card--icon > h6, .card--icon > b {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-white);
+  line-height: 140%;
+}
+@media (max-width: 1000px) {
+  .card--icon > h1, .card--icon > h2, .card--icon > h3, .card--icon > h4, .card--icon > h5, .card--icon > h6, .card--icon > b {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .card--icon > h1, .card--icon > h2, .card--icon > h3, .card--icon > h4, .card--icon > h5, .card--icon > h6, .card--icon > b {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+.card--icon > b {
+  margin-bottom: 1em;
 }
 .card--icon > img, .card--icon > i {
   position: absolute;
@@ -4730,18 +4769,20 @@ button:hover img,
     padding: 20px 20px 20px 50px;
   }
 }
-.card--roadmap > b {
+.card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6, .card--roadmap > b {
   font-weight: 600;
   font-size: 16px;
   color: var(--blue-main);
+  line-height: 140%;
+  margin: 0;
 }
 @media (max-width: 1000px) {
-  .card--roadmap > b {
+  .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6, .card--roadmap > b {
     font-size: 16px;
   }
 }
 @media (max-width: 600px) {
-  .card--roadmap > b {
+  .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6, .card--roadmap > b {
     font-size: 16px;
     font-weight: 400;
   }
@@ -8352,22 +8393,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
 }
 .sites-reviews {
   position: relative;
-}
-.sites-reviews-head {
-  display: flex;
-}
-@media (max-width: 900px) {
-  .sites-reviews-head {
-    flex-direction: column;
-  }
-  .sites-reviews-head .title_h3 {
-    margin-left: auto;
-    margin-bottom: 50px;
-  }
-}
-.sites-reviews-head .title_h3 {
-  max-height: 1.4em;
-  margin-right: auto;
 }
 .sites-reviews-slider {
   display: flex;
