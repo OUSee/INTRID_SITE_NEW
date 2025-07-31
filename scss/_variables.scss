@@ -777,6 +777,117 @@ ol {
   }
 }
 
+.list {
+  &--crm {
+    list-style: none;
+    padding: 0;
+
+    & > li {
+      position: relative;
+      padding-left: 65px;
+      counter-increment: num;
+
+      @media (max-width: 1000px) {
+        padding-left: 60px;
+      }
+
+      @media (max-width: 600px) {
+        padding-left: 35px;
+      }
+
+      &::before {
+        content: counter(num);
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: var(--blue-main);
+        border-radius: 50%;
+        font-size: large;
+        color: var(--bg-main);
+        font-weight: 600;
+        text-align: center;
+
+        @media (max-width: 600px) {
+          width: 25px;
+          height: 25px;
+        }
+      }
+
+      &::marker {
+        display: none !important;
+      }
+    }
+  }
+
+  &--cooperate {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0;
+
+    @media (max-width: 1000px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: 20px;
+      row-gap: 30px;
+    }
+
+    & li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+      margin: 0;
+
+      @media (max-width: 1000px) {
+        flex: 1 1 45%;
+      }
+
+      @media (max-width: 600px) {
+        flex: 1 1 45%;
+      }
+
+      @media (max-width: 520px) {
+        flex: 1 1 90%;
+        justify-content: center;
+      }
+
+      i {
+        border-radius: 50px;
+        color: var(--blue-main);
+        font-size: 40px;
+        max-height: 40px;
+        line-height: 40px;
+        box-shadow: 0px 0px 50px 10px var(--blue-clouds),
+          inset 0px 0px 30px -10px var(--blue-clouds);
+      }
+
+      img {
+        border-radius: 25%;
+        height: 40px;
+        width: 40px;
+        box-shadow: 0px 0px 50px 10px var(--blue-clouds),
+          inset 0px 0px 30px -10px var(--blue-clouds);
+      }
+
+      p {
+        max-width: 200px;
+        margin: 0;
+
+        @media (max-width: 520px) {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
 // preloader settings
 #preloader {
   z-index: 10;
@@ -2309,7 +2420,7 @@ ol {
       position: relative;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;

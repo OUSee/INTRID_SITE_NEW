@@ -1,13 +1,13 @@
 // vendor
-@import './vendor/normalize';
+@import "./vendor/normalize";
 
-@import '../src/fonts/icons/css/INTRID_ICONS.css';
-@import './variables';
+@import "../src/fonts/icons/css/INTRID_ICONS.css";
+@import "./variables";
 
 // layouts
-@import './layouts/popup';
-@import './layouts/header';
-@import './layouts/footer';
+@import "./layouts/popup";
+@import "./layouts/header";
+@import "./layouts/footer";
 
 /* BASE STYLES */
 
@@ -21,11 +21,11 @@ html {
 }
 
 body {
-  font-family: 'Roboto' !important;
+  font-family: "Roboto" !important;
   font-size: 14px;
   background-color: var(--bg-main);
   color: var(--color-white);
-  background-image: url('../src/images/bg-main.webp');
+  background-image: url("../src/images/bg-main.webp");
   background-size: auto 944px;
   background-position: top;
   background-repeat: repeat;
@@ -33,7 +33,7 @@ body {
   overflow-x: clip;
 
   @media (max-width: 601px) {
-    background-image: url('../src/images/bg-main-vert.webp');
+    background-image: url("../src/images/bg-main-vert.webp");
     background-size: 100% auto;
   }
 }
@@ -89,7 +89,7 @@ body {
           // }
         }
 
-        &:has(input[type='radio']:checked) {
+        &:has(input[type="radio"]:checked) {
           transform: scale(1.2);
           background-color: var(--bg-main);
           color: var(--blue-main);
@@ -553,7 +553,7 @@ button.next {
         bottom: 0;
         right: 0;
         z-index: 1;
-        content: '';
+        content: "";
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -826,7 +826,7 @@ button.next {
           margin-top: 5px;
 
           &::marker {
-            content: '\2022';
+            content: "\2022";
           }
         }
       }
@@ -989,7 +989,7 @@ button.next {
           align-items: center;
 
           .tender-text-target li {
-            list-style: '\2713';
+            list-style: "\2713";
             padding-left: 10px;
           }
         }
@@ -999,7 +999,7 @@ button.next {
           width: 530px;
 
           &::before {
-            content: '';
+            content: "";
             width: 8px;
             height: 8px;
             position: absolute;
@@ -1011,7 +1011,7 @@ button.next {
           }
 
           &::after {
-            content: '';
+            content: "";
             width: 8px;
             height: 8px;
             position: absolute;
@@ -1350,7 +1350,7 @@ button.next {
       top: 40px;
       left: 90px;
       z-index: 0;
-      content: '';
+      content: "";
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -1578,7 +1578,7 @@ button.next {
   }
 
   &::before {
-    content: '';
+    content: "";
     z-index: 0;
     position: absolute;
     top: -10px;
@@ -1629,7 +1629,7 @@ button.next {
       rgba(0, 234, 255, 0.1) 85%,
       rgba(0, 234, 255, 0) 100%
     ),
-    url('../src/images/mountains_1.webp');
+    url("../src/images/mountains_1.webp");
   background-size: 100% auto;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -1730,7 +1730,7 @@ button.next {
   height: fit-content;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     height: 2px;
     top: 22px;
@@ -1740,7 +1740,7 @@ button.next {
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 18px;
     left: -44px;
@@ -1765,8 +1765,8 @@ button.next {
     text-wrap: nowrap;
 
     &::before {
-      font-family: 'INTRID_ICONS';
-      content: '\64';
+      font-family: "INTRID_ICONS";
+      content: "\64";
       height: 77px;
       width: 77px;
       font-size: 77px;
@@ -1799,68 +1799,6 @@ button.next {
 .why-cooperate {
   position: relative;
   z-index: 1;
-
-  &-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-
-    @media (max-width: 1000px) {
-      flex-wrap: wrap;
-      justify-content: center;
-      column-gap: 20px;
-      row-gap: 30px;
-    }
-
-    & li {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 15px;
-      margin: 0;
-
-      @media (max-width: 1000px) {
-        flex: 1 1 45%;
-      }
-
-      @media (max-width: 600px) {
-        flex: 1 1 45%;
-      }
-
-      @media (max-width: 520px) {
-        flex: 1 1 90%;
-        justify-content: center;
-      }
-
-      i {
-        border-radius: 50px;
-        color: var(--blue-main);
-        font-size: 40px;
-        max-height: 40px;
-        line-height: 40px;
-        box-shadow: 0px 0px 50px 10px var(--blue-clouds),
-          inset 0px 0px 30px -10px var(--blue-clouds);
-      }
-
-      img {
-        border-radius: 25%;
-        height: 40px;
-        width: 40px;
-        box-shadow: 0px 0px 50px 10px var(--blue-clouds),
-          inset 0px 0px 30px -10px var(--blue-clouds);
-      }
-
-      p {
-        max-width: 200px;
-        margin: 0;
-
-        @media (max-width: 520px) {
-          max-width: 100%;
-        }
-      }
-    }
-  }
 }
 
 .tech-we-use {
@@ -2164,7 +2102,7 @@ button.next {
   flex-direction: column;
   position: relative;
   gap: 20px;
-  background-image: url('../src/images/planet.webp');
+  background-image: url("../src/images/planet.webp");
   background-size: 100% auto;
   background-position: top;
   background-repeat: no-repeat;
@@ -2736,7 +2674,7 @@ button.next {
 
         &:before {
           box-sizing: border-box;
-          content: '\2714';
+          content: "\2714";
           font-size: 0.9em;
           width: 20px;
           height: 20px;
@@ -2751,7 +2689,7 @@ button.next {
           transition: all 0.2s ease-in;
         }
 
-        input[type='checkbox'] {
+        input[type="checkbox"] {
           position: absolute;
           opacity: 0%;
           width: 20px;
@@ -2760,7 +2698,7 @@ button.next {
 
         &:has(input:checked) {
           &:before {
-            content: '\2714';
+            content: "\2714";
             font-size: 0.9em;
             width: 20px;
             height: 20px;
@@ -2917,7 +2855,7 @@ button.next {
             margin-top: 5px;
 
             &::marker {
-              content: '\2022';
+              content: "\2022";
             }
           }
         }
@@ -3000,7 +2938,7 @@ button.next {
 
         &::marker {
           color: var(--blue-main);
-          content: '\2022';
+          content: "\2022";
           margin-right: 10px;
         }
       }
@@ -3364,67 +3302,13 @@ button.next {
       }
     }
   }
-
-  &-crm {
-    &-list {
-      padding-left: 40px;
-
-      @media (max-width: 600px) {
-        padding-left: 20px;
-      }
-
-      & > li {
-        padding-left: 20px;
-        position: relative;
-
-        @media (max-width: 600px) {
-          padding-left: 10px;
-        }
-
-        &::before {
-          content: '';
-          background-color: var(--blue-main);
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          display: block;
-          position: absolute;
-          left: -37px;
-          z-index: -1;
-          font-size: 35px;
-          color: var(--bg-main);
-          font-weight: 600;
-          z-index: 2;
-          padding-left: 15px;
-          padding-top: 4px;
-          box-sizing: border-box;
-
-          @media (max-width: 600px) {
-            padding-left: 7px;
-            font-size: 20px;
-            width: 25px;
-            height: 25px;
-            left: -20px;
-          }
-        }
-
-        &:nth-child(1)::before {
-          content: '1';
-        }
-
-        &:nth-child(2)::before {
-          content: '2';
-        }
-      }
-    }
-  }
 }
 
 // calculator page
 #reset-options-btn {
   @media (max-width: 900px) {
-    font-family: 'INTRID_ICONS';
-    content: '\63';
+    font-family: "INTRID_ICONS";
+    content: "\63";
     font-size: 2em;
     padding: 12px 9px 10px 8px;
     max-height: 46px;
@@ -3583,7 +3467,7 @@ button.next {
             }
 
             /* For Firefox */
-            input[type='number'] {
+            input[type="number"] {
               -moz-appearance: textfield;
               width: 60px;
             }
@@ -3632,27 +3516,27 @@ button.next {
 
               &.rubric {
                 &::marker {
-                  content: '\2022';
+                  content: "\2022";
                   color: var(--blue-main);
                 }
               }
 
               &.podrubric {
                 &::marker {
-                  content: '\261b';
+                  content: "\261b";
                   color: var(--blue-main);
                 }
               }
 
               &.razdel {
                 &::marker {
-                  content: '\26AC';
+                  content: "\26AC";
                   color: var(--blue-main);
                 }
               }
 
               &::marker {
-                content: '\2022';
+                content: "\2022";
                 color: var(--color-white);
               }
             }
@@ -3674,7 +3558,7 @@ button.next {
       margin-bottom: 10px;
 
       &::marker {
-        content: '\2022';
+        content: "\2022";
         color: var(--blue-main);
       }
     }
@@ -3789,7 +3673,7 @@ button.next {
       position: relative;
 
       &::before {
-        content: '';
+        content: "";
         background-color: var(--blue-tag);
         border: 1px solid var(--color-white);
       }
@@ -3806,7 +3690,7 @@ button.next {
     cursor: pointer;
 
     &::before {
-      content: '';
+      content: "";
       display: inline-block;
       min-width: 50px;
       height: 24px;
@@ -3818,7 +3702,7 @@ button.next {
     }
 
     &:after {
-      content: '';
+      content: "";
       top: calc(50% - 10px);
       left: 3px;
       position: absolute;
@@ -3970,7 +3854,7 @@ button.next {
 
       &::marker {
         color: var(--blue-main);
-        content: '\2022';
+        content: "\2022";
         margin-right: 10px;
       }
     }
@@ -4040,12 +3924,6 @@ button.next {
         display: none;
       }
     }
-  }
-}
-
-.tech-advantages {
-  & .title_h2 {
-    margin-bottom: 50px;
   }
 }
 
@@ -4349,7 +4227,7 @@ button.next {
       top: 40px;
       left: 90px;
       z-index: 0;
-      content: '';
+      content: "";
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -4846,8 +4724,8 @@ button.next {
             position: absolute;
             color: var(--blue-main);
             right: 12px;
-            font-family: 'INTRID_ICONS';
-            content: '\6d';
+            font-family: "INTRID_ICONS";
+            content: "\6d";
             font-size: 1.5em;
             transform: rotate(90deg);
           }
@@ -5662,7 +5540,7 @@ button.next {
     margin-bottom: 15px;
 
     li::marker {
-      content: '-';
+      content: "-";
     }
   }
 }
@@ -6409,7 +6287,7 @@ button.next {
     border-radius: 3px;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -1.5px;
       left: 1px;
@@ -6422,7 +6300,7 @@ button.next {
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -1.5px;
       right: 1px;
@@ -6470,12 +6348,12 @@ button.next {
     }
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 50%;
       left: 50%;
       z-index: 0;
-      content: '';
+      content: "";
       width: 30px;
       height: 30px;
       border-radius: 50%;
@@ -6506,7 +6384,7 @@ button.next {
     }
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -7167,7 +7045,7 @@ button.next {
           box-shadow: none;
         }
 
-        &:has(input[type='radio']:checked) {
+        &:has(input[type="radio"]:checked) {
           transform: scale(1);
           background-color: var(--bg-main);
           color: var(--blue-main);
@@ -7258,8 +7136,8 @@ button.next {
           position: absolute;
           color: var(--blue-main);
           right: 0;
-          font-family: 'INTRID_ICONS';
-          content: '\6d';
+          font-family: "INTRID_ICONS";
+          content: "\6d";
           font-size: 1.5em;
           // transform: rotate(270deg);
           transform: rotate(90deg);
