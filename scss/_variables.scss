@@ -1634,6 +1634,12 @@ ol {
         flex-direction: column;
       }
     }
+
+    &-wrap {
+      @media (max-width: 1000px) {
+        flex-wrap: wrap;
+      }
+    }
   }
 
   &-xl {
@@ -4763,6 +4769,7 @@ button:hover,
     & > .card-price {
       @include h5;
       margin-top: auto;
+      margin-bottom: unset;
       color: var(--blue-main);
     }
 
