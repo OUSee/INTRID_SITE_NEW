@@ -723,7 +723,7 @@ button.next {
           width: fit-content;
 
           img {
-            width: 30%;
+            // width: 30%;
             height: auto;
           }
         }
@@ -2524,92 +2524,6 @@ body
         }
       }
     }
-
-    &-card {
-      border-radius: 35px;
-      padding: 20px 50px;
-      background-color: var(--blue-bg);
-      display: flex;
-      align-items: center;
-      gap: 50px;
-      margin: 0 auto;
-      position: relative;
-      transition: 0.25s ease-in-out;
-
-      @media (max-width: 900px) {
-        padding: 20px;
-      }
-
-      &-info {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 10px;
-
-        @media (max-width: 900px) {
-          gap: 20px;
-        }
-
-        .title_h5 {
-          flex: 1 1 90%;
-        }
-
-        .color-grey {
-          flex: 1 1 45%;
-
-          &:last-child {
-            display: flex;
-            flex-direction: column;
-
-            p:not(.title_h4) {
-              margin-bottom: 10px;
-            }
-          }
-
-          @media (max-width: 900px) {
-            flex: 1 1 90%;
-            padding-left: 136px;
-
-            &:last-child {
-              display: flex;
-              flex-direction: column;
-              padding-left: 0;
-            }
-          }
-
-          @media (max-width: 540px) {
-            padding-left: 0;
-          }
-        }
-
-        .auto-spacer {
-          line-height: 3em;
-        }
-
-        .title_h4 {
-          margin-top: auto;
-          display: block;
-        }
-      }
-
-      img {
-        width: 190px;
-        height: auto;
-
-        @media (max-width: 900px) {
-          position: absolute;
-          width: 127px;
-          height: auto;
-          top: 2.7em;
-          left: 25px;
-        }
-
-        @media (max-width: 540px) {
-          display: none;
-        }
-      }
-    }
   }
 
   &-portfolio {
@@ -2627,13 +2541,6 @@ body
   }
 
   &-roadmap {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(10, 10, 10, 0) 100%
-    );
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -3311,43 +3218,6 @@ body
         }
       }
     }
-
-    .sites-prices-card {
-      img {
-        min-width: 150px;
-      }
-
-      &-info {
-        flex-direction: column;
-      }
-
-      @media (max-width: 900px) {
-        img {
-          top: 3.7em;
-          max-width: 90px;
-          min-width: 90px;
-        }
-
-        &-info .color-grey {
-          padding-left: 116px;
-        }
-      }
-
-      @media (max-width: 540px) {
-        flex-direction: column;
-
-        img {
-          position: static;
-          display: block;
-          max-width: 110px;
-          min-width: 110px;
-        }
-
-        &-info .color-grey {
-          padding-left: 0px;
-        }
-      }
-    }
   }
 
   &-diferenses {
@@ -3446,45 +3316,12 @@ body
 
 // it for business
 .it {
-
   &-prices {
     padding-top: 62px;
-
-    .sites-prices-card {
-      img {
-        width: 130px;
-        height: 130px;
-      }
-
-      p.color-grey {
-        flex: 1 1 100%;
-      }
-
-      @media (max-width: 900px) {
-        p {
-          padding-left: 180px;
-        }
-
-        img {
-          width: 160px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
-
-      @media (max-width: 540px) {
-        p {
-          padding-left: 0;
-        }
-      }
-    }
   }
 
   &-ai {
-    background-image: url(../src/images/planets-aside.webp);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
 
     &-web_count {
       display: flex;
@@ -3552,21 +3389,6 @@ body
   }
 
   &-crm {
-    position: relative;
-    background: linear-gradient(
-        0deg,
-        rgba(0, 234, 255, 0) 0%,
-        rgba(0, 234, 255, 0) 15%,
-        rgba(0, 234, 255, 0.09) 50%,
-        rgba(0, 234, 255, 0.1) 83%,
-        rgba(0, 234, 255, 0) 100%
-      ),
-      url(../src/images/mountains_1.webp);
-    background-size: 100% auto;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    padding-bottom: 186px;
-
     &-list {
       padding-left: 40px;
 
@@ -7008,13 +6830,6 @@ body
   &-content {
     position: relative;
     padding: 0 50px 62px;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(0, 234, 255, 0.1) 83%,
-      rgba(0, 234, 255, 0) 100%
-    );
 
     @media (max-width: 601px) {
       padding: 0 20px 40px;
@@ -7307,46 +7122,6 @@ body
     display: none;
   }
 
-  .main-page {
-    padding-top: 90px;
-    padding-bottom: 180px !important;
-    flex-wrap: wrap;
-
-    .button-link.big {
-      font-size: 12px;
-      padding: 20px 24px;
-      gap: 4px;
-    }
-
-    .flying-orb {
-      top: 405px;
-      left: 0px;
-
-      width: 202px;
-      height: 202px;
-
-      img {
-        height: 250px;
-        width: auto;
-        transform: scaleX(-1) rotate(10deg);
-      }
-
-      &::before {
-        width: 202px;
-        height: 202px;
-      }
-
-      .water-ripple {
-        height: 250px;
-        width: 250px;
-      }
-    }
-
-    .achievements-slider {
-      top: 50px;
-    }
-  }
-
   .tabs-buttons {
     gap: 11px;
     margin: 0 11px;
@@ -7550,23 +7325,6 @@ body
 }
 
 @media (max-width: 440px) {
-  .button-link.big {
-    font-size: 12px;
-    padding: 14px 24px;
-    gap: 4px;
-    max-height: 50px;
-  }
-
-  .main-page {
-    padding-bottom: 220px !important;
-
-    .flying-orb {
-      top: 310px;
-      scale: -1 1;
-      left: calc(100vw / 2 - 92px);
-    }
-  }
-
   .tabs {
     .tabs-buttons {
       flex-direction: column-reverse;
