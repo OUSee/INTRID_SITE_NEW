@@ -2212,6 +2212,10 @@ ol li p {
   height: auto !important;
 }
 
+.mw-700 {
+  max-width: 700px;
+}
+
 .m-center {
   margin-left: auto;
   margin-right: auto;
@@ -2457,6 +2461,23 @@ ol li p {
 }
 .bg-lights--left::before {
   left: 125px;
+}
+.bg-back--glow {
+  position: relative;
+}
+.bg-back--glow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  display: flex;
+  width: 25%;
+  height: 12.5%;
+  border-radius: 50%;
+  box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 10px var(--blue-clouds);
+  user-select: none;
+  transform: translate(-50%, -50%);
 }
 
 fieldset {
@@ -5248,6 +5269,7 @@ button:hover img,
   height: 100vh;
   padding: 20px 10px;
   background-color: rgba(0, 0, 0, 0.75);
+  border: none;
   visibility: hidden;
   opacity: 0;
   overflow-x: hidden;
@@ -5466,6 +5488,9 @@ button:hover img,
   width: auto;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 30px 0px;
+}
+.popup-docs img {
+  border-radius: 15px;
 }
 
 .navbar {
@@ -6584,13 +6609,6 @@ button.next:hover {
   border-color: var(--color-grey);
 }
 
-.main-page {
-  display: flex;
-}
-.main-page h1 {
-  max-width: 766px;
-}
-
 .main-section {
   position: relative;
   z-index: 1;
@@ -7355,11 +7373,6 @@ button.next:hover {
   .tab-content-webDev.tender .tender-types-group .tender-table tr:last-child td:not(:first-child) {
     font-size: 12px;
   }
-}
-
-body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-card > div.card--recent > img {
-  width: 227px;
-  height: 141px;
 }
 
 .count-n-card {
@@ -12234,12 +12247,6 @@ body > section.tabs > div.tabs-content > div:nth-child(2) > div > div.count-n-ca
   }
   .tab-content {
     padding-bottom: 0px;
-  }
-  .tab-content .under-title {
-    width: 90%;
-  }
-  .tab-content .under-title.type2 {
-    width: 40%;
   }
   .tab-content .tab-content-webDev {
     flex-wrap: wrap;
