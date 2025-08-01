@@ -5716,6 +5716,86 @@ button:hover img,
 .card--service.no-arrow b::after {
   display: none;
 }
+.card--tab {
+  background-color: transparent;
+  color: var(--color-white);
+  border: none;
+  overflow: visible;
+}
+.card--tab > .card-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 2em;
+}
+.card--tab > .card-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  box-shadow: 0px 0px 70px 60px var(--blue-clouds), inset 0px 0px 70px 2px var(--blue-clouds);
+  transform: translate(-50%, -50%);
+}
+.card--tab > .card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform-origin: center;
+  transition: 0.25s ease-in-out;
+}
+.card--tab > b {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-white);
+  margin-bottom: 1em;
+}
+@media (max-width: 1000px) {
+  .card--tab > b {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .card--tab > b {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+.card--tab > span {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--blue-main);
+  margin-bottom: 1em;
+}
+@media (max-width: 1000px) {
+  .card--tab > span {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .card--tab > span {
+    font-size: 16px;
+  }
+}
+.card--tab > p:last-child {
+  margin-bottom: unset;
+}
+.card--tab:hover {
+  background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+  transform: scale(1.03);
+}
+.card--tab:hover > .card-icon img {
+  transform: scale(1.125);
+}
 
 .popup {
   position: fixed;
@@ -7308,53 +7388,6 @@ button.next:hover {
 .tab-content-webDev.store {
   row-gap: 50px;
 }
-.tab-content-webDev.store .count-n-card {
-  gap: 50px;
-  width: fit-content;
-}
-@media (max-width: 1000px) {
-  .tab-content-webDev.store .count-n-card {
-    flex-direction: column;
-  }
-}
-.tab-content-webDev.store .count-n-card .web-count {
-  width: unset;
-  flex-basis: 35%;
-  margin-left: auto;
-}
-.tab-content-webDev.store .count-n-card .web-count span.ml-6 {
-  flex-basis: 300px;
-  text-wrap: wrap;
-}
-@media (max-width: 1000px) {
-  .tab-content-webDev.store .count-n-card .web-count {
-    justify-content: center;
-  }
-}
-.tab-content-webDev.store .count-n-card .card--recent {
-  margin-right: 0;
-  margin-left: auto;
-  width: 45%;
-}
-@media (max-width: 600px) {
-  .tab-content-webDev.store .count-n-card .card--recent {
-    width: 100%;
-  }
-}
-@media (max-width: 1000px) {
-  .tab-content-webDev.store .count-n-card .card--recent {
-    margin-right: auto;
-    margin-left: auto;
-    width: fit-content;
-  }
-  .tab-content-webDev.store .count-n-card .card--recent img {
-    height: auto;
-  }
-}
-.tab-content-webDev.store .store-testimonials {
-  max-width: 720px;
-  margin: 0 auto;
-}
 .tab-content-webDev .web-shop-diagram,
 .tab-content-webDev .tender-diagram {
   position: relative;
@@ -7833,10 +7866,7 @@ button.next:hover {
   }
 }
 
-.count-n-card {
-  display: flex;
-}
-.count-n-card .web-count {
+.web-count {
   display: flex;
   align-items: center;
   width: 380px;
@@ -7844,29 +7874,29 @@ button.next:hover {
   row-gap: 10px;
   position: relative;
 }
-.count-n-card .web-count span.ml-6 {
+.web-count span.ml-6 {
   flex-shrink: 1;
   flex-basis: 100px;
 }
 @media (max-width: 1250px) {
-  .count-n-card .web-count span.ml-6 {
+  .web-count span.ml-6 {
     text-wrap: nowrap;
     margin-left: 0;
   }
 }
-.count-n-card .web-count .large-number {
+.web-count .large-number {
   color: var(--blue-main);
   font-size: 70px;
   font-weight: 600;
 }
-.count-n-card .web-count img {
+.web-count img {
   height: 70px;
   width: auto;
 }
-.count-n-card .web-count img.olive-right {
+.web-count img.olive-right {
   transform: scaleX(-1);
 }
-.count-n-card .web-count::before {
+.web-count::before {
   position: absolute;
   top: 40px;
   left: 90px;
@@ -7876,15 +7906,6 @@ button.next:hover {
   height: 50px;
   border-radius: 50%;
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
-}
-.count-n-card .card--recent {
-  margin-left: auto;
-  margin-right: 0;
-}
-@media (max-width: 600px) {
-  .count-n-card .card--recent {
-    margin-right: auto;
-  }
 }
 
 #more-about-web-dev {
@@ -8907,7 +8928,7 @@ button.next:hover {
   }
 }
 
-.store-benefits .web-shop-diagram, .store-ai .web-shop-diagram {
+.store-benefits.web-shop-diagram, .store-ai.web-shop-diagram {
   position: relative;
   width: 100%;
   display: flex;
@@ -8916,21 +8937,21 @@ button.next:hover {
   gap: 0;
 }
 @media (max-width: 1000px) {
-  .store-benefits .web-shop-diagram .title_h4, .store-ai .web-shop-diagram .title_h4 {
+  .store-benefits.web-shop-diagram .title_h4, .store-ai.web-shop-diagram .title_h4 {
     margin-bottom: 50px;
   }
 }
-.store-benefits .web-shop-diagram .benefits-left,
-.store-benefits .web-shop-diagram .benefits-right, .store-ai .web-shop-diagram .benefits-left,
-.store-ai .web-shop-diagram .benefits-right {
+.store-benefits.web-shop-diagram .benefits-left,
+.store-benefits.web-shop-diagram .benefits-right, .store-ai.web-shop-diagram .benefits-left,
+.store-ai.web-shop-diagram .benefits-right {
   height: 420px;
   top: 200px;
   justify-content: space-between;
 }
 @media (max-width: 1000px) {
-  .store-benefits .web-shop-diagram .benefits-left,
-  .store-benefits .web-shop-diagram .benefits-right, .store-ai .web-shop-diagram .benefits-left,
-  .store-ai .web-shop-diagram .benefits-right {
+  .store-benefits.web-shop-diagram .benefits-left,
+  .store-benefits.web-shop-diagram .benefits-right, .store-ai.web-shop-diagram .benefits-left,
+  .store-ai.web-shop-diagram .benefits-right {
     display: flex;
     position: static;
     height: fit-content;
@@ -8939,18 +8960,18 @@ button.next:hover {
     width: 100%;
     margin: 0;
   }
-  .store-benefits .web-shop-diagram .benefits-left .benefit-card,
-  .store-benefits .web-shop-diagram .benefits-right .benefit-card, .store-ai .web-shop-diagram .benefits-left .benefit-card,
-  .store-ai .web-shop-diagram .benefits-right .benefit-card {
+  .store-benefits.web-shop-diagram .benefits-left .benefit-card,
+  .store-benefits.web-shop-diagram .benefits-right .benefit-card, .store-ai.web-shop-diagram .benefits-left .benefit-card,
+  .store-ai.web-shop-diagram .benefits-right .benefit-card {
     width: 100%;
     max-width: unset;
     margin: 0;
   }
 }
-.store-benefits .web-shop-diagram div.video-diagramm .connections .line, .store-ai .web-shop-diagram div.video-diagramm .connections .line {
+.store-benefits.web-shop-diagram div.video-diagramm .connections .line, .store-ai.web-shop-diagram div.video-diagramm .connections .line {
   background-color: var(--blue-bg);
 }
-.store-benefits .web-shop-diagram div.video-diagramm .connections .line:before, .store-benefits .web-shop-diagram div.video-diagramm .connections .line:after, .store-ai .web-shop-diagram div.video-diagramm .connections .line:before, .store-ai .web-shop-diagram div.video-diagramm .connections .line:after {
+.store-benefits.web-shop-diagram div.video-diagramm .connections .line:before, .store-benefits.web-shop-diagram div.video-diagramm .connections .line:after, .store-ai.web-shop-diagram div.video-diagramm .connections .line:before, .store-ai.web-shop-diagram div.video-diagramm .connections .line:after {
   background-color: transparent;
 }
 .store-benefits .benefits-left, .store-ai .benefits-left {
@@ -9033,16 +9054,20 @@ button.next:hover {
     margin: 50px auto;
   }
 }
+.store-ai .benefits-right,
+.store-ai .benefits-left {
+  top: 60px !important;
+}
 @media (max-width: 1250px) {
   .store-ai .benefits-right,
   .store-ai .benefits-left {
-    top: 220px !important;
+    top: 80px !important;
   }
 }
 @media (max-width: 1100px) {
   .store-ai .benefits-right,
   .store-ai .benefits-left {
-    top: 275px !important;
+    top: 75px !important;
   }
 }
 @media (max-width: 1000px) {
@@ -9885,23 +9910,6 @@ button.next:hover {
   }
 }
 
-.tech-additionals {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 40px;
-  flex: 1 0 50%;
-}
-@media (max-width: 1200px) {
-  .tech-additionals {
-    gap: 20px;
-  }
-}
-.tech-additionals > a {
-  align-self: center;
-  margin-top: auto;
-}
-
 .support-slider {
   display: flex;
   align-items: stretch;
@@ -10030,14 +10038,6 @@ button.next:hover {
 
 .tender-selection .tab-content-webDev {
   margin: 0 auto;
-}
-.tender-selection .tab-content-webDev > p.title_h4 {
-  margin: 0 auto 30px;
-}
-@media (max-width: 900px) {
-  .tender-selection .tab-content-webDev > p.title_h4 {
-    margin: 0 auto 0px;
-  }
 }
 
 .tenders-keys--list {
@@ -10443,11 +10443,6 @@ button.next:hover {
   border: 1px solid var(--blue-main);
   padding: 5px;
   padding-left: 10px;
-}
-
-.seo_page-portfolio .support-card--list > div > b {
-  width: 120px;
-  flex: 0 0 120px;
 }
 
 .smm-services .tech-list {
@@ -12248,10 +12243,6 @@ button.next:hover {
   .tab-content-webDev {
     flex-direction: column;
   }
-  .achievements-group {
-    order: 3;
-    margin: 40px 0px;
-  }
   .for-buisness-offers .blocks-wrapper .for-buisness-block {
     margin: 0 !important;
   }
@@ -12346,34 +12337,6 @@ button.next:hover {
   }
   .tab-content .tab-content-webDev .webDev-benefits {
     width: 100%;
-  }
-  .tab-content .tab-content-webDev .icms-note {
-    align-items: start;
-    padding: 14px 30px;
-  }
-  .tab-content .tab-content-webDev .achievements-group {
-    width: 100%;
-    margin-top: 56px;
-    margin-bottom: 56px;
-    flex-grow: 1;
-    flex-basis: 90%;
-    column-gap: unset;
-  }
-  .count-n-card {
-    display: flex;
-    flex-direction: column;
-  }
-  .count-n-card .web-count {
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 40px;
-    justify-content: center;
-  }
-  .count-n-card .web-count span.title_h4 {
-    flex-grow: 1;
-    flex-basis: 80%;
-    text-align: center;
-    margin: 0;
   }
 }
 @media (max-width: 540px) {
@@ -12503,9 +12466,6 @@ button.next:hover {
   .tabs .tab-content h2 {
     margin-top: 50px;
     justify-self: center;
-  }
-  .web-count {
-    width: 100%;
   }
   hr.calc-spacer {
     display: none !important;
