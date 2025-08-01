@@ -1708,6 +1708,52 @@ ol {
         }
       }
     }
+
+    &--service {
+      align-items: stretch;
+      justify-content: center;
+      gap: 20px;
+
+      & > * {
+        width: 260px;
+
+        @media (max-width: 1200px) {
+          flex-basis: 200px;
+          width: auto;
+        }
+
+        @media (max-width: 1000px) {
+          flex-basis: calc(50% - 10px);
+          max-width: calc(50% - 10px);
+        }
+      }
+    }
+
+    &--use {
+      align-items: stretch;
+      justify-content: center;
+      gap: 20px;
+
+      & > * {
+        width: 240px;
+        flex-basis: 240px;
+
+        @media (max-width: 1200px) {
+          flex-basis: 220px;
+          width: 220px;
+        }
+
+        @media (max-width: 1000px) {
+          flex-basis: calc(50% - 10px);
+          max-width: calc(50% - 10px);
+        }
+
+        @media (max-width: 600px) {
+          flex-basis: calc(25% - 10px);
+          max-width: calc(25% - 10px);
+        }
+      }
+    }
   }
 
   &-column {
@@ -5500,6 +5546,205 @@ button:hover,
       @media (max-width: 600px) {
         width: 96px;
         margin-top: unset;
+      }
+    }
+  }
+
+  &--service {
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 125px 20px 32px 20px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 16px;
+    overflow: visible;
+    transform-origin: center;
+    transition: 0.25s ease-in-out;
+
+    @media (max-width: 1200px) {
+      padding: 105px 20px 32px 20px;
+    }
+
+    @media (max-width: 600px) {
+      padding: 85px 10px 10px 10px;
+    }
+
+    & > .card-icon {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1 / 1;
+      width: 120px;
+      height: 120px;
+      user-select: none;
+      transform: translate(-50%, -30%);
+      transition: 0.25s ease-in-out;
+
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -15%);
+      }
+
+      @media (max-width: 600px) {
+        width: 84px;
+        height: 84px;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        height: 50%;
+        border-radius: 100%;
+        aspect-ratio: 1 / 1;
+        box-shadow: 0px 0px 70px 60px var(--blue-clouds),
+          inset 0px 0px 70px 2px var(--blue-clouds);
+        transform: translate(-50%, -50%);
+      }
+
+      & img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: top center;
+        transition: 0.25s ease-in-out;
+      }
+    }
+
+    & b {
+      display: block;
+      width: 100%;
+      font-size: 16px;
+      line-height: 1.25;
+      color: var(--color-white);
+      text-wrap: nowrap;
+
+      @media (max-width: 1200px) {
+        min-height: 2.5em;
+        text-wrap: wrap;
+      }
+
+      @media (max-width: 400px) {
+        font-size: 14px;
+      }
+    }
+
+    & p {
+      display: block;
+      width: 100%;
+      font-size: 16px;
+      color: var(--blue-main);
+      text-wrap: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-100%);
+      transition: 0.25s ease-in-out;
+
+      @media (max-width: 1200px) {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 600px) {
+        font-size: 14px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &:hover {
+      @media (min-width: 1200px) {
+        padding: 165px 20px 32px 20px;
+        margin-top: -20px;
+        margin-bottom: -20px;
+
+        & > .card-icon {
+          transform: translate(-50%, 15%);
+        }
+
+        & p {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0%);
+        }
+      }
+    }
+
+    &.use {
+      @media (max-width: 1200px) {
+        padding: 105px 20px 12px 20px;
+      }
+
+      @media (max-width: 600px) {
+        padding: 0;
+        border: none;
+      }
+
+      & > .card-icon {
+        @media (max-width: 600px) {
+          position: relative;
+          top: unset;
+          left: unset;
+          width: 64px;
+          height: 64px;
+          transform: none;
+        }
+      }
+
+      & b {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 6px;
+        width: fit-content;
+        margin-top: 16px;
+        font-weight: 400;
+        line-height: 1.25;
+
+        @media (max-width: 600px) {
+          min-height: 2.5em;
+          margin-top: 6px;
+          font-size: 12px;
+        }
+
+        &::after {
+          content: "\6c";
+          display: flex;
+          color: var(--blue-main);
+          font-family: "INTRID_ICONS";
+          font-style: normal !important;
+          font-weight: normal !important;
+          font-variant: normal !important;
+          text-transform: none !important;
+          speak: none;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+
+          @media (max-width: 600px) {
+            display: none;
+          }
+        }
+      }
+
+      &:hover {
+        & > .card-icon {
+          & img {
+            transform: scale(1.125);
+          }
+        }
       }
     }
   }
