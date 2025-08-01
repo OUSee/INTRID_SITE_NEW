@@ -216,27 +216,41 @@
             <h2 class="underlined w-fit m-center text-center">
                 Инструкция и Демо-версия ICMS
             </h2>
-            <div class="use-service-list prices-services-list use-service-list-icms">
-                <a href="./src/docs/инструкция_по_установке_icms.pdf" target="_blank" class="prices-services-list-item">
-                    <div class="img-wrapper"><img src="./src/icons/ai_icon_upload.svg" alt="landig-page"></div>
-                    <span class="color-white">Инструкция по установке&nbsp;<i
-                            class="icon-arrow_wide color-blue"></i></span>
+
+            <div class="flex-layout flex-layout--docs mt-50">
+                <a href="./src/docs/инструкция_по_установке_icms.pdf" target="_blank"
+                    class="card card--service use docs">
+                    <div class="card-icon">
+                        <img src="./src/icons/ai_icon_upload.svg" alt="landig-page">
+                    </div>
+                    <b>
+                        <span>Инструкция по установке</span>
+                    </b>
                 </a>
                 <a href="./src/docs/инструкция_по_эксплуатации_icms.pdf" target="_blank"
-                    class="prices-services-list-item">
-                    <div class="img-wrapper"><img src="./src/icons/ai_icon_upload.svg" alt="landig-page"></div>
-                    <span class="color-white">Инструкция по эксплуатации&nbsp;<i
-                            class="icon-arrow_wide color-blue"></i></span>
+                    class="card card--service use docs">
+                    <div class="card-icon">
+                        <img src="./src/icons/ai_icon_upload.svg" alt="landig-page">
+                    </div>
+                    <b>
+                        <span>Инструкция по эксплуатации</span>
+                    </b>
                 </a>
-                <a href="https://demo.intrid.ru/" target="_blank" class="prices-services-list-item small">
-                    <div class="img-wrapper"><img src="./src/icons/corp-site-services.svg" alt="landig-page"></div>
-                    <span class="color-white">Демо для корпоративного сайта&nbsp;<i
-                            class="icon-arrow_wide color-blue"></i></span>
+                <a href="https://demo.intrid.ru/" target="_blank" class="card card--service use docs">
+                    <div class="card-icon min">
+                        <img src="./src/icons/corp-site-services.svg" alt="landig-page">
+                    </div>
+                    <b>
+                        <span>Демо для корпоративного сайта</span>
+                    </b>
                 </a>
-                <a href="https://shop.intrid.ru/" target="_blank" class="prices-services-list-item small">
-                    <div class="img-wrapper"><img src="./src/icons/web-shop-services.svg" alt="landig-page"></div>
-                    <span class="color-white">Демо для интернет-магазина&nbsp;<i
-                            class="icon-arrow_wide color-blue"></i></span>
+                <a href="https://shop.intrid.ru/" target="_blank" class="card card--service use docs">
+                    <div class="card-icon min">
+                        <img src="./src/icons/web-shop-services.svg" alt="landig-page">
+                    </div>
+                    <b>
+                        <span>Демо для интернет-магазина</span>
+                    </b>
                 </a>
             </div>
         </section>
@@ -329,7 +343,7 @@
                 <h2 class="w-fit underlined m-center">
                     Функционал базовой версии:
                 </h2>
-                
+
                 <div class="flex-layout flex-layout--advantages justify-center mt-50">
                     <div class="card card--icon">
                         <img src="./src/icons/tech-pen.svg" alt="">
@@ -358,7 +372,8 @@
                         <ul>
                             <li>
                                 <p>
-                                    Создавайте и редактируйте неограниченное количество разделов, подразделов и вложенных
+                                    Создавайте и редактируйте неограниченное количество разделов, подразделов и
+                                    вложенных
                                     страниц
                                 </p>
                             </li>
@@ -382,7 +397,8 @@
                             </li>
                             <li>
                                 <p>
-                                    Управляйте расположением и названием рубрик каталогаДобавляйте фотографии и описания к
+                                    Управляйте расположением и названием рубрик каталогаДобавляйте фотографии и описания
+                                    к
                                     товарам
                                 </p>
                             </li>
@@ -515,51 +531,91 @@
             </div>
         </section>
         <!--  -->
-        <section class="icms-pricelist container" id="icms-pricelist">
-            <h3 class="underlined w-fit m-center">
-                Стоимость iCMS, версии:
-            </h3>
-            <ul class="prices-services-list mt-32">
-                <a href="./corporate.html" class="prices-services-list-item">
-                    <div class="img-wrapper"><img src="./src/images/corp-site.svg" alt="corp-site"></div>
-                    <span>Корпоративный сайт</span>
-                    <span class="color-blue">от 30 000 ₽</span>
-                </a>
-                <a href="./store.html" class="prices-services-list-item">
-                    <div class="img-wrapper"><img src="./src/images/web-shop.svg" alt="web-shop"></div>
-                    <span>Интернет-магазин</span>
-                    <span class="color-blue">от 40 000 ₽</span>
-                </a>
-                <a href="./internet-magazin-s-ii.html" class="prices-services-list-item">
-                    <div class="img-wrapper"><img src="./src/icons/shop-ai.svg" alt="ai"></div>
-                    <span>Искусственный интеллект</span>
-                    <span class="color-blue">от 60 000 ₽</span>
-                </a>
-            </ul>
+        <section class="icms-pricelist" id="icms-pricelist">
+            <div class="container">
+                <h3 class="underlined w-fit m-center">
+                    Стоимость iCMS, версии:
+                </h3>
+
+                <div class="flex-layout flex-layout--service mt-50 mb-50">
+                    <a href="./corporate.html" class="card card--service">
+                        <div class="card-icon">
+                            <img src="./src/images/corp-site.svg" alt="corp-site">
+                        </div>
+                        <b>
+                            Корпоративный сайт
+                        </b>
+                        <p>
+                            от 30 000 ₽
+                        </p>
+                    </a>
+                    <a href="./store.html" class="card card--service">
+                        <div class="card-icon">
+                            <img src="./src/images/web-shop.svg" alt="web-shop">
+                        </div>
+                        <b>
+                            Интернет-магазин
+                        </b>
+                        <p>
+                            от 40 000 ₽
+                        </p>
+                    </a>
+                    <a href="./internet-magazin-s-ii.html" class="card card--service">
+                        <div class="card-icon">
+                            <img src="./src/icons/shop-ai.svg" alt="ai">
+                        </div>
+                        <b>
+                            Искусственный интеллект
+                        </b>
+                        <p>
+                            от 60 000 ₽
+                        </p>
+                    </a>
+                </div>
+
+            </div>
         </section>
-        <!--  -->
-        <section class="use-service container">
-            <h3 class="underlined w-fit m-center text-center">
-                Заказать разработку сайта или создание бренда
-            </h3>
-            <div class="use-service-list prices-services-list">
-                <a href="./calculator.html" class="prices-services-list-item">
-                    <div class="img-wrapper"><img src="./src/icons/site-calc.svg" alt="landig-page"></div>
-                    <span class="color-white">Калькулятор сайта&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-                </a>
-                <a href="./brif-site.html" class="prices-services-list-item">
-                    <div class="img-wrapper"><img src="./src/icons/brif-site.svg" alt="landig-page"></div>
-                    <span class="color-white">Бриф на сайт&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-                </a>
-                <a href="./brif-logo.html" class="prices-services-list-item">
-                    <div class="img-wrapper"><img src="./src/icons/brif-logo.svg" alt="landig-page"></div>
-                    <span class="color-white">Бриф на бренд<span class="br470"> и лого</span>&nbsp;<i
-                            class="icon-arrow_wide color-blue"></i></span>
-                </a>
-                <a href="./seo.html#seo_application" class="prices-services-list-item">
-                    <div class="img-wrapper"><img src="./src/icons/promotion-request.svg" alt="landig-page"></div>
-                    <span class="color-white">Заявка на раскрутку&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-                </a>
+
+        <section>
+            <div class="container">
+                <h3 class="underlined w-fit m-center text-center">
+                    Заказать разработку сайта или создание бренда
+                </h3>
+
+                <div class="flex-layout flex-layout--use">
+                    <a href="./calculator.html" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="./src/icons/site-calc.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Калькулятор сайта
+                        </b>
+                    </a>
+                    <a href="./brif-site.html" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="./src/icons/brif-site.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Бриф на сайт
+                        </b>
+                    </a>
+                    <a href="./brif-logo.html" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="./src/icons/brif-logo.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Бриф на бренд
+                        </b>
+                    </a>
+                    <a href="./seo.html#seo_application" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="./src/icons/promotion-request.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Заявка на раскрутку
+                        </b>
+                    </a>
+                </div>
             </div>
         </section>
     </main>

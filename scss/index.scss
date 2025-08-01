@@ -1369,88 +1369,6 @@ button.next {
   }
 }
 
-.prices-services-list {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
-  height: 290px;
-  align-items: center;
-  margin-bottom: 20px;
-
-  @media (max-width: 900px) {
-    flex-wrap: wrap;
-    height: 400px;
-  }
-
-  &-item {
-    border: 1px solid var(--blue-clouds);
-    border-radius: 39px;
-    padding: 125px 20px 32px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    flex-basis: 230px;
-    max-width: 230px;
-    width: 100%;
-    height: fit-content;
-    transition: all 0.3s ease-in-out;
-
-    span:not(.color-blue) {
-      color: white;
-    }
-
-    .img-wrapper {
-      box-sizing: border-box;
-      position: absolute;
-      border-radius: 50%;
-      padding: 0px;
-      top: -35px;
-      overflow: visible;
-      transition: all 0.3s ease-in-out;
-      box-shadow: 0px 0px 50px 10px var(--blue-clouds),
-        inset 0px 0px 160px -20px var(--blue-clouds);
-
-      img {
-        width: 140px;
-        height: 140px;
-        transition: all 0.3s ease-in-out;
-      }
-    }
-
-    span {
-      text-wrap: nowrap;
-      width: 100%;
-      text-align: center;
-      font-size: 16px;
-    }
-
-    span.color-blue {
-      display: none;
-      transform: translateY(-20px);
-    }
-
-    @media (min-width: 1200px) {
-      &:hover {
-        padding: 166px 20px 32px 20px;
-
-        .img-wrapper {
-          top: 15px;
-        }
-
-        span.color-blue {
-          display: block;
-          transform: translateY(0px);
-          animation: priceAppear 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-      }
-    }
-  }
-}
-
 #more-about-web-dev {
   display: none;
 }
@@ -2135,142 +2053,6 @@ button.next {
     justify-self: end;
     width: 100%;
     justify-content: center;
-  }
-}
-
-.use-service {
-  .title_h2 {
-    margin-bottom: 50px;
-
-    @media (max-width: 520px) {
-      margin-bottom: 30px;
-    }
-  }
-
-  &-list {
-    margin-bottom: 0;
-  }
-
-  &-list.prices-services-list {
-    margin-top: 0;
-
-    .prices-services-list-item {
-      &:hover {
-        img {
-          transform: scale(1.1);
-        }
-      }
-
-      i.icon-arrow_wide {
-        position: relative;
-        top: 0.3em;
-        height: 1.3em;
-        font-size: 1.3em !important;
-      }
-
-      & > p {
-        min-height: 4em;
-      }
-
-      @media (max-width: 1000px) {
-        flex: 1 1 45%;
-        padding: 60px 10px 32px 10px;
-
-        img {
-          width: 80px;
-          height: auto;
-        }
-
-        span {
-          text-wrap: wrap;
-        }
-      }
-    }
-
-    @media (max-width: 1000px) {
-      gap: 10px;
-      row-gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 520px) {
-      display: flex !important;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      gap: 10px;
-      margin-top: 60px;
-
-      .prices-services-list-item {
-        flex: 1 1 20%;
-        padding: 60px 10px 10px 10px;
-        border: none;
-
-        .img-wrapper {
-          max-width: 61px;
-          min-width: 61px;
-          margin: 0 auto;
-          box-shadow: 0px 0px 50px 10px var(--blue-clouds),
-            inset 0px 0px 80px -20px var(--blue-clouds);
-        }
-
-        span {
-          font-size: 12px;
-          text-wrap: wrap;
-          min-height: 50px;
-        }
-
-        img {
-          top: 5px;
-          width: 100%;
-          height: auto;
-          box-shadow: none;
-        }
-
-        i {
-          display: none;
-        }
-      }
-    }
-  }
-
-  &-list {
-    &-icms {
-      @media (max-width: 520px) {
-        flex-wrap: wrap !important;
-      }
-
-      & .prices {
-        &-services {
-          &-list {
-            &-item {
-              @media (max-width: 520px) {
-                padding: 40px 10px 30px 10px !important;
-              }
-
-              &.small {
-                & > .img-wrapper {
-                  width: 140px;
-                  height: 140px;
-                  padding: 20px;
-
-                  @media (max-width: 1000px) {
-                    width: 80px;
-                    height: 80px;
-                    padding: 10px;
-                  }
-
-                  & > img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
   }
 }
 
@@ -3068,66 +2850,62 @@ button.next {
 
 //web-portal page
 .portal {
-  &-types {
-    padding-top: 120px;
+  &.tab-view {
+    .slider-arrow {
+      display: none !important;
+    }
 
-    .tab-view {
-      .slider-arrow {
-        display: none !important;
+    .tab-slider {
+      flex-direction: row;
+      display: flex;
+
+      @media (max-width: 1200px) {
+        flex-wrap: wrap;
+
+        &-card p {
+          text-align: center;
+        }
       }
 
-      .tab-slider {
-        flex-direction: row;
-        display: flex;
+      &-card {
+        min-width: unset !important;
+        margin-right: 0 !important;
+        flex: 1 1 40% !important;
 
-        @media (max-width: 1200px) {
-          flex-wrap: wrap;
-
-          &-card p {
-            text-align: center;
+        @media (max-width: 900px) {
+          p:not(.title_h4) {
+            display: none;
           }
         }
+      }
 
-        &-card {
-          min-width: unset !important;
-          margin-right: 0 !important;
-          flex: 1 1 40% !important;
+      @media (max-width: 1200px) {
+        flex-wrap: wrap;
 
-          @media (max-width: 900px) {
-            p:not(.title_h4) {
-              display: none;
-            }
-          }
+        .tab-slider-card {
+          flex: 1 1 45%;
         }
+      }
 
-        @media (max-width: 1200px) {
-          flex-wrap: wrap;
+      @media (max-width: 600px) {
+        margin: 0;
 
-          .tab-slider-card {
-            flex: 1 1 45%;
-          }
-        }
+        .tab-slider-card {
+          flex: 1 1 40%;
+          max-width: 50%;
 
-        @media (max-width: 600px) {
-          margin: 0;
+          @media (max-width: 520px) {
+            &-image {
+              height: 42px;
 
-          .tab-slider-card {
-            flex: 1 1 40%;
-            max-width: 50%;
-
-            @media (max-width: 520px) {
-              &-image {
+              img {
                 height: 42px;
-
-                img {
-                  height: 42px;
-                  width: auto;
-                }
+                width: auto;
               }
+            }
 
-              .title_h4 {
-                font-size: 14px;
-              }
+            .title_h4 {
+              font-size: 14px;
             }
           }
         }
@@ -4954,15 +4732,6 @@ button.next {
 }
 
 // icms page
-.icms {
-  &-pricelist {
-    ul.prices-services-list {
-      @media (max-width: 540px) {
-        display: flex !important;
-      }
-    }
-  }
-}
 
 // kontakts page
 .kontakts {
@@ -5471,38 +5240,6 @@ button.next {
 
       @media (max-width: 900px) {
         grid-template-columns: 1fr;
-      }
-    }
-
-    & > .prices-services-list {
-      .prices-services-list-item {
-        flex: 1 1 45%;
-        max-width: 50%;
-        height: unset;
-        padding: 100px 20px 32px 20px;
-
-        .img-wrapper {
-          padding: 5px;
-          transform: translateY(50px);
-        }
-
-        span.color-blue {
-          display: block;
-          transform: translateY(0px);
-          text-wrap: unset;
-        }
-
-        &:hover {
-          .img-wrapper {
-            transform: translateY(0px);
-          }
-        }
-      }
-
-      @media (max-width: 1200px) {
-        flex-wrap: wrap;
-        height: unset;
-        align-items: stretch;
       }
     }
 
@@ -6643,38 +6380,6 @@ button.next {
     & > .ordinary-list {
       margin-bottom: 20px;
     }
-
-    & .prices-services-list {
-      & .prices-services-list-item {
-        flex: 1 1 45%;
-        max-width: 50%;
-        height: unset;
-        padding: 100px 20px 32px 20px;
-
-        .img-wrapper {
-          padding: 5px;
-          transform: translateY(50px);
-        }
-
-        span.color-blue {
-          display: block;
-          transform: translateY(0px);
-          text-wrap: unset;
-        }
-
-        &:hover {
-          .img-wrapper {
-            transform: translateY(0px);
-          }
-        }
-      }
-
-      @media (max-width: 1200px) {
-        flex-wrap: wrap;
-        height: unset;
-        align-items: stretch;
-      }
-    }
   }
 
   &-bottom {
@@ -6873,10 +6578,6 @@ button.next {
   width: 100%;
 }
 
-.prices-services-list {
-  margin-top: 40px;
-}
-
 @media (min-width: 601px) and (max-width: 900px) {
   .flying-orb {
     display: none;
@@ -6963,21 +6664,6 @@ button.next {
         flex-basis: 80%;
         text-align: center;
         margin: 0;
-      }
-    }
-  }
-
-  .prices-services-list {
-    flex-wrap: wrap;
-    height: fit-content;
-
-    &-item {
-      flex-grow: 1;
-      flex-basis: 0;
-
-      span.color-blue {
-        transform: translateY(0px);
-        display: block;
       }
     }
   }
