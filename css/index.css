@@ -983,6 +983,16 @@ h5 *,
   flex-basis: 100%;
 }
 
+.link-text:hover {
+  text-decoration: none;
+}
+.link-text:hover i {
+  text-decoration: none;
+}
+.link-text:hover span {
+  text-decoration: underline;
+}
+
 h1,
 .title_h1 {
   font-weight: 600;
@@ -2238,6 +2248,37 @@ ol li p {
     display: none;
   }
 }
+.flex-layout--branches {
+  gap: 20px;
+}
+@media (max-width: 720px) {
+  .flex-layout--branches {
+    flex-direction: column;
+  }
+}
+.flex-layout--branches > *:first-child {
+  max-width: 35%;
+  width: 100%;
+}
+@media (max-width: 720px) {
+  .flex-layout--branches > *:first-child {
+    max-width: 100%;
+  }
+}
+.flex-layout--branches iframe {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .flex-layout--branches iframe {
+    border-radius: 15px;
+    aspect-ratio: 1/1;
+  }
+}
 .flex-column {
   flex-direction: column !important;
 }
@@ -3413,6 +3454,9 @@ form .button:hover {
 .phone-line:hover {
   color: var(--blue-main);
   text-shadow: var(--blue-main) 0px 0px 10px;
+}
+.phone-line i {
+  display: flex;
 }
 .phone-line span {
   font-size: 14px;
@@ -5985,13 +6029,41 @@ button:hover img,
     display: none;
   }
 }
+.card--team {
+  position: relative;
+  z-index: 1;
+}
+.card--team::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  box-shadow: 0px 0px 70px 60px var(--blue-clouds), inset 0px 0px 70px 2px var(--blue-clouds);
+  transform: translate(-50%, -15%);
+}
 .card--team > .card-icon {
   width: 100%;
-  height: 100%;
+  height: 260px;
   aspect-ratio: 16/9;
+  border-radius: 25px;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .card--team > .card-icon {
+    height: 300px;
+  }
+}
+.card--team > .card-icon::before {
+  display: none;
 }
 .card--team > .card-icon img {
   z-index: 1;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 .card--team > span {
@@ -5999,6 +6071,9 @@ button:hover img,
 }
 .card--team > p:last-child {
   margin-top: auto;
+}
+.card--team:hover > .card-icon img {
+  transform: scale(1.0625);
 }
 
 .popup {
@@ -7351,6 +7426,39 @@ button.next:hover {
   left: unset !important;
   right: 0;
   transform: translate(50%, -50%);
+}
+@media (max-width: 1000px) {
+  .prices-block--contacts .prices-block--buttons {
+    justify-content: center;
+    gap: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .prices-block--contacts .prices-block--buttons {
+    gap: 10px;
+  }
+}
+@media (max-width: 1000px) {
+  .prices-block--contacts .prices-block--buttons > * {
+    flex: 1;
+    max-width: 100%;
+  }
+}
+@media (max-width: 1000px) {
+  .prices-block--contacts .prices-block--buttons > * img {
+    width: 28px;
+    height: 28px;
+  }
+}
+@media (max-width: 1000px) {
+  .prices-block--contacts .prices-block--content {
+    padding: 20px 0;
+  }
+}
+@media (max-width: 600px) {
+  .prices-block--contacts .prices-block--content {
+    padding: 10px 10px 20px;
+  }
 }
 
 .main-section {
@@ -10127,29 +10235,6 @@ button.next:hover {
 
 .integration-stages > .title_h3 {
   margin: 0 auto 50px;
-}
-
-.integration-stack .tech-we-use {
-  padding: 0;
-}
-.integration-stack .tech-we-use > .title_h2 {
-  margin: 0 auto 50px;
-}
-
-.tender-advantages .tab-content-webDev {
-  margin: 0 auto;
-}
-.tender-advantages .tab-content-webDev > p.title_h4 {
-  margin: 0 auto 30px;
-}
-@media (max-width: 900px) {
-  .tender-advantages .tab-content-webDev > p.title_h4 {
-    margin: 0 auto 0px;
-  }
-}
-
-.tender-selection .tab-content-webDev {
-  margin: 0 auto;
 }
 
 .tenders-keys--list {

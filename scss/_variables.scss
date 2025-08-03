@@ -327,6 +327,22 @@ h5,
   }
 }
 
+.link {
+  &-text {
+    &:hover {
+      text-decoration: none;
+
+      & i {
+        text-decoration: none;
+      }
+
+      & span {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 h1,
 .title_h1 {
   font-weight: 600;
@@ -1828,6 +1844,39 @@ ol {
           &:nth-child(5) {
             display: none;
           }
+        }
+      }
+    }
+
+    &--branches {
+      gap: 20px;
+
+      @media (max-width: 720px) {
+        flex-direction: column;
+      }
+
+      & > * {
+        &:first-child {
+          max-width: 35%;
+          width: 100%;
+
+          @media (max-width: 720px) {
+            max-width: 100%;
+          }
+        }
+      }
+
+      & iframe {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+
+        @media (max-width: 600px) {
+          border-radius: 15px;
+          aspect-ratio: 1 / 1;
         }
       }
     }
@@ -3383,6 +3432,10 @@ form {
     color: var(--blue-main);
     text-shadow: var(--blue-main) 0px 0px 10px;
     //
+  }
+
+  & i {
+    display: flex;
   }
 
   & span {
@@ -6115,13 +6168,42 @@ button:hover,
   }
 
   &--team {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      aspect-ratio: 1 / 1;
+      box-shadow: 0px 0px 70px 60px var(--blue-clouds),
+        inset 0px 0px 70px 2px var(--blue-clouds);
+      transform: translate(-50%, -15%);
+    }
+
     & > .card-icon {
       width: 100%;
-      height: 100%;
+      height: 260px;
       aspect-ratio: 16 / 9;
+      border-radius: 25px;
+      overflow: hidden;
+
+      @media (max-width: 600px) {
+        height: 300px;
+      }
+
+      &::before {
+        display: none;
+      }
 
       & img {
         z-index: 1;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
       }
     }
@@ -6133,6 +6215,14 @@ button:hover,
     & > p {
       &:last-child {
         margin-top: auto;
+      }
+    }
+
+    &:hover {
+      & > .card-icon {
+        & img {
+          transform: scale(1.0625);
+        }
       }
     }
   }

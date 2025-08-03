@@ -162,51 +162,67 @@
     </header>
     <!-- MAIN PAGE -->
     <main>
-        <section class="bg-gradient kontakts-main">
+        <section class="bg-gradient">
             <div class="container">
                 <div class="breadcrumbs">
                     <a href="./">Главная</a>
                     <span>-</span>
                     <a href="#" class="link-disabled">Контакты</a>
                 </div>
+
                 <h1 class="w-fit mb-50">
-                    <span class="title_h1 underlined">Веб-студия INTRID</span> - Контактная информация
+                    <span class="underlined">Веб-студия INTRID</span> - Контактная информация
                 </h1>
-                <div class="slider-with-tabs">
-                    <aside class="slider-with-tabs_tabs-buttons">
-                        <label for="tab-slide-btn-1" class="button-link">
+
+                <div class="prices-block prices-block--contacts">
+                    <div class="prices-block--buttons" id="pricesButtons">
+                        <label for="tab-slide-btn-1" class="button-link button-link--tab">
                             <input type="radio" name="tab-slider-radio" id="tab-slide-btn-1" checked="">
                             <img src="./src/images/voronezh-icon.webp" alt="icon">
-                            <span>Воронеж</span><i class="icon-arrow_wide"></i>
+                            <span>Воронеж</span>
+                            <i class="icon-arrow_wide"></i>
                         </label>
-                        <label for="tab-slide-btn-2" class="button-link">
+                        <label for="tab-slide-btn-2" class="button-link button-link--tab">
                             <input type="radio" name="tab-slider-radio" id="tab-slide-btn-2">
                             <img src="./src/images/prague-icon.webp" alt="icon">
-                            <span>Прага</span><i class="icon-arrow_wide"></i>
+                            <span>Прага</span>
+                            <i class="icon-arrow_wide"></i>
                         </label>
-                    </aside>
-                    <div class="tab-view">
-                        <div class="tab-slider" id="tab-slide-1">
-                            <div class="description mb-32">
-                                <p class="title_h3 w-fit mb-20">Воронеж (главный офис)</p>
-                                <a href="https://yandex.com/maps/-/CHfmvO6X" target="_blank" class="hover-underline">
-                                    <i class="icon-adress"></i> г. Воронеж ул. Пятницкого, 40
+                    </div>
+
+                    <div class="prices-block--content">
+                        <div class="flex-layout flex-layout--branches active" id="tab-slide-1">
+                            <div class="d-flex flex-column">
+                                <p class="title_h3 w-fit">Воронеж (главный офис)</p>
+
+                                <a href="https://yandex.com/maps/-/CHfmvO6X" target="_blank"
+                                    class="d-flex align-start gap-6 flex-nowrap link-text">
+                                    <i class="icon-adress"></i>
+                                    <span class="m-0 d-flex flex-column">
+                                        <span>г. Воронеж ул. Пятницкого, 40</span>
+                                        <span class="color-grey">Пн-Пт: 9:00-18:00</span>
+                                    </span>
                                 </a>
-                                <p class="ml-20 color-grey">Пн-Пт: 9:00-18:00</p>
-                                <a class="title_h5 fz-20 phone-line gap-10 mt-10" href="tel:+74732540796">
-                                    <i class="icon-phone  color-blue" style="top: 4px;"></i>
+
+                                <a class="title_h5 fz-20 phone-line gap-6 mt-10" href="tel:+74732540796">
+                                    <i class="icon-phone color-blue"></i>
                                     <span>+7 (473) 254 0796</span>
                                 </a>
-                                <p class="w-fit title_h5 mt-10">
+
+                                <p class="w-fit title_h5 mt-20">
                                     Единый корпоративный email: <a href="mailto:mail@intrid.ru">mail@intrid.ru</a>
                                 </p>
-                                <div class="d-flex align-center gap-10 mt-10">
-                                    <a class="title_h5 fz-26 phone-line" id="map-whatsapp" href="tel:+74732540796">
-                                        <i class="icon-whatsapp color-blue" style="top: 4px;"></i>
+
+                                <div class="d-flex flex-column align-start gap-10 mt-10">
+                                    <a class="title_h5 fz-26 phone-line gap-6" id="map-whatsapp"
+                                        href="tel:+74732540796">
+                                        <i class="icon-whatsapp color-blue"></i>
+                                        <span>+7 (473) 254 0796</span>
                                     </a>
-                                    <a class="title_h5 fz-26 phone-line" id="map-telegram"
+                                    <a class="title_h5 fz-26 phone-line gap-6" id="map-telegram"
                                         href="https://t.me/webintrid">
-                                        <i class="icon-tg color-blue" style="top: 4px;"></i>
+                                        <i class="icon-tg color-blue"></i>
+                                        <span>@webintrid</span>
                                     </a>
                                 </div>
                             </div>
@@ -214,26 +230,38 @@
                                 src="https://yandex.ru/map-widget/v1/?um=constructor%3Ade02f3d1f93ca59ddbc7669962c5e7f350cec0968beae8e096d86287b227d6b1&amp;source=constructor"
                                 width="674" height="534" frameborder="0"></iframe>
                         </div>
-                        <div class="tab-slider" id="tab-slide-2">
-                            <div class="description mb-32">
-                                <p class="title_h3 w-fit mb-20">Прага (филиал)</p>
-                                <a href="https://yandex.ru/maps/-/CHvuzWlD" target="_blank" class="hover-underline">
-                                    <i class="icon-adress"></i> Poděbradská 52, 19000 Praha 9
+
+                        <div class="flex-layout flex-layout--branches" id="tab-slide-2">
+                            <div class="d-flex flex-column">
+                                <p class="title_h3 w-fit">Прага (филиал)</p>
+
+                                <a href="https://yandex.ru/maps/-/CHvuzWlD" target="_blank"
+                                    class="d-flex align-start gap-6 flex-nowrap link-text">
+                                    <i class="icon-adress"></i>
+                                    <span class="m-0 d-flex flex-column">
+                                        <span>Poděbradská 52, 19000 Praha 9</span>
+                                    </span>
                                 </a>
-                                <!-- <p class="ml-20">Пн-Пт: 9:00-18:00</p> -->
-                                <a class="title_h5 fz-20 phone-line gap-10 mt-10" href="tel:+420777749719">
-                                    <i class="icon-phone  color-blue" style="top: 4px;"></i>
+
+                                <a class="title_h5 fz-20 phone-line gap-6 mt-10" href="tel:+420777749719">
+                                    <i class="icon-phone color-blue"></i>
                                     <span>+420 777 749 719</span>
                                 </a>
-                                <p class="w-fit title_h5 mt-10">
+
+                                <p class="w-fit title_h5 mt-20">
                                     Единый корпоративный email: <a href="mailto:mail@intrid.ru">mail@intrid.ru</a>
                                 </p>
-                                <div class="d-flex align-center gap-10 mt-10">
-                                    <a class="title_h5 fz-26 phone-line" id="map-whatsapp" href="tel:+79518587172">
-                                        <i class="icon-whatsapp color-blue" style="top: 4px;"></i>
+
+                                <div class="d-flex flex-column align-start gap-10 mt-10">
+                                    <a class="title_h5 fz-26 phone-line gap-6" id="map-whatsapp"
+                                        href="tel:+79518587172">
+                                        <i class="icon-whatsapp color-blue"></i>
+                                        <span>+7 (951) 858 71-72</span>
                                     </a>
-                                    <a class="title_h5 fz-26 phone-line" id="map-telegram" href="https://t.me/lionvdv">
-                                        <i class="icon-tg color-blue" style="top: 4px;"></i>
+                                    <a class="title_h5 fz-26 phone-line gap-6" id="map-telegram"
+                                        href="https://t.me/lionvdv">
+                                        <i class="icon-tg color-blue"></i>
+                                        <span>@lionvdv</span>
                                     </a>
                                 </div>
                             </div>
@@ -245,37 +273,42 @@
                 </div>
             </div>
         </section>
+
         <!--  -->
-        <section class="landing-benefits container kontakts-photo">
-            <p class="title_h3 mb-50 underlined w-fit">
-                Наш офис в Воронеже
-            </p>
-            <div class="sites-reviews-slider" data-slider="reviews-slider" id="office-slider"
-                style="transform: translateX(0px);">
-                <div class="card card--photo active">
-                    <img src="./src/images/office-photo-1.webp" alt="">
+        <section class="landing-benefits kontakts-photo">
+            <div class="container">
+                <h3 class="underlined w-fit">
+                    Наш офис в Воронеже
+                </h3>
+
+                <div class="sites-reviews-slider" data-slider="reviews-slider" id="office-slider"
+                    style="transform: translateX(0px);">
+                    <div class="card card--photo active">
+                        <img src="./src/images/office-photo-1.webp" alt="">
+                    </div>
+                    <div class="card card--photo active">
+                        <img src="./src/images/office-photo-2.webp" alt="">
+                    </div>
+                    <div class="card card--photo">
+                        <img src="./src/images/office-photo-3.webp" alt="">
+                    </div>
                 </div>
-                <div class="card card--photo active">
-                    <img src="./src/images/office-photo-2.webp" alt="">
+
+                <div id="sites-reviews-pagination" class="pagination">
+                    <button class="pagination--prev-btn">
+                        <i class="icon-shevrone left"></i>
+                    </button>
+                    <div class="pagination--buttons-dots">
+                        <button class="pagination--btn-dot highlight"></button>
+                        <button class="pagination--btn-dot"></button>
+                        <button class="pagination--btn-dot"></button>
+                        <button class="pagination--btn-dot"></button>
+                        <button class="pagination--btn-dot"></button>
+                    </div>
+                    <button class="pagination--next-btn">
+                        <i class="icon-shevrone"></i>
+                    </button>
                 </div>
-                <div class="card card--photo">
-                    <img src="./src/images/office-photo-3.webp" alt="">
-                </div>
-            </div>
-            <div id="sites-reviews-pagination" class="pagination">
-                <button class="pagination--prev-btn">
-                    <i class="icon-shevrone left"></i>
-                </button>
-                <div class="pagination--buttons-dots">
-                    <button class="pagination--btn-dot highlight"></button>
-                    <button class="pagination--btn-dot"></button>
-                    <button class="pagination--btn-dot"></button>
-                    <button class="pagination--btn-dot"></button>
-                    <button class="pagination--btn-dot"></button>
-                </div>
-                <button class="pagination--next-btn">
-                    <i class="icon-shevrone"></i>
-                </button>
             </div>
         </section>
         <!--  -->
@@ -373,6 +406,7 @@
                 </div>
             </div>
         </section>
+
         <!--  -->
         <section>
             <div class="container">
@@ -637,7 +671,7 @@
             </div>
         </div>
     </dialog>
-    <dialog class="popup" id="accreditation-view">
+    <dialog class="popup popup-docs" id="accreditation-view">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <img src="./src/images/accreditation.webp" alt="accrediattion">
@@ -650,7 +684,7 @@
     <script src="./js/map-handler.js"></script>
     <script src="./js/slider-with-pagination.js"></script>
     <script src="./js/phoneFieldHandler.js"></script>
-    <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/tabs.js"></script>
     <script>
         window.addEventListener('hashchange', () => {
             console.log('=> ', location.hash)

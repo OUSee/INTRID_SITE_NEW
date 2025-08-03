@@ -401,6 +401,43 @@ button.next {
         }
       }
     }
+
+    &--contacts {
+      & .prices-block--buttons {
+        @media (max-width: 1000px) {
+          justify-content: center;
+          gap: 10px;
+        }
+
+        @media (max-width: 600px) {
+          gap: 10px;
+        }
+
+        & > * {
+          @media (max-width: 1000px) {
+            flex: 1;
+            max-width: 100%;
+          }
+
+          & img {
+            @media (max-width: 1000px) {
+              width: 28px;
+              height: 28px;
+            }
+          }
+        }
+      }
+
+      & .prices-block--content {
+        @media (max-width: 1000px) {
+          padding: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+          padding: 10px 10px 20px;
+        }
+      }
+    }
   }
 }
 
@@ -638,6 +675,7 @@ button.next {
   }
 }
 
+// WARNING: LEGACY CODE IS HERE!
 .tab-content-webDev {
   display: flex;
   justify-content: space-between;
@@ -3599,39 +3637,8 @@ button.next {
 }
 
 // integration stack
-.integration-stack {
-  & .tech-we-use {
-    padding: 0;
-
-    & > .title_h2 {
-      margin: 0 auto 50px;
-    }
-  }
-}
 
 // tender
-.tender-advantages {
-  & .tab-content-webDev {
-    margin: 0 auto;
-
-    & > p {
-      &.title_h4 {
-        margin: 0 auto 30px;
-
-        @media (max-width: 900px) {
-          margin: 0 auto 0px;
-        }
-      }
-    }
-  }
-}
-
-.tender-selection {
-  & .tab-content-webDev {
-    margin: 0 auto;
-  }
-}
-
 .tenders-keys {
   &--list {
     display: flex;
