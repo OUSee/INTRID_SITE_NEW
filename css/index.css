@@ -5985,6 +5985,21 @@ button:hover img,
     display: none;
   }
 }
+.card--team > .card-icon {
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+  aspect-ratio: 16/9;
+}
+.card--team > .card-icon img {
+  z-index: 1;
+}
+.card--team > span {
+  min-height: 2.5em;
+}
+.card--team > p:last-child {
+  margin-top: auto;
+}
 
 .popup {
   position: fixed;
@@ -10793,81 +10808,13 @@ button.next:hover {
     flex-direction: column;
   }
 }
-.o-nas-crew > .tab-view {
-  padding: 0px;
-}
-@media (max-width: 620px) {
-  .o-nas-crew > .tab-view {
-    overflow: visible;
-  }
-}
-@media (max-width: 1200px) {
-  .o-nas-crew > .tab-view > .tab-slider {
-    gap: 20px;
-  }
-}
-@media (max-width: 600px) {
-  .o-nas-crew > .tab-view > .tab-slider .crew-card {
-    flex: 1 1 90%;
-  }
-  .o-nas-crew > .tab-view > .tab-slider .crew-card .testimonials {
-    display: block;
-    padding: 10px 20px;
-  }
-}
 .o-nas-portfolio {
   background: transparent;
 }
 .o-nas-portfolio .sites-portfolio-slider {
   position: relative;
 }
-.o-nas-principals .integrations--right {
-  border: 1px solid var(--blue-bg);
-  background-color: transparent;
-  padding: 0px;
-  border-radius: 25px;
-  width: 100%;
-}
-.o-nas-principals .integrations--right .video-diagramm {
-  width: 100%;
-  min-width: 240px;
-  min-height: 240px;
-  height: auto;
-  margin: 0;
-  border-radius: 25px;
-  position: relative;
-  background-size: cover;
-}
-.o-nas-principals .integrations--right .video-diagramm > button {
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-}
-.o-nas-principals .integrations--right .video-diagramm:has(button:hover) {
-  animation: none;
-  transition: background-position 5s ease-in;
-}
 
-.kontakts-main .slider-with-tabs_tabs-buttons {
-  margin-top: 0;
-  padding-top: 30px;
-}
-.kontakts-main .tab-slider {
-  gap: 50px;
-}
-.kontakts-main .tab-slider .description {
-  flex: 1 0 300px;
-}
-@media (max-width: 600px) {
-  .kontakts-main .tab-slider .description {
-    margin-top: 20px;
-  }
-}
-.kontakts-main .tab-slider iframe {
-  width: 100%;
-  height: 450px;
-  border-radius: 25px;
-}
 .kontakts-bottom .sites-leaders-content {
   padding-bottom: 62px;
 }

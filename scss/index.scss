@@ -4431,71 +4431,11 @@ button.next {
     }
   }
 
-  &-crew {
-    & > .tab-view {
-      padding: 0px;
-
-      @media (max-width: 620px) {
-        overflow: visible;
-      }
-
-      & > .tab-slider {
-        @media (max-width: 1200px) {
-          gap: 20px;
-        }
-
-        @media (max-width: 600px) {
-          .crew-card {
-            flex: 1 1 90%;
-
-            .testimonials {
-              display: block;
-              padding: 10px 20px;
-            }
-          }
-        }
-      }
-    }
-  }
-
   &-portfolio {
     background: transparent;
 
     .sites-portfolio-slider {
       position: relative;
-    }
-  }
-
-  &-principals {
-    .integrations--right {
-      border: 1px solid var(--blue-bg);
-      background-color: transparent;
-      padding: 0px;
-      border-radius: 25px;
-      width: 100%;
-
-      .video-diagramm {
-        width: 100%;
-        min-width: 240px;
-        min-height: 240px;
-        height: auto;
-        margin: 0;
-        border-radius: 25px;
-        position: relative;
-
-        background-size: cover;
-
-        & > button {
-          width: 100%;
-          height: 100%;
-          border-radius: 25px;
-        }
-
-        &:has(button:hover) {
-          animation: none;
-          transition: background-position 5s ease-in;
-        }
-      }
     }
   }
 }
@@ -4504,32 +4444,6 @@ button.next {
 
 // kontakts page
 .kontakts {
-  &-main {
-    .slider-with-tabs_tabs-buttons {
-      margin-top: 0;
-      padding-top: 30px;
-    }
-
-    .tab-slider {
-      // flex-direction: column;
-      gap: 50px;
-
-      .description {
-        flex: 1 0 300px;
-
-        @media (max-width: 600px) {
-          margin-top: 20px;
-        }
-      }
-
-      iframe {
-        width: 100%;
-        height: 450px;
-        border-radius: 25px;
-      }
-    }
-  }
-
   &-bottom {
     .sites-leaders-content {
       padding-bottom: 62px;
