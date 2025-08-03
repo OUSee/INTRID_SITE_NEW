@@ -3850,6 +3850,13 @@ button img,
   display: flex;
   transition: all 0.3s ease-in-out;
 }
+button i,
+.button i,
+.button-link i,
+.button-highlight i,
+.radioButton i {
+  transition: 0.25s ease-in-out;
+}
 button i.icon-arrow_wide,
 .button i.icon-arrow_wide,
 .button-link i.icon-arrow_wide,
@@ -3857,7 +3864,6 @@ button i.icon-arrow_wide,
 .radioButton i.icon-arrow_wide {
   font-size: 1.4em;
   line-height: 14px;
-  transition: color 0.3s ease-in-out;
 }
 button.big,
 .button.big,
@@ -7302,7 +7308,9 @@ button.next:hover {
   min-height: unset;
   max-height: unset;
   padding: 0;
-  border: 2px solid var(--color-white);
+  text-align: center;
+  border: 2px solid;
+  border-color: transparent;
   border-radius: 100%;
   font-size: 32px;
   line-height: 0;
@@ -7311,6 +7319,10 @@ button.next:hover {
   .prices-block .slider-arrow {
     display: none !important;
   }
+}
+.prices-block .slider-arrow:hover {
+  border-color: var(--color-white);
+  color: var(--blue-main);
 }
 .prices-block .slider-arrow i {
   transform: none;
@@ -8807,9 +8819,6 @@ button.next:hover {
 }
 .sites-differences {
   padding-bottom: 0px;
-}
-.sites-prices {
-  padding-top: 0;
 }
 .sites-portfolio-slider {
   margin-top: 50px;
@@ -12437,62 +12446,6 @@ button.next:hover {
     margin: 15px 0px;
     align-items: center;
     justify-content: center;
-  }
-  .slider-with-tabs {
-    gap: 0;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons {
-    gap: 0;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link {
-    height: 100px;
-    justify-content: start;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link img {
-    width: 30px;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link span {
-    text-transform: none;
-    font-size: 13px;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link span.seo-desktop {
-    display: none;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link span.seo-mobile {
-    display: inline;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link:hover {
-    box-shadow: none;
-  }
-  .slider-with-tabs aside.slider-with-tabs_tabs-buttons label.button-link:has(input[type=radio]:checked) {
-    transform: scale(1);
-    background-color: var(--bg-main);
-    color: var(--blue-main);
-    border: 1px solid transparent;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  .slider-with-tabs .tab-view {
-    background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgba(10, 10, 10, 0.5522584034) 15%, rgba(10, 10, 10, 0) 31%);
-  }
-  .slider-with-tabs .tab-view .tab-slider {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-top: 0;
-  }
-  .slider-with-tabs .tab-view .tab-slider-card {
-    min-width: unset !important;
-    margin-right: 0 !important;
-    flex: 1 1 40% !important;
-    padding: 10px !important;
-    border-radius: 15px !important;
-  }
-  .slider-with-tabs .tab-view .tab-slider-card .title_h4 {
-    font-size: 13px !important;
-    font-weight: 600;
-  }
-  .slider-with-tabs .tab-view .tab-slider-card p:not(.title_h4) {
-    display: none;
   }
 }
 @media (max-width: 440px) {

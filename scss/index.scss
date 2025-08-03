@@ -368,13 +368,20 @@ button.next {
         min-height: unset;
         max-height: unset;
         padding: 0;
-        border: 2px solid var(--color-white);
+        text-align: center;
+        border: 2px solid;
+        border-color: transparent;
         border-radius: 100%;
         font-size: 32px;
         line-height: 0;
 
         @media (max-width: 1000px) {
           display: none !important;
+        }
+
+        &:hover {
+          border-color: var(--color-white);
+          color: var(--blue-main);
         }
 
         & i {
@@ -2076,11 +2083,6 @@ button.next {
 
   &-differences {
     padding-bottom: 0px;
-  }
-
-  // TODO
-  &-prices {
-    padding-top: 0;
   }
 
   &-portfolio {
@@ -6409,91 +6411,6 @@ button.next {
     margin: 15px 0px;
     align-items: center;
     justify-content: center;
-  }
-
-  .slider-with-tabs {
-    gap: 0;
-
-    aside.slider-with-tabs_tabs-buttons {
-      gap: 0;
-
-      label.button-link {
-        height: 100px;
-        justify-content: start;
-
-        img {
-          width: 30px;
-        }
-
-        span {
-          text-transform: none;
-          font-size: 13px;
-        }
-
-        span.seo-desktop {
-          display: none;
-        }
-
-        span.seo-mobile {
-          display: inline;
-        }
-
-        &:hover {
-          box-shadow: none;
-        }
-
-        &:has(input[type="radio"]:checked) {
-          transform: scale(1);
-          background-color: var(--bg-main);
-          color: var(--blue-main);
-          border: 1px solid transparent;
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        }
-      }
-    }
-
-    .tab-view {
-      background: linear-gradient(
-        180deg,
-        rgba(10, 10, 10, 1) 0%,
-        rgba(10, 10, 10, 0.5522584033613445) 15%,
-        rgba(10, 10, 10, 0) 31%
-      );
-
-      .tab-slider {
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding-top: 0;
-
-        &-card {
-          min-width: unset !important;
-          margin-right: 0 !important;
-          flex: 1 1 40% !important;
-          padding: 10px !important;
-          border-radius: 15px !important;
-
-          &:hover {
-            img {
-              // box-shadow: 0px 0px 20px 10px var(--blue-clouds), inset 0px 0px 75px 20px var(--blue-clouds) !important;
-            }
-          }
-
-          img {
-            // box-shadow: 0px 0px 60px 20px var(--blue-clouds), inset 0px 0px 75px 20px var(--blue-clouds) !important;
-          }
-
-          .title_h4 {
-            font-size: 13px !important;
-            font-weight: 600;
-          }
-
-          p:not(.title_h4) {
-            display: none;
-          }
-        }
-      }
-    }
   }
 }
 
