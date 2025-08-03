@@ -916,44 +916,51 @@
                     Услуги и цены
                 </h2>
 
-                <div class="slider-with-tabs">
-                    <aside class="slider-with-tabs_tabs-buttons">
-                        <label for="tab-slide-btn-1" class="button-link">
+                <div class="prices-block">
+                    <div class="prices-block--buttons" id="pricesButtons">
+                        <label for="tab-slide-btn-1" class="button-link button-link--tab">
                             <input type="radio" name="tab-slider-radio" id="tab-slide-btn-1" checked>
                             <img src="./src/images/web-dev-btn.webp" alt="icon" />
                             <span>Веб рaзработка</span><i class="icon-arrow_wide"></i>
                         </label>
-                        <label for="tab-slide-btn-2" class="button-link">
+                        <label for="tab-slide-btn-2" class="button-link button-link--tab">
                             <input type="radio" name="tab-slider-radio" id="tab-slide-btn-2">
                             <img src="./src/images/it-buisness-button.webp" alt="icon" />
                             <span>IT для бизнеса</span><i class="icon-arrow_wide"></i>
                         </label>
-                        <label for="tab-slide-btn-3" class="button-link">
+                        <label for="tab-slide-btn-3" class="button-link button-link--tab">
                             <input type="radio" name="tab-slider-radio" id="tab-slide-btn-3">
                             <img src="./src/images/promoton-btn.webp" alt="icon" />
-                            <span class="seo-mobile">СЕО</span><span class="seo-desktop">Продвижение</span><i
-                                class="icon-arrow_wide"></i>
+                            <span>
+                                <span class="d-lg-none d-xs-inline">СЕО</span>
+                                <span class="d-xs-none">Продвижение</span>
+                            </span>
+                            <i class="icon-arrow_wide"></i>
                         </label>
-                        <label for="tab-slide-btn-4" class="button-link">
+                        <label for="tab-slide-btn-4" class="button-link button-link--tab">
                             <input type="radio" name="tab-slider-radio" id="tab-slide-btn-4">
                             <img src="./src/images/hosting-btn.webp" alt="icon" />
                             <span>Хостинг</span><i class="icon-arrow_wide"></i>
                         </label>
-                        <label for="tab-slide-btn-5" class="button-link">
+                        <label for="tab-slide-btn-5" class="button-link button-link--tab">
                             <input type="radio" name="tab-slider-radio" id="tab-slide-btn-5">
                             <img src="./src/images/design-btn.webp" alt="icon" />
                             <span>Дизайн</span><i class="icon-arrow_wide"></i>
                         </label>
-                    </aside>
-                    <div class="tab-view">
-                        <button class="slider-arrow prev"><i class="icon-shevrone left"></i></button>
-                        <button class="slider-arrow next"><i class="icon-shevrone right"></i></button>
-                        <div class="tab-slider" id="tab-slide-1">
-                            <a href="./landing-page.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/l-page-services.svg" alt="img">
+                    </div>
+
+                    <div class="prices-block--content">
+                        <div class="flex-layout flex-layout--prices active" id="tab-slide-1" data-slider="tab-slider-1" data-fill="5,4,3,2">
+                            <a href="./landing-page.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/l-page-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Landing Page</p>
-                                <p class="title_h4 color-blue">от 75 000 ₽</p>
+                                <b>
+                                    Landing Page
+                                </b>
+                                <span>
+                                    от 75 000 ₽
+                                </span>
                                 <p>
                                     Одностраничный сайт, который оптимально подходит для продвижения и продаж
                                     монопродукта.
@@ -962,24 +969,32 @@
                                     покупатели.
                                 </p>
                             </a>
-                            <a href="./corporate.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/corp-site-services.svg"
-                                        alt="img">
+                            <a href="./corporate.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/corp-site-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Корпоративный сайт</p>
-                                <p class="title_h4 color-blue">от 180 000 ₽</p>
+                                <b>
+                                    Корпоративный сайт
+                                </b>
+                                <span>
+                                    от 180 000 ₽
+                                </span>
                                 <p>
                                     Сайт внесет серьезный вклад в информирование потенциальных клиентов о предлагаемых
                                     услугах, осветит Ваш бизнес под самым выгодным углом. Может включать интерактивные и
                                     интеграционные сервисы для клиентов и партнёров.
                                 </p>
                             </a>
-                            <a href="./store.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/web-shop-services.svg"
-                                        alt="img">
+                            <a href="./store.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/web-shop-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Интернет-магазин</p>
-                                <p class="title_h4 color-blue">от 320 000 ₽</p>
+                                <b>
+                                    Интернет-магазин
+                                </b>
+                                <span>
+                                    от 320 000 ₽
+                                </span>
                                 <p>
                                     Мust have современного бизнеса, магазин работает на Вас 24/7. Простое и удобное
                                     управление, адаптированное под нюансы Вашего каталога товаров. Синхронизация с 1С
@@ -987,12 +1002,16 @@
                                     другой локальной БД, онлайн-оплата и многое другое.
                                 </p>
                             </a>
-                            <a href="./web-portal.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/web-portal-services.svg"
-                                        alt="img">
+                            <a href="./web-portal.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/web-portal-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Веб-порталы</p>
-                                <p class="title_h4 color-blue">от 350 000 ₽</p>
+                                <b>
+                                    Веб-порталы
+                                </b>
+                                <span>
+                                    от 350 000 ₽
+                                </span>
                                 <p>
                                     Разработаем веб-портал под индивидуальные нестандартные задачи: от новостей до
                                     корпоративных сервисов для повышения KPI. Оптимизированное ПО, рассчитанное на
@@ -1000,12 +1019,16 @@
                                     нагрузку и высокую производительность.
                                 </p>
                             </a>
-                            <a href="./internet-magazin-s-ii.html" class="tab-slider-card d-lg-none">
-                                <div class="tab-slider-card-image"><img src="./src/icons/internet-magazine-s-ii.svg"
-                                        alt="img">
+                            <a href="./internet-magazin-s-ii.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/internet-magazine-s-ii.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Интернет-магазин с ИИ</p>
-                                <p class="title_h4 color-blue">от 350 000 ₽</p>
+                                <b>
+                                    Интернет-магазин с ИИ
+                                </b>
+                                <span>
+                                    от 350 000 ₽
+                                </span>
                                 <p>
                                     Ваши клиенты получают персонализированный шопинг — система анализирует их поведение,
                                     предпочтения и историю
@@ -1015,23 +1038,34 @@
                                 </p>
                             </a>
                         </div>
-                        <div class="tab-slider" id="tab-slide-2">
-                            <a href="./internet-magazin-s-ii.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/site-ai.svg" alt="img"></div>
-                                <p class="title_h4">Искусственный интеллект</p>
-                                <p class="title_h4 color-blue">от 400 000 ₽</p>
+
+                        <div class="flex-layout flex-layout--prices" id="tab-slide-2" data-slider="tab-slider-2" data-fill="5,4,3,2">
+                            <a href="./internet-magazin-s-ii.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/site-ai.svg" alt="img">
+                                </div>
+                                <b>
+                                    Искусственный интеллект
+                                </b>
+                                <span>
+                                    от 400 000 ₽
+                                </span>
                                 <p>
                                     Поставим нейросети на службу Вашего бизнеса. Это в разы увеличит производительность,
                                     умножит конверсию, повысит средний чек продаж. А также улучшит юзабилити и упростит
                                     взаимодействие клиентов с сайтом.
                                 </p>
                             </a>
-                            <a href="./crm-erp.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/crm-erp-services.svg"
-                                        alt="img">
+                            <a href="./crm-erp.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/crm-erp-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Разработка CRM, ERP</p>
-                                <p class="title_h4 color-blue">от 450 000 ₽</p>
+                                <b>
+                                    Разработка CRM, ERP
+                                </b>
+                                <span>
+                                    от 450 000 ₽
+                                </span>
                                 <p>
                                     CRM-системы призваны улучшить коммуникации с клиентами. Что существенно снижает
                                     нагрузку
@@ -1040,11 +1074,16 @@
                                     ERP-система автоматизирует управление складом и производством.
                                 </p>
                             </a>
-                            <a href="./tender-portal.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/tender-services.svg" alt="img">
+                            <a href="./tender-portal.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/tender-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Тендерные порталы</p>
-                                <p class="title_h4 color-blue">от 600 000 ₽</p>
+                                <b>
+                                    Тендерные порталы
+                                </b>
+                                <span>
+                                    от 600 000 ₽
+                                </span>
                                 <p>
                                     Корпоративный тендерный портал – это современный интсрумент для крупного бизнеса,
                                     который позволяет значительно сократить расходы на логистику и на закупки. По факту
@@ -1053,12 +1092,16 @@
                                     цене.
                                 </p>
                             </a>
-                            <a href="./integration.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image">
+                            <a href="./integration.html" class="card card--tab minified">
+                                <div class="card-icon">
                                     <img src="./src/icons/it-integration-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Интеграция IT-систем</p>
-                                <p class="title_h4 color-blue">от 50 000 ₽</p>
+                                <b>
+                                    Интеграция IT-систем
+                                </b>
+                                <span>
+                                    от 50 000 ₽
+                                </span>
                                 <p>
                                     Бесперебойное взаимодействие различных IT-систем позволяет существенно расширить
                                     онлайн-услуги и повысить их качество.
@@ -1067,12 +1110,16 @@
                                     и другие.
                                 </p>
                             </a>
-                            <a href="./tech.html" class="tab-slider-card d-lg-none">
-                                <div class="tab-slider-card-image"><img src="./src/icons/services-it-help.svg"
-                                        alt="img">
+                            <a href="./tech.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/services-it-help.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Сопровождение сайтов</p>
-                                <p class="title_h4 color-blue">от 8 000 ₽</p>
+                                <b>
+                                    Сопровождение сайтов
+                                </b>
+                                <span>
+                                    от 8 000 ₽
+                                </span>
                                 <p>
                                     Профессиональная поддержка для
                                     стабильной работы сайта: мониторинг
@@ -1083,12 +1130,18 @@
                                 </p>
                             </a>
                         </div>
-                        <div class="tab-slider" id="tab-slide-3">
-                            <a href="./seo-audit.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/seo-services.svg" alt="img">
+
+                        <div class="flex-layout flex-layout--prices" id="tab-slide-3" data-slider="tab-slider-3" data-fill="5,4,3,2">
+                            <a href="./seo-audit.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/seo-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">СЕО-аудиты и аналитика</p>
-                                <p class="title_h4 color-blue">от 9 000 ₽</p>
+                                <b>
+                                    СЕО-аудиты и аналитика
+                                </b>
+                                <span>
+                                    от 9 000 ₽
+                                </span>
                                 <p>
                                     Анализ сайта по 135 факторам поискового ранжирования, которые напрямую влияют на
                                     конверсию сайта и его позицию в поисковых системах. Результат аудита – подробный и
@@ -1096,12 +1149,16 @@
                                     конкурентами. Это своеобразная дорожная карта для достижения лучших позиций в СЕО.
                                 </p>
                             </a>
-                            <a href="./promotion.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/promotion-services.svg"
-                                        alt="img">
+                            <a href="./promotion.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/promotion-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Раскрутка с&nbsp;гарантией</p>
-                                <p class="title_h4 color-blue">от 18 000 ₽/мес</p>
+                                <b>
+                                    Раскрутка с&nbsp;гарантией
+                                </b>
+                                <span>
+                                    от 18 000 ₽/мес
+                                </span>
                                 <p>
                                     Продвижение сайта на первые строчки поиска приведет на сайт конвертабельный трафик.
                                     Используя многолетный опыт и актуальные знания о современных поисковых алгоритмах,
@@ -1109,12 +1166,16 @@
                                     Используем СЕО-инструменты собственной разработки.
                                 </p>
                             </a>
-                            <a href="./reputation.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/reputation-services.svg"
-                                        alt="img">
+                            <a href="./reputation.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/reputation-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Улучшение репутации в&nbsp;сети</p>
-                                <p class="title_h4 color-blue">от 6 000 ₽</p>
+                                <b>
+                                    Улучшение репутации в&nbsp;сети
+                                </b>
+                                <span>
+                                    от 6 000 ₽
+                                </span>
                                 <p>
                                     Сформируем положительный образ Вашей компании, товаров и услуг в интернете с помощью
                                     SERM-стратегий. Вытесним негатив и увеличим конверсию Вашего сайта.
@@ -1122,12 +1183,16 @@
                                     Помните: от негативных отзывов теряется до 70% новых клиентов.
                                 </p>
                             </a>
-                            <a href="./smm.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/tg-target-services.svg"
-                                        alt="img">
+                            <a href="./smm.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/tg-target-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Таргет-реклама в&nbsp;Телеграм</p>
-                                <p class="title_h4 color-blue">от 19 000 ₽</p>
+                                <b>
+                                    Таргет-реклама в&nbsp;Телеграм
+                                </b>
+                                <span>
+                                    от 19 000 ₽
+                                </span>
                                 <p>
                                     Отличный способ перетянуть клиентов от конкурентов. Настроим эффективную
                                     таргет-рекламу
@@ -1135,13 +1200,18 @@
                                 </p>
                             </a>
                         </div>
-                        <div class="tab-slider" id="tab-slide-4">
-                            <a href="./hosting-tarify.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/hosting-services.svg"
-                                        alt="img">
+
+                        <div class="flex-layout flex-layout--prices" id="tab-slide-4" data-slider="tab-slider-4" data-fill="5,4,3,2">
+                            <a href="./hosting-tarify.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/hosting-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Бюджетный хостинг</p>
-                                <p class="title_h4 color-blue">от 3 000 ₽/год</p>
+                                <b>
+                                    Бюджетный хостинг
+                                </b>
+                                <span>
+                                    от 3 000 ₽/год
+                                </span>
                                 <p>
                                     Качественный хостинг с гарантией бесперебойной работы сайтов и размещением на двух
                                     серверах, расположенных в разных дата-центрах. Это обеспечивает устойчивость
@@ -1150,11 +1220,16 @@
                                     переносе сайтов предоставим бесплатно.
                                 </p>
                             </a>
-                            <a href="./vds.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/vds-services.svg" alt="img">
+                            <a href="./vds.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/vds-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">VDS – виртуальный сервер</p>
-                                <p class="title_h4 color-blue">от 7 200 ₽/год</p>
+                                <b>
+                                    VDS – виртуальный сервер
+                                </b>
+                                <span>
+                                    от 7 200 ₽/год
+                                </span>
                                 <p>
                                     Гарантия мониторинга состояния виртуального сервера, полную защиту от спама и
                                     вирусов, а
@@ -1162,22 +1237,32 @@
                                     управления ISPManager Lite 5 с полным функционалом.
                                 </p>
                             </a>
-                            <a href="./domain.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/domen-services.svg" alt="img">
+                            <a href="./domain.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/domen-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Регистрация доменов</p>
-                                <p class="title_h4 color-blue">от 600 ₽/год</p>
+                                <b>
+                                    Регистрация доменов
+                                </b>
+                                <span>
+                                    от 600 ₽/год
+                                </span>
                                 <p>
                                     Оптимальное доменное имя для Вашего сайта – уникальное и легко запоминающееся.
                                     Регистрируем в популярных зонах по цене регистратора, следим за сроками и вовремя
                                     информируем Вас о необходимости продления.
                                 </p>
                             </a>
-                            <a href="./ssl.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/ssl-services.svg" alt="img">
+                            <a href="./ssl.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/ssl-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">SSL-сертификаты</p>
-                                <p class="title_h4 color-blue">от 900 ₽/год</p>
+                                <b>
+                                    SSL-сертификаты
+                                </b>
+                                <span>
+                                    от 900 ₽/год
+                                </span>
                                 <p>
                                     SSL-сертификат обеспечивает защищённое соединение Вашего сайта с устройствами
                                     посетителей. Тем самым обеспечивается защита данных от злоумышленников.
@@ -1187,12 +1272,18 @@
                                 </p>
                             </a>
                         </div>
-                        <div class="tab-slider" id="tab-slide-5">
-                            <a href="./design-site.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/site-design-services.svg"
-                                        alt="img"></div>
-                                <p class="title_h4">Дизайн сайта</p>
-                                <p class="title_h4 color-blue">от 50 000 ₽</p>
+
+                        <div class="flex-layout flex-layout--prices" id="tab-slide-5" data-slider="tab-slider-5" data-fill="5,4,3,2">
+                            <a href="./design-site.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/site-design-services.svg" alt="img">
+                                </div>
+                                <b>
+                                    Дизайн сайта
+                                </b>
+                                <span>
+                                    от 50 000 ₽
+                                </span>
                                 <p>
                                     Исследуем предпочтения целевой аудитории и создадим уникальный образ Вашего сайта,
                                     который поможет выделиться среди конкурентов и привлечь целевую аудиторию. Работаем
@@ -1200,11 +1291,16 @@
                                     полного одобрения дизайна заказчиком
                                 </p>
                             </a>
-                            <a href="./ui-design.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/ux-ui-services.svg" alt="img">
+                            <a href="./ui-design.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/ux-ui-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">UI/UX интерфейсы</p>
-                                <p class="title_h4 color-blue">от 35 000 ₽</p>
+                                <b>
+                                    UI/UX интерфейсы
+                                </b>
+                                <span>
+                                    от 35 000 ₽
+                                </span>
                                 <p>
                                     Спроектируем пользовательский интерфейс, нацеленный на каждый сегмент целевой
                                     аудитории. Чтобы пользователи без труда могли ориентироваться на сайте /
@@ -1212,11 +1308,16 @@
                                     находить, нужную информацию и легко пользоваться всем доступным функционалом.
                                 </p>
                             </a>
-                            <a href="./logo.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/logo-services.svg" alt="img">
+                            <a href="./logo.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/logo-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Разработка логотипа</p>
-                                <p class="title_h4 color-blue">от 15 000 ₽</p>
+                                <b>
+                                    Разработка логотипа
+                                </b>
+                                <span>
+                                    от 15 000 ₽
+                                </span>
                                 <p>
                                     Логотип визуально отражает смысл деятельности компании и является уникальным для
                                     того,
@@ -1224,11 +1325,16 @@
                                     подчеркнуть ваш корпоративный стиль, а также увеличить узнаваемость компании.
                                 </p>
                             </a>
-                            <a href="./brand.html" class="tab-slider-card">
-                                <div class="tab-slider-card-image"><img src="./src/icons/brand-services.svg" alt="img">
+                            <a href="./brand.html" class="card card--tab minified">
+                                <div class="card-icon">
+                                    <img src="./src/icons/brand-services.svg" alt="img">
                                 </div>
-                                <p class="title_h4">Создание бренда</p>
-                                <p class="title_h4 color-blue">от 25 000 ₽</p>
+                                <b>
+                                    Создание бренда
+                                </b>
+                                <span>
+                                    от 25 000 ₽
+                                </span>
                                 <p>
                                     Выделитесь из серой массы конкурентов уникальным корпоративным стилем — всё внимание
                                     потенциальных клиентов будет приковано к Вам. Разработаем живой бренд, который
@@ -1237,6 +1343,9 @@
                                 </p>
                             </a>
                         </div>
+
+                        <button class="slider-arrow prev"><i class="icon-shevrone left"></i></button>
+                        <button class="slider-arrow next"><i class="icon-shevrone right"></i></button>
                     </div>
                 </div>
             </div>

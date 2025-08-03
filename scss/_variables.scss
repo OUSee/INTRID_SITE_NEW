@@ -1144,6 +1144,11 @@ ol {
         display: none !important;
       }
     }
+    &-inline {
+      @media (max-width: 440px) {
+        display: inline !important;
+      }
+    }
   }
 }
 
@@ -1792,6 +1797,37 @@ ol {
         @media (max-width: 720px) {
           flex: 1 0 100%;
           width: 100%;
+        }
+      }
+    }
+
+    &--prices {
+      flex-wrap: nowrap;
+      gap: 20px;
+
+      @media (max-width: 1000px) {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      & > * {
+        flex: 1 1 0;
+
+        @media (max-width: 1360px) {
+          flex: 1 0 calc(25% - 10px);
+        }
+
+        @media (max-width: 1200px) {
+          flex: 1 0 calc(33.333333% - 10px);
+        }
+
+        @media (max-width: 1000px) {
+          flex: 1 0 calc(50% - 5px);
+          max-width: calc(50% - 5px);
+
+          &:nth-child(5) {
+            display: none;
+          }
         }
       }
     }
@@ -3955,6 +3991,113 @@ button:hover,
   }
 }
 
+.button {
+  &-link {
+    &--tab {
+      gap: 10px;
+
+      @media (max-width: 1000px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-height: unset;
+        background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+        border-color: transparent;
+        border-radius: 15px;
+        text-align: center;
+        transform-origin: center;
+      }
+
+      @media (max-width: 600px) {
+        padding: 4px 4px 16px;
+        background: transparent;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        transform-origin: bottom center;
+      }
+
+      &:hover {
+        @media (max-width: 1000px) {
+          color: var(--color-white);
+          background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+          transform: scale(1.125);
+        }
+
+        @media (max-width: 600px) {
+          border-color: transparent;
+          transform: none;
+        }
+
+        & img {
+          @media (max-width: 1000px) {
+            filter: unset;
+          }
+        }
+      }
+
+      & img {
+        display: flex;
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+
+        @media (max-width: 1000px) {
+          width: 48px;
+          height: 48px;
+        }
+
+        @media (max-width: 600px) {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      & span {
+        @media (max-width: 1000px) {
+          text-wrap: balance;
+          font-size: 12px !important;
+        }
+
+        @media (max-width: 600px) {
+          font-size: 10px !important;
+        }
+      }
+
+      &:has(:checked) {
+        background-color: var(--blue-main);
+        color: var(--color-black);
+        box-shadow: 0px 0px 15px var(--blue-main);
+
+        @media (max-width: 1000px) {
+          color: var(--blue-main);
+          background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+          // transform: scale(1.125);
+        }
+
+        @media (max-width: 600px) {
+          box-shadow: unset;
+        }
+
+        & img {
+          filter: invert(1) grayscale(1) brightness(0);
+
+          @media (max-width: 1000px) {
+            filter: unset;
+          }
+        }
+      }
+
+      & i {
+        color: currentColor;
+
+        @media (max-width: 1000px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 // cards
 .card {
   position: relative;
@@ -5817,7 +5960,7 @@ button:hover,
         text-wrap: wrap;
 
         &::after {
-          content: '\6c';
+          content: "\6c";
           position: relative;
           top: 3px;
           display: inline;
@@ -5855,10 +5998,16 @@ button:hover,
   }
 
   &--tab {
+    padding: 60px 30px 30px;
     background-color: transparent;
     color: var(--color-white);
     border: none;
     overflow: visible;
+
+    @media (max-width: 1000px) {
+      padding: 50px 20px 20px;
+      border-radius: 25px;
+    }
 
     & > .card-icon {
       position: relative;
@@ -5897,6 +6046,7 @@ button:hover,
 
     & > b {
       @include h5;
+      line-height: 1.25;
       color: var(--color-white);
       margin-bottom: 1em;
     }
@@ -5920,6 +6070,41 @@ button:hover,
       & > .card-icon {
         & img {
           transform: scale(1.125);
+        }
+      }
+    }
+
+    &.minified {
+      @media (max-width: 900px) {
+        align-items: center;
+      }
+
+      & > span {
+        @media (max-width: 900px) {
+          text-align: center;
+          margin-top: auto;
+          margin-bottom: unset;
+        }
+
+        @media (max-width: 600px) {
+          font-size: 14px;
+        }
+      }
+
+      & > b {
+        @media (max-width: 900px) {
+          min-height: 2.5em;
+          text-align: center;
+        }
+
+        @media (max-width: 600px) {
+          font-size: 14px;
+        }
+      }
+
+      & > p {
+        @media (max-width: 900px) {
+          display: none;
         }
       }
     }

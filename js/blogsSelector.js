@@ -197,7 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleToggleByHash = (hash) => {
       const id = hash.replace('#', '');
       const button = document.querySelector(
-        `.tab-slider-card[data-selector=${id}]`
+        `.tab-slider-card[data-selector=${id}]`,
+        `.card--tab[data-selector=${id}]`
       );
 
       button.click();

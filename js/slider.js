@@ -140,7 +140,7 @@ const SliderInIt = () => {};
 document.addEventListener('DOMContentLoaded', () => {
   const sliders = document.querySelectorAll('.tab-slider');
 
-  const tabButtons = document.querySelector('.slider-with-tabs_tabs-buttons');
+  const tabButtons = document.querySelector('.prices-block--buttons, .slider-with-tabs_tabs-buttons');
 
   if (!tabButtons) {
     return;
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth > 600) {
       tabButtonsList.forEach((tabButton, index) => {
         const input = tabButton.querySelector(`#tab-slide-btn-${index + 1}`);
-        input.addEventListener('click', () => {
+        input.addEventListener('change', () => {
           const activeSlider = document.querySelector(
             `#tab-slide-${index + 1}`
           );
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const SliderHandler = (slider) => {
-        const cards = slider.querySelectorAll('.tab-slider-card');
+        const cards = slider.querySelectorAll('.tab-slider-card, .card--tab');
         const prevButton = document.querySelector(`.slider-arrow.prev`);
         const nextButton = document.querySelector(`.slider-arrow.next`);
 
@@ -228,14 +228,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.innerWidth > 600) {
     tabButtonsList.forEach((tabButton, index) => {
       const input = tabButton.querySelector(`#tab-slide-btn-${index + 1}`);
-      input.addEventListener('click', () => {
+      input.addEventListener('change', () => {
         const activeSlider = document.querySelector(`#tab-slide-${index + 1}`);
         SliderHandler(activeSlider);
       });
     });
 
     const SliderHandler = (slider) => {
-      const cards = slider.querySelectorAll('.tab-slider-card');
+      const cards = slider.querySelectorAll('.tab-slider-card, .card--tab');
       const prevButton = document.querySelector(`.slider-arrow.prev`);
       const nextButton = document.querySelector(`.slider-arrow.next`);
 
@@ -295,4 +295,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     SliderHandler(document.querySelector(`#tab-slide-${1}`));
   }
+});
+
+
+// tabs init
+document.querySelectorAll('.prices-block--buttons input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    const tabId = this.id.replace('btn-', '');
+    document.querySelectorAll('[id^="tab-slide-"]').forEach(tab => {
+      tab.classList.remove('active');
+    });
+    document.getElementById(tabId).classList.add('active');
+  });
 });
