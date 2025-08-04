@@ -2373,6 +2373,7 @@ ol li p {
   .flex-layout--prices > * {
     flex: 1 0 calc(50% - 5px);
     max-width: calc(50% - 5px);
+    min-width: unset !important;
   }
   .flex-layout--prices > *:nth-child(5) {
     display: none;
@@ -2608,6 +2609,11 @@ ol li p {
 }
 @media (max-width: 1200px) {
   .justify-xl-center {
+    justify-content: center;
+  }
+}
+@media (max-width: 1360px) {
+  .justify-xxl-center {
     justify-content: center;
   }
 }
@@ -4579,6 +4585,19 @@ button:hover img,
     padding: 24px;
   }
 }
+.card--recent::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  box-shadow: 0px 0px 70px 60px var(--blue-clouds), inset 0px 0px 70px 2px var(--blue-clouds);
+  transform: translate(-50%, 0%);
+}
 .card--recent > a:not(.absolute-link) {
   display: flex;
   flex-direction: column;
@@ -6262,6 +6281,52 @@ button:hover img,
 }
 .card--team:hover > .card-icon img {
   transform: scale(1.0625);
+}
+.card--count {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 670px;
+}
+@media (max-width: 1000px) {
+  .card--count {
+    justify-content: center;
+  }
+}
+.card--count > .card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+@media (max-width: 1200px) {
+  .card--count > .card-header {
+    flex-direction: column;
+  }
+}
+.card--count > .card-header > span {
+  font-weight: 600;
+  font-size: 24px;
+  flex: 1;
+  margin: 0;
+}
+@media (max-width: 1000px) {
+  .card--count > .card-header > span {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .card--count > .card-header > span {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1200px) {
+  .card--count > .card-header > span {
+    flex: unset;
+    text-align: center;
+  }
 }
 
 .popup {
@@ -8380,7 +8445,6 @@ button.next:hover {
 .web-count {
   display: flex;
   align-items: center;
-  width: 380px;
   flex-wrap: wrap;
   row-gap: 10px;
   position: relative;
