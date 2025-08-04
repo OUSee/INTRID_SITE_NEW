@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 // import first
-@import "./mixins";
-@import "./colors";
-@import "./animation";
+@import './mixins';
+@import './colors';
+@import './animation';
 
 // $list-length: 18;
 // $interval: 0.6s;
@@ -16,19 +16,19 @@ $section-clouds-bg: linear-gradient(
 );
 
 @font-face {
-  font-family: "INTRID_ICONS";
-  src: url("../src/fonts/icons/fonts/INTRID_ICONS.eot");
-  src: url("../src/fonts/icons/fonts/INTRID_ICONS.eot?#iefix")
-      format("embedded-opentype"),
-    url("../src/fonts/icons/fonts/INTRID_ICONS.woff") format("woff"),
-    url("../src/fonts/icons/fonts/INTRID_ICONS.ttf") format("truetype"),
-    url("../src/fonts/icons/fonts/INTRID_ICONS.svg#INTRID_ICONS") format("svg");
+  font-family: 'INTRID_ICONS';
+  src: url('../src/fonts/icons/fonts/INTRID_ICONS.eot');
+  src: url('../src/fonts/icons/fonts/INTRID_ICONS.eot?#iefix')
+      format('embedded-opentype'),
+    url('../src/fonts/icons/fonts/INTRID_ICONS.woff') format('woff'),
+    url('../src/fonts/icons/fonts/INTRID_ICONS.ttf') format('truetype'),
+    url('../src/fonts/icons/fonts/INTRID_ICONS.svg#INTRID_ICONS') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 [data-icon]:before {
-  font-family: "INTRID_ICONS" !important;
+  font-family: 'INTRID_ICONS' !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -40,9 +40,9 @@ $section-clouds-bg: linear-gradient(
   -moz-osx-font-smoothing: grayscale;
 }
 
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
-  font-family: "INTRID_ICONS" !important;
+[class^='icon-']:before,
+[class*=' icon-']:before {
+  font-family: 'INTRID_ICONS' !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -54,61 +54,61 @@ $section-clouds-bg: linear-gradient(
 }
 
 .icon-adress:before {
-  content: "\70";
+  content: '\70';
 }
 .icon-play:before {
-  content: "\61";
+  content: '\61';
 }
 .icon-mail:before {
-  content: "\62";
+  content: '\62';
 }
 .icon-reset:before {
-  content: "\63";
+  content: '\63';
 }
 .icon-intrid:before {
-  content: "\64";
+  content: '\64';
 }
 .icon-whatsapp:before {
-  content: "\65";
+  content: '\65';
 }
 .icon-lightbulb:before {
-  content: "\66";
+  content: '\66';
 }
 .icon-target:before {
-  content: "\67";
+  content: '\67';
 }
 .icon-person:before {
-  content: "\68";
+  content: '\68';
 }
 .icon-links:before {
-  content: "\69";
+  content: '\69';
 }
 .icon-rocket:before {
-  content: "\6a";
+  content: '\6a';
 }
 .icon-arrow:before {
-  content: "\6b";
+  content: '\6b';
 }
 .icon-arrow_wide:before {
-  content: "\6c";
+  content: '\6c';
 }
 .icon-shevrone:before {
-  content: "\6d";
+  content: '\6d';
 }
 .icon-tg:before {
-  content: "\6e";
+  content: '\6e';
 }
 .icon-phone:before {
-  content: "\6f";
+  content: '\6f';
 }
 .icon-fire:before {
-  content: "\71";
+  content: '\71';
 }
 
 @font-face {
-  font-family: "Roboto";
-  src: url("../src/fonts/roboto/Roboto-Regular.woff2") format("woff2"),
-    url("../src/fonts/roboto/Roboto-Regular.woff") format("woff");
+  font-family: 'Roboto';
+  src: url('../src/fonts/roboto/Roboto-Regular.woff2') format('woff2'),
+    url('../src/fonts/roboto/Roboto-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -302,7 +302,7 @@ $section-clouds-bg: linear-gradient(
   scroll-margin-block-start: 80px;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   display: none;
 }
 
@@ -330,7 +330,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   margin-block-start: 0;
   margin-block-end: 1em;
   line-height: 140%;
@@ -344,7 +344,7 @@ p {
 p,
 span,
 a {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   // display: block;
   // margin: 0;
   line-height: 140%;
@@ -371,8 +371,8 @@ h5,
   &::after {
     display: block;
     position: absolute;
-    content: "";
-    background-image: url("../src/images/h1-underline.svg");
+    content: '';
+    background-image: url('../src/images/h1-underline.svg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 100%;
@@ -592,7 +592,7 @@ i {
     &::before {
       min-width: 13px;
       min-height: 13px;
-      content: "";
+      content: '';
       display: inline-block;
       background-color: #fdf41f;
       clip-path: polygon(
@@ -614,7 +614,7 @@ i {
         &::before {
           min-width: 13px;
           min-height: 13px;
-          content: "";
+          content: '';
           display: inline-block;
           background: linear-gradient(
             90deg,
@@ -642,7 +642,7 @@ i {
         &::before {
           min-width: 12px;
           min-height: 12px;
-          content: "";
+          content: '';
           display: inline-block;
           background: linear-gradient(
             90deg,
@@ -840,7 +840,7 @@ ul {
       color: var(--color-white);
 
       &::marker {
-        content: "\2022";
+        content: '\2022';
         color: var(--blue-main);
       }
     }
@@ -855,7 +855,7 @@ ul {
       padding-left: 0;
 
       &::marker {
-        content: "\2022";
+        content: '\2022';
         color: var(--blue-main);
       }
     }
@@ -1002,7 +1002,7 @@ ol {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background-image: url("../src/images/bg-main.webp");
+  background-image: url('../src/images/bg-main.webp');
   background-size: auto 944px;
   background-position: top;
   background-repeat: repeat;
@@ -1014,7 +1014,7 @@ ol {
     // offset-path: path("M0,110 С68,100 0,0 128,136");
 
     offset-path: path(
-      "M -100 -100 Q 200 0, 133 139"
+      'M -100 -100 Q 200 0, 133 139'
     ); // Example cubic Bezier; replace with your hyperbola approximation
     offset-distance: 0%;
     transform: scale(1);
@@ -1032,7 +1032,7 @@ ol {
     display: flex;
     align-items: center;
     justify-content: center;
-    content: "?";
+    content: '?';
     color: white;
     font-size: 0.7em;
     font-weight: 900 !important;
@@ -2594,7 +2594,7 @@ ol {
       mix-blend-mode: lighten;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -2608,7 +2608,7 @@ ol {
           black 90%,
           transparent 100%
         );
-        background-image: url("../src/images/planet-site-bg.webp");
+        background-image: url('../src/images/planet-site-bg.webp');
         background-position: bottom;
         background-repeat: no-repeat;
         background-size: contain;
@@ -2624,7 +2624,7 @@ ol {
         rgba(0, 234, 255, 0.1) 61%,
         rgba(0, 234, 255, 0) 100%
       ),
-      url("../src/images/mountains_2.webp");
+      url('../src/images/mountains_2.webp');
     background-size: 100% auto;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -2632,7 +2632,7 @@ ol {
 
   &-planets {
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 0;
@@ -2646,7 +2646,7 @@ ol {
         black 90%,
         transparent 100%
       );
-      background-image: url("../src/images/planets-aside.webp");
+      background-image: url('../src/images/planets-aside.webp');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -2656,7 +2656,7 @@ ol {
 
   &-lights {
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       z-index: 0;
       width: 50px;
@@ -2684,7 +2684,7 @@ ol {
       position: relative;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         left: 50%;
@@ -2899,11 +2899,11 @@ form {
       }
 
       &::before {
-        content: "\70";
+        content: '\70';
         position: absolute;
         top: 2px;
         left: 0;
-        font-family: "INTRID_ICONS" !important;
+        font-family: 'INTRID_ICONS' !important;
         font-style: normal !important;
         font-weight: normal !important;
         font-variant: normal !important;
@@ -2928,11 +2928,11 @@ form {
 
     & a {
       &::before {
-        content: "\62";
+        content: '\62';
         position: absolute;
         top: 2px;
         left: 0;
-        font-family: "INTRID_ICONS" !important;
+        font-family: 'INTRID_ICONS' !important;
         font-style: normal !important;
         font-weight: normal !important;
         font-variant: normal !important;
@@ -3165,14 +3165,14 @@ form {
           margin-top: 10px;
 
           &::before {
-            content: ",,";
+            content: ',,';
             position: relative;
             top: -1em;
             color: var(--blue-main);
           }
 
           &::after {
-            content: ",,";
+            content: ',,';
             color: var(--blue-main);
           }
         }
@@ -3225,7 +3225,7 @@ form {
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 180px;
     height: 180px;
@@ -3249,9 +3249,9 @@ form {
     position: absolute;
     top: 60px;
     left: 20px;
-    font-family: "INTRID_ICONS";
+    font-family: 'INTRID_ICONS';
     font-size: 52px;
-    content: "\64";
+    content: '\64';
     color: var(--blue-main);
     transition: all 0.3s ease-in-out;
     animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
@@ -3624,7 +3624,7 @@ form {
       background-color: var(--blue-main);
       border-radius: 50%;
       transform: translate(24px, 19px);
-      content: "";
+      content: '';
       width: 230px;
       height: 230px;
       z-index: -1;
@@ -3675,7 +3675,7 @@ form {
       background-color: var(--blue-main);
       border-radius: 50%;
       transform: translate(24px, 19px);
-      content: "";
+      content: '';
       width: 0;
       height: 0;
       z-index: -1;
@@ -3749,7 +3749,7 @@ form {
   margin: 160px auto;
   border-radius: 50%;
   position: relative;
-  background-image: url("../src/images/planet-bg.webp");
+  background-image: url('../src/images/planet-bg.webp');
   background-size: auto 240px;
   background-position: top;
   background-repeat: no-repeat;
@@ -3851,7 +3851,7 @@ form {
       }
 
       &::before {
-        content: "";
+        content: '';
         width: 8px;
         height: 8px;
         position: absolute;
@@ -3863,7 +3863,7 @@ form {
       }
 
       &::after {
-        content: "";
+        content: '';
         width: 8px;
         height: 8px;
         position: absolute;
@@ -4082,11 +4082,11 @@ button,
 
 // Радио-кнопки
 .radioButton {
-  input[type="radio"] {
+  input[type='radio'] {
     display: none;
   }
 
-  &:has(input[type="radio"]:checked) {
+  &:has(input[type='radio']:checked) {
     border: 1px solid var(--blue-main);
     background-color: var(--blue-main);
     color: var(--color-black);
@@ -4100,8 +4100,8 @@ button,
     box-shadow: none;
 
     &::after {
-      font-family: "INTRID_ICONS";
-      content: "\0049";
+      font-family: 'INTRID_ICONS';
+      content: '\0049';
       font-weight: 600;
       font-size: 14px;
     }
@@ -4264,12 +4264,12 @@ button:hover,
     padding: 0px;
 
     &::before {
-      content: "\64";
+      content: '\64';
       position: absolute;
       right: -50px;
       bottom: -50px;
       z-index: 2;
-      font-family: "INTRID_ICONS";
+      font-family: 'INTRID_ICONS';
       height: 177px;
       width: 177px;
       font-size: 177px;
@@ -4291,12 +4291,12 @@ button:hover,
     border: 1px solid var(--blue-bg);
 
     &::before {
-      content: "\64";
+      content: '\64';
       position: absolute;
       right: -50px;
       bottom: -50px;
       z-index: 2;
-      font-family: "INTRID_ICONS";
+      font-family: 'INTRID_ICONS';
       height: 177px;
       width: 177px;
       font-size: 177px;
@@ -4406,7 +4406,7 @@ button:hover,
 
         &:first-child {
           &:before {
-            content: ",,";
+            content: ',,';
             font-size: 2.5em;
             color: var(--blue-main);
             position: absolute;
@@ -4423,7 +4423,7 @@ button:hover,
           margin-bottom: 0;
 
           &:after {
-            content: ",,";
+            content: ',,';
             font-size: 2.5em;
             line-height: 0px;
             color: var(--blue-main);
@@ -4472,6 +4472,11 @@ button:hover,
       align-items: center;
       justify-content: flex-end;
       gap: 6px;
+
+      & > p {
+        margin: 0;
+        color: var(--color-grey);
+      }
     }
 
     & .card-source {
@@ -4484,23 +4489,23 @@ button:hover,
       background-repeat: no-repeat;
 
       &.yandex {
-        background-image: url("../src/icons/reviews/min/yandex-min.svg");
+        background-image: url('../src/icons/reviews/min/yandex-min.svg');
       }
 
       &.doublegis {
-        background-image: url("../src/icons/reviews/min/2gis-min.svg");
+        background-image: url('../src/icons/reviews/min/2gis-min.svg');
       }
 
       &.google {
-        background-image: url("../src/icons/reviews/min/google-min.svg");
+        background-image: url('../src/icons/reviews/min/google-min.svg');
       }
 
       &.yell {
-        background-image: url("../src/icons/reviews/min/yell-min.svg");
+        background-image: url('../src/icons/reviews/min/yell-min.svg');
       }
 
       &.runet {
-        background-image: url("../src/icons/reviews/min/runet-min.svg");
+        background-image: url('../src/icons/reviews/min/runet-min.svg');
       }
     }
   }
@@ -5067,7 +5072,7 @@ button:hover,
           color: var(--color-white);
 
           &::marker {
-            content: "\2022";
+            content: '\2022';
             color: var(--blue-main);
           }
 
@@ -5228,7 +5233,7 @@ button:hover,
     }
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -5362,12 +5367,12 @@ button:hover,
       cursor: default;
 
       &::before {
-        content: "d";
+        content: 'd';
         position: absolute;
         top: 50%;
         left: 0;
         z-index: -1;
-        font-family: "INTRID_ICONS";
+        font-family: 'INTRID_ICONS';
         font-size: 77px;
         color: hsla(0, 0%, 100%, 0.02);
         transform: translate(-50%, -50%);
@@ -5464,7 +5469,7 @@ button:hover,
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       right: 0;
@@ -5928,7 +5933,7 @@ button:hover,
       }
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         left: 50%;
@@ -6053,10 +6058,10 @@ button:hover,
         }
 
         &::after {
-          content: "\6c";
+          content: '\6c';
           display: flex;
           color: var(--blue-main);
-          font-family: "INTRID_ICONS";
+          font-family: 'INTRID_ICONS';
           font-style: normal !important;
           font-weight: normal !important;
           font-variant: normal !important;
@@ -6109,7 +6114,7 @@ button:hover,
         text-wrap: wrap;
 
         &::after {
-          content: "\6c";
+          content: '\6c';
           position: relative;
           top: 3px;
           display: inline;
@@ -6170,7 +6175,7 @@ button:hover,
       margin-bottom: 2em;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         left: 50%;
@@ -6270,7 +6275,7 @@ button:hover,
     }
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 15%;
       left: 50%;

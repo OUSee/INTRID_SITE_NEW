@@ -4463,6 +4463,10 @@ button:hover img,
   justify-content: flex-end;
   gap: 6px;
 }
+.card--review .card-date > p {
+  margin: 0;
+  color: var(--color-grey);
+}
 .card--review .card-source {
   position: relative;
   display: flex;
@@ -9666,12 +9670,6 @@ button.next:hover {
   }
 }
 
-.it-prices {
-  padding-top: 62px;
-}
-.it-ai {
-  position: relative;
-}
 .it-ai-web_count {
   display: flex;
   justify-content: center;
@@ -10255,67 +10253,6 @@ button.next:hover {
   display: none;
 }
 
-.integration-popular {
-  position: relative;
-}
-.integration-popular > .popular-description {
-  margin: 32px auto;
-}
-.integration-popular .popular-description {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 32px;
-}
-@media (max-width: 600px) {
-  .integration-popular .popular-description {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-.integration-popular .popular-description > *:first-child {
-  flex: 1 0 auto;
-  max-width: 67%;
-}
-@media (max-width: 1000px) {
-  .integration-popular .popular-description > *:first-child {
-    flex: 1;
-    max-width: unset;
-  }
-}
-.integration-popular .popular-description > *:last-child {
-  margin: 0 0 0 auto;
-}
-@media (max-width: 600px) {
-  .integration-popular .popular-description > *:last-child {
-    margin: 0 auto;
-  }
-}
-.integration-popular .integrations {
-  margin: 32px auto 0;
-}
-
-.integrations--content {
-  display: flex;
-  align-items: stretch;
-  gap: 50px;
-  padding: 0;
-}
-.integrations--content hr {
-  width: 100%;
-}
-@media (max-width: 900px) {
-  .integrations--content {
-    flex-direction: column;
-  }
-}
-.integrations--left {
-  flex: 1 1 70%;
-}
-.integrations--right {
-  flex: 1 1 30%;
-}
-
 .integrations-list {
   display: flex;
   flex-direction: row;
@@ -10338,10 +10275,6 @@ button.next:hover {
   height: 40px;
   object-fit: contain;
   object-position: center;
-}
-
-.integration-stages > .title_h3 {
-  margin: 0 auto 50px;
 }
 
 .tenders-keys--list {
@@ -10929,6 +10862,10 @@ button.next:hover {
 .domain-table tr th:not(:first-child) {
   border-left: 1px solid var(--blue-main);
 }
+.domain-table tr td p,
+.domain-table tr th p {
+  margin: 0;
+}
 .domain-table thead tr td:first-child,
 .domain-table thead tr th:first-child {
   border-top-left-radius: 25px;
@@ -10936,6 +10873,10 @@ button.next:hover {
 .domain-table thead tr td:last-child,
 .domain-table thead tr th:last-child {
   border-top-right-radius: 25px;
+}
+.domain-table thead tr td p,
+.domain-table thead tr th p {
+  margin: 0;
 }
 @media (max-width: 600px) {
   .domain-table thead tr td:first-child,
@@ -10973,9 +10914,6 @@ button.next:hover {
     padding: 5px 5px;
   }
 }
-.domain-form {
-  padding-top: 0px;
-}
 
 .ssl-accordions .accordion-item {
   border-radius: 25px;
@@ -11007,13 +10945,10 @@ button.next:hover {
   position: relative;
 }
 
-.kontakts-bottom .sites-leaders-content {
-  padding-bottom: 62px;
-}
-.kontakts-bottom > div > div > div.sites-leaders-content-left {
+.kontakts .sites-leaders-content-left {
   flex: 1 1 60%;
 }
-.kontakts-bottom > div > div > div.sites-leaders-content-right {
+.kontakts .sites-leaders-content-right {
   flex: 1 1 35%;
 }
 
