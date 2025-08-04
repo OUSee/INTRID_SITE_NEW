@@ -1257,3 +1257,908 @@ document.addEventListener("DOMContentLoaded", () => {
     initInremet();
   }, 1000);
 });
+
+// phone field handler
+document.addEventListener("DOMContentLoaded", () => {
+  const fields = document.querySelectorAll("input[type=tel]");
+  const phonePattern =
+    "^(7|8)[\\s\\-]?\\(?\\d{3}\\)?[\\s\\-]?\\d{3}[\\s\\-]?\\d{2}[\\s\\-]?\\d{2}$";
+
+  fields.forEach((field) => {
+    field.addEventListener("beforeinput", (e) => {
+      const input = e.target;
+      const value = input.value;
+      const digits = value.replace(/\D/g, "");
+      const isDigit = /\d/.test(e.data);
+
+      if (isDigit && digits.length >= 11) {
+        e.preventDefault();
+      }
+    });
+
+    field.addEventListener("input", (e) => {
+      const input = e.target;
+      field.setAttribute("pattern", phonePattern);
+
+      let cursorPos = input.selectionStart;
+      const oldValue = input.value;
+
+      let digits = oldValue.replace(/\D/g, "");
+
+      if (digits.length > 0 && digits[0] !== "7") {
+        digits = "7" + digits.slice(1);
+      }
+
+      if (digits.length > 11) {
+        digits = digits.slice(0, 11);
+      }
+
+      function formatPhone(digits) {
+        let formatted = "";
+        if (digits.length > 0) {
+          formatted += digits[0];
+        }
+        if (digits.length >= 2) {
+          formatted += " (" + digits.slice(1, 4);
+        }
+        if (digits.length >= 5) {
+          formatted += ") " + digits.slice(4, 7);
+        }
+        if (digits.length >= 8) {
+          formatted += " " + digits.slice(7, 9);
+        }
+        if (digits.length >= 10) {
+          formatted += " " + digits.slice(9, 11);
+        }
+        return formatted;
+      }
+
+      const formatted = formatPhone(digits);
+
+      function countDigits(str, pos) {
+        return (str.slice(0, pos).match(/\d/g) || []).length;
+      }
+
+      const digitsBeforeCursor = countDigits(oldValue, cursorPos);
+
+      let newCursorPos = 0;
+      let digitsCount = 0;
+
+      while (
+        digitsCount < digitsBeforeCursor &&
+        newCursorPos < formatted.length
+      ) {
+        if (/\d/.test(formatted[newCursorPos])) {
+          digitsCount++;
+        }
+        newCursorPos++;
+      }
+
+      input.value = formatted;
+      input.setSelectionRange(newCursorPos, newCursorPos);
+    });
+  });
+});
+
+// blog selector
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll("[data-selector]");
+  const titleTarget = document.getElementById("blogs-title");
+  const slider = document.getElementById("blog-slider");
+
+  const titles = {
+    "blog-site": { title: "Статьи Разработка сайтов" },
+    "digital-design": { title: "Статьи Digital-дизайн" },
+    "seo-promotion": { title: "Статьи SEO-продвижение" },
+    "internet-marketing": { title: "Статьи Интернет-маркетинг" },
+  };
+
+  const articles = {
+    "blog-site": [
+      {
+        img: "./src/images/image-by-item-and-alias.webp",
+        link: "./blog/landing-page.html",
+        title: "Отличия Landing Page от сайта",
+        description: `Прежде чем заказать лендинг, нужно понимать, что это и для чего он нужен. 
+                              А также нужно разобраться, в чем его отличия от обычного сайте. 
+                              Суть обоих понятий довольно близка - немного отличается лишь разнообразие. 
+                              Выбор должен основываться на преследуемых целях и особенностей бизнеса.`,
+        date: "2022-01-01",
+      },
+      {
+        img: "./src/images/blog/kontent_sayta.webp",
+        link: "./blog/unikalnyj-kontent-dla-vasego-internet-magazina.html",
+        title: "Уникальный контент для Вашего интернет-магазина",
+        description: `Интернет-магазин - удобная и современная платформа для реализации товаров. 
+                              Однако, для удачной работы недостаточно просто создать сайт или страницу в соцсетях. 
+                              Нужно наполнить его качественным контентом: статьями, заметками и описаниями товаров.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/cms-blog-preview.webp",
+        link: "./blog/vozmoznosti-nasej-cms-i-sms.html",
+        title: 'Возможности нашей CMS – "i-сms"',
+        description: `Наша компания разрабатывает и устанавливает уникальные CMS, под конкретные веб-ресурсы с индивидуальными функциональными возможностями. 
+                              Каждый такой сайт оснащается также надёжной системой защиты от несанкционированного доступа.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/viz02.webp",
+        link: "./blog/manual-dla-licnogo-kabineta.html",
+        title: "Мануал для личного кабинета",
+        description: `В этой инструкции мы расскажем для чего нужен личный кабинет и как пользоваться его инструментами.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/cms-zoom.webp",
+        link: "./blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html",
+        title: "Почему нельзя создавать интернет-магазины на шаблонах",
+        description: `Основные проблемы, с которыми сталкиваются пользователи при создании сайтов на шаблонах`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/list-preview.webp",
+        link: "./blog/pamatka-zakazciku.html",
+        title: "Памятка заказчику",
+        description: `Ни для кого не секрет, что коммерческий сайт – это современный инструмент бизнеса, позволяющий получать большой поток клиентов из сети. 
+                              Основные задачи сайта: привлекать клиентов, приносить прибыль, способствовать продвижению торговой марки, улучшать имидж компании, обеспечивать обратную связь с потребителями и т.д., и т.п.                        `,
+        date: "2022-01-02",
+      },
+    ],
+    "digital-design": [
+      {
+        img: "./src/images/blog/UX_UI_dis.webp",
+        link: "./blog/uxui_design.html",
+        title: "UX и UI-дизайн — что это и зачем нужно?",
+        description: `Доступно и кратко рассказываем о самой эффективной технологии web-дизайна.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/visitka.webp",
+        link: "./blog/vizitka-vaznyj-element-delovogo-imidza.html",
+        title: "Визитка – важный элемент делового имиджа",
+        description: `Облегчая общение, визитка служит неназойливым напоминанием о деловом человеке. 
+                              Просматривая свою визитницу, ее обладатель будет постоянно видеть Вашу визитку, и не исключено, что, подыскивая деловых партнеров, вспомнит о Вашем существовании. 
+                              Многие из нас к самому процессу изготовления визиток подходят не совсем ответственно и взвешенно, и напрасно.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/kreative-design.webp",
+        link: "./blog/kreativ-v-reklamnom-dizajne.html",
+        title: "Креатив в рекламном дизайне",
+        description: `Процесс рекламного дизайна заключается в непрерывном поиске новых средств, которые могли бы привлечь внимание читателя и заинтересовать его в предмете рекламы. 
+                              Дизайн процесс творческий.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/ponyatie-logotipa.webp",
+        link: "./blog/ponatie-logotipa.html",
+        title: "Понятие логотипа",
+        description: `Логотип это официально принятый термин, означающий зарегистрированное в порядке оригинально оформленное художественное изображение, для отличия товаров и услуг и их рекламы.`,
+        date: "2022-01-02",
+      },
+    ],
+    "seo-promotion": [
+      {
+        img: "./src/images/blog/eseo.webp",
+        link: "./blog/etapy-seo-prodvijenia.html",
+        title: "Этапы SEO-продвижения сайта",
+        description: `Чтобы стать успешным предпринимателем, просто создать сайт недостаточно. 
+                              Интернет-ресурс должен быть заметен потенциальной клиентуре. 
+                              Для этого требуется продвинуть его вверх в поисковых системах.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/seo-circle.webp",
+        link: "./blog/kratkij-gajd-po-faktoram-ranzirovania-v-seo.html",
+        title: "Краткий гайд по факторам ранжирования в SEO ",
+        description: `Факторы, на которые роботы смотрят при ранжировании сайтов в поисковой системе. 
+                              Основная информация.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/orig.webp",
+        link: "./blog/filtry-andeksa-priznaki-popadania-sroki-sankcij-i-sposoby-vyhoda.html",
+        title: "Фильтры Яндекса",
+        description: `Признаки попадания, сроки санкций и способы выхода.
+                              Кратко о том, что такое санкции Яндекса и с чем их едят.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/link-building.webp",
+        link: "./blog/linkbilding-v-2019-rabocie-metody.html",
+        title: "Линкбилдинг в 2019: рабочие методы",
+        description: `Статья о том, как продвигать сайт с помощью ссылок в 2019 году и не попадать под фильтры.`,
+        date: "2022-01-02",
+      },
+    ],
+    "internet-marketing": [
+      {
+        img: "./src/images/blog/reputation-preview.webp",
+        link: "./blog/upravlenie-reputaciej-v-internete-zacem-i-kak.html",
+        title: "Управление репутацией в интернете: зачем и как",
+        description: `О том, почему так важно поддерживать репутацию бренда в интернете.`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/typewriter.webp",
+        link: "./blog/korporativnyj-blog-dan-mode-ili-effektivnaa-reklama.html",
+        title: "Корпоративный блог: дань моде или эффективная реклама?",
+        description: `Зачем нужно вести корпоративный блог и что он Вам даст?`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/cursor-preview.webp",
+        link: "./blog/kontekstnaa-reklama-8-sovetov-novickam.html",
+        title: "Контекстная реклама: 8 советов новичкам",
+        description: `Настройка КР для чайников – больше конверсии, меньше трат бюджета!`,
+        date: "2022-01-02",
+      },
+      {
+        img: "./src/images/blog/mic-preview.webp",
+        link: "./blog/intervu.html",
+        title:
+          "Интервью как способ громко заявить о своём бизнесе с помощью прессы",
+        description: `Одно хорошее интервью может быть эффективнее десяти щедро проплаченных рекламных кампаний. Почему? Читайте в этой статье.`,
+        date: "2022-01-02",
+      },
+    ],
+  };
+
+  if (buttons && titleTarget && slider) {
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        titleTarget.innerText = titles[button.dataset.selector].title;
+        while (slider.lastChild) {
+          slider.removeChild(slider.lastChild);
+        }
+        articles[button.dataset.selector].forEach((article) => {
+          const slide = document.createElement("div");
+          slide.classList.add("card");
+          slide.classList.add("card--recent");
+          slide.classList.add("card--newsletter");
+          slide.classList.add("active");
+          const slideHtml = `
+                        <a href="${article.link}">
+                            <div class="img-wrapper"><img src="${article.img}" alt="${article.title}"></div>
+                            <div class="card-body">
+                                <b>${article.title}</b>
+                                <p>
+                                    ${article.description}
+                                </p>
+                                <span class="card-date">
+                                    ${article.date}
+                                </span>
+                            </div>
+                        </a>`;
+          slide.innerHTML = slideHtml;
+          slider.appendChild(slide);
+        });
+      });
+    });
+
+    const handleToggleByHash = (hash) => {
+      const id = hash.replace("#", "");
+      const button = document.querySelector(`.card--tab[data-selector=${id}]`);
+
+      button.click();
+    };
+
+    setTimeout(() => {
+      handleToggleByHash(window.location.hash);
+    }, 300);
+  }
+});
+
+// textarea autosize
+window.textarea_autosize = {
+  init: function () {
+    // Resize all textareas with data-autosize attribute
+    document
+      .querySelectorAll("textarea[data-autosize]")
+      .forEach(function (elem) {
+        textarea_autosize.resize(elem);
+      });
+
+    // Listen for input and change events on textareas with data-autosize
+    document.addEventListener("input", function (event) {
+      if (event.target && event.target.matches("textarea[data-autosize]")) {
+        textarea_autosize.resize(event.target);
+      }
+    });
+    document.addEventListener("change", function (event) {
+      if (event.target && event.target.matches("textarea[data-autosize]")) {
+        textarea_autosize.resize(event.target);
+      }
+    });
+
+    // Listen for DOMSubtreeModified event to resize textareas without data-autosize="true"
+    // document.addEventListener('DOMSubtreeModified', function() {
+    //     document.querySelectorAll('textarea[data-autosize]:not([data-autosize="true"])').forEach(function(elem) {
+    //         textarea_autosize.resize(elem);
+    //     });
+    // });
+  },
+
+  resize: function (elem) {
+    if (elem) {
+      elem.style.height = "auto";
+      elem.style.height = elem.scrollHeight + 5 + "px";
+
+      if (elem.getAttribute("data-autosize") !== "true") {
+        elem.setAttribute("data-autosize", "true");
+      }
+    }
+  },
+};
+
+// Initialize on DOMContentLoaded
+document.addEventListener("DOMContentLoaded", function () {
+  textarea_autosize.init();
+});
+
+// gallery selector
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("gallery-popup")) {
+    const gallery = document
+      .getElementById("gallery-popup")
+      .querySelector("[data-slider]");
+    const triggers = document.querySelectorAll("[data-gallery]");
+    const onLoad = gallery.dataset.onload;
+
+    const clearGallery = () => {
+      // [].forEach.call(gallery.children, function(child) {
+      //       gallery.remove(child)
+      //     });
+      while (gallery.firstChild) {
+        gallery.removeChild(gallery.firstChild);
+      }
+    };
+
+    const setUpGallery = (info) => {
+      const contentId = info.split("_")[0];
+      const contentCount = info.split("_")[1];
+      clearGallery();
+
+      for (let index = 0; index < contentCount; index++) {
+        const div = document.createElement("div");
+        div.classList.add("gallery-card");
+        const img = document.createElement("img");
+        img.src = `../src/images/galleries/${contentId}_${index + 1}.webp`;
+        div.appendChild(img);
+        gallery.appendChild(div);
+      }
+
+      if (onLoad) {
+        window[onLoad]();
+      }
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        setUpGallery(trigger.dataset.gallery);
+      });
+    });
+  }
+});
+
+// tooltip handler
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("[data-tooltip]").forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      let text = el.getAttribute("data-tooltip");
+
+      let tooltip = document.getElementById("custom-tooltip");
+      if (!tooltip) {
+        tooltip = document.createElement("div");
+        tooltip.id = "custom-tooltip";
+
+        tooltip.classList.add("tooltip-after");
+        document.body.appendChild(tooltip);
+      }
+
+      tooltip.textContent = text;
+      tooltip.classList.add("visible");
+
+      const rect = el.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+      let top = window.scrollY + rect.bottom + 8; // 8px offset
+      let left = window.scrollX + rect.left;
+
+      // Check right overflow
+      if (left + tooltipRect.width > window.scrollX + window.innerWidth) {
+        left = window.scrollX + window.innerWidth - tooltipRect.width - 8;
+      }
+      // Check left overflow
+      if (left < window.scrollX) {
+        left = window.scrollX + 8;
+      }
+      // Check bottom overflow
+      if (top + tooltipRect.height > window.scrollY + window.innerHeight) {
+        top = window.scrollY + rect.top - tooltipRect.height - 8;
+      }
+      // Check top overflow
+      if (top < window.scrollY) {
+        top = window.scrollY + 8;
+      }
+
+      tooltip.style.top = `${top}px`;
+      tooltip.style.left = `${left}px`;
+    });
+
+    el.addEventListener("mouseleave", () => {
+      let tooltip = document.getElementById("custom-tooltip");
+      if (tooltip) tooltip.classList.remove("visible");
+    });
+  });
+});
+
+// brif
+document.addEventListener("DOMContentLoaded", () => {
+  const inputs = document
+    .getElementById("calculator")
+    ?.querySelectorAll(".accordion-content input");
+  const sentButton = document.getElementById("send-brif-total");
+
+  const toggleConverter = (inputs) => {
+    const toggles = [];
+    const texts = [];
+    inputs.forEach((input) => {
+      switch (input.type) {
+        case "checkbox": {
+          toggles.push({
+            id: input.id,
+            elementref: input,
+            reveal: document.getElementById(input.dataset.reveal || ""),
+            radioid: input.dataset.radio?.split(";"),
+          });
+          break;
+        }
+        default: {
+          texts.push({
+            id: input.id,
+            elementref: input,
+          });
+          break;
+        }
+      }
+    });
+
+    return { toggles: toggles, texts: texts };
+  };
+
+  if (inputs && sentButton) {
+    const { toggles, texts } = toggleConverter(inputs);
+    const togglechange = new Event("change");
+
+    toggles.forEach((toggle) => {
+      toggle.elementref.addEventListener("change", () => {
+        switch (toggle.id) {
+          default: {
+            if (toggle.elementref.checked) {
+              if (toggle.reveal) {
+                toggle.reveal.classList.remove("hidden");
+              }
+              if (toggle.radioid && toggle.radioid.length > 0) {
+                toggles.map((el) => {
+                  toggle.radioid?.forEach((id) => {
+                    if (el.id === id && el.elementref.checked) {
+                      el.elementref.checked = false;
+                      el.reveal?.classList.add("hidden");
+                    }
+                  });
+                });
+              }
+              break;
+            } else {
+              if (toggle.reveal) {
+                toggle.reveal.classList.add("hidden");
+              }
+              break;
+            }
+          }
+        }
+      });
+    });
+
+    sentButton.addEventListener("click", () => {
+      const review = {
+        options: toggles.filter((toggle) => toggle.elementref.checked),
+        extra: texts.filter((text) => text.elementref.value !== ""),
+      };
+      console.log(review);
+    });
+  }
+});
+
+// calculator
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.querySelector(".calculator")) {
+    const inputs = document
+      .getElementById("calculator")
+      ?.querySelectorAll(".accordion-content input");
+    const reset_button = document.getElementById("reset-options-btn");
+    const sentButton = document.getElementById("send-calculator-total");
+    const target = document.getElementById("calculator-total-target");
+    const hash = window.location.hash;
+    const togglechange = new Event("change");
+
+    const formatNumber = (num) => {
+      const [integer, decimal] = num.toString().split(".");
+      const formatted = integer.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      // console.log('=> formatted', formatted)
+      return formatted;
+    };
+
+    Object.defineProperty(target, "current_value", {
+      get() {
+        return this._current_value;
+      },
+      set(val) {
+        this._current_value = val;
+        this.innerText = formatNumber(val);
+        // console.log('=> set new value', val)
+      },
+      configurable: true,
+    });
+
+    const handleToggleByHash = (hash, toggles) => {
+      const id = hash.replace("#", "");
+      const handle_target = toggles.find((t) => t.id === id);
+      if (handle_target) {
+        try {
+          handle_target.elementref.checked = true;
+          handle_target.elementref.dispatchEvent(togglechange);
+          if (handle_target.nested && handle_target.nested.length > 0) {
+            handle_target.nested.forEach((nestedToggleid) => {
+              const nestedToggle = toggles.find((t) => t.id === nestedToggleid);
+              const section = document.querySelector(
+                `#section-${nestedToggleid.split("-")?.[0]}`
+              );
+              section.checked = true;
+              try {
+                if (nestedToggle) {
+                  nestedToggle.elementref.checked = true;
+                  nestedToggle.elementref.dispatchEvent(togglechange);
+                } else {
+                  console.error("=> ", nestedToggleid, "not found");
+                }
+                if (nestedToggle?.reveal) {
+                  nestedToggle.reveal.classList.remove("hidden");
+                }
+              } catch (err) {
+                console.error(nestedToggleid, err);
+              }
+            });
+          }
+          console.log("=> sucess");
+        } catch (err) {
+          console.log("=> error", err);
+        }
+      }
+    };
+
+    const toggleConverter = (inputs) => {
+      const toggles = [];
+      const counters = [];
+      const texts = [];
+      inputs.forEach((input) => {
+        switch (input.type) {
+          case "checkbox": {
+            toggles.push({
+              id: input.id,
+              elementref: input,
+              price: parseInt(input.dataset.price || ""),
+              nested: input.dataset.nested?.split(";"),
+              reveal: document.getElementById(input.dataset.reveal || ""),
+              radioid: input.dataset.radio?.split(";"),
+            });
+            break;
+          }
+          case "number": {
+            counters.push({
+              id: input.id,
+              elementref: input,
+              price: parseInt(input.dataset.price),
+              total: parseInt(input.dataset.price) * input.value,
+              intendfor: input.dataset.intendfor,
+            });
+            break;
+          }
+          default: {
+            texts.push({
+              id: input.id,
+              elementref: input,
+            });
+            break;
+          }
+        }
+      });
+
+      toggles.forEach((toggle) => {
+        counters.forEach((counter) => {
+          if (counter.intendfor === toggle.id) {
+            toggle.counter = counter;
+          }
+        });
+      });
+
+      return { toggles: toggles, counters: counters, texts: texts };
+    };
+
+    if (inputs && target) {
+      const { toggles, counters, texts } = toggleConverter(inputs);
+      target.innerText = 0;
+      target.current_value = 0;
+
+      toggles.forEach((toggle) => {
+        toggle.elementref.addEventListener("change", () => {
+          switch (toggle.id) {
+            default: {
+              if (toggle.elementref.checked) {
+                if (toggle.reveal) {
+                  toggle.reveal.classList.remove("hidden");
+                }
+                if (toggle.counter?.total) {
+                  target.current_value =
+                    target.current_value + toggle.counter.total;
+                }
+                if (toggle.radioid && toggle.radioid.length > 0) {
+                  toggles.map((el) => {
+                    toggle.radioid?.forEach((id) => {
+                      if (el.id === id) {
+                        if (el?.nested?.length > 0 && el.elementref.checked) {
+                          el.nested.forEach((nested) => {
+                            const nestedToggle = toggles.find(
+                              (t) => t.id === nested
+                            );
+                            nestedToggle.elementref.checked = false;
+                            nestedToggle.reveal?.classList.add("hidden");
+                            nestedToggle.elementref.dispatchEvent(togglechange);
+                          });
+                        }
+                        if (el.counter && el.elementref.checked) {
+                          el.elementref.checked = false;
+                          target.current_value =
+                            target.current_value - el.price - el.counter.total;
+                          el.reveal?.classList.add("hidden");
+                        } else if (el.elementref.checked) {
+                          target.current_value =
+                            target.current_value - el.price;
+                          el.elementref.checked = false;
+                          el.reveal?.classList.add("hidden");
+                        }
+                      }
+                    });
+                  });
+                }
+                if (toggle.nested && toggle.nested.length > 0) {
+                  toggle.nested.forEach((nestedToggleid) => {
+                    const nestedToggle = toggles.find(
+                      (t) => t.id === nestedToggleid
+                    );
+                    const section = document.querySelector(
+                      `#section-${nestedToggleid.split("-")?.[0]}`
+                    );
+                    section ? (section.checked = true) : null;
+                    try {
+                      if (nestedToggle) {
+                        nestedToggle.elementref.checked = true;
+                        nestedToggle.elementref.dispatchEvent(togglechange);
+                      } else {
+                        console.error("=> ", nestedToggleid, "not found");
+                      }
+                      if (nestedToggle?.reveal) {
+                        nestedToggle.reveal.classList.remove("hidden");
+                      }
+                    } catch (err) {
+                      console.error(nestedToggleid, err);
+                    }
+                  });
+                }
+                target.current_value = target.current_value + toggle.price;
+                break;
+              } else {
+                if (toggle.reveal) {
+                  toggle.reveal.classList.add("hidden");
+                }
+                if (toggle.counter?.total) {
+                  target.current_value =
+                    target.current_value - toggle.counter.total;
+                  // target.current_value = 162
+                }
+                if (toggle.nested && toggle.nested.length > 0) {
+                  toggle.nested.forEach((nestedToggleid) => {
+                    const nestedToggle = toggles.find(
+                      (t) => t.id === nestedToggleid
+                    );
+                    if (nestedToggle.elementref.checked) {
+                      nestedToggle.elementref.checked = false;
+                      nestedToggle.elementref.dispatchEvent(togglechange);
+                    }
+                    if (nestedToggle.reveal) {
+                      nestedToggle.reveal.classList.add("hidden");
+                    }
+                  });
+                }
+                if (
+                  toggle.id === "promotion-seo" ||
+                  toggle.id === "promotion-max_start"
+                ) {
+                  const inside_toggles = toggle.reveal.querySelectorAll(
+                    "input[type=checkbox]"
+                  );
+                  // console.log('=> inside_toggles', inside_toggles)
+                  const new_toggleChange = new Event("change");
+                  inside_toggles.forEach((toggle) => {
+                    if (toggle.checked) {
+                      toggle.checked = false;
+                      try {
+                        toggle.dispatchEvent(new_toggleChange);
+                      } catch (e) {
+                        console.log("err: ", e);
+                      }
+                    }
+                  });
+                }
+                const total = parseInt(target.current_value) - toggle.price;
+                if (total < 0) {
+                  target.current_value = 0;
+                } else {
+                  target.current_value = target.current_value - toggle.price;
+                }
+                break;
+              }
+            }
+          }
+        });
+      });
+
+      counters.forEach((counter) => {
+        const changeEvent = new Event("input");
+        counter.elementref.nextElementSibling?.addEventListener("click", () => {
+          counter.elementref.value++;
+          counter.elementref.dispatchEvent(changeEvent);
+        });
+        counter.elementref.previousElementSibling?.addEventListener(
+          "click",
+          () => {
+            if (counter.elementref.dataset?.intendfor === "design-landing") {
+              if (counter.elementref.value > 1) {
+                counter.elementref.value--;
+              }
+            } else if (counter.elementref.value > 0) {
+              counter.elementref.value--;
+            }
+            counter.elementref.dispatchEvent(changeEvent);
+          }
+        );
+        counter.elementref.addEventListener("input", () => {
+          target.current_value = target.current_value - counter.total;
+          counter.total =
+            parseInt(
+              counter.elementref.value === "" ? 0 : counter.elementref.value
+            ) * counter.price;
+          target.current_value = target.current_value + counter.total;
+        });
+        counter.elementref.addEventListener("keydown", (e) => {
+          const blockedkeys = ["-", ",", ".", "+"];
+          if (blockedkeys.includes(e.key)) {
+            e.preventDefault();
+          }
+        });
+        counter.elementref.addEventListener("blur", () => {
+          if (counter.elementref.value === "") {
+            counter.elementref.value = 0;
+          }
+          if (
+            counter.elementref.dataset?.intendfor === "design-landing" &&
+            counter.elementref.value < 1
+          ) {
+            counter.elementref.value = 1;
+          }
+        });
+      });
+
+      sentButton?.addEventListener("click", () => {
+        const review = {
+          options: toggles.filter((toggle) => toggle.elementref.checked),
+          extra: texts.filter((text) => text.elementref.value !== ""),
+          preprice: target.innerText,
+        };
+        console.log(review);
+      });
+
+      reset_button?.addEventListener("click", () => {
+        toggles.map((toggle) => {
+          toggle.elementref.checked = false;
+        });
+        target.current_value = 0;
+      });
+
+      if (hash) {
+        handleToggleByHash(hash, toggles);
+      }
+    }
+  }
+});
+
+// reviews
+document.addEventListener("DOMContentLoaded", () => {
+  const reviewsContainer = document.querySelector("#reviews-container");
+
+  if (reviewsContainer) {
+    reviewsContainer.addEventListener("submit", (event) => {
+      if (event.target.matches("form[data-pjax]")) {
+        event.preventDefault();
+
+        pjaxSubmit(event, {
+          push: true,
+          replace: false,
+          timeout: 1000,
+          scrollTo: false,
+          container: "#reviews-container",
+        });
+      }
+    });
+    // Обработка клика по элементам с классом 'filter'
+    document.addEventListener("click", (event) => {
+      if (event.target.matches(".filter")) {
+        const rating = event.target.dataset.rating;
+        const type = document.querySelector(".reviews__button.active").dataset
+          .type;
+        // Здесь должен быть вызов функции pjax.reload
+        pjaxReload({
+          container: "#reviews-container",
+          type: "POST",
+          data: { rating: rating, type: type },
+          timeout: 1000,
+          push: false,
+          replace: true,
+        });
+      }
+    });
+  }
+});
+
+// handle change clicks to add smooth change of columns
+document.addEventListener("DOMContentLoaded", () => {
+  const table = document.querySelector(".tender-table");
+  if (!table) {
+    return;
+  }
+  const buttons = table.querySelectorAll("th");
+  buttons.forEach((button, index) => {
+    if (index > 0) {
+      input = button.querySelector("input");
+      input.addEventListener("click", (e) => {
+        changeOrderHandler(button);
+      });
+    }
+  });
+
+  const changeOrderHandler = (button) => {
+    console.log("=> inside");
+    try {
+      buttons.forEach((item) => {
+        item.style.order = "1";
+        label = item?.querySelector("label");
+        label?.classList?.add("fade-out");
+      });
+
+      setTimeout(() => {
+        button.style.order = "3";
+      }, 350);
+
+      setTimeout(() => {
+        buttons.forEach((item) => {
+          label = item?.querySelector("label");
+          label?.classList?.remove("fade-out");
+          console.log("-- item.style", item.style.order);
+        });
+      }, 400);
+    } catch (error) {
+      console.log("=> err", error);
+    }
+  };
+});
