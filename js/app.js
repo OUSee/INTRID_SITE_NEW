@@ -1773,7 +1773,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // calculator
 document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector(".calculator")) {
+  if (document.querySelector("#calculator")) {
     const inputs = document
       .getElementById("calculator")
       ?.querySelectorAll(".accordion-content input");
