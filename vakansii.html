@@ -409,26 +409,28 @@
         </div>
     </footer>
     <!-- MODAL WINDOWS -->
-    <dialog class="popup" id="map">
+    <dialog class="popup popup-map" id="map">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <div class="map-container"></div>
                 <hr>
                 <div class="map-testimonials">
-                    <p class="color-white ml-10"></p>
+                    <div id="map-info"></div>
                     <a class="title_h5 fz-20 phone-line gap-10" href="tel:+74732540796">
-                        <i class="icon-phone  color-blue" style="top: 4px;"></i>
+                        <i class="icon-phone  color-blue"></i>
                         <span>+7 (473) 254 0796</span>
                     </a>
-                    <div class="gap-10 ml-10" id="map-social">
+                    <div class="gap-10" id="map-social">
                         <a class="title_h5 fz-26 phone-line" id="map-whatsapp" href="tel:+74732540796">
-                            <i class="icon-whatsapp color-blue" style="top: 4px;"></i>
+                            <i class="icon-whatsapp color-blue"></i>
                         </a>
                         <a class="title_h5 fz-26 phone-line" id="map-telegram" href="https://t.me/webintrid">
-                            <i class="icon-tg color-blue" style="top: 4px;"></i></a>
+                            <i class="icon-tg color-blue"></i>
+                        </a>
                     </div>
                     <a href="#" target="_blank" class="button-link">
-                        Перейти в карты <i class="icon-arrow_wide"></i>
+                        Перейти в карты 
+                        <i class="icon-arrow_wide"></i>
                     </a>
                 </div>
             </div>
@@ -444,11 +446,6 @@
                         <input type="tel" name="phone" placeholder="* Телефон" required>
                         <textarea data-autosize="true" rows="1"
                             placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
-                        <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
-                        <!-- <label for="personal-data">
-                            <input type="checkbox" name="agree" id="personal-data" required>
-                            Согласен на обработку персональных данных
-                        </label> -->
                         <p class="testimonials text-center m-center">
                             Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
                                 class="text-dashed color-white">обработку
