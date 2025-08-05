@@ -1,5 +1,5 @@
 // header
-const header = document.getElementById("header");
+const header = document.querySelector("#header, .header");
 const preloader = document.getElementById("preloader");
 
 window.addEventListener("scroll", function () {
@@ -14,6 +14,98 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     preloader.style.display = "none";
   }, 3000);
+});
+
+// mobile-menu
+const mainMenu = document.querySelector(".menu");
+const menuOpenButtons = document.querySelectorAll("[data-menu]");
+const menuCloseButtons = document.querySelectorAll("[data-menu-close]");
+
+function openMenu(menuElem) {
+  if (menuElem.getAttribute("data-menu") === "open") {
+    menuElem.setAttribute("data-menu", "closed");
+    mainMenu.classList.remove("open");
+    document.documentElement.classList.remove("menu-open");
+  } else {
+    menuElem.setAttribute("data-menu", "open");
+    mainMenu.classList.add("open");
+    document.documentElement.classList.add("menu-open");
+  }
+}
+
+function closeMenu() {
+  document.querySelector(".header-burger").setAttribute("data-menu", "closed");
+  mainMenu.classList.remove("open");
+  document.documentElement.classList.remove("menu-open");
+}
+
+function initDropdowns() {
+  const menuDropdowns = document.querySelectorAll(".menu-dropdown");
+  let activeDropdown = null;
+
+  // Обработчик для главных ссылок меню
+  document.querySelectorAll(".menu-dropdown > a.menu-link").forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const currentDropdown = this.closest(".menu-dropdown");
+
+      // Если кликнули по уже открытому меню - просто закрываем его
+      if (currentDropdown === activeDropdown) {
+        currentDropdown.classList.remove("active");
+        activeDropdown = null;
+        e.preventDefault();
+        return;
+      }
+
+      // Закрываем предыдущее открытое меню
+      if (activeDropdown) {
+        activeDropdown.classList.remove("active");
+      }
+
+      // Открываем текущее меню
+      currentDropdown.classList.add("active");
+      activeDropdown = currentDropdown;
+
+      e.preventDefault();
+    });
+  });
+
+  // Закрываем меню при клике вне области
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".menu-dropdown") && activeDropdown) {
+      activeDropdown.classList.remove("active");
+      activeDropdown = null;
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth <= 1000) {
+    initDropdowns();
+  }
+});
+
+// Обработчик событий для кнопки открытия меню
+menuOpenButtons?.forEach((menuElem) => {
+  menuElem?.addEventListener("click", () => {
+    openMenu(menuElem);
+  });
+});
+
+// Обработчик событий для кнопки закрытия меню
+menuCloseButtons?.forEach((menuItem) => {
+  menuItem?.addEventListener("click", () => {
+    closeMenu();
+  });
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 1000) {
+    closeMenu();
+  }
+
+  if(window.innerWidth <= 1000) {
+    initDropdowns();
+  }
 });
 
 // dynamic mockup place
@@ -281,7 +373,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const firstClone = originalSlides[0].cloneNode(true);
     const secondClone = originalSlides[1].cloneNode(true);
     const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
-    const preLastClone = originalSlides[originalSlides.length - 2].cloneNode(true);
+    const preLastClone =
+      originalSlides[originalSlides.length - 2].cloneNode(true);
 
     // Добавляем клоны в DOM (2 в начале и 2 в конце)
     slidesContainer.insertBefore(lastClone, originalSlides[0]);
@@ -311,20 +404,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Функция обновления позиции слайдера
     function updateSlider(instant = false) {
-      const slideSize = isHorizontal 
-        ? originalSlides[0].offsetWidth 
+      const slideSize = isHorizontal
+        ? originalSlides[0].offsetWidth
         : originalSlides[0].offsetHeight;
-      
+
       const translateValue = isHorizontal
         ? `translateX(-${currentIndex * slideSize}px)`
         : `translateY(-${currentIndex * slideSize}px)`;
-      
+
       if (instant) {
         slidesContainer.style.transition = "none";
       } else {
         slidesContainer.style.transition = "transform 0.5s ease";
       }
-      
+
       slidesContainer.style.transform = translateValue;
     }
 
@@ -404,7 +497,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSlider();
       }, 100);
     });
-
   } catch (err) {
     console.error("Slider error:", err);
   }
