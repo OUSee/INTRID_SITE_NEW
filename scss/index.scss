@@ -649,8 +649,8 @@ button.next {
         }
 
         // @media (max-width: 1000px) {
-          // max-width: 100%;
-          // max-width: 550px;
+        // max-width: 100%;
+        // max-width: 550px;
         // }
       }
 
@@ -699,14 +699,13 @@ button.next {
       }
 
       @media (max-width: 600px) {
-        margin-top: 60px;
+        // margin-top: 60px;
         margin-left: auto;
-        margin-right: 20px;
-        margin-bottom: -80px;
+        margin-right: -60px;
       }
 
       @media (max-width: 400px) {
-        margin-top: 50px;
+        // margin-top: 50px;
       }
     }
 
@@ -717,9 +716,16 @@ button.next {
 
       @media (max-width: 600px) {
         top: 0;
+        width: 200px;
         align-items: center;
         justify-content: center;
-        margin: 0;
+        margin: -150px 0 0 0;
+      }
+
+      & .slides {
+        @media (max-width: 600px) {
+          width: 200px;
+        }
       }
     }
   }
