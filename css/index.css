@@ -970,7 +970,7 @@ th {
 }
 
 [id] {
-  scroll-margin-block-start: 80px;
+  scroll-margin-block-start: 70px;
 }
 
 input[type=radio] {
@@ -7366,152 +7366,6 @@ body {
   }
 }
 
-div.slider-test,
-.achievements-slider,
-.slider-horizontal {
-  width: 250px;
-  height: 400px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-}
-div.slider-test div.slides,
-.achievements-slider div.slides,
-.slider-horizontal div.slides {
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.5s ease;
-}
-div.slider-test div.slides .slide,
-.achievements-slider div.slides .slide,
-.slider-horizontal div.slides .slide {
-  width: 250px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: white;
-}
-div.slider-test div.slides .slide:hover .img-placeholder,
-.achievements-slider div.slides .slide:hover .img-placeholder,
-.slider-horizontal div.slides .slide:hover .img-placeholder {
-  background-color: var(--blue-clouds);
-  box-shadow: 0px 0px 20px 20px var(--blue-clouds);
-}
-
-.achievements-slider {
-  transform-style: preserve-3d;
-}
-.achievements-slider .slides .slide {
-  transform-style: preserve-3d;
-}
-.achievements-slider .slides .slide .icons-partners {
-  height: 1.7em;
-  max-height: 0px;
-}
-.achievements-slider .slides .slide .icons-partners img {
-  width: 1.7em;
-  height: auto;
-}
-@media (max-width: 600px) {
-  .achievements-slider.early {
-    top: 240px;
-    margin: 0 auto;
-    height: 100vw;
-    transform: rotate(90deg);
-  }
-  .achievements-slider.early .slides hr {
-    border-color: transparent;
-    background-color: transparent;
-  }
-  .achievements-slider.early .slides .slide {
-    padding: 0;
-    gap: 0;
-    justify-content: unset;
-    padding-top: 20px;
-    transform: rotate(-90deg) translateY(35px);
-    height: calc(50vw - 1px);
-    width: calc(50vw - 1px);
-  }
-  .achievements-slider.early .slides .slide .img-placeholder {
-    margin-bottom: 12px;
-  }
-  .achievements-slider.early .slides .slide p {
-    max-width: 80%;
-  }
-  .achievements-slider.early .prev {
-    top: -10px;
-  }
-  .achievements-slider.early .next {
-    bottom: -10px;
-  }
-  .achievements-slider.early button {
-    left: 100px;
-  }
-}
-@media (max-width: 440px) {
-  .achievements-slider {
-    height: 100vw;
-    transform: rotate(90deg);
-    transform-style: preserve-3d;
-  }
-  .achievements-slider .slides hr {
-    border-color: transparent;
-    background-color: transparent;
-  }
-  .achievements-slider .slides .slide {
-    padding: 0;
-    gap: 0;
-    justify-content: unset;
-    padding-top: 20px;
-    transform-style: preserve-3d;
-    transform: rotate(-90deg) translateY(35px);
-    height: calc(50vw - 1px);
-    width: calc(50vw - 1px);
-  }
-  .achievements-slider .slides .slide .img-placeholder {
-    margin-bottom: 12px;
-  }
-  .achievements-slider .slides .slide p {
-    max-width: 80%;
-  }
-  .achievements-slider .prev {
-    top: -10px;
-  }
-  .achievements-slider .next {
-    bottom: -10px;
-  }
-  .achievements-slider button {
-    left: 85px;
-  }
-}
-
-.slider-horizontal {
-  width: 100%;
-  height: 400px;
-}
-.slider-horizontal div.slides {
-  display: flex;
-  flex-direction: row;
-  transition: transform 0.5s ease;
-}
-.slider-horizontal div.slides .slide {
-  flex: 1 1;
-  width: unset;
-  height: unset;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: white;
-}
-.slider-horizontal div.slides .slide:hover .img-placeholder {
-  background-color: var(--blue-clouds);
-  box-shadow: 0px 0px 20px 20px var(--blue-clouds);
-}
-
 button.prev,
 button.next {
   position: absolute;
@@ -7541,6 +7395,70 @@ button.next:hover {
 .achievements-slider {
   position: relative;
   z-index: 3;
+  width: 200px;
+  height: 400px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .achievements-slider {
+    display: flex;
+    width: 100vw;
+    height: auto;
+    padding: 20px 0;
+    margin: 0 auto;
+    overflow: unset;
+  }
+}
+.achievements-slider div.slides {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.5s ease;
+}
+@media (max-width: 600px) {
+  .achievements-slider div.slides {
+    align-items: flex-start;
+  }
+}
+.achievements-slider div.slides .slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 0 0 0;
+  padding: 0;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+}
+@media (max-width: 600px) {
+  .achievements-slider div.slides .slide {
+    width: auto;
+    max-width: calc(50vw - 1px);
+    height: unset;
+    flex: 1 0 auto;
+  }
+}
+.achievements-slider div.slides .slide .icons-partners {
+  height: 1.7em;
+  max-height: 0px;
+}
+.achievements-slider div.slides .slide .icons-partners img {
+  width: 1.7em;
+  height: auto;
+}
+@media (max-width: 600px) {
+  .achievements-slider div.slides .slide p {
+    max-width: 80%;
+  }
+}
+.achievements-slider div.slides .slide:hover .img-placeholder {
+  background-color: var(--blue-clouds);
+  box-shadow: 0px 0px 20px 20px var(--blue-clouds);
 }
 .achievements-slider button {
   color: var(--blue-main);
@@ -7549,32 +7467,63 @@ button.next:hover {
   border: none;
   padding: 10px;
   cursor: pointer;
+  transform-origin: center;
 }
 .achievements-slider button:hover {
   background: transparent;
   box-shadow: none;
 }
 .achievements-slider button i {
+  color: currentColor;
   font-size: 30px;
 }
 .achievements-slider button.prev {
-  top: -10px;
-  transform: rotate(270deg);
+  top: 0;
+  left: 50%;
+  right: unset;
+  bottom: unset;
+  transform: translate(-50%, -30%);
+}
+@media (max-width: 600px) {
+  .achievements-slider button.prev {
+    top: 50%;
+    left: 0;
+    right: unset;
+    bottom: unset;
+    transform: translate(-50%, -50%);
+  }
+}
+.achievements-slider button.prev i {
+  transform: rotate(-90deg);
+}
+@media (max-width: 600px) {
+  .achievements-slider button.prev i {
+    transform: rotate(-180deg);
+  }
 }
 .achievements-slider button.next {
-  left: 100px;
-  bottom: -10px;
+  top: unset;
+  left: 50%;
+  right: unset;
+  bottom: 0;
+  transform: translate(-50%, 30%);
+}
+@media (max-width: 600px) {
+  .achievements-slider button.next {
+    top: 50%;
+    left: unset;
+    right: 0;
+    bottom: unset;
+    transform: translate(50%, -50%);
+  }
+}
+.achievements-slider button.next i {
   transform: rotate(90deg);
 }
-.achievements-slider .slides .slide {
-  flex-direction: column;
-  text-align: center;
-  gap: 12px;
-}
-.achievements-slider .slides hr {
-  width: 70%;
-  margin: 0 auto;
-  border-color: var(--color-grey);
+@media (max-width: 600px) {
+  .achievements-slider button.next i {
+    transform: rotate(0deg);
+  }
 }
 
 .prices-block {
@@ -7976,27 +7925,15 @@ button.next:hover {
 }
 @media (max-width: 600px) {
   .main-section--index .flying-mockup {
+    margin-top: 50px;
+    margin-bottom: 50px;
     margin-left: auto;
-    margin-right: -60px;
+    margin-right: auto;
   }
 }
 @media (max-width: 1000px) {
   .main-section--index .achievements-slider {
     margin-right: unset;
-  }
-}
-@media (max-width: 600px) {
-  .main-section--index .achievements-slider {
-    top: 0;
-    width: 200px;
-    align-items: center;
-    justify-content: center;
-    margin: -150px 0 0 0;
-  }
-}
-@media (max-width: 600px) {
-  .main-section--index .achievements-slider .slides {
-    width: 200px;
   }
 }
 .main-section--comment {
@@ -9242,16 +9179,8 @@ button.next:hover {
   flex: 1 1 30%;
 }
 .sites-leaders-content-right .achievements-slider {
-  top: unset;
   margin: 0 auto;
   margin-bottom: auto;
-}
-@media (max-width: 440px) {
-  .sites-leaders-content-right .achievements-slider {
-    top: unset !important;
-    margin-top: -150px !important;
-    transform: rotate(90deg);
-  }
 }
 .sites-portfolio-slider {
   margin-top: 50px;
@@ -9262,6 +9191,9 @@ button.next:hover {
 .sites-portfolio-slider.logo-slider {
   min-height: unset;
   align-items: stretch;
+}
+.sites-portfolio-slider > *:not(.active) {
+  opacity: 0;
 }
 .sites-reviews {
   position: relative;
@@ -12423,9 +12355,6 @@ button.next:hover {
     height: 212px;
     width: 212px;
   }
-  .tabs {
-    padding-top: 0px;
-  }
   .tabs-buttons {
     margin: 0 8px;
     gap: 14px;
@@ -12467,11 +12396,7 @@ button.next:hover {
     height: 212px;
     width: 212px;
   }
-  .achievements-slider {
-    top: -50px;
-  }
   .tabs {
-    padding-top: 0px;
     padding-bottom: 0px;
   }
   .tabs-buttons {

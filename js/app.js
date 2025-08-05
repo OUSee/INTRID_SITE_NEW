@@ -397,6 +397,134 @@ document.addEventListener("DOMContentLoaded", () => {
 //     console.log("=> err", err);
 //   }
 // });
+// new
+// document.addEventListener("DOMContentLoaded", () => {
+//   try {
+//     const slidesContainer = document.querySelector(".slides");
+//     const prevBtn = document.querySelector(".prev");
+//     const nextBtn = document.querySelector(".next");
+//     const originalSlides = document.querySelectorAll(".slide");
+
+//     if (!slidesContainer || !originalSlides.length) {
+//       return;
+//     }
+
+//     // Создаем клоны для плавных переходов
+//     const firstClone = originalSlides[0].cloneNode(true);
+//     const secondClone = originalSlides[1].cloneNode(true);
+//     const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+//     const preLastClone =
+//       originalSlides[originalSlides.length - 2].cloneNode(true);
+
+//     // Добавляем клоны в DOM (2 в начале и 2 в конце)
+//     slidesContainer.insertBefore(lastClone, originalSlides[0]);
+//     slidesContainer.insertBefore(preLastClone, originalSlides[0]);
+//     slidesContainer.appendChild(firstClone);
+//     slidesContainer.appendChild(secondClone);
+
+//     // Получаем все слайды (оригиналы + клоны)
+//     const allSlides = slidesContainer.querySelectorAll(".slide");
+//     const realSlideCount = originalSlides.length;
+//     let currentIndex = 2; // Начинаем с первого оригинального слайда (учитывая 2 клона в начале)
+
+//     // Настройки автопрокрутки
+//     let isAutoScrollPaused = false;
+//     let autoScrollIntervalId;
+
+//     // Функция обновления позиции слайдера
+//     function updateSlider() {
+//       const slideHeight = originalSlides[0].offsetHeight;
+//       slidesContainer.style.transform = `translateY(-${
+//         currentIndex * slideHeight
+//       }px)`;
+//     }
+
+//     // Функция для плавного перехода к слайду
+//     function goToSlide(index, instant = false) {
+//       if (instant) {
+//         slidesContainer.style.transition = "none";
+//       } else {
+//         slidesContainer.style.transition = "transform 0.5s ease";
+//       }
+
+//       currentIndex = index;
+//       updateSlider();
+//     }
+
+//     // Обработчики навигации
+//     function goNext() {
+//       clearInterval(autoScrollIntervalId);
+
+//       // Плавный переход к следующему слайду
+//       goToSlide(currentIndex + 1);
+
+//       // Если достигли конца (последний клон), мгновенно переходим к началу
+//       if (currentIndex >= allSlides.length - 2) {
+//         setTimeout(() => {
+//           goToSlide(2, true); // Переход к первому оригинальному слайду
+//         }, 500);
+//       }
+
+//       resetAutoScroll();
+//     }
+
+//     function goPrev() {
+//       clearInterval(autoScrollIntervalId);
+
+//       // Плавный переход к предыдущему слайду
+//       goToSlide(currentIndex - 1);
+
+//       // Если достигли начала (первый клон), мгновенно переходим к концу
+//       if (currentIndex <= 1) {
+//         setTimeout(() => {
+//           goToSlide(allSlides.length - 3, true); // Переход к последнему оригинальному слайду
+//         }, 500);
+//       }
+
+//       resetAutoScroll();
+//     }
+
+//     // Управление автопрокруткой
+//     function startAutoScroll() {
+//       if (isAutoScrollPaused) return;
+//       autoScrollIntervalId = setInterval(goNext, 3000);
+//     }
+
+//     function stopAutoScroll() {
+//       clearInterval(autoScrollIntervalId);
+//     }
+
+//     function resetAutoScroll() {
+//       stopAutoScroll();
+//       startAutoScroll();
+//     }
+
+//     // Обработчики событий
+//     nextBtn.addEventListener("click", goNext);
+//     prevBtn.addEventListener("click", goPrev);
+
+//     slidesContainer.addEventListener("mouseenter", () => {
+//       isAutoScrollPaused = true;
+//       stopAutoScroll();
+//     });
+
+//     slidesContainer.addEventListener("mouseleave", () => {
+//       isAutoScrollPaused = false;
+//       startAutoScroll();
+//     });
+
+//     // Инициализация
+//     goToSlide(2, true); // Устанавливаем начальную позицию
+//     startAutoScroll();
+
+//     // Обработка ресайза
+//     window.addEventListener("resize", () => {
+//       updateSlider();
+//     });
+//   } catch (err) {
+//     console.error("Slider error:", err);
+//   }
+// });
 document.addEventListener("DOMContentLoaded", () => {
   try {
     const slidesContainer = document.querySelector(".slides");
@@ -423,60 +551,72 @@ document.addEventListener("DOMContentLoaded", () => {
     // Получаем все слайды (оригиналы + клоны)
     const allSlides = slidesContainer.querySelectorAll(".slide");
     const realSlideCount = originalSlides.length;
-    let currentIndex = 2; // Начинаем с первого оригинального слайда (учитывая 2 клона в начале)
+    let currentIndex = 2; // Начинаем с первого оригинального слайда
+
+    // Определяем ориентацию слайдера
+    let isHorizontal = false;
+    const checkOrientation = () => {
+      const newIsHorizontal = window.innerWidth <= 600;
+      if (newIsHorizontal !== isHorizontal) {
+        isHorizontal = newIsHorizontal;
+        slidesContainer.style.flexDirection = isHorizontal ? "row" : "column";
+        updateSlider(true); // Принудительное обновление без анимации
+      }
+    };
 
     // Настройки автопрокрутки
     let isAutoScrollPaused = false;
     let autoScrollIntervalId;
 
     // Функция обновления позиции слайдера
-    function updateSlider() {
-      const slideHeight = originalSlides[0].offsetHeight;
-      slidesContainer.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
-    }
-
-    // Функция для плавного перехода к слайду
-    function goToSlide(index, instant = false) {
+    function updateSlider(instant = false) {
+      const slideSize = isHorizontal 
+        ? originalSlides[0].offsetWidth 
+        : originalSlides[0].offsetHeight;
+      
+      const translateValue = isHorizontal
+        ? `translateX(-${currentIndex * slideSize}px)`
+        : `translateY(-${currentIndex * slideSize}px)`;
+      
       if (instant) {
         slidesContainer.style.transition = "none";
       } else {
         slidesContainer.style.transition = "transform 0.5s ease";
       }
       
-      currentIndex = index;
-      updateSlider();
+      slidesContainer.style.transform = translateValue;
     }
 
     // Обработчики навигации
     function goNext() {
       clearInterval(autoScrollIntervalId);
-      
-      // Плавный переход к следующему слайду
-      goToSlide(currentIndex + 1);
-      
+      currentIndex++;
+      updateSlider();
+
       // Если достигли конца (последний клон), мгновенно переходим к началу
       if (currentIndex >= allSlides.length - 2) {
         setTimeout(() => {
-          goToSlide(2, true); // Переход к первому оригинальному слайду
+          currentIndex = 2;
+          updateSlider(true);
         }, 500);
       }
-      
+
       resetAutoScroll();
     }
 
     function goPrev() {
       clearInterval(autoScrollIntervalId);
-      
-      // Плавный переход к предыдущему слайду
-      goToSlide(currentIndex - 1);
-      
+      currentIndex--;
+      updateSlider();
+
       // Если достигли начала (первый клон), мгновенно переходим к концу
       if (currentIndex <= 1) {
         setTimeout(() => {
-          goToSlide(allSlides.length - 3, true); // Переход к последнему оригинальному слайду
+          currentIndex = allSlides.length - 3;
+          updateSlider(true);
         }, 500);
       }
-      
+
       resetAutoScroll();
     }
 
@@ -510,12 +650,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Инициализация
-    goToSlide(2, true); // Устанавливаем начальную позицию
+    checkOrientation();
+    updateSlider(true);
     startAutoScroll();
 
-    // Обработка ресайза
+    // Обработка ресайза с троттлингом
+    let resizeTimeout;
     window.addEventListener("resize", () => {
-      updateSlider();
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        checkOrientation();
+        updateSlider();
+      }, 100);
     });
 
   } catch (err) {
@@ -530,9 +676,7 @@ const SliderInIt = () => {};
 document.addEventListener("DOMContentLoaded", () => {
   const sliders = document.querySelectorAll(".tab-slider");
 
-  const tabButtons = document.querySelector(
-    ".prices-block--buttons"
-  );
+  const tabButtons = document.querySelector(".prices-block--buttons");
 
   if (!tabButtons) {
     return;
@@ -1820,79 +1964,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // brif
 document.addEventListener("DOMContentLoaded", () => {
-  const inputs = document
-    .getElementById("calculator")
-    ?.querySelectorAll(".accordion-content input");
-  const sentButton = document.getElementById("send-brif-total");
+  if (document.querySelector(".sitebrif")) {
+    const inputs = document
+      .getElementById("calculator")
+      ?.querySelectorAll(".accordion-content input");
+    const sentButton = document.getElementById("send-brif-total");
 
-  const toggleConverter = (inputs) => {
-    const toggles = [];
-    const texts = [];
-    inputs.forEach((input) => {
-      switch (input.type) {
-        case "checkbox": {
-          toggles.push({
-            id: input.id,
-            elementref: input,
-            reveal: document.getElementById(input.dataset.reveal || ""),
-            radioid: input.dataset.radio?.split(";"),
-          });
-          break;
-        }
-        default: {
-          texts.push({
-            id: input.id,
-            elementref: input,
-          });
-          break;
-        }
-      }
-    });
-
-    return { toggles: toggles, texts: texts };
-  };
-
-  if (inputs && sentButton) {
-    const { toggles, texts } = toggleConverter(inputs);
-    const togglechange = new Event("change");
-
-    toggles.forEach((toggle) => {
-      toggle.elementref.addEventListener("change", () => {
-        switch (toggle.id) {
+    const toggleConverter = (inputs) => {
+      const toggles = [];
+      const texts = [];
+      inputs.forEach((input) => {
+        switch (input.type) {
+          case "checkbox": {
+            toggles.push({
+              id: input.id,
+              elementref: input,
+              reveal: document.getElementById(input.dataset.reveal || ""),
+              radioid: input.dataset.radio?.split(";"),
+            });
+            break;
+          }
           default: {
-            if (toggle.elementref.checked) {
-              if (toggle.reveal) {
-                toggle.reveal.classList.remove("hidden");
-              }
-              if (toggle.radioid && toggle.radioid.length > 0) {
-                toggles.map((el) => {
-                  toggle.radioid?.forEach((id) => {
-                    if (el.id === id && el.elementref.checked) {
-                      el.elementref.checked = false;
-                      el.reveal?.classList.add("hidden");
-                    }
-                  });
-                });
-              }
-              break;
-            } else {
-              if (toggle.reveal) {
-                toggle.reveal.classList.add("hidden");
-              }
-              break;
-            }
+            texts.push({
+              id: input.id,
+              elementref: input,
+            });
+            break;
           }
         }
       });
-    });
 
-    sentButton.addEventListener("click", () => {
-      const review = {
-        options: toggles.filter((toggle) => toggle.elementref.checked),
-        extra: texts.filter((text) => text.elementref.value !== ""),
-      };
-      console.log(review);
-    });
+      return { toggles: toggles, texts: texts };
+    };
+
+    if (inputs && sentButton) {
+      const { toggles, texts } = toggleConverter(inputs);
+      const togglechange = new Event("change");
+
+      toggles.forEach((toggle) => {
+        toggle.elementref.addEventListener("change", () => {
+          switch (toggle.id) {
+            default: {
+              if (toggle.elementref.checked) {
+                if (toggle.reveal) {
+                  toggle.reveal.classList.remove("hidden");
+                }
+                if (toggle.radioid && toggle.radioid.length > 0) {
+                  toggles.map((el) => {
+                    toggle.radioid?.forEach((id) => {
+                      if (el.id === id && el.elementref.checked) {
+                        el.elementref.checked = false;
+                        el.reveal?.classList.add("hidden");
+                      }
+                    });
+                  });
+                }
+                break;
+              } else {
+                if (toggle.reveal) {
+                  toggle.reveal.classList.add("hidden");
+                }
+                break;
+              }
+            }
+          }
+        });
+      });
+
+      sentButton.addEventListener("click", () => {
+        const review = {
+          options: toggles.filter((toggle) => toggle.elementref.checked),
+          extra: texts.filter((text) => text.elementref.value !== ""),
+        };
+        console.log(review);
+      });
+    }
   }
 });
 
