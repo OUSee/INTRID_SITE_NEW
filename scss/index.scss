@@ -3378,70 +3378,6 @@ button.next {
   }
 }
 
-.tech-conditions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 32px;
-
-  & > span {
-    &.title_h4 {
-      flex: 1 0 auto;
-      width: 100%;
-    }
-  }
-
-  & > ul {
-    margin: 20px 0 32px;
-
-    @media (max-width: 600px) {
-      margin: 20px 0;
-    }
-
-    & > li {
-      padding-left: 10px;
-      margin-bottom: 10px;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-      &::marker {
-        color: var(--blue-main);
-        content: "\2022";
-        margin-right: 10px;
-      }
-    }
-  }
-
-  & > div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    max-width: 1090px;
-    width: 100%;
-    margin-top: 20px;
-
-    & > p {
-      @media (max-width: 1200px) {
-        width: 100%;
-      }
-    }
-
-    & > .button-link {
-      margin-left: auto;
-
-      @media (max-width: 1200px) {
-        margin-left: 0;
-      }
-    }
-  }
-}
-
 .support-slider {
   display: flex;
   align-items: stretch;
@@ -4213,12 +4149,6 @@ button.next {
   }
 }
 
-.numbers-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 20px;
-}
-
 // comment
 
 // Отзывы
@@ -4546,6 +4476,7 @@ button.next {
 .blog_page {
   & > .container {
     @include blogContainer;
+
     padding-top: 0px;
     padding: 0px 50px 62px 50px;
 
