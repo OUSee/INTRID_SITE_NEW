@@ -1244,58 +1244,7 @@ button.next {
   }
 }
 
-.web-count {
-  display: flex;
-  align-items: center;
-  // width: 380px;
-  flex-wrap: wrap;
-  row-gap: 10px;
-  position: relative;
-
-  span.ml-6 {
-    flex-shrink: 1;
-    flex-basis: 100px;
-
-    @media (max-width: 1250px) {
-      text-wrap: nowrap;
-      margin-left: 0;
-    }
-  }
-
-  .large-number {
-    color: var(--blue-main);
-    font-size: 70px;
-    font-weight: 600;
-  }
-
-  img {
-    height: 70px;
-    width: auto;
-
-    &.olive-right {
-      transform: scaleX(-1);
-    }
-  }
-
-  &::before {
-    position: absolute;
-    top: 40px;
-    left: 90px;
-    z-index: 0;
-    content: "";
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 100px 80px var(--blue-clouds),
-      inset 0px 0px 100px 2px var(--blue-clouds);
-  }
-}
-
 #more-about-web-dev {
-  display: none;
-}
-
-.calc-spacer {
   display: none;
 }
 
@@ -1972,60 +1921,6 @@ button.next {
   display: flex;
 }
 
-.slider-nav-button {
-  width: 50px;
-  height: 50px;
-  font-size: 25px;
-  line-height: 25px;
-  border-radius: 50%;
-  padding: 4px 0 0 12px;
-  color: var(--blue-main);
-  border-color: var(--blue-main);
-
-  i {
-    max-width: 25px;
-    max-height: 25px;
-
-    &.left {
-      transform: rotate(180deg) translateY(0.1em);
-    }
-
-    &::before {
-      max-width: 25px;
-      max-height: 25px;
-    }
-  }
-
-  &.close-button {
-    position: absolute;
-    top: -25px;
-    right: 10px;
-    padding: 13px 14px;
-    width: 40px;
-    height: 40px;
-    font-size: 15px;
-    line-height: 15px;
-
-    i {
-      max-width: 15px;
-      max-height: 15px;
-
-      &::before {
-        max-width: 15px;
-        max-height: 15px;
-      }
-    }
-  }
-
-  @media (max-width: 600px) {
-    display: none;
-
-    &.close-button {
-      display: block;
-    }
-  }
-}
-
 // pages styles
 
 // PAGES
@@ -2357,36 +2252,9 @@ button.next {
 }
 
 //corporate page
-.corporate {
-  &-howdone {
-    &-additional {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      padding: 20px;
-      gap: 20px;
-
-      .img-wrapper {
-        border-radius: 50%;
-        width: 62px;
-        height: 62px;
-      }
-
-      @media (max-width: 440px) {
-        flex-direction: column;
-        align-items: center;
-
-        p {
-          text-align: center;
-        }
-      }
-    }
-  }
-}
 
 //store page
 .store {
-  &-benefits,
   &-ai {
     &.web-shop-diagram {
       position: relative;
@@ -2697,41 +2565,6 @@ button.next {
 }
 
 //web-portal page
-.portal {
-  &-diferenses {
-    table {
-      overflow: hidden;
-      border-radius: 39px;
-      background-color: var(--blue-bg);
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      border-collapse: collapse;
-      border: 1px solid var(--blue-main);
-
-      @media (max-width: 600px) {
-        border-radius: 25px;
-      }
-
-      tr {
-        td:nth-child(2) {
-          background-color: var(--blue-tag);
-        }
-      }
-
-      th {
-        background-color: var(--blue-clouds);
-      }
-
-      td,
-      th {
-        border: 1px solid var(--blue-main);
-        padding: 18px 30px;
-        text-align: center;
-      }
-    }
-  }
-}
 
 //ai page
 .ai {
@@ -3798,26 +3631,6 @@ button.next {
 
 // smm
 .smm {
-  &-services {
-    .tech-list {
-      gap: 50px 20px;
-
-      li {
-        max-width: 50%;
-        flex-basis: calc(50% - 16px);
-
-        img {
-          align-self: start;
-        }
-
-        @media (max-width: 600px) {
-          max-width: 100%;
-          flex: 1 1 100%;
-        }
-      }
-    }
-  }
-
   &-form {
     form {
       .form-limitter .block {
@@ -5738,12 +5551,6 @@ button.next {
   }
 }
 
-.calc-spacer {
-  margin-top: 64px;
-  display: block;
-  width: 100%;
-}
-
 @media (min-width: 601px) and (max-width: 900px) {
   .flying-orb {
     display: none;
@@ -5803,10 +5610,6 @@ button.next {
 }
 
 @media (max-width: 540px) {
-  hr.calc-spacer {
-    display: none !important;
-  }
-
   #calc-web-price,
   .more-about-web-dev {
     width: 100%;
@@ -5892,10 +5695,6 @@ button.next {
         justify-self: center;
       }
     }
-  }
-
-  hr.calc-spacer {
-    display: none !important;
   }
 
   #calc-web-price,
