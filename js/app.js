@@ -1797,9 +1797,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // brif
 document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector("#calculator-sitebrif")) {
+  if (document.querySelector("#calculator-brif")) {
     const inputs = document
-      .getElementById("calculator-sitebrif")
+      .getElementById("calculator-brif")
       ?.querySelectorAll(".accordion-content input");
     const sentButton = document.getElementById("send-brif-total");
 
