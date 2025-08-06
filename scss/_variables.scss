@@ -4345,6 +4345,24 @@ button:hover,
   }
 }
 
+.mobile {
+  &-visible {
+    display: none !important;
+
+    @media (max-width: 1000px) {
+      display: block !important;
+    }
+  }
+}
+
+.pc {
+  &-visible {
+    @media (max-width: 1200px) {
+      display: none !important;
+    }
+  }
+}
+
 // cards
 .card {
   position: relative;

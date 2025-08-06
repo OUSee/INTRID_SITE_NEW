@@ -4328,6 +4328,21 @@ button:hover img,
   }
 }
 
+.mobile-visible {
+  display: none !important;
+}
+@media (max-width: 1000px) {
+  .mobile-visible {
+    display: block !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pc-visible {
+    display: none !important;
+  }
+}
+
 .card {
   position: relative;
   z-index: 1;
@@ -6993,21 +7008,6 @@ button:hover img,
   margin-top: auto;
 }
 
-.mobile-visible {
-  display: none;
-}
-@media (max-width: 1000px) {
-  .mobile-visible {
-    display: block;
-  }
-}
-
-@media (max-width: 1200px) {
-  .pc-visible {
-    display: none;
-  }
-}
-
 .burger {
   position: relative;
   display: inline-block;
@@ -7024,7 +7024,7 @@ button:hover img,
 .burger-content {
   display: none;
   position: absolute;
-  top: 42px;
+  top: 38px;
   right: 0;
   height: 0px;
   z-index: 1;
