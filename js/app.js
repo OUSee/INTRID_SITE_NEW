@@ -158,7 +158,7 @@ window.addEventListener("resize", handleResize);
 
 // popup logic
 document.addEventListener("DOMContentLoaded", () => {
-  const popupTriggers = document.querySelectorAll("[data-popup]");
+  const popupTriggers = document?.querySelectorAll("[data-popup]");
 
   popupTriggers.forEach((trigger) => {
     trigger.addEventListener("click", () => {
@@ -1797,9 +1797,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // brif
 document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector(".sitebrif")) {
+  if (document.querySelector("#calculator-sitebrif")) {
     const inputs = document
-      .getElementById("calculator")
+      .getElementById("calculator-sitebrif")
       ?.querySelectorAll(".accordion-content input");
     const sentButton = document.getElementById("send-brif-total");
 
