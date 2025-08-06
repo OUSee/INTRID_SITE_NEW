@@ -833,6 +833,11 @@ th {
   width: 100%;
   opacity: 0;
 }
+@media (max-width: 1000px) {
+  [data-slider]#office-slider > *, [data-slider]#testimonials-slider > *, [data-slider]#reviews-slider > * {
+    min-width: calc(50% - 10px);
+  }
+}
 @media (max-width: 600px) {
   [data-slider]#office-slider > *, [data-slider]#testimonials-slider > *, [data-slider]#reviews-slider > * {
     flex: 1 0 auto;
@@ -4825,18 +4830,20 @@ button:hover img,
 }
 .card--awards {
   max-width: 100%;
-  aspect-ratio: 0.708/1;
   border-radius: 0;
   border: 0;
   padding: 0;
 }
 .card--awards > a {
+  display: flex;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 .card--awards img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 0.708/1;
   object-fit: cover;
 }
 .card--group {
@@ -9182,13 +9189,17 @@ button.next:hover {
     gap: 20px;
   }
 }
+.sites-reviews > .container {
+  position: relative;
+}
 .sites-reviews .pagination {
   margin-bottom: 30px;
 }
 .sites-reviews .button-link.big {
   position: absolute;
-  bottom: 60px;
+  bottom: 0;
   right: 0;
+  transform: translateY(50%);
 }
 @media (max-width: 720px) {
   .sites-reviews .button-link.big {
@@ -9196,11 +9207,8 @@ button.next:hover {
     bottom: unset;
     right: unset;
     margin-right: auto;
-  }
-}
-@media (max-width: 600px) {
-  .sites-reviews .button-link {
-    margin-right: auto;
+    margin-left: auto;
+    transform: none;
   }
 }
 
@@ -10873,6 +10881,11 @@ button.next:hover {
 @media (max-width: 1000px) {
   .reviews__button:not(.reviews__button-main):hover > picture, .reviews__button:not(.reviews__button-main).active > picture {
     filter: invert(0);
+  }
+}
+@media (min-width: 1000px) {
+  .reviews__button:not(.reviews__button-main):hover > picture img, .reviews__button:not(.reviews__button-main).active > picture img {
+    filter: unset;
   }
 }
 .reviews__layout {

@@ -1985,26 +1985,27 @@ button.next {
       }
     }
 
+    & > .container {
+      position: relative;
+    }
+
     .pagination {
       margin-bottom: 30px;
     }
 
     .button-link.big {
       position: absolute;
-      bottom: 60px;
+      bottom: 0;
       right: 0;
+      transform: translateY(50%);
 
       @media (max-width: 720px) {
         position: relative;
         bottom: unset;
         right: unset;
         margin-right: auto;
-      }
-    }
-
-    .button-link {
-      @media (max-width: 600px) {
-        margin-right: auto;
+        margin-left: auto;
+        transform: none;
       }
     }
   }
@@ -4023,6 +4024,12 @@ button.next {
         & > picture {
           @media (max-width: 1000px) {
             filter: invert(0);
+          }
+
+          & img {
+            @media (min-width: 1000px) {
+              filter: unset;
+            }
           }
         }
       }
