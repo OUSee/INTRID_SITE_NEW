@@ -5394,7 +5394,9 @@ button:hover,
     }
 
     & > b {
+      @include h5;
       margin-bottom: 1em;
+      color: var(--blue-main);
     }
 
     & > img,
@@ -5425,11 +5427,6 @@ button:hover,
           margin-bottom: 0;
         }
       }
-    }
-
-    & > b {
-      @include h5;
-      color: var(--blue-main);
     }
 
     & > .card-price {
@@ -5546,12 +5543,18 @@ button:hover,
     & > h3,
     & > h4,
     & > h5,
-    & > h6,
-    & > b {
+    & > h6 {
       @include h5;
       color: var(--blue-main);
       line-height: 140%;
       margin: 0;
+    }
+
+    & > b {
+      @include h5;
+      color: var(--blue-main);
+      line-height: 140%;
+      margin-bottom: 1em;
     }
 
     &::before {

@@ -5312,7 +5312,21 @@ button:hover img,
   }
 }
 .card--icon > b {
+  font-weight: 600;
+  font-size: 16px;
   margin-bottom: 1em;
+  color: var(--blue-main);
+}
+@media (max-width: 1000px) {
+  .card--icon > b {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .card--icon > b {
+    font-size: 16px;
+    font-weight: 400;
+  }
 }
 .card--icon > img, .card--icon > i {
   position: absolute;
@@ -5336,22 +5350,6 @@ button:hover img,
 }
 .card--icon ul li:last-child {
   margin-bottom: 0;
-}
-.card--icon > b {
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--blue-main);
-}
-@media (max-width: 1000px) {
-  .card--icon > b {
-    font-size: 16px;
-  }
-}
-@media (max-width: 600px) {
-  .card--icon > b {
-    font-size: 16px;
-    font-weight: 400;
-  }
 }
 .card--icon > .card-price {
   font-weight: 600;
@@ -5453,7 +5451,7 @@ button:hover img,
     padding: 20px 20px 20px 50px;
   }
 }
-.card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6, .card--roadmap > b {
+.card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6 {
   font-weight: 600;
   font-size: 16px;
   color: var(--blue-main);
@@ -5461,12 +5459,30 @@ button:hover img,
   margin: 0;
 }
 @media (max-width: 1000px) {
-  .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6, .card--roadmap > b {
+  .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6 {
     font-size: 16px;
   }
 }
 @media (max-width: 600px) {
-  .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6, .card--roadmap > b {
+  .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+.card--roadmap > b {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--blue-main);
+  line-height: 140%;
+  margin-bottom: 1em;
+}
+@media (max-width: 1000px) {
+  .card--roadmap > b {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .card--roadmap > b {
     font-size: 16px;
     font-weight: 400;
   }
