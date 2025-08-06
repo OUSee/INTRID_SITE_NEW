@@ -3523,10 +3523,16 @@ form .button:hover {
   border: 1px solid var(--blue-main);
   vertical-align: top;
 }
+.table th p {
+  margin: 0;
+}
 .table td {
   padding: 5px 10px;
   border: 1px solid var(--blue-main);
   vertical-align: top;
+}
+.table td p {
+  margin: 0;
 }
 .table tr {
   border: 1px solid var(--blue-main);
@@ -12225,100 +12231,6 @@ button.next:hover {
   width: 100%;
   border: 0;
   overflow: hidden;
-}
-
-.pamatka_page-top {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-}
-.pamatka_page-content {
-  position: relative;
-  padding: 0 50px 62px;
-}
-@media (max-width: 601px) {
-  .pamatka_page-content {
-    padding: 0 20px 40px;
-  }
-}
-@media (max-width: 440px) {
-  .pamatka_page-content {
-    padding: 0 10px 40px;
-  }
-}
-.pamatka_page-content .img-wrapper {
-  display: flex;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 25px;
-}
-.pamatka_page-content .img-wrapper:first-child {
-  margin-top: 0;
-}
-.pamatka_page-content .img-wrapper.wider {
-  max-width: 100%;
-}
-.pamatka_page-content .img-wrapper img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-.pamatka_page-content > p {
-  margin-bottom: 20px;
-}
-.pamatka_page-content > p.title_h3, .pamatka_page-content > p.title_h4 {
-  margin-bottom: 32px;
-  margin-top: 50px;
-}
-.pamatka_page-content > p.title_h3:first-child, .pamatka_page-content > p.title_h4:first-child {
-  margin-top: 0;
-}
-.pamatka_page-content > .ordinary-list {
-  margin-bottom: 20px;
-}
-.pamatka_page-bottom {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-@media (max-width: 1000px) {
-  .pamatka_page-bottom {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
-.pamatka_page-bottom > div:first-child {
-  max-width: 50%;
-}
-@media (max-width: 1000px) {
-  .pamatka_page-bottom > div:first-child {
-    max-width: 100%;
-  }
-}
-.pamatka_page-bottom > div:first-child > .title_h3 {
-  margin-bottom: 32px;
-}
-@media (max-width: 1000px) {
-  .pamatka_page-bottom > div:first-child > .title_h3 {
-    text-align: center;
-  }
-}
-.pamatka_page-bottom > div:first-child > .card--result {
-  width: 100%;
-}
-.pamatka_page-bottom > .case_page-mockup {
-  flex: 1;
-  width: 100%;
-  max-width: 470px;
-}
-@media (max-width: 1000px) {
-  .pamatka_page-bottom > .case_page-mockup {
-    margin: 0 auto;
-  }
 }
 
 @media (max-width: 1500px) {
