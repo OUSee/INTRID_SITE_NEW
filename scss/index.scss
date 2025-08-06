@@ -3498,7 +3498,7 @@ button.next {
 
     table {
       width: 100%;
-      background-color: var(--blue-tag);
+      // background-color: var(--blue-tag);
 
       thead {
         background-color: var(--color-white);
@@ -3511,6 +3511,14 @@ button.next {
       tbody {
         border-color: var(--blue-bg);
 
+        tr {
+          background-color: rgba(0, 234, 255, 0.25);
+
+          &:nth-child(even) {
+            background-color: rgba(0, 234, 255, 0.5);
+          }
+        }
+
         & td {
           & span {
             font-size: inherit;
@@ -3520,7 +3528,8 @@ button.next {
 
       th {
         padding: 5px;
-        border: 1px solid var(--blue-bg);
+        border: 1px solid rgba(0, 234, 255, 0.65);
+        // border: 1px solid var(--blue-bg);
       }
 
       td {

@@ -10469,7 +10469,6 @@ button.next:hover {
 }
 .seo-table .table-wrapper table {
   width: 100%;
-  background-color: var(--blue-tag);
 }
 .seo-table .table-wrapper table thead {
   background-color: var(--color-white);
@@ -10481,12 +10480,18 @@ button.next:hover {
 .seo-table .table-wrapper table tbody {
   border-color: var(--blue-bg);
 }
+.seo-table .table-wrapper table tbody tr {
+  background-color: rgba(0, 234, 255, 0.25);
+}
+.seo-table .table-wrapper table tbody tr:nth-child(even) {
+  background-color: rgba(0, 234, 255, 0.5);
+}
 .seo-table .table-wrapper table tbody td span {
   font-size: inherit;
 }
 .seo-table .table-wrapper table th {
   padding: 5px;
-  border: 1px solid var(--blue-bg);
+  border: 1px solid rgba(0, 234, 255, 0.65);
 }
 .seo-table .table-wrapper table td {
   border: 1px solid var(--blue-main);
