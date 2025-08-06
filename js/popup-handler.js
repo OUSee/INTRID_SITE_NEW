@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let videoPopup = popup.querySelector('video');
+        let iframe = popup.querySelector('iframe');
 
         popup.classList.remove('open');
 
@@ -76,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.classList.remove('popup-opened');
 
         videoPopup ? toggleVideoPLay(videoPopup, false) : false;
+        iframe ? iframe.remove() : false;
       }
     });
   };

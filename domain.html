@@ -10,44 +10,41 @@
     </title>
     <meta name="description"
         content="Зарегистрировать доменное имя легко! Найдите свободное доменное имя на нашем сайте, узнайте стоимость регистрации, и мы зарегистрируем его на удобный для вас срок!" />
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/index.min.css">
 </head>
 
 <body>
     <div id="preloader">
     </div>
     <!-- NAVBAR -->
-    <header class="navbar" id="header">
-        <div class="container main-header">
-            <a href="./" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="main-logo">
-                <img src="./src/images/logoMain.svg" alt="INTRID - разработка сайтов">
-            </a>
-            <div class="mobile-burger">
-                <div id="mobilemenuToggle">
-                    <input type="checkbox" id="menuCheckbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <nav class="header-links-nav">
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./site.html">Разработка сайтов</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./site.html">Разработка сайтов</a>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="./" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="header-logo">
+                    <img src="./src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+                </a>
+
+                <!-- navigation -->
+                <nav class="menu">
+                    <div class="menu-dropdown">
+                        <a href="./site.html" class="menu-link">Разработка сайтов</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./site.html">Разработка сайтов</a>
                             <a href="./landing-page.html">Разработка Landing page</a>
                             <a href="./corporate.html">Корпоративный сайт</a>
-                            <a href="./store.html">Интернет-магазин</a><a
-                                href="./internet-magazin-s-ii.html">Интернет-магазин с
-                                ИИ</a>
+                            <a href="./store.html">Интернет-магазин</a>
+                            <a href="./internet-magazin-s-ii.html">Интернет-магазин с ИИ</a>
                             <a href="./web-portal.html">Веб-порталы</a>
                             <hr>
                             <a href="./portfolio/site.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./automation-business.html">IT для бизнеса</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./automation-business.html">IT для бизнеса</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="./automation-business.html">IT для бизнеса</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./automation-business.html">IT для
+                                бизнеса</a>
                             <a href="./ai.html">Искусственный интеллект</a>
                             <a href="./crm-erp.html">Разработка CRM и ERP</a>
                             <a href="./tender-portal.html">Тендерные порталы</a>
@@ -57,10 +54,11 @@
                             <a href="./portfolio/site.html#web-portal">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./promotion.html">Продвижение</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./promotion.html">Продвижение</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="./promotion.html">Продвижение</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./promotion.html">Продвижение</a>
                             <a href="./seo-audit.html">SEO-аудиты и аналитика</a>
                             <a href="./seo.html">Раскрутка с гарантией</a>
                             <a href="./reputation.html">Улучшение репутации в сети</a>
@@ -69,10 +67,11 @@
                             <a href="./portfolio/seo.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./design.html">Дизайн</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./promotion.html">Дизайн</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="./design.html">Дизайн</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./promotion.html">Дизайн</a>
                             <a href="./design-site.html">Дизайн сайтов</a>
                             <a href="./ui-design.html">UI/UX-разработка интерфейсов</a>
                             <a href="./logo.html">Разработка логотипа</a>
@@ -81,112 +80,131 @@
                             <a href="./portfolio/design.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./hosting.html">Хостинг</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./hosting.html">Хостинг</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="./hosting.html">Хостинг</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./hosting.html">Хостинг</a>
                             <a href="./hosting-tarify.html">Бюджетный хостинг</a>
                             <a href="./vds.html">VDS - виртуальный сервер</a>
                             <a href="./domain.html">Регистрация доменов</a>
                             <a href="./ssl.html">SSL-сертификаты</a>
                         </div>
                     </div>
+
                     <hr class="mobile-visible">
-                    <a class="mobile-visible" href="./portfolio.html" class="bold">
-                        <span class="title_h5">Портфолио</span>
-                    </a>
+
+                    <a class="mobile-visible menu-link menu-link--noicon" href="./portfolio.html">Портфолио</a>
+
                     <hr class="mobile-visible">
+
                     <a class="mobile-visible" href="./o-nas.html">О Компании</a>
                     <a class="mobile-visible" href="./klientam.html">Клиентам</a>
                     <a class="mobile-visible" href="./comment.html">Отзывы</a>
                     <a class="mobile-visible" href="./blog.html">Блог</a>
                     <a class="mobile-visible" href="./vakansii.html">Вакансии</a>
                     <a class="mobile-visible" href="./kontakty.html">Контакты</a>
-                    <a class="button-highlight mobile-visible" href="./calculator.html">Заказать сайт</a>
+                    <a class="button-highlight button-highlighted mobile-visible" href="./calculator.html">Заказать
+                        сайт</a>
                 </nav>
-            </div>
-            <a href="./calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
-            <div class="fd-col ml-6 header-contacts">
-                <a class="title_h5 phone-line" href="tel:+74732540796">
-                    <i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
-                    <span>+7 (473) 254 0796</span>
-                </a>
-                <span class="work-time a-self-end">Пн-Пт: 9:00-18:00</span>
-            </div>
-            <div class="icon-menu">
-                <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
-                    <i class="icon-mail"></i>
-                </a>
-                <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796" target="_blank">
-                    <i class="icon-whatsapp"></i>
-                </a>
-                <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
-                    <i class="icon-tg"></i>
-                </a>
-                <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
-                    target="_blank">
-                    <i class="icon-person"></i>
-                </a>
-            </div>
-            <div class="burger ml-32">
-                <div id="menuToggle">
-                    <input type="checkbox" id="menuCheckbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="burger-content">
-                    <a href="./portfolio.html" class="bold title_h5">
-                        Портфолио
+
+                <a href="./calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
+
+                <div class="header-contacts">
+                    <a class="title_h5 phone-line" href="tel:+74732540796">
+                        <i class="icon-phone fz-26 color-blue"></i>
+                        <span>+7 (473) 254 0796</span>
                     </a>
-                    <hr>
-                    <a href="./o-nas.html">О Компании</a>
-                    <a href="./klientam.html">Клиентам</a>
-                    <a href="./comment.html">Отзывы</a>
-                    <a href="./blog.html">Блог</a>
-                    <a href="./vakansii.html">Вакансии</a>
-                    <a href="./kontakty.html">Контакты</a>
-                    <hr>
-                    <a class="work-time a-self-end popup-trigger map-link" href="javascript://"
-                        title="Посмотреть на карте" data-popup="map" data-map="vrn">
-                        Воронеж ул.Пятницкого 40
-                    </a>
-                    <hr>
-                    <button class="button-highlight mt-32">
-                        Заказать сайт
-                    </button>
+                    <span>Пн-Пт: 9:00-18:00</span>
                 </div>
+
+                <div class="icon-menu">
+                    <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+                        <i class="icon-mail"></i>
+                    </a>
+                    <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796"
+                        target="_blank">
+                        <i class="icon-whatsapp"></i>
+                    </a>
+                    <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+                        <i class="icon-tg"></i>
+                    </a>
+                    <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+                        target="_blank">
+                        <i class="icon-person"></i>
+                    </a>
+                </div>
+
+                <div class="burger">
+                    <div id="menuToggle">
+                        <input type="checkbox" id="menuCheckbox" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="burger-content">
+                        <a href="./portfolio.html" class="bold title_h5">
+                            Портфолио
+                        </a>
+                        <hr>
+                        <a href="./o-nas.html">О Компании</a>
+                        <a href="./klientam.html">Клиентам</a>
+                        <a href="./comment.html">Отзывы</a>
+                        <a href="./blog.html">Блог</a>
+                        <a href="./vakansii.html">Вакансии</a>
+                        <a href="./kontakty.html">Контакты</a>
+                        <hr>
+                        <a class="work-time align-self-end popup-trigger map-link" href="javascript://"
+                            title="Посмотреть на карте" data-popup="map" data-map="vrn">
+                            Воронеж ул.Пятницкого 40
+                        </a>
+                        <hr>
+                        <a href="./calculator.html" class="button button-highlight mt-32">
+                            Заказать сайт
+                        </a>
+                    </div>
+                </div>
+
+                <!-- burger/cross -->
+                <button aria-label="menu" class="header-burger" data-menu="closed">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
     <!-- MAIN PAGE -->
-    <section class="crm crm-page container">
-        <div class="breadcrumbs">
-            <a href="./">Главная</a>
-            <span>-</span>
-            <a href="./hosting.html">Хостинг</a>
-            <span>-</span>
-            <a href="#" class="link-disabled">Регистрация домена</a>
-        </div>
-
-        <div class="crm-page--block">
-            <h1 class="title_h1 w-fit underlined">
-                Регистрация доменного имени
-            </h1>
-            <p class="integration-description">
-                Подбираем оптимальное для Вашего сайта доменное имя, легко запоминающееся и обладающее 100%
-                уникальностью. Регистрируем в популярных зонах по цене регистратора, следим за сроками продления и
-                вовремя информируем Вас о необходимости
-            </p>
-
-            <div class="crm-actions">
-                <a class="button-highlight big" href="#crm-creation">
-                    Купить домен
-                    <i class="icon-arrow_wide"></i>
-                </a>
+    <main>
+        <section class="main-section container">
+            <div class="breadcrumbs">
+                <a href="./">Главная</a>
+                <span>-</span>
+                <a href="./hosting.html">Хостинг</a>
+                <span>-</span>
+                <a href="#" class="link-disabled">Регистрация домена</a>
             </div>
 
-            <div class="flying-orb straight">
+            <div class="main-section--left">
+                <h1 class="w-fit underlined">
+                    Регистрация доменного имени
+                </h1>
+
+                <p>
+                    Подбираем оптимальное для Вашего сайта доменное имя, легко запоминающееся и обладающее 100%
+                    уникальностью. Регистрируем в популярных зонах по цене регистратора, следим за сроками продления и
+                    вовремя информируем Вас о необходимости
+                </p>
+
+                <div class="main-section--actions">
+                    <a class="button-highlight big" href="#crm-creation">
+                        Купить домен
+                        <i class="icon-arrow_wide"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flying-mockup straight">
                 <img src="./src/images/domain-main-mockup.webp" alt="">
                 <div class="water-ripple">
                     <div class="ripple-circle"></div>
@@ -195,13 +213,14 @@
                     <div class="ripple-circle"></div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--  -->
-    <section class="corporate-icms sites-leaders">
-        <div class="img-handler">
-            <div class="sites-leaders-content container">
-                <p class="title_h3 w-fit mb-32">Стоимость регистрации домена</p>
+        </section>
+        <!--  -->
+        <section>
+            <div class="container">
+                <h2 class="w-fit">
+                    Стоимость регистрации домена
+                </h2>
+
                 <div class="table-block">
                     <table class="domain-table">
                         <thead>
@@ -249,7 +268,16 @@
                         </tbody>
                     </table>
                 </div>
-                <p class="title_h3 w-fit mb-32 mt-50">Проверка и регистрация свободных доменных имен</p>
+            </div>
+        </section>
+
+        <!--  -->
+        <section>
+            <div class="container">
+                <h3 class="w-fit">
+                    Проверка свободных доменных имен
+                </h3>
+
                 <form action="submit" id="test-site-form" class="fd-row w-fill">
                     <input type="text" placeholder="Введите домен">
                     <button type="submit" class="big">
@@ -257,70 +285,91 @@
                     </button>
                 </form>
             </div>
-        </div>
-    </section>
-    <!-- corporate -->
-    <section class="domain-form corporate-creation landing-creation" id="crm-creation">
-        <div class="container">
-            <form action="submit">
-                <div class="form-limitter">
-                    <p class="title_h3 w-fit">
-                        Зарегистрируйте доменное имя уже сегодня
-                    </p>
-                    <p class="description">
-                        Оставьте заявку и уже сегодня мы бесплатно проконсультируем по всем вопросам и предоставим
-                        развернутое коммерческое
-                        предложение.
-                    </p>
-                    <input type="text" name="name" placeholder="* Имя" required="">
-                    <input type="mail" name="mail" placeholder="E-mail">
-                    <input type="tel" name="phone" placeholder="* Телефон" required="">
-                    <input type="text" placeholder="URL сайта" name="url">
-                    <input type="text" placeholder="География интересов" name="target">
-                    <textarea data-autosize="true" rows="1"
-                        placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
+        </section>
+        
+        <!-- corporate -->
+        <section class="domain-form landing-creation" id="crm-creation">
+            <div class="container">
+                <form action="submit">
+                    <div class="form-limitter">
+                        <p class="title_h3 w-fit">
+                            Зарегистрируйте доменное имя уже сегодня
+                        </p>
+                        <p class="description">
+                            Оставьте заявку и мы бесплатно проконсультируем по всем вопросам и предоставим
+                            развернутое коммерческое
+                            предложение.
+                        </p>
+                        <input type="text" name="name" placeholder="* Имя" required="">
+                        <input type="mail" name="mail" placeholder="E-mail">
+                        <input type="tel" name="phone" placeholder="* Телефон" required="">
+                        <input type="text" placeholder="URL сайта" name="url">
+                        <input type="text" placeholder="География интересов" name="target">
+                        <textarea data-autosize="true" rows="1"
+                            placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
 
-                    <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
-                    <!-- <label for="personal-data">
+                        <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
+                        <!-- <label for="personal-data">
                             <input type="checkbox" name="agree" id="personal-data" required>
                             Согласен на обработку персональных данных
                         </label> -->
-                    <button type="submit" class="button-white">Отправить заявку</button>
-                    <p class="testimonials text-center m-center">
-                        Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy">обработку
-                            своих персональных
-                            данных</a>
-                    </p>
+                        <button type="submit" class="button-white">Отправить заявку</button>
+                        <p class="testimonials text-center m-center">
+                            Отправляя форму, я даю согласие на <a href="javascript://"
+                                data-popup="privacy-policy">обработку
+                                своих персональных
+                                данных</a>
+                        </p>
+                    </div>
+                    <img src="./src/images/orb-with-logo.webp" alt="orb"="">
+                </form>
+            </div>
+        </section>
+
+        <!--  -->
+        <section>
+            <div class="container">
+                <h3 class="underlined w-fit m-center text-center">
+                    Заказать разработку сайта или создание бренда
+                </h3>
+
+                <div class="flex-layout flex-layout--use">
+                    <a href="./calculator.html" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="./src/icons/site-calc.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Калькулятор сайта
+                        </b>
+                    </a>
+                    <a href="./brif-site.html" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="./src/icons/brif-site.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Бриф на сайт
+                        </b>
+                    </a>
+                    <a href="./brif-logo.html" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="./src/icons/brif-logo.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Бриф на бренд
+                        </b>
+                    </a>
+                    <a href="./seo.html#seo_application" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="./src/icons/promotion-request.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Заявка на раскрутку
+                        </b>
+                    </a>
                 </div>
-                <img src="./src/images/orb-with-logo.webp" alt="orb"="">
-            </form>
-        </div>
-    </section>
-    <!--  -->
-    <section class="use-service container">
-        <p class="title_h2 underlined w-fit m-center text-center">
-            Заказать разработку сайта или создание бренда
-        </p>
-        <div class="use-service-list prices-services-list">
-            <a href="./calculator.html" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="./src/icons/site-calc.svg" alt="landig-page"></div>
-                <span class="color-white">Калькулятор сайта&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-            </a>
-            <a href="./brif-site.html" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="./src/icons/brif-site.svg" alt="landig-page"></div>
-                <span class="color-white">Бриф на сайт&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-            </a>
-            <a href="./brif-logo.html" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="./src/icons/brif-logo.svg" alt="landig-page"></div>
-                <span class="color-white">Бриф на бренд<span class="br470"> и лого</span>&nbsp;<i
-                        class="icon-arrow_wide color-blue"></i></span>
-            </a>
-            <a href="./seo.html#seo_application" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="./src/icons/promotion-request.svg" alt="landig-page"></div>
-                <span class="color-white">Заявка на раскрутку&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-            </a>
-        </div>
-    </section>
+            </div>
+        </section>
+    </main>
     <!-- footer -->
     <footer class="footer">
         <div class="container container-full">
@@ -398,26 +447,28 @@
         </div>
     </footer>
     <!-- MODAL WINDOWS -->
-    <dialog class="popup" id="map">
+    <dialog class="popup popup-map" id="map">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <div class="map-container"></div>
                 <hr>
                 <div class="map-testimonials">
-                    <p class="color-white ml-10"></p>
+                    <div id="map-info"></div>
                     <a class="title_h5 fz-20 phone-line gap-10" href="tel:+74732540796">
-                        <i class="icon-phone  color-blue" style="top: 4px;"></i>
+                        <i class="icon-phone  color-blue"></i>
                         <span>+7 (473) 254 0796</span>
                     </a>
-                    <div class="gap-10 ml-10" id="map-social">
+                    <div class="gap-10" id="map-social">
                         <a class="title_h5 fz-26 phone-line" id="map-whatsapp" href="tel:+74732540796">
-                            <i class="icon-whatsapp color-blue" style="top: 4px;"></i>
+                            <i class="icon-whatsapp color-blue"></i>
                         </a>
                         <a class="title_h5 fz-26 phone-line" id="map-telegram" href="https://t.me/webintrid">
-                            <i class="icon-tg color-blue" style="top: 4px;"></i></a>
+                            <i class="icon-tg color-blue"></i>
+                        </a>
                     </div>
                     <a href="#" target="_blank" class="button-link">
-                        Перейти в карты <i class="icon-arrow_wide"></i>
+                        Перейти в карты 
+                        <i class="icon-arrow_wide"></i>
                     </a>
                 </div>
             </div>
@@ -439,7 +490,8 @@
                             Согласен на обработку персональных данных
                         </label> -->
                         <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy" class="text-dashed color-white">обработку
+                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
+                                class="text-dashed color-white">обработку
                                 своих персональных
                                 данных</a>
                         </p>
@@ -461,7 +513,8 @@
                 </p>
                 <p class="title_h5 mb-10">Защита данных</p>
                 <p class="mb-20">
-                    Администрация сайта <a href="./" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт) не
+                    Администрация сайта <a href="./" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт)
+                    не
                     может
                     передать или
                     раскрыть
@@ -526,7 +579,7 @@
             </div>
         </div>
     </dialog>
-    <dialog class="popup" id="accreditation-view">
+    <dialog class="popup popup-docs" id="accreditation-view">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <img src="./src/images/accreditation.webp" alt="accrediattion">
@@ -534,11 +587,7 @@
             </div>
         </div>
     </dialog>
-    <script src="./js/header-opacity.js"></script>
-    <script src="./js/popup-handler.js"></script>
-    <script src="./js/map-handler.js"></script>
-    <script src="./js/phoneFieldHandler.js"></script>
-    <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 
 </html>

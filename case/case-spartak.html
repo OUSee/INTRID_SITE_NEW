@@ -11,44 +11,42 @@
     <meta name="keywords" content="блог, веб-разработка, веб-блог, интрид, intrid">
     <meta name="description"
         content="В этом кейсе Вы сможете узнать о том, как мы разрабатывали удобный и технически продуманный интерфейс для кинотеатра, расширяли функционал для администрирования и множество других полезных фишек." />
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/index.min.css">
 </head>
 
 <body>
     <div id="preloader">
     </div>
     <!-- NAVBAR -->
-    <header class="navbar" id="header">
-        <div class="container main-header">
-            <a href="../" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="main-logo">
-                <img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
-            </a>
-            <div class="mobile-burger">
-                <div id="mobilemenuToggle">
-                    <input type="checkbox" id="menuCheckbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <nav class="header-links-nav">
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../site.html">Разработка сайтов</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../site.html">Разработка сайтов</a>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ"
+                    class="header-logo">
+                    <img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+                </a>
+
+                <!-- navigation -->
+                <nav class="menu">
+                    <div class="menu-dropdown">
+                        <a href="../site.html" class="menu-link">Разработка сайтов</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../site.html">Разработка сайтов</a>
                             <a href="../landing-page.html">Разработка Landing page</a>
                             <a href="../corporate.html">Корпоративный сайт</a>
-                            <a href="../store.html">Интернет-магазин</a><a
-                                href="../internet-magazin-s-ii.html">Интернет-магазин с
-                                ИИ</a>
+                            <a href="../store.html">Интернет-магазин</a>
+                            <a href="../internet-magazin-s-ii.html">Интернет-магазин с ИИ</a>
                             <a href="../web-portal.html">Веб-порталы</a>
                             <hr>
                             <a href="../portfolio/site.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../automation-business.html">IT для бизнеса</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../automation-business.html">IT для бизнеса</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="../automation-business.html">IT для бизнеса</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../automation-business.html">IT для
+                                бизнеса</a>
                             <a href="../ai.html">Искусственный интеллект</a>
                             <a href="../crm-erp.html">Разработка CRM и ERP</a>
                             <a href="../tender-portal.html">Тендерные порталы</a>
@@ -58,10 +56,11 @@
                             <a href="../portfolio/site.html#web-portal">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../promotion.html">Продвижение</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../promotion.html">Продвижение</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="../promotion.html">Продвижение</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../promotion.html">Продвижение</a>
                             <a href="../seo-audit.html">SEO-аудиты и аналитика</a>
                             <a href="../seo.html">Раскрутка с гарантией</a>
                             <a href="../reputation.html">Улучшение репутации в сети</a>
@@ -70,10 +69,11 @@
                             <a href="../portfolio/seo.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../design.html">Дизайн</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../promotion.html">Дизайн</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="../design.html">Дизайн</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../promotion.html">Дизайн</a>
                             <a href="../design-site.html">Дизайн сайтов</a>
                             <a href="../ui-design.html">UI/UX-разработка интерфейсов</a>
                             <a href="../logo.html">Разработка логотипа</a>
@@ -82,633 +82,709 @@
                             <a href="../portfolio/design.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../hosting.html">Хостинг</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../hosting.html">Хостинг</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="../hosting.html">Хостинг</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../hosting.html">Хостинг</a>
                             <a href="../hosting-tarify.html">Бюджетный хостинг</a>
                             <a href="../vds.html">VDS - виртуальный сервер</a>
                             <a href="../domain.html">Регистрация доменов</a>
                             <a href="../ssl.html">SSL-сертификаты</a>
                         </div>
                     </div>
+
                     <hr class="mobile-visible">
-                    <a class="mobile-visible" href="../portfolio.html" class="bold">
-                        <span class="title_h5">Портфолио</span>
-                    </a>
+
+                    <a class="mobile-visible menu-link menu-link--noicon" href="../portfolio.html">Портфолио</a>
+
                     <hr class="mobile-visible">
+
                     <a class="mobile-visible" href="../o-nas.html">О Компании</a>
                     <a class="mobile-visible" href="../klientam.html">Клиентам</a>
                     <a class="mobile-visible" href="../comment.html">Отзывы</a>
                     <a class="mobile-visible" href="../blog.html">Блог</a>
                     <a class="mobile-visible" href="../vakansii.html">Вакансии</a>
                     <a class="mobile-visible" href="../kontakty.html">Контакты</a>
-                    <a class="button-highlight mobile-visible" href="../calculator.html">Заказать сайт</a>
+                    <a class="button-highlight button-highlighted mobile-visible" href="../calculator.html">Заказать
+                        сайт</a>
                 </nav>
-            </div>
-            <a href="../calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
-            <div class="fd-col ml-6 header-contacts">
-                <a class="title_h5 phone-line" href="tel:+74732540796">
-                    <i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
-                    <span>+7 (473) 254 0796</span>
-                </a>
-                <span class="work-time a-self-end">Пн-Пт: 9:00-18:00</span>
-            </div>
-            <div class="icon-menu">
-                <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
-                    <i class="icon-mail"></i>
-                </a>
-                <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796" target="_blank">
-                    <i class="icon-whatsapp"></i>
-                </a>
-                <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
-                    <i class="icon-tg"></i>
-                </a>
-                <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
-                    target="_blank">
-                    <i class="icon-person"></i>
-                </a>
-            </div>
-            <div class="burger ml-32">
-                <div id="menuToggle">
-                    <input type="checkbox" id="menuCheckbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="burger-content">
-                    <a href="../portfolio.html" class="bold title_h5">
-                        Портфолио
+
+                <a href="../calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
+
+                <div class="header-contacts">
+                    <a class="title_h5 phone-line" href="tel:+74732540796">
+                        <i class="icon-phone fz-26 color-blue"></i>
+                        <span>+7 (473) 254 0796</span>
                     </a>
-                    <hr>
-                    <a href="../o-nas.html">О Компании</a>
-                    <a href="../klientam.html">Клиентам</a>
-                    <a href="../comment.html">Отзывы</a>
-                    <a href="../blog.html">Блог</a>
-                    <a href="../vakansii.html">Вакансии</a>
-                    <a href="../kontakty.html">Контакты</a>
-                    <hr>
-                    <a class="work-time a-self-end popup-trigger map-link" href="javascript://"
-                        title="Посмотреть на карте" data-popup="map" data-map="vrn">
-                        Воронеж ул.Пятницкого 40
-                    </a>
-                    <hr>
-                    <button class="button-highlight mt-32">
-                        Заказать сайт
-                    </button>
+                    <span>Пн-Пт: 9:00-18:00</span>
                 </div>
+
+                <div class="icon-menu">
+                    <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+                        <i class="icon-mail"></i>
+                    </a>
+                    <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796"
+                        target="_blank">
+                        <i class="icon-whatsapp"></i>
+                    </a>
+                    <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+                        <i class="icon-tg"></i>
+                    </a>
+                    <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+                        target="_blank">
+                        <i class="icon-person"></i>
+                    </a>
+                </div>
+
+                <div class="burger">
+                    <div id="menuToggle">
+                        <input type="checkbox" id="menuCheckbox" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="burger-content">
+                        <a href="../portfolio.html" class="bold title_h5">
+                            Портфолио
+                        </a>
+                        <hr>
+                        <a href="../o-nas.html">О Компании</a>
+                        <a href="../klientam.html">Клиентам</a>
+                        <a href="../comment.html">Отзывы</a>
+                        <a href="../blog.html">Блог</a>
+                        <a href="../vakansii.html">Вакансии</a>
+                        <a href="../kontakty.html">Контакты</a>
+                        <hr>
+                        <a class="work-time align-self-end popup-trigger map-link" href="javascript://"
+                            title="Посмотреть на карте" data-popup="map" data-map="vrn">
+                            Воронеж ул.Пятницкого 40
+                        </a>
+                        <hr>
+                        <a href="../calculator.html" class="button button-highlight mt-32">
+                            Заказать сайт
+                        </a>
+                    </div>
+                </div>
+
+                <!-- burger/cross -->
+                <button aria-label="menu" class="header-burger" data-menu="closed">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
     <!-- MAIN PAGE -->
-    <section class="comment-main crm crm-page container">
-        <div class="breadcrumbs">
-            <a href="../">Главная</a>
-            <span>-</span>
-            <a href="../blog.html">Кейсы</a>
-            <span>-</span>
-            <a href="#" class="link-disabled">Кинотеатр «Спартак»</a>
-        </div>
-    </section>
-    <!--  -->
-    <section class="container container-blog case_page-content">
-        <div class="case_page-top">
-            <div>
-                <h1 class="title_h1">
-                    <span class="underlined">Разработка</span> нового
-                    сайта для культового
-                    кинотеатра Воронежа
-                </h1>
-
-                <b class="title_h4">
-                    «Спартак» — один из старейших
-                    кинотеатров Воронежа с богатой
-                    историей своего развития.
-                    В 2020 году подошёл новый этап –
-                    модернизация сайта.
-                </b>
-
-                <p>
-                    В этом кейсе Вы сможете узнать о том, как мы разрабатывали удобный и технически продуманный
-                    интерфейс для кинотеатра,
-                    расширяли функционал для администрирования и множество других полезных фишек. Конечно же, разработка
-                    крупного проекта не
-                    могла пройти идеально и без непредвиденных ситуаций. Далее мы также расскажем, как наша команда
-                    преодолевала трудности,
-                    с которыми столкнулась во время разработки.
-                </p>
+    <main>
+        <section class="main-section container">
+            <div class="breadcrumbs">
+                <a href="../">Главная</a>
+                <span>-</span>
+                <a href="../blog.html">Кейсы</a>
+                <span>-</span>
+                <a href="#" class="link-disabled">Кинотеатр «Спартак»</a>
             </div>
+        </section>
+        <!--  -->
+        <section class="case_page">
+            <div class="container">
+                <div class="case_page-top">
+                    <div>
+                        <h1 class="title_h1">
+                            <span class="underlined">Разработка</span> нового
+                            сайта для культового
+                            кинотеатра Воронежа
+                        </h1>
 
-            <div class="case_page-cover">
-                <img src="./../src/images/case/spartak/spartak-maket.webp" alt="Макет сайта «Спартак»">
-            </div>
+                        <b class="title_h4">
+                            «Спартак» — один из старейших
+                            кинотеатров Воронежа с богатой
+                            историей своего развития.
+                            В 2020 году подошёл новый этап –
+                            модернизация сайта.
+                        </b>
 
-            <div class="card card-case">
-                <p class="card-title">
-                    Как всё начиналось?
-                </p>
-                <ul class="card-list">
-                    <li>
-                        Дизайн: <span class="highlight">Устаревший</span>
-                    </li>
-                    <li>
-                        Интерфейсы: <span class="highlight">Неудобные, отсутствует адаптивность, постоянные проблемы с
-                            бронированием и покупкой билетов</span>
-                    </li>
-                    <li>
-                        Система администрирования: <span class="highlight">UMI.CMS (коробочная система управления
-                            контентом с ограниченным функционалом)</span>
-                    </li>
-                    <li>
-                        Интеграция с TicketSoft: <span class="highlight">Частичная</span>
-                    </li>
-                    <li>
-                        Оформление и отслеживание статуса заявки: <span class="highlight">Отсутствует</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <p class="title_h3 w-fit underlined">
-            Какие задачи были поставлены:
-        </p>
-
-        <div class="case_layout case_layout--2x" id="case-tasks">
-            <ul class="ordinary-list">
-                <li>
-                    <p>
-                        Разработать современный и минималистичный дизайн, удобную и адаптивную версию сайта;
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        Разработать CMS (система управления контентом), в которой удобно и просто работать, и которая
-                        будет полностью
-                        отвечать требованиям и пожеланиям заказчика;
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        Расширить интеграцию с TicketSoft - программное обеспечение для кинотеатров;
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        Добавить возможность покупки билетов онлайн;
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        Внедрить удобный интерфейс администрирования конфигурации залов, фильмов и сеансов в CMS;
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        Разработать новую систему выбора и бронирования мест. Также предстояло расширить сам функционал,
-                        например,
-                        задавать максимальное количество билетов на покупку;
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        Разработать удобный личный кабинет, в котором пользователи могли бы узнать информацию о заказах,
-                        проверить
-                        баланс бонусной карты, а также подписаться на различные рассылки;
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        Интегрировать модуль для организации почтовой рассылки.
-                    </p>
-                </li>
-            </ul>
-
-            <div class="img-wrapper">
-                <img src="./../src/images/case/spartak/spartak-tasks.webp" alt="Версия старого сайта">
-            </div>
-        </div>
-
-        <p class="title_h3 w-fit underlined">
-            Основные пожелания заказчика:
-        </p>
-
-        <p>
-            Заказчиком был предоставлен подробный список требований к сайту как по технической части, так и по
-            визуальному
-            оформлению. На его основе, а также после глубокого анализа конкурентов и различных сайтов топовых
-            кинотеатров, было
-            составлено техническое задание.
-        </p>
-
-        <p>
-            В начале работы нами было сразу сделано несколько предложений по поводу модернизации:
-        </p>
-
-        <ul class="ordinary-list">
-            <li>
-                <p>
-                    различные варианты карточек фильмов (плитка, таблица);
-                </p>
-            </li>
-            <li>
-                <p>
-                    функционал по управлению фотогалереей;
-                </p>
-            </li>
-            <li>
-                <p>
-                    удобное администрирование меню блюд в кафе.
-                </p>
-            </li>
-        </ul>
-
-        <div class="case_layout case_layout--2x case_layout--min" id="team-tasks">
-            <div class="img-wrapper">
-                <img src="./../src/images/case/spartak/spartak-team-tasks.webp" alt="Команда разработчиков">
-            </div>
-
-            <div>
-                <p class="title_h3 w-fit mb-32 underlined">
-                    Какие задачи мы поставили команде разработчиков?
-                </p>
-
-                <p>
-                    Одна из самых главных задач – изучить информацию по интеграции с сервисом TicketSoft. Это было
-                    необходимо для
-                    дальнейшего написания собственного модуля бронирования.
-                </p>
-
-                <p>
-                    Так же, чтобы без потерь перенести все данные старых пользователей и сохранить информацию о бонусных
-                    картах и
-                    накопленных баллах, необходимо было изучить структуры баз данных существующего сайта.
-                </p>
-            </div>
-        </div>
-
-        <div class="case_layout case_layout--2x case_layout--min" id="case-info">
-            <div>
-                <p class="title_h3 w-fit mb-32 underlined">
-                    Спартак - это не только про кино!
-                </p>
-
-                <p>
-                    Помимо кинотеатра, Спартак в себя включает также организацию прямых трансляций театральных
-                    представлений. А ещё в его
-                    комплекс включены боулинг и три кафе. Конечно же, для них тоже нужно было разработать отдельные
-                    страницы и продумать
-                    весь функционал.
-                </p>
-            </div>
-
-            <div class="img-wrapper" style="max-width: 300px;">
-                <img src="./../src/images/case/spartak/spartak-info.webp" alt="Сервисы">
-            </div>
-        </div>
-
-        <div class="case_layout case_layout--2x case_layout--min" id="case-whatever">
-            <div class="img-wrapper" style="max-width: 300px;">
-                <img src="./../src/images/case/spartak/spartak-whatever.webp" alt="Театр в кино">
-            </div>
-
-            <div>
-                <p class="title_h3 w-fit mb-32 underlined">
-                    Театр в кино - это как?
-                </p>
-
-                <p>
-                    У кинотеатра Спартак есть своя особенность – онлайн трансляции театральных постановок прямо в
-                    кинозале! Согласитесь, что
-                    это очень удобно, а также доступно каждому желающему. Благодаря такой программе каждый житель
-                    Воронежа всегда сможет
-                    прикоснуться к миру знаменитых театров.
-                </p>
-            </div>
-        </div>
-
-        <div class="case_layout case_layout--2x case_layout--min" id="case-obstacles">
-            <div>
-                <p class="title_h3 w-fit mb-32 underlined">
-                    Нашей команде любые препятствия нипочем!
-                </p>
-
-                <p>
-                    Никогда нельзя предугадать, что может произойти в процессе разработки сайта. В этот раз одной из
-                    первых трудностей стало
-                    то, что наш ведущий программист решил сменить направление развития и уволиться. Сначала нами было
-                    принято решение нанять
-                    опытного высокооплачиваемого специалиста, у которого точно будет достаточно знаний, чтобы закончить
-                    проект. На поиск и
-                    адаптацию такого сотрудника мы потратили много сил и времени, так и не добившись результата (попыток
-                    было 2).
-                </p>
-
-                <p>
-                    После этих неудач приняли решение принять на работу несколько студентов и выпускников профильных
-                    ВУЗов. Обучить их
-                    нюансам веб-программирования и особенностям работы с фреймворком и нашей iCMS. И с первых дней
-                    стажировки стали
-                    погружать новых сотрудников в суть проекта “Кинотеатр “Спартак”. Это была очень кропотливая работа с
-                    постоянным участием
-                    проект-менеджера и руководителя. В итоге нам удалось не только с успехом завершить работы над сайтом
-                    кинотеатра, но и
-                    “вырастить” отличных программистов!
-                </p>
-            </div>
-
-            <div class="img-wrapper">
-                <img src="./../src/images/case/spartak/spartak-obstacles.webp" alt="Сервисы">
-            </div>
-
-            <p style="flex:1 0 auto;max-width:100%;">
-                Помимо этого, еще одной трудностью являлось то, что система TicketSoft, на момент разработки, являлась
-                устаревшей.
-                Поэтому нашим разработчикам предстояло совместить современные технологии, которые использовались при
-                разработке
-                новой
-                системы бронирования и администрирование фильмов/сеансов с устаревшим функционалом системы TicketSoft.
-            </p>
-        </div>
-
-        <div class="case_layout case_layout--2x case_layout--min" id="case-result">
-            <div class="img-wrapper" style="max-width: 300px;">
-                <img src="./../src/images/case/spartak/spartak-result.webp" alt="Результат">
-            </div>
-
-            <div>
-                <p class="title_h3 w-fit mb-32 underlined">
-                    Результат и достижения
-                </p>
-
-                <p>
-                    Помимо разработки нового и грамотно продуманного дизайна, были также автоматизированы основные
-                    процессы внутри системы
-                    управления сайтом, такие как:
-                </p>
-
-                <ul class="ordinary-list">
-                    <li>
                         <p>
-                            Разработали новую систему бронирования и покупки билетов;
+                            В этом кейсе Вы сможете узнать о том, как мы разрабатывали удобный и технически продуманный
+                            интерфейс для кинотеатра,
+                            расширяли функционал для администрирования и множество других полезных фишек. Конечно же,
+                            разработка
+                            крупного проекта не
+                            могла пройти идеально и без непредвиденных ситуаций. Далее мы также расскажем, как наша
+                            команда
+                            преодолевала трудности,
+                            с которыми столкнулась во время разработки.
                         </p>
-                    </li>
-                    <li>
-                        <p>
-                            Улучшили сетку сеансов – переработали её визуальную часть и добавили фильтрацию;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Интеграция с TicketSoft согласно всем требованиям и пожеланиям заказчика;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Внедрения нового интерфейса администрирования фильмов/сеансов;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Управление конфигурацией залов и ценами мест;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Администрирование броней и покупок билетов с удобной фильтрацией и журналом событий по
-                            каждой брони/покупке.
-                        </p>
-                    </li>
-                </ul>
+                    </div>
 
-                <p class="mt-20">
-                    Конечно же, этого было бы недостаточно для полной модернизации сайта, поэтому мы так же решили
-                    данные задачи:
-                </p>
+                    <div class="case_page-cover">
+                        <img src="./../src/images/case/spartak/spartak-maket.webp" alt="Макет сайта «Спартак»">
+                    </div>
 
-                <ul class="ordinary-list">
-                    <li>
-                        <p>
-                            Новый функционал по управлению фотогалереей;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Удобное управление баннерной рекламой;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Простое администрирование меню блюд кафе;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Разграничение прав доступа для различных типов пользователей;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Провели подробное обучение сотрудников работы с системой управления iCMS.
-                        </p>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                    <div class="card card--result">
+                        <div class="card-header">
+                            Как всё начиналось?
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>
+                                    Дизайн: <span class="highlight">Устаревший</span>
+                                </li>
+                                <li>
+                                    Интерфейсы: <span class="highlight">Неудобные, отсутствует адаптивность, постоянные
+                                        проблемы
+                                        с
+                                        бронированием и покупкой билетов</span>
+                                </li>
+                                <li>
+                                    Система администрирования: <span class="highlight">UMI.CMS (коробочная система
+                                        управления
+                                        контентом с ограниченным функционалом)</span>
+                                </li>
+                                <li>
+                                    Интеграция с TicketSoft: <span class="highlight">Частичная</span>
+                                </li>
+                                <li>
+                                    Оформление и отслеживание статуса заявки: <span class="highlight">Отсутствует</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="case_layout case_layout--2x case_layout--min" id="case-visually">
-            <div>
-                <p class="title_h3 w-fit mb-32 underlined">
-                    А если более наглядно?
-                </p>
-
-                <p>
-                    Одним из самых главных показателей сайта на сегодняшний день является Индекс качества сайта (ИКС) от
-                    Яндекс. Этот индекс
-                    в цифровом выражении показывает:
-                </p>
-
-                <ul class="ordinary-list">
-                    <li>
-                        <p>
-                            размер аудитории сайта;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            степень удовлетворенности пользователей;
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            уровень доверия к сайта как со стороны пользователей, так и со стороны Яндекса.
-                        </p>
-                    </li>
-                </ul>
-
-                <p class="mt-20">
-                    Исходя из графика, можно увидеть, что после разработки сайта рейтинг кинотеатра Спартак уже почти 2
-                    года стабильно
-                    растет вверх!
-                </p>
-            </div>
-
-            <div class="img-wrapper" style="max-width: 480px;">
-                <img src="./../src/images/case/spartak/spartak-visually.webp" alt="Результат">
-            </div>
-        </div>
-
-        <div class="case_layout case_layout--2x case_layout--min" id="case-traffic">
-            <div class="img-wrapper" style="max-width: 480px;">
-                <img src="./../src/images/case/spartak/spartak-traffic.webp" alt="Результат">
-            </div>
-
-            <div class="mt-auto mb-auto">
-                <p>
-                    Также один из самых наглядных примеров - посещаемость сайта. Сейчас сайт Спартака стабильно занимает
-                    лидирующее место по
-                    популярности, среди всех сайтов воронежских кинотеатров, даже несмотря на непростые времена для
-                    данного бизнеса.
-                </p>
-
-                <p>
-                    Популярность и посещаемость сайта говорит о его удобстве и полезности для пользователей.
-                </p>
-
-                <p>
-                    А нам приятно видеть, что плоды нашей работы пользуются успехом у сотен тысяч воронежцев!
-                </p>
-            </div>
-        </div>
-
-        <div class="case_layout case_layout--2x case_layout--min" id="case-icms">
-            <div>
-                <p class="title_h3 w-fit mb-32 underlined">
-                    Как iCMS легко подстраивалась под любые изменения?
-                </p>
-
-                <p>
-                    Благодаря гибкости iCMS, разработчики могли легко подстраивать функционал сайта под современные
-                    реалии. Например, во
-                    время Пандемии был переработан функционал бронирования и покупки билетов. Из-за введенных
-                    ограничений, появлялся
-                    автоматический запрет на бронирование мест в определенном порядке.
-                </p>
-
-                <p>
-                    Спустя некоторое время после запуска сайта разработчики TicketSoft обновили свою систему, нам не
-                    составило труда
-                    перенастроить интеграцию согласно новым требованиям.
-                </p>
-
-                <p>
-                    Так же, после появления «Пушкинских карт» команде разработчиков предстояло подготовить и
-                    интегрировать функционал оплаты
-                    определенных сеансов по ним. Что было легко и оперативно сделано!
-                </p>
-            </div>
-
-            <div class="img-wrapper" style="max-width: 300px;">
-                <img src="./../src/images/case/spartak/spartak-icms.webp" alt="Результат">
-            </div>
-        </div>
-
-        <div class="case_page-bottom">
-            <div>
                 <p class="title_h3 w-fit underlined">
-                    Подводя итог:
+                    Какие задачи были поставлены:
                 </p>
 
-                <div class="card card-case card-case--result">
-                    <ul class="card-list">
+                <div class="case_layout case_layout--2x" id="case-tasks">
+                    <ul>
                         <li>
-                            Дизайн: <span class="highlight">Дизайн:Современный и интуитивно понятный</span>
+                            <p>
+                                Разработать современный и минималистичный дизайн, удобную и адаптивную версию сайта;
+                            </p>
                         </li>
                         <li>
-                            Интерфейсы: <span class="highlight">Новые и адаптированные под различные устройства</span>
+                            <p>
+                                Разработать CMS (система управления контентом), в которой удобно и просто работать, и
+                                которая
+                                будет полностью
+                                отвечать требованиям и пожеланиям заказчика;
+                            </p>
                         </li>
                         <li>
-                            Система администрирования: <span class="highlight">iCMS</span> <a
-                                href="https://reestr.digital.gov.ru/reestr/855588/?sphrase_id=6112342" rel="nofollow"
-                                target="_blank" class="d-inline fw-bold link" title="Реестр ПО">(внесена
-                                в реестр Российского ПО)</a>
+                            <p>
+                                Расширить интеграцию с TicketSoft - программное обеспечение для кинотеатров;
+                            </p>
                         </li>
                         <li>
-                            Интеграция с TicketSoft: <span class="highlight">Частичная</span>
+                            <p>
+                                Добавить возможность покупки билетов онлайн;
+                            </p>
                         </li>
                         <li>
-                            Оформление и отслеживание статуса заявки: <span class="highlight">Отсутствует</span>
+                            <p>
+                                Внедрить удобный интерфейс администрирования конфигурации залов, фильмов и сеансов в
+                                CMS;
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Разработать новую систему выбора и бронирования мест. Также предстояло расширить сам
+                                функционал,
+                                например,
+                                задавать максимальное количество билетов на покупку;
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Разработать удобный личный кабинет, в котором пользователи могли бы узнать информацию о
+                                заказах,
+                                проверить
+                                баланс бонусной карты, а также подписаться на различные рассылки;
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Интегрировать модуль для организации почтовой рассылки.
+                            </p>
                         </li>
                     </ul>
+
+                    <div class="img-wrapper">
+                        <img src="./../src/images/case/spartak/spartak-tasks.webp" alt="Версия старого сайта">
+                    </div>
+                </div>
+
+                <p class="title_h3 w-fit underlined">
+                    Основные пожелания заказчика:
+                </p>
+
+                <p>
+                    Заказчиком был предоставлен подробный список требований к сайту как по технической части, так и по
+                    визуальному
+                    оформлению. На его основе, а также после глубокого анализа конкурентов и различных сайтов топовых
+                    кинотеатров, было
+                    составлено техническое задание.
+                </p>
+
+                <p>
+                    В начале работы нами было сразу сделано несколько предложений по поводу модернизации:
+                </p>
+
+                <ul>
+                    <li>
+                        <p>
+                            различные варианты карточек фильмов (плитка, таблица);
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            функционал по управлению фотогалереей;
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            удобное администрирование меню блюд в кафе.
+                        </p>
+                    </li>
+                </ul>
+
+                <div class="case_layout case_layout--2x case_layout--min" id="team-tasks">
+                    <div class="img-wrapper">
+                        <img src="./../src/images/case/spartak/spartak-team-tasks.webp" alt="Команда разработчиков">
+                    </div>
+
+                    <div>
+                        <p class="title_h3 w-fit mb-32 underlined">
+                            Какие задачи мы поставили команде разработчиков?
+                        </p>
+
+                        <p>
+                            Одна из самых главных задач – изучить информацию по интеграции с сервисом TicketSoft. Это
+                            было
+                            необходимо для
+                            дальнейшего написания собственного модуля бронирования.
+                        </p>
+
+                        <p>
+                            Так же, чтобы без потерь перенести все данные старых пользователей и сохранить информацию о
+                            бонусных
+                            картах и
+                            накопленных баллах, необходимо было изучить структуры баз данных существующего сайта.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="case_layout case_layout--2x case_layout--min" id="case-info">
+                    <div>
+                        <p class="title_h3 w-fit mb-32 underlined">
+                            Спартак - это не только про кино!
+                        </p>
+
+                        <p>
+                            Помимо кинотеатра, Спартак в себя включает также организацию прямых трансляций театральных
+                            представлений. А ещё в его
+                            комплекс включены боулинг и три кафе. Конечно же, для них тоже нужно было разработать
+                            отдельные
+                            страницы и продумать
+                            весь функционал.
+                        </p>
+                    </div>
+
+                    <div class="img-wrapper" style="max-width: 300px;">
+                        <img src="./../src/images/case/spartak/spartak-info.webp" alt="Сервисы">
+                    </div>
+                </div>
+
+                <div class="case_layout case_layout--2x case_layout--min" id="case-whatever">
+                    <div class="img-wrapper" style="max-width: 300px;">
+                        <img src="./../src/images/case/spartak/spartak-whatever.webp" alt="Театр в кино">
+                    </div>
+
+                    <div>
+                        <p class="title_h3 w-fit mb-32 underlined">
+                            Театр в кино - это как?
+                        </p>
+
+                        <p>
+                            У кинотеатра Спартак есть своя особенность – онлайн трансляции театральных постановок прямо
+                            в
+                            кинозале! Согласитесь, что
+                            это очень удобно, а также доступно каждому желающему. Благодаря такой программе каждый
+                            житель
+                            Воронежа всегда сможет
+                            прикоснуться к миру знаменитых театров.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="case_layout case_layout--2x case_layout--min" id="case-obstacles">
+                    <div>
+                        <p class="title_h3 w-fit mb-32 underlined">
+                            Нашей команде любые препятствия нипочем!
+                        </p>
+
+                        <p>
+                            Никогда нельзя предугадать, что может произойти в процессе разработки сайта. В этот раз
+                            одной из
+                            первых трудностей стало
+                            то, что наш ведущий программист решил сменить направление развития и уволиться. Сначала нами
+                            было
+                            принято решение нанять
+                            опытного высокооплачиваемого специалиста, у которого точно будет достаточно знаний, чтобы
+                            закончить
+                            проект. На поиск и
+                            адаптацию такого сотрудника мы потратили много сил и времени, так и не добившись результата
+                            (попыток
+                            было 2).
+                        </p>
+
+                        <p>
+                            После этих неудач приняли решение принять на работу несколько студентов и выпускников
+                            профильных
+                            ВУЗов. Обучить их
+                            нюансам веб-программирования и особенностям работы с фреймворком и нашей iCMS. И с первых
+                            дней
+                            стажировки стали
+                            погружать новых сотрудников в суть проекта “Кинотеатр “Спартак”. Это была очень кропотливая
+                            работа с
+                            постоянным участием
+                            проект-менеджера и руководителя. В итоге нам удалось не только с успехом завершить работы
+                            над
+                            сайтом
+                            кинотеатра, но и
+                            “вырастить” отличных программистов!
+                        </p>
+                    </div>
+
+                    <div class="img-wrapper">
+                        <img src="./../src/images/case/spartak/spartak-obstacles.webp" alt="Сервисы">
+                    </div>
+
+                    <p style="flex:1 0 auto;max-width:100%;">
+                        Помимо этого, еще одной трудностью являлось то, что система TicketSoft, на момент разработки,
+                        являлась
+                        устаревшей.
+                        Поэтому нашим разработчикам предстояло совместить современные технологии, которые использовались
+                        при
+                        разработке
+                        новой
+                        системы бронирования и администрирование фильмов/сеансов с устаревшим функционалом системы
+                        TicketSoft.
+                    </p>
+                </div>
+
+                <div class="case_layout case_layout--2x case_layout--min" id="case-result">
+                    <div class="img-wrapper" style="max-width: 300px;">
+                        <img src="./../src/images/case/spartak/spartak-result.webp" alt="Результат">
+                    </div>
+
+                    <div>
+                        <p class="title_h3 w-fit mb-32 underlined">
+                            Результат и достижения
+                        </p>
+
+                        <p>
+                            Помимо разработки нового и грамотно продуманного дизайна, были также автоматизированы
+                            основные
+                            процессы внутри системы
+                            управления сайтом, такие как:
+                        </p>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    Разработали новую систему бронирования и покупки билетов;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Улучшили сетку сеансов – переработали её визуальную часть и добавили фильтрацию;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Интеграция с TicketSoft согласно всем требованиям и пожеланиям заказчика;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Внедрения нового интерфейса администрирования фильмов/сеансов;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Управление конфигурацией залов и ценами мест;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Администрирование броней и покупок билетов с удобной фильтрацией и журналом событий
+                                    по
+                                    каждой брони/покупке.
+                                </p>
+                            </li>
+                        </ul>
+
+                        <p class="mt-20">
+                            Конечно же, этого было бы недостаточно для полной модернизации сайта, поэтому мы так же
+                            решили
+                            данные задачи:
+                        </p>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    Новый функционал по управлению фотогалереей;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Удобное управление баннерной рекламой;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Простое администрирование меню блюд кафе;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Разграничение прав доступа для различных типов пользователей;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Провели подробное обучение сотрудников работы с системой управления iCMS.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="case_layout case_layout--2x case_layout--min" id="case-visually">
+                    <div>
+                        <p class="title_h3 w-fit mb-32 underlined">
+                            А если более наглядно?
+                        </p>
+
+                        <p>
+                            Одним из самых главных показателей сайта на сегодняшний день является Индекс качества сайта
+                            (ИКС) от
+                            Яндекс. Этот индекс
+                            в цифровом выражении показывает:
+                        </p>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    размер аудитории сайта;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    степень удовлетворенности пользователей;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    уровень доверия к сайта как со стороны пользователей, так и со стороны Яндекса.
+                                </p>
+                            </li>
+                        </ul>
+
+                        <p class="mt-20">
+                            Исходя из графика, можно увидеть, что после разработки сайта рейтинг кинотеатра Спартак уже
+                            почти 2
+                            года стабильно
+                            растет вверх!
+                        </p>
+                    </div>
+
+                    <div class="img-wrapper" style="max-width: 480px;">
+                        <img src="./../src/images/case/spartak/spartak-visually.webp" alt="Результат">
+                    </div>
+                </div>
+
+                <div class="case_layout case_layout--2x case_layout--min" id="case-traffic">
+                    <div class="img-wrapper" style="max-width: 480px;">
+                        <img src="./../src/images/case/spartak/spartak-traffic.webp" alt="Результат">
+                    </div>
+
+                    <div class="mt-auto mb-auto">
+                        <p>
+                            Также один из самых наглядных примеров - посещаемость сайта. Сейчас сайт Спартака стабильно
+                            занимает
+                            лидирующее место по
+                            популярности, среди всех сайтов воронежских кинотеатров, даже несмотря на непростые времена
+                            для
+                            данного бизнеса.
+                        </p>
+
+                        <p>
+                            Популярность и посещаемость сайта говорит о его удобстве и полезности для пользователей.
+                        </p>
+
+                        <p>
+                            А нам приятно видеть, что плоды нашей работы пользуются успехом у сотен тысяч воронежцев!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="case_layout case_layout--2x case_layout--min" id="case-icms">
+                    <div>
+                        <p class="title_h3 w-fit mb-32 underlined">
+                            Как iCMS легко подстраивалась под любые изменения?
+                        </p>
+
+                        <p>
+                            Благодаря гибкости iCMS, разработчики могли легко подстраивать функционал сайта под
+                            современные
+                            реалии. Например, во
+                            время Пандемии был переработан функционал бронирования и покупки билетов. Из-за введенных
+                            ограничений, появлялся
+                            автоматический запрет на бронирование мест в определенном порядке.
+                        </p>
+
+                        <p>
+                            Спустя некоторое время после запуска сайта разработчики TicketSoft обновили свою систему,
+                            нам не
+                            составило труда
+                            перенастроить интеграцию согласно новым требованиям.
+                        </p>
+
+                        <p>
+                            Так же, после появления «Пушкинских карт» команде разработчиков предстояло подготовить и
+                            интегрировать функционал оплаты
+                            определенных сеансов по ним. Что было легко и оперативно сделано!
+                        </p>
+                    </div>
+
+                    <div class="img-wrapper" style="max-width: 300px;">
+                        <img src="./../src/images/case/spartak/spartak-icms.webp" alt="Результат">
+                    </div>
+                </div>
+
+                <div class="case_page-bottom">
+                    <div>
+                        <p class="title_h3 w-fit underlined">
+                            Подводя итог:
+                        </p>
+
+                        <div class="card card--result to">
+                            <div class="card-body">
+                                <ul>
+                                    <li>
+                                        Дизайн: <span class="highlight">Дизайн:Современный и интуитивно понятный</span>
+                                    </li>
+                                    <li>
+                                        Интерфейсы: <span class="highlight">Новые и адаптированные под различные
+                                            устройства</span>
+                                    </li>
+                                    <li>
+                                        Система администрирования: <span class="highlight">iCMS</span> <a
+                                            href="https://reestr.digital.gov.ru/reestr/855588/?sphrase_id=6112342"
+                                            rel="nofollow" target="_blank" class="d-inline fw-bold link"
+                                            title="Реестр ПО">(внесена
+                                            в реестр Российского ПО)</a>
+                                    </li>
+                                    <li>
+                                        Интеграция с TicketSoft: <span class="highlight">Частичная</span>
+                                    </li>
+                                    <li>
+                                        Оформление и отслеживание статуса заявки: <span
+                                            class="highlight">Отсутствует</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case_page-mockup">
+                        <img src="./../src/images/case/spartak/spartak-mockup.webp"
+                            alt="Мокап сайта кинотеатра «Спартак»" />
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="case_page-mockup">
-                <img src="./../src/images/case/spartak/spartak-mockup.webp" alt="Мокап сайта кинотеатра «Спартак»" />
+        <!-- corporate -->
+        <section class="landing-creation" id="case-creation">
+            <div class="container">
+                <form action="submit">
+                    <div class="form-limitter">
+                        <p class="title_h3 w-fit">
+                            Вам понравился этот кейс?
+                        </p>
+                        <p class="description">
+                            Просто заполните форму ниже, и мы предложим оптимальное решение для Вашего бизнеса!
+                        </p>
+                        <input type="text" name="name" placeholder="* Имя" required="">
+                        <input type="mail" name="mail" placeholder="E-mail">
+                        <input type="tel" name="phone" placeholder="* Телефон" required="">
+                        <input type="text" placeholder="URL сайта" name="url">
+                        <input type="text" placeholder="География интересов" name="target">
+                        <textarea data-autosize="true" rows="1"
+                            placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
+                        <button type="submit" class="button-white">Отправить заявку</button>
+                        <p class="testimonials text-center m-center">
+                            Отправляя форму, я даю согласие на <a href="javascript://"
+                                data-popup="privacy-policy">обработку
+                                своих персональных
+                                данных</a>
+                        </p>
+                    </div>
+                    <img src="../src/images/orb-with-logo.webp" alt="orb"="">
+                </form>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- corporate -->
-    <section class="corporate-creation landing-creation" id="case-creation">
-        <div class="container">
-            <form action="submit">
-                <div class="form-limitter">
-                    <p class="title_h3 w-fit">
-                        Вам понравился этот кейс?
-                    </p>
-                    <p class="description">
-                        Просто заполните форму ниже, и мы предложим оптимальное решение для Вашего бизнеса!
-                    </p>
-                    <input type="text" name="name" placeholder="* Имя" required="">
-                    <input type="mail" name="mail" placeholder="E-mail">
-                    <input type="tel" name="phone" placeholder="* Телефон" required="">
-                    <input type="text" placeholder="URL сайта" name="url">
-                    <input type="text" placeholder="География интересов" name="target">
-                    <textarea data-autosize="true" rows="1"
-                        placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
+        <!--  -->
+        <section>
+            <div class="container">
+                <h3 class="underlined w-fit m-center text-center">
+                    Заказать разработку сайта или создание бренда
+                </h3>
 
-                    <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
-                    <!-- <label for="personal-data">
-                                <input type="checkbox" name="agree" id="personal-data" required>
-                                Согласен на обработку персональных данных
-                            </label> -->
-                    <button type="submit" class="button-white">Отправить заявку</button>
-                    <p class="testimonials text-center m-center">
-                        Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy">обработку
-                            своих персональных
-                            данных</a>
-                    </p>
+                <div class="flex-layout flex-layout--use">
+                    <a href="../calculator.html" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="../src/icons/site-calc.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Калькулятор сайта
+                        </b>
+                    </a>
+                    <a href="../brif-site.html" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="../src/icons/brif-site.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Бриф на сайт
+                        </b>
+                    </a>
+                    <a href="../brif-logo.html" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="../src/icons/brif-logo.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Бриф на бренд
+                        </b>
+                    </a>
+                    <a href="../seo.html#seo_application" class="card card--service use">
+                        <div class="card-icon">
+                            <img src="../src/icons/promotion-request.svg" alt="landig-page">
+                        </div>
+                        <b>
+                            Заявка на раскрутку
+                        </b>
+                    </a>
                 </div>
-                <img src="../src/images/orb-with-logo.webp" alt="orb"="">
-            </form>
-        </div>
-    </section>
-
-    <!--  -->
-    <section class="use-service container">
-        <p class="title_h2 underlined w-fit m-center text-center">
-            Заказать разработку сайта или создание бренда
-        </p>
-        <div class="use-service-list prices-services-list">
-            <a href="../calculator.html" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="../src/icons/site-calc.svg" alt="landig-page"></div>
-                <span class="color-white">Калькулятор сайта&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-            </a>
-            <a href="../brif-site.html" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="../src/icons/brif-site.svg" alt="landig-page"></div>
-                <span class="color-white">Бриф на сайт&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-            </a>
-            <a href="../brif-logo.html" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="../src/icons/brif-logo.svg" alt="landig-page"></div>
-                <span class="color-white">Бриф на бренд<span class="br470"> и лого</span>&nbsp;<i
-                        class="icon-arrow_wide color-blue"></i></span>
-            </a>
-            <a href="../seo#seo_application" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="../src/icons/promotion-request.svg" alt="landig-page"></div>
-                <span class="color-white">Заявка на раскрутку&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-            </a>
-        </div>
-    </section>
+            </div>
+        </section>
+    </main>
     <!-- footer -->
     <footer class="footer">
         <div class="container container-full">
@@ -786,26 +862,28 @@
         </div>
     </footer>
     <!-- MODAL WINDOWS -->
-    <dialog class="popup" id="map">
+    <dialog class="popup popup-map" id="map">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <div class="map-container"></div>
                 <hr>
                 <div class="map-testimonials">
-                    <p class="color-white ml-10"></p>
+                    <div id="map-info"></div>
                     <a class="title_h5 fz-20 phone-line gap-10" href="tel:+74732540796">
-                        <i class="icon-phone  color-blue" style="top: 4px;"></i>
+                        <i class="icon-phone  color-blue"></i>
                         <span>+7 (473) 254 0796</span>
                     </a>
-                    <div class="gap-10 ml-10" id="map-social">
+                    <div class="gap-10" id="map-social">
                         <a class="title_h5 fz-26 phone-line" id="map-whatsapp" href="tel:+74732540796">
-                            <i class="icon-whatsapp color-blue" style="top: 4px;"></i>
+                            <i class="icon-whatsapp color-blue"></i>
                         </a>
                         <a class="title_h5 fz-26 phone-line" id="map-telegram" href="https://t.me/webintrid">
-                            <i class="icon-tg color-blue" style="top: 4px;"></i></a>
+                            <i class="icon-tg color-blue"></i>
+                        </a>
                     </div>
                     <a href="#" target="_blank" class="button-link">
-                        Перейти в карты <i class="icon-arrow_wide"></i>
+                        Перейти в карты
+                        <i class="icon-arrow_wide"></i>
                     </a>
                 </div>
             </div>
@@ -821,13 +899,9 @@
                         <input type="tel" name="phone" placeholder="* Телефон" required>
                         <textarea data-autosize="true" rows="1"
                             placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
-                        <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
-                        <!-- <label for="personal-data">
-                            <input type="checkbox" name="agree" id="personal-data" required>
-                            Согласен на обработку персональных данных
-                        </label> -->
                         <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy" class="text-dashed color-white">обработку
+                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
+                                class="text-dashed color-white">обработку
                                 своих персональных
                                 данных</a>
                         </p>
@@ -849,7 +923,8 @@
                 </p>
                 <p class="title_h5 mb-10">Защита данных</p>
                 <p class="mb-20">
-                    Администрация сайта <a href="../" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт) не
+                    Администрация сайта <a href="../" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее
+                    Сайт) не
                     может
                     передать или
                     раскрыть
@@ -914,19 +989,14 @@
             </div>
         </div>
     </dialog>
-    <dialog class="popup" id="accreditation-view">
+    <dialog class="popup popup-docs" id="accreditation-view">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <img src="../src/images/accreditation.webp" alt="accrediattion">
             </div>
         </div>
     </dialog>
-    <script src="../js/header-opacity.js"></script>
-    <script src="../js/popup-handler.js"></script>
-    <script src="../js/map-handler.js"></script>
-    <script src="../js/phoneFieldHandler.js"></script>
-    <script src="../js/slider-with-pagination.js"></script>
-    <script src="../js/blogsSelector.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 
 </html>

@@ -10,44 +10,41 @@
     </title>
     <meta name="description"
         content="Актуальные вакансии веб-студии INTRID. Если вам понравились наши вакансии, то звоните или пишите нам на почту и приходите на собеседование." />
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/index.min.css">
 </head>
 
 <body>
     <div id="preloader">
     </div>
     <!-- NAVBAR -->
-    <header class="navbar" id="header">
-        <div class="container main-header">
-            <a href="./" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="main-logo">
-                <img src="./src/images/logoMain.svg" alt="INTRID - разработка сайтов">
-            </a>
-            <div class="mobile-burger">
-                <div id="mobilemenuToggle">
-                    <input type="checkbox" id="menuCheckbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <nav class="header-links-nav">
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./site.html">Разработка сайтов</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./site.html">Разработка сайтов</a>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="./" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="header-logo">
+                    <img src="./src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+                </a>
+
+                <!-- navigation -->
+                <nav class="menu">
+                    <div class="menu-dropdown">
+                        <a href="./site.html" class="menu-link">Разработка сайтов</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./site.html">Разработка сайтов</a>
                             <a href="./landing-page.html">Разработка Landing page</a>
                             <a href="./corporate.html">Корпоративный сайт</a>
-                            <a href="./store.html">Интернет-магазин</a><a
-                                href="./internet-magazin-s-ii.html">Интернет-магазин с
-                                ИИ</a>
+                            <a href="./store.html">Интернет-магазин</a>
+                            <a href="./internet-magazin-s-ii.html">Интернет-магазин с ИИ</a>
                             <a href="./web-portal.html">Веб-порталы</a>
                             <hr>
                             <a href="./portfolio/site.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./automation-business.html">IT для бизнеса</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./automation-business.html">IT для бизнеса</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="./automation-business.html">IT для бизнеса</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./automation-business.html">IT для
+                                бизнеса</a>
                             <a href="./ai.html">Искусственный интеллект</a>
                             <a href="./crm-erp.html">Разработка CRM и ERP</a>
                             <a href="./tender-portal.html">Тендерные порталы</a>
@@ -57,10 +54,11 @@
                             <a href="./portfolio/site.html#web-portal">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./promotion.html">Продвижение</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./promotion.html">Продвижение</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="./promotion.html">Продвижение</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./promotion.html">Продвижение</a>
                             <a href="./seo-audit.html">SEO-аудиты и аналитика</a>
                             <a href="./seo.html">Раскрутка с гарантией</a>
                             <a href="./reputation.html">Улучшение репутации в сети</a>
@@ -69,10 +67,11 @@
                             <a href="./portfolio/seo.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./design.html">Дизайн</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./promotion.html">Дизайн</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="./design.html">Дизайн</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./promotion.html">Дизайн</a>
                             <a href="./design-site.html">Дизайн сайтов</a>
                             <a href="./ui-design.html">UI/UX-разработка интерфейсов</a>
                             <a href="./logo.html">Разработка логотипа</a>
@@ -81,125 +80,145 @@
                             <a href="./portfolio/design.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="./hosting.html">Хостинг</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="./hosting.html">Хостинг</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="./hosting.html">Хостинг</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="./hosting.html">Хостинг</a>
                             <a href="./hosting-tarify.html">Бюджетный хостинг</a>
                             <a href="./vds.html">VDS - виртуальный сервер</a>
                             <a href="./domain.html">Регистрация доменов</a>
                             <a href="./ssl.html">SSL-сертификаты</a>
                         </div>
                     </div>
+
                     <hr class="mobile-visible">
-                    <a class="mobile-visible" href="./portfolio.html" class="bold">
-                        <span class="title_h5">Портфолио</span>
-                    </a>
+
+                    <a class="mobile-visible menu-link menu-link--noicon" href="./portfolio.html">Портфолио</a>
+
                     <hr class="mobile-visible">
+
                     <a class="mobile-visible" href="./o-nas.html">О Компании</a>
                     <a class="mobile-visible" href="./klientam.html">Клиентам</a>
                     <a class="mobile-visible" href="./comment.html">Отзывы</a>
                     <a class="mobile-visible" href="./blog.html">Блог</a>
                     <a class="mobile-visible" href="./vakansii.html">Вакансии</a>
                     <a class="mobile-visible" href="./kontakty.html">Контакты</a>
-                    <a class="button-highlight mobile-visible" href="./calculator.html">Заказать сайт</a>
+                    <a class="button-highlight button-highlighted mobile-visible" href="./calculator.html">Заказать
+                        сайт</a>
                 </nav>
-            </div>
-            <a href="./calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
-            <div class="fd-col ml-6 header-contacts">
-                <a class="title_h5 phone-line" href="tel:+74732540796">
-                    <i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
-                    <span>+7 (473) 254 0796</span>
-                </a>
-                <span class="work-time a-self-end">Пн-Пт: 9:00-18:00</span>
-            </div>
-            <div class="icon-menu">
-                <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
-                    <i class="icon-mail"></i>
-                </a>
-                <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796" target="_blank">
-                    <i class="icon-whatsapp"></i>
-                </a>
-                <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
-                    <i class="icon-tg"></i>
-                </a>
-                <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
-                    target="_blank">
-                    <i class="icon-person"></i>
-                </a>
-            </div>
-            <div class="burger ml-32">
-                <div id="menuToggle">
-                    <input type="checkbox" id="menuCheckbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="burger-content">
-                    <a href="./portfolio.html" class="bold title_h5">
-                        Портфолио
+
+                <a href="./calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
+
+                <div class="header-contacts">
+                    <a class="title_h5 phone-line" href="tel:+74732540796">
+                        <i class="icon-phone fz-26 color-blue"></i>
+                        <span>+7 (473) 254 0796</span>
                     </a>
-                    <hr>
-                    <a href="./o-nas.html">О Компании</a>
-                    <a href="./klientam.html">Клиентам</a>
-                    <a href="./comment.html">Отзывы</a>
-                    <a href="./blog.html">Блог</a>
-                    <a href="./vakansii.html">Вакансии</a>
-                    <a href="./kontakty.html">Контакты</a>
-                    <hr>
-                    <a class="work-time a-self-end popup-trigger map-link" href="javascript://"
-                        title="Посмотреть на карте" data-popup="map" data-map="vrn">
-                        Воронеж ул.Пятницкого 40
-                    </a>
-                    <hr>
-                    <button class="button-highlight mt-32">
-                        Заказать сайт
-                    </button>
+                    <span>Пн-Пт: 9:00-18:00</span>
                 </div>
+
+                <div class="icon-menu">
+                    <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+                        <i class="icon-mail"></i>
+                    </a>
+                    <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796"
+                        target="_blank">
+                        <i class="icon-whatsapp"></i>
+                    </a>
+                    <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+                        <i class="icon-tg"></i>
+                    </a>
+                    <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+                        target="_blank">
+                        <i class="icon-person"></i>
+                    </a>
+                </div>
+
+                <div class="burger">
+                    <div id="menuToggle">
+                        <input type="checkbox" id="menuCheckbox" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="burger-content">
+                        <a href="./portfolio.html" class="bold title_h5">
+                            Портфолио
+                        </a>
+                        <hr>
+                        <a href="./o-nas.html">О Компании</a>
+                        <a href="./klientam.html">Клиентам</a>
+                        <a href="./comment.html">Отзывы</a>
+                        <a href="./blog.html">Блог</a>
+                        <a href="./vakansii.html">Вакансии</a>
+                        <a href="./kontakty.html">Контакты</a>
+                        <hr>
+                        <a class="work-time align-self-end popup-trigger map-link" href="javascript://"
+                            title="Посмотреть на карте" data-popup="map" data-map="vrn">
+                            Воронеж ул.Пятницкого 40
+                        </a>
+                        <hr>
+                        <a href="./calculator.html" class="button button-highlight mt-32">
+                            Заказать сайт
+                        </a>
+                    </div>
+                </div>
+
+                <!-- burger/cross -->
+                <button aria-label="menu" class="header-burger" data-menu="closed">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
     <!-- MAIN PAGE -->
-    <section class="crm crm-page vakancy-page container">
-        <div class="breadcrumbs">
-            <a href="./">Главная</a>
-            <span>-</span>
-            <a href="#" class="link-disabled">Вакансии</a>
-        </div>
+    <main>
+        <section class="main-section container">
+            <div class="breadcrumbs">
+                <a href="./">Главная</a>
+                <span>-</span>
+                <a href="#" class="link-disabled">Вакансии</a>
+            </div>
 
-        <div class="crm-page--block">
-            <h1 class="title_h1 w-fit underlined">
-                Вакансии
-            </h1>
-            <p class="integration-description">
-                <span class="color-blue">INTRID</span> – студия инновационных технологий, <span
-                    class="color-blue">работаем с 2004 года и входим в ТОП 10 веб-студий Воронежа.</span>
-                Наша специализация – <span class="color-blue">разработка сайтов и высоконагруженных порталов,</span>
-                которые выводят бизнес на новый
-                уровень.
-            </p>
-            <p class="title_h5 color-blue">
-                Приглашаем талантливых веб-разработчиков в команду INTRID.
-            </p>
-        </div>
-        <div class="employes-n-experience mt-auto mb-auto ml-50 mr-50">
-            <div class="employes-n-experience-item">
-                <span>20<span class="color-blue">+</span></span>
-                <p>лет опыта работы</p>
+            <div class="main-section--left">
+                <h1 class="w-fit underlined">
+                    Вакансии
+                </h1>
+
+                <p>
+                    <span class="color-blue">INTRID</span> – студия инновационных технологий, <span
+                        class="color-blue">работаем с 2004 года и входим в ТОП 10 веб-студий Воронежа.</span>
+                    Наша специализация – <span class="color-blue">разработка сайтов и высоконагруженных порталов,</span>
+                    которые выводят бизнес на новый
+                    уровень.
+                </p>
+
+                <p class="title_h5 color-blue">
+                    Приглашаем талантливых веб-разработчиков в команду INTRID.
+                </p>
             </div>
-            <div class="employes-n-experience-item">
-                <span>12</span>
-                <p>разработчиков в штате</p>
+
+            <div class="d-flex flex-row align-center justify-start justify-lg-center gap-20 mt-32 w-fit ml-auto mr-auto">
+                <div class="card--employ">
+                    <span>20<span class="color-blue">+</span></span>
+                    <p>лет опыта работы</p>
+                </div>
+                <div class="card--employ">
+                    <span>12</span>
+                    <p>разработчиков в штате</p>
+                </div>
             </div>
-        </div>
-    </section>
-    <!--  -->
-    <section class="hosting-tariffs smm-tariffs crm-advantages container" id="hosting-tariffs">
-        <ul class="crm-advantages--list">
-            <li>
-                <a href="javascript://" data-popup="vakancy">
-                    <div class="tariff-card vakancy-card hover-glow">
-                        <div class="header">
+        </section>
+
+        <!--  -->
+        <section id="hosting-tariffs">
+            <div class="container">
+                <div class="flex-layout flex-layout--2x align-center justify-center gap-20">
+                    <div class="card--tariff card--vakancy hover-glow" data-popup="vakancy">
+                        <div class="card-header">
                             <p class="title_h4 w-fit">
                                 Аналитик
                             </p>
@@ -207,7 +226,7 @@
                                 50&nbsp;000&nbsp;-&nbsp;80&nbsp;000&nbsp;₽
                             </p>
                         </div>
-                        <div class="tariff-card-content">
+                        <div class="card-body">
                             <span class="title_h5 color-white ml-10 mb-10">
                                 Обязательные требования:
                             </span>
@@ -254,14 +273,9 @@
                                 подробнее <i class="icon-arrow_wide"></i>
                             </button>
                         </div>
-                        <!-- <div class="button-link big m-center mb-10">заказать</div> -->
                     </div>
-                </a>
-            </li>
-            <li>
-                <a href="javascript://" data-popup="vakancy">
-                    <div class="tariff-card vakancy-card hover-glow">
-                        <div class="header">
+                    <div class="card--tariff card--vakancy hover-glow" data-popup="vakancy">
+                        <div class="card-header">
                             <p class="title_h4 w-fit">
                                 Аналитик
                             </p>
@@ -269,7 +283,7 @@
                                 50&nbsp;000&nbsp;-&nbsp;80&nbsp;000&nbsp;₽
                             </p>
                         </div>
-                        <div class="tariff-card-content">
+                        <div class="card-body">
                             <span class="title_h5 color-white ml-10 mb-10">
                                 Обязательные требования:
                             </span>
@@ -316,19 +330,23 @@
                                 подробнее <i class="icon-arrow_wide"></i>
                             </button>
                         </div>
-                        <!-- <div class="button-link big m-center mb-10">заказать</div> -->
                     </div>
-                </a>
-            </li>
-        </ul>
-        <p class="text-center m-center w-fit title_h5 color-blue mt-50" id="apply">
-            Удовлетворяешь требованиям и подходят условия и обязанности?
-        </p>
-        <p class="text-center m-center w-fit">Отправляй резюме на <a id="apply_link"
-                href="mailto:mail@intrid.ru?subject=Отклик на вакансию">mail@intrid.ru</a></p>
+                </div>
 
-    </section>
-    <!--  -->
+                <p class="text-center m-center w-fit title_h5 color-blue mt-50" id="apply">
+                    Удовлетворяешь требованиям и подходят условия и обязанности?
+                </p>
+
+                <p class="text-center m-center w-fit">
+                    Отправляй резюме на
+                    <a id="apply_link" href="mailto:mail@intrid.ru?subject=Отклик на вакансию">
+                        mail@intrid.ru
+                    </a>
+                </p>
+            </div>
+        </section>
+        <!--  -->
+    </main>
     <!-- footer -->
     <footer class="footer">
         <div class="container container-full">
@@ -406,26 +424,28 @@
         </div>
     </footer>
     <!-- MODAL WINDOWS -->
-    <dialog class="popup" id="map">
+    <dialog class="popup popup-map" id="map">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <div class="map-container"></div>
                 <hr>
                 <div class="map-testimonials">
-                    <p class="color-white ml-10"></p>
+                    <div id="map-info"></div>
                     <a class="title_h5 fz-20 phone-line gap-10" href="tel:+74732540796">
-                        <i class="icon-phone  color-blue" style="top: 4px;"></i>
+                        <i class="icon-phone  color-blue"></i>
                         <span>+7 (473) 254 0796</span>
                     </a>
-                    <div class="gap-10 ml-10" id="map-social">
+                    <div class="gap-10" id="map-social">
                         <a class="title_h5 fz-26 phone-line" id="map-whatsapp" href="tel:+74732540796">
-                            <i class="icon-whatsapp color-blue" style="top: 4px;"></i>
+                            <i class="icon-whatsapp color-blue"></i>
                         </a>
                         <a class="title_h5 fz-26 phone-line" id="map-telegram" href="https://t.me/webintrid">
-                            <i class="icon-tg color-blue" style="top: 4px;"></i></a>
+                            <i class="icon-tg color-blue"></i>
+                        </a>
                     </div>
                     <a href="#" target="_blank" class="button-link">
-                        Перейти в карты <i class="icon-arrow_wide"></i>
+                        Перейти в карты 
+                        <i class="icon-arrow_wide"></i>
                     </a>
                 </div>
             </div>
@@ -441,13 +461,9 @@
                         <input type="tel" name="phone" placeholder="* Телефон" required>
                         <textarea data-autosize="true" rows="1"
                             placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
-                        <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
-                        <!-- <label for="personal-data">
-                            <input type="checkbox" name="agree" id="personal-data" required>
-                            Согласен на обработку персональных данных
-                        </label> -->
                         <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy" class="text-dashed color-white">обработку
+                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
+                                class="text-dashed color-white">обработку
                                 своих персональных
                                 данных</a>
                         </p>
@@ -469,7 +485,8 @@
                 </p>
                 <p class="title_h5 mb-10">Защита данных</p>
                 <p class="mb-20">
-                    Администрация сайта <a href="./" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт) не
+                    Администрация сайта <a href="./" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт)
+                    не
                     может
                     передать или
                     раскрыть
@@ -623,7 +640,8 @@
                     </li>
                     <li>
                         <p>
-                            Работа над интересными проектами и задачами, следовательно, планомерный профессиональный рост и
+                            Работа над интересными проектами и задачами, следовательно, планомерный профессиональный
+                            рост и
                             развитие, что влечёт увеличение уровня дохода;
                         </p>
                     </li>
@@ -669,7 +687,8 @@
                         </p>
                     </li>
                 </ul>
-                <p class="title_h4 mb-10 mt-20">Минимальный размер заработной платы (оклад): <span class="color-blue title_h3">40
+                <p class="title_h4 mb-10 mt-20">Минимальный размер заработной платы (оклад): <span
+                        class="color-blue title_h3">40
                         000
                         ₽</span></p>
                 <p class="title_h4 ">Совокупный доход с учетом ежемесячных премий: <span class="color-blue title_h3">от
@@ -683,17 +702,14 @@
             </div>
         </div>
     </dialog>
-    <dialog class="popup" id="accreditation-view">
+    <dialog class="popup popup-docs" id="accreditation-view">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <img src="./src/images/accreditation.webp" alt="accrediattion">
             </div>
         </div>
     </dialog>
-    <script src="./js/header-opacity.js"></script>
-    <script src="./js/popup-handler.js"></script>
-    <script src="./js/map-handler.js"></script>
-    <script src="./js/phoneFieldHandler.js"></script>
+    <script src="./js/app.js"></script>
     <script>
         window.addEventListener('hashchange', () => {
             console.log('=> ', location.hash)

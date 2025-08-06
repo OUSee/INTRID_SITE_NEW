@@ -1,18 +1,23 @@
 .popup {
-  display: none;
+  // display: none;
   position: fixed;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  min-width: 200px;
   width: 100vw;
   height: 100vh;
   padding: 20px 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 1;
-  z-index: 5;
-  top: 0;
-  backdrop-filter: blur(5px);
-  transform-origin: center;
-  min-width: 200px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: none;
+  // backdrop-filter: blur(5px);
+  visibility: hidden;
+  opacity: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  transform-origin: center;
+  transform: scale(1.25);
+  transition: 0.25s ease-in-out;
 
   video {
     border-radius: 10px;
@@ -20,11 +25,14 @@
   }
 
   &.open {
-    display: flex;
+    // display: flex;
     flex-direction: column;
     margin-top: auto;
     margin-bottom: auto;
-    animation: popupAppear 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    // animation: popupAppear 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
   }
 
   &-opened {
@@ -32,13 +40,22 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+
+    & body {
+      & > header,
+      & > main,
+      & > section,
+      & > footer {
+        filter: blur(5px);
+      }
+    }
   }
 
   &-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     width: fit-content;
     max-width: 100%;
     margin: auto;
@@ -57,7 +74,7 @@
     aspect-ratio: 1 / 1;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 50%;
       left: 50%;
@@ -69,7 +86,7 @@
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 50%;
       left: 50%;
@@ -100,7 +117,8 @@
     img {
       width: auto;
       height: auto;
-      max-height: 745px;
+      // max-height: 745px;
+      max-height: 75vh;
       border-radius: 25px;
       box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.2) inset;
     }
@@ -133,10 +151,32 @@
     }
   }
 
+  &#privacy-policy {
+    overflow-y: scroll;
+
+    p {
+      max-width: 900px;
+      color: var(--color-white);
+    }
+  }
+
+  &-map {
+    & .popup-wrapper {
+      width: 100%;
+      max-width: 1400px;
+
+      & .popup-body {
+        width: 100%;
+      }
+    }
+  }
+
   .map-container {
     overflow: hidden;
     border-radius: 25px;
-    width: 80vw;
+    width: 100%;
+    // max-width: 80vw;
+    // min-width: 75vw;
     height: 60vh;
 
     iframe {
@@ -145,31 +185,29 @@
     }
   }
 
+  #map-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    & > span {
+      white-space: nowrap;
+    }
+  }
+
   .map-testimonials {
     display: flex;
     align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 
-    p.color-white {
-      span {
-        &.separator {
-          margin: 0px 12px;
-        }
-
-        @media (max-width: 900px) {
-          margin: 0px 12px;
-
-          &.separator {
-            display: none;
-          }
-        }
-      }
-
+    span {
       @media (max-width: 900px) {
-        max-width: 210px;
-      }
-
-      @media (max-width: 600px) {
-        max-width: 200px;
+        &.separator {
+          display: none;
+        }
       }
     }
 
@@ -177,8 +215,7 @@
       display: none;
 
       @media (max-width: 900px) {
-        display: block;
-        margin-left: 12px;
+        display: flex;
       }
     }
 
@@ -186,14 +223,13 @@
       margin-left: auto;
     }
 
-    @media (max-width: 750px) {
+    @media (max-width: 840px) {
       display: grid;
-      gap: 6px;
+      gap: 16px;
       grid-template-columns: repeat(2, 1fr);
-      // grid-template-rows: repeat(3, 1fr);
       grid-template-columns: auto;
 
-      .p.color-white {
+      #map-info {
         grid-area: 1 / 1 / 2 / 2;
       }
 
@@ -206,7 +242,6 @@
       }
 
       .button-link {
-        // grid-area: 2 / 2 / 3 / 3;
         grid-area: 3 / 2 / 4 / 3;
       }
     }
@@ -214,7 +249,7 @@
     @media (max-width: 520px) {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 12px;
       align-items: start;
 
       .button-link {
@@ -243,6 +278,13 @@
           box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 30px 0px;
         }
       }
+    }
+  }
+
+  &-docs {
+    & img {
+      max-height: 70vh;
+      border-radius: 15px;
     }
   }
 }

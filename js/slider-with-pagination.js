@@ -167,16 +167,34 @@ function sliderInitialise() {
       navButtons[currentIndex].classList.add('highlight');
 
       // adding absolute arrows for pagination
+      // const handleSliderArrows = () => {
+      //   const sliderHeight = slider.offsetHeight / 2 + 30 + 17;
+      //   const paginationWidth = dotsContainer.offsetWidth + 12;
+      //   const relativeMoveOffset = window.innerWidth / 2 - paginationWidth - 17;
+
+      //   prevBtn.forEach((btn) => {
+      //     btn.style = `position: relative; transform: translateY(-${sliderHeight}px) translateX(-${relativeMoveOffset}px); left: 5px; color: var(--blue-main);`;
+      //   });
+      //   nextBtn.forEach((btn) => {
+      //     btn.style = `position: relative; transform: translateY(-${sliderHeight}px) translateX(${relativeMoveOffset}px); right: 5px; color: var(--blue-main);`;
+      //   });
+      // };
       const handleSliderArrows = () => {
-        const sliderHeight = slider.offsetHeight / 2 + 30 + 17;
-        const paginationWidth = dotsContainer.offsetWidth + 12;
-        const relativeMoveOffset = window.innerWidth / 2 - paginationWidth - 17;
+        const sliderHeight = slider.offsetHeight / 2 + 40;
 
         prevBtn.forEach((btn) => {
-          btn.style = `position: relative; transform: translateY(-${sliderHeight}px) translateX(-${relativeMoveOffset}px); left: 5px; color: var(--blue-main);`;
+          if (slider.id === 'gallery-slider') {
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`}); left: ${window.innerWidth > 600 ? `25px` : `-5px`}; color: var(--blue-main);`;
+          } else {
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`}); left: ${window.innerWidth > 600 ? `-5px` : `0`}; color: var(--blue-main);`;
+          }
         });
         nextBtn.forEach((btn) => {
-          btn.style = `position: relative; transform: translateY(-${sliderHeight}px) translateX(${relativeMoveOffset}px); right: 5px; color: var(--blue-main);`;
+          if (slider.id === 'gallery-slider') {
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`}); right: ${window.innerWidth > 600 ? `25px` : `-5px`}; color: var(--blue-main);`;
+          } else {
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`}); right: ${window.innerWidth > 600 ? `-5px` : `0`}; color: var(--blue-main);`;
+          }
         });
       };
 

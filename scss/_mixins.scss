@@ -1,0 +1,81 @@
+@mixin h4 {
+  font-weight: 600;
+  font-size: 24px;
+
+  @media (max-width: 1000px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 16px;
+  }
+}
+
+@mixin h5 {
+  font-weight: 600;
+  font-size: 16px;
+
+  @media (max-width: 1000px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+
+@mixin blockVideo {
+  width: 100%;
+  min-height: unset;
+  max-height: unset;
+  height: unset;
+  border-radius: 25px;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: top;
+  transition: 0.25s ease-in-out;
+
+  & .play-video-button {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background-size: cover;
+    animation: unset;
+  }
+
+  &:has(button:hover) {
+    animation: unset;
+    background-size: cover;
+    background-position: bottom;
+  }
+
+  &:hover {
+    background-size: cover;
+    background-position: bottom;
+  }
+}
+
+@mixin blogContainer {
+  max-width: 1170px;
+  margin: 0 auto;
+
+  @media (max-width: 1220px) {
+    max-width: 100%;
+    margin: 0 40px;
+  }
+
+  @media (max-width: 1000px) {
+    max-width: 970px;
+  }
+
+  @media (max-width: 600px) {
+    margin: 0px 20px;
+    max-width: 600px;
+  }
+
+  @media (max-width: 440px) {
+    margin: 0 10px;
+  }
+}

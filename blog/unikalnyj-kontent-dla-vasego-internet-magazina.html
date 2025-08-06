@@ -12,44 +12,41 @@
     <meta name="description"
         content="Самые свежие и актуальные статьи на тему веб-разработки в блоге веб-студии INTRID" />
     <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/index.min.css">
 </head>
 
 <body>
     <div id="preloader">
     </div>
     <!-- NAVBAR -->
-    <header class="navbar" id="header">
-        <div class="container main-header">
-            <a href="../" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="main-logo">
-                <img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
-            </a>
-            <div class="mobile-burger">
-                <div id="mobilemenuToggle">
-                    <input type="checkbox" id="menuCheckbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <nav class="header-links-nav">
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../site.html">Разработка сайтов</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../site.html">Разработка сайтов</a>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../" title="INTRID - создание и продвижение сайтов и IT-продуктов на заказ" class="header-logo">
+                    <img src="../src/images/logoMain.svg" alt="INTRID - разработка сайтов">
+                </a>
+
+                <!-- navigation -->
+                <nav class="menu">
+                    <div class="menu-dropdown">
+                        <a href="../site.html" class="menu-link">Разработка сайтов</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../site.html">Разработка сайтов</a>
                             <a href="../landing-page.html">Разработка Landing page</a>
                             <a href="../corporate.html">Корпоративный сайт</a>
-                            <a href="../store.html">Интернет-магазин</a><a
-                                href="../internet-magazin-s-ii.html">Интернет-магазин с
-                                ИИ</a>
+                            <a href="../store.html">Интернет-магазин</a>
+                            <a href="../internet-magazin-s-ii.html">Интернет-магазин с ИИ</a>
                             <a href="../web-portal.html">Веб-порталы</a>
                             <hr>
                             <a href="../portfolio/site.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../automation-business.html">IT для бизнеса</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../automation-business.html">IT для бизнеса</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="../automation-business.html">IT для бизнеса</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../automation-business.html">IT для
+                                бизнеса</a>
                             <a href="../ai.html">Искусственный интеллект</a>
                             <a href="../crm-erp.html">Разработка CRM и ERP</a>
                             <a href="../tender-portal.html">Тендерные порталы</a>
@@ -59,10 +56,11 @@
                             <a href="../portfolio/site.html#web-portal">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../promotion.html">Продвижение</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../promotion.html">Продвижение</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="../promotion.html">Продвижение</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../promotion.html">Продвижение</a>
                             <a href="../seo-audit.html">SEO-аудиты и аналитика</a>
                             <a href="../seo.html">Раскрутка с гарантией</a>
                             <a href="../reputation.html">Улучшение репутации в сети</a>
@@ -71,10 +69,11 @@
                             <a href="../portfolio/seo.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../design.html">Дизайн</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../promotion.html">Дизайн</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="../design.html">Дизайн</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../promotion.html">Дизайн</a>
                             <a href="../design-site.html">Дизайн сайтов</a>
                             <a href="../ui-design.html">UI/UX-разработка интерфейсов</a>
                             <a href="../logo.html">Разработка логотипа</a>
@@ -83,211 +82,274 @@
                             <a href="../portfolio/design.html">Портфолио</a>
                         </div>
                     </div>
-                    <div class="dropdown second">
-                        <a class="nav-link" href="../hosting.html">Хостинг</a>
-                        <div class="dropdown-content">
-                            <a class="highlight burger-hidden" href="../hosting.html">Хостинг</a>
+
+                    <div class="menu-dropdown">
+                        <a class="menu-link" href="../hosting.html">Хостинг</a>
+                        <div class="menu-dropdown--content">
+                            <a class="menu-dropdown--hidden highlight" href="../hosting.html">Хостинг</a>
                             <a href="../hosting-tarify.html">Бюджетный хостинг</a>
                             <a href="../vds.html">VDS - виртуальный сервер</a>
                             <a href="../domain.html">Регистрация доменов</a>
                             <a href="../ssl.html">SSL-сертификаты</a>
                         </div>
                     </div>
+
                     <hr class="mobile-visible">
-                    <a class="mobile-visible" href="../portfolio.html" class="bold">
-                        <span class="title_h5">Портфолио</span>
-                    </a>
+
+                    <a class="mobile-visible menu-link menu-link--noicon" href="../portfolio.html">Портфолио</a>
+
                     <hr class="mobile-visible">
+
                     <a class="mobile-visible" href="../o-nas.html">О Компании</a>
                     <a class="mobile-visible" href="../klientam.html">Клиентам</a>
                     <a class="mobile-visible" href="../comment.html">Отзывы</a>
                     <a class="mobile-visible" href="../blog.html">Блог</a>
                     <a class="mobile-visible" href="../vakansii.html">Вакансии</a>
                     <a class="mobile-visible" href="../kontakty.html">Контакты</a>
-                    <a class="button-highlight mobile-visible" href="../calculator.html">Заказать сайт</a>
+                    <a class="button-highlight button-highlighted mobile-visible" href="../calculator.html">Заказать
+                        сайт</a>
                 </nav>
-            </div>
-            <a href="../calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
-            <div class="fd-col ml-6 header-contacts">
-                <a class="title_h5 phone-line" href="tel:+74732540796">
-                    <i class="icon-phone fz-26 color-blue" style="top: 4px;"></i>
-                    <span>+7 (473) 254 0796</span>
-                </a>
-                <span class="work-time a-self-end">Пн-Пт: 9:00-18:00</span>
-            </div>
-            <div class="icon-menu">
-                <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
-                    <i class="icon-mail"></i>
-                </a>
-                <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796" target="_blank">
-                    <i class="icon-whatsapp"></i>
-                </a>
-                <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
-                    <i class="icon-tg"></i>
-                </a>
-                <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
-                    target="_blank">
-                    <i class="icon-person"></i>
-                </a>
-            </div>
-            <div class="burger ml-32">
-                <div id="menuToggle">
-                    <input type="checkbox" id="menuCheckbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="burger-content">
-                    <a href="../portfolio.html" class="bold title_h5">
-                        Портфолио
+
+                <a href="../calculator.html" class="button-highlight pc-visible">Заказать сайт</a>
+
+                <div class="header-contacts">
+                    <a class="title_h5 phone-line" href="tel:+74732540796">
+                        <i class="icon-phone fz-26 color-blue"></i>
+                        <span>+7 (473) 254 0796</span>
                     </a>
-                    <hr>
-                    <a href="../o-nas.html">О Компании</a>
-                    <a href="../klientam.html">Клиентам</a>
-                    <a href="../comment.html">Отзывы</a>
-                    <a href="../blog.html">Блог</a>
-                    <a href="../vakansii.html">Вакансии</a>
-                    <a href="../kontakty.html">Контакты</a>
-                    <hr>
-                    <a class="work-time a-self-end popup-trigger map-link" href="javascript://"
-                        title="Посмотреть на карте" data-popup="map" data-map="vrn">
-                        Воронеж ул.Пятницкого 40
-                    </a>
-                    <hr>
-                    <button class="button-highlight mt-32">
-                        Заказать сайт
-                    </button>
+                    <span>Пн-Пт: 9:00-18:00</span>
                 </div>
+
+                <div class="icon-menu">
+                    <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+                        <i class="icon-mail"></i>
+                    </a>
+                    <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796"
+                        target="_blank">
+                        <i class="icon-whatsapp"></i>
+                    </a>
+                    <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
+                        <i class="icon-tg"></i>
+                    </a>
+                    <a id="lk-link" class="nav-icon-link" title="Личный кабинет" href="https://lk.intrid.ru/"
+                        target="_blank">
+                        <i class="icon-person"></i>
+                    </a>
+                </div>
+
+                <div class="burger">
+                    <div id="menuToggle">
+                        <input type="checkbox" id="menuCheckbox" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="burger-content">
+                        <a href="../portfolio.html" class="bold title_h5">
+                            Портфолио
+                        </a>
+                        <hr>
+                        <a href="../o-nas.html">О Компании</a>
+                        <a href="../klientam.html">Клиентам</a>
+                        <a href="../comment.html">Отзывы</a>
+                        <a href="../blog.html">Блог</a>
+                        <a href="../vakansii.html">Вакансии</a>
+                        <a href="../kontakty.html">Контакты</a>
+                        <hr>
+                        <a class="work-time align-self-end popup-trigger map-link" href="javascript://"
+                            title="Посмотреть на карте" data-popup="map" data-map="vrn">
+                            Воронеж ул.Пятницкого 40
+                        </a>
+                        <hr>
+                        <a href="../calculator.html" class="button button-highlight mt-32">
+                            Заказать сайт
+                        </a>
+                    </div>
+                </div>
+
+                <!-- burger/cross -->
+                <button aria-label="menu" class="header-burger" data-menu="closed">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
     <!-- MAIN PAGE -->
-    <section class="comment-main crm crm-page container">
-        <div class="breadcrumbs">
-            <a href="../">Главная</a>
-            <span>-</span>
-            <a href="../blog.html">Блог</a>
-            <span>-</span>
-            <a href="#" class="link-disabled">Разработка сайтов</a>
-        </div>
-        <h1 class="title_h1 w-fit underlined m-center">
-            Уникальный контент для Вашего интернет-магазина
-        </h1>
-    </section>
-    <!--  -->
-    <section class="container container-blog blog_page-content">
-        <p>
-            Интернет-магазин - удобная и современная платформа для реализации товаров. Однако, для удачной работы
-            недостаточно просто создать сайт. Нужно наполнить его качественным и уникальным контентом: изображениями,
-            видео и аудиоматериалами и текстом. Все эти виды позволяют пользователям находить ту информацию и товары,
-            которые им нужны, а поисковикам — оценивать качество ресурса и лучше его ранжировать.
-        </p>
-        <div class="img-wrapper">
-            <img src="../src/images/blog/kontent_sayta_kak_neoyemlemaya_chast_internet-marketinga.webp" alt="">
-        </div>
-        <p class="title_h3 w-fit m-center underlined">
-            Что такое уникальный контент
-        </p>
-        <p>
-            Прежде чем <a href="../store.html" class="hover-underline">заказать интернет магазин</a>, а уж тем более
-            думать о его наполнении, необходимо ознакомиться с
-            важными понятиями по этому вопросу. Уникальный контент в SEO - оригинальные визуальные, видео, аудио и
-            текстовые материалы, которые существуют в единственном числе только на Вашем ресурсе.
-        </p>
-        <p>
-            Уникальность для поисковых систем — один важнейший критерий качества, при этом Яндекс и Google могут понять
-            в каких случаях копирование оправдано. Кроме того, поисковики могут накладывать санкции за использование
-            скопированного контента, будь то изображения или тексты. Например, Яндекса исключает не уникальные страницы
-            из индекса и они не получают никакого трафика.
-        </p>
-        <p>
-            Остальные параметры оценки, такие как качество, оформление и оптимизация чаще всего являются второстепенным,
-            в зависимости от вида и тематики ресурса. Предположим, у Вас новостной портал, и темы, которые на нем
-            публикуются, часто мелькают в сети. При этом портал юзерфрендли, обладает высоким уровнем юзабилити,
-            приятным дизайном, а пользователи активно делятся статьями и оставляют комментарии. В таком случае большую
-            роль будет играть то, насколько сайт полезен для аудитории и положительный пользовательский опыт.
-        </p>
-        <div class="img-wrapper">
-            <img src="../src/images/blog/kontent_sayta.webp" alt="">
-        </div>
-        <p class="title_h3 w-fit m-center underlined">
-            Какой контент поможет интернет-магазину
-        </p>
-        <p>
-            Любой онлайн-магазин должен быть наполнен контентом и обязательной к наполнению является следующая
-            информация:
-        </p>
-        <ul class="ordinary-list">
-            <li>
+    <main>
+        <section class="main-section container">
+            <div class="breadcrumbs">
+                <a href="../">Главная</a>
+                <span>-</span>
+                <a href="../blog.html">Блог</a>
+                <span>-</span>
+                <a href="#" class="link-disabled">Разработка сайтов</a>
+            </div>
+
+            <h1 class="w-fit underlined m-center">
+                Уникальный контент для Вашего интернет-магазина
+            </h1>
+        </section>
+        <!--  -->
+        <section class="blog_page">
+            <div class="container">
                 <p>
-                    описания товаров. Под каждой единицей должны быть характеристики товара, сведения о производителе,
-                    назначении, составе и т.д.
+                    Интернет-магазин - удобная и современная платформа для реализации товаров. Однако, для удачной
+                    работы
+                    недостаточно просто создать сайт. Нужно наполнить его качественным и уникальным контентом:
+                    изображениями,
+                    видео и аудиоматериалами и текстом. Все эти виды позволяют пользователям находить ту информацию и
+                    товары,
+                    которые им нужны, а поисковикам — оценивать качество ресурса и лучше его ранжировать.
                 </p>
-            </li>
-            <li>
+
+                <div class="img-wrapper">
+                    <img src="../src/images/blog/kontent_sayta_kak_neoyemlemaya_chast_internet-marketinga.webp" alt="">
+                </div>
+
+                <p class="title_h3 w-fit m-center underlined">
+                    Что такое уникальный контент
+                </p>
                 <p>
-                    контакты для связи. Они должны быть заметны. Можно сделать под них отдельный раздел
+                    Прежде чем <a href="../store.html" class="hover-underline">заказать интернет магазин</a>, а уж тем
+                    более
+                    думать о его наполнении, необходимо ознакомиться с
+                    важными понятиями по этому вопросу. Уникальный контент в SEO - оригинальные визуальные, видео, аудио
+                    и
+                    текстовые материалы, которые существуют в единственном числе только на Вашем ресурсе.
                 </p>
-            </li>
-            <li>
                 <p>
-                    статьи. Их можно написать с учетом популярных ключевых запросов, чтобы продвинуть страницу в поиске
+                    Уникальность для поисковых систем — один важнейший критерий качества, при этом Яндекс и Google могут
+                    понять
+                    в каких случаях копирование оправдано. Кроме того, поисковики могут накладывать санкции за
+                    использование
+                    скопированного контента, будь то изображения или тексты. Например, Яндекса исключает не уникальные
+                    страницы
+                    из индекса и они не получают никакого трафика.
                 </p>
-            </li>
-            <li>
                 <p>
-                    баннеры. Качественно отрисованные баннеры должны быть не только уникальными, но и привлекательными.
-                    Благодаря уникальному торговому предложению, которое Вы на нем разместите, можно повысить процент
-                    конверсии
+                    Остальные параметры оценки, такие как качество, оформление и оптимизация чаще всего являются
+                    второстепенным,
+                    в зависимости от вида и тематики ресурса. Предположим, у Вас новостной портал, и темы, которые на
+                    нем
+                    публикуются, часто мелькают в сети. При этом портал юзерфрендли, обладает высоким уровнем юзабилити,
+                    приятным дизайном, а пользователи активно делятся статьями и оставляют комментарии. В таком случае
+                    большую
+                    роль будет играть то, насколько сайт полезен для аудитории и положительный пользовательский опыт.
                 </p>
-            </li>
-            <li>
+                
+                <div class="img-wrapper">
+                    <img src="../src/images/blog/kontent_sayta.webp" alt="">
+                </div>
+
+                <p class="title_h3 w-fit m-center underlined">
+                    Какой контент поможет интернет-магазину
+                </p>
                 <p>
-                    отзывы. Достоверные и положительные отзывы усилят репутацию Вашей компании
+                    Любой онлайн-магазин должен быть наполнен контентом и обязательной к наполнению является следующая
+                    информация:
                 </p>
-            </li>
-        </ul>
-        <p class="title_h3 w-fit m-center underlined">
-            Где взять уникальный контент
-        </p>
-        <p>
-            <a href="../store.html" class="hover-underline">Разработать сайт</a> с уникальным наполнением и структурой -
-            задача не из легких. Для создания качественного и
-            разнообразного контента для интернет-магазина лучше всего обратиться к специалистам: графическому дизайнеру,
-            веб-дизайнеру и копирайтеру. Можно нанять человека в штат или же обратиться за помощью к фрилансерам и
-            разместить заказ на создание контента на бирже.
-        </p>
-        <p>
-            У нас Вы можете <a href="../store.html">заказать</a> сайт в Воронеже. Мы поможем с наполнением, правильным
-            оформлением и продвижением.
-            Обращайтесь за помощью - мы обязательно поможем сделать Ваше дело более прибыльным.
-        </p>
-    </section>
-    <!--  -->
-    <section class="use-service container">
-        <p class="title_h2 underlined w-fit m-center text-center">
-            Заказать разработку сайта или создание бренда
-        </p>
-        <div class="use-service-list prices-services-list">
-            <a href="../calculator.html" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="../src/icons/site-calc.svg" alt="landig-page"></div>
-                <span class="color-white">Калькулятор сайта&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-            </a>
-            <a href="../brif-site.html" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="../src/icons/brif-site.svg" alt="landig-page"></div>
-                <span class="color-white">Бриф на сайт&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-            </a>
-            <a href="../brif-logo.html" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="../src/icons/brif-logo.svg" alt="landig-page"></div>
-                <span class="color-white">Бриф на бренд<span class="br470"> и лого</span>&nbsp;<i
-                        class="icon-arrow_wide color-blue"></i></span>
-            </a>
-            <a href="../seo.html#seo_application" class="prices-services-list-item">
-                <div class="img-wrapper"><img src="../src/icons/promotion-request.svg" alt="landig-page"></div>
-                <span class="color-white">Заявка на раскрутку&nbsp;<i class="icon-arrow_wide color-blue"></i></span>
-            </a>
-        </div>
-    </section>
+                <ul>
+                    <li>
+                        <p>
+                            описания товаров. Под каждой единицей должны быть характеристики товара, сведения о
+                            производителе,
+                            назначении, составе и т.д.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            контакты для связи. Они должны быть заметны. Можно сделать под них отдельный раздел
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            статьи. Их можно написать с учетом популярных ключевых запросов, чтобы продвинуть страницу в
+                            поиске
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            баннеры. Качественно отрисованные баннеры должны быть не только уникальными, но и
+                            привлекательными.
+                            Благодаря уникальному торговому предложению, которое Вы на нем разместите, можно повысить
+                            процент
+                            конверсии
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            отзывы. Достоверные и положительные отзывы усилят репутацию Вашей компании
+                        </p>
+                    </li>
+                </ul>
+
+                <p class="title_h3 w-fit m-center underlined">
+                    Где взять уникальный контент
+                </p>
+                <p>
+                    <a href="../store.html" class="hover-underline">Разработать сайт</a> с уникальным наполнением и
+                    структурой -
+                    задача не из легких. Для создания качественного и
+                    разнообразного контента для интернет-магазина лучше всего обратиться к специалистам: графическому
+                    дизайнеру,
+                    веб-дизайнеру и копирайтеру. Можно нанять человека в штат или же обратиться за помощью к фрилансерам
+                    и
+                    разместить заказ на создание контента на бирже.
+                </p>
+                <p>
+                    У нас Вы можете <a href="../store.html">заказать</a> сайт в Воронеже. Мы поможем с наполнением,
+                    правильным
+                    оформлением и продвижением.
+                    Обращайтесь за помощью - мы обязательно поможем сделать Ваше дело более прибыльным.
+                </p>
+            </div>
+        </section>
+        <!--  -->
+        <section>
+			<div class="container">
+				<h3 class="underlined w-fit m-center text-center">
+					Заказать разработку сайта или создание бренда
+				</h3>
+
+				<div class="flex-layout flex-layout--use">
+					<a href="../calculator.html" class="card card--service use">
+						<div class="card-icon">
+							<img src="../src/icons/site-calc.svg" alt="landig-page">
+						</div>
+						<b>
+							Калькулятор сайта
+						</b>
+					</a>
+					<a href="../brif-site.html" class="card card--service use">
+						<div class="card-icon">
+							<img src="../src/icons/brif-site.svg" alt="landig-page">
+						</div>
+						<b>
+							Бриф на сайт
+						</b>
+					</a>
+					<a href="../brif-logo.html" class="card card--service use">
+						<div class="card-icon">
+							<img src="../src/icons/brif-logo.svg" alt="landig-page">
+						</div>
+						<b>
+							Бриф на бренд
+						</b>
+					</a>
+					<a href="../seo.html#seo_application" class="card card--service use">
+						<div class="card-icon">
+							<img src="../src/icons/promotion-request.svg" alt="landig-page">
+						</div>
+						<b>
+							Заявка на раскрутку
+						</b>
+					</a>
+				</div>
+			</div>
+		</section>
+    </main>
     <!-- footer -->
     <footer class="footer">
         <div class="container container-full">
@@ -365,26 +427,28 @@
         </div>
     </footer>
     <!-- MODAL WINDOWS -->
-    <dialog class="popup" id="map">
+    <dialog class="popup popup-map" id="map">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <div class="map-container"></div>
                 <hr>
                 <div class="map-testimonials">
-                    <p class="color-white ml-10"></p>
+                    <div id="map-info"></div>
                     <a class="title_h5 fz-20 phone-line gap-10" href="tel:+74732540796">
-                        <i class="icon-phone  color-blue" style="top: 4px;"></i>
+                        <i class="icon-phone  color-blue"></i>
                         <span>+7 (473) 254 0796</span>
                     </a>
-                    <div class="gap-10 ml-10" id="map-social">
+                    <div class="gap-10" id="map-social">
                         <a class="title_h5 fz-26 phone-line" id="map-whatsapp" href="tel:+74732540796">
-                            <i class="icon-whatsapp color-blue" style="top: 4px;"></i>
+                            <i class="icon-whatsapp color-blue"></i>
                         </a>
                         <a class="title_h5 fz-26 phone-line" id="map-telegram" href="https://t.me/webintrid">
-                            <i class="icon-tg color-blue" style="top: 4px;"></i></a>
+                            <i class="icon-tg color-blue"></i>
+                        </a>
                     </div>
                     <a href="#" target="_blank" class="button-link">
-                        Перейти в карты <i class="icon-arrow_wide"></i>
+                        Перейти в карты
+                        <i class="icon-arrow_wide"></i>
                     </a>
                 </div>
             </div>
@@ -406,7 +470,8 @@
                             Согласен на обработку персональных данных
                         </label> -->
                         <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy" class="text-dashed color-white">обработку
+                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
+                                class="text-dashed color-white">обработку
                                 своих персональных
                                 данных</a>
                         </p>
@@ -428,7 +493,8 @@
                 </p>
                 <p class="title_h5 mb-10">Защита данных</p>
                 <p class="mb-20">
-                    Администрация сайта <a href="../" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее Сайт) не
+                    Администрация сайта <a href="../" class="p w-fit d-inline hover-underline">intrid.ru</a> (далее
+                    Сайт) не
                     может
                     передать или
                     раскрыть
@@ -493,19 +559,14 @@
             </div>
         </div>
     </dialog>
-    <dialog class="popup" id="accreditation-view">
+    <dialog class="popup popup-docs" id="accreditation-view">
         <div class="popup-wrapper">
             <div class="popup-body">
                 <img src="../src/images/accreditation.webp" alt="accrediattion">
             </div>
         </div>
     </dialog>
-    <script src="../js/header-opacity.js"></script>
-    <script src="../js/popup-handler.js"></script>
-    <script src="../js/map-handler.js"></script>
-    <script src="../js/phoneFieldHandler.js"></script>
-    <script src="../js/slider-with-pagination.js"></script>
-    <script src="../js/blogsSelector.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 
 </html>
