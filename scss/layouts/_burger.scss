@@ -12,7 +12,8 @@
   }
 
   &-content {
-    display: none;
+    // display: none;
+    display: block;
     position: absolute;
     top: 38px;
     right: 0;
@@ -82,9 +83,10 @@
   }
 
   & #menuToggle:has(input:not(:checked)) {
-    & ~ .burger-content {
+    &~.burger-content {
       height: 0;
       opacity: 0;
+      visibility: hidden;
       animation: burgerAppearUp 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
   }
@@ -106,9 +108,9 @@
       transform: rotate(-45deg) translate(-1px, -2px);
     }
 
-    & ~ .burger-content {
-      display: block;
+    &~.burger-content {
       opacity: 1;
+      visibility: visible;
       height: fit-content;
       animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     }

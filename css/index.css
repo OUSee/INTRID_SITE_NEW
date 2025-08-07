@@ -7101,7 +7101,7 @@ button:hover img,
   }
 }
 .burger-content {
-  display: none;
+  display: block;
   position: absolute;
   top: 38px;
   right: 0;
@@ -7164,6 +7164,7 @@ button:hover img,
 .burger #menuToggle:has(input:not(:checked)) ~ .burger-content {
   height: 0;
   opacity: 0;
+  visibility: hidden;
   animation: burgerAppearUp 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .burger #menuToggle:has(input:checked) span {
@@ -7179,8 +7180,8 @@ button:hover img,
   transform: rotate(-45deg) translate(-1px, -2px);
 }
 .burger #menuToggle:has(input:checked) ~ .burger-content {
-  display: block;
   opacity: 1;
+  visibility: visible;
   height: fit-content;
   animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -12358,4 +12359,4 @@ button.next:hover {
   #more-about-web-dev {
     margin-bottom: 40px;
   }
-}
+}/*# sourceMappingURL=index.css.map */
