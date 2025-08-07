@@ -2592,73 +2592,6 @@ button.next {
 }
 
 // it for business
-.it {
-  &-ai {
-    &-web_count {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: auto;
-        height: 70px;
-
-        &.olive-right {
-          transform: scaleX(-1);
-        }
-      }
-
-      .large-number {
-        color: var(--blue-main);
-        font-size: 70px;
-        font-weight: 600;
-        line-height: 70px;
-        min-width: 264px;
-
-        &>span {
-          font-size: 70px;
-          font-weight: 600;
-          line-height: 70px;
-        }
-      }
-
-      .title_h4 {
-        margin-left: 20px;
-        max-width: 600px;
-
-        @media (max-width: 900px) {
-          margin-left: 0;
-          margin-top: 20px;
-          max-width: unset;
-          flex: 1 1 100%;
-          text-align: center;
-        }
-      }
-
-      @media (max-width: 900px) {
-        flex-wrap: wrap;
-      }
-
-      @media (max-width: 520px) {
-        .large-number {
-          font-size: 30px;
-          line-height: 30px;
-          min-width: unset;
-
-          &>span {
-            font-size: 30px;
-            line-height: 30px;
-          }
-        }
-
-        img {
-          width: auto;
-          height: 30px;
-        }
-      }
-    }
-  }
-}
 
 // calculator page
 #reset-options-btn {
@@ -3341,6 +3274,31 @@ button.next {
       flex-direction: column;
     }
 
+    &.expanded {
+      flex-direction: row;
+      justify-content: center;
+
+      &>div {
+        flex-wrap: nowrap;
+
+        & .large-number {
+          white-space: nowrap;
+
+          @media (max-width: 480px) {
+            font-size: 50px;
+          }
+        }
+      }
+
+      &>p {
+        flex: 1;
+
+        @media (max-width: 600px) {
+          text-align: center;
+        }
+      }
+    }
+
     &>div {
       display: flex;
       align-items: center;
@@ -3484,7 +3442,6 @@ button.next {
 
     table {
       width: 100%;
-      // background-color: var(--blue-tag);
 
       thead {
         background-color: var(--color-white);
@@ -3571,34 +3528,6 @@ button.next {
         background-clip: content-box;
       }
     }
-  }
-}
-
-.default-table {
-  width: 100%;
-  background-color: var(--blue-tag);
-
-  thead {
-    background-color: var(--color-white);
-    color: var(--bg-main);
-    position: sticky;
-    top: 0;
-    border-color: var(--bg-main);
-  }
-
-  tbody {
-    border-color: var(--blue-bg);
-  }
-
-  th {
-    padding: 5px;
-    border: 1px solid var(--blue-bg);
-  }
-
-  td {
-    border: 1px solid var(--blue-main);
-    padding: 5px;
-    padding-left: 10px;
   }
 }
 
@@ -4345,6 +4274,7 @@ button.next {
 .help {
   &-faq {
     .accordion-item {
+      counter-increment: helpItems;
       background-color: var(--bg-main);
       border-radius: 25px;
 
@@ -4356,6 +4286,17 @@ button.next {
       .accordion-header {
         position: relative;
         display: block;
+
+        & p {
+          position: relative;
+
+          &::before {
+            content: counter(helpItems)'.';
+            display: inline;
+            @include h4;
+            color: var(--blue-main);
+          }
+        }
 
         i {
           display: flex;

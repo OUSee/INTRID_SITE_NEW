@@ -2485,6 +2485,9 @@ ol li > ol {
     flex-basis: 100% !important;
   }
 }
+.flex-row {
+  flex-direction: row !important;
+}
 .flex-column {
   flex-direction: column !important;
 }
@@ -2724,6 +2727,9 @@ ol li > ol {
 }
 .mw-700 {
   max-width: 700px;
+}
+.mw-900 {
+  max-width: 900px;
 }
 
 .m-center {
@@ -9778,64 +9784,6 @@ button.next:hover {
   }
 }
 
-.it-ai-web_count {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.it-ai-web_count img {
-  width: auto;
-  height: 70px;
-}
-.it-ai-web_count img.olive-right {
-  transform: scaleX(-1);
-}
-.it-ai-web_count .large-number {
-  color: var(--blue-main);
-  font-size: 70px;
-  font-weight: 600;
-  line-height: 70px;
-  min-width: 264px;
-}
-.it-ai-web_count .large-number > span {
-  font-size: 70px;
-  font-weight: 600;
-  line-height: 70px;
-}
-.it-ai-web_count .title_h4 {
-  margin-left: 20px;
-  max-width: 600px;
-}
-@media (max-width: 900px) {
-  .it-ai-web_count .title_h4 {
-    margin-left: 0;
-    margin-top: 20px;
-    max-width: unset;
-    flex: 1 1 100%;
-    text-align: center;
-  }
-}
-@media (max-width: 900px) {
-  .it-ai-web_count {
-    flex-wrap: wrap;
-  }
-}
-@media (max-width: 520px) {
-  .it-ai-web_count .large-number {
-    font-size: 30px;
-    line-height: 30px;
-    min-width: unset;
-  }
-  .it-ai-web_count .large-number > span {
-    font-size: 30px;
-    line-height: 30px;
-  }
-  .it-ai-web_count img {
-    width: auto;
-    height: 30px;
-  }
-}
-
 @media (max-width: 900px) {
   #reset-options-btn {
     font-family: "INTRID_ICONS";
@@ -10416,6 +10364,29 @@ button.next:hover {
     flex-direction: column;
   }
 }
+.portfolio-count.expanded {
+  flex-direction: row;
+  justify-content: center;
+}
+.portfolio-count.expanded > div {
+  flex-wrap: nowrap;
+}
+.portfolio-count.expanded > div .large-number {
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .portfolio-count.expanded > div .large-number {
+    font-size: 50px;
+  }
+}
+.portfolio-count.expanded > p {
+  flex: 1;
+}
+@media (max-width: 600px) {
+  .portfolio-count.expanded > p {
+    text-align: center;
+  }
+}
 .portfolio-count > div {
   display: flex;
   align-items: center;
@@ -10608,30 +10579,6 @@ button.next:hover {
     background-color: var(--color-white);
     background-clip: content-box;
   }
-}
-
-.default-table {
-  width: 100%;
-  background-color: var(--blue-tag);
-}
-.default-table thead {
-  background-color: var(--color-white);
-  color: var(--bg-main);
-  position: sticky;
-  top: 0;
-  border-color: var(--bg-main);
-}
-.default-table tbody {
-  border-color: var(--blue-bg);
-}
-.default-table th {
-  padding: 5px;
-  border: 1px solid var(--blue-bg);
-}
-.default-table td {
-  border: 1px solid var(--blue-main);
-  padding: 5px;
-  padding-left: 10px;
 }
 
 .smm-form form .form-limitter .block {
@@ -11229,6 +11176,7 @@ button.next:hover {
 }
 
 .help-faq .accordion-item {
+  counter-increment: helpItems;
   background-color: var(--bg-main);
   border-radius: 25px;
 }
@@ -11239,6 +11187,26 @@ button.next:hover {
 .help-faq .accordion-item .accordion-header {
   position: relative;
   display: block;
+}
+.help-faq .accordion-item .accordion-header p {
+  position: relative;
+}
+.help-faq .accordion-item .accordion-header p::before {
+  content: counter(helpItems) ".";
+  display: inline;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--blue-main);
+}
+@media (max-width: 1000px) {
+  .help-faq .accordion-item .accordion-header p::before {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .help-faq .accordion-item .accordion-header p::before {
+    font-size: 16px;
+  }
 }
 .help-faq .accordion-item .accordion-header i {
   display: flex;
