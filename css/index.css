@@ -858,6 +858,28 @@ th {
 [data-slider]#office-slider > *:not(.active), [data-slider]#testimonials-slider > *:not(.active), [data-slider]#reviews-slider > *:not(.active) {
   pointer-events: none;
 }
+[data-slider]#our-team > * {
+  flex: 1 0 calc(25% - 5px);
+  max-width: calc(25% - 5px);
+}
+@media (max-width: 1200px) {
+  [data-slider]#our-team > * {
+    flex: 1 0 calc(33.333333% - 5px);
+    max-width: calc(33.333333% - 5px);
+  }
+}
+@media (max-width: 1000px) {
+  [data-slider]#our-team > * {
+    flex: 1 0 calc(50% - 5px);
+    max-width: calc(50% - 5px);
+  }
+}
+@media (max-width: 600px) {
+  [data-slider]#our-team > * {
+    flex: 1 0 auto;
+    max-width: 100%;
+  }
+}
 [data-slider]#portfolio-slider, [data-slider]#portfolio-slider-2, [data-slider]#design-portfolio-slider, [data-slider]#ui-portfolio-slider, [data-slider]#portfolio-shop-slider, [data-slider]#portfolio-corporate-slider, [data-slider]#portfolio-web-slider {
   width: 100%;
 }
@@ -6640,10 +6662,12 @@ button:hover img,
   top: 0;
   z-index: 4;
   display: flex;
+  max-width: 100vw;
   width: 100%;
   height: 60px;
   padding: 6px 0;
   background-color: var(--navbar-bg-op);
+  transition: 0.25s ease-in-out;
 }
 .header:has(#menuCheckbox:checked), .header:has(#menuToggle:checked) {
   background-color: var(--bg-main);

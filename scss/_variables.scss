@@ -159,6 +159,28 @@
     }
   }
 
+  &#our-team {
+    &>* {
+      flex: 1 0 calc(25% - 5px);
+      max-width: calc(25% - 5px);
+
+      @media (max-width: 1200px) {
+        flex: 1 0 calc(33.333333% - 5px);
+        max-width: calc(33.333333% - 5px);
+      }
+
+      @media (max-width: 1000px) {
+        flex: 1 0 calc(50% - 5px);
+        max-width: calc(50% - 5px);
+      }
+
+      @media (max-width: 600px) {
+        flex: 1 0 auto;
+        max-width: 100%;
+      }
+    }
+  }
+
   &#portfolio-slider,
   &#portfolio-slider-2,
   &#design-portfolio-slider,
