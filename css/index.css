@@ -1779,6 +1779,9 @@ ol li > ol {
 .d-flex {
   display: flex;
 }
+.d-block {
+  display: block !important;
+}
 .d-inline {
   display: inline;
 }
@@ -5578,6 +5581,11 @@ button:hover img,
   align-items: center;
   max-width: 200px;
   min-width: 180px;
+}
+@media (max-width: 600px) {
+  .card--achievement {
+    min-width: 140px;
+  }
 }
 .card--achievement div {
   flex-grow: 1;
