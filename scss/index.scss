@@ -4324,24 +4324,6 @@ button.next {
       }
     }
 
-    &>.grid-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 20px;
-      row-gap: 32px;
-      margin-bottom: 32px;
-
-      .grid-group-item {
-        .title_h5 {
-          margin-bottom: 10px;
-        }
-      }
-
-      @media (max-width: 900px) {
-        grid-template-columns: 1fr;
-      }
-    }
-
     &>.default-table {
       margin-bottom: 20px;
     }
@@ -4381,8 +4363,6 @@ button.next {
           position: absolute;
           top: 16px;
           left: 20px;
-          // top: 32px;
-          // right: -30px;
           transition: all 0.3s ease-in-out;
           transform-origin: center;
 
@@ -4399,7 +4379,7 @@ button.next {
           }
         }
 
-        & .ordinary-list {
+        & ul {
           & p {
             @media (min-width: 1200px) {
               font-size: 16px;
@@ -4478,9 +4458,6 @@ button.next {
     width: 100%;
     max-width: 500px;
     height: auto;
-    // max-width: 600px;
-    // height: 100%;
-    // margin: 0 -50px 0 0;
     user-select: none;
     pointer-events: none;
     overflow: hidden;
@@ -4642,28 +4619,6 @@ button.next {
       &:first-child {
         margin-top: 0;
       }
-    }
-
-    &>.grid-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 20px;
-      row-gap: 32px;
-      margin-bottom: 32px;
-
-      .grid-group-item {
-        .title_h5 {
-          margin-bottom: 10px;
-        }
-      }
-
-      @media (max-width: 900px) {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    &>.ordinary-list {
-      margin-bottom: 20px;
     }
   }
 }
@@ -5306,7 +5261,6 @@ button.next {
     display: flex;
     flex-direction: column;
     width: 100%;
-    // height: 100%;
     padding: 0;
     background-color: var(--footer-bg);
     border-radius: 25px;
@@ -5640,7 +5594,6 @@ button.next {
         border-bottom-right-radius: 0;
 
         span.tab-header::after {
-          // transform: rotate(90deg);
           transform: rotate(270deg);
         }
       }
@@ -5655,7 +5608,6 @@ button.next {
           font-family: "INTRID_ICONS";
           content: "\6d";
           font-size: 1.5em;
-          // transform: rotate(270deg);
           transform: rotate(90deg);
         }
       }
