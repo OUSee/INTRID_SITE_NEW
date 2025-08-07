@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  transform-origin: top center;
 
   @media (max-width: 1000px) {
     position: fixed;
@@ -82,6 +83,7 @@
       @media (max-width: 600px) {
         top: 0;
         left: 165px;
+        width: 52%;
         margin: 67px 0 0 0;
         padding: 0 10px;
       }
@@ -144,7 +146,6 @@
         &:hover {
           color: var(--blue-main);
 
-
           @media (max-width: 1000px) {
             text-decoration: underline;
             text-underline-offset: 3px;
@@ -163,7 +164,7 @@
     }
 
     &:hover {
-      &>a {
+      & > a {
         color: var(--blue-main);
         text-decoration: underline;
         text-decoration-thickness: none;
@@ -178,7 +179,7 @@
       }
     }
 
-    &>a {
+    & > a {
       &.menu-link {
         @media (min-width: 1000px) and (max-width: 1100px) {
           padding-left: 5px;
@@ -239,7 +240,7 @@
       }
 
       @media (min-width: 1000px) {
-        &+.menu-dropdown--content {
+        & + .menu-dropdown--content {
           max-height: fit-content;
           opacity: 1;
           visibility: visible;
@@ -256,7 +257,6 @@
     }
 
     &--noicon {
-
       &::before,
       &::after {
         display: none;
@@ -264,10 +264,17 @@
     }
   }
 
+  &:not(.open) {
+    @media (max-width: 1000px) {
+      opacity: 0;
+      visibility: hidden;
+      animation: burgerAppearUp 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+  }
+
   &.open {
     opacity: 1;
     visibility: visible;
-    transform-origin: top center;
     animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
@@ -278,7 +285,7 @@
     overflow: hidden;
   }
 
-  &>hr {
+  & > hr {
     width: 50%;
     max-width: 150px;
     border-top: 1px solid;
@@ -287,9 +294,13 @@
     margin-top: 0;
     margin-bottom: 0;
     height: 0;
+
+    @media (max-width: 600px) {
+      width: 40%;
+    }
   }
 
-  &>a {
+  & > a {
     &:not(.button-highlighted, .menu-link) {
       font-size: 15px;
       white-space: nowrap;

@@ -651,6 +651,16 @@ th {
     transform: scale(1, 1);
   }
 }
+@keyframes burgerAppearUp {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1, 0);
+  }
+}
 @keyframes eye {
   0%, 100% {
     transform: translateY(-5px) translateX(0px) scale(1);
@@ -4073,6 +4083,7 @@ button,
   max-height: 50px;
   align-items: center;
   cursor: pointer;
+  touch-action: manipulation;
 }
 button span,
 .button span,
@@ -6769,6 +6780,7 @@ button:hover img,
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  transform-origin: top center;
 }
 @media (max-width: 1000px) {
   .menu {
@@ -6852,6 +6864,7 @@ button:hover img,
   .menu-dropdown--content {
     top: 0;
     left: 165px;
+    width: 52%;
     margin: 67px 0 0 0;
     padding: 0 10px;
   }
@@ -7013,10 +7026,16 @@ button:hover img,
 .menu-link--noicon::before, .menu-link--noicon::after {
   display: none;
 }
+@media (max-width: 1000px) {
+  .menu:not(.open) {
+    opacity: 0;
+    visibility: hidden;
+    animation: burgerAppearUp 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
 .menu.open {
   opacity: 1;
   visibility: visible;
-  transform-origin: top center;
   animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .menu-open {
@@ -7034,6 +7053,11 @@ button:hover img,
   margin-top: 0;
   margin-bottom: 0;
   height: 0;
+}
+@media (max-width: 600px) {
+  .menu > hr {
+    width: 40%;
+  }
 }
 .menu > a:not(.button-highlighted, .menu-link) {
   font-size: 15px;
@@ -7089,6 +7113,7 @@ button:hover img,
   border-bottom-left-radius: 46px;
   border-bottom-right-radius: 46px;
   overflow: hidden;
+  transform-origin: top center;
   transition: height 0.5s ease-in-out;
 }
 .burger-content a:not(.button) {
@@ -7136,6 +7161,11 @@ button:hover img,
 .burger span:last-child {
   margin: 0;
 }
+.burger #menuToggle:has(input:not(:checked)) ~ .burger-content {
+  height: 0;
+  opacity: 0;
+  animation: burgerAppearUp 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 .burger #menuToggle:has(input:checked) span {
   background: var(--blue-main);
 }
@@ -7152,7 +7182,6 @@ button:hover img,
   display: block;
   opacity: 1;
   height: fit-content;
-  transform-origin: top center;
   animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -9859,6 +9888,9 @@ button.next:hover {
   color: var(--blue-main);
   margin-right: 6px;
 }
+.calculator-calculator .accordion .accordion-header .icon-shevrone {
+  margin-left: 10px;
+}
 .calculator-calculator .accordion-item {
   padding: 10px;
   border-radius: 29px;
@@ -12326,4 +12358,4 @@ button.next:hover {
   #more-about-web-dev {
     margin-bottom: 40px;
   }
-}/*# sourceMappingURL=index.css.map */
+}
