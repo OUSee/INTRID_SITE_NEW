@@ -12,7 +12,7 @@
   }
 
   &-content {
-    display: none;
+    display: block;
     position: absolute;
     top: 38px;
     right: 0;
@@ -24,6 +24,7 @@
     border-bottom-left-radius: 46px;
     border-bottom-right-radius: 46px;
     overflow: hidden;
+    transform-origin: top center;
     transition: height 0.5s ease-in-out;
 
     a:not(.button) {
@@ -80,6 +81,15 @@
     }
   }
 
+  & #menuToggle:has(input:not(:checked)) {
+    &~.burger-content {
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+      animation: burgerAppearUp 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+  }
+
   & #menuToggle:has(input:checked) {
     span {
       background: var(--blue-main);
@@ -97,11 +107,10 @@
       transform: rotate(-45deg) translate(-1px, -2px);
     }
 
-    & ~ .burger-content {
-      display: block;
+    &~.burger-content {
       opacity: 1;
+      visibility: visible;
       height: fit-content;
-      transform-origin: top center;
       animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
   }

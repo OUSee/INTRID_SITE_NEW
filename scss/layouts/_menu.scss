@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  transform-origin: top center;
 
   @media (max-width: 1000px) {
     position: fixed;
@@ -12,6 +13,7 @@
     align-items: flex-start;
     width: 100vw;
     height: 100vh;
+    height: 100svh;
     padding: 60px 40px 20px;
     background-color: var(--bg-main);
     opacity: 0;
@@ -22,11 +24,11 @@
 
   @media (max-width: 600px) {
     gap: 6px;
-    padding: 50px 20px 20px;
+    padding: 60px 20px 20px;
   }
 
   @media (max-width: 440px) {
-    padding: 50px 10px 10px;
+    padding: 60px 10px 10px;
   }
 
   &::before {
@@ -72,7 +74,8 @@
         gap: 6px;
         min-width: 100px;
         width: 55%;
-        padding: 8px 10px;
+        margin: 60px 0 0 0;
+        padding: 0 10px;
         background-color: transparent;
         box-shadow: none;
       }
@@ -80,7 +83,9 @@
       @media (max-width: 600px) {
         top: 0;
         left: 165px;
-        padding: 4px 10px;
+        width: 52%;
+        margin: 67px 0 0 0;
+        padding: 0 10px;
       }
 
       &:hover {
@@ -140,11 +145,10 @@
 
         &:hover {
           color: var(--blue-main);
-          
 
           @media (max-width: 1000px) {
             text-decoration: underline;
-          text-underline-offset: 3px;
+            text-underline-offset: 3px;
           }
         }
       }
@@ -260,10 +264,17 @@
     }
   }
 
+  &:not(.open) {
+    @media (max-width: 1000px) {
+      opacity: 0;
+      visibility: hidden;
+      animation: burgerAppearUp 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+  }
+
   &.open {
     opacity: 1;
     visibility: visible;
-    transform-origin: top center;
     animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
@@ -283,6 +294,10 @@
     margin-top: 0;
     margin-bottom: 0;
     height: 0;
+
+    @media (max-width: 600px) {
+      width: 40%;
+    }
   }
 
   & > a {

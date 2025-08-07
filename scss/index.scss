@@ -126,7 +126,7 @@ button.next {
         }
       }
 
-      p {
+      & p {
         @media (max-width: 600px) {
           max-width: 80%;
         }
@@ -238,7 +238,7 @@ button.next {
         gap: 0;
       }
 
-      & > * {
+      &>* {
         flex: 1 1 15%;
 
         @media (max-width: 1000px) {
@@ -341,7 +341,7 @@ button.next {
           gap: 10px;
         }
 
-        & > * {
+        &>* {
           @media (max-width: 1000px) {
             flex: 1;
             max-width: 100%;
@@ -395,7 +395,7 @@ button.next {
       max-width: 100%;
     }
 
-    & > h1 {
+    &>h1 {
       margin-bottom: 32px;
 
       @media (max-width: 600px) {
@@ -421,7 +421,7 @@ button.next {
     align-items: flex-start;
     width: 100%;
 
-    & > h1 {
+    &>h1 {
       margin-bottom: 32px;
 
       @media (max-width: 600px) {
@@ -464,7 +464,7 @@ button.next {
     }
 
     &-3x {
-      & > * {
+      &>* {
         max-width: 25%;
       }
     }
@@ -517,7 +517,7 @@ button.next {
     align-items: flex-start;
     gap: 20px;
 
-    & > div {
+    &>div {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -954,7 +954,7 @@ button.next {
       }
     }
 
-    & > p.title_h4 {
+    &>p.title_h4 {
       margin: 30px 0;
 
       @media (max-width: 900px) {
@@ -980,34 +980,16 @@ button.next {
           transition: 0.25s ease-in-out;
         }
 
-        &:has(thead th:nth-child(2) label input:checked)
-          tbody
-          tr
-          td:nth-child(2),
-        &:has(thead th:nth-child(3) label input:checked)
-          tbody
-          tr
-          td:nth-child(3),
-        &:has(thead th:nth-child(4) label input:checked)
-          tbody
-          tr
-          td:nth-child(4) {
+        &:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2),
+        &:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3),
+        &:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
           box-shadow: inset -2px 0 0 var(--blue-tag),
             inset 2px 0 0 var(--blue-tag);
         }
 
-        &:has(thead th:nth-child(2) label input:checked)
-          tbody
-          tr:last-child
-          td:nth-child(2),
-        &:has(thead th:nth-child(3) label input:checked)
-          tbody
-          tr:last-child
-          td:nth-child(3),
-        &:has(thead th:nth-child(4) label input:checked)
-          tbody
-          tr:last-child
-          td:nth-child(4) {
+        &:has(thead th:nth-child(2) label input:checked) tbody tr:last-child td:nth-child(2),
+        &:has(thead th:nth-child(3) label input:checked) tbody tr:last-child td:nth-child(3),
+        &:has(thead th:nth-child(4) label input:checked) tbody tr:last-child td:nth-child(4) {
           color: var(--color-white) !important;
           background-color: var(--blue-tag);
           border-bottom: 2px solid var(--blue-tag);
@@ -1016,6 +998,7 @@ button.next {
         thead {
           @media (min-width: 900px) {
             tr {
+
               td,
               th {
                 padding: 0;
@@ -1048,6 +1031,7 @@ button.next {
 
         tbody tr {
           &:first-child {
+
             td,
             th label {
               padding: 18px 30px;
@@ -1109,18 +1093,9 @@ button.next {
           overflow-x: hidden;
           overflow-y: visible;
 
-          &:has(thead th:nth-child(2) label input:checked)
-            tbody
-            tr
-            td:nth-child(2),
-          &:has(thead th:nth-child(3) label input:checked)
-            tbody
-            tr
-            td:nth-child(3),
-          &:has(thead th:nth-child(4) label input:checked)
-            tbody
-            tr
-            td:nth-child(4) {
+          &:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2),
+          &:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3),
+          &:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
             display: table-cell !important;
           }
 
@@ -1254,6 +1229,7 @@ button.next {
     }
 
     .benefits {
+
       &-left,
       &-right,
       &-bottom {
@@ -1275,6 +1251,7 @@ button.next {
   z-index: 1;
 
   .benefit-card {
+
     &:first-child,
     &:last-child {
       margin-left: 30px;
@@ -1388,13 +1365,11 @@ button.next {
 
 .for-buisness-offers {
   position: relative;
-  background: linear-gradient(
-      0deg,
+  background: linear-gradient(0deg,
       rgba(0, 234, 255, 0) 0%,
       rgba(0, 234, 255, 0.1) 15%,
       rgba(0, 234, 255, 0.1) 85%,
-      rgba(0, 234, 255, 0) 100%
-    ),
+      rgba(0, 234, 255, 0) 100%),
     url("../src/images/mountains_1.webp");
   background-size: 100% auto;
   background-position: bottom;
@@ -1798,12 +1773,12 @@ button.next {
           }
         }
 
-        &:has(#cases-tab-1:checked) ~ .cases-content .tab-content:nth-child(1),
-        &:has(#cases-tab-2:checked) ~ .cases-content .tab-content:nth-child(2),
-        &:has(#cases-tab-3:checked) ~ .cases-content .tab-content:nth-child(3),
-        &:has(#cases-tab-4:checked) ~ .cases-content .tab-content:nth-child(4),
-        &:has(#cases-tab-5:checked) ~ .cases-content .tab-content:nth-child(5),
-        &:has(#cases-tab-6:checked) ~ .cases-content .tab-content:nth-child(6) {
+        &:has(#cases-tab-1:checked)~.cases-content .tab-content:nth-child(1),
+        &:has(#cases-tab-2:checked)~.cases-content .tab-content:nth-child(2),
+        &:has(#cases-tab-3:checked)~.cases-content .tab-content:nth-child(3),
+        &:has(#cases-tab-4:checked)~.cases-content .tab-content:nth-child(4),
+        &:has(#cases-tab-5:checked)~.cases-content .tab-content:nth-child(5),
+        &:has(#cases-tab-6:checked)~.cases-content .tab-content:nth-child(6) {
           display: flex;
           animation: flex-appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
@@ -1959,7 +1934,7 @@ button.next {
         align-items: stretch;
       }
 
-      & > * {
+      &>* {
         &:not(.active) {
           opacity: 0;
         }
@@ -1985,7 +1960,7 @@ button.next {
       }
     }
 
-    & > .container {
+    &>.container {
       position: relative;
     }
 
@@ -2075,17 +2050,15 @@ button.next {
           left: 0%;
           position: absolute;
           transform: rotateX(-50deg) rotateY(15deg) translateZ(68px) scale(0.6);
-          background: radial-gradient(
-            ellipse at center,
-            #00eaff 15%,
-            #00eaff 16%,
-            #fff 16%,
-            #fff 40%,
-            #00eaff 41%,
-            #00eaff 55%,
-            #fff 56%,
-            transparent 71%
-          );
+          background: radial-gradient(ellipse at center,
+              #00eaff 15%,
+              #00eaff 16%,
+              #fff 16%,
+              #fff 40%,
+              #00eaff 41%,
+              #00eaff 55%,
+              #fff 56%,
+              transparent 71%);
           border-radius: 100%;
           transition: none;
 
@@ -2110,6 +2083,7 @@ button.next {
         }
 
         @media (max-width: 520px) {
+
           &:nth-child(4),
           &:nth-child(5) {
             flex: 1 1 90%;
@@ -2386,12 +2360,14 @@ button.next {
   }
 
   &-ai {
+
     .benefits-right,
     .benefits-left {
       top: 60px !important;
     }
 
     @media (max-width: 1250px) {
+
       .benefits-right,
       .benefits-left {
         top: 80px !important;
@@ -2399,6 +2375,7 @@ button.next {
     }
 
     @media (max-width: 1100px) {
+
       .benefits-right,
       .benefits-left {
         top: 75px !important;
@@ -2406,6 +2383,7 @@ button.next {
     }
 
     @media (max-width: 1000px) {
+
       .benefits-right,
       .benefits-left {
         margin-top: 30px !important;
@@ -2494,6 +2472,7 @@ button.next {
       }
 
       @media (max-width: 420px) {
+
         .block:nth-child(1),
         .block:nth-child(3),
         .block:last-child {
@@ -2613,73 +2592,6 @@ button.next {
 }
 
 // it for business
-.it {
-  &-ai {
-    &-web_count {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: auto;
-        height: 70px;
-
-        &.olive-right {
-          transform: scaleX(-1);
-        }
-      }
-
-      .large-number {
-        color: var(--blue-main);
-        font-size: 70px;
-        font-weight: 600;
-        line-height: 70px;
-        min-width: 264px;
-
-        & > span {
-          font-size: 70px;
-          font-weight: 600;
-          line-height: 70px;
-        }
-      }
-
-      .title_h4 {
-        margin-left: 20px;
-        max-width: 600px;
-
-        @media (max-width: 900px) {
-          margin-left: 0;
-          margin-top: 20px;
-          max-width: unset;
-          flex: 1 1 100%;
-          text-align: center;
-        }
-      }
-
-      @media (max-width: 900px) {
-        flex-wrap: wrap;
-      }
-
-      @media (max-width: 520px) {
-        .large-number {
-          font-size: 30px;
-          line-height: 30px;
-          min-width: unset;
-
-          & > span {
-            font-size: 30px;
-            line-height: 30px;
-          }
-        }
-
-        img {
-          width: auto;
-          height: 30px;
-        }
-      }
-    }
-  }
-}
 
 // calculator page
 #reset-options-btn {
@@ -2711,7 +2623,7 @@ button.next {
         flex-direction: column;
       }
 
-      & > * {
+      &>* {
         flex: 1 1 45%;
       }
     }
@@ -2728,7 +2640,7 @@ button.next {
         justify-content: center;
         gap: 20px;
 
-        & > p {
+        &>p {
           text-align: center;
         }
       }
@@ -2768,6 +2680,10 @@ button.next {
           line-height: 1em;
           color: var(--blue-main);
           margin-right: 6px;
+        }
+
+        & .icon-shevrone {
+          margin-left: 10px;
         }
       }
 
@@ -2997,8 +2913,6 @@ button.next {
 }
 
 .sitebrif {
-  padding-bottom: unset;
-
   .logo-preview-grid {
     display: flex;
     flex-wrap: wrap;
@@ -3047,7 +2961,7 @@ button.next {
   display: none;
 
   &:checked {
-    & + label {
+    &+label {
       position: relative;
 
       &::before {
@@ -3063,7 +2977,7 @@ button.next {
     }
   }
 
-  & + label {
+  &+label {
     position: relative;
     cursor: pointer;
 
@@ -3107,7 +3021,7 @@ button.next {
       color: white;
       width: 90%;
 
-      & > a {
+      &>a {
         &:hover {
           text-decoration: none;
         }
@@ -3157,7 +3071,7 @@ button.next {
     gap: 20px;
   }
 
-  & > li {
+  &>li {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -3180,7 +3094,7 @@ button.next {
       max-width: 100%;
     }
 
-    & > p {
+    &>p {
       max-width: 360px;
 
       @media (max-width: 540px) {
@@ -3188,7 +3102,7 @@ button.next {
       }
     }
 
-    & > img,
+    &>img,
     i {
       font-size: 32px;
       line-height: 32px;
@@ -3215,6 +3129,7 @@ button.next {
   }
 
   & .pagintaion {
+
     &--prev,
     &--next {
       &-btn {
@@ -3234,7 +3149,7 @@ button.next {
   flex-wrap: wrap;
   gap: 16px;
 
-  & > .item {
+  &>.item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3243,10 +3158,10 @@ button.next {
     flex: 0 1 80px;
     text-align: center;
 
-    & > img,
-    & > picture,
-    & > image,
-    & > source {
+    &>img,
+    &>picture,
+    &>image,
+    &>source {
       width: 40px;
       height: 40px;
       object-fit: contain;
@@ -3268,7 +3183,7 @@ button.next {
     gap: 16px;
     margin: 50px auto 0;
 
-    & > * {
+    &>* {
       flex: 1 0 calc(50% - 8px);
       max-width: calc(50% - 8px);
 
@@ -3306,6 +3221,7 @@ button.next {
       }
 
       & .pagination {
+
         &--next-btn,
         &--prev-btn {
           position: absolute;
@@ -3334,8 +3250,8 @@ button.next {
       }
     }
 
-    & > .container {
-      & > .button-link {
+    &>.container {
+      &>.button-link {
         margin: 32px 0 0 auto;
 
         @media (max-width: 1200px) {
@@ -3356,7 +3272,32 @@ button.next {
       flex-direction: column;
     }
 
-    & > div {
+    &.expanded {
+      flex-direction: row;
+      justify-content: center;
+
+      &>div {
+        flex-wrap: nowrap;
+
+        & .large-number {
+          white-space: nowrap;
+
+          @media (max-width: 480px) {
+            font-size: 50px;
+          }
+        }
+      }
+
+      &>p {
+        flex: 1;
+
+        @media (max-width: 600px) {
+          text-align: center;
+        }
+      }
+    }
+
+    &>div {
       display: flex;
       align-items: center;
       flex-wrap: nowrap;
@@ -3499,7 +3440,6 @@ button.next {
 
     table {
       width: 100%;
-      // background-color: var(--blue-tag);
 
       thead {
         background-color: var(--color-white);
@@ -3586,34 +3526,6 @@ button.next {
         background-clip: content-box;
       }
     }
-  }
-}
-
-.default-table {
-  width: 100%;
-  background-color: var(--blue-tag);
-
-  thead {
-    background-color: var(--color-white);
-    color: var(--bg-main);
-    position: sticky;
-    top: 0;
-    border-color: var(--bg-main);
-  }
-
-  tbody {
-    border-color: var(--blue-bg);
-  }
-
-  th {
-    padding: 5px;
-    border: 1px solid var(--blue-bg);
-  }
-
-  td {
-    border: 1px solid var(--blue-main);
-    padding: 5px;
-    padding-left: 10px;
   }
 }
 
@@ -3782,13 +3694,13 @@ button.next {
         transform: translateY(-54px);
         background-color: transparent;
 
-        label ~ * {
+        label~* {
           display: none;
           transform-origin: top;
           transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
 
-        label:has(input:checked) ~ * {
+        label:has(input:checked)~* {
           display: flex;
         }
 
@@ -3837,6 +3749,7 @@ button.next {
     }
 
     thead tr {
+
       td,
       th {
         &:first-child {
@@ -3895,6 +3808,7 @@ button.next {
       border-radius: 15px;
 
       tr {
+
         td,
         th {
           padding: 5px 5px;
@@ -3914,11 +3828,11 @@ button.next {
 
       outline: 1px solid var(--blue-bg);
 
-      & > label {
+      &>label {
         width: 100%;
         display: flex;
 
-        & > i {
+        &>i {
           margin-left: auto;
         }
       }
@@ -3947,6 +3861,7 @@ button.next {
 
 // Отзывы
 .reviews {
+
   // Внутренняя часть
   &__inner {
     display: flex;
@@ -3972,7 +3887,7 @@ button.next {
       gap: 10px;
     }
 
-    & > * {
+    &>* {
       flex: 1;
 
       @media (max-width: 1000px) {
@@ -3993,7 +3908,7 @@ button.next {
   &__button {
     background: transparent;
 
-    & > picture {
+    &>picture {
       transition: 0.25s ease-in-out;
 
       @media (max-width: 1000px) {
@@ -4011,6 +3926,7 @@ button.next {
     }
 
     &:not(.reviews__button-main) {
+
       &:hover,
       &.active {
         background: transparent;
@@ -4021,7 +3937,7 @@ button.next {
           background-color: var(--blue-main);
         }
 
-        & > picture {
+        &>picture {
           @media (max-width: 1000px) {
             filter: invert(0);
           }
@@ -4051,14 +3967,14 @@ button.next {
       gap: 30px;
     }
 
-    & > .reviews__rates {
+    &>.reviews__rates {
       @media (min-width: 1000px) {
         max-width: 238px;
         flex: 0 0 33%;
       }
     }
 
-    & > .reviews__container {
+    &>.reviews__container {
       flex: 1;
       max-width: 100%;
     }
@@ -4076,7 +3992,7 @@ button.next {
       top: unset;
     }
 
-    & > p {
+    &>p {
       font-size: 24px;
       font-weight: 600;
       margin-bottom: 0;
@@ -4087,7 +4003,7 @@ button.next {
       justify-content: flex-end;
       align-items: center;
 
-      & > p {
+      &>p {
         font-size: 64px;
         line-height: 1;
         font-weight: 500;
@@ -4097,7 +4013,7 @@ button.next {
       &--stars {
         margin-left: 5px;
 
-        & > p {
+        &>p {
           font-weight: 500;
           width: fit-content;
 
@@ -4110,11 +4026,11 @@ button.next {
           }
         }
 
-        & > div {
+        &>div {
           display: flex;
           gap: 1.7px;
 
-          & > i {
+          &>i {
             display: flex;
             font-size: 12px;
           }
@@ -4194,11 +4110,11 @@ button.next {
       gap: 30px;
     }
 
-    & > a {
+    &>a {
       margin-left: auto;
     }
 
-    & > .reviews__wrapper-filter {
+    &>.reviews__wrapper-filter {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -4212,7 +4128,7 @@ button.next {
         gap: 4px;
       }
 
-      & > .filter {
+      &>.filter {
         padding: 4px 8px;
 
         &:hover {
@@ -4228,14 +4144,14 @@ button.next {
           border: 1px solid var(--blue-main);
           box-shadow: 0px 0px 15px var(--blue-main);
 
-          & > i {
+          &>i {
             &::before {
               background-color: currentColor;
             }
           }
         }
 
-        & > i {
+        &>i {
           margin-left: 2px;
         }
       }
@@ -4254,7 +4170,7 @@ button.next {
       flex: 1 1 360px;
 
       &-rate {
-        & > b {
+        &>b {
           @media (max-width: 601px) {
             display: none;
           }
@@ -4274,15 +4190,13 @@ button.next {
 
 // blog_page
 .blog_page {
-  & > .container {
+  &>.container {
     @include blogContainer;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.1) 15%,
-      rgba(0, 234, 255, 0.1) 85%,
-      rgba(0, 234, 255, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.1) 15%,
+        rgba(0, 234, 255, 0.1) 85%,
+        rgba(0, 234, 255, 0) 100%);
 
     padding-top: 0px;
     padding: 0px 50px 62px 50px;
@@ -4315,10 +4229,10 @@ button.next {
       }
     }
 
-    & > h3,
-    & > h4,
-    & > p.title_h3,
-    & > p.title_h4 {
+    &>h3,
+    &>h4,
+    &>p.title_h3,
+    &>p.title_h4 {
       margin-top: 50px;
 
       &:first-child {
@@ -4326,7 +4240,7 @@ button.next {
       }
     }
 
-    & > .highlighted-space {
+    &>.highlighted-space {
       background-color: var(--bg-main);
       border-radius: 15px;
       padding: 10px 20px;
@@ -4337,25 +4251,7 @@ button.next {
       }
     }
 
-    & > .grid-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 20px;
-      row-gap: 32px;
-      margin-bottom: 32px;
-
-      .grid-group-item {
-        .title_h5 {
-          margin-bottom: 10px;
-        }
-      }
-
-      @media (max-width: 900px) {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    & > .default-table {
+    &>.default-table {
       margin-bottom: 20px;
     }
   }
@@ -4376,6 +4272,7 @@ button.next {
 .help {
   &-faq {
     .accordion-item {
+      counter-increment: helpItems;
       background-color: var(--bg-main);
       border-radius: 25px;
 
@@ -4388,14 +4285,23 @@ button.next {
         position: relative;
         display: block;
 
+        & p {
+          position: relative;
+
+          &::before {
+            content: counter(helpItems)'.';
+            display: inline;
+            @include h4;
+            color: var(--blue-main);
+          }
+        }
+
         i {
           display: flex;
           font-size: 2em;
           position: absolute;
           top: 16px;
           left: 20px;
-          // top: 32px;
-          // right: -30px;
           transition: all 0.3s ease-in-out;
           transform-origin: center;
 
@@ -4406,13 +4312,13 @@ button.next {
       }
 
       & .accordion-content {
-        & > p {
+        &>p {
           @media (min-width: 1200px) {
             font-size: 16px;
           }
         }
 
-        & .ordinary-list {
+        & ul {
           & p {
             @media (min-width: 1200px) {
               font-size: 16px;
@@ -4421,7 +4327,7 @@ button.next {
         }
       }
 
-      .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
+      .accordion-checkbox:checked+.accordion-header i.icon-shevrone {
         transform: rotate(-90deg);
       }
     }
@@ -4443,7 +4349,7 @@ button.next {
       align-items: stretch;
     }
 
-    & > div {
+    &>div {
       &:first-child {
         flex: auto;
         width: 100%;
@@ -4453,18 +4359,18 @@ button.next {
           max-width: 100%;
         }
 
-        & > h1 {
+        &>h1 {
           margin-bottom: 32px;
         }
 
-        & > b {
+        &>b {
           display: block;
           margin-bottom: 20px;
         }
       }
     }
 
-    & > .card--result {
+    &>.card--result {
       flex: 1 0 auto;
       max-width: 50%;
 
@@ -4477,7 +4383,7 @@ button.next {
       }
     }
 
-    & > .case_page-cover {
+    &>.case_page-cover {
       flex: 1;
     }
   }
@@ -4491,17 +4397,12 @@ button.next {
     width: 100%;
     max-width: 500px;
     height: auto;
-    // max-width: 600px;
-    // height: 100%;
-    // margin: 0 -50px 0 0;
     user-select: none;
     pointer-events: none;
     overflow: hidden;
-    mask-image: linear-gradient(
-      to left,
-      rgb(0, 0, 0) 40%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    mask-image: linear-gradient(to left,
+        rgb(0, 0, 0) 40%,
+        rgba(0, 0, 0, 0) 100%);
 
     @media (max-width: 1000px) {
       display: none;
@@ -4528,7 +4429,7 @@ button.next {
       align-items: stretch;
     }
 
-    & > div {
+    &>div {
       &:first-child {
         max-width: 50%;
 
@@ -4536,7 +4437,7 @@ button.next {
           max-width: 100%;
         }
 
-        & > .title_h3 {
+        &>.title_h3 {
           margin-bottom: 32px;
 
           @media (max-width: 1000px) {
@@ -4544,13 +4445,13 @@ button.next {
           }
         }
 
-        & > .card--result {
+        &>.card--result {
           width: 100%;
         }
       }
     }
 
-    & > .case_page-mockup {
+    &>.case_page-mockup {
       flex: 1;
       width: 100%;
       max-width: 470px;
@@ -4604,18 +4505,16 @@ button.next {
     }
   }
 
-  & > .container {
+  &>.container {
     @include blogContainer;
 
     position: relative;
     padding: 0 50px 62px;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.1) 15%,
-      rgba(0, 234, 255, 0.1) 85%,
-      rgba(0, 234, 255, 0) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(0, 234, 255, 0) 0%,
+        rgba(0, 234, 255, 0.1) 15%,
+        rgba(0, 234, 255, 0.1) 85%,
+        rgba(0, 234, 255, 0) 100%);
 
     @media (max-width: 601px) {
       padding: 0 20px 40px;
@@ -4647,40 +4546,18 @@ button.next {
       }
     }
 
-    & > p {
+    &>p {
       margin-bottom: 20px;
     }
 
-    & > p.title_h3,
-    & > p.title_h4 {
+    &>p.title_h3,
+    &>p.title_h4 {
       margin-bottom: 32px;
       margin-top: 50px;
 
       &:first-child {
         margin-top: 0;
       }
-    }
-
-    & > .grid-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 20px;
-      row-gap: 32px;
-      margin-bottom: 32px;
-
-      .grid-group-item {
-        .title_h5 {
-          margin-bottom: 10px;
-        }
-      }
-
-      @media (max-width: 900px) {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    & > .ordinary-list {
-      margin-bottom: 20px;
     }
   }
 }
@@ -4697,8 +4574,9 @@ button.next {
     margin: 32px auto;
   }
 
-  & > div:not(.card) {
-    & > p {
+  &>div:not(.card) {
+    &>p {
+
       &:not(.title_h3),
       &:not(.underlined) {
         margin-bottom: 20px;
@@ -4710,7 +4588,8 @@ button.next {
     }
   }
 
-  & > p {
+  &>p {
+
     &:not(.title_h3),
     &:not(.underlined) {
       margin-bottom: 20px;
@@ -4732,13 +4611,13 @@ button.next {
   }
 
   &#case-molvest-itog {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 260px;
     }
   }
 
   &#case-molvest-data {
-    & > .img-wrapper {
+    &>.img-wrapper {
       margin: auto 0 auto -50px;
       max-width: 360px;
 
@@ -4753,7 +4632,7 @@ button.next {
   }
 
   &#case-molvest-monitor {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 320px;
     }
 
@@ -4769,7 +4648,7 @@ button.next {
 
   &#case-krepezh-idea,
   &#case-krepezh-cost {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 320px;
     }
 
@@ -4785,7 +4664,7 @@ button.next {
 
   &#case-molvest-review,
   &#case-review {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 320px;
       height: 100%;
       aspect-ratio: 10/16;
@@ -4805,7 +4684,7 @@ button.next {
   &#case-krepezh-data,
   &#case-koreec-data,
   &#case-mklimata-data {
-    & > .img-wrapper {
+    &>.img-wrapper {
       margin: auto 0 auto -50px;
       max-width: 360px;
 
@@ -4824,13 +4703,13 @@ button.next {
   }
 
   &#inkomed-wishes {
-    & > .img-wrapper {
+    &>.img-wrapper {
       margin: 0 auto;
     }
   }
 
   &#case-inkomed-works {
-    & > .img-wrapper {
+    &>.img-wrapper {
       margin: auto 0;
       max-width: 360px;
 
@@ -4848,17 +4727,17 @@ button.next {
     & .case_layout--filled {
       margin: 0;
 
-      & > * {
+      &>* {
         display: flex;
         flex-direction: column;
 
         &:nth-child(1) {
-          & > .img-wrapper {
+          &>.img-wrapper {
             margin-top: 0;
           }
         }
 
-        & > .img-wrapper {
+        &>.img-wrapper {
           @media (max-width: 1030px) {
             margin: 0 auto;
           }
@@ -4866,7 +4745,7 @@ button.next {
       }
     }
 
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 460px;
       margin: 60px -50px auto auto;
 
@@ -4885,28 +4764,28 @@ button.next {
   }
 
   &#case-inkomed-economy {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 260px;
       margin: 0 auto;
     }
   }
 
   &#case-mklimata-process {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 360px;
       margin: 0 auto;
     }
   }
 
   &#case-koreec-process {
-    & > .filled {
+    &>.filled {
       flex: 1 0 auto;
       max-width: 100%;
     }
   }
 
   &#case-koreec-process {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 460px;
       margin: 0 -50px auto auto;
 
@@ -4921,7 +4800,7 @@ button.next {
   }
 
   &#case-koreec-price {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 460px;
       margin: 0 -50px auto auto;
 
@@ -4943,7 +4822,7 @@ button.next {
       margin-bottom: 0;
     }
 
-    & > div {
+    &>div {
       &:not(.img-wrapper) {
         flex: 1;
         max-width: 400px;
@@ -4971,7 +4850,7 @@ button.next {
       flex-direction: column;
     }
 
-    & > * {
+    &>* {
       &:first-child {
         max-width: 400px;
 
@@ -4995,13 +4874,13 @@ button.next {
   }
 
   &--min {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 400px;
     }
   }
 
   &--minified {
-    & > .img-wrapper {
+    &>.img-wrapper {
       max-width: 320px;
       margin: 0 auto;
 
@@ -5022,7 +4901,7 @@ button.next {
       flex-direction: column;
     }
 
-    & > * {
+    &>* {
       flex: calc(50% - 10px);
 
       @media (max-width: 1000px) {
@@ -5030,7 +4909,7 @@ button.next {
       }
     }
 
-    & > .img-wrapper {
+    &>.img-wrapper {
       align-self: flex-start;
       margin: 0;
     }
@@ -5041,7 +4920,7 @@ button.next {
       flex-direction: column;
     }
 
-    & > * {
+    &>* {
       flex: calc(33% - 20px);
       max-width: calc(33% - 10px);
 
@@ -5080,7 +4959,7 @@ button.next {
     width: 56px;
     height: 56px;
 
-    & > * {
+    &>* {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -5098,7 +4977,7 @@ button.next {
     flex: 1;
     width: 100%;
 
-    & > * {
+    &>* {
       text-align: center;
     }
   }
@@ -5155,7 +5034,7 @@ button.next {
   gap: 10px;
   text-align: center;
 
-  & > b {
+  &>b {
     position: relative;
     color: var(--blue-main);
     font-size: 100px;
@@ -5284,7 +5163,7 @@ button.next {
       margin-right: 0;
     }
 
-    & > img {
+    &>img {
       width: 42px;
       height: 42px;
       object-fit: contain;
@@ -5300,9 +5179,7 @@ button.next {
     align-self: center;
     justify-content: flex-start;
     gap: 6px;
-    max-width: calc(
-      50% - (var(--number-ball-size) / 2 + var(--number-ball-gap))
-    );
+    max-width: calc(50% - (var(--number-ball-size) / 2 + var(--number-ball-gap)));
     min-height: 100px;
     flex: 1;
     text-align: right;
@@ -5323,7 +5200,6 @@ button.next {
     display: flex;
     flex-direction: column;
     width: 100%;
-    // height: 100%;
     padding: 0;
     background-color: var(--footer-bg);
     border-radius: 25px;
@@ -5425,7 +5301,7 @@ button.next {
     background-color: var(--color-white);
     overflow: hidden;
 
-    & > iframe {
+    &>iframe {
       width: 100%;
       border: 0;
       overflow: hidden;
@@ -5623,6 +5499,7 @@ button.next {
 }
 
 @media (max-width: 540px) {
+
   #calc-web-price,
   .more-about-web-dev {
     width: 100%;
@@ -5656,7 +5533,6 @@ button.next {
         border-bottom-right-radius: 0;
 
         span.tab-header::after {
-          // transform: rotate(90deg);
           transform: rotate(270deg);
         }
       }
@@ -5671,7 +5547,6 @@ button.next {
           font-family: "INTRID_ICONS";
           content: "\6d";
           font-size: 1.5em;
-          // transform: rotate(270deg);
           transform: rotate(90deg);
         }
       }
@@ -5691,7 +5566,7 @@ button.next {
       transform: translateY(-54px);
       background-color: transparent;
 
-      label ~ * {
+      label~* {
         &:not(.benefit-card) {
           display: none;
           transform-origin: top;
@@ -5699,7 +5574,7 @@ button.next {
         }
       }
 
-      label:has(input:checked) ~ * {
+      label:has(input:checked)~* {
         display: flex;
       }
 
