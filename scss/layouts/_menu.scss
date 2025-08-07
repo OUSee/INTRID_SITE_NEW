@@ -12,6 +12,7 @@
     align-items: flex-start;
     width: 100vw;
     height: 100vh;
+    height: 100svh;
     padding: 60px 40px 20px;
     background-color: var(--bg-main);
     opacity: 0;
@@ -22,11 +23,11 @@
 
   @media (max-width: 600px) {
     gap: 6px;
-    padding: 50px 20px 20px;
+    padding: 60px 20px 20px;
   }
 
   @media (max-width: 440px) {
-    padding: 50px 10px 10px;
+    padding: 60px 10px 10px;
   }
 
   &::before {
@@ -72,7 +73,8 @@
         gap: 6px;
         min-width: 100px;
         width: 55%;
-        padding: 8px 10px;
+        margin: 60px 0 0 0;
+        padding: 0 10px;
         background-color: transparent;
         box-shadow: none;
       }
@@ -80,7 +82,8 @@
       @media (max-width: 600px) {
         top: 0;
         left: 165px;
-        padding: 4px 10px;
+        margin: 67px 0 0 0;
+        padding: 0 10px;
       }
 
       &:hover {
@@ -140,11 +143,11 @@
 
         &:hover {
           color: var(--blue-main);
-          
+
 
           @media (max-width: 1000px) {
             text-decoration: underline;
-          text-underline-offset: 3px;
+            text-underline-offset: 3px;
           }
         }
       }
@@ -160,7 +163,7 @@
     }
 
     &:hover {
-      & > a {
+      &>a {
         color: var(--blue-main);
         text-decoration: underline;
         text-decoration-thickness: none;
@@ -175,7 +178,7 @@
       }
     }
 
-    & > a {
+    &>a {
       &.menu-link {
         @media (min-width: 1000px) and (max-width: 1100px) {
           padding-left: 5px;
@@ -236,7 +239,7 @@
       }
 
       @media (min-width: 1000px) {
-        & + .menu-dropdown--content {
+        &+.menu-dropdown--content {
           max-height: fit-content;
           opacity: 1;
           visibility: visible;
@@ -253,6 +256,7 @@
     }
 
     &--noicon {
+
       &::before,
       &::after {
         display: none;
@@ -274,7 +278,7 @@
     overflow: hidden;
   }
 
-  & > hr {
+  &>hr {
     width: 50%;
     max-width: 150px;
     border-top: 1px solid;
@@ -285,7 +289,7 @@
     height: 0;
   }
 
-  & > a {
+  &>a {
     &:not(.button-highlighted, .menu-link) {
       font-size: 15px;
       white-space: nowrap;
