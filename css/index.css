@@ -5869,6 +5869,58 @@ button:hover img,
 .card--mockup:hover img {
   transform: rotateX(-25deg) rotateY(25deg) skewX(12deg) skewY(10deg) scale3d(1.25, 1.25, 1);
 }
+.card--mockup.transparency {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  overflow: visible;
+}
+.card--mockup.transparency:hover {
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+.card--mockup.transparency:hover img {
+  transform: scale3d(1.5, 1.5, 1);
+}
+.card--mockup.transparency:hover .card-body > b, .card--mockup.transparency:hover .card-body > p {
+  text-shadow: 0 0 3px var(--color-black);
+}
+.card--mockup.transparency::before {
+  display: none;
+}
+.card--mockup.transparency img {
+  z-index: -2;
+  mask-image: linear-gradient(80deg, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+  transform-origin: top left;
+  transition: 0.35s ease-in-out;
+}
+.card--mockup.transparency > a {
+  transition: 0.35s ease-in-out;
+  overflow: hidden;
+}
+.card--mockup.transparency > a:not(.absolute-link) {
+  border-radius: 0 0 25px 25px;
+}
+.card--mockup.transparency > a:is(.absolute-link) {
+  z-index: 2;
+  background-image: linear-gradient(0deg, rgb(6, 39, 42) 30%, rgba(6, 39, 42, 0) 100%);
+  background-size: 200% 100%;
+  border-radius: 0 0 25px 25px;
+}
+.card--mockup.transparency .card-body {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+  border-radius: 25px 25px 0 0;
+  overflow: hidden;
+}
+.card--mockup.transparency .card-body > b, .card--mockup.transparency .card-body > p {
+  transition: 0.25s ease-in-out;
+}
 .card--prices {
   flex-direction: row;
   align-items: flex-start;
@@ -10430,6 +10482,42 @@ button.next:hover {
   height: 50px;
   border-radius: 50%;
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
+}
+.portfolio-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+@media (max-width: 440px) {
+  .portfolio-block {
+    gap: 10px;
+  }
+}
+.portfolio-block > * {
+  flex: 1 0 calc(25% - 15px);
+  max-width: calc(25% - 15px);
+}
+@media (max-width: 1000px) {
+  .portfolio-block > * {
+    flex: 1 0 calc(33.333333% - 14px);
+    max-width: calc(33.333333% - 14px);
+  }
+}
+@media (max-width: 720px) {
+  .portfolio-block > * {
+    flex: 1 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+@media (max-width: 440px) {
+  .portfolio-block > * {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
 }
 
 .seo-table {
