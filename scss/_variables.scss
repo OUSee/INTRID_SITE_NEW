@@ -2069,7 +2069,7 @@ ol {
   }
 
   &-row {
-    flex-direction: row !important;
+    flex-direction: row;
   }
 
   &-column {
@@ -2246,6 +2246,14 @@ ol {
 
   &-end {
     align-items: flex-end;
+  }
+
+  &-md {
+    &-center {
+      @media (max-width: 720px) {
+        align-items: center;
+      }
+    }
   }
 
   &-lg {

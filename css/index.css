@@ -2486,7 +2486,7 @@ ol li > ol {
   }
 }
 .flex-row {
-  flex-direction: row !important;
+  flex-direction: row;
 }
 .flex-column {
   flex-direction: column !important;
@@ -2607,6 +2607,11 @@ ol li > ol {
 }
 .align-end {
   align-items: flex-end;
+}
+@media (max-width: 720px) {
+  .align-md-center {
+    align-items: center;
+  }
 }
 @media (max-width: 1000px) {
   .align-lg-center {
@@ -7071,11 +7076,13 @@ button:hover img,
   visibility: visible;
   animation: burgerAppear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-.menu-open {
-  position: static;
-  width: 100vw;
-  height: 100%;
-  overflow: hidden;
+@media (max-width: 1000px) {
+  .menu-open {
+    position: static;
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+  }
 }
 .menu > hr {
   width: 50%;
@@ -12296,13 +12303,10 @@ button.next:hover {
     transform: translateY(-54px);
     background-color: transparent;
   }
-  .tabs .tab-content label ~ *:not(.benefit-card) {
+  .tabs .tab-content label:has(input:not(:checked)) ~ *:not(.benefit-card) {
     display: none;
     transform-origin: top;
     transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-  .tabs .tab-content label:has(input:checked) ~ * {
-    display: flex;
   }
   .tabs .tab-content h2 {
     margin-top: 50px;
@@ -12318,4 +12322,4 @@ button.next:hover {
   #more-about-web-dev {
     margin-bottom: 40px;
   }
-}/*# sourceMappingURL=index.css.map */
+}

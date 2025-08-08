@@ -5566,7 +5566,7 @@ button.next {
       transform: translateY(-54px);
       background-color: transparent;
 
-      label~* {
+      label:has(input:not(:checked))~* {
         &:not(.benefit-card) {
           display: none;
           transform-origin: top;
@@ -5575,7 +5575,7 @@ button.next {
       }
 
       label:has(input:checked)~* {
-        display: flex;
+        // display: flex;
       }
 
       h2 {
