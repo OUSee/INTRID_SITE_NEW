@@ -1,56 +1,56 @@
 // header
-const header = document.querySelector("#header, .header");
-const preloader = document.getElementById("preloader");
+const header = document.querySelector('#header, .header');
+const preloader = document.getElementById('preloader');
 
-window.addEventListener("scroll", function () {
+window.addEventListener('scroll', function () {
   if (window.scrollY > 50) {
-    header.classList.add("scrolled");
+    header.classList.add('scrolled');
   } else {
-    header.classList.remove("scrolled");
+    header.classList.remove('scrolled');
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    preloader.style.display = "none";
+    preloader.style.display = 'none';
   }, 3000);
 });
 
 // mobile-menu
-const mainMenu = document.querySelector(".menu");
-const menuOpenButtons = document.querySelectorAll("[data-menu]");
-const menuCloseButtons = document.querySelectorAll("[data-menu-close]");
+const mainMenu = document.querySelector('.menu');
+const menuOpenButtons = document.querySelectorAll('[data-menu]');
+const menuCloseButtons = document.querySelectorAll('[data-menu-close]');
 
 function openMenu(menuElem) {
-  if (menuElem.getAttribute("data-menu") === "open") {
-    menuElem.setAttribute("data-menu", "closed");
-    mainMenu.classList.remove("open");
-    document.documentElement.classList.remove("menu-open");
+  if (menuElem.getAttribute('data-menu') === 'open') {
+    menuElem.setAttribute('data-menu', 'closed');
+    mainMenu.classList.remove('open');
+    document.documentElement.classList.remove('menu-open');
   } else {
-    menuElem.setAttribute("data-menu", "open");
-    mainMenu.classList.add("open");
-    document.documentElement.classList.add("menu-open");
+    menuElem.setAttribute('data-menu', 'open');
+    mainMenu.classList.add('open');
+    document.documentElement.classList.add('menu-open');
   }
 }
 
 function closeMenu() {
-  document.querySelector(".header-burger").setAttribute("data-menu", "closed");
-  mainMenu.classList.remove("open");
-  document.documentElement.classList.remove("menu-open");
+  document.querySelector('.header-burger').setAttribute('data-menu', 'closed');
+  mainMenu.classList.remove('open');
+  document.documentElement.classList.remove('menu-open');
 }
 
 function initDropdowns() {
-  const menuDropdowns = document.querySelectorAll(".menu-dropdown");
+  const menuDropdowns = document.querySelectorAll('.menu-dropdown');
   let activeDropdown = null;
 
   // Обработчик для главных ссылок меню
-  document.querySelectorAll(".menu-dropdown > a.menu-link").forEach((link) => {
-    link.addEventListener("click", function (e) {
-      const currentDropdown = this.closest(".menu-dropdown");
+  document.querySelectorAll('.menu-dropdown > a.menu-link').forEach((link) => {
+    link.addEventListener('click', function (e) {
+      const currentDropdown = this.closest('.menu-dropdown');
 
       // Если кликнули по уже открытому меню - просто закрываем его
       if (currentDropdown === activeDropdown) {
-        currentDropdown.classList.remove("active");
+        currentDropdown.classList.remove('active');
         activeDropdown = null;
         e.preventDefault();
         return;
@@ -58,11 +58,11 @@ function initDropdowns() {
 
       // Закрываем предыдущее открытое меню
       if (activeDropdown) {
-        activeDropdown.classList.remove("active");
+        activeDropdown.classList.remove('active');
       }
 
       // Открываем текущее меню
-      currentDropdown.classList.add("active");
+      currentDropdown.classList.add('active');
       activeDropdown = currentDropdown;
 
       e.preventDefault();
@@ -70,15 +70,15 @@ function initDropdowns() {
   });
 
   // Закрываем меню при клике вне области
-  document.addEventListener("click", function (e) {
-    if (!e.target.closest(".menu-dropdown") && activeDropdown) {
-      activeDropdown.classList.remove("active");
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.menu-dropdown') && activeDropdown) {
+      activeDropdown.classList.remove('active');
       activeDropdown = null;
     }
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   if (window.innerWidth <= 1000) {
     initDropdowns();
   }
@@ -86,39 +86,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Обработчик событий для кнопки открытия меню
 menuOpenButtons?.forEach((menuElem) => {
-  menuElem?.addEventListener("click", () => {
+  menuElem?.addEventListener('click', () => {
     openMenu(menuElem);
   });
 });
 
 // Обработчик событий для кнопки закрытия меню
 menuCloseButtons?.forEach((menuItem) => {
-  menuItem?.addEventListener("click", () => {
+  menuItem?.addEventListener('click', () => {
     closeMenu();
   });
 });
 
-window.addEventListener("resize", () => {
+window.addEventListener('resize', () => {
   if (window.innerWidth >= 1000) {
     closeMenu();
   }
 
-  if(window.innerWidth <= 1000) {
+  if (window.innerWidth <= 1000) {
     initDropdowns();
   }
 });
 
 // dynamic mockup place
 function updateMockupPlace() {
-  const mockup = document.querySelector(".flying-mockup");
+  const mockup = document.querySelector('.flying-mockup');
   if (!mockup) return; // Если мокап не найден, выходим из функции
 
-  const mainPageSelector = document.querySelector(".main-section--index");
+  const mainPageSelector = document.querySelector('.main-section--index');
   const isMainPage = !!mainPageSelector;
   let isMobileView = window.innerWidth < 1000;
 
   if (isMainPage) {
-    const mainSectionRight = document.querySelector(".main-section--right");
+    const mainSectionRight = document.querySelector('.main-section--right');
     if (!mainSectionRight) return;
 
     isMobileView = window.innerWidth < 1200;
@@ -131,8 +131,8 @@ function updateMockupPlace() {
       mainSectionRight.insertBefore(mockup, mainSectionRight.firstChild);
     }
   } else {
-    const movementPlace = document.querySelector(".main-section--actions");
-    const returnPlace = document.querySelector(".main-section");
+    const movementPlace = document.querySelector('.main-section--actions');
+    const returnPlace = document.querySelector('.main-section');
 
     if (isMobileView && movementPlace) {
       // Для мобильного вида на других страницах - перед movementPlace
@@ -153,15 +153,15 @@ function handleResize() {
   }, 50);
 }
 
-document.addEventListener("DOMContentLoaded", updateMockupPlace);
-window.addEventListener("resize", handleResize);
+document.addEventListener('DOMContentLoaded', updateMockupPlace);
+window.addEventListener('resize', handleResize);
 
 // popup logic
-document.addEventListener("DOMContentLoaded", () => {
-  const popupTriggers = document?.querySelectorAll("[data-popup]");
+document.addEventListener('DOMContentLoaded', () => {
+  const popupTriggers = document?.querySelectorAll('[data-popup]');
 
   popupTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
+    trigger.addEventListener('click', () => {
       const popupId = trigger.dataset.popup;
       openPopup(popupId);
     });
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleVideoPLay = (videoElement, init) => {
     if (videoElement) {
       init === true ? videoElement.play() : videoElement.pause();
-      videoElement.setAttribute("playinline", init === true ? true : false);
+      videoElement.setAttribute('playinline', init === true ? true : false);
       videoElement.autoplay = init === true ? true : false;
       videoElement.controls = init === true ? true : false;
       videoElement.loop = init === true ? true : false;
@@ -188,50 +188,50 @@ document.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById(id);
     const onLoad = popup.dataset.onload;
 
-    let buttonClose = document.createElement("button");
+    let buttonClose = document.createElement('button');
 
-    buttonClose.classList.add("popup-close");
-    buttonClose.setAttribute("data-close-popup", true);
-    buttonClose.setAttribute("aria-label", "close-popup");
+    buttonClose.classList.add('popup-close');
+    buttonClose.setAttribute('data-close-popup', true);
+    buttonClose.setAttribute('aria-label', 'close-popup');
 
-    let videoPopup = popup.querySelector("video");
+    let videoPopup = popup.querySelector('video');
     // console.log(popup);
 
-    popup.classList.add("open");
+    popup.classList.add('open');
 
-    popup.querySelector(".popup-wrapper")
-      ? popup?.querySelector(".popup-wrapper").prepend(buttonClose)
+    popup.querySelector('.popup-wrapper')
+      ? popup?.querySelector('.popup-wrapper').prepend(buttonClose)
       : popup.prepend(buttonClose);
 
     // Приостанавливаем прокрутку страницы, когда окно открыто
-    document.documentElement.classList.add("popup-opened");
+    document.documentElement.classList.add('popup-opened');
     videoPopup ? toggleVideoPLay(videoPopup, true) : false;
 
     if (onLoad) {
       window[onLoad]();
     }
 
-    popup.addEventListener("click", (e) => {
+    popup.addEventListener('click', (e) => {
       if (
-        e.target.classList.contains("popup-close") ||
+        e.target.classList.contains('popup-close') ||
         e.target.dataset.closePopup ||
-        e.target.classList.contains("popup-wrapper") ||
+        e.target.classList.contains('popup-wrapper') ||
         e.target.id == id
       ) {
-        if (e.target.tagName && e.target.tagName.toLowerCase() !== "a") {
+        if (e.target.tagName && e.target.tagName.toLowerCase() !== 'a') {
           e.stopPropagation();
           e.preventDefault();
         }
 
-        let videoPopup = popup.querySelector("video");
-        let iframe = popup.querySelector("iframe");
+        let videoPopup = popup.querySelector('video');
+        let iframe = popup.querySelector('iframe');
 
-        popup.classList.remove("open");
+        popup.classList.remove('open');
 
         buttonClose.remove();
 
         // Возвращаем прокрутку страницы, когда окно закрыто
-        document.documentElement.classList.remove("popup-opened");
+        document.documentElement.classList.remove('popup-opened');
 
         videoPopup ? toggleVideoPLay(videoPopup, false) : false;
         iframe ? iframe.remove() : false;
@@ -241,36 +241,36 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // MAP LOGIC
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   // console.log('=> map script started', )
   try {
-    const mapLinks = document.querySelectorAll(".map-link");
+    const mapLinks = document.querySelectorAll('.map-link');
     // console.log('=> links found', mapLinks)
 
     const mapData = {
       prague: {
         frame:
           '<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A596c110a6e67b7ecf53baf573cb97950916b7bfb81fe164b7ec895af9864ccb8&amp;source=constructor" width="835" height="516" frameborder="0"></iframe>',
-        link: "https://yandex.ru/maps/-/CHvuzWlD",
-        adress: "Poděbradská 52, 19000 Praha 9",
-        phone: "420777749719",
-        wa: "79518587172",
-        tg: "lionvdv",
+        link: 'https://yandex.ru/maps/-/CHvuzWlD',
+        adress: 'Poděbradská 52, 19000 Praha 9',
+        phone: '420777749719',
+        wa: '79518587172',
+        tg: 'lionvdv',
       },
       vrn: {
         frame:
           '<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ade02f3d1f93ca59ddbc7669962c5e7f350cec0968beae8e096d86287b227d6b1&amp;source=constructor" width="674" height="534" frameborder="0"></iframe>',
-        link: "https://yandex.com/maps/-/CHfmvO6X",
-        adress: "г. Воронеж ул. Пятницкого, 40",
-        schedule: "Пн-Пт: 9:00-18:00",
-        phone: "74732540796",
-        wa: "74732540796",
-        tg: "webintrid",
+        link: 'https://yandex.com/maps/-/CHfmvO6X',
+        adress: 'г. Воронеж ул. Пятницкого, 40',
+        schedule: 'Пн-Пт: 9:00-18:00',
+        phone: '74732540796',
+        wa: '74732540796',
+        tg: 'webintrid',
       },
     };
 
     mapLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
+      link.addEventListener('click', (e) => {
         loadMap(e, e?.target?.dataset.map);
       });
     });
@@ -278,13 +278,13 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadMap(e, value) {
       e.preventDefault();
       // console.log('=> enter func loadMap', e, value)
-      const map = document.querySelector("#map");
-      const container = map.querySelector(".map-container");
-      const linkBtn = map.querySelector(".button-link");
-      const paragraph = map.querySelector("#map-info");
-      const social = map.querySelector("#map-social");
-      const whatsapp = map.querySelector("#map-whatsapp");
-      const telegram = map.querySelector("#map-telegram");
+      const map = document.querySelector('#map');
+      const container = map.querySelector('.map-container');
+      const linkBtn = map.querySelector('.button-link');
+      const paragraph = map.querySelector('#map-info');
+      const social = map.querySelector('#map-social');
+      const whatsapp = map.querySelector('#map-whatsapp');
+      const telegram = map.querySelector('#map-telegram');
       paragraph.innerHTML =
         mapData[value].adress +
         (mapData[value]?.schedule
@@ -295,60 +295,60 @@ document.addEventListener("DOMContentLoaded", () => {
       container.innerHTML = mapData[value].frame;
 
       social.style.display =
-        mapData[value]?.wa || mapData[value]?.tg ? "flex" : "none";
+        mapData[value]?.wa || mapData[value]?.tg ? 'flex' : 'none';
 
-      whatsapp.style.display = mapData[value].wa ? "flex" : "none";
-      whatsapp.setAttribute("href", "https://wa.me/" + mapData[value]?.wa);
-      whatsapp.setAttribute("target", "_blank");
+      whatsapp.style.display = mapData[value].wa ? 'flex' : 'none';
+      whatsapp.setAttribute('href', 'https://wa.me/' + mapData[value]?.wa);
+      whatsapp.setAttribute('target', '_blank');
 
-      telegram.style.display = mapData[value].tg ? "flex" : "none";
-      telegram.setAttribute("href", "https://t.me/" + mapData[value]?.tg);
-      telegram.setAttribute("target", "_blank");
+      telegram.style.display = mapData[value].tg ? 'flex' : 'none';
+      telegram.setAttribute('href', 'https://t.me/' + mapData[value]?.tg);
+      telegram.setAttribute('target', '_blank');
 
-      console.log(telegram.getAttribute("href"));
+      console.log(telegram.getAttribute('href'));
 
       linkBtn.href = mapData[value].link;
     }
   } catch (error) {
-    console.error("=> error", error.message);
+    console.error('=> error', error.message);
   }
 });
 
 // sitePreview logic
-let popup = document.querySelector("#site-preview"),
-  buttons = document.querySelectorAll("[data-site-preview]"),
-  iframe = document.createElement("iframe");
+let popup = document.querySelector('#site-preview'),
+  buttons = document.querySelectorAll('[data-site-preview]'),
+  iframe = document.createElement('iframe');
 
 if (buttons.length > 0) {
   buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
+    button.addEventListener('click', (e) => {
       iframe.src = e.currentTarget.dataset.sitePreview;
-      popup.querySelector(".iframe-window").appendChild(iframe);
-      popup.querySelector(".iframe-tab-link").innerText = e.currentTarget
-        .closest(".card--support, .card--recent")
-        .querySelector(".card-body b, b").innerText;
-      popup.querySelector(".iframe-url-input").innerText =
+      popup.querySelector('.iframe-window').appendChild(iframe);
+      popup.querySelector('.iframe-tab-link').innerText = e.currentTarget
+        .closest('.card--support, .card--recent')
+        .querySelector('.card-body b, b').innerText;
+      popup.querySelector('.iframe-url-input').innerText =
         e.currentTarget.dataset.sitePreview;
     });
   });
 }
 
 // techList logic
-document.addEventListener("DOMContentLoaded", () => {
-  let lists = document.querySelectorAll(".tech-we-use-list"),
+document.addEventListener('DOMContentLoaded', () => {
+  let lists = document.querySelectorAll('.tech-we-use-list'),
     interval = 0.6;
 
   lists.forEach((list) => {
-    let items = list.querySelectorAll("li");
+    let items = list.querySelectorAll('li');
 
     if (list) {
-      list.style.setProperty("--list-length", items.length);
+      list.style.setProperty('--list-length', items.length);
 
       items.forEach((item, index) => {
-        item.querySelector(".tech-tag").style.animation = `list-glow ${
+        item.querySelector('.tech-tag').style.animation = `list-glow ${
           items.length * interval
         }s linear infinite`;
-        item.querySelector(".tech-tag").style.animationDelay = `${
+        item.querySelector('.tech-tag').style.animationDelay = `${
           index * interval
         }s`;
       });
@@ -358,12 +358,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // SLIDER LEGACY START
 // SLIDER START
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   try {
-    const slidesContainer = document.querySelector(".slides");
-    const prevBtn = document.querySelector(".prev");
-    const nextBtn = document.querySelector(".next");
-    const originalSlides = document.querySelectorAll(".slide");
+    const slidesContainer = document.querySelector('.slides');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const originalSlides = document.querySelectorAll('.slide');
 
     if (!slidesContainer || !originalSlides.length) {
       return;
@@ -383,7 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
     slidesContainer.appendChild(secondClone);
 
     // Получаем все слайды (оригиналы + клоны)
-    const allSlides = slidesContainer.querySelectorAll(".slide");
+    const allSlides = slidesContainer.querySelectorAll('.slide');
     const realSlideCount = originalSlides.length;
     let currentIndex = 2; // Начинаем с первого оригинального слайда
 
@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const newIsHorizontal = window.innerWidth <= 600;
       if (newIsHorizontal !== isHorizontal) {
         isHorizontal = newIsHorizontal;
-        slidesContainer.style.flexDirection = isHorizontal ? "row" : "column";
+        slidesContainer.style.flexDirection = isHorizontal ? 'row' : 'column';
         updateSlider(true); // Принудительное обновление без анимации
       }
     };
@@ -413,9 +413,9 @@ document.addEventListener("DOMContentLoaded", () => {
         : `translateY(-${currentIndex * slideSize}px)`;
 
       if (instant) {
-        slidesContainer.style.transition = "none";
+        slidesContainer.style.transition = 'none';
       } else {
-        slidesContainer.style.transition = "transform 0.5s ease";
+        slidesContainer.style.transition = 'transform 0.5s ease';
       }
 
       slidesContainer.style.transform = translateValue;
@@ -470,15 +470,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Обработчики событий
-    nextBtn.addEventListener("click", goNext);
-    prevBtn.addEventListener("click", goPrev);
+    nextBtn.addEventListener('click', goNext);
+    prevBtn.addEventListener('click', goPrev);
 
-    slidesContainer.addEventListener("mouseenter", () => {
+    slidesContainer.addEventListener('mouseenter', () => {
       isAutoScrollPaused = true;
       stopAutoScroll();
     });
 
-    slidesContainer.addEventListener("mouseleave", () => {
+    slidesContainer.addEventListener('mouseleave', () => {
       isAutoScrollPaused = false;
       startAutoScroll();
     });
@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Обработка ресайза с троттлингом
     let resizeTimeout;
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         checkOrientation();
@@ -498,7 +498,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 100);
     });
   } catch (err) {
-    console.error("Slider error:", err);
+    console.error('Slider error:', err);
   }
 });
 // SLIDER END
@@ -506,22 +506,22 @@ document.addEventListener("DOMContentLoaded", () => {
 // HORIZONTAL SLIDER
 const SliderInIt = () => {};
 
-document.addEventListener("DOMContentLoaded", () => {
-  const sliders = document.querySelectorAll(".tab-slider");
+document.addEventListener('DOMContentLoaded', () => {
+  const sliders = document.querySelectorAll('.tab-slider');
 
-  const tabButtons = document.querySelector(".prices-block--buttons");
+  const tabButtons = document.querySelector('.prices-block--buttons');
 
   if (!tabButtons) {
     return;
   }
 
-  const tabButtonsList = tabButtons.querySelectorAll("label.button-link");
+  const tabButtonsList = tabButtons.querySelectorAll('label.button-link');
 
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     if (window.innerWidth > 600) {
       tabButtonsList.forEach((tabButton, index) => {
         const input = tabButton.querySelector(`#tab-slide-btn-${index + 1}`);
-        input.addEventListener("change", () => {
+        input.addEventListener('change', () => {
           const activeSlider = document.querySelector(
             `#tab-slide-${index + 1}`
           );
@@ -530,7 +530,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const SliderHandler = (slider) => {
-        const cards = slider.querySelectorAll(".tab-slider-card, .card--tab");
+        const cards = slider.querySelectorAll('.tab-slider-card, .card--tab');
         const prevButton = document.querySelector(`.slider-arrow.prev`);
         const nextButton = document.querySelector(`.slider-arrow.next`);
 
@@ -551,9 +551,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }px)`;
 
           if (currentIndex === 0 || cards.length <= slidesPerPage) {
-            prevButton.style.display = "none";
+            prevButton.style.display = 'none';
           } else {
-            prevButton.style.display = "block";
+            prevButton.style.display = 'block';
           }
 
           if (
@@ -561,18 +561,18 @@ document.addEventListener("DOMContentLoaded", () => {
             maxIndex <= 0 ||
             cards.length <= slidesPerPage
           ) {
-            nextButton.style.display = "none";
+            nextButton.style.display = 'none';
           } else {
-            nextButton.style.display = "block";
+            nextButton.style.display = 'block';
           }
         };
 
-        prevButton.addEventListener("click", () => {
+        prevButton.addEventListener('click', () => {
           currentIndex--;
           updateSlider();
         });
 
-        nextButton.addEventListener("click", () => {
+        nextButton.addEventListener('click', () => {
           const sliderWidth = slider.offsetWidth;
           const slidesPerPage = Math.floor(sliderWidth / 255);
           const maxIndex = Math.max(0, cards.length - slidesPerPage);
@@ -586,7 +586,7 @@ document.addEventListener("DOMContentLoaded", () => {
           updateSlider();
         });
 
-        window.addEventListener("resize", updateSlider);
+        window.addEventListener('resize', updateSlider);
         updateSlider();
       };
 
@@ -597,14 +597,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.innerWidth > 600) {
     tabButtonsList.forEach((tabButton, index) => {
       const input = tabButton.querySelector(`#tab-slide-btn-${index + 1}`);
-      input.addEventListener("change", () => {
+      input.addEventListener('change', () => {
         const activeSlider = document.querySelector(`#tab-slide-${index + 1}`);
         SliderHandler(activeSlider);
       });
     });
 
     const SliderHandler = (slider) => {
-      const cards = slider.querySelectorAll(".tab-slider-card, .card--tab");
+      const cards = slider.querySelectorAll('.tab-slider-card, .card--tab');
       const prevButton = document.querySelector(`.slider-arrow.prev`);
       const nextButton = document.querySelector(`.slider-arrow.next`);
 
@@ -623,9 +623,9 @@ document.addEventListener("DOMContentLoaded", () => {
         slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 
         if (currentIndex === 0 || cards.length <= slidesPerPage) {
-          prevButton.style.display = "none";
+          prevButton.style.display = 'none';
         } else {
-          prevButton.style.display = "block";
+          prevButton.style.display = 'block';
         }
 
         if (
@@ -633,18 +633,18 @@ document.addEventListener("DOMContentLoaded", () => {
           maxIndex <= 0 ||
           cards.length <= slidesPerPage
         ) {
-          nextButton.style.display = "none";
+          nextButton.style.display = 'none';
         } else {
-          nextButton.style.display = "block";
+          nextButton.style.display = 'block';
         }
       };
 
-      prevButton.addEventListener("click", () => {
+      prevButton.addEventListener('click', () => {
         currentIndex--;
         updateSlider();
       });
 
-      nextButton.addEventListener("click", () => {
+      nextButton.addEventListener('click', () => {
         const sliderWidth = slider.offsetWidth;
         const slidesPerPage = Math.floor(sliderWidth / 255);
         const maxIndex = Math.max(0, cards.length - slidesPerPage);
@@ -658,7 +658,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSlider();
       });
 
-      window.addEventListener("resize", updateSlider);
+      window.addEventListener('resize', updateSlider);
       updateSlider();
     };
 
@@ -670,27 +670,27 @@ document.addEventListener("DOMContentLoaded", () => {
 document
   .querySelectorAll('.prices-block--buttons input[type="radio"]')
   .forEach((radio) => {
-    radio.addEventListener("change", function () {
-      const tabId = this.id.replace("btn-", "");
+    radio.addEventListener('change', function () {
+      const tabId = this.id.replace('btn-', '');
       document.querySelectorAll('[id^="tab-slide-"]').forEach((tab) => {
-        tab.classList.remove("active");
+        tab.classList.remove('active');
       });
-      document.getElementById(tabId).classList.add("active");
+      document.getElementById(tabId).classList.add('active');
     });
   });
 
 // main page diagrams
 // in tab webshop content show
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   const webShopDiagramHandler = () => {
-    const webShopDiagram = document.querySelector(".web-shop-diagram");
+    const webShopDiagram = document.querySelector('.web-shop-diagram');
     if (!webShopDiagram) {
       return;
     } else {
-      const webShopTarget = webShopDiagram.querySelector(".store-text-target");
+      const webShopTarget = webShopDiagram.querySelector('.store-text-target');
       // console.log('=> webshop', webShopDiagram, webShopTarget)
-      webShopDiagram.querySelectorAll("input").forEach((input) =>
-        input.addEventListener("click", () => {
+      webShopDiagram.querySelectorAll('input').forEach((input) =>
+        input.addEventListener('click', () => {
           // console.log('=> input', input)
           setTabContent(input.id);
           toggleLineShopAI(input.id);
@@ -699,36 +699,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const toggleLineShopAI = (id) => {
         // console.log('=> enter', )
-        const lines = webShopDiagram.querySelectorAll(".line");
+        const lines = webShopDiagram.querySelectorAll('.line');
         // console.log('=> lines', lines)
         lines.forEach((line) => {
-          line.classList.remove("active-left");
-          line.classList.remove("active-right");
+          line.classList.remove('active-left');
+          line.classList.remove('active-right');
         });
         const lastChar = id.slice(-1);
         switch (lastChar) {
           default: {
-            lines[1].classList.add("active-left");
+            lines[1].classList.add('active-left');
             break;
           }
-          case "2": {
-            lines[0].classList.add("active-left");
+          case '2': {
+            lines[0].classList.add('active-left');
             break;
           }
-          case "3": {
-            lines[2].classList.add("active-left");
+          case '3': {
+            lines[2].classList.add('active-left');
             break;
           }
-          case "4": {
-            lines[2].classList.add("active-right");
+          case '4': {
+            lines[2].classList.add('active-right');
             break;
           }
-          case "5": {
-            lines[0].classList.add("active-right");
+          case '5': {
+            lines[0].classList.add('active-right');
             break;
           }
-          case "6": {
-            lines[1].classList.add("active-right");
+          case '6': {
+            lines[1].classList.add('active-right');
             break;
           }
         }
@@ -737,34 +737,34 @@ document.addEventListener("DOMContentLoaded", () => {
       const setTabContent = (tabId) => {
         const content = [
           {
-            id: "ai-benefit-1",
+            id: 'ai-benefit-1',
             content:
-              "ИИ анализирует поведение пользователей и предлагает релевантные товары в нужный момент",
+              'ИИ анализирует поведение пользователей и предлагает релевантные товары в нужный момент',
           },
           {
-            id: "ai-benefit-2",
+            id: 'ai-benefit-2',
             content:
-              "Персонализированные рекомендации, умный поиск и автоматизированная поддержка выделят вас среди конкурентов",
+              'Персонализированные рекомендации, умный поиск и автоматизированная поддержка выделят вас среди конкурентов',
           },
           {
-            id: "ai-benefit-3",
+            id: 'ai-benefit-3',
             content:
-              "Подбирает сопутствующие товары, которые покупатели часто добавляют в корзину, тем самым увеличивают средний чек",
+              'Подбирает сопутствующие товары, которые покупатели часто добавляют в корзину, тем самым увеличивают средний чек',
           },
           {
-            id: "ai-benefit-4",
+            id: 'ai-benefit-4',
             content:
-              "Умные системы предсказывают потребности клиента и показывают ему именно то, что он ищет",
+              'Умные системы предсказывают потребности клиента и показывают ему именно то, что он ищет',
           },
           {
-            id: "ai-benefit-5",
+            id: 'ai-benefit-5',
             content:
-              "Покупатели могут искать товары голосом, что ускоряет процесс и делает магазин удобнее для пользователей смартфонов и умных устройств",
+              'Покупатели могут искать товары голосом, что ускоряет процесс и делает магазин удобнее для пользователей смартфонов и умных устройств',
           },
           {
-            id: "ai-benefit-6",
+            id: 'ai-benefit-6',
             content:
-              "Телеграм-бот помогает с подбором товаров, оформлением заказов и отвечает на вопросы 24/7, увеличивая вовлеченность и лояльность клиентов",
+              'Телеграм-бот помогает с подбором товаров, оформлением заказов и отвечает на вопросы 24/7, увеличивая вовлеченность и лояльность клиентов',
           },
         ];
 
@@ -772,91 +772,91 @@ document.addEventListener("DOMContentLoaded", () => {
         webShopTarget.innerHTML = newText;
       };
 
-      setTabContent("ai-benefit-1");
-      toggleLineShopAI("1");
+      setTabContent('ai-benefit-1');
+      toggleLineShopAI('1');
     }
   };
 
   webShopDiagramHandler();
 
   const tenderDiagramHandler = () => {
-    const tenderDiagram = document.querySelector(".tender-diagram");
+    const tenderDiagram = document.querySelector('.tender-diagram');
     if (!tenderDiagram) {
       return;
     } else {
-      const tenderTarget = tenderDiagram.querySelector(".tender-text-target");
-      tenderDiagram.querySelectorAll("input").forEach((input) =>
-        input.addEventListener("click", () => {
+      const tenderTarget = tenderDiagram.querySelector('.tender-text-target');
+      tenderDiagram.querySelectorAll('input').forEach((input) =>
+        input.addEventListener('click', () => {
           setTenderTabContent(input.id);
         })
       );
       const setTenderTabContent = (tabId) => {
         const content = [
           {
-            id: "tender-radio-1",
+            id: 'tender-radio-1',
             content: [
-              "Поставщики конкурируют за ваши тендеры на закупки и предлагают минимальную цену.",
-              "Вы приобретаете сырье и материалы по самым выгодным ценам",
-              "Усредненная экономия - 5% с каждой закупки",
+              'Поставщики конкурируют за ваши тендеры на закупки и предлагают минимальную цену.',
+              'Вы приобретаете сырье и материалы по самым выгодным ценам',
+              'Усредненная экономия - 5% с каждой закупки',
             ],
           },
           {
-            id: "tender-radio-2",
+            id: 'tender-radio-2',
             content: [
-              "Гибкая настройка интерфейса портала под ваши задачи",
-              "Система разрабатывается с учетом навыков обычного пользователя ПК",
-              "Быстрое освоение всего функционала портала",
+              'Гибкая настройка интерфейса портала под ваши задачи',
+              'Система разрабатывается с учетом навыков обычного пользователя ПК',
+              'Быстрое освоение всего функционала портала',
             ],
           },
           {
-            id: "tender-radio-3",
+            id: 'tender-radio-3',
             content: [
-              "Полная совместимость с ПО от 1С",
-              "Возможность интеграции с любым другим офисным ПО и БД",
-              "Тендеры выгружаются из БД в один клик, а поставщики могут выгружать свои предложения при синхронизации артикулов",
+              'Полная совместимость с ПО от 1С',
+              'Возможность интеграции с любым другим офисным ПО и БД',
+              'Тендеры выгружаются из БД в один клик, а поставщики могут выгружать свои предложения при синхронизации артикулов',
             ],
           },
           {
-            id: "tender-radio-4",
+            id: 'tender-radio-4',
             content: [
-              "Менеджерам больше не нужно обзванивать сотни поставщиков и изучать их прайсы и КП.",
-              "Формирование тендеров в автоматическом режиме исходя из текущих потребностей компании.",
-              "Синхронизация с бухгалтерией поставщиков.",
-              "Выбор лучших предложений по цене, условиям поставки и качеству продукции для тысяч наименований от сотен поставщиков. ",
-              "Автоматически генерируется необходимый пакет документов. Полностью автоматизированный процесс закупок",
+              'Менеджерам больше не нужно обзванивать сотни поставщиков и изучать их прайсы и КП.',
+              'Формирование тендеров в автоматическом режиме исходя из текущих потребностей компании.',
+              'Синхронизация с бухгалтерией поставщиков.',
+              'Выбор лучших предложений по цене, условиям поставки и качеству продукции для тысяч наименований от сотен поставщиков. ',
+              'Автоматически генерируется необходимый пакет документов. Полностью автоматизированный процесс закупок',
             ],
           },
           {
-            id: "tender-radio-5",
+            id: 'tender-radio-5',
             content: [
-              "При создании портала учитывается каждый бизнес-процесс компании",
-              "Роли пользователей распределяются согласно вашим требованиям",
-              "Максимум эффективности и удобства при эксплуатации",
+              'При создании портала учитывается каждый бизнес-процесс компании',
+              'Роли пользователей распределяются согласно вашим требованиям',
+              'Максимум эффективности и удобства при эксплуатации',
             ],
           },
           {
-            id: "tender-radio-6",
+            id: 'tender-radio-6',
             content: [
-              "Фиксация и учет всех действий, которые совершались на портале",
-              "Данные станут неопровержимым доказательством при разрешении спорных ситуаций",
-              "Возможность составления необходимых отчетов и графиков по закупкам, ценам, поставщикам и т. д. в динамике",
+              'Фиксация и учет всех действий, которые совершались на портале',
+              'Данные станут неопровержимым доказательством при разрешении спорных ситуаций',
+              'Возможность составления необходимых отчетов и графиков по закупкам, ценам, поставщикам и т. д. в динамике',
             ],
           },
           {
-            id: "tender-radio-7",
+            id: 'tender-radio-7',
             content: [
-              "Минимизация количества сотрудников, задействованных в процессе закупок",
-              "Автоматизация всех процессов организации закупок",
-              "Сотрудники могут сосредоточиться на стратегических задачах, так как рутинные процессы выполняются системой",
+              'Минимизация количества сотрудников, задействованных в процессе закупок',
+              'Автоматизация всех процессов организации закупок',
+              'Сотрудники могут сосредоточиться на стратегических задачах, так как рутинные процессы выполняются системой',
             ],
           },
 
           {
-            id: "tender-radio-8",
+            id: 'tender-radio-8',
             content: [
-              "Прозрачная процедура определения победителя тендера",
-              "Защита от несанкционированного вмешательства",
-              "Невозможность использования “откатов” и прочих теневых схем",
+              'Прозрачная процедура определения победителя тендера',
+              'Защита от несанкционированного вмешательства',
+              'Невозможность использования “откатов” и прочих теневых схем',
             ],
           },
         ];
@@ -867,10 +867,10 @@ document.addEventListener("DOMContentLoaded", () => {
           .map((item) => {
             return `<li>${item}</li>`;
           })
-          .join("");
+          .join('');
       };
 
-      setTenderTabContent("tender-radio-1");
+      setTenderTabContent('tender-radio-1');
     }
   };
 
@@ -878,43 +878,43 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // handle change clicks to add smooth change of columns
-document.addEventListener("DOMContentLoaded", () => {
-  const table = document.querySelector(".tender-table");
+document.addEventListener('DOMContentLoaded', () => {
+  const table = document.querySelector('.tender-table');
   if (!table) {
     return;
   }
-  const buttons = table.querySelectorAll("th");
+  const buttons = table.querySelectorAll('th');
   buttons.forEach((button, index) => {
     if (index > 0) {
-      input = button.querySelector("input");
-      input.addEventListener("click", (e) => {
+      input = button.querySelector('input');
+      input.addEventListener('click', (e) => {
         changeOrderHandler(button);
       });
     }
   });
 
   const changeOrderHandler = (button) => {
-    console.log("=> inside");
+    console.log('=> inside');
     try {
       buttons.forEach((item) => {
-        item.style.order = "1";
-        label = item?.querySelector("label");
-        label?.classList?.add("fade-out");
+        item.style.order = '1';
+        label = item?.querySelector('label');
+        label?.classList?.add('fade-out');
       });
 
       setTimeout(() => {
-        button.style.order = "3";
+        button.style.order = '3';
       }, 350);
 
       setTimeout(() => {
         buttons.forEach((item) => {
-          label = item?.querySelector("label");
-          label?.classList?.remove("fade-out");
-          console.log("-- item.style", item.style.order);
+          label = item?.querySelector('label');
+          label?.classList?.remove('fade-out');
+          console.log('-- item.style', item.style.order);
         });
       }, 400);
     } catch (error) {
-      console.log("=> err", error);
+      console.log('=> err', error);
     }
   };
 });
@@ -922,8 +922,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // sliders with pagination
 function sliderInitialise() {
   const tabSliderWithPagination = (id) => {
-    if (id === "logo-slider") {
-      console.log("=> init", id);
+    if (id === 'logo-slider') {
+      console.log('=> init', id);
     }
     let slider = document.getElementById(`${id}`);
     const pagination = document.querySelector(`#${id} + .pagination`);
@@ -942,7 +942,7 @@ function sliderInitialise() {
     const visibleWidth = slider.parentElement.clientWidth;
 
     if (fill) {
-      const breaks = fill.split(",");
+      const breaks = fill.split(',');
       const windowWidth = window.innerWidth;
 
       if (windowWidth > 1200) {
@@ -975,14 +975,14 @@ function sliderInitialise() {
       nextBtn.push(navRight);
 
       navLeft.style =
-        "position: absolute; left: 5px; top: 50%; transform: translateY(-50%)";
+        'position: absolute; left: 5px; top: 50%; transform: translateY(-50%)';
       navRight.style = `position: absolute; right: 5px; top: 50%; transform: translateY(-50%)`;
     }
 
     if (id === `cases-tabs-slider`) {
-      slides = slider.querySelectorAll(".tab-content");
+      slides = slider.querySelectorAll('.tab-content');
       gap = parseInt(
-        window.getComputedStyle(slider.querySelector(".cases-content")).gap
+        window.getComputedStyle(slider.querySelector('.cases-content')).gap
       );
     }
 
@@ -991,14 +991,14 @@ function sliderInitialise() {
       i < currentIndex + visibleSlidesCount && i < slides.length;
       i++
     ) {
-      slides[i].classList.add("active");
+      slides[i].classList.add('active');
     }
 
     const updateSlider = () => {
       const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
       try {
         if (fill) {
-          const breaks = fill.split(",");
+          const breaks = fill.split(',');
           const windowWidth = window.innerWidth;
 
           if (windowWidth > 1200) {
@@ -1024,7 +1024,7 @@ function sliderInitialise() {
           }
         }
         [].forEach.call(slides, function (slide) {
-          slide.classList.remove("active");
+          slide.classList.remove('active');
         });
 
         for (
@@ -1032,67 +1032,67 @@ function sliderInitialise() {
           i < currentIndex + visibleSlidesCount && i < slides.length;
           i++
         ) {
-          slides[i].classList.add("active");
+          slides[i].classList.add('active');
         }
         slider.style.transform = `translateX(-${moveAmmount}px)`;
 
         // Disable prev button if at start
         prevBtn.forEach((btn) => {
           if (currentIndex === 0) {
-            btn.style.opacity = "0";
+            btn.style.opacity = '0';
           } else {
-            btn.style.opacity = "1";
+            btn.style.opacity = '1';
           }
         });
 
         // Disable next button if at end
         nextBtn.forEach((btn) => {
           if (currentIndex + visibleSlidesCount >= slides.length) {
-            btn.style.opacity = "0";
+            btn.style.opacity = '0';
           } else {
-            btn.style.opacity = "1";
+            btn.style.opacity = '1';
           }
         });
 
         if (!!pagination) {
           const btncount = slides.length - (visibleSlidesCount - 1);
           if (btncount < 2) {
-            pagination.style.display = "none";
-          } else if (pagination.style.display === "none" && btncount > 1) {
-            pagination.style.display = "flex";
+            pagination.style.display = 'none';
+          } else if (pagination.style.display === 'none' && btncount > 1) {
+            pagination.style.display = 'flex';
           }
         }
       } catch (err) {
-        console.log("=> err", err);
+        console.log('=> err', err);
       }
     };
 
     if (!!pagination) {
       prevBtn = [
         ...prevBtn,
-        ...pagination?.querySelectorAll(".pagination--prev-btn"),
+        ...pagination?.querySelectorAll('.pagination--prev-btn'),
       ];
       nextBtn = [
         ...nextBtn,
-        ...pagination?.querySelectorAll(".pagination--next-btn"),
+        ...pagination?.querySelectorAll('.pagination--next-btn'),
       ];
-      navButtons = pagination.querySelectorAll(".pagination--btn-dot");
+      navButtons = pagination.querySelectorAll('.pagination--btn-dot');
       const dotsContainer = pagination.querySelector(
-        ".pagination--buttons-dots"
+        '.pagination--buttons-dots'
       );
       const btncount = slides.length - (visibleSlidesCount - 1);
 
       navButtons.forEach((navbutton) => {
-        navbutton.classList.remove("highlight");
+        navbutton.classList.remove('highlight');
       });
 
-      navButtons[currentIndex].classList.add("highlight");
+      navButtons[currentIndex].classList.add('highlight');
 
       const handleSliderArrows = () => {
         const sliderHeight = slider.offsetHeight / 2 + 40;
 
         prevBtn.forEach((btn) => {
-          if (slider.id === "gallery-slider") {
+          if (slider.id === 'gallery-slider') {
             btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
               window.innerWidth > 600 ? `-100%` : `0`
             }); left: ${
@@ -1107,7 +1107,7 @@ function sliderInitialise() {
           }
         });
         nextBtn.forEach((btn) => {
-          if (slider.id === "gallery-slider") {
+          if (slider.id === 'gallery-slider') {
             btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
               window.innerWidth > 600 ? `100%` : `0`
             }); right: ${
@@ -1126,21 +1126,21 @@ function sliderInitialise() {
       if (navButtons.length !== btncount && visibleSlidesCount > 0) {
         navButtons.forEach((button) => dotsContainer.removeChild(button));
         for (let index = 0; index < btncount; index++) {
-          const btnDot = document.createElement("button");
-          btnDot.classList.add("pagination--btn-dot");
+          const btnDot = document.createElement('button');
+          btnDot.classList.add('pagination--btn-dot');
           dotsContainer.appendChild(btnDot);
         }
-        navButtons = pagination.querySelectorAll(".pagination--btn-dot");
+        navButtons = pagination.querySelectorAll('.pagination--btn-dot');
         navButtons.forEach((button) => {
-          button.classList.remove("highlight");
+          button.classList.remove('highlight');
         });
-        navButtons[currentIndex].classList.add("highlight");
+        navButtons[currentIndex].classList.add('highlight');
         if (currentIndex === 0) {
           prevBtn.forEach((btn) => {
             if (currentIndex === 0) {
-              btn.style.opacity = "0";
+              btn.style.opacity = '0';
             } else {
-              btn.style.opacity = "1";
+              btn.style.opacity = '1';
             }
           });
         }
@@ -1151,36 +1151,36 @@ function sliderInitialise() {
     const nextSlide = () => {
       if (
         navButtons[currentIndex + 1] &&
-        window.getComputedStyle(navButtons[currentIndex + 1]).display === "none"
+        window.getComputedStyle(navButtons[currentIndex + 1]).display === 'none'
       ) {
         return;
       }
       navButtons.forEach((navbutton) => {
-        navbutton.classList.remove("highlight");
+        navbutton.classList.remove('highlight');
       });
       currentIndex =
         currentIndex === navButtons.length - 1
           ? navButtons.length - 1
           : currentIndex + 1;
-      navButtons[currentIndex].classList.add("highlight");
+      navButtons[currentIndex].classList.add('highlight');
       updateSlider();
     };
 
     const prevSlide = () => {
       navButtons.forEach((navbutton) => {
-        navbutton.classList.remove("highlight");
+        navbutton.classList.remove('highlight');
       });
       currentIndex = currentIndex > 1 ? currentIndex - 1 : 0;
-      navButtons[currentIndex].classList.add("highlight");
+      navButtons[currentIndex].classList.add('highlight');
       updateSlider();
     };
 
     navButtons.forEach((button, index) => {
-      button.addEventListener("click", () => {
+      button.addEventListener('click', () => {
         navButtons.forEach((navbutton) => {
-          navbutton.classList.remove("highlight");
+          navbutton.classList.remove('highlight');
         });
-        button.classList.add("highlight");
+        button.classList.add('highlight');
         currentIndex = index;
         updateSlider();
       });
@@ -1219,25 +1219,25 @@ function sliderInitialise() {
 
     updateSlider();
 
-    slider.addEventListener("touchstart", handleTouchStart, false);
-    slider.addEventListener("touchmove", handleTouchMove, false);
+    slider.addEventListener('touchstart', handleTouchStart, false);
+    slider.addEventListener('touchmove', handleTouchMove, false);
 
-    prevBtn.forEach((btn) => btn.addEventListener("click", prevSlide));
-    nextBtn.forEach((btn) => btn.addEventListener("click", nextSlide));
+    prevBtn.forEach((btn) => btn.addEventListener('click', prevSlide));
+    nextBtn.forEach((btn) => btn.addEventListener('click', nextSlide));
 
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       updateSlider();
     });
   };
 
-  const sliders = document.querySelectorAll("[data-slider]");
+  const sliders = document.querySelectorAll('[data-slider]');
 
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     sliders.forEach((slider) => {
       try {
         tabSliderWithPagination(slider.id);
       } catch (err) {
-        console.warn("=> err seting slider ", slider.id, ":", err);
+        console.warn('=> err seting slider ', slider.id, ':', err);
       }
     });
   });
@@ -1256,7 +1256,7 @@ function sliderInitialise() {
           debounceTimeout = setTimeout(() => {
             // Check if any mutation is of type 'childList'
             const hasChildListMutation = mutationsList.some(
-              (mutation) => mutation.type === "childList"
+              (mutation) => mutation.type === 'childList'
             );
             if (hasChildListMutation) {
               tabSliderWithPagination(slider.id);
@@ -1271,17 +1271,17 @@ function sliderInitialise() {
 
         tabSliderWithPagination(slider.id);
       } catch (err) {
-        console.warn("=> err seting slider ", slider.id, ":", err);
+        console.warn('=> err seting slider ', slider.id, ':', err);
       }
     });
   }
 }
 
-document.addEventListener("DOMContentLoaded", sliderInitialise);
+document.addEventListener('DOMContentLoaded', sliderInitialise);
 
 // increment numbers
-document.addEventListener("DOMContentLoaded", () => {
-  const counters = document.querySelectorAll("[data-counter-value]");
+document.addEventListener('DOMContentLoaded', () => {
+  const counters = document.querySelectorAll('[data-counter-value]');
 
   const initInremet = () => {
     if (counters) {
@@ -1291,15 +1291,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const animateCounter = (counter, duration = 4000) => {
           // Убираем пробелы и преобразуем в число
           const targetValue = parseInt(
-            counter.getAttribute("data-counter-value").replace(/\s+/g, ""),
+            counter.getAttribute('data-counter-value').replace(/\s+/g, ''),
             10
           );
-          const blankValue = counter.getAttribute("data-counter-value").length;
+          const blankValue = counter.getAttribute('data-counter-value').length;
           let currentValue = 0;
           const startTime = performance.now();
 
           // Устанавливаем начальное значение в виде нулей
-          counter.textContent = "0".repeat(blankValue);
+          counter.textContent = '0'.repeat(blankValue);
 
           const updateCounter = (currentTime) => {
             const elapsedTime = currentTime - startTime;
@@ -1309,8 +1309,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // Форматируем текущее значение с пробелами
             counter.textContent = currentValue
               .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, " ") // Добавляем пробелы
-              .padStart(blankValue, "0"); // Добавляем нули слева
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ' ') // Добавляем пробелы
+              .padStart(blankValue, '0'); // Добавляем нули слева
 
             if (progress < 1) {
               requestAnimationFrame(updateCounter);
@@ -1318,8 +1318,8 @@ document.addEventListener("DOMContentLoaded", () => {
               // Форматируем конечное значение с пробелами
               counter.textContent = targetValue
                 .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, " ") // Добавляем пробелы
-                .padStart(blankValue, "0"); // Устанавливаем конечное значение с нулями
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ' ') // Добавляем пробелы
+                .padStart(blankValue, '0'); // Устанавливаем конечное значение с нулями
             }
           };
 
@@ -1328,7 +1328,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const observerOptions = {
           root: null,
-          rootMargin: "0px",
+          rootMargin: '0px',
           threshold: 0.1,
         };
 
@@ -1361,16 +1361,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // phone field handler
-document.addEventListener("DOMContentLoaded", () => {
-  const fields = document.querySelectorAll("input[type=tel]");
+document.addEventListener('DOMContentLoaded', () => {
+  const fields = document.querySelectorAll('input[type=tel]');
   const phonePattern =
-    "^(7|8)[\\s\\-]?\\(?\\d{3}\\)?[\\s\\-]?\\d{3}[\\s\\-]?\\d{2}[\\s\\-]?\\d{2}$";
+    '^(7|8)[\\s\\-]?\\(?\\d{3}\\)?[\\s\\-]?\\d{3}[\\s\\-]?\\d{2}[\\s\\-]?\\d{2}$';
 
   fields.forEach((field) => {
-    field.addEventListener("beforeinput", (e) => {
+    field.addEventListener('beforeinput', (e) => {
       const input = e.target;
       const value = input.value;
-      const digits = value.replace(/\D/g, "");
+      const digits = value.replace(/\D/g, '');
       const isDigit = /\d/.test(e.data);
 
       if (isDigit && digits.length >= 11) {
@@ -1378,17 +1378,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    field.addEventListener("input", (e) => {
+    field.addEventListener('input', (e) => {
       const input = e.target;
-      field.setAttribute("pattern", phonePattern);
+      field.setAttribute('pattern', phonePattern);
 
       let cursorPos = input.selectionStart;
       const oldValue = input.value;
 
-      let digits = oldValue.replace(/\D/g, "");
+      let digits = oldValue.replace(/\D/g, '');
 
-      if (digits.length > 0 && digits[0] !== "7") {
-        digits = "7" + digits.slice(1);
+      if (digits.length > 0 && digits[0] !== '7') {
+        digits = '7' + digits.slice(1);
       }
 
       if (digits.length > 11) {
@@ -1396,21 +1396,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function formatPhone(digits) {
-        let formatted = "";
+        let formatted = '';
         if (digits.length > 0) {
           formatted += digits[0];
         }
         if (digits.length >= 2) {
-          formatted += " (" + digits.slice(1, 4);
+          formatted += ' (' + digits.slice(1, 4);
         }
         if (digits.length >= 5) {
-          formatted += ") " + digits.slice(4, 7);
+          formatted += ') ' + digits.slice(4, 7);
         }
         if (digits.length >= 8) {
-          formatted += " " + digits.slice(7, 9);
+          formatted += ' ' + digits.slice(7, 9);
         }
         if (digits.length >= 10) {
-          formatted += " " + digits.slice(9, 11);
+          formatted += ' ' + digits.slice(9, 11);
         }
         return formatted;
       }
@@ -1443,183 +1443,183 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // blog selector
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll("[data-selector]");
-  const titleTarget = document.getElementById("blogs-title");
-  const slider = document.getElementById("blog-slider");
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('[data-selector]');
+  const titleTarget = document.getElementById('blogs-title');
+  const slider = document.getElementById('blog-slider');
 
   const titles = {
-    "blog-site": { title: "Статьи Разработка сайтов" },
-    "digital-design": { title: "Статьи Digital-дизайн" },
-    "seo-promotion": { title: "Статьи SEO-продвижение" },
-    "internet-marketing": { title: "Статьи Интернет-маркетинг" },
+    'blog-site': { title: 'Статьи Разработка сайтов' },
+    'digital-design': { title: 'Статьи Digital-дизайн' },
+    'seo-promotion': { title: 'Статьи SEO-продвижение' },
+    'internet-marketing': { title: 'Статьи Интернет-маркетинг' },
   };
 
   const articles = {
-    "blog-site": [
+    'blog-site': [
       {
-        img: "./src/images/image-by-item-and-alias.webp",
-        link: "./blog/landing-page.html",
-        title: "Отличия Landing Page от сайта",
+        img: './src/images/image-by-item-and-alias.webp',
+        link: './blog/landing-page.html',
+        title: 'Отличия Landing Page от сайта',
         description: `Прежде чем заказать лендинг, нужно понимать, что это и для чего он нужен. 
                               А также нужно разобраться, в чем его отличия от обычного сайте. 
                               Суть обоих понятий довольно близка - немного отличается лишь разнообразие. 
                               Выбор должен основываться на преследуемых целях и особенностей бизнеса.`,
-        date: "2022-01-01",
+        date: '2022-01-01',
       },
       {
-        img: "./src/images/blog/kontent_sayta.webp",
-        link: "./blog/unikalnyj-kontent-dla-vasego-internet-magazina.html",
-        title: "Уникальный контент для Вашего интернет-магазина",
+        img: './src/images/blog/kontent_sayta.webp',
+        link: './blog/unikalnyj-kontent-dla-vasego-internet-magazina.html',
+        title: 'Уникальный контент для Вашего интернет-магазина',
         description: `Интернет-магазин - удобная и современная платформа для реализации товаров. 
                               Однако, для удачной работы недостаточно просто создать сайт или страницу в соцсетях. 
                               Нужно наполнить его качественным контентом: статьями, заметками и описаниями товаров.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/cms-blog-preview.webp",
-        link: "./blog/vozmoznosti-nasej-cms-i-sms.html",
+        img: './src/images/blog/cms-blog-preview.webp',
+        link: './blog/vozmoznosti-nasej-cms-i-sms.html',
         title: 'Возможности нашей CMS – "i-сms"',
         description: `Наша компания разрабатывает и устанавливает уникальные CMS, под конкретные веб-ресурсы с индивидуальными функциональными возможностями. 
                               Каждый такой сайт оснащается также надёжной системой защиты от несанкционированного доступа.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/viz02.webp",
-        link: "./blog/manual-dla-licnogo-kabineta.html",
-        title: "Мануал для личного кабинета",
+        img: './src/images/blog/viz02.webp',
+        link: './blog/manual-dla-licnogo-kabineta.html',
+        title: 'Мануал для личного кабинета',
         description: `В этой инструкции мы расскажем для чего нужен личный кабинет и как пользоваться его инструментами.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/cms-zoom.webp",
-        link: "./blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html",
-        title: "Почему нельзя создавать интернет-магазины на шаблонах",
+        img: './src/images/blog/cms-zoom.webp',
+        link: './blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html',
+        title: 'Почему нельзя создавать интернет-магазины на шаблонах',
         description: `Основные проблемы, с которыми сталкиваются пользователи при создании сайтов на шаблонах`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/list-preview.webp",
-        link: "./blog/pamatka-zakazciku.html",
-        title: "Памятка заказчику",
+        img: './src/images/blog/list-preview.webp',
+        link: './blog/pamatka-zakazciku.html',
+        title: 'Памятка заказчику',
         description: `Ни для кого не секрет, что коммерческий сайт – это современный инструмент бизнеса, позволяющий получать большой поток клиентов из сети. 
                               Основные задачи сайта: привлекать клиентов, приносить прибыль, способствовать продвижению торговой марки, улучшать имидж компании, обеспечивать обратную связь с потребителями и т.д., и т.п.                        `,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
     ],
-    "digital-design": [
+    'digital-design': [
       {
-        img: "./src/images/blog/UX_UI_dis.webp",
-        link: "./blog/uxui_design.html",
-        title: "UX и UI-дизайн — что это и зачем нужно?",
+        img: './src/images/blog/UX_UI_dis.webp',
+        link: './blog/uxui_design.html',
+        title: 'UX и UI-дизайн — что это и зачем нужно?',
         description: `Доступно и кратко рассказываем о самой эффективной технологии web-дизайна.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/visitka.webp",
-        link: "./blog/vizitka-vaznyj-element-delovogo-imidza.html",
-        title: "Визитка – важный элемент делового имиджа",
+        img: './src/images/blog/visitka.webp',
+        link: './blog/vizitka-vaznyj-element-delovogo-imidza.html',
+        title: 'Визитка – важный элемент делового имиджа',
         description: `Облегчая общение, визитка служит неназойливым напоминанием о деловом человеке. 
                               Просматривая свою визитницу, ее обладатель будет постоянно видеть Вашу визитку, и не исключено, что, подыскивая деловых партнеров, вспомнит о Вашем существовании. 
                               Многие из нас к самому процессу изготовления визиток подходят не совсем ответственно и взвешенно, и напрасно.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/kreative-design.webp",
-        link: "./blog/kreativ-v-reklamnom-dizajne.html",
-        title: "Креатив в рекламном дизайне",
+        img: './src/images/blog/kreative-design.webp',
+        link: './blog/kreativ-v-reklamnom-dizajne.html',
+        title: 'Креатив в рекламном дизайне',
         description: `Процесс рекламного дизайна заключается в непрерывном поиске новых средств, которые могли бы привлечь внимание читателя и заинтересовать его в предмете рекламы. 
                               Дизайн процесс творческий.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/ponyatie-logotipa.webp",
-        link: "./blog/ponatie-logotipa.html",
-        title: "Понятие логотипа",
+        img: './src/images/blog/ponyatie-logotipa.webp',
+        link: './blog/ponatie-logotipa.html',
+        title: 'Понятие логотипа',
         description: `Логотип это официально принятый термин, означающий зарегистрированное в порядке оригинально оформленное художественное изображение, для отличия товаров и услуг и их рекламы.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
     ],
-    "seo-promotion": [
+    'seo-promotion': [
       {
-        img: "./src/images/blog/eseo.webp",
-        link: "./blog/etapy-seo-prodvijenia.html",
-        title: "Этапы SEO-продвижения сайта",
+        img: './src/images/blog/eseo.webp',
+        link: './blog/etapy-seo-prodvijenia.html',
+        title: 'Этапы SEO-продвижения сайта',
         description: `Чтобы стать успешным предпринимателем, просто создать сайт недостаточно. 
                               Интернет-ресурс должен быть заметен потенциальной клиентуре. 
                               Для этого требуется продвинуть его вверх в поисковых системах.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/seo-circle.webp",
-        link: "./blog/kratkij-gajd-po-faktoram-ranzirovania-v-seo.html",
-        title: "Краткий гайд по факторам ранжирования в SEO ",
+        img: './src/images/blog/seo-circle.webp',
+        link: './blog/kratkij-gajd-po-faktoram-ranzirovania-v-seo.html',
+        title: 'Краткий гайд по факторам ранжирования в SEO ',
         description: `Факторы, на которые роботы смотрят при ранжировании сайтов в поисковой системе. 
                               Основная информация.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/orig.webp",
-        link: "./blog/filtry-andeksa-priznaki-popadania-sroki-sankcij-i-sposoby-vyhoda.html",
-        title: "Фильтры Яндекса",
+        img: './src/images/blog/orig.webp',
+        link: './blog/filtry-andeksa-priznaki-popadania-sroki-sankcij-i-sposoby-vyhoda.html',
+        title: 'Фильтры Яндекса',
         description: `Признаки попадания, сроки санкций и способы выхода.
                               Кратко о том, что такое санкции Яндекса и с чем их едят.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/link-building.webp",
-        link: "./blog/linkbilding-v-2019-rabocie-metody.html",
-        title: "Линкбилдинг в 2019: рабочие методы",
+        img: './src/images/blog/link-building.webp',
+        link: './blog/linkbilding-v-2019-rabocie-metody.html',
+        title: 'Линкбилдинг в 2019: рабочие методы',
         description: `Статья о том, как продвигать сайт с помощью ссылок в 2019 году и не попадать под фильтры.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
     ],
-    "internet-marketing": [
+    'internet-marketing': [
       {
-        img: "./src/images/blog/reputation-preview.webp",
-        link: "./blog/upravlenie-reputaciej-v-internete-zacem-i-kak.html",
-        title: "Управление репутацией в интернете: зачем и как",
+        img: './src/images/blog/reputation-preview.webp',
+        link: './blog/upravlenie-reputaciej-v-internete-zacem-i-kak.html',
+        title: 'Управление репутацией в интернете: зачем и как',
         description: `О том, почему так важно поддерживать репутацию бренда в интернете.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/typewriter.webp",
-        link: "./blog/korporativnyj-blog-dan-mode-ili-effektivnaa-reklama.html",
-        title: "Корпоративный блог: дань моде или эффективная реклама?",
+        img: './src/images/blog/typewriter.webp',
+        link: './blog/korporativnyj-blog-dan-mode-ili-effektivnaa-reklama.html',
+        title: 'Корпоративный блог: дань моде или эффективная реклама?',
         description: `Зачем нужно вести корпоративный блог и что он Вам даст?`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/cursor-preview.webp",
-        link: "./blog/kontekstnaa-reklama-8-sovetov-novickam.html",
-        title: "Контекстная реклама: 8 советов новичкам",
+        img: './src/images/blog/cursor-preview.webp',
+        link: './blog/kontekstnaa-reklama-8-sovetov-novickam.html',
+        title: 'Контекстная реклама: 8 советов новичкам',
         description: `Настройка КР для чайников – больше конверсии, меньше трат бюджета!`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
       {
-        img: "./src/images/blog/mic-preview.webp",
-        link: "./blog/intervu.html",
+        img: './src/images/blog/mic-preview.webp',
+        link: './blog/intervu.html',
         title:
-          "Интервью как способ громко заявить о своём бизнесе с помощью прессы",
+          'Интервью как способ громко заявить о своём бизнесе с помощью прессы',
         description: `Одно хорошее интервью может быть эффективнее десяти щедро проплаченных рекламных кампаний. Почему? Читайте в этой статье.`,
-        date: "2022-01-02",
+        date: '2022-01-02',
       },
     ],
   };
 
   if (buttons && titleTarget && slider) {
     buttons.forEach((button) => {
-      button.addEventListener("click", () => {
+      button.addEventListener('click', () => {
         titleTarget.innerText = titles[button.dataset.selector].title;
         while (slider.lastChild) {
           slider.removeChild(slider.lastChild);
         }
         articles[button.dataset.selector].forEach((article) => {
-          const slide = document.createElement("div");
-          slide.classList.add("card");
-          slide.classList.add("card--recent");
-          slide.classList.add("card--newsletter");
-          slide.classList.add("active");
+          const slide = document.createElement('div');
+          slide.classList.add('card');
+          slide.classList.add('card--recent');
+          slide.classList.add('card--newsletter');
+          slide.classList.add('active');
           const slideHtml = `
                         <a href="${article.link}">
                             <div class="img-wrapper"><img src="${article.img}" alt="${article.title}"></div>
@@ -1640,7 +1640,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const handleToggleByHash = (hash) => {
-      const id = hash.replace("#", "");
+      const id = hash.replace('#', '');
       const button = document.querySelector(`.card--tab[data-selector=${id}]`);
 
       button.click();
@@ -1657,19 +1657,19 @@ window.textarea_autosize = {
   init: function () {
     // Resize all textareas with data-autosize attribute
     document
-      .querySelectorAll("textarea[data-autosize]")
+      .querySelectorAll('textarea[data-autosize]')
       .forEach(function (elem) {
         textarea_autosize.resize(elem);
       });
 
     // Listen for input and change events on textareas with data-autosize
-    document.addEventListener("input", function (event) {
-      if (event.target && event.target.matches("textarea[data-autosize]")) {
+    document.addEventListener('input', function (event) {
+      if (event.target && event.target.matches('textarea[data-autosize]')) {
         textarea_autosize.resize(event.target);
       }
     });
-    document.addEventListener("change", function (event) {
-      if (event.target && event.target.matches("textarea[data-autosize]")) {
+    document.addEventListener('change', function (event) {
+      if (event.target && event.target.matches('textarea[data-autosize]')) {
         textarea_autosize.resize(event.target);
       }
     });
@@ -1684,28 +1684,28 @@ window.textarea_autosize = {
 
   resize: function (elem) {
     if (elem) {
-      elem.style.height = "auto";
-      elem.style.height = elem.scrollHeight + 5 + "px";
+      elem.style.height = 'auto';
+      elem.style.height = elem.scrollHeight + 5 + 'px';
 
-      if (elem.getAttribute("data-autosize") !== "true") {
-        elem.setAttribute("data-autosize", "true");
+      if (elem.getAttribute('data-autosize') !== 'true') {
+        elem.setAttribute('data-autosize', 'true');
       }
     }
   },
 };
 
 // Initialize on DOMContentLoaded
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   textarea_autosize.init();
 });
 
 // gallery selector
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.getElementById("gallery-popup")) {
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('gallery-popup')) {
     const gallery = document
-      .getElementById("gallery-popup")
-      .querySelector("[data-slider]");
-    const triggers = document.querySelectorAll("[data-gallery]");
+      .getElementById('gallery-popup')
+      .querySelector('[data-slider]');
+    const triggers = document.querySelectorAll('[data-gallery]');
     const onLoad = gallery.dataset.onload;
 
     const clearGallery = () => {
@@ -1718,14 +1718,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const setUpGallery = (info) => {
-      const contentId = info.split("_")[0];
-      const contentCount = info.split("_")[1];
+      const contentId = info.split('_')[0];
+      const contentCount = info.split('_')[1];
       clearGallery();
 
       for (let index = 0; index < contentCount; index++) {
-        const div = document.createElement("div");
-        div.classList.add("gallery-card");
-        const img = document.createElement("img");
+        const div = document.createElement('div');
+        div.classList.add('gallery-card');
+        const img = document.createElement('img');
         img.src = `../src/images/galleries/${contentId}_${index + 1}.webp`;
         div.appendChild(img);
         gallery.appendChild(div);
@@ -1737,7 +1737,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     triggers.forEach((trigger) => {
-      trigger.addEventListener("click", () => {
+      trigger.addEventListener('click', () => {
         setUpGallery(trigger.dataset.gallery);
       });
     });
@@ -1745,22 +1745,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // tooltip handler
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("[data-tooltip]").forEach((el) => {
-    el.addEventListener("mouseenter", () => {
-      let text = el.getAttribute("data-tooltip");
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-tooltip]').forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      let text = el.getAttribute('data-tooltip');
 
-      let tooltip = document.getElementById("custom-tooltip");
+      let tooltip = document.getElementById('custom-tooltip');
       if (!tooltip) {
-        tooltip = document.createElement("div");
-        tooltip.id = "custom-tooltip";
+        tooltip = document.createElement('div');
+        tooltip.id = 'custom-tooltip';
 
-        tooltip.classList.add("tooltip-after");
+        tooltip.classList.add('tooltip-after');
         document.body.appendChild(tooltip);
       }
 
       tooltip.textContent = text;
-      tooltip.classList.add("visible");
+      tooltip.classList.add('visible');
 
       const rect = el.getBoundingClientRect();
       const tooltipRect = tooltip.getBoundingClientRect();
@@ -1788,32 +1788,32 @@ document.addEventListener("DOMContentLoaded", () => {
       tooltip.style.left = `${left}px`;
     });
 
-    el.addEventListener("mouseleave", () => {
-      let tooltip = document.getElementById("custom-tooltip");
-      if (tooltip) tooltip.classList.remove("visible");
+    el.addEventListener('mouseleave', () => {
+      let tooltip = document.getElementById('custom-tooltip');
+      if (tooltip) tooltip.classList.remove('visible');
     });
   });
 });
 
 // brif
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector("#calculator-brif")) {
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.querySelector('#calculator-brif')) {
     const inputs = document
-      .getElementById("calculator-brif")
-      ?.querySelectorAll(".accordion-content input");
-    const sentButton = document.getElementById("send-brif-total");
+      .getElementById('calculator-brif')
+      ?.querySelectorAll('.accordion-content input');
+    const sentButton = document.getElementById('send-brif-total');
 
     const toggleConverter = (inputs) => {
       const toggles = [];
       const texts = [];
       inputs.forEach((input) => {
         switch (input.type) {
-          case "checkbox": {
+          case 'checkbox': {
             toggles.push({
               id: input.id,
               elementref: input,
-              reveal: document.getElementById(input.dataset.reveal || ""),
-              radioid: input.dataset.radio?.split(";"),
+              reveal: document.getElementById(input.dataset.reveal || ''),
+              radioid: input.dataset.radio?.split(';'),
             });
             break;
           }
@@ -1832,22 +1832,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (inputs && sentButton) {
       const { toggles, texts } = toggleConverter(inputs);
-      const togglechange = new Event("change");
+      const togglechange = new Event('change');
 
       toggles.forEach((toggle) => {
-        toggle.elementref.addEventListener("change", () => {
+        toggle.elementref.addEventListener('change', () => {
           switch (toggle.id) {
             default: {
               if (toggle.elementref.checked) {
                 if (toggle.reveal) {
-                  toggle.reveal.classList.remove("hidden");
+                  toggle.reveal.classList.remove('hidden');
                 }
                 if (toggle.radioid && toggle.radioid.length > 0) {
                   toggles.map((el) => {
                     toggle.radioid?.forEach((id) => {
                       if (el.id === id && el.elementref.checked) {
                         el.elementref.checked = false;
-                        el.reveal?.classList.add("hidden");
+                        el.reveal?.classList.add('hidden');
                       }
                     });
                   });
@@ -1855,7 +1855,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
               } else {
                 if (toggle.reveal) {
-                  toggle.reveal.classList.add("hidden");
+                  toggle.reveal.classList.add('hidden');
                 }
                 break;
               }
@@ -1864,10 +1864,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
 
-      sentButton.addEventListener("click", () => {
+      sentButton.addEventListener('click', () => {
         const review = {
           options: toggles.filter((toggle) => toggle.elementref.checked),
-          extra: texts.filter((text) => text.elementref.value !== ""),
+          extra: texts.filter((text) => text.elementref.value !== ''),
         };
         console.log(review);
       });
@@ -1876,25 +1876,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // calculator
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector("#calculator")) {
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.querySelector('#calculator')) {
     const inputs = document
-      .getElementById("calculator")
-      ?.querySelectorAll(".accordion-content input");
-    const reset_button = document.getElementById("reset-options-btn");
-    const sentButton = document.getElementById("send-calculator-total");
-    const target = document.getElementById("calculator-total-target");
+      .getElementById('calculator')
+      ?.querySelectorAll('.accordion-content input');
+    const reset_button = document.getElementById('reset-options-btn');
+    const sentButton = document.getElementById('send-calculator-total');
+    const target = document.getElementById('calculator-total-target');
     const hash = window.location.hash;
-    const togglechange = new Event("change");
+    const togglechange = new Event('change');
 
     const formatNumber = (num) => {
-      const [integer, decimal] = num.toString().split(".");
-      const formatted = integer.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      const [integer, decimal] = num.toString().split('.');
+      const formatted = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
       // console.log('=> formatted', formatted)
       return formatted;
     };
 
-    Object.defineProperty(target, "current_value", {
+    Object.defineProperty(target, 'current_value', {
       get() {
         return this._current_value;
       },
@@ -1907,7 +1907,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const handleToggleByHash = (hash, toggles) => {
-      const id = hash.replace("#", "");
+      const id = hash.replace('#', '');
       const handle_target = toggles.find((t) => t.id === id);
       if (handle_target) {
         try {
@@ -1917,7 +1917,7 @@ document.addEventListener("DOMContentLoaded", () => {
             handle_target.nested.forEach((nestedToggleid) => {
               const nestedToggle = toggles.find((t) => t.id === nestedToggleid);
               const section = document.querySelector(
-                `#section-${nestedToggleid.split("-")?.[0]}`
+                `#section-${nestedToggleid.split('-')?.[0]}`
               );
               section.checked = true;
               try {
@@ -1925,19 +1925,19 @@ document.addEventListener("DOMContentLoaded", () => {
                   nestedToggle.elementref.checked = true;
                   nestedToggle.elementref.dispatchEvent(togglechange);
                 } else {
-                  console.error("=> ", nestedToggleid, "not found");
+                  console.error('=> ', nestedToggleid, 'not found');
                 }
                 if (nestedToggle?.reveal) {
-                  nestedToggle.reveal.classList.remove("hidden");
+                  nestedToggle.reveal.classList.remove('hidden');
                 }
               } catch (err) {
                 console.error(nestedToggleid, err);
               }
             });
           }
-          console.log("=> sucess");
+          console.log('=> sucess');
         } catch (err) {
-          console.log("=> error", err);
+          console.log('=> error', err);
         }
       }
     };
@@ -1948,18 +1948,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const texts = [];
       inputs.forEach((input) => {
         switch (input.type) {
-          case "checkbox": {
+          case 'checkbox': {
             toggles.push({
               id: input.id,
               elementref: input,
-              price: parseInt(input.dataset.price || ""),
-              nested: input.dataset.nested?.split(";"),
-              reveal: document.getElementById(input.dataset.reveal || ""),
-              radioid: input.dataset.radio?.split(";"),
+              price: parseInt(input.dataset.price || ''),
+              nested: input.dataset.nested?.split(';'),
+              reveal: document.getElementById(input.dataset.reveal || ''),
+              radioid: input.dataset.radio?.split(';'),
             });
             break;
           }
-          case "number": {
+          case 'number': {
             counters.push({
               id: input.id,
               elementref: input,
@@ -1996,12 +1996,12 @@ document.addEventListener("DOMContentLoaded", () => {
       target.current_value = 0;
 
       toggles.forEach((toggle) => {
-        toggle.elementref.addEventListener("change", () => {
+        toggle.elementref.addEventListener('change', () => {
           switch (toggle.id) {
             default: {
               if (toggle.elementref.checked) {
                 if (toggle.reveal) {
-                  toggle.reveal.classList.remove("hidden");
+                  toggle.reveal.classList.remove('hidden');
                 }
                 if (toggle.counter?.total) {
                   target.current_value =
@@ -2017,7 +2017,7 @@ document.addEventListener("DOMContentLoaded", () => {
                               (t) => t.id === nested
                             );
                             nestedToggle.elementref.checked = false;
-                            nestedToggle.reveal?.classList.add("hidden");
+                            nestedToggle.reveal?.classList.add('hidden');
                             nestedToggle.elementref.dispatchEvent(togglechange);
                           });
                         }
@@ -2025,12 +2025,12 @@ document.addEventListener("DOMContentLoaded", () => {
                           el.elementref.checked = false;
                           target.current_value =
                             target.current_value - el.price - el.counter.total;
-                          el.reveal?.classList.add("hidden");
+                          el.reveal?.classList.add('hidden');
                         } else if (el.elementref.checked) {
                           target.current_value =
                             target.current_value - el.price;
                           el.elementref.checked = false;
-                          el.reveal?.classList.add("hidden");
+                          el.reveal?.classList.add('hidden');
                         }
                       }
                     });
@@ -2042,7 +2042,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       (t) => t.id === nestedToggleid
                     );
                     const section = document.querySelector(
-                      `#section-${nestedToggleid.split("-")?.[0]}`
+                      `#section-${nestedToggleid.split('-')?.[0]}`
                     );
                     section ? (section.checked = true) : null;
                     try {
@@ -2050,10 +2050,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         nestedToggle.elementref.checked = true;
                         nestedToggle.elementref.dispatchEvent(togglechange);
                       } else {
-                        console.error("=> ", nestedToggleid, "not found");
+                        console.error('=> ', nestedToggleid, 'not found');
                       }
                       if (nestedToggle?.reveal) {
-                        nestedToggle.reveal.classList.remove("hidden");
+                        nestedToggle.reveal.classList.remove('hidden');
                       }
                     } catch (err) {
                       console.error(nestedToggleid, err);
@@ -2064,7 +2064,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
               } else {
                 if (toggle.reveal) {
-                  toggle.reveal.classList.add("hidden");
+                  toggle.reveal.classList.add('hidden');
                 }
                 if (toggle.counter?.total) {
                   target.current_value =
@@ -2081,26 +2081,26 @@ document.addEventListener("DOMContentLoaded", () => {
                       nestedToggle.elementref.dispatchEvent(togglechange);
                     }
                     if (nestedToggle.reveal) {
-                      nestedToggle.reveal.classList.add("hidden");
+                      nestedToggle.reveal.classList.add('hidden');
                     }
                   });
                 }
                 if (
-                  toggle.id === "promotion-seo" ||
-                  toggle.id === "promotion-max_start"
+                  toggle.id === 'promotion-seo' ||
+                  toggle.id === 'promotion-max_start'
                 ) {
                   const inside_toggles = toggle.reveal.querySelectorAll(
-                    "input[type=checkbox]"
+                    'input[type=checkbox]'
                   );
                   // console.log('=> inside_toggles', inside_toggles)
-                  const new_toggleChange = new Event("change");
+                  const new_toggleChange = new Event('change');
                   inside_toggles.forEach((toggle) => {
                     if (toggle.checked) {
                       toggle.checked = false;
                       try {
                         toggle.dispatchEvent(new_toggleChange);
                       } catch (e) {
-                        console.log("err: ", e);
+                        console.log('err: ', e);
                       }
                     }
                   });
@@ -2119,15 +2119,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       counters.forEach((counter) => {
-        const changeEvent = new Event("input");
-        counter.elementref.nextElementSibling?.addEventListener("click", () => {
+        const changeEvent = new Event('input');
+        counter.elementref.nextElementSibling?.addEventListener('click', () => {
           counter.elementref.value++;
           counter.elementref.dispatchEvent(changeEvent);
         });
         counter.elementref.previousElementSibling?.addEventListener(
-          "click",
+          'click',
           () => {
-            if (counter.elementref.dataset?.intendfor === "design-landing") {
+            if (counter.elementref.dataset?.intendfor === 'design-landing') {
               if (counter.elementref.value > 1) {
                 counter.elementref.value--;
               }
@@ -2137,26 +2137,26 @@ document.addEventListener("DOMContentLoaded", () => {
             counter.elementref.dispatchEvent(changeEvent);
           }
         );
-        counter.elementref.addEventListener("input", () => {
+        counter.elementref.addEventListener('input', () => {
           target.current_value = target.current_value - counter.total;
           counter.total =
             parseInt(
-              counter.elementref.value === "" ? 0 : counter.elementref.value
+              counter.elementref.value === '' ? 0 : counter.elementref.value
             ) * counter.price;
           target.current_value = target.current_value + counter.total;
         });
-        counter.elementref.addEventListener("keydown", (e) => {
-          const blockedkeys = ["-", ",", ".", "+"];
+        counter.elementref.addEventListener('keydown', (e) => {
+          const blockedkeys = ['-', ',', '.', '+'];
           if (blockedkeys.includes(e.key)) {
             e.preventDefault();
           }
         });
-        counter.elementref.addEventListener("blur", () => {
-          if (counter.elementref.value === "") {
+        counter.elementref.addEventListener('blur', () => {
+          if (counter.elementref.value === '') {
             counter.elementref.value = 0;
           }
           if (
-            counter.elementref.dataset?.intendfor === "design-landing" &&
+            counter.elementref.dataset?.intendfor === 'design-landing' &&
             counter.elementref.value < 1
           ) {
             counter.elementref.value = 1;
@@ -2164,16 +2164,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
 
-      sentButton?.addEventListener("click", () => {
+      sentButton?.addEventListener('click', () => {
         const review = {
           options: toggles.filter((toggle) => toggle.elementref.checked),
-          extra: texts.filter((text) => text.elementref.value !== ""),
+          extra: texts.filter((text) => text.elementref.value !== ''),
           preprice: target.innerText,
         };
         console.log(review);
       });
 
-      reset_button?.addEventListener("click", () => {
+      reset_button?.addEventListener('click', () => {
         toggles.map((toggle) => {
           toggle.elementref.checked = false;
         });
@@ -2188,12 +2188,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // reviews
-document.addEventListener("DOMContentLoaded", () => {
-  const reviewsContainer = document.querySelector("#reviews-container");
+document.addEventListener('DOMContentLoaded', () => {
+  const reviewsContainer = document.querySelector('#reviews-container');
 
   if (reviewsContainer) {
-    reviewsContainer.addEventListener("submit", (event) => {
-      if (event.target.matches("form[data-pjax]")) {
+    reviewsContainer.addEventListener('submit', (event) => {
+      if (event.target.matches('form[data-pjax]')) {
         event.preventDefault();
 
         pjaxSubmit(event, {
@@ -2201,20 +2201,20 @@ document.addEventListener("DOMContentLoaded", () => {
           replace: false,
           timeout: 1000,
           scrollTo: false,
-          container: "#reviews-container",
+          container: '#reviews-container',
         });
       }
     });
     // Обработка клика по элементам с классом 'filter'
-    document.addEventListener("click", (event) => {
-      if (event.target.matches(".filter")) {
+    document.addEventListener('click', (event) => {
+      if (event.target.matches('.filter')) {
         const rating = event.target.dataset.rating;
-        const type = document.querySelector(".reviews__button.active").dataset
+        const type = document.querySelector('.reviews__button.active').dataset
           .type;
         // Здесь должен быть вызов функции pjax.reload
         pjaxReload({
-          container: "#reviews-container",
-          type: "POST",
+          container: '#reviews-container',
+          type: 'POST',
           data: { rating: rating, type: type },
           timeout: 1000,
           push: false,
@@ -2226,43 +2226,58 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // handle change clicks to add smooth change of columns
-document.addEventListener("DOMContentLoaded", () => {
-  const table = document.querySelector(".tender-table");
+document.addEventListener('DOMContentLoaded', () => {
+  const table = document.querySelector('.tender-table');
   if (!table) {
     return;
   }
-  const buttons = table.querySelectorAll("th");
+  const buttons = table.querySelectorAll('th');
   buttons.forEach((button, index) => {
     if (index > 0) {
-      input = button.querySelector("input");
-      input.addEventListener("click", (e) => {
+      input = button.querySelector('input');
+      input.addEventListener('click', (e) => {
         changeOrderHandler(button);
       });
     }
   });
 
   const changeOrderHandler = (button) => {
-    console.log("=> inside");
+    console.log('=> inside');
     try {
       buttons.forEach((item) => {
-        item.style.order = "1";
-        label = item?.querySelector("label");
-        label?.classList?.add("fade-out");
+        item.style.order = '1';
+        label = item?.querySelector('label');
+        label?.classList?.add('fade-out');
       });
 
       setTimeout(() => {
-        button.style.order = "3";
+        button.style.order = '3';
       }, 350);
 
       setTimeout(() => {
         buttons.forEach((item) => {
-          label = item?.querySelector("label");
-          label?.classList?.remove("fade-out");
-          console.log("-- item.style", item.style.order);
+          label = item?.querySelector('label');
+          label?.classList?.remove('fade-out');
+          console.log('-- item.style', item.style.order);
         });
       }, 400);
     } catch (error) {
-      console.log("=> err", error);
+      console.log('=> err', error);
     }
   };
+});
+
+// filter portfolio sites
+document.addEventListener('DOMContentLoaded', () => {
+  let filterBlock = document.querySelector('[data-filters]'),
+    filtered = document.querySelector('[data-filtered]'),
+    filters = filterBlock?.querySelectorAll('[data-filter]');
+
+  if (filters.length > 0 && filtered) {
+    filters.forEach((filter) => {
+      filter.addEventListener('change', (e) => {
+        console.log(e.currentTarget.checked);
+      });
+    });
+  }
 });
