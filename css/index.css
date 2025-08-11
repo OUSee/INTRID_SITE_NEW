@@ -717,6 +717,22 @@ th {
     color: var(--color-white);
   }
 }
+@keyframes mockupScaleIn {
+  0% {
+    transform: rotateX(-25deg) rotateY(-20deg) skewX(0deg) skewY(0deg) scale3d(1, 1, 2) translate(35%, 10%);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) scale3d(1.5, 1.5, 1) translate(0, 0);
+  }
+}
+@keyframes mockupScaleOut {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) scale3d(1.5, 1.5, 1) translate(0, 0);
+  }
+  100% {
+    transform: rotateX(-25deg) rotateY(-20deg) skewX(0deg) skewY(0deg) scale3d(1, 1, 2) translate(35%, 10%);
+  }
+}
 @font-face {
   font-family: "INTRID_ICONS";
   src: url("../src/fonts/icons/fonts/INTRID_ICONS.eot");
@@ -5876,7 +5892,6 @@ button:hover img,
   border: none;
   outline: none;
   border-radius: 25px;
-  overflow: visible;
 }
 .card--mockup.transparency:hover {
   box-shadow: none;
@@ -5884,23 +5899,31 @@ button:hover img,
   outline: none;
 }
 .card--mockup.transparency:hover img {
-  transform: scale3d(1.5, 1.5, 1);
+  width: 80%;
+  height: 100%;
+  transform: rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) scale3d(1.5, 1.5, 1) translate(0, 0);
 }
 .card--mockup.transparency:hover .card-body > b, .card--mockup.transparency:hover .card-body > p {
   text-shadow: 0 0 3px var(--blue-bg);
 }
 .card--mockup.transparency:hover .card-body::before {
   opacity: 1;
-  visibility: visible;
+  box-shadow: 0px 0px 180px 180px var(--blue-bg);
+}
+.card--mockup.transparency:hover .absolute-link::before {
+  opacity: 1;
 }
 .card--mockup.transparency::before {
   display: none;
 }
 .card--mockup.transparency img {
+  width: 60%;
+  height: 80%;
   z-index: -2;
   mask-image: linear-gradient(80deg, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+  transform: rotateX(-25deg) rotateY(-20deg) skewX(0deg) skewY(0deg) scale3d(1, 1, 2) translate(35%, 10%);
   transform-origin: top left;
-  transition: 0.35s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 .card--mockup.transparency > a {
   transition: 0.35s ease-in-out;
@@ -5911,9 +5934,23 @@ button:hover img,
 }
 .card--mockup.transparency > a:is(.absolute-link) {
   z-index: 2;
-  background-image: linear-gradient(0deg, rgb(6, 39, 42) 30%, rgba(6, 39, 42, 0) 100%);
-  background-size: 200% 100%;
+  background: transparent;
   border-radius: 0 0 25px 25px;
+  overflow: visible;
+}
+.card--mockup.transparency > a:is(.absolute-link)::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: 50%;
+  height: 0;
+  opacity: 0;
+  box-shadow: 0px 0px 70px 40px var(--color-black);
+  transform: translate(-50%, -50%);
+  transition: 0.35s ease-in-out;
+  will-change: opacity;
 }
 .card--mockup.transparency .card-body {
   position: relative;
@@ -5931,10 +5968,9 @@ button:hover img,
   width: 0;
   height: 0;
   opacity: 0;
-  visibility: hidden;
-  box-shadow: 0px 0px 180px 180px var(--blue-bg);
+  box-shadow: 0px 0px 0px 0px var(--blue-bg);
   background-color: var(--blue-bg);
-  transition: 0.25s ease-in-out;
+  transition: 0.35s ease-in-out;
 }
 .card--mockup.transparency .card-body > b, .card--mockup.transparency .card-body > p {
   transition: 0.25s ease-in-out;
