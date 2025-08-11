@@ -5889,6 +5889,10 @@ button:hover img,
 .card--mockup.transparency:hover .card-body > b, .card--mockup.transparency:hover .card-body > p {
   text-shadow: 0 0 3px var(--color-black);
 }
+.card--mockup.transparency:hover .card-body::before {
+  opacity: 1;
+  visibility: visible;
+}
 .card--mockup.transparency::before {
   display: none;
 }
@@ -5917,6 +5921,20 @@ button:hover img,
   margin-bottom: 0;
   border-radius: 25px 25px 0 0;
   overflow: hidden;
+}
+.card--mockup.transparency .card-body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0px 0px 180px 180px var(--blue-bg);
+  background-color: var(--blue-bg);
+  transition: 0.25s ease-in-out;
 }
 .card--mockup.transparency .card-body > b, .card--mockup.transparency .card-body > p {
   transition: 0.25s ease-in-out;
@@ -7173,6 +7191,7 @@ button:hover img,
   position: sticky;
   bottom: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
   text-align: center;
   margin-top: auto;
