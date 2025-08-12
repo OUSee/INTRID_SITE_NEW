@@ -2269,14 +2269,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // filter portfolio sites
 document.addEventListener('DOMContentLoaded', () => {
-  let filterBlock = document.querySelector('[data-filters]'),
-    filtered = document.querySelector('[data-filtered]'),
-    filters = filterBlock?.querySelectorAll('[data-filter]');
+  let filtered = document.querySelector('[data-items]'),
+    items = filtered?.querySelectorAll('[data-item]'),
+    filterInputs = document.querySelectorAll('[data-filter]');
 
-  if (filters.length > 0 && filtered) {
-    filters.forEach((filter) => {
-      filter.addEventListener('change', (e) => {
-        console.log(e.currentTarget.checked);
+  if (filterInputs.length > 0 && filtered) {
+    filterInputs.forEach((input) => {
+      input.addEventListener('change', (e) => {
+        const selectedFilters = Array.from(filterInputs)
+          .filter((input) => input.checked)
+          .map((input) => input.dataset.filter);
+
+        items.forEach((item) => {
+          if (
+            selectedFilters.length === 0 ||
+            selectedFilters.includes(item.dataset.item)
+          ) {
+            item.style.display = '';
+            setTimeout(() => {
+              item.classList.remove('hidden');
+            });
+          } else {
+            item.classList.add('hidden');
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 250);
+          }
+        });
       });
     });
   }
