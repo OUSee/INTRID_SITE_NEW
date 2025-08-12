@@ -717,20 +717,10 @@ th {
     color: var(--color-white);
   }
 }
-@keyframes mockupScaleIn {
-  0% {
-    transform: rotateX(-25deg) rotateY(-20deg) skewX(0deg) skewY(0deg) scale3d(1, 1, 2) translate(35%, 10%);
-  }
-  100% {
-    transform: rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) scale3d(1.5, 1.5, 1) translate(0, 0);
-  }
-}
-@keyframes mockupScaleOut {
-  0% {
-    transform: rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) scale3d(1.5, 1.5, 1) translate(0, 0);
-  }
-  100% {
-    transform: rotateX(-25deg) rotateY(-20deg) skewX(0deg) skewY(0deg) scale3d(1, 1, 2) translate(35%, 10%);
+@keyframes showCard {
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 @font-face {
@@ -4429,6 +4419,20 @@ button:hover img,
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
+.card.hiding {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+.card.showing {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: showCard 0.3s forwards;
+}
+.card[style*="display: none"] {
+  height: 0;
+  overflow: hidden;
+}
 .card--photo {
   padding: 0px;
 }
@@ -5974,12 +5978,6 @@ button:hover img,
 }
 .card--mockup.transparency .card-body > b, .card--mockup.transparency .card-body > p {
   transition: 0.25s ease-in-out;
-}
-.card--mockup.hidden {
-  width: 0;
-  max-width: 0;
-  opacity: 0;
-  visibility: hidden;
 }
 .card--prices {
   flex-direction: row;

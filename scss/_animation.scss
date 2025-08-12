@@ -364,26 +364,9 @@
   }
 }
 
-@keyframes mockupScaleIn {
-  0% {
-    transform: rotateX(-25deg) rotateY(-20deg) skewX(0deg) skewY(0deg)
-      scale3d(1, 1, 2) translate(35%, 10%);
-  }
-
-  100% {
-    transform: rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg)
-      scale3d(1.5, 1.5, 1) translate(0, 0);
-  }
-}
-
-@keyframes mockupScaleOut {
-  0% {
-    transform: rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg)
-      scale3d(1.5, 1.5, 1) translate(0, 0);
-  }
-
-  100% {
-    transform: rotateX(-25deg) rotateY(-20deg) skewX(0deg) skewY(0deg)
-      scale3d(1, 1, 2) translate(35%, 10%);
+@keyframes showCard {
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

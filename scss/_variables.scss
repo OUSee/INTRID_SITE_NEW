@@ -4441,6 +4441,23 @@ button:hover,
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 
+  &.hiding {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+  }
+
+  &.showing {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: showCard 0.3s forwards;
+  }
+
+  &[style*='display: none'] {
+    height: 0;
+    overflow: hidden;
+  }
+
   &--photo {
     padding: 0px;
 
@@ -6112,13 +6129,6 @@ button:hover,
           transition: 0.25s ease-in-out;
         }
       }
-    }
-
-    &.hidden {
-      width: 0;
-      max-width: 0;
-      opacity: 0;
-      visibility: hidden;
     }
   }
 

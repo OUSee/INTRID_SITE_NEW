@@ -2281,19 +2281,24 @@ document.addEventListener('DOMContentLoaded', () => {
           .map((input) => input.dataset.filter);
 
         items.forEach((item) => {
-          if (
+          const shouldShow =
             selectedFilters.length === 0 ||
-            selectedFilters.includes(item.dataset.item)
-          ) {
+            selectedFilters.includes(item.dataset.item);
+
+          if (shouldShow) {
             item.style.display = '';
+            item.classList.remove('hiding');
+            item.classList.add('showing');
             setTimeout(() => {
-              item.classList.remove('hidden');
-            });
+              item.classList.remove('showing');
+            }, 300);
           } else {
-            item.classList.add('hidden');
+            item.classList.add('hiding');
+            item.classList.remove('showing');
             setTimeout(() => {
               item.style.display = 'none';
-            }, 250);
+              item.classList.remove('hiding');
+            }, 300);
           }
         });
       });
