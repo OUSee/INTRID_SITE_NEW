@@ -1,14 +1,14 @@
 // vendor
-@import "./vendor/normalize";
+@import './vendor/normalize';
 
-@import "./variables";
+@import './variables';
 
 // layouts
-@import "./layouts/popup";
-@import "./layouts/header";
-@import "./layouts/menu";
-@import "./layouts/burger";
-@import "./layouts/footer";
+@import './layouts/popup';
+@import './layouts/header';
+@import './layouts/menu';
+@import './layouts/burger';
+@import './layouts/footer';
 
 /* BASE STYLES */
 
@@ -22,11 +22,11 @@ html {
 }
 
 body {
-  font-family: "Roboto" !important;
+  font-family: 'Roboto' !important;
   font-size: 14px;
   background-color: var(--bg-main);
   color: var(--color-white);
-  background-image: url("../src/images/bg-main.webp");
+  background-image: url('../src/images/bg-main.webp');
   background-size: auto 944px;
   background-position: top;
   background-repeat: repeat;
@@ -34,7 +34,7 @@ body {
   overflow-x: clip;
 
   @media (max-width: 601px) {
-    background-image: url("../src/images/bg-main-vert.webp");
+    background-image: url('../src/images/bg-main-vert.webp');
     background-size: 100% auto;
   }
 }
@@ -274,7 +274,7 @@ button.next {
         border-bottom-right-radius: 25px;
       }
 
-      & [id^="tab-slide-"] {
+      & [id^='tab-slide-'] {
         display: none;
 
         &.active {
@@ -492,7 +492,7 @@ button.next {
         bottom: 0;
         right: 0;
         z-index: 1;
-        content: "";
+        content: '';
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -639,9 +639,9 @@ button.next {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 50px;
+  // margin-top: 50px;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  // margin-bottom: 50px;
 
   &.store {
     row-gap: 50px;
@@ -747,7 +747,7 @@ button.next {
           margin-top: 5px;
 
           &::marker {
-            content: "\2022";
+            content: '\2022';
           }
         }
       }
@@ -909,8 +909,16 @@ button.next {
           justify-content: center;
           align-items: center;
 
+          .tender-text-target {
+            transition: 0.25s ease-in-out;
+
+            &.transition {
+              opacity: 0;
+            }
+          }
+
           .tender-text-target li {
-            list-style: "\2713";
+            list-style: '\2713';
             padding-left: 10px;
           }
         }
@@ -920,7 +928,7 @@ button.next {
           width: 530px;
 
           &::before {
-            content: "";
+            content: '';
             width: 8px;
             height: 8px;
             position: absolute;
@@ -932,7 +940,7 @@ button.next {
           }
 
           &::after {
-            content: "";
+            content: '';
             width: 8px;
             height: 8px;
             position: absolute;
@@ -1353,7 +1361,7 @@ button.next {
   }
 
   &::before {
-    content: "";
+    content: '';
     z-index: 0;
     position: absolute;
     top: -10px;
@@ -1395,7 +1403,7 @@ button.next {
       rgba(0, 234, 255, 0.1) 85%,
       rgba(0, 234, 255, 0) 100%
     ),
-    url("../src/images/mountains_1.webp");
+    url('../src/images/mountains_1.webp');
   background-size: 100% auto;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -1496,7 +1504,7 @@ button.next {
   height: fit-content;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     height: 2px;
     top: 22px;
@@ -1506,7 +1514,7 @@ button.next {
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 18px;
     left: -44px;
@@ -1531,8 +1539,8 @@ button.next {
     text-wrap: nowrap;
 
     &::before {
-      font-family: "INTRID_ICONS";
-      content: "\64";
+      font-family: 'INTRID_ICONS';
+      content: '\64';
       height: 77px;
       width: 77px;
       font-size: 77px;
@@ -1867,7 +1875,7 @@ button.next {
   flex-direction: column;
   position: relative;
   gap: 20px;
-  background-image: url("../src/images/planet.webp");
+  background-image: url('../src/images/planet.webp');
   background-size: 100% auto;
   background-position: top;
   background-repeat: no-repeat;
@@ -2181,7 +2189,7 @@ button.next {
 
         &:before {
           box-sizing: border-box;
-          content: "\2714";
+          content: '\2714';
           font-size: 0.9em;
           width: 20px;
           height: 20px;
@@ -2196,7 +2204,7 @@ button.next {
           transition: all 0.2s ease-in;
         }
 
-        input[type="checkbox"] {
+        input[type='checkbox'] {
           position: absolute;
           opacity: 0%;
           width: 20px;
@@ -2205,7 +2213,7 @@ button.next {
 
         &:has(input:checked) {
           &:before {
-            content: "\2714";
+            content: '\2714';
             font-size: 0.9em;
             width: 20px;
             height: 20px;
@@ -2335,7 +2343,7 @@ button.next {
             margin-top: 5px;
 
             &::marker {
-              content: "\2022";
+              content: '\2022';
             }
           }
         }
@@ -2377,6 +2385,14 @@ button.next {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &-target {
+          transition: 0.25s ease-in-out;
+
+          &.transition {
+            opacity: 0;
+          }
+        }
       }
 
       @media (max-width: 1000px) {
@@ -2423,7 +2439,7 @@ button.next {
 
         &::marker {
           color: var(--blue-main);
-          content: "\2022";
+          content: '\2022';
           margin-right: 10px;
         }
       }
@@ -2617,8 +2633,8 @@ button.next {
 // calculator page
 #reset-options-btn {
   @media (max-width: 900px) {
-    font-family: "INTRID_ICONS";
-    content: "\63";
+    font-family: 'INTRID_ICONS';
+    content: '\63';
     font-size: 2em;
     padding: 12px 9px 10px 8px;
     max-height: 46px;
@@ -2781,7 +2797,7 @@ button.next {
             }
 
             /* For Firefox */
-            input[type="number"] {
+            input[type='number'] {
               -moz-appearance: textfield;
               width: 60px;
             }
@@ -2830,27 +2846,27 @@ button.next {
 
               &.rubric {
                 &::marker {
-                  content: "\2022";
+                  content: '\2022';
                   color: var(--blue-main);
                 }
               }
 
               &.podrubric {
                 &::marker {
-                  content: "\261b";
+                  content: '\261b';
                   color: var(--blue-main);
                 }
               }
 
               &.razdel {
                 &::marker {
-                  content: "\26AC";
+                  content: '\26AC';
                   color: var(--blue-main);
                 }
               }
 
               &::marker {
-                content: "\2022";
+                content: '\2022';
                 color: var(--color-white);
               }
             }
@@ -2872,7 +2888,7 @@ button.next {
       margin-bottom: 10px;
 
       &::marker {
-        content: "\2022";
+        content: '\2022';
         color: var(--blue-main);
       }
     }
@@ -2986,7 +3002,7 @@ button.next {
       position: relative;
 
       &::before {
-        content: "";
+        content: '';
         background-color: var(--blue-tag);
         border: 1px solid var(--color-white);
       }
@@ -3003,7 +3019,7 @@ button.next {
     cursor: pointer;
 
     &::before {
-      content: "";
+      content: '';
       display: inline-block;
       min-width: 50px;
       height: 24px;
@@ -3015,7 +3031,7 @@ button.next {
     }
 
     &:after {
-      content: "";
+      content: '';
       top: calc(50% - 10px);
       left: 3px;
       position: absolute;
@@ -3354,7 +3370,7 @@ button.next {
       top: 40px;
       left: 90px;
       z-index: 0;
-      content: "";
+      content: '';
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -3725,8 +3741,8 @@ button.next {
             position: absolute;
             color: var(--blue-main);
             right: 12px;
-            font-family: "INTRID_ICONS";
-            content: "\6d";
+            font-family: 'INTRID_ICONS';
+            content: '\6d';
             font-size: 1.5em;
             transform: rotate(90deg);
           }
@@ -4020,6 +4036,7 @@ button.next {
       @media (min-width: 1000px) {
         max-width: 238px;
         flex: 0 0 33%;
+        padding-bottom: 100px;
       }
     }
 
@@ -4314,7 +4331,7 @@ button.next {
     margin-bottom: 15px;
 
     li::marker {
-      content: "-";
+      content: '-';
     }
   }
 }
@@ -4340,7 +4357,7 @@ button.next {
           position: relative;
 
           &::before {
-            content: counter(helpItems) ".";
+            content: counter(helpItems) '.';
             display: inline;
             @include h4;
             color: var(--blue-main);
@@ -5050,7 +5067,7 @@ button.next {
     border-radius: 3px;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -1.5px;
       left: 1px;
@@ -5063,7 +5080,7 @@ button.next {
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -1.5px;
       right: 1px;
@@ -5111,12 +5128,12 @@ button.next {
     }
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
       z-index: 0;
-      content: "";
+      content: '';
       width: 30px;
       height: 30px;
       border-radius: 50%;
@@ -5147,7 +5164,7 @@ button.next {
     }
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -5598,8 +5615,8 @@ button.next {
           position: absolute;
           color: var(--blue-main);
           right: 0;
-          font-family: "INTRID_ICONS";
-          content: "\6d";
+          font-family: 'INTRID_ICONS';
+          content: '\6d';
           font-size: 1.5em;
           transform: rotate(90deg);
         }
@@ -5636,6 +5653,10 @@ button.next {
         margin-top: 50px;
         justify-self: center;
       }
+    }
+
+    & .card--achievement {
+      min-width: 100px;
     }
   }
 

@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     height: 100%;
 
     @media (max-width: 440px) {
@@ -89,7 +89,7 @@
       }
     }
 
-    &[data-menu="open"] {
+    &[data-menu='open'] {
       transform: translateY(1px);
 
       span {
@@ -109,7 +109,8 @@
       }
     }
 
-    &[data-menu="closed"] {}
+    &[data-menu='closed'] {
+    }
   }
 
   &-contacts {
@@ -121,7 +122,7 @@
       display: none;
     }
 
-    &>span {
+    & > span {
       align-self: flex-end;
     }
   }
@@ -155,7 +156,7 @@
     }
   }
 
-  &>.container {
+  & > .container {
     flex: 1;
   }
 }

@@ -294,6 +294,25 @@
       &:not(.active) {
         pointer-events: none;
       }
+
+      flex: 1 1 calc(25% - 5px);
+      max-width: calc(25% - 5px);
+
+      @media (max-width: 1200px) {
+        flex: 1 1 calc(33.333333% - 5px);
+        max-width: 33.333333%;
+        opacity: 0;
+      }
+
+      @media (max-width: 1000px) {
+        flex: 1 1 50%;
+        max-width: 50%;
+      }
+
+      @media (max-width: 600px) {
+        flex: 1 0 100%;
+        max-width: 100%;
+      }
     }
   }
 
@@ -4441,6 +4460,23 @@ button:hover,
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 
+  &.hiding {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+  }
+
+  &.showing {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: showCard 0.3s forwards;
+  }
+
+  &[style*='display: none'] {
+    height: 0;
+    overflow: hidden;
+  }
+
   &--photo {
     padding: 0px;
 
@@ -6478,6 +6514,10 @@ button:hover,
     @media (max-width: 1000px) {
       padding: 50px 20px 20px;
       border-radius: 25px;
+    }
+
+    &.selected {
+      box-shadow: 0px 0px 10px 5px var(--blue-clouds);
     }
 
     & > .card-icon {
