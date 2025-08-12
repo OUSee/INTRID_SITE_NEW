@@ -2310,8 +2310,11 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.add('hiding');
             item.classList.remove('showing');
             setTimeout(() => {
-              item.style.display = 'none';
               item.classList.remove('hiding');
+
+              setTimeout(() => {
+                item.style.display = 'none';
+              }, 50);
             }, 300);
           }
         });
