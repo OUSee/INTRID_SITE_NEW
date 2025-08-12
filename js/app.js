@@ -769,7 +769,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         const newText = content.find((item) => item.id === tabId).content;
-        webShopTarget.innerHTML = newText;
+
+        webShopTarget.classList.add('transition');
+
+        setTimeout(() => {
+          webShopTarget.classList.remove('transition');
+          webShopTarget.innerHTML = newText;
+        }, 250);
       };
 
       setTabContent('ai-benefit-1');
@@ -863,11 +869,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const newContent = content.find((item) => item.id === tabId).content;
 
-        tenderTarget.innerHTML = newContent
-          .map((item) => {
-            return `<li>${item}</li>`;
-          })
-          .join('');
+        tenderTarget.classList.add('transition');
+
+        setTimeout(() => {
+          tenderTarget.classList.remove('transition');
+
+          tenderTarget.innerHTML = newContent
+            .map((item) => {
+              return `<li>${item}</li>`;
+            })
+            .join('');
+        }, 250);
       };
 
       setTenderTabContent('tender-radio-1');

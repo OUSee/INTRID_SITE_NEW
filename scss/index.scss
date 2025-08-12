@@ -909,6 +909,14 @@ button.next {
           justify-content: center;
           align-items: center;
 
+          .tender-text-target {
+            transition: 0.25s ease-in-out;
+
+            &.transition {
+              opacity: 0;
+            }
+          }
+
           .tender-text-target li {
             list-style: '\2713';
             padding-left: 10px;
@@ -2377,6 +2385,14 @@ button.next {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &-target {
+          transition: 0.25s ease-in-out;
+
+          &.transition {
+            opacity: 0;
+          }
+        }
       }
 
       @media (max-width: 1000px) {
