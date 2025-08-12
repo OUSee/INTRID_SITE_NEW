@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
       telegram.setAttribute('href', 'https://t.me/' + mapData[value]?.tg);
       telegram.setAttribute('target', '_blank');
 
-      console.log(telegram.getAttribute('href'));
+      // console.log(telegram.getAttribute('href'));
 
       linkBtn.href = mapData[value].link;
     }
