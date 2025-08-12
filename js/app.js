@@ -1611,6 +1611,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
         titleTarget.innerText = titles[button.dataset.selector].title;
+
         while (slider.lastChild) {
           slider.removeChild(slider.lastChild);
         }
@@ -1635,6 +1636,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         </a>`;
           slide.innerHTML = slideHtml;
           slider.appendChild(slide);
+        });
+
+        buttons.forEach((btn) => btn.classList.remove('selected'));
+        button.classList.add('selected');
+
+        let elementRect = document
+          .querySelector('#blogs-blog')
+          .getBoundingClientRect();
+        let offsetPosition = elementRect.top + window.pageYOffset - 20;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
         });
       });
     });
