@@ -42,10 +42,11 @@
     overflow: hidden;
 
     & body {
-      & > header,
-      & > main,
-      & > section,
-      & > footer {
+
+      &>header,
+      &>main,
+      &>section,
+      &>footer {
         filter: blur(5px);
       }
     }
@@ -192,7 +193,7 @@
     gap: 10px;
     flex-wrap: wrap;
 
-    & > span {
+    &>span {
       white-space: nowrap;
     }
   }
@@ -285,6 +286,18 @@
     & img {
       max-height: 70vh;
       border-radius: 15px;
+    }
+  }
+
+  &-notify {
+    & .popup-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 500px;
+      padding: 25px;
+      text-align: center;
     }
   }
 }
