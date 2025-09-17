@@ -156,6 +156,30 @@ function handleResize() {
 document.addEventListener('DOMContentLoaded', updateMockupPlace);
 window.addEventListener('resize', handleResize);
 
+// email validate
+const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu
+
+const emailInputs = document.querySelectorAll('input[type="email"]');
+
+function validate(e) {
+  if (isEmailValid(e.currentTarget.value)) {
+    console.log(e.currentTarget.validationMessage)
+  } else {
+    console.log(e.currentTarget.validationMessage)
+  }
+}
+
+emailInputs.forEach((input) => {
+  input.addEventListener('input', (e) => {
+    validate(e);
+  })
+});
+
+function isEmailValid(value) {
+  return EMAIL_REGEXP.test(value);
+}
+
+
 // popup logic
 document.addEventListener('DOMContentLoaded', () => {
   const popupTriggers = document?.querySelectorAll('[data-popup]');
@@ -289,8 +313,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mapData[value].adress +
         (mapData[value]?.schedule
           ? '<span class="separator">|</span><span> ' +
-            mapData[value].schedule +
-            '</span><span class="separator">|</span>'
+          mapData[value].schedule +
+          '</span><span class="separator">|</span>'
           : '<span class="separator">|</span>');
       container.innerHTML = mapData[value].frame;
 
@@ -345,12 +369,10 @@ document.addEventListener('DOMContentLoaded', () => {
       list.style.setProperty('--list-length', items.length);
 
       items.forEach((item, index) => {
-        item.querySelector('.tech-tag').style.animation = `list-glow ${
-          items.length * interval
-        }s linear infinite`;
-        item.querySelector('.tech-tag').style.animationDelay = `${
-          index * interval
-        }s`;
+        item.querySelector('.tech-tag').style.animation = `list-glow ${items.length * interval
+          }s linear infinite`;
+        item.querySelector('.tech-tag').style.animationDelay = `${index * interval
+          }s`;
       });
     }
   });
@@ -504,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // SLIDER END
 
 // HORIZONTAL SLIDER
-const SliderInIt = () => {};
+const SliderInIt = () => { };
 
 document.addEventListener('DOMContentLoaded', () => {
   const sliders = document.querySelectorAll('.tab-slider');
@@ -546,9 +568,8 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.minWidth = `${cardWidth}px`;
           });
 
-          slider.style.transform = `translateX(-${
-            currentIndex * (cardWidth + 25)
-          }px)`;
+          slider.style.transform = `translateX(-${currentIndex * (cardWidth + 25)
+            }px)`;
 
           if (currentIndex === 0 || cards.length <= slidesPerPage) {
             prevButton.style.display = 'none';
@@ -1105,32 +1126,24 @@ function sliderInitialise() {
 
         prevBtn.forEach((btn) => {
           if (slider.id === 'gallery-slider') {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `-100%` : `0`
-            }); left: ${
-              window.innerWidth > 600 ? `25px` : `-5px`
-            }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+              }); left: ${window.innerWidth > 600 ? `25px` : `-5px`
+              }; color: var(--blue-main);`;
           } else {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `-100%` : `0`
-            }); left: ${
-              window.innerWidth > 600 ? `-5px` : `0`
-            }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+              }); left: ${window.innerWidth > 600 ? `-5px` : `0`
+              }; color: var(--blue-main);`;
           }
         });
         nextBtn.forEach((btn) => {
           if (slider.id === 'gallery-slider') {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `100%` : `0`
-            }); right: ${
-              window.innerWidth > 600 ? `25px` : `-5px`
-            }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+              }); right: ${window.innerWidth > 600 ? `25px` : `-5px`
+              }; color: var(--blue-main);`;
           } else {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `100%` : `0`
-            }); right: ${
-              window.innerWidth > 600 ? `-5px` : `0`
-            }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+              }); right: ${window.innerWidth > 600 ? `-5px` : `0`
+              }; color: var(--blue-main);`;
           }
         });
       };
