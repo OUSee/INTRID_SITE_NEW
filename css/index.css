@@ -2367,16 +2367,12 @@ ol li > ol {
   align-items: stretch;
   justify-content: center;
   gap: 20px;
-  margin: 65px auto 50px;
-}
-@media (max-width: 600px) {
-  .flex-layout--use {
-    margin: 45px auto 0;
-  }
+  margin: 65px auto 25px;
 }
 @media (max-width: 600px) {
   .flex-layout--use {
     gap: 10px;
+    margin: 45px auto 0;
   }
 }
 .flex-layout--use > * {
@@ -5049,6 +5045,32 @@ button:hover img,
   padding: 20px;
   background-color: transparent;
   border: 1px solid var(--blue-main);
+}
+.card--outline .card-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.card--outline .card-price {
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: auto;
+  color: var(--blue-main);
+}
+@media (max-width: 1000px) {
+  .card--outline .card-price {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .card--outline .card-price {
+    font-size: 16px;
+    font-weight: 400;
+  }
 }
 .card--keys {
   position: relative;
