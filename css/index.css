@@ -7671,6 +7671,9 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: "Roboto" !important;
   font-size: 14px;
   background-color: var(--bg-main);
@@ -7687,6 +7690,11 @@ body {
     background-image: url("../src/images/bg-main-vert.webp");
     background-size: 100% auto;
   }
+}
+
+main {
+  flex: 1;
+  min-height: 60vh;
 }
 
 button.prev,
