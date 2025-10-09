@@ -8005,6 +8005,83 @@ button.next:hover {
   }
 }
 
+.table-tabs {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.table-tabs--buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .table-tabs--buttons {
+    gap: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .table-tabs--buttons {
+    gap: 0;
+  }
+}
+.table-tabs--buttons > * {
+  width: auto;
+  min-width: 320px;
+}
+@media (max-width: 1000px) {
+  .table-tabs--buttons > * {
+    min-width: 240px;
+  }
+}
+@media (max-width: 600px) {
+  .table-tabs--buttons > * {
+    min-width: 120px;
+  }
+  .table-tabs--buttons > *:has(input:checked) {
+    background-color: var(--blue-main);
+    color: var(--color-black);
+  }
+  .table-tabs--buttons > *:has(input:checked) > * {
+    filter: invert(1) grayscale(1) brightness(0);
+  }
+}
+.table-tabs--content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 50px;
+  transition: 0.25s ease-in-out;
+}
+@media (max-width: 1000px) {
+  .table-tabs--content {
+    gap: 10px;
+    padding-top: 32px;
+  }
+}
+@media (max-width: 600px) {
+  .table-tabs--content {
+    padding-top: unset;
+    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+}
+.table-tabs--content [id^=tab-slide-] {
+  display: none;
+}
+.table-tabs--content [id^=tab-slide-].active {
+  display: flex;
+  animation: fadeIn 0.5s ease-in;
+}
+
 .main-section {
   position: relative;
   z-index: 1;

@@ -381,140 +381,301 @@
 		<!-- Варианты решений тендерных порталов -->
 		<section>
 			<div class="container">
-				<div class="tab-content-webDev tender m-center">
-					<div class="tender-types-group">
-						<h2 class="w-fill text-center">
-							Варианты решений тендерных порталов
-						</h2>
-						<div class="table-block">
-							<table class="tender-table">
-								<thead>
-									<tr>
-										<th class="title_h5">Опции</th>
-										<th>
-											<label for="tarif-standart" class="title_h5">
-												<input type="radio" id="tarif-standart" name="tarif" checked>
-												Типовой
-											</label>
-										</th>
-										<th>
-											<label for="tarif-extended" class="title_h5">
-												<input type="radio" id="tarif-extended" name="tarif">
-												Расширенный
-											</label>
-										</th>
-										<th>
-											<label for="tarif-individual" class="title_h5">
-												<input type="radio" id="tarif-individual" name="tarif">
-												Индивидуальный
-											</label>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Настройка под бренд заказчика</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Открытые/закрытые тендеры/аукционы</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Установка приоритетов для подрядчиков</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Логирование действий всех пользователей</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Архивация данных</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Автоматическое формирование и выгрузка сопутствующей документации</td>
-										<td></td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Интеграция с локальной базой заказчика</td>
-										<td></td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Интеграция с 1С заказчика и подрядчика</td>
-										<td></td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Автоматический выбор искусственным интеллектом победителей тендера/аукциона
-											по
-											заданным
-											критериям</td>
-										<td></td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Детальная статистика торгов в виде графиков и табличных отчетов</td>
-										<td></td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Торги в 1 клик</td>
-										<td></td>
-										<td>&#10003;</td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Дополнительные возможности</td>
-										<td></td>
-										<td></td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Индивидуальные требования заказчика</td>
-										<td></td>
-										<td></td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Оценка качества подрядчика</td>
-										<td></td>
-										<td></td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td>Многофакторная регистрация новых подрядчиков с согласования заинтересованных
-											служб
-										</td>
-										<td></td>
-										<td></td>
-										<td>&#10003;</td>
-									</tr>
-									<tr>
-										<td></td>
-										<td class="title_h5">от 600&nbsp;000&nbsp;₽</td>
-										<td class="title_h5">от 850&nbsp;000&nbsp;₽</td>
-										<td class="title_h5">от 1&nbsp;200&nbsp;000&nbsp;₽</td>
-									</tr>
-								</tbody>
-							</table>
+				<h2 class="w-fill text-center">
+					Варианты решений тендерных порталов
+				</h2>
+
+				<div class="table-tabs mt-50">
+					<div class="table-tabs--buttons" id="pricesButtons" data-tabs-buttons="">
+						<label for="tab-slide-btn-1" class="button-link button-link--tab">
+							<input type="radio" name="tab-slider-radio" id="tab-slide-btn-1" checked="">
+							<img src="./src/images/shipping.svg" alt="icon">
+							<span>Грузоперевозки</span>
+							<i class="icon-arrow_wide"></i>
+						</label>
+						<label for="tab-slide-btn-2" class="button-link button-link--tab">
+							<input type="radio" name="tab-slider-radio" id="tab-slide-btn-2">
+							<img src="./src/images/purchases.svg" alt="icon">
+							<span>Закупки</span>
+							<i class="icon-arrow_wide"></i>
+						</label>
+					</div>
+				
+					<div class="table-tabs--content">
+						<div class="tab active" id="tab-slide-1">
+							<div class="tab-content-webDev tender m-center">
+								<div class="tender-types-group">
+									<div class="table-block">
+										<table class="tender-table">
+											<thead>
+												<tr>
+													<th class="title_h5">Опции</th>
+													<th>
+														<label for="tarif-standart" class="title_h5">
+															<input type="radio" id="tarif-standart" name="tarif-shipping" checked>
+															Типовой
+														</label>
+													</th>
+													<th>
+														<label for="tarif-extended" class="title_h5">
+															<input type="radio" id="tarif-extended" name="tarif-shipping">
+															Расширенный
+														</label>
+													</th>
+													<th>
+														<label for="tarif-individual" class="title_h5">
+															<input type="radio" id="tarif-individual" name="tarif-shipping">
+															Индивидуальный
+														</label>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Настройка под бренд заказчика</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Логирование действий всех пользователей</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Архивация данных</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Автоматическое формирование и выгрузка сопутствующей документации</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Детальная статистика торгов в виде графиков и табличных отчетов</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Система борьбы с попытками мошенничества и чёрные списки</td>
+													<td></td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Telegram-бот для мгновенных уведомлений</td>
+													<td></td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Торги в 1 клик</td>
+													<td></td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Построение сложных маршрутов</td>
+													<td></td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Автовыбор победителей на основе заданных критерий оценки</td>
+													<td></td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Подключение Искусственного Интеллекта для выбора победителей</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Интеграция с 1С заказчика и подрядчиков</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Торги на заключение долгосрочных контрактов</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Торги с приоритетами для выбранных транспортных компаний</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Оценка качества подрядчика и рейтинги</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Индивидуальные требования заказчика</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td></td>
+													<td class="title_h5">от 900&nbsp;000&nbsp;₽</td>
+													<td class="title_h5">от 1&nbsp;200&nbsp;000&nbsp;₽</td>
+													<td class="title_h5">от 1&nbsp;500&nbsp;000&nbsp;₽</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+				
+						<div class="tab" id="tab-slide-2">
+							<div class="tab-content-webDev tender m-center">
+								<div class="tender-types-group">
+									<div class="table-block">
+										<table class="tender-table">
+											<thead>
+												<tr>
+													<th class="title_h5">Опции</th>
+													<th>
+														<label for="tarif-standart-2" class="title_h5">
+															<input type="radio" id="tarif-standart-2" name="tarif-purchases" checked>
+															Типовой
+														</label>
+													</th>
+													<th>
+														<label for="tarif-extended-2" class="title_h5">
+															<input type="radio" id="tarif-extended-2" name="tarif-purchases">
+															Расширенный
+														</label>
+													</th>
+													<th>
+														<label for="tarif-individual-2" class="title_h5">
+															<input type="radio" id="tarif-individual-2" name="tarif-purchases">
+															Индивидуальный
+														</label>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Настройка под бренд заказчика</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Логирование действий всех пользователей</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Архивация данных</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Автоматическое формирование и выгрузка сопутствующей документации</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Детальная статистика торгов в виде графиков и табличных отчетов</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Система борьбы с попытками мошенничества</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Telegram-бот для мгновенных уведомлений</td>
+													<td></td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Интеграция с 1С заказчика и подрядчика</td>
+													<td></td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Торги в 1 клик</td>
+													<td></td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Автовыбор победителей на основе заданных критериев оценки</td>
+													<td></td>
+													<td>&#10003;</td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Подключение ИИ для выбора победителей</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Оценка качества поставщика (рейтинговая система)</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Организация торгов для сбора актуальных цен от поставщиков</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Торги на заключение долгосрочных контрактов</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Торги с приоритетами</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td>Индивидуальные требования заказчика</td>
+													<td></td>
+													<td></td>
+													<td>&#10003;</td>
+												</tr>
+												<tr>
+													<td></td>
+													<td class="title_h5">от 900&nbsp;000&nbsp;₽</td>
+													<td class="title_h5">от 1&nbsp;200&nbsp;000&nbsp;₽</td>
+													<td class="title_h5">от 1&nbsp;500&nbsp;000&nbsp;₽</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

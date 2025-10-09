@@ -740,7 +740,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // tabs init
 document
-	.querySelectorAll('.prices-block--buttons input[type="radio"]')
+	.querySelectorAll(
+		'.prices-block--buttons input[type="radio"], .table-tabs--buttons input[type="radio"]'
+	)
 	.forEach((radio) => {
 		radio.addEventListener("change", function () {
 			const tabId = this.id.replace("btn-", "");
@@ -749,6 +751,14 @@ document
 			});
 			document.getElementById(tabId).classList.add("active");
 		});
+
+		if (radio.checked === true) {
+			const tabId = radio.id.replace("btn-", "");
+			document.querySelectorAll('[id^="tab-slide-"]').forEach((tab) => {
+				tab.classList.remove("active");
+			});
+			document.getElementById(tabId).classList.add("active");
+		}
 	});
 
 // main page diagrams
@@ -970,44 +980,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // handle change clicks to add smooth change of columns
 document.addEventListener("DOMContentLoaded", () => {
-	const table = document.querySelector(".tender-table");
-	if (!table) {
-		return;
-	}
-	const buttons = table.querySelectorAll("th");
-	buttons.forEach((button, index) => {
-		if (index > 0) {
-			input = button.querySelector("input");
-			input.addEventListener("click", (e) => {
-				changeOrderHandler(button);
-			});
+	const tables = document.querySelectorAll(".tender-table");
+
+	tables.forEach((table) => {
+		if (!table) {
+			return;
 		}
-	});
-
-	const changeOrderHandler = (button) => {
-		console.log("=> inside");
-		try {
-			buttons.forEach((item) => {
-				item.style.order = "1";
-				label = item?.querySelector("label");
-				label?.classList?.add("fade-out");
-			});
-
-			setTimeout(() => {
-				button.style.order = "3";
-			}, 350);
-
-			setTimeout(() => {
-				buttons.forEach((item) => {
-					label = item?.querySelector("label");
-					label?.classList?.remove("fade-out");
-					console.log("-- item.style", item.style.order);
+		const buttons = table.querySelectorAll("th");
+		buttons.forEach((button, index) => {
+			if (index > 0) {
+				input = button.querySelector("input");
+				input.addEventListener("click", (e) => {
+					changeOrderHandler(button);
 				});
-			}, 400);
-		} catch (error) {
-			console.log("=> err", error);
-		}
-	};
+			}
+		});
+
+		const changeOrderHandler = (button) => {
+			console.log("=> inside");
+			try {
+				buttons.forEach((item) => {
+					item.style.order = "1";
+					label = item?.querySelector("label");
+					label?.classList?.add("fade-out");
+				});
+
+				setTimeout(() => {
+					button.style.order = "3";
+				}, 350);
+
+				setTimeout(() => {
+					buttons.forEach((item) => {
+						label = item?.querySelector("label");
+						label?.classList?.remove("fade-out");
+						console.log("-- item.style", item.style.order);
+					});
+				}, 400);
+			} catch (error) {
+				console.log("=> err", error);
+			}
+		};
+	});
 });
 
 // sliders with pagination
