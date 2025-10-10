@@ -205,17 +205,21 @@ const toggleVideoPLay = (videoElement, init) => {
 
 		if (init === false) {
 			videoElement.currentTime = 0;
+
+			// optimized
+			videoElement.remove();
 		}
 	}
 };
 
 const openPopup = (id) => {
-	// console.log('open ', id);
 	const popup = document.getElementById(id);
 	const onLoad = popup.dataset.onload;
 
 	let buttonClose;
+	let popupVideo = popup.id === "video-circle";
 
+	// Проверка на кнопки закрытия
 	if (!popup.querySelector(".popup-close")) {
 		buttonClose = document.createElement("button");
 		buttonClose.classList.add("popup-close");
@@ -223,18 +227,32 @@ const openPopup = (id) => {
 		buttonClose.setAttribute("aria-label", "close-popup");
 	}
 
-	let videoPopup = popup.querySelector("video");
-	// console.log(popup);
+	// Проверка окна с видео + последующая вставка <video></video>
+	if (popupVideo) {
+		let popupBody = popup.querySelector(".popup-body"),
+			videoElement = `<video poster="./src/images/video/poster.webp">
+                    <source src="./src/video/video.mp4" type="video/mp4">
+                    <source src="./src/video/video.webm" type="video/webm">
+                </video>`;
 
+		// Вставляем элемент с видео
+		popupBody.innerHTML = videoElement;
+	}
+
+	// Обозначаем видео селектор в popup
+	let videoSelector = popup.querySelector("video");
+
+	// Открываем окно
 	popup.classList.add("open");
 
+	// Вставка кнопки закрытия в зависимости от верстки окон
 	popup.querySelector(".popup-wrapper")
 		? popup?.querySelector(".popup-wrapper").prepend(buttonClose)
 		: popup.prepend(buttonClose);
 
 	// Приостанавливаем прокрутку страницы, когда окно открыто
 	document.documentElement.classList.add("popup-opened");
-	videoPopup ? toggleVideoPLay(videoPopup, true) : false;
+	videoSelector ? toggleVideoPLay(videoSelector, true) : false;
 
 	if (onLoad) {
 		window[onLoad]();
@@ -252,7 +270,7 @@ const openPopup = (id) => {
 				e.preventDefault();
 			}
 
-			let videoPopup = popup.querySelector("video");
+			// let videoPopup = popup.querySelector("video");
 			let iframe = popup.querySelector("iframe");
 
 			popup.classList.remove("open");
@@ -264,7 +282,7 @@ const openPopup = (id) => {
 			// Возвращаем прокрутку страницы, когда окно закрыто
 			document.documentElement.classList.remove("popup-opened");
 
-			videoPopup ? toggleVideoPLay(videoPopup, false) : false;
+			videoSelector ? toggleVideoPLay(videoSelector, false) : false;
 			iframe ? iframe.remove() : false;
 		}
 	});
