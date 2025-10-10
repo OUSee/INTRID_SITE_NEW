@@ -729,6 +729,7 @@ th {
   src: url("../src/fonts/icons/fonts/INTRID_ICONS.eot?#iefix") format("embedded-opentype"), url("../src/fonts/icons/fonts/INTRID_ICONS.woff") format("woff"), url("../src/fonts/icons/fonts/INTRID_ICONS.ttf") format("truetype"), url("../src/fonts/icons/fonts/INTRID_ICONS.svg#INTRID_ICONS") format("svg");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 [data-icon]:before {
   font-family: "INTRID_ICONS" !important;
@@ -840,28 +841,41 @@ th {
 [data-slider] > *.active {
   opacity: 1 !important;
 }
-[data-slider]#office-slider, [data-slider]#testimonials-slider, [data-slider]#reviews-slider {
+[data-slider]#reviews-slider {
   width: 100%;
 }
-[data-slider]#office-slider > *, [data-slider]#testimonials-slider > *, [data-slider]#reviews-slider > * {
+[data-slider]#reviews-slider > * {
+  flex: 1 0 auto;
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%;
+  opacity: 0;
+}
+[data-slider]#reviews-slider > *:not(.active) {
+  pointer-events: none;
+}
+[data-slider]#office-slider, [data-slider]#testimonials-slider {
+  width: 100%;
+}
+[data-slider]#office-slider > *, [data-slider]#testimonials-slider > * {
   flex: 1 1 0%;
   min-width: calc(50% - 15px);
   width: 100%;
   opacity: 0;
 }
 @media (max-width: 1000px) {
-  [data-slider]#office-slider > *, [data-slider]#testimonials-slider > *, [data-slider]#reviews-slider > * {
+  [data-slider]#office-slider > *, [data-slider]#testimonials-slider > * {
     min-width: calc(50% - 10px);
   }
 }
 @media (max-width: 600px) {
-  [data-slider]#office-slider > *, [data-slider]#testimonials-slider > *, [data-slider]#reviews-slider > * {
+  [data-slider]#office-slider > *, [data-slider]#testimonials-slider > * {
     flex: 1 0 auto;
     max-width: 100%;
     min-width: 100%;
   }
 }
-[data-slider]#office-slider > *:not(.active), [data-slider]#testimonials-slider > *:not(.active), [data-slider]#reviews-slider > *:not(.active) {
+[data-slider]#office-slider > *:not(.active), [data-slider]#testimonials-slider > *:not(.active) {
   pointer-events: none;
 }
 [data-slider]#our-team > * {

@@ -16,6 +16,7 @@
 			format("svg");
 	font-weight: normal;
 	font-style: normal;
+	font-display: swap;
 }
 
 [data-icon]:before {
@@ -132,9 +133,24 @@
 		}
 	}
 
-	&#office-slider,
-	&#testimonials-slider,
 	&#reviews-slider {
+		width: 100%;
+
+		& > * {
+			flex: 1 0 auto;
+			max-width: 100%;
+			min-width: 100%;
+			width: 100%;
+			opacity: 0;
+
+			&:not(.active) {
+				pointer-events: none;
+			}
+		}
+	}
+
+	&#office-slider,
+	&#testimonials-slider {
 		width: 100%;
 
 		& > * {
