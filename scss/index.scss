@@ -3516,6 +3516,50 @@ button.next {
 				max-width: 100%;
 			}
 		}
+
+		&:is([data-pjax-container]) {
+			display: block !important;
+
+			& > * {
+				max-width: 100% !important;
+				flex: 1 0 auto !important;
+			}
+
+			& .portfolio-block__cards {
+				display: flex;
+				flex-direction: row;
+				// align-items: center;
+				align-items: stretch;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+				gap: 20px;
+				width: 100%;
+
+				@media (max-width: 440px) {
+					gap: 10px;
+				}
+
+				& > * {
+					flex: 1 0 calc(25% - 15px);
+					max-width: calc(25% - 15px);
+
+					@media (max-width: 1000px) {
+						flex: 1 0 calc(33.333333% - 14px);
+						max-width: calc(33.333333% - 14px);
+					}
+
+					@media (max-width: 720px) {
+						flex: 1 0 calc(50% - 10px);
+						max-width: calc(50% - 10px);
+					}
+
+					@media (max-width: 440px) {
+						flex: 1 0 100%;
+						max-width: 100%;
+					}
+				}
+			}
+		}
 	}
 }
 
