@@ -184,20 +184,14 @@ function isEmailValid(value) {
 }
 
 // popup logic
-function initPopups() {
-	const popupTriggers = document?.querySelectorAll("[data-popup]");
+const popupTriggers = document?.querySelectorAll("[data-popup]");
 
-	popupTriggers.forEach((trigger) => {
-		trigger.removeEventListener("click", handlePopupTriggerClick);
-		trigger.addEventListener("click", handlePopupTriggerClick);
+popupTriggers.forEach((trigger) => {
+	trigger.addEventListener("click", () => {
+		const popupId = trigger.dataset.popup;
+		openPopup(popupId);
 	});
-}
-
-// Обработчик клика на триггере модального окна
-function handlePopupTriggerClick() {
-	const popupId = this.dataset.popup;
-	openPopup(popupId);
-}
+});
 
 // Специально, для видео из кружочка
 const toggleVideoPLay = (videoElement, init) => {
@@ -218,7 +212,6 @@ const toggleVideoPLay = (videoElement, init) => {
 	}
 };
 
-// Открытие окон
 const openPopup = (id) => {
 	const popup = document.getElementById(id);
 	const onLoad = popup.dataset.onload;
@@ -294,8 +287,6 @@ const openPopup = (id) => {
 		}
 	});
 };
-
-document.addEventListener("DOMContentLoaded", initPopups);
 
 // MAP LOGIC
 document.addEventListener("DOMContentLoaded", () => {
