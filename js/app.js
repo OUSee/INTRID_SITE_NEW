@@ -396,6 +396,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	let lists = document.querySelectorAll(".tech-we-use-list"),
 		interval = 0.6;
 
+	if (!lists) return;
+
 	lists.forEach((list) => {
 		let items = list.querySelectorAll("li");
 
@@ -1009,6 +1011,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
 	const tables = document.querySelectorAll(".tender-table");
 
+	if (!tables) return;
 	tables.forEach((table) => {
 		if (!table) {
 			return;
@@ -1436,7 +1439,7 @@ document.addEventListener("DOMContentLoaded", sliderInitialise);
 document.addEventListener("DOMContentLoaded", () => {
 	const counters = document.querySelectorAll("[data-counter-value]");
 
-	const initInremet = () => {
+	const initIncrement = () => {
 		if (counters) {
 			counters.forEach((counter) => {
 				let hasAnimated = false;
@@ -1512,7 +1515,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	};
 
 	setTimeout(() => {
-		initInremet();
+		initIncrement();
 	}, 1000);
 });
 
@@ -1926,6 +1929,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // tooltip handler
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll("[data-tooltip]").forEach((el) => {
+		if (!el) return;
+
 		el.addEventListener("mouseenter", () => {
 			let text = el.getAttribute("data-tooltip");
 
@@ -2583,3 +2588,23 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 });
+
+// lazyloading for bg-images elements
+function handleIntersection(entries) {
+	entries.map((entry) => {
+		if (entry.isIntersecting) {
+			// Item has crossed our observation
+			// threshold - load src from data-src
+			entry.target.src = entry.target.dataset.src;
+			entry.target.classList.remove("lazyload");
+			// Job done for this item - no need to watch it!
+			observer.unobserve(entry.target);
+		}
+	});
+}
+
+const lazyElements = document.querySelectorAll(".lazyload");
+const observer = new IntersectionObserver(handleIntersection, {
+	rootMargin: "100px",
+});
+lazyElements.forEach((element) => observer.observe(element));

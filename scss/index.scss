@@ -721,6 +721,12 @@ button.next {
 		justify-content: space-between;
 		width: 100%;
 	}
+
+	&--blog {
+		& h1 {
+			margin-bottom: unset;
+		}
+	}
 }
 
 // WARNING: LEGACY CODE IS HERE!
@@ -1978,11 +1984,14 @@ button.next {
 	flex-direction: column;
 	position: relative;
 	gap: 20px;
-	background-image: url("../src/images/planet.webp");
 	background-size: 100% auto;
 	background-position: top;
 	background-repeat: no-repeat;
 	backdrop-filter: brightness(50%);
+
+	&:not(.lazyload) {
+		background-image: url("../src/images/planet.webp");
+	}
 
 	@media (max-width: 1200px) {
 		display: none;

@@ -1051,6 +1051,10 @@ th {
   scroll-margin-block-start: 70px;
 }
 
+[data-src]:is(.lazyload) {
+  visibility: hidden;
+}
+
 input[type=radio] {
   display: none;
 }
@@ -4464,6 +4468,22 @@ button:hover img,
   transform: scale(0.95);
   animation: showCard 0.3s forwards;
 }
+.card:is(.empty) {
+  background-color: var(--blue-clouds);
+  border-radius: 39px;
+  padding: 16px 32px;
+}
+@media (max-width: 600px) {
+  .card:is(.empty) {
+    padding: 16px;
+  }
+}
+.card:is(.empty) .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+}
 .card[style*="display: none"] {
   height: 0;
   overflow: hidden;
@@ -6607,6 +6627,79 @@ button:hover img,
     text-align: center;
   }
 }
+.card--blog {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .card--blog {
+    flex-direction: column;
+  }
+}
+.card--blog .img-wrapper {
+  aspect-ratio: 1/1;
+  width: 128px;
+  height: 128px;
+  flex: 0 0 128px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .card--blog .img-wrapper {
+    aspect-ratio: 16/9;
+    width: 100%;
+    height: 100%;
+    flex: unset;
+  }
+}
+.card--blog .img-wrapper > * {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+.card--blog .card-body {
+  gap: 6px;
+  margin-bottom: unset;
+}
+.card--blog .card-body > h3, .card--blog .card-body > b {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--color-white);
+  margin-bottom: unset;
+  transition: 0.25s ease-in-out;
+}
+@media (max-width: 1000px) {
+  .card--blog .card-body > h3, .card--blog .card-body > b {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .card--blog .card-body > h3, .card--blog .card-body > b {
+    font-size: 16px;
+  }
+}
+.card--blog .card-body > span {
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: auto;
+}
+@media (max-width: 1000px) {
+  .card--blog .card-body > span {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .card--blog .card-body > span {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+.card--blog:hover .card-body > h3, .card--blog:hover .card-body > b {
+  color: var(--blue-main);
+}
 
 .popup {
   position: fixed;
@@ -8363,6 +8456,9 @@ button.next:hover {
   justify-content: space-between;
   width: 100%;
 }
+.main-section--blog h1 {
+  margin-bottom: unset;
+}
 
 .tab-content-webDev {
   display: flex;
@@ -9442,11 +9538,13 @@ button.next:hover {
   flex-direction: column;
   position: relative;
   gap: 20px;
-  background-image: url("../src/images/planet.webp");
   background-size: 100% auto;
   background-position: top;
   background-repeat: no-repeat;
   backdrop-filter: brightness(50%);
+}
+.cases-counts:not(.lazyload) {
+  background-image: url("../src/images/planet.webp");
 }
 @media (max-width: 1200px) {
   .cases-counts {
