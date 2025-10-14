@@ -1054,7 +1054,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // sliders with pagination
-function sliderInitialise() {
+function sliderInitialize() {
 	const tabSliderWithPagination = (id) => {
 		if (id === "logo-slider") {
 			console.log("=> init", id);
@@ -1432,8 +1432,8 @@ function sliderInitialise() {
 	}
 }
 
-sliderInitialise();
-document.addEventListener("DOMContentLoaded", sliderInitialise);
+sliderInitialize();
+document.addEventListener("DOMContentLoaded", sliderInitialize);
 
 // increment numbers
 document.addEventListener("DOMContentLoaded", () => {
