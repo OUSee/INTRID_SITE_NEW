@@ -1,5 +1,4 @@
 .popup {
-	// display: none;
 	position: fixed;
 	top: 0;
 	z-index: 5;
@@ -10,7 +9,6 @@
 	padding: 20px 10px;
 	background-color: rgba(0, 0, 0, 0.75);
 	border: none;
-	// backdrop-filter: blur(5px);
 	visibility: hidden;
 	opacity: 0;
 	overflow-x: hidden;
@@ -25,14 +23,12 @@
 	}
 
 	&.open {
-		// display: flex;
 		flex-direction: column;
 		margin-top: auto;
 		margin-bottom: auto;
 		opacity: 1;
 		visibility: visible;
 		transform: scale(1);
-		// animation: popupAppear 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 	}
 
 	&-opened {
@@ -179,8 +175,6 @@
 		overflow: hidden;
 		border-radius: 25px;
 		width: 100%;
-		// max-width: 80vw;
-		// min-width: 75vw;
 		height: 60vh;
 
 		iframe {
@@ -301,6 +295,11 @@
 			max-width: 500px;
 			padding: 25px;
 			text-align: center;
+			background-color: var(--blue-bg);
+
+			& p {
+				margin: 0;
+			}
 		}
 	}
 }
