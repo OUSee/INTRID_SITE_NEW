@@ -594,13 +594,17 @@ const SliderInIt = () => {};
 document.addEventListener("DOMContentLoaded", () => {
 	const sliders = document.querySelectorAll(".tab-slider");
 
-	const tabButtons = document.querySelector(".prices-block--buttons");
+	const tabButtons = document.querySelector(
+		".prices-block--buttons, [data-tabs-buttons]"
+	);
 
 	if (!tabButtons) {
 		return;
 	}
 
-	const tabButtonsList = tabButtons.querySelectorAll("label.button-link");
+	const tabButtonsList = tabButtons.querySelectorAll(
+		"label.button-link, label.button--tab"
+	);
 
 	window.addEventListener("resize", () => {
 		if (window.innerWidth > 600) {
@@ -770,9 +774,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // tabs init
 document
 	.querySelectorAll(
-		'.prices-block--buttons input[type="radio"], .table-tabs--buttons input[type="radio"]'
+		'.prices-block--buttons input[type="radio"], .table-tabs--buttons input[type="radio"], [data-tabs-buttons]  input[type="radio"]'
 	)
 	.forEach((radio) => {
+		if (!radio) return;
+
 		radio.addEventListener("change", function () {
 			const tabId = this.id.replace("btn-", "");
 			document.querySelectorAll('[id^="tab-slide-"]').forEach((tab) => {
