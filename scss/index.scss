@@ -233,158 +233,6 @@ button.next {
 			rgba(0, 234, 255, 0) 100%
 		);
 	}
-
-	&-block {
-		position: relative;
-		z-index: 1;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-
-		&--buttons {
-			display: flex;
-			flex-direction: row;
-			gap: 20px;
-			flex-wrap: wrap;
-			width: 100%;
-
-			@media (max-width: 1000px) {
-				gap: 10px;
-			}
-
-			@media (max-width: 600px) {
-				gap: 0;
-			}
-
-			& > * {
-				flex: 1 1 15%;
-
-				@media (max-width: 1000px) {
-					flex: 1 0 calc(20% - 8px);
-					max-width: calc(20% - 8px);
-				}
-
-				@media (max-width: 600px) {
-					flex: 1 0 20%;
-					max-width: 20%;
-				}
-			}
-		}
-
-		&--content {
-			position: relative;
-			z-index: 1;
-			display: flex;
-			flex-direction: column;
-			gap: 20px;
-			padding-top: 50px;
-			transition: 0.25s ease-in-out;
-
-			@media (max-width: 1000px) {
-				gap: 10px;
-				padding-top: 32px;
-			}
-
-			@media (max-width: 600px) {
-				padding-top: unset;
-				background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-				border-bottom-left-radius: 25px;
-				border-bottom-right-radius: 25px;
-			}
-
-			& [id^="tab-slide-"] {
-				display: none;
-
-				&.active {
-					display: flex;
-					animation: fadeIn 0.5s ease-in;
-				}
-			}
-		}
-
-		& .slider {
-			&-arrow {
-				position: absolute;
-				top: 50% !important;
-				z-index: 1;
-				aspect-ratio: 1 / 1;
-				display: block;
-				width: 64px;
-				height: 64px;
-				min-height: unset;
-				max-height: unset;
-				padding: 0;
-				text-align: center;
-				border: 2px solid;
-				border-color: transparent;
-				border-radius: 100%;
-				font-size: 32px;
-				line-height: 0;
-
-				@media (max-width: 1000px) {
-					display: none !important;
-				}
-
-				&:hover {
-					border-color: var(--color-white);
-					color: var(--blue-main);
-				}
-
-				& i {
-					transform: none;
-				}
-
-				&.prev {
-					right: unset !important;
-					left: 0;
-					transform: translate(-50%, -50%) rotate(-180deg);
-				}
-
-				&.next {
-					left: unset !important;
-					right: 0;
-					transform: translate(50%, -50%);
-				}
-			}
-		}
-
-		&--contacts {
-			& .prices-block--buttons {
-				@media (max-width: 1000px) {
-					justify-content: center;
-					gap: 10px;
-				}
-
-				@media (max-width: 600px) {
-					gap: 10px;
-				}
-
-				& > * {
-					@media (max-width: 1000px) {
-						flex: 1;
-						max-width: 100%;
-					}
-
-					& img {
-						@media (max-width: 1000px) {
-							width: 28px;
-							height: 28px;
-						}
-					}
-				}
-			}
-
-			& .prices-block--content {
-				@media (max-width: 1000px) {
-					padding: 20px 0;
-				}
-
-				@media (max-width: 600px) {
-					padding: 10px 10px 20px;
-				}
-			}
-		}
-	}
 }
 
 // new styles
@@ -507,84 +355,86 @@ button.next {
 				}
 			}
 		}
-	}
-}
 
-// non-deprecated styles
-.table {
-	&-tabs {
-		position: relative;
-		z-index: 1;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
+		&--custom {
+			& .nav-tabs--buttons {
+				& > * {
+					flex: 1 1 0%;
+					max-width: 280px;
 
-		&--buttons {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			gap: 20px;
-			flex-wrap: wrap;
-			width: 100%;
-
-			@media (max-width: 1000px) {
-				gap: 10px;
+					@media (max-width: 600px) {
+						flex: 1 0 20%;
+						max-width: 20%;
+					}
+				}
 			}
 
-			@media (max-width: 600px) {
-				gap: 0;
-			}
-
-			& > * {
-				width: auto;
-				min-width: 320px;
+			& .nav-tabs--content {
+				padding: 32px 0;
 
 				@media (max-width: 1000px) {
-					min-width: 240px;
-				}
-
-				@media (max-width: 600px) {
-					min-width: 120px;
-
-					&:has(input:checked) {
-						background-color: var(--blue-main);
-						color: var(--color-black);
-
-						& > * {
-							filter: invert(1) grayscale(1) brightness(0);
-						}
-					}
+					padding: 20px 0;
 				}
 			}
 		}
 
-		&--content {
-			position: relative;
-			z-index: 1;
-			display: flex;
-			flex-direction: column;
-			gap: 20px;
-			padding-top: 50px;
-			transition: 0.25s ease-in-out;
+		&--tender {
+			& .nav-tabs--buttons {
+				& > * {
+					@include tab-button-light;
+					flex: 1 1 0%;
+					max-width: 45%;
 
-			@media (max-width: 1000px) {
-				gap: 10px;
-				padding-top: 32px;
+					@media (max-width: 600px) {
+						flex: 1 0 40%;
+						max-width: 40%;
+					}
+				}
 			}
 
-			@media (max-width: 600px) {
-				padding-top: unset;
-				background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-				border-bottom-left-radius: 25px;
-				border-bottom-right-radius: 25px;
+			& .nav-tabs--content {
+				margin: 0;
+				padding: 0;
+				background: unset;
+			}
+		}
+
+		&--contacts {
+			& .nav-tabs--buttons {
+				& > * {
+					@include tab-button-light-outline;
+					flex: 1 1 0%;
+					max-width: 45%;
+
+					@media (max-width: 1000px) {
+						flex: 1 0 40%;
+						max-width: 40%;
+					}
+
+					& img {
+						@media (max-width: 1000px) {
+							width: 24px;
+							height: 24px;
+						}
+					}
+				}
 			}
 
-			& [id^="tab-slide-"] {
-				display: none;
+			& .nav-tabs--content {
+				margin: 0;
+				padding: 30px;
+				background: linear-gradient(
+					0deg,
+					rgba(0, 234, 255, 0) 0%,
+					rgba(0, 234, 255, 0.09) 15%,
+					rgba(10, 10, 10, 0) 30%
+				);
+				border: 1px solid var(--blue-main);
+				border-radius: 39px;
 
-				&.active {
-					display: flex;
-					animation: fadeIn 0.5s ease-in;
+				@media (max-width: 600px) {
+					padding: 16px;
+					border-radius: 16px;
 				}
 			}
 		}
@@ -3147,6 +2997,7 @@ button.next {
 		position: relative;
 		background-color: var(--bg-main);
 		padding: 10px 0px;
+		border-top: 1px solid var(--blue-main);
 		border-top-left-radius: 39px;
 		border-top-right-radius: 39px;
 		transition: all 0s;

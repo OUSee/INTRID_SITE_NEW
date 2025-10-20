@@ -1,81 +1,402 @@
 @mixin h4 {
-  font-weight: 600;
-  font-size: 24px;
+	font-weight: 600;
+	font-size: 24px;
 
-  @media (max-width: 1000px) {
-    font-size: 20px;
-  }
+	@media (max-width: 1000px) {
+		font-size: 20px;
+	}
 
-  @media (max-width: 600px) {
-    font-size: 16px;
-  }
+	@media (max-width: 600px) {
+		font-size: 16px;
+	}
 }
 
 @mixin h5 {
-  font-weight: 600;
-  font-size: 16px;
+	font-weight: 600;
+	font-size: 16px;
 
-  @media (max-width: 1000px) {
-    font-size: 16px;
-  }
+	@media (max-width: 1000px) {
+		font-size: 16px;
+	}
 
-  @media (max-width: 600px) {
-    font-size: 16px;
-    font-weight: 400;
-  }
+	@media (max-width: 600px) {
+		font-size: 16px;
+		font-weight: 400;
+	}
 }
 
 @mixin blockVideo {
-  width: 100%;
-  min-height: unset;
-  max-height: unset;
-  height: unset;
-  border-radius: 25px;
-  margin: 0;
-  aspect-ratio: 16 / 9;
-  background-size: cover;
-  background-position: top;
-  transition: 0.25s ease-in-out;
+	width: 100%;
+	min-height: unset;
+	max-height: unset;
+	height: unset;
+	border-radius: 25px;
+	margin: 0;
+	aspect-ratio: 16 / 9;
+	background-size: cover;
+	background-position: top;
+	transition: 0.25s ease-in-out;
 
-  & .play-video-button {
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    background-size: cover;
-    animation: unset;
-  }
+	& .play-video-button {
+		width: 100%;
+		height: 100%;
+		border-radius: 25px;
+		background-size: cover;
+		animation: unset;
+	}
 
-  &:has(button:hover) {
-    animation: unset;
-    background-size: cover;
-    background-position: bottom;
-  }
+	&:has(button:hover) {
+		animation: unset;
+		background-size: cover;
+		background-position: bottom;
+	}
 
-  &:hover {
-    background-size: cover;
-    background-position: bottom;
-  }
+	&:hover {
+		background-size: cover;
+		background-position: bottom;
+	}
 }
 
 @mixin blogContainer {
-  max-width: 1170px;
-  margin: 0 auto;
+	max-width: 1170px;
+	margin: 0 auto;
 
-  @media (max-width: 1220px) {
-    max-width: 100%;
-    margin: 0 40px;
-  }
+	@media (max-width: 1220px) {
+		max-width: 100%;
+		margin: 0 40px;
+	}
 
-  @media (max-width: 1000px) {
-    max-width: 970px;
-  }
+	@media (max-width: 1000px) {
+		max-width: 970px;
+	}
 
-  @media (max-width: 600px) {
-    margin: 0px 20px;
-    max-width: 600px;
-  }
+	@media (max-width: 600px) {
+		margin: 0px 20px;
+		max-width: 600px;
+	}
 
-  @media (max-width: 440px) {
-    margin: 0 10px;
-  }
+	@media (max-width: 440px) {
+		margin: 0 10px;
+	}
+}
+
+@mixin tab-button {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 16px;
+	padding: 16px;
+	background-color: var(--blue-bg);
+	border-top: 2px solid var(--bg-main);
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.25s ease-in-out;
+
+	@media (max-width: 1000px) {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		max-height: unset;
+		padding: 10px;
+		background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+		border-color: transparent;
+		border-radius: 15px;
+		text-align: center;
+		transform-origin: center;
+	}
+
+	@media (max-width: 600px) {
+		gap: 8px;
+		padding: 4px 4px 16px;
+		background: transparent;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		transform-origin: bottom center;
+	}
+
+	&:hover {
+		background: color-mix(in srgb, var(--blue-main) 15%, transparent);
+
+		@media (max-width: 1000px) {
+			color: var(--color-white);
+			background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+			transform: scale(1.125);
+		}
+
+		@media (max-width: 600px) {
+			border-color: transparent;
+			transform: none;
+		}
+
+		& img {
+			@media (max-width: 1000px) {
+				filter: unset;
+			}
+		}
+	}
+
+	& img {
+		display: flex;
+		width: 32px;
+		height: 32px;
+		object-fit: contain;
+
+		@media (max-width: 1000px) {
+			width: 48px;
+			height: 48px;
+		}
+
+		@media (max-width: 600px) {
+			width: 32px;
+			height: 32px;
+		}
+	}
+
+	& span {
+		@media (max-width: 1000px) {
+			text-wrap: balance;
+			font-size: 12px !important;
+		}
+
+		@media (max-width: 600px) {
+			font-size: 10px !important;
+		}
+	}
+
+	&:has(:checked),
+	&.active {
+		@media (max-width: 1000px) {
+			box-shadow: 0px 0px 15px var(--blue-main);
+			color: var(--blue-main);
+			background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+		}
+
+		@media (max-width: 600px) {
+			box-shadow: unset;
+		}
+
+		& img {
+			filter: invert(1) grayscale(1) brightness(0);
+
+			@media (max-width: 1000px) {
+				filter: unset;
+			}
+		}
+
+		@media (min-width: 1000px) {
+			background-color: var(--bg-main);
+			border-top: 2px solid var(--blue-main);
+			color: var(--color-white);
+
+			& img {
+				filter: invert(0) grayscale(0) brightness(1);
+			}
+		}
+	}
+}
+
+@mixin tab-button-light {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	padding: 16px;
+	background-color: var(--blue-bg);
+	border: 1px solid var(--bg-main);
+	border-bottom: 0;
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.25s ease-in-out;
+
+	@media (max-width: 1000px) {
+		gap: 8px;
+		max-height: unset;
+		padding: 8px;
+		border-top-left-radius: 16px;
+		border-top-right-radius: 16px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		text-align: center;
+		transform: none;
+	}
+
+	@media (max-width: 600px) {
+		padding: 4px;
+	}
+
+	&:hover {
+		background: color-mix(in srgb, var(--blue-main) 15%, transparent);
+
+		@media (max-width: 1000px) {
+			color: var(--color-white);
+			transform: none;
+		}
+
+		@media (max-width: 600px) {
+			border-color: transparent;
+			transform: none;
+		}
+	}
+
+	& img {
+		display: flex;
+		width: 32px;
+		height: 32px;
+		object-fit: contain;
+
+		@media (max-width: 1000px) {
+			width: 32px;
+			height: 32px;
+		}
+
+		@media (max-width: 600px) {
+			width: 26px;
+			height: 26px;
+		}
+	}
+
+	& span {
+		@media (max-width: 1000px) {
+			text-wrap: balance;
+			font-size: 12px !important;
+		}
+
+		@media (max-width: 600px) {
+			font-size: 10px !important;
+		}
+	}
+
+	&:has(:checked),
+	&.active {
+		@media (max-width: 1000px) {
+			box-shadow: 0px 0px 15px var(--bg-main);
+			color: var(--bg-main);
+			background: var(--blue-main);
+		}
+
+		@media (max-width: 600px) {
+			box-shadow: unset;
+		}
+
+		& img {
+			filter: invert(1) grayscale(1) brightness(0);
+		}
+
+		@media (min-width: 1000px) {
+			border-color: var(--bg-main);
+			color: var(--bg-main);
+			background: var(--blue-main);
+		}
+	}
+}
+
+@mixin tab-button-light-outline {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	padding: 16px;
+	background-color: transparent;
+	border: 1px solid;
+	border-bottom: 0;
+	border-color: var(--blue-main);
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.25s ease-in-out;
+
+	@media (max-width: 1000px) {
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		max-height: unset;
+		padding: 8px;
+		border-top-left-radius: 16px;
+		border-top-right-radius: 16px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		text-align: center;
+		transform: none;
+	}
+
+	@media (max-width: 600px) {
+		padding: 4px;
+	}
+
+	&:hover {
+		background: color-mix(in srgb, var(--blue-main) 15%, transparent);
+
+		@media (max-width: 1000px) {
+			color: var(--color-white);
+			transform: none;
+		}
+
+		@media (max-width: 600px) {
+			border-color: transparent;
+			transform: none;
+		}
+	}
+
+	& img {
+		display: flex;
+		width: 32px;
+		height: 32px;
+		object-fit: contain;
+
+		@media (max-width: 1000px) {
+			width: 32px;
+			height: 32px;
+		}
+
+		@media (max-width: 600px) {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	& span {
+		@media (max-width: 1000px) {
+			text-wrap: balance;
+			font-size: 12px !important;
+		}
+
+		@media (max-width: 600px) {
+			font-size: 10px !important;
+		}
+	}
+
+	&:has(:checked),
+	&.active {
+		@media (max-width: 1000px) {
+			box-shadow: 0px 0px 15px var(--bg-main);
+			color: var(--bg-main);
+			background: var(--blue-main);
+		}
+
+		@media (max-width: 600px) {
+			box-shadow: unset;
+		}
+
+		& img {
+			filter: invert(1) grayscale(1) brightness(0);
+		}
+
+		@media (min-width: 1000px) {
+			border-color: var(--bg-main);
+			color: var(--bg-main);
+			background: var(--blue-main);
+		}
+	}
 }

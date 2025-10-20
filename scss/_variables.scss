@@ -2052,6 +2052,7 @@ ol {
 		}
 
 		&--branches {
+			width: 100%;
 			gap: 20px;
 
 			@media (max-width: 720px) {
@@ -2076,6 +2077,10 @@ ol {
 				border-radius: 25px;
 				aspect-ratio: 16 / 9;
 				overflow: hidden;
+
+				@media (max-width: 1000px) {
+					aspect-ratio: 16 / 10;
+				}
 
 				@media (max-width: 600px) {
 					border-radius: 15px;
@@ -4454,120 +4459,7 @@ button:hover,
 	}
 
 	&--tab {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 16px;
-		padding: 16px;
-		background-color: var(--blue-bg);
-		border-top: 2px solid var(--bg-main);
-		border-top-left-radius: 16px;
-		border-top-right-radius: 16px;
-		overflow: hidden;
-		cursor: pointer;
-		transition: 0.25s ease-in-out;
-
-		@media (max-width: 1000px) {
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			gap: 8px;
-			max-height: unset;
-			background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-			border-color: transparent;
-			border-radius: 15px;
-			text-align: center;
-			transform-origin: center;
-		}
-
-		@media (max-width: 600px) {
-			padding: 4px 4px 16px;
-			background: transparent;
-			border-bottom-left-radius: 0;
-			border-bottom-right-radius: 0;
-			transform-origin: bottom center;
-		}
-
-		&:hover {
-			background: color-mix(in srgb, var(--blue-main) 15%, transparent);
-
-			@media (max-width: 1000px) {
-				color: var(--color-white);
-				background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-				transform: scale(1.125);
-			}
-
-			@media (max-width: 600px) {
-				border-color: transparent;
-				transform: none;
-			}
-
-			& img {
-				@media (max-width: 1000px) {
-					filter: unset;
-				}
-			}
-		}
-
-		& img {
-			display: flex;
-			width: 32px;
-			height: 32px;
-			object-fit: contain;
-
-			@media (max-width: 1000px) {
-				width: 48px;
-				height: 48px;
-			}
-
-			@media (max-width: 600px) {
-				width: 32px;
-				height: 32px;
-			}
-		}
-
-		& span {
-			@media (max-width: 1000px) {
-				text-wrap: balance;
-				font-size: 12px !important;
-			}
-
-			@media (max-width: 600px) {
-				font-size: 10px !important;
-			}
-		}
-
-		&:has(:checked),
-		&.active {
-			@media (max-width: 1000px) {
-				box-shadow: 0px 0px 15px var(--blue-main);
-				color: var(--blue-main);
-				background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-			}
-
-			@media (max-width: 600px) {
-				box-shadow: unset;
-			}
-
-			& img {
-				filter: invert(1) grayscale(1) brightness(0);
-
-				@media (max-width: 1000px) {
-					filter: unset;
-				}
-			}
-
-			@media (min-width: 1000px) {
-				background-color: var(--bg-main);
-				border-top: 2px solid var(--blue-bg);
-				color: var(--color-white);
-
-				& img {
-					filter: invert(0) grayscale(0) brightness(1);
-				}
-			}
-		}
+		@include tab-button;
 	}
 }
 
