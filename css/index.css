@@ -942,20 +942,20 @@ th {
   opacity: 1;
 }
 [data-slider]#site-slider > *, [data-slider]#brand-slider > *, [data-slider]#support-slider > * {
-  flex: 1 1 20%;
-  min-width: 20%;
+  flex: 1 1 calc(20% - 5px);
+  min-width: calc(20% - 5px);
 }
 @media (max-width: 1200px) {
   [data-slider]#site-slider > *, [data-slider]#brand-slider > *, [data-slider]#support-slider > * {
     flex: 1 1 calc(33.333333% - 5px);
-    min-width: 33.333333%;
+    min-width: calc(33.333333% - 5px);
     opacity: 0;
   }
 }
 @media (max-width: 1000px) {
   [data-slider]#site-slider > *, [data-slider]#brand-slider > *, [data-slider]#support-slider > * {
-    flex: 1 1 50%;
-    min-width: 50%;
+    flex: 1 1 calc(50% - 5px);
+    min-width: calc(50% - 5px);
   }
 }
 @media (max-width: 600px) {
@@ -2444,6 +2444,16 @@ ol li > ol {
 }
 .flex-layout--prices > * {
   flex: 1 1 0;
+}
+@media (max-width: 1400px) {
+  .flex-layout--prices > * {
+    flex: 1 0 calc(25% - 10px);
+  }
+}
+@media (max-width: 1200px) {
+  .flex-layout--prices > * {
+    flex: 1 0 calc(33.33333% - 10px);
+  }
 }
 @media (max-width: 1000px) {
   .flex-layout--prices > * {
@@ -8086,6 +8096,11 @@ button.next:hover {
   }
 }
 
+@media (max-width: 1000px) {
+  .prices {
+    background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.1) 85%, rgba(0, 234, 255, 0) 100%);
+  }
+}
 .prices-block {
   position: relative;
   z-index: 1;
@@ -8273,11 +8288,13 @@ button.next:hover {
 @media (max-width: 1000px) {
   .nav-tabs--content {
     gap: 10px;
+    margin-top: 16px;
     padding: 32px 0;
   }
 }
 @media (max-width: 600px) {
   .nav-tabs--content {
+    margin-top: unset;
     padding-top: unset;
     background: color-mix(in srgb, var(--bg-main) 70%, transparent);
     border-bottom-left-radius: 25px;

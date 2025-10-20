@@ -589,187 +589,152 @@ document.addEventListener("DOMContentLoaded", () => {
 // SLIDER END
 
 // HORIZONTAL SLIDER
-const SliderInIt = () => {};
-
-document.addEventListener("DOMContentLoaded", () => {
+const SliderInIt = () => {
 	const sliders = document.querySelectorAll(".tab-slider");
-
 	const tabButtons = document.querySelector(
 		".prices-block--buttons, [data-tabs-buttons]"
 	);
 
-	if (!tabButtons) {
-		return;
-	}
+	if (!tabButtons) return;
 
 	const tabButtonsList = tabButtons.querySelectorAll(
 		"label.button-link, label.button--tab"
 	);
 
-	window.addEventListener("resize", () => {
+	// Единая функция для обработки слайдера
+	const SliderHandler = (slider) => {
+		const cards = slider.querySelectorAll(".tab-slider-card, .card--tab");
+		let currentIndex = 0;
+
+		const updateSlider = () => {
+			const sliderWidth = slider.offsetWidth;
+			const slidesPerPage = Math.floor(sliderWidth / 255);
+			const maxIndex = Math.max(0, cards.length - slidesPerPage);
+			const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
+
+			cards.forEach((card) => {
+				card.style.minWidth = `${cardWidth}px`;
+			});
+
+			const offset = currentIndex * (cardWidth + 25);
+			slider.style.transform = `translateX(-${offset}px)`;
+
+			// Получаем актуальные ссылки на кнопки при каждом обновлении
+			const prevButton = document.querySelector(".slider-arrow.prev");
+			const nextButton = document.querySelector(".slider-arrow.next");
+
+			if (prevButton && nextButton) {
+				// Обновляем видимость кнопок
+				prevButton.style.display =
+					currentIndex === 0 || cards.length <= slidesPerPage
+						? "none"
+						: "block";
+				nextButton.style.display =
+					currentIndex === maxIndex ||
+					maxIndex <= 0 ||
+					cards.length <= slidesPerPage
+						? "none"
+						: "block";
+
+				console.log(
+					`currentIndex: ${currentIndex}, maxIndex: ${maxIndex}, slidesPerPage: ${slidesPerPage}, cards: ${cards.length}`
+				); // Для отладки
+			}
+		};
+
+		// Обработчики для кнопок
+		const handlePrevClick = () => {
+			if (currentIndex > 0) {
+				currentIndex--;
+				updateSlider();
+			}
+		};
+
+		const handleNextClick = () => {
+			const sliderWidth = slider.offsetWidth;
+			const slidesPerPage = Math.floor(sliderWidth / 255);
+			const maxIndex = Math.max(0, cards.length - slidesPerPage);
+
+			if (currentIndex < maxIndex) {
+				currentIndex++;
+				updateSlider();
+			}
+		};
+
+		// Удаляем старые обработчики и добавляем новые
+		const setupButtons = () => {
+			const prevButton = document.querySelector(".slider-arrow.prev");
+			const nextButton = document.querySelector(".slider-arrow.next");
+
+			if (prevButton && nextButton) {
+				// Клонируем кнопки чтобы сбросить все старые обработчики
+				const newPrev = prevButton.cloneNode(true);
+				const newNext = nextButton.cloneNode(true);
+
+				prevButton.parentNode.replaceChild(newPrev, prevButton);
+				nextButton.parentNode.replaceChild(newNext, nextButton);
+
+				// Добавляем новые обработчики
+				newPrev.addEventListener("click", handlePrevClick);
+				newNext.addEventListener("click", handleNextClick);
+
+				// Обновляем видимость кнопок
+				updateSlider();
+			}
+		};
+
+		setupButtons();
+		window.addEventListener("resize", updateSlider);
+		updateSlider();
+	};
+
+	// Общая функция инициализации
+	const initializeSlider = () => {
 		if (window.innerWidth > 600) {
 			tabButtonsList.forEach((tabButton, index) => {
 				const input = tabButton.querySelector(
 					`#tab-slide-btn-${index + 1}`
 				);
-				input.addEventListener("change", () => {
-					const activeSlider = document.querySelector(
-						`#tab-slide-${index + 1}`
-					);
-					SliderHandler(activeSlider);
-				});
+				if (input) {
+					// Удаляем старые обработчики перед добавлением новых
+					input.removeEventListener("change", handleTabChange);
+					input.addEventListener("change", handleTabChange);
+				}
 			});
 
-			const SliderHandler = (slider) => {
-				const cards = slider.querySelectorAll(
-					".tab-slider-card, .card--tab"
-				);
-				const prevButton = document.querySelector(`.slider-arrow.prev`);
-				const nextButton = document.querySelector(`.slider-arrow.next`);
-
-				let currentIndex = 0;
-
-				const updateSlider = () => {
-					const sliderWidth = slider.offsetWidth;
-					const slidesPerPage = Math.floor(sliderWidth / 255);
-					const maxIndex = cards.length - slidesPerPage;
-					const cardWidth = Math.floor(
-						sliderWidth / slidesPerPage - 25
-					);
-
-					cards.forEach((card) => {
-						card.style.minWidth = `${cardWidth}px`;
-					});
-
-					slider.style.transform = `translateX(-${
-						currentIndex * (cardWidth + 25)
-					}px)`;
-
-					if (currentIndex === 0 || cards.length <= slidesPerPage) {
-						prevButton.style.display = "none";
-					} else {
-						prevButton.style.display = "block";
-					}
-
-					if (
-						currentIndex === maxIndex ||
-						maxIndex <= 0 ||
-						cards.length <= slidesPerPage
-					) {
-						nextButton.style.display = "none";
-					} else {
-						nextButton.style.display = "block";
-					}
-				};
-
-				prevButton.addEventListener("click", () => {
-					currentIndex--;
-					updateSlider();
-				});
-
-				nextButton.addEventListener("click", () => {
-					const sliderWidth = slider.offsetWidth;
-					const slidesPerPage = Math.floor(sliderWidth / 255);
-					const maxIndex = Math.max(0, cards.length - slidesPerPage);
-					const cardWidth = Math.floor(
-						sliderWidth / slidesPerPage - 25
-					);
-
-					cards.forEach((card) => {
-						card.style.minWidth = `${cardWidth}px`;
-					});
-
-					currentIndex++;
-					updateSlider();
-				});
-
-				window.addEventListener("resize", updateSlider);
-				updateSlider();
-			};
-
-			SliderHandler(document.querySelector(`#tab-slide-${1}`));
+			// Инициализация первого слайдера
+			// const firstSlider = document.querySelector("#tab-slide-1");
+			const firstSlider = document.querySelector("[data-slider].active");
+			if (firstSlider) SliderHandler(firstSlider);
 		}
+	};
+
+	// Обработчик переключения табов
+	const handleTabChange = function () {
+		const index = Array.from(tabButtonsList).findIndex(
+			(tabButton) =>
+				tabButton.querySelector('input[type="radio"]') === this
+		);
+		if (index !== -1) {
+			const activeSlider = document.querySelector(
+				`#tab-slide-${index + 1}`
+			);
+			if (activeSlider) SliderHandler(activeSlider);
+		}
+	};
+
+	// Инициализация при загрузке
+	initializeSlider();
+
+	// Дебаунс для resize чтобы избежать множественных вызовов
+	let resizeTimeout;
+	window.addEventListener("resize", () => {
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(initializeSlider, 100);
 	});
+};
 
-	if (window.innerWidth > 600) {
-		tabButtonsList.forEach((tabButton, index) => {
-			const input = tabButton.querySelector(
-				`#tab-slide-btn-${index + 1}`
-			);
-			input.addEventListener("change", () => {
-				const activeSlider = document.querySelector(
-					`#tab-slide-${index + 1}`
-				);
-				SliderHandler(activeSlider);
-			});
-		});
-
-		const SliderHandler = (slider) => {
-			const cards = slider.querySelectorAll(
-				".tab-slider-card, .card--tab"
-			);
-			const prevButton = document.querySelector(`.slider-arrow.prev`);
-			const nextButton = document.querySelector(`.slider-arrow.next`);
-
-			let currentIndex = 0;
-
-			const updateSlider = () => {
-				const sliderWidth = slider.offsetWidth;
-				const slidesPerPage = Math.floor(sliderWidth / 255);
-				const maxIndex = cards.length - slidesPerPage;
-				const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
-
-				cards.forEach((card) => {
-					card.style.minWidth = `${cardWidth}px`;
-				});
-
-				slider.style.transform = `translateX(-${
-					currentIndex * cardWidth
-				}px)`;
-
-				if (currentIndex === 0 || cards.length <= slidesPerPage) {
-					prevButton.style.display = "none";
-				} else {
-					prevButton.style.display = "block";
-				}
-
-				if (
-					currentIndex === maxIndex ||
-					maxIndex <= 0 ||
-					cards.length <= slidesPerPage
-				) {
-					nextButton.style.display = "none";
-				} else {
-					nextButton.style.display = "block";
-				}
-			};
-
-			prevButton.addEventListener("click", () => {
-				currentIndex--;
-				updateSlider();
-			});
-
-			nextButton.addEventListener("click", () => {
-				const sliderWidth = slider.offsetWidth;
-				const slidesPerPage = Math.floor(sliderWidth / 255);
-				const maxIndex = Math.max(0, cards.length - slidesPerPage);
-				const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
-
-				cards.forEach((card) => {
-					card.style.minWidth = `${cardWidth}px`;
-				});
-
-				currentIndex++;
-				updateSlider();
-			});
-
-			window.addEventListener("resize", updateSlider);
-			updateSlider();
-		};
-
-		SliderHandler(document.querySelector(`#tab-slide-${1}`));
-	}
-});
+document.addEventListener("DOMContentLoaded", SliderInIt);
 
 // tabs init
 document
