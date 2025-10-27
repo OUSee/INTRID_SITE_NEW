@@ -2149,12 +2149,21 @@ document.addEventListener("DOMContentLoaded", () => {
 						// Добавляем стоимость счетчиков nested toggles
 						if (nestedToggle.counter) {
 							const counter = nestedToggle.counter;
-							counter.total =
-								parseInt(counter.elementref.value || "0") *
-								counter.price;
+							// ВОССТАНАВЛИВАЕМ ЗНАЧЕНИЕ СЧЕТЧИКА ИЗ HTML
+							const defaultValue = parseInt(
+								counter.elementref.getAttribute("value") || "0"
+							);
+							counter.elementref.value = defaultValue;
+							counter.total = defaultValue * counter.price;
 							target.current_value += counter.total;
+
+							// ПОКАЗЫВАЕМ REVEAL-БЛОК ДЛЯ СЧЕТЧИКА
+							if (nestedToggle.reveal) {
+								nestedToggle.reveal.classList.remove("hidden");
+							}
 						}
 
+						// ПОКАЗЫВАЕМ REVEAL-БЛОК ДЛЯ NESTED TOGGLE
 						if (nestedToggle.reveal) {
 							nestedToggle.reveal.classList.remove("hidden");
 						}
