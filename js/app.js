@@ -2046,7 +2046,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-// calculator v1 с исправлениями для учета счетчиков
+// calculator v1 с жесткими пресетами для типов сайтов
 document.addEventListener("DOMContentLoaded", () => {
 	if (document.querySelector("#calculator")) {
 		const inputs = document
@@ -2075,7 +2075,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			configurable: true,
 		});
 
-		// НОВЫЕ ФУНКЦИИ ДЛЯ УПРАВЛЕНИЯ БЛОКАМИ И СБРОСА СТОИМОСТИ
+		// ФУНКЦИИ ДЛЯ УПРАВЛЕНИЯ БЛОКАМИ
 		const showElement = (element) => {
 			if (element) element.classList.remove("hidden");
 		};
@@ -2100,96 +2100,55 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		};
 
-		// ФУНКЦИЯ ДЛЯ СБРОСА СТОИМОСТИ ВЛОЖЕННЫХ TOGGLES ПРИ СКРЫТИИ БЛОКА
-		const resetTogglesCostInAccordionItems = (
-			accordionItemIds,
-			toggles,
-			target
-		) => {
-			if (!accordionItemIds) return;
-
-			accordionItemIds.forEach((accordionItemId) => {
-				const accordionItem = document.getElementById(accordionItemId);
-				if (accordionItem) {
-					const inputsInAccordion =
-						accordionItem.querySelectorAll("input");
-
-					inputsInAccordion.forEach((input) => {
-						if (input.type === "checkbox" && input.checked) {
-							const toggle = toggles.find(
-								(t) => t.id === input.id
-							);
-							if (toggle) {
-								// Вычитаем стоимость toggle
-								if (toggle.price) {
-									target.current_value -= toggle.price;
-								}
-
-								// Вычитаем стоимость nested toggles
-								if (toggle.nested && toggle.nested.length > 0) {
-									toggle.nested.forEach((nestedToggleId) => {
-										const nestedToggle = toggles.find(
-											(t) => t.id === nestedToggleId
-										);
-										if (
-											nestedToggle &&
-											nestedToggle.price
-										) {
-											target.current_value -=
-												nestedToggle.price;
-										}
-									});
-								}
-
-								// Сбрасываем состояние
-								input.checked = false;
-								if (toggle.reveal) {
-									toggle.reveal.classList.add("hidden");
-								}
-							}
-						} else if (
-							input.type === "number" &&
-							parseInt(input.value) > 0
-						) {
-							const counter = toggles.find(
-								(t) => t.counter?.id === input.id
-							)?.counter;
-							if (counter && counter.total) {
-								target.current_value -= counter.total;
-								counter.total = 0;
-								input.value = 0;
-							}
-						}
-					});
+		// ФУНКЦИЯ ДЛЯ ПОЛНОГО СБРОСА КАЛЬКУЛЯТОРА
+		const resetCalculator = (toggles, target) => {
+			toggles.forEach((toggle) => {
+				toggle.elementref.checked = false;
+				if (toggle.reveal) {
+					toggle.reveal.classList.add("hidden");
 				}
+				if (toggle.counter) {
+					toggle.counter.total = 0;
+					toggle.counter.elementref.value = 0;
+				}
+			});
+			target.current_value = 0;
+
+			// Показываем все accordion-items при сбросе
+			const allAccordionItems =
+				document.querySelectorAll(".accordion-item");
+			allAccordionItems.forEach((item) => {
+				item.classList.remove("hidden");
 			});
 		};
 
-		// ФУНКЦИЯ ДЛЯ АКТИВАЦИИ NESTED TOGGLES БЕЗ ДВОЙНОГО УЧЕТА СТОИМОСТИ
-		const activateNestedToggles = (
-			nestedToggleIds,
-			toggles,
-			target,
-			isTypeToggle = false
-		) => {
-			if (!nestedToggleIds) return;
+		// ФУНКЦИЯ ДЛЯ ПРИМЕНЕНИЯ ПРЕСЕТА ТИПА САЙТА
+		const applySiteTypePreset = (selectedToggle, toggles, target) => {
+			// Полностью сбрасываем калькулятор
+			resetCalculator(toggles, target);
 
-			nestedToggleIds.forEach((nestedToggleId) => {
-				const nestedToggle = toggles.find(
-					(t) => t.id === nestedToggleId
-				);
-				if (nestedToggle && !nestedToggle.elementref.checked) {
-					// Для типов сайтов добавляем стоимость nested toggles
-					if (isTypeToggle) {
+			// Применяем выбранный тип сайта
+			selectedToggle.elementref.checked = true;
+			target.current_value += selectedToggle.price;
+
+			// Показываем reveal блок
+			if (selectedToggle.reveal) {
+				selectedToggle.reveal.classList.remove("hidden");
+			}
+
+			// Активируем все nested toggles и добавляем их стоимость
+			if (selectedToggle.nested && selectedToggle.nested.length > 0) {
+				selectedToggle.nested.forEach((nestedToggleId) => {
+					const nestedToggle = toggles.find(
+						(t) => t.id === nestedToggleId
+					);
+					if (nestedToggle) {
 						nestedToggle.elementref.checked = true;
-						if (nestedToggle.price) {
-							target.current_value += nestedToggle.price;
-						}
+						target.current_value += nestedToggle.price;
 
-						// ДОБАВЛЕНО: УЧЕТ СЧЕТЧИКОВ ПРИ АКТИВАЦИИ ТИПА САЙТА
+						// Добавляем стоимость счетчиков nested toggles
 						if (nestedToggle.counter) {
 							const counter = nestedToggle.counter;
-							// Пересчитываем total на основе текущего значения счетчика
 							counter.total =
 								parseInt(counter.elementref.value || "0") *
 								counter.price;
@@ -2199,39 +2158,57 @@ document.addEventListener("DOMContentLoaded", () => {
 						if (nestedToggle.reveal) {
 							nestedToggle.reveal.classList.remove("hidden");
 						}
-					} else {
-						// Для обычных toggles просто меняем состояние без изменения стоимости
-						nestedToggle.elementref.checked = true;
-						if (nestedToggle.reveal) {
-							nestedToggle.reveal.classList.remove("hidden");
+
+						// Активируем связанные секции
+						const section = document.querySelector(
+							`#section-${nestedToggleId.split("-")?.[0]}`
+						);
+						if (section) {
+							section.checked = true;
 						}
 					}
+				});
+			}
 
-					// Активируем связанные секции
-					const section = document.querySelector(
-						`#section-${nestedToggleId.split("-")?.[0]}`
-					);
-					if (section) {
-						section.checked = true;
-					}
-				}
-			});
+			// Управляем блоками accordion
+			if (selectedToggle.showAccordionItems) {
+				showAccordionItems(selectedToggle.showAccordionItems);
+			}
+			if (selectedToggle.hideAccordionItems) {
+				hideAccordionItems(selectedToggle.hideAccordionItems);
+			}
 		};
 
-		// ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ СЧЕТЧИКОВ ПРИ АКТИВАЦИИ ТОГГЛОВ
+		// ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ СЧЕТЧИКОВ
 		const updateCountersForToggle = (toggle, target) => {
 			if (toggle.counter) {
 				const counter = toggle.counter;
-				// Пересчитываем total на основе текущего значения счетчика
 				const currentValue = parseInt(counter.elementref.value || "0");
 				counter.total = currentValue * counter.price;
 
-				// Если toggle активирован, добавляем стоимость счетчика
 				if (toggle.elementref.checked) {
-					// Сначала вычитаем старую стоимость (если была), затем добавляем новую
 					target.current_value += counter.total;
 				}
 			}
+		};
+
+		// ФУНКЦИЯ ДЛЯ ПРОВЕРКИ, ЯВЛЯЕТСЯ ЛИ TOGGLE ВНУТРЕННИМ ДЛЯ ТЕНДЕРНОГО ПОРТАЛА
+		const isTenderPortalInnerToggle = (toggle) => {
+			const tenderConfigIds = [
+				"tender-portal_config",
+				"tender-portal_paying_config",
+			];
+
+			for (const configId of tenderConfigIds) {
+				const configElement = document.getElementById(configId);
+				if (
+					configElement &&
+					configElement.contains(toggle.elementref)
+				) {
+					return true;
+				}
+			}
+			return false;
 		};
 
 		const handleToggleByHash = (hash, toggles) => {
@@ -2252,7 +2229,7 @@ document.addEventListener("DOMContentLoaded", () => {
 							const section = document.querySelector(
 								`#section-${nestedToggleid.split("-")?.[0]}`
 							);
-							section.checked = true;
+							if (section) section.checked = true;
 							try {
 								if (nestedToggle) {
 									nestedToggle.elementref.checked = true;
@@ -2283,14 +2260,32 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		};
 
-		// ОБНОВЛЕН toggleConverter - ДОБАВЛЕНЫ НОВЫЕ АТРИБУТЫ
+		// ОБНОВЛЕН toggleConverter - УТОЧНЕННАЯ ЛОГИКА ДЛЯ isSiteType
 		const toggleConverter = (inputs) => {
 			const toggles = [];
 			const counters = [];
 			const texts = [];
+
+			// Определяем основные типы сайтов
+			const mainSiteTypes = [
+				"type-landing",
+				"type-portfolio",
+				"type-corporate",
+				"type-corporate_catalogue",
+				"type-store",
+				"type-store_ai",
+				"type-portal",
+				"tender-portal",
+				"tender-portal-paying",
+				"type-unique",
+			];
+
 			inputs.forEach((input) => {
 				switch (input.type) {
 					case "checkbox": {
+						// Проверяем, является ли это основным типом сайта
+						const isMainSiteType = mainSiteTypes.includes(input.id);
+
 						toggles.push({
 							id: input.id,
 							elementref: input,
@@ -2300,16 +2295,11 @@ document.addEventListener("DOMContentLoaded", () => {
 								input.dataset.reveal || ""
 							),
 							radioid: input.dataset.radio?.split(";"),
-							// ДОБАВЛЕНЫ НОВЫЕ АТРИБУТЫ ДЛЯ УПРАВЛЕНИЯ БЛОКАМИ
 							showAccordionItems:
 								input.dataset.showAccordionItem?.split(";"),
 							hideAccordionItems:
 								input.dataset.hideAccordionItem?.split(";"),
-							// ФЛАГ ДЛЯ ОПРЕДЕЛЕНИЯ ТИПА САЙТА
-							isSiteType:
-								input.id.startsWith("type-") ||
-								input.id.startsWith("tender-portal") ||
-								input.id.startsWith("tender-portal-playing"),
+							isSiteType: isMainSiteType,
 						});
 						break;
 					}
@@ -2353,278 +2343,184 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			toggles.forEach((toggle) => {
 				toggle.elementref.addEventListener("change", () => {
-					switch (toggle.id) {
-						default: {
-							if (toggle.elementref.checked) {
-								// СУЩЕСТВУЮЩАЯ ЛОГИКА ПОДСЧЕТА СТОИМОСТИ
-								if (toggle.reveal) {
-									toggle.reveal.classList.remove("hidden");
-								}
+					// ОСОБАЯ ЛОГИКА ДЛЯ ТИПОВ САЙТОВ
+					if (toggle.isSiteType) {
+						if (toggle.elementref.checked) {
+							applySiteTypePreset(toggle, toggles, target);
+						} else {
+							resetCalculator(toggles, target);
+						}
+						// При отключении типа сайта ничего не делаем - это обрабатывается при включении нового типа
+						return;
+					}
 
-								// ИСПРАВЛЕНО: ОБНОВЛЯЕМ СЧЕТЧИК ПЕРЕД ДОБАВЛЕНИЕМ СТОИМОСТИ
-								if (toggle.counter) {
-									updateCountersForToggle(toggle, target);
-								} else if (toggle.counter?.total) {
-									target.current_value +=
-										toggle.counter.total;
-								}
+					// ПРОВЕРЯЕМ, ЯВЛЯЕТСЯ ЛИ TOGGLE ВНУТРЕННИМ ДЛЯ ТЕНДЕРНОГО ПОРТАЛА
+					const isTenderInnerToggle =
+						isTenderPortalInnerToggle(toggle);
 
+					// СТАНДАРТНАЯ ЛОГИКА ДЛЯ ОБЫЧНЫХ TOGGLES
+					if (toggle.elementref.checked) {
+						// АКТИВАЦИЯ
+						if (toggle.reveal) {
+							toggle.reveal.classList.remove("hidden");
+						}
+
+						// Обновляем счетчик
+						if (toggle.counter) {
+							updateCountersForToggle(toggle, target);
+						}
+
+						// ОБРАБОТКА RADIO ГРУПП
+						if (toggle.radioid && toggle.radioid.length > 0) {
+							toggle.radioid.forEach((id) => {
+								const radioToggle = toggles.find(
+									(t) => t.id === id
+								);
 								if (
-									toggle.radioid &&
-									toggle.radioid.length > 0
+									radioToggle &&
+									radioToggle.elementref.checked
 								) {
-									toggles.map((el) => {
-										toggle.radioid?.forEach((id) => {
-											if (el.id === id) {
-												if (
-													el?.nested?.length > 0 &&
-													el.elementref.checked
-												) {
-													el.nested.forEach(
-														(nested) => {
-															const nestedToggle =
-																toggles.find(
-																	(t) =>
-																		t.id ===
-																		nested
-																);
-															nestedToggle.elementref.checked = false;
-															nestedToggle.reveal?.classList.add(
-																"hidden"
-															);
-															nestedToggle.elementref.dispatchEvent(
-																togglechange
-															);
-														}
-													);
-												}
-												if (
-													el.counter &&
-													el.elementref.checked
-												) {
-													el.elementref.checked = false;
-													target.current_value -=
-														el.price +
-														el.counter.total;
-													el.reveal?.classList.add(
-														"hidden"
-													);
-												} else if (
-													el.elementref.checked
-												) {
-													el.elementref.checked = false;
-													target.current_value -=
-														el.price;
-													el.reveal?.classList.add(
-														"hidden"
-													);
-												}
-											}
-										});
-									});
-								}
-
-								// ИСПРАВЛЕННАЯ ЛОГИКА ДЛЯ NESTED TOGGLES
-								if (toggle.nested && toggle.nested.length > 0) {
-									// Для типов сайтов используем специальную функцию активации
-									if (toggle.isSiteType) {
-										activateNestedToggles(
-											toggle.nested,
-											toggles,
-											target,
-											true
+									// Деактивируем radio toggle
+									radioToggle.elementref.checked = false;
+									target.current_value -= radioToggle.price;
+									if (radioToggle.reveal) {
+										radioToggle.reveal.classList.add(
+											"hidden"
 										);
-									} else {
-										toggle.nested.forEach(
-											(nestedToggleid) => {
+									}
+
+									// Сбрасываем счетчики радио-элемента
+									if (
+										radioToggle.counter &&
+										radioToggle.counter.total
+									) {
+										target.current_value -=
+											radioToggle.counter.total;
+										radioToggle.counter.total = 0;
+									}
+
+									// Сбрасываем nested toggles радио-элемента
+									if (radioToggle.nested) {
+										radioToggle.nested.forEach(
+											(nestedId) => {
 												const nestedToggle =
 													toggles.find(
-														(t) =>
-															t.id ===
-															nestedToggleid
+														(t) => t.id === nestedId
 													);
-												const section =
-													document.querySelector(
-														`#section-${
-															nestedToggleid.split(
-																"-"
-															)?.[0]
-														}`
-													);
-												if (section)
-													section.checked = true;
-
-												try {
-													if (
-														nestedToggle &&
-														!nestedToggle.elementref
-															.checked
-													) {
-														nestedToggle.elementref.checked = true;
-														// Для обычных toggles не добавляем стоимость nested элементов
-														if (
-															nestedToggle?.reveal
-														) {
-															nestedToggle.reveal.classList.remove(
-																"hidden"
-															);
-														}
+												if (
+													nestedToggle &&
+													nestedToggle.elementref
+														.checked
+												) {
+													nestedToggle.elementref.checked = false;
+													target.current_value -=
+														nestedToggle.price;
+													if (nestedToggle.reveal) {
+														nestedToggle.reveal.classList.add(
+															"hidden"
+														);
 													}
-												} catch (err) {
-													console.error(
-														nestedToggleid,
-														err
-													);
 												}
 											}
 										);
 									}
 								}
+							});
+						}
 
-								// ДОБАВЛЯЕМ СТОИМОСТЬ ОСНОВНОГО TOGGLE
-								target.current_value += toggle.price;
-
-								// ДОБАВЛЕНА НОВАЯ ЛОГИКА УПРАВЛЕНИЯ БЛОКАМИ
-								if (toggle.showAccordionItems) {
-									showAccordionItems(
-										toggle.showAccordionItems
-									);
-								}
-								if (toggle.hideAccordionItems) {
-									// ПРИ СКРЫТИИ БЛОКОВ СБРАСЫВАЕМ ИХ СТОИМОСТЬ
-									resetTogglesCostInAccordionItems(
-										toggle.hideAccordionItems,
-										toggles,
-										target
-									);
-									hideAccordionItems(
-										toggle.hideAccordionItems
-									);
-								}
-
-								break;
-							} else {
-								// СУЩЕСТВУЮЩАЯ ЛОГИКА ПОДСЧЕТА СТОИМОСТИ
-								if (toggle.reveal) {
-									toggle.reveal.classList.add("hidden");
-								}
-
-								// ВЫЧИТАЕМ СТОИМОСТЬ СЧЕТЧИКА
-								if (toggle.counter?.total) {
-									target.current_value -=
-										toggle.counter.total;
-									// Сбрасываем total счетчика
-									toggle.counter.total = 0;
-								}
-
-								// ИСПРАВЛЕННАЯ ЛОГИКА ДЛЯ NESTED TOGGLES ПРИ ДЕАКТИВАЦИИ
-								if (toggle.nested && toggle.nested.length > 0) {
-									toggle.nested.forEach((nestedToggleid) => {
-										const nestedToggle = toggles.find(
-											(t) => t.id === nestedToggleid
-										);
-										if (
-											nestedToggle &&
-											nestedToggle.elementref.checked
-										) {
-											// Вычитаем стоимость nested toggles только для типов сайтов
-											if (
-												toggle.isSiteType &&
-												nestedToggle.price
-											) {
-												target.current_value -=
-													nestedToggle.price;
-											}
-
-											// ВЫЧИТАЕМ СТОИМОСТЬ СЧЕТЧИКОВ NESTED TOGGLES
-											if (
-												toggle.isSiteType &&
-												nestedToggle.counter?.total
-											) {
-												target.current_value -=
-													nestedToggle.counter.total;
-												nestedToggle.counter.total = 0;
-											}
-
-											nestedToggle.elementref.checked = false;
-											if (nestedToggle.reveal) {
-												nestedToggle.reveal.classList.add(
-													"hidden"
-												);
-											}
-										}
-									});
-								}
-
-								// ОБРАБОТКА PROMOTION TOGGLES
+						// АКТИВАЦИЯ NESTED TOGGLES (БЕЗ ДОБАВЛЕНИЯ СТОИМОСТИ)
+						if (toggle.nested && toggle.nested.length > 0) {
+							toggle.nested.forEach((nestedToggleid) => {
+								const nestedToggle = toggles.find(
+									(t) => t.id === nestedToggleid
+								);
 								if (
-									toggle.id === "promotion-seo" ||
-									toggle.id === "promotion-max_start"
+									nestedToggle &&
+									!nestedToggle.elementref.checked
 								) {
-									const inside_toggles =
-										toggle.reveal.querySelectorAll(
-											"input[type=checkbox]"
+									nestedToggle.elementref.checked = true;
+									if (nestedToggle.reveal) {
+										nestedToggle.reveal.classList.remove(
+											"hidden"
 										);
-									const new_toggleChange = new Event(
-										"change"
-									);
-									inside_toggles.forEach((insideToggle) => {
-										if (insideToggle.checked) {
-											const insideToggleObj =
-												toggles.find(
-													(t) =>
-														t.id === insideToggle.id
-												);
-											if (
-												insideToggleObj &&
-												insideToggleObj.price
-											) {
-												target.current_value -=
-													insideToggleObj.price;
-											}
-											insideToggle.checked = false;
-											try {
-												insideToggle.dispatchEvent(
-													new_toggleChange
-												);
-											} catch (e) {
-												console.log("err: ", e);
-											}
-										}
-									});
-								}
+									}
 
-								// ВЫЧИТАЕМ СТОИМОСТЬ ОСНОВНОГО TOGGLE
-								target.current_value -= toggle.price;
-								if (target.current_value < 0) {
-									target.current_value = 0;
+									const section = document.querySelector(
+										`#section-${
+											nestedToggleid.split("-")?.[0]
+										}`
+									);
+									if (section) section.checked = true;
 								}
+							});
+						}
 
-								// ДОБАВЛЕНА НОВАЯ ЛОГИКА УПРАВЛЕНИЯ БЛОКАМИ ПРИ ДЕАКТИВАЦИИ
-								if (toggle.showAccordionItems) {
-									// ПРИ СКРЫТИИ БЛОКОВ СБРАСЫВАЕМ ИХ СТОИМОСТЬ
-									resetTogglesCostInAccordionItems(
-										toggle.showAccordionItems,
-										toggles,
-										target
-									);
-									hideAccordionItems(
-										toggle.showAccordionItems
-									);
-								}
-								if (toggle.hideAccordionItems) {
-									showAccordionItems(
-										toggle.hideAccordionItems
-									);
-								}
-								break;
+						// ДОБАВЛЯЕМ СТОИМОСТЬ ОСНОВНОГО TOGGLE
+						target.current_value += toggle.price;
+
+						// УПРАВЛЕНИЕ БЛОКАМИ - ПРИМЕНЯЕМ ТОЛЬКО ДЛЯ НЕ-ВНУТРЕННИХ TOGGLES
+						if (!isTenderInnerToggle) {
+							if (toggle.showAccordionItems) {
+								showAccordionItems(toggle.showAccordionItems);
+							}
+							if (toggle.hideAccordionItems) {
+								hideAccordionItems(toggle.hideAccordionItems);
 							}
 						}
+					} else {
+						// ДЕАКТИВАЦИЯ
+						if (toggle.reveal) {
+							toggle.reveal.classList.add("hidden");
+						}
+
+						// ВЫЧИТАЕМ СТОИМОСТЬ СЧЕТЧИКА
+						if (toggle.counter?.total) {
+							target.current_value -= toggle.counter.total;
+							toggle.counter.total = 0;
+						}
+
+						// ДЕАКТИВАЦИЯ NESTED TOGGLES (БЕЗ ВЫЧИТАНИЯ СТОИМОСТИ)
+						if (toggle.nested && toggle.nested.length > 0) {
+							toggle.nested.forEach((nestedToggleid) => {
+								const nestedToggle = toggles.find(
+									(t) => t.id === nestedToggleid
+								);
+								if (
+									nestedToggle &&
+									nestedToggle.elementref.checked
+								) {
+									nestedToggle.elementref.checked = false;
+									if (nestedToggle.reveal) {
+										nestedToggle.reveal.classList.add(
+											"hidden"
+										);
+									}
+								}
+							});
+						}
+
+						// ВЫЧИТАЕМ СТОИМОСТЬ ОСНОВНОГО TOGGLE
+						target.current_value -= toggle.price;
+
+						// УПРАВЛЕНИЕ БЛОКАМИ - ПРИМЕНЯЕМ ТОЛЬКО ДЛЯ НЕ-ВНУТРЕННИХ TOGGLES
+						if (!isTenderInnerToggle) {
+							if (toggle.showAccordionItems) {
+								hideAccordionItems(toggle.showAccordionItems);
+							}
+							if (toggle.hideAccordionItems) {
+								showAccordionItems(toggle.hideAccordionItems);
+							}
+						}
+					}
+
+					// Гарантируем, что стоимость не станет отрицательной
+					if (target.current_value < 0) {
+						target.current_value = 0;
 					}
 				});
 			});
 
-			// ОБРАБОТКА COUNTERS - ИСПРАВЛЕНА ДЛЯ ПРАВИЛЬНОГО УЧЕТА СТОИМОСТИ
+			// ОБРАБОТКА COUNTERS
 			counters.forEach((counter) => {
 				const changeEvent = new Event("input");
 				counter.elementref.nextElementSibling?.addEventListener(
@@ -2676,6 +2572,11 @@ document.addEventListener("DOMContentLoaded", () => {
 									: counter.elementref.value
 							) * counter.price;
 					}
+
+					// Гарантируем, что стоимость не станет отрицательной
+					if (target.current_value < 0) {
+						target.current_value = 0;
+					}
 				});
 				counter.elementref.addEventListener("keydown", (e) => {
 					const blockedkeys = ["-", ",", ".", "+"];
@@ -2709,21 +2610,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 
 			reset_button?.addEventListener("click", () => {
-				toggles.map((toggle) => {
-					toggle.elementref.checked = false;
-					if (toggle.counter) {
-						toggle.counter.total = 0;
-						toggle.counter.elementref.value = 0;
-					}
-				});
-				target.current_value = 0;
-
-				// Показываем все accordion-items при сбросе
-				const allAccordionItems =
-					document.querySelectorAll(".accordion-item");
-				allAccordionItems.forEach((item) => {
-					item.classList.remove("hidden");
-				});
+				resetCalculator(toggles, target);
 			});
 
 			if (hash) {
