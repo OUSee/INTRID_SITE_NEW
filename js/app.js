@@ -2308,7 +2308,8 @@ document.addEventListener("DOMContentLoaded", () => {
 							// ФЛАГ ДЛЯ ОПРЕДЕЛЕНИЯ ТИПА САЙТА
 							isSiteType:
 								input.id.startsWith("type-") ||
-								input.id.startsWith("tender-portal"),
+								input.id.startsWith("tender-portal") ||
+								input.id.startsWith("tender-portal-playing"),
 						});
 						break;
 					}
