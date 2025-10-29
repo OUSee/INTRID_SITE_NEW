@@ -2111,6 +2111,13 @@ document.addEventListener("DOMContentLoaded", () => {
 					toggle.counter.total = 0;
 					toggle.counter.elementref.value = 0;
 				}
+
+				if (toggle.elementref.dataset?.intendfor === "design-landing") {
+					console.log(toggle.counter);
+					if (toggle.elementref.value < 1) {
+						toggle.elementref.value = 1;
+					}
+				}
 			});
 			target.current_value = 0;
 
@@ -2586,6 +2593,17 @@ document.addEventListener("DOMContentLoaded", () => {
 					if (target.current_value < 0) {
 						target.current_value = 0;
 					}
+
+					if (
+						counter.elementref.dataset?.intendfor ===
+						"design-landing"
+					) {
+						if (counter.elementref.value < 1) {
+							counter.elementref.value = 1;
+						}
+					}
+
+					counter.elementref.dispatchEvent(changeEvent);
 				});
 				counter.elementref.addEventListener("keydown", (e) => {
 					const blockedkeys = ["-", ",", ".", "+"];
@@ -2597,12 +2615,21 @@ document.addEventListener("DOMContentLoaded", () => {
 					if (counter.elementref.value === "") {
 						counter.elementref.value = 0;
 					}
+					// if (
+					// 	counter.elementref.dataset?.intendfor ===
+					// 		"design-landing" &&
+					// 	counter.elementref.value < 1
+					// ) {
+					// 	counter.elementref.value = 1;
+					// }
+
 					if (
 						counter.elementref.dataset?.intendfor ===
-							"design-landing" &&
-						counter.elementref.value < 1
+						"design-landing"
 					) {
-						counter.elementref.value = 1;
+						if (counter.elementref.value < 1) {
+							counter.elementref.value = 1;
+						}
 					}
 				});
 			});
