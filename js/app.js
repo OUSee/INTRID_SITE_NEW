@@ -2046,7 +2046,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-// calculator v1 с жесткими пресетами для типов сайтов
+// calculator v1 с жесткими пресетами для типов сайтов (исправлен сброс счетчиков)
 document.addEventListener("DOMContentLoaded", () => {
 	if (document.querySelector("#calculator")) {
 		const inputs = document
@@ -2101,24 +2101,27 @@ document.addEventListener("DOMContentLoaded", () => {
 		};
 
 		// ФУНКЦИЯ ДЛЯ ПОЛНОГО СБРОСА КАЛЬКУЛЯТОРА
-		const resetCalculator = (toggles, target) => {
+		const resetCalculator = (toggles, counters, target) => {
+			// Сбрасываем все toggles
 			toggles.forEach((toggle) => {
 				toggle.elementref.checked = false;
 				if (toggle.reveal) {
 					toggle.reveal.classList.add("hidden");
 				}
-				if (toggle.counter) {
-					toggle.counter.total = 0;
-					toggle.counter.elementref.value = 0;
-				}
+			});
 
-				if (toggle.elementref.dataset?.intendfor === "design-landing") {
-					console.log(toggle.counter);
-					if (toggle.elementref.value < 1) {
-						toggle.elementref.value = 1;
-					}
+			// Сбрасываем все счетчики
+			counters.forEach((counter) => {
+				// Для design-landing устанавливаем значение 1, для остальных 0
+				if (counter.intendfor === "design-landing") {
+					counter.elementref.value = 1;
+					counter.total = 1 * counter.price;
+				} else {
+					counter.elementref.value = 0;
+					counter.total = 0;
 				}
 			});
+
 			target.current_value = 0;
 
 			// Показываем все accordion-items при сбросе
@@ -2130,9 +2133,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		};
 
 		// ФУНКЦИЯ ДЛЯ ПРИМЕНЕНИЯ ПРЕСЕТА ТИПА САЙТА
-		const applySiteTypePreset = (selectedToggle, toggles, target) => {
+		const applySiteTypePreset = (
+			selectedToggle,
+			toggles,
+			counters,
+			target
+		) => {
 			// Полностью сбрасываем калькулятор
-			resetCalculator(toggles, target);
+			resetCalculator(toggles, counters, target);
 
 			// Применяем выбранный тип сайта
 			selectedToggle.elementref.checked = true;
@@ -2362,9 +2370,14 @@ document.addEventListener("DOMContentLoaded", () => {
 					// ОСОБАЯ ЛОГИКА ДЛЯ ТИПОВ САЙТОВ
 					if (toggle.isSiteType) {
 						if (toggle.elementref.checked) {
-							applySiteTypePreset(toggle, toggles, target);
+							applySiteTypePreset(
+								toggle,
+								toggles,
+								counters,
+								target
+							);
 						} else {
-							resetCalculator(toggles, target);
+							resetCalculator(toggles, counters, target);
 						}
 						// При отключении типа сайта ничего не делаем - это обрабатывается при включении нового типа
 						return;
@@ -2615,21 +2628,12 @@ document.addEventListener("DOMContentLoaded", () => {
 					if (counter.elementref.value === "") {
 						counter.elementref.value = 0;
 					}
-					// if (
-					// 	counter.elementref.dataset?.intendfor ===
-					// 		"design-landing" &&
-					// 	counter.elementref.value < 1
-					// ) {
-					// 	counter.elementref.value = 1;
-					// }
-
 					if (
 						counter.elementref.dataset?.intendfor ===
-						"design-landing"
+							"design-landing" &&
+						counter.elementref.value < 1
 					) {
-						if (counter.elementref.value < 1) {
-							counter.elementref.value = 1;
-						}
+						counter.elementref.value = 1;
 					}
 				});
 			});
@@ -2646,7 +2650,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 
 			reset_button?.addEventListener("click", () => {
-				resetCalculator(toggles, target);
+				resetCalculator(toggles, counters, target);
 			});
 
 			if (hash) {
