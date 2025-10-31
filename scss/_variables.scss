@@ -5848,8 +5848,13 @@ button:hover,
 		background-color: var(--blue-bg);
 		border-radius: 50px;
 		align-items: center;
-		max-width: 330px;
+		max-width: 370px;
 		max-height: 50px;
+
+		@media (max-width: 600px) {
+			max-height: fit-content;
+			padding: 4px 24px;
+		}
 
 		&-highlight {
 			display: block;

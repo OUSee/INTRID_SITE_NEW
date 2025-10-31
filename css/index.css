@@ -5864,8 +5864,14 @@ button:hover img,
   background-color: var(--blue-bg);
   border-radius: 50px;
   align-items: center;
-  max-width: 330px;
+  max-width: 370px;
   max-height: 50px;
+}
+@media (max-width: 600px) {
+  .card--stripe {
+    max-height: fit-content;
+    padding: 4px 24px;
+  }
 }
 .card--stripe-highlight {
   display: block;
@@ -10510,6 +10516,10 @@ button.next:hover {
     text-align: center;
   }
 }
+.calculator-calculator {
+  max-width: 860px;
+  margin: 0 auto;
+}
 .calculator-calculator-header {
   overflow: visible;
 }
@@ -10736,6 +10746,10 @@ button.next:hover {
   }
 }
 
+.sitebrif {
+  max-width: 860px;
+  margin: 0 auto;
+}
 .sitebrif .logo-preview-grid {
   display: flex;
   flex-wrap: wrap;
@@ -11949,6 +11963,7 @@ button.next:hover {
 .help-faq .accordion-item .accordion-header {
   position: relative;
   display: block;
+  background-color: var(--blue-clouds);
 }
 .help-faq .accordion-item .accordion-header p {
   position: relative;
@@ -11982,6 +11997,9 @@ button.next:hover {
 }
 .help-faq .accordion-item .accordion-header i.icon-shevrone {
   transform: rotate(90deg);
+}
+.help-faq .accordion-item .accordion-content {
+  background-color: var(--blue-bg);
 }
 @media (min-width: 1200px) {
   .help-faq .accordion-item .accordion-content > p {
