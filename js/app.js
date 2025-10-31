@@ -2129,6 +2129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				document.querySelectorAll(".accordion-item");
 			allAccordionItems.forEach((item) => {
 				item.classList.remove("hidden");
+				item.classList.remove("deactive");
 			});
 		};
 
@@ -2141,6 +2142,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		) => {
 			// Полностью сбрасываем калькулятор
 			resetCalculator(toggles, counters, target);
+
+			isTenderToggling(selectedToggle);
 
 			// Применяем выбранный тип сайта
 			selectedToggle.elementref.checked = true;
@@ -2360,6 +2363,50 @@ document.addEventListener("DOMContentLoaded", () => {
 			return { toggles: toggles, counters: counters, texts: texts };
 		};
 
+		// Функция деактивации аккордионов при изменении состояния переключателей Тендерных порталов
+		const isTenderToggling = (toggle) => {
+			const accordionNamesToHide = [
+				"design-accordion",
+				"engine-accordion",
+				"management-accordion",
+				"structure-accordion",
+				"modules-accordion",
+				"ai-accordion",
+				"seo-accordion",
+				"extra-accordion",
+			];
+
+			const accordions = document.querySelectorAll(".accordion-item");
+			const isTenderSelected =
+				(toggle.elementref.id === "tender-portal" ||
+					toggle.elementref.id === "tender-portal-paying") &&
+				toggle.elementref.checked;
+
+			accordions.forEach((accordion) => {
+				// Проверяем, содержится ли id аккордиона в массиве accordionNamesToHide
+				if (
+					accordionNamesToHide.some((name) => accordion.id === name)
+				) {
+					if (isTenderSelected) {
+						// Деактивируем и сворачиваем аккордион
+						accordion.classList.add("deactive");
+						// Находим чекбокс секции и снимаем выделение (сворачиваем)
+						const sectionCheckbox = accordion.querySelector(
+							'input[type="checkbox"][id^="section-"]'
+						);
+						if (sectionCheckbox) {
+							sectionCheckbox.checked = false;
+						}
+					} else {
+						// Активируем аккордион (разрешаем взаимодействие)
+						accordion.classList.remove("deactive");
+						// Восстанавливаем состояние аккордиона на основе его собственных атрибутов
+						// (не разворачиваем автоматически, оставляем как было до деактивации)
+					}
+				}
+			});
+		};
+
 		if (inputs && target) {
 			const { toggles, counters, texts } = toggleConverter(inputs);
 			target.innerText = 0;
@@ -2379,6 +2426,8 @@ document.addEventListener("DOMContentLoaded", () => {
 						} else {
 							resetCalculator(toggles, counters, target);
 						}
+						isTenderToggling(toggle);
+
 						// При отключении типа сайта ничего не делаем - это обрабатывается при включении нового типа
 						return;
 					}
@@ -2616,7 +2665,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						}
 					}
 
-					counter.elementref.dispatchEvent(changeEvent);
+					// counter.elementref.dispatchEvent(changeEvent);
 				});
 				counter.elementref.addEventListener("keydown", (e) => {
 					const blockedkeys = ["-", ",", ".", "+"];
