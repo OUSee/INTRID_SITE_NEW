@@ -2238,52 +2238,70 @@ document.addEventListener("DOMContentLoaded", () => {
 			return false;
 		};
 
-		const handleToggleByHash = (hash, toggles) => {
+		const handleToggleByHash = (hash, toggles, counters, target) => {
 			const id = hash.replace("#", "");
 			const handle_target = toggles.find((t) => t.id === id);
+
 			if (handle_target) {
 				try {
-					handle_target.elementref.checked = true;
-					handle_target.elementref.dispatchEvent(togglechange);
-					if (
-						handle_target.nested &&
-						handle_target.nested.length > 0
-					) {
-						handle_target.nested.forEach((nestedToggleid) => {
-							const nestedToggle = toggles.find(
-								(t) => t.id === nestedToggleid
-							);
-							const section = document.querySelector(
-								`#section-${nestedToggleid.split("-")?.[0]}`
-							);
-							if (section) section.checked = true;
-							try {
-								if (nestedToggle) {
-									nestedToggle.elementref.checked = true;
-									nestedToggle.elementref.dispatchEvent(
-										togglechange
-									);
-								} else {
-									console.error(
-										"=> ",
-										nestedToggleid,
-										"not found"
-									);
+					// ОСОБАЯ ЛОГИКА ДЛЯ ТИПОВ САЙТОВ
+					if (handle_target.isSiteType) {
+						// Для типов сайтов применяем полный пресет
+						applySiteTypePreset(
+							handle_target,
+							toggles,
+							counters,
+							target
+						);
+					} else {
+						// Для обычных toggles активируем напрямую
+						handle_target.elementref.checked = true;
+						handle_target.elementref.dispatchEvent(togglechange);
+
+						// Активируем nested toggles
+						if (
+							handle_target.nested &&
+							handle_target.nested.length > 0
+						) {
+							handle_target.nested.forEach((nestedToggleid) => {
+								const nestedToggle = toggles.find(
+									(t) => t.id === nestedToggleid
+								);
+								const section = document.querySelector(
+									`#section-${nestedToggleid.split("-")?.[0]}`
+								);
+								if (section) section.checked = true;
+
+								try {
+									if (nestedToggle) {
+										nestedToggle.elementref.checked = true;
+										nestedToggle.elementref.dispatchEvent(
+											togglechange
+										);
+									} else {
+										console.error(
+											"=> ",
+											nestedToggleid,
+											"not found"
+										);
+									}
+									if (nestedToggle?.reveal) {
+										nestedToggle.reveal.classList.remove(
+											"hidden"
+										);
+									}
+								} catch (err) {
+									console.error(nestedToggleid, err);
 								}
-								if (nestedToggle?.reveal) {
-									nestedToggle.reveal.classList.remove(
-										"hidden"
-									);
-								}
-							} catch (err) {
-								console.error(nestedToggleid, err);
-							}
-						});
+							});
+						}
 					}
-					console.log("=> sucess");
+					console.log("=> success");
 				} catch (err) {
 					console.log("=> error", err);
 				}
+			} else {
+				console.log("=> toggle not found for hash:", id);
 			}
 		};
 
@@ -2703,7 +2721,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 
 			if (hash) {
-				handleToggleByHash(hash, toggles);
+				handleToggleByHash(hash, toggles, counters, target);
 			}
 		}
 	}
