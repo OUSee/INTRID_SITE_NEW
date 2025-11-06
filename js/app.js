@@ -1956,7 +1956,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // brif
 document.addEventListener("DOMContentLoaded", () => {
-	if (document.querySelector("#calculator-brif")) {
+	if (document.getElementById("calculator-brif")) {
 		const inputs = document
 			.getElementById("calculator-brif")
 			?.querySelectorAll(".accordion-content input");
@@ -2048,7 +2048,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // calculator v1 с жесткими пресетами для типов сайтов (исправлен сброс счетчиков)
 document.addEventListener("DOMContentLoaded", () => {
-	if (document.querySelector("#calculator")) {
+	if (document.getElementById("calculator")) {
 		const inputs = document
 			.getElementById("calculator")
 			?.querySelectorAll(".accordion-content input");
