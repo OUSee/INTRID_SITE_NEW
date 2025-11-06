@@ -1,12 +1,12 @@
 // header
-const header = document.querySelector("#header, .header");
+const header = document.querySelector(".header");
 const preloader = document.getElementById("preloader");
 
 window.addEventListener("scroll", function () {
 	if (window.scrollY > 50) {
-		header.classList.add("scrolled");
+		header?.classList.add("scrolled");
 	} else {
-		header.classList.remove("scrolled");
+		header?.classList.remove("scrolled");
 	}
 });
 
@@ -373,23 +373,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // sitePreview logic
-let popup = document.querySelector("#site-preview"),
-	buttons = document.querySelectorAll("[data-site-preview]"),
-	iframe = document.createElement("iframe");
+function sitePreview() {
+	let popup = document.getElementById("site-preview"),
+		buttons = document.querySelectorAll("[data-site-preview]"),
+		iframe = document.createElement("iframe");
 
-if (buttons.length > 0) {
-	buttons.forEach((button) => {
-		button.addEventListener("click", (e) => {
-			iframe.src = e.currentTarget.dataset.sitePreview;
-			popup.querySelector(".iframe-window").appendChild(iframe);
-			popup.querySelector(".iframe-tab-link").innerText = e.currentTarget
-				.closest(".card--support, .card--recent")
-				.querySelector(".card-body b, b").innerText;
-			popup.querySelector(".iframe-url-input").innerText =
-				e.currentTarget.dataset.sitePreview;
+	if (buttons.length > 0) {
+		buttons.forEach((button) => {
+			button.addEventListener("click", (e) => {
+				iframe.src = e.currentTarget.dataset.sitePreview;
+				popup.querySelector(".iframe-window").appendChild(iframe);
+				popup.querySelector(".iframe-tab-link").innerText =
+					e.currentTarget
+						.closest(".card--support, .card--recent")
+						.querySelector(".card-body b, b").innerText;
+				popup.querySelector(".iframe-url-input").innerText =
+					e.currentTarget.dataset.sitePreview;
+			});
 		});
-	});
+	}
 }
+sitePreview();
 
 // techList logic
 document.addEventListener("DOMContentLoaded", () => {
@@ -2729,7 +2733,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // reviews
 document.addEventListener("DOMContentLoaded", () => {
-	const reviewsContainer = document.querySelector("#reviews-container");
+	const reviewsContainer = document.getElementById("reviews-container");
 
 	if (reviewsContainer) {
 		reviewsContainer.addEventListener("submit", (event) => {
