@@ -11291,13 +11291,21 @@ button.next:hover {
 }
 .seo-table .table-wrapper table {
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 .seo-table .table-wrapper table thead {
-  background-color: var(--color-white);
-  color: var(--bg-main);
+  background-color: var(--blue-bg);
+  color: var(--color-white);
   position: sticky;
   top: 0;
   border-color: var(--bg-main);
+}
+.seo-table .table-wrapper table thead tr th {
+  border: 1px solid var(--blue-clouds);
+}
+.seo-table .table-wrapper table thead tr th .yandex {
+  color: var(--color-white);
 }
 .seo-table .table-wrapper table tbody {
   border-color: var(--blue-bg);
@@ -11305,7 +11313,10 @@ button.next:hover {
 .seo-table .table-wrapper table tbody tr {
   background-color: rgba(0, 234, 255, 0.25);
 }
-.seo-table .table-wrapper table tbody tr:nth-child(even) {
+.seo-table .table-wrapper table tbody tr:hover td:not(.color_td_PR) {
+  background-color: var(--blue-clouds);
+}
+.seo-table .table-wrapper table tbody td.color_td_PR {
   background-color: rgba(0, 234, 255, 0.5);
 }
 .seo-table .table-wrapper table tbody td span {
@@ -11313,12 +11324,12 @@ button.next:hover {
 }
 .seo-table .table-wrapper table th {
   padding: 5px;
-  border: 1px solid rgba(0, 234, 255, 0.65);
 }
 .seo-table .table-wrapper table td {
-  border: 1px solid var(--blue-main);
-  padding: 5px;
+  border: 1px solid var(--blue-clouds);
+  padding: 10px 5px;
   padding-left: 10px;
+  transition: 0.25s ease-in-out;
 }
 @media (max-width: 900px) {
   .seo-table {
