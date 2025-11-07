@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		};
 
 		mapLinks.forEach((link) => {
-			link.addEventListener("click", (e) => {
+			link?.addEventListener("click", (e) => {
 				loadMap(e, e?.target?.dataset.map);
 			});
 		});
@@ -333,13 +333,17 @@ document.addEventListener("DOMContentLoaded", () => {
 		function loadMap(e, value) {
 			e.preventDefault();
 			// console.log('=> enter func loadMap', e, value)
-			const map = document.querySelector("#map");
+			const map = document.getElementById("map");
+
+			if (!map) return;
+
 			const container = map.querySelector(".map-container");
 			const linkBtn = map.querySelector(".button-link");
 			const paragraph = map.querySelector("#map-info");
 			const social = map.querySelector("#map-social");
 			const whatsapp = map.querySelector("#map-whatsapp");
 			const telegram = map.querySelector("#map-telegram");
+
 			paragraph.innerHTML =
 				mapData[value].adress +
 				(mapData[value]?.schedule
@@ -378,20 +382,19 @@ function sitePreview() {
 		buttons = document.querySelectorAll("[data-site-preview]"),
 		iframe = document.createElement("iframe");
 
-	if (buttons.length > 0) {
-		buttons.forEach((button) => {
-			button.addEventListener("click", (e) => {
-				iframe.src = e.currentTarget.dataset.sitePreview;
-				popup.querySelector(".iframe-window").appendChild(iframe);
-				popup.querySelector(".iframe-tab-link").innerText =
-					e.currentTarget
-						.closest(".card--support, .card--recent")
-						.querySelector(".card-body b, b").innerText;
-				popup.querySelector(".iframe-url-input").innerText =
-					e.currentTarget.dataset.sitePreview;
-			});
+	if (!buttons) return;
+
+	buttons.forEach((button) => {
+		button.addEventListener("click", (e) => {
+			iframe.src = e.currentTarget.dataset.sitePreview;
+			popup.querySelector(".iframe-window").appendChild(iframe);
+			popup.querySelector(".iframe-tab-link").innerText = e.currentTarget
+				.closest(".card--support, .card--recent")
+				.querySelector(".card-body b, b").innerText;
+			popup.querySelector(".iframe-url-input").innerText =
+				e.currentTarget.dataset.sitePreview;
 		});
-	}
+	});
 }
 sitePreview();
 
