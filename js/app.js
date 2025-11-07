@@ -2856,6 +2856,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
+const lazyElements = document.querySelectorAll(".lazyload");
+const observer = new IntersectionObserver(handleIntersection, {
+	rootMargin: "100px",
+});
+lazyElements.forEach((element) => observer.observe(element));
+
 // lazyloading for bg-images elements
 function handleIntersection(entries) {
 	entries.map((entry) => {
@@ -2869,9 +2875,3 @@ function handleIntersection(entries) {
 		}
 	});
 }
-
-const lazyElements = document.querySelectorAll(".lazyload");
-const observer = new IntersectionObserver(handleIntersection, {
-	rootMargin: "100px",
-});
-lazyElements.forEach((element) => observer.observe(element));
