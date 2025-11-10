@@ -1410,9 +1410,9 @@ function sliderInitialize() {
 	}
 }
 
-sliderInitialize();
 document.addEventListener("DOMContentLoaded", sliderInitialize);
 document.addEventListener("resize", sliderInitialize);
+sliderInitialize();
 
 // vakansies
 window.addEventListener("hashchange", () => {
