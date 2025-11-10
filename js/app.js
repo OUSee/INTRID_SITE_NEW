@@ -1412,6 +1412,23 @@ function sliderInitialize() {
 
 sliderInitialize();
 document.addEventListener("DOMContentLoaded", sliderInitialize);
+document.addEventListener("resize", sliderInitialize);
+
+// vakansies
+window.addEventListener("hashchange", () => {
+	console.log("=> ", location.hash);
+	if (location.hash === "#apply") {
+		document.getElementById("apply_link").classList.add("infinite-glow");
+
+		setTimeout(() => {
+			history.replaceState(
+				"",
+				document.title,
+				window.location.pathname + window.location.search
+			);
+		}, 3000);
+	}
+});
 
 // increment numbers
 document.addEventListener("DOMContentLoaded", () => {
