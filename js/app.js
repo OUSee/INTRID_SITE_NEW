@@ -1853,9 +1853,7 @@ window.textarea_autosize = {
 };
 
 // Initialize on DOMContentLoaded
-document.addEventListener("DOMContentLoaded", function () {
-	textarea_autosize.init();
-});
+document.addEventListener("DOMContentLoaded", textarea_autosize.init);
 
 // gallery selector
 document.addEventListener("DOMContentLoaded", () => {
