@@ -2859,30 +2859,45 @@ button.next {
 				.toggle-line {
 					display: flex;
 					gap: 6px;
-					align-items: center;
+					align-items: flex-start;
 					margin-left: 6px;
 
 					&:has(*.counter:not(.hidden)) {
 						label {
 							flex-wrap: wrap;
 
-							@media (max-width: 600px) {
-								margin-bottom: 70px;
+							// @media (max-width: 600px) {
+							// margin-bottom: 70px;
 
-								.counter {
-									margin-top: 10px;
+							// .counter {
+							// 	margin-top: 10px;
+							// }
+							// }
+
+							& > p {
+								@media (max-width: 600px) {
+									flex: 1;
 								}
 							}
 						}
 					}
 
 					label {
+						position: relative;
 						display: flex;
-						align-items: center;
-						max-height: 26px;
+						align-items: flex-start;
+						gap: 10px;
+						width: 100%;
+						// align-items: center;
+						// max-height: 26px;
+
+						&::before {
+							margin-right: 0;
+						}
 
 						p {
 							margin: 0;
+							align-self: center;
 						}
 					}
 
@@ -2895,8 +2910,18 @@ button.next {
 						}
 
 						align-items: center;
-						margin-left: 20px;
+						margin-left: 14px;
 						gap: 6px;
+
+						@media (max-width: 600px) {
+							width: 100%;
+							flex: 1 0 auto;
+							margin-left: 0;
+						}
+
+						@media (max-width: 440px) {
+							max-height: fit-content;
+						}
 
 						input::-webkit-outer-spin-button,
 						input::-webkit-inner-spin-button {
@@ -3146,7 +3171,8 @@ button.next {
 
 		&:after {
 			content: "";
-			top: calc(50% - 10px);
+			// top: calc(50% - 10px);
+			top: 3px;
 			left: 3px;
 			position: absolute;
 			width: 20px;
@@ -4511,6 +4537,44 @@ button.next {
 
 		& > .default-table {
 			margin-bottom: 20px;
+		}
+	}
+}
+
+// blog-list
+.blog {
+	&-list {
+		position: relative;
+		padding: 24px;
+		background-color: var(--blue-bg);
+		border-radius: 39px;
+		overflow: hidden;
+
+		@media (max-width: 1000px) {
+			padding: 16px;
+			border-radius: 20px;
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 10%;
+			left: 50%;
+			z-index: -1;
+			width: 0;
+			height: 0;
+			border-radius: 100%;
+			aspect-ratio: 1/1;
+			box-shadow: 0px 0px 70px 60px var(--blue-clouds),
+				inset 0px 0px 70px 2px var(--blue-clouds);
+			transform: translate(-50%, 0%);
+		}
+
+		& > .card {
+			&:last-child {
+				padding-bottom: 0;
+				border-bottom: 0;
+			}
 		}
 	}
 }

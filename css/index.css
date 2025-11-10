@@ -596,6 +596,18 @@ th {
     opacity: 0;
   }
 }
+@keyframes ripple-fill {
+  0% {
+    border: 8px solid var(--blue-main);
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    border: 1px solid white;
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
 @keyframes logo-hover {
   0% {
     box-shadow: none;
@@ -1653,6 +1665,16 @@ ol li > ol {
     row-gap: 30px;
   }
 }
+@media (max-width: 600px) {
+  .list--cooperate {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 .list--cooperate li {
   display: flex;
   flex-direction: row;
@@ -1667,13 +1689,8 @@ ol li > ol {
 }
 @media (max-width: 600px) {
   .list--cooperate li {
-    flex: 1 1 45%;
-  }
-}
-@media (max-width: 520px) {
-  .list--cooperate li {
-    flex: 1 1 90%;
-    justify-content: center;
+    flex: unset;
+    width: 100%;
   }
 }
 .list--cooperate li i {
@@ -1694,7 +1711,7 @@ ol li > ol {
   max-width: 200px;
   margin: 0;
 }
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   .list--cooperate li p {
     max-width: 100%;
   }
@@ -3897,6 +3914,21 @@ form .button:hover {
     width: 190px;
     height: 190px;
   }
+}
+.flying-mockup--clients .ripple-circle {
+  animation: ripple-fill 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flying-mockup--clients .ripple-circle:nth-child(1) {
+  animation-delay: 0s;
+}
+.flying-mockup--clients .ripple-circle:nth-child(2) {
+  animation-delay: 1s;
+}
+.flying-mockup--clients .ripple-circle:nth-child(3) {
+  animation-delay: 2s;
+}
+.flying-mockup--clients .ripple-circle:nth-child(3) {
+  animation-delay: 3s;
 }
 
 .water-ripple {
@@ -6834,6 +6866,32 @@ button:hover img,
 }
 .card--blog:hover .card-body > h3, .card--blog:hover .card-body > b {
   color: var(--blue-main);
+}
+.card--blog-stacked {
+  padding: 0 0 20px 0;
+  border: 0;
+  border-bottom: 1px solid;
+  border-color: var(--blue-clouds);
+  border-radius: 0;
+  outline: 0;
+  background-color: transparent;
+}
+.card--blog-stacked::before {
+  display: none;
+}
+.card--blog-stacked img {
+  transform: scale(1);
+  transition: 0.25s ease-in-out;
+}
+.card--blog-stacked:hover {
+  border: 0;
+  border-bottom: 1px solid;
+  border-color: var(--blue-clouds);
+  outline: 0;
+  box-shadow: none;
+}
+.card--blog-stacked:hover .img-wrapper img {
+  transform: scale(1.125);
 }
 
 .popup {
@@ -10586,38 +10644,53 @@ button.next:hover {
 .calculator-calculator .accordion-content .toggle-line {
   display: flex;
   gap: 6px;
-  align-items: center;
+  align-items: flex-start;
   margin-left: 6px;
 }
 .calculator-calculator .accordion-content .toggle-line:has(*.counter:not(.hidden)) label {
   flex-wrap: wrap;
 }
 @media (max-width: 600px) {
-  .calculator-calculator .accordion-content .toggle-line:has(*.counter:not(.hidden)) label {
-    margin-bottom: 70px;
-  }
-  .calculator-calculator .accordion-content .toggle-line:has(*.counter:not(.hidden)) label .counter {
-    margin-top: 10px;
+  .calculator-calculator .accordion-content .toggle-line:has(*.counter:not(.hidden)) label > p {
+    flex: 1;
   }
 }
 .calculator-calculator .accordion-content .toggle-line label {
+  position: relative;
   display: flex;
-  align-items: center;
-  max-height: 26px;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+}
+.calculator-calculator .accordion-content .toggle-line label::before {
+  margin-right: 0;
 }
 .calculator-calculator .accordion-content .toggle-line label p {
   margin: 0;
+  align-self: center;
 }
 .calculator-calculator .accordion-content .toggle-line .counter {
   max-height: 26px;
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 14px;
   gap: 6px;
   /* For Firefox */
 }
 .calculator-calculator .accordion-content .toggle-line .counter.hidden {
   display: none;
+}
+@media (max-width: 600px) {
+  .calculator-calculator .accordion-content .toggle-line .counter {
+    width: 100%;
+    flex: 1 0 auto;
+    margin-left: 0;
+  }
+}
+@media (max-width: 440px) {
+  .calculator-calculator .accordion-content .toggle-line .counter {
+    max-height: fit-content;
+  }
 }
 .calculator-calculator .accordion-content .toggle-line .counter input::-webkit-outer-spin-button,
 .calculator-calculator .accordion-content .toggle-line .counter input::-webkit-inner-spin-button {
@@ -10827,7 +10900,7 @@ button.next:hover {
 }
 .toggle-checkbox + label:after {
   content: "";
-  top: calc(50% - 10px);
+  top: 3px;
   left: 3px;
   position: absolute;
   width: 20px;
@@ -11958,6 +12031,37 @@ button.next:hover {
 }
 .blog_page > .container > .default-table {
   margin-bottom: 20px;
+}
+
+.blog-list {
+  position: relative;
+  padding: 24px;
+  background-color: var(--blue-bg);
+  border-radius: 39px;
+  overflow: hidden;
+}
+@media (max-width: 1000px) {
+  .blog-list {
+    padding: 16px;
+    border-radius: 20px;
+  }
+}
+.blog-list::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  box-shadow: 0px 0px 70px 60px var(--blue-clouds), inset 0px 0px 70px 2px var(--blue-clouds);
+  transform: translate(-50%, 0%);
+}
+.blog-list > .card:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .ordinary-list .ordinary-list {
