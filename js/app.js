@@ -425,7 +425,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // SLIDER LEGACY START
 // SLIDER START
-document.addEventListener("DOMContentLoaded", () => {
+function tabSlidersStart() {
 	try {
 		const slidesContainer = document.querySelector(".slides");
 		const prevBtn = document.querySelector(".prev");
@@ -592,7 +592,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	} catch (err) {
 		console.error("Slider error:", err);
 	}
-});
+}
+
+tabSlidersStart();
+document.addEventListener("DOMContentLoaded", tabSlidersStart);
 // SLIDER END
 
 // HORIZONTAL SLIDER
