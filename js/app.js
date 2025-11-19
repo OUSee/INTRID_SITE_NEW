@@ -389,8 +389,12 @@ function sitePreview() {
 			iframe.src = e.currentTarget.dataset.sitePreview;
 			popup.querySelector(".iframe-window").appendChild(iframe);
 			popup.querySelector(".iframe-tab-link").innerText = e.currentTarget
-				.closest(".card--support, .card--recent, .card--portfolio")
-				.querySelector(".card-body b, b").innerText;
+				.closest(
+					".card--support, .card--recent, .card--portfolio, .card--group"
+				)
+				.querySelector(
+					".card-body b, b, .card-header div span"
+				).innerText;
 			popup.querySelector(".iframe-url-input").innerText =
 				e.currentTarget.dataset.sitePreview;
 		});
