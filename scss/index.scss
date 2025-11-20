@@ -1070,6 +1070,24 @@ button.next {
 				border-radius: 25px;
 				overflow: hidden;
 
+				@media (min-width: 900px) {
+					& label {
+						position: relative;
+
+						& input {
+							position: absolute;
+							top: 0;
+							left: 0;
+							z-index: 1;
+							display: block;
+							width: 100%;
+							height: 200vh;
+							opacity: 0;
+							cursor: pointer;
+						}
+					}
+				}
+
 				& th,
 				& td {
 					transition: 0.25s ease-in-out;
@@ -4202,6 +4220,7 @@ button.next {
 		background: transparent;
 
 		& > picture {
+			pointer-events: none;
 			transition: 0.25s ease-in-out;
 
 			@media (max-width: 1000px) {
@@ -4445,7 +4464,9 @@ button.next {
 				}
 
 				& > i {
+					display: flex;
 					margin-left: 2px;
+					pointer-events: none;
 				}
 			}
 		}
