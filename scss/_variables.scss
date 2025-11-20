@@ -6376,12 +6376,13 @@ button:hover,
 			flex: 1 0 auto;
 			max-width: 164px;
 			width: 100%;
-			height: 100%;
+			// height: 100%; // fix for firefox
 			max-height: 62px;
 			aspect-ratio: 1 / 0.37;
 			object-fit: contain;
 			object-position: right center;
-			transform: translate3d(0, 0, 0);
+			backface-visibility: hidden;
+			transform: scale(100%) translateZ(0) rotate(0.001deg); // fix for firefox
 			transform-origin: right top;
 			will-change: transform;
 			transition: 0.4s ease-in-out;
@@ -6401,6 +6402,7 @@ button:hover,
 			border-radius: 8px;
 			overflow: hidden;
 			transform-origin: center;
+			transform: scale(100%);
 			will-change: transform;
 			transition: 0.4s ease-in-out;
 		}
@@ -6473,7 +6475,7 @@ button:hover,
 		&:not(.isBrand) {
 			@media (max-width: 1000px) {
 				& .portfolio-logo {
-					transform: scale(80%);
+					transform: scale(80%) translateZ(0) rotate(0.001deg);
 				}
 
 				& .portfolio-site {
@@ -6583,7 +6585,7 @@ button:hover,
 				flex: 1 0 auto;
 
 				@media (max-width: 1000px) {
-					transform: scale(90%);
+					transform: scale(90%) translateZ(0) rotate(0.001deg);
 				}
 			}
 
@@ -6602,7 +6604,7 @@ button:hover,
 
 		&:hover {
 			& .portfolio-logo {
-				transform: scale(90%);
+				transform: scale(90%) translateZ(0) rotate(0.001deg);
 			}
 
 			& .portfolio-site {
