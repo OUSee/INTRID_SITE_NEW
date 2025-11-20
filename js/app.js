@@ -1169,7 +1169,10 @@ function sliderInitialize() {
 
 				// Disable next button if at end
 				nextBtn.forEach((btn) => {
-					if (currentIndex + visibleSlidesCount >= slides.length) {
+					if (
+						currentIndex + visibleSlidesCount >= slides.length ||
+						currentIndex >= slides.length - 1
+					) {
 						btn.style.opacity = "0";
 					} else {
 						btn.style.opacity = "1";

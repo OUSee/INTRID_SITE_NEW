@@ -256,6 +256,7 @@
 	}
 
 	&#site-slider,
+	&#logo-slider,
 	&#brand-slider,
 	&#portfolio-slider,
 	&#portfolio-slider-2,
@@ -5192,6 +5193,8 @@ button:hover,
 
 			& .card-header {
 				& > div {
+					overflow: hidden;
+
 					& > .title_h4 {
 						height: 2em;
 					}
@@ -5199,7 +5202,11 @@ button:hover,
 					& > a {
 						position: relative;
 						z-index: 2;
+						max-width: 100%;
 						height: unset;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
 					}
 				}
 			}

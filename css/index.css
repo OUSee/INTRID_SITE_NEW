@@ -953,11 +953,11 @@ th {
 [data-slider]#tenders-keys-slider > *.active, [data-slider]#support-slider > *.active {
   opacity: 1;
 }
-[data-slider]#site-slider > *:first-child, [data-slider]#brand-slider > *:first-child, [data-slider]#portfolio-slider > *:first-child, [data-slider]#portfolio-slider-2 > *:first-child, [data-slider]#ui-portfolio-slider > *:first-child, [data-slider]#portfolio-web-slider > *:first-child, [data-slider]#portfolio-corporate-slider > *:first-child, [data-slider]#portfolio-shop-slider > *:first-child {
+[data-slider]#site-slider > *:first-child, [data-slider]#logo-slider > *:first-child, [data-slider]#brand-slider > *:first-child, [data-slider]#portfolio-slider > *:first-child, [data-slider]#portfolio-slider-2 > *:first-child, [data-slider]#ui-portfolio-slider > *:first-child, [data-slider]#portfolio-web-slider > *:first-child, [data-slider]#portfolio-corporate-slider > *:first-child, [data-slider]#portfolio-shop-slider > *:first-child {
   border-top-left-radius: 39px;
   border-bottom-left-radius: 39px;
 }
-[data-slider]#site-slider > *:last-child, [data-slider]#brand-slider > *:last-child, [data-slider]#portfolio-slider > *:last-child, [data-slider]#portfolio-slider-2 > *:last-child, [data-slider]#ui-portfolio-slider > *:last-child, [data-slider]#portfolio-web-slider > *:last-child, [data-slider]#portfolio-corporate-slider > *:last-child, [data-slider]#portfolio-shop-slider > *:last-child {
+[data-slider]#site-slider > *:last-child, [data-slider]#logo-slider > *:last-child, [data-slider]#brand-slider > *:last-child, [data-slider]#portfolio-slider > *:last-child, [data-slider]#portfolio-slider-2 > *:last-child, [data-slider]#ui-portfolio-slider > *:last-child, [data-slider]#portfolio-web-slider > *:last-child, [data-slider]#portfolio-corporate-slider > *:last-child, [data-slider]#portfolio-shop-slider > *:last-child {
   border-top-right-radius: 39px;
   border-bottom-right-radius: 39px;
 }
@@ -5251,13 +5251,20 @@ button:hover img,
 .card--group.minified {
   gap: 16px;
 }
+.card--group.minified .card-header > div {
+  overflow: hidden;
+}
 .card--group.minified .card-header > div > .title_h4 {
   height: 2em;
 }
 .card--group.minified .card-header > div > a {
   position: relative;
   z-index: 2;
+  max-width: 100%;
   height: unset;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .card--group.minified > .absolute-link {
   position: absolute;
