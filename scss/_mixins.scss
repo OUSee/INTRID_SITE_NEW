@@ -400,3 +400,60 @@
 		}
 	}
 }
+
+@mixin pagination-btn {
+	padding: 4px;
+	border-radius: 50%;
+	background: rgba(8, 37, 60, 0.35);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+
+	text-decoration: none !important;
+
+	&:hover {
+		background-color: transparent;
+		box-shadow: none;
+		color: var(--color-white);
+		border: 1px solid var(--color-white);
+	}
+
+	i {
+		font-size: 24px;
+		line-height: 24px;
+		width: 24px;
+		height: 24px;
+		text-decoration: none;
+	}
+}
+
+@mixin pagination-panel-btn {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	background: rgba(8, 37, 60, 0.35);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: border-color 0.25s ease, background-color 0.25s ease,
+		box-shadow 0.25s ease, color 0.25s ease;
+
+	@media (max-width: 576px) {
+		width: 38px;
+		height: 38px;
+	}
+
+	&:hover {
+		border-color: var(--blue-main);
+		background-color: rgba(26, 123, 255, 0.3);
+		box-shadow: 0 0 18px rgba(33, 159, 255, 0.45);
+		color: var(--color-white);
+	}
+
+	i {
+		font-size: 24px;
+		line-height: 24px;
+		width: 24px;
+		height: 24px;
+		text-decoration: none;
+	}
+}

@@ -136,6 +136,10 @@
 	&#reviews-slider {
 		width: 100%;
 
+		@media (max-width: 600px) {
+			padding: 0 20px;
+		}
+
 		& > * {
 			flex: 1 0 auto;
 			max-width: 100%;
@@ -628,7 +632,8 @@ a {
 			[class*="slide"],
 			[class*="rating-item"],
 			[class*="phone-line"],
-			[class*="link-text"]
+			[class*="link-text"],
+			[class*="pagination"]
 		) {
 		text-decoration: underline;
 		text-underline-offset: 4px;
@@ -3048,32 +3053,19 @@ form {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 6px;
+	gap: 8px;
 	margin-top: 30px;
 
 	button {
-		padding: 4px;
-		border-radius: 50%;
-		border: 1px solid transparent;
+		// padding: 4px;
+		// border-radius: 50%;
+		// border: 1px solid transparent;
+		@include pagination-btn;
 	}
 
 	&--prev-btn,
 	&--next-btn {
-		text-decoration: none !important;
-
-		&:hover {
-			background-color: transparent;
-			box-shadow: none;
-			color: var(--color-white);
-			border: 1px solid var(--color-white);
-		}
-
-		i {
-			font-size: 24px;
-			line-height: 24px;
-			width: 24px;
-			height: 24px;
-		}
+		@include pagination-panel-btn;
 	}
 
 	&--prev-btn i.left {
@@ -3082,7 +3074,7 @@ form {
 
 	&--buttons-dots {
 		display: flex;
-		gap: 2px;
+		gap: 8px;
 
 		button {
 			max-height: 5px;

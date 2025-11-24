@@ -856,6 +856,11 @@ th {
 [data-slider]#reviews-slider {
   width: 100%;
 }
+@media (max-width: 600px) {
+  [data-slider]#reviews-slider {
+    padding: 0 20px;
+  }
+}
 [data-slider]#reviews-slider > * {
   flex: 1 0 auto;
   max-width: 100%;
@@ -1320,7 +1325,8 @@ a:not([class*=button],
 [class*=slide],
 [class*=rating-item],
 [class*=phone-line],
-[class*=link-text]) {
+[class*=link-text],
+[class*=pagination]) {
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
@@ -1331,7 +1337,8 @@ a:not([class*=button],
 [class*=slide],
 [class*=rating-item],
 [class*=phone-line],
-[class*=link-text]):hover {
+[class*=link-text],
+[class*=pagination]):hover {
   text-decoration: none;
 }
 
@@ -3179,35 +3186,65 @@ form .button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-top: 30px;
 }
 .pagination button {
   padding: 4px;
   border-radius: 50%;
-  border: 1px solid transparent;
-}
-.pagination--prev-btn, .pagination--next-btn {
+  background: rgba(8, 37, 60, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   text-decoration: none !important;
 }
-.pagination--prev-btn:hover, .pagination--next-btn:hover {
+.pagination button:hover {
   background-color: transparent;
   box-shadow: none;
   color: var(--color-white);
   border: 1px solid var(--color-white);
+}
+.pagination button i {
+  font-size: 24px;
+  line-height: 24px;
+  width: 24px;
+  height: 24px;
+  text-decoration: none;
+}
+.pagination--prev-btn, .pagination--next-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(8, 37, 60, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+@media (max-width: 576px) {
+  .pagination--prev-btn, .pagination--next-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+.pagination--prev-btn:hover, .pagination--next-btn:hover {
+  border-color: var(--blue-main);
+  background-color: rgba(26, 123, 255, 0.3);
+  box-shadow: 0 0 18px rgba(33, 159, 255, 0.45);
+  color: var(--color-white);
 }
 .pagination--prev-btn i, .pagination--next-btn i {
   font-size: 24px;
   line-height: 24px;
   width: 24px;
   height: 24px;
+  text-decoration: none;
 }
 .pagination--prev-btn i.left {
   transform: rotate(180deg) translateY(0);
 }
 .pagination--buttons-dots {
   display: flex;
-  gap: 2px;
+  gap: 8px;
 }
 .pagination--buttons-dots button {
   max-height: 5px;
@@ -8390,9 +8427,8 @@ button.next:hover {
     display: flex;
     width: 100%;
     height: auto;
-    padding: 20px 0;
+    padding: 20px 10px;
     margin: 0 auto;
-    overflow: unset;
   }
 }
 .achievements-slider div.slides {
@@ -8404,6 +8440,7 @@ button.next:hover {
 @media (max-width: 600px) {
   .achievements-slider div.slides {
     align-items: flex-start;
+    width: 100%;
   }
 }
 .achievements-slider div.slides .slide {
@@ -8423,9 +8460,8 @@ button.next:hover {
 @media (max-width: 600px) {
   .achievements-slider div.slides .slide {
     width: auto;
-    max-width: calc(50vw - 8px);
     height: unset;
-    flex: 1 0 auto;
+    flex: 0 0 50%;
   }
 }
 .achievements-slider div.slides .slide .icons-partners {
@@ -8478,7 +8514,7 @@ button.next:hover {
 @media (max-width: 600px) {
   .achievements-slider button.prev {
     top: 50%;
-    left: 0;
+    left: 10px;
     right: unset;
     bottom: unset;
     transform: translate(-50%, -50%);
@@ -8503,7 +8539,7 @@ button.next:hover {
   .achievements-slider button.next {
     top: 50%;
     left: unset;
-    right: 0;
+    right: 10px;
     bottom: unset;
     transform: translate(50%, -50%);
   }
@@ -13645,6 +13681,16 @@ button.next:hover {
   background-color: rgba(26, 123, 255, 0.3);
   box-shadow: 0 0 18px rgba(33, 159, 255, 0.45);
   color: var(--color-white);
+}
+.portfolio-block__pagination .pagination--prev-btn i,
+.portfolio-block__pagination .pagination--next-btn i,
+.pagination-panel .pagination--prev-btn i,
+.pagination-panel .pagination--next-btn i {
+  font-size: 24px;
+  line-height: 24px;
+  width: 24px;
+  height: 24px;
+  text-decoration: none;
 }
 .portfolio-block__pagination .pagination--buttons-numbers,
 .pagination-panel .pagination--buttons-numbers {
