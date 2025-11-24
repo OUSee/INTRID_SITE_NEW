@@ -238,11 +238,11 @@
             </div>
         </section>
         <!--  -->
-        <section class="comment-comments sites-reviews reviews bg-gradient">
+        <section class="comment-comments sites-reviews reviews container">
             <!-- Контентная часть -->
             <div class="reviews__inner">
                 <!-- Табы отзывов по сервисам  -->
-                <!-- <div class="reviews__buttons">
+                <div class="reviews__buttons">
                     <button type="button" class="big reviews__button reviews__button-main" data-type="all">
                         Все отзывы
                         <i class="icon-arrow_wide"></i>
@@ -277,341 +277,329 @@
                             <img src="./src/icons/reviews/rating_runet.svg" />
                         </picture>
                     </button>
-                </div> -->
-
-                <div class="nav-tabs--buttons w-100 container" id="pricesButtons" data-tabs-buttons="">
-                    <label for="tab-slide-btn-1" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-1" checked="" >
-                        <i class="icon-arrow_wide"></i>
-                        <span>
-                            <span>Все</span>
-                            <span class="d-xs-none d-sm-none d-md-none">отзывы</span>
-                        </span>
-                    </label>
-                    <label for="tab-slide-btn-2" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-2">
-                        <img src="./src/icons/reviews/yandex.svg" />
-                        <span>Яндекс</span>
-                    </label>
-                    <label for="tab-slide-btn-3" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-3">
-                        <img src="./src/icons/reviews/google.svg" />
-                        <span>Google</span>
-                    </label>
-                    <label for="tab-slide-btn-4" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-4">
-                        <img src="./src/icons/reviews/2gis.svg" />
-                        <span>2gis</span>
-                    </label>
-                    <label for="tab-slide-btn-5" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-5">
-                        <img src="./src/icons/reviews/yell.svg" />
-                        <span>Yell</span>
-                    </label>
-                    <label for="tab-slide-btn-6" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-6">
-                        <img src="./src/icons/reviews/rating_runet.svg" />
-                        <span>Рейтинг рунета</span>
-                    </label>
                 </div>
 
-                    <!-- Лейаут отзывов -->
-                <div class="reviews__wrapper">
-                    <div class="reviews__layout container" id="reviews-container" data-pjax-container="" data-pjax-push-state=""
-                        data-pjax-timeout="1000">
-                    
-                        <!-- Рейтинг отзывов -->
-                        <div class="reviews__rates">
-                            <div class="reviews__rates-container">
-                                <p>4.9</p>
-                                <div class="reviews__rates-container--stars">
-                                    <p>354 оценки</p>
-                                    <p>168 отзывов</p>
-                                    <div>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="reviews__rates-percentage">
+                <!-- Лейаут отзывов -->
+                <div class="reviews__layout" id="reviews-container" data-pjax-container="" data-pjax-push-state=""
+                    data-pjax-timeout="1000">
+
+                    <!-- Рейтинг отзывов -->
+                    <div class="reviews__rates">
+                        <div class="reviews__rates-container">
+                            <p>4.9</p>
+                            <div class="reviews__rates-container--stars">
+                                <p>354 оценки</p>
+                                <p>168 отзывов</p>
                                 <div>
-                                    <p>5</p>
                                     <i class="icon-star"></i>
-                                    <progress id="file" max="100" value="94"></progress>
-                                    <p>94%</p>
-                                </div>
-                                <div>
-                                    <p>4</p>
                                     <i class="icon-star"></i>
-                                    <progress id="file" max="100" value="4"></progress>
-                                    <p>4%</p>
-                                </div>
-                                <div>
-                                    <p>3</p>
                                     <i class="icon-star"></i>
-                                    <progress id="file" max="100" value="1"></progress>
-                                    <p>1%</p>
-                                </div>
-                                <div>
-                                    <p>2</p>
                                     <i class="icon-star"></i>
-                                    <progress id="file" max="100" value="0"></progress>
-                                    <p>0%</p>
-                                </div>
-                                <div>
-                                    <p>1</p>
                                     <i class="icon-star"></i>
-                                    <progress id="file" max="100" value="1"></progress>
-                                    <p>1%</p>
                                 </div>
                             </div>
                         </div>
-                    
-                        <!-- Контент отзывов -->
-                        <div class="reviews__container">
-                    
-                            <!-- Карточки отзывов -->
-                            <div class="reviews__list">
-                                <div class="card card--review">
-                                    <div class="card-header">
-                                        <div class="card-name">
-                                            <b>Понкратов Олег Васильевич</b>
-                                            <p>Директор EVKKA – Автоковрики</p>
-                                        </div>
-                    
-                                        <div class="card-rate">
-                                            <b>5.0</b>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                        </div>
-                                    </div>
-                    
-                                    <div class="card-body">
-                                        <p>
-                                            Для меня ребята делали сайте https://evkka.ru/, авто аксессуары (чехлы, ковры,
-                                            накидки, шторки),
-                                            работа проделана огромная, сил а самое главное терпения вложено не
-                                            меньше))))))Хочу
-                                            сказать
-                                            спасибо и пожелать удачи на проф. поприще. Кстати работу со студией продолжаю до
-                                            сих
-                                            пор, почти
-                                            каждый меся внедряем новый товар (причем новый товар представляется как новый
-                                            онлайн-конструк)
-                                            Всем рекомендую!!! Спасибо!!!
-                                        </p>
-                                    </div>
-                    
-                                    <div class="card-footer">
-                                        <a target="_blank" href="https://new.evkka.ru/" class="color-blue mr-10 hover-underline">
-                                            https://new.evkka.ru
-                                        </a>
-                    
-                                        <div class="card-date">
-                                            <a href="#" target="_blank" class="card-source yandex"></a>
-                    
-                                            <p>
-                                                20.01.22
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <div class="card card--review">
-                                    <div class="card-header">
-                                        <div class="card-name">
-                                            <b>СтронгМэн</b>
-                                            <p>Директор СтронгМэн</p>
-                                        </div>
-                    
-                                        <div class="card-rate">
-                                            <b>5.0</b>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                        </div>
-                                    </div>
-                    
-                                    <div class="card-body">
-                                        <p>
-                                            Работаем с компанией Intrid более полугода. Разработали для меня интернет
-                                            магазин.
-                                            Качеством я остался доволен. Очень
-                                            профессиональный подход и весьма ориентированы на клиента. Желаю им больших
-                                            успехов
-                                            и
-                                            хороших заказов)
-                                        </p>
-                                    </div>
-                    
-                                    <div class="card-footer">
-                                        <a target="_blank" href="https://strongmanpro.ru/" class="color-blue mr-10 hover-underline">
-                                            https://strongmanpro.ru/
-                                        </a>
-                    
-                                        <div class="card-date">
-                                            <a href="#" target="_blank" class="card-source doublegis"></a>
-                    
-                                            <p>
-                                                20.01.22
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <div class="card card--review">
-                                    <div class="card-header">
-                                        <div class="card-name">
-                                            <b>Иванова С.В</b>
-                                            <p>Руководитель SpaceLove</p>
-                                        </div>
-                    
-                                        <div class="card-rate">
-                                            <b>5.0</b>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                        </div>
-                                    </div>
-                    
-                                    <div class="card-body">
-                                        <p>
-                                            Искала веб-студию для разработки интернет-магазина, решила остановиться на этой
-                                            организации, опираясь на прочитанные
-                                            отзывы, и не ошиблась. Работа была выполнена оперативно и в срок, в процессе
-                                            разработки
-                                            каждое пожелание было учитано и
-                                            исполнено в самом лучшем варианте, сайтом полностью довольны. Дополнительно были
-                                            предоставлены скидки, что очень
-                                            порадовало. Отдельное спасибо Тимуру за полное сопровождение в процессе
-                                            разработки,
-                                            и
-                                            всей организации за
-                                            клиентоориентированный подход. Если Вы хотите крутой, современный и
-                                            функциональный
-                                            сайт,
-                                            то Вам в INTRID.
-                                        </p>
-                                    </div>
-                    
-                                    <div class="card-footer">
-                                        <a target="_blank" href=" https://space-love.ru/" class="color-blue mr-10 hover-underline">
-                                            https://space-love.ru/
-                                        </a>
-                    
-                                        <div class="card-date">
-                                            <a href="#" target="_blank" class="card-source google"></a>
-                    
-                                            <p>
-                                                21.09.21
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <div class="card card--review">
-                                    <div class="card-header">
-                                        <div class="card-name">
-                                            <b>Татаринцев С.С.</b>
-                                            <p>Руководитель Протект-Ковка</p>
-                                        </div>
-                    
-                                        <div class="card-rate">
-                                            <b>5.0</b>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                        </div>
-                                    </div>
-                    
-                                    <div class="card-body">
-                                        <p>
-                                            С компанией Intrid работаем полтора года. Сотрудничество началось с разработки
-                                            сайта
-                                            (protekt-kovka.ru), затем SEO и
-                                            реклама. Качеством всех услуг мы довольны, все наши претензии и пожелания
-                                            рассматриваем
-                                            с project-менеджером в
-                                            конструктивном диалоге. Цены ,по нашим наблюдениям, очень демократичные, то есть
-                                            ниже,
-                                            чем во всех коммерческих
-                                            предложениях от других компаний. Неоднократно рекомендовали INTRID своим
-                                            бизнес-партнёрам, все были довольны.
-                                        </p>
-                                    </div>
-                    
-                                    <div class="card-footer">
-                                        <a target="_blank" href="https://protekt-kovka.ru/" class="color-blue mr-10 hover-underline">
-                                            https://protekt-kovka.ru/
-                                        </a>
-                    
-                                        <div class="card-date">
-                                            <a href="#" target="_blank" class="card-source yell"></a>
-                    
-                                            <p>
-                                                07.07.21
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <div class="card card--review">
-                                    <div class="card-header">
-                                        <div class="card-name">
-                                            <b>Задорожняя Е.В.</b>
-                                            <p>Адвокат Адвокат Задорожняя Е.В.</p>
-                                        </div>
-                    
-                                        <div class="card-rate">
-                                            <b>5.0</b>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                        </div>
-                                    </div>
-                    
-                                    <div class="card-body">
-                                        <p>
-                                            Индивидуальный подход к клиентам, оперативное реагирование на замечания. Работой
-                                            довольна.
-                                        </p>
-                                    </div>
-                    
-                                    <div class="card-footer">
-                                        <a target="_blank" href="https://advokatvoronezh.ru/" class="color-blue mr-10 hover-underline">
-                                            https://advokatvoronezh.ru/
-                                        </a>
-                    
-                                        <div class="card-date">
-                                            <a href="#" target="_blank" class="card-source runet"></a>
-                    
-                                            <p>
-                                                01.08.20
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="reviews__rates-percentage">
+                            <div>
+                                <p>5</p>
+                                <i class="icon-star"></i>
+                                <progress id="file" max="100" value="94"></progress>
+                                <p>94%</p>
                             </div>
-                    
-                            <!-- Показать ещё -->
-                            <button class="button-link big m-center" data-popup="login-review">
-                                Оставить отзыв <i class="icon-arrow_wide"></i>
+                            <div>
+                                <p>4</p>
+                                <i class="icon-star"></i>
+                                <progress id="file" max="100" value="4"></progress>
+                                <p>4%</p>
+                            </div>
+                            <div>
+                                <p>3</p>
+                                <i class="icon-star"></i>
+                                <progress id="file" max="100" value="1"></progress>
+                                <p>1%</p>
+                            </div>
+                            <div>
+                                <p>2</p>
+                                <i class="icon-star"></i>
+                                <progress id="file" max="100" value="0"></progress>
+                                <p>0%</p>
+                            </div>
+                            <div>
+                                <p>1</p>
+                                <i class="icon-star"></i>
+                                <progress id="file" max="100" value="1"></progress>
+                                <p>1%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Контент отзывов -->
+                    <div class="reviews__container">
+                        <!-- Сортировка -->
+                        <div class="reviews__wrapper-filter">
+                            <button type="button" class="filter active" data-rating="all">
+                                все
+                            </button>
+                            <button type="button" class="filter" data-rating="5">
+                                5 <i class="icon-star"></i>
+                            </button>
+                            <button type="button" class="filter" data-rating="4">
+                                4 <i class="icon-star"></i>
+                            </button>
+                            <button type="button" class="filter" data-rating="3">
+                                3 <i class="icon-star"></i>
+                            </button>
+                            <button type="button" class="filter " data-rating="2">
+                                2 <i class="icon-star"></i>
+                            </button>
+                            <button type="button" class="filter" data-rating="1">
+                                1 <i class="icon-star"></i>
                             </button>
                         </div>
+
+                        <!-- Карточки отзывов -->
+                        <div class="reviews__list">
+                            <div class="card card--review">
+                                <div class="card-header">
+                                    <div class="card-name">
+                                        <b>Понкратов Олег Васильевич</b>
+                                        <p>Директор EVKKA – Автоковрики</p>
+                                    </div>
+
+                                    <div class="card-rate">
+                                        <b>5.0</b>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <p>
+                                        Для меня ребята делали сайте https://evkka.ru/, авто аксессуары (чехлы, ковры,
+                                        накидки, шторки),
+                                        работа проделана огромная, сил а самое главное терпения вложено не
+                                        меньше))))))Хочу
+                                        сказать
+                                        спасибо и пожелать удачи на проф. поприще. Кстати работу со студией продолжаю до
+                                        сих
+                                        пор, почти
+                                        каждый меся внедряем новый товар (причем новый товар представляется как новый
+                                        онлайн-конструк)
+                                        Всем рекомендую!!! Спасибо!!!
+                                    </p>
+                                </div>
+
+                                <div class="card-footer">
+                                    <a target="_blank" href="https://new.evkka.ru/"
+                                        class="color-blue mr-10 hover-underline">
+                                        https://new.evkka.ru
+                                    </a>
+
+                                    <div class="card-date">
+                                        <a href="#" target="_blank" class="card-source yandex"></a>
+
+                                        <p>
+                                            20.01.22
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card card--review">
+                                <div class="card-header">
+                                    <div class="card-name">
+                                        <b>СтронгМэн</b>
+                                        <p>Директор СтронгМэн</p>
+                                    </div>
+
+                                    <div class="card-rate">
+                                        <b>5.0</b>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <p>
+                                        Работаем с компанией Intrid более полугода. Разработали для меня интернет
+                                        магазин.
+                                        Качеством я остался доволен. Очень
+                                        профессиональный подход и весьма ориентированы на клиента. Желаю им больших
+                                        успехов
+                                        и
+                                        хороших заказов)
+                                    </p>
+                                </div>
+
+                                <div class="card-footer">
+                                    <a target="_blank" href="https://strongmanpro.ru/"
+                                        class="color-blue mr-10 hover-underline">
+                                        https://strongmanpro.ru/
+                                    </a>
+
+                                    <div class="card-date">
+                                        <a href="#" target="_blank" class="card-source doublegis"></a>
+
+                                        <p>
+                                            20.01.22
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card card--review">
+                                <div class="card-header">
+                                    <div class="card-name">
+                                        <b>Иванова С.В</b>
+                                        <p>Руководитель SpaceLove</p>
+                                    </div>
+
+                                    <div class="card-rate">
+                                        <b>5.0</b>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <p>
+                                        Искала веб-студию для разработки интернет-магазина, решила остановиться на этой
+                                        организации, опираясь на прочитанные
+                                        отзывы, и не ошиблась. Работа была выполнена оперативно и в срок, в процессе
+                                        разработки
+                                        каждое пожелание было учитано и
+                                        исполнено в самом лучшем варианте, сайтом полностью довольны. Дополнительно были
+                                        предоставлены скидки, что очень
+                                        порадовало. Отдельное спасибо Тимуру за полное сопровождение в процессе
+                                        разработки,
+                                        и
+                                        всей организации за
+                                        клиентоориентированный подход. Если Вы хотите крутой, современный и
+                                        функциональный
+                                        сайт,
+                                        то Вам в INTRID.
+                                    </p>
+                                </div>
+
+                                <div class="card-footer">
+                                    <a target="_blank" href=" https://space-love.ru/"
+                                        class="color-blue mr-10 hover-underline">
+                                        https://space-love.ru/
+                                    </a>
+
+                                    <div class="card-date">
+                                        <a href="#" target="_blank" class="card-source google"></a>
+
+                                        <p>
+                                            21.09.21
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card card--review">
+                                <div class="card-header">
+                                    <div class="card-name">
+                                        <b>Татаринцев С.С.</b>
+                                        <p>Руководитель Протект-Ковка</p>
+                                    </div>
+
+                                    <div class="card-rate">
+                                        <b>5.0</b>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <p>
+                                        С компанией Intrid работаем полтора года. Сотрудничество началось с разработки
+                                        сайта
+                                        (protekt-kovka.ru), затем SEO и
+                                        реклама. Качеством всех услуг мы довольны, все наши претензии и пожелания
+                                        рассматриваем
+                                        с project-менеджером в
+                                        конструктивном диалоге. Цены ,по нашим наблюдениям, очень демократичные, то есть
+                                        ниже,
+                                        чем во всех коммерческих
+                                        предложениях от других компаний. Неоднократно рекомендовали INTRID своим
+                                        бизнес-партнёрам, все были довольны.
+                                    </p>
+                                </div>
+
+                                <div class="card-footer">
+                                    <a target="_blank" href="https://protekt-kovka.ru/"
+                                        class="color-blue mr-10 hover-underline">
+                                        https://protekt-kovka.ru/
+                                    </a>
+
+                                    <div class="card-date">
+                                        <a href="#" target="_blank" class="card-source yell"></a>
+
+                                        <p>
+                                            07.07.21
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card card--review">
+                                <div class="card-header">
+                                    <div class="card-name">
+                                        <b>Задорожняя Е.В.</b>
+                                        <p>Адвокат Адвокат Задорожняя Е.В.</p>
+                                    </div>
+
+                                    <div class="card-rate">
+                                        <b>5.0</b>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <p>
+                                        Индивидуальный подход к клиентам, оперативное реагирование на замечания. Работой
+                                        довольна.
+                                    </p>
+                                </div>
+
+                                <div class="card-footer">
+                                    <a target="_blank" href="https://advokatvoronezh.ru/"
+                                        class="color-blue mr-10 hover-underline">
+                                        https://advokatvoronezh.ru/
+                                    </a>
+
+                                    <div class="card-date">
+                                        <a href="#" target="_blank" class="card-source runet"></a>
+
+                                        <p>
+                                            01.08.20
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Показать ещё -->
+                        <button class="button-link big m-center" data-popup="login-review">
+                            Оставить отзыв <i class="icon-arrow_wide"></i>
+                        </button>
                     </div>
                 </div>
             </div>
