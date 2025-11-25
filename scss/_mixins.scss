@@ -199,6 +199,82 @@
 	}
 }
 
+@mixin tab-button-reviews {
+	transition: 0.25s ease-in-out;
+
+	& i {
+		display: flex;
+		font-size: 32px;
+		color: var(--color-white);
+		transition: 0.25s ease-in-out;
+
+		@media (max-width: 1000px) {
+			font-size: 48px;
+		}
+
+		@media (max-width: 600px) {
+			font-size: 32px;
+		}
+	}
+
+	& img {
+		display: flex;
+		width: 32px;
+		height: 32px;
+		object-fit: contain;
+		filter: invert(1) grayscale(1) brightness(5);
+		transition: 0.25s ease-in-out;
+
+		@media (max-width: 1000px) {
+			width: 48px;
+			height: 48px;
+		}
+
+		@media (max-width: 600px) {
+			width: 32px;
+			height: 32px;
+		}
+	}
+
+	&:hover {
+		& i {
+			@media (max-width: 1000px) {
+				color: var(--blue-main);
+			}
+		}
+		& img {
+			@media (max-width: 1000px) {
+				filter: unset;
+			}
+		}
+	}
+
+	&:has(:checked),
+	&.active {
+		& img {
+			filter: invert(1) grayscale(1) brightness(0);
+
+			@media (max-width: 1000px) {
+				filter: unset;
+			}
+		}
+
+		& i {
+			color: var(--blue-main);
+		}
+
+		@media (min-width: 1000px) {
+			background-color: var(--bg-main);
+			border-top: 2px solid var(--blue-main);
+			color: var(--color-white);
+
+			& img {
+				filter: invert(0) grayscale(0) brightness(1);
+			}
+		}
+	}
+}
+
 @mixin tab-button-light {
 	position: relative;
 	display: flex;

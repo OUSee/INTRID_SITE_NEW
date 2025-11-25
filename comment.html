@@ -238,87 +238,51 @@
             </div>
         </section>
         <!--  -->
-        <section class="comment-comments sites-reviews reviews bg-gradient">
+        <section class="comment-comments sites-reviews reviews">
             <!-- Контентная часть -->
+            <div  id="reviews-container" data-pjax-container="" data-pjax-push-state=""
+                        data-pjax-timeout="1000">
             <div class="reviews__inner">
                 <!-- Табы отзывов по сервисам  -->
-                <!-- <div class="reviews__buttons">
-                    <button type="button" class="big reviews__button reviews__button-main" data-type="all">
-                        Все отзывы
-                        <i class="icon-arrow_wide"></i>
-                    </button>
-                    <button type="button" class="big reviews__button" data-type="1">
-                        <picture>
-                            <source srcset="./src/images/yandex-big-logo.webp" media="(min-width: 1000px)" />
-                            <img src="./src/icons/reviews/yandex.svg" />
-                        </picture>
-                    </button>
-                    <button type="button" class="big reviews__button" data-type="2">
-                        <picture>
-                            <source srcset="./src/images/google-big-logo.webp" media="(min-width: 1000px)" />
-                            <img src="./src/icons/reviews/google.svg" />
-                        </picture>
-                    </button>
-                    <button type="button" class="big reviews__button" data-type="3">
-                        <picture>
-                            <source srcset="./src/images/2-gis-big-logo.webp" media="(min-width: 1000px)" />
-                            <img src="./src/icons/reviews/2gis.svg" />
-                        </picture>
-                    </button>
-                    <button type="button" class="big reviews__button" data-type="4">
-                        <picture>
-                            <source srcset="./src/images/yell-big-logo.webp" media="(min-width: 1000px)" />
-                            <img src="./src/icons/reviews/yell.svg" />
-                        </picture>
-                    </button>
-                    <button type="button" class="big reviews__button" data-type="5">
-                        <picture>
-                            <source srcset="./src/images/runet-big-logo.webp" media="(min-width: 1000px)" />
-                            <img src="./src/icons/reviews/rating_runet.svg" />
-                        </picture>
-                    </button>
-                </div> -->
-
-                <div class="nav-tabs--buttons w-100 container" id="pricesButtons" data-tabs-buttons="">
-                    <label for="tab-slide-btn-1" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-1" checked="" >
+                <div class="reviews__buttons w-100 container">
+                    <label for="tab-slide-btn-1" class="reviews__button">
+                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-1" data-type="all" checked="" >
                         <i class="icon-arrow_wide"></i>
                         <span>
                             <span>Все</span>
                             <span class="d-xs-none d-sm-none d-md-none">отзывы</span>
                         </span>
                     </label>
-                    <label for="tab-slide-btn-2" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-2">
-                        <img src="./src/icons/reviews/yandex.svg" />
+                    <label for="tab-slide-btn-2" class="reviews__button">
+                        <input type="radio" name="tab-prices-radio" data-type="1" id="tab-slide-btn-2">
+                        <img src="./src/icons/reviews/yandex-blue.svg" />
                         <span>Яндекс</span>
                     </label>
-                    <label for="tab-slide-btn-3" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-3">
-                        <img src="./src/icons/reviews/google.svg" />
+                    <label for="tab-slide-btn-3" class="reviews__button">
+                        <input type="radio" name="tab-prices-radio" data-type="2" id="tab-slide-btn-3">
+                        <img src="./src/icons/reviews/google-blue.svg" />
                         <span>Google</span>
                     </label>
-                    <label for="tab-slide-btn-4" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-4">
-                        <img src="./src/icons/reviews/2gis.svg" />
+                    <label for="tab-slide-btn-4" class="reviews__button">
+                        <input type="radio" name="tab-prices-radio" data-type="3" id="tab-slide-btn-4">
+                        <img src="./src/icons/reviews/2gis-blue.svg" />
                         <span>2gis</span>
                     </label>
-                    <label for="tab-slide-btn-5" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-5">
-                        <img src="./src/icons/reviews/yell.svg" />
+                    <label for="tab-slide-btn-5" class="reviews__button">
+                        <input type="radio" name="tab-prices-radio" data-type="4" id="tab-slide-btn-5">
+                        <img src="./src/icons/reviews/yell-blue.svg" />
                         <span>Yell</span>
                     </label>
-                    <label for="tab-slide-btn-6" class="button--tab">
-                        <input type="radio" name="tab-prices-radio" id="tab-slide-btn-6">
-                        <img src="./src/icons/reviews/rating_runet.svg" />
+                    <label for="tab-slide-btn-6" class="reviews__button">
+                        <input type="radio" name="tab-prices-radio" data-type="5" id="tab-slide-btn-6">
+                        <img src="./src/icons/reviews/rating_runet-blue.svg" />
                         <span>Рейтинг рунета</span>
                     </label>
                 </div>
 
                     <!-- Лейаут отзывов -->
                 <div class="reviews__wrapper">
-                    <div class="reviews__layout container" id="reviews-container" data-pjax-container="" data-pjax-push-state=""
-                        data-pjax-timeout="1000">
+                    <div class="reviews__layout container">
                     
                         <!-- Рейтинг отзывов -->
                         <div class="reviews__rates">
@@ -614,6 +578,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
 

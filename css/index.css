@@ -11859,67 +11859,209 @@ button.next:hover {
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 12px;
   flex-wrap: wrap;
   width: 100%;
 }
 @media (max-width: 1000px) {
   .reviews__buttons {
-    gap: 10px;
+    gap: 8px;
+  }
+}
+@media (max-width: 600px) {
+  .reviews__buttons {
+    gap: 0;
   }
 }
 .reviews__buttons > * {
   flex: 1;
 }
-@media (max-width: 1000px) {
-  .reviews__buttons > * {
-    flex-basis: calc(20% - 8px);
-    max-width: calc(20% - 8px);
-  }
-}
-@media (max-width: 1140px) {
-  .reviews__buttons > *:first-child {
-    flex: 1 0 auto;
-    width: 100%;
-    max-width: 100%;
-  }
-}
 .reviews__button {
-  background: transparent;
-}
-.reviews__button > picture {
-  pointer-events: none;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--blue-bg);
+  border-top: 2px solid var(--bg-main);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
 }
 @media (max-width: 1000px) {
-  .reviews__button > picture {
-    filter: invert(1);
+  .reviews__button {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-height: unset;
+    padding: 10px;
+    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+    border-color: transparent;
+    border-radius: 15px;
+    text-align: center;
+    transform-origin: center;
   }
 }
-.reviews__button:is(.reviews__button-main).active {
-  background-color: var(--blue-main);
-  color: var(--color-black);
-  border: 1px solid var(--blue-main);
-  box-shadow: 0px 0px 15px var(--blue-main);
+@media (max-width: 600px) {
+  .reviews__button {
+    gap: 8px;
+    padding: 4px;
+    background: transparent;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transform-origin: bottom center;
+  }
 }
-.reviews__button:not(.reviews__button-main):hover, .reviews__button:not(.reviews__button-main).active {
-  background: transparent;
-  border: 1px solid var(--blue-main);
-  box-shadow: 0px 0px 15px var(--blue-main);
+.reviews__button:hover {
+  background: color-mix(in srgb, var(--blue-main) 15%, transparent);
 }
 @media (max-width: 1000px) {
-  .reviews__button:not(.reviews__button-main):hover, .reviews__button:not(.reviews__button-main).active {
-    background-color: var(--blue-main);
+  .reviews__button:hover {
+    color: var(--color-white);
+    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+    transform: scale(1.125);
+  }
+}
+@media (max-width: 600px) {
+  .reviews__button:hover {
+    border-color: transparent;
+    transform: none;
   }
 }
 @media (max-width: 1000px) {
-  .reviews__button:not(.reviews__button-main):hover > picture, .reviews__button:not(.reviews__button-main).active > picture {
-    filter: invert(0);
+  .reviews__button:hover img {
+    filter: unset;
+  }
+}
+.reviews__button img {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+@media (max-width: 1000px) {
+  .reviews__button img {
+    width: 48px;
+    height: 48px;
+  }
+}
+@media (max-width: 600px) {
+  .reviews__button img {
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (max-width: 1000px) {
+  .reviews__button span {
+    text-wrap: balance;
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 600px) {
+  .reviews__button span {
+    font-size: 11px !important;
+  }
+}
+@media (max-width: 1000px) {
+  .reviews__button:has(:checked), .reviews__button.active {
+    box-shadow: 0px 0px 15px var(--blue-main);
+    color: var(--blue-main);
+    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+  }
+}
+@media (max-width: 600px) {
+  .reviews__button:has(:checked), .reviews__button.active {
+    box-shadow: unset;
+  }
+}
+.reviews__button:has(:checked) img, .reviews__button.active img {
+  filter: invert(1) grayscale(1) brightness(0);
+}
+@media (max-width: 1000px) {
+  .reviews__button:has(:checked) img, .reviews__button.active img {
+    filter: unset;
   }
 }
 @media (min-width: 1000px) {
-  .reviews__button:not(.reviews__button-main):hover > picture img, .reviews__button:not(.reviews__button-main).active > picture img {
+  .reviews__button:has(:checked), .reviews__button.active {
+    background-color: var(--bg-main);
+    border-top: 2px solid var(--blue-main);
+    color: var(--color-white);
+  }
+  .reviews__button:has(:checked) img, .reviews__button.active img {
+    filter: invert(0) grayscale(0) brightness(1);
+  }
+}
+.reviews__button i {
+  display: flex;
+  font-size: 32px;
+  color: var(--color-white);
+  transition: 0.25s ease-in-out;
+}
+@media (max-width: 1000px) {
+  .reviews__button i {
+    font-size: 48px;
+  }
+}
+@media (max-width: 600px) {
+  .reviews__button i {
+    font-size: 32px;
+  }
+}
+.reviews__button img {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: invert(1) grayscale(1) brightness(5);
+  transition: 0.25s ease-in-out;
+}
+@media (max-width: 1000px) {
+  .reviews__button img {
+    width: 48px;
+    height: 48px;
+  }
+}
+@media (max-width: 600px) {
+  .reviews__button img {
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (max-width: 1000px) {
+  .reviews__button:hover i {
+    color: var(--blue-main);
+  }
+}
+@media (max-width: 1000px) {
+  .reviews__button:hover img {
     filter: unset;
+  }
+}
+.reviews__button:has(:checked) img, .reviews__button.active img {
+  filter: invert(1) grayscale(1) brightness(0);
+}
+@media (max-width: 1000px) {
+  .reviews__button:has(:checked) img, .reviews__button.active img {
+    filter: unset;
+  }
+}
+.reviews__button:has(:checked) i, .reviews__button.active i {
+  color: var(--blue-main);
+}
+@media (min-width: 1000px) {
+  .reviews__button:has(:checked), .reviews__button.active {
+    background-color: var(--bg-main);
+    border-top: 2px solid var(--blue-main);
+    color: var(--color-white);
+  }
+  .reviews__button:has(:checked) img, .reviews__button.active img {
+    filter: invert(0) grayscale(0) brightness(1);
   }
 }
 .reviews__wrapper {
@@ -11935,7 +12077,7 @@ button.next:hover {
 }
 @media (max-width: 1000px) {
   .reviews__wrapper {
-    background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.1) 85%, rgba(0, 234, 255, 0) 100%);
+    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
   }
 }
 .reviews__layout {

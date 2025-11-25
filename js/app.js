@@ -2768,26 +2768,46 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (event.target.matches("form[data-pjax]")) {
 				event.preventDefault();
 
-				pjaxSubmit(event, {
+				$.pjax.submit(event, "#reviews-container", {
 					push: true,
 					replace: false,
 					timeout: 1000,
 					scrollTo: false,
-					container: "#reviews-container",
 				});
 			}
 		});
-		// Обработка клика по элементам с классом 'filter'
+
+		// Обработка кликов по пагинации
 		document.addEventListener("click", (event) => {
-			if (event.target.matches(".filter")) {
-				const rating = event.target.dataset.rating;
-				const type = document.querySelector(".reviews__button.active")
-					.dataset.type;
-				// Здесь должен быть вызов функции pjax.reload
-				pjaxReload({
-					container: "#reviews-container",
+			const pageLink = event.target.closest(".pagination a");
+
+			if (pageLink) {
+				event.preventDefault();
+				$.pjax.reload("#reviews-container", {
+					url: pageLink.href,
+					type: "GET",
+					timeout: 1000,
+					push: false,
+					replace: true,
+					scrollTo: false,
+				});
+				return;
+			}
+		});
+
+		document.addEventListener("change", (event) => {
+			const filter = event.target.matches(".reviews__button input")
+				? event.target
+				: null;
+
+			if (filter) {
+				const type = filter.dataset.type;
+
+				console.log("success change: ", type);
+
+				$.pjax.reload("#reviews-container", {
 					type: "POST",
-					data: { rating: rating, type: type },
+					data: { type: type },
 					timeout: 1000,
 					push: false,
 					replace: true,
