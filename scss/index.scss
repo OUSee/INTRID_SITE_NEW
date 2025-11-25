@@ -4189,11 +4189,6 @@ button.next {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		// gap: 50px;
-
-		// @media (max-width: 1000px) {
-		// 	gap: 40px;
-		// }
 
 		@media (min-width: 600px) and (max-width: 1000px) {
 			gap: 8px;
@@ -4222,53 +4217,6 @@ button.next {
 		}
 	}
 
-	// &__button {
-	// 	background: transparent;
-
-	// 	& > picture {
-	// 		pointer-events: none;
-	// 		transition: 0.25s ease-in-out;
-
-	// 		@media (max-width: 1000px) {
-	// 			filter: invert(1);
-	// 		}
-	// 	}
-
-	// 	&:is(.reviews__button-main) {
-	// 		&.active {
-	// 			background-color: var(--blue-main);
-	// 			color: var(--color-black);
-	// 			border: 1px solid var(--blue-main);
-	// 			box-shadow: 0px 0px 15px var(--blue-main);
-	// 		}
-	// 	}
-
-	// 	&:not(.reviews__button-main) {
-	// 		&:hover,
-	// 		&.active {
-	// 			background: transparent;
-	// 			border: 1px solid var(--blue-main);
-	// 			box-shadow: 0px 0px 15px var(--blue-main);
-
-	// 			@media (max-width: 1000px) {
-	// 				background-color: var(--blue-main);
-	// 			}
-
-	// 			& > picture {
-	// 				@media (max-width: 1000px) {
-	// 					filter: invert(0);
-	// 				}
-
-	// 				& img {
-	// 					@media (min-width: 1000px) {
-	// 						filter: unset;
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }
-
 	&__button {
 		@include tab-button;
 		@include tab-button-reviews;
@@ -4291,16 +4239,6 @@ button.next {
 			rgba(10, 10, 10, 0) 100%
 		);
 		transition: 0.25s ease-in-out;
-
-		// @media (max-width: 1000px) {
-		// 	background: linear-gradient(
-		// 		0deg,
-		// 		rgba(0, 234, 255, 0) 0%,
-		// 		rgba(0, 234, 255, 0.1) 15%,
-		// 		rgba(0, 234, 255, 0.1) 85%,
-		// 		rgba(0, 234, 255, 0) 100%
-		// 	);
-		// }
 	}
 
 	&__layout {
@@ -4519,6 +4457,12 @@ button.next {
 		flex-wrap: wrap;
 		gap: 12px;
 		width: 100%;
+
+		transform-origin: top center;
+
+		&.show {
+			animation: burgerAppear 0.5s ease-in-out;
+		}
 
 		& .card {
 			flex: 1 1 360px;

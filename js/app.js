@@ -2802,6 +2802,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			if (filter) {
 				const type = filter.dataset.type;
+				const wrapper =
+					reviewsContainer.querySelector(".reviews__list");
+
+				const isShow = wrapper && wrapper.classList.contains("show");
+
+				if (isShow) {
+					wrapper.classList.remove("show");
+
+					setTimeout(() => {
+						wrapper.classList.add("show");
+					}, 250);
+				} else {
+					wrapper.classList.add("show");
+				}
 
 				console.log("success change: ", type);
 
