@@ -2789,7 +2789,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					timeout: 1000,
 					push: false,
 					replace: true,
-					scrollTo: false,
+					scrollTo: true,
 				});
 				return;
 			}

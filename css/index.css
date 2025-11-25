@@ -11849,10 +11849,20 @@ button.next:hover {
   flex: 1 1 35%;
 }
 
+@media (max-width: 1000px) {
+  .reviews {
+    background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.35) 15%, rgba(0, 234, 255, 0.35) 85%, rgba(0, 234, 255, 0) 100%);
+  }
+}
 .reviews__inner {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+@media (min-width: 600px) and (max-width: 1000px) {
+  .reviews__inner {
+    gap: 8px;
+  }
 }
 .reviews__buttons {
   display: flex;
@@ -11997,6 +12007,11 @@ button.next:hover {
     filter: invert(0) grayscale(0) brightness(1);
   }
 }
+@media (max-width: 1000px) {
+  .reviews__button {
+    justify-content: flex-start;
+  }
+}
 .reviews__button i {
   display: flex;
   font-size: 32px;
@@ -12074,11 +12089,6 @@ button.next:hover {
   padding: 32px 0;
   background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
   transition: 0.25s ease-in-out;
-}
-@media (max-width: 1000px) {
-  .reviews__wrapper {
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-  }
 }
 .reviews__layout {
   display: flex;
