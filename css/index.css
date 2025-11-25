@@ -4652,6 +4652,13 @@ button:hover img,
     filter: invert(0) grayscale(0) brightness(1);
   }
 }
+.button--tab input {
+  display: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
 
 .mobile-visible {
   display: none !important;
@@ -11243,6 +11250,38 @@ button.next:hover {
   }
 }
 
+@media (max-width: 1000px) {
+  .portfolio {
+    background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.35) 15%, rgba(0, 234, 255, 0.35) 85%, rgba(0, 234, 255, 0) 100%);
+  }
+}
+.portfolio-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.portfolio-tabs--buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  overflow-x: auto;
+}
+@media (min-width: 600px) and (max-width: 1000px) {
+  .portfolio-tabs--buttons {
+    gap: 8px;
+    padding: 16px 0;
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-tabs--buttons {
+    gap: 0;
+  }
+}
+.portfolio-tabs--buttons > * {
+  flex: 1;
+  width: auto;
+  min-width: fit-content;
+}
 .portfolio-keys .slider-wrapper {
   position: relative;
   display: flex;
@@ -11365,47 +11404,23 @@ button.next:hover {
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
 }
 .portfolio-block {
+  position: relative;
+  z-index: 1;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
-  width: 100%;
-}
-@media (max-width: 440px) {
-  .portfolio-block {
-    gap: 10px;
-  }
-}
-.portfolio-block > * {
-  flex: 1 0 calc(25% - 15px);
-  max-width: calc(25% - 15px);
+  padding: 50px 0;
+  background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
+  transition: 0.25s ease-in-out;
 }
 @media (max-width: 1000px) {
-  .portfolio-block > * {
-    flex: 1 0 calc(33.333333% - 14px);
-    max-width: calc(33.333333% - 14px);
-  }
-}
-@media (max-width: 720px) {
-  .portfolio-block > * {
-    flex: 1 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-  }
-}
-@media (max-width: 440px) {
-  .portfolio-block > * {
-    flex: 1 0 100%;
-    max-width: 100%;
+  .portfolio-block {
+    gap: 10px;
+    padding: 32px 0;
   }
 }
 .portfolio-block:is([data-pjax-container]) {
   display: block !important;
-}
-.portfolio-block:is([data-pjax-container]) > * {
-  max-width: 100% !important;
-  flex: 1 0 auto !important;
 }
 .portfolio-block:is([data-pjax-container]) .portfolio-block__cards {
   display: flex;
@@ -11413,36 +11428,46 @@ button.next:hover {
   align-items: stretch;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 4px;
   width: 100%;
   border-radius: 39px;
   overflow: hidden;
 }
-@media (max-width: 440px) {
-  .portfolio-block:is([data-pjax-container]) .portfolio-block__cards {
-    gap: 10px;
-  }
-}
 .portfolio-block:is([data-pjax-container]) .portfolio-block__cards > * {
-  flex: 1 0 calc(25% - 15px);
-  max-width: calc(25% - 15px);
+  flex: 1 0 calc(25% - 3px);
+  max-width: calc(25% - 3px);
 }
 @media (max-width: 1000px) {
   .portfolio-block:is([data-pjax-container]) .portfolio-block__cards > * {
-    flex: 1 0 calc(33.333333% - 14px);
-    max-width: calc(33.333333% - 14px);
+    flex: 1 0 calc(33.333333% - 3px);
+    max-width: calc(33.333333% - 3px);
   }
 }
 @media (max-width: 720px) {
   .portfolio-block:is([data-pjax-container]) .portfolio-block__cards > * {
-    flex: 1 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
+    flex: 1 0 calc(50% - 3px);
+    max-width: calc(50% - 3px);
   }
 }
 @media (max-width: 440px) {
   .portfolio-block:is([data-pjax-container]) .portfolio-block__cards > * {
     flex: 1 0 100%;
     max-width: 100%;
+  }
+}
+.portfolio-block--buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+@media (max-width: 1000px) {
+  .portfolio-block--buttons {
+    gap: 4px;
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-block--buttons {
+    gap: 0;
   }
 }
 
@@ -12006,6 +12031,13 @@ button.next:hover {
   .reviews__button:has(:checked) img, .reviews__button.active img {
     filter: invert(0) grayscale(0) brightness(1);
   }
+}
+.reviews__button input {
+  display: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
 }
 @media (max-width: 1000px) {
   .reviews__button {

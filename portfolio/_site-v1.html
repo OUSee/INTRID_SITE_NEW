@@ -176,259 +176,293 @@
     </header>
     <main>
         <!-- hero-section -->
-        <section class="main-section portfolio">
-            <div class="container w-100">
-                <div class="breadcrumbs">
-                    <a href="../">Главная</a>
-                    <span>-</span>
-                    <a href="../portfolio.html">Портфолио</a>
-                    <span>-</span>
-                    <a href="#" class="link-disabled">Разработка сайтов</a>
-                </div>
-
-                <h1 class="w-fit">
-                    <span class="title_h1 underlined">Портфолио разработка сайтов</span>
-                </h1>
+        <section class="main-section container">
+            <div class="breadcrumbs">
+                <a href="../">Главная</a>
+                <span>-</span>
+                <a href="../portfolio.html">Портфолио</a>
+                <span>-</span>
+                <a href="#" class="link-disabled">Разработка сайтов</a>
             </div>
 
-            <div class="portfolio-tabs">
-                <div class="container">
-                    <div class="portfolio-tabs--buttons">
-                        <label for="portfolio-filter-1" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-1" data-type="landing-page">
-                            <span>Landing Page</span>
-                        </label>
-                        <label for="portfolio-filter-2" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-2" data-type="corporate-website">
-                            <span>Корпоративный сайт</span>
-                        </label>
-                        <label for="portfolio-filter-3" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-3" data-type="online-store">
-                            <span>Интернет-магазин</span>
-                        </label>
-                        <label for="portfolio-filter-4" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-4" data-type="informational-portal">
-                            <span>Информационный портал</span>
-                        </label>
-                        <label for="portfolio-filter-5" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-5" data-type="tender-portal">
-                            <span>Тендерный портал</span>
-                        </label>
-                    </div>
+            <h1 class="w-fit">
+                <span class="title_h1 underlined">Портфолио разработка сайтов</span>
+            </h1>
+
+            <div class="flex-layout flex-layout--tab gap-20 w-100" data-filters="portfolio-sites">
+                <label for="portfolio-filter-1" class="button-link">
+                    <input type="checkbox" name="portfolio-filter" id="portfolio-filter-1" data-filter="landing-site">
+                    <span>Landing Page</span><i class="icon-arrow_wide"></i>
+                </label>
+                <label for="portfolio-filter-2" class="button-link">
+                    <input type="checkbox" name="portfolio-filter" id="portfolio-filter-2" data-filter="corporate-site">
+                    <span>Корпоративный сайт</span><i class="icon-arrow_wide"></i>
+                </label>
+                <label for="portfolio-filter-3" class="button-link">
+                    <input type="checkbox" name="portfolio-filter" id="portfolio-filter-3" data-filter="magazine-site">
+                    <span>Интернет-магазин</span><i class="icon-arrow_wide"></i>
+                </label>
+                <label for="portfolio-filter-4" class="button-link">
+                    <input type="checkbox" name="portfolio-filter" id="portfolio-filter-4" data-filter="information-site">
+                    <span>Информационный портал</span><i class="icon-arrow_wide"></i>
+                </label>
+            </div>
+
+            <div class="portfolio-block mt-50" data-items="portfolio-sites">
+                <div class="card card--recent card--mockup transparency active" data-item="landing-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/tipo.webp" alt="recent-work-demo" />
+                            <b>Типография 36</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/"
+                        class="absolute-link">https://tipo.intrid.ru</a>
                 </div>
-            
-                <div id="porfolio-body-content" class="portfolio-block" data-pjax-container="" data-pjax-push-state=""
-                    data-pjax-timeout="1000">
-                    <div class="container">
-                        <div class="portfolio-block__cards">
-                            <div class="card card--portfolio transparency active corporate-website"
-                                style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites461/112813.jpg" class="portfolio-site"
-                                    alt="КВ Системы">
-                                <div class="card-body">
-                                    <b>КВ Системы</b>
-                                    <p>14.07.2025</p>
-                                    <span>https://kwsystems.ru/</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://kwsystems.ru/"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active corporate-website"
-                                style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites462/fed877.jpg" class="portfolio-site"
-                                    alt="Yamnoe Dynamics">
-                                <div class="card-body">
-                                    <b>Yamnoe Dynamics</b>
-                                    <p>01.07.2025</p>
-                                    <span>https://yadms.ru</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://yadms.ru"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active corporate-website"
-                                style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites463/bd3648.jpg" class="portfolio-site"
-                                    alt="Линия Холода">
-                                <div class="card-body">
-                                    <b>Линия Холода</b>
-                                    <p>20.06.2025</p>
-                                    <span>https://lineholod.ru</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://lineholod.ru"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active online-store" style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites459/760602.jpg" class="portfolio-site"
-                                    alt="Сервис-Телеком">
-                                <div class="card-body">
-                                    <b>Сервис-Телеком</b>
-                                    <p>14.04.2025</p>
-                                    <span>https://s-telekom.ru/</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://s-telekom.ru/"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active corporate-website"
-                                style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites458/f04896.jpg" class="portfolio-site"
-                                    alt="Типография36">
-                                <div class="card-body">
-                                    <b>Типография36</b>
-                                    <p>10.03.2025</p>
-                                    <span>https://tipo.intrid.ru/</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active corporate-website"
-                                style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites451/7b2b04.jpg" class="portfolio-site"
-                                    alt="Стоматология Факел">
-                                <div class="card-body">
-                                    <b>Стоматология Факел</b>
-                                    <p>15.01.2025</p>
-                                    <span>https://stomatfakel.ru/</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://stomatfakel.ru/"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active online-store" style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites456/31dd45.png" class="portfolio-site" alt="VinLam">
-                                <div class="card-body">
-                                    <b>VinLam</b>
-                                    <p>26.12.2024</p>
-                                    <span>https://vinlam.ru/</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active tender-portal" style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites452/ccee95.jpg" class="portfolio-site"
-                                    alt="Тендер ВКТМ">
-                                <div class="card-body">
-                                    <b>Тендер ВКТМ</b>
-                                    <p>25.12.2024</p>
-                                    <span>https://tender-vktm.ru</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://tender-vktm.ru"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active corporate-website"
-                                style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites454/b724a7.png" class="portfolio-site"
-                                    alt="СтройИнтерьер">
-                                <div class="card-body">
-                                    <b>СтройИнтерьер</b>
-                                    <p>13.12.2024</p>
-                                    <span>https://стройинтерер.рф/</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://стройинтерер.рф/"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active corporate-website"
-                                style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites447/393912.png" class="portfolio-site" alt="АтомИнфо">
-                                <div class="card-body">
-                                    <b>АтомИнфо</b>
-                                    <p>07.10.2024</p>
-                                    <span>https://atom-info.ru</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://atom-info.ru"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active informational-portal"
-                                style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites453/81bcfa.jpg" class="portfolio-site"
-                                    alt="Вся недвижимость">
-                                <div class="card-body">
-                                    <b>Вся недвижимость</b>
-                                    <p>07.08.2024</p>
-                                    <span>https://vsya-nedvizhimost.ru/</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://vsya-nedvizhimost.ru/"
-                                    class="absolute-link"></a>
-                            </div>
-                            <div class="card card--portfolio transparency active corporate-website"
-                                style="--portfolio-color: #ffffff">
-                                <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                                <img src="../../files/image/store/Sites/Sites446/710a10.jpg" class="portfolio-site"
-                                    alt="Евразийская Организация Индустрии">
-                                <div class="card-body">
-                                    <b>Евразийская Организация Индустрии</b>
-                                    <p>26.06.2024</p>
-                                    <span>https://eur-asia.org.ru/</span>
-                                </div>
-                                <a href="javascript://" data-popup="site-preview" data-site-preview="https://eur-asia.org.ru/"
-                                    class="absolute-link"></a>
-                            </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="corporate-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/vinlam.webp" alt="recent-work-demo" />
+                            <b>VinLam</b>
+                            <p>
+                                02.07.1991
+                            </p>
                         </div>
-                        <div class="portfolio-block__pagination pagination-panel">
-                            <div class="pagination">
-                                <span class="pagination--prev-btn" style="opacity: 0;">
-                                    <i class="icon-shevrone left"></i>
-                                </span>
-            
-                                <div class="pagination--buttons-dots pagination--buttons-numbers">
-                                    <a class="pagination--btn-num pagination--btn-dot highlight"
-                                        href="/portfolio/site?page=1&amp;per-page=12" data-link-page="site" data-page="1"
-                                        aria-label="Страница 1"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">1</span></a><a
-                                        class="pagination--btn-num pagination--btn-dot"
-                                        href="/portfolio/site?page=2&amp;per-page=12" data-link-page="site" data-page="2"
-                                        aria-label="Страница 2"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">2</span></a><a
-                                        class="pagination--btn-num pagination--btn-dot"
-                                        href="/portfolio/site?page=3&amp;per-page=12" data-link-page="site" data-page="3"
-                                        aria-label="Страница 3"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">3</span></a><a
-                                        class="pagination--btn-num pagination--btn-dot"
-                                        href="/portfolio/site?page=4&amp;per-page=12" data-link-page="site" data-page="4"
-                                        aria-label="Страница 4"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">4</span></a><a
-                                        class="pagination--btn-num pagination--btn-dot"
-                                        href="/portfolio/site?page=5&amp;per-page=12" data-link-page="site" data-page="5"
-                                        aria-label="Страница 5"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">5</span></a><a
-                                        class="pagination--btn-num pagination--btn-dot"
-                                        href="/portfolio/site?page=6&amp;per-page=12" data-link-page="site" data-page="6"
-                                        aria-label="Страница 6"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">6</span></a><a
-                                        class="pagination--btn-num pagination--btn-dot"
-                                        href="/portfolio/site?page=7&amp;per-page=12" data-link-page="site" data-page="7"
-                                        aria-label="Страница 7"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">7</span></a><a
-                                        class="pagination--btn-num pagination--btn-dot"
-                                        href="/portfolio/site?page=8&amp;per-page=12" data-link-page="site" data-page="8"
-                                        aria-label="Страница 8"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">8</span></a><a
-                                        class="pagination--btn-num pagination--btn-dot"
-                                        href="/portfolio/site?page=9&amp;per-page=12" data-link-page="site" data-page="9"
-                                        aria-label="Страница 9"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">9</span></a><span
-                                        class="pagination--btn-dot">...</span><a class="pagination--btn-num pagination--btn-dot"
-                                        href="/portfolio/site?page=20&amp;per-page=12" data-link-page="site" data-page="20"
-                                        aria-label="Страница 20"><span class="pagination--btn-dot-circle"
-                                            aria-hidden="true"></span><span class="pagination--btn-label">20</span></a>
-                                </div>
-            
-                                <a class="pagination--next-btn" href="/portfolio/site?page=2&amp;per-page=12"
-                                    data-link-page="site"><i class="icon-shevrone"></i></a>
-                            </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/"
+                        class="absolute-link">https://vinlam.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="magazine-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/trast.webp" alt="recent-work-demo" />
+                            <b>ТРАСТ</b>
+                            <p>
+                                02.07.1991
+                            </p>
                         </div>
-                    </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/"
+                        class="absolute-link">https://trastvrn.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="information-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/yamnoe.webp" alt="recent-work-demo" />
+                            <b>YamnoeDynamics</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/"
+                        class="absolute-link">https://yamnoe_dynamics</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="landing-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/tipo.webp" alt="recent-work-demo" />
+                            <b>Типография 36</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/"
+                        class="absolute-link">https://tipo.intrid.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="corporate-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/vinlam.webp" alt="recent-work-demo" />
+                            <b>VinLam</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/"
+                        class="absolute-link">https://vinlam.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="magazine-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/trast.webp" alt="recent-work-demo" />
+                            <b>ТРАСТ</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/"
+                        class="absolute-link">https://trastvrn.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="information-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/yamnoe.webp" alt="recent-work-demo" />
+                            <b>YamnoeDynamics</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/"
+                        class="absolute-link">https://yamnoe_dynamics</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="landing-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/vinlam.webp" alt="recent-work-demo" />
+                            <b>VinLam</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/"
+                        class="absolute-link">https://vinlam.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="corporate-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/trast.webp" alt="recent-work-demo" />
+                            <b>ТРАСТ</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/"
+                        class="absolute-link">https://trastvrn.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="magazine-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/yamnoe.webp" alt="recent-work-demo" />
+                            <b>YamnoeDynamics</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/"
+                        class="absolute-link">https://yamnoe_dynamics</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="information-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/tipo.webp" alt="recent-work-demo" />
+                            <b>Типография 36</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/"
+                        class="absolute-link">https://tipo.intrid.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="landing-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/vinlam.webp" alt="recent-work-demo" />
+                            <b>VinLam</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/"
+                        class="absolute-link">https://vinlam.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup transparency active" data-item="corporate-site">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/">
+                        <div class="card-body">
+                            <img src="../src/images/mockup/trast.webp" alt="recent-work-demo" />
+                            <b>ТРАСТ</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/"
+                        class="absolute-link">https://trastvrn.ru</a>
                 </div>
             </div>
+
+            <!-- <div class="flex-layout flex-layout--4x mt-50 w-100">
+                <div class="card card--recent card--mockup active">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/">
+                        <img src="../src/images/mockup/tipo.webp" alt="recent-work-demo" />
+                        <div class="card-body">
+                            <b>Типография 36</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://tipo.intrid.ru/"
+                        class="absolute-link">https://tipo.intrid.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup active">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/">
+                        <img src="../src/images/mockup/vinlam.webp" alt="recent-work-demo" />
+                        <div class="card-body">
+                            <b>VinLam</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/"
+                        class="absolute-link">https://vinlam.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup active">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/">
+                        <img src="../src/images/mockup/trast.webp" alt="recent-work-demo" />
+                        <div class="card-body">
+                            <b>ТРАСТ</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://trastvrn.ru/"
+                        class="absolute-link">https://trastvrn.ru</a>
+                </div>
+
+                <div class="card card--recent card--mockup active">
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/">
+                        <img src="../src/images/mockup/yamnoe.webp" alt="recent-work-demo" />
+                        <div class="card-body">
+                            <b>YamnoeDynamics</b>
+                            <p>
+                                02.07.1991
+                            </p>
+                        </div>
+                    </a>
+                    <a href="javascript://" data-popup="site-preview" data-site-preview="https://test.intrid.ru/yd/"
+                        class="absolute-link">https://yamnoe_dynamics</a>
+                </div>
+            </div> -->
         </section>
 
         <!--  -->
