@@ -240,7 +240,8 @@
 	&#ui-portfolio-slider,
 	&#portfolio-web-slider,
 	&#portfolio-corporate-slider,
-	&#portfolio-shop-slider {
+	&#portfolio-shop-slider,
+	&#noncommercial-slider {
 		gap: 4px;
 		width: 100%;
 
@@ -2268,12 +2269,28 @@ ol {
 		gap: 10px;
 	}
 
+	&-16 {
+		gap: 16px;
+	}
+
 	&-20 {
 		gap: 20px;
 	}
 
+	&-24 {
+		gap: 24px;
+	}
+
+	&-28 {
+		gap: 28px;
+	}
+
 	&-32 {
 		gap: 32px;
+	}
+
+	&-36 {
+		gap: 36px;
 	}
 
 	&-50 {
@@ -4829,6 +4846,7 @@ button:hover,
 			align-items: center;
 			justify-content: flex-end;
 			gap: 6px;
+			margin-left: auto;
 
 			& > p {
 				margin: 0;
@@ -5820,6 +5838,10 @@ button:hover,
 			& > p {
 				margin: 0;
 				color: var(--color-grey);
+			}
+
+			&:is(a) {
+				cursor: pointer;
 			}
 		}
 	}

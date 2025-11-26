@@ -1531,6 +1531,7 @@ button.next {
 		gap: 100px;
 		position: relative;
 		margin-bottom: 140px;
+		padding-left: 25%;
 
 		@media (max-width: 520px) {
 			display: none;
@@ -1539,6 +1540,7 @@ button.next {
 		@media (max-width: 1100px) {
 			justify-content: center;
 			gap: 20px;
+			padding-left: 0;
 		}
 
 		.orb-bottom {
@@ -3423,6 +3425,7 @@ button.next {
 	}
 
 	& .nav-tabs {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -3433,6 +3436,14 @@ button.next {
 			padding: 16px 40px;
 			scroll-behavior: smooth;
 			scroll-snap-type: mandatory;
+			mask-image: linear-gradient(
+				to right,
+				rgb(0, 0, 0, 0) 0%,
+				rgba(0, 0, 0) 5%,
+				rgba(0, 0, 0) 95%,
+				rgb(0, 0, 0, 0) 100%
+			);
+
 			overflow-x: auto;
 			overflow-y: clip;
 		}
@@ -3460,6 +3471,7 @@ button.next {
 
 			@media (max-width: 1000px) {
 				width: fit-content;
+				min-width: 100%;
 			}
 
 			@media (max-width: 600px) {
@@ -3472,11 +3484,12 @@ button.next {
 
 				@media (max-width: 1000px) {
 					flex: 1 1 0%;
-					width: 200px;
+					min-width: 200px;
+					max-width: unset;
 				}
 
 				@media (max-width: 600px) {
-					width: 150px;
+					min-width: 150px;
 				}
 			}
 		}
@@ -5783,7 +5796,7 @@ button.next {
 
 	.for-buisness-offers {
 		.blocks-wrapper .orb-bottom {
-			left: -10%;
+			// left: -10%;
 			margin-left: 0;
 		}
 	}
