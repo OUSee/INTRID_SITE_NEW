@@ -4564,19 +4564,19 @@ button:hover img,
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     max-height: unset;
-    padding: 10px;
+    padding: 8px 4px;
     background: color-mix(in srgb, var(--bg-main) 70%, transparent);
     border-color: transparent;
-    border-radius: 15px;
+    border-radius: 16px 16px 0 0;
     text-align: center;
     transform-origin: center;
   }
 }
 @media (max-width: 600px) {
   .button--tab {
-    gap: 8px;
+    gap: 4px;
     padding: 4px;
     background: transparent;
     border-bottom-left-radius: 0;
@@ -4613,8 +4613,8 @@ button:hover img,
 }
 @media (max-width: 1000px) {
   .button--tab img {
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
   }
 }
 @media (max-width: 600px) {
@@ -8397,7 +8397,6 @@ button.next:hover {
 @media (max-width: 1000px) {
   .nav-tabs--content {
     gap: 10px;
-    margin-top: 16px;
     padding: 32px 0;
   }
 }
@@ -11485,7 +11484,11 @@ button.next:hover {
   width: 100%;
   padding: 50px 0;
   background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
+  transform-origin: top center;
   transition: 0.25s ease-in-out;
+}
+.portfolio-block.show {
+  animation: burgerAppear 0.5s ease-in-out;
 }
 @media (max-width: 1000px) {
   .portfolio-block {
@@ -11958,11 +11961,6 @@ button.next:hover {
   flex-direction: row;
   flex-wrap: wrap;
 }
-@media (min-width: 600px) and (max-width: 1000px) {
-  .reviews__inner {
-    gap: 8px;
-  }
-}
 .reviews__buttons {
   display: flex;
   flex-direction: row;
@@ -12006,19 +12004,19 @@ button.next:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     max-height: unset;
-    padding: 10px;
+    padding: 8px 4px;
     background: color-mix(in srgb, var(--bg-main) 70%, transparent);
     border-color: transparent;
-    border-radius: 15px;
+    border-radius: 16px 16px 0 0;
     text-align: center;
     transform-origin: center;
   }
 }
 @media (max-width: 600px) {
   .reviews__button {
-    gap: 8px;
+    gap: 4px;
     padding: 4px;
     background: transparent;
     border-bottom-left-radius: 0;
@@ -12055,8 +12053,8 @@ button.next:hover {
 }
 @media (max-width: 1000px) {
   .reviews__button img {
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
   }
 }
 @media (max-width: 600px) {
@@ -12126,7 +12124,7 @@ button.next:hover {
 }
 @media (max-width: 1000px) {
   .reviews__button i {
-    font-size: 48px;
+    font-size: 32px;
   }
 }
 @media (max-width: 600px) {
@@ -12291,7 +12289,7 @@ button.next:hover {
 }
 .reviews__rates-percentage div p:first-child {
   width: 11px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20.8px;
   color: var(--primary65);
 }
@@ -12562,16 +12560,6 @@ button.next:hover {
 }
 .help-faq .accordion-item .accordion-content {
   background-color: var(--blue-bg);
-}
-@media (min-width: 1200px) {
-  .help-faq .accordion-item .accordion-content > p {
-    font-size: 16px;
-  }
-}
-@media (min-width: 1200px) {
-  .help-faq .accordion-item .accordion-content ul p {
-    font-size: 16px;
-  }
 }
 .help-faq .accordion-item .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
   transform: rotate(-90deg);
@@ -13840,6 +13828,5 @@ button.next:hover {
   justify-content: center;
   width: 30px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 16px;
   letter-spacing: 2px;
 }

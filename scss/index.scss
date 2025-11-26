@@ -290,7 +290,7 @@ button.next {
 
 			@media (max-width: 1000px) {
 				gap: 10px;
-				margin-top: 16px;
+				// margin-top: 16px;
 				padding: 32px 0;
 			}
 
@@ -3684,7 +3684,12 @@ button.next {
 			rgba(10, 10, 10, 0.6) 96%,
 			rgba(10, 10, 10, 0) 100%
 		);
+		transform-origin: top center;
 		transition: 0.25s ease-in-out;
+
+		&.show {
+			animation: burgerAppear 0.5s ease-in-out;
+		}
 
 		@media (max-width: 1000px) {
 			gap: 10px;
@@ -4303,10 +4308,6 @@ button.next {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-
-		@media (min-width: 600px) and (max-width: 1000px) {
-			gap: 8px;
-		}
 	}
 
 	&__buttons {
@@ -4462,7 +4463,7 @@ button.next {
 
 					&:first-child {
 						width: 11px;
-						font-size: 16px;
+						font-size: 14px;
 						line-height: 20.8px;
 						color: var(--primary65);
 					}
@@ -4771,19 +4772,19 @@ button.next {
 			& .accordion-content {
 				background-color: var(--blue-bg);
 
-				& > p {
-					@media (min-width: 1200px) {
-						font-size: 16px;
-					}
-				}
+				// & > p {
+				// 	@media (min-width: 1200px) {
+				// 		font-size: 16px;
+				// 	}
+				// }
 
-				& ul {
-					& p {
-						@media (min-width: 1200px) {
-							font-size: 16px;
-						}
-					}
-				}
+				// & ul {
+				// 	& p {
+				// 		@media (min-width: 1200px) {
+				// 			font-size: 16px;
+				// 		}
+				// 	}
+				// }
 			}
 
 			.accordion-checkbox:checked + .accordion-header i.icon-shevrone {
@@ -6204,7 +6205,7 @@ button.next {
 		justify-content: center;
 		width: 30px;
 		color: rgba(255, 255, 255, 0.5);
-		font-size: 16px;
+		// font-size: 16px;
 		letter-spacing: 2px;
 	}
 }
