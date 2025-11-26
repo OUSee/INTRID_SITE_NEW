@@ -6585,22 +6585,23 @@ button:hover,
 				@include h4;
 				display: block;
 				width: 100%;
-				max-width: fit-content;
-				max-height: 3em;
-				height: unset;
-				flex: 1 0 auto;
+				max-width: 100%;
+				// max-height: 3em;
+				// height: unset;
+				// flex: 1 0 auto;
 				margin-left: auto;
-				aspect-ratio: unset;
+				// aspect-ratio: unset;
 				font-weight: 600;
 				text-align: right;
 				line-break: auto;
+				line-height: 2.5;
 				white-space: nowrap;
 				text-overflow: ellipsis;
 				overflow: hidden;
 
 				@media (max-width: 440px) {
-					max-width: fit-content;
-					max-height: 3em;
+					max-width: 100%;
+					// max-height: 3em;
 				}
 			}
 
@@ -6624,6 +6625,19 @@ button:hover,
 				aspect-ratio: 16 / 9;
 			}
 
+			&:is(.isDev) {
+				& .portfolio-logo {
+					max-height: 3em;
+					height: unset;
+					flex: 1 0 auto;
+					aspect-ratio: unset;
+
+					@media (max-width: 440px) {
+						max-height: 3em;
+					}
+				}
+			}
+
 			& .portfolio-logo {
 				flex: 1 0 auto;
 
@@ -6633,6 +6647,8 @@ button:hover,
 			}
 
 			& .portfolio-site {
+				max-width: 472px;
+
 				@media (max-width: 1000px) {
 					transform: scale(103.5%);
 				}
