@@ -2054,13 +2054,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       sectionIds.forEach((id) => {
         const section = document.getElementById(id);
+		
         if (!section) {
           console.warn(`Элемент с id="${id}" не найден`);
           return;
         }
 
         const isActive = section.classList.contains("show");
-        section.classList.toggle("show", !isActive);
+        section.classList.add("show", !isActive);
 
         if (!isActive) {
           setTimeout(() => {
