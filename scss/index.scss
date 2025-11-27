@@ -3094,6 +3094,17 @@ button.next {
 			}
 		}
 
+		&:not(.show) {
+			max-height: 0;
+			height: 0;
+			opacity: 0;
+			visibility: hidden;
+
+			& * {
+				display: none;
+			}
+		}
+
 		.mobile-hidden {
 			@media (max-width: 1400px) {
 				display: none;

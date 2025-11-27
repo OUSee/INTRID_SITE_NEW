@@ -10994,6 +10994,15 @@ button.next:hover {
     top: calc(100vh - 600px) !important;
   }
 }
+.calculator-total:not(.show) {
+  max-height: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.calculator-total:not(.show) * {
+  display: none;
+}
 @media (max-width: 1400px) {
   .calculator-total .mobile-hidden {
     display: none;
