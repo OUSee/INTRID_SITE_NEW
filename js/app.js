@@ -2255,7 +2255,10 @@ document.addEventListener("DOMContentLoaded", () => {
           elementref: { id: "tenders_toggle", checked: true },
         });
       } else {
-        // ДЕАКТИВАЦИЯ TENDERS_TOGGLE - скрываем блок
+        // ДЕАКТИВАЦИЯ TENDERS_TOGGLE - сбрасываем калькулятор и скрываем блок
+        resetCalculator(toggles, counters, target);
+
+        // Скрываем блок тендерных порталов
         if (toggle.showAccordionItems) {
           hideAccordionItems(toggle.showAccordionItems);
         }
