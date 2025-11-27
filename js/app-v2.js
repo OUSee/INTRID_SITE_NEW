@@ -2078,7 +2078,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-// calculator v1 с жесткими пресетами для типов сайтов (исправлен расчет для вложенных тендерных порталов)
+// calculator v1 с жесткими пресетами для типов сайтов (исправлен сброс счетчиков)
 document.addEventListener("DOMContentLoaded", () => {
 	if (document.getElementById("calculator")) {
 		const inputs = document
@@ -2270,88 +2270,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			return false;
 		};
 
-		// ФУНКЦИЯ ДЛЯ ОБРАБОТКИ TENDERS_TOGGLE (ОСОБЫЙ СЛУЧАЙ)
-		const handleTendersToggle = (toggle, toggles, counters, target) => {
-			if (toggle.elementref.checked) {
-				// АКТИВАЦИЯ TENDERS_TOGGLE - сбрасываем калькулятор и показываем блок
-				resetCalculator(toggles, counters, target);
-				
-				// Восстанавливаем состояние tenders_toggle
-				toggle.elementref.checked = true;
-				
-				// Показываем блок тендерных порталов
-				if (toggle.showAccordionItems) {
-					showAccordionItems(toggle.showAccordionItems);
-				}
-				
-				// Скрываем другие аккордеоны (как для тендерных порталов)
-				isTenderToggling({elementref: {id: 'tenders_toggle', checked: true}});
-			} else {
-				// ДЕАКТИВАЦИЯ TENDERS_TOGGLE - скрываем блок
-				if (toggle.showAccordionItems) {
-					hideAccordionItems(toggle.showAccordionItems);
-				}
-			}
-		};
-
-		// ФУНКЦИЯ ДЛЯ АКТИВАЦИИ NESTED TOGGLES С ДОБАВЛЕНИЕМ СТОИМОСТИ
-		const activateNestedToggles = (toggle, toggles, target) => {
-			if (toggle.nested && toggle.nested.length > 0) {
-				toggle.nested.forEach((nestedToggleid) => {
-					const nestedToggle = toggles.find(
-						(t) => t.id === nestedToggleid
-					);
-					if (nestedToggle && !nestedToggle.elementref.checked) {
-						// Активируем nested toggle
-						nestedToggle.elementref.checked = true;
-						
-						// Добавляем стоимость nested toggle
-						target.current_value += nestedToggle.price;
-						
-						// Показываем reveal блок
-						if (nestedToggle.reveal) {
-							nestedToggle.reveal.classList.remove("hidden");
-						}
-
-						// Активируем связанные секции
-						const section = document.querySelector(
-							`#section-${nestedToggleid.split("-")?.[0]}`
-						);
-						if (section) section.checked = true;
-						
-						// Рекурсивно активируем вложенные nested toggles
-						activateNestedToggles(nestedToggle, toggles, target);
-					}
-				});
-			}
-		};
-
-		// ФУНКЦИЯ ДЛЯ ДЕАКТИВАЦИИ NESTED TOGGLES С ВЫЧИТАНИЕМ СТОИМОСТИ
-		const deactivateNestedToggles = (toggle, toggles, target) => {
-			if (toggle.nested && toggle.nested.length > 0) {
-				toggle.nested.forEach((nestedToggleid) => {
-					const nestedToggle = toggles.find(
-						(t) => t.id === nestedToggleid
-					);
-					if (nestedToggle && nestedToggle.elementref.checked) {
-						// Вычитаем стоимость nested toggle
-						target.current_value -= nestedToggle.price;
-						
-						// Деактивируем nested toggle
-						nestedToggle.elementref.checked = false;
-						
-						// Скрываем reveal блок
-						if (nestedToggle.reveal) {
-							nestedToggle.reveal.classList.add("hidden");
-						}
-						
-						// Рекурсивно деактивируем вложенные nested toggles
-						deactivateNestedToggles(nestedToggle, toggles, target);
-					}
-				});
-			}
-		};
-
 		const handleToggleByHash = (hash, toggles, counters, target) => {
 			const id = hash.replace("#", "");
 			const handle_target = toggles.find((t) => t.id === id);
@@ -2425,7 +2343,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			const counters = [];
 			const texts = [];
 
-			// Определяем основные типы сайтов (tenders_toggle НЕ является типом сайта)
+			// Определяем основные типы сайтов
 			const mainSiteTypes = [
 				"type-landing",
 				"type-portfolio",
@@ -2434,7 +2352,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				"type-store",
 				"type-store_ai",
 				"type-portal",
-				"tenders-toggle",
+				"tender-portal",
+				"tender-portal-paying",
 				"type-unique",
 			];
 
@@ -2510,8 +2429,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			const accordions = document.querySelectorAll(".accordion-item");
 			const isTenderSelected =
 				(toggle.elementref.id === "tender-portal" ||
-					toggle.elementref.id === "tender-portal-paying" ||
-					toggle.elementref.id === "tenders_toggle") &&
+					toggle.elementref.id === "tender-portal-paying") &&
 				toggle.elementref.checked;
 
 			accordions.forEach((accordion) => {
@@ -2532,6 +2450,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					} else {
 						// Активируем аккордион (разрешаем взаимодействие)
 						accordion.classList.remove("deactive");
+						// Восстанавливаем состояние аккордиона на основе его собственных атрибутов
+						// (не разворачиваем автоматически, оставляем как было до деактивации)
 					}
 				}
 			});
@@ -2544,13 +2464,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			toggles.forEach((toggle) => {
 				toggle.elementref.addEventListener("change", () => {
-					// ОСОБАЯ ЛОГИКА ДЛЯ TENDERS_TOGGLE
-					if (toggle.id === "tenders_toggle") {
-						handleTendersToggle(toggle, toggles, counters, target);
-						isTenderToggling(toggle);
-						return;
-					}
-
 					// ОСОБАЯ ЛОГИКА ДЛЯ ТИПОВ САЙТОВ
 					if (toggle.isSiteType) {
 						if (toggle.elementref.checked) {
@@ -2564,6 +2477,8 @@ document.addEventListener("DOMContentLoaded", () => {
 							resetCalculator(toggles, counters, target);
 						}
 						isTenderToggling(toggle);
+
+						// При отключении типа сайта ничего не делаем - это обрабатывается при включении нового типа
 						return;
 					}
 
@@ -2614,15 +2529,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
 									// Сбрасываем nested toggles радио-элемента
 									if (radioToggle.nested) {
-										deactivateNestedToggles(radioToggle, toggles, target);
+										radioToggle.nested.forEach(
+											(nestedId) => {
+												const nestedToggle =
+													toggles.find(
+														(t) => t.id === nestedId
+													);
+												if (
+													nestedToggle &&
+													nestedToggle.elementref
+														.checked
+												) {
+													nestedToggle.elementref.checked = false;
+													target.current_value -=
+														nestedToggle.price;
+													if (nestedToggle.reveal) {
+														nestedToggle.reveal.classList.add(
+															"hidden"
+														);
+													}
+												}
+											}
+										);
 									}
 								}
 							});
 						}
 
-						// АКТИВАЦИЯ NESTED TOGGLES С ДОБАВЛЕНИЕМ СТОИМОСТИ
+						// АКТИВАЦИЯ NESTED TOGGLES (БЕЗ ДОБАВЛЕНИЯ СТОИМОСТИ)
 						if (toggle.nested && toggle.nested.length > 0) {
-							activateNestedToggles(toggle, toggles, target);
+							toggle.nested.forEach((nestedToggleid) => {
+								const nestedToggle = toggles.find(
+									(t) => t.id === nestedToggleid
+								);
+								if (
+									nestedToggle &&
+									!nestedToggle.elementref.checked
+								) {
+									nestedToggle.elementref.checked = true;
+									if (nestedToggle.reveal) {
+										nestedToggle.reveal.classList.remove(
+											"hidden"
+										);
+									}
+
+									const section = document.querySelector(
+										`#section-${
+											nestedToggleid.split("-")?.[0]
+										}`
+									);
+									if (section) section.checked = true;
+								}
+							});
 						}
 
 						// ДОБАВЛЯЕМ СТОИМОСТЬ ОСНОВНОГО TOGGLE
@@ -2649,9 +2607,24 @@ document.addEventListener("DOMContentLoaded", () => {
 							toggle.counter.total = 0;
 						}
 
-						// ДЕАКТИВАЦИЯ NESTED TOGGLES С ВЫЧИТАНИЕМ СТОИМОСТИ
+						// ДЕАКТИВАЦИЯ NESTED TOGGLES (БЕЗ ВЫЧИТАНИЯ СТОИМОСТИ)
 						if (toggle.nested && toggle.nested.length > 0) {
-							deactivateNestedToggles(toggle, toggles, target);
+							toggle.nested.forEach((nestedToggleid) => {
+								const nestedToggle = toggles.find(
+									(t) => t.id === nestedToggleid
+								);
+								if (
+									nestedToggle &&
+									nestedToggle.elementref.checked
+								) {
+									nestedToggle.elementref.checked = false;
+									if (nestedToggle.reveal) {
+										nestedToggle.reveal.classList.add(
+											"hidden"
+										);
+									}
+								}
+							});
 						}
 
 						// ВЫЧИТАЕМ СТОИМОСТЬ ОСНОВНОГО TOGGLE

@@ -2624,6 +2624,9 @@ ol li > ol {
     flex-direction: column;
   }
 }
+.flex-1 {
+  flex: 1;
+}
 
 .gap-0 {
   gap: 0 !important;
@@ -10748,19 +10751,15 @@ button.next:hover {
 }
 .calculator-main-testimonial {
   display: flex;
-  gap: 50px;
-  align-items: end;
-  margin-top: 50px;
+  align-items: flex-end;
+  gap: 32px;
 }
 @media (max-width: 900px) {
   .calculator-main-testimonial {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-  }
-  .calculator-main-testimonial > p {
-    text-align: center;
+    gap: 12px;
   }
 }
 .calculator-calculator {
