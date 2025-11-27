@@ -10942,6 +10942,15 @@ button.next:hover {
 .calculator-calculator .hidden {
   display: none;
 }
+.calculator-calculator:not(.show) {
+  max-height: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.calculator-calculator:not(.show) * {
+  display: none;
+}
 .calculator-list {
   padding-left: 30px;
 }

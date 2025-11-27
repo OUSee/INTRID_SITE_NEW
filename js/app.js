@@ -2089,6 +2089,37 @@ document.addEventListener("DOMContentLoaded", () => {
 		const target = document.getElementById("calculator-total-target");
 		const hash = window.location.hash;
 		const togglechange = new Event("change");
+		const triggerSection = document.querySelector('[data-show-calculator]');
+
+		triggerSection.addEventListener('click', (e) => {
+			toggleSection(e, true);
+		});
+
+		const toggleSection = (trigger, isObject = false) => {
+			let sectionName;
+
+			if (!isObject) {
+				sectionName = trigger;
+			} else {
+				sectionName = trigger.currentTarget.dataset.showCalculator;
+			}
+
+			const section = document.querySelector(`.${sectionName}`);
+			const isActive = section.classList.contains('show');
+
+			if(section) {
+				section.classList.add('show', !isActive);
+
+				setTimeout(() => {
+						section.scrollIntoView({
+							behavior: "smooth",
+							block: "start",
+						});
+
+						console.log('success scroll')
+					}, !isObject ? 250 : 0);
+			}
+		}
 
 		const formatNumber = (num) => {
 			const [integer, decimal] = num.toString().split(".");
@@ -2410,6 +2441,7 @@ document.addEventListener("DOMContentLoaded", () => {
 							});
 						}
 					}
+					toggleSection('calculator-calculator', false);
 					console.log("=> success");
 				} catch (err) {
 					console.log("=> error", err);

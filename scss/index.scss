@@ -3037,6 +3037,17 @@ button.next {
 		.hidden {
 			display: none;
 		}
+
+		&:not(.show) {
+			max-height: 0;
+			height: 0;
+			opacity: 0;
+			visibility: hidden;
+
+			& * {
+				display: none;
+			}
+		}
 	}
 
 	&-list {
