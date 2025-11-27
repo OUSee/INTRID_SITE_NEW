@@ -2017,55 +2017,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const target = document.getElementById("calculator-total-target");
     const hash = window.location.hash;
     const togglechange = new Event("change");
-    const triggerButtons = document?.querySelectorAll("[data-trigger]");
-
-    triggerButtons.forEach((button) => {
-      button.addEventListener("click", (e) => {
-        toggleSection(e, true);
-      });
-    });
-
-    const toggleSection = (trigger, isObject = false) => {
-      let sectionIds = [];
-
-      if (!isObject) {
-        if (Array.isArray(trigger)) {
-          sectionIds = trigger;
-        } else {
-          sectionIds = [trigger];
-        }
-      } else {
-        const triggerShow = trigger.currentTarget.dataset.triggerShow;
-
-        if (triggerShow) {
-          sectionIds = triggerShow.split(";").filter((id) => id.trim() !== "");
-        }
-      }
-
-      sectionIds.forEach((id) => {
-        const section = document.getElementById(id);
-
-        if (!section) {
-          console.warn(`Элемент с id="${id}" не найден`);
-          return;
-        }
-
-        const isActive = section.classList.contains("show");
-        section.classList.add("show", !isActive);
-
-        if (sectionIds.length > 0) {
-          const firstSection = document.getElementById(sectionIds[0]);
-
-          setTimeout(() => {
-            firstSection.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-            console.log("success scroll to #" + id);
-          }, isObject ? 0 : 250);
-        }
-      });
-    };
 
     const formatNumber = (num) => {
       const [integer, decimal] = num.toString().split(".");
@@ -2696,6 +2647,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// trigger blocks
+const triggerButtons = document?.querySelectorAll("[data-trigger]");
+
+triggerButtons?.forEach((button) => {
+  button?.addEventListener("click", (e) => {
+    toggleSection(e, true);
+  });
+});
+
+const toggleSection = (trigger, isObject = false) => {
+  let sectionIds = [];
+
+  if (!isObject) {
+    if (Array.isArray(trigger)) {
+      sectionIds = trigger;
+    } else {
+      sectionIds = [trigger];
+    }
+  } else {
+    const triggerShow = trigger.currentTarget.dataset.triggerShow;
+
+    if (triggerShow) {
+      sectionIds = triggerShow.split(";").filter((id) => id.trim() !== "");
+    }
+  }
+
+  sectionIds.forEach((id) => {
+    const section = document.getElementById(id);
+
+    if (!section) {
+      console.warn(`Элемент с id="${id}" не найден`);
+      return;
+    }
+
+    const isActive = section.classList.contains("show");
+    section.classList.add("show", !isActive);
+
+    if (sectionIds.length > 0) {
+      const firstSection = document.getElementById(sectionIds[0]);
+
+      setTimeout(() => {
+        firstSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        console.log("success scroll to #" + id);
+      }, isObject ? 0 : 250);
+    }
+  });
+};
 
 // reviews
 document.addEventListener("DOMContentLoaded", () => {
