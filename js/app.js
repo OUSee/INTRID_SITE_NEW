@@ -1195,7 +1195,7 @@ function sliderInitialize() {
               }; color: var(--blue-main);`;
           } else {
             btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
-              }); left: ${window.innerWidth > 600 ? `-5px` : `0`
+              }); left: ${window.innerWidth > 600 ? `15px` : `-5px`
               }; color: var(--blue-main);`;
           }
         });
@@ -1206,7 +1206,7 @@ function sliderInitialize() {
               }; color: var(--blue-main);`;
           } else {
             btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
-              }); right: ${window.innerWidth > 600 ? `-5px` : `0`
+              }); right: ${window.innerWidth > 600 ? `15px` : `-5px`
               }; color: var(--blue-main);`;
           }
         });

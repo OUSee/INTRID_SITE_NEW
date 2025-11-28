@@ -3204,6 +3204,7 @@ form .button:hover {
   border-radius: 50%;
   background: rgba(8, 37, 60, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.25);
+  outline-offset: 4px;
   text-decoration: none !important;
 }
 .pagination button:hover {
@@ -3248,6 +3249,46 @@ form .button:hover {
   width: 24px;
   height: 24px;
   text-decoration: none;
+}
+@media (min-width: 1480px) {
+  .pagination:not([id=gallery-pagination]) .pagination--prev-btn {
+    left: 15px !important;
+  }
+}
+@media (min-width: 1500px) {
+  .pagination:not([id=gallery-pagination]) .pagination--prev-btn {
+    left: 12.5px !important;
+  }
+}
+@media (min-width: 1550px) {
+  .pagination:not([id=gallery-pagination]) .pagination--prev-btn {
+    left: -4px !important;
+  }
+}
+@media (min-width: 1600px) {
+  .pagination:not([id=gallery-pagination]) .pagination--prev-btn {
+    left: -20px !important;
+  }
+}
+@media (min-width: 1480px) {
+  .pagination:not([id=gallery-pagination]) .pagination--next-btn {
+    right: 15px !important;
+  }
+}
+@media (min-width: 1500px) {
+  .pagination:not([id=gallery-pagination]) .pagination--next-btn {
+    right: 12.5px !important;
+  }
+}
+@media (min-width: 1550px) {
+  .pagination:not([id=gallery-pagination]) .pagination--next-btn {
+    right: -4px !important;
+  }
+}
+@media (min-width: 1600px) {
+  .pagination:not([id=gallery-pagination]) .pagination--next-btn {
+    right: -20px !important;
+  }
 }
 .pagination--prev-btn i.left {
   transform: rotate(180deg) translateY(0);
@@ -3893,14 +3934,12 @@ form .button:hover {
   line-height: 1;
   color: var(--blue-main);
 }
-.accordion .accordion-header i.icon-shevrone {
-  margin-left: auto;
-}
-.accordion .accordion-header i.icon-shevrone,
-.accordion .accordion-header i.icon-shevrone_double {
+.accordion .accordion-header i.icon-shevrone, .accordion .accordion-header ii.icon-shevrone_double {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  font-size: 24px;
   color: var(--blue-main);
   transform-origin: center;
   transform: rotate(90deg);
@@ -3992,7 +4031,7 @@ form .button:hover {
   gap: 4px;
   /* For Firefox */
 }
-.toggle-line .counter > p {
+.toggle-line .counter > p, .toggle-line .counter > span {
   margin-right: 8px;
 }
 .toggle-line .counter.hidden {
@@ -6681,7 +6720,7 @@ button:hover img,
 }
 @media (max-width: 1200px) {
   .card--service > .card-icon {
-    transform: translate(-50%, -15%);
+    transform: translate(-50%, -25%);
   }
 }
 @media (max-width: 600px) {
@@ -9661,10 +9700,10 @@ button.next:hover {
 }
 @media (max-width: 1000px) {
   .benefits-n-video {
-    margin-bottom: 60px;
-  }
-  .benefits-n-video h2 {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 0;
   }
   .benefits-n-video .video-diagramm {
     margin: 0 auto;
@@ -9673,7 +9712,42 @@ button.next:hover {
     display: none;
   }
   .benefits-n-video .benefits-left, .benefits-n-video .benefits-right, .benefits-n-video .benefits-bottom {
-    display: none;
+    position: relative;
+    top: unset;
+    left: unset;
+    bottom: unset;
+    right: unset;
+    gap: 16px;
+    width: 100%;
+    margin-left: unset;
+    margin-right: unset;
+  }
+  .benefits-n-video .benefits-left > .benefit-card, .benefits-n-video .benefits-right > .benefit-card, .benefits-n-video .benefits-bottom > .benefit-card {
+    align-self: flex-start;
+    max-width: 100%;
+    width: 100%;
+    margin-left: unset;
+    margin-right: unset;
+  }
+  .benefits-n-video .benefits-left > .benefit-card:first-child, .benefits-n-video .benefits-left > .benefit-card:last-child, .benefits-n-video .benefits-right > .benefit-card:first-child, .benefits-n-video .benefits-right > .benefit-card:last-child, .benefits-n-video .benefits-bottom > .benefit-card:first-child, .benefits-n-video .benefits-bottom > .benefit-card:last-child {
+    margin-left: unset;
+    margin-right: unset;
+  }
+  .benefits-n-video > h2 {
+    order: 0;
+  }
+  .benefits-n-video > .video-diagramm {
+    order: -1;
+    margin: 0 auto 32px;
+  }
+  .benefits-n-video > .benefits-left {
+    order: 1;
+  }
+  .benefits-n-video > .benefits-right {
+    order: 2;
+  }
+  .benefits-n-video > .benefits-bottom {
+    order: 3;
   }
 }
 
@@ -9764,24 +9838,6 @@ button.next:hover {
   border-radius: 50%;
   width: 140px;
   height: 140px;
-}
-
-.benefits-accordion .accordion-header {
-  display: block;
-}
-.benefits-accordion .accordion-content .benefit-card {
-  max-width: unset;
-  min-height: unset;
-  width: 100%;
-  height: auto;
-}
-.benefits-accordion .accordion-content .benefit-card::before {
-  top: unset;
-}
-@media (min-width: 999px) {
-  .benefits-accordion {
-    display: none;
-  }
 }
 
 .for-buisness-offers {
@@ -12474,6 +12530,10 @@ button.next:hover {
   content: "-";
 }
 
+.help-faq .accordion {
+  border-radius: 30px;
+  overflow: hidden;
+}
 .help-faq .accordion-item {
   counter-increment: helpItems;
 }
@@ -12498,7 +12558,9 @@ button.next:hover {
     font-size: 16px;
   }
 }
-
+.help-faq .accordion-content {
+  display: block;
+}
 .case_page-top {
   display: flex;
   flex-direction: row;
@@ -13763,4 +13825,4 @@ button.next:hover {
   width: 30px;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 2px;
-}
+}/*# sourceMappingURL=index.css.map */

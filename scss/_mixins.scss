@@ -254,6 +254,7 @@
         color: var(--blue-main);
       }
     }
+
     & img {
       @media (max-width: 1000px) {
         filter: unset;
@@ -494,6 +495,7 @@
   border-radius: 50%;
   background: rgba(8, 37, 60, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.25);
+  outline-offset: 4px;
 
   text-decoration: none !important;
 
@@ -595,20 +597,19 @@
       }
 
       & i {
-        &.icon-shevrone {
-          margin-left: auto;
-        }
-      }
 
-      i.icon-shevrone,
-      i.icon-shevrone_double {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--blue-main);
-        transform-origin: center;
-        transform: rotate(90deg);
-        transition: 0.25s ease-in-out;
+        &.icon-shevrone,
+        &i.icon-shevrone_double {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: auto;
+          font-size: 24px;
+          color: var(--blue-main);
+          transform-origin: center;
+          transform: rotate(90deg);
+          transition: 0.25s ease-in-out;
+        }
       }
 
       &.title_h4 i.icon-shevrone {
@@ -655,16 +656,16 @@
     &-checkbox {
       display: none;
 
-      &:checked + .accordion-header i.icon-shevrone,
-      &:checked + .accordion-header i.icon-shevrone_double {
+      &:checked+.accordion-header i.icon-shevrone,
+      &:checked+.accordion-header i.icon-shevrone_double {
         transform: rotate(-90deg);
       }
 
-      &:checked + .accordion-header.title_h4 i.icon-shevrone {
+      &:checked+.accordion-header.title_h4 i.icon-shevrone {
         transform: rotate(-90deg);
       }
 
-      &:checked + .accordion-header + .accordion-content {
+      &:checked+.accordion-header+.accordion-content {
         max-height: unset;
         padding: 16px 32px;
 
@@ -677,11 +678,21 @@
 }
 
 @mixin accordion-help {
+  // background-color: var(--blue-clouds);
+  border-radius: 30px;
+  overflow: hidden;
+
   &-item {
     counter-increment: helpItems;
+    // margin: 0;
+    // background-color: transparent;
+    // border-radius: 0;
   }
 
   &-header {
+    // background-color: transparent;
+    // border-radius: 0;
+
     & p {
       position: relative;
       margin: 0;
@@ -692,6 +703,16 @@
         @include h4;
         color: var(--blue-main);
       }
+    }
+  }
+
+  &-content {
+    display: block;
+  }
+
+  &-checkbox {
+    &:checked+.accordion-header {
+      // background-color: var(--blue-clouds);
     }
   }
 }
