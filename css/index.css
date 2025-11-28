@@ -3850,24 +3850,54 @@ form .button:hover {
   font-size: 14px;
 }
 
-.accordion {
+.accordion .accordion-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin: 0 auto;
-}
-.accordion-item {
-  position: relative;
+  height: 100%;
   margin-bottom: 10px;
-  border-radius: 5px;
+  background-color: var(--blue-bg);
+  border-radius: 30px;
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
-.accordion-header {
-  padding: 14px;
-  background-color: transparent;
+.accordion .accordion-item.deactive {
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.5;
+}
+.accordion .accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  width: 100%;
+  padding: 16px 32px;
+  background-color: var(--blue-clouds);
+  border-radius: 30px;
+  color: var(--color-white);
   cursor: pointer;
-  position: relative;
+  transition: 0.25s ease-in-out;
 }
-.accordion-header i.icon-shevrone,
-.accordion-header i.icon-shevrone_double {
+@media (max-width: 600px) {
+  .accordion .accordion-header {
+    padding: 16px;
+  }
+}
+.accordion .accordion-header img, .accordion .accordion-header i {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--blue-main);
+}
+.accordion .accordion-header i.icon-shevrone {
+  margin-left: auto;
+}
+.accordion .accordion-header i.icon-shevrone,
+.accordion .accordion-header i.icon-shevrone_double {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3876,30 +3906,158 @@ form .button:hover {
   transform: rotate(90deg);
   transition: 0.25s ease-in-out;
 }
-.accordion-header.title_h4 i.icon-shevrone {
+.accordion .accordion-header.title_h4 i.icon-shevrone {
   transform: rotate(90deg);
 }
-.accordion-content {
+.accordion .accordion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
   padding: 0;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
-.accordion-checkbox {
+.accordion .accordion-content .title_h5 {
+  margin-top: 10px;
+}
+.accordion .accordion-content input,
+.accordion .accordion-content textarea {
+  padding: 12px;
+  background-color: transparent;
+  border-radius: 25px;
+  border: 1px solid var(--color-white);
+  resize: none;
+  overflow: hidden;
+}
+.accordion .accordion-content input:focus,
+.accordion .accordion-content textarea:focus {
+  border: 1px dashed var(--color-white);
+  outline: none;
+}
+.accordion .accordion-content input::placeholder,
+.accordion .accordion-content textarea::placeholder {
+  color: var(--color-grey);
+}
+.accordion .accordion-checkbox {
   display: none;
 }
-.accordion-checkbox:checked + .accordion-header i.icon-shevrone, .accordion-checkbox:checked + .accordion-header i.icon-shevrone_double {
+.accordion .accordion-checkbox:checked + .accordion-header i.icon-shevrone, .accordion .accordion-checkbox:checked + .accordion-header i.icon-shevrone_double {
   transform: rotate(-90deg);
 }
-.accordion-checkbox:checked + .accordion-header.title_h4 i.icon-shevrone {
+.accordion .accordion-checkbox:checked + .accordion-header.title_h4 i.icon-shevrone {
   transform: rotate(-90deg);
 }
-.accordion-checkbox:checked + .accordion-header + .accordion-content {
+.accordion .accordion-checkbox:checked + .accordion-header + .accordion-content {
   max-height: unset;
-  padding: 14px;
+  padding: 16px 32px;
+}
+@media (max-width: 600px) {
+  .accordion .accordion-checkbox:checked + .accordion-header + .accordion-content {
+    padding: 16px;
+  }
+}
+
+.toggle-line {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin-left: 6px;
+}
+.toggle-line:has(*.counter:not(.hidden)) label {
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .toggle-line:has(*.counter:not(.hidden)) label > p {
+    flex: 1;
+  }
+}
+.toggle-line label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.toggle-line label::before {
+  margin-right: 0;
+}
+.toggle-line label p {
+  margin: 0;
+  align-self: center;
+}
+.toggle-line .counter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* For Firefox */
+}
+.toggle-line .counter > p {
+  margin-right: 8px;
+}
+.toggle-line .counter.hidden {
+  display: none;
+}
+@media (max-width: 600px) {
+  .toggle-line .counter {
+    width: 100%;
+    flex: 1 0 auto;
+    margin-left: 0;
+  }
+}
+@media (max-width: 440px) {
+  .toggle-line .counter {
+    max-height: fit-content;
+  }
+}
+.toggle-line .counter input::-webkit-outer-spin-button,
+.toggle-line .counter input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.toggle-line .counter input[type=number] {
+  -moz-appearance: textfield;
+  width: 60px;
+}
+.toggle-line .counter button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+}
+.toggle-line .counter button,
+.toggle-line .counter input {
+  height: 30px;
+  padding: 12px;
+}
+
+.catalogue-preview {
+  padding-left: 10px;
+}
+.catalogue-preview ul {
+  padding-left: 10px;
+}
+.catalogue-preview ul li {
+  padding-left: 6px;
+  margin-bottom: 4px;
+}
+.catalogue-preview ul li.rubric::marker {
+  content: "•";
+  color: var(--blue-main);
+}
+.catalogue-preview ul li.podrubric::marker {
+  content: "☛";
+  color: var(--blue-main);
+}
+.catalogue-preview ul li.razdel::marker {
+  content: "⚬";
+  color: var(--blue-main);
+}
+.catalogue-preview ul li::marker {
+  content: "•";
+  color: var(--color-white);
 }
 
 .flying-orb {
@@ -9653,16 +9811,17 @@ button.next:hover {
   margin-bottom: 140px;
   padding-left: 25%;
 }
-@media (max-width: 520px) {
-  .for-buisness-offers .blocks-wrapper {
-    display: none;
-  }
-}
 @media (max-width: 1100px) {
   .for-buisness-offers .blocks-wrapper {
     justify-content: center;
     gap: 20px;
     padding-left: 0;
+  }
+}
+@media (max-width: 520px) {
+  .for-buisness-offers .blocks-wrapper {
+    flex-direction: column;
+    margin-bottom: 0;
   }
 }
 .for-buisness-offers .blocks-wrapper .orb-bottom {
@@ -9684,37 +9843,6 @@ button.next:hover {
   opacity: 1;
   transform: scale(-1, 1) rotate(-15deg);
   animation: baloon-right 8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
-}
-.for-buisness-offers-mobile-accordion {
-  width: auto;
-  display: none;
-}
-.for-buisness-offers-mobile-accordion .accordion-item label.accordion-header {
-  display: flex;
-  height: fit-content;
-  padding: 14px 20px;
-  background-color: var(--bg-main);
-  border-radius: 25px;
-  justify-content: space-between;
-  align-items: center;
-}
-.for-buisness-offers-mobile-accordion .accordion-item label.accordion-header i {
-  font-size: 20px;
-}
-.for-buisness-offers-mobile-accordion .accordion-item:has(input:checked) label.accordion-header {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.for-buisness-offers-mobile-accordion .accordion-item .accordion-content {
-  padding-top: 0 !important;
-  background-color: var(--bg-main);
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-}
-@media (max-width: 520px) {
-  .for-buisness-offers-mobile-accordion {
-    display: block;
-  }
 }
 
 .for-buisness-block {
@@ -9785,7 +9913,7 @@ button.next:hover {
     overflow: hidden;
   }
 }
-@media (max-width: 510px) {
+@media (max-width: 520px) {
   .for-buisness-block {
     max-width: 100%;
   }
@@ -10781,163 +10909,6 @@ button.next:hover {
     flex-wrap: wrap;
     gap: 10px;
   }
-}
-.calculator-calculator .accordion .accordion-header {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-.calculator-calculator .accordion .accordion-header i:not(.icon-shevrone),
-.calculator-calculator .accordion .accordion-header img {
-  font-size: 40px;
-  height: 40px;
-  width: 40px;
-  max-height: 41px;
-  line-height: 1em;
-  color: var(--blue-main);
-  margin-right: 6px;
-}
-.calculator-calculator .accordion .accordion-header .icon-shevrone {
-  margin-left: 10px;
-}
-.calculator-calculator .accordion-item {
-  padding: 10px;
-  border-radius: 29px;
-  border: 1px solid var(--blue-bg);
-  background-color: var(--blue-bg);
-}
-.calculator-calculator .accordion-item:first-child .accordion-content {
-  position: relative;
-}
-.calculator-calculator .accordion-item:first-child .accordion-content .button-white {
-  position: absolute;
-  top: 330px;
-  right: 20px;
-}
-@media (max-width: 900px) {
-  .calculator-calculator .accordion-item:first-child .accordion-content .button-white {
-    position: relative;
-    bottom: unset;
-    right: unset;
-  }
-}
-.calculator-calculator .accordion-item.deactive {
-  pointer-events: none;
-  user-select: none;
-  opacity: 0.5;
-}
-.calculator-calculator .accordion-content .toggle-line {
-  display: flex;
-  gap: 6px;
-  align-items: flex-start;
-  margin-left: 6px;
-}
-.calculator-calculator .accordion-content .toggle-line:has(*.counter:not(.hidden)) label {
-  flex-wrap: wrap;
-}
-@media (max-width: 600px) {
-  .calculator-calculator .accordion-content .toggle-line:has(*.counter:not(.hidden)) label > p {
-    flex: 1;
-  }
-}
-.calculator-calculator .accordion-content .toggle-line label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  width: 100%;
-}
-.calculator-calculator .accordion-content .toggle-line label::before {
-  margin-right: 0;
-}
-.calculator-calculator .accordion-content .toggle-line label p {
-  margin: 0;
-  align-self: center;
-}
-.calculator-calculator .accordion-content .toggle-line .counter {
-  max-height: 26px;
-  display: flex;
-  align-items: center;
-  margin-left: 14px;
-  gap: 6px;
-  /* For Firefox */
-}
-.calculator-calculator .accordion-content .toggle-line .counter.hidden {
-  display: none;
-}
-@media (max-width: 600px) {
-  .calculator-calculator .accordion-content .toggle-line .counter {
-    width: 100%;
-    flex: 1 0 auto;
-    margin-left: 0;
-  }
-}
-@media (max-width: 440px) {
-  .calculator-calculator .accordion-content .toggle-line .counter {
-    max-height: fit-content;
-  }
-}
-.calculator-calculator .accordion-content .toggle-line .counter input::-webkit-outer-spin-button,
-.calculator-calculator .accordion-content .toggle-line .counter input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.calculator-calculator .accordion-content .toggle-line .counter input[type=number] {
-  -moz-appearance: textfield;
-  width: 60px;
-}
-.calculator-calculator .accordion-content .toggle-line .counter button,
-.calculator-calculator .accordion-content .toggle-line .counter input {
-  height: 30px;
-  padding: 12px;
-}
-.calculator-calculator .accordion-content .title_h5 {
-  margin-top: 10px;
-}
-.calculator-calculator .accordion-content input,
-.calculator-calculator .accordion-content textarea {
-  width: 100%;
-  background-color: transparent;
-  padding: 15px 30px;
-  border-radius: 25px;
-  border: 1px solid var(--color-white);
-  resize: none;
-  overflow: hidden;
-}
-.calculator-calculator .accordion-content input:focus,
-.calculator-calculator .accordion-content textarea:focus {
-  border: 1px dashed var(--color-white);
-  outline: none;
-}
-.calculator-calculator .accordion-content input::placeholder,
-.calculator-calculator .accordion-content textarea::placeholder {
-  color: var(--color-grey);
-}
-.calculator-calculator .accordion-content .catalogue-preview {
-  padding-left: 10px;
-}
-.calculator-calculator .accordion-content .catalogue-preview ul {
-  padding-left: 10px;
-}
-.calculator-calculator .accordion-content .catalogue-preview ul li {
-  padding-left: 6px;
-  margin-bottom: 4px;
-}
-.calculator-calculator .accordion-content .catalogue-preview ul li.rubric::marker {
-  content: "•";
-  color: var(--blue-main);
-}
-.calculator-calculator .accordion-content .catalogue-preview ul li.podrubric::marker {
-  content: "☛";
-  color: var(--blue-main);
-}
-.calculator-calculator .accordion-content .catalogue-preview ul li.razdel::marker {
-  content: "⚬";
-  color: var(--blue-main);
-}
-.calculator-calculator .accordion-content .catalogue-preview ul li::marker {
-  content: "•";
-  color: var(--color-white);
 }
 .calculator-calculator .hidden {
   display: none;
@@ -11936,20 +11907,6 @@ button.next:hover {
   }
 }
 
-.ssl-accordions .accordion-item {
-  border-radius: 25px;
-  background-color: var(--bg-main);
-  padding: 10px;
-  outline: 1px solid var(--blue-bg);
-}
-.ssl-accordions .accordion-item > label {
-  width: 100%;
-  display: flex;
-}
-.ssl-accordions .accordion-item > label > i {
-  margin-left: auto;
-}
-
 .kontakts .sites-leaders-content-left {
   flex: 1 1 60%;
 }
@@ -12519,23 +12476,12 @@ button.next:hover {
 
 .help-faq .accordion-item {
   counter-increment: helpItems;
-  background-color: var(--bg-main);
-  border-radius: 25px;
 }
-.help-faq .accordion-item p.title_h5 {
-  padding-left: 45px;
-  padding-right: 30px;
-}
-.help-faq .accordion-item .accordion-header {
-  position: relative;
-  display: block;
-  background-color: var(--blue-clouds);
-}
-.help-faq .accordion-item .accordion-header p {
+.help-faq .accordion-header p {
   position: relative;
   margin: 0;
 }
-.help-faq .accordion-item .accordion-header p::before {
+.help-faq .accordion-header p::before {
   content: counter(helpItems) ".";
   display: inline;
   font-weight: 600;
@@ -12543,32 +12489,14 @@ button.next:hover {
   color: var(--blue-main);
 }
 @media (max-width: 1000px) {
-  .help-faq .accordion-item .accordion-header p::before {
+  .help-faq .accordion-header p::before {
     font-size: 20px;
   }
 }
 @media (max-width: 600px) {
-  .help-faq .accordion-item .accordion-header p::before {
+  .help-faq .accordion-header p::before {
     font-size: 16px;
   }
-}
-.help-faq .accordion-item .accordion-header i {
-  display: flex;
-  font-size: 2em;
-  position: absolute;
-  top: 0.45em;
-  left: 20px;
-  transition: all 0.3s ease-in-out;
-  transform-origin: center;
-}
-.help-faq .accordion-item .accordion-header i.icon-shevrone {
-  transform: rotate(90deg);
-}
-.help-faq .accordion-item .accordion-content {
-  background-color: var(--blue-bg);
-}
-.help-faq .accordion-item .accordion-checkbox:checked + .accordion-header i.icon-shevrone {
-  transform: rotate(-90deg);
 }
 
 .case_page-top {
@@ -13835,4 +13763,4 @@ button.next:hover {
   width: 30px;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 2px;
-}/*# sourceMappingURL=index.css.map */
+}
