@@ -2536,6 +2536,14 @@ ol {
   &-100 {
     width: 100%;
   }
+
+  &-sm {
+    @media (max-width: 600px) {
+      &-100 {
+        width: 100% !important;
+      }
+    }
+  }
 }
 
 .h {
@@ -3908,7 +3916,7 @@ form {
   display: flex;
   gap: 6px;
   align-items: flex-start;
-  margin-left: 6px;
+  // margin-left: 6px;
 
   &:has(*.counter:not(.hidden)) {
     label {
