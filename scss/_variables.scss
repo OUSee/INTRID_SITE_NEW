@@ -5302,10 +5302,11 @@ button:hover,
 	}
 
 	&--award {
-		gap: 4px;
+		gap: 16px;
 		min-height: 300px;
 		border-radius: 12px;
 		color: var(--color-white);
+		cursor: pointer;
 		transform-origin: bottom center;
 		transform: translateY(0);
 
@@ -5389,14 +5390,16 @@ button:hover,
 						transform: scaleX(-1);
 					}
 				}
+			}
 
-				& span {
-					font-weight: 600;
-					font-size: 20px;
+			& > p {
+				font-weight: 600;
+				font-size: 20px;
+				min-height: 2.5em;
+				margin: 0 0 auto 0;
 
-					@media (max-width: 1000px) {
-						font-size: 14px;
-					}
+				@media (max-width: 1000px) {
+					font-size: 14px;
 				}
 			}
 		}

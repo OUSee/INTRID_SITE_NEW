@@ -5297,10 +5297,11 @@ button:hover img,
   object-fit: cover;
 }
 .card--award {
-  gap: 4px;
+  gap: 16px;
   min-height: 300px;
   border-radius: 12px;
   color: var(--color-white);
+  cursor: pointer;
   transform-origin: bottom center;
   transform: translateY(0);
 }
@@ -5377,12 +5378,14 @@ button:hover img,
 .card--award .card-body .achievement b::after {
   transform: scaleX(-1);
 }
-.card--award .card-body .achievement span {
+.card--award .card-body > p {
   font-weight: 600;
   font-size: 20px;
+  min-height: 2.5em;
+  margin: 0 0 auto 0;
 }
 @media (max-width: 1000px) {
-  .card--award .card-body .achievement span {
+  .card--award .card-body > p {
     font-size: 14px;
   }
 }
