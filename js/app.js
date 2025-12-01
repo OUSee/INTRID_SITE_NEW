@@ -788,13 +788,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			const webShopTarget =
 				webShopDiagram.querySelector(".store-text-target");
 			// console.log('=> webshop', webShopDiagram, webShopTarget)
-			webShopDiagram.querySelectorAll("input").forEach((input) =>
-				input.addEventListener("click", () => {
-					// console.log('=> input', input)
-					setTabContent(input.id);
-					toggleLineShopAI(input.id);
-				})
-			);
 
 			const toggleLineShopAI = (id) => {
 				// console.log('=> enter', )
@@ -879,8 +872,29 @@ document.addEventListener("DOMContentLoaded", () => {
 				}, 250);
 			};
 
-			setTabContent("ai-benefit-1");
-			toggleLineShopAI("1");
+			const inputs = webShopDiagram.querySelectorAll("input");
+
+			inputs.forEach((input) => {
+				input.addEventListener("click", () => {
+					setTabContent(input.id);
+					toggleLineShopAI(input.id);
+				});
+			});
+
+			inputs.forEach((input) => {
+				if (input.checked) {
+					setTabContent(input.id);
+					toggleLineShopAI(input.id);
+				}
+			});
+
+			const anyChecked = Array.from(inputs).some(
+				(input) => input.checked
+			);
+			if (!anyChecked) {
+				setTabContent("ai-benefit-1");
+				toggleLineShopAI("1");
+			}
 		}
 	};
 
