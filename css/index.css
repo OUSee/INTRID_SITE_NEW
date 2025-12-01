@@ -5368,9 +5368,13 @@ button:hover img,
   color: var(--blue-main);
 }
 .card--award .card-body .achievement b::before, .card--award .card-body .achievement b::after {
-  content: url("/src/images/olive-left.webp");
+  content: "";
   display: flex;
-  height: 50px;
+  width: 100%;
+  max-width: 38px;
+  flex: 0 0 38px;
+  height: 100%;
+  background-image: url("/src/images/olive-left.webp");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
