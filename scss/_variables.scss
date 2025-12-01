@@ -315,22 +315,46 @@
 		margin-top: 0;
 
 		& > * {
-			flex: 1 1 20%;
-			min-width: 20%;
+			flex: 1 1 calc(25% - 4px);
+			min-width: calc(25% - 4px);
 
-			@media (max-width: 1440px) {
+			@media (max-width: 1200px) {
 				flex: 0 0 calc(33.333333% - 4px);
 				opacity: 0;
 			}
 
-			@media (max-width: 1100px) {
-				flex: 1 0 50%;
-				min-width: 50%;
+			@media (max-width: 1000px) {
+				flex: 1 0 calc(50% - 4px);
+				min-width: calc(50% - 4px);
 			}
 
-			@media (max-width: 720px) {
-				flex: 1 0 100%;
-				max-width: 100%;
+			@media (max-width: 600px) {
+				flex: 1 1 0%;
+				min-width: 100% !important;
+			}
+
+			@media (min-width: 1000px) and (max-width: 1440px) {
+				padding: 24px 12px;
+			}
+
+			@media (min-width: 600px) and (max-width: 700px) {
+				padding: 24px 12px;
+			}
+
+			& .card-header {
+				& > div {
+					& > a {
+						white-space: nowrap;
+					}
+				}
+			}
+
+			& .card-body {
+				& > div {
+					& > b {
+						font-size: 20px;
+					}
+				}
 			}
 		}
 	}
@@ -1090,7 +1114,7 @@ ol {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			gap: 15px;
+			gap: 16px;
 			margin: 0;
 
 			@media (max-width: 1000px) {
@@ -5481,7 +5505,7 @@ button:hover,
 			display: flex;
 			flex-direction: column;
 			align-items: stretch;
-			gap: 15px;
+			gap: 16px;
 			margin-top: 20px;
 			width: 100%;
 			flex: 1;
@@ -5496,7 +5520,7 @@ button:hover,
 				flex-direction: row;
 				align-items: center;
 				justify-content: flex-start;
-				gap: 10px;
+				gap: 8px;
 				width: 100%;
 				min-height: 2em;
 
@@ -5514,6 +5538,10 @@ button:hover,
 					@media (max-width: 600px) {
 						font-size: 16px;
 					}
+				}
+
+				& > p {
+					margin: 0;
 				}
 
 				& > i {
@@ -5939,7 +5967,7 @@ button:hover,
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 15px;
+			gap: 16px;
 			margin-top: 20px;
 			width: 100%;
 			flex: 1;
