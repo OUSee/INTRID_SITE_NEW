@@ -891,6 +891,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			const anyChecked = Array.from(inputs).some(
 				(input) => input.checked
 			);
+
 			if (!anyChecked) {
 				setTabContent("ai-benefit-1");
 				toggleLineShopAI("1");
@@ -1014,6 +1015,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			const anyChecked = Array.from(inputs).some(
 				(input) => input.checked
 			);
+
 			if (!anyChecked) {
 				setTenderTabContent("tender-radio-1");
 			}
