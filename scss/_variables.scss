@@ -1570,7 +1570,7 @@ ol {
 
 		&--roadmap {
 			align-items: stretch;
-			gap: 30px;
+			gap: 32px;
 
 			@media (max-width: 600px) {
 				gap: 8px;
@@ -1578,8 +1578,8 @@ ol {
 
 			& > * {
 				counter-increment: roadmapItems;
-				flex: 1 0 calc(33.33333% - 20px);
-				max-width: calc(33.33333% - 20px);
+				flex: 1 0 calc(33.33333% - 22px);
+				max-width: calc(33.33333% - 22px);
 				order: var(--i);
 
 				&::before {
@@ -1587,8 +1587,8 @@ ol {
 				}
 
 				@media (max-width: 1000px) {
-					flex: 1 0 calc(50% - 15px);
-					max-width: calc(50% - 15px);
+					flex: 1 0 calc(50% - 16px);
+					max-width: calc(50% - 16px);
 				}
 
 				@media (max-width: 600px) {
@@ -1606,8 +1606,8 @@ ol {
 			&-4x {
 				& > * {
 					@media (min-width: 600px) {
-						flex: 1 0 calc(50% - 15px);
-						max-width: calc(50% - 15px);
+						flex: 1 0 calc(50% - 16px);
+						max-width: calc(50% - 16px);
 
 						// Первая строка из трёх
 						&:nth-child(6n + 1) {
@@ -2038,7 +2038,7 @@ ol {
 			gap: 20px;
 
 			@media (max-width: 600px) {
-				gap: 40px 10px;
+				gap: 40px 12px;
 			}
 
 			& > * {
@@ -2053,6 +2053,11 @@ ol {
 					flex-basis: calc(50% - 10px);
 					max-width: calc(50% - 10px);
 				}
+
+				@media (max-width: 600px) {
+					flex-basis: calc(50% - 6px);
+					max-width: calc(50% - 6px);
+				}
 			}
 		}
 
@@ -2063,7 +2068,7 @@ ol {
 			margin: 65px auto 25px;
 
 			@media (max-width: 600px) {
-				gap: 10px;
+				gap: 12px;
 				margin: 45px auto 0;
 			}
 
@@ -2082,8 +2087,8 @@ ol {
 				}
 
 				@media (max-width: 600px) {
-					flex-basis: calc(25% - 10px);
-					max-width: calc(25% - 10px);
+					flex-basis: calc(25% - 9px);
+					max-width: calc(25% - 9px);
 				}
 			}
 		}
@@ -2111,7 +2116,7 @@ ol {
 
 			@media (max-width: 1000px) {
 				flex-wrap: wrap;
-				gap: 10px;
+				gap: 12px;
 			}
 
 			& > * {
@@ -2119,17 +2124,15 @@ ol {
 
 				@media (max-width: 1400px) {
 					flex: 1 0 calc(25% - 10px);
-					// min-width: 24%;
 				}
 
 				@media (max-width: 1100px) {
 					flex: 1 0 calc(33.33333% - 10px);
-					// min-width: 32%;
 				}
 
 				@media (max-width: 1000px) {
-					flex: 1 0 calc(50% - 5px);
-					max-width: calc(50% - 5px);
+					flex: 1 0 calc(50% - 6px);
+					max-width: calc(50% - 6px);
 					min-width: unset !important;
 
 					&:nth-child(5) {
@@ -6280,7 +6283,7 @@ button:hover,
 			top: 50%;
 			right: 0;
 			z-index: -1;
-			width: 30px;
+			width: 32px;
 			height: 24px;
 			background-color: var(--blue-main);
 			clip-path: polygon(
