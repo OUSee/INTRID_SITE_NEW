@@ -720,9 +720,7 @@ button.next {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	// margin-top: 50px;
 	flex-wrap: wrap;
-	// margin-bottom: 50px;
 
 	&.store {
 		row-gap: 50px;
@@ -745,7 +743,7 @@ button.next {
 
 		.benefits-left,
 		.benefits-right {
-			height: 420px;
+			height: 470px;
 			justify-content: space-between;
 
 			@media (max-width: 1000px) {
@@ -1531,27 +1529,6 @@ button.next {
 	}
 }
 
-// .benefits-accordion {
-//   .accordion-header {
-//     display: block;
-//   }
-
-//   .accordion-content .benefit-card {
-//     max-width: unset;
-//     min-height: unset;
-//     width: 100%;
-//     height: auto;
-
-//     &::before {
-//       top: unset;
-//     }
-//   }
-
-//   @media (min-width: 999px) {
-//     display: none;
-//   }
-// }
-
 .for-buisness-offers {
 	position: relative;
 	background: linear-gradient(
@@ -2225,46 +2202,46 @@ button.next {
 				}
 			}
 
-			.eye {
-				width: 150px;
-				height: 150px;
-				max-width: 150px;
-				background-color: #fff;
-				box-shadow: inset 0 0 60px 0 #ffff;
-				border-radius: 100%;
-				// position: absolute;
-				perspective: 500px;
-				overflow: hidden;
+			// .eye {
+			// 	width: 150px;
+			// 	height: 150px;
+			// 	max-width: 150px;
+			// 	background-color: #fff;
+			// 	box-shadow: inset 0 0 60px 0 #ffff;
+			// 	border-radius: 100%;
+			// 	// position: absolute;
+			// 	perspective: 500px;
+			// 	overflow: hidden;
 
-				.iris {
-					width: 100%;
-					height: 100%;
-					top: 0%;
-					left: 0%;
-					position: absolute;
-					transform: rotateX(-50deg) rotateY(15deg) translateZ(68px)
-						scale(0.6);
-					background: radial-gradient(
-						ellipse at center,
-						#00eaff 15%,
-						#00eaff 16%,
-						#fff 16%,
-						#fff 40%,
-						#00eaff 41%,
-						#00eaff 55%,
-						#fff 56%,
-						transparent 71%
-					);
-					border-radius: 100%;
-					transition: none;
+			// 	.iris {
+			// 		width: 100%;
+			// 		height: 100%;
+			// 		top: 0%;
+			// 		left: 0%;
+			// 		position: absolute;
+			// 		transform: rotateX(-50deg) rotateY(15deg) translateZ(68px)
+			// 			scale(0.6);
+			// 		background: radial-gradient(
+			// 			ellipse at center,
+			// 			#00eaff 15%,
+			// 			#00eaff 16%,
+			// 			#fff 16%,
+			// 			#fff 40%,
+			// 			#00eaff 41%,
+			// 			#00eaff 55%,
+			// 			#fff 56%,
+			// 			transparent 71%
+			// 		);
+			// 		border-radius: 100%;
+			// 		transition: none;
 
-					&.anim {
-						animation-duration: 10s;
-						animation-iteration-count: infinite;
-						animation-name: iris;
-					}
-				}
-			}
+			// 		&.anim {
+			// 			animation-duration: 10s;
+			// 			animation-iteration-count: infinite;
+			// 			animation-name: iris;
+			// 		}
+			// 	}
+			// }
 
 			input {
 				flex: 1 1 90%;
@@ -2428,9 +2405,13 @@ button.next {
 
 			.benefits-left,
 			.benefits-right {
-				height: 420px;
+				height: 430px;
 				top: 200px;
 				justify-content: space-between;
+
+				@media (max-width: 1250px) {
+					height: 400px;
+				}
 
 				@media (max-width: 1000px) {
 					display: flex;
@@ -2861,211 +2842,6 @@ button.next {
 				gap: 10px;
 			}
 		}
-
-		// .accordion {
-		// 	.accordion-header {
-		// 		display: flex;
-		// 		align-items: center;
-		// 		width: 100%;
-
-		// 		i:not(.icon-shevrone),
-		// 		img {
-		// 			font-size: 40px;
-		// 			height: 40px;
-		// 			width: 40px;
-		// 			max-height: 41px;
-		// 			line-height: 1em;
-		// 			color: var(--blue-main);
-		// 			margin-right: 6px;
-		// 		}
-
-		// 		& .icon-shevrone {
-		// 			margin-left: 10px;
-		// 		}
-		// 	}
-
-		// 	&-item {
-		// 		padding: 10px;
-		// 		border-radius: 29px;
-		// 		border: 1px solid var(--blue-bg);
-		// 		background-color: var(--blue-bg);
-		// 		// background-color: var(--bg-main);
-
-		// 		&:first-child .accordion-content {
-		// 			position: relative;
-
-		// 			.button-white {
-		// 				position: absolute;
-		// 				top: 330px;
-		// 				right: 20px;
-
-		// 				@media (max-width: 900px) {
-		// 					position: relative;
-		// 					bottom: unset;
-		// 					right: unset;
-		// 				}
-		// 			}
-		// 		}
-
-		// 		&.deactive {
-		// 			pointer-events: none;
-		// 			user-select: none;
-		// 			opacity: 0.5;
-		// 		}
-		// 	}
-
-		// 	&-content {
-		// 		.toggle-line {
-		// 			display: flex;
-		// 			gap: 6px;
-		// 			align-items: flex-start;
-		// 			margin-left: 6px;
-
-		// 			&:has(*.counter:not(.hidden)) {
-		// 				label {
-		// 					flex-wrap: wrap;
-
-		// 					// @media (max-width: 600px) {
-		// 					// margin-bottom: 70px;
-
-		// 					// .counter {
-		// 					// 	margin-top: 10px;
-		// 					// }
-		// 					// }
-
-		// 					& > p {
-		// 						@media (max-width: 600px) {
-		// 							flex: 1;
-		// 						}
-		// 					}
-		// 				}
-		// 			}
-
-		// 			label {
-		// 				position: relative;
-		// 				display: flex;
-		// 				align-items: flex-start;
-		// 				gap: 10px;
-		// 				width: 100%;
-		// 				// align-items: center;
-		// 				// max-height: 26px;
-
-		// 				&::before {
-		// 					margin-right: 0;
-		// 				}
-
-		// 				p {
-		// 					margin: 0;
-		// 					align-self: center;
-		// 				}
-		// 			}
-
-		// 			.counter {
-		// 				max-height: 26px;
-		// 				display: flex;
-
-		// 				&.hidden {
-		// 					display: none;
-		// 				}
-
-		// 				align-items: center;
-		// 				margin-left: 14px;
-		// 				gap: 6px;
-
-		// 				@media (max-width: 600px) {
-		// 					width: 100%;
-		// 					flex: 1 0 auto;
-		// 					margin-left: 0;
-		// 				}
-
-		// 				@media (max-width: 440px) {
-		// 					max-height: fit-content;
-		// 				}
-
-		// 				input::-webkit-outer-spin-button,
-		// 				input::-webkit-inner-spin-button {
-		// 					-webkit-appearance: none;
-		// 					margin: 0;
-		// 				}
-
-		// 				/* For Firefox */
-		// 				input[type="number"] {
-		// 					-moz-appearance: textfield;
-		// 					width: 60px;
-		// 				}
-
-		// 				button,
-		// 				input {
-		// 					height: 30px;
-		// 					padding: 12px;
-		// 				}
-		// 			}
-		// 		}
-
-		// 		.title_h5 {
-		// 			margin-top: 10px;
-		// 		}
-
-		// 		input,
-		// 		textarea {
-		// 			width: 100%;
-		// 			background-color: transparent;
-		// 			padding: 15px 30px;
-		// 			border-radius: 25px;
-		// 			border: 1px solid var(--color-white);
-		// 			resize: none;
-		// 			overflow: hidden;
-
-		// 			&:focus {
-		// 				border: 1px dashed var(--color-white);
-		// 				outline: none;
-		// 			}
-
-		// 			&::placeholder {
-		// 				color: var(--color-grey);
-		// 			}
-		// 		}
-
-		// 		.catalogue-preview {
-		// 			padding-left: 10px;
-
-		// 			ul {
-		// 				padding-left: 10px;
-
-		// 				li {
-		// 					padding-left: 6px;
-		// 					margin-bottom: 4px;
-
-		// 					&.rubric {
-		// 						&::marker {
-		// 							content: "\2022";
-		// 							color: var(--blue-main);
-		// 						}
-		// 					}
-
-		// 					&.podrubric {
-		// 						&::marker {
-		// 							content: "\261b";
-		// 							color: var(--blue-main);
-		// 						}
-		// 					}
-
-		// 					&.razdel {
-		// 						&::marker {
-		// 							content: "\26AC";
-		// 							color: var(--blue-main);
-		// 						}
-		// 					}
-
-		// 					&::marker {
-		// 						content: "\2022";
-		// 						color: var(--color-white);
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
 
 		.hidden {
 			display: none;
@@ -3692,38 +3468,6 @@ button.next {
 	}
 
 	&-block {
-		// display: flex;
-		// flex-direction: row;
-		// align-items: center;
-		// justify-content: flex-start;
-		// flex-wrap: wrap;
-		// gap: 20px;
-		// width: 100%;
-
-		// @media (max-width: 440px) {
-		// 	gap: 10px;
-		// }
-
-		// & > * {
-		// 	flex: 1 0 calc(25% - 15px);
-		// 	max-width: calc(25% - 15px);
-
-		// 	@media (max-width: 1000px) {
-		// 		flex: 1 0 calc(33.333333% - 14px);
-		// 		max-width: calc(33.333333% - 14px);
-		// 	}
-
-		// 	@media (max-width: 720px) {
-		// 		flex: 1 0 calc(50% - 10px);
-		// 		max-width: calc(50% - 10px);
-		// 	}
-
-		// 	@media (max-width: 440px) {
-		// 		flex: 1 0 100%;
-		// 		max-width: 100%;
-		// 	}
-		// }
-
 		position: relative;
 		z-index: 1;
 		display: flex;
