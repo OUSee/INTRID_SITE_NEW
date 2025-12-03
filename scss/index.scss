@@ -249,7 +249,7 @@ button.next {
 			// width: 100%;
 
 			@media (max-width: 1000px) {
-				gap: 10px;
+				gap: 12px;
 			}
 
 			@media (max-width: 600px) {
@@ -260,8 +260,8 @@ button.next {
 				flex: 1 1 15%;
 
 				@media (max-width: 1000px) {
-					flex: 1 0 calc(20% - 8px);
-					max-width: calc(20% - 8px);
+					flex: 1 0 calc(20% - 10px);
+					max-width: calc(20% - 10px);
 				}
 
 				@media (max-width: 600px) {
@@ -527,15 +527,11 @@ button.next {
 		flex-direction: row;
 		align-items: flex-start;
 		flex-wrap: wrap;
-		gap: 30px 60px;
+		gap: 32px 60px;
 
 		@media (max-width: 1000px) {
 			justify-content: center;
-			gap: 20px;
-		}
-
-		@media (max-width: 440px) {
-			gap: 10px;
+			gap: 16px;
 		}
 
 		&-3x {
@@ -548,7 +544,7 @@ button.next {
 			position: relative;
 			display: flex;
 			flex-wrap: wrap;
-			gap: 30px 60px;
+			gap: 32px 60px;
 			width: 100%;
 			max-width: 420px;
 
@@ -558,7 +554,7 @@ button.next {
 
 			@media (max-width: 1000px) {
 				justify-content: center;
-				gap: 30px;
+				gap: 32px;
 				width: auto;
 			}
 
@@ -589,15 +585,36 @@ button.next {
 	&--numbers {
 		display: flex;
 		flex-direction: row;
-		align-items: flex-start;
-		gap: 20px;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px 8px;
+		flex-wrap: wrap;
+		width: 100%;
 
-		& > div {
+		@media (max-width: 440px) {
+			flex-direction: column;
+		}
+
+		& > * {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 16px;
+			gap: 8px;
 			text-align: center;
+
+			@media (max-width: 1000px) {
+				flex: 1 1 0%;
+			}
+
+			@media (max-width: 850px) {
+				flex: 1 1 calc(50% - 4px);
+				max-width: calc(50% - 4px);
+			}
+
+			@media (max-width: 440px) {
+				flex: unset;
+				max-width: 100%;
+			}
 		}
 	}
 
@@ -698,12 +715,77 @@ button.next {
 		}
 	}
 
+	&--about {
+		flex-wrap: wrap;
+
+		& .main-section {
+			&--left {
+				@media (min-width: 1100px) {
+					max-width: 100%;
+					flex: 1;
+				}
+
+				@media (max-width: 1100px) {
+					max-width: 100%;
+				}
+			}
+
+			&--right {
+				flex-direction: row;
+				align-items: center;
+
+				@media (max-width: 1100px) {
+					justify-content: space-evenly;
+					margin: 40px 0;
+				}
+			}
+
+			&--block {
+				margin-top: 40px;
+
+				@media (max-width: 1100px) {
+					margin-top: unset;
+				}
+			}
+		}
+
+		& .flying-mockup {
+			align-self: center;
+			margin-left: auto;
+			margin-right: unset;
+
+			@media (max-width: 1200px) {
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			@media (max-width: 1100px) {
+				margin: 0;
+			}
+
+			@media (max-width: 600px) {
+				margin-top: 50px;
+				margin-bottom: 50px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+
+		& .achievements-slider {
+			margin-right: unset;
+
+			@media (max-width: 1100px) {
+				margin: 0;
+			}
+		}
+	}
+
 	&--comment {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 0 20px;
+		gap: 0 16px;
 		justify-content: space-between;
 		width: 100%;
 	}
@@ -723,7 +805,7 @@ button.next {
 	flex-wrap: wrap;
 
 	&.store {
-		row-gap: 50px;
+		row-gap: 48px;
 	}
 
 	.web-shop-diagram,
@@ -751,7 +833,7 @@ button.next {
 				position: static;
 				height: fit-content;
 				justify-content: unset;
-				gap: 30px;
+				gap: 32px;
 				width: 100%;
 				margin: 0;
 
@@ -909,7 +991,7 @@ button.next {
 					position: static;
 					height: fit-content;
 					justify-content: unset;
-					gap: 30px;
+					gap: 32px;
 					width: 100%;
 					margin: 0;
 					margin-top: 30px;
@@ -936,7 +1018,7 @@ button.next {
 					position: static;
 					height: fit-content;
 					justify-content: unset;
-					gap: 30px;
+					gap: 32px;
 					width: 100%;
 					margin: 0;
 					margin-top: 30px;
@@ -960,7 +1042,7 @@ button.next {
 					position: static;
 					height: fit-content;
 					justify-content: unset;
-					gap: 30px;
+					gap: 32px;
 					width: 100%;
 					margin: 0;
 					margin-top: 30px;
@@ -1431,7 +1513,7 @@ button.next {
 	display: flex;
 	flex-direction: column;
 	width: fit-content;
-	gap: 18px;
+	gap: 16px;
 	position: absolute;
 	left: 0;
 	top: 100px;
@@ -1450,7 +1532,7 @@ button.next {
 	display: flex;
 	flex-direction: column;
 	width: fit-content;
-	gap: 18px;
+	gap: 16px;
 	position: absolute;
 	top: 100px;
 	right: 0;
@@ -1471,7 +1553,7 @@ button.next {
 	display: flex;
 	flex-direction: column;
 	width: fit-content;
-	gap: 18px;
+	gap: 16px;
 	position: absolute;
 	bottom: -280px;
 	left: calc(100% / 2 - 360px / 2);
@@ -1489,7 +1571,7 @@ button.next {
 	padding: 20px 14px;
 	overflow: hidden;
 	display: flex;
-	gap: 30px;
+	gap: 32px;
 	max-width: 360px;
 	align-items: center;
 	min-height: 150px;
@@ -1714,7 +1796,7 @@ button.next {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		column-gap: 30px;
+		column-gap: 32px;
 		row-gap: 20px;
 		justify-content: center;
 		align-items: center;
@@ -1724,8 +1806,8 @@ button.next {
 		list-style: none;
 
 		@media (max-width: 520px) {
-			column-gap: 10px;
-			row-gap: 10px;
+			column-gap: 12px;
+			row-gap: 8px;
 		}
 
 		& li {
@@ -1759,7 +1841,7 @@ button.next {
 
 	@media (max-width: 520px) {
 		justify-content: space-between;
-		gap: 10px;
+		gap: 12px;
 	}
 
 	&-item {
@@ -1767,7 +1849,7 @@ button.next {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		gap: 10px;
+		gap: 12px;
 
 		img {
 			width: 98px;
@@ -1836,7 +1918,7 @@ button.next {
 					display: flex;
 					flex-direction: row;
 					padding: 20px;
-					gap: 15px;
+					gap: 16px;
 					min-height: 100px;
 					height: fit-content;
 					align-items: center;
@@ -2061,7 +2143,7 @@ button.next {
 	&-leaders {
 		&-content {
 			display: flex;
-			gap: 50px;
+			gap: 48px;
 
 			@media (max-width: 900px) {
 				flex-direction: column;
@@ -2117,15 +2199,15 @@ button.next {
 
 		&-slider {
 			display: flex;
-			gap: 30px;
+			gap: 32px;
 			overflow-y: visible;
 			width: fit-content;
 
 			@media (max-width: 900px) {
-				gap: 10px;
+				gap: 12px;
 			}
 
-			@media (max-width: 900px) {
+			@media (max-width: 600px) {
 				gap: 20px;
 			}
 		}
@@ -2166,7 +2248,7 @@ button.next {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
-			gap: 10px;
+			gap: 12px;
 			position: relative;
 		}
 
@@ -2418,7 +2500,7 @@ button.next {
 					position: static;
 					height: fit-content;
 					justify-content: unset;
-					gap: 30px;
+					gap: 32px;
 					width: 100%;
 					margin: 0;
 
@@ -2680,10 +2762,10 @@ button.next {
 				display: flex;
 				flex-direction: row;
 				flex-wrap: wrap;
-				gap: 10px;
+				gap: 12px;
 
 				@media (max-width: 600px) {
-					column-gap: 5px;
+					column-gap: 4px;
 				}
 
 				.title_h5 {
@@ -2839,7 +2921,7 @@ button.next {
 
 			@media (max-width: 900px) {
 				flex-wrap: wrap;
-				gap: 10px;
+				gap: 12px;
 			}
 		}
 
@@ -2931,7 +3013,7 @@ button.next {
 
 			@media (max-width: 900px) {
 				flex-direction: column;
-				row-gap: 10px;
+				row-gap: 12px;
 				align-items: center;
 
 				.title_h1 {
@@ -3049,7 +3131,7 @@ button.next {
 		background-color: var(--blue-tag);
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: 8px;
 
 		.testimonials {
 			color: white;
@@ -3109,7 +3191,7 @@ button.next {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: 15px;
+		gap: 16px;
 		flex-basis: calc(25% - 16px);
 		max-width: 25%;
 
@@ -3152,7 +3234,7 @@ button.next {
 .support-slider {
 	display: flex;
 	align-items: stretch;
-	gap: 10px;
+	gap: 12px;
 }
 
 #support-slider-pagination {
@@ -3187,7 +3269,7 @@ button.next {
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
-		gap: 10px;
+		gap: 12px;
 		flex: 0 1 80px;
 		text-align: center;
 
@@ -3327,7 +3409,7 @@ button.next {
 			position: relative;
 			display: flex;
 			flex-direction: column;
-			gap: 30px;
+			gap: 32px;
 			width: 100%;
 		}
 
@@ -3389,7 +3471,7 @@ button.next {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
-		row-gap: 10px;
+		row-gap: 12px;
 
 		@media (max-width: 900px) {
 			flex-direction: column;
@@ -3424,7 +3506,7 @@ button.next {
 			display: flex;
 			align-items: center;
 			flex-wrap: nowrap;
-			row-gap: 10px;
+			row-gap: 12px;
 		}
 
 		& .large-number {
@@ -3642,7 +3724,7 @@ button.next {
 		flex: 1 1 auto;
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: 8px;
 
 		.info-list {
 			margin: 0 auto;
@@ -3650,7 +3732,7 @@ button.next {
 
 			li {
 				display: grid;
-				row-gap: 5px;
+				row-gap: 4px;
 				column-gap: 20px;
 				grid-template-columns: 1fr 4fr;
 				grid-template-rows: repeat(2, 1fr);
@@ -3831,7 +3913,7 @@ button.next {
 		form {
 			.form-limitter .block {
 				display: flex;
-				gap: 10px;
+				gap: 8px;
 				flex: 1 1 100%;
 
 				.left-half {
@@ -3843,7 +3925,7 @@ button.next {
 					padding: 14px 22px;
 					border: 1px solid var(--color-white);
 					border-radius: 25px;
-					gap: 10px;
+					gap: 8px;
 
 					@media (max-width: 1200px) {
 						flex: 1 1 50%;
@@ -3925,7 +4007,7 @@ button.next {
 		@media (max-width: 900px) {
 			.tabs-buttons {
 				flex-direction: column-reverse;
-				gap: 10px;
+				gap: 8px;
 				margin: 0;
 				margin-bottom: 50px;
 				position: relative;
@@ -4287,7 +4369,7 @@ button.next {
 
 				& > div {
 					display: flex;
-					gap: 1.7px;
+					gap: 4px;
 
 					& > i {
 						display: flex;
@@ -4299,7 +4381,7 @@ button.next {
 
 		&-percentage {
 			margin-top: 30px;
-			gap: 10px;
+			gap: 12px;
 
 			& progress {
 				background-color: var(--neutral45);
@@ -4363,7 +4445,7 @@ button.next {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 35px;
+		gap: 32px;
 
 		@media (max-width: 1000px) {
 			gap: 30px;
@@ -4377,7 +4459,7 @@ button.next {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
-			gap: 10px;
+			gap: 12px;
 			max-width: 100%;
 			width: 100%;
 			justify-content: flex-start;
@@ -5351,7 +5433,7 @@ button.next {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 10px;
+	gap: 12px;
 	text-align: center;
 
 	& > b {
@@ -5395,7 +5477,7 @@ button.next {
 }
 
 .step-balls {
-	--number-ball-size: 70px;
+	--number-ball-size: 72px;
 	--number-ball-gap: 20px;
 	display: flex;
 	flex-direction: column;
@@ -5498,7 +5580,7 @@ button.next {
 		flex-direction: column;
 		align-self: center;
 		justify-content: flex-start;
-		gap: 6px;
+		gap: 4px;
 		max-width: calc(
 			50% - (var(--number-ball-size) / 2 + var(--number-ball-gap))
 		);
@@ -5538,7 +5620,7 @@ button.next {
 			flex-direction: row;
 			align-items: center;
 			justify-content: flex-start;
-			gap: 10px;
+			gap: 12px;
 			padding: 7px 14px 0;
 			background-color: rgba(255, 255, 255, 0.02);
 
@@ -5587,7 +5669,7 @@ button.next {
 		flex-direction: row;
 		align-items: center;
 		justify-content: flex-start;
-		gap: 6px;
+		gap: 8px;
 		flex-wrap: nowrap;
 	}
 
@@ -5675,7 +5757,7 @@ button.next {
 
 	.tabs-buttons {
 		margin: 0 8px;
-		gap: 14px;
+		gap: 12px;
 	}
 
 	.tab-button {
@@ -5721,7 +5803,7 @@ button.next {
 
 	.tabs-buttons {
 		margin: 0 8px;
-		gap: 14px;
+		gap: 12px;
 	}
 
 	.tab-button {
@@ -5745,7 +5827,7 @@ button.next {
 	}
 
 	.tabs-buttons {
-		gap: 11px;
+		gap: 12px;
 		margin: 0 11px;
 	}
 
@@ -5805,7 +5887,7 @@ button.next {
 	.tabs {
 		.tabs-buttons {
 			flex-direction: column-reverse;
-			gap: 10px;
+			gap: 8px;
 			margin: 0;
 			margin-bottom: 50px;
 			position: relative;
@@ -5931,7 +6013,7 @@ button.next {
 		display: inline-flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 10px;
+		gap: 12px;
 		min-width: 38px;
 		padding: 4px 6px 0;
 		text-decoration: none;

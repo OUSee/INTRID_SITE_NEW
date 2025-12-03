@@ -118,6 +118,8 @@ function updateMockupPlace() {
 	if (!mockup) return; // Если мокап не найден, выходим из функции
 
 	const mainPageSelector = document.querySelector(".main-section--index");
+	const aboutPageSelector = document.querySelector(".main-section--about");
+	const isAboutPage = !!aboutPageSelector;
 	const isMainPage = !!mainPageSelector;
 	let isMobileView = window.innerWidth < 1000;
 
@@ -130,6 +132,22 @@ function updateMockupPlace() {
 		if (isMobileView) {
 			// Для мобильного вида на главной странице - перед mainSectionRight
 			mainSectionRight.before(mockup);
+		} else {
+			// Для десктопного вида на главной странице - внутрь mainSectionRight первым элементом
+			mainSectionRight.insertBefore(mockup, mainSectionRight.firstChild);
+		}
+	} else if (isAboutPage) {
+		const mainSectionRight = document.querySelector(".main-section--right");
+		const mainSectionParagraph = document.querySelector(
+			".main-section--left p"
+		);
+		if (!mainSectionRight) return;
+
+		isMobileView = window.innerWidth < 600;
+
+		if (isMobileView) {
+			// Для мобильного вида на главной странице - перед mainSectionRight
+			mainSectionParagraph.after(mockup);
 		} else {
 			// Для десктопного вида на главной странице - внутрь mainSectionRight первым элементом
 			mainSectionRight.insertBefore(mockup, mainSectionRight.firstChild);
