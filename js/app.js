@@ -1213,8 +1213,10 @@ function sliderInitialize() {
 				prevBtn.forEach((btn) => {
 					if (currentIndex === 0) {
 						btn.style.opacity = "0";
+						btn.style.pointerEvents = "none";
 					} else {
 						btn.style.opacity = "1";
+						btn.style.pointerEvents = "";
 					}
 				});
 
@@ -1225,8 +1227,10 @@ function sliderInitialize() {
 						currentIndex >= slides.length - 1
 					) {
 						btn.style.opacity = "0";
+						btn.style.pointerEvents = "none";
 					} else {
 						btn.style.opacity = "1";
+						btn.style.pointerEvents = "";
 					}
 				});
 
@@ -1322,8 +1326,10 @@ function sliderInitialize() {
 					prevBtn.forEach((btn) => {
 						if (currentIndex === 0) {
 							btn.style.opacity = "0";
+							btn.style.pointerEvents = "none";
 						} else {
 							btn.style.opacity = "1";
+							btn.style.pointerEvents = "";
 						}
 					});
 				}
