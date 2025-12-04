@@ -3089,6 +3089,11 @@ ol li > ol {
     height: 560px;
   }
 }
+@media (max-width: 600px) {
+  .bg-planets::before, .bg-planets::after {
+    display: none;
+  }
+}
 .bg-planets::before {
   left: 0;
   mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
