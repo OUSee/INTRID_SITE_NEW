@@ -2908,6 +2908,7 @@ button.next {
 	}
 
 	&-calculator {
+		width: 100%;
 		// max-width: 860px;
 		// margin: 0 auto;
 
@@ -2967,6 +2968,10 @@ button.next {
 	&--left {
 		flex: 1;
 		max-width: 100%;
+
+		& .accordion {
+			width: 100%;
+		}
 	}
 
 	&--right {
@@ -3054,8 +3059,9 @@ button.next {
 }
 
 .sitebrif {
-	max-width: 860px;
-	margin: 0 auto;
+	width: 100%;
+	// max-width: 860px;
+	// margin: 0 auto;
 
 	.logo-preview-grid {
 		display: flex;
@@ -3095,6 +3101,20 @@ button.next {
 					height: auto;
 					max-height: 160px;
 					max-width: 100%;
+				}
+			}
+		}
+	}
+
+	& .calculator--right {
+		& .position-sticky {
+			@media (max-width: 1000px) {
+				display: flex;
+				flex-direction: column-reverse;
+				gap: 36px;
+
+				& > [data-popup] {
+					margin: 0 auto 20px;
 				}
 			}
 		}

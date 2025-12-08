@@ -11303,6 +11303,9 @@ button.next:hover {
     gap: 12px;
   }
 }
+.calculator-calculator {
+  width: 100%;
+}
 .calculator-calculator-header {
   overflow: visible;
 }
@@ -11339,6 +11342,9 @@ button.next:hover {
 .calculator--left {
   flex: 1;
   max-width: 100%;
+}
+.calculator--left .accordion {
+  width: 100%;
 }
 .calculator--right {
   flex: 1;
@@ -11411,8 +11417,7 @@ button.next:hover {
 }
 
 .sitebrif {
-  max-width: 860px;
-  margin: 0 auto;
+  width: 100%;
 }
 .sitebrif .logo-preview-grid {
   display: flex;
@@ -11454,6 +11459,16 @@ button.next:hover {
   height: auto;
   max-height: 160px;
   max-width: 100%;
+}
+@media (max-width: 1000px) {
+  .sitebrif .calculator--right .position-sticky {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 36px;
+  }
+  .sitebrif .calculator--right .position-sticky > [data-popup] {
+    margin: 0 auto 20px;
+  }
 }
 
 .toggle-checkbox {
