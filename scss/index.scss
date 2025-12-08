@@ -2908,8 +2908,8 @@ button.next {
 	}
 
 	&-calculator {
-		max-width: 860px;
-		margin: 0 auto;
+		// max-width: 860px;
+		// margin: 0 auto;
 
 		&-header {
 			overflow: visible;
@@ -2928,20 +2928,26 @@ button.next {
 			}
 		}
 
+		& .accordion {
+			&-item {
+				height: unset;
+			}
+		}
+
 		.hidden {
 			display: none;
 		}
 
-		&:not(.show) {
-			max-height: 0;
-			height: 0;
-			opacity: 0;
-			visibility: hidden;
+		// &:not(.show) {
+		// 	max-height: 0;
+		// 	height: 0;
+		// 	opacity: 0;
+		// 	visibility: hidden;
 
-			& * {
-				display: none;
-			}
-		}
+		// 	& * {
+		// 		display: none;
+		// 	}
+		// }
 	}
 
 	&-list {
@@ -2955,6 +2961,26 @@ button.next {
 				content: "\2022";
 				color: var(--blue-main);
 			}
+		}
+	}
+
+	&--left {
+		flex: 1;
+		max-width: 100%;
+	}
+
+	&--right {
+		flex: 1;
+		max-width: 400px;
+
+		@media (max-width: 1000px) {
+			max-width: 420px;
+			margin: 0 auto;
+		}
+
+		@media (max-width: 440px) {
+			max-width: 100%;
+			margin: 0;
 		}
 	}
 
@@ -2988,16 +3014,16 @@ button.next {
 			}
 		}
 
-		&:not(.show) {
-			max-height: 0;
-			height: 0;
-			opacity: 0;
-			visibility: hidden;
+		// &:not(.show) {
+		// 	max-height: 0;
+		// 	height: 0;
+		// 	opacity: 0;
+		// 	visibility: hidden;
 
-			& * {
-				display: none;
-			}
-		}
+		// 	& * {
+		// 		display: none;
+		// 	}
+		// }
 
 		.mobile-hidden {
 			@media (max-width: 1400px) {

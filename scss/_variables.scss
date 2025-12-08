@@ -2351,6 +2351,11 @@ ol {
 				gap: 20px;
 			}
 		}
+		&-24 {
+			@media (max-width: 600px) {
+				gap: 24px;
+			}
+		}
 	}
 
 	&-lg {
@@ -3079,30 +3084,7 @@ form {
 
 	input,
 	textarea {
-		width: 100%;
-		background-color: transparent;
-		color: white;
-		padding: 14px 22px;
-		border-radius: 25px;
-		border: 1px solid var(--color-white);
-		position: relative;
-
-		// &:before {
-		//     content: '*';
-		//     font-size: 100px;
-		//     color: white;
-		//     position: absolute;
-		//     z-index: 10;
-		// }
-
-		&:focus {
-			border: 1px dashed var(--color-white);
-			outline: none;
-		}
-
-		&::placeholder {
-			color: var(--color-grey);
-		}
+		@include input;
 	}
 
 	.button {
@@ -3112,6 +3094,100 @@ form {
 
 	.button:hover {
 		background-color: var(--color-white);
+	}
+}
+
+// multiple form
+.input {
+	&-file {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		flex-wrap: nowrap;
+		gap: 8px;
+		width: 100%;
+		max-width: 100%;
+		@include input;
+		cursor: pointer;
+
+		& input[type="file"] {
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+			display: block;
+			width: 0;
+			height: 0;
+		}
+
+		& > label {
+			width: 100%;
+			text-align: left;
+			cursor: pointer;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+
+			& > span {
+				opacity: 0.75;
+			}
+
+			& > img {
+				width: 16px;
+				height: 16px;
+				object-fit: contain;
+				vertical-align: middle;
+				opacity: 0.75;
+				margin-left: 4px;
+			}
+		}
+
+		& .file-list {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			max-height: 200px;
+			margin: 0;
+			// border-radius: 25px;
+			// border: 1px dashed var(--color-white);
+			// padding: 14px 22px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		& .file-item {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			width: 100%;
+			max-width: 100%;
+
+			& > span {
+				&:not(.remove-file) {
+					display: block;
+					width: 100%;
+					height: 100%;
+					font-size: 14px;
+					text-align: left;
+					cursor: pointer;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					overflow: hidden;
+				}
+			}
+		}
+
+		& .remove-file {
+			position: relative;
+			z-index: 3;
+			display: flex;
+			font-size: 18px;
+			line-height: 1.25;
+			padding: 6px;
+			user-select: none;
+			cursor: pointer;
+		}
 	}
 }
 
@@ -6576,6 +6652,10 @@ button:hover,
 				text-decoration-thickness: 2px;
 				color: var(--color-white);
 			}
+		}
+
+		&.minified {
+			padding: 16px 28px;
 		}
 	}
 
