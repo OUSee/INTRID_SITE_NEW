@@ -4099,12 +4099,10 @@ button.next {
 		background-color: var(--blue-bg);
 
 		tr {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			grid-template-rows: 1fr;
+			border-bottom: 1px solid var(--blue-main);
 
-			&:first-child {
-				border-bottom: 1px solid var(--blue-main);
+			&:last-child {
+				border-bottom: none;
 			}
 
 			td,
@@ -4182,7 +4180,7 @@ button.next {
 			tr {
 				td,
 				th {
-					padding: 5px 5px;
+					padding: 5px;
 				}
 			}
 		}

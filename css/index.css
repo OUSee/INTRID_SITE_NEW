@@ -6680,6 +6680,7 @@ button:hover img,
   z-index: 2;
 }
 .card--portfolio.isMain {
+  aspect-ratio: unset;
   border-radius: 39px;
 }
 @media (max-width: 440px) {
@@ -12202,12 +12203,10 @@ button.next:hover {
   background-color: var(--blue-bg);
 }
 .domain-table tr {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
-}
-.domain-table tr:first-child {
   border-bottom: 1px solid var(--blue-main);
+}
+.domain-table tr:last-child {
+  border-bottom: none;
 }
 .domain-table tr td,
 .domain-table tr th {
@@ -12266,7 +12265,7 @@ button.next:hover {
   }
   .domain-table tr td,
   .domain-table tr th {
-    padding: 5px 5px;
+    padding: 5px;
   }
 }
 
