@@ -1116,9 +1116,12 @@ function sliderInitialize() {
 		if (id === "logo-slider") {
 			console.log("=> init", id);
 		}
-		let slider = document.getElementById(`${id}`);
 
 		if (!id) return;
+
+		let slider = document.getElementById(`${id}`);
+
+		if (!slider) return;
 
 		// Проверяем, был ли уже инициализирован слайдер
 		if (slider.dataset.initialized === "true") {
