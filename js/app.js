@@ -672,29 +672,29 @@ const SliderInIt = () => {
 
 				const offset = currentIndex * (cardWidth + 25);
 				slider.style.transform = `translateX(-${offset}px)`;
+
+				// Получаем актуальные ссылки на кнопки при каждом обновлении
+				const prevButton = document.querySelector(".slider-arrow.prev");
+				const nextButton = document.querySelector(".slider-arrow.next");
+
+				if (prevButton && nextButton) {
+					// Обновляем видимость кнопок
+					prevButton.style.display =
+						currentIndex === 0 || cards.length <= slidesPerPage
+							? "none"
+							: "block";
+					nextButton.style.display =
+						currentIndex === maxIndex ||
+						maxIndex <= 0 ||
+						cards.length <= slidesPerPage
+							? "none"
+							: "block";
+
+					console.log(
+						`currentIndex: ${currentIndex}, maxIndex: ${maxIndex}, slidesPerPage: ${slidesPerPage}, cards: ${cards.length}`
+					); // Для отладки
+				}
 			});
-
-			// Получаем актуальные ссылки на кнопки при каждом обновлении
-			const prevButton = document.querySelector(".slider-arrow.prev");
-			const nextButton = document.querySelector(".slider-arrow.next");
-
-			if (prevButton && nextButton) {
-				// Обновляем видимость кнопок
-				prevButton.style.display =
-					currentIndex === 0 || cards.length <= slidesPerPage
-						? "none"
-						: "block";
-				nextButton.style.display =
-					currentIndex === maxIndex ||
-					maxIndex <= 0 ||
-					cards.length <= slidesPerPage
-						? "none"
-						: "block";
-
-				console.log(
-					`currentIndex: ${currentIndex}, maxIndex: ${maxIndex}, slidesPerPage: ${slidesPerPage}, cards: ${cards.length}`
-				); // Для отладки
-			}
 		};
 
 		// Обработчики для кнопок
@@ -1120,6 +1120,16 @@ function sliderInitialize() {
 
 		if (!id) return;
 
+		// Проверяем, был ли уже инициализирован слайдер
+		if (slider.dataset.initialized === "true") {
+			// Только обновляем размеры, не сбрасываем позицию
+			updateSliderDimensions(slider);
+			return;
+		}
+
+		// Первоначальная инициализация
+		slider.dataset.initialized = "true";
+
 		const pagination = document.querySelector(`#${id} + .pagination`);
 		const navLeft = document.getElementById(`navleft_for--${id}`);
 		const navRight = document.getElementById(`navright_for--${id}`);
@@ -1499,6 +1509,25 @@ function sliderInitialize() {
 			}
 		});
 	}
+}
+
+function updateSliderDimensions(slider) {
+	// Только обновляем размеры без сброса позиции
+	// const computedStyle = window.getComputedStyle(slider);
+	// const gap = parseInt(computedStyle.gap) || 0;
+	// const visibleWidth = slider.parentElement?.clientWidth || 0;
+	const slides = slider.children;
+
+	if (slides.length === 0) return;
+
+	// const slideWidth = calculateSlideWidth(slider, visibleWidth, gap);
+
+	requestAnimationFrame(() => {
+		Array.from(slides).forEach((slide) => {
+			slide.style.minWidth = `${slideWidth}px`;
+		});
+		// Не обновляем transform - сохраняем текущую позицию
+	});
 }
 
 sliderInitialize();
