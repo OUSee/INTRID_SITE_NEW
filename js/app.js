@@ -167,13 +167,32 @@ function updateMockupPlace() {
 }
 
 // Используем debounce для оптимизации обработки resize
+// let resizeTimeout;
+// function handleResize() {
+// 	clearTimeout(resizeTimeout);
+// 	resizeTimeout = setTimeout(() => {
+// 		updateMockupPlace();
+// 		sliderInitialize();
+// 		SliderInIt();
+// 	}, 250);
+// }
+
 let resizeTimeout;
+let resizeRunning = false;
+
 function handleResize() {
+	if (resizeRunning) return;
+
 	clearTimeout(resizeTimeout);
 	resizeTimeout = setTimeout(() => {
-		updateMockupPlace();
-		sliderInitialize();
-		SliderInIt();
+		resizeRunning = true;
+
+		requestAnimationFrame(() => {
+			updateMockupPlace();
+			sliderInitialize();
+			SliderInIt();
+			resizeRunning = false;
+		});
 	}, 250);
 }
 
@@ -641,17 +660,19 @@ const SliderInIt = () => {
 		let currentIndex = 0;
 
 		const updateSlider = () => {
-			const sliderWidth = slider.offsetWidth;
-			const slidesPerPage = Math.floor(sliderWidth / 255);
-			const maxIndex = Math.max(0, cards.length - slidesPerPage);
-			const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
+			requestAnimationFrame(() => {
+				const sliderWidth = slider.offsetWidth;
+				const slidesPerPage = Math.floor(sliderWidth / 255);
+				const maxIndex = Math.max(0, cards.length - slidesPerPage);
+				const cardWidth = Math.floor(sliderWidth / slidesPerPage - 25);
 
-			cards.forEach((card) => {
-				card.style.minWidth = `${cardWidth}px`;
+				cards.forEach((card) => {
+					card.style.minWidth = `${cardWidth}px`;
+				});
+
+				const offset = currentIndex * (cardWidth + 25);
+				slider.style.transform = `translateX(-${offset}px)`;
 			});
-
-			const offset = currentIndex * (cardWidth + 25);
-			slider.style.transform = `translateX(-${offset}px)`;
 
 			// Получаем актуальные ссылки на кнопки при каждом обновлении
 			const prevButton = document.querySelector(".slider-arrow.prev");
@@ -1096,6 +1117,9 @@ function sliderInitialize() {
 			console.log("=> init", id);
 		}
 		let slider = document.getElementById(`${id}`);
+
+		if (!id) return;
+
 		const pagination = document.querySelector(`#${id} + .pagination`);
 		const navLeft = document.getElementById(`navleft_for--${id}`);
 		const navRight = document.getElementById(`navright_for--${id}`);
