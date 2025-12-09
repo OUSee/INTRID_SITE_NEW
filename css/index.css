@@ -3019,6 +3019,15 @@ ol li > ol {
   position: relative;
 }
 
+#stickyElem {
+  position: sticky;
+  top: unset;
+  right: 0;
+  bottom: 100px;
+  left: 0;
+  z-index: 1;
+}
+
 .color-blue {
   color: var(--blue-main) !important;
 }
@@ -10161,7 +10170,6 @@ button.next:hover {
   display: flex;
   gap: 32px;
   max-width: 360px;
-  align-items: center;
   min-height: 150px;
   cursor: pointer;
   transition: 0.25s ease-in-out;
@@ -10173,11 +10181,15 @@ button.next:hover {
 .benefit-card img {
   width: 44px;
   height: 44px;
+  align-self: center;
 }
 .benefit-card img,
 .benefit-card div {
   position: relative;
   z-index: 1;
+}
+.benefit-card div {
+  flex: 1;
 }
 .benefit-card p {
   margin: 0;
@@ -10706,7 +10718,6 @@ button.next:hover {
 }
 .sites-leaders-content-right .achievements-slider {
   margin: 0 auto;
-  margin-bottom: auto;
 }
 .sites-portfolio-slider {
   margin-top: 50px;
@@ -11349,6 +11360,13 @@ button.next:hover {
 .calculator--right {
   flex: 1;
   max-width: 400px;
+}
+@media (min-width: 1000px) {
+  .calculator--right.isStickyColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 }
 @media (max-width: 1000px) {
   .calculator--right {

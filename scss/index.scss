@@ -1573,7 +1573,7 @@ button.next {
 	display: flex;
 	gap: 32px;
 	max-width: 360px;
-	align-items: center;
+	// align-items: center;
 	min-height: 150px;
 	cursor: pointer;
 	transition: 0.25s ease-in-out;
@@ -1586,12 +1586,17 @@ button.next {
 	img {
 		width: 44px;
 		height: 44px;
+		align-self: center;
 	}
 
 	img,
 	div {
 		position: relative;
 		z-index: 1;
+	}
+
+	div {
+		flex: 1;
 	}
 
 	p {
@@ -2168,7 +2173,7 @@ button.next {
 
 				& .achievements-slider {
 					margin: 0 auto;
-					margin-bottom: auto;
+					// margin-bottom: auto;
 				}
 			}
 		}
@@ -2977,6 +2982,14 @@ button.next {
 	&--right {
 		flex: 1;
 		max-width: 400px;
+
+		&.isStickyColumn {
+			@media (min-width: 1000px) {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+			}
+		}
 
 		@media (max-width: 1000px) {
 			max-width: 420px;
