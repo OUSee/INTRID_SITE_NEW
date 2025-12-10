@@ -5824,19 +5824,6 @@ button.next {
 		}
 	}
 
-	.tabs-buttons {
-		margin: 0 8px;
-		gap: 12px;
-	}
-
-	.tab-button {
-		padding: 18px 32px 18px 100px;
-
-		.title_h5 {
-			display: block;
-		}
-	}
-
 	.tab-content-webDev {
 		flex-direction: column;
 	}
@@ -5865,23 +5852,6 @@ button.next {
 			width: 212px;
 		}
 	}
-
-	.tabs {
-		padding-bottom: 0px;
-	}
-
-	.tabs-buttons {
-		margin: 0 8px;
-		gap: 12px;
-	}
-
-	.tab-button {
-		padding: 18px 32px 0px 100px;
-
-		.title_h5 {
-			display: block;
-		}
-	}
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
@@ -5893,40 +5863,6 @@ button.next {
 @media (max-width: 601px) {
 	.more-about-web-dev {
 		display: none;
-	}
-
-	.tabs-buttons {
-		gap: 12px;
-		margin: 0 11px;
-	}
-
-	.tab-button {
-		padding: 14px 20px 0px 20px;
-
-		.tab-header {
-			position: relative;
-			font-size: 14px;
-			z-index: 1;
-		}
-
-		&::before {
-			display: none;
-		}
-
-		&:hover,
-		&:has(input:checked) {
-			&::after {
-				z-index: 0;
-				color: var(--blue-clouds);
-			}
-		}
-
-		&::after {
-			font-size: 75px;
-			top: -5px;
-			left: -35px;
-			color: var(--blue-clouds);
-		}
 	}
 
 	.tab-content {
@@ -5954,78 +5890,78 @@ button.next {
 
 @media (max-width: 440px) {
 	.tabs {
-		.tabs-buttons {
-			flex-direction: column-reverse;
-			gap: 8px;
-			margin: 0;
-			margin-bottom: 50px;
-			position: relative;
-			display: none;
-		}
+		// .tabs-buttons {
+		// 	flex-direction: column-reverse;
+		// 	gap: 8px;
+		// 	margin: 0;
+		// 	margin-bottom: 50px;
+		// 	position: relative;
+		// 	display: none;
+		// }
 
-		.tab-button {
-			display: flex;
-			flex-basis: unset;
-			height: fit-content;
-			border-radius: 39px;
-			align-items: center;
-			padding: 14px 20px;
+		// .tab-button {
+		// 	display: flex;
+		// 	flex-basis: unset;
+		// 	height: fit-content;
+		// 	border-radius: 39px;
+		// 	align-items: center;
+		// 	padding: 14px 20px;
 
-			&:has(input:checked) {
-				border-bottom-left-radius: 0;
-				border-bottom-right-radius: 0;
+		// 	&:has(input:checked) {
+		// 		border-bottom-left-radius: 0;
+		// 		border-bottom-right-radius: 0;
 
-				span.tab-header::after {
-					transform: rotate(270deg);
-				}
-			}
+		// 		span.tab-header::after {
+		// 			transform: rotate(270deg);
+		// 		}
+		// 	}
 
-			span.tab-header {
-				width: 100%;
+		// 	span.tab-header {
+		// 		width: 100%;
 
-				&::after {
-					position: absolute;
-					color: var(--blue-main);
-					right: 0;
-					font-family: "INTRID_ICONS";
-					content: "\6d";
-					font-size: 1.5em;
-					transform: rotate(90deg);
-				}
-			}
-		}
+		// 		&::after {
+		// 			position: absolute;
+		// 			color: var(--blue-main);
+		// 			right: 0;
+		// 			font-family: "INTRID_ICONS";
+		// 			content: "\6d";
+		// 			font-size: 1.5em;
+		// 			transform: rotate(90deg);
+		// 		}
+		// 	}
+		// }
 
-		.tabs-content {
-			background: transparent;
+		// .tabs-content {
+		// 	background: transparent;
 
-			&:has(input:checked) {
-				background-color: var(--bg-main);
-			}
-		}
+		// 	&:has(input:checked) {
+		// 		background-color: var(--bg-main);
+		// 	}
+		// }
 
-		.tab-content {
-			display: block;
-			padding: 6px 0;
-			transform: translateY(-54px);
-			background-color: transparent;
+		// .tab-content {
+		// 	display: block;
+		// 	padding: 6px 0;
+		// 	transform: translateY(-54px);
+		// 	background-color: transparent;
 
-			label:has(input:not(:checked)) ~ * {
-				&:not(.benefit-card) {
-					display: none;
-					transform-origin: top;
-					transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-				}
-			}
+		// 	label:has(input:not(:checked)) ~ * {
+		// 		&:not(.benefit-card) {
+		// 			display: none;
+		// 			transform-origin: top;
+		// 			transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+		// 		}
+		// 	}
 
-			label:has(input:checked) ~ * {
-				// display: flex;
-			}
+		// 	label:has(input:checked) ~ * {
+		// 		// display: flex;
+		// 	}
 
-			h2 {
-				margin-top: 50px;
-				justify-self: center;
-			}
-		}
+		// 	h2 {
+		// 		margin-top: 50px;
+		// 		justify-self: center;
+		// 	}
+		// }
 
 		& .card--achievement {
 			min-width: 100px;
@@ -6044,6 +5980,7 @@ button.next {
 		margin-bottom: 40px;
 	}
 }
+
 
 .portfolio-block__pagination,
 .pagination-panel {
