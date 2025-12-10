@@ -3604,8 +3604,139 @@ form .button:hover {
   padding: 62px 0px;
   transform-origin: top;
 }
-
-.tab-button {
+.tabs .tab-button {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: -1px;
+  padding: 16px;
+  background-color: var(--blue-bg);
+  border-top: 2px solid var(--bg-main);
+  border-bottom: 1px solid var(--bg-main);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+}
+@media (max-width: 1000px) {
+  .tabs .tab-button {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    max-height: unset;
+    padding: 8px 4px;
+    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+    border-color: transparent;
+    border-radius: 16px 16px 0 0;
+    text-align: center;
+    transform-origin: center;
+  }
+}
+@media (max-width: 600px) {
+  .tabs .tab-button {
+    gap: 4px;
+    padding: 4px;
+    background: transparent;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transform-origin: bottom center;
+  }
+}
+.tabs .tab-button:hover {
+  background: color-mix(in srgb, var(--blue-main) 15%, transparent);
+}
+@media (max-width: 1000px) {
+  .tabs .tab-button:hover {
+    color: var(--color-white);
+    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+    transform: scale(1.125);
+  }
+}
+@media (max-width: 600px) {
+  .tabs .tab-button:hover {
+    border-color: transparent;
+    transform: none;
+  }
+}
+@media (max-width: 1000px) {
+  .tabs .tab-button:hover img {
+    filter: unset;
+  }
+}
+.tabs .tab-button img {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+@media (max-width: 1000px) {
+  .tabs .tab-button img {
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (max-width: 600px) {
+  .tabs .tab-button img {
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (max-width: 1000px) {
+  .tabs .tab-button span {
+    text-wrap: balance;
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 600px) {
+  .tabs .tab-button span {
+    font-size: 11px !important;
+  }
+}
+.tabs .tab-button:has(:checked), .tabs .tab-button.active {
+  border-bottom: 1px solid var(--blue-main);
+}
+@media (max-width: 1000px) {
+  .tabs .tab-button:has(:checked), .tabs .tab-button.active {
+    box-shadow: 0px 0px 15px var(--blue-main);
+    color: var(--blue-main);
+    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+  }
+}
+@media (max-width: 600px) {
+  .tabs .tab-button:has(:checked), .tabs .tab-button.active {
+    box-shadow: unset;
+  }
+}
+.tabs .tab-button:has(:checked) img, .tabs .tab-button.active img {
+  filter: invert(1) grayscale(1) brightness(0);
+}
+@media (max-width: 1000px) {
+  .tabs .tab-button:has(:checked) img, .tabs .tab-button.active img {
+    filter: unset;
+  }
+}
+@media (min-width: 1000px) {
+  .tabs .tab-button:has(:checked), .tabs .tab-button.active {
+    background-color: var(--bg-main);
+    border-top: 2px solid var(--blue-main);
+    color: var(--color-white);
+  }
+  .tabs .tab-button:has(:checked) img, .tabs .tab-button.active img {
+    filter: invert(0) grayscale(0) brightness(1);
+  }
+}
+.tabs .tab-button input {
+  display: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.tabs:is(.isMain) .tab-button {
   padding: 24px 60px 18px 100px;
   background-color: var(--blue-bg);
   border-top: 2px solid var(--bg-main);
@@ -3618,21 +3749,13 @@ form .button:hover {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
-.tab-button.mobile {
-  display: none;
-}
-@media (max-width: 440px) {
-  .tab-button.mobile {
-    display: block;
-  }
-}
-.tab-button:hover::before {
+.tabs:is(.isMain) .tab-button:hover::before {
   background-color: var(--blue-main);
 }
-.tab-button:hover::after {
+.tabs:is(.isMain) .tab-button:hover::after {
   color: var(--color-white);
 }
-.tab-button::before {
+.tabs:is(.isMain) .tab-button::before {
   content: "";
   position: absolute;
   width: 180px;
@@ -3644,17 +3767,17 @@ form .button:hover {
   transition: all 0.3s ease-in-out;
 }
 @media (min-width: 1420px) {
-  .tab-button::before {
+  .tabs:is(.isMain) .tab-button::before {
     top: -43px;
     left: -90px;
   }
 }
 @media (max-width: 900px) {
-  .tab-button::before {
+  .tabs:is(.isMain) .tab-button::before {
     display: none;
   }
 }
-.tab-button::after {
+.tabs:is(.isMain) .tab-button::after {
   position: absolute;
   top: 60px;
   left: 20px;
@@ -3666,41 +3789,49 @@ form .button:hover {
   animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 @media (min-width: 1420px) {
-  .tab-button::after {
+  .tabs:is(.isMain) .tab-button::after {
     top: 50px;
     left: 20px;
   }
 }
 @media (max-width: 900px) {
-  .tab-button::after {
+  .tabs:is(.isMain) .tab-button::after {
     top: 25px;
     left: 20px;
   }
 }
-.tab-button .tab-button-content {
+.tabs:is(.isMain) .tab-button .tab-button-content {
   margin-top: 8px;
   color: var(--color-grey);
 }
 @media (max-width: 900px) {
-  .tab-button .tab-button-content {
+  .tabs:is(.isMain) .tab-button .tab-button-content {
     display: none;
   }
 }
-.tab-button input {
+.tabs:is(.isMain) .tab-button input {
   display: none;
 }
-.tab-button:has(input:checked) {
+.tabs:is(.isMain) .tab-button:has(input:checked) {
   background-color: var(--bg-main);
   border-top: 2px solid var(--blue-bg);
 }
-.tab-button:has(input:checked)::before {
+.tabs:is(.isMain) .tab-button:has(input:checked)::before {
   background-color: var(--blue-main);
 }
-.tab-button:has(input:checked)::after {
+.tabs:is(.isMain) .tab-button:has(input:checked)::after {
   color: var(--color-white);
 }
-.tab-button:has(input:checked) .tab-content {
+.tabs:is(.isMain) .tab-button:has(input:checked) .tab-content {
   color: var(--color-white);
+}
+.tabs:is(.isMain) .tab-button.mobile {
+  display: none;
+}
+@media (max-width: 440px) {
+  .tabs:is(.isMain) .tab-button.mobile {
+    display: block;
+  }
 }
 
 .tabs-buttons:has(#tab-1:checked) ~ .tabs-content .tab-content:nth-child(1),

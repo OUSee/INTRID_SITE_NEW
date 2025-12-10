@@ -3480,112 +3480,25 @@ form {
 			transform-origin: top;
 		}
 	}
-}
 
-.tab {
-	&-button {
-		padding: 24px 60px 18px 100px;
-		background-color: var(--blue-bg);
-		border-top: 2px solid var(--bg-main);
-		border-top-left-radius: 39px;
-		border-top-right-radius: 39px;
-		flex-grow: 1;
-		flex-basis: 0;
-		overflow: hidden;
-		position: relative;
-		transition: all 0.3s ease-in-out;
-		cursor: pointer;
-
-		&.mobile {
-			display: none;
-
-			@media (max-width: 440px) {
-				display: block;
-			}
+	& .tab {
+		&-button {
+			@include tab-button;
 		}
+	}
 
-		&:hover {
-			&::before {
-				background-color: var(--blue-main);
+	&:is(.isMain) {
+			& .tab-button {
+				@include tab-button-main;
+
+				&.mobile {
+					display: none;
+
+					@media (max-width: 440px) {
+						display: block;
+					}
+				}
 			}
-
-			&::after {
-				color: var(--color-white);
-			}
-		}
-
-		&::before {
-			content: "";
-			position: absolute;
-			width: 180px;
-			height: 180px;
-			background-color: var(--bg-main);
-			border-radius: 50%;
-			top: -25px;
-			left: -90px;
-			transition: all 0.3s ease-in-out;
-
-			@media (min-width: 1420px) {
-				top: -43px;
-				left: -90px;
-			}
-
-			@media (max-width: 900px) {
-				display: none;
-			}
-		}
-
-		&::after {
-			position: absolute;
-			top: 60px;
-			left: 20px;
-			font-family: "INTRID_ICONS";
-			font-size: 52px;
-			content: "\64";
-			color: var(--blue-main);
-			transition: all 0.3s ease-in-out;
-			animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
-
-			@media (min-width: 1420px) {
-				top: 50px;
-				left: 20px;
-			}
-
-			@media (max-width: 900px) {
-				top: 25px;
-				left: 20px;
-			}
-		}
-
-		.tab-button-content {
-			margin-top: 8px;
-			color: var(--color-grey);
-
-			@media (max-width: 900px) {
-				display: none;
-			}
-		}
-
-		input {
-			display: none;
-		}
-
-		&:has(input:checked) {
-			background-color: var(--bg-main);
-			border-top: 2px solid var(--blue-bg);
-
-			&::before {
-				background-color: var(--blue-main);
-			}
-
-			&::after {
-				color: var(--color-white);
-			}
-
-			.tab-content {
-				color: var(--color-white);
-			}
-		}
 	}
 }
 
