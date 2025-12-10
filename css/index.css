@@ -11338,6 +11338,15 @@ button.next:hover {
 .calculator-calculator .hidden {
   display: none;
 }
+.calculator-calculator:not(.show) {
+  max-height: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.calculator-calculator:not(.show) * {
+  display: none;
+}
 .calculator-list {
   padding-left: 30px;
 }
@@ -11410,6 +11419,15 @@ button.next:hover {
   .calculator-total.fixed-bottom {
     top: calc(100vh - 600px) !important;
   }
+}
+.calculator-total:not(.show) {
+  max-height: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.calculator-total:not(.show) * {
+  display: none;
 }
 @media (max-width: 1400px) {
   .calculator-total .mobile-hidden {
