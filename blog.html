@@ -177,27 +177,114 @@
     </header>
     <!-- MAIN PAGE -->
     <main>
-        <section class="main-section mb-50 container">
+        <section class="main-section container">
             <div class="breadcrumbs">
                 <a href="./">Главная</a>
                 <span>-</span>
                 <a href="#" class="link-disabled">Блог</a>
             </div>
 
-            <h1 class="w-fit underlined">
+            <h1 class="w-fit m-center text-center underlined mb-0">
                 Веб-разработка по полочкам
             </h1>
         </section>
 
         <!--  -->
+        <section class="bg-gradient" id="blogs-blog">
+            <div class="container">
+                <h2 class="underlined w-fit m-center text-center" id="blogs-title">
+                    Свежие публикации
+                </h2>
+        
+                <div class="d-flex flex-column gap-20 blog-list" id="blogs-list">
+                    <a href="./blog/landing-page.html" class="card card--recent card--blog card--blog-stacked">
+                        <div class="img-wrapper">
+                            <img data-src="./src/images/image-by-item-and-alias.webp" alt="recent-work-demo" class="lazyload">
+                        </div>
+                        <div class="card-body">
+                            <h3>Отличия Landing Page от сайта</h3>
+                            <p>
+                                Прежде чем заказать лендинг, нужно понимать, что это и для чего он нужен. А также
+                                нужно
+                                разобраться, в чем его отличия от обычного сайте. Суть обоих понятий довольно близка
+                                -
+                                немного отличается лишь разнообразие. Выбор должен основываться на преследуемых
+                                целях и
+                                особенностей бизнеса.
+                            </p>
+                            <span class="card-date">
+                                02.08.2025
+                            </span>
+                        </div>
+                    </a>
+                    <a href="./blog/etapy-seo-prodvijenia.html" class="card card--recent card--blog card--blog-stacked">
+                        <div class="img-wrapper">
+                            <img data-src="./src/images/blog/eseo.webp" alt="recent-work-demo" class="lazyload">
+                        </div>
+                        <div class="card-body">
+                            <h3>Этапы SEO-продвижения сайта</h3>
+                            <p>
+                                Чтобы стать успешным предпринимателем, просто создать сайт недостаточно.
+                                Интернет-ресурс
+                                должен быть заметен потенциальной клиентуре. Для этого требуется продвинуть его
+                                вверх в
+                                поисковых системах.
+                            </p>
+                            <span class="card-date">
+                                02.08.2025
+                            </span>
+                        </div>
+                    </a>
+                    <a href="./blog/unikalnyj-kontent-dla-vasego-internet-magazina.html" class="card card--recent card--blog card--blog-stacked">
+                        <div class="img-wrapper">
+                            <img data-src="./src/images/blog/kontent_sayta_kak_neoyemlemaya_chast_internet-marketinga.webp"
+                                alt="recent-work-demo" class="lazyload">
+                        </div>
+                        <div class="card-body">
+                            <h3>Уникальный контент для Вашего интернет-магазина</h3>
+                            <p>
+                                Интернет-магазин - удобная и современная платформа для реализации товаров. Однако,
+                                для
+                                удачной работы недостаточно просто создать сайт или страницу в соцсетях. Нужно
+                                наполнить
+                                его качественным контентом: статьями, заметками и описаниями товаров.
+                            </p>
+                            <span class="card-date">
+                                02.08.2025
+                            </span>
+                        </div>
+                    </a>
+                    <a href="./blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html"
+                        class="card card--recent card--blog card--blog-stacked">
+                        <div class="img-wrapper">
+                            <img data-src="./src/images/blog/cms-zoom.webp" alt="recent-work-demo" class="lazyload">
+                        </div>
+                        <div class="card-body">
+                            <h3>
+                                Почему нельзя создавать интернет-магазины на
+                                шаблонах
+                            </h3>
+                            <p>
+                                Основные проблемы, с которыми сталкиваются пользователи при создании сайтов на
+                                шаблонах
+                            </p>
+                            <span class="card-date">
+                                02.08.2025
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section>
             <div class="container">
                 <h2 class="w-fit m-center">
                     Выбирайте статьи по темам
                 </h2>
-
+                
                 <div class="flex-layout flex-layout--tab gap-20">
-                    <a href="#blog-site" data-selector="blog-site" class="card card--tab" onclick="sliderInitialise()">
+                    <a href="./blog-category.html" class="card card--tab">
                         <div class="card-icon">
                             <img src="./src/images/corp-site-services.webp" alt="img">
                         </div>
@@ -208,8 +295,7 @@
                             Материалы о важнейших и новейших программных разработках в сфере WEB специально для Вас!
                         </p>
                     </a>
-                    <a href="#digital-design" data-selector="digital-design" class="card card--tab"
-                        onclick="sliderInitialise()">
+                    <a href="./blog-category.html" class="card card--tab">
                         <div class="card-icon">
                             <img src="./src/images/site-design-services.webp" alt="img">
                         </div>
@@ -220,8 +306,7 @@
                             Раскрываем секреты качественного веб-дизайна и рассказываем о новейших креативных подходах
                         </p>
                     </a>
-                    <a href="#seo-promotion" data-selector="seo-promotion" class="card card--tab"
-                        onclick="sliderInitialise()">
+                    <a href="./blog-category.html" class="card card--tab">
                         <div class="card-icon">
                             <img src="./src/icons/seo-services.svg" alt="img">
                         </div>
@@ -233,8 +318,7 @@
                             чуть-чуть
                         </p>
                     </a>
-                    <a href="#internet-marketing" data-selector="internet-marketing" class="card card--tab"
-                        onclick="sliderInitialise()">
+                    <a href="./blog-category.html" class="card card--tab">
                         <div class="card-icon">
                             <img src="./src/images/tg-target-services.webp" alt="img">
                         </div>
@@ -246,114 +330,6 @@
                             покупателей
                         </p>
                     </a>
-                </div>
-            </div>
-        </section>
-
-        <!--  -->
-        <section class="bg-gradient" id="blogs-blog">
-            <div class="container">
-                <h2 class="underlined w-fit" id="blogs-title">
-                    Свежие публикации
-                </h2>
-
-                <div class="sites-portfolio-slider" data-slider="blog-slider" data-fill="4,3,2,1" id="blog-slider"
-                    style="transform: translateX(0px);">
-                    <div class="card card--recent card--newsletter active">
-                        <a href="./blog/landing-page.html">
-                            <div class="img-wrapper">
-                                <img src="./src/images/image-by-item-and-alias.webp" alt="recent-work-demo">
-                            </div>
-                            <div class="card-body">
-                                <b>Отличия Landing Page от сайта</b>
-                                <p>
-                                    Прежде чем заказать лендинг, нужно понимать, что это и для чего он нужен. А также
-                                    нужно
-                                    разобраться, в чем его отличия от обычного сайте. Суть обоих понятий довольно близка
-                                    -
-                                    немного отличается лишь разнообразие. Выбор должен основываться на преследуемых
-                                    целях и
-                                    особенностей бизнеса.
-                                </p>
-                                <span class="card-date">
-                                    02.08.2025
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card card--recent card--newsletter active">
-                        <a href="./blog/etapy-seo-prodvijenia.html">
-                            <div class="img-wrapper">
-                                <img src="./src/images/blog/eseo.webp" alt="recent-work-demo">
-                            </div>
-                            <div class="card-body">
-                                <b>Этапы SEO-продвижения сайта</b>
-                                <p>
-                                    Чтобы стать успешным предпринимателем, просто создать сайт недостаточно.
-                                    Интернет-ресурс
-                                    должен быть заметен потенциальной клиентуре. Для этого требуется продвинуть его
-                                    вверх в
-                                    поисковых системах.
-                                </p>
-                                <span class="card-date">
-                                    02.08.2025
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card card--recent card--newsletter active">
-                        <a href="./blog/unikalnyj-kontent-dla-vasego-internet-magazina.html">
-                            <div class="img-wrapper">
-                                <img src="./src/images/blog/kontent_sayta_kak_neoyemlemaya_chast_internet-marketinga.webp"
-                                    alt="recent-work-demo">
-                            </div>
-                            <div class="card-body">
-                                <b>Уникальный контент для Вашего интернет-магазина</b>
-                                <p>
-                                    Интернет-магазин - удобная и современная платформа для реализации товаров. Однако,
-                                    для
-                                    удачной работы недостаточно просто создать сайт или страницу в соцсетях. Нужно
-                                    наполнить
-                                    его качественным контентом: статьями, заметками и описаниями товаров.
-                                </p>
-                                <span class="card-date">
-                                    02.08.2025
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card card--recent card--newsletter active">
-                        <a href="./blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html">
-                            <div class="img-wrapper">
-                                <img src="./src/images/blog/cms-zoom.webp" alt="recent-work-demo">
-                            </div>
-                            <div class="card-body">
-                                <b>
-                                    Почему нельзя создавать интернет-магазины на
-                                    шаблонах
-                                </b>
-                                <p>
-                                    Основные проблемы, с которыми сталкиваются пользователи при создании сайтов на
-                                    шаблонах
-                                </p>
-                                <span class="card-date">
-                                    02.08.2025
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div id="sites-portfolio-pagination" class="pagination">
-                    <button class="pagination--prev-btn" style="opacity: 0;">
-                        <i class="icon-shevrone left"></i>
-                    </button>
-                    <div class="pagination--buttons-dots">
-                        <button class="pagination--btn-dot highlight"></button>
-                    </div>
-                    <button class="pagination--next-btn">
-                        <i class="icon-shevrone"></i>
-                    </button>
                 </div>
             </div>
         </section>

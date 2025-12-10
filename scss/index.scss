@@ -246,6 +246,7 @@ button.next {
 			flex-direction: row;
 			gap: 20px;
 			flex-wrap: wrap;
+			margin-bottom: -1px;
 			// width: 100%;
 
 			@media (max-width: 1000px) {
@@ -439,6 +440,12 @@ button.next {
 					padding: 16px;
 					border-radius: 16px;
 				}
+			}
+		}
+
+		&:not(.nav-tabs--tender) {
+			& .nav-tabs--content {
+				@include tabs-content;
 			}
 		}
 	}
@@ -4334,6 +4341,8 @@ button.next {
 	}
 
 	&__wrapper {
+		@include tabs-content;
+
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;

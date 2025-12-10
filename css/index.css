@@ -3180,6 +3180,14 @@ form textarea {
   color: white;
   border-radius: 25px;
   border: 1px solid var(--color-white);
+  font-size: 16px;
+  line-height: 1.25;
+}
+@media (max-width: 1000px) {
+  form input,
+  form textarea {
+    font-size: 15px;
+  }
 }
 form input:focus,
 form textarea:focus {
@@ -3214,7 +3222,14 @@ form .button:hover {
   color: white;
   border-radius: 25px;
   border: 1px solid var(--color-white);
+  font-size: 16px;
+  line-height: 1.25;
   cursor: pointer;
+}
+@media (max-width: 1000px) {
+  .input-file {
+    font-size: 15px;
+  }
 }
 .input-file:focus {
   border: 1px dashed var(--color-white);
@@ -3576,157 +3591,6 @@ form .button:hover {
   opacity: 0.7;
 }
 
-.tab-view {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-  padding: 0 14px;
-}
-.tab-view .slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  min-width: 60px;
-  min-height: 60px;
-  color: var(--blue-main);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  border: none;
-  font-size: 20px;
-  display: none;
-}
-.tab-view .slider-arrow i.left {
-  transform: rotate(180deg) translateY(0em);
-}
-.tab-view .slider-arrow i {
-  font-size: 40px;
-}
-@media (max-width: 1440px) {
-  .tab-view .slider-arrow {
-    display: flex;
-  }
-}
-.tab-view .slider-arrow:hover {
-  outline: 1px solid var(--blue-main);
-  background-color: var(--navbar-bg-op);
-}
-.tab-view .slider-arrow.prev {
-  left: 1px;
-}
-.tab-view .slider-arrow.next {
-  left: unset;
-  right: 1px;
-}
-.tab-view .tab-slider {
-  display: none;
-  animation: fadeIn 1s ease-in;
-  padding: 30px 0px;
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: visible;
-  transition: 0.25s ease-in-out;
-}
-.tab-view .tab-slider .tab-slider-card {
-  border-radius: 39px;
-  padding: 20px 30px;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1;
-  transition: all 0.3s ease-in-out;
-  color: var(--color-white);
-}
-.tab-view .tab-slider .tab-slider-card:not(:last-child) {
-  margin-right: 25px;
-}
-.tab-view .tab-slider .tab-slider-card p.title_h4 {
-  font-size: 20px;
-}
-@media (max-width: 600px) {
-  .tab-view .tab-slider .tab-slider-card p.title_h4 {
-    font-size: 16px;
-  }
-}
-.tab-view .tab-slider .tab-slider-card-image {
-  align-self: center;
-  width: auto;
-  height: 62px;
-  padding: 0px;
-  margin: 50px 0px;
-  object-fit: contain;
-  overflow: visible;
-  border-radius: 50%;
-  position: relative;
-  box-shadow: 0px 0px 60px 45px var(--blue-clouds), inset 0px 0px 75px 20px var(--blue-clouds);
-}
-@media (max-width: 900px) {
-  .tab-view .tab-slider .tab-slider-card-image {
-    margin: 50px 0px 20px 0px;
-  }
-}
-.tab-view .tab-slider .tab-slider-card-image img {
-  width: 62px;
-  height: 62px;
-  transition: all 0.3s ease-in-out;
-}
-.tab-view .tab-slider .tab-slider-card:hover {
-  transform: scale(1.03);
-  background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-}
-.tab-view .tab-slider .tab-slider-card:hover img {
-  transform: scale(1.3);
-}
-.tab-view .tab-slider .tab-slider-card.crew-card {
-  outline: 1px solid var(--blue-bg);
-  cursor: default;
-}
-.tab-view .tab-slider .tab-slider-card.crew-card .tab-slider-card-image {
-  margin: 15px auto;
-  height: 200px;
-  box-shadow: 0px 0px 60px 25px var(--blue-clouds), inset 0px 0px 75px 10px var(--blue-clouds);
-  border-radius: 25px;
-  transition: all 0.3s ease-in-out;
-}
-.tab-view .tab-slider .tab-slider-card.crew-card .tab-slider-card-image img {
-  border-radius: 15px;
-  height: 200px;
-  width: auto;
-}
-.tab-view .tab-slider .tab-slider-card.crew-card:hover .tab-slider-card-image > img {
-  transform: scale(1.1);
-}
-.tab-view .tab-slider .tab-slider-card.crew-card > .title_h4 {
-  white-space: normal;
-  /* Prevent breaking at hyphens */
-  word-break: normal;
-  overflow-wrap: normal;
-  /* Prevent breaking at hyphens */
-  hyphens: manual;
-}
-.tab-view .tab-slider .tab-slider-card.crew-card > .testimonials {
-  margin-top: 10px;
-}
-.tab-view .tab-slider .tab-slider-card.crew-card > .testimonials::before {
-  content: ",,";
-  position: relative;
-  top: -1em;
-  color: var(--blue-main);
-}
-.tab-view .tab-slider .tab-slider-card.crew-card > .testimonials::after {
-  content: ",,";
-  color: var(--blue-main);
-}
-@media (max-width: 1440px) {
-  .tab-view .tab-slider .tab-slider-card {
-    display: flex;
-    min-width: 255px;
-  }
-}
-
 .tabs-buttons {
   display: flex;
   flex-direction: row;
@@ -3835,27 +3699,12 @@ form .button:hover {
   width: 100%;
   background: rgb(10, 10, 10);
   background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
+  border-top: 1px solid var(--blue-main);
 }
 .tabs-content .tab-content {
   display: none;
   padding: 62px 0px;
   transform-origin: top;
-}
-.tabs-content .count-n-card .recent-work-card {
-  margin-right: 0;
-  margin-left: auto;
-  width: 45%;
-}
-@media (max-width: 600px) {
-  .tabs-content .count-n-card .recent-work-card {
-    width: 100%;
-  }
-}
-@media (max-width: 1000px) {
-  .tabs-content .count-n-card .recent-work-card img {
-    width: 30%;
-    height: auto;
-  }
 }
 
 .tabs-buttons:has(#tab-1:checked) ~ .tabs-content .tab-content:nth-child(1),
@@ -4876,9 +4725,11 @@ button:hover img,
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  margin-bottom: -1px;
   padding: 16px;
   background-color: var(--blue-bg);
   border-top: 2px solid var(--bg-main);
+  border-bottom: 1px solid var(--bg-main);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   overflow: hidden;
@@ -4959,6 +4810,9 @@ button:hover img,
   .button--tab span {
     font-size: 11px !important;
   }
+}
+.button--tab:has(:checked), .button--tab.active {
+  border-bottom: 1px solid var(--blue-main);
 }
 @media (max-width: 1000px) {
   .button--tab:has(:checked), .button--tab.active {
@@ -8817,6 +8671,7 @@ button.next:hover {
   flex-direction: row;
   gap: 20px;
   flex-wrap: wrap;
+  margin-bottom: -1px;
 }
 @media (max-width: 1000px) {
   .nav-tabs--buttons {
@@ -9179,6 +9034,12 @@ button.next:hover {
     padding: 16px;
     border-radius: 16px;
   }
+}
+.nav-tabs:not(.nav-tabs--tender) .nav-tabs--content {
+  width: 100%;
+  background: rgb(10, 10, 10);
+  background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
+  border-top: 1px solid var(--blue-main);
 }
 
 .main-section {
@@ -12467,9 +12328,11 @@ button.next:hover {
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  margin-bottom: -1px;
   padding: 16px;
   background-color: var(--blue-bg);
   border-top: 2px solid var(--bg-main);
+  border-bottom: 1px solid var(--bg-main);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   overflow: hidden;
@@ -12551,6 +12414,9 @@ button.next:hover {
   .reviews__button span {
     font-size: 11px !important;
   }
+}
+.reviews__button:has(:checked), .reviews__button.active {
+  border-bottom: 1px solid var(--blue-main);
 }
 @media (max-width: 1000px) {
   .reviews__button:has(:checked), .reviews__button.active {
@@ -12662,6 +12528,10 @@ button.next:hover {
   }
 }
 .reviews__wrapper {
+  width: 100%;
+  background: rgb(10, 10, 10);
+  background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
+  border-top: 1px solid var(--blue-main);
   display: flex;
   flex-direction: row;
   align-items: flex-start;
