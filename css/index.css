@@ -3660,19 +3660,9 @@ form .button:hover {
     transform-origin: bottom center;
   }
 }
-.tabs .tab-button:hover {
-  background: color-mix(in srgb, var(--blue-main) 15%, transparent);
-}
-@media (max-width: 1000px) {
+@media (min-width: 1000px) {
   .tabs .tab-button:hover {
-    color: var(--color-white);
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-  }
-}
-@media (max-width: 600px) {
-  .tabs .tab-button:hover {
-    border-color: transparent;
-    transform: none;
+    background: color-mix(in srgb, var(--blue-main) 15%, transparent);
   }
 }
 @media (max-width: 1000px) {
@@ -5061,19 +5051,9 @@ button:hover img,
     transform-origin: bottom center;
   }
 }
-.button--tab:hover {
-  background: color-mix(in srgb, var(--blue-main) 15%, transparent);
-}
-@media (max-width: 1000px) {
+@media (min-width: 1000px) {
   .button--tab:hover {
-    color: var(--color-white);
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-  }
-}
-@media (max-width: 600px) {
-  .button--tab:hover {
-    border-color: transparent;
-    transform: none;
+    background: color-mix(in srgb, var(--blue-main) 15%, transparent);
   }
 }
 @media (max-width: 1000px) {
@@ -8966,7 +8946,11 @@ button.next:hover {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  max-width: 100%;
+}
+@media (max-width: 1500px) {
+  .nav-tabs--buttons {
+    max-width: 100%;
+  }
 }
 @media (max-width: 1000px) {
   .nav-tabs--buttons {
@@ -9302,7 +9286,6 @@ button.next:hover {
 .nav-tabs--contacts .nav-tabs--content {
   margin: 0;
   padding: 30px;
-  background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
   border: 1px solid var(--blue-main);
   border-radius: 39px;
 }
@@ -12116,6 +12099,7 @@ button.next:hover {
   width: 100%;
   padding: 50px 0;
   background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
+  border-top: 1px solid var(--blue-main);
   transform-origin: top center;
   transition: 0.25s ease-in-out;
 }
@@ -12638,19 +12622,9 @@ button.next:hover {
     transform-origin: bottom center;
   }
 }
-.reviews__button:hover {
-  background: color-mix(in srgb, var(--blue-main) 15%, transparent);
-}
-@media (max-width: 1000px) {
+@media (min-width: 1000px) {
   .reviews__button:hover {
-    color: var(--color-white);
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-  }
-}
-@media (max-width: 600px) {
-  .reviews__button:hover {
-    border-color: transparent;
-    transform: none;
+    background: color-mix(in srgb, var(--blue-main) 15%, transparent);
   }
 }
 @media (max-width: 1000px) {

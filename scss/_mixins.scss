@@ -191,7 +191,11 @@
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
-	max-width: 100%;
+	// max-width: 100%;
+
+	@media (max-width: 1500px) {
+		max-width: 100%;
+	}
 
 	@media (max-width: 1000px) {
 		gap: 12px;
@@ -217,6 +221,8 @@
 	background-color: var(--blue-bg);
 	// border-top: 2px solid var(--bg-main);
 	border-top: 2px solid var(--blue-clouds);
+	// border-left: 1px solid transparent;
+	// border-right: 1px solid transparent;
 	border-bottom: 1px solid var(--blue-main);
 	border-top-left-radius: 16px;
 	border-top-right-radius: 16px;
@@ -248,18 +254,20 @@
 	}
 
 	&:hover {
-		background: color-mix(in srgb, var(--blue-main) 15%, transparent);
-
-		@media (max-width: 1000px) {
-			color: var(--color-white);
-			background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-			//   transform: scale(1.125);
+		@media (min-width: 1000px) {
+			background: color-mix(in srgb, var(--blue-main) 15%, transparent);
 		}
 
-		@media (max-width: 600px) {
-			border-color: transparent;
-			transform: none;
-		}
+		// @media (max-width: 1000px) {
+		// color: var(--color-white);
+		// background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+		//   transform: scale(1.125);
+		// }
+
+		// @media (max-width: 600px) {
+		// border-color: transparent;
+		// transform: none;
+		// }
 
 		& img {
 			@media (max-width: 1000px) {
@@ -301,6 +309,8 @@
 	&:has(:checked),
 	&.active {
 		border-top-color: var(--blue-main);
+		// border-left-color: var(--blue-main);
+		// border-right-color: var(--blue-main);
 		border-bottom-color: var(--bg-main);
 		@media (max-width: 1000px) {
 			// box-shadow: 0px 0px 15px var(--blue-main);
