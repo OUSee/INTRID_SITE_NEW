@@ -3990,8 +3990,8 @@ form .button:hover {
     border-top-color: var(--blue-main);
     border-top-left-radius: 26px;
     border-top-right-radius: 26px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
   .tabs:is(.isMain) .tab-button:has(input:checked) .tab-header::after {
     transform: rotate(270deg);
@@ -4016,6 +4016,251 @@ form .button:hover {
 }
 @media (max-width: 440px) {
   .tabs:is(.isMain) .tab-button.mobile {
+    display: block;
+  }
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tabs-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border-top: 0;
+  }
+}
+.tabs:is(.isDesign) .tabs-content .tab-content {
+  display: none;
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tabs-content .tab-content {
+    padding: 32px 0;
+  }
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tabs-content label:has(input:checked) + .tab-content {
+    display: block;
+    animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+@media (min-width: 900px) {
+  .tabs:is(.isDesign) .tabs-buttons label:nth-of-type(1)::after {
+    animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) 2s infinite;
+  }
+}
+@media (min-width: 900px) {
+  .tabs:is(.isDesign) .tabs-buttons:has(#tab-1:checked) ~ .tabs-content .tab-content:nth-of-type(1) {
+    display: block;
+    animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+@media (min-width: 900px) {
+  .tabs:is(.isDesign) .tabs-buttons label:nth-of-type(2)::after {
+    animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) 3s infinite;
+  }
+}
+@media (min-width: 900px) {
+  .tabs:is(.isDesign) .tabs-buttons:has(#tab-2:checked) ~ .tabs-content .tab-content:nth-of-type(2) {
+    display: block;
+    animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+@media (min-width: 900px) {
+  .tabs:is(.isDesign) .tabs-buttons label:nth-of-type(3)::after {
+    animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) 4s infinite;
+  }
+}
+@media (min-width: 900px) {
+  .tabs:is(.isDesign) .tabs-buttons:has(#tab-3:checked) ~ .tabs-content .tab-content:nth-of-type(3) {
+    display: block;
+    animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tabs-buttons {
+    display: none;
+  }
+}
+.tabs:is(.isDesign) .tab-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0;
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 24px 60px 18px 100px;
+  background-color: var(--blue-bg);
+  border-top: 2px solid var(--bg-main);
+  border-bottom: 1px solid var(--blue-main);
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  text-align: left;
+  overflow: hidden;
+  transform: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+@media (max-width: 1200px) {
+  .tabs:is(.isDesign) .tab-button {
+    padding: 18px 32px 18px 100px;
+  }
+}
+@media (max-width: 1000px) {
+  .tabs:is(.isDesign) .tab-button {
+    padding: 12px 20px 18px 100px;
+  }
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tab-button {
+    flex-basis: unset;
+    margin: 0 10px;
+    padding: 12px 20px;
+    border-radius: 100px 100px;
+    border-top-width: 2px;
+    border-width: 1px;
+    border-color: var(--bg-main);
+  }
+}
+.tabs:is(.isDesign) .tab-button:hover::before {
+  background-color: var(--blue-main);
+}
+.tabs:is(.isDesign) .tab-button:hover::after {
+  color: var(--color-white);
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tab-button:hover::after {
+    color: var(--blue-clouds);
+  }
+}
+.tabs:is(.isDesign) .tab-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 180px;
+  background-color: var(--bg-main);
+  border-radius: 50%;
+  transform: translate(-50%, -25%);
+  transition: all 0.3s ease-in-out;
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tab-button::before {
+    display: none;
+  }
+}
+.tabs:is(.isDesign) .tab-button::after {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  font-family: "INTRID_ICONS";
+  font-size: 52px;
+  content: "d";
+  color: var(--blue-main);
+  transition: all 0.3s ease-in-out;
+}
+@media (min-width: 1420px) {
+  .tabs:is(.isDesign) .tab-button::after {
+    top: 50px;
+    left: 20px;
+  }
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tab-button::after {
+    top: 50%;
+    left: 0;
+    z-index: 0;
+    color: var(--blue-clouds);
+    transform: translate(-35%, -50%);
+  }
+}
+.tabs:is(.isDesign) .tab-button .tab-header {
+  font-weight: 600;
+  font-size: 16px;
+}
+@media (max-width: 1200px) {
+  .tabs:is(.isDesign) .tab-button .tab-header {
+    display: block;
+  }
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tab-button .tab-header {
+    position: relative;
+    z-index: 1;
+  }
+  .tabs:is(.isDesign) .tab-button .tab-header::after {
+    position: absolute;
+    color: var(--blue-main);
+    right: 0;
+    font-family: "INTRID_ICONS";
+    content: "m";
+    font-size: 1.5em;
+    transform: rotate(90deg);
+    transition: 0.25s ease-in-out;
+  }
+}
+@media (max-width: 440px) {
+  .tabs:is(.isDesign) .tab-button .tab-header {
+    padding-right: 1.5em;
+    font-weight: 400;
+    font-size: 14px;
+  }
+}
+.tabs:is(.isDesign) .tab-button .tab-button-content {
+  color: var(--color-grey);
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tab-button .tab-button-content {
+    display: none;
+  }
+}
+.tabs:is(.isDesign) .tab-button input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  user-select: none;
+}
+.tabs:is(.isDesign) .tab-button:has(input:checked) {
+  background-color: var(--bg-main);
+  border-top: 2px solid var(--blue-main);
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tab-button:has(input:checked) {
+    background-color: transparent;
+    border-top-color: var(--blue-main);
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .tabs:is(.isDesign) .tab-button:has(input:checked) .tab-header::after {
+    transform: rotate(270deg);
+  }
+}
+.tabs:is(.isDesign) .tab-button:has(input:checked)::before {
+  background-color: var(--blue-main);
+}
+.tabs:is(.isDesign) .tab-button:has(input:checked)::after {
+  color: var(--color-white);
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tab-button:has(input:checked)::after {
+    color: var(--blue-clouds);
+  }
+}
+.tabs:is(.isDesign) .tab-button:has(input:checked) .tab-content {
+  color: var(--color-white);
+}
+.tabs:is(.isDesign) .tab-button.mobile {
+  display: none;
+}
+@media (max-width: 900px) {
+  .tabs:is(.isDesign) .tab-button.mobile {
     display: block;
   }
 }
@@ -5858,6 +6103,10 @@ button:hover img,
   background-color: transparent;
   border: 1px solid var(--blue-main);
 }
+.card--outline.muted {
+  border: 1px solid var(--blue-bg);
+  box-shadow: 0px 0px 0px 0px var(--blue-clouds), inset 0px 0px 20px 2px var(--blue-clouds);
+}
 .card--outline .card-footer {
   display: flex;
   flex-direction: row;
@@ -6358,7 +6607,13 @@ button:hover img,
 }
 .card--benefit.slim > p {
   margin: 0;
+  font-size: 16px;
   color: var(--color-grey);
+}
+@media (max-width: 1000px) {
+  .card--benefit.slim > p {
+    font-size: 14px;
+  }
 }
 .card--benefit.slim:is(a) {
   cursor: pointer;
@@ -6629,13 +6884,6 @@ button:hover img,
     display: none;
   }
 }
-.card--leaders p {
-  margin-top: 14px;
-  margin-bottom: 14px;
-}
-.card--leaders p:last-child {
-  margin-bottom: 0px;
-}
 .card--leaders form {
   display: flex;
   flex-shrink: 1;
@@ -6683,7 +6931,7 @@ button:hover img,
   color: var(--color-white);
 }
 .card--leaders.minified {
-  padding: 16px 28px;
+  padding: 20px 16px;
 }
 .card--employ {
   display: flex;
@@ -9391,7 +9639,7 @@ button.next:hover {
   gap: 40px 20px;
   flex-wrap: wrap;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 @media (max-width: 1000px) {
   .main-section--actions {
@@ -12395,100 +12643,6 @@ button.next:hover {
   }
   .smm-form form .form-limitter .block .left-half {
     order: 2;
-  }
-}
-
-.ui_design-tabs .tabs-buttons .tab-button::before {
-  width: 80px;
-  height: 80px;
-  top: -17px;
-  left: -15px;
-}
-.ui_design-tabs .tabs-buttons .tab-button::after {
-  font-size: 32px;
-  top: 20px;
-  left: 20px;
-}
-@media (max-width: 1000px) {
-  .ui_design-tabs .tabs-buttons .tab-button {
-    padding: 18px 32px 0px 70px;
-  }
-}
-@media (max-width: 600px) {
-  .ui_design-tabs .tabs-buttons .tab-button {
-    padding: 18px 14px 0px 40px;
-  }
-  .ui_design-tabs .tabs-buttons .tab-button::after {
-    font-size: 32px;
-    top: 10px;
-    left: 10px;
-  }
-}
-.ui_design-tabs .tabs-content .tab-content label.tab-button {
-  margin-bottom: 20px;
-}
-@media (max-width: 900px) {
-  .ui_design-tabs .tabs-buttons {
-    flex-direction: column-reverse;
-    gap: 8px;
-    margin: 0;
-    margin-bottom: 50px;
-    position: relative;
-    display: none;
-  }
-  .ui_design-tabs .tab-button {
-    display: flex;
-    flex-basis: unset;
-    height: fit-content;
-    border-radius: 39px;
-    align-items: center;
-    padding: 14px 20px;
-  }
-  .ui_design-tabs .tab-button::after {
-    display: none;
-  }
-  .ui_design-tabs .tab-button:has(input:checked) {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  .ui_design-tabs .tab-button:has(input:checked) span.tab-header::after {
-    transform: rotate(270deg);
-  }
-  .ui_design-tabs .tab-button span.tab-header {
-    width: calc(100% - 24px);
-  }
-  .ui_design-tabs .tab-button span.tab-header::after {
-    position: absolute;
-    color: var(--blue-main);
-    right: 12px;
-    font-family: "INTRID_ICONS";
-    content: "m";
-    font-size: 1.5em;
-    transform: rotate(90deg);
-  }
-  .ui_design-tabs .tabs-content {
-    background: transparent;
-  }
-  .ui_design-tabs .tabs-content:has(input:checked) {
-    background-color: var(--bg-main);
-  }
-  .ui_design-tabs .tab-content {
-    display: block;
-    padding: 6px 0;
-    transform: translateY(-54px);
-    background-color: transparent;
-  }
-  .ui_design-tabs .tab-content label ~ * {
-    display: none;
-    transform-origin: top;
-    transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-  .ui_design-tabs .tab-content label:has(input:checked) ~ * {
-    display: flex;
-  }
-  .ui_design-tabs .tab-content h2 {
-    margin-top: 50px;
-    justify-self: center;
   }
 }
 
