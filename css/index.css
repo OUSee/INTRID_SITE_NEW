@@ -3590,6 +3590,8 @@ form .button:hover {
   display: flex;
   flex-direction: row;
   gap: 32px;
+}
+.tabs-buttons:not(.container) {
   margin: 0 auto;
 }
 @media (max-width: 1200px) {
@@ -3699,13 +3701,13 @@ form .button:hover {
   }
 }
 @media (max-width: 1000px) {
-  .tabs .tab-button span {
+  .tabs .tab-button > span:not(.tab-header, .tab-button-content) {
     text-wrap: balance;
     font-size: 12px !important;
   }
 }
 @media (max-width: 600px) {
-  .tabs .tab-button span {
+  .tabs .tab-button > span:not(.tab-header, .tab-button-content) {
     font-size: 11px !important;
   }
 }
@@ -3814,7 +3816,10 @@ form .button:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
   gap: 0;
+  flex-grow: 1;
+  flex-basis: 0;
   padding: 24px 60px 18px 100px;
   background-color: var(--blue-bg);
   border-top: 2px solid var(--bg-main);
@@ -3834,25 +3839,30 @@ form .button:hover {
 }
 @media (max-width: 1000px) {
   .tabs:is(.isMain) .tab-button {
-    padding: 12px 20px 32px 90px;
+    padding: 12px 20px 18px 100px;
   }
 }
 @media (max-width: 900px) {
   .tabs:is(.isMain) .tab-button {
-    padding: 12px 12px 12px 90px;
+    padding: 18px 12px 18px 90px;
+  }
+}
+@media (max-width: 720px) {
+  .tabs:is(.isMain) .tab-button {
+    padding: 18px 12px 18px 80px;
   }
 }
 @media (max-width: 600px) {
   .tabs:is(.isMain) .tab-button {
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
     padding: 8px 20px 8px 20px;
   }
 }
 @media (max-width: 440px) {
   .tabs:is(.isMain) .tab-button {
+    flex-basis: unset;
+    margin: 0 10px;
     padding: 12px 20px;
-    border-radius: 16px;
+    border-radius: 100px 100px;
     border-top-width: 2px;
     border-width: 1px;
     border-color: var(--bg-main);
@@ -3917,29 +3927,46 @@ form .button:hover {
     color: var(--blue-clouds);
   }
 }
+@media (max-width: 440px) {
+  .tabs:is(.isMain) .tab-button::after {
+    top: 50%;
+    left: 0;
+    transform: translate(-35%, -50%);
+  }
+}
 .tabs:is(.isMain) .tab-button .tab-header {
   font-weight: 600;
-  font-size: 26px;
+  font-size: 16px;
 }
 @media (max-width: 1200px) {
   .tabs:is(.isMain) .tab-button .tab-header {
     display: block;
   }
 }
-@media (max-width: 1000px) {
-  .tabs:is(.isMain) .tab-button .tab-header {
-    font-size: 16px;
-  }
-}
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .tabs:is(.isMain) .tab-button .tab-header {
     position: relative;
+    font-weight: 400;
     font-size: 14px;
     z-index: 1;
   }
 }
+@media (max-width: 440px) {
+  .tabs:is(.isMain) .tab-button .tab-header {
+    padding-right: 1.5em;
+  }
+  .tabs:is(.isMain) .tab-button .tab-header::after {
+    position: absolute;
+    color: var(--blue-main);
+    right: 0;
+    font-family: "INTRID_ICONS";
+    content: "m";
+    font-size: 1.5em;
+    transform: rotate(90deg);
+    transition: 0.25s ease-in-out;
+  }
+}
 .tabs:is(.isMain) .tab-button .tab-button-content {
-  margin-top: 8px;
   color: var(--color-grey);
 }
 @media (max-width: 900px) {
@@ -3964,9 +3991,15 @@ form .button:hover {
 }
 @media (max-width: 440px) {
   .tabs:is(.isMain) .tab-button:has(input:checked) {
+    background-color: transparent;
     border-top-color: var(--blue-main);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  .tabs:is(.isMain) .tab-button:has(input:checked) .tab-header::after {
+    transform: rotate(270deg);
   }
 }
 .tabs:is(.isMain) .tab-button:has(input:checked)::before {
@@ -3977,7 +4010,7 @@ form .button:hover {
 }
 @media (max-width: 600px) {
   .tabs:is(.isMain) .tab-button:has(input:checked)::after {
-    color: var(--bg-main);
+    color: var(--blue-clouds);
   }
 }
 .tabs:is(.isMain) .tab-button:has(input:checked) .tab-content {
@@ -5078,13 +5111,13 @@ button:hover img,
   }
 }
 @media (max-width: 1000px) {
-  .button--tab span {
+  .button--tab > span:not(.tab-header, .tab-button-content) {
     text-wrap: balance;
     font-size: 12px !important;
   }
 }
 @media (max-width: 600px) {
-  .button--tab span {
+  .button--tab > span:not(.tab-header, .tab-button-content) {
     font-size: 11px !important;
   }
 }
@@ -12681,13 +12714,13 @@ button.next:hover {
   }
 }
 @media (max-width: 1000px) {
-  .reviews__button span {
+  .reviews__button > span:not(.tab-header, .tab-button-content) {
     text-wrap: balance;
     font-size: 12px !important;
   }
 }
 @media (max-width: 600px) {
-  .reviews__button span {
+  .reviews__button > span:not(.tab-header, .tab-button-content) {
     font-size: 11px !important;
   }
 }
