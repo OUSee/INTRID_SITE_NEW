@@ -2025,15 +2025,30 @@ ol {
 			& > * {
 				width: 260px;
 
+				@media (max-width: 1500px) {
+					width: unset;
+					flex: 1;
+				}
+
 				@media (max-width: 1200px) {
-					flex-basis: 200px;
-					width: auto;
+					width: unset;
+					max-width: 33%;
 				}
 
 				@media (max-width: 1000px) {
-					flex-basis: calc(50% - 10px);
-					max-width: calc(50% - 10px);
+					max-width: unset;
+					min-width: calc(50% - 10px);
 				}
+
+				// @media (max-width: 1200px) {
+				// 	flex-basis: 200px;
+				// 	width: auto;
+				// }
+
+				// @media (max-width: 1000px) {
+				// 	flex-basis: calc(50% - 10px);
+				// 	max-width: calc(50% - 10px);
+				// }
 			}
 		}
 

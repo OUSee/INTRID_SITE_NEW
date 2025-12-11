@@ -2363,16 +2363,22 @@ ol li > ol {
 .flex-layout--service > * {
   width: 260px;
 }
+@media (max-width: 1500px) {
+  .flex-layout--service > * {
+    width: unset;
+    flex: 1;
+  }
+}
 @media (max-width: 1200px) {
   .flex-layout--service > * {
-    flex-basis: 200px;
-    width: auto;
+    width: unset;
+    max-width: 33%;
   }
 }
 @media (max-width: 1000px) {
   .flex-layout--service > * {
-    flex-basis: calc(50% - 10px);
-    max-width: calc(50% - 10px);
+    max-width: unset;
+    min-width: calc(50% - 10px);
   }
 }
 .flex-layout--docs {
@@ -8470,6 +8476,9 @@ button:hover img,
   flex-direction: column;
   width: 100%;
   background-color: var(--bg-main);
+  border-top: 1px solid var(--blue-main);
+  border-top-left-radius: 39px;
+  border-top-right-radius: 39px;
 }
 .footer a {
   text-decoration: none;
