@@ -2776,6 +2776,11 @@ ol li > ol {
   }
 }
 @media (max-width: 1200px) {
+  .align-xl-start {
+    align-self: flex-start;
+  }
+}
+@media (max-width: 1200px) {
   .align-xl-center {
     align-items: center;
   }
@@ -4834,6 +4839,18 @@ form .button:hover {
   align-items: center;
   justify-content: center;
   background-color: var(--blue-clouds);
+}
+.video-diagramm .play-video-button::before {
+  content: "Смотреть видео";
+  position: absolute;
+  top: auto;
+  bottom: 40px;
+  left: 50%;
+  z-index: 1;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  transform: translate(-50%, 0);
 }
 .video-diagramm .play-video-button i.icon-play {
   height: 1em;

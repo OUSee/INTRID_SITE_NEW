@@ -2511,6 +2511,12 @@ ol {
 	}
 
 	&-xl {
+		&-start {
+			@media (max-width: 1200px) {
+				align-self: flex-start;
+			}
+		}
+
 		&-center {
 			@media (max-width: 1200px) {
 				align-items: center;
@@ -4208,6 +4214,19 @@ form {
 		align-items: center;
 		justify-content: center;
 		background-color: var(--blue-clouds);
+
+		&::before {
+			content: "Смотреть видео";
+			position: absolute;
+			top: auto;
+			bottom: 40px;
+			left: 50%;
+			z-index: 1;
+			font-size: 14px;
+			line-height: 1;
+			text-align: center;
+			transform: translate(-50%, 0);
+		}
 
 		i.icon-play {
 			height: 1em;
