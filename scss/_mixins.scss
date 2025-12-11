@@ -622,13 +622,13 @@
 	&::before {
 		content: "";
 		position: absolute;
-		top: 0;
+		top: 50%;
 		left: 0;
-		width: 180px;
-		height: 180px;
+		width: 94px;
+		height: 94px;
 		background-color: var(--bg-main);
 		border-radius: 50%;
-		transform: translate(-50%, -25%);
+		transform: translate(-30%, -50%);
 		transition: all 0.3s ease-in-out;
 
 		@media (max-width: 900px) {
@@ -638,18 +638,13 @@
 
 	&::after {
 		position: absolute;
-		top: 40px;
-		left: 20px;
+		top: 25px;
+		left: 4px;
 		font-family: "INTRID_ICONS";
-		font-size: 52px;
+		font-size: 40px;
 		content: "\64";
 		color: var(--blue-main);
 		transition: all 0.3s ease-in-out;
-
-		@media (min-width: 1420px) {
-			top: 50px;
-			left: 20px;
-		}
 
 		@media (max-width: 900px) {
 			top: 50%;

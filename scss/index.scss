@@ -2798,61 +2798,61 @@ button.next {
 
 //ai page
 .ai {
-	&-tabs {
-		.tabs-content {
-			.tab-content {
-				&-ai_store {
-					padding: 0 30px;
+	// &-tabs {
+	// 	.tabs-content {
+	// 		.tab-content {
+	// 			&-ai_store {
+	// 				padding: 0 30px;
 
-					ul {
-						display: flex;
-						flex-direction: column;
-						gap: 20px;
-						padding: 0;
-						list-style: none;
+	// 				ul {
+	// 					display: flex;
+	// 					flex-direction: column;
+	// 					gap: 20px;
+	// 					padding: 0;
+	// 					list-style: none;
 
-						li {
-							padding-bottom: 15px;
-							border-bottom: 1px solid var(--blue-bg);
+	// 					li {
+	// 						padding-bottom: 15px;
+	// 						border-bottom: 1px solid var(--blue-bg);
 
-							& p {
-								display: flex;
-								align-items: center;
-								margin-bottom: 6px;
-								@include h4;
-								color: var(--blue-main);
+	// 						& p {
+	// 							display: flex;
+	// 							align-items: center;
+	// 							margin-bottom: 6px;
+	// 							@include h4;
+	// 							color: var(--blue-main);
 
-								& img {
-									height: 2em;
-									width: auto;
-									margin-right: 10px;
-								}
-							}
+	// 							& img {
+	// 								height: 2em;
+	// 								width: auto;
+	// 								margin-right: 10px;
+	// 							}
+	// 						}
 
-							& span {
-								color: var(--color-grey);
-							}
-						}
-					}
+	// 						& span {
+	// 							color: var(--color-grey);
+	// 						}
+	// 					}
+	// 				}
 
-					hr {
-						width: 100%;
-					}
+	// 				hr {
+	// 					width: 100%;
+	// 				}
 
-					@media (max-width: 440px) {
-						padding: 30px 0px;
-					}
-				}
+	// 				@media (max-width: 440px) {
+	// 					padding: 30px 0px;
+	// 				}
+	// 			}
 
-				.d-flex.justify-sb {
-					@media (max-width: 600px) {
-						flex-direction: column;
-						gap: 20px;
-					}
-				}
-			}
-		}
-	}
+	// 			.d-flex.justify-sb {
+	// 				@media (max-width: 600px) {
+	// 					flex-direction: column;
+	// 					gap: 20px;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 // it for business
@@ -4026,119 +4026,6 @@ button.next {
 // design-site page
 
 // ui design page
-.ui_design {
-	&-tabs {
-		// .tabs-buttons .tab-button {
-		// 	&::before {
-		// 		width: 80px;
-		// 		height: 80px;
-		// 		top: -17px;
-		// 		left: -15px;
-		// 	}
-
-		// 	&::after {
-		// 		font-size: 32px;
-		// 		top: 20px;
-		// 		left: 20px;
-		// 	}
-
-		// 	@media (max-width: 1000px) {
-		// 		padding: 18px 32px 0px 70px;
-		// 	}
-
-		// 	@media (max-width: 600px) {
-		// 		&::after {
-		// 			font-size: 32px;
-		// 			top: 10px;
-		// 			left: 10px;
-		// 		}
-
-		// 		padding: 18px 14px 0px 40px;
-		// 	}
-		// }
-
-		// .tabs-content .tab-content label.tab-button {
-		// 	margin-bottom: 20px;
-		// }
-
-		// @media (max-width: 900px) {
-		// 	.tabs-buttons {
-		// 		flex-direction: column-reverse;
-		// 		gap: 8px;
-		// 		margin: 0;
-		// 		margin-bottom: 50px;
-		// 		position: relative;
-		// 		display: none;
-		// 	}
-
-		// 	.tab-button {
-		// 		display: flex;
-		// 		flex-basis: unset;
-		// 		height: fit-content;
-		// 		border-radius: 39px;
-		// 		align-items: center;
-		// 		padding: 14px 20px;
-
-		// 		&::after {
-		// 			display: none;
-		// 		}
-
-		// 		&:has(input:checked) {
-		// 			border-bottom-left-radius: 0;
-		// 			border-bottom-right-radius: 0;
-
-		// 			span.tab-header::after {
-		// 				transform: rotate(270deg);
-		// 			}
-		// 		}
-
-		// 		span.tab-header {
-		// 			width: calc(100% - 24px);
-
-		// 			&::after {
-		// 				position: absolute;
-		// 				color: var(--blue-main);
-		// 				right: 12px;
-		// 				font-family: "INTRID_ICONS";
-		// 				content: "\6d";
-		// 				font-size: 1.5em;
-		// 				transform: rotate(90deg);
-		// 			}
-		// 		}
-		// 	}
-
-		// 	.tabs-content {
-		// 		background: transparent;
-
-		// 		&:has(input:checked) {
-		// 			background-color: var(--bg-main);
-		// 		}
-		// 	}
-
-		// 	.tab-content {
-		// 		display: block;
-		// 		padding: 6px 0;
-		// 		transform: translateY(-54px);
-		// 		background-color: transparent;
-
-		// 		label ~ * {
-		// 			display: none;
-		// 			transform-origin: top;
-		// 			transition: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-		// 		}
-
-		// 		label:has(input:checked) ~ * {
-		// 			display: flex;
-		// 		}
-
-		// 		h2 {
-		// 			margin-top: 50px;
-		// 			justify-self: center;
-		// 		}
-		// 	}
-		// }
-	}
-}
 
 // logo page
 

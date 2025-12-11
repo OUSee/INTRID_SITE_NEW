@@ -1161,6 +1161,37 @@ ol {
 			}
 		}
 	}
+
+	&--ai {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		padding: 0;
+		list-style: none;
+
+		li {
+			padding-bottom: 15px;
+			border-bottom: 1px solid var(--blue-bg);
+
+			& p {
+				display: flex;
+				align-items: center;
+				margin-bottom: 6px;
+				@include h4;
+				color: var(--blue-main);
+
+				& img {
+					height: 2em;
+					width: auto;
+					margin-right: 10px;
+				}
+			}
+
+			& span {
+				color: var(--color-grey);
+			}
+		}
+	}
 }
 
 // preloader settings
@@ -2254,6 +2285,14 @@ ol {
 	&-md {
 		&-column {
 			@media (max-width: 720px) {
+				flex-direction: column;
+			}
+		}
+	}
+
+	&-xs {
+		&-column {
+			@media (max-width: 440px) {
 				flex-direction: column;
 			}
 		}
@@ -3493,7 +3532,7 @@ form {
 
 		& .tab-content {
 			display: none;
-			padding: 62px 0px;
+			padding: 62px 0px 0px;
 			transform-origin: top;
 		}
 	}
@@ -3504,7 +3543,8 @@ form {
 		}
 	}
 
-	&:is(.isMain) {
+	&:is(.isMain),
+	&:is(.isAi) {
 		& .tabs-content {
 			@media (max-width: 440px) {
 				display: flex;
@@ -3573,14 +3613,14 @@ form {
 			@media (max-width: 900px) {
 				display: flex;
 				flex-direction: column;
-				gap: 40px;
+				gap: 16px;
 				border-top: 0;
 			}
 			& .tab-content {
 				display: none;
 
 				@media (max-width: 900px) {
-					padding: 32px 0;
+					padding: 16px 0;
 				}
 			}
 
