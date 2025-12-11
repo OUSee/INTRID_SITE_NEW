@@ -3587,6 +3587,8 @@ form .button:hover {
 }
 
 .tabs-buttons {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: row;
   gap: 32px;
@@ -3626,7 +3628,6 @@ form .button:hover {
   flex-direction: row;
   align-items: center;
   gap: 16px;
-  margin-bottom: -1px;
   padding: 16px;
   background-color: var(--blue-bg);
   border-top: 2px solid var(--bg-main);
@@ -3712,18 +3713,13 @@ form .button:hover {
   }
 }
 .tabs .tab-button:has(:checked), .tabs .tab-button.active {
-  border-bottom: 1px solid var(--blue-main);
+  border-top-color: var(--blue-main);
+  border-bottom-color: var(--bg-main);
 }
 @media (max-width: 1000px) {
   .tabs .tab-button:has(:checked), .tabs .tab-button.active {
-    box-shadow: 0px 0px 15px var(--blue-main);
     color: var(--blue-main);
     background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-  }
-}
-@media (max-width: 600px) {
-  .tabs .tab-button:has(:checked), .tabs .tab-button.active {
-    box-shadow: unset;
   }
 }
 .tabs .tab-button:has(:checked) img, .tabs .tab-button.active img {
@@ -3993,8 +3989,8 @@ form .button:hover {
   .tabs:is(.isMain) .tab-button:has(input:checked) {
     background-color: transparent;
     border-top-color: var(--blue-main);
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
   }
@@ -5036,7 +5032,6 @@ button:hover img,
   flex-direction: row;
   align-items: center;
   gap: 16px;
-  margin-bottom: -1px;
   padding: 16px;
   background-color: var(--blue-bg);
   border-top: 2px solid var(--bg-main);
@@ -5122,18 +5117,13 @@ button:hover img,
   }
 }
 .button--tab:has(:checked), .button--tab.active {
-  border-bottom: 1px solid var(--blue-main);
+  border-top-color: var(--blue-main);
+  border-bottom-color: var(--bg-main);
 }
 @media (max-width: 1000px) {
   .button--tab:has(:checked), .button--tab.active {
-    box-shadow: 0px 0px 15px var(--blue-main);
     color: var(--blue-main);
     background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-  }
-}
-@media (max-width: 600px) {
-  .button--tab:has(:checked), .button--tab.active {
-    box-shadow: unset;
   }
 }
 .button--tab:has(:checked) img, .button--tab.active img {
@@ -12638,7 +12628,6 @@ button.next:hover {
   flex-direction: row;
   align-items: center;
   gap: 16px;
-  margin-bottom: -1px;
   padding: 16px;
   background-color: var(--blue-bg);
   border-top: 2px solid var(--bg-main);
@@ -12725,18 +12714,13 @@ button.next:hover {
   }
 }
 .reviews__button:has(:checked), .reviews__button.active {
-  border-bottom: 1px solid var(--blue-main);
+  border-top-color: var(--blue-main);
+  border-bottom-color: var(--bg-main);
 }
 @media (max-width: 1000px) {
   .reviews__button:has(:checked), .reviews__button.active {
-    box-shadow: 0px 0px 15px var(--blue-main);
     color: var(--blue-main);
     background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-  }
-}
-@media (max-width: 600px) {
-  .reviews__button:has(:checked), .reviews__button.active {
-    box-shadow: unset;
   }
 }
 .reviews__button:has(:checked) img, .reviews__button.active img {
