@@ -242,34 +242,22 @@ button.next {
 .nav {
 	&-tabs {
 		&--buttons {
-			display: flex;
-			flex-direction: row;
-			gap: 20px;
-			flex-wrap: wrap;
-			margin-bottom: -1px;
-			// width: 100%;
+			@include tabs-buttons--nav;
+			
 
-			@media (max-width: 1000px) {
-				gap: 12px;
-			}
+			// & > * {
+			// 	flex: 1 1 15%;
 
-			@media (max-width: 600px) {
-				gap: 0;
-			}
+			// 	@media (max-width: 1000px) {
+			// 		flex: 1 0 calc(20% - 10px);
+			// 		max-width: calc(20% - 10px);
+			// 	}
 
-			& > * {
-				flex: 1 1 15%;
-
-				@media (max-width: 1000px) {
-					flex: 1 0 calc(20% - 10px);
-					max-width: calc(20% - 10px);
-				}
-
-				@media (max-width: 600px) {
-					flex: 1 0 20%;
-					max-width: 20%;
-				}
-			}
+			// 	@media (max-width: 600px) {
+			// 		flex: 1 0 20%;
+			// 		max-width: 20%;
+			// 	}
+			// }
 		}
 
 		&--content {

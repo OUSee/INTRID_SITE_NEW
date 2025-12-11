@@ -3628,10 +3628,11 @@ form .button:hover {
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  margin-bottom: -1px;
   padding: 16px;
   background-color: var(--blue-bg);
-  border-top: 2px solid var(--bg-main);
-  border-bottom: 1px solid var(--bg-main);
+  border-top: 2px solid var(--blue-clouds);
+  border-bottom: 1px solid var(--blue-main);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   overflow: hidden;
@@ -3642,12 +3643,9 @@ form .button:hover {
   .tabs .tab-button {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 8px;
     max-height: unset;
     padding: 8px 4px;
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-    border-color: transparent;
     border-radius: 16px 16px 0 0;
     text-align: center;
     transform-origin: center;
@@ -3657,7 +3655,6 @@ form .button:hover {
   .tabs .tab-button {
     gap: 4px;
     padding: 4px;
-    background: transparent;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     transform-origin: bottom center;
@@ -3719,7 +3716,7 @@ form .button:hover {
 @media (max-width: 1000px) {
   .tabs .tab-button:has(:checked), .tabs .tab-button.active {
     color: var(--blue-main);
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+    background-color: var(--bg-main);
   }
 }
 .tabs .tab-button:has(:checked) img, .tabs .tab-button.active img {
@@ -5032,10 +5029,11 @@ button:hover img,
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  margin-bottom: -1px;
   padding: 16px;
   background-color: var(--blue-bg);
-  border-top: 2px solid var(--bg-main);
-  border-bottom: 1px solid var(--bg-main);
+  border-top: 2px solid var(--blue-clouds);
+  border-bottom: 1px solid var(--blue-main);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   overflow: hidden;
@@ -5046,12 +5044,9 @@ button:hover img,
   .button--tab {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 8px;
     max-height: unset;
     padding: 8px 4px;
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-    border-color: transparent;
     border-radius: 16px 16px 0 0;
     text-align: center;
     transform-origin: center;
@@ -5061,7 +5056,6 @@ button:hover img,
   .button--tab {
     gap: 4px;
     padding: 4px;
-    background: transparent;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     transform-origin: bottom center;
@@ -5123,7 +5117,7 @@ button:hover img,
 @media (max-width: 1000px) {
   .button--tab:has(:checked), .button--tab.active {
     color: var(--blue-main);
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+    background-color: var(--bg-main);
   }
 }
 .button--tab:has(:checked) img, .button--tab.active img {
@@ -8967,11 +8961,12 @@ button.next:hover {
 }
 
 .nav-tabs--buttons {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: row;
   gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: -1px;
+  max-width: 100%;
 }
 @media (max-width: 1000px) {
   .nav-tabs--buttons {
@@ -8984,19 +8979,7 @@ button.next:hover {
   }
 }
 .nav-tabs--buttons > * {
-  flex: 1 1 15%;
-}
-@media (max-width: 1000px) {
-  .nav-tabs--buttons > * {
-    flex: 1 0 calc(20% - 10px);
-    max-width: calc(20% - 10px);
-  }
-}
-@media (max-width: 600px) {
-  .nav-tabs--buttons > * {
-    flex: 1 0 20%;
-    max-width: 20%;
-  }
+  flex: 1 1 0%;
 }
 .nav-tabs--content {
   position: relative;
@@ -9096,10 +9079,12 @@ button.next:hover {
   align-items: center;
   justify-content: center;
   gap: 16px;
+  margin-bottom: -1px;
   padding: 16px;
   background-color: var(--blue-bg);
-  border: 1px solid var(--bg-main);
-  border-bottom: 0;
+  border-top: 2px solid;
+  border-color: var(--bg-main);
+  border-bottom-color: var(--blue-main);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   overflow: hidden;
@@ -9137,7 +9122,6 @@ button.next:hover {
 }
 @media (max-width: 600px) {
   .nav-tabs--tender .nav-tabs--buttons > *:hover {
-    border-color: transparent;
     transform: none;
   }
 }
@@ -9172,14 +9156,8 @@ button.next:hover {
 }
 @media (max-width: 1000px) {
   .nav-tabs--tender .nav-tabs--buttons > *:has(:checked), .nav-tabs--tender .nav-tabs--buttons > *.active {
-    box-shadow: 0px 0px 15px var(--bg-main);
     color: var(--bg-main);
     background: var(--blue-main);
-  }
-}
-@media (max-width: 600px) {
-  .nav-tabs--tender .nav-tabs--buttons > *:has(:checked), .nav-tabs--tender .nav-tabs--buttons > *.active {
-    box-shadow: unset;
   }
 }
 .nav-tabs--tender .nav-tabs--buttons > *:has(:checked) img, .nav-tabs--tender .nav-tabs--buttons > *.active img {
@@ -9187,7 +9165,6 @@ button.next:hover {
 }
 @media (min-width: 1000px) {
   .nav-tabs--tender .nav-tabs--buttons > *:has(:checked), .nav-tabs--tender .nav-tabs--buttons > *.active {
-    border-color: var(--bg-main);
     color: var(--bg-main);
     background: var(--blue-main);
   }
@@ -12628,10 +12605,11 @@ button.next:hover {
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  margin-bottom: -1px;
   padding: 16px;
   background-color: var(--blue-bg);
-  border-top: 2px solid var(--bg-main);
-  border-bottom: 1px solid var(--bg-main);
+  border-top: 2px solid var(--blue-clouds);
+  border-bottom: 1px solid var(--blue-main);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   overflow: hidden;
@@ -12643,12 +12621,9 @@ button.next:hover {
   .reviews__button {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 8px;
     max-height: unset;
     padding: 8px 4px;
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-    border-color: transparent;
     border-radius: 16px 16px 0 0;
     text-align: center;
     transform-origin: center;
@@ -12658,7 +12633,6 @@ button.next:hover {
   .reviews__button {
     gap: 4px;
     padding: 4px;
-    background: transparent;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     transform-origin: bottom center;
@@ -12720,7 +12694,7 @@ button.next:hover {
 @media (max-width: 1000px) {
   .reviews__button:has(:checked), .reviews__button.active {
     color: var(--blue-main);
-    background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+    background-color: var(--bg-main);
   }
 }
 .reviews__button:has(:checked) img, .reviews__button.active img {
