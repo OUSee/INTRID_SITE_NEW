@@ -5296,18 +5296,7 @@ button:hover,
 			margin-bottom: 30px;
 
 			& .card-tag {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: flex-start;
-				gap: 4px;
-				color: var(--blue-tag);
-				font-size: 16px;
-
-				& i {
-					display: flex;
-					font-size: larger;
-				}
+				@include card-tag;
 			}
 
 			& p {
@@ -7018,18 +7007,7 @@ button:hover,
 			}
 
 			& > .card-tag {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: flex-start;
-				gap: 6px;
-				color: var(--blue-tag);
-				font-size: 16px;
-
-				& i {
-					display: flex;
-					font-size: larger;
-				}
+				@include card-tag;
 			}
 		}
 
@@ -7144,36 +7122,88 @@ button:hover,
 		}
 
 		&.isMain {
-			aspect-ratio: unset;
+			max-width: 100%;
+			aspect-ratio: 16 / 9;
 			border-radius: 39px;
 
 			@media (max-width: 440px) {
 				width: 100%;
 			}
 
-			@media (min-width: 1000px) {
-				aspect-ratio: 16 / 9;
-			}
+			// @media (min-width: 1000px) {
+			// 	aspect-ratio: 16 / 9;
+			// }
 
 			&:is(.isDev) {
-				& .portfolio-logo {
-					max-height: 3em;
-					height: unset;
-					flex: 1 0 auto;
-					aspect-ratio: unset;
+				& .card-header {
+					display: flex;
+					flex-direction: row;
+					align-items: flex-start;
+					gap: 4px;
+					width: 100%;
+					flex-wrap: nowrap;
 
-					@media (max-width: 440px) {
-						max-height: 3em;
+					&-text {
+						display: flex;
+						flex-direction: column;
+						align-items: flex-end;
+						gap: 4px;
+						margin-left: auto;
+						backface-visibility: hidden;
+						transform: scale(100%) translateZ(0) rotate(0.001deg); // fix for firefox
+						transform-origin: right top;
+						will-change: transform;
+						transition: 0.4s ease-in-out;
+
+						& .card-tag {
+							@include card-tag;
+							text-align: right;
+							color: var(--color-white);
+						}
+
+						& b {
+							@include h4;
+							display: block;
+							width: 100%;
+							font-weight: 600;
+							text-align: right;
+							line-break: auto;
+						}
 					}
+				}
+				& .portfolio-logo {
+					// max-height: 3em;
+					position: relative;
+					top: unset;
+					left: unset;
+					right: unset;
+					bottom: unset;
+					align-self: flex-start;
+					width: unset;
+					height: unset;
+					flex: unset;
+					margin: 0;
+					aspect-ratio: unset;
+					line-height: 0.75;
+					overflow: unset;
+
+					@media (max-width: 1000px) {
+						display: none;
+					}
+
+					// @media (max-width: 440px) {
+					// max-height: 3em;
+					// }
 				}
 			}
 
 			& .portfolio-logo {
 				flex: 1 0 auto;
+				transform: none !important;
 
-				@media (max-width: 1000px) {
-					transform: scale(90%) translateZ(0) rotate(0.001deg);
-				}
+				// @media (max-width: 1000px) {
+				// 	transform: scale(90%) translateZ(0) rotate(0.001deg);
+				// }
 			}
 
 			& .portfolio-site {
@@ -7202,6 +7232,16 @@ button:hover,
 
 			& .card-body {
 				transform: translateY(0%);
+			}
+
+			&.isMain {
+				&:is(.isDev) {
+					& .card-header-text {
+						@media (min-width: 1000px) {
+							transform: scale(90%) translateZ(0) rotate(0.001deg);
+						}
+					}
+				}
 			}
 		}
 	}
