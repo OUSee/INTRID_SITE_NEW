@@ -3185,6 +3185,7 @@ form {
 		width: 100%;
 		max-width: 100%;
 		@include input;
+		@include input-file-slim;
 		cursor: pointer;
 
 		& input[type="file"] {
@@ -3202,13 +3203,15 @@ form {
 			cursor: pointer;
 			white-space: nowrap;
 			text-overflow: ellipsis;
-			overflow: hidden;
+			// overflow: hidden;
 
 			& > span {
+				font-size: inherit;
 				opacity: 0.75;
 			}
 
 			& > img {
+				display: initial;
 				width: 16px;
 				height: 16px;
 				object-fit: contain;
@@ -3243,7 +3246,7 @@ form {
 				&:not(.remove-file) {
 					display: block;
 					width: 100%;
-					height: 100%;
+					// height: 100%;
 					font-size: 14px;
 					text-align: left;
 					cursor: pointer;
@@ -6620,6 +6623,10 @@ button:hover,
 
 			@media (max-width: 900px) {
 				display: none;
+			}
+
+			&:is(.icms-herb) {
+				width: 100px;
 			}
 		}
 

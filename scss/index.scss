@@ -2170,6 +2170,11 @@ button.next {
 				flex-direction: column;
 				gap: 16px;
 				flex: 1 1 70%;
+				max-width: 70%;
+
+				@media (max-width: 900px) {
+					max-width: 100%;
+				}
 			}
 
 			&-right {
@@ -2177,10 +2182,20 @@ button.next {
 				flex-direction: column;
 				gap: 16px;
 				flex: 1 1 30%;
+				max-width: 400px;
+
+				@media (max-width: 900px) {
+					max-width: 100%;
+				}
 
 				& .achievements-slider {
 					margin: 0 auto;
 					// margin-bottom: auto;
+				}
+
+				& .card--leaders {
+					max-width: 100%;
+					margin: 0 auto;
 				}
 			}
 		}

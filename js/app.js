@@ -2976,59 +2976,106 @@ if (inputFiles.length > 0) {
 
 		fileListContainer.style.display = "none";
 
-		input.addEventListener("change", function () {
-			const files = Array.from(this.files);
-			fileListContainer.innerHTML = ""; // Очищаем предыдущий список файлов
+		// Массив для хранения всех выбранных файлов
+		let allFiles = [];
 
-			files.forEach((file, index) => {
+		// Функция для проверки дубликатов
+		const isDuplicateFile = (newFile, existingFiles) => {
+			return existingFiles.some(
+				(existingFile) =>
+					existingFile.name === newFile.name &&
+					existingFile.size === newFile.size &&
+					existingFile.lastModified === newFile.lastModified
+			);
+		};
+
+		// Функция обновления отображения файлов
+		const updateFileDisplay = () => {
+			fileListContainer.innerHTML = ""; // Очищаем список
+
+			if (allFiles.length === 0) {
+				fileListContainer.style.display = "none";
+				return;
+			}
+
+			fileListContainer.style.display = "";
+
+			allFiles.forEach((file, index) => {
 				const fileItem = document.createElement("div");
 				fileItem.classList.add("file-item");
-
-				fileListContainer.style.display =
-					files.length > 0 ? "" : "none";
 
 				// Создаем элемент span для названия файла
 				const fileNameSpan = document.createElement("span");
 				fileNameSpan.textContent = file.name;
-				fileNameSpan.style.cursor = "pointer"; // Указываем, что это кликабельный элемент
+				fileNameSpan.style.cursor = "pointer";
 
-				// Добавляем обработчик события для открытия файла в новой вкладке
+				// Добавляем обработчик события для открытия файла
 				fileNameSpan.addEventListener("click", () => {
 					const reader = new FileReader();
 					reader.onload = (e) => {
 						const fileUrl = e.target.result;
-						window.open(fileUrl, "_blank"); // Открываем файл в новой вкладке
+						window.open(fileUrl, "_blank");
 					};
-					reader.readAsDataURL(file); // Читаем файл как Data URL
+					reader.readAsDataURL(file);
 				});
 
 				const removeButton = document.createElement("span");
 				removeButton.textContent = "✖";
 				removeButton.classList.add("remove-file");
-				removeButton.dataset.index = index; // Сохраняем индекс файла для удаления
+				removeButton.dataset.index = index;
 
-				fileItem.appendChild(fileNameSpan); // Добавляем span с названием файла
-				fileItem.appendChild(removeButton); // Добавляем кнопку удаления
-				fileListContainer.appendChild(fileItem); // Добавляем элемент файла в контейнер
+				fileItem.appendChild(fileNameSpan);
+				fileItem.appendChild(removeButton);
+				fileListContainer.appendChild(fileItem);
 			});
+		};
+
+		// Функция обновления input.files
+		const updateInputFiles = () => {
+			const dataTransfer = new DataTransfer();
+			allFiles.forEach((file) => {
+				dataTransfer.items.add(file);
+			});
+			input.files = dataTransfer.files;
+		};
+
+		input.addEventListener("change", function () {
+			const newFiles = Array.from(this.files);
+			let hasNewFiles = false;
+
+			// Проверяем каждый новый файл на дубликаты
+			newFiles.forEach((file) => {
+				if (!isDuplicateFile(file, allFiles)) {
+					allFiles.push(file);
+					hasNewFiles = true;
+				} else {
+					console.log(`Файл "${file.name}" уже добавлен`);
+					// Можно показать уведомление пользователю
+				}
+			});
+
+			if (hasNewFiles) {
+				// Обновляем input.files
+				updateInputFiles();
+
+				// Обновляем отображение
+				updateFileDisplay();
+			}
+
+			// Сбрасываем значение input, чтобы можно было выбрать тот же файл повторно
+			this.value = "";
 		});
 
 		fileListContainer.addEventListener("click", function (e) {
 			if (e.target.classList.contains("remove-file")) {
-				const index = e.target.dataset.index;
-				const filesArray = Array.from(input.files);
-				filesArray.splice(index, 1); // Удаляем файл из массива
+				const index = parseInt(e.target.dataset.index);
+				allFiles.splice(index, 1); // Удаляем файл из массива
 
-				fileListContainer.style.display =
-					filesArray.length > 0 ? "" : "none";
-
-				// Обновляем список файлов в input
-				const dataTransfer = new DataTransfer();
-				filesArray.forEach((file) => dataTransfer.items.add(file));
-				input.files = dataTransfer.files;
+				// Обновляем input.files
+				updateInputFiles();
 
 				// Обновляем отображение файлов
-				input.dispatchEvent(new Event("change"));
+				updateFileDisplay();
 			}
 		});
 	});
