@@ -4821,6 +4821,107 @@ button:hover,
 	}
 }
 
+.cup {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	transition: 0.25s ease-in-out;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 0;
+		width: 0;
+		height: 0;
+		border-radius: 300px;
+		box-shadow: 0px 0px 40px 30px var(--blue-clouds);
+		transform: translate(-50%, -50%);
+		transition: 0.25s ease-in-out;
+	}
+
+	&-number {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		font-weight: 600;
+		font-size: 40px;
+		line-height: 0.75;
+		text-align: center;
+		color: var(--blue-main);
+	}
+
+	&-body {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		width: 46px;
+		height: 20px;
+		margin-top: auto;
+		background-image: url("/src/icons/cup-body.svg");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	// С пьедесталом
+	&.isPodium {
+	}
+
+	// С гербом
+	&.isHerb {
+		& .cup-body {
+			width: 42px;
+			height: 42px;
+			margin: 0;
+			background-image: url("/src/icons/herb-blue.svg");
+		}
+	}
+
+	// С длинным числом
+	&.isNumber {
+		& .cup-body {
+			display: none;
+		}
+	}
+
+	// С крылышками
+	&.isArrows {
+		& .cup-number {
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				display: flex;
+				width: 22px;
+				height: 36px;
+				background-image: url("/src/images/olive-left.webp");
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			&::before {
+				left: 0;
+				transform: translate(-100%, -50%);
+			}
+
+			&::after {
+				right: 0;
+				transform: translate(100%, -50%) scaleX(-1);
+			}
+		}
+	}
+}
+
 // cards
 .card {
 	position: relative;
@@ -6336,6 +6437,34 @@ button:hover,
 		}
 	}
 
+	// &--achievement {
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	flex-basis: 40%;
+	// 	align-items: center;
+	// 	max-width: 200px;
+	// 	min-width: 180px;
+
+	// 	& div {
+	// 		flex-grow: 1;
+	// 		flex-basis: 40%;
+	// 	}
+
+	// 	& > p {
+	// 		color: var(--color-white);
+	// 		margin-top: 10px;
+	// 		margin-bottom: unset;
+	// 		text-align: center;
+	// 	}
+
+	// 	&:hover {
+	// 		& > .img-placeholder {
+	// 			background-color: var(--blue-clouds);
+	// 			box-shadow: 0px 0px 20px 20px var(--blue-clouds);
+	// 		}
+	// 	}
+	// }
+
 	&--achievement {
 		display: flex;
 		flex-direction: column;
@@ -6343,11 +6472,6 @@ button:hover,
 		align-items: center;
 		max-width: 200px;
 		min-width: 180px;
-
-		& div {
-			flex-grow: 1;
-			flex-basis: 40%;
-		}
 
 		& > p {
 			color: var(--color-white);
@@ -6357,9 +6481,14 @@ button:hover,
 		}
 
 		&:hover {
-			& > .img-placeholder {
-				background-color: var(--blue-clouds);
-				box-shadow: 0px 0px 20px 20px var(--blue-clouds);
+			& > .img-placeholder,
+			& > .cup {
+				// background-color: var(--blue-clouds);
+				// box-shadow: 0px 0px 20px 20px var(--blue-clouds);
+
+				&::before {
+					box-shadow: 0px 0px 40px 40px var(--blue-clouds);
+				}
 			}
 		}
 	}

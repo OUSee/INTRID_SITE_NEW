@@ -5557,6 +5557,83 @@ button:hover img,
   }
 }
 
+.cup {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: 0.25s ease-in-out;
+}
+.cup::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: 0;
+  height: 0;
+  border-radius: 300px;
+  box-shadow: 0px 0px 40px 30px var(--blue-clouds);
+  transform: translate(-50%, -50%);
+  transition: 0.25s ease-in-out;
+}
+.cup-number {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 0.75;
+  text-align: center;
+  color: var(--blue-main);
+}
+.cup-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 46px;
+  height: 20px;
+  margin-top: auto;
+  background-image: url("/src/icons/cup-body.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.cup.isHerb .cup-body {
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  background-image: url("/src/icons/herb-blue.svg");
+}
+.cup.isNumber .cup-body {
+  display: none;
+}
+.cup.isArrows .cup-number::before, .cup.isArrows .cup-number::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  display: flex;
+  width: 22px;
+  height: 36px;
+  background-image: url("/src/images/olive-left.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.cup.isArrows .cup-number::before {
+  left: 0;
+  transform: translate(-100%, -50%);
+}
+.cup.isArrows .cup-number::after {
+  right: 0;
+  transform: translate(100%, -50%) scaleX(-1);
+}
+
 .card {
   position: relative;
   z-index: 1;
@@ -6888,19 +6965,14 @@ button:hover img,
   max-width: 200px;
   min-width: 180px;
 }
-.card--achievement div {
-  flex-grow: 1;
-  flex-basis: 40%;
-}
 .card--achievement > p {
   color: var(--color-white);
   margin-top: 10px;
   margin-bottom: unset;
   text-align: center;
 }
-.card--achievement:hover > .img-placeholder {
-  background-color: var(--blue-clouds);
-  box-shadow: 0px 0px 20px 20px var(--blue-clouds);
+.card--achievement:hover > .img-placeholder::before, .card--achievement:hover > .cup::before {
+  box-shadow: 0px 0px 40px 40px var(--blue-clouds);
 }
 .card--stripe {
   flex-direction: row;
@@ -9247,6 +9319,7 @@ button.next:hover {
   }
 }
 .achievements-slider div.slides .slide {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9275,6 +9348,9 @@ button.next:hover {
   width: 1.7em;
   height: auto;
 }
+.achievements-slider div.slides .slide p {
+  margin: 0;
+}
 @media (max-width: 600px) {
   .achievements-slider div.slides .slide p {
     max-width: 80%;
@@ -9285,9 +9361,8 @@ button.next:hover {
     max-width: 85%;
   }
 }
-.achievements-slider div.slides .slide:hover .img-placeholder {
-  background-color: var(--blue-clouds);
-  box-shadow: 0px 0px 20px 20px var(--blue-clouds);
+.achievements-slider div.slides .slide:hover > .cup::before {
+  box-shadow: 0px 0px 40px 40px var(--blue-clouds);
 }
 .achievements-slider button {
   color: var(--blue-main);
@@ -9849,12 +9924,12 @@ button.next:hover {
   border-radius: 50%;
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
 }
-.main-section--achievements.group div {
+.main-section--achievements.group > div {
   flex-grow: 1;
   flex-basis: 40%;
 }
 @media (max-width: 1000px) {
-  .main-section--achievements.group div {
+  .main-section--achievements.group > div {
     flex-grow: 0;
   }
 }
