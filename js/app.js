@@ -1153,22 +1153,22 @@ function sliderInitialize() {
 			const windowWidth = window.innerWidth;
 
 			if (windowWidth > 1200) {
-				const slideWidth = visibleWidth / breaks[0] - gap;
+				const slideWidth = visibleWidth / breaks[0] - gap / 2;
 				[].forEach.call(slides, function (slide) {
 					slide.style.minWidth = `${slideWidth}px`;
 				});
 			} else if (windowWidth > 900) {
-				const slideWidth = visibleWidth / breaks[1] - gap;
+				const slideWidth = visibleWidth / breaks[1] - gap / 2;
 				[].forEach.call(slides, function (slide) {
 					slide.style.minWidth = `${slideWidth}px`;
 				});
 			} else if (windowWidth > 600) {
-				const slideWidth = visibleWidth / breaks[2] - gap;
+				const slideWidth = visibleWidth / breaks[2] - gap / 2;
 				[].forEach.call(slides, function (slide) {
 					slide.style.minWidth = `${slideWidth}px`;
 				});
 			} else {
-				const slideWidth = visibleWidth / breaks[3] - gap;
+				const slideWidth = visibleWidth / breaks[3] - gap / 2;
 				[].forEach.call(slides, function (slide) {
 					slide.style.minWidth = `${slideWidth}px`;
 				});
@@ -1212,22 +1212,22 @@ function sliderInitialize() {
 					const windowWidth = window.innerWidth;
 
 					if (windowWidth > 1200) {
-						const slideWidth = visibleWidth / breaks[0] - gap;
+						const slideWidth = visibleWidth / breaks[0] - gap / 2;
 						[].forEach.call(slides, function (slide) {
 							slide.style.minWidth = `${slideWidth}px`;
 						});
 					} else if (windowWidth > 900) {
-						const slideWidth = visibleWidth / breaks[1] - gap;
+						const slideWidth = visibleWidth / breaks[1] - gap / 2;
 						[].forEach.call(slides, function (slide) {
 							slide.style.minWidth = `${slideWidth}px`;
 						});
 					} else if (windowWidth > 600) {
-						const slideWidth = visibleWidth / breaks[2] - gap;
+						const slideWidth = visibleWidth / breaks[2] - gap / 2;
 						[].forEach.call(slides, function (slide) {
 							slide.style.minWidth = `${slideWidth}px`;
 						});
 					} else {
-						const slideWidth = visibleWidth / breaks[3] - gap;
+						const slideWidth = visibleWidth / breaks[3] - gap / 2;
 						[].forEach.call(slides, function (slide) {
 							slide.style.minWidth = `${slideWidth}px`;
 						});

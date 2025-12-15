@@ -12155,6 +12155,34 @@ button.next:hover {
   object-fit: contain;
   object-position: center;
 }
+.tech-list.slim {
+  margin: 0;
+  padding: 0;
+}
+.tech-list.slim > li {
+  align-items: flex-start;
+  flex-basis: calc(50% - 10px);
+  max-width: calc(50% - 10px);
+  margin: 0;
+}
+@media (max-width: 1200px) {
+  .tech-list.slim > li {
+    flex-basis: calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+@media (max-width: 900px) {
+  .tech-list.slim > li {
+    flex-basis: calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+@media (max-width: 540px) {
+  .tech-list.slim > li {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
 
 .support-slider {
   display: flex;
