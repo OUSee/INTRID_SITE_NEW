@@ -1615,6 +1615,30 @@ ol {
 					max-width: 100%;
 				}
 			}
+
+			&.slim {
+				gap: 16px;
+
+				& > * {
+					flex: 1 0 calc(50% - 8px);
+					max-width: calc(50% - 8px);
+
+					@media (max-width: 1120px) {
+						flex: 1 0 100%;
+						max-width: 100%;
+					}
+
+					@media (max-width: 1000px) {
+						flex: 1 0 calc(50% - 8px);
+						max-width: calc(50% - 8px);
+					}
+
+					@media (max-width: 600px) {
+						flex: 1 0 100%;
+						max-width: 100%;
+					}
+				}
+			}
 		}
 
 		&--roadmap {
@@ -2024,6 +2048,26 @@ ol {
 				}
 			}
 
+			&-column {
+				flex-direction: column;
+
+				& > * {
+					max-width: 100%;
+					flex: 1;
+
+					&::after {
+						top: auto !important;
+						left: 50%;
+						bottom: 0% !important;
+						transform: translate(-50%, 115%) rotate(90deg) !important;
+
+						@media (max-width: 600px) {
+							display: none;
+						}
+					}
+				}
+			}
+
 			&-nothing {
 				& > * {
 					&::after {
@@ -2270,6 +2314,47 @@ ol {
 				@media (max-width: 768px) {
 					max-width: 100%;
 					flex-basis: 100% !important;
+				}
+			}
+		}
+
+		&--split {
+			display: flex;
+			gap: 48px;
+
+			@media (max-width: 1000px) {
+				flex-direction: column;
+			}
+
+			& .left {
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+				flex: 1;
+
+				@media (max-width: 1000px) {
+					max-width: 100%;
+				}
+			}
+
+			& .right {
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+				flex: 1 1 30%;
+				max-width: 400px;
+
+				@media (max-width: 1000px) {
+					max-width: 100%;
+				}
+
+				& .achievements-slider {
+					margin: 0 auto;
+				}
+
+				& .card--leaders {
+					max-width: 100%;
+					margin: 0 auto;
 				}
 			}
 		}
@@ -5885,7 +5970,7 @@ button:hover,
 	&--result {
 		display: flex;
 		flex-direction: column;
-		border-radius: 25px;
+		border-radius: 30px;
 		gap: 0;
 		padding: 0;
 		background-color: var(--blue-bg);
@@ -5897,7 +5982,8 @@ button:hover,
 			padding: 18px 40px;
 			border-radius: 30px;
 			color: var(--color-white);
-			background-color: var(--blue-tag);
+			// background-color: var(--blue-tag);
+			background-color: var(--blue-light-bg);
 		}
 
 		& .card-body {
@@ -7166,10 +7252,12 @@ button:hover,
 
 			&:not(.isMain) {
 				& > .card-body {
-					& > p {
-						&:last-of-type {
-							margin-left: auto;
-							opacity: 0.85;
+					& > a {
+						& + p {
+							&:last-of-type {
+								margin-left: auto;
+								opacity: 0.85;
+							}
 						}
 					}
 				}
