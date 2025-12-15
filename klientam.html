@@ -324,47 +324,100 @@
                 <h2 class="underlined w-fit">
                     Полезные сервисы
                 </h2>
-
-                <p class="title_h5">
-                    Бесплатный аудит сайта
-                </p>
-
-                <p>
-                    Попробуйте бесплатный экспресс аудит и проверьте ваш сайт с помощью нашего онлайн
-                    инструмента
-                    для быстрой
-                    проверки сайта по данным о домене и основным СЕО-параметрам.
-                </p>
-
-                <form action="submit" id="test-site-form" class="fd-row mt-32 mb-50">
-                    <input type="text" placeholder="URL сайта" id="audit-test">
-                    <button type="submit" class="big">
-                        проверить
-                    </button>
-                </form>
-
-                <p class="title_h5">
-                    Проверка домена
-                </p>
-
-                <p>
-                    Проверка и регистрация свободных доменных имен
-                </p>
-
-                <form action="submit" id="test-domain-form" class="fd-row mt-32">
-                    <input type="text" placeholder="Введите домен" id="domain-test">
-                    <button type="submit" class="big">
-                        проверить
-                    </button>
-                </form>
-
-                <a href="./src/docs/Поисковое_ранжирование.pdf" target="_blank"
-                    class="d-flex align-center justify-center w-fit mt-32 ml-auto mr-auto hover-underline">
-                    <img src="./src/icons/ai_icon_upload.svg" alt="">
-                    <span>
-                        Поисковое ранжирование Google <span class="color-white">(29 Мб)</span>
-                    </span>
-                </a>
+        
+                <div class="flex-layout flex-layout--split mt-20">
+                    <div class="left">
+                        <div class="card min">
+                            <p class="title_h5">
+                                Бесплатный аудит сайта
+                            </p>
+                    
+                            <p>
+                                Попробуйте бесплатный экспресс аудит и проверьте ваш сайт с помощью нашего онлайн
+                                инструмента
+                                для быстрой
+                                проверки сайта по данным о домене и основным СЕО-параметрам.
+                            </p>
+                    
+                            <form action="/submit/analiz-site" id="test-site-form" class="fd-row mt-32 mb-50" method="post">
+                                <input type="text" name="site" placeholder="URL сайта" id="audit-test">
+                                <button type="submit" class="button-highlight big">
+                                    проверить
+                                </button>
+                            </form>
+                    
+                            <p class="title_h5">
+                                Проверка домена
+                            </p>
+                    
+                            <p>
+                                Проверка и регистрация свободных доменных имен
+                            </p>
+                    
+                            <form action="/submit/domain" id="test-domain-form" class="fd-row mt-32 ajax-form" method="post">
+                                <input type="text" name="domain" placeholder="Введите домен" id="domain-test">
+                                <button type="submit" class="button-highlight big">
+                                    проверить
+                                </button>
+                            </form>
+                    
+                            <a href="/src/docs/Poiskovoe_ranzhirovanie.pdf" target="_blank"
+                                class="d-flex align-center justify-center w-fit mt-32 ml-auto mr-auto hover-underline">
+                                <img src="/src/icons/ai_icon_upload.svg" alt="">
+                                <span>
+                                    Поисковое ранжирование Google <span class="color-white">(29 Мб)</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="card card--leaders minified position-sticky" id="clients-creation">
+                            <p class="title_h4 text-center">
+                                Оформить быстрый заказ
+                            </p>
+                            <p class="text-center">
+                                Заполните форму ниже и мы перезвоним в течении дня в рабочее время
+                            </p>
+                            <form class="order-form">
+                                <input type="text" required id="customer-name" name="customer-name" placeholder="Ваше имя *">
+                    
+                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                    
+                                <input type="tel" required id="customer-phone" name="customer-phone" placeholder="Ваш телефон *">
+                    
+                                <textarea data-autosize="true" rows="2" id="customer-phone" placeholder="Комментарий"
+                                    name="list"></textarea>
+                    
+                                <div class="input-file">
+                                    <label>
+                                        <input type="file" multiple=""
+                                            accept=".pdf, application/pdf, image/*,
+                                                                                                                                                                                                                                                                                                                            application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                                                                                                                                                                                                                                                                                                                            application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                                                                                                                                                                                                                                                                                                            application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                                                                                                                                                                                                                                                                                                                            text/plain,
+                                                                                                                                                                                                                                                                                                                            application/rtf,
+                                                                                                                                                                                                                                                                                                                            application/vnd.oasis.opendocument.text,
+                                                                                                                                                                                                                                                                                                                            application/vnd.oasis.opendocument.spreadsheet,
+                                                                                                                                                                                                                                                                                                                            application/vnd.oasis.opendocument.presentation">
+                                        <span>Прикрепить файл</span>
+                                        <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                    </label>
+                                    <div class="file-list"></div>
+                                </div>
+                    
+                                <button type="submit" class="button big button-white mt-10">
+                                    Заказать сайт
+                                </button>
+                            </form>
+                            <p class="testimonials text-center mt-10 mb-0">
+                                Отправляя форму, я даю согласие на <a href="javascript://" class="popup-trigger"
+                                    data-popup="privacy-policy">обработку своих персональных
+                                    данных</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 

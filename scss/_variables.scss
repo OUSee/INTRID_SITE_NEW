@@ -5106,6 +5106,14 @@ button:hover,
 		animation: showCard 0.3s forwards;
 	}
 
+	&.min {
+		padding: 24px 16px;
+
+		@media (max-width: 1000px) {
+			padding: 16px 10px;
+		}
+	}
+
 	&:is(.empty) {
 		background-color: var(--blue-clouds);
 		border-radius: 39px;

@@ -197,7 +197,7 @@
                 </p>
 
                 <div class="main-section--actions">
-                    <a class="button-highlight big" href="#crm-creation">
+                    <a class="button-highlight big" href="#domain-creation">
                         Купить домен
                         <i class="icon-arrow_wide"></i>
                     </a>
@@ -217,73 +217,131 @@
         <!--  -->
         <section>
             <div class="container">
-                <h2 class="w-fit">
-                    Стоимость регистрации домена
-                </h2>
+                <div class="flex-layout flex-layout--split mt-20">
+                    <div class="left">
+                        <div class="card min">
+                            <h2 class="w-fit">
+                                Стоимость регистрации домена
+                            </h2>
 
-                <div class="table-block">
-                    <table class="domain-table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <p class="title_h5 w-fit color-blue">
-                                        Доменная зона
-                                    </p>
-                                </th>
-                                <th>
-                                    <p class="title_h5 w-fit color-blue">
-                                        Регистрация/продление
-                                    </p>
-                                </th>
-                                <th>
-                                    <p class="title_h5 w-fit color-blue">
-                                        + SSL сертификат
-                                    </p>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>.ru, .su</p>
-                                </td>
-                                <td>
-                                    <p>600 ₽/год</p>
-                                </td>
-                                <td>
-                                    <p>900 ₽/год</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>.com, net, .biz, .org, .info</p>
-                                </td>
-                                <td>
-                                    <p>1800 ₽/год</p>
-                                </td>
-                                <td>
-                                    <p>1200 ₽/год</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <div class="table-block">
+                                <table class="domain-table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <p class="title_h5 w-fit color-blue">
+                                                    Доменная зона
+                                                </p>
+                                            </th>
+                                            <th>
+                                                <p class="title_h5 w-fit color-blue">
+                                                    Регистрация/продление
+                                                </p>
+                                            </th>
+                                            <th>
+                                                <p class="title_h5 w-fit color-blue">
+                                                    + SSL сертификат
+                                                </p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <p>.ru, .su</p>
+                                            </td>
+                                            <td>
+                                                <p>600 ₽/год</p>
+                                            </td>
+                                            <td>
+                                                <p>900 ₽/год</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>.com, net, .biz, .org, .info</p>
+                                            </td>
+                                            <td>
+                                                <p>1800 ₽/год</p>
+                                            </td>
+                                            <td>
+                                                <p>1200 ₽/год</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Другие зоны</p>
+                                            </td>
+                                            <td colspan="2">
+                                                <p>Индивидуальная цена</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <br class="mt-32" />
+
+                            <h3 class="w-fit">
+                                Проверка свободных доменных имен
+                            </h3>
+                            
+                            <form action="/submit/domain" id="test-site-form" class="fd-row w-fill" method="get">
+                                <input type="text" placeholder="Введите домен">
+                                <button type="submit" class="button-highlight big">
+                                    проверить
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="card card--leaders minified position-sticky" id="domain-creation">
+                            <p class="title_h4 text-center">
+                                Оформить быстрый заказ
+                            </p>
+                            <p class="text-center">
+                                Заполните форму ниже и мы перезвоним в течении дня в рабочее время
+                            </p>
+                            <form class="order-form">
+                                <input type="text" required id="customer-name" name="customer-name" placeholder="Ваше имя *">
+                    
+                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                    
+                                <input type="tel" required id="customer-phone" name="customer-phone" placeholder="Ваш телефон *">
+                    
+                                <textarea data-autosize="true" rows="2" id="customer-phone" placeholder="Комментарий"
+                                    name="list"></textarea>
+                    
+                                <div class="input-file">
+                                    <label>
+                                        <input type="file" multiple=""
+                                            accept=".pdf, application/pdf, image/*,
+                                                                                                                                                                                                                                                                                    application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                                                                                                                                                                                                                                                                                    application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                                                                                                                                                                                                                                                                    application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                                                                                                                                                                                                                                                                                    text/plain,
+                                                                                                                                                                                                                                                                                    application/rtf,
+                                                                                                                                                                                                                                                                                    application/vnd.oasis.opendocument.text,
+                                                                                                                                                                                                                                                                                    application/vnd.oasis.opendocument.spreadsheet,
+                                                                                                                                                                                                                                                                                    application/vnd.oasis.opendocument.presentation">
+                                        <span>Прикрепить файл</span>
+                                        <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                    </label>
+                                    <div class="file-list"></div>
+                                </div>
+                    
+                                <button type="submit" class="button big button-white mt-10">
+                                    Заказать сайт
+                                </button>
+                            </form>
+                            <p class="testimonials text-center mt-10 mb-0">
+                                Отправляя форму, я даю согласие на <a href="javascript://" class="popup-trigger"
+                                    data-popup="privacy-policy">обработку своих персональных
+                                    данных</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!--  -->
-        <section>
-            <div class="container">
-                <h3 class="w-fit">
-                    Проверка свободных доменных имен
-                </h3>
-
-                <form action="submit" id="test-site-form" class="fd-row w-fill">
-                    <input type="text" placeholder="Введите домен">
-                    <button type="submit" class="big">
-                        проверить
-                    </button>
-                </form>
             </div>
         </section>
 
