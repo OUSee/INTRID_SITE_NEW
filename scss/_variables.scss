@@ -2326,7 +2326,21 @@ ol {
 				flex-direction: column;
 			}
 
-			& .left {
+			&.early {
+				@media (max-width: 1200px) {
+					flex-direction: column;
+				}
+
+				& > .left {
+					max-width: calc(100% - 430px - 20px);
+
+					@media (max-width: 1200px) {
+						max-width: 100%;
+					}
+				}
+			}
+
+			& > .left {
 				display: flex;
 				flex-direction: column;
 				gap: 16px;
@@ -2337,7 +2351,7 @@ ol {
 				}
 			}
 
-			& .right {
+			& > .right {
 				display: flex;
 				flex-direction: column;
 				gap: 16px;
@@ -5351,103 +5365,103 @@ button:hover,
 		}
 	}
 
-	&--recent {
-		gap: 20px;
-		padding: 24px 30px;
-		background-color: var(--blue-bg);
-		border: 1px solid var(--blue-clouds);
+	// &--recent {
+	// 	gap: 20px;
+	// 	padding: 24px 30px;
+	// 	background-color: var(--blue-bg);
+	// 	border: 1px solid var(--blue-clouds);
 
-		@media (max-width: 900px) {
-			padding: 24px;
-		}
+	// 	@media (max-width: 900px) {
+	// 		padding: 24px;
+	// 	}
 
-		&::before {
-			content: "";
-			position: absolute;
-			top: 10%;
-			left: 50%;
-			z-index: -1;
-			width: 0;
-			height: 0;
-			border-radius: 100%;
-			aspect-ratio: 1 / 1;
-			box-shadow: 0px 0px 70px 60px var(--blue-clouds),
-				inset 0px 0px 70px 2px var(--blue-clouds);
-			transform: translate(-50%, 0%);
-		}
+	// 	&::before {
+	// 		content: "";
+	// 		position: absolute;
+	// 		top: 10%;
+	// 		left: 50%;
+	// 		z-index: -1;
+	// 		width: 0;
+	// 		height: 0;
+	// 		border-radius: 100%;
+	// 		aspect-ratio: 1 / 1;
+	// 		box-shadow: 0px 0px 70px 60px var(--blue-clouds),
+	// 			inset 0px 0px 70px 2px var(--blue-clouds);
+	// 		transform: translate(-50%, 0%);
+	// 	}
 
-		& > a {
-			&:not(.absolute-link) {
-				display: flex;
-				flex-direction: column;
+	// 	& > a {
+	// 		&:not(.absolute-link) {
+	// 			display: flex;
+	// 			flex-direction: column;
 
-				& img {
-					@media (max-width: 600px) {
-						margin: 0 auto;
-					}
-				}
-			}
-		}
+	// 			& img {
+	// 				@media (max-width: 600px) {
+	// 					margin: 0 auto;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
 
-		&:hover {
-			outline: 1px solid var(--blue-main);
-			box-shadow: 0px 0px 15px var(--blue-main);
-		}
+	// 	&:hover {
+	// 		outline: 1px solid var(--blue-main);
+	// 		box-shadow: 0px 0px 15px var(--blue-main);
+	// 	}
 
-		& img {
-			max-width: 225px;
-			height: 141px;
-			max-height: 141px;
-			object-fit: contain;
-			object-position: center;
+	// 	& img {
+	// 		max-width: 225px;
+	// 		height: 141px;
+	// 		max-height: 141px;
+	// 		object-fit: contain;
+	// 		object-position: center;
 
-			@media (max-width: 1250px) {
-				width: 100%;
-				max-height: 141px;
-			}
-		}
+	// 		@media (max-width: 1250px) {
+	// 			width: 100%;
+	// 			max-height: 141px;
+	// 		}
+	// 	}
 
-		& .card-body {
-			display: flex;
-			flex-direction: column;
-			gap: 8px;
-			margin-bottom: 30px;
+	// 	& .card-body {
+	// 		display: flex;
+	// 		flex-direction: column;
+	// 		gap: 8px;
+	// 		margin-bottom: 30px;
 
-			& .card-tag {
-				@include card-tag;
-			}
+	// 		& .card-tag {
+	// 			@include card-tag;
+	// 		}
 
-			& p {
-				color: var(--color-grey);
-				min-height: 41px;
-			}
+	// 		& p {
+	// 			color: var(--color-grey);
+	// 			min-height: 41px;
+	// 		}
 
-			& b {
-				@include h4;
-				color: var(--color-white);
-				line-height: 140%;
-			}
+	// 		& b {
+	// 			@include h4;
+	// 			color: var(--color-white);
+	// 			line-height: 140%;
+	// 		}
 
-			& span {
-				@include h4;
-				color: var(--color-white);
-			}
+	// 		& span {
+	// 			@include h4;
+	// 			color: var(--color-white);
+	// 		}
 
-			& a {
-				margin-top: 16px;
-			}
-		}
+	// 		& a {
+	// 			margin-top: 16px;
+	// 		}
+	// 	}
 
-		& .absolute-link {
-			position: absolute;
-			bottom: 24px;
-			flex-direction: row !important;
+	// 	& .absolute-link {
+	// 		position: absolute;
+	// 		bottom: 24px;
+	// 		flex-direction: row !important;
 
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-	}
+	// 		&:hover {
+	// 			text-decoration: underline;
+	// 		}
+	// 	}
+	// }
 
 	// &--logo {
 	// 	padding: 16px 20px;

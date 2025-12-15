@@ -2691,18 +2691,31 @@ ol li > ol {
     flex-direction: column;
   }
 }
-.flex-layout--split .left {
+@media (max-width: 1200px) {
+  .flex-layout--split.early {
+    flex-direction: column;
+  }
+}
+.flex-layout--split.early > .left {
+  max-width: calc(100% - 430px - 20px);
+}
+@media (max-width: 1200px) {
+  .flex-layout--split.early > .left {
+    max-width: 100%;
+  }
+}
+.flex-layout--split > .left {
   display: flex;
   flex-direction: column;
   gap: 16px;
   flex: 1;
 }
 @media (max-width: 1000px) {
-  .flex-layout--split .left {
+  .flex-layout--split > .left {
     max-width: 100%;
   }
 }
-.flex-layout--split .right {
+.flex-layout--split > .right {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -2710,14 +2723,14 @@ ol li > ol {
   max-width: 400px;
 }
 @media (max-width: 1000px) {
-  .flex-layout--split .right {
+  .flex-layout--split > .right {
     max-width: 100%;
   }
 }
-.flex-layout--split .right .achievements-slider {
+.flex-layout--split > .right .achievements-slider {
   margin: 0 auto;
 }
-.flex-layout--split .right .card--leaders {
+.flex-layout--split > .right .card--leaders {
   max-width: 100%;
   margin: 0 auto;
 }
@@ -6036,121 +6049,6 @@ button:hover img,
 }
 .card--review .card-source.runet {
   background-image: url("../src/icons/reviews/min/runet-min.svg");
-}
-.card--recent {
-  gap: 20px;
-  padding: 24px 30px;
-  background-color: var(--blue-bg);
-  border: 1px solid var(--blue-clouds);
-}
-@media (max-width: 900px) {
-  .card--recent {
-    padding: 24px;
-  }
-}
-.card--recent::before {
-  content: "";
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  z-index: -1;
-  width: 0;
-  height: 0;
-  border-radius: 100%;
-  aspect-ratio: 1/1;
-  box-shadow: 0px 0px 70px 60px var(--blue-clouds), inset 0px 0px 70px 2px var(--blue-clouds);
-  transform: translate(-50%, 0%);
-}
-.card--recent > a:not(.absolute-link) {
-  display: flex;
-  flex-direction: column;
-}
-@media (max-width: 600px) {
-  .card--recent > a:not(.absolute-link) img {
-    margin: 0 auto;
-  }
-}
-.card--recent:hover {
-  outline: 1px solid var(--blue-main);
-  box-shadow: 0px 0px 15px var(--blue-main);
-}
-.card--recent img {
-  max-width: 225px;
-  height: 141px;
-  max-height: 141px;
-  object-fit: contain;
-  object-position: center;
-}
-@media (max-width: 1250px) {
-  .card--recent img {
-    width: 100%;
-    max-height: 141px;
-  }
-}
-.card--recent .card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 30px;
-}
-.card--recent .card-body .card-tag {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 6px;
-  color: var(--blue-tag);
-  font-size: 16px;
-}
-.card--recent .card-body .card-tag i {
-  display: flex;
-  font-size: larger;
-}
-.card--recent .card-body p {
-  color: var(--color-grey);
-  min-height: 41px;
-}
-.card--recent .card-body b {
-  font-weight: 600;
-  font-size: 24px;
-  color: var(--color-white);
-  line-height: 140%;
-}
-@media (max-width: 1000px) {
-  .card--recent .card-body b {
-    font-size: 20px;
-  }
-}
-@media (max-width: 600px) {
-  .card--recent .card-body b {
-    font-size: 16px;
-  }
-}
-.card--recent .card-body span {
-  font-weight: 600;
-  font-size: 24px;
-  color: var(--color-white);
-}
-@media (max-width: 1000px) {
-  .card--recent .card-body span {
-    font-size: 20px;
-  }
-}
-@media (max-width: 600px) {
-  .card--recent .card-body span {
-    font-size: 16px;
-  }
-}
-.card--recent .card-body a {
-  margin-top: 16px;
-}
-.card--recent .absolute-link {
-  position: absolute;
-  bottom: 24px;
-  flex-direction: row !important;
-}
-.card--recent .absolute-link:hover {
-  text-decoration: underline;
 }
 .card--awards {
   max-width: 100%;
@@ -12316,6 +12214,67 @@ button.next:hover {
     flex: 1 0 auto;
     max-width: 100%;
   }
+}
+.tenders-keys--list.slim {
+  width: 100%;
+  margin: 0;
+}
+.tenders-keys--list.slim > * {
+  flex: 1 0 auto;
+  max-width: 100%;
+}
+@media (max-width: 1200px) {
+  .tenders-keys--list.slim > * {
+    flex: 1 0 auto;
+    max-width: 100%;
+  }
+}
+.tenders-keys--list.slim + .pagination {
+  margin-top: 16px;
+}
+@media (min-width: 1480px) {
+  .tenders-keys--list.slim + .pagination:not([id=gallery-pagination]) .pagination--prev-btn {
+    left: 10px !important;
+  }
+}
+@media (min-width: 1500px) {
+  .tenders-keys--list.slim + .pagination:not([id=gallery-pagination]) .pagination--prev-btn {
+    left: 10px !important;
+  }
+}
+@media (min-width: 1550px) {
+  .tenders-keys--list.slim + .pagination:not([id=gallery-pagination]) .pagination--prev-btn {
+    left: 10px !important;
+  }
+}
+@media (min-width: 1600px) {
+  .tenders-keys--list.slim + .pagination:not([id=gallery-pagination]) .pagination--prev-btn {
+    left: 10px !important;
+  }
+}
+@media (min-width: 1480px) {
+  .tenders-keys--list.slim + .pagination:not([id=gallery-pagination]) .pagination--next-btn {
+    right: 10px !important;
+  }
+}
+@media (min-width: 1500px) {
+  .tenders-keys--list.slim + .pagination:not([id=gallery-pagination]) .pagination--next-btn {
+    right: 10px !important;
+  }
+}
+@media (min-width: 1550px) {
+  .tenders-keys--list.slim + .pagination:not([id=gallery-pagination]) .pagination--next-btn {
+    right: 10px !important;
+  }
+}
+@media (min-width: 1600px) {
+  .tenders-keys--list.slim + .pagination:not([id=gallery-pagination]) .pagination--next-btn {
+    right: 10px !important;
+  }
+}
+
+#tenders-keys-pagination {
+  display: flex;
 }
 
 #tenders-slider-pagination {
