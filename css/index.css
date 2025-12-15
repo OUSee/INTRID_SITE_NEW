@@ -4956,7 +4956,7 @@ form .button:hover {
   position: absolute;
   top: 0;
   left: 0;
-  backdrop-filter: blur(2px) hue-rotate(340deg);
+  backdrop-filter: blur(2px) hue-rotate(340deg) brightness(80%);
   font-size: 92px;
   line-height: 1em;
   display: flex;
@@ -4968,7 +4968,7 @@ form .button:hover {
   content: "Смотреть видео";
   position: absolute;
   top: auto;
-  bottom: 40px;
+  bottom: 15%;
   left: 50%;
   z-index: 1;
   font-size: 14px;
@@ -7305,13 +7305,19 @@ button:hover img,
 }
 .card--portfolio .card-body > p {
   margin: 0;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 .card--portfolio .card-body > span {
   max-width: 60%;
   margin-left: auto;
   white-space: nowrap;
   color: var(--blue-main);
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.card--portfolio .card-body > a {
+  max-width: 100%;
+  white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -7436,6 +7442,10 @@ button:hover img,
 }
 .card--portfolio.isDev .card-body {
   z-index: 2;
+}
+.card--portfolio.isDev:not(.isMain) > .card-body > p:last-of-type {
+  margin-left: auto;
+  opacity: 0.85;
 }
 .card--portfolio.isMain {
   max-width: 100%;
