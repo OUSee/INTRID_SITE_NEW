@@ -2363,6 +2363,18 @@ ol {
 				}
 			}
 
+			&.centered {
+				max-width: 900px;
+				margin: 0 auto;
+
+				& > .right {
+					@media (max-width: 1200px) {
+						max-width: 400px;
+						margin: 0 auto;
+					}
+				}
+			}
+
 			& > .left {
 				display: flex;
 				flex-direction: column;

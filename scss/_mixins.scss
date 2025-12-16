@@ -1306,3 +1306,59 @@
 		font-size: larger;
 	}
 }
+
+@mixin crm-offer-card {
+	@media (max-width: 1100px) {
+		max-width: 100%;
+		padding: 0;
+		background-color: unset;
+		overflow: visible;
+	}
+	@media (max-width: 1000px) {
+		width: 100%;
+		max-width: 100%;
+		height: unset;
+		border: 1px solid var(--blue-bg);
+		background-color: var(--bg-main);
+		border-radius: 39px;
+		padding: 30px;
+		overflow: hidden;
+		transition: all 0.3s ease-in-out;
+	}
+
+	& > p {
+		color: var(--color-grey);
+	}
+
+	& > b {
+		display: block;
+		@include h3;
+		color: var(--blue-main);
+		margin-bottom: 0.5em;
+		text-wrap: nowrap;
+
+		&::before {
+			font-family: "INTRID_ICONS";
+			content: "\64";
+			height: 77px;
+			width: 77px;
+			font-size: 77px;
+			line-height: 77px;
+			color: var(--blue-bg-icon);
+			position: absolute;
+			left: -77px;
+			top: -15px;
+		}
+
+		@media (max-width: 1000px) {
+			@include h5;
+			color: var(--color-white);
+		}
+
+		@media (max-width: 1100px) {
+			&::before {
+				left: -38px;
+			}
+		}
+	}
+}
