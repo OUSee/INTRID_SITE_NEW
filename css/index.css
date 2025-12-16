@@ -10594,14 +10594,6 @@ button.next:hover {
   width: 34px;
   height: 34px;
 }
-@media (max-width: 1000px) {
-  .tab-content-webDev .benefit-card img {
-    align-self: flex-start;
-  }
-}
-.tab-content-webDev .benefit-card:before {
-  top: -35px;
-}
 .tab-content-webDev .video-diagramm .water-ripple-video {
   z-index: 1 !important;
 }
@@ -10784,11 +10776,6 @@ button.next:hover {
 @media (max-width: 1200px) {
   .tab-content-webDev.tender .tender-diagram {
     padding: 0px;
-  }
-}
-@media (min-width: 1000px) and (max-width: 1200px) {
-  .tab-content-webDev.tender .tender-diagram .benefit-card::before {
-    top: -10px;
   }
 }
 .tab-content-webDev.tender > p.title_h4 {
@@ -11133,7 +11120,7 @@ button.next:hover {
 .benefit-card img {
   width: 44px;
   height: 44px;
-  align-self: center;
+  align-self: flex-start;
 }
 .benefit-card img,
 .benefit-card div {
@@ -11150,12 +11137,13 @@ button.next:hover {
   content: "";
   z-index: 0;
   position: absolute;
-  top: -10px;
-  left: -70px;
+  top: 0;
+  left: 0;
   background-color: var(--blue-bg);
   border-radius: 50%;
-  width: 140px;
-  height: 140px;
+  width: 90px;
+  height: 90px;
+  transform: translate(-15%, -10%);
 }
 
 .for-buisness-offers {
@@ -11837,14 +11825,6 @@ button.next:hover {
 .store-ai .benefit-card img {
   width: 34px;
   height: 34px;
-}
-@media (max-width: 1000px) {
-  .store-ai .benefit-card img {
-    align-self: flex-start;
-  }
-}
-.store-ai .benefit-card:before {
-  top: -35px;
 }
 .store-ai .video-diagramm .water-ripple-video {
   z-index: 1 !important;

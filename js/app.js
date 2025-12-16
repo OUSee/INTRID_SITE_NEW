@@ -866,42 +866,66 @@ document.addEventListener("DOMContentLoaded", () => {
 			};
 
 			const setTabContent = (tabId) => {
-				const content = [
-					{
-						id: "ai-benefit-1",
-						content:
-							"ИИ анализирует поведение пользователей и предлагает релевантные товары в нужный момент",
-					},
-					{
-						id: "ai-benefit-2",
-						content:
-							"Персонализированные рекомендации, умный поиск и автоматизированная поддержка выделят вас среди конкурентов",
-					},
-					{
-						id: "ai-benefit-3",
-						content:
-							"Подбирает сопутствующие товары, которые покупатели часто добавляют в корзину, тем самым увеличивают средний чек",
-					},
-					{
-						id: "ai-benefit-4",
-						content:
-							"Умные системы предсказывают потребности клиента и показывают ему именно то, что он ищет",
-					},
-					{
-						id: "ai-benefit-5",
-						content:
-							"Покупатели могут искать товары голосом, что ускоряет процесс и делает магазин удобнее для пользователей смартфонов и умных устройств",
-					},
-					{
-						id: "ai-benefit-6",
-						content:
-							"Телеграм-бот помогает с подбором товаров, оформлением заказов и отвечает на вопросы 24/7, увеличивая вовлеченность и лояльность клиентов",
-					},
-				];
+				// Пытаемся найти контент в HTML
+				const input = document.getElementById(tabId);
+				if (!input) {
+					console.error(`Input with id "${tabId}" not found`);
+					return;
+				}
 
-				const newText = content.find(
-					(item) => item.id === tabId
-				).content;
+				const label = input.closest("label");
+				if (!label) {
+					console.error(
+						`Label for input with id "${tabId}" not found`
+					);
+					return;
+				}
+
+				const hiddenContent = label.querySelector(".content-hidden");
+				let newText;
+				if (hiddenContent) {
+					newText = hiddenContent.textContent;
+				} else {
+					const content = [
+						{
+							id: "ai-benefit-1",
+							content:
+								"ИИ анализирует поведение пользователей и предлагает релевантные товары в нужный момент",
+						},
+						{
+							id: "ai-benefit-2",
+							content:
+								"Персонализированные рекомендации, умный поиск и автоматизированная поддержка выделят вас среди конкурентов",
+						},
+						{
+							id: "ai-benefit-3",
+							content:
+								"Подбирает сопутствующие товары, которые покупатели часто добавляют в корзину, тем самым увеличивают средний чек",
+						},
+						{
+							id: "ai-benefit-4",
+							content:
+								"Умные системы предсказывают потребности клиента и показывают ему именно то, что он ищет",
+						},
+						{
+							id: "ai-benefit-5",
+							content:
+								"Покупатели могут искать товары голосом, что ускоряет процесс и делает магазин удобнее для пользователей смартфонов и умных устройств",
+						},
+						{
+							id: "ai-benefit-6",
+							content:
+								"Телеграм-бот помогает с подбором товаров, оформлением заказов и отвечает на вопросы 24/7, увеличивая вовлеченность и лояльность клиентов",
+						},
+					];
+
+					const foundItem = content.find((item) => item.id === tabId);
+					if (!foundItem) {
+						console.error(`Content for id "${tabId}" not found`);
+						return;
+					}
+					newText = foundItem.content;
+				}
 
 				webShopTarget.classList.add("transition");
 
