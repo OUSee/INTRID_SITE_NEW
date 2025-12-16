@@ -208,7 +208,7 @@
                 </p>
 
                 <div class="main-section--actions">
-                    <a class="button-highlight big" href="#crm-creation">
+                    <a class="button-highlight big" href="#ui-creation">
                         Заказать
                     </a>
                     <a class="button-link big" href="#portfolio-ux_ui">
@@ -876,48 +876,96 @@
                     Наш подход к разработке интерфейсов
                 </h3>
 
-                <div class="flex-layout flex-layout--roadmap flex-layout--roadmap-4x mt-50 mb-50">
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            Анализ
-                        </b>
-                        <p>
-                            Изучаем бизнес-процессы и
-                            анализируем существующие
-                            системы и их ограничения
-                        </p>
-                    </div>
+                <div class="flex-layout flex-layout--split mt-20">
+                    <div class="left">
+                        <div class="flex-layout flex-layout--roadmap flex-layout--roadmap-column justify-center">
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    Анализ
+                                </b>
+                                <p>
+                                    Изучаем бизнес-процессы и
+                                    анализируем существующие
+                                    системы и их ограничения
+                                </p>
+                            </div>
 
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            Проектирование
-                        </b>
-                        <p>
-                            Создаем информационную
-                            архитектуру и прописываем
-                            пользовательские сценарии
-                        </p>
-                    </div>
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    Проектирование
+                                </b>
+                                <p>
+                                    Создаем информационную
+                                    архитектуру и прописываем
+                                    пользовательские сценарии
+                                </p>
+                            </div>
 
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            Прототипирование
-                        </b>
-                        <p>
-                            Разрабатываем прототипы
-                            отдельных страниц и
-                            интерактивных интерфейсов
-                        </p>
-                    </div>
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    Прототипирование
+                                </b>
+                                <p>
+                                    Разрабатываем прототипы
+                                    отдельных страниц и
+                                    интерактивных интерфейсов
+                                </p>
+                            </div>
 
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            UI/UX-дизайн
-                        </b>
-                        <p>
-                            Разработка визуального стиля,
-                            создание дизайн-системы
-                        </p>
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    UI/UX-дизайн
+                                </b>
+                                <p>
+                                    Разработка визуального стиля,
+                                    создание дизайн-системы
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="card card--leaders minified position-sticky" id="ui-creation">
+                            <p class="title_h4 text-center">
+                                Оформить быстрый заказ
+                            </p>
+                            <form class="order-form">
+                                <input type="text" required id="customer-name" name="customer-name" placeholder="Ваше имя *">
+                    
+                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                    
+                                <input type="tel" required id="customer-phone" name="customer-phone" placeholder="Ваш телефон *">
+                    
+                                <textarea data-autosize="true" rows="2" id="customer-phone" placeholder="Комментарий"
+                                    name="list"></textarea>
+                    
+                                <div class="input-file">
+                                    <label>
+                                        <input type="file" multiple=""
+                                            accept=".pdf, application/pdf, image/*,
+                                                            					                                                                                                                                                            application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                                                            					                                                                                                                                                            application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                                            					                                                                                                                                                            application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                                                            					                                                                                                                                                            text/plain,
+                                                            					                                                                                                                                                            application/rtf,
+                                                            					                                                                                                                                                            application/vnd.oasis.opendocument.text,
+                                                            					                                                                                                                                                            application/vnd.oasis.opendocument.spreadsheet,
+                                                            					                                                                                                                                                            application/vnd.oasis.opendocument.presentation">
+                                        <span>Прикрепить файл</span>
+                                        <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                    </label>
+                                    <div class="file-list"></div>
+                                </div>
+                    
+                                <button type="submit" class="button big button-white mt-10">
+                                    Заказать сайт
+                                </button>
+                            </form>
+                            <p class="testimonials text-center mt-10 mb-0">
+                                Отправляя форму, я даю согласие на <a href="javascript://" class="popup-trigger"
+                                    data-popup="privacy-policy">обработку своих персональных
+                                    данных</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
