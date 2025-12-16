@@ -2841,6 +2841,10 @@ ol {
 	&-900 {
 		max-width: 900px;
 	}
+
+	&-1000 {
+		max-width: 1000px;
+	}
 }
 
 // margin
@@ -2988,6 +2992,21 @@ ol {
 
 	&-0 {
 		margin: 0 !important;
+	}
+}
+
+// padding
+.p {
+	&t {
+		&-0 {
+			padding-top: 0 !important;
+		}
+	}
+
+	&b {
+		&-0 {
+			padding-bottom: 0 !important;
+		}
 	}
 }
 
@@ -6791,19 +6810,6 @@ button:hover,
 			}
 		}
 
-		// & p {
-		// 	margin-top: 14px;
-		// 	margin-bottom: 14px;
-
-		// 	&:first-child {
-		// 		margin-top: 0;
-		// 	}
-
-		// 	&:last-child {
-		// 		margin-bottom: 0px;
-		// 	}
-		// }
-
 		& form {
 			display: flex;
 			flex-shrink: 1;
@@ -6859,6 +6865,82 @@ button:hover,
 
 		&.minified {
 			padding: 20px 16px;
+		}
+
+		&.wider {
+			align-items: flex-start;
+			max-width: 1000px;
+			padding: 30px;
+
+			@media (max-width: 900px) {
+				align-items: center;
+				padding: 20px 16px;
+			}
+
+			& .form-cols {
+				display: flex;
+				flex-direction: row;
+				align-items: flex-start;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				gap: 20px;
+				width: 100%;
+
+				& > form {
+					align-items: flex-start;
+					flex: 1;
+					max-width: 700px;
+
+					@media (max-width: 900px) {
+						max-width: 100%;
+					}
+
+					& > .form-inputs {
+						display: flex;
+						flex-direction: row;
+						align-items: flex-start;
+						flex-wrap: wrap;
+						gap: 8px;
+
+						& #customer-name {
+							width: 100%;
+						}
+
+						& #customer-mail,
+						& #customer-phone {
+							flex: 1;
+							max-width: 50%;
+						}
+
+						& #customer-comment {
+							width: 100%;
+						}
+					}
+				}
+
+				& > img {
+					margin: 0 auto;
+					flex: 1 1;
+					width: 100%;
+					max-width: 330px;
+					margin-left: auto;
+					margin-right: 0;
+					user-select: none;
+					pointer-events: none;
+
+					@media (max-width: 900px) {
+						display: none;
+					}
+				}
+
+				& .testimonials {
+					text-align: left;
+
+					@media (max-width: 900px) {
+						text-align: center;
+					}
+				}
+			}
 		}
 	}
 
