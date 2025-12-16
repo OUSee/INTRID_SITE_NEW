@@ -4920,6 +4920,8 @@ form .button:hover {
   left: 55%;
   z-index: 3;
   animation-delay: 3s;
+  transform-origin: center;
+  will-change: transform, opacity, box-shadow;
 }
 .flying-orb.straight > img {
   left: 50% !important;
@@ -5041,6 +5043,8 @@ form .button:hover {
   animation: ripple 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -2;
   filter: drop-shadow(0 0 10px var(--blue-main));
+  transform-origin: center;
+  will-change: transform, opacity, box-shadow;
 }
 .ripple-circle:nth-child(1) {
   animation-delay: 0s;
