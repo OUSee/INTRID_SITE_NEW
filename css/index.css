@@ -7149,6 +7149,11 @@ button:hover img,
   max-width: 200px;
   min-width: 180px;
 }
+@media (max-width: 600px) {
+  .card--achievement {
+    min-width: 150px;
+  }
+}
 .card--achievement > p {
   color: var(--color-white);
   margin-top: 10px;
@@ -7636,6 +7641,7 @@ button:hover img,
   height: 100%;
   border-radius: 8px;
   object-fit: cover;
+  object-position: center top;
 }
 .card--portfolio.isMain {
   max-width: 100%;
@@ -10121,12 +10127,13 @@ button.next:hover {
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 32px 60px;
+  gap: 32px 16px;
 }
 @media (max-width: 1000px) {
   .main-section--achievements {
     justify-content: center;
     gap: 16px;
+    margin-top: 24px;
   }
 }
 .main-section--achievements-3x > * {
