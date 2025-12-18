@@ -6266,6 +6266,18 @@ button:hover img,
   transform-origin: bottom center;
   transform: translateY(0);
 }
+.card--award::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
+  transform: translate(-50%, -50%);
+}
 .card--award:hover {
   border-color: var(--blue-main);
 }
@@ -6280,6 +6292,7 @@ button:hover img,
   align-items: flex-end;
   justify-content: space-between;
   gap: 4px;
+  padding-bottom: 16px;
   font-weight: 600;
 }
 .card--award .card-header > img {
@@ -6305,18 +6318,6 @@ button:hover img,
   justify-content: center;
   gap: 8px;
   text-align: center;
-}
-.card--award .card-body .achievement::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 0;
-  content: "";
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 2px var(--blue-clouds);
-  transform: translate(-50%, -50%);
 }
 .card--award .card-body .achievement b {
   position: relative;
