@@ -4787,14 +4787,26 @@ form .button:hover {
 .accordion .accordion-content .title_h5 {
   margin-top: 10px;
 }
+.accordion .accordion-content .quote {
+  margin-bottom: 0;
+}
 .accordion .accordion-content input,
 .accordion .accordion-content textarea {
-  padding: 12px;
+  position: relative;
+  width: 100%;
+  padding: 14px 22px;
   background-color: transparent;
+  color: white;
   border-radius: 25px;
   border: 1px solid var(--color-white);
-  resize: none;
-  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.25;
+}
+@media (max-width: 1000px) {
+  .accordion .accordion-content input,
+  .accordion .accordion-content textarea {
+    font-size: 15px;
+  }
 }
 .accordion .accordion-content input:focus,
 .accordion .accordion-content textarea:focus {

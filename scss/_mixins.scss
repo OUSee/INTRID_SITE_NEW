@@ -1206,25 +1206,30 @@
 				margin-top: 10px;
 			}
 
+			& .quote {
+				margin-bottom: 0;
+			}
+
 			input,
 			textarea {
-				// width: 100%;
-				padding: 12px;
-				background-color: transparent;
-				// padding: 15px 30px;
-				border-radius: 25px;
-				border: 1px solid var(--color-white);
-				resize: none;
-				overflow: hidden;
+				@include input;
+				// // width: 100%;
+				// padding: 12px;
+				// background-color: transparent;
+				// // padding: 15px 30px;
+				// border-radius: 25px;
+				// border: 1px solid var(--color-white);
+				// resize: none;
+				// overflow: hidden;
 
-				&:focus {
-					border: 1px dashed var(--color-white);
-					outline: none;
-				}
+				// &:focus {
+				// 	border: 1px dashed var(--color-white);
+				// 	outline: none;
+				// }
 
-				&::placeholder {
-					color: var(--color-grey);
-				}
+				// &::placeholder {
+				// 	color: var(--color-grey);
+				// }
 			}
 		}
 

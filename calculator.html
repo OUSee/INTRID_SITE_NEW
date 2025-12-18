@@ -361,7 +361,7 @@
                                                 </label>
                                             </div>
                                             <div class="hidden fd-col ml-10 gap-20 mb-10" id="tender-portal_config">
-                                                <p className="title_h5 color-blue quote">
+                                                <p className="title_h5 quote">
                                                     Настройки под тендерный портал
                                                 </p>
                                                 <!-- Ядро системы с защитой данных -->
@@ -664,7 +664,7 @@
                                                 </label>
                                             </div>
                                             <div class="hidden fd-col ml-10 gap-20 mb-10" id="tender-portal_paying_config">
-                                                <p className="title_h5 color-blue quote">
+                                                <p className="title_h5 quote">
                                                     Настройки под тендерный портал
                                                 </p>
             
@@ -975,10 +975,13 @@
                                         </div>
                                         <input type="text" id="type-unique_text" placeholder="Опишите свой проект" class="hidden">
             
-                                        <label for="type-similar_cites" class="title_h5">
-                                            Сайты с подобным функционалом
+                                        <!-- change: label -->
+                                        <label for="type-similar_cites">
+                                            <p class="fw-bold">
+                                                Сайты с подобным функционалом
+                                            </p>
+                                            <input type="text" id="type-similar_cites" placeholder="Введите текст">
                                         </label>
-                                        <input type="text" id="type-similar_cites" placeholder="Введите текст">
                                     </div>
                                 </div>
                                 <!-- / types packages-selector -->
@@ -1056,12 +1059,15 @@
                                             </label>
                                         </div>
             
-                                        <label for="design-similar_cites" class="title_h5">
-                                            Укажите сайты с понравившемся дизайном, сайты конкурентов
+                                        <!-- change: label -->
+                                        <label for="design-similar_cites">
+                                            <p class="fw-bold">
+                                                Укажите сайты с понравившемся дизайном, сайты конкурентов
+                                            </p>
+                                            <input type="text" placeholder="Введите текст" id="design-similar_cites">
                                         </label>
-                                        <input type="text" placeholder="Введите текст" id="design-similar_cites">
-            
-                                        <p class="title_h5 color-blue quote">Дополнительно необходимо разработать:</p>
+                                        
+                                        <p class="title_h5 quote">Дополнительно необходимо разработать:</p>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="design-additional-logobook"
                                                 data-price="15000" name="design-additional-logobook"
@@ -1199,7 +1205,7 @@
                                             class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <p class="title_h5 color-blue quote">Разделы сайта <span class="color-grey">(Выберите нужные
+                                        <p class="title_h5 quote">Разделы сайта <span class="color-grey">(Выберите нужные
                                                 Вам
                                                 разделы, содержание раздела дополните по своему усмотрению)</span></p>
                                         <div class="toggle-line">
@@ -1273,12 +1279,15 @@
                                             </label>
                                         </div>
             
-                                        <label for="functions-section_custom" class="title_h5">
-                                            Укажите свои разделы
+                                        <!-- change: label -->
+                                        <label for="functions-section_custom">
+                                            <p class="fw-bold">
+                                                Укажите свои разделы
+                                            </p>
+                                            <input type="text" placeholder="Введите текст" id="functions-section_custom">
                                         </label>
-                                        <input type="text" placeholder="Введите текст" id="functions-section_custom">
             
-                                        <p class="title_h5 color-blue quote">Блоки на главной</p>
+                                        <p class="title_h5 quote">Блоки на главной</p>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="functions-blocks_promoslider"
                                                 data-price="3000" name="functions-blocks_promoslider">
@@ -1343,10 +1352,14 @@
                                             </label>
                                         </div>
             
-                                        <label for="functions-blocks_custom" class="title_h5">
-                                            Укажите свои блоки
+                                        <!-- change: label -->
+                                        <label for="functions-blocks_custom">
+                                            <p class="fw-bold">
+                                                Укажите свои блоки
+                                            </p>
+                                            <input type="text" placeholder="Введите текст" id="functions-blocks_custom">
                                         </label>
-                                        <input type="text" placeholder="Введите текст" id="functions-blocks_custom">
+                                       
                                     </div>
                                 </div>
                                 <!-- / structure and functions -->
@@ -1357,7 +1370,7 @@
                                         <i class="icon-links"></i>Необходимые программные модули<i class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <p class="title_h5 color-blue quote">Каталог товаров (Услуг)</span></p>
+                                        <p class="title_h5 quote">Каталог товаров (Услуг)</span></p>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="modules-catalogue_1"
                                                 data-price="15000" name="modules-catalogue_1"
@@ -1480,7 +1493,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <p class="title_h5 color-blue quote">Стандартные модули</p>
+                                        <p class="title_h5 quote">Стандартные модули</p>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="modules-search_base"
                                                 data-price="10000" name="modules-search_base" data-radio="modules-search_advanced">
@@ -1642,7 +1655,7 @@
                                                 data-price="20000" name="modules-order_cart" data-radio="modules-order">
                                             <label for="modules-order_cart">Оформление заказа с корзиной</label>
                                         </div>
-                                        <p class="title_h5 color-blue quote">Интеграция с 1С или другой локальной базой</p>
+                                        <p class="title_h5 quote">Интеграция с 1С или другой локальной базой</p>
                                         <!-- <div class="toggle-line">
                                                 <input type="checkbox" checked class="toggle-checkbox" id="modules-integration_database_none"
                                                     name="modules-integration_database_none" data-price="0">
@@ -1675,13 +1688,16 @@
                                             </label>
                                         </div>
             
-                                        <label for="modules-integration_database_other" class="title_h5">
-                                            Другая система
+                                        <!-- change: label -->
+                                        <label for="modules-integration_database_other">
+                                            <p class="fw-bold">
+                                                Другая система
+                                            </p>
+                                            <input type="text" placeholder="Название системы" id="modules-integration_database_other">
                                         </label>
-                                        <input type="text" placeholder="Название системы" id="modules-integration_database_other">
             
                                         <div class="d-flex flex-column gap-20" id="programming_modules_for_store">
-                                            <p class="title_h5 color-blue quote">Модули для динамического каталога и
+                                            <p class="title_h5 quote">Модули для динамического каталога и
                                                 интернет-магазина</p>
                                             <div class="toggle-line">
                                                 <input type="checkbox" class="toggle-checkbox" id="modules-integration-acquiring"
@@ -1871,7 +1887,7 @@
                                             class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <p class="title_h5 color-blue quote">
+                                        <p class="title_h5 quote">
                                             Функции искусственного интеллекта <span class="color-grey">(Выберите нужные Вам функции
                                                 ИИ)</span>
                                         </p>
@@ -2020,7 +2036,7 @@
                                             </label>
                                         </div>
                                         <div class="hidden fd-col ml-10 gap-20 mb-10" id="promotion-seo_where">
-                                            <p className="title_h5 color-blue quote">Выберите регион раскрутки</p>
+                                            <p className="title_h5 quote">Выберите регион раскрутки</p>
                                             <div class="toggle-line">
                                                 <input type="checkbox" class="toggle-checkbox" data-price="15000"
                                                     id="promotion-seo_reg" name="promotion-seo_reg" data-radio="promotion-seo_ctr">
@@ -2051,7 +2067,7 @@
                                             </label>
                                         </div>
                                         <div class="hidden fd-col ml-10 gap-20" id="promotion-max_start_where">
-                                            <p className="title_h5 color-blue quote">Выберите регион раскрутки</p>
+                                            <p className="title_h5 quote">Выберите регион раскрутки</p>
                                             <div class="toggle-line">
                                                 <input type="checkbox" class="toggle-checkbox" data-price="30000"
                                                     id="promotion-max_start_reg" name="promotion-max_start_reg"
