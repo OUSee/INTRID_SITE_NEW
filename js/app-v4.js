@@ -11,16 +11,9 @@ window.addEventListener("scroll", function () {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-	if (window.location.pathname == "/") {
-		setTimeout(() => {
-			preloader.style.display = "none";
-		}, 3000);
-	} else {
+	setTimeout(() => {
 		preloader.style.display = "none";
-	}
-	// setTimeout(() => {
-	// preloader.style.display = "none";
-	// }, 3000);
+	}, 3000);
 });
 
 // mobile-menu
@@ -343,369 +336,6 @@ const openPopup = (id) => {
 
 document.addEventListener("DOMContentLoaded", initPopups);
 
-document.addEventListener("DOMContentLoaded", () => {
-	const forms = document.querySelectorAll("form.ajax-form");
-	const recaptchaForms = [];
-	const defaultSuccessMessage = "Форма отправлена";
-	const defaultErrorMessage = "Ошибка отправки";
-	let notificationStylesInjected = false;
-
-	const ensureNotificationStyles = () => {
-		if (notificationStylesInjected) {
-			return;
-		}
-
-		if (document.getElementById("popup-notify-style")) {
-			notificationStylesInjected = true;
-			return;
-		}
-
-		const style = document.createElement("style");
-		style.id = "popup-notify-style";
-		style.textContent = `
-.popup-notify__message {
-  margin: 12px 0;
-  font-size: 18px;
-  line-height: 1.45;
-}
-.popup-notify__message:first-child {
-  margin-top: 0;
-}
-.popup-notify__message:last-child {
-  margin-bottom: 0;
-}
-.popup-notify__message--error {
-  color: var(--text-hl-red);
-}
-`;
-		document.head.appendChild(style);
-		notificationStylesInjected = true;
-	};
-
-	const sanitizeMessage = (rawMessage) => {
-		if (rawMessage === null || rawMessage === undefined) {
-			return "";
-		}
-
-		const container = document.createElement("div");
-		container.textContent = String(rawMessage);
-		return container.innerHTML
-			.replace(/(?:\r\n|\r|\n)/g, "<br>")
-			.replace(/&lt;br\s*\/?&gt;/gi, "<br>");
-	};
-
-	const extractMessage = (payload, fallback) => {
-		if (payload && typeof payload === "object" && !Array.isArray(payload)) {
-			if (
-				typeof payload.data === "string" &&
-				payload.data.trim() !== ""
-			) {
-				return payload.data;
-			}
-
-			if (Array.isArray(payload.data)) {
-				const prepared = payload.data
-					.map((item) =>
-						typeof item === "string" ? item.trim() : ""
-					)
-					.filter((item) => item !== "");
-
-				if (prepared.length > 0) {
-					return prepared.join("<br>");
-				}
-			}
-		}
-
-		if (typeof payload === "string" && payload.trim() !== "") {
-			return payload;
-		}
-
-		return fallback;
-	};
-
-	const showNotificationPopup = (message, type = "success") => {
-		const fallback =
-			type === "error" ? defaultErrorMessage : defaultSuccessMessage;
-		const popup = document.getElementById("notify");
-		const normalizedMessage =
-			typeof message === "string" && message.trim() !== ""
-				? message
-				: fallback;
-
-		if (!popup) {
-			const alertMessage = normalizedMessage.replace(
-				/<br\s*\/?>(\s*)/gi,
-				"\n$1"
-			);
-			window.alert(alertMessage);
-			return;
-		}
-
-		ensureNotificationStyles();
-
-		const body = popup.querySelector(".popup-body");
-		if (!body) {
-			const alertMessage = normalizedMessage.replace(
-				/<br\s*\/?>(\s*)/gi,
-				"\n$1"
-			);
-			window.alert(alertMessage);
-			return;
-		}
-
-		body.innerHTML = "";
-
-		const messageElement = document.createElement("div");
-		messageElement.classList.add("popup-notify__message");
-		messageElement.classList.add(
-			type === "error"
-				? "popup-notify__message--error"
-				: "popup-notify__message--success"
-		);
-		messageElement.innerHTML = sanitizeMessage(normalizedMessage);
-
-		body.appendChild(messageElement);
-
-		if (typeof window.openPopup === "function") {
-			window.openPopup("notify");
-			return;
-		}
-
-		popup.classList.add("open");
-		let closeButton = popup.querySelector(".popup-close");
-		if (!closeButton) {
-			closeButton = document.createElement("button");
-			closeButton.classList.add("popup-close");
-			closeButton.setAttribute("data-close-popup", "true");
-			closeButton.setAttribute("aria-label", "close-popup");
-			const wrapper = popup.querySelector(".popup-wrapper");
-			if (wrapper) {
-				wrapper.prepend(closeButton);
-			} else {
-				popup.prepend(closeButton);
-			}
-		}
-
-		popup.addEventListener("click", (e) => {
-			if (
-				e.target.classList.contains("popup-close") ||
-				e.target.dataset.closePopup ||
-				e.target.classList.contains("popup-wrapper") ||
-				e.target.id == "notify"
-			) {
-				if (
-					e.target.tagName &&
-					e.target.tagName.toLowerCase() !== "a"
-				) {
-					e.stopPropagation();
-					e.preventDefault();
-				}
-
-				popup.classList.remove("open");
-
-				if (closeButton) {
-					closeButton.remove();
-				}
-
-				// Возвращаем прокрутку страницы, когда окно закрыто
-				document.documentElement.classList.remove("popup-opened");
-			}
-		});
-
-		document.documentElement.classList.add("popup-opened");
-	};
-
-	window.showNotificationPopup = showNotificationPopup;
-
-	const closeFormPopup = (form) => {
-		const popup = form.closest(".popup");
-		if (!popup || !popup.classList.contains("open")) {
-			return;
-		}
-
-		const closeButton = popup.querySelector(".popup-close");
-		if (closeButton) {
-			closeButton.click();
-			return;
-		}
-
-		popup.classList.remove("open");
-		if (!document.querySelector(".popup.open")) {
-			document.documentElement.classList.remove("popup-opened");
-		}
-	};
-
-	const resetAutosizeTextareas = (form) => {
-		form.querySelectorAll("textarea[data-autosize]").forEach((textarea) => {
-			textarea.style.height = "auto";
-			if (
-				window.textarea_autosize &&
-				typeof window.textarea_autosize.resize === "function"
-			) {
-				window.textarea_autosize.resize(textarea);
-			}
-		});
-	};
-
-	const submitAjaxForm = (form) => {
-		const formData = new FormData(form);
-
-		return fetch(form.action, {
-			method: "POST",
-			body: formData,
-			credentials: "same-origin",
-		})
-			.then(async (response) => {
-				let parsedData = null;
-
-				try {
-					parsedData = await response.json();
-				} catch (error) {
-					if (!response.ok) {
-						throw new Error(defaultErrorMessage);
-					}
-				}
-
-				if (!response.ok) {
-					const errorMessage = extractMessage(
-						parsedData,
-						defaultErrorMessage
-					);
-					throw new Error(errorMessage);
-				}
-
-				return parsedData;
-			})
-			.then((data) => {
-				const isSuccess = Boolean(data && data.status);
-				const message = extractMessage(
-					data,
-					isSuccess ? defaultSuccessMessage : defaultErrorMessage
-				);
-
-				if (isSuccess) {
-					closeFormPopup(form);
-					form.reset();
-					resetAutosizeTextareas(form);
-				}
-
-				showNotificationPopup(message, isSuccess ? "success" : "error");
-				return data;
-			})
-			.catch((error) => {
-				const message =
-					error &&
-					typeof error.message === "string" &&
-					error.message.trim() !== ""
-						? error.message
-						: defaultErrorMessage;
-				showNotificationPopup(message, "error");
-			});
-	};
-
-	forms.forEach((form) => {
-		const recaptchaInput = form.querySelector(
-			'input[name="g-recaptcha-response"]'
-		);
-		const recaptchaContainer = form.querySelector(".js-recaptcha");
-
-		if (recaptchaInput && recaptchaContainer) {
-			const formData = {
-				form,
-				recaptchaInput,
-				recaptchaContainer,
-				widgetId: null,
-				pendingSubmit: false,
-				initialized: false,
-			};
-
-			form.addEventListener("submit", (event) => {
-				event.preventDefault();
-
-				if (formData.widgetId !== null) {
-					recaptchaInput.value = "";
-					grecaptcha.reset(formData.widgetId);
-					grecaptcha.execute(formData.widgetId);
-				} else {
-					formData.pendingSubmit = true;
-				}
-			});
-
-			recaptchaForms.push(formData);
-		} else {
-			form.addEventListener("submit", (event) => {
-				event.preventDefault();
-				submitAjaxForm(form);
-			});
-		}
-	});
-
-	if (recaptchaForms.length > 0) {
-		const defaultSiteKey = "6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX";
-		const initializeRecaptcha = () => {
-			recaptchaForms.forEach((item) => {
-				if (item.initialized || typeof grecaptcha === "undefined") {
-					return;
-				}
-
-				const sitekey =
-					item.recaptchaContainer.dataset.sitekey &&
-					item.recaptchaContainer.dataset.sitekey.length > 0
-						? item.recaptchaContainer.dataset.sitekey
-						: defaultSiteKey;
-
-				const widgetId = grecaptcha.render(item.recaptchaContainer, {
-					sitekey,
-					size: item.recaptchaContainer.dataset.size || "invisible",
-					callback: (token) => {
-						item.recaptchaInput.value = token;
-
-						submitAjaxForm(item.form).finally(() => {
-							item.recaptchaInput.value = "";
-							grecaptcha.reset(widgetId);
-						});
-					},
-				});
-
-				item.widgetId = widgetId;
-				item.initialized = true;
-
-				if (item.pendingSubmit) {
-					item.pendingSubmit = false;
-					grecaptcha.execute(widgetId);
-				}
-			});
-		};
-
-		if (typeof grecaptcha !== "undefined") {
-			initializeRecaptcha();
-		} else {
-			const callbackName = "initAjaxFormRecaptcha";
-			const previousCallback = window[callbackName];
-
-			window[callbackName] = () => {
-				if (typeof previousCallback === "function") {
-					previousCallback();
-				}
-				initializeRecaptcha();
-			};
-
-			const scriptId = "google-recaptcha-script";
-			if (!document.getElementById(scriptId)) {
-				const script = document.createElement("script");
-				script.id = scriptId;
-				script.src =
-					"https://www.google.com/recaptcha/api.js?onload=" +
-					callbackName +
-					"&render=explicit";
-				script.async = true;
-				script.defer = true;
-				document.head.appendChild(script);
-			}
-		}
-	}
-});
-
 // MAP LOGIC
 document.addEventListener("DOMContentLoaded", () => {
 	// console.log('=> map script started', )
@@ -742,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		function loadMap(e, value) {
 			e.preventDefault();
 			// console.log('=> enter func loadMap', e, value)
-			const map = document.querySelector("#map");
+			const map = document.getElementById("map");
 
 			if (!map) return;
 
@@ -752,6 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			const social = map.querySelector("#map-social");
 			const whatsapp = map.querySelector("#map-whatsapp");
 			const telegram = map.querySelector("#map-telegram");
+
 			paragraph.innerHTML =
 				mapData[value].adress +
 				(mapData[value]?.schedule
@@ -775,7 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			telegram.setAttribute("href", "https://t.me/" + mapData[value]?.tg);
 			telegram.setAttribute("target", "_blank");
 
-			console.log(telegram.getAttribute("href"));
+			// console.log(telegram.getAttribute('href'));
 
 			linkBtn.href = mapData[value].link;
 		}
@@ -892,16 +523,14 @@ function tabSlidersStart() {
 		// Определяем ориентацию слайдера
 		let isHorizontal = false;
 		const checkOrientation = () => {
-			requestAnimationFrame(() => {
-				const newIsHorizontal = window.innerWidth <= 600;
-				if (newIsHorizontal !== isHorizontal) {
-					isHorizontal = newIsHorizontal;
-					slidesContainer.style.flexDirection = isHorizontal
-						? "row"
-						: "column";
-					updateSlider(true); // Принудительное обновление без анимации
-				}
-			});
+			const newIsHorizontal = window.innerWidth <= 600;
+			if (newIsHorizontal !== isHorizontal) {
+				isHorizontal = newIsHorizontal;
+				slidesContainer.style.flexDirection = isHorizontal
+					? "row"
+					: "column";
+				updateSlider(true); // Принудительное обновление без анимации
+			}
 		};
 
 		// Настройки автопрокрутки
@@ -979,12 +608,6 @@ function tabSlidersStart() {
 		nextBtn.addEventListener("click", goNext);
 		prevBtn.addEventListener("click", goPrev);
 
-		prevBtn.setAttribute("aria-label", "Предыдущий слайд");
-		prevBtn.setAttribute("role", "button");
-
-		nextBtn.setAttribute("aria-label", "Следующий слайд");
-		nextBtn.setAttribute("role", "button");
-
 		slidesContainer.addEventListener("mouseenter", () => {
 			isAutoScrollPaused = true;
 			stopAutoScroll();
@@ -1015,7 +638,7 @@ function tabSlidersStart() {
 }
 
 tabSlidersStart();
-// document.addEventListener("DOMContentLoaded", tabSlidersStart);
+document.addEventListener("DOMContentLoaded", tabSlidersStart);
 // SLIDER END
 
 // HORIZONTAL SLIDER
@@ -1067,9 +690,9 @@ const SliderInIt = () => {
 							? "none"
 							: "block";
 
-					// console.log(
-					// 	`currentIndex: ${currentIndex}, maxIndex: ${maxIndex}, slidesPerPage: ${slidesPerPage}, cards: ${cards.length}`
-					// ); // Для отладки
+					console.log(
+						`currentIndex: ${currentIndex}, maxIndex: ${maxIndex}, slidesPerPage: ${slidesPerPage}, cards: ${cards.length}`
+					); // Для отладки
 				}
 			});
 		};
@@ -1455,6 +1078,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			const anyChecked = Array.from(inputs).some(
 				(input) => input.checked
 			);
+
 			if (!anyChecked) {
 				setTenderTabContent("tender-radio-1");
 			}
@@ -1530,6 +1154,9 @@ function sliderInitialize() {
 			return;
 		}
 
+		// Первоначальная инициализация
+		slider.dataset.initialized = "true";
+
 		const pagination = document.querySelector(`#${id} + .pagination`);
 		const navLeft = document.getElementById(`navleft_for--${id}`);
 		const navRight = document.getElementById(`navright_for--${id}`);
@@ -1583,12 +1210,6 @@ function sliderInitialize() {
 			navLeft.style =
 				"position: absolute; left: 5px; top: 50%; transform: translateY(-50%)";
 			navRight.style = `position: absolute; right: 5px; top: 50%; transform: translateY(-50%)`;
-
-			prevBtn.setAttribute("aria-label", "Предыдущий слайд");
-			prevBtn.setAttribute("role", "button");
-
-			nextBtn.setAttribute("aria-label", "Следующий слайд");
-			nextBtn.setAttribute("role", "button");
 		}
 
 		if (id === `cases-tabs-slider`) {
@@ -1658,9 +1279,6 @@ function sliderInitialize() {
 						btn.style.opacity = "1";
 						btn.style.pointerEvents = "";
 					}
-
-					btn.setAttribute("aria-label", "Предыдущий слайд");
-					btn.setAttribute("role", "button");
 				});
 
 				// Disable next button if at end
@@ -1675,9 +1293,6 @@ function sliderInitialize() {
 						btn.style.opacity = "1";
 						btn.style.pointerEvents = "";
 					}
-
-					btn.setAttribute("aria-label", "Следующий слайд");
-					btn.setAttribute("role", "button");
 				});
 
 				if (!!pagination) {
@@ -1969,8 +1584,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	const initIncrement = () => {
 		if (counters) {
 			counters.forEach((counter) => {
-				if (!counter) return;
-
 				let hasAnimated = false;
 
 				const animateCounter = (counter, duration = 4000) => {
@@ -2130,6 +1743,231 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
+// blog selector
+document.addEventListener("DOMContentLoaded", () => {
+	const buttons = document.querySelectorAll("[data-selector]");
+	const titleTarget = document.getElementById("blogs-title");
+	const slider = document.getElementById("blog-slider");
+
+	const titles = {
+		"blog-site": { title: "Статьи Разработка сайтов" },
+		"digital-design": { title: "Статьи Digital-дизайн" },
+		"seo-promotion": { title: "Статьи SEO-продвижение" },
+		"internet-marketing": { title: "Статьи Интернет-маркетинг" },
+	};
+
+	const articles = {
+		"blog-site": [
+			{
+				img: "./src/images/image-by-item-and-alias.webp",
+				link: "./blog/landing-page.html",
+				title: "Отличия Landing Page от сайта",
+				description: `Прежде чем заказать лендинг, нужно понимать, что это и для чего он нужен. 
+                              А также нужно разобраться, в чем его отличия от обычного сайте. 
+                              Суть обоих понятий довольно близка - немного отличается лишь разнообразие. 
+                              Выбор должен основываться на преследуемых целях и особенностей бизнеса.`,
+				date: "2022-01-01",
+			},
+			{
+				img: "./src/images/blog/kontent_sayta.webp",
+				link: "./blog/unikalnyj-kontent-dla-vasego-internet-magazina.html",
+				title: "Уникальный контент для Вашего интернет-магазина",
+				description: `Интернет-магазин - удобная и современная платформа для реализации товаров. 
+                              Однако, для удачной работы недостаточно просто создать сайт или страницу в соцсетях. 
+                              Нужно наполнить его качественным контентом: статьями, заметками и описаниями товаров.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/cms-blog-preview.webp",
+				link: "./blog/vozmoznosti-nasej-cms-i-sms.html",
+				title: 'Возможности нашей CMS – "i-сms"',
+				description: `Наша компания разрабатывает и устанавливает уникальные CMS, под конкретные веб-ресурсы с индивидуальными функциональными возможностями. 
+                              Каждый такой сайт оснащается также надёжной системой защиты от несанкционированного доступа.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/viz02.webp",
+				link: "./blog/manual-dla-licnogo-kabineta.html",
+				title: "Мануал для личного кабинета",
+				description: `В этой инструкции мы расскажем для чего нужен личный кабинет и как пользоваться его инструментами.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/cms-zoom.webp",
+				link: "./blog/pocemu-nelza-sozdavat-internet-magaziny-na-sablonah.html",
+				title: "Почему нельзя создавать интернет-магазины на шаблонах",
+				description: `Основные проблемы, с которыми сталкиваются пользователи при создании сайтов на шаблонах`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/list-preview.webp",
+				link: "./blog/pamatka-zakazciku.html",
+				title: "Памятка заказчику",
+				description: `Ни для кого не секрет, что коммерческий сайт – это современный инструмент бизнеса, позволяющий получать большой поток клиентов из сети. 
+                              Основные задачи сайта: привлекать клиентов, приносить прибыль, способствовать продвижению торговой марки, улучшать имидж компании, обеспечивать обратную связь с потребителями и т.д., и т.п.                        `,
+				date: "2022-01-02",
+			},
+		],
+		"digital-design": [
+			{
+				img: "./src/images/blog/UX_UI_dis.webp",
+				link: "./blog/uxui_design.html",
+				title: "UX и UI-дизайн — что это и зачем нужно?",
+				description: `Доступно и кратко рассказываем о самой эффективной технологии web-дизайна.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/visitka.webp",
+				link: "./blog/vizitka-vaznyj-element-delovogo-imidza.html",
+				title: "Визитка – важный элемент делового имиджа",
+				description: `Облегчая общение, визитка служит неназойливым напоминанием о деловом человеке. 
+                              Просматривая свою визитницу, ее обладатель будет постоянно видеть Вашу визитку, и не исключено, что, подыскивая деловых партнеров, вспомнит о Вашем существовании. 
+                              Многие из нас к самому процессу изготовления визиток подходят не совсем ответственно и взвешенно, и напрасно.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/kreative-design.webp",
+				link: "./blog/kreativ-v-reklamnom-dizajne.html",
+				title: "Креатив в рекламном дизайне",
+				description: `Процесс рекламного дизайна заключается в непрерывном поиске новых средств, которые могли бы привлечь внимание читателя и заинтересовать его в предмете рекламы. 
+                              Дизайн процесс творческий.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/ponyatie-logotipa.webp",
+				link: "./blog/ponatie-logotipa.html",
+				title: "Понятие логотипа",
+				description: `Логотип это официально принятый термин, означающий зарегистрированное в порядке оригинально оформленное художественное изображение, для отличия товаров и услуг и их рекламы.`,
+				date: "2022-01-02",
+			},
+		],
+		"seo-promotion": [
+			{
+				img: "./src/images/blog/eseo.webp",
+				link: "./blog/etapy-seo-prodvijenia.html",
+				title: "Этапы SEO-продвижения сайта",
+				description: `Чтобы стать успешным предпринимателем, просто создать сайт недостаточно. 
+                              Интернет-ресурс должен быть заметен потенциальной клиентуре. 
+                              Для этого требуется продвинуть его вверх в поисковых системах.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/seo-circle.webp",
+				link: "./blog/kratkij-gajd-po-faktoram-ranzirovania-v-seo.html",
+				title: "Краткий гайд по факторам ранжирования в SEO ",
+				description: `Факторы, на которые роботы смотрят при ранжировании сайтов в поисковой системе. 
+                              Основная информация.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/orig.webp",
+				link: "./blog/filtry-andeksa-priznaki-popadania-sroki-sankcij-i-sposoby-vyhoda.html",
+				title: "Фильтры Яндекса",
+				description: `Признаки попадания, сроки санкций и способы выхода.
+                              Кратко о том, что такое санкции Яндекса и с чем их едят.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/link-building.webp",
+				link: "./blog/linkbilding-v-2019-rabocie-metody.html",
+				title: "Линкбилдинг в 2019: рабочие методы",
+				description: `Статья о том, как продвигать сайт с помощью ссылок в 2019 году и не попадать под фильтры.`,
+				date: "2022-01-02",
+			},
+		],
+		"internet-marketing": [
+			{
+				img: "./src/images/blog/reputation-preview.webp",
+				link: "./blog/upravlenie-reputaciej-v-internete-zacem-i-kak.html",
+				title: "Управление репутацией в интернете: зачем и как",
+				description: `О том, почему так важно поддерживать репутацию бренда в интернете.`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/typewriter.webp",
+				link: "./blog/korporativnyj-blog-dan-mode-ili-effektivnaa-reklama.html",
+				title: "Корпоративный блог: дань моде или эффективная реклама?",
+				description: `Зачем нужно вести корпоративный блог и что он Вам даст?`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/cursor-preview.webp",
+				link: "./blog/kontekstnaa-reklama-8-sovetov-novickam.html",
+				title: "Контекстная реклама: 8 советов новичкам",
+				description: `Настройка КР для чайников – больше конверсии, меньше трат бюджета!`,
+				date: "2022-01-02",
+			},
+			{
+				img: "./src/images/blog/mic-preview.webp",
+				link: "./blog/intervu.html",
+				title: "Интервью как способ громко заявить о своём бизнесе с помощью прессы",
+				description: `Одно хорошее интервью может быть эффективнее десяти щедро проплаченных рекламных кампаний. Почему? Читайте в этой статье.`,
+				date: "2022-01-02",
+			},
+		],
+	};
+
+	if (buttons && titleTarget && slider) {
+		buttons.forEach((button) => {
+			button.addEventListener("click", () => {
+				titleTarget.innerText = titles[button.dataset.selector].title;
+
+				while (slider.lastChild) {
+					slider.removeChild(slider.lastChild);
+				}
+				articles[button.dataset.selector].forEach((article) => {
+					const slide = document.createElement("div");
+					slide.classList.add("card");
+					slide.classList.add("card--recent");
+					slide.classList.add("card--newsletter");
+					slide.classList.add("active");
+					const slideHtml = `
+                        <a href="${article.link}">
+                            <div class="img-wrapper"><img src="${article.img}" alt="${article.title}"></div>
+                            <div class="card-body">
+                                <b>${article.title}</b>
+                                <p>
+                                    ${article.description}
+                                </p>
+                                <span class="card-date">
+                                    ${article.date}
+                                </span>
+                            </div>
+                        </a>`;
+					slide.innerHTML = slideHtml;
+					slider.appendChild(slide);
+				});
+
+				buttons.forEach((btn) => btn.classList.remove("selected"));
+				button.classList.add("selected");
+
+				let elementRect = document
+					.querySelector("#blogs-blog")
+					.getBoundingClientRect();
+				let offsetPosition = elementRect.top + window.pageYOffset - 20;
+
+				window.scrollTo({
+					top: offsetPosition,
+					behavior: "smooth",
+				});
+			});
+		});
+
+		const handleToggleByHash = (hash) => {
+			const id = hash.replace("#", "");
+			const button = document.querySelector(
+				`.card--tab[data-selector=${id}]`
+			);
+
+			button.click();
+		};
+
+		setTimeout(() => {
+			handleToggleByHash(window.location.hash);
+		}, 300);
+	}
+});
+
 // textarea autosize
 window.textarea_autosize = {
 	init: function () {
@@ -2182,7 +2020,7 @@ window.textarea_autosize = {
 document.addEventListener("DOMContentLoaded", textarea_autosize.init);
 
 // gallery selector
-function gallerySelector() {
+document.addEventListener("DOMContentLoaded", () => {
 	if (document.getElementById("gallery-popup")) {
 		const gallery = document
 			.getElementById("gallery-popup")
@@ -2199,62 +2037,21 @@ function gallerySelector() {
 			}
 		};
 
-		const resolveGallerySource = () => {
-			if (typeof window !== "undefined") {
-				if (typeof window.galleryData !== "undefined") {
-					return window.galleryData;
-				}
-				if (typeof window.galleryImages !== "undefined") {
-					return window.galleryImages;
-				}
-			}
-
-			if (typeof galleryData !== "undefined") {
-				return galleryData;
-			}
-
-			if (typeof galleryImages !== "undefined") {
-				return galleryImages;
-			}
-
-			return {};
-		};
-
-		const normaliseGalleryEntry = (entry) => {
-			if (!entry) {
-				return [];
-			}
-
-			if (Array.isArray(entry)) {
-				return entry;
-			}
-
-			if (entry && Array.isArray(entry.images)) {
-				return entry.images;
-			}
-
-			return [];
-		};
-
 		const setUpGallery = (info) => {
-			console.log("=> setUpGallery", info);
+			const contentId = info.split("_")[0];
+			const contentCount = info.split("_")[1];
 			clearGallery();
 
-			const source = resolveGallerySource();
-			const galleryEntry = normaliseGalleryEntry(source[info]);
-
-			galleryEntry.forEach((imgSrc) => {
-				if (!imgSrc) {
-					return;
-				}
-
+			for (let index = 0; index < contentCount; index++) {
 				const div = document.createElement("div");
 				div.classList.add("gallery-card");
 				const img = document.createElement("img");
-				img.src = imgSrc;
+				img.src = `../src/images/galleries/${contentId}_${
+					index + 1
+				}.webp`;
 				div.appendChild(img);
 				gallery.appendChild(div);
-			});
+			}
 
 			if (onLoad) {
 				window[onLoad]();
@@ -2267,8 +2064,7 @@ function gallerySelector() {
 			});
 		});
 	}
-}
-document.addEventListener("DOMContentLoaded", gallerySelector);
+});
 
 // tooltip handler
 document.addEventListener("DOMContentLoaded", () => {
@@ -3341,7 +3137,6 @@ document.addEventListener("DOMContentLoaded", () => {
 					replace: true,
 					scrollTo: true,
 				});
-
 				return;
 			}
 		});
@@ -3358,6 +3153,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				const isShow = wrapper && wrapper.classList.contains("show");
 
+				if (isShow) {
+					wrapper.classList.remove("show");
+
+					setTimeout(() => {
+						wrapper.classList.add("show");
+					}, 250);
+				} else {
+					wrapper.classList.add("show");
+				}
+
+				console.log("success change: ", type);
+
 				$.pjax.reload("#reviews-container", {
 					type: "POST",
 					data: { type: type },
@@ -3365,106 +3172,49 @@ document.addEventListener("DOMContentLoaded", () => {
 					push: false,
 					replace: true,
 				});
-
-				if (isShow) {
-					wrapper.classList.remove("show");
-
-					setTimeout(() => {
-						wrapper.classList.add("show");
-					}, 300);
-				} else {
-					wrapper.classList.add("show");
-				}
 			}
 		});
 	}
 });
 
-// comment password and add handling
+// filter portfolio sites
 document.addEventListener("DOMContentLoaded", () => {
-	// Helper function to serialize form data (mimics jQuery's serialize())
-	function serializeForm(form) {
-		const formData = new FormData(form);
-		const params = new URLSearchParams();
-		for (const [key, value] of formData.entries()) {
-			params.append(key, value);
-		}
-		return params.toString();
-	}
+	let filtered = document.querySelector("[data-items]"),
+		items = filtered?.querySelectorAll("[data-item]"),
+		filterInputs = document.querySelectorAll("[data-filter]");
 
-	// Handle password form submission
-	const passwordForm = document.querySelector("#form-comment-password");
-	if (passwordForm) {
-		passwordForm.addEventListener("submit", function (e) {
-			e.preventDefault();
-			const url = this.action;
-			const data = serializeForm(this);
+	if (filterInputs.length > 0 && filtered) {
+		filterInputs.forEach((input) => {
+			input.addEventListener("change", (e) => {
+				const selectedFilters = Array.from(filterInputs)
+					.filter((input) => input.checked)
+					.map((input) => input.dataset.filter);
 
-			fetch(url, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded",
-				},
-				body: data,
-			})
-				.then((response) => response.json())
-				.then((res) => {
-					if (res.status) {
-						const popupBody = document.querySelector(
-							"#login-review .popup-body"
-						);
-						if (popupBody) {
-							popupBody.innerHTML =
-								'<p class="mb-20">' +
-								res.data.title +
-								"</p>" +
-								res.data.body;
-						}
+				items.forEach((item) => {
+					const shouldShow =
+						selectedFilters.length === 0 ||
+						selectedFilters.includes(item.dataset.item);
+
+					if (shouldShow) {
+						item.style.display = "";
+						item.classList.remove("hiding");
+						item.classList.add("showing");
+						setTimeout(() => {
+							item.classList.remove("showing");
+						}, 300);
 					} else {
-						alert(res.data);
-					}
-				})
-				.catch((error) => {
-					console.error("Error:", error);
-				});
-		});
-	}
+						item.classList.add("hiding");
+						item.classList.remove("showing");
+						setTimeout(() => {
+							item.classList.remove("hiding");
 
-	// Handle comment add form submission
-	const commentForm = document.querySelector("#comment-add");
-	if (commentForm) {
-		commentForm.addEventListener("submit", function (e) {
-			e.preventDefault();
-			const url = this.action;
-			const data = serializeForm(this);
-
-			fetch(url, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded",
-				},
-				body: data,
-			})
-				.then((response) => response.json())
-				.then((res) => {
-					if (res.status) {
-						const popupBody = document.querySelector(
-							"#login-review .popup-body"
-						);
-						if (popupBody) {
-							popupBody.innerHTML =
-								'<p class="mb-20">' +
-								res.data.title +
-								"</p>" +
-								res.dataEnd.body;
-						}
-					} else {
-						alert(res.data);
+							setTimeout(() => {
+								item.style.display = "none";
+							}, 50);
+						}, 300);
 					}
-				})
-				.catch((error) => {
-					console.error("Error:", error);
 				});
+			});
 		});
 	}
 });
@@ -3488,9 +3238,3 @@ function handleIntersection(entries) {
 		}
 	});
 }
-
-// document.addEventListener("DOMContentLoaded", () => {
-// 	const elements = document.querySelectorAll(".lazyload");
-// 	const observer = new IntersectionObserver(handleIntersection);
-// 	elements.forEach((element) => observer.observe(element));
-// });
