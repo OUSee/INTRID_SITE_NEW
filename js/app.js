@@ -910,21 +910,23 @@ function tabSlidersStart() {
 
 		// Функция обновления позиции слайдера
 		function updateSlider(instant = false) {
-			const slideSize = isHorizontal
-				? originalSlides[0].offsetWidth
-				: originalSlides[0].offsetHeight;
+			requestAnimationFrame(() => {
+				const slideSize = isHorizontal
+					? originalSlides[0].offsetWidth
+					: originalSlides[0].offsetHeight;
 
-			const translateValue = isHorizontal
-				? `translateX(-${currentIndex * slideSize}px)`
-				: `translateY(-${currentIndex * slideSize}px)`;
+				const translateValue = isHorizontal
+					? `translateX(-${currentIndex * slideSize}px)`
+					: `translateY(-${currentIndex * slideSize}px)`;
 
-			if (instant) {
-				slidesContainer.style.transition = "none";
-			} else {
-				slidesContainer.style.transition = "transform 0.5s ease";
-			}
+				if (instant) {
+					slidesContainer.style.transition = "none";
+				} else {
+					slidesContainer.style.transition = "transform 0.5s ease";
+				}
 
-			slidesContainer.style.transform = translateValue;
+				slidesContainer.style.transform = translateValue;
+			});
 		}
 
 		// Обработчики навигации
@@ -2276,48 +2278,56 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (!el) return;
 
 		el.addEventListener("mouseenter", () => {
-			let text = el.getAttribute("data-tooltip");
+			requestAnimationFrame(() => {
+				let text = el.getAttribute("data-tooltip");
 
-			let tooltip = document.getElementById("custom-tooltip");
-			if (!tooltip) {
-				tooltip = document.createElement("div");
-				tooltip.id = "custom-tooltip";
+				let tooltip = document.getElementById("custom-tooltip");
+				if (!tooltip) {
+					tooltip = document.createElement("div");
+					tooltip.id = "custom-tooltip";
 
-				tooltip.classList.add("tooltip-after");
-				document.body.appendChild(tooltip);
-			}
+					tooltip.classList.add("tooltip-after");
+					document.body.appendChild(tooltip);
+				}
 
-			tooltip.textContent = text;
-			tooltip.classList.add("visible");
+				tooltip.textContent = text;
+				tooltip.classList.add("visible");
 
-			const rect = el.getBoundingClientRect();
-			const tooltipRect = tooltip.getBoundingClientRect();
-			let top = window.scrollY + rect.bottom + 8; // 8px offset
-			let left = window.scrollX + rect.left;
+				const rect = el.getBoundingClientRect();
+				const tooltipRect = tooltip.getBoundingClientRect();
+				let top = window.scrollY + rect.bottom + 8; // 8px offset
+				let left = window.scrollX + rect.left;
 
-			// Check right overflow
-			if (left + tooltipRect.width > window.scrollX + window.innerWidth) {
-				left =
-					window.scrollX + window.innerWidth - tooltipRect.width - 8;
-			}
-			// Check left overflow
-			if (left < window.scrollX) {
-				left = window.scrollX + 8;
-			}
-			// Check bottom overflow
-			if (
-				top + tooltipRect.height >
-				window.scrollY + window.innerHeight
-			) {
-				top = window.scrollY + rect.top - tooltipRect.height - 8;
-			}
-			// Check top overflow
-			if (top < window.scrollY) {
-				top = window.scrollY + 8;
-			}
+				// Check right overflow
+				if (
+					left + tooltipRect.width >
+					window.scrollX + window.innerWidth
+				) {
+					left =
+						window.scrollX +
+						window.innerWidth -
+						tooltipRect.width -
+						8;
+				}
+				// Check left overflow
+				if (left < window.scrollX) {
+					left = window.scrollX + 8;
+				}
+				// Check bottom overflow
+				if (
+					top + tooltipRect.height >
+					window.scrollY + window.innerHeight
+				) {
+					top = window.scrollY + rect.top - tooltipRect.height - 8;
+				}
+				// Check top overflow
+				if (top < window.scrollY) {
+					top = window.scrollY + 8;
+				}
 
-			tooltip.style.top = `${top}px`;
-			tooltip.style.left = `${left}px`;
+				tooltip.style.top = `${top}px`;
+				tooltip.style.left = `${left}px`;
+			});
 		});
 
 		el.addEventListener("mouseleave", () => {
