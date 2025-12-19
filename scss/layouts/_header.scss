@@ -136,8 +136,7 @@
 		z-index: 2;
 		margin-left: auto;
 		margin-right: 0;
-		will-change: contents;
-		transition: 0.25s ease-in-out;
+		transition: gap 0.25s ease-in-out;
 
 		@media (min-width: 1000px) and (max-width: 1100px) {
 			gap: 4px;
@@ -157,6 +156,7 @@
 
 		#lk-link {
 			color: var(--blue-main);
+			transition: color 0.25s ease-in-out, text-shadow 0.25s ease-in-out;
 
 			&:hover {
 				text-shadow: var(--blue-main) 1px 0 10px;
