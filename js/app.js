@@ -3310,13 +3310,120 @@ if (inputFiles.length > 0) {
 }
 
 // reviews
+// document.addEventListener("DOMContentLoaded", () => {
+// 	const reviewsContainer = document.getElementById("reviews-container");
+
+// 	if (reviewsContainer) {
+// 		reviewsContainer.addEventListener("submit", (event) => {
+// 			if (event.target.matches("form[data-pjax]")) {
+// 				event.preventDefault();
+
+// 				$.pjax.submit(event, "#reviews-container", {
+// 					push: true,
+// 					replace: false,
+// 					timeout: 1000,
+// 					scrollTo: false,
+// 				});
+// 			}
+// 		});
+
+// 		// Обработка кликов по пагинации
+// 		document.addEventListener("click", (event) => {
+// 			const pageLink = event.target.closest(".pagination a");
+
+// 			if (pageLink) {
+// 				event.preventDefault();
+// 				$.pjax.reload("#reviews-container", {
+// 					url: pageLink.href,
+// 					type: "GET",
+// 					timeout: 1000,
+// 					push: false,
+// 					replace: true,
+// 					scrollTo: true,
+// 				});
+
+// 				return;
+// 			}
+// 		});
+
+// 		document.addEventListener("change", (event) => {
+// 			const filter = event.target.matches(".reviews__button input")
+// 				? event.target
+// 				: null;
+
+// 			if (filter) {
+// 				const type = filter.dataset.type;
+// 				const wrapper =
+// 					reviewsContainer.querySelector(".reviews__list");
+
+// 				const isShow = wrapper && wrapper.classList.contains("show");
+
+// 				$.pjax.reload("#reviews-container", {
+// 					type: "POST",
+// 					data: { type: type },
+// 					timeout: 1000,
+// 					push: false,
+// 					replace: true,
+// 				});
+
+// 				if (isShow) {
+// 					wrapper.classList.remove("show");
+
+// 					setTimeout(() => {
+// 						wrapper.classList.add("show");
+// 					}, 300);
+// 				} else {
+// 					wrapper.classList.add("show");
+// 				}
+// 			}
+// 		});
+// 	}
+// });
+
+// reviews
 document.addEventListener("DOMContentLoaded", () => {
 	const reviewsContainer = document.getElementById("reviews-container");
 
 	if (reviewsContainer) {
+		// Функция для сброса анимации перед загрузкой
+		function resetReviewsAnimation() {
+			const wrapper = reviewsContainer.querySelector(".reviews__list");
+			if (wrapper && wrapper.classList.contains("show")) {
+				wrapper.classList.remove("show");
+			}
+		}
+
+		// Функция для запуска анимации после загрузки
+		function animateReviewsBlock() {
+			const wrapper = reviewsContainer.querySelector(".reviews__list");
+			if (wrapper && !wrapper.classList.contains("show")) {
+				// Небольшая задержка для гарантии, что DOM обновлен
+				setTimeout(() => {
+					wrapper.classList.add("show");
+				}, 50);
+			}
+		}
+
+		// Обработчик успешной загрузки PJAX
+		$(document).on("pjax:end", "#reviews-container", function () {
+			// Запускаем анимацию после загрузки контента
+			animateReviewsBlock();
+		});
+
+		// Показываем блок при первой загрузке (если не через PJAX)
+		setTimeout(() => {
+			const wrapper = reviewsContainer.querySelector(".reviews__list");
+			if (wrapper && !wrapper.classList.contains("show")) {
+				wrapper.classList.add("show");
+			}
+		}, 100);
+
 		reviewsContainer.addEventListener("submit", (event) => {
 			if (event.target.matches("form[data-pjax]")) {
 				event.preventDefault();
+
+				// Сбрасываем анимацию перед отправкой
+				resetReviewsAnimation();
 
 				$.pjax.submit(event, "#reviews-container", {
 					push: true,
@@ -3333,6 +3440,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			if (pageLink) {
 				event.preventDefault();
+
+				// Сбрасываем анимацию перед загрузкой
+				resetReviewsAnimation();
+
 				$.pjax.reload("#reviews-container", {
 					url: pageLink.href,
 					type: "GET",
@@ -3353,10 +3464,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			if (filter) {
 				const type = filter.dataset.type;
-				const wrapper =
-					reviewsContainer.querySelector(".reviews__list");
 
-				const isShow = wrapper && wrapper.classList.contains("show");
+				// Сбрасываем анимацию перед загрузкой
+				resetReviewsAnimation();
 
 				$.pjax.reload("#reviews-container", {
 					type: "POST",
@@ -3366,15 +3476,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					replace: true,
 				});
 
-				if (isShow) {
-					wrapper.classList.remove("show");
-
-					setTimeout(() => {
-						wrapper.classList.add("show");
-					}, 300);
-				} else {
-					wrapper.classList.add("show");
-				}
+				// УБИРАЕМ анимацию отсюда - она будет запущена в pjax:end
 			}
 		});
 	}
