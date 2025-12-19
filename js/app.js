@@ -1544,7 +1544,10 @@ function sliderInitialize() {
 		let navButtons = [];
 
 		let slides = slider.children;
-		let gap = parseInt(window.getComputedStyle(slider).gap);
+		let gap;
+		requestAnimationFrame(() => {
+			gap = parseInt(window.getComputedStyle(slider).gap);
+		});
 		const visibleWidth = slider.parentElement.clientWidth;
 
 		if (fill) {
