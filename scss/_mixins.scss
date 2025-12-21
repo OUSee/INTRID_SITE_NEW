@@ -1150,7 +1150,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: flex-start;
-			gap: 4px;
+			gap: 8px;
 			width: 100%;
 			padding: 16px 32px;
 			background-color: var(--blue-clouds);
@@ -1165,6 +1165,7 @@
 
 			& img,
 			& i {
+				align-self: flex-start;
 				width: 32px;
 				height: 32px;
 				object-fit: contain;
@@ -1296,6 +1297,146 @@
 			// background-color: var(--blue-clouds);
 		}
 	}
+}
+
+@mixin toggle-line {
+	display: flex;
+    gap: 4px;
+    align-items: flex-start;
+
+    &:has(*.counter:not(.hidden)) {
+      label {
+        flex-wrap: wrap;
+
+        & > p {
+          @media (max-width: 600px) {
+            flex: 1;
+          }
+        }
+      }
+    }
+
+    label {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      // width: 100%;
+
+      &::before {
+        margin-right: 0;
+      }
+
+      p {
+        margin: 0;
+        align-self: center;
+      }
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      // max-height: 26px;
+      // margin-left: 14px;
+
+      & > p,
+      & > span {
+        margin-right: 8px;
+      }
+
+      &.hidden {
+        display: none;
+      }
+
+      @media (max-width: 600px) {
+        width: 100%;
+        flex: 1 0 auto;
+        margin-left: 0;
+      }
+
+      @media (max-width: 440px) {
+        max-height: fit-content;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* For Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+        width: 60px;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        padding: 4px;
+      }
+
+      button,
+      input {
+        height: 30px;
+        padding: 12px;
+      }
+    }
+}
+
+@mixin toggle-checkbox {
+	display: none;
+
+    &:checked {
+      & + label {
+        position: relative;
+
+        &::before {
+          content: "";
+          background-color: var(--blue-tag);
+          border: 1px solid var(--color-white);
+        }
+
+        &:after {
+          background-color: var(--color-white);
+          transform: translateX(26px);
+        }
+      }
+    }
+
+    & + label {
+      position: relative;
+      cursor: pointer;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        min-width: 50px;
+        height: 24px;
+        border-radius: 20px;
+        background-color: var(--blue-bg);
+        border: 1px solid var(--blue-main);
+        // margin-right: 10px;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      &:after {
+        content: "";
+        // top: calc(50% - 10px);
+        top: 3px;
+        left: 3px;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        background-color: var(--blue-main);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+    }
 }
 
 @mixin card-tag {

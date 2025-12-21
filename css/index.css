@@ -4739,7 +4739,7 @@ form .button:hover {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 4px;
+  gap: 8px;
   width: 100%;
   padding: 16px 32px;
   background-color: var(--blue-clouds);
@@ -4754,6 +4754,7 @@ form .button:hover {
   }
 }
 .accordion .accordion-header img, .accordion .accordion-header i {
+  align-self: flex-start;
   width: 32px;
   height: 32px;
   object-fit: contain;
@@ -4854,7 +4855,7 @@ form .button:hover {
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 12px;
 }
 .toggle-line label::before {
   margin-right: 0;
@@ -4908,6 +4909,46 @@ form .button:hover {
 .toggle-line .counter input {
   height: 30px;
   padding: 12px;
+}
+.toggle-checkbox {
+  display: none;
+}
+.toggle-checkbox:checked + label {
+  position: relative;
+}
+.toggle-checkbox:checked + label::before {
+  content: "";
+  background-color: var(--blue-tag);
+  border: 1px solid var(--color-white);
+}
+.toggle-checkbox:checked + label:after {
+  background-color: var(--color-white);
+  transform: translateX(26px);
+}
+.toggle-checkbox + label {
+  position: relative;
+  cursor: pointer;
+}
+.toggle-checkbox + label::before {
+  content: "";
+  display: inline-block;
+  min-width: 50px;
+  height: 24px;
+  border-radius: 20px;
+  background-color: var(--blue-bg);
+  border: 1px solid var(--blue-main);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.toggle-checkbox + label:after {
+  content: "";
+  top: 3px;
+  left: 3px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: var(--blue-main);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .catalogue-preview {
@@ -12470,48 +12511,6 @@ button.next:hover {
   .sitebrif .calculator--right .position-sticky > [data-popup] {
     margin: 0 auto 20px;
   }
-}
-
-.toggle-checkbox {
-  display: none;
-}
-.toggle-checkbox:checked + label {
-  position: relative;
-}
-.toggle-checkbox:checked + label::before {
-  content: "";
-  background-color: var(--blue-tag);
-  border: 1px solid var(--color-white);
-}
-.toggle-checkbox:checked + label:after {
-  background-color: var(--color-white);
-  transform: translateX(26px);
-}
-.toggle-checkbox + label {
-  position: relative;
-  cursor: pointer;
-}
-.toggle-checkbox + label::before {
-  content: "";
-  display: inline-block;
-  min-width: 50px;
-  height: 24px;
-  border-radius: 20px;
-  background-color: var(--blue-bg);
-  border: 1px solid var(--blue-main);
-  margin-right: 10px;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.toggle-checkbox + label:after {
-  content: "";
-  top: 3px;
-  left: 3px;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
-  background-color: var(--blue-main);
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .form-popup form .form-limitter {
