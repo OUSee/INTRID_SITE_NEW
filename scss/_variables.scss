@@ -1193,6 +1193,7 @@ ol {
 
 		&.stashed {
 			flex-direction: column;
+			justify-content: space-evenly;
 			gap: 24px;
 
 			@media (max-width: 1000px) {
@@ -1206,7 +1207,7 @@ ol {
 			}
 
 			& li {
-				flex: 1;
+				flex: unset;
 				max-width: 100%;
 				align-items: center;
 
@@ -1255,11 +1256,11 @@ ol {
 		}
 	}
 
-  &.bigger {
-    & li {
-      margin-bottom: 1em;
-    }
-  }
+	&.bigger {
+		& li {
+			margin-bottom: 1em;
+		}
+	}
 }
 
 // preloader settings
