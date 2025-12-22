@@ -1208,7 +1208,7 @@ ol {
 			& li {
 				flex: 1;
 				max-width: 100%;
-				align-items: flex-start;
+				align-items: center;
 
 				@media (max-width: 1000px) {
 					flex: 1 1 45%;
@@ -1218,6 +1218,7 @@ ol {
 				@media (max-width: 600px) {
 					flex: 1;
 					max-width: 240px;
+					align-items: flex-start;
 				}
 			}
 		}
@@ -1253,6 +1254,12 @@ ol {
 			}
 		}
 	}
+
+  &.bigger {
+    & li {
+      margin-bottom: 1em;
+    }
+  }
 }
 
 // preloader settings
@@ -7445,13 +7452,13 @@ button:hover,
 			padding: 20px;
 		}
 
-		& h1,
-		& h2,
-		& h3,
-		& h4,
-		& h5,
-		& h6,
-		& b {
+		& > h1,
+		& > h2,
+		& > h3,
+		& > h4,
+		& > h5,
+		& > h6,
+		& > b {
 			width: 100%;
 			margin-left: 240px;
 			margin-bottom: 1em;

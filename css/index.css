@@ -1790,7 +1790,7 @@ ol li > ol {
 .list--cooperate.stashed li {
   flex: 1;
   max-width: 100%;
-  align-items: flex-start;
+  align-items: center;
 }
 @media (max-width: 1000px) {
   .list--cooperate.stashed li {
@@ -1802,6 +1802,7 @@ ol li > ol {
   .list--cooperate.stashed li {
     flex: 1;
     max-width: 240px;
+    align-items: flex-start;
   }
 }
 .list--ai {
@@ -1840,6 +1841,9 @@ ol li > ol {
 }
 .list--ai li span {
   color: var(--color-grey);
+}
+.list.bigger li {
+  margin-bottom: 1em;
 }
 
 #preloader {
@@ -7870,7 +7874,7 @@ button:hover img,
     padding: 20px;
   }
 }
-.card--prices h1, .card--prices h2, .card--prices h3, .card--prices h4, .card--prices h5, .card--prices h6, .card--prices b {
+.card--prices > h1, .card--prices > h2, .card--prices > h3, .card--prices > h4, .card--prices > h5, .card--prices > h6, .card--prices > b {
   width: 100%;
   margin-left: 240px;
   margin-bottom: 1em;
@@ -7880,18 +7884,18 @@ button:hover img,
   line-height: 140%;
 }
 @media (max-width: 1000px) {
-  .card--prices h1, .card--prices h2, .card--prices h3, .card--prices h4, .card--prices h5, .card--prices h6, .card--prices b {
+  .card--prices > h1, .card--prices > h2, .card--prices > h3, .card--prices > h4, .card--prices > h5, .card--prices > h6, .card--prices > b {
     font-size: 16px;
   }
 }
 @media (max-width: 600px) {
-  .card--prices h1, .card--prices h2, .card--prices h3, .card--prices h4, .card--prices h5, .card--prices h6, .card--prices b {
+  .card--prices > h1, .card--prices > h2, .card--prices > h3, .card--prices > h4, .card--prices > h5, .card--prices > h6, .card--prices > b {
     font-size: 16px;
     font-weight: 400;
   }
 }
 @media (max-width: 900px) {
-  .card--prices h1, .card--prices h2, .card--prices h3, .card--prices h4, .card--prices h5, .card--prices h6, .card--prices b {
+  .card--prices > h1, .card--prices > h2, .card--prices > h3, .card--prices > h4, .card--prices > h5, .card--prices > h6, .card--prices > b {
     margin-left: unset;
   }
 }
