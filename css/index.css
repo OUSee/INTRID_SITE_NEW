@@ -1771,6 +1771,39 @@ ol li > ol {
   margin: 0;
   padding: 0;
 }
+.list--cooperate.stashed {
+  flex-direction: column;
+  gap: 24px;
+}
+@media (max-width: 1000px) {
+  .list--cooperate.stashed {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+@media (max-width: 600px) {
+  .list--cooperate.stashed {
+    flex-direction: column;
+  }
+}
+.list--cooperate.stashed li {
+  flex: 1;
+  max-width: 100%;
+  align-items: flex-start;
+}
+@media (max-width: 1000px) {
+  .list--cooperate.stashed li {
+    flex: 1 1 45%;
+    max-width: 270px;
+  }
+}
+@media (max-width: 600px) {
+  .list--cooperate.stashed li {
+    flex: 1;
+    max-width: 240px;
+  }
+}
 .list--ai {
   display: flex;
   flex-direction: column;
@@ -13399,6 +13432,9 @@ button.next:hover {
   .domain-table tr th {
     padding: 5px;
   }
+}
+.domain-table.start tr {
+  vertical-align: top;
 }
 
 .kontakts .sites-leaders-content-left {

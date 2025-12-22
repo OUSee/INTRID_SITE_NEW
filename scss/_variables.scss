@@ -1145,15 +1145,9 @@ ol {
 			}
 
 			@media (max-width: 600px) {
-				// flex: 1 1 45%;
 				flex: unset;
 				width: 100%;
 			}
-
-			// @media (max-width: 520px) {
-			// 	flex: 1 1 90%;
-			// 	justify-content: center;
-			// }
 
 			i {
 				border-radius: 50px;
@@ -1194,6 +1188,37 @@ ol {
 				max-width: calc(50% - 20px);
 				margin: 0;
 				padding: 0;
+			}
+		}
+
+		&.stashed {
+			flex-direction: column;
+			gap: 24px;
+
+			@media (max-width: 1000px) {
+				flex-direction: row;
+				flex-wrap: wrap;
+				align-items: center;
+			}
+
+			@media (max-width: 600px) {
+				flex-direction: column;
+			}
+
+			& li {
+				flex: 1;
+				max-width: 100%;
+				align-items: flex-start;
+
+				@media (max-width: 1000px) {
+					flex: 1 1 45%;
+					max-width: 270px;
+				}
+
+				@media (max-width: 600px) {
+					flex: 1;
+					max-width: 240px;
+				}
 			}
 		}
 	}
