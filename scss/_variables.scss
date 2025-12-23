@@ -7153,13 +7153,13 @@ button:hover,
 		padding: 16px 16px 0;
 		border: 0;
 		border-radius: 0;
-		min-height: 300px;
-		aspect-ratio: 1 / 1;
+		// min-height: 300px;
+		// aspect-ratio: 16 / 12;
 		overflow: hidden;
 
-		@media (max-width: 720px) {
-			min-height: 260px;
-		}
+		// @media (max-width: 720px) {
+		// 	min-height: 260px;
+		// }
 
 		&::before {
 			content: "";
@@ -7247,6 +7247,9 @@ button:hover,
 			width: 100%;
 			margin: auto;
 			border-radius: 8px 8px 0 0;
+			aspect-ratio: 16 / 9;
+			object-fit: cover;
+			object-position: top center;
 			overflow: hidden;
 			transform-origin: center;
 			transform: scale(100%);
@@ -7263,13 +7266,17 @@ button:hover,
 			flex-wrap: wrap;
 			gap: 6px;
 			width: 100%;
-			padding: 8px 24px 24px;
+			padding: 8px 24px 16px;
 			background-color: rgba(5, 7, 12, 0.95);
 			backdrop-filter: blur(6px);
 			border-bottom: 8px solid var(--blue-main);
 			transform: translateY(100%);
 			will-change: transform;
 			transition: 0.25s ease-in-out;
+
+			@media (max-width: 1000px) {
+				padding: 8px 16px 8px;
+			}
 
 			& > b {
 				@include h4;
@@ -7336,7 +7343,7 @@ button:hover,
 				height: 100%;
 				border-radius: 8px;
 				object-fit: cover;
-				object-position: center top;
+				object-position: center;
 			}
 		}
 

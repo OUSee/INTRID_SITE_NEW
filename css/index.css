@@ -7551,14 +7551,7 @@ button:hover img,
   padding: 16px 16px 0;
   border: 0;
   border-radius: 0;
-  min-height: 300px;
-  aspect-ratio: 1/1;
   overflow: hidden;
-}
-@media (max-width: 720px) {
-  .card--portfolio {
-    min-height: 260px;
-  }
 }
 .card--portfolio::before {
   content: "";
@@ -7652,6 +7645,9 @@ button:hover img,
   width: 100%;
   margin: auto;
   border-radius: 8px 8px 0 0;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: top center;
   overflow: hidden;
   transform-origin: center;
   transform: scale(100%);
@@ -7667,13 +7663,18 @@ button:hover img,
   flex-wrap: wrap;
   gap: 6px;
   width: 100%;
-  padding: 8px 24px 24px;
+  padding: 8px 24px 16px;
   background-color: rgba(5, 7, 12, 0.95);
   backdrop-filter: blur(6px);
   border-bottom: 8px solid var(--blue-main);
   transform: translateY(100%);
   will-change: transform;
   transition: 0.25s ease-in-out;
+}
+@media (max-width: 1000px) {
+  .card--portfolio .card-body {
+    padding: 8px 16px 8px;
+  }
 }
 .card--portfolio .card-body > b {
   font-weight: 600;
@@ -7751,7 +7752,7 @@ button:hover img,
   height: 100%;
   border-radius: 8px;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
 }
 .card--portfolio.isMain {
   max-width: 100%;
