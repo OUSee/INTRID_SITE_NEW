@@ -7349,7 +7349,7 @@ button:hover,
 
 		&.isMain {
 			max-width: 100%;
-			aspect-ratio: 16 / 9;
+			// aspect-ratio: 16 / 9;
 			border-radius: 39px;
 
 			@media (max-width: 440px) {
@@ -7400,8 +7400,9 @@ button:hover,
 				right: unset;
 				bottom: unset;
 				align-self: flex-start;
-				width: unset;
-				height: unset;
+				max-width: 120px;
+				width: auto;
+				height: 28px;
 				flex: unset;
 				margin: 0;
 				aspect-ratio: unset;
@@ -7423,8 +7424,8 @@ button:hover,
 				}
 
 				& > a {
-					margin-left: 0;
-					margin-right: auto;
+					margin-left: auto;
+					margin-right: 0;
 				}
 			}
 		}

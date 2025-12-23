@@ -7754,7 +7754,6 @@ button:hover img,
 }
 .card--portfolio.isMain {
   max-width: 100%;
-  aspect-ratio: 16/9;
   border-radius: 39px;
 }
 @media (max-width: 440px) {
@@ -7823,8 +7822,9 @@ button:hover img,
   right: unset;
   bottom: unset;
   align-self: flex-start;
-  width: unset;
-  height: unset;
+  max-width: 120px;
+  width: auto;
+  height: 28px;
   flex: unset;
   margin: 0;
   aspect-ratio: unset;
@@ -7845,8 +7845,8 @@ button:hover img,
   }
 }
 .card--portfolio.isMain .card-body > a {
-  margin-left: 0;
-  margin-right: auto;
+  margin-left: auto;
+  margin-right: 0;
 }
 @media (min-width: 1000px) {
   .card--portfolio:hover .portfolio-logo, .card--portfolio:hover .card-header-text {
