@@ -82,6 +82,11 @@
 }
 
 @mixin webkit_scrollbar {
+	@supports (-moz-appearance: none) {
+		scrollbar-color: var(--blue-main) var(--bg-main);
+		scrollbar-width: thin;
+	}
+
 	&::-webkit-scrollbar {
 		width: 8px;
 		height: 6px;

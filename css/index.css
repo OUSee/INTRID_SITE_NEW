@@ -9783,6 +9783,12 @@ button:hover img,
 html {
   overflow-x: hidden;
 }
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-color: var(--blue-main) var(--bg-main);
+    scrollbar-width: thin;
+  }
+}
 html::-webkit-scrollbar {
   width: 8px;
   height: 6px;
@@ -12871,6 +12877,12 @@ button.next:hover {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+@supports (-moz-appearance: none) {
+  .portfolio .nav-tabs {
+    scrollbar-color: var(--blue-main) var(--bg-main);
+    scrollbar-width: thin;
+  }
 }
 .portfolio .nav-tabs::-webkit-scrollbar {
   width: 8px;
