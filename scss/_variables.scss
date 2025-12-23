@@ -6709,7 +6709,7 @@ button:hover,
 		padding: 30px;
 		color: var(--color-grey);
 		background-color: var(--bg-main);
-		border-radius: 35px;
+		border-radius: 30px;
 		border-color: var(--bg-main);
 
 		& ul,
@@ -6772,11 +6772,8 @@ button:hover,
 	&--leaders {
 		padding: 30px 52px;
 		// border: 1px solid var(--blue-tag);
-		border-radius: 35px;
+		border-radius: 30px;
 		background-color: var(--blue-tag);
-		border: 0;
-		box-shadow: inset 0 1px 0 1px var(--blue-clouds),
-			inset 0 -1px 0 1px var(--blue-light-bg);
 
 		@media (max-width: 1280px) {
 			padding: 30px;
@@ -6958,37 +6955,47 @@ button:hover,
 
 	&--portfolio {
 		flex-direction: column;
-		gap: 16px;
-		padding: 16px 16px 0;
+		gap: 0;
+		// padding: 16px 16px 0;
+		padding: 8px 0 0 0;
 		border: 0;
 		border-radius: 0;
+		background: radial-gradient(
+				60% 60% at 10% 20%,
+				color-mix(in srgb, var(--portfolio-color) 50%, transparent) 0%,
+				color-mix(in srgb, var(--portfolio-color) 50%, transparent)
+					37.79%,
+				transparent 100%
+			),
+			hsla(0, 0%, 100%, 0.125);
+		overflow: hidden;
+
 		// min-height: 300px;
 		// aspect-ratio: 16 / 12;
-		overflow: hidden;
 
 		// @media (max-width: 720px) {
 		// 	min-height: 260px;
 		// }
 
-		&::before {
-			content: "";
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			z-index: -2;
-			width: 100%;
-			height: 100%;
-			background: radial-gradient(
-					50% 50% at 50% 50%,
-					var(--portfolio-color) 0%,
-					var(--portfolio-color) 67.79%,
-					transparent 100%
-				),
-				rgba(255, 255, 255, 0.125);
-			opacity: 0.5;
-			filter: blur(50px);
-			transform: translate(-50%, -50%);
-		}
+		// &::before {
+		// 	content: "";
+		// 	position: absolute;
+		// 	top: 50%;
+		// 	left: 50%;
+		// 	z-index: -2;
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	background: radial-gradient(
+		// 			50% 50% at 50% 50%,
+		// 			var(--portfolio-color) 0%,
+		// 			var(--portfolio-color) 67.79%,
+		// 			transparent 100%
+		// 		),
+		// 		rgba(255, 255, 255, 0.125);
+		// 	opacity: 0.5;
+		// 	filter: blur(50px);
+		// 	transform: translate(-50%, -50%);
+		// }
 
 		& .card-header {
 			display: flex;
@@ -6997,6 +7004,12 @@ button:hover,
 			gap: 4px;
 			width: 100%;
 			flex-wrap: nowrap;
+			padding: 4px 24px;
+			text-decoration: none;
+
+			@media (max-width: 1000px) {
+				padding: 4px 16px;
+			}
 
 			&-text {
 				display: flex;
@@ -7005,6 +7018,7 @@ button:hover,
 				gap: 4px;
 				margin-left: auto;
 				backface-visibility: hidden;
+				color: var(--color-white);
 				transform: scale(100%) translateZ(0) rotate(0.001deg); // fix for firefox
 				transform-origin: right top;
 				will-change: transform;
@@ -7055,8 +7069,8 @@ button:hover,
 			z-index: 0;
 			width: 100%;
 			margin: auto;
-			border-radius: 8px 8px 0 0;
-			aspect-ratio: 16 / 9;
+			// aspect-ratio: 16 / 9;
+			aspect-ratio: 21 / 10;
 			object-fit: cover;
 			object-position: top center;
 			overflow: hidden;
@@ -7075,8 +7089,8 @@ button:hover,
 			flex-wrap: wrap;
 			gap: 6px;
 			width: 100%;
-			padding: 8px 24px 16px;
-			background-color: rgba(5, 7, 12, 0.95);
+			padding: 8px 24px;
+			background-color: rgba(5, 7, 12, 0.8);
 			backdrop-filter: blur(6px);
 			border-bottom: 8px solid var(--blue-main);
 			transform: translateY(100%);
@@ -7084,7 +7098,7 @@ button:hover,
 			transition: 0.25s ease-in-out;
 
 			@media (max-width: 1000px) {
-				padding: 8px 16px 8px;
+				padding: 8px 16px;
 			}
 
 			& > b {
@@ -7123,18 +7137,28 @@ button:hover,
 		}
 
 		& > .absolute-link {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			width: 100%;
+			// position: absolute;
+			// top: 0;
+			// left: 0;
+			// right: 0;
+			// bottom: 0;
+			// width: 100%;
+			// height: 100%;
+			// opacity: 0;
+			// z-index: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			flex: 1;
 			height: 100%;
-			z-index: 1;
+
+			@media (max-width: 1000px) {
+				gap: 4px;
+			}
 		}
 
 		&:not(.isBrand) {
-			aspect-ratio: 16 / 12;
+			// aspect-ratio: 16 / 12;
 
 			@media (max-width: 1000px) {
 				& .card-body {
@@ -7144,7 +7168,7 @@ button:hover,
 		}
 
 		&.isBrand {
-			padding: 16px;
+			// padding: 16px;
 
 			& .portfolio-site {
 				flex: 1;
@@ -7152,7 +7176,8 @@ button:hover,
 				// max-height: 300px;
 				width: 100%;
 				height: 100%;
-				border-radius: 8px;
+				// border-radius: 8px;
+				border-radius: 0;
 				object-fit: cover;
 				object-position: center;
 			}
@@ -7269,7 +7294,7 @@ button:hover,
 		flex-wrap: wrap;
 		gap: 12px;
 		margin: 0 auto;
-		border-radius: 35px;
+		border-radius: 30px;
 		padding: 20px 50px;
 		color: var(--color-grey);
 		background-color: var(--blue-bg);

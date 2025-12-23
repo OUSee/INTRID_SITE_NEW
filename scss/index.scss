@@ -3526,18 +3526,35 @@ button.next {
 
 		&:is([data-pjax-container]) {
 			display: block !important;
+		}
 
-			& .portfolio-block__cards {
-				display: flex;
-				flex-direction: row;
-				align-items: stretch;
-				justify-content: flex-start;
-				flex-wrap: wrap;
-				gap: 4px;
-				width: 100%;
-				border-radius: 39px;
-				overflow: hidden;
+		&__cards {
+			display: flex;
+			flex-direction: row;
+			align-items: stretch;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			gap: 4px;
+			width: 100%;
+			border-radius: 39px;
+			overflow: hidden;
 
+			& > * {
+				flex: 1 0 calc(33.333333% - 3px);
+				max-width: calc(33.333333% - 3px);
+
+				@media (max-width: 1000px) {
+					flex: 1 0 calc(50% - 3px);
+					max-width: calc(50% - 3px);
+				}
+
+				@media (max-width: 600px) {
+					flex: 1 0 100%;
+					max-width: 100%;
+				}
+			}
+
+			&.logos {
 				& > * {
 					flex: 1 0 calc(25% - 3px);
 					max-width: calc(25% - 3px);
