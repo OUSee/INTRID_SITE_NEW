@@ -55,6 +55,7 @@
 }
 
 @keyframes iris {
+
 	0%,
 	100% {
 		transform: rotateX(-10deg) rotateY(15deg) translateZ(68px) scale(0.6);
@@ -168,6 +169,7 @@
 }
 
 @keyframes baloon {
+
 	0%,
 	100% {
 		transform: translateY(0) rotate(0deg) scale(1);
@@ -307,6 +309,7 @@
 }
 
 @keyframes eye {
+
 	0%,
 	100% {
 		transform: translateY(-5px) translateX(0px) scale(1);
@@ -331,6 +334,18 @@
 	}
 }
 
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 100%, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
 @keyframes append-order {
 	0% {
 		color: transparent;
@@ -342,6 +357,7 @@
 }
 
 @keyframes list-glow {
+
 	0%,
 	100% {
 		box-shadow: none;
@@ -392,12 +408,14 @@
 			0 20px 30px 0 var(--blue-clouds) inset,
 			0 60px 60px 0 var(--blue-main) inset;
 	}
+
 	50% {
 		transform: rotate(270deg);
 		box-shadow: 0 10px 20px 0 #fff inset,
 			0 20px 10px 0 var(--blue-clouds) inset,
 			0 40px 60px 0 var(--blue-tag) inset;
 	}
+
 	100% {
 		transform: rotate(450deg);
 		box-shadow: 0 10px 20px 0 #fff inset,
@@ -407,17 +425,64 @@
 }
 
 @keyframes loader-letter-anim {
+
 	0%,
 	100% {
 		opacity: 0.4;
 		transform: translateY(0);
 	}
+
 	20% {
 		opacity: 1;
 		transform: scale(1.15);
 	}
+
 	40% {
 		opacity: 0.7;
 		transform: translateY(0);
+	}
+}
+
+@keyframes fadeOutUp {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+}
+
+@keyframes fadeOutLeft {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+		transform: translate3d(-100%, 0, 0);
+	}
+}
+
+@keyframes lightSpeedOutLeft {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		transform: translate3d(-100%, 0, 0) skewX(-30deg);
+		opacity: 0;
+	}
+}
+
+@keyframes fadeInUpForm {
+	0% {
+		display: flex;
+		transform: translate3d(0, 100%, 0);
+	}
+
+	100% {
+		transform: translate3d(0, 0, 0);
 	}
 }

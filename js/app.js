@@ -595,8 +595,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			.catch((error) => {
 				const message =
 					error &&
-					typeof error.message === "string" &&
-					error.message.trim() !== ""
+						typeof error.message === "string" &&
+						error.message.trim() !== ""
 						? error.message
 						: defaultErrorMessage;
 				showNotificationPopup(message, "error");
@@ -650,7 +650,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				const sitekey =
 					item.recaptchaContainer.dataset.sitekey &&
-					item.recaptchaContainer.dataset.sitekey.length > 0
+						item.recaptchaContainer.dataset.sitekey.length > 0
 						? item.recaptchaContainer.dataset.sitekey
 						: defaultSiteKey;
 
@@ -756,8 +756,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				mapData[value].adress +
 				(mapData[value]?.schedule
 					? '<span class="separator">|</span><span> ' +
-					  mapData[value].schedule +
-					  '</span><span class="separator">|</span>'
+					mapData[value].schedule +
+					'</span><span class="separator">|</span>'
 					: '<span class="separator">|</span>');
 			container.innerHTML = mapData[value].frame;
 
@@ -824,12 +824,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			list.style.setProperty("--list-length", items.length);
 
 			items.forEach((item, index) => {
-				item.querySelector(".tech-tag").style.animation = `list-glow ${
-					items.length * interval
-				}s linear infinite`;
-				item.querySelector(".tech-tag").style.animationDelay = `${
-					index * interval
-				}s`;
+				item.querySelector(".tech-tag").style.animation = `list-glow ${items.length * interval
+					}s linear infinite`;
+				item.querySelector(".tech-tag").style.animationDelay = `${index * interval
+					}s`;
 			});
 		}
 	});
@@ -1064,8 +1062,8 @@ const SliderInIt = () => {
 							: "block";
 					nextButton.style.display =
 						currentIndex === maxIndex ||
-						maxIndex <= 0 ||
-						cards.length <= slidesPerPage
+							maxIndex <= 0 ||
+							cards.length <= slidesPerPage
 							? "none"
 							: "block";
 
@@ -1727,32 +1725,24 @@ function sliderInitialize() {
 
 				prevBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `-100%` : `0`
-						}); left: ${
-							window.innerWidth > 600 ? `25px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+							}); left: ${window.innerWidth > 600 ? `25px` : `-5px`
+							}; color: var(--blue-main);`;
 					} else {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `-100%` : `0`
-						}); left: ${
-							window.innerWidth > 600 ? `15px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+							}); left: ${window.innerWidth > 600 ? `15px` : `-5px`
+							}; color: var(--blue-main);`;
 					}
 				});
 				nextBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `100%` : `0`
-						}); right: ${
-							window.innerWidth > 600 ? `25px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+							}); right: ${window.innerWidth > 600 ? `25px` : `-5px`
+							}; color: var(--blue-main);`;
 					} else {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `100%` : `0`
-						}); right: ${
-							window.innerWidth > 600 ? `15px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+							}); right: ${window.innerWidth > 600 ? `15px` : `-5px`
+							}; color: var(--blue-main);`;
 					}
 				});
 			};
@@ -3120,7 +3110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					}
 					if (
 						counter.elementref.dataset?.intendfor ===
-							"design-landing" &&
+						"design-landing" &&
 						counter.elementref.value < 1
 					) {
 						counter.elementref.value = 1;
@@ -3160,37 +3150,50 @@ triggerButtons?.forEach((button) => {
 });
 
 const toggleSection = (trigger, isObject = false) => {
-	let sectionIds = [];
+	let selectorsShowIds = [];
+	let selectorsHideIds = [];
+
+	let setShowClass = ['show'];
+	let setHideClass = ['fadeOutUp'];
 
 	if (!isObject) {
 		if (Array.isArray(trigger)) {
-			sectionIds = trigger;
+			selectorsShowIds = trigger;
+			selectorsHideIds = trigger;
 		} else {
-			sectionIds = [trigger];
+			selectorsShowIds = [trigger];
+			selectorsHideIds = [trigger];
 		}
 	} else {
 		const triggerShow = trigger.currentTarget.dataset.triggerShow;
+		const triggerHide = trigger.currentTarget.dataset.triggerHide;
 
 		if (triggerShow) {
-			sectionIds = triggerShow
+			selectorsShowIds = triggerShow
+				.split(";")
+				.filter((id) => id.trim() !== "");
+		}
+
+		if (triggerHide) {
+			selectorsHideIds = triggerHide
 				.split(";")
 				.filter((id) => id.trim() !== "");
 		}
 	}
 
-	sectionIds.forEach((id) => {
-		const section = document.getElementById(id);
+	selectorsShowIds.forEach((id) => {
+		const selector = document.getElementById(id);
 
-		if (!section) {
+		if (!selector) {
 			console.warn(`Элемент с id="${id}" не найден`);
 			return;
 		}
 
-		const isActive = section.classList.contains("show");
-		section.classList.add("show", !isActive);
+		const isActive = selector.classList.contains(...setShowClass);
+		selector.classList.add(...setShowClass, !isActive);
 
-		if (sectionIds.length > 0) {
-			const firstSection = document.getElementById(sectionIds[0]);
+		if (selectorsShowIds.length > 0) {
+			const firstSection = document.getElementById(selectorsShowIds[0]);
 
 			setTimeout(
 				() => {
@@ -3199,12 +3202,35 @@ const toggleSection = (trigger, isObject = false) => {
 						block: "start",
 					});
 					console.log("success scroll to #" + id);
-				},
-				isObject ? 0 : 250
+				}, selectorsHideIds ? 650 : 250
 			);
 		}
 	});
+
+	selectorsHideIds.forEach((id) => {
+		const selector = document.getElementById(id);
+
+		if (!selector) {
+			console.warn(`Элемент с id="${id}" не найден`);
+			return;
+		}
+
+		const isActive = selector.classList.contains(...setHideClass);
+		selector.classList.add(...setHideClass, !isActive);
+
+		setTimeout(
+			() => {
+				selector.style.maxHeight = 0;
+
+				setTimeout(() => {
+					selector.remove();
+				}, 0)
+			}, 500
+		);
+	});
 };
+
+
 
 // input type file logic
 const inputFiles = document.querySelectorAll(".input-file input[type=file]");

@@ -691,6 +691,16 @@ th {
     opacity: 1;
   }
 }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 @keyframes append-order {
   0% {
     color: transparent;
@@ -760,6 +770,42 @@ th {
   40% {
     opacity: 0.7;
     transform: translateY(0);
+  }
+}
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes lightSpeedOutLeft {
+  from {
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(-100%, 0, 0) skewX(-30deg);
+    opacity: 0;
+  }
+}
+@keyframes fadeInUpForm {
+  0% {
+    display: flex;
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
   }
 }
 @font-face {
@@ -2783,6 +2829,7 @@ ol li > ol {
   }
 }
 .flex-layout--split > .right {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -8702,6 +8749,29 @@ button:hover img,
   display: block;
 }
 
+.fadeIn {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.fadeInUp {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.fadeOutUp {
+  animation: fadeOutUp 0.6s ease forwards;
+  transform-origin: top center;
+}
+
+.fadeOutLeft {
+  animation: fadeOutLeft 0.6s ease forwards;
+  transform-origin: top center;
+}
+
+.lightSpeedOutLeft {
+  animation: lightSpeedOutLeft 0.6s ease forwards;
+  transform-origin: top center;
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -12459,13 +12529,12 @@ button.next:hover {
   display: none;
 }
 .calculator-calculator:not(.show) {
-  max-height: 0;
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-}
-.calculator-calculator:not(.show) * {
   display: none;
+  max-height: 0;
+  opacity: 0;
+}
+.calculator-calculator:is(.show) {
+  animation: fadeInUp 0.6s ease forwards;
 }
 .calculator-list {
   padding-left: 30px;
@@ -12569,6 +12638,18 @@ button.next:hover {
   .calculator-total .container .title_h1 {
     text-align: center;
   }
+}
+
+#calculator-creation:is(.show) {
+  animation: fadeInUpForm 0.6s ease forwards;
+  transform-origin: center bottom;
+}
+#calculator-creation:not(.show) {
+  display: none;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
 }
 
 .sitebrif {
@@ -15286,4 +15367,4 @@ button.next:hover {
   width: 30px;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 2px;
-}
+}/*# sourceMappingURL=index.css.map */

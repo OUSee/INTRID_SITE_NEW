@@ -185,7 +185,7 @@
                 Расчёт стоимости разработки сайта по <span class="underlined">индивидуальным параметрам</span>
             </h1>
 
-            <div class="flex-layout flex-layout--split align-stretch gap-lg-16 mb-32">
+            <div class="flex-layout flex-layout--split align-start gap-lg-16 mb-32" id="choose_your_way">
                 <div class="left">
                     <div class="card card--outline h-100">
                         <p class="title_h4 w-fit">
@@ -200,8 +200,8 @@
                             понять, сколько стоит ресурс, состоящий из нужных Вам модулей.
                         </p>
 
-                        <a href="javascript://" data-trigger data-trigger-show="calculator;calculator-total"
-                            class="button-link big mt-auto">
+                        <a href="javascript://" data-trigger data-trigger-show="calculator"
+                            data-trigger-hide="choose_your_way" class="button-link big mt-auto">
                             Перейти к расчету <i class="icon-arrow_wide"></i>
                         </a>
                     </div>
@@ -220,12 +220,12 @@
                             и
                             других важных аспектов.
                         </p>
-                        <a href="javascript://" class="button button-highlight big mt-auto" data-popup="fast-req-form">
+                        <a href="javascript://" class="button button-highlight big mt-auto" data-trigger
+                            data-trigger-show="calculator-creation" data-trigger-hide="calculator-creation-hole">
                             Быстрый заказ
                         </a>
                     </div>
-                    <div class="card card--leaders minified position-sticky" id="calculator-creation"
-                        style="display: none;">
+                    <div class="card card--leaders minified position-sticky" id="calculator-creation">
                         <p class="title_h4 text-center">
                             Оформить быстрый заказ
                         </p>
