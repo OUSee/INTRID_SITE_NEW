@@ -2801,6 +2801,28 @@ ol li > ol {
   max-width: 100%;
   margin: 0 auto;
 }
+@media (max-width: 1000px) {
+  .flex-layout--split > .right.fixed-bottom {
+    position: sticky !important;
+    bottom: 0 !important;
+    top: calc(100vh - 310px) !important;
+  }
+}
+@media (max-width: 1000px) and (max-width: 900px) {
+  .flex-layout--split > .right.fixed-bottom {
+    top: calc(100vh - 370px) !important;
+  }
+}
+@media (max-width: 1000px) and (max-width: 580px) {
+  .flex-layout--split > .right.fixed-bottom {
+    top: calc(100vh - 460px) !important;
+  }
+}
+@media (max-width: 1000px) and (max-width: 420px) {
+  .flex-layout--split > .right.fixed-bottom {
+    top: calc(100vh - 600px) !important;
+  }
+}
 .flex-row {
   flex-direction: row;
 }
@@ -5920,7 +5942,7 @@ button:hover img,
   flex-direction: column;
   border: 1px solid var(--blue-bg);
   background-color: var(--bg-main);
-  border-radius: 39px;
+  border-radius: 30px;
   padding: 30px;
   overflow: hidden;
   transition: all 0.3s ease-in-out;

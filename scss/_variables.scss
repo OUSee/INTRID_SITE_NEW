@@ -2438,6 +2438,26 @@ ol {
 					max-width: 100%;
 					margin: 0 auto;
 				}
+
+				&.fixed-bottom {
+					@media (max-width: 1000px) {
+						position: sticky !important;
+						bottom: 0 !important;
+						top: calc(100vh - 310px) !important;
+
+						@media (max-width: 900px) {
+							top: calc(100vh - 370px) !important;
+						}
+
+						@media (max-width: 580px) {
+							top: calc(100vh - 460px) !important;
+						}
+
+						@media (max-width: 420px) {
+							top: calc(100vh - 600px) !important;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -5102,7 +5122,7 @@ button:hover,
 	flex-direction: column;
 	border: 1px solid var(--blue-bg);
 	background-color: var(--bg-main);
-	border-radius: 39px;
+	border-radius: 30px;
 	padding: 30px;
 	overflow: hidden;
 	transition: all 0.3s ease-in-out;
