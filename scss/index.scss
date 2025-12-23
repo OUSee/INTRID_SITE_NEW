@@ -4432,6 +4432,8 @@ button.next {
 
 // case-page
 .case_page {
+	padding-top: 0;
+
 	&-top {
 		display: flex;
 		flex-direction: row;
@@ -4607,7 +4609,6 @@ button.next {
 		@include blogContainer;
 
 		position: relative;
-		// padding: 0 50px 62px;
 		padding: 0 50px;
 		background: linear-gradient(
 			0deg,
@@ -4617,13 +4618,15 @@ button.next {
 			rgba(0, 234, 255, 0) 100%
 		);
 
+		@media (max-width: 1500px) {
+			padding: 0 40px;
+		}
+
 		@media (max-width: 601px) {
-			// padding: 0 20px 40px;
 			padding: 0 20px;
 		}
 
 		@media (max-width: 440px) {
-			// padding: 0 10px 40px;
 			padding: 0 10px;
 		}
 
