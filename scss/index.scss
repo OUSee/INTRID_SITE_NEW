@@ -13,6 +13,7 @@
 /* BASE STYLES */
 
 html {
+	@include webkit_scrollbar;
 	overflow-x: hidden;
 }
 
@@ -3227,11 +3228,12 @@ button.next {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+		@include webkit_scrollbar;
 
 		@media (max-width: 1000px) {
 			width: calc(100% + 80px);
 			margin-left: -40px;
-			padding: 16px 40px;
+			padding: 16px 40px 0;
 			scroll-behavior: smooth;
 			scroll-snap-type: mandatory;
 			mask-image: linear-gradient(
@@ -3528,7 +3530,6 @@ button.next {
 			& .portfolio-block__cards {
 				display: flex;
 				flex-direction: row;
-				// align-items: center;
 				align-items: stretch;
 				justify-content: flex-start;
 				flex-wrap: wrap;
@@ -3541,17 +3542,17 @@ button.next {
 					flex: 1 0 calc(25% - 3px);
 					max-width: calc(25% - 3px);
 
-					@media (max-width: 1000px) {
+					@media (max-width: 1200px) {
 						flex: 1 0 calc(33.333333% - 3px);
 						max-width: calc(33.333333% - 3px);
 					}
 
-					@media (max-width: 720px) {
+					@media (max-width: 900px) {
 						flex: 1 0 calc(50% - 3px);
 						max-width: calc(50% - 3px);
 					}
 
-					@media (max-width: 440px) {
+					@media (max-width: 600px) {
 						flex: 1 0 100%;
 						max-width: 100%;
 					}

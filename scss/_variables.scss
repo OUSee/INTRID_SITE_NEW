@@ -5907,6 +5907,15 @@ button:hover,
 			border: 1px solid var(--blue-bg);
 			box-shadow: 0px 0px 0px 0px var(--blue-clouds),
 				inset 0px 0px 20px 2px var(--blue-clouds);
+
+			&:hover {
+				@media (min-width: 1000px) {
+					box-shadow: 0px 0px 15px var(--blue-main),
+						0px 0px 0px 0px var(--blue-clouds),
+						inset 0px 0px 20px 2px var(--blue-clouds);
+					transform: scale(1.025);
+				}
+			}
 		}
 
 		& .card-footer {
@@ -7325,6 +7334,8 @@ button:hover,
 		}
 
 		&:not(.isBrand) {
+			aspect-ratio: 16 / 12;
+
 			@media (max-width: 1000px) {
 				& .card-body {
 					transform: translateY(0%);

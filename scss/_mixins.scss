@@ -81,6 +81,23 @@
 	}
 }
 
+@mixin webkit_scrollbar {
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 6px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--bg-main);
+		border-radius: 8px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--blue-main);
+		border-radius: 8px;
+	}
+}
+
 @mixin blockVideo {
 	width: 100%;
 	min-height: unset;
