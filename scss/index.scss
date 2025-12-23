@@ -4303,6 +4303,8 @@ button.next {
 
 // blog_page
 .blog_page {
+	padding-top: 0;
+
 	& > .container {
 		@include blogContainer;
 		background: linear-gradient(
@@ -4313,15 +4315,18 @@ button.next {
 			rgba(0, 234, 255, 0) 100%
 		);
 
-		padding-top: 0px;
-		padding: 0px 50px 62px 50px;
+		padding: 0 50px;
 
-		@media (max-width: 600px) {
-			padding: 0 20px 40px;
+		@media (max-width: 1500px) {
+			padding: 0 40px;
+		}
+
+		@media (max-width: 601px) {
+			padding: 0 20px;
 		}
 
 		@media (max-width: 440px) {
-			padding: 0 10px 40px;
+			padding: 0 10px;
 		}
 
 		.img-wrapper {

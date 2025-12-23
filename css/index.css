@@ -13900,12 +13900,14 @@ button.next:hover {
   transform: none;
 }
 
+.blog_page {
+  padding-top: 0;
+}
 .blog_page > .container {
   max-width: 1440px;
   margin: 0 auto;
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.1) 85%, rgba(0, 234, 255, 0) 100%);
-  padding-top: 0px;
-  padding: 0px 50px 62px 50px;
+  padding: 0 50px;
 }
 @media (max-width: 1500px) {
   .blog_page > .container {
@@ -13929,14 +13931,19 @@ button.next:hover {
     margin: 0;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 1500px) {
   .blog_page > .container {
-    padding: 0 20px 40px;
+    padding: 0 40px;
+  }
+}
+@media (max-width: 601px) {
+  .blog_page > .container {
+    padding: 0 20px;
   }
 }
 @media (max-width: 440px) {
   .blog_page > .container {
-    padding: 0 10px 40px;
+    padding: 0 10px;
   }
 }
 .blog_page > .container .img-wrapper {
