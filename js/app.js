@@ -11,12 +11,17 @@ window.addEventListener("scroll", function () {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-	if (window.location.pathname == "/") {
-		setTimeout(() => {
+	if (preloader) {
+		if (window.location.pathname == "/") {
+			setTimeout(() => {
+				preloader.style.display = "none";
+			}, 3000);
+		} else {
 			preloader.style.display = "none";
+		}
+		setTimeout(() => {
+			preloader.remove();
 		}, 3000);
-	} else {
-		preloader.style.display = "none";
 	}
 	// setTimeout(() => {
 	// preloader.style.display = "none";
