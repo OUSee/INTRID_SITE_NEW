@@ -281,41 +281,58 @@ $tab-main-count: 3;
 			}
 
 			&:first-child {
-				border-top-left-radius: 39px;
-				border-bottom-left-radius: 39px;
+				border-radius: 30px 0 0 30px;
+			}
+
+			&:not(:first-child, :last-child) {
+				border-radius: 0;
 			}
 
 			&:last-child {
-				border-top-right-radius: 39px;
-				border-bottom-right-radius: 39px;
+				border-radius: 0 30px 30px 0;
 			}
 		}
 	}
 
-	// &#site-slider,
-	// &#brand-slider,
-	// &#support-slider {
-	// 	& > * {
-	// 		flex: 1 1 calc(20% - 4px);
-	// 		min-width: calc(20% - 4px);
+	&#logo-slider,
+	&#brand-slider {
+		& > * {
+			flex: 1 1 0%;
+			min-width: calc(25% - 4px);
+			width: 100%;
+			opacity: 0;
 
-	// 		@media (max-width: 1200px) {
-	// 			flex: 1 1 calc(33.333333% - 4px);
-	// 			min-width: calc(33.333333% - 4px);
-	// 			opacity: 0;
-	// 		}
+			@media (max-width: 1200px) {
+				min-width: calc(33.333333% - 2px);
+			}
 
-	// 		@media (max-width: 1000px) {
-	// 			flex: 1 1 calc(50% - 6px);
-	// 			min-width: calc(50% - 6px);
-	// 		}
+			@media (max-width: 1000px) {
+				min-width: calc(50% - 2px);
+			}
 
-	// 		@media (max-width: 600px) {
-	// 			flex: 1 0 100%;
-	// 			max-width: 100%;
-	// 		}
-	// 	}
-	// }
+			@media (max-width: 440px) {
+				flex: 1 0 auto;
+				max-width: 100%;
+				min-width: 100% !important;
+			}
+
+			&:not(.active) {
+				pointer-events: none;
+			}
+
+			&:first-child {
+				border-radius: 30px 0 0 30px;
+			}
+
+			&:not(:first-child, :last-child) {
+				border-radius: 0;
+			}
+
+			&:last-child {
+				border-radius: 0 30px 30px 0;
+			}
+		}
+	}
 
 	&#promotion-slider,
 	&#group-slider {
