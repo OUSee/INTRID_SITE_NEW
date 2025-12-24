@@ -7633,9 +7633,14 @@ button:hover img,
   gap: 0;
   padding: 8px 0 0 0;
   border: 0;
-  border-radius: 0;
+  border-radius: 30px;
   background: radial-gradient(60% 60% at 10% 20%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 0%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 37.79%, transparent 100%), hsla(0, 0%, 100%, 0.125);
   overflow: hidden;
+}
+@media (max-width: 1000px) {
+  .card--portfolio {
+    border-radius: 20px;
+  }
 }
 .card--portfolio .card-header {
   display: flex;
@@ -7645,7 +7650,7 @@ button:hover img,
   width: 100%;
   flex-wrap: nowrap;
   padding: 4px 24px;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 @media (max-width: 1000px) {
   .card--portfolio .card-header {
@@ -7656,7 +7661,7 @@ button:hover img,
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 4px;
+  gap: 0;
   margin-left: auto;
   backface-visibility: hidden;
   color: var(--color-white);
@@ -7689,6 +7694,7 @@ button:hover img,
   max-width: 100%;
   font-weight: 600;
   text-align: right;
+  line-height: 1.25;
   line-break: auto;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -7704,11 +7710,14 @@ button:hover img,
     font-size: 16px;
   }
 }
+.card--portfolio .card-header-text > * {
+  text-decoration: none !important;
+}
 .card--portfolio .portfolio-logo {
   display: flex;
-  max-width: 120px;
+  max-width: 64px;
   width: auto;
-  height: 28px;
+  height: 64px;
   object-fit: contain;
   object-position: left center;
   backface-visibility: hidden;
@@ -7716,6 +7725,11 @@ button:hover img,
   transform-origin: left top;
   will-change: transform;
   transition: 0.4s ease-in-out;
+}
+@media (max-width: 1000px) {
+  .card--portfolio .portfolio-logo {
+    height: 32px;
+  }
 }
 .card--portfolio .portfolio-site {
   display: flex;
@@ -7810,6 +7824,7 @@ button:hover img,
   gap: 8px;
   flex: 1;
   height: 100%;
+  text-decoration: none;
 }
 @media (max-width: 1000px) {
   .card--portfolio > .absolute-link {
@@ -7831,26 +7846,17 @@ button:hover img,
 }
 .card--portfolio.isMain {
   max-width: 100%;
-  border-radius: 39px;
 }
 @media (max-width: 440px) {
   .card--portfolio.isMain {
     width: 100%;
   }
 }
-.card--portfolio.isMain .card-header {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 4px;
-  width: 100%;
-  flex-wrap: nowrap;
-}
 .card--portfolio.isMain .card-header-text {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 4px;
+  gap: 0;
   margin-left: auto;
   backface-visibility: hidden;
   transform: scale(100%) translateZ(0) rotate(0.001deg);
@@ -7899,19 +7905,11 @@ button:hover img,
   right: unset;
   bottom: unset;
   align-self: flex-start;
-  max-width: 120px;
-  width: auto;
-  height: 28px;
   flex: unset;
   margin: 0;
   aspect-ratio: unset;
   line-height: 0.75;
   overflow: unset;
-}
-@media (max-width: 1000px) {
-  .card--portfolio.isMain .portfolio-logo {
-    display: none;
-  }
 }
 .card--portfolio.isMain .portfolio-site {
   max-width: 472px;
@@ -9919,8 +9917,8 @@ body {
   font-size: 14px;
   background-color: var(--bg-main);
   color: var(--color-white);
-  background-image: url("../src/images/bg-main.webp");
-  background-size: auto 944px;
+  background-image: url("/src/images/stars.jpg");
+  background-size: auto 400px;
   background-position: top;
   background-repeat: repeat;
   position: relative;
@@ -11497,9 +11495,9 @@ button.next:hover {
 .for-buisness-offers {
   position: relative;
   background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.1) 15%, rgba(0, 234, 255, 0.1) 85%, rgba(0, 234, 255, 0) 100%), url("../src/images/mountains_1.webp");
-  background-size: 100% auto;
-  background-position: bottom;
-  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: 600px 100%;
+  background-repeat: repeat-x;
 }
 @media (max-width: 1100px) {
   .for-buisness-offers {
@@ -15367,4 +15365,4 @@ button.next:hover {
   width: 30px;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 2px;
-}/*# sourceMappingURL=index.css.map */
+}
