@@ -273,7 +273,10 @@ const openPopup = (id) => {
 	let popupVideo = popup.id === "video-circle";
 
 	// Проверка на кнопки закрытия
-	if (!popup.querySelector(".popup-close")) {
+	if (
+		!popup.querySelector(".popup-close") &&
+		typeof popup.id !== "undefined"
+	) {
 		buttonClose = document.createElement("button");
 		buttonClose.classList.add("popup-close");
 		buttonClose.setAttribute("data-close-popup", true);
@@ -299,9 +302,11 @@ const openPopup = (id) => {
 	popup.classList.add("open");
 
 	// Вставка кнопки закрытия в зависимости от верстки окон
-	popup.querySelector(".popup-wrapper")
-		? popup?.querySelector(".popup-wrapper").prepend(buttonClose)
-		: popup.prepend(buttonClose);
+	if (typeof buttonClose !== "undefined") {
+		popup.querySelector(".popup-wrapper")
+			? popup?.querySelector(".popup-wrapper").prepend(buttonClose)
+			: popup.prepend(buttonClose);
+	}
 
 	// Приостанавливаем прокрутку страницы, когда окно открыто
 	document.documentElement.classList.add("popup-opened");
@@ -595,8 +600,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			.catch((error) => {
 				const message =
 					error &&
-						typeof error.message === "string" &&
-						error.message.trim() !== ""
+					typeof error.message === "string" &&
+					error.message.trim() !== ""
 						? error.message
 						: defaultErrorMessage;
 				showNotificationPopup(message, "error");
@@ -650,7 +655,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				const sitekey =
 					item.recaptchaContainer.dataset.sitekey &&
-						item.recaptchaContainer.dataset.sitekey.length > 0
+					item.recaptchaContainer.dataset.sitekey.length > 0
 						? item.recaptchaContainer.dataset.sitekey
 						: defaultSiteKey;
 
@@ -756,8 +761,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				mapData[value].adress +
 				(mapData[value]?.schedule
 					? '<span class="separator">|</span><span> ' +
-					mapData[value].schedule +
-					'</span><span class="separator">|</span>'
+					  mapData[value].schedule +
+					  '</span><span class="separator">|</span>'
 					: '<span class="separator">|</span>');
 			container.innerHTML = mapData[value].frame;
 
@@ -824,10 +829,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			list.style.setProperty("--list-length", items.length);
 
 			items.forEach((item, index) => {
-				item.querySelector(".tech-tag").style.animation = `list-glow ${items.length * interval
-					}s linear infinite`;
-				item.querySelector(".tech-tag").style.animationDelay = `${index * interval
-					}s`;
+				item.querySelector(".tech-tag").style.animation = `list-glow ${
+					items.length * interval
+				}s linear infinite`;
+				item.querySelector(".tech-tag").style.animationDelay = `${
+					index * interval
+				}s`;
 			});
 		}
 	});
@@ -1062,8 +1069,8 @@ const SliderInIt = () => {
 							: "block";
 					nextButton.style.display =
 						currentIndex === maxIndex ||
-							maxIndex <= 0 ||
-							cards.length <= slidesPerPage
+						maxIndex <= 0 ||
+						cards.length <= slidesPerPage
 							? "none"
 							: "block";
 
@@ -1725,24 +1732,32 @@ function sliderInitialize() {
 
 				prevBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
-							}); left: ${window.innerWidth > 600 ? `25px` : `-5px`
-							}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
+							window.innerWidth > 600 ? `-100%` : `0`
+						}); left: ${
+							window.innerWidth > 600 ? `25px` : `-5px`
+						}; color: var(--blue-main);`;
 					} else {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
-							}); left: ${window.innerWidth > 600 ? `15px` : `-5px`
-							}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
+							window.innerWidth > 600 ? `-100%` : `0`
+						}); left: ${
+							window.innerWidth > 600 ? `15px` : `-5px`
+						}; color: var(--blue-main);`;
 					}
 				});
 				nextBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
-							}); right: ${window.innerWidth > 600 ? `25px` : `-5px`
-							}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
+							window.innerWidth > 600 ? `100%` : `0`
+						}); right: ${
+							window.innerWidth > 600 ? `25px` : `-5px`
+						}; color: var(--blue-main);`;
 					} else {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
-							}); right: ${window.innerWidth > 600 ? `15px` : `-5px`
-							}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
+							window.innerWidth > 600 ? `100%` : `0`
+						}); right: ${
+							window.innerWidth > 600 ? `15px` : `-5px`
+						}; color: var(--blue-main);`;
 					}
 				});
 			};
@@ -3110,7 +3125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					}
 					if (
 						counter.elementref.dataset?.intendfor ===
-						"design-landing" &&
+							"design-landing" &&
 						counter.elementref.value < 1
 					) {
 						counter.elementref.value = 1;
@@ -3153,8 +3168,8 @@ const toggleSection = (trigger, isObject = false) => {
 	let selectorsShowIds = [];
 	let selectorsHideIds = [];
 
-	let setShowClass = ['show'];
-	let setHideClass = ['fadeOutUp'];
+	let setShowClass = ["show"];
+	let setHideClass = ["fadeOutUp"];
 
 	if (!isObject) {
 		if (Array.isArray(trigger)) {
@@ -3202,7 +3217,8 @@ const toggleSection = (trigger, isObject = false) => {
 						block: "start",
 					});
 					console.log("success scroll to #" + id);
-				}, selectorsHideIds ? 650 : 250
+				},
+				selectorsHideIds ? 650 : 250
 			);
 		}
 	});
@@ -3218,19 +3234,15 @@ const toggleSection = (trigger, isObject = false) => {
 		const isActive = selector.classList.contains(...setHideClass);
 		selector.classList.add(...setHideClass, !isActive);
 
-		setTimeout(
-			() => {
-				selector.style.maxHeight = 0;
+		setTimeout(() => {
+			selector.style.maxHeight = 0;
 
-				setTimeout(() => {
-					selector.remove();
-				}, 0)
-			}, 500
-		);
+			setTimeout(() => {
+				selector.remove();
+			}, 0);
+		}, 500);
 	});
 };
-
-
 
 // input type file logic
 const inputFiles = document.querySelectorAll(".input-file input[type=file]");
