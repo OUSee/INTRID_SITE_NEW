@@ -297,16 +297,16 @@ $tab-main-count: 3;
 	&#awards-slider {
 		& > * {
 			flex: 1 1 0%;
-			min-width: calc(25% - 4px);
+			min-width: calc(25% - 6px);
 			width: 100%;
 			opacity: 0;
 
 			@media (max-width: 1200px) {
-				min-width: calc(33.333333% - 2px);
+				min-width: calc(33.333333% - 6px);
 			}
 
 			@media (max-width: 900px) {
-				min-width: calc(50% - 2px);
+				min-width: calc(50% - 4px);
 			}
 
 			@media (max-width: 440px) {
@@ -7278,14 +7278,15 @@ button:hover,
 		& > .absolute-link {
 			display: flex;
 			flex-direction: column;
-			gap: 8px;
+			gap: 0;
+			// gap: 8px;
 			flex: 1;
 			height: 100%;
 			text-decoration: none;
 
-			@media (max-width: 1000px) {
-				gap: 4px;
-			}
+			// @media (max-width: 1000px) {
+			// 	gap: 4px;
+			// }
 		}
 
 		&:not(.isBrand) {

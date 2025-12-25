@@ -1057,18 +1057,18 @@ th {
 }
 [data-slider]#logo-slider > *, [data-slider]#brand-slider > *, [data-slider]#awards-slider > * {
   flex: 1 1 0%;
-  min-width: calc(25% - 4px);
+  min-width: calc(25% - 6px);
   width: 100%;
   opacity: 0;
 }
 @media (max-width: 1200px) {
   [data-slider]#logo-slider > *, [data-slider]#brand-slider > *, [data-slider]#awards-slider > * {
-    min-width: calc(33.333333% - 2px);
+    min-width: calc(33.333333% - 6px);
   }
 }
 @media (max-width: 900px) {
   [data-slider]#logo-slider > *, [data-slider]#brand-slider > *, [data-slider]#awards-slider > * {
-    min-width: calc(50% - 2px);
+    min-width: calc(50% - 4px);
   }
 }
 @media (max-width: 440px) {
@@ -8035,15 +8035,10 @@ button:hover img,
 .card--portfolio > .absolute-link {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
   flex: 1;
   height: 100%;
   text-decoration: none;
-}
-@media (max-width: 1000px) {
-  .card--portfolio > .absolute-link {
-    gap: 4px;
-  }
 }
 @media (max-width: 1000px) {
   .card--portfolio:not(.isBrand) .card-body {
