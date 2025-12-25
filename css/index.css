@@ -2815,11 +2815,13 @@ ol li > ol {
 @media (max-width: 1000px) {
   .flex-layout--split {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
 }
 @media (max-width: 1200px) {
   .flex-layout--split.early {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
 }
 .flex-layout--split.early > .left {
@@ -12294,49 +12296,6 @@ button.next:hover {
   display: flex;
 }
 
-.sites-leaders-content {
-  display: flex;
-  gap: 48px;
-}
-@media (max-width: 900px) {
-  .sites-leaders-content {
-    flex-direction: column;
-  }
-}
-.sites-leaders-content hr {
-  width: 100%;
-}
-.sites-leaders-content-left {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex: 1 1 70%;
-  max-width: 70%;
-}
-@media (max-width: 900px) {
-  .sites-leaders-content-left {
-    max-width: 100%;
-  }
-}
-.sites-leaders-content-right {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex: 1 1 30%;
-  max-width: 400px;
-}
-@media (max-width: 900px) {
-  .sites-leaders-content-right {
-    max-width: 100%;
-  }
-}
-.sites-leaders-content-right .achievements-slider {
-  margin: 0 auto;
-}
-.sites-leaders-content-right .card--leaders {
-  max-width: 100%;
-  margin: 0 auto;
-}
 .sites-portfolio-slider {
   margin-top: 50px;
   gap: 8px;
