@@ -4149,13 +4149,13 @@ form {
 	}
 }
 
-// nav
+// content nav
 .article {
 	&-navigation {
 		position: fixed;
 		top: 80px;
 		left: 0;
-		z-index: 5;
+		z-index: 3;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -4217,12 +4217,14 @@ form {
 
 				@include webkit_scrollbar;
 				& a {
+					display: block;
 					color: var(--color-white);
 					transition: 0.25s ease-in-out;
 
 					&.active {
-						font-weight: 600;
+						color: var(--blue-main);
 						text-shadow: 0 0 3px var(--blue-clouds);
+						text-decoration: none !important;
 					}
 				}
 			}

@@ -3174,6 +3174,7 @@ const toggleSection = (
 ) => {
 	let selectorsShowIds = [];
 	let selectorsHideIds = [];
+	let shouldScroll = true;
 
 	let setShowClass = ["show"];
 	let setHideClass = ["fadeOutUp"];
@@ -3195,6 +3196,9 @@ const toggleSection = (
 		// Старая логика для работы с data-атрибутами
 		const triggerShow = trigger.currentTarget.dataset.triggerShow;
 		const triggerHide = trigger.currentTarget.dataset.triggerHide;
+
+		const scrollAttr = trigger.currentTarget.dataset.shouldScroll;
+		shouldScroll = scrollAttr === undefined || scrollAttr === "true";
 
 		if (triggerShow) {
 			selectorsShowIds = triggerShow
@@ -3236,7 +3240,7 @@ const toggleSection = (
 		selector.style.display = "";
 
 		// Скролл к первому элементу
-		if (id === selectorsShowIds[0]) {
+		if (id === selectorsShowIds[0] && shouldScroll) {
 			setTimeout(() => {
 				selector.scrollIntoView({
 					behavior: "smooth",
@@ -3244,6 +3248,8 @@ const toggleSection = (
 				});
 				console.log("success scroll to #" + id);
 			}, 600);
+		} else if (id === selectorsShowIds[0] && !shouldScroll) {
+			console.log("scroll skipped for #" + id);
 		}
 	});
 
@@ -3857,3 +3863,529 @@ document.addEventListener("DOMContentLoaded", function () {
 		activeMobile: true,
 	});
 });
+
+/**
+ * Единый класс для работы с оглавлением статьи
+ * Поддерживает автоматическую генерацию и управление существующим оглавлением
+ */
+class TableOfContents {
+	/**
+	 * Конструктор класса
+	 * @param {Object} options - Настройки оглавления
+	 * @param {boolean} options.autoGenerate - Автоматически генерировать оглавление
+	 * @param {string} options.selector - Селектор заголовков для авто-генерации
+	 * @param {boolean} options.highlightAll - Подсвечивать все видимые заголовки
+	 * @param {string} options.highlightStrategy - Стратегия подсветки ('multiple', 'closest', 'first')
+	 * @param {string} options.rootMargin - Настройки rootMargin для IntersectionObserver
+	 * @param {number} options.scrollOffset - Отступ при скролле к элементу
+	 */
+	constructor(options = {}) {
+		// Настройки по умолчанию
+		this.options = {
+			autoGenerate: false,
+			selector: '.blog_page [id^="a"]',
+			highlightAll: true,
+			highlightStrategy: "multiple",
+			rootMargin: "-10% 0px 100% 0px",
+			scrollOffset: 80,
+			...options,
+		};
+
+		// Основные элементы
+		this.nav = document.querySelector(".article-navigation");
+		if (!this.nav) {
+			console.warn(
+				"TableOfContents: Не найден элемент .article-navigation"
+			);
+			return;
+		}
+
+		this.navList = this.nav.querySelector(".nav-list");
+		if (!this.navList) {
+			console.warn("TableOfContents: Не найден элемент .nav-list");
+			return;
+		}
+
+		// Данные для работы
+		this.links = [];
+		this.sections = [];
+		this.visibleSections = new Set();
+		this.tocData = [];
+		this.observer = null;
+		this.currentActive = null;
+
+		this.init();
+	}
+
+	/**
+	 * Инициализация оглавления
+	 */
+	init() {
+		// Автоматическая генерация оглавления если нужно
+		if (this.options.autoGenerate && !this.hasManualTOC()) {
+			this.generateTOC();
+		} else {
+			this.links = this.navList.querySelectorAll('a[href^="#"]');
+		}
+
+		// Если нет ссылок - выходим
+		if (this.links.length === 0) {
+			console.warn("TableOfContents: Не найдены ссылки в оглавлении");
+			return;
+		}
+
+		// Настройка секций и отслеживания
+		this.setupSections();
+		this.setupIntersectionObserver();
+		this.setupClickHandlers();
+
+		console.log(
+			`TableOfContents: Инициализировано ${this.sections.length} секций`
+		);
+	}
+
+	/**
+	 * Проверяет, есть ли уже созданное вручную оглавление
+	 */
+	hasManualTOC() {
+		return this.navList.children.length > 0;
+	}
+
+	/**
+	 * Автоматическая генерация оглавления
+	 */
+	generateTOC() {
+		console.log("TableOfContents: Запуск автоматической генерации...");
+
+		const headings = document.querySelectorAll(this.options.selector);
+		if (headings.length === 0) {
+			console.warn("TableOfContents: Не найдены заголовки для генерации");
+			return;
+		}
+
+		// Сортируем заголовки
+		const sortedHeadings = this.sortHeadings(Array.from(headings));
+
+		// Строим структуру
+		this.buildTOCStructure(sortedHeadings);
+
+		// Рендерим HTML
+		this.renderTOC();
+
+		// Получаем ссылки
+		this.links = this.navList.querySelectorAll('a[href^="#"]');
+
+		console.log(
+			`TableOfContents: Сгенерировано ${this.links.length} ссылок`
+		);
+	}
+
+	/**
+	 * Сортировка заголовков по ID
+	 */
+	sortHeadings(headings) {
+		return headings.sort((a, b) => {
+			const idA = a.id;
+			const idB = b.id;
+
+			// Разбираем ID типа "a1", "a2-1", "a2-2", "a3"
+			const partsA = idA.split("-").map((part) => part.replace("a", ""));
+			const partsB = idB.split("-").map((part) => part.replace("a", ""));
+
+			// Сравниваем по уровням вложенности
+			for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
+				const numA = parseInt(partsA[i] || 0);
+				const numB = parseInt(partsB[i] || 0);
+
+				if (numA !== numB) {
+					return numA - numB;
+				}
+			}
+
+			return 0;
+		});
+	}
+
+	/**
+	 * Построение структуры оглавления
+	 */
+	buildTOCStructure(headings) {
+		const root = { level: 0, children: [] };
+		const stack = [root];
+
+		headings.forEach((heading) => {
+			const id = heading.id;
+			const level = this.getHeadingLevel(id);
+			const text = this.getHeadingText(heading);
+
+			const node = {
+				id,
+				text,
+				level,
+				children: [],
+			};
+
+			// Находим правильного родителя
+			while (stack.length > 0 && stack[stack.length - 1].level >= level) {
+				stack.pop();
+			}
+
+			// Добавляем к родителю
+			const parent = stack[stack.length - 1];
+			parent.children.push(node);
+			stack.push(node);
+
+			this.tocData.push(node);
+		});
+	}
+
+	/**
+	 * Определение уровня заголовка по ID
+	 */
+	getHeadingLevel(id) {
+		const parts = id.split("-");
+		if (parts.length === 1) return 1;
+		return 2;
+	}
+
+	/**
+	 * Получение текста заголовка
+	 */
+	getHeadingText(heading) {
+		return heading.textContent.trim();
+	}
+
+	/**
+	 * Рендеринг HTML оглавления
+	 */
+	renderTOC() {
+		this.navList.innerHTML = "";
+
+		const renderNode = (node) => {
+			const li = document.createElement("li");
+
+			// Создаем ссылку
+			const link = document.createElement("a");
+			link.href = `#${node.id}`;
+			link.textContent = node.text;
+			link.className = "hover-underline";
+
+			li.appendChild(link);
+
+			// Если есть вложенные элементы
+			if (node.children && node.children.length > 0) {
+				const subList = document.createElement("ul");
+				node.children.forEach((child) => {
+					subList.appendChild(renderNode(child));
+				});
+				li.appendChild(subList);
+			}
+
+			return li;
+		};
+
+		// Рендерим корневые элементы (уровень 1)
+		this.tocData
+			.filter((item) => item.level === 1)
+			.forEach((item) => {
+				this.navList.appendChild(renderNode(item));
+			});
+	}
+
+	/**
+	 * Настройка секций для отслеживания
+	 */
+	setupSections() {
+		this.links.forEach((link) => {
+			const id = link.getAttribute("href").substring(1);
+			const section = document.getElementById(id);
+
+			if (section) {
+				this.sections.push({
+					id,
+					link,
+					element: section,
+					isVisible: false,
+				});
+			} else {
+				console.warn(`TableOfContents: Не найден элемент с id="${id}"`);
+			}
+		});
+	}
+
+	/**
+	 * Настройка Intersection Observer
+	 */
+	setupIntersectionObserver() {
+		if (this.sections.length === 0) {
+			console.warn("TableOfContents: Нет секций для отслеживания");
+			return;
+		}
+
+		const observerOptions = {
+			root: null,
+			rootMargin: this.options.rootMargin,
+			threshold: this.calculateThresholds(),
+		};
+
+		this.observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				const id = entry.target.id;
+				const section = this.sections.find((s) => s.id === id);
+
+				if (!section) return;
+
+				// Обновляем состояние видимости
+				section.isVisible = entry.isIntersecting;
+				section.intersectionRatio = entry.intersectionRatio;
+
+				// Добавляем/удаляем из видимых секций
+				if (entry.isIntersecting) {
+					this.visibleSections.add(id);
+				} else {
+					this.visibleSections.delete(id);
+				}
+			});
+
+			// Обновляем подсветку согласно выбранной стратегии
+			this.updateActiveLinks();
+		}, observerOptions);
+
+		// Начинаем наблюдение
+		this.sections.forEach((section) => {
+			this.observer.observe(section.element);
+		});
+	}
+
+	/**
+	 * Расчет порогов для Intersection Observer
+	 */
+	calculateThresholds() {
+		if (this.options.highlightAll) {
+			// Несколько порогов для точного отслеживания
+			return [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+		}
+		return 0; // Только факт пересечения
+	}
+
+	/**
+	 * Обновление активных ссылок
+	 */
+	updateActiveLinks() {
+		// Сбрасываем все активные классы
+		this.links.forEach((link) => link.classList.remove("active"));
+
+		// Применяем выбранную стратегию подсветки
+		switch (this.options.highlightStrategy) {
+			case "multiple":
+				this.highlightMultiple();
+				break;
+			case "closest":
+				this.highlightClosest();
+				break;
+			case "first":
+				this.highlightFirstVisible();
+				break;
+			default:
+				this.highlightMultiple();
+		}
+
+		// Прокручиваем навигацию к активным элементам
+		this.scrollToVisibleInNav();
+	}
+
+	/**
+	 * Подсветка всех видимых секций
+	 */
+	highlightMultiple() {
+		this.visibleSections.forEach((id) => {
+			const section = this.sections.find((s) => s.id === id);
+			if (section && section.intersectionRatio > 0.1) {
+				section.link.classList.add("active");
+			}
+		});
+	}
+
+	/**
+	 * Подсветка ближайшей к центру секции
+	 */
+	highlightClosest() {
+		let closestSection = null;
+		let minDistance = Infinity;
+
+		this.sections.forEach((section) => {
+			if (section.isVisible) {
+				const rect = section.element.getBoundingClientRect();
+				const viewportCenter = window.innerHeight / 2;
+				const elementCenter = rect.top + rect.height / 2;
+				const distance = Math.abs(elementCenter - viewportCenter);
+
+				if (distance < minDistance) {
+					minDistance = distance;
+					closestSection = section;
+				}
+			}
+		});
+
+		if (closestSection) {
+			closestSection.link.classList.add("active");
+		}
+	}
+
+	/**
+	 * Подсветка первой видимой секции
+	 */
+	highlightFirstVisible() {
+		// Находим первую секцию, которая видна
+		const firstVisible = this.sections.find((s) => s.isVisible);
+		if (firstVisible) {
+			firstVisible.link.classList.add("active");
+		}
+	}
+
+	/**
+	 * Прокрутка навигации к видимым элементам
+	 */
+	scrollToVisibleInNav() {
+		const firstVisible = this.sections.find((s) => s.isVisible);
+		if (firstVisible) {
+			const linkRect = firstVisible.link.getBoundingClientRect();
+			const navRect = this.navList.getBoundingClientRect();
+
+			// Если ссылка не видна в навигации - прокручиваем
+			if (
+				linkRect.top < navRect.top ||
+				linkRect.bottom > navRect.bottom
+			) {
+				firstVisible.link.scrollIntoView({
+					behavior: "smooth",
+					block: "nearest",
+				});
+			}
+		}
+	}
+
+	/**
+	 * Настройка обработчиков кликов
+	 */
+	setupClickHandlers() {
+		this.links.forEach((link) => {
+			link.addEventListener("click", (e) => {
+				e.preventDefault();
+				const targetId = link.getAttribute("href");
+				const targetElement = document.querySelector(targetId);
+
+				if (targetElement) {
+					// Используем scroll-margin-top из CSS или настройки
+					const scrollMargin =
+						parseInt(
+							window.getComputedStyle(targetElement)
+								.scrollMarginTop
+						) || this.options.scrollOffset;
+
+					window.scrollTo({
+						top: targetElement.offsetTop - scrollMargin,
+						behavior: "smooth",
+					});
+
+					// Обновляем URL
+					history.pushState(null, null, targetId);
+				}
+			});
+		});
+	}
+
+	/**
+	 * Получение информации о текущем состоянии
+	 */
+	getState() {
+		return {
+			totalSections: this.sections.length,
+			visibleSections: Array.from(this.visibleSections),
+			links: this.links.length,
+			options: this.options,
+		};
+	}
+
+	/**
+	 * Обновление настроек
+	 */
+	updateOptions(newOptions) {
+		this.options = { ...this.options, ...newOptions };
+
+		// Пересоздаем observer если изменились настройки отслеживания
+		if (
+			this.observer &&
+			(newOptions.rootMargin || newOptions.highlightAll)
+		) {
+			this.sections.forEach((section) => {
+				this.observer.unobserve(section.element);
+			});
+			this.setupIntersectionObserver();
+		}
+	}
+
+	/**
+	 * Уничтожение экземпляра
+	 */
+	destroy() {
+		if (this.observer) {
+			this.sections.forEach((section) => {
+				this.observer.unobserve(section.element);
+			});
+		}
+
+		// Удаляем обработчики событий
+		this.links.forEach((link) => {
+			const newLink = link.cloneNode(true);
+			link.parentNode.replaceChild(newLink, link);
+		});
+
+		console.log("TableOfContents: Экземпляр уничтожен");
+	}
+}
+
+// Автоматическая инициализация при загрузке страницы
+document.addEventListener("DOMContentLoaded", () => {
+	// Проверяем наличие навигации
+	const nav = document.querySelector(".article-navigation");
+	if (!nav) return;
+
+	// Определяем настройки на основе data-атрибутов
+	const autoGenerate = nav.dataset.autoGenerate === "true";
+	const highlightAll = nav.dataset.highlightAll !== "false";
+	const highlightStrategy = nav.dataset.highlightStrategy || "multiple";
+	const rootMargin = nav.dataset.rootMargin || "-10% 0px -70% 0px";
+
+	// Создаем экземпляр с настройками
+	window.articleTOC = new TableOfContents({
+		autoGenerate,
+		highlightAll,
+		highlightStrategy,
+		rootMargin,
+		scrollOffset: 100,
+	});
+
+	// Дебаг информация в консоль
+	if (window.articleTOC && window.articleTOC.getState) {
+		console.log(
+			"TableOfContents: Автоматически инициализирован",
+			window.articleTOC.getState()
+		);
+	}
+});
+
+// Экспорт для использования в модулях
+if (typeof module !== "undefined" && module.exports) {
+	module.exports = TableOfContents;
+}
+
+// Автоматическая генерация
+// data-auto-generate="true" (true/false)
+
+// Подсветка нескольких ссылок одновременно
+// data-highlight-strategy="multiple" (можно не указывать)
+// data-highlight-all="true" (true/false)
+
+// Собственный root-margin observer
+// data-root-margin="-15% 0px -65% 0px"

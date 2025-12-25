@@ -4881,7 +4881,7 @@ form .button:hover {
   position: fixed;
   top: 80px;
   left: 0;
-  z-index: 5;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -4952,12 +4952,14 @@ form .button:hover {
   border-radius: 8px;
 }
 .article-navigation .nav-list a {
+  display: block;
   color: var(--color-white);
   transition: 0.25s ease-in-out;
 }
 .article-navigation .nav-list a.active {
-  font-weight: 600;
+  color: var(--blue-main);
   text-shadow: 0 0 3px var(--blue-clouds);
+  text-decoration: none !important;
 }
 .article-navigation .nav-trigger {
   position: fixed;
@@ -12723,36 +12725,6 @@ button.next:hover {
   content: "•";
   color: var(--blue-main);
 }
-.calculator--left {
-  flex: 1;
-  max-width: 100%;
-}
-.calculator--left .accordion {
-  width: 100%;
-}
-.calculator--right {
-  flex: 1;
-  max-width: 400px;
-}
-@media (min-width: 1000px) {
-  .calculator--right.isStickyColumn {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-}
-@media (max-width: 1000px) {
-  .calculator--right {
-    max-width: 420px;
-    margin: 0 auto;
-  }
-}
-@media (max-width: 440px) {
-  .calculator--right {
-    max-width: 100%;
-    margin: 0;
-  }
-}
 .calculator-total {
   z-index: 3;
   width: 100%;
@@ -12821,6 +12793,10 @@ button.next:hover {
   display: flex;
   flex-direction: column;
   gap: 0;
+  min-height: 100%;
+  transition: min-height 0.25s ease-in-out;
+}
+.calculator-wrapper:not(.active) {
   min-height: 100vh;
 }
 .calculator-wrapper:not(.active) > * {
