@@ -605,8 +605,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			.catch((error) => {
 				const message =
 					error &&
-					typeof error.message === "string" &&
-					error.message.trim() !== ""
+						typeof error.message === "string" &&
+						error.message.trim() !== ""
 						? error.message
 						: defaultErrorMessage;
 				showNotificationPopup(message, "error");
@@ -660,7 +660,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				const sitekey =
 					item.recaptchaContainer.dataset.sitekey &&
-					item.recaptchaContainer.dataset.sitekey.length > 0
+						item.recaptchaContainer.dataset.sitekey.length > 0
 						? item.recaptchaContainer.dataset.sitekey
 						: defaultSiteKey;
 
@@ -766,8 +766,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				mapData[value].adress +
 				(mapData[value]?.schedule
 					? '<span class="separator">|</span><span> ' +
-					  mapData[value].schedule +
-					  '</span><span class="separator">|</span>'
+					mapData[value].schedule +
+					'</span><span class="separator">|</span>'
 					: '<span class="separator">|</span>');
 			container.innerHTML = mapData[value].frame;
 
@@ -834,12 +834,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			list.style.setProperty("--list-length", items.length);
 
 			items.forEach((item, index) => {
-				item.querySelector(".tech-tag").style.animation = `list-glow ${
-					items.length * interval
-				}s linear infinite`;
-				item.querySelector(".tech-tag").style.animationDelay = `${
-					index * interval
-				}s`;
+				item.querySelector(".tech-tag").style.animation = `list-glow ${items.length * interval
+					}s linear infinite`;
+				item.querySelector(".tech-tag").style.animationDelay = `${index * interval
+					}s`;
 			});
 		}
 	});
@@ -1007,6 +1005,39 @@ function tabSlidersStart() {
 			startAutoScroll();
 		});
 
+		function handleTouchStart(evt) {
+			const firstTouch = evt.touches[0];
+			xDown = firstTouch.clientX;
+			yDown = firstTouch.clientY;
+		}
+
+		function handleTouchMove(evt) {
+			if (!xDown || !yDown) {
+				return;
+			}
+
+			const xUp = evt.touches[0].clientX;
+			const yUp = evt.touches[0].clientY;
+
+			const xDiff = xDown - xUp;
+			const yDiff = yDown - yUp;
+
+			if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 20) {
+				evt.preventDefault();
+				if (xDiff > 0) {
+					goNext();
+				} else {
+					goPrev();
+				}
+			} else {
+				return;
+			}
+			xDown = null;
+			yDown = null;
+		}
+		slidesContainer.addEventListener("touchstart", handleTouchStart, false);
+		slidesContainer.addEventListener("touchmove", handleTouchMove, false);
+
 		// Инициализация
 		checkOrientation();
 		updateSlider(true);
@@ -1074,8 +1105,8 @@ const SliderInIt = () => {
 							: "block";
 					nextButton.style.display =
 						currentIndex === maxIndex ||
-						maxIndex <= 0 ||
-						cards.length <= slidesPerPage
+							maxIndex <= 0 ||
+							cards.length <= slidesPerPage
 							? "none"
 							: "block";
 
@@ -1737,32 +1768,24 @@ function sliderInitialize() {
 
 				prevBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `-100%` : `0`
-						}); left: ${
-							window.innerWidth > 600 ? `25px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+							}); left: ${window.innerWidth > 600 ? `25px` : `-5px`
+							}; color: var(--blue-main);`;
 					} else {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `-100%` : `0`
-						}); left: ${
-							window.innerWidth > 600 ? `15px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+							}); left: ${window.innerWidth > 600 ? `15px` : `-5px`
+							}; color: var(--blue-main);`;
 					}
 				});
 				nextBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `100%` : `0`
-						}); right: ${
-							window.innerWidth > 600 ? `25px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+							}); right: ${window.innerWidth > 600 ? `25px` : `-5px`
+							}; color: var(--blue-main);`;
 					} else {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `100%` : `0`
-						}); right: ${
-							window.innerWidth > 600 ? `15px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+							}); right: ${window.innerWidth > 600 ? `15px` : `-5px`
+							}; color: var(--blue-main);`;
 					}
 				});
 			};
@@ -3135,7 +3158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					}
 					if (
 						counter.elementref.dataset?.intendfor ===
-							"design-landing" &&
+						"design-landing" &&
 						counter.elementref.value < 1
 					) {
 						counter.elementref.value = 1;
