@@ -845,6 +845,218 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // SLIDER LEGACY START
 // SLIDER START
+// function tabSlidersStart() {
+// 	try {
+// 		const slidesContainer = document.querySelector(".slides");
+// 		const prevBtn = document.querySelector(".prev");
+// 		const nextBtn = document.querySelector(".next");
+// 		const originalSlides = document.querySelectorAll(".slide");
+
+// 		if (!slidesContainer || !originalSlides.length) {
+// 			return;
+// 		}
+
+// 		// Делегирование событий для кликов по слайдам
+// 		slidesContainer.addEventListener("click", (e) => {
+// 			const slide = e.target.closest(".slide");
+// 			if (slide) {
+// 				// Получаем индекс оригинального слайда
+// 				const allSlides = slidesContainer.querySelectorAll(".slide");
+// 				const slideIndex = Array.from(allSlides).indexOf(slide);
+// 				const realIndex =
+// 					(slideIndex - 2 + originalSlides.length) %
+// 					originalSlides.length;
+
+// 				// Вызываем обработчик события для слайда
+// 				handleSlideClick(realIndex, slide);
+// 			}
+// 		});
+
+// 		// Функция для обработки кликов по слайдам
+// 		function handleSlideClick(index, slideElement) {
+// 			// console.log("Clicked slide:", index);
+// 			index === 0 ? openPopup(slideElement.dataset.popup) : "";
+// 		}
+
+// 		// Создаем клоны для плавных переходов
+// 		const firstClone = originalSlides[0].cloneNode(true);
+// 		const secondClone = originalSlides[1].cloneNode(true);
+// 		const lastClone =
+// 			originalSlides[originalSlides.length - 1].cloneNode(true);
+// 		const preLastClone =
+// 			originalSlides[originalSlides.length - 2].cloneNode(true);
+
+// 		// Добавляем клоны в DOM (2 в начале и 2 в конце)
+// 		slidesContainer.insertBefore(lastClone, originalSlides[0]);
+// 		slidesContainer.insertBefore(preLastClone, originalSlides[0]);
+// 		slidesContainer.appendChild(firstClone);
+// 		slidesContainer.appendChild(secondClone);
+
+// 		// Получаем все слайды (оригиналы + клоны)
+// 		const allSlides = slidesContainer.querySelectorAll(".slide");
+// 		const realSlideCount = originalSlides.length;
+// 		let currentIndex = 2; // Начинаем с первого оригинального слайда
+
+// 		// Определяем ориентацию слайдера
+// 		let isHorizontal = false;
+// 		const checkOrientation = () => {
+// 			requestAnimationFrame(() => {
+// 				const newIsHorizontal = window.innerWidth <= 600;
+// 				if (newIsHorizontal !== isHorizontal) {
+// 					isHorizontal = newIsHorizontal;
+// 					slidesContainer.style.flexDirection = isHorizontal
+// 						? "row"
+// 						: "column";
+// 					updateSlider(true); // Принудительное обновление без анимации
+// 				}
+// 			});
+// 		};
+
+// 		// Настройки автопрокрутки
+// 		let isAutoScrollPaused = false;
+// 		let autoScrollIntervalId;
+
+// 		// Функция обновления позиции слайдера
+// 		function updateSlider(instant = false) {
+// 			requestAnimationFrame(() => {
+// 				const slideSize = isHorizontal
+// 					? originalSlides[0].offsetWidth
+// 					: originalSlides[0].offsetHeight;
+
+// 				const translateValue = isHorizontal
+// 					? `translateX(-${currentIndex * slideSize}px)`
+// 					: `translateY(-${currentIndex * slideSize}px)`;
+
+// 				if (instant) {
+// 					slidesContainer.style.transition = "none";
+// 				} else {
+// 					slidesContainer.style.transition = "transform 0.5s ease";
+// 				}
+
+// 				slidesContainer.style.transform = translateValue;
+// 			});
+// 		}
+
+// 		// Обработчики навигации
+// 		function goNext() {
+// 			clearInterval(autoScrollIntervalId);
+// 			currentIndex++;
+// 			updateSlider();
+
+// 			// Если достигли конца (последний клон), мгновенно переходим к началу
+// 			if (currentIndex >= allSlides.length - 2) {
+// 				setTimeout(() => {
+// 					currentIndex = 2;
+// 					updateSlider(true);
+// 				}, 500);
+// 			}
+
+// 			resetAutoScroll();
+// 		}
+
+// 		function goPrev() {
+// 			clearInterval(autoScrollIntervalId);
+// 			currentIndex--;
+// 			updateSlider();
+
+// 			// Если достигли начала (первый клон), мгновенно переходим к концу
+// 			if (currentIndex <= 1) {
+// 				setTimeout(() => {
+// 					currentIndex = allSlides.length - 3;
+// 					updateSlider(true);
+// 				}, 500);
+// 			}
+
+// 			resetAutoScroll();
+// 		}
+
+// 		// Управление автопрокруткой
+// 		function startAutoScroll() {
+// 			if (isAutoScrollPaused) return;
+// 			autoScrollIntervalId = setInterval(goNext, 3000);
+// 		}
+
+// 		function stopAutoScroll() {
+// 			clearInterval(autoScrollIntervalId);
+// 		}
+
+// 		function resetAutoScroll() {
+// 			stopAutoScroll();
+// 			startAutoScroll();
+// 		}
+
+// 		// Обработчики событий
+// 		nextBtn.addEventListener("click", goNext);
+// 		prevBtn.addEventListener("click", goPrev);
+
+// 		prevBtn.setAttribute("aria-label", "Предыдущий слайд");
+// 		prevBtn.setAttribute("role", "button");
+
+// 		nextBtn.setAttribute("aria-label", "Следующий слайд");
+// 		nextBtn.setAttribute("role", "button");
+
+// 		slidesContainer.addEventListener("mouseenter", () => {
+// 			isAutoScrollPaused = true;
+// 			stopAutoScroll();
+// 		});
+
+// 		slidesContainer.addEventListener("mouseleave", () => {
+// 			isAutoScrollPaused = false;
+// 			startAutoScroll();
+// 		});
+
+// 		function handleTouchStart(evt) {
+// 			const firstTouch = evt.touches[0];
+// 			xDown = firstTouch.clientX;
+// 			yDown = firstTouch.clientY;
+// 		}
+
+// 		function handleTouchMove(evt) {
+// 			if (!xDown || !yDown) {
+// 				return;
+// 			}
+
+// 			const xUp = evt.touches[0].clientX;
+// 			const yUp = evt.touches[0].clientY;
+
+// 			const xDiff = xDown - xUp;
+// 			const yDiff = yDown - yUp;
+
+// 			if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 20) {
+// 				evt.preventDefault();
+// 				if (xDiff > 0) {
+// 					goNext();
+// 				} else {
+// 					goPrev();
+// 				}
+// 			} else {
+// 				return;
+// 			}
+// 			xDown = null;
+// 			yDown = null;
+// 		}
+// 		slidesContainer.addEventListener("touchstart", handleTouchStart, false);
+// 		slidesContainer.addEventListener("touchmove", handleTouchMove, false);
+
+// 		// Инициализация
+// 		checkOrientation();
+// 		updateSlider(true);
+// 		startAutoScroll();
+
+// 		// Обработка ресайза с троттлингом
+// 		let resizeTimeout;
+// 		window.addEventListener("resize", () => {
+// 			clearTimeout(resizeTimeout);
+// 			resizeTimeout = setTimeout(() => {
+// 				checkOrientation();
+// 				updateSlider();
+// 			}, 100);
+// 		});
+// 	} catch (err) {
+// 		console.error("Slider error:", err);
+// 	}
+// }
+
 function tabSlidersStart() {
 	try {
 		const slidesContainer = document.querySelector(".slides");
@@ -900,6 +1112,7 @@ function tabSlidersStart() {
 		// Определяем ориентацию слайдера
 		let isHorizontal = false;
 		const checkOrientation = () => {
+			// Используем requestAnimationFrame для безопасного доступа к свойствам DOM
 			requestAnimationFrame(() => {
 				const newIsHorizontal = window.innerWidth <= 600;
 				if (newIsHorizontal !== isHorizontal) {
@@ -914,14 +1127,23 @@ function tabSlidersStart() {
 
 		// Настройки автопрокрутки
 		let isAutoScrollPaused = false;
-		let autoScrollIntervalId;
+		let autoScrollIntervalId = null;
+		let isAnimating = false;
 
 		// Функция обновления позиции слайдера
 		function updateSlider(instant = false) {
+			// Используем requestAnimationFrame для синхронизации с браузером
 			requestAnimationFrame(() => {
+				// Проверка на видимость элемента
+				if (!slidesContainer.offsetParent) return;
+
+				// Получаем актуальные размеры слайда
 				const slideSize = isHorizontal
 					? originalSlides[0].offsetWidth
 					: originalSlides[0].offsetHeight;
+
+				// Если размеры нулевые (слайдер скрыт), не обновляем
+				if (!slideSize) return;
 
 				const translateValue = isHorizontal
 					? `translateX(-${currentIndex * slideSize}px)`
@@ -939,9 +1161,16 @@ function tabSlidersStart() {
 
 		// Обработчики навигации
 		function goNext() {
+			if (isAnimating) return;
+			isAnimating = true;
+
 			clearInterval(autoScrollIntervalId);
 			currentIndex++;
 			updateSlider();
+
+			setTimeout(() => {
+				isAnimating = false;
+			}, 500);
 
 			// Если достигли конца (последний клон), мгновенно переходим к началу
 			if (currentIndex >= allSlides.length - 2) {
@@ -955,9 +1184,16 @@ function tabSlidersStart() {
 		}
 
 		function goPrev() {
+			if (isAnimating) return;
+			isAnimating = true;
+
 			clearInterval(autoScrollIntervalId);
 			currentIndex--;
 			updateSlider();
+
+			setTimeout(() => {
+				isAnimating = false;
+			}, 500);
 
 			// Если достигли начала (первый клон), мгновенно переходим к концу
 			if (currentIndex <= 1) {
@@ -972,17 +1208,27 @@ function tabSlidersStart() {
 
 		// Управление автопрокруткой
 		function startAutoScroll() {
-			if (isAutoScrollPaused) return;
+			if (isAutoScrollPaused || autoScrollIntervalId) return;
+			// Очищаем предыдущий интервал перед установкой нового
+			clearInterval(autoScrollIntervalId);
 			autoScrollIntervalId = setInterval(goNext, 3000);
 		}
 
 		function stopAutoScroll() {
-			clearInterval(autoScrollIntervalId);
+			if (autoScrollIntervalId) {
+				clearInterval(autoScrollIntervalId);
+				autoScrollIntervalId = null; // сбрасываем идентификатор
+			}
 		}
 
 		function resetAutoScroll() {
 			stopAutoScroll();
-			startAutoScroll();
+			// Добавить задержку перед запуском нового интервала
+			setTimeout(() => {
+				if (!isAutoScrollPaused) {
+					startAutoScroll();
+				}
+			}, 10);
 		}
 
 		// Обработчики событий
@@ -1004,6 +1250,22 @@ function tabSlidersStart() {
 			isAutoScrollPaused = false;
 			startAutoScroll();
 		});
+
+		// Обработчики для управления автопрокруткой при потере фокуса окна/вкладки
+		window.addEventListener("blur", stopAutoScroll);
+		window.addEventListener("focus", startAutoScroll);
+
+		// Обработчик для события visibilitychange (переключение вкладок)
+		document.addEventListener("visibilitychange", () => {
+			if (document.hidden) {
+				stopAutoScroll();
+			} else {
+				startAutoScroll();
+			}
+		});
+
+		let xDown = null;
+		let yDown = null;
 
 		function handleTouchStart(evt) {
 			const firstTouch = evt.touches[0];
@@ -1044,13 +1306,24 @@ function tabSlidersStart() {
 		startAutoScroll();
 
 		// Обработка ресайза с троттлингом
-		let resizeTimeout;
+		let isResizing = false;
 		window.addEventListener("resize", () => {
+			if (isResizing) return;
+			isResizing = true;
+
+			stopAutoScroll(); // останавливаем перед ресайзом
+
 			clearTimeout(resizeTimeout);
 			resizeTimeout = setTimeout(() => {
 				checkOrientation();
-				updateSlider();
-			}, 100);
+				updateSlider(true);
+
+				// Запускаем с задержкой
+				setTimeout(() => {
+					startAutoScroll();
+					isResizing = false;
+				}, 300);
+			}, 150);
 		});
 	} catch (err) {
 		console.error("Slider error:", err);
