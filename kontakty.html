@@ -294,15 +294,14 @@
                     Наш офис в Воронеже
                 </h3>
 
-                <div class="sites-reviews-slider" data-slider="reviews-slider" id="office-slider"
-                    style="transform: translateX(0px);">
-                    <div class="card card--photo active">
+                <div class="sites-reviews-slider" data-slider="reviews-slider" id="office-slider">
+                    <div class="card card--photo active" data-popup="photo-view">
                         <img src="./src/images/office-photo-1.webp" alt="">
                     </div>
-                    <div class="card card--photo active">
+                    <div class="card card--photo active" data-popup="photo-view">
                         <img src="./src/images/office-photo-2.webp" alt="">
                     </div>
-                    <div class="card card--photo">
+                    <div class="card card--photo" data-popup="photo-view">
                         <img src="./src/images/office-photo-3.webp" alt="">
                     </div>
                 </div>
@@ -810,6 +809,13 @@
             <div class="popup-body">
                 <img src="./src/images/accreditation.webp" alt="accrediattion">
 
+            </div>
+        </div>
+    </dialog>
+    <dialog class="popup popup-gallery" id="photo-view">
+        <div class="popup-wrapper">
+            <div class="popup-body">
+                <img src="" alt="Фото офиса">
             </div>
         </div>
     </dialog>

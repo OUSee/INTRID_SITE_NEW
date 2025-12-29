@@ -954,9 +954,14 @@ th {
 }
 [data-slider]#office-slider > *, [data-slider]#testimonials-slider > * {
   flex: 1 1 0%;
-  min-width: calc(50% - 16px);
+  min-width: calc(33.333333% - 24px);
   width: 100%;
   opacity: 0;
+}
+@media (max-width: 1000px) {
+  [data-slider]#office-slider > *, [data-slider]#testimonials-slider > * {
+    min-width: calc(50% - 16px);
+  }
 }
 @media (max-width: 1000px) {
   [data-slider]#office-slider > *, [data-slider]#testimonials-slider > * {
@@ -6245,7 +6250,11 @@ button:hover img,
   overflow: hidden;
 }
 .card--photo {
+  background: unset;
+  border: 0;
   padding: 0px;
+  aspect-ratio: 16/9;
+  cursor: pointer;
 }
 .card--photo::before {
   content: "d";

@@ -165,9 +165,13 @@ $tab-main-count: 3;
 
 		& > * {
 			flex: 1 1 0%;
-			min-width: calc(50% - 16px);
+			min-width: calc(33.333333% - 24px);
 			width: 100%;
 			opacity: 0;
+
+			@media (max-width: 1000px) {
+				min-width: calc(50% - 16px);
+			}
 
 			@media (max-width: 1000px) {
 				min-width: calc(50% - 6px);
@@ -5306,7 +5310,11 @@ button:hover,
 	}
 
 	&--photo {
+		background: unset;
+		border: 0;
 		padding: 0px;
+		aspect-ratio: 16 / 9;
+		cursor: pointer;
 
 		&::before {
 			content: "\64";
