@@ -963,7 +963,7 @@ th {
     min-width: calc(50% - 16px);
   }
 }
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   [data-slider]#office-slider > *, [data-slider]#testimonials-slider > * {
     min-width: calc(50% - 6px);
   }
@@ -2880,24 +2880,24 @@ ol li > ol {
 }
 @media (max-width: 1000px) {
   .flex-layout--split > .right.fixed-bottom {
-    position: sticky !important;
-    bottom: 0 !important;
-    top: calc(100vh - 310px) !important;
+    position: sticky;
+    top: calc(100vh - 310px);
+    bottom: 0;
+    width: calc(100% + 80px);
+    max-width: none;
+    margin-left: -40px;
   }
 }
-@media (max-width: 1000px) and (max-width: 900px) {
+@media (max-width: 600px) {
   .flex-layout--split > .right.fixed-bottom {
-    top: calc(100vh - 370px) !important;
+    width: calc(100% + 40px);
+    margin-left: -20px;
   }
 }
-@media (max-width: 1000px) and (max-width: 580px) {
+@media (max-width: 440px) {
   .flex-layout--split > .right.fixed-bottom {
-    top: calc(100vh - 460px) !important;
-  }
-}
-@media (max-width: 1000px) and (max-width: 420px) {
-  .flex-layout--split > .right.fixed-bottom {
-    top: calc(100vh - 600px) !important;
+    width: calc(100% + 20px);
+    margin-left: -10px;
   }
 }
 .flex-row {
@@ -2941,13 +2941,18 @@ ol li > ol {
   }
 }
 @media (max-width: 1000px) {
+  .flex-lg-row {
+    flex-direction: row !important;
+  }
+}
+@media (max-width: 1000px) {
   .flex-lg-column {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 }
 @media (max-width: 1000px) {
   .flex-lg-wrap {
-    flex-wrap: wrap;
+    flex-wrap: wrap !important;
   }
 }
 @media (max-width: 1200px) {
@@ -3017,6 +3022,11 @@ ol li > ol {
 @media (max-width: 600px) {
   .gap-sm-24 {
     gap: 24px;
+  }
+}
+@media (max-width: 1000px) {
+  .gap-lg-8 {
+    gap: 8px !important;
   }
 }
 @media (max-width: 1000px) {
@@ -12739,27 +12749,6 @@ button.next:hover {
   border-top-left-radius: 39px;
   border-top-right-radius: 39px;
   transition: all 0s;
-}
-.calculator-total.fixed-bottom {
-  transition: all 0s;
-  position: sticky !important;
-  bottom: 0 !important;
-  top: calc(100vh - 310px) !important;
-}
-@media (max-width: 900px) {
-  .calculator-total.fixed-bottom {
-    top: calc(100vh - 370px) !important;
-  }
-}
-@media (max-width: 580px) {
-  .calculator-total.fixed-bottom {
-    top: calc(100vh - 460px) !important;
-  }
-}
-@media (max-width: 420px) {
-  .calculator-total.fixed-bottom {
-    top: calc(100vh - 600px) !important;
-  }
 }
 .calculator-total:not(.show) {
   max-height: 0;

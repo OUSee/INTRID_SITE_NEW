@@ -281,6 +281,13 @@
                 <div id="calculator" class="calculator-calculator">
                     <div class="flex-layout flex-layout--split">
                         <div class="left">
+                            <div class="d-flex mobile-visible flex-column align-center">
+                                <p>
+                                    Хотите узнать подробнее, что включает в себя каждый модуль?
+                                </p>
+                                <a href="/modules-help" class="button-link">Справка по функционалу <i class="icon-arrow_wide"></i></a>
+                            </div>
+
                             <div class="accordion">
                                 <!-- types packages-selector -->
                                 <div class="accordion-item">
@@ -1061,8 +1068,8 @@
                                             <label for="type-unique">
                                                 <p>
                                                     Уникальная разработка (Например:&nbsp;<a
-                                                        class="d-inline hover-underline" href="./crm-erp.html"
-                                                        title="CRM">CRM</a>,&nbsp;<a class="d-inline hover-underline"
+                                                        class="d-inline color-white" href="./crm-erp.html"
+                                                        title="CRM">CRM</a>,&nbsp;<a class="d-inline color-white"
                                                         href="./integration.html" title="CRM">интеграция
                                                         IT-систем</a>&nbsp;
                                                     и т.д.)
@@ -1214,12 +1221,12 @@
                                         </div>
                                         <ul class="calculator-list">
                                             <li>
-                                                <a href="./portfolio/design.html" class="hover-underline">
+                                                <a href="./portfolio/design.html" class="color-white">
                                                     Примеры разработанных нашей компанией логотипов и брендов
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./logo.html" class="hover-underline">
+                                                <a href="./logo.html" class="color-white">
                                                     Подробнее об услуге по разработке логотипа и фирменного стиля
                                                 </a>
                                             </li>
@@ -1769,7 +1776,7 @@
                                                 <p>
                                                     Интерактивный калькулятор или конструктор (пример:&nbsp;<a
                                                         href="https://pk-rokos.ru/kalkulator-plastic-okon"
-                                                        class="d-inline hover-underline" target="_blank">пластиковые
+                                                        class="d-inline color-white" target="_blank">пластиковые
                                                         окна</a>)
                                                     <span class="tooltip"
                                                         data-tooltip="Расчет значений по заданным параметрам, например стоимость окна в зависимости от размеров, материалов и т.д."><i
@@ -2260,7 +2267,9 @@
                                         </div>
                                         <ul class="calculator-list">
                                             <li>
-                                                <a href="./seo.html" class="hover-underline d-inline">Узнайте больше</a>
+                                                <a href="./seo.html" class="color-white d-inline">
+                                                    Узнайте больше
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -2277,15 +2286,23 @@
                                             <input type="checkbox" class="toggle-checkbox" id="extra-domain"
                                                 name="extra-domain" data-price="1500">
                                             <label for="extra-domain">
-                                                Подбор и регистрация домена
+                                                <p>
+                                                    <a href="/domain" target="_blank">
+                                                        Подбор и регистрация домена
+                                                    </a>
+                                                </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="extra-hosting"
                                                 name="extra-hosting" data-price="3000">
                                             <label for="extra-hosting">
-                                                <a href="./hosting-tarify.html" class="hover-underline">Качественный
-                                                    хостинг</a>
+                                                <p>
+                                                    <a href="/hosting-tarify" target="_blank">
+                                                        Качественный
+                                                        хостинг
+                                                    </a>
+                                                </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
@@ -2293,10 +2310,13 @@
                                                 name="extra-ssl" data-price="2500">
                                             <label for="extra-ssl">
                                                 <p>
-                                                    Установка / настройка SSL
+                                                    <a href="/ssl">
+                                                        Установка / настройка SSL
+                                                    </a>
                                                     <span class="tooltip"
-                                                        data-tooltip="SSL - Безопасное соединение между браузером пользователя и сервером. При использовании SSL-протокола информация передается в закодированном виде по HTTPS. Для работы SSL-протокола требуется, чтобы на сервере был установлен SSL-сертификат."><i
-                                                            class="icon-tooltip"></i></span>
+                                                        data-tooltip="SSL - Безопасное соединение между браузером пользователя и сервером. При использовании SSL-протокола информация передается в закодированном виде по HTTPS. Для работы SSL-протокола требуется, чтобы на сервере был установлен SSL-сертификат.">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
                                                 </p>
                                             </label>
                                         </div>
@@ -2307,22 +2327,24 @@
                         </div>
                         <div class="right fixed-bottom">
                             <div class="position-sticky d-flex flex-column align-center gap-16 text-center">
-                                <div id="calculator-total" class="card w-100">
-                                    <div class="d-flex flex-column align-center">
-                                        <p class="title_h4 m-0">
-                                            Стоимость сайта
-                                            <span class="mobile-hidden title_h4">
-                                                по выбранным параметрам
-                                            </span>
-                                            :
-                                        </p>
-                                        <p class="title_h1 m-0 color-blue">
-                                            <span class="color-blue title_h1 w-fit" id="calculator-total-target">
-                                                0
-                                            </span>
-
-                                            &nbsp;₽
-                                        </p>
+                                <div id="calculator-total" class="card small w-100">
+                                    <div class="d-flex flex-column align-center gap-0 gap-lg-8">
+                                        <div class="d-flex flex-column flex-lg-row align-center gap-8">
+                                            <p class="title_h4 m-0 ml-auto mr-auto">
+                                                <span>Стоимость сайта</span>
+                                                <span class="d-lg-none title_h4">
+                                                    по выбранным параметрам
+                                                </span>
+                                                <span>:</span>
+                                            </p>
+                                            <p class="title_h1 m-0 color-blue">
+                                                <span class="color-blue title_h1 w-fit" id="calculator-total-target">
+                                                    0
+                                                </span>
+                                            
+                                                &nbsp;₽
+                                            </p>
+                                        </div>
                                         <div class="d-flex flex-row flex-wrap gap-8 w-100">
                                             <button id="reset-options-btn" class="button button-white"><i
                                                     class="icon-reset"></i></button>
@@ -2334,7 +2356,7 @@
                                     </div>
                                 </div>
 
-                                <div class="d-flex flex-column align-center">
+                                <div class="d-flex d-lg-none flex-column align-center">
                                     <p>
                                         Хотите узнать подробнее, что включает в себя каждый модуль?
                                     </p>

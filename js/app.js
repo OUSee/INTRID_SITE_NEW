@@ -4710,6 +4710,7 @@ let photoCards = document?.querySelectorAll(".card--photo");
 if (photoCards.length > 0) {
 	photoCards.forEach((item) => {
 		item.addEventListener("click", (e) => {
+			openPopup("photo-view");
 			officeImage(e.currentTarget);
 		});
 	});
