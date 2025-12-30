@@ -3620,9 +3620,9 @@ form .button:hover {
   border: 1px solid var(--color-white);
   font-size: 16px;
   line-height: 1.25;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border: 0;
+  padding: 0;
+  border: 1px dashed;
+  overflow: hidden;
   cursor: pointer;
 }
 @media (max-width: 1000px) {
@@ -3637,15 +3637,57 @@ form .button:hover {
 .input-file::placeholder {
   color: var(--color-grey);
 }
-.input-file > label {
+.input-file .file-drop-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  min-height: 5em;
+  padding: 4px 22px;
+  transition: background-color 0.25s ease-in-out;
+}
+.input-file .file-drop-area.drag-over {
+  background-color: rgba(17, 52, 56, 0.25);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+}
+.input-file .file-drop-area > label {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   overflow: visible;
 }
-.input-file > label > span {
+.input-file .file-drop-area > label > img {
+  display: initial;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  vertical-align: middle;
+  opacity: 0.75;
+  margin-left: 4px;
+}
+.input-file .file-drop-area > label > input {
+  left: 0;
+}
+.input-file .file-drop-area > label > span {
+  font-size: inherit;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-decoration-style: dashed;
   text-decoration-skip-ink: none;
   text-underline-offset: 4px;
+}
+.input-file .drag-drop-hint {
+  font-size: 14px;
+  color: var(--color-grey);
+}
+@media (max-width: 1000px) {
+  .input-file .drag-drop-hint {
+    font-size: 12px;
+  }
 }
 .input-file input[type=file] {
   position: absolute;
@@ -3654,26 +3696,6 @@ form .button:hover {
   display: block;
   width: 0;
   height: 0;
-}
-.input-file > label {
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.input-file > label > span {
-  font-size: inherit;
-  opacity: 0.75;
-}
-.input-file > label > img {
-  display: initial;
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-  vertical-align: middle;
-  opacity: 0.75;
-  margin-left: 4px;
 }
 .input-file .file-list {
   display: flex;
@@ -3684,6 +3706,24 @@ form .button:hover {
   margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
+}
+@supports (-moz-appearance: none) {
+  .input-file .file-list {
+    scrollbar-color: var(--blue-main) var(--blue-light-bg);
+    scrollbar-width: thin;
+  }
+}
+.input-file .file-list::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+}
+.input-file .file-list::-webkit-scrollbar-track {
+  background: var(--blue-light-bg);
+  border-radius: 8px;
+}
+.input-file .file-list::-webkit-scrollbar-thumb {
+  background: var(--blue-main);
+  border-radius: 8px;
 }
 .input-file .file-item {
   display: flex;

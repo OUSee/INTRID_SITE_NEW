@@ -103,6 +103,28 @@
 	}
 }
 
+@mixin webkit_scrollbar_input {
+	@supports (-moz-appearance: none) {
+		scrollbar-color: var(--blue-main) var(--blue-light-bg);
+		scrollbar-width: thin;
+	}
+
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 6px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--blue-light-bg);
+		border-radius: 8px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--blue-main);
+		border-radius: 8px;
+	}
+}
+
 @mixin blockVideo {
 	width: 100%;
 	min-height: unset;
@@ -185,6 +207,70 @@
 
 	&::placeholder {
 		color: var(--color-grey);
+	}
+}
+
+@mixin input-drag-n-drop {
+	padding: 0;
+	border: 1px dashed;
+	overflow: hidden;
+
+	& .file-drop-area {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+		width: 100%;
+		min-height: 5em;
+		padding: 4px 22px;
+		transition: background-color 0.25s ease-in-out;
+
+		&.drag-over {
+			background-color: rgba(17, 52, 56, 0.25);
+			box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+		}
+
+		& > label {
+			width: 100%;
+			text-align: center;
+			cursor: pointer;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: visible;
+
+			& > img {
+				display: initial;
+				width: 16px;
+				height: 16px;
+				object-fit: contain;
+				vertical-align: middle;
+				opacity: 0.75;
+				margin-left: 4px;
+			}
+
+			& > input {
+				left: 0;
+			}
+
+			& > span {
+				font-size: inherit;
+				text-decoration: underline;
+				text-decoration-thickness: 1px;
+				text-decoration-style: dashed;
+				text-decoration-skip-ink: none;
+				text-underline-offset: 4px;
+			}
+		}
+	}
+
+	& .drag-drop-hint {
+		font-size: 14px;
+		color: var(--color-grey);
+
+		@media (max-width: 1000px) {
+			font-size: 12px;
+		}
 	}
 }
 

@@ -3621,120 +3621,313 @@ triggerButtons?.forEach((button) => {
 });
 
 // input type file logic
-const inputFiles = document.querySelectorAll(".input-file input[type=file]");
+// const inputFiles = document.querySelectorAll(".input-file input[type=file]");
 
-if (inputFiles.length > 0) {
-	inputFiles.forEach((input) => {
-		const fileListContainer = input
-			.closest(".input-file")
-			.querySelector(".file-list");
+// if (inputFiles.length > 0) {
+// 	inputFiles.forEach((input) => {
+// 		const fileListContainer = input
+// 			.closest(".input-file")
+// 			.querySelector(".file-list");
 
-		fileListContainer.style.display = "none";
+// 		fileListContainer.style.display = "none";
 
-		// Массив для хранения всех выбранных файлов
-		let allFiles = [];
+// 		// Массив для хранения всех выбранных файлов
+// 		let allFiles = [];
 
-		// Функция для проверки дубликатов
-		const isDuplicateFile = (newFile, existingFiles) => {
-			return existingFiles.some(
-				(existingFile) =>
-					existingFile.name === newFile.name &&
-					existingFile.size === newFile.size &&
-					existingFile.lastModified === newFile.lastModified
-			);
-		};
+// 		// Функция для проверки дубликатов
+// 		const isDuplicateFile = (newFile, existingFiles) => {
+// 			return existingFiles.some(
+// 				(existingFile) =>
+// 					existingFile.name === newFile.name &&
+// 					existingFile.size === newFile.size &&
+// 					existingFile.lastModified === newFile.lastModified
+// 			);
+// 		};
 
-		// Функция обновления отображения файлов
-		const updateFileDisplay = () => {
-			fileListContainer.innerHTML = ""; // Очищаем список
+// 		// Функция обновления отображения файлов
+// 		const updateFileDisplay = () => {
+// 			fileListContainer.innerHTML = ""; // Очищаем список
 
-			if (allFiles.length === 0) {
-				fileListContainer.style.display = "none";
-				return;
-			}
+// 			if (allFiles.length === 0) {
+// 				fileListContainer.style.display = "none";
+// 				return;
+// 			}
 
-			fileListContainer.style.display = "";
+// 			fileListContainer.style.display = "";
 
-			allFiles.forEach((file, index) => {
-				const fileItem = document.createElement("div");
-				fileItem.classList.add("file-item");
+// 			allFiles.forEach((file, index) => {
+// 				const fileItem = document.createElement("div");
+// 				fileItem.classList.add("file-item");
 
-				// Создаем элемент span для названия файла
-				const fileNameSpan = document.createElement("span");
-				fileNameSpan.textContent = file.name;
-				fileNameSpan.style.cursor = "pointer";
+// 				// Создаем элемент span для названия файла
+// 				const fileNameSpan = document.createElement("span");
+// 				fileNameSpan.textContent = file.name;
+// 				fileNameSpan.style.cursor = "pointer";
 
-				// Добавляем обработчик события для открытия файла
-				fileNameSpan.addEventListener("click", () => {
-					const reader = new FileReader();
-					reader.onload = (e) => {
-						const fileUrl = e.target.result;
-						window.open(fileUrl, "_blank");
-					};
-					reader.readAsDataURL(file);
+// 				// Добавляем обработчик события для открытия файла
+// 				fileNameSpan.addEventListener("click", () => {
+// 					const reader = new FileReader();
+// 					reader.onload = (e) => {
+// 						const fileUrl = e.target.result;
+// 						window.open(fileUrl, "_blank");
+// 					};
+// 					reader.readAsDataURL(file);
+// 				});
+
+// 				const removeButton = document.createElement("span");
+// 				removeButton.textContent = "✖";
+// 				removeButton.classList.add("remove-file");
+// 				removeButton.dataset.index = index;
+
+// 				fileItem.appendChild(fileNameSpan);
+// 				fileItem.appendChild(removeButton);
+// 				fileListContainer.appendChild(fileItem);
+// 			});
+// 		};
+
+// 		// Функция обновления input.files
+// 		const updateInputFiles = () => {
+// 			const dataTransfer = new DataTransfer();
+// 			allFiles.forEach((file) => {
+// 				dataTransfer.items.add(file);
+// 			});
+// 			input.files = dataTransfer.files;
+// 		};
+
+// 		input.addEventListener("change", function () {
+// 			const newFiles = Array.from(this.files);
+// 			let hasNewFiles = false;
+
+// 			// Проверяем каждый новый файл на дубликаты
+// 			newFiles.forEach((file) => {
+// 				if (!isDuplicateFile(file, allFiles)) {
+// 					allFiles.push(file);
+// 					hasNewFiles = true;
+// 				} else {
+// 					console.log(`Файл "${file.name}" уже добавлен`);
+// 					// Можно показать уведомление пользователю
+// 				}
+// 			});
+
+// 			if (hasNewFiles) {
+// 				// Обновляем input.files
+// 				updateInputFiles();
+
+// 				// Обновляем отображение
+// 				updateFileDisplay();
+// 			}
+
+// 			// Сбрасываем значение input, чтобы можно было выбрать тот же файл повторно
+// 			this.value = "";
+// 		});
+
+// 		fileListContainer.addEventListener("click", function (e) {
+// 			if (e.target.classList.contains("remove-file")) {
+// 				const index = parseInt(e.target.dataset.index);
+// 				allFiles.splice(index, 1); // Удаляем файл из массива
+
+// 				// Обновляем input.files
+// 				updateInputFiles();
+
+// 				// Обновляем отображение файлов
+// 				updateFileDisplay();
+// 			}
+// 		});
+// 	});
+// }
+
+// input type file logic with drag-n-drop
+document.addEventListener("DOMContentLoaded", function () {
+	const inputFiles = document.querySelectorAll(
+		".input-file input[type=file]"
+	);
+
+	if (inputFiles.length > 0) {
+		inputFiles.forEach((input) => {
+			const fileDropArea = input
+				.closest(".input-file")
+				.querySelector(".file-drop-area");
+			const fileListContainer = fileDropArea.querySelector(".file-list");
+
+			fileListContainer.style.display = "none";
+
+			// Массив для хранения всех выбранных файлов
+			let allFiles = [];
+
+			// Функция для проверки дубликатов
+			const isDuplicateFile = (newFile, existingFiles) => {
+				return existingFiles.some(
+					(existingFile) =>
+						existingFile.name === newFile.name &&
+						existingFile.size === newFile.size &&
+						existingFile.lastModified === newFile.lastModified
+				);
+			};
+
+			// Функция обновления отображения файлов
+			const updateFileDisplay = () => {
+				fileListContainer.innerHTML = ""; // Очищаем список
+
+				if (allFiles.length === 0) {
+					fileListContainer.style.display = "none";
+					return;
+				}
+
+				fileListContainer.style.display = "";
+
+				allFiles.forEach((file, index) => {
+					const fileItem = document.createElement("div");
+					fileItem.classList.add("file-item");
+
+					// Создаем элемент span для названия файла
+					const fileNameSpan = document.createElement("span");
+					fileNameSpan.textContent = file.name;
+					fileNameSpan.style.cursor = "pointer";
+
+					// Добавляем обработчик события для открытия файла
+					fileNameSpan.addEventListener("click", () => {
+						const reader = new FileReader();
+						reader.onload = (e) => {
+							const fileUrl = e.target.result;
+							window.open(fileUrl, "_blank");
+						};
+						reader.readAsDataURL(file);
+					});
+
+					const removeButton = document.createElement("span");
+					removeButton.textContent = "✖";
+					removeButton.classList.add("remove-file");
+					removeButton.dataset.index = index;
+
+					fileItem.appendChild(fileNameSpan);
+					fileItem.appendChild(removeButton);
+					fileListContainer.appendChild(fileItem);
+				});
+			};
+
+			// Функция обновления input.files
+			const updateInputFiles = () => {
+				const dataTransfer = new DataTransfer();
+				allFiles.forEach((file) => {
+					dataTransfer.items.add(file);
+				});
+				input.files = dataTransfer.files;
+
+				// Триггерим событие change для обновления формы
+				const event = new Event("change", { bubbles: true });
+				input.dispatchEvent(event);
+			};
+
+			// Функция добавления файлов (общая для input и drag-n-drop)
+			const addFiles = (files) => {
+				const newFiles = Array.from(files);
+				let hasNewFiles = false;
+
+				// Проверяем каждый новый файл на дубликаты
+				newFiles.forEach((file) => {
+					if (!isDuplicateFile(file, allFiles)) {
+						allFiles.push(file);
+						hasNewFiles = true;
+					} else {
+						console.log(`Файл "${file.name}" уже добавлен`);
+						// Можно показать уведомление пользователю
+					}
 				});
 
-				const removeButton = document.createElement("span");
-				removeButton.textContent = "✖";
-				removeButton.classList.add("remove-file");
-				removeButton.dataset.index = index;
+				if (hasNewFiles) {
+					// Обновляем input.files
+					updateInputFiles();
 
-				fileItem.appendChild(fileNameSpan);
-				fileItem.appendChild(removeButton);
-				fileListContainer.appendChild(fileItem);
+					// Обновляем отображение
+					updateFileDisplay();
+				}
+			};
+
+			// Обработчик выбора файлов через input
+			input.addEventListener("change", function () {
+				addFiles(this.files);
+
+				// Сбрасываем значение input, чтобы можно было выбрать тот же файл повторно
+				this.value = "";
 			});
-		};
 
-		// Функция обновления input.files
-		const updateInputFiles = () => {
-			const dataTransfer = new DataTransfer();
-			allFiles.forEach((file) => {
-				dataTransfer.items.add(file);
+			// Drag-and-drop события
+			fileDropArea.addEventListener("dragover", function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				this.classList.add("drag-over");
 			});
-			input.files = dataTransfer.files;
-		};
 
-		input.addEventListener("change", function () {
-			const newFiles = Array.from(this.files);
-			let hasNewFiles = false;
-
-			// Проверяем каждый новый файл на дубликаты
-			newFiles.forEach((file) => {
-				if (!isDuplicateFile(file, allFiles)) {
-					allFiles.push(file);
-					hasNewFiles = true;
-				} else {
-					console.log(`Файл "${file.name}" уже добавлен`);
-					// Можно показать уведомление пользователю
+			fileDropArea.addEventListener("dragleave", function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				// Проверяем, покинули ли мы именно drop-зону, а не её детей
+				if (!this.contains(e.relatedTarget)) {
+					this.classList.remove("drag-over");
 				}
 			});
 
-			if (hasNewFiles) {
-				// Обновляем input.files
-				updateInputFiles();
+			fileDropArea.addEventListener("drop", function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				this.classList.remove("drag-over");
 
-				// Обновляем отображение
-				updateFileDisplay();
+				// Получаем файлы из события drop
+				const droppedFiles = e.dataTransfer.files;
+
+				if (droppedFiles.length > 0) {
+					addFiles(droppedFiles);
+				}
+			});
+
+			// ВАЖНОЕ ИЗМЕНЕНИЕ: Обработчик клика только для подсказки drag-and-drop
+			// Находим элемент с подсказкой и добавляем обработчик только к нему
+			const dragDropHint = fileDropArea.querySelector(".drag-drop-hint");
+			if (dragDropHint) {
+				dragDropHint.addEventListener("click", function (e) {
+					e.stopPropagation(); // Останавливаем всплытие
+					input.click();
+				});
 			}
 
-			// Сбрасываем значение input, чтобы можно было выбрать тот же файл повторно
-			this.value = "";
-		});
+			// Удаление файлов
+			fileListContainer.addEventListener("click", function (e) {
+				if (e.target.classList.contains("remove-file")) {
+					e.stopPropagation(); // Предотвращаем срабатывание клика на fileDropArea
+					const index = parseInt(e.target.dataset.index);
+					allFiles.splice(index, 1); // Удаляем файл из массива
 
-		fileListContainer.addEventListener("click", function (e) {
-			if (e.target.classList.contains("remove-file")) {
-				const index = parseInt(e.target.dataset.index);
-				allFiles.splice(index, 1); // Удаляем файл из массива
+					// Обновляем input.files
+					updateInputFiles();
 
-				// Обновляем input.files
-				updateInputFiles();
+					// Обновляем отображение файлов
+					updateFileDisplay();
+				}
+			});
 
-				// Обновляем отображение файлов
-				updateFileDisplay();
+			// Предотвращаем стандартное поведение браузера для drag событий
+			["dragenter", "dragover", "dragleave", "drop"].forEach(
+				(eventName) => {
+					fileDropArea.addEventListener(
+						eventName,
+						preventDefaults,
+						false
+					);
+					document.body.addEventListener(
+						eventName,
+						preventDefaults,
+						false
+					);
+				}
+			);
+
+			function preventDefaults(e) {
+				e.preventDefault();
+				e.stopPropagation();
 			}
 		});
-	});
-}
+	}
+});
 
 // reviews
 // document.addEventListener("DOMContentLoaded", () => {
