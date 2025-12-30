@@ -3788,7 +3788,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					fileNameSpan.addEventListener("click", () => {
 						const reader = new FileReader();
 						reader.onload = (e) => {
-							const fileUrl = e.target.result;
+							const fileUrl = URL.createObjectURL(file);
 							window.open(fileUrl, "_blank");
 						};
 						reader.readAsDataURL(file);
