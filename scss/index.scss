@@ -2890,6 +2890,17 @@ button.next {
 		}
 
 		& #choose_your_way {
+			@media (min-width: 1000px) {
+				min-height: 300px;
+
+				& > .left,
+				& > .right {
+					& > .card--outline {
+						min-height: 300px;
+					}
+				}
+			}
+
 			& > .right {
 				&:not(.active) {
 					& > #calculator-creation-brif {

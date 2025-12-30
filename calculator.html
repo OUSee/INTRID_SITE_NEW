@@ -186,7 +186,7 @@
             </h1>
 
             <div class="calculator-wrapper">
-                <div class="flex-layout flex-layout--split align-stretch gap-lg-16 mb-32" id="choose_your_way">
+                <div class="flex-layout flex-layout--split align-start align-lg-stretch gap-lg-16" id="choose_your_way">
                     <div class="left">
                         <div class="card card--outline h-100">
                             <p class="title_h4 w-fit">
@@ -204,7 +204,7 @@
                             </p>
 
                             <a href="javascript://" data-trigger data-trigger-show="calculator"
-                                data-trigger-hide="choose_your_way" data-should-scroll="false" class="button-link big mt-auto">
+                                data-trigger-hide="choose_your_way" data-should-scroll="false" class="button button-highlight big mt-auto">
                                 Перейти к расчету <i class="icon-arrow_wide"></i>
                             </a>
                         </div>
@@ -1070,7 +1070,7 @@
                                                 name="type-unique"
                                                 data-radio="type-landing;type-portfolio;type-corporate;type-corporate_catalogue;type-store;type-store_ai;tender-portal;tender-portal-paying;type-portal"
                                                 data-price="0" data-hide-accordion-item="tenders_toggle_block"
-                                                data-reveal="type-unique_text">
+                                                data-reveal="type-unique_form">
                                             <label for="type-unique">
                                                 <p>
                                                     Уникальная разработка (Например:&nbsp;<a
@@ -1085,8 +1085,29 @@
                                                 </p>
                                             </label>
                                         </div>
-                                        <input type="text" id="type-unique_text" placeholder="Опишите свой проект"
-                                            class="hidden">
+                                        <div id="type-unique_form" class="hidden">
+                                            <div class="input-file mb-16">
+                                                <div class="file-drop-area">
+                                                    <label>
+                                                        <input type="file" multiple=""
+                                                            accept=".pdf, application/pdf, image/*,
+                                                                                                                                                        application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                                                                                                                                                        application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                                                                                                                                        application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                                                                                                                                                        text/plain,
+                                                                                                                                                        application/rtf,
+                                                                                                                                                        application/vnd.oasis.opendocument.text,
+                                                                                                                                                        application/vnd.oasis.opendocument.spreadsheet,
+                                                                                                                                                        application/vnd.oasis.opendocument.presentation">
+                                                        <span>Прикрепить ТЗ</span>
+                                                        <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                                    </label>
+                                                    <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                                    <div class="file-list" style="display: none;"></div>
+                                                </div>
+                                            </div>
+                                            <input type="text" id="type-unique_text" placeholder="Опишите свой проект" />
+                                        </div>
 
                                         <!-- change: label -->
                                         <label for="type-similar_cites">

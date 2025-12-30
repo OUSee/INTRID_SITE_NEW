@@ -3107,6 +3107,11 @@ ol li > ol {
     align-items: center;
   }
 }
+@media (max-width: 1000px) {
+  .align-lg-stretch {
+    align-items: stretch;
+  }
+}
 @media (max-width: 1200px) {
   .align-xl-start {
     align-self: flex-start;
@@ -3676,7 +3681,9 @@ form .button:hover {
   margin-left: 4px;
 }
 .input-file .file-drop-area > label > input {
+  top: 0;
   left: 0;
+  padding: 0;
 }
 .input-file .file-drop-area > label > span {
   font-size: inherit;
@@ -12854,6 +12861,14 @@ button.next:hover {
   left: 0;
   width: 100%;
   flex: 1;
+}
+@media (min-width: 1000px) {
+  .calculator-wrapper #choose_your_way {
+    min-height: 300px;
+  }
+  .calculator-wrapper #choose_your_way > .left > .card--outline, .calculator-wrapper #choose_your_way > .right > .card--outline {
+    min-height: 300px;
+  }
 }
 .calculator-wrapper #choose_your_way > .right:not(.active) > #calculator-creation-brif {
   position: absolute;
