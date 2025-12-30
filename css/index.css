@@ -2900,6 +2900,12 @@ ol li > ol {
     margin-left: -10px;
   }
 }
+@media (min-width: 1000px) {
+  .flex-layout--split > .right.fixed-bottom > * {
+    top: calc(100vh - 380px) !important;
+    bottom: 0 !important;
+  }
+}
 .flex-row {
   flex-direction: row;
 }
@@ -3660,7 +3666,7 @@ form .button:hover {
   transition: background-color 0.25s ease-in-out;
 }
 .input-file .file-drop-area.drag-over {
-  background-color: rgba(17, 52, 56, 0.25);
+  background-color: rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
 }
 .input-file .file-drop-area > label {
