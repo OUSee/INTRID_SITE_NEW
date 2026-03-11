@@ -2939,11 +2939,33 @@ document.addEventListener("DOMContentLoaded", () => {
       ];
 
       inputs.forEach((input) => {
+        if (
+          input.type === "text" &&
+          input.hasAttribute("data-calculation-textfield")
+        ) {
+          toggles.push({
+            id: input.id,
+            elementref: input,
+            price: parseInt(input.dataset.price || "0"),
+            reveal: document.getElementById(input.dataset.reveal || ""),
+            nested: input.dataset.nested ? input.dataset.nested.split(";") : [],
+            showAccordionItems: input.dataset.showAccordionItem
+              ? input.dataset.showAccordionItem.split(";")
+              : [],
+            hideAccordionItems: input.dataset.hideAccordionItem
+              ? input.dataset.hideAccordionItem.split(";")
+              : [],
+            type: "textfield",
+            active: false, // изначально не активно
+          });
+          return;
+        }
+
         // Обработка select
         if (input.tagName === "SELECT") {
           const options = [];
           for (let opt of input.options) {
-            const optionObj = {
+            options.push({
               value: opt.value,
               price: parseInt(opt.dataset.price || "0"),
               reveal: opt.dataset.reveal
@@ -2956,9 +2978,9 @@ document.addEventListener("DOMContentLoaded", () => {
               hideAccordionItems: opt.dataset.hideAccordionItem
                 ? opt.dataset.hideAccordionItem.split(";")
                 : [],
-            };
-            options.push(optionObj);
+            });
           }
+
           const selectObj = {
             id: input.id,
             elementref: input,
@@ -2966,11 +2988,28 @@ document.addEventListener("DOMContentLoaded", () => {
             options: options,
             currentOption: null,
           };
-          // Устанавливаем текущую опцию по умолчанию
-          const selectedIndex = input.selectedIndex;
-          if (selectedIndex >= 0 && options[selectedIndex]) {
-            selectObj.currentOption = options[selectedIndex];
+
+          // Проверяем, есть ли опция с атрибутом selected
+          let hasSelectedOption = false;
+          for (let opt of input.options) {
+            if (opt.hasAttribute("selected")) {
+              hasSelectedOption = true;
+              break;
+            }
           }
+
+          if (hasSelectedOption) {
+            // Берём выбранный индекс (он будет соответствовать опции с selected)
+            const selectedIndex = input.selectedIndex;
+            if (selectedIndex >= 0 && options[selectedIndex]) {
+              selectObj.currentOption = options[selectedIndex];
+            }
+          } else {
+            // Нет выбранной опции по умолчанию: сбрасываем selectedIndex на -1
+            input.selectedIndex = -1;
+            // currentOption остаётся null
+          }
+
           toggles.push(selectObj);
           return;
         }
@@ -3013,28 +3052,6 @@ document.addEventListener("DOMContentLoaded", () => {
             break;
           }
         }
-
-        if (
-          input.type === "text" &&
-          input.hasAttribute("data-calculation-textfield")
-        ) {
-          toggles.push({
-            id: input.id,
-            elementref: input,
-            price: parseInt(input.dataset.price || "0"),
-            reveal: document.getElementById(input.dataset.reveal || ""),
-            nested: input.dataset.nested ? input.dataset.nested.split(";") : [],
-            showAccordionItems: input.dataset.showAccordionItem
-              ? input.dataset.showAccordionItem.split(";")
-              : [],
-            hideAccordionItems: input.dataset.hideAccordionItem
-              ? input.dataset.hideAccordionItem.split(";")
-              : [],
-            type: "textfield",
-            active: false, // изначально не активно
-          });
-          return;
-        }
       });
 
       toggles.forEach((toggle) => {
@@ -3043,26 +3060,6 @@ document.addEventListener("DOMContentLoaded", () => {
             toggle.counter = counter;
           }
         });
-
-        if (toggle.type === "textfield") {
-          toggle.elementref.addEventListener("input", () => {
-            const value = toggle.elementref.value.trim();
-            if (value !== "" && !toggle.active) {
-              activateTextField(toggle, target, toggles);
-            } else if (value === "" && toggle.active) {
-              deactivateTextField(toggle, target, toggles);
-            }
-          });
-
-          toggle.elementref.addEventListener("change", () => {
-            const value = toggle.elementref.value.trim();
-            if (value !== "" && !toggle.active) {
-              activateTextField(toggle, target, toggles);
-            } else if (value === "" && toggle.active) {
-              deactivateTextField(toggle, target, toggles);
-            }
-          });
-        }
       });
 
       return { toggles: toggles, counters: counters, texts: texts };
@@ -3075,6 +3072,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ИНИЦИАЛИЗАЦИЯ: все аккордеоны deactive и закрыты
       deactivateAllAccordions();
+
+      // Добавляем слушатели для текстовых полей
+      toggles.forEach((toggle) => {
+        if (toggle.type === "textfield") {
+          toggle.elementref.addEventListener("input", () => {
+            const value = toggle.elementref.value.trim();
+            if (value !== "" && !toggle.active) {
+              activateTextField(toggle, target, toggles);
+            } else if (value === "" && toggle.active) {
+              deactivateTextField(toggle, target, toggles);
+            }
+          });
+          toggle.elementref.addEventListener("change", () => {
+            const value = toggle.elementref.value.trim();
+            if (value !== "" && !toggle.active) {
+              activateTextField(toggle, target, toggles);
+            } else if (value === "" && toggle.active) {
+              deactivateTextField(toggle, target, toggles);
+            }
+          });
+        }
+      });
 
       // Инициализация select'ов (добавляем их стоимость и эффекты)
       initializeSelects(toggles, target);
