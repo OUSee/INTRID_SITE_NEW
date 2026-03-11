@@ -3349,11 +3349,16 @@ document.addEventListener("DOMContentLoaded", () => {
       // });
 
       reset_button?.addEventListener("click", () => {
+        const calculator = document.getElementById('calculator');
+
         resetCalculator(toggles, counters, target);
-        window.scrollTo({
-          top: document.querySelector(".calculator-wrapper").scrollTop,
-          behavior: "smooth",
-        });
+
+        setTimeout(() => {
+          calculator?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 600);
       });
 
       if (hash) {
