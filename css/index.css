@@ -808,6 +808,11 @@ th {
     transform: translate3d(0, 0, 0);
   }
 }
+@keyframes rotateInfinite {
+  to {
+    transform: rotate(-360deg);
+  }
+}
 @font-face {
   font-family: "Roboto";
   src: url("../src/fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../src/fonts/roboto/Roboto-Regular.woff") format("woff");
@@ -15412,6 +15417,10 @@ button.next:hover {
   width: 100%;
   border: 0;
   overflow: hidden;
+}
+
+.rotateInfinite {
+  animation: rotateInfinite 0.6s linear infinite;
 }
 
 @media (max-width: 1400px) {

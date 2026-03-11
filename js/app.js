@@ -3348,8 +3348,13 @@ document.addEventListener("DOMContentLoaded", () => {
       //   console.log(review);
       // });
 
-      reset_button?.addEventListener("click", () => {
+      reset_button?.addEventListener("click", (e) => {
         const calculator = document.getElementById('calculator');
+
+        let icon = e.currentTarget.querySelector('i');
+
+        icon.classList.add('rotateInfinite');
+        sentButton.disabled = true;
 
         resetCalculator(toggles, counters, target);
 
@@ -3358,6 +3363,9 @@ document.addEventListener("DOMContentLoaded", () => {
             behavior: "smooth",
             block: "start",
           });
+
+          icon.classList.remove('rotateInfinite');
+          sentButton.disabled = false;
         }, 600);
       });
 
