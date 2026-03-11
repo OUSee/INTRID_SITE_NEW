@@ -3284,16 +3284,76 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       sentButton?.addEventListener("click", () => {
+        // Выбранные чекбоксы
+        const checkboxes = toggles
+          .filter((t) => t.type === "checkbox" && t.elementref.checked)
+          .map((t) => ({
+            id: t.id,
+            price: t.price,
+          }));
+
+        // Выбранные опции селектов
+        const selects = toggles
+          .filter((t) => t.type === "select" && t.currentOption)
+          .map((t) => ({
+            id: t.id,
+            selectedValue: t.currentOption.value,
+            price: t.currentOption.price,
+          }));
+
+        // Активные текстовые поля с ценой
+        const textfields = toggles
+          .filter((t) => t.type === "textfield" && t.active)
+          .map((t) => ({
+            id: t.id,
+            value: t.elementref.value,
+            price: t.price,
+          }));
+
+        // Счётчики (числовые поля)
+        const countersData = counters
+          .filter((c) => c.elementref.value != "")
+          .map((c) => ({
+            id: c.id,
+            value: parseInt(c.elementref.value),
+            price: c.price,
+          }));
+
+        // Обычные текстовые поля (без цены) с непустым значением
+        const extraTexts = texts
+          .filter((t) => t.elementref.value !== "")
+          .map((t) => ({
+            id: t.id,
+            value: t.elementref.value,
+          }));
+
         const review = {
-          options: toggles.filter((toggle) => toggle.elementref.checked),
-          extra: texts.filter((text) => text.elementref.value !== ""),
+          checkboxes,
+          selects,
+          textfields,
+          counters: countersData,
+          extra: extraTexts,
           preprice: target.innerText,
+          total: target.current_value,
         };
         console.log(review);
       });
 
+      // sentButton?.addEventListener("click", () => {
+      //   const review = {
+      //     options: toggles.filter((toggle) => toggle.elementref.checked),
+      //     extra: texts.filter((text) => text.elementref.value !== ""),
+      //     preprice: target.innerText,
+      //   };
+      //   console.log(review);
+      // });
+
       reset_button?.addEventListener("click", () => {
         resetCalculator(toggles, counters, target);
+        window.scrollTo({
+          top: document.querySelector(".calculator-wrapper").scrollTop,
+          behavior: "smooth",
+        });
       });
 
       if (hash) {
