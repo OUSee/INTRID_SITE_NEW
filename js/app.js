@@ -574,8 +574,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => {
         const message =
           error &&
-          typeof error.message === "string" &&
-          error.message.trim() !== ""
+            typeof error.message === "string" &&
+            error.message.trim() !== ""
             ? error.message
             : defaultErrorMessage;
         showNotificationPopup(message, "error");
@@ -629,7 +629,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const sitekey =
           item.recaptchaContainer.dataset.sitekey &&
-          item.recaptchaContainer.dataset.sitekey.length > 0
+            item.recaptchaContainer.dataset.sitekey.length > 0
             ? item.recaptchaContainer.dataset.sitekey
             : defaultSiteKey;
 
@@ -737,8 +737,8 @@ document.addEventListener("DOMContentLoaded", () => {
         mapData[value].adress +
         (mapData[value]?.schedule
           ? '<span class="separator">|</span><span> ' +
-            mapData[value].schedule +
-            '</span><span class="separator">|</span>'
+          mapData[value].schedule +
+          '</span><span class="separator">|</span>'
           : '<span class="separator">|</span>');
       container.innerHTML = mapData[value].frame;
 
@@ -800,12 +800,10 @@ document.addEventListener("DOMContentLoaded", () => {
       list.style.setProperty("--list-length", items.length);
 
       items.forEach((item, index) => {
-        item.querySelector(".tech-tag").style.animation = `list-glow ${
-          items.length * interval
-        }s linear infinite`;
-        item.querySelector(".tech-tag").style.animationDelay = `${
-          index * interval
-        }s`;
+        item.querySelector(".tech-tag").style.animation = `list-glow ${items.length * interval
+          }s linear infinite`;
+        item.querySelector(".tech-tag").style.animationDelay = `${index * interval
+          }s`;
       });
     }
   });
@@ -1130,8 +1128,8 @@ const SliderInIt = () => {
               : "block";
           nextButton.style.display =
             currentIndex === maxIndex ||
-            maxIndex <= 0 ||
-            cards.length <= slidesPerPage
+              maxIndex <= 0 ||
+              cards.length <= slidesPerPage
               ? "none"
               : "block";
 
@@ -1771,32 +1769,24 @@ function sliderInitialize() {
 
         prevBtn.forEach((btn) => {
           if (slider.id === "gallery-slider") {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `-100%` : `0`
-            }); left: ${
-              window.innerWidth > 600 ? `25px` : `-5px`
-            }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+              }); left: ${window.innerWidth > 600 ? `25px` : `-5px`
+              }; color: var(--blue-main);`;
           } else {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `-100%` : `0`
-            }); left: ${
-              window.innerWidth > 600 ? `15px` : `-5px`
-            }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+              }); left: ${window.innerWidth > 600 ? `15px` : `-5px`
+              }; color: var(--blue-main);`;
           }
         });
         nextBtn.forEach((btn) => {
           if (slider.id === "gallery-slider") {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `100%` : `0`
-            }); right: ${
-              window.innerWidth > 600 ? `25px` : `-5px`
-            }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+              }); right: ${window.innerWidth > 600 ? `25px` : `-5px`
+              }; color: var(--blue-main);`;
           } else {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `100%` : `0`
-            }); right: ${
-              window.innerWidth > 600 ? `15px` : `-5px`
-            }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+              }); right: ${window.innerWidth > 600 ? `15px` : `-5px`
+              }; color: var(--blue-main);`;
           }
         });
       };
@@ -2496,7 +2486,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const deactivateAllAccordions = () => {
       const allAccordionItems = document.querySelectorAll(".accordion-item");
       allAccordionItems.forEach((item) => {
-		if(item.id === 'site-types') return;
+        if (item.id === 'site-types') return;
         item.classList.add("deactive");
         // Закрываем аккордеон (снимаем чекбокс секции)
         const sectionCheckbox = item.querySelector('input[type="checkbox"][id^="section-"]');
@@ -2545,7 +2535,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // НОВАЯ ФУНКЦИЯ ДЛЯ УПРАВЛЕНИЯ СОСТОЯНИЕМ АККОРДЕОНОВ В ЗАВИСИМОСТИ ОТ ТИПА САЙТА
     const updateAccordionStateForSiteType = (toggle) => {
       // Определяем, является ли toggle тендерным порталом и выбран ли он
-      const isTenderSelected = toggle && toggle.elementref.checked && 
+      const isTenderSelected = toggle && toggle.elementref.checked &&
         (toggle.id === "tender-portal" || toggle.id === "tender-portal-paying" || toggle.id === "tenders_toggle");
 
       if (isTenderSelected) {
@@ -3680,6 +3670,9 @@ const niceSelectJS = function (selectName, options) {
       let listItem = document.createElement("li");
       listItem.innerHTML = child.textContent;
       listItem.setAttribute("data-value", child.value);
+      if (child.hasAttribute('data-price')) {
+        listItem.setAttribute('data-price', child.getAttribute('data-price'));
+      }
       listItem.classList.add("option");
       if (
         child.getAttribute("disabled") == "" ||
@@ -3729,23 +3722,22 @@ const niceSelectJS = function (selectName, options) {
   });
 
   // Option click
-  document
-    .querySelectorAll(".nice-select .option:not(.disabled)")
-    .forEach((link) => {
-      link.addEventListener("click", function (e) {
-        let option = e.target;
-        let dropdown = option.closest(".nice-select");
-        if (dropdown.querySelector(".selected") !== null) {
-          dropdown.querySelector(".selected").classList.remove("selected");
-        }
-        option.classList.add("selected");
-        let text = option.textContent;
-        dropdown.querySelector(".current").textContent = text;
-        dropdown.previousSibling.value = option.getAttribute("data-value");
-
-        console.log("Клик по option:", e.target.getAttribute("data-value"));
-      });
-    });
+  document.addEventListener('click', function (e) {
+    const option = e.target.closest('.nice-select .option:not(.disabled)');
+    if (!option) return;
+    let dropdown = option.closest(".nice-select");
+    if (dropdown.querySelector(".selected") !== null) {
+      dropdown.querySelector(".selected").classList.remove("selected");
+    }
+    option.classList.add("selected");
+    let text = option.textContent;
+    dropdown.querySelector(".current").textContent = text;
+    let originalSelect = dropdown.previousSibling;
+    originalSelect.value = option.getAttribute("data-value");
+    // Генерируем событие change для калькулятора
+    originalSelect.dispatchEvent(new Event('change'));
+    console.log(`dispatched change on ${originalSelect.id}, value=${originalSelect.value}`);
+  });
 
   return this;
 };
