@@ -574,8 +574,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => {
         const message =
           error &&
-            typeof error.message === "string" &&
-            error.message.trim() !== ""
+          typeof error.message === "string" &&
+          error.message.trim() !== ""
             ? error.message
             : defaultErrorMessage;
         showNotificationPopup(message, "error");
@@ -629,7 +629,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const sitekey =
           item.recaptchaContainer.dataset.sitekey &&
-            item.recaptchaContainer.dataset.sitekey.length > 0
+          item.recaptchaContainer.dataset.sitekey.length > 0
             ? item.recaptchaContainer.dataset.sitekey
             : defaultSiteKey;
 
@@ -737,8 +737,8 @@ document.addEventListener("DOMContentLoaded", () => {
         mapData[value].adress +
         (mapData[value]?.schedule
           ? '<span class="separator">|</span><span> ' +
-          mapData[value].schedule +
-          '</span><span class="separator">|</span>'
+            mapData[value].schedule +
+            '</span><span class="separator">|</span>'
           : '<span class="separator">|</span>');
       container.innerHTML = mapData[value].frame;
 
@@ -800,10 +800,12 @@ document.addEventListener("DOMContentLoaded", () => {
       list.style.setProperty("--list-length", items.length);
 
       items.forEach((item, index) => {
-        item.querySelector(".tech-tag").style.animation = `list-glow ${items.length * interval
-          }s linear infinite`;
-        item.querySelector(".tech-tag").style.animationDelay = `${index * interval
-          }s`;
+        item.querySelector(".tech-tag").style.animation = `list-glow ${
+          items.length * interval
+        }s linear infinite`;
+        item.querySelector(".tech-tag").style.animationDelay = `${
+          index * interval
+        }s`;
       });
     }
   });
@@ -1128,8 +1130,8 @@ const SliderInIt = () => {
               : "block";
           nextButton.style.display =
             currentIndex === maxIndex ||
-              maxIndex <= 0 ||
-              cards.length <= slidesPerPage
+            maxIndex <= 0 ||
+            cards.length <= slidesPerPage
               ? "none"
               : "block";
 
@@ -1769,24 +1771,32 @@ function sliderInitialize() {
 
         prevBtn.forEach((btn) => {
           if (slider.id === "gallery-slider") {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
-              }); left: ${window.innerWidth > 600 ? `25px` : `-5px`
-              }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
+              window.innerWidth > 600 ? `-100%` : `0`
+            }); left: ${
+              window.innerWidth > 600 ? `25px` : `-5px`
+            }; color: var(--blue-main);`;
           } else {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
-              }); left: ${window.innerWidth > 600 ? `15px` : `-5px`
-              }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
+              window.innerWidth > 600 ? `-100%` : `0`
+            }); left: ${
+              window.innerWidth > 600 ? `15px` : `-5px`
+            }; color: var(--blue-main);`;
           }
         });
         nextBtn.forEach((btn) => {
           if (slider.id === "gallery-slider") {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
-              }); right: ${window.innerWidth > 600 ? `25px` : `-5px`
-              }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
+              window.innerWidth > 600 ? `100%` : `0`
+            }); right: ${
+              window.innerWidth > 600 ? `25px` : `-5px`
+            }; color: var(--blue-main);`;
           } else {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
-              }); right: ${window.innerWidth > 600 ? `15px` : `-5px`
-              }; color: var(--blue-main);`;
+            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
+              window.innerWidth > 600 ? `100%` : `0`
+            }); right: ${
+              window.innerWidth > 600 ? `15px` : `-5px`
+            }; color: var(--blue-main);`;
           }
         });
       };
@@ -2486,9 +2496,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const deactivateAllAccordions = () => {
       const allAccordionItems = document.querySelectorAll(".accordion-item");
       allAccordionItems.forEach((item) => {
-        if (item.id === 'site-types') return;
+        if (item.id === "site-types") return;
         item.classList.add("deactive");
-        const sectionCheckbox = item.querySelector('input[type="checkbox"][id^="section-"]');
+        const sectionCheckbox = item.querySelector(
+          'input[type="checkbox"][id^="section-"]',
+        );
         if (sectionCheckbox) {
           sectionCheckbox.checked = false;
         }
@@ -2506,7 +2518,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const resetCalculator = (toggles, counters, target) => {
       // Сбрасываем все чекбоксы
       toggles.forEach((toggle) => {
-        if (toggle.type === 'checkbox') {
+        if (toggle.type === "checkbox") {
           toggle.elementref.checked = false;
           if (toggle.reveal) {
             toggle.reveal.classList.add("hidden");
@@ -2527,7 +2539,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Сбрасываем все select'ы к состоянию "не выбрано"
       toggles.forEach((toggle) => {
-        if (toggle.type === 'select') {
+        if (toggle.type === "select") {
           const selectEl = toggle.elementref;
 
           // 1. Деактивируем текущую опцию, если она была
@@ -2540,21 +2552,37 @@ document.addEventListener("DOMContentLoaded", () => {
           toggle.currentOption = null;
 
           // 3. Обновляем отображение кастомного селекта (если он есть)
-          const niceSelect = selectEl.nextElementSibling?.classList.contains('nice-select')
+          const niceSelect = selectEl.nextElementSibling?.classList.contains(
+            "nice-select",
+          )
             ? selectEl.nextElementSibling
             : null;
           if (niceSelect) {
-            const currentSpan = niceSelect.querySelector('.current');
+            const currentSpan = niceSelect.querySelector(".current");
             if (currentSpan) {
               // Берём текст из data-display или задаём заглушку
-              currentSpan.textContent = selectEl.getAttribute('data-display') || 'Выберите...';
+              currentSpan.textContent =
+                selectEl.getAttribute("data-display") || "Выберите...";
             }
             // Убираем выделение со всех пунктов списка
-            niceSelect.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            niceSelect
+              .querySelectorAll(".option")
+              .forEach((opt) => opt.classList.remove("selected"));
           }
 
           // (Можно вызвать событие change, но оно не обязательно, т.к. всё уже обновлено вручную)
           // selectEl.dispatchEvent(new Event('change'));
+        }
+      });
+
+      // Сброс текстовых полей
+      toggles.forEach((toggle) => {
+        if (toggle.type === "textfield") {
+          if (toggle.active) {
+            deactivateTextField(toggle, target, toggles);
+          }
+          toggle.elementref.value = "";
+          toggle.active = false;
         }
       });
 
@@ -2617,16 +2645,82 @@ document.addEventListener("DOMContentLoaded", () => {
     // НОВАЯ ФУНКЦИЯ ИНИЦИАЛИЗАЦИИ SELECT'ОВ
     const initializeSelects = (toggles, target) => {
       toggles.forEach((toggle) => {
-        if (toggle.type === 'select' && toggle.currentOption) {
+        if (toggle.type === "select" && toggle.currentOption) {
           activateSelectOption(toggle.currentOption, toggles, target);
+        }
+      });
+    };
+
+    // Управление кастомными input с ценами
+    // Активация текстового поля
+    const activateTextField = (textFieldToggle, target, toggles) => {
+      if (textFieldToggle.active) return; // уже активно
+      target.current_value += textFieldToggle.price;
+      if (textFieldToggle.reveal) {
+        showElement(textFieldToggle.reveal);
+      }
+      if (textFieldToggle.nested && textFieldToggle.nested.length > 0) {
+        const tempToggle = { nested: textFieldToggle.nested };
+        activateNestedToggles(tempToggle, toggles, target);
+      }
+      if (textFieldToggle.showAccordionItems) {
+        showAccordionItems(textFieldToggle.showAccordionItems);
+      }
+      if (textFieldToggle.hideAccordionItems) {
+        hideAccordionItems(textFieldToggle.hideAccordionItems);
+      }
+      textFieldToggle.active = true;
+    };
+
+    // Деактивация текстового поля
+    const deactivateTextField = (textFieldToggle, target, toggles) => {
+      if (!textFieldToggle.active) return;
+      target.current_value -= textFieldToggle.price;
+      if (textFieldToggle.reveal) {
+        hideElement(textFieldToggle.reveal);
+      }
+      if (textFieldToggle.nested && textFieldToggle.nested.length > 0) {
+        const tempToggle = { nested: textFieldToggle.nested };
+        deactivateNestedToggles(tempToggle, toggles, target);
+      }
+      if (textFieldToggle.showAccordionItems) {
+        hideAccordionItems(textFieldToggle.showAccordionItems);
+      }
+      if (textFieldToggle.hideAccordionItems) {
+        showAccordionItems(textFieldToggle.hideAccordionItems);
+      }
+      textFieldToggle.active = false;
+    };
+
+    // Очистка текстовых полей в контейнере (при скрытии родителя)
+    const clearTextFieldsInContainer = (container, toggles, target) => {
+      if (!container) return;
+      const textFields = container.querySelectorAll(
+        "input[data-calculation-textfield]",
+      );
+      textFields.forEach((field) => {
+        const textToggle = toggles.find(
+          (t) => t.type === "textfield" && t.elementref === field,
+        );
+        if (textToggle && textToggle.active) {
+          // Деактивируем
+          deactivateTextField(textToggle, target, toggles);
+          field.value = "";
+        } else if (textToggle) {
+          // Просто очищаем значение, если не активно
+          field.value = "";
         }
       });
     };
 
     // НОВАЯ ФУНКЦИЯ ДЛЯ УПРАВЛЕНИЯ СОСТОЯНИЕМ АККОРДЕОНОВ В ЗАВИСИМОСТИ ОТ ТИПА САЙТА
     const updateAccordionStateForSiteType = (toggle) => {
-      const isTenderSelected = toggle && toggle.elementref.checked &&
-        (toggle.id === "tender-portal" || toggle.id === "tender-portal-paying" || toggle.id === "tenders_toggle");
+      const isTenderSelected =
+        toggle &&
+        toggle.elementref.checked &&
+        (toggle.id === "tender-portal" ||
+          toggle.id === "tender-portal-paying" ||
+          toggle.id === "tenders_toggle");
 
       if (isTenderSelected) {
         deactivateAllAccordions();
@@ -2846,23 +2940,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
       inputs.forEach((input) => {
         // Обработка select
-        if (input.tagName === 'SELECT') {
+        if (input.tagName === "SELECT") {
           const options = [];
           for (let opt of input.options) {
             const optionObj = {
               value: opt.value,
               price: parseInt(opt.dataset.price || "0"),
-              reveal: opt.dataset.reveal ? document.getElementById(opt.dataset.reveal) : null,
-              nested: opt.dataset.nested ? opt.dataset.nested.split(';') : [],
-              showAccordionItems: opt.dataset.showAccordionItem ? opt.dataset.showAccordionItem.split(';') : [],
-              hideAccordionItems: opt.dataset.hideAccordionItem ? opt.dataset.hideAccordionItem.split(';') : [],
+              reveal: opt.dataset.reveal
+                ? document.getElementById(opt.dataset.reveal)
+                : null,
+              nested: opt.dataset.nested ? opt.dataset.nested.split(";") : [],
+              showAccordionItems: opt.dataset.showAccordionItem
+                ? opt.dataset.showAccordionItem.split(";")
+                : [],
+              hideAccordionItems: opt.dataset.hideAccordionItem
+                ? opt.dataset.hideAccordionItem.split(";")
+                : [],
             };
             options.push(optionObj);
           }
           const selectObj = {
             id: input.id,
             elementref: input,
-            type: 'select',
+            type: "select",
             options: options,
             currentOption: null,
           };
@@ -2889,7 +2989,7 @@ document.addEventListener("DOMContentLoaded", () => {
               showAccordionItems: input.dataset.showAccordionItem?.split(";"),
               hideAccordionItems: input.dataset.hideAccordionItem?.split(";"),
               isSiteType: isMainSiteType,
-              type: 'checkbox', // явно укажем тип
+              type: "checkbox", // явно укажем тип
             });
             break;
           }
@@ -2913,6 +3013,28 @@ document.addEventListener("DOMContentLoaded", () => {
             break;
           }
         }
+
+        if (
+          input.type === "text" &&
+          input.hasAttribute("data-calculation-textfield")
+        ) {
+          toggles.push({
+            id: input.id,
+            elementref: input,
+            price: parseInt(input.dataset.price || "0"),
+            reveal: document.getElementById(input.dataset.reveal || ""),
+            nested: input.dataset.nested ? input.dataset.nested.split(";") : [],
+            showAccordionItems: input.dataset.showAccordionItem
+              ? input.dataset.showAccordionItem.split(";")
+              : [],
+            hideAccordionItems: input.dataset.hideAccordionItem
+              ? input.dataset.hideAccordionItem.split(";")
+              : [],
+            type: "textfield",
+            active: false, // изначально не активно
+          });
+          return;
+        }
       });
 
       toggles.forEach((toggle) => {
@@ -2921,6 +3043,26 @@ document.addEventListener("DOMContentLoaded", () => {
             toggle.counter = counter;
           }
         });
+
+        if (toggle.type === "textfield") {
+          toggle.elementref.addEventListener("input", () => {
+            const value = toggle.elementref.value.trim();
+            if (value !== "" && !toggle.active) {
+              activateTextField(toggle, target, toggles);
+            } else if (value === "" && toggle.active) {
+              deactivateTextField(toggle, target, toggles);
+            }
+          });
+
+          toggle.elementref.addEventListener("change", () => {
+            const value = toggle.elementref.value.trim();
+            if (value !== "" && !toggle.active) {
+              activateTextField(toggle, target, toggles);
+            } else if (value === "" && toggle.active) {
+              deactivateTextField(toggle, target, toggles);
+            }
+          });
+        }
       });
 
       return { toggles: toggles, counters: counters, texts: texts };
@@ -2939,7 +3081,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Добавляем обработчики для всех toggles (чекбоксы и select)
       toggles.forEach((toggle) => {
-        if (toggle.type === 'checkbox') {
+        if (toggle.type === "checkbox") {
           toggle.elementref.addEventListener("change", () => {
             if (toggle.id === "tenders_toggle") {
               handleTendersToggle(toggle, toggles, counters, target);
@@ -2999,6 +3141,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
               if (toggle.reveal) {
                 toggle.reveal.classList.add("hidden");
+                clearTextFieldsInContainer(toggle.reveal, toggles, target);
               }
               if (toggle.counter?.total) {
                 target.current_value -= toggle.counter.total;
@@ -3023,7 +3166,7 @@ document.addEventListener("DOMContentLoaded", () => {
               target.current_value = 0;
             }
           });
-        } else if (toggle.type === 'select') {
+        } else if (toggle.type === "select") {
           toggle.elementref.addEventListener("change", (e) => {
             const oldOption = toggle.currentOption;
             const newIndex = toggle.elementref.selectedIndex;
@@ -3739,8 +3882,8 @@ const niceSelectJS = function (selectName, options) {
       let listItem = document.createElement("li");
       listItem.innerHTML = child.textContent;
       listItem.setAttribute("data-value", child.value);
-      if (child.hasAttribute('data-price')) {
-        listItem.setAttribute('data-price', child.getAttribute('data-price'));
+      if (child.hasAttribute("data-price")) {
+        listItem.setAttribute("data-price", child.getAttribute("data-price"));
       }
       listItem.classList.add("option");
       if (
@@ -3791,8 +3934,8 @@ const niceSelectJS = function (selectName, options) {
   });
 
   // Option click
-  document.addEventListener('click', function (e) {
-    const option = e.target.closest('.nice-select .option:not(.disabled)');
+  document.addEventListener("click", function (e) {
+    const option = e.target.closest(".nice-select .option:not(.disabled)");
     if (!option) return;
     let dropdown = option.closest(".nice-select");
     if (dropdown.querySelector(".selected") !== null) {
@@ -3804,8 +3947,10 @@ const niceSelectJS = function (selectName, options) {
     let originalSelect = dropdown.previousSibling;
     originalSelect.value = option.getAttribute("data-value");
     // Генерируем событие change для калькулятора
-    originalSelect.dispatchEvent(new Event('change'));
-    console.log(`dispatched change on ${originalSelect.id}, value=${originalSelect.value}`);
+    originalSelect.dispatchEvent(new Event("change"));
+    console.log(
+      `dispatched change on ${originalSelect.id}, value=${originalSelect.value}`,
+    );
   });
 
   return this;
