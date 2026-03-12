@@ -2443,7 +2443,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("calculator")) {
     const inputs = document
       .getElementById("calculator")
-      ?.querySelectorAll(".accordion-content input, .accordion-content select");
+      ?.querySelectorAll(".accordion-content input, .accordion-content select"); // добавлены select
     const reset_button = document.getElementById("reset-options-btn");
     const sentButton = document.getElementById("send-calculator-total");
     const target = document.getElementById("calculator-total-target");
@@ -2467,13 +2467,15 @@ document.addEventListener("DOMContentLoaded", () => {
       configurable: true,
     });
 
-    // Вспомогательные функции для управления блоками
+    // ФУНКЦИИ ДЛЯ УПРАВЛЕНИЯ БЛОКАМИ
     const showElement = (element) => {
       if (element) element.classList.remove("hidden");
     };
+
     const hideElement = (element) => {
       if (element) element.classList.add("hidden");
     };
+
     const showAccordionItems = (accordionItemIds) => {
       if (!accordionItemIds) return;
       accordionItemIds.forEach((itemId) => {
@@ -2481,6 +2483,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showElement(item);
       });
     };
+
     const hideAccordionItems = (accordionItemIds) => {
       if (!accordionItemIds) return;
       accordionItemIds.forEach((itemId) => {
@@ -2489,20 +2492,21 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
 
-    // Управление аккордеонами
+    // НОВЫЕ ФУНКЦИИ ДЛЯ УПРАВЛЕНИЯ СОСТОЯНИЕМ ВСЕХ АККОРДЕОНОВ
     const deactivateAllAccordions = () => {
       const allAccordionItems = document.querySelectorAll(".accordion-item");
       allAccordionItems.forEach((item) => {
         if (item.id === "site-types") return;
         item.classList.add("deactive");
         const sectionCheckbox = item.querySelector(
-          'input[type="checkbox"][id^="section-"]'
+          'input[type="checkbox"][id^="section-"]',
         );
         if (sectionCheckbox) {
           sectionCheckbox.checked = false;
         }
       });
     };
+
     const activateAllAccordions = () => {
       const allAccordionItems = document.querySelectorAll(".accordion-item");
       allAccordionItems.forEach((item) => {
@@ -2510,40 +2514,19 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
 
-    // Функция обновления отображения кастомного селекта (nice-select)
-    const updateNiceSelect = (selectEl) => {
-      const niceSelect = selectEl.nextElementSibling?.classList.contains("nice-select")
-        ? selectEl.nextElementSibling
-        : null;
-      if (!niceSelect) return;
-
-      const currentSpan = niceSelect.querySelector(".current");
-      if (currentSpan) {
-        const selectedOption = selectEl.options[selectEl.selectedIndex];
-        currentSpan.textContent = selectedOption
-          ? selectedOption.textContent
-          : selectEl.getAttribute("data-display") || "Выберите...";
-      }
-
-      // Обновляем классы у пунктов списка
-      niceSelect.querySelectorAll(".option").forEach((opt) => opt.classList.remove("selected"));
-      if (selectEl.selectedIndex >= 0) {
-        const selectedLi = niceSelect.querySelectorAll(".option")[selectEl.selectedIndex];
-        if (selectedLi) selectedLi.classList.add("selected");
-      }
-    };
-
-    // Функция полного сброса калькулятора
+    // ФУНКЦИЯ ДЛЯ ПОЛНОГО СБРОСА КАЛЬКУЛЯТОРА (ИЗМЕНЕНА: добавлен сброс select)
     const resetCalculator = (toggles, counters, target) => {
-      // Сбрасываем чекбоксы
+      // Сбрасываем все чекбоксы
       toggles.forEach((toggle) => {
         if (toggle.type === "checkbox") {
           toggle.elementref.checked = false;
-          if (toggle.reveal) toggle.reveal.classList.add("hidden");
+          if (toggle.reveal) {
+            toggle.reveal.classList.add("hidden");
+          }
         }
       });
 
-      // Сбрасываем счётчики
+      // Сбрасываем все счетчики
       counters.forEach((counter) => {
         if (counter.intendfor === "design-landing") {
           counter.elementref.value = 1;
@@ -2554,20 +2537,45 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // Сбрасываем селекты
+      // Сбрасываем все select'ы к состоянию "не выбрано"
       toggles.forEach((toggle) => {
         if (toggle.type === "select") {
           const selectEl = toggle.elementref;
+
+          // 1. Деактивируем текущую опцию, если она была
           if (toggle.currentOption) {
             deactivateSelectOption(toggle.currentOption, toggles, target);
           }
+
+          // 2. Сбрасываем выбранную опцию на -1 (ничего не выбрано)
           selectEl.selectedIndex = -1;
           toggle.currentOption = null;
-          updateNiceSelect(selectEl); // обновляем отображение
+
+          // 3. Обновляем отображение кастомного селекта (если он есть)
+          const niceSelect = selectEl.nextElementSibling?.classList.contains(
+            "nice-select",
+          )
+            ? selectEl.nextElementSibling
+            : null;
+          if (niceSelect) {
+            const currentSpan = niceSelect.querySelector(".current");
+            if (currentSpan) {
+              // Берём текст из data-display или задаём заглушку
+              currentSpan.textContent =
+                selectEl.getAttribute("data-display") || "Выберите...";
+            }
+            // Убираем выделение со всех пунктов списка
+            niceSelect
+              .querySelectorAll(".option")
+              .forEach((opt) => opt.classList.remove("selected"));
+          }
+
+          // (Можно вызвать событие change, но оно не обязательно, т.к. всё уже обновлено вручную)
+          // selectEl.dispatchEvent(new Event('change'));
         }
       });
 
-      // Сбрасываем текстовые поля
+      // Сброс текстовых полей
       toggles.forEach((toggle) => {
         if (toggle.type === "textfield") {
           if (toggle.active) {
@@ -2582,82 +2590,138 @@ document.addEventListener("DOMContentLoaded", () => {
       deactivateAllAccordions();
     };
 
-    // Функции для работы с опциями select
+    // НОВЫЕ ФУНКЦИИ ДЛЯ РАБОТЫ С ОПЦИЯМИ SELECT
     const activateSelectOption = (option, toggles, target) => {
       if (!option) return;
+      // Добавляем цену
       target.current_value += option.price;
-      if (option.reveal) showElement(option.reveal);
-      if (option.nested && option.nested.length > 0) {
-        activateNestedToggles({ nested: option.nested }, toggles, target);
+
+      // Показываем reveal
+      if (option.reveal) {
+        showElement(option.reveal);
       }
-      if (option.showAccordionItems) showAccordionItems(option.showAccordionItems);
-      if (option.hideAccordionItems) hideAccordionItems(option.hideAccordionItems);
+
+      // Активируем nested toggles (чекбоксы)
+      if (option.nested && option.nested.length > 0) {
+        // Создаём временный toggle для использования activateNestedToggles
+        const tempToggle = { nested: option.nested };
+        activateNestedToggles(tempToggle, toggles, target);
+      }
+
+      // Управление аккордеонами
+      if (option.showAccordionItems) {
+        showAccordionItems(option.showAccordionItems);
+      }
+      if (option.hideAccordionItems) {
+        hideAccordionItems(option.hideAccordionItems);
+      }
     };
 
     const deactivateSelectOption = (option, toggles, target) => {
       if (!option) return;
+      // Вычитаем цену
       target.current_value -= option.price;
-      if (option.reveal) hideElement(option.reveal);
-      if (option.nested && option.nested.length > 0) {
-        deactivateNestedToggles({ nested: option.nested }, toggles, target);
+
+      // Скрываем reveal
+      if (option.reveal) {
+        hideElement(option.reveal);
       }
-      if (option.showAccordionItems) hideAccordionItems(option.showAccordionItems);
-      if (option.hideAccordionItems) showAccordionItems(option.hideAccordionItems);
+
+      // Деактивируем nested toggles
+      if (option.nested && option.nested.length > 0) {
+        const tempToggle = { nested: option.nested };
+        deactivateNestedToggles(tempToggle, toggles, target);
+      }
+
+      // Возвращаем аккордеоны (противоположные действия)
+      if (option.showAccordionItems) {
+        hideAccordionItems(option.showAccordionItems);
+      }
+      if (option.hideAccordionItems) {
+        showAccordionItems(option.hideAccordionItems);
+      }
     };
 
-    // Инициализация селектов (активируем предустановленные опции)
+    // НОВАЯ ФУНКЦИЯ ИНИЦИАЛИЗАЦИИ SELECT'ОВ
     const initializeSelects = (toggles, target) => {
       toggles.forEach((toggle) => {
         if (toggle.type === "select" && toggle.currentOption) {
           activateSelectOption(toggle.currentOption, toggles, target);
-          updateNiceSelect(toggle.elementref); // обновляем nice-select
         }
       });
     };
 
-    // Текстовые поля
+    // Управление кастомными input с ценами
+    // Активация текстового поля
     const activateTextField = (textFieldToggle, target, toggles) => {
-      if (textFieldToggle.active) return;
+      if (textFieldToggle.active) return; // уже активно
       target.current_value += textFieldToggle.price;
-      if (textFieldToggle.reveal) showElement(textFieldToggle.reveal);
-      if (textFieldToggle.nested && textFieldToggle.nested.length > 0) {
-        activateNestedToggles({ nested: textFieldToggle.nested }, toggles, target);
+      if (textFieldToggle.reveal) {
+        showElement(textFieldToggle.reveal);
       }
-      if (textFieldToggle.showAccordionItems) showAccordionItems(textFieldToggle.showAccordionItems);
-      if (textFieldToggle.hideAccordionItems) hideAccordionItems(textFieldToggle.hideAccordionItems);
+      if (textFieldToggle.nested && textFieldToggle.nested.length > 0) {
+        const tempToggle = { nested: textFieldToggle.nested };
+        activateNestedToggles(tempToggle, toggles, target);
+      }
+      if (textFieldToggle.showAccordionItems) {
+        showAccordionItems(textFieldToggle.showAccordionItems);
+      }
+      if (textFieldToggle.hideAccordionItems) {
+        hideAccordionItems(textFieldToggle.hideAccordionItems);
+      }
       textFieldToggle.active = true;
     };
+
+    // Деактивация текстового поля
     const deactivateTextField = (textFieldToggle, target, toggles) => {
       if (!textFieldToggle.active) return;
       target.current_value -= textFieldToggle.price;
-      if (textFieldToggle.reveal) hideElement(textFieldToggle.reveal);
-      if (textFieldToggle.nested && textFieldToggle.nested.length > 0) {
-        deactivateNestedToggles({ nested: textFieldToggle.nested }, toggles, target);
+      if (textFieldToggle.reveal) {
+        hideElement(textFieldToggle.reveal);
       }
-      if (textFieldToggle.showAccordionItems) hideAccordionItems(textFieldToggle.showAccordionItems);
-      if (textFieldToggle.hideAccordionItems) showAccordionItems(textFieldToggle.hideAccordionItems);
+      if (textFieldToggle.nested && textFieldToggle.nested.length > 0) {
+        const tempToggle = { nested: textFieldToggle.nested };
+        deactivateNestedToggles(tempToggle, toggles, target);
+      }
+      if (textFieldToggle.showAccordionItems) {
+        hideAccordionItems(textFieldToggle.showAccordionItems);
+      }
+      if (textFieldToggle.hideAccordionItems) {
+        showAccordionItems(textFieldToggle.hideAccordionItems);
+      }
       textFieldToggle.active = false;
     };
+
+    // Очистка текстовых полей в контейнере (при скрытии родителя)
     const clearTextFieldsInContainer = (container, toggles, target) => {
       if (!container) return;
-      const textFields = container.querySelectorAll("input[data-calculation-textfield]");
+      const textFields = container.querySelectorAll(
+        "input[data-calculation-textfield]",
+      );
       textFields.forEach((field) => {
-        const textToggle = toggles.find((t) => t.type === "textfield" && t.elementref === field);
+        const textToggle = toggles.find(
+          (t) => t.type === "textfield" && t.elementref === field,
+        );
         if (textToggle && textToggle.active) {
+          // Деактивируем
           deactivateTextField(textToggle, target, toggles);
           field.value = "";
         } else if (textToggle) {
+          // Просто очищаем значение, если не активно
           field.value = "";
         }
       });
     };
 
-    // Управление аккордеонами для тендеров
+    // НОВАЯ ФУНКЦИЯ ДЛЯ УПРАВЛЕНИЯ СОСТОЯНИЕМ АККОРДЕОНОВ В ЗАВИСИМОСТИ ОТ ТИПА САЙТА
     const updateAccordionStateForSiteType = (toggle) => {
       const isTenderSelected =
         toggle &&
         toggle.elementref.checked &&
-        (toggle.id === "tender-portal" || toggle.id === "tender-portal-paying" || toggle.id === "tenders_toggle");
+        (toggle.id === "tender-portal" ||
+          toggle.id === "tender-portal-paying" ||
+          toggle.id === "tenders_toggle");
+
       if (isTenderSelected) {
         deactivateAllAccordions();
       } else if (toggle && toggle.elementref.checked) {
@@ -2665,12 +2729,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    // Применение пресета типа сайта
+    // ФУНКЦИЯ ДЛЯ ПРИМЕНЕНИЯ ПРЕСЕТА ТИПА САЙТА
     const applySiteTypePreset = (selectedToggle, toggles, counters, target) => {
       resetCalculator(toggles, counters, target);
       selectedToggle.elementref.checked = true;
       target.current_value += selectedToggle.price;
-      if (selectedToggle.reveal) selectedToggle.reveal.classList.remove("hidden");
+
+      if (selectedToggle.reveal) {
+        selectedToggle.reveal.classList.remove("hidden");
+      }
 
       if (selectedToggle.nested && selectedToggle.nested.length > 0) {
         selectedToggle.nested.forEach((nestedToggleId) => {
@@ -2678,61 +2745,92 @@ document.addEventListener("DOMContentLoaded", () => {
           if (nestedToggle) {
             nestedToggle.elementref.checked = true;
             target.current_value += nestedToggle.price;
+
             if (nestedToggle.counter) {
               const counter = nestedToggle.counter;
-              const defaultValue = parseInt(counter.elementref.getAttribute("value") || "0");
+              const defaultValue = parseInt(
+                counter.elementref.getAttribute("value") || "0",
+              );
               counter.elementref.value = defaultValue;
               counter.total = defaultValue * counter.price;
               target.current_value += counter.total;
+
+              if (nestedToggle.reveal) {
+                nestedToggle.reveal.classList.remove("hidden");
+              }
             }
-            if (nestedToggle.reveal) nestedToggle.reveal.classList.remove("hidden");
-            const section = document.querySelector(`#section-${nestedToggleId.split("-")?.[0]}`);
-            if (section) section.checked = true;
+
+            if (nestedToggle.reveal) {
+              nestedToggle.reveal.classList.remove("hidden");
+            }
+
+            const section = document.querySelector(
+              `#section-${nestedToggleId.split("-")?.[0]}`,
+            );
+            if (section) {
+              section.checked = true;
+            }
           }
         });
       }
 
       updateAccordionStateForSiteType(selectedToggle);
-      if (selectedToggle.showAccordionItems) showAccordionItems(selectedToggle.showAccordionItems);
-      if (selectedToggle.hideAccordionItems) hideAccordionItems(selectedToggle.hideAccordionItems);
+
+      if (selectedToggle.showAccordionItems) {
+        showAccordionItems(selectedToggle.showAccordionItems);
+      }
+      if (selectedToggle.hideAccordionItems) {
+        hideAccordionItems(selectedToggle.hideAccordionItems);
+      }
     };
 
-    // Обновление счётчиков
+    // ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ СЧЕТЧИКОВ
     const updateCountersForToggle = (toggle, target) => {
       if (toggle.counter) {
         const counter = toggle.counter;
         const currentValue = parseInt(counter.elementref.value || "0");
         counter.total = currentValue * counter.price;
+
         if (toggle.elementref.checked) {
           target.current_value += counter.total;
         }
       }
     };
 
-    // Проверка внутреннего тендерного переключателя
+    // ФУНКЦИЯ ДЛЯ ПРОВЕРКИ, ЯВЛЯЕТСЯ ЛИ TOGGLE ВНУТРЕННИМ ДЛЯ ТЕНДЕРНОГО ПОРТАЛА
     const isTenderPortalInnerToggle = (toggle) => {
-      const tenderConfigIds = ["tender-portal_config", "tender-portal_paying_config"];
+      const tenderConfigIds = [
+        "tender-portal_config",
+        "tender-portal_paying_config",
+      ];
+
       for (const configId of tenderConfigIds) {
         const configElement = document.getElementById(configId);
-        if (configElement && configElement.contains(toggle.elementref)) return true;
+        if (configElement && configElement.contains(toggle.elementref)) {
+          return true;
+        }
       }
       return false;
     };
 
-    // Обработка специального тендерного переключателя
+    // ФУНКЦИЯ ДЛЯ ОБРАБОТКИ TENDERS_TOGGLE
     const handleTendersToggle = (toggle, toggles, counters, target) => {
       if (toggle.elementref.checked) {
         resetCalculator(toggles, counters, target);
         toggle.elementref.checked = true;
-        if (toggle.showAccordionItems) showAccordionItems(toggle.showAccordionItems);
+        if (toggle.showAccordionItems) {
+          showAccordionItems(toggle.showAccordionItems);
+        }
         updateAccordionStateForSiteType(toggle);
       } else {
         resetCalculator(toggles, counters, target);
-        if (toggle.showAccordionItems) hideAccordionItems(toggle.showAccordionItems);
+        if (toggle.showAccordionItems) {
+          hideAccordionItems(toggle.showAccordionItems);
+        }
       }
     };
 
-    // Активация/деактивация вложенных чекбоксов
+    // ФУНКЦИИ ДЛЯ АКТИВАЦИИ/ДЕАКТИВАЦИИ NESTED TOGGLES
     const activateNestedToggles = (toggle, toggles, target) => {
       if (toggle.nested && toggle.nested.length > 0) {
         toggle.nested.forEach((nestedToggleid) => {
@@ -2740,14 +2838,19 @@ document.addEventListener("DOMContentLoaded", () => {
           if (nestedToggle && !nestedToggle.elementref.checked) {
             nestedToggle.elementref.checked = true;
             target.current_value += nestedToggle.price;
-            if (nestedToggle.reveal) nestedToggle.reveal.classList.remove("hidden");
-            const section = document.querySelector(`#section-${nestedToggleid.split("-")?.[0]}`);
+            if (nestedToggle.reveal) {
+              nestedToggle.reveal.classList.remove("hidden");
+            }
+            const section = document.querySelector(
+              `#section-${nestedToggleid.split("-")?.[0]}`,
+            );
             if (section) section.checked = true;
             activateNestedToggles(nestedToggle, toggles, target);
           }
         });
       }
     };
+
     const deactivateNestedToggles = (toggle, toggles, target) => {
       if (toggle.nested && toggle.nested.length > 0) {
         toggle.nested.forEach((nestedToggleid) => {
@@ -2755,17 +2858,19 @@ document.addEventListener("DOMContentLoaded", () => {
           if (nestedToggle && nestedToggle.elementref.checked) {
             target.current_value -= nestedToggle.price;
             nestedToggle.elementref.checked = false;
-            if (nestedToggle.reveal) nestedToggle.reveal.classList.add("hidden");
+            if (nestedToggle.reveal) {
+              nestedToggle.reveal.classList.add("hidden");
+            }
             deactivateNestedToggles(nestedToggle, toggles, target);
           }
         });
       }
     };
 
-    // Обработка хеша
     const handleToggleByHash = (hash, toggles, counters, target) => {
       const id = hash.replace("#", "");
       const handle_target = toggles.find((t) => t.id === id);
+
       if (handle_target) {
         try {
           if (handle_target.isSiteType) {
@@ -2773,20 +2878,39 @@ document.addEventListener("DOMContentLoaded", () => {
           } else {
             handle_target.elementref.checked = true;
             handle_target.elementref.dispatchEvent(togglechange);
+
             if (handle_target.nested && handle_target.nested.length > 0) {
               handle_target.nested.forEach((nestedToggleid) => {
-                const nestedToggle = toggles.find((t) => t.id === nestedToggleid);
-                const section = document.querySelector(`#section-${nestedToggleid.split("-")?.[0]}`);
+                const nestedToggle = toggles.find(
+                  (t) => t.id === nestedToggleid,
+                );
+                const section = document.querySelector(
+                  `#section-${nestedToggleid.split("-")?.[0]}`,
+                );
                 if (section) section.checked = true;
-                if (nestedToggle) {
-                  nestedToggle.elementref.checked = true;
-                  nestedToggle.elementref.dispatchEvent(togglechange);
+
+                try {
+                  if (nestedToggle) {
+                    nestedToggle.elementref.checked = true;
+                    nestedToggle.elementref.dispatchEvent(togglechange);
+                  } else {
+                    console.error("=> ", nestedToggleid, "not found");
+                  }
+                  if (nestedToggle?.reveal) {
+                    nestedToggle.reveal.classList.remove("hidden");
+                  }
+                } catch (err) {
+                  console.error(nestedToggleid, err);
                 }
-                if (nestedToggle?.reveal) nestedToggle.reveal.classList.remove("hidden");
               });
             }
           }
-          toggleSection(null, false, ["calculator", "calculator-total"], ["choose_your_way"]);
+          toggleSection(
+            null,
+            false,
+            ["calculator", "calculator-total"],
+            ["choose_your_way"],
+          );
           console.log("=> success");
         } catch (err) {
           console.log("=> error", err);
@@ -2796,45 +2920,64 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    // Преобразование DOM-элементов во внутренние объекты
+    // ОБНОВЛЕН toggleConverter - добавлена обработка select
     const toggleConverter = (inputs) => {
       const toggles = [];
       const counters = [];
       const texts = [];
 
       const mainSiteTypes = [
-        "type-landing", "type-portfolio", "type-corporate", "type-corporate_catalogue",
-        "type-store", "type-store_ai", "type-portal", "tenders-toggle", "type-unique"
+        "type-landing",
+        "type-portfolio",
+        "type-corporate",
+        "type-corporate_catalogue",
+        "type-store",
+        "type-store_ai",
+        "type-portal",
+        "tenders-toggle",
+        "type-unique",
       ];
 
       inputs.forEach((input) => {
-        // Текстовые поля с ценой
-        if (input.type === "text" && input.hasAttribute("data-calculation-textfield")) {
+        if (
+          input.type === "text" &&
+          input.hasAttribute("data-calculation-textfield")
+        ) {
           toggles.push({
             id: input.id,
             elementref: input,
             price: parseInt(input.dataset.price || "0"),
             reveal: document.getElementById(input.dataset.reveal || ""),
             nested: input.dataset.nested ? input.dataset.nested.split(";") : [],
-            showAccordionItems: input.dataset.showAccordionItem ? input.dataset.showAccordionItem.split(";") : [],
-            hideAccordionItems: input.dataset.hideAccordionItem ? input.dataset.hideAccordionItem.split(";") : [],
+            showAccordionItems: input.dataset.showAccordionItem
+              ? input.dataset.showAccordionItem.split(";")
+              : [],
+            hideAccordionItems: input.dataset.hideAccordionItem
+              ? input.dataset.hideAccordionItem.split(";")
+              : [],
             type: "textfield",
-            active: false,
+            active: false, // изначально не активно
           });
           return;
         }
 
-        // Селекты
+        // Обработка select
         if (input.tagName === "SELECT") {
           const options = [];
           for (let opt of input.options) {
             options.push({
               value: opt.value,
               price: parseInt(opt.dataset.price || "0"),
-              reveal: opt.dataset.reveal ? document.getElementById(opt.dataset.reveal) : null,
+              reveal: opt.dataset.reveal
+                ? document.getElementById(opt.dataset.reveal)
+                : null,
               nested: opt.dataset.nested ? opt.dataset.nested.split(";") : [],
-              showAccordionItems: opt.dataset.showAccordionItem ? opt.dataset.showAccordionItem.split(";") : [],
-              hideAccordionItems: opt.dataset.hideAccordionItem ? opt.dataset.hideAccordionItem.split(";") : [],
+              showAccordionItems: opt.dataset.showAccordionItem
+                ? opt.dataset.showAccordionItem.split(";")
+                : [],
+              hideAccordionItems: opt.dataset.hideAccordionItem
+                ? opt.dataset.hideAccordionItem.split(";")
+                : [],
             });
           }
 
@@ -2846,7 +2989,7 @@ document.addEventListener("DOMContentLoaded", () => {
             currentOption: null,
           };
 
-          // Определяем, есть ли предустановленная опция
+          // Проверяем, есть ли опция с атрибутом selected
           let hasSelectedOption = false;
           for (let opt of input.options) {
             if (opt.hasAttribute("selected")) {
@@ -2856,27 +2999,25 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           if (hasSelectedOption) {
+            // Берём выбранный индекс (он будет соответствовать опции с selected)
             const selectedIndex = input.selectedIndex;
             if (selectedIndex >= 0 && options[selectedIndex]) {
               selectObj.currentOption = options[selectedIndex];
             }
           } else {
+            // Нет выбранной опции по умолчанию: сбрасываем selectedIndex на -1
             input.selectedIndex = -1;
+            // currentOption остаётся null
           }
 
           toggles.push(selectObj);
           return;
         }
 
-        // Остальные input'ы
+        // Обработка остальных input'ов (checkbox, number, text и т.д.)
         switch (input.type) {
           case "checkbox": {
             const isMainSiteType = mainSiteTypes.includes(input.id);
-            const selectTarget = input.dataset.selectTarget;
-            const selectOptionIndex = input.dataset.selectOptionIndex
-              ? parseInt(input.dataset.selectOptionIndex)
-              : 0;
-
             toggles.push({
               id: input.id,
               elementref: input,
@@ -2887,9 +3028,7 @@ document.addEventListener("DOMContentLoaded", () => {
               showAccordionItems: input.dataset.showAccordionItem?.split(";"),
               hideAccordionItems: input.dataset.hideAccordionItem?.split(";"),
               isSiteType: isMainSiteType,
-              type: "checkbox",
-              selectTarget: selectTarget,
-              selectOptionIndex: selectOptionIndex,
+              type: "checkbox", // явно укажем тип
             });
             break;
           }
@@ -2898,19 +3037,23 @@ document.addEventListener("DOMContentLoaded", () => {
               id: input.id,
               elementref: input,
               price: parseInt(input.dataset.price || "0"),
-              total: parseInt(input.dataset.price || "0") * (parseInt(input.value) || 0),
+              total:
+                parseInt(input.dataset.price || "0") *
+                (parseInt(input.value) || 0),
               intendfor: input.dataset.intendfor,
             });
             break;
           }
           default: {
-            texts.push({ id: input.id, elementref: input });
+            texts.push({
+              id: input.id,
+              elementref: input,
+            });
             break;
           }
         }
       });
 
-      // Связываем счётчики с соответствующими чекбоксами
       toggles.forEach((toggle) => {
         counters.forEach((counter) => {
           if (counter.intendfor === toggle.id) {
@@ -2919,17 +3062,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
 
-      return { toggles, counters, texts };
+      return { toggles: toggles, counters: counters, texts: texts };
     };
 
-    // Основная логика
     if (inputs && target) {
       const { toggles, counters, texts } = toggleConverter(inputs);
       target.innerText = 0;
       target.current_value = 0;
+
+      // ИНИЦИАЛИЗАЦИЯ: все аккордеоны deactive и закрыты
       deactivateAllAccordions();
 
-      // Слушатели для текстовых полей
+      // Добавляем слушатели для текстовых полей
       toggles.forEach((toggle) => {
         if (toggle.type === "textfield") {
           toggle.elementref.addEventListener("input", () => {
@@ -2951,18 +3095,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // Инициализация селектов
+      // Инициализация select'ов (добавляем их стоимость и эффекты)
       initializeSelects(toggles, target);
 
-      // Обработчики для чекбоксов и селектов
+      // Добавляем обработчики для всех toggles (чекбоксы и select)
       toggles.forEach((toggle) => {
         if (toggle.type === "checkbox") {
           toggle.elementref.addEventListener("change", () => {
-            // Специальные обработчики
             if (toggle.id === "tenders_toggle") {
               handleTendersToggle(toggle, toggles, counters, target);
               return;
             }
+
             if (toggle.isSiteType) {
               if (toggle.elementref.checked) {
                 applySiteTypePreset(toggle, toggles, counters, target);
@@ -2975,21 +3119,28 @@ document.addEventListener("DOMContentLoaded", () => {
             const isTenderInnerToggle = isTenderPortalInnerToggle(toggle);
 
             if (toggle.elementref.checked) {
-              // Включение чекбокса
-              if (toggle.reveal) toggle.reveal.classList.remove("hidden");
-              if (toggle.counter) updateCountersForToggle(toggle, target);
+              if (toggle.reveal) {
+                toggle.reveal.classList.remove("hidden");
+              }
+              if (toggle.counter) {
+                updateCountersForToggle(toggle, target);
+              }
               if (toggle.radioid && toggle.radioid.length > 0) {
                 toggle.radioid.forEach((id) => {
                   const radioToggle = toggles.find((t) => t.id === id);
                   if (radioToggle && radioToggle.elementref.checked) {
                     radioToggle.elementref.checked = false;
                     target.current_value -= radioToggle.price;
-                    if (radioToggle.reveal) radioToggle.reveal.classList.add("hidden");
+                    if (radioToggle.reveal) {
+                      radioToggle.reveal.classList.add("hidden");
+                    }
                     if (radioToggle.counter && radioToggle.counter.total) {
                       target.current_value -= radioToggle.counter.total;
                       radioToggle.counter.total = 0;
                     }
-                    if (radioToggle.nested) deactivateNestedToggles(radioToggle, toggles, target);
+                    if (radioToggle.nested) {
+                      deactivateNestedToggles(radioToggle, toggles, target);
+                    }
                   }
                 });
               }
@@ -2999,11 +3150,14 @@ document.addEventListener("DOMContentLoaded", () => {
               target.current_value += toggle.price;
 
               if (!isTenderInnerToggle) {
-                if (toggle.showAccordionItems) showAccordionItems(toggle.showAccordionItems);
-                if (toggle.hideAccordionItems) hideAccordionItems(toggle.hideAccordionItems);
+                if (toggle.showAccordionItems) {
+                  showAccordionItems(toggle.showAccordionItems);
+                }
+                if (toggle.hideAccordionItems) {
+                  hideAccordionItems(toggle.hideAccordionItems);
+                }
               }
             } else {
-              // Выключение чекбокса
               if (toggle.reveal) {
                 toggle.reveal.classList.add("hidden");
                 clearTextFieldsInContainer(toggle.reveal, toggles, target);
@@ -3018,29 +3172,18 @@ document.addEventListener("DOMContentLoaded", () => {
               target.current_value -= toggle.price;
 
               if (!isTenderInnerToggle) {
-                if (toggle.showAccordionItems) hideAccordionItems(toggle.showAccordionItems);
-                if (toggle.hideAccordionItems) showAccordionItems(toggle.hideAccordionItems);
-              }
-            }
-
-            // Управление связанным селектом (добавлено внутрь обработчика)
-            if (toggle.selectTarget) {
-              const targetSelect = document.getElementById(toggle.selectTarget);
-              if (targetSelect && targetSelect.tagName === "SELECT") {
-                if (toggle.elementref.checked) {
-                  const index = toggle.selectOptionIndex ?? 0;
-                  if (index >= 0 && index < targetSelect.options.length) {
-                    targetSelect.selectedIndex = index;
-                    targetSelect.dispatchEvent(new Event("change"));
-                  }
-                } else {
-                  targetSelect.selectedIndex = -1;
-                  targetSelect.dispatchEvent(new Event("change"));
+                if (toggle.showAccordionItems) {
+                  hideAccordionItems(toggle.showAccordionItems);
+                }
+                if (toggle.hideAccordionItems) {
+                  showAccordionItems(toggle.hideAccordionItems);
                 }
               }
             }
 
-            if (target.current_value < 0) target.current_value = 0;
+            if (target.current_value < 0) {
+              target.current_value = 0;
+            }
           });
         } else if (toggle.type === "select") {
           toggle.elementref.addEventListener("change", (e) => {
@@ -3048,93 +3191,141 @@ document.addEventListener("DOMContentLoaded", () => {
             const newIndex = toggle.elementref.selectedIndex;
             const newOption = toggle.options[newIndex];
 
-            if (oldOption === newOption) return;
+            if (oldOption === newOption) return; // ничего не изменилось
 
+            // Деактивируем старую опцию
             if (oldOption) {
               deactivateSelectOption(oldOption, toggles, target);
             }
+
+            // Активируем новую опцию
             if (newOption) {
               activateSelectOption(newOption, toggles, target);
             }
 
             toggle.currentOption = newOption;
-            updateNiceSelect(toggle.elementref); // обновляем nice-select
 
-            if (target.current_value < 0) target.current_value = 0;
+            if (target.current_value < 0) {
+              target.current_value = 0;
+            }
           });
-        }
-
-        // Инициализация для уже отмеченных чекбоксов
-        if (toggle.type === "checkbox" && toggle.elementref.checked && toggle.selectTarget) {
-          toggle.elementref.dispatchEvent(new Event("change"));
         }
       });
 
-      // Обработка счётчиков
+      // ОБРАБОТКА COUNTERS (без изменений)
       counters.forEach((counter) => {
         const changeEvent = new Event("input");
         counter.elementref.nextElementSibling?.addEventListener("click", () => {
           counter.elementref.value++;
           counter.elementref.dispatchEvent(changeEvent);
         });
-        counter.elementref.previousElementSibling?.addEventListener("click", () => {
-          if (counter.elementref.dataset?.intendfor === "design-landing") {
-            if (counter.elementref.value > 1) counter.elementref.value--;
-          } else if (counter.elementref.value > 0) {
-            counter.elementref.value--;
-          }
-          counter.elementref.dispatchEvent(changeEvent);
-        });
-
+        counter.elementref.previousElementSibling?.addEventListener(
+          "click",
+          () => {
+            if (counter.elementref.dataset?.intendfor === "design-landing") {
+              if (counter.elementref.value > 1) {
+                counter.elementref.value--;
+              }
+            } else if (counter.elementref.value > 0) {
+              counter.elementref.value--;
+            }
+            counter.elementref.dispatchEvent(changeEvent);
+          },
+        );
         counter.elementref.addEventListener("input", () => {
           const relatedToggle = toggles.find((t) => t.id === counter.intendfor);
+
           if (relatedToggle && relatedToggle.elementref.checked) {
             const oldTotal = counter.total;
-            counter.total = parseInt(counter.elementref.value === "" ? "0" : counter.elementref.value) * counter.price;
-            target.current_value += counter.total - oldTotal;
+            counter.total =
+              parseInt(
+                counter.elementref.value === ""
+                  ? "0"
+                  : counter.elementref.value,
+              ) * counter.price;
+            const difference = counter.total - oldTotal;
+            target.current_value += difference;
           } else {
-            counter.total = parseInt(counter.elementref.value === "" ? "0" : counter.elementref.value) * counter.price;
+            counter.total =
+              parseInt(
+                counter.elementref.value === ""
+                  ? "0"
+                  : counter.elementref.value,
+              ) * counter.price;
           }
-          if (target.current_value < 0) target.current_value = 0;
-          if (counter.elementref.dataset?.intendfor === "design-landing" && counter.elementref.value < 1) {
-            counter.elementref.value = 1;
+
+          if (target.current_value < 0) {
+            target.current_value = 0;
+          }
+
+          if (counter.elementref.dataset?.intendfor === "design-landing") {
+            if (counter.elementref.value < 1) {
+              counter.elementref.value = 1;
+            }
           }
         });
-
         counter.elementref.addEventListener("keydown", (e) => {
           const blockedkeys = ["-", ",", ".", "+"];
-          if (blockedkeys.includes(e.key)) e.preventDefault();
+          if (blockedkeys.includes(e.key)) {
+            e.preventDefault();
+          }
         });
-
         counter.elementref.addEventListener("blur", () => {
-          if (counter.elementref.value === "") counter.elementref.value = 0;
-          if (counter.elementref.dataset?.intendfor === "design-landing" && counter.elementref.value < 1) {
+          if (counter.elementref.value === "") {
+            counter.elementref.value = 0;
+          }
+          if (
+            counter.elementref.dataset?.intendfor === "design-landing" &&
+            counter.elementref.value < 1
+          ) {
             counter.elementref.value = 1;
           }
         });
       });
 
-      // Кнопка отправки
       sentButton?.addEventListener("click", () => {
+        // Выбранные чекбоксы
         const checkboxes = toggles
           .filter((t) => t.type === "checkbox" && t.elementref.checked)
-          .map((t) => ({ id: t.id, price: t.price }));
+          .map((t) => ({
+            id: t.id,
+            price: t.price,
+          }));
 
+        // Выбранные опции селектов
         const selects = toggles
           .filter((t) => t.type === "select" && t.currentOption)
-          .map((t) => ({ id: t.id, selectedValue: t.currentOption.value, price: t.currentOption.price }));
+          .map((t) => ({
+            id: t.id,
+            selectedValue: t.currentOption.value,
+            price: t.currentOption.price,
+          }));
 
+        // Активные текстовые поля с ценой
         const textfields = toggles
           .filter((t) => t.type === "textfield" && t.active)
-          .map((t) => ({ id: t.id, value: t.elementref.value, price: t.price }));
+          .map((t) => ({
+            id: t.id,
+            value: t.elementref.value,
+            price: t.price,
+          }));
 
+        // Счётчики (числовые поля)
         const countersData = counters
           .filter((c) => c.elementref.value != "")
-          .map((c) => ({ id: c.id, value: parseInt(c.elementref.value), price: c.price }));
+          .map((c) => ({
+            id: c.id,
+            value: parseInt(c.elementref.value),
+            price: c.price,
+          }));
 
+        // Обычные текстовые поля (без цены) с непустым значением
         const extraTexts = texts
           .filter((t) => t.elementref.value !== "")
-          .map((t) => ({ id: t.id, value: t.elementref.value }));
+          .map((t) => ({
+            id: t.id,
+            value: t.elementref.value,
+          }));
 
         const review = {
           checkboxes,
@@ -3148,18 +3339,32 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(review);
       });
 
-      // Кнопка сброса
+      // sentButton?.addEventListener("click", () => {
+      //   const review = {
+      //     options: toggles.filter((toggle) => toggle.elementref.checked),
+      //     extra: texts.filter((text) => text.elementref.value !== ""),
+      //     preprice: target.innerText,
+      //   };
+      //   console.log(review);
+      // });
+
       reset_button?.addEventListener("click", (e) => {
-        const calculator = document.getElementById("calculator");
-        let icon = e.currentTarget.querySelector("i");
-        icon.classList.add("rotateInfinite");
+        const calculator = document.getElementById('calculator');
+
+        let icon = e.currentTarget.querySelector('i');
+
+        icon.classList.add('rotateInfinite');
         sentButton.disabled = true;
 
         resetCalculator(toggles, counters, target);
 
         setTimeout(() => {
-          calculator?.scrollIntoView({ behavior: "smooth", block: "start" });
-          icon.classList.remove("rotateInfinite");
+          calculator?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+
+          icon.classList.remove('rotateInfinite');
           sentButton.disabled = false;
         }, 600);
       });
