@@ -5149,7 +5149,6 @@ form .button:hover {
   margin-bottom: 10px;
   background-color: var(--blue-bg);
   border-radius: 30px;
-  overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
 .accordion .accordion-item.deactive {
@@ -5205,6 +5204,7 @@ form .button:hover {
   gap: 16px;
   padding: 0;
   max-height: 0;
+  visibility: hidden;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
 }
@@ -5253,6 +5253,8 @@ form .button:hover {
 .accordion .accordion-checkbox:checked + .accordion-header + .accordion-content {
   max-height: unset;
   padding: 16px 32px;
+  visibility: visible;
+  overflow: visible;
 }
 @media (max-width: 600px) {
   .accordion .accordion-checkbox:checked + .accordion-header + .accordion-content {
@@ -5373,6 +5375,54 @@ form .button:hover {
   border-radius: 20px;
   background-color: var(--blue-main);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.toggle-nice > input {
+  display: none;
+}
+.toggle-nice > input:checked + label {
+  position: relative;
+}
+.toggle-nice > input:checked + label::before {
+  content: "";
+  background-color: var(--blue-tag);
+  border: 1px solid var(--color-white);
+}
+.toggle-nice > input:checked + label:after {
+  background-color: var(--color-white);
+  transform: translateX(26px);
+}
+.toggle-nice > input + label {
+  position: relative;
+  cursor: pointer;
+}
+.toggle-nice > input + label::before {
+  content: "";
+  display: inline-block;
+  min-width: 50px;
+  height: 24px;
+  border-radius: 20px;
+  background-color: var(--blue-bg);
+  border: 1px solid var(--blue-main);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.toggle-nice > input + label:after {
+  content: "";
+  top: 3px;
+  left: 3px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: var(--blue-main);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.toggle-nice > input:not(:checked) + label + * {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.toggle-nice > input:is(:checked) + label + * {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .catalogue-preview {
@@ -8929,6 +8979,9 @@ button:hover svg,
   display: flex;
   height: 50px;
 }
+.nice-wrapper--simple {
+  height: auto;
+}
 
 .nice-select {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -9001,66 +9054,10 @@ button:hover svg,
 .nice-select.disabled:after {
   border-color: rgba(255, 255, 255, 0.5);
 }
-.nice-select.wide {
-  width: 100%;
-}
-.nice-select.wide .list {
-  left: 0 !important;
-  right: 0 !important;
-}
-.nice-select.right {
-  float: right;
-}
-.nice-select.right .list {
-  left: auto;
-  right: 0;
-}
-.nice-select.small {
-  font-size: 12px;
-  height: 36px;
-  line-height: 34px;
-}
-.nice-select.small:after {
-  height: 4px;
-  width: 4px;
-}
-.nice-select.small .option {
-  line-height: 34px;
-  min-height: 34px;
-}
-.nice-select.isTextField:not(.open) {
-  background-color: transparent;
-  border-color: transparent;
-}
-.nice-select.isTextField:after {
-  height: 8px;
-  width: 8px;
-  margin-top: -6px;
-}
-.nice-select.isTextField .list {
-  left: -1px;
-  width: calc(100% + 2px);
-  margin: 0;
-  border-top-width: 0;
-  box-shadow: unset;
-}
-.nice-select.isTextField .list .option {
-  padding-right: 38px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.nice-select.isTextField:is(.open) {
-  border-radius: 8px 8px 0 0;
-  border-bottom-width: 0;
-}
-.nice-select.isTextField:is(.open) .list {
-  border-color: var(--blue-main);
-  border-radius: 0 0 8px 8px;
-}
 .nice-select .list {
   background-color: var(--blue-light-bg);
   border-radius: 8px;
-  border: solid 1px var(--blue-light-bg);
+  border: 1px solid var(--blue-main);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
   margin-top: 4px;
@@ -9102,6 +9099,75 @@ button:hover svg,
   background-color: transparent;
   color: rgba(255, 255, 255, 0.5);
   cursor: default;
+}
+.nice-select.wide {
+  width: 100%;
+}
+.nice-select.wide .list {
+  left: 0 !important;
+  right: 0 !important;
+}
+.nice-select.right {
+  float: right;
+}
+.nice-select.right .list {
+  left: auto;
+  right: 0;
+}
+.nice-select.small {
+  font-size: 12px;
+  height: 36px;
+  line-height: 34px;
+}
+.nice-select.small:after {
+  height: 4px;
+  width: 4px;
+}
+.nice-select.small .option {
+  line-height: 34px;
+  min-height: 34px;
+}
+.nice-select.isTextField {
+  height: fit-content;
+  padding-top: 2px;
+  padding-left: 8px;
+  padding-bottom: 2px;
+  line-height: 1;
+  white-space: normal;
+}
+.nice-select.isTextField:not(.open) {
+  background-color: transparent;
+  border-color: transparent;
+}
+.nice-select.isTextField:after {
+  height: 8px;
+  width: 8px;
+  margin-top: -6px;
+}
+.nice-select.isTextField .current {
+  white-space: unset;
+  text-overflow: unset;
+  overflow: visible;
+}
+.nice-select.isTextField .list {
+  left: -1px;
+  width: calc(100% + 2px);
+}
+.nice-select.isTextField .list .option {
+  min-height: unset;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 40px;
+  font-size: 14px;
+  line-height: 1.25;
+  white-space: unset;
+}
+.nice-select.isTextField:is(.open) {
+  background-color: transparent;
+  border-color: transparent;
+}
+.nice-select.isTextField:is(.open) .list {
+  border-color: var(--blue-main);
 }
 
 .no-csspointerevents .nice-select .list {
@@ -15699,4 +15765,4 @@ button.next:hover {
   width: 30px;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 2px;
-}
+}/*# sourceMappingURL=index.css.map */

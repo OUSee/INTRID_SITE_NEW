@@ -282,6 +282,7 @@
                 <div id="calculator" class="calculator-calculator">
                     <div class="flex-layout flex-layout--split">
                         <div class="left">
+                            <!-- Справка по функционалу -->
                             <div class="d-flex mobile-visible flex-column align-center mb-16">
                                 <p class="fw-bold color-blue" style="max-width:280px;">
                                     Хотите узнать подробнее, что включает в себя каждый модуль?
@@ -2326,7 +2327,7 @@
                                     <div class="accordion-content">
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="extra-domain"
-                                                name="extra-domain" data-price="1500">
+                                                name="extra-domain" data-price="0">
                                             <label for="extra-domain">
                                                 <p>
                                                     <a href="/domain" target="_blank">
@@ -2335,7 +2336,29 @@
                                                 </p>
                                             </label>
                                         </div>
-                                        <div class="toggle-line">
+
+                                        <div class="toggle-line toggle-nice">
+                                            <input type="checkbox" class="toggle-checkbox" id="extra-server"
+                                                name="extra-server" data-price="0">
+                                            <label for="extra-server"></label>
+                                            <div class="nice-wrapper nice-wrapper--simple">
+                                                <select id="extra-hosting" class="isTextField"
+                                                    data-display="Выберите элемент списка" data-price="0">
+                                                    <option value="1800" data-price="1800">Хостинг старт
+                                                        (12
+                                                        месяцев)
+                                                    </option>
+                                                    <option value="3000" data-price="3000">Хостинг стандарт (12
+                                                        месяцев)
+                                                    </option>
+                                                    <option value="6000" data-price="6000">Виртуальный сервер / VDS
+                                                        (12
+                                                        месяцев)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="extra-hosting"
                                                 name="extra-hosting" data-price="3000">
                                             <label for="extra-hosting">
@@ -2346,14 +2369,14 @@
                                                     </a>
                                                 </p>
                                             </label>
-                                        </div>
+                                        </div> -->
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="extra-ssl"
-                                                name="extra-ssl" data-price="2500">
+                                                name="extra-ssl" data-price="900">
                                             <label for="extra-ssl">
                                                 <p>
                                                     <a href="/ssl">
-                                                        Установка / настройка SSL
+                                                        SSL (12 месяцев)
                                                     </a>
                                                     <span class="tooltip"
                                                         data-tooltip="SSL - Безопасное соединение между браузером пользователя и сервером. При использовании SSL-протокола информация передается в закодированном виде по HTTPS. Для работы SSL-протокола требуется, чтобы на сервере был установлен SSL-сертификат.">
@@ -2400,10 +2423,10 @@
                                         <div class="d-flex flex-row flex-wrap gap-8 w-100">
                                             <button id="reset-options-btn" class="button button-white"><i
                                                     class="icon-reset"></i></button>
-                                            <a href="javascript://" data-popup="fast-req-form"
-                                                id="send-calculator-total" class="button-highlight flex-1 big">
+                                            <button data-popup="fast-req-form" id="send-calculator-total"
+                                                class="button-highlight flex-1 big">
                                                 получить проект<span class="br600">сайта</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -2626,6 +2649,120 @@
             </div>
         </div>
     </dialog>
+    <!-- 
+    <script>(() => {
+            function g(n) {
+                var m = document.cookie.match(new RegExp("(?:^|; )" + n.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"));
+                return m ? decodeURIComponent(m[1]) : void 0
+            }
+            var K = "OAuth_cookie_privacy_policy_new";
+            var H = "OAuth_cookie_privacy_policy_hidden"; // Имя куки для крестика
+
+            if (!g(K) && !g(H)) { // Проверка отсутствия обоих cookie
+                var b = document.createElement("div"), s = b.style;
+                b.className = "wr-cookie-cookie-bar";
+                s.position = "fixed";
+                s.bottom = "20px";
+                s.left = "50%";
+                s.zIndex = "5";
+                s.width = "300px";
+                s.height = "fit-content";
+                s.padding = "15px";
+                s.background = "#ffffff";
+                s.borderRadius = "15px";
+                s.boxShadow = "0 8px 20px 0 rgba(0, 0, 0, 0.1)";
+                s.fontFamily = 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+                s.color = "#2b2f35";
+                s.transform = "translate3d(-50%, 0, 1px)";
+                s.transition = ".8s";
+                s.animation = "slideIn .8s";
+                s.animationDelay = ".8s";
+
+                var t = document.createElement("span");
+                t.className = "wr-cookie-message";
+                t.style.display = "block";
+                t.style.fontWeight = "500";
+                t.style.fontSize = "16px";
+                t.style.lineHeight = "135%";
+                t.style.marginBottom = "15px";
+                t.style.paddingRight = "25px";
+                t.innerHTML = '<span> Мы используем файлы cookie для вашего удобства пользования сайтом. </span>';
+
+                var a = document.createElement("a");
+                a.className = "wr-cookie-message-a";
+                a.innerText = "Подробнее";
+                a.href = "/files/polytic.pdf";
+                a.target = "_blank";
+                a.style.display = "block";
+                a.style.width = "fit-content";
+                a.style.color = "#1f4aaa";
+                a.style.textDecoration = "underline";
+                t.appendChild(a);
+
+                var x = document.createElement("label");
+                x.className = "wr-cookie-close-cb";
+                x.innerText = "×";
+                x.style.position = "absolute";
+                x.style.top = "15px";
+                x.style.right = "15px";
+                x.style.zIndex = "1";
+                x.style.display = "flex";
+                x.style.alignItems = "center";
+                x.style.justifyContent = "center";
+                x.style.width = "35px";
+                x.style.height = "35px";
+                x.style.padding = "10px";
+                x.style.fontWeight = "500";
+                x.style.fontSize = "21px";
+                x.style.lineHeight = "100%";
+                x.style.textAlign = "center";
+                x.style.color = "#728494";
+                x.style.cursor = "pointer";
+                x.style.textTransform = "uppercase";
+                x.style.transform = "translate(10px, -10px)";
+
+                // Обработчик клика на крестик — сохранение cookie и скрытие баннера
+                x.onclick = () => {
+                    var e = new Date;
+                    e.setFullYear(9999); // Установка срока действия cookie до 9999 года
+                    document.cookie = H + "=hidden; path=/; expires=" + e.toUTCString() + "; SameSite=Lax";
+                    b.remove();
+                };
+
+                var y = document.createElement("label");
+                y.className = "wr-agree-close-cb";
+                y.innerText = "Согласен";
+                y.style.display = "block";
+                y.style.width = "100%";
+                y.style.padding = "6.5px";
+                y.style.borderRadius = "1000px";
+                y.style.background = "#4fac7f";
+                y.style.color = "#ffffff";
+                y.style.fontWeight = "500";
+                y.style.fontSize = "16px";
+                y.style.lineHeight = "135%";
+                y.style.textAlign = "center";
+                y.style.cursor = "pointer";
+
+                y.onclick = () => {
+                    var e = new Date;
+                    e.setFullYear(9999);
+                    document.cookie = K + "=accepted; path=/; expires=" + e.toUTCString() + "; SameSite=Lax";
+                    b.remove()
+                };
+
+                b.appendChild(t);
+                b.appendChild(y);
+                b.appendChild(x);
+                document.body.appendChild(b);
+
+                setInterval(() => {
+                    var r = document.getElementsByClassName("label_39");
+                    for (var i = 0; i < r.length; i++) r[i].style.zIndex = "2147483646"
+                }, 100)
+            }
+        })();</script> -->
+
     <script src="./js/app.js"></script>
 </body>
 
