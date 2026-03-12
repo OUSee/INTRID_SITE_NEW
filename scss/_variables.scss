@@ -4904,6 +4904,12 @@ button,
 	&.no-border {
 		border-color: transparent;
 	}
+
+	&:disabled,
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.5;
+	}
 }
 
 // Специфичные стили для разных типов кнопок

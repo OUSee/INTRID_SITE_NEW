@@ -5933,6 +5933,18 @@ button.no-border,
 .radioButton.no-border {
   border-color: transparent;
 }
+button:disabled, button.disabled,
+.button:disabled,
+.button.disabled,
+.button-link:disabled,
+.button-link.disabled,
+.button-highlight:disabled,
+.button-highlight.disabled,
+.radioButton:disabled,
+.radioButton.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 
 .button-white {
   background-color: var(--color-white);
