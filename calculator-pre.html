@@ -1403,10 +1403,10 @@
 
                                         <!-- Разделы сайта -->
                                         <p class="title_h5 quote">
-                                            Разделы сайта <span class="tooltip" data-tooltip="Выберите
+                                            Разделы сайта <span class="color-grey">(Выберите
                                                 нужные
                                                 Вам
-                                                разделы, содержание раздела дополните по своему усмотрению"><i class="icon-tooltip"></i></span>
+                                                разделы, содержание раздела дополните по своему усмотрению)</span>
                                         </p>
 
                                         <div class="toggle-line">
@@ -1553,61 +1553,95 @@
                                 </div>
                                 <!-- / structure and functions -->
 
-                                <!-- core -->
-                                <div class="accordion-item disabled deactive" id="core-accordion">
-                                    <input type="checkbox" id="section-core" class="accordion-checkbox">
-                                    <label for="section-core" class="accordion-header title_h4">
-                                        <img src="./src/icons/tech-shield.svg" alt="">
-                                        Ядро сайта и CMS
-                                        <i class="icon-shevrone"></i>
+                                <!-- engine -->
+                                <div class="accordion-item disabled deactive" id="engine-accordion">
+                                    <input type="checkbox" id="section-engine" class="accordion-checkbox">
+                                    <label for="section-engine" class="accordion-header title_h4">
+                                        <img src="./src/icons/tech-shield.svg" alt=""> Движок сайта<i
+                                            class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <p class="title_h5 quote">
-                                            <a href="./icms.html" target="_blank" class="d-inline hover-undeline" title="Демонстрация системы управления контентом">iCMS</a> — система управления контентом <span class="tooltip top" data-tooltip="Удобная и простая в использовании CMS содержит все необходимые функции для администрирования корпоративного сайта"><i class="icon-tooltip"></i></span>
-                                        </p>
-
-                                        <div class="toggle-line toggle-nice">
-                                            <input type="checkbox" class="toggle-checkbox" id="icms-solution"
-                                                name="icms-solution" data-select-target="icms-solution-select"
-                                                data-select-option-index="0">
-                                            <label for="icms-solution"></label>
-                                            <div class="nice-wrapper nice-wrapper--simple">
-                                                <select id="icms-solution-select" class="isTextField"
-                                                    data-display="Стандартное решение" data-price="0">
-                                                    <option value="30000" data-price="30000">Стандартное решение</option>
-                                                    <option value="50000" data-price="50000">Индивидуальная разработка</option>
-                                                </select>
-                                            </div>
-                                            <span class="tooltip hidden" id="icms-solution-1" data-tooltip=" Готовая система администрирования для типовых задач">
-                                                <i class="icon-tooltip"></i>
-                                            </span>
-                                            <span class="tooltip hidden" id="icms-solution-2" data-tooltip="iCMS, адаптированная под ваши уникальные бизнес-процессы и нестандартные задачи">
-                                                        <i class="icon-tooltip"></i>
-                                            </span>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="engine-store"
+                                                name="engine-store" data-radio="engine-corpo" data-price="40000">
+                                            <label for="engine-store">
+                                                <p>
+                                                    Движок сайта с защитой от взлома для интернет-магазина
+                                                    <span class="tooltip"
+                                                        data-tooltip="Расширенная безопасность транзакций, защита персональных данных, шифрование передаваемой информации, многоуровневая аутентификация, защита от фишинга и мошенничества"><i
+                                                            class="icon-tooltip"></i></span>
+                                                </p>
+                                            </label>
                                         </div>
-
-                                        <div class="toggle-line toggle-nice">
-                                            <input type="checkbox" class="toggle-checkbox" id="core-site"
-                                                name="core-site" data-select-target="core-site-select"
-                                                data-select-option-index="0">
-                                            <label for="core-site"></label>
-                                            <div class="nice-wrapper nice-wrapper--simple">
-                                                <select id="core-site-select" class="isTextField"
-                                                    data-display="Стандартное защищённое ядро" data-price="0">
-                                                    <option value="30000" data-price="30000">Стандартное защищённое ядро</option>
-                                                    <option value="60000" data-price="60000">Усиленное ядро с шифрованием данных</option>
-                                                </select>
-                                            </div>
-                                            <span class="tooltip" id="core-site-1" data-tooltip="Базовый уровень безопасности для проектов с типовыми требованиями">
-                                                <i class="icon-tooltip"></i>
-                                            </span>
-                                            <span class="tooltip hidden" id="core-site-2" data-tooltip="Дополнительные уровни сквозного шифрования для конфиденциальных данных, таких как личная информация и детали платежей">
-                                                        <i class="icon-tooltip"></i>
-                                            </span>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="engine-corpo"
+                                                name="engine-corpo" data-price="30000" data-radio="engine-store">
+                                            <label for="engine-corpo">
+                                                <p>
+                                                    Движок сайта с защитой от взлома для корпоративного сайта
+                                                    <span class="tooltip"
+                                                        data-tooltip="Защита от хакерских атак и утечек данных, антивирусная защита, межсетевые экраны, контроль доступа, регулярные обновления безопасности"><i
+                                                            class="icon-tooltip"></i></span>
+                                                </p>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- / engine -->
+
+                                <!-- management system -->
+                                <div class="accordion-item disabled deactive" id="management-accordion">
+                                    <input type="checkbox" id="section-management" class="accordion-checkbox">
+                                    <label for="section-management" class="accordion-header title_h4">
+                                        <img src="./src/icons/magnifier_glass.svg" alt=""> Cистема управления сайтом<i
+                                            class="icon-shevrone"></i>
+                                    </label>
+                                    <div class="accordion-content">
+                                        <!-- <div class="toggle-line">
+                                                <input type="checkbox" checked class="toggle-checkbox" id="management-none"
+                                                    name="management-none" data-price="0" data-radio="management-icms;management-custom">
+                                                <label for="management-none">
+                                                    <p>
+                                                        Без системы управления
+                                                    </p>
+                                                </label>
+                                            </div> -->
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="management-icms"
+                                                name="management-icms" data-price="25000"
+                                                data-radio="management-none;management-custom">
+                                            <label for="management-icms">
+                                                <p>
+                                                    Стандартная система администрирования и управления контентом
+                                                    сайта &nbsp;
+                                                    <a href="./icms.html" class="d-inline hover-undeline"
+                                                        title="Демонстрация системы управления контентом">i-cms</a>
+                                                    <span class="tooltip top"
+                                                        data-tooltip="Удобная и простая в использовании CMS содержит все необходимые функции для администрирования корпоративного сайта"><i
+                                                            class="icon-tooltip"></i></span>
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="management-custom"
+                                                name="management-custom" data-price="50000"
+                                                data-radio="management-icms;management-none"
+                                                data-reveal="custom-cms-extra">
+                                            <label for="management-custom">
+                                                <p>
+                                                    Уникальная разработка под индивидуальные задачи и нестандартные
+                                                    решения любой сложности
+                                                    <span class="tooltip top"
+                                                        data-tooltip="Если у Вас есть нестандартные требования и пожелания к CMS, чтобы Вам было максимально удобно и комфортно управлять сайтом, интегрировать с Вашей бухгалтерией или другими локальными базами данных – это решение для Вас"><i
+                                                            class="icon-tooltip"></i></span>
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <input type="text" class="hidden" placeholder="Опишите требования и пожелания"
+                                            id="custom-cms-extra">
+                                    </div>
+                                </div>
+                                <!-- / management system  -->
 
                                 <!-- modules -->
                                 <div class="accordion-item disabled deactive" id="modules-accordion">
@@ -1617,60 +1651,164 @@
                                             class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <!-- Каталог услуг -->
                                         <p class="title_h5 quote">Каталог товаров (Услуг)</p>
-                                        <div class="toggle-line toggle-nice">
-                                            <input type="checkbox" class="toggle-checkbox" id="modules-catalogue"
-                                                name="modules-catalogue" data-select-target="modules-catalogue-select"
-                                                data-select-option-index="0">
-                                            <label for="modules-catalogue"></label>
-                                            <div class="nice-wrapper nice-wrapper--simple">
-                                                <select id="modules-catalogue-select" class="isTextField"
-                                                    data-display="Одноуровневый" data-price="0">
-                                                    <option value="15000" data-price="15000">Одноуровневый</option>
-                                                    <option value="25000" data-price="25000">Двухуровневый</option>
-                                                    <option value="35000" data-price="35000">Трехуровнеый</option>
-                                                    <option value="45000" data-price="45000">Многоуровневый</option>
-                                                </select>
-                                            </div>
-                                            <span class="tooltip hidden" id="modules-catalogue-1" data-tooltip="Рубрика / товар">
-                                                <i class="icon-tooltip"></i>
-                                            </span>
-                                            <span class="tooltip hidden" id="modules-catalogue-2" data-tooltip="Рубрика/подрубрика/товар">
-                                                        <i class="icon-tooltip"></i>
-                                            </span>
-                                            <span class="tooltip hidden" id="modules-catalogue-3" data-tooltip="Рубрика/подрубрика/раздел/товар">
-                                                        <i class="icon-tooltip"></i>
-                                            </span>
-                                            <span class="tooltip hidden" id="modules-catalogue-4" data-tooltip="Больше вложенностей / плавающая вложенность">
-                                                        <i class="icon-tooltip"></i>
-                                            </span>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-catalogue_1"
+                                                data-price="15000" name="modules-catalogue_1"
+                                                data-radio="modules-catalogue_2;modules-catalogue_3;modules-catalogue_4"
+                                                data-reveal="preview_1">
+                                            <label for="modules-catalogue_1">
+                                                Рубрика/товар
+                                            </label>
                                         </div>
-
-                                        <!-- Поиск по сайту -->
-                                        <p class="title_h5 quote">Поиск и навигация</p>
-                                        <div class="toggle-line toggle-nice">
-                                            <input type="checkbox" class="toggle-checkbox" id="modules-search"
-                                                name="modules-search" data-select-target="modules-search-select"
-                                                data-select-option-index="0">
-                                            <label for="modules-search"></label>
-                                            <div class="nice-wrapper nice-wrapper--simple">
-                                                <select id="modules-search-select" class="isTextField"
-                                                    data-display="Простой поиск" data-price="0">
-                                                    <option value="10000" data-price="10000">Простой поиск</option>
-                                                    <option value="24000" data-price="24000">Интеллектуальный поиск</option>
-                                                </select>
-                                            </div>
-                                            <span class="tooltip hidden" id="modules-search-1" data-tooltip="Простой поиск по тексту сайта или по названию товара в каталоге">
-                                                <i class="icon-tooltip"></i>
-                                            </span>
-                                            <span class="tooltip hidden" id="modules-search-2" data-tooltip="Транслит, поиск по характеристикам товара, поддержка ошибочной раскладки клавиатуры, автокоррекция опечаток, синонимизация, стемминг, персонализированные подсказки на основе истории поиска">
-                                                <i class="icon-tooltip"></i>
-                                            </span>
+                                        <div class="catalogue-preview hidden" id="preview_1">
+                                            <ul>
+                                                <li class="rubric">
+                                                    Рубрика
+                                                    <ul>
+                                                        <li>Товар 1</li>
+                                                        <li>Товар 2</li>
+                                                        <li>Товар 3</li>
+                                                        <li>...</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </div>
-
-                                        <!-- Обратная связь и отзывы -->
-                                        <p class="title_h5 quote">Обратная связь и отзывы</p>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-catalogue_2"
+                                                data-price="25000" name="modules-catalogue_2"
+                                                data-radio="modules-catalogue_1;modules-catalogue_3;modules-catalogue_4"
+                                                data-reveal="preview_2">
+                                            <label for="modules-catalogue_2">
+                                                Рубрика/подрубрика/товар
+                                            </label>
+                                        </div>
+                                        <div class="catalogue-preview hidden" id="preview_2">
+                                            <ul>
+                                                <li class="rubric">
+                                                    Рубрика
+                                                    <ul>
+                                                        <li class="podrubric">
+                                                            Подрубрика
+                                                            <ul>
+                                                                <li>Товар 1</li>
+                                                                <li>Товар 2</li>
+                                                                <li>Товар 3</li>
+                                                                <li>...</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-catalogue_3"
+                                                data-price="35000" name="modules-catalogue_3"
+                                                data-radio="modules-catalogue_1;modules-catalogue_2;modules-catalogue_4"
+                                                data-reveal="preview_3">
+                                            <label for="modules-catalogue_3">
+                                                Рубрика/подрубрика/раздел/товар
+                                            </label>
+                                        </div>
+                                        <div class="catalogue-preview hidden" id="preview_3">
+                                            <ul>
+                                                <li class="rubric">
+                                                    Рубрика
+                                                    <ul>
+                                                        <li class="podrubric">
+                                                            Подрубрика
+                                                            <ul>
+                                                                <li class="razdel">
+                                                                    Раздел
+                                                                    <ul>
+                                                                        <li>Товар 1</li>
+                                                                        <li>Товар 2</li>
+                                                                        <li>Товар 3</li>
+                                                                        <li>...</li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-catalogue_4"
+                                                data-price="45000" name="modules-catalogue_4"
+                                                data-radio="modules-catalogue_1;modules-catalogue_2;modules-catalogue_3"
+                                                data-reveal="preview_4">
+                                            <label for="modules-catalogue_4">
+                                                Больше вложений и/или плавающая вложннность
+                                            </label>
+                                        </div>
+                                        <div class="catalogue-preview hidden" id="preview_4">
+                                            <ul>
+                                                <li class="rubric">
+                                                    Рубрика
+                                                    <ul>
+                                                        <li class="podrubric">
+                                                            Подрубрика
+                                                            <ul>
+                                                                <li class="razdel">
+                                                                    Раздел
+                                                                    <ul>
+                                                                        <li>Товар 1</li>
+                                                                        <li>Товар 2</li>
+                                                                        <li>Товар 3</li>
+                                                                        <li>...</li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="podrubric">
+                                                            Подрубрика
+                                                            <ul>
+                                                                <li>Товар 1</li>
+                                                                <li>Товар 2</li>
+                                                                <li>Товар 3</li>
+                                                                <li>...</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <p class="title_h5 quote">Стандартные модули</p>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-search_base"
+                                                data-price="10000" name="modules-search_base"
+                                                data-radio="modules-search_advanced">
+                                            <label for="modules-search_base">
+                                                <p>
+                                                    Поиск по сайту
+                                                    <span class="tooltip"
+                                                        data-tooltip="Простой поиск по тексту сайта или по названию товара в каталоге"><i
+                                                            class="icon-tooltip"></i></span>
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-search_advanced"
+                                                data-price="24000" name="modules-search_advanced"
+                                                data-radio="modules-search_base">
+                                            <label for="modules-search_advanced">
+                                                <p>Интеллектуальный поиск с подсказками и морфологией <span
+                                                        class="tooltip"
+                                                        data-tooltip="Транслит, поиск по характеристикам товара, поддержка ошибочной раскладки клавиатуры, автокоррекция опечаток, синонимизация, стемминг, персонализированные подсказки на основе истории поиска"><i
+                                                            class="icon-tooltip"></i></span></p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-navigation"
+                                                data-price="10000" name="modules-navigation">
+                                            <label for="modules-navigation">Многоуровневое меню навигации</label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-blog"
+                                                name="modules-blog" data-price="6000">
+                                            <label for="modules-blog">Новости (Блог)</label>
+                                        </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="modules-review_form"
                                                 data-price="3000" name="modules-review_form">
@@ -1696,111 +1834,29 @@
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="modules-chat"
-                                                name="modules-chat" data-price="2000">
-                                            <label for="modules-chat">
-                                                <p>
-                                                    Онлайн-консультант (чат)
-                                                </p>
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line toggle-nice">
-                                            <input type="checkbox" class="toggle-checkbox" id="modules-reviews"
-                                                name="modules-reviews" data-select-target="modules-reviews-select"
-                                                data-select-option-index="0">
-                                            <label for="modules-reviews"></label>
-                                            <div class="nice-wrapper nice-wrapper--simple">
-                                                <select id="modules-reviews-select" class="isTextField"
-                                                    data-display="Cтатичные отзывы / сканы благодарностей" data-price="0">
-                                                    <option value="5000" data-price="5000">Cтатичные отзывы / сканы благодарностей</option>
-                                                    <option value="9000" data-price="9000">Динамические отзывы</option>
-                                                </select>
-                                            </div>
-                                            <span class="tooltip hidden" id="modules-reviews-1">
-                                            </span>
-                                            <span class="tooltip hidden" id="modules-reviews-2" data-tooltip="Пользователи могут добавлять отзывы. Администратор модерирует отзывы перед публикацией">
-                                                <i class="icon-tooltip"></i>
-                                            </span>
-                                        </div>
-
-                                        <!-- Взаимодействие с пользователем -->
-                                        <p class="title_h5 quote">Взаимодействие с пользователем</p>
-                                        <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="modules-poll"
-                                                name="modules-poll" data-price="8000">
+                                                name="modules-poll" data-price="12000">
                                             <label for="modules-poll">
                                                 <p>
-                                                    Интерактивные опросы
+                                                    Организация интерактивных опросов на сайте
                                                     <span class="tooltip"
-                                                        data-tooltip="Возможность создавать опросы для посетителей сайта, сохранять и публиковать статистику"><i
+                                                        data-tooltip="Возможность создавать различные опросы, собирать и публиковать статистику"><i
                                                             class="icon-tooltip"></i></span>
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="modules-calculator"
-                                                data-price="20000" name="modules-calculator">
-                                            <label for="modules-calculator">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-faq"
+                                                name="modules-faq" data-price="6000">
+                                            <label for="modules-faq">
                                                 <p>
-                                                    Калькулятор расчета стоимости
+                                                    Рубрика "Вопрос-Ответ" (FAQ)
                                                     <span class="tooltip"
-                                                        data-tooltip="Возможность посетителей сайта самостоятельно рассчитать предварительную стоимость услуги на основе выбранных параметров (пример: калькулятор, который вы сейчас заполняете">
-                                                        <i class="icon-tooltip"></i>
-                                                    </span>
+                                                        data-tooltip="Сервис, предоставляющий посетителю возможность задать вопрос непосредственно на сайте, а модератору получить этот вопрос, ответить на него и опубликовать"><i
+                                                            class="icon-tooltip"></i></span>
                                                 </p>
                                             </label>
                                         </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="modules-booking-system"
-                                                data-price="15000" name="modules-booking-system">
-                                            <label for="modules-booking-system">
-                                                <p>
-                                                    Система бронирования консультации
-                                                    <span class="tooltip"
-                                                        data-tooltip="Интеллектуальная форма записи с синхронизацией вашего календаря. Клиент видит доступное время, выбирает слот, встреча автоматически добавляется в ваше расписание. Система исключает двойные бронирования и отправляет уведомления.">
-                                                        <i class="icon-tooltip"></i>
-                                                    </span>
-                                                </p>
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="modules-newsletters"
-                                                data-price="15000" name="modules-newsletters">
-                                            <label for="modules-newsletters">
-                                                <p>
-                                                    Рассылки
-                                                    <span class="tooltip"
-                                                        data-tooltip="Система для отправки email-рассылок посетителям, которые согласились на рассылку, и пользователям личного кабинета (при его наличии)">
-                                                        <i class="icon-tooltip"></i>
-                                                    </span>
-                                                </p>
-                                            </label>
-                                        </div>
-
-                                        <!-- Управление товарами и услугами -->
-                                        <p class="title_h5 quote">Управление товарами и услугами</p>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="modules-pricelist"
-                                                data-price="5000" name="modules-pricelist">
-                                            <label for="modules-pricelist">
-                                                <p>
-                                                    Загрузка и обновление прайс-листов
-                                                    <span class="tooltip"
-                                                        data-tooltip="Размещение и актуализация прайс-листов в формате PDF/Excel для скачивания">
-                                                        <i class="icon-tooltip"></i>
-                                                    </span>
-                                                </p>
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="modules-pricelist-catalogue" data-price="15000" name="modules-pricelist-catalogue">
-                                            <label for="modules-pricelist-catalogue">
-                                                <p>
-                                                    Формирование общего прайс-листа для скачивания из каталога
-                                                </p>
-                                            </label>
-                                        </div>
-
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="modules-dashboard_base"
                                                 data-price="30000" name="modules-dashboard_base">
@@ -1826,14 +1882,51 @@
                                                 </p>
                                             </label>
                                         </div>
-                                        
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-chat"
+                                                name="modules-chat" data-price="2000">
+                                            <label for="modules-chat">Онлайн-консультант (чат)</label>
+                                        </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="modules-portfolio"
                                                 name="modules-portfolio" data-price="9000">
                                             <label for="modules-portfolio">Портфолио</label>
                                         </div>
-                                        
-                                        
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-reviews_static"
+                                                data-price="5000" name="modules-reviews_static"
+                                                data-radio="modules-reviews_dynamic">
+                                            <label for="modules-reviews_static">Cтатичные отзывы / сканы
+                                                благодарностей</label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-reviews_dynamic"
+                                                data-price="9000" name="modules-reviews_dynamic"
+                                                data-radio="modules-reviews_static">
+                                            <label for="modules-reviews_dynamic">
+                                                <p>
+                                                    Динамические отзывы
+                                                    <span class="tooltip"
+                                                        data-tooltip="Пользователи могут добавлять отзывы. Администратор модерирует отзывы перед публикацией"><i
+                                                            class="icon-tooltip"></i></span>
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="modules-calculator"
+                                                data-price="15000" name="modules-calculator">
+                                            <label for="modules-calculator">
+                                                <p>
+                                                    Интерактивный калькулятор или конструктор (пример:&nbsp;<a
+                                                        href="https://pk-rokos.ru/kalkulator-plastic-okon"
+                                                        class="d-inline color-white" target="_blank">пластиковые
+                                                        окна</a>)
+                                                    <span class="tooltip"
+                                                        data-tooltip="Расчет значений по заданным параметрам, например стоимость окна в зависимости от размеров, материалов и т.д."><i
+                                                            class="icon-tooltip"></i></span>
+                                                </p>
+                                            </label>
+                                        </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="modules-banner"
                                                 name="modules-banner" data-price="10000">
@@ -2335,10 +2428,6 @@
                                         <i class="icon-lightbulb"></i> Дополнительные опции<i class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <p class="title_h5 quote">
-                                            Размещение сайта (домен + хостинг)
-                                        </p>
-
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="extra-domain"
                                                 name="extra-domain" data-price="0">
@@ -2393,70 +2482,6 @@
                                                         data-tooltip="SSL - Безопасное соединение между браузером пользователя и сервером. При использовании SSL-протокола информация передается в закодированном виде по HTTPS. Для работы SSL-протокола требуется, чтобы на сервере был установлен SSL-сертификат.">
                                                         <i class="icon-tooltip"></i>
                                                     </span>
-                                                </p>
-                                            </label>
-                                        </div>
-
-                                        <p class="title_h5 quote">
-                                            Бесплатные опции
-                                        </p>
-
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="extra-management-consulting"
-                                                name="extra-management-consulting" data-price="0">
-                                            <label for="extra-management-consulting">
-                                                <p>
-                                                    Консультирование по работе с сайтом
-                                                </p>
-                                            </label>
-                                        </div>
-
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="extra-creating-favicon"
-                                                name="extra-creating-favicon" data-price="0">
-                                            <label for="extra-creating-favicon">
-                                                <p>
-                                                    Создание уникальной иконки сайта
-                                                </p>
-                                            </label>
-                                        </div>
-
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="extra-integration-social"
-                                                name="extra-integration-social" data-price="0">
-                                            <label for="extra-integration-social">
-                                                <p>
-                                                    Интегрирование с соцсетями (поделиться в различных соцсетях или месенджерах)
-                                                </p>
-                                            </label>
-                                        </div>
-
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="extra-install-ymaps"
-                                                name="extra-install-ymaps" data-price="0">
-                                            <label for="extra-install-ymaps">
-                                                <p>
-                                                    Установка интерактивной карты Яндекс.Карты
-                                                </p>
-                                            </label>
-                                        </div>
-
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="extra-creating-mailing"
-                                                name="extra-creating-mailing" data-price="0">
-                                            <label for="extra-creating-mailing">
-                                                <p>
-                                                    Создание почтовых ящиков, относящихся к сайту
-                                                </p>
-                                            </label>
-                                        </div>
-
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="extra-install-ssl"
-                                                name="extra-install-ssl" data-price="0">
-                                            <label for="extra-install-ssl">
-                                                <p>
-                                                    Установка и настройка защищённого соединения (SSL-сертификат)
                                                 </p>
                                             </label>
                                         </div>

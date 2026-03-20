@@ -231,7 +231,7 @@
 			box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
 		}
 
-		&>label {
+		& > label {
 			width: 100%;
 			text-align: center;
 			cursor: pointer;
@@ -239,7 +239,7 @@
 			text-overflow: ellipsis;
 			overflow: visible;
 
-			&>img {
+			& > img {
 				display: initial;
 				width: 16px;
 				height: 16px;
@@ -249,13 +249,13 @@
 				margin-left: 4px;
 			}
 
-			&>input {
+			& > input {
 				top: 0;
 				left: 0;
 				padding: 0;
 			}
 
-			&>span {
+			& > span {
 				font-size: inherit;
 				text-decoration: underline;
 				text-decoration-thickness: 1px;
@@ -281,10 +281,10 @@
 	padding-bottom: 4px;
 	border: 0;
 
-	&>label {
+	& > label {
 		overflow: visible;
 
-		&>span {
+		& > span {
 			text-decoration: underline;
 			text-decoration-thickness: 1px;
 			text-decoration-style: dashed;
@@ -338,7 +338,7 @@
 		gap: 0;
 	}
 
-	&>* {
+	& > * {
 		flex: 1 1 0%;
 	}
 }
@@ -427,13 +427,13 @@
 		}
 	}
 
-	&>span {
+	& > span {
 		&:not(.tab-header, .tab-button-content) {
 			@media (max-width: 1000px) {
 				text-wrap: balance;
 				font-size: 12px !important;
 
-				&>span {
+				& > span {
 					font-size: 12px !important;
 				}
 			}
@@ -441,7 +441,7 @@
 			@media (max-width: 600px) {
 				font-size: 11px !important;
 
-				&>span {
+				& > span {
 					font-size: 11px !important;
 				}
 			}
@@ -1168,12 +1168,14 @@
 @mixin tabs-content {
 	width: 100%;
 	background: rgb(10, 10, 10);
-	background: linear-gradient(180deg,
-			rgba(10, 10, 10, 1) 0%,
-			rgba(10, 10, 10, 1) 82%,
-			rgba(10, 10, 10, 0.8) 91%,
-			rgba(10, 10, 10, 0.6) 96%,
-			rgba(10, 10, 10, 0) 100%);
+	background: linear-gradient(
+		180deg,
+		rgba(10, 10, 10, 1) 0%,
+		rgba(10, 10, 10, 1) 82%,
+		rgba(10, 10, 10, 0.8) 91%,
+		rgba(10, 10, 10, 0.6) 96%,
+		rgba(10, 10, 10, 0) 100%
+	);
 	border-top: 1px solid var(--blue-main);
 }
 
@@ -1216,8 +1218,11 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	transition: border-color 0.25s ease, background-color 0.25s ease,
-		box-shadow 0.25s ease, color 0.25s ease;
+	transition:
+		border-color 0.25s ease,
+		background-color 0.25s ease,
+		box-shadow 0.25s ease,
+		color 0.25s ease;
 
 	@media (max-width: 1000px) {
 		width: 32px;
@@ -1290,7 +1295,6 @@
 			}
 
 			& i {
-
 				&.icon-shevrone,
 				&i.icon-shevrone_double {
 					display: flex;
@@ -1315,11 +1319,17 @@
 			flex-direction: column;
 			justify-content: space-between;
 			gap: 16px;
-			padding: 0;
+			padding: 0 32px;
 			max-height: 0;
 			visibility: hidden;
 			overflow: hidden;
-			transition: max-height 0.3s ease, padding 0.3s ease;
+			transition:
+				max-height 0.3s ease,
+				padding 0.3s ease;
+
+			@media (max-width: 600px) {
+				padding: 0 16px;
+			}
 
 			.title_h5 {
 				margin-top: 10px;
@@ -1355,16 +1365,16 @@
 		&-checkbox {
 			display: none;
 
-			&:checked+.accordion-header i.icon-shevrone,
-			&:checked+.accordion-header i.icon-shevrone_double {
+			&:checked + .accordion-header i.icon-shevrone,
+			&:checked + .accordion-header i.icon-shevrone_double {
 				transform: rotate(-90deg);
 			}
 
-			&:checked+.accordion-header.title_h4 i.icon-shevrone {
+			&:checked + .accordion-header.title_h4 i.icon-shevrone {
 				transform: rotate(-90deg);
 			}
 
-			&:checked+.accordion-header+.accordion-content {
+			&:checked + .accordion-header + .accordion-content {
 				max-height: unset;
 				padding: 16px 32px;
 				visibility: visible;
@@ -1412,7 +1422,7 @@
 	}
 
 	&-checkbox {
-		&:checked+.accordion-header {
+		&:checked + .accordion-header {
 			// background-color: var(--blue-clouds);
 		}
 	}
@@ -1427,7 +1437,7 @@
 		label {
 			flex-wrap: wrap;
 
-			&>p {
+			& > p {
 				@media (max-width: 600px) {
 					flex: 1;
 				}
@@ -1459,8 +1469,8 @@
 		// max-height: 26px;
 		// margin-left: 14px;
 
-		&>p,
-		&>span {
+		& > p,
+		& > span {
 			margin-right: 8px;
 		}
 
@@ -1511,7 +1521,7 @@
 	display: none;
 
 	&:checked {
-		&+label {
+		& + label {
 			position: relative;
 
 			&::before {
@@ -1527,7 +1537,7 @@
 		}
 	}
 
-	&+label {
+	& + label {
 		position: relative;
 		cursor: pointer;
 
@@ -1559,12 +1569,12 @@
 }
 
 @mixin toggle-nice {
-	&>input {
+	& > input {
 		@include toggle-checkbox;
 
 		&:not(:checked) {
-			&+label {
-				&+* {
+			& + label {
+				& + * {
 					pointer-events: none;
 					opacity: 0.5;
 				}
@@ -1572,8 +1582,8 @@
 		}
 
 		&:is(:checked) {
-			&+label {
-				&+* {
+			& + label {
+				& + * {
 					opacity: 1;
 					pointer-events: all;
 				}
@@ -1617,7 +1627,7 @@
 		transition: all 0.3s ease-in-out;
 	}
 
-	&>p {
+	& > p {
 		// position: relative;
 		// z-index: 2;
 		color: var(--color-grey);
@@ -1636,7 +1646,7 @@
 		// }
 	}
 
-	&>b {
+	& > b {
 		display: block;
 		@include h3;
 		color: var(--blue-main);

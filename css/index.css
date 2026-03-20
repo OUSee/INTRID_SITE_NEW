@@ -5202,11 +5202,16 @@ form .button:hover {
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
-  padding: 0;
+  padding: 0 32px;
   max-height: 0;
   visibility: hidden;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
+}
+@media (max-width: 600px) {
+  .accordion .accordion-content {
+    padding: 0 16px;
+  }
 }
 .accordion .accordion-content .title_h5 {
   margin-top: 10px;
@@ -9163,13 +9168,13 @@ button:hover svg,
 }
 .nice-select.isTextField .list {
   left: -1px;
-  width: calc(100% + 2px);
+  width: unset;
 }
 .nice-select.isTextField .list .option {
   min-height: unset;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 40px;
+  padding-right: 18px;
   font-size: 14px;
   line-height: 1.25;
   white-space: unset;
