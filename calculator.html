@@ -306,9 +306,10 @@
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="type-landing"
                                                 name="type-landing" data-price="0"
-                                                data-hide-accordion-item="tenders_toggle_block"
+                                                data-show-accordion-item="design-landing"
+                                                data-hide-accordion-item="tenders_toggle_block;design-all"
                                                 data-radio="type-portfolio;type-corporate;type-corporate_catalogue;type-store;type-store_ai;type-portal;tender-portal;tender-portal-paying;type-unique"
-                                                data-nested="design-base;structure-blocks_mainscreen;structure-blocks_goods;structure-blocks_reviews;structure-blocks_services;structure-blocks_portfolio;modules-review_form;extra-creating-favicon;extra-install-ssl">
+                                                data-nested="design-landing-base;structure-blocks_mainscreen;structure-blocks_goods;structure-blocks_reviews;structure-blocks_services;structure-blocks_portfolio;modules-review_form;extra-creating-favicon;extra-install-ssl">
                                             <label for="type-landing">
                                                 <p>
                                                     Сайт визитка или LandingPage
@@ -318,9 +319,10 @@
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="type-portfolio"
                                                 name="type-portfolio" data-price="0"
-                                                data-hide-accordion-item="tenders_toggle_block;programming_modules_for_store"
+                                                data-show-accordion-item="design-all"
+                                                data-hide-accordion-item="tenders_toggle_block;design-landing"
                                                 data-radio="type-landing;type-corporate;type-corporate_catalogue;type-store;type-store_ai;type-portal;tender-portal;tender-portal-paying;type-unique"
-                                                data-nested="design-base;management-icms;functions-blocks_portfolio;functions-blocks_about;functions-section_goods;functions-section_services;functions-section_about;functions-section_gallery;functions-section_contacts;functions-blocks_promoslider;functions-blocks_promo;functions-blocks_services;functions-blocks_benefits;functions-blocks_reviews;modules-review_form;modules-chat;modules-portfolio">
+                                                data-nested="design-base;structure-blocks_mainscreen;structure-blocks_about;structure-blocks_benefits;structure-blocks_reviews;structure-blocks_portfolio;structure-portfolio:0;structure-section_contacts;core-icms:0;modules-review_form;modules-reviews:0;extra-management-consulting;extra-creating-favicon;extra-install-ssl">
                                             <label for="type-portfolio">
                                                 <p>
                                                     Сайт портфолио
@@ -1107,32 +1109,68 @@
                                             class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="design-base"
-                                                name="design-base" data-price="25000"
-                                                data-radio="design-premium">
-                                            <label for="design-base">
-                                                <p>
-                                                    Современный уникальный дизайн
-                                                    <span class="tooltip"
-                                                        data-tooltip="Предоставляется 1-2 варианта дизайна, возможность внести три последовательные корректировки в выбранный дизайн макет. Включает в себя дизайн главной и двух внутренних страниц"><i
-                                                            class="icon-tooltip"></i></span>
-                                                </p>
-                                            </label>
+                                        <!-- Чекбоксы выбора дизайна для всех -->
+                                        <div class="d-flex flex-column gap-16 hidden" id="design-all">
+                                            <div class="toggle-line">
+                                                <input type="checkbox" class="toggle-checkbox" id="design-base"
+                                                    name="design-base" data-price="50000"
+                                                    data-radio="design-premium">
+                                                <label for="design-base">
+                                                    <p>
+                                                        Современный уникальный дизайн
+                                                        <span class="tooltip"
+                                                            data-tooltip="Вы получаете эксклюзивный дизайн, созданный с нуля под ваш бренд. Разрабатываем несколько уникальных концепций с продуманным интерфейсом. После выбора лучшей концепции вносим правки столько, сколько нужно для идеального результата. Работаем до вашего полного удовлетворения. Базовый пакет включает 5 блоков на главной странице и 2 внутренние страницы, но также можно выбрать дополнительные блоки в разделах ниже."><i
+                                                                class="icon-tooltip"></i></span>
+                                                    </p>
+                                                </label>
+                                            </div>
+
+                                            <div class="toggle-line">
+                                                <input type="checkbox" class="toggle-checkbox" id="design-premium"
+                                                    name="design-premium" data-price="70000"
+                                                    data-radio="design-base">
+                                                <label for="design-premium">
+                                                    <p>
+                                                        Премиум-дизайн
+                                                        <span class="tooltip"
+                                                            data-tooltip="Дизайн от ведущего специалиста с опытом 10+ лет на основе глубокого анализа вашего бизнеса, конкурентов и аудитории. Результат будет на 100% лучше решений конкурентов. Работаем без ограничений по правкам до полного совершенства. Базовый пакет включает 5 блоков на главной странице и 2 внутренние страницы, но также можно выбрать дополнительные блоки в разделах ниже.
+                                                            *Решение для бизнеса, где дизайн - критически важен"><i
+                                                                class="icon-tooltip"></i></span>
+                                                    </p>
+                                                </label>
+                                            </div>
                                         </div>
 
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="design-premium"
-                                                name="design-premium" data-price="40000"
-                                                data-radio="design-base">
-                                            <label for="design-premium">
-                                                <p>
-                                                    Премиум-дизайн
-                                                    <span class="tooltip"
-                                                        data-tooltip="Неограниченное количество вариантов и правок, до полного одобрения Заказчиком. Включает в себя дизайн главной и двух внутренних страниц"><i
-                                                            class="icon-tooltip"></i></span>
-                                                </p>
-                                            </label>
+                                        <!-- Чекбоксы выбора дизайна для лендинга -->
+                                        <div class="d-flex flex-column gap-16 hidden" id="design-landing">
+                                            <div class="toggle-line">
+                                                <input type="checkbox" class="toggle-checkbox" id="design-landing-base"
+                                                    name="design-landing-base" data-price="40000"
+                                                    data-radio="design-landing-premium">
+                                                <label for="design-landing-base">
+                                                    <p>
+                                                        Современный уникальный дизайн
+                                                        <span class="tooltip"
+                                                            data-tooltip="Вы получаете эксклюзивный дизайн, созданный с нуля под ваш бренд. Разрабатываем несколько уникальных концепций с продуманным интерфейсом. После выбора лучшей концепции вносим правки столько, сколько нужно для идеального результата. Работаем до вашего полного удовлетворения. Базовый пакет включает 5 блоков, но также можно выбрать дополнительные блоки в разделах ниже"><i
+                                                                class="icon-tooltip"></i></span>
+                                                    </p>
+                                                </label>
+                                            </div>
+
+                                            <div class="toggle-line">
+                                                <input type="checkbox" class="toggle-checkbox" id="design-landing-premium"
+                                                    name="design-landing-premium" data-price="50000"
+                                                    data-radio="design-landing-base">
+                                                <label for="design-landing-premium">
+                                                    <p>
+                                                        Премиум-дизайн
+                                                        <span class="tooltip"
+                                                            data-tooltip="Дизайн от ведущего специалиста с опытом 10+ лет на основе глубокого анализа вашего бизнеса, конкурентов и аудитории. Результат будет на 100% лучше решений конкурентов. Работаем без ограничений по правкам до полного совершенства. Базовый пакет включает 5 блоков, но также можно выбрать дополнительные блоки в разделах ниже. 
+                                                            *Решение для бизнеса, где дизайн - критически важен"><i
+                                                                class="icon-tooltip"></i></span>
+                                                    </p>
+                                                </label>
+                                            </div>
                                         </div>
 
                                         <!-- change: label -->
@@ -1517,21 +1555,21 @@
                                         </p>
 
                                         <div class="toggle-line toggle-nice">
-                                            <input type="checkbox" class="toggle-checkbox" id="icms-solution"
-                                                name="icms-solution" data-select-target="icms-solution-select"
+                                            <input type="checkbox" class="toggle-checkbox" id="core-icms"
+                                                name="core-icms" data-select-target="core-icms-select"
                                                 data-select-option-index="0">
-                                            <label for="icms-solution"></label>
+                                            <label for="core-icms"></label>
                                             <div class="nice-wrapper nice-wrapper--simple">
-                                                <select id="icms-solution-select" class="isTextField"
+                                                <select id="core-icms-select" class="isTextField"
                                                     data-display="Стандартное решение" data-price="0">
                                                     <option value="30000" data-price="30000">Стандартное решение</option>
                                                     <option value="50000" data-price="50000">Индивидуальная разработка</option>
                                                 </select>
                                             </div>
-                                            <span class="tooltip hidden" id="icms-solution-1" data-tooltip=" Готовая система администрирования для типовых задач">
+                                            <span class="tooltip hidden" id="core-icms-1" data-tooltip=" Готовая система администрирования для типовых задач">
                                                 <i class="icon-tooltip"></i>
                                             </span>
-                                            <span class="tooltip hidden" id="icms-solution-2" data-tooltip="iCMS, адаптированная под ваши уникальные бизнес-процессы и нестандартные задачи">
+                                            <span class="tooltip hidden" id="core-icms-2" data-tooltip="iCMS, адаптированная под ваши уникальные бизнес-процессы и нестандартные задачи">
                                                         <i class="icon-tooltip"></i>
                                             </span>
                                         </div>
