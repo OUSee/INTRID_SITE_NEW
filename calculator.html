@@ -306,9 +306,9 @@
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="type-landing"
                                                 name="type-landing" data-price="0"
-                                                data-hide-accordion-item="tenders_toggle_block;programming_modules_for_store"
+                                                data-hide-accordion-item="tenders_toggle_block"
                                                 data-radio="type-portfolio;type-corporate;type-corporate_catalogue;type-store;type-store_ai;type-portal;tender-portal;tender-portal-paying;type-unique"
-                                                data-nested="design-base;functions-blocks_promoslider;functions-blocks_tariffs;functions-blocks_promoslider;functions-blocks_goods;functions-blocks_services;functions-blocks_reviews;functions-blocks_benefits;modules-review_form;modules-faq;modules-chat;modules-portfolio;modules-reviews_static">
+                                                data-nested="design-base;structure-blocks_mainscreen;structure-blocks_goods;structure-blocks_reviews;structure-blocks_services;structure-blocks_portfolio;modules-review_form;extra-creating-favicon;extra-install-ssl">
                                             <label for="type-landing">
                                                 <p>
                                                     Сайт визитка или LandingPage
@@ -1110,7 +1110,7 @@
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="design-base"
                                                 name="design-base" data-price="25000"
-                                                data-radio="design-landing;design-premium">
+                                                data-radio="design-premium">
                                             <label for="design-base">
                                                 <p>
                                                     Современный уникальный дизайн
@@ -1124,7 +1124,7 @@
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="design-premium"
                                                 name="design-premium" data-price="40000"
-                                                data-radio="design-landing;design-base">
+                                                data-radio="design-base">
                                             <label for="design-premium">
                                                 <p>
                                                     Премиум-дизайн
@@ -1134,24 +1134,6 @@
                                                 </p>
                                             </label>
                                         </div>
-
-                                        <!-- custom-select -->
-                                        <!-- <div class="nice-wrapper">
-                                            <select id="customPriceSelect" class=""
-                                                data-display="Выберите элемент списка" data-price="0">
-                                                <option value="10000" data-price="10000">Опция первая</option>
-                                                <option value="20000" data-price="20000">Опция вторая</option>
-                                                <option value="30000" data-price="30000" disabled>Опция недоступна
-                                                </option>
-                                                <option value="40000" data-price="40000">Опция четвертая</option>
-                                            </select>
-                                        </div> -->
-
-                                        <!-- custom input with price -->
-                                        <!-- <div class="form-field">
-                                            <input type="text" data-price="15000" id="customPriceInput"
-                                                data-calculation-textfield="" value="" />
-                                        </div> -->
 
                                         <!-- change: label -->
                                         <label for="design-similar_cites">
@@ -1245,27 +1227,30 @@
 
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_promoslider" data-price="8000"
-                                                name="functions-blocks_promoslider">
-                                            <label for="functions-blocks_promoslider">
+                                                id="structure-blocks_mainscreen" data-price="8000"
+                                                name="structure-blocks_mainscreen">
+                                            <label for="structure-blocks_mainscreen">
                                                 <p>
-                                                    Слайдер с акциями и важной информацией
+                                                    Главный экран
+                                                    <span class="tooltip" data-tooltip="Первый крупный блок на веб-странице, который привлекает внимание пользователя">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_goods"
-                                                data-price="8000" name="functions-blocks_goods">
-                                            <label for="functions-blocks_goods">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_goods"
+                                                data-price="8000" name="structure-blocks_goods">
+                                            <label for="structure-blocks_goods">
                                                 <p>
                                                     Продукция
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_about"
-                                                data-price="8000" name="functions-blocks_about">
-                                            <label for="functions-blocks_about">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_about"
+                                                data-price="8000" name="structure-blocks_about">
+                                            <label for="structure-blocks_about">
                                                 <p>
                                                     О компании
                                                 </p>
@@ -1273,18 +1258,21 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_benefits" data-price="8000"
-                                                name="functions-blocks_benefits">
-                                            <label for="functions-blocks_benefits">
+                                                id="structure-blocks_benefits" data-price="8000"
+                                                name="structure-blocks_benefits">
+                                            <label for="structure-blocks_benefits">
                                                 <p>
                                                     Преимущества компании
+                                                    <span class="tooltip" data-tooltip="Наглядная инфографика для удобного восприятия">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_reviews"
-                                                data-price="8000" name="functions-blocks_reviews">
-                                            <label for="functions-blocks_reviews">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_reviews"
+                                                data-price="8000" name="structure-blocks_reviews">
+                                            <label for="structure-blocks_reviews">
                                                 <p>
                                                     Отзывы
                                                 </p>
@@ -1292,9 +1280,9 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_services" data-price="8000"
-                                                name="functions-blocks_services">
-                                            <label for="functions-blocks_services">
+                                                id="structure-blocks_services" data-price="8000"
+                                                name="structure-blocks_services">
+                                            <label for="structure-blocks_services">
                                                 <p>
                                                     Услуги
                                                 </p>
@@ -1302,9 +1290,9 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_tariffs" data-price="8000"
-                                                name="functions-blocks_tariffs">
-                                            <label for="functions-blocks_tariffs">
+                                                id="structure-blocks_tariffs" data-price="8000"
+                                                name="structure-blocks_tariffs">
+                                            <label for="structure-blocks_tariffs">
                                                 <p>
                                                     Тарифы
                                                 </p>
@@ -1312,19 +1300,22 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_howitworks" data-price="8000"
-                                                name="functions-blocks_howitworks">
-                                            <label for="functions-blocks_howitworks">
+                                                id="structure-blocks_howitworks" data-price="8000"
+                                                name="structure-blocks_howitworks">
+                                            <label for="structure-blocks_howitworks">
                                                 <p>
                                                     Как это работает
+                                                    <span class="tooltip" data-tooltip="Визуализация этапов работы и того, что делает клиент и что делает исполнитель">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_portfolio" data-price="8000"
-                                                name="functions-blocks_portfolio">
-                                            <label for="functions-blocks_portfolio">
+                                                id="structure-blocks_portfolio" data-price="8000"
+                                                name="structure-blocks_portfolio">
+                                            <label for="structure-blocks_portfolio">
                                                 <p>
                                                     Портфолио / Кейсы
                                                 </p>
@@ -1332,27 +1323,27 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_faq" data-price="8000"
-                                                name="functions-blocks_faq">
-                                            <label for="functions-blocks_faq">
+                                                id="structure-blocks_faq" data-price="8000"
+                                                name="structure-blocks_faq">
+                                            <label for="structure-blocks_faq">
                                                 <p>
                                                     FAQ
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_promo"
-                                                data-price="8000" name="functions-blocks_promo">
-                                            <label for="functions-blocks_promo">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_promo"
+                                                data-price="8000" name="structure-blocks_promo">
+                                            <label for="structure-blocks_promo">
                                                 <p>
                                                     Акции / Хиты / Новинки
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_news"
-                                                data-price="8000" name="functions-blocks_news">
-                                            <label for="functions-blocks_news">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_news"
+                                                data-price="8000" name="structure-blocks_news">
+                                            <label for="structure-blocks_news">
                                                 <p>
                                                     Новости
                                                 </p>
@@ -1360,7 +1351,7 @@
                                         </div>
 
                                         <!-- change: label -->
-                                        <label for="functions-blocks_custom">
+                                        <label for="structure-blocks_custom">
                                             <p class="fw-bold">
                                                 Укажите свои блоки
                                             </p>
@@ -1377,9 +1368,9 @@
                                         </p>
 
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-section_goods"
-                                                data-price="15000" name="functions-section_goods">
-                                            <label for="functions-section_goods">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-section_goods"
+                                                data-price="15000" name="structure-section_goods">
+                                            <label for="structure-section_goods">
                                                 <p>
                                                     Продукция
                                                 </p>
@@ -1387,27 +1378,27 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_services" data-price="15000"
-                                                name="functions-section_services">
-                                            <label for="functions-section_services">
+                                                id="structure-section_services" data-price="15000"
+                                                name="structure-section_services">
+                                            <label for="structure-section_services">
                                                 <p>
                                                     Услуги
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-section_about"
-                                                data-price="15000" name="functions-section_about">
-                                            <label for="functions-section_about">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-section_about"
+                                                data-price="15000" name="structure-section_about">
+                                            <label for="structure-section_about">
                                                 <p>
                                                     О компании
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-section_news"
-                                                data-price="15000" name="functions-section_news">
-                                            <label for="functions-section_news">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-section_news"
+                                                data-price="15000" name="structure-section_news">
+                                            <label for="structure-section_news">
                                                 <p>
                                                     Новости
                                                 </p>
@@ -1453,9 +1444,9 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_toclients" data-price="15000"
-                                                name="functions-section_toclients">
-                                            <label for="functions-section_toclients">
+                                                id="structure-section_toclients" data-price="15000"
+                                                name="structure-section_toclients">
+                                            <label for="structure-section_toclients">
                                                 <p>
                                                     Клиентам
                                                 </p>
@@ -1463,9 +1454,9 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_tocontributors" data-price="15000"
-                                                name="functions-section_tocontributors">
-                                            <label for="functions-section_tocontributors">
+                                                id="structure-section_tocontributors" data-price="15000"
+                                                name="structure-section_tocontributors">
+                                            <label for="structure-section_tocontributors">
                                                 <p>
                                                     Партенерам
                                                 </p>
@@ -1473,9 +1464,9 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_contacts" data-price="15000"
-                                                name="functions-section_contacts">
-                                            <label for="functions-section_contacts">
+                                                id="structure-section_contacts" data-price="15000"
+                                                name="structure-section_contacts">
+                                            <label for="structure-section_contacts">
                                                 <p>
                                                     Контакты
                                                 </p>
@@ -1483,18 +1474,18 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_payment" data-price="15000"
-                                                name="functions-section_payment">
-                                            <label for="functions-section_payment">
+                                                id="structure-section_payment" data-price="15000"
+                                                name="structure-section_payment">
+                                            <label for="structure-section_payment">
                                                 <p>
                                                     Оплата и доставка
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-section_vacansies"
-                                                data-price="15000" name="functions-section_vacansies">
-                                            <label for="functions-section_vacansies">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-section_vacansies"
+                                                data-price="15000" name="structure-section_vacansies">
+                                            <label for="structure-section_vacansies">
                                                 <p>
                                                     Вакансии
                                                 </p>
@@ -1502,7 +1493,7 @@
                                         </div>
 
                                         <!-- change: label -->
-                                        <label for="functions-section_custom">
+                                        <label for="structure-section_custom">
                                             <p class="fw-bold">
                                                 Укажите свои разделы
                                             </p>
