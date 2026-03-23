@@ -2366,6 +2366,147 @@ function gallerySelector() {
 }
 document.addEventListener("DOMContentLoaded", gallerySelector);
 
+// NiceSelect
+const niceSelectJS = function (selectName, options) {
+	let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	let settings = {};
+	settings.activeMobile = false;
+	for (var userOpt in options) {
+		if (options.hasOwnProperty(userOpt)) {
+			settings[userOpt] = options[userOpt];
+		}
+	}
+
+	selectName = document.querySelectorAll(selectName);
+	selectName.forEach((select) => {
+		if (!settings.activeMobile && isMobile) {
+			if (select.getAttribute("data-display") !== null) {
+				var option = document.createElement("option");
+				option.text = select.getAttribute("data-display");
+				select.add(option, select[0]);
+				option.setAttribute("selected", true);
+			}
+			return;
+		}
+		select.style.display = "none";
+		if (!select.nextElementSibling) {
+			create_nice_select(select);
+		}
+	});
+
+	function create_nice_select(select) {
+		let divSelect = document.createElement("div");
+		let classes = select.getAttribute("class");
+		if (!classes == "") {
+			divSelect.className = "nice-select " + classes + "";
+		}
+		divSelect.classList.add("nice-select");
+		divSelect.setAttribute(
+			"tabindex",
+			select.getAttribute("disabled") ? null : "0",
+		);
+		divSelect.innerHTML =
+			'<span class="current"></span><ul class="list"></ul>';
+		// addClass($select.attr('disabled') ? 'disabled' : '') disable özelliği eklenicek
+
+		select.parentNode.insertBefore(divSelect, select.nextSibling);
+
+		let dropdown = select.nextElementSibling;
+		let _options = select.getElementsByTagName("option");
+		let selected = select.getElementsByTagName("option:selected");
+
+		dropdown.querySelector(".current").innerHTML =
+			select.getAttribute("data-display") ||
+			select.firstChild.nextElementSibling.innerText;
+
+		for (const child of _options) {
+			let listUl = dropdown.querySelector(".list");
+			let listItem = document.createElement("li");
+			listItem.innerHTML = child.textContent;
+			listItem.setAttribute("data-value", child.value);
+			if (child.hasAttribute("data-price")) {
+				listItem.setAttribute(
+					"data-price",
+					child.getAttribute("data-price"),
+				);
+			}
+			listItem.classList.add("option");
+			if (
+				child.getAttribute("disabled") == "" ||
+				child.getAttribute("disabled") == "disabled"
+			) {
+				listItem.classList.add("disabled");
+			} else if (
+				child.getAttribute("selected") == "" ||
+				child.getAttribute("selected") == "selected"
+			) {
+				listItem.classList.add("selected");
+			}
+
+			listUl.appendChild(listItem);
+		}
+	}
+
+	// Open/close
+	let allSelects = document.querySelectorAll(".nice-select");
+
+	allSelects.forEach((link) => {
+		link.addEventListener("click", function () {
+			if (this.classList.contains("open")) {
+				this.classList.remove("open");
+				if (this.querySelector(".focus") !== null) {
+					this.querySelector(".focus").classList.remove("focus");
+				}
+			} else {
+				allSelects.forEach((el) => {
+					el.classList.remove("open");
+				});
+				this.classList.add("open");
+				if (this.querySelector(".selected") !== null) {
+					this.querySelector(".selected").classList.add("focus");
+				}
+			}
+		});
+	});
+
+	// Close when clicking outside
+	document.addEventListener("click", function (e) {
+		if (e.target.closest(".nice-select") === null) {
+			allSelects.forEach((el) => {
+				el.classList.remove("open");
+			});
+		}
+	});
+
+	// Option click
+	document.addEventListener("click", function (e) {
+		const option = e.target.closest(".nice-select .option:not(.disabled)");
+		if (!option) return;
+		let dropdown = option.closest(".nice-select");
+		if (dropdown.querySelector(".selected") !== null) {
+			dropdown.querySelector(".selected").classList.remove("selected");
+		}
+		option.classList.add("selected");
+		let text = option.textContent;
+		dropdown.querySelector(".current").textContent = text;
+		let originalSelect = dropdown.previousSibling;
+		originalSelect.value = option.getAttribute("data-value");
+		// Генерируем событие change для калькулятора
+		originalSelect.dispatchEvent(new Event("change"));
+		console.log(
+			`dispatched change on ${originalSelect.id}, value=${originalSelect.value}`,
+		);
+	});
+
+	return this;
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+	let customSelect = niceSelectJS("select", {
+		activeMobile: true,
+	});
+});
+
 // tooltip handler
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll("[data-tooltip]").forEach((el) => {
@@ -4134,153 +4275,6 @@ function handleIntersection(entries) {
 		}
 	});
 }
-
-// NiceSelect
-/*  
-  Javascript Nice Select - v1.0
-  https://github.com/mustafabakirci/jquery-nice-select
-  Made by Hernán Sartorio, Developed by Mustafa Bakırcı  
-*/
-
-const niceSelectJS = function (selectName, options) {
-	let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-	let settings = {};
-	settings.activeMobile = false;
-	for (var userOpt in options) {
-		if (options.hasOwnProperty(userOpt)) {
-			settings[userOpt] = options[userOpt];
-		}
-	}
-
-	selectName = document.querySelectorAll(selectName);
-	selectName.forEach((select) => {
-		if (!settings.activeMobile && isMobile) {
-			if (select.getAttribute("data-display") !== null) {
-				var option = document.createElement("option");
-				option.text = select.getAttribute("data-display");
-				select.add(option, select[0]);
-				option.setAttribute("selected", true);
-			}
-			return;
-		}
-		select.style.display = "none";
-		if (!select.nextElementSibling) {
-			create_nice_select(select);
-		}
-	});
-
-	function create_nice_select(select) {
-		let divSelect = document.createElement("div");
-		let classes = select.getAttribute("class");
-		if (!classes == "") {
-			divSelect.className = "nice-select " + classes + "";
-		}
-		divSelect.classList.add("nice-select");
-		divSelect.setAttribute(
-			"tabindex",
-			select.getAttribute("disabled") ? null : "0",
-		);
-		divSelect.innerHTML =
-			'<span class="current"></span><ul class="list"></ul>';
-		// addClass($select.attr('disabled') ? 'disabled' : '') disable özelliği eklenicek
-
-		select.parentNode.insertBefore(divSelect, select.nextSibling);
-
-		let dropdown = select.nextElementSibling;
-		let _options = select.getElementsByTagName("option");
-		let selected = select.getElementsByTagName("option:selected");
-
-		dropdown.querySelector(".current").innerHTML =
-			select.getAttribute("data-display") ||
-			select.firstChild.nextElementSibling.innerText;
-
-		for (const child of _options) {
-			let listUl = dropdown.querySelector(".list");
-			let listItem = document.createElement("li");
-			listItem.innerHTML = child.textContent;
-			listItem.setAttribute("data-value", child.value);
-			if (child.hasAttribute("data-price")) {
-				listItem.setAttribute(
-					"data-price",
-					child.getAttribute("data-price"),
-				);
-			}
-			listItem.classList.add("option");
-			if (
-				child.getAttribute("disabled") == "" ||
-				child.getAttribute("disabled") == "disabled"
-			) {
-				listItem.classList.add("disabled");
-			} else if (
-				child.getAttribute("selected") == "" ||
-				child.getAttribute("selected") == "selected"
-			) {
-				listItem.classList.add("selected");
-			}
-
-			listUl.appendChild(listItem);
-		}
-	}
-
-	// Open/close
-	let allSelects = document.querySelectorAll(".nice-select");
-
-	allSelects.forEach((link) => {
-		link.addEventListener("click", function () {
-			if (this.classList.contains("open")) {
-				this.classList.remove("open");
-				if (this.querySelector(".focus") !== null) {
-					this.querySelector(".focus").classList.remove("focus");
-				}
-			} else {
-				allSelects.forEach((el) => {
-					el.classList.remove("open");
-				});
-				this.classList.add("open");
-				if (this.querySelector(".selected") !== null) {
-					this.querySelector(".selected").classList.add("focus");
-				}
-			}
-		});
-	});
-
-	// Close when clicking outside
-	document.addEventListener("click", function (e) {
-		if (e.target.closest(".nice-select") === null) {
-			allSelects.forEach((el) => {
-				el.classList.remove("open");
-			});
-		}
-	});
-
-	// Option click
-	document.addEventListener("click", function (e) {
-		const option = e.target.closest(".nice-select .option:not(.disabled)");
-		if (!option) return;
-		let dropdown = option.closest(".nice-select");
-		if (dropdown.querySelector(".selected") !== null) {
-			dropdown.querySelector(".selected").classList.remove("selected");
-		}
-		option.classList.add("selected");
-		let text = option.textContent;
-		dropdown.querySelector(".current").textContent = text;
-		let originalSelect = dropdown.previousSibling;
-		originalSelect.value = option.getAttribute("data-value");
-		// Генерируем событие change для калькулятора
-		originalSelect.dispatchEvent(new Event("change"));
-		console.log(
-			`dispatched change on ${originalSelect.id}, value=${originalSelect.value}`,
-		);
-	});
-
-	return this;
-};
-
-document.addEventListener("DOMContentLoaded", function () {
-	let customSelect = niceSelectJS("select", {
-		activeMobile: true,
-	});
-});
 
 /**
  * Единый класс для работы с оглавлением статьи
