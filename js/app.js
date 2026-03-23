@@ -2586,6 +2586,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const target = document.getElementById("calculator-total-target");
     const hash = window.location.hash;
     const togglechange = new Event("change");
+    const tenderAccordion = document.getElementById("tender-accordion");
 
     const formatNumber = (num) => {
       const [integer, decimal] = num.toString().split(".");
@@ -2644,6 +2645,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const allAccordionItems = document.querySelectorAll(".accordion-item");
       allAccordionItems.forEach((item) => {
         item.classList.remove("deactive");
+      });
+    };
+    // Скрывает все аккордеоны, кроме указанных по id
+    const hideAllAccordionsExcept = (keepIds) => {
+      const allAccordionItems = document.querySelectorAll(".accordion-item");
+      allAccordionItems.forEach((item) => {
+        if (!keepIds.includes(item.id)) {
+          item.classList.add("hidden");
+        }
+      });
+    };
+    // Показывает все аккордеоны (убирает класс hidden)
+    const showAllAccordions = () => {
+      const allAccordionItems = document.querySelectorAll(".accordion-item");
+      allAccordionItems.forEach((item) => {
+        item.classList.remove("hidden");
       });
     };
 
@@ -2769,6 +2786,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       target.current_value = 0;
       deactivateAllAccordions();
+      showAllAccordions();
+
+      if (tenderAccordion) {
+        tenderAccordion.classList.add("hidden");
+        tenderAccordion.classList.add("deactive");
+      }
     };
 
     // Функции для работы с опциями select
@@ -2880,6 +2903,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Применение пресета типа сайта
     const applySiteTypePreset = (selectedToggle, toggles, counters, target) => {
       resetCalculator(toggles, counters, target);
+
+      // Показать все аккордеоны, кроме тендерного (он будет скрыт отдельно)
+      showAllAccordions();
+      if (tenderAccordion) {
+        tenderAccordion.classList.add("hidden");
+        tenderAccordion.classList.add("deactive");
+      }
+
       selectedToggle.elementref.checked = true;
       target.current_value += selectedToggle.price;
       if (selectedToggle.reveal)
@@ -2950,16 +2981,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Обработка специального тендерного переключателя
     const handleTendersToggle = (toggle, toggles, counters, target) => {
+      const siteTypesAccordion = document.getElementById("site-types");
+
       if (toggle.elementref.checked) {
+        // 1. Полный сброс калькулятора
         resetCalculator(toggles, counters, target);
-        toggle.elementref.checked = true;
-        if (toggle.showAccordionItems)
-          showAccordionItems(toggle.showAccordionItems);
+        toggle.elementref.checked = true; // восстанавливаем состояние (resetCalculator его сбросил)
+
+        // 2. Скрываем все аккордеоны, кроме site-types и tender-accordion
+        hideAllAccordionsExcept(["site-types", "tender-accordion"]);
+
+        // 3. Обновляем состояние аккордеонов (деактивируем остальные)
         updateAccordionStateForSiteType(toggle);
+
+        // 4. Убеждаемся, что тендерный аккордеон видим и активен
+        if (tenderAccordion) {
+          tenderAccordion.classList.remove("hidden");
+          tenderAccordion.classList.remove("deactive");
+        }
       } else {
+        // 5. Выключение: сброс и показ всех аккордеонов
         resetCalculator(toggles, counters, target);
-        if (toggle.showAccordionItems)
-          hideAccordionItems(toggle.showAccordionItems);
+        showAllAccordions();
+
+        // 6. Скрываем тендерный аккордеон
+        if (tenderAccordion) {
+          tenderAccordion.classList.add("hidden");
+        }
+
+        // 7. Активируем все аккордеоны (убираем класс deactive)
+        // activateAllAccordions();
       }
     };
 
