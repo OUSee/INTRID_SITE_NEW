@@ -3437,20 +3437,21 @@ document.addEventListener("DOMContentLoaded", () => {
 										radioToggle.elementref.dispatchEvent(
 											new Event("change"),
 										);
-										target.current_value -=
-											radioToggle.price;
-										if (radioToggle.reveal)
-											radioToggle.reveal.classList.add(
-												"hidden",
-											);
-										if (
-											radioToggle.counter &&
-											radioToggle.counter.total
-										) {
-											target.current_value -=
-												radioToggle.counter.total;
-											radioToggle.counter.total = 0;
-										}
+										// Временно удалено
+										// target.current_value -=
+										// 	radioToggle.price;
+										// if (radioToggle.reveal)
+										// 	radioToggle.reveal.classList.add(
+										// 		"hidden",
+										// 	);
+										// if (
+										// 	radioToggle.counter &&
+										// 	radioToggle.counter.total
+										// ) {
+										// 	target.current_value -=
+										// 		radioToggle.counter.total;
+										// 	radioToggle.counter.total = 0;
+										// }
 									}
 								});
 							}
