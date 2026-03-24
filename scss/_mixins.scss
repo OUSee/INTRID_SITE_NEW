@@ -1259,6 +1259,19 @@
 			// overflow: hidden;
 			transition: all 0.3s ease-in-out;
 
+			&.active {
+				& .accordion-content {
+					max-height: unset;
+					padding: 16px 32px;
+					visibility: visible;
+					overflow: visible;
+
+					@media (max-width: 600px) {
+						padding: 16px;
+					}
+				}
+			}
+
 			&.deactive {
 				pointer-events: none;
 				user-select: none;
@@ -1521,7 +1534,8 @@
 	display: none;
 
 	&:checked {
-		& + label {
+		& + label,
+		& + .switch-slider {
 			position: relative;
 
 			&::before {
@@ -1537,7 +1551,8 @@
 		}
 	}
 
-	& + label {
+	& + label,
+	& + .switch-slider {
 		position: relative;
 		cursor: pointer;
 
@@ -1588,6 +1603,45 @@
 					pointer-events: all;
 				}
 			}
+		}
+	}
+}
+
+@mixin toggle-switch {
+	width: fit-content;
+
+	& .switch {
+		&-label {
+			display: flex;
+			flex-direction: row;
+			align-items: stretch;
+			height: 26px;
+		}
+
+		&-option {
+			appearance: button;
+			align-self: center;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+
+		&-control {
+			@include toggle-line;
+
+			& .switch-slider {
+				&::before {
+					background-color: var(--blue-tag) !important;
+					border: 1px solid var(--color-white) !important;
+				}
+
+				&::after {
+					background-color: var(--color-white) !important;
+				}
+			}
+		}
+
+		&-checkbox {
+			@include toggle-checkbox;
 		}
 	}
 }

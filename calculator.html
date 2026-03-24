@@ -400,7 +400,8 @@
                                             <input type="checkbox" class="toggle-checkbox" id="tenders_toggle"
                                                 name="tenders_toggle"
                                                 data-radio="type-landing;type-portfolio;type-corporate;type-corporate_catalogue;type-store;type-store_ai;type-portal;type-unique"
-                                                data-price="0" data-show-accordion-item="tender-accordion">
+                                                data-nested="tender-solution-switch:0"
+                                                data-price="0">
                                             <label for="tenders_toggle">
                                                 <p>
                                                     Тендерный портал
@@ -1778,8 +1779,28 @@
                                     </label>
                                     
                                     <div class="accordion-content">
+                                        <!-- Переключатель для выбора типа тендерного портала -->
+                                        <div class="toggle-line toggle-switch">
+                                            <label for="tender-solution-switch" class="switch-label">
+                                                <span class="switch-option" data-option="freight">Грузоперевозки</span>
+                                                <span class="switch-control">
+                                                    <input type="checkbox" id="tender-solution-switch" class="switch-checkbox"
+                                                        data-select-target="tender-solution-select"
+                                                        data-select-option-index="0">
+                                                    <span class="switch-slider"></span>
+                                                </span>
+                                                <span class="switch-option" data-option="procurement">Закупки</span>
+                                            </label>
+                                        </div>
+
+                                        <select id="tender-solution-select" class="hidden" data-price="0">
+                                            <option value="1" data-price="0" data-nested="tender-portal_core;tender-portal_cust;tender-portal_logging;tender-portal_archive;tender-portal_afdd;tender-portal_auto;tender-portal_stat;tender-portal_defender;tender-portal_priority"
+                                                data-hide-accordion-item="tender-portal_paying_config" data-show-accordion-item="tender-portal_config">Грузоперевозки</option>
+                                            <option value="2" data-price="0" data-nested="tender-portal_paying_core;tender-portal_paying_cust;tender-portal_paying_logging;tender-portal_paying_archive;tender-portal_paying_auto;tender-portal_paying_stat;tender-portal_paying_defender;tender-portal_paying_priority" data-hide-accordion-item="tender-portal_config" data-show-accordion-item="tender-portal_paying_config">Закупки</option>
+                                        </select>
+
                                         <!-- tender-portal: грузоперевозки -->
-                                            <div class="toggle-line">
+                                            <!-- <div class="toggle-line">
                                                 <input type="checkbox" class="toggle-checkbox" id="tender-portal"
                                                     name="tender-portal" data-price="0"
                                                     data-radio="type-portfolio;type-landing;type-corporate;type-corporate_catalogue;type-store;type-store_ai;type-portal;tender-portal-paying;type-unique"
@@ -1795,10 +1816,11 @@
                                                                 class="icon-tooltip"></i></span>
                                                     </p>
                                                 </label>
-                                            </div>
+                                            </div> -->
+
                                             <div class="hidden fd-col ml-10 gap-20 mb-10" id="tender-portal_config">
-                                                <p className="title_h5 quote">
-                                                    Настройки под тендерный портал
+                                                <p class="title_h5 quote">
+                                                    Настройки под тендерный портал грузоперевозок
                                                 </p>
                                                 <!-- Ядро системы с защитой данных -->
                                                 <div class="toggle-line">
@@ -2094,7 +2116,7 @@
                                             <!-- tender-portal: грузоперевозки -->
 
                                             <!-- tender-portal: закупки -->
-                                            <div class="toggle-line">
+                                            <!-- <div class="toggle-line">
                                                 <input type="checkbox" class="toggle-checkbox" id="tender-portal-paying"
                                                     name="tender-portal-paying" data-price="0"
                                                     data-radio="type-portfolio;type-landing;type-corporate;type-corporate_catalogue;type-store;type-store_ai;type-portal;tender-portal;type-unique"
@@ -2110,11 +2132,11 @@
                                                                 class="icon-tooltip"></i></span>
                                                     </p>
                                                 </label>
-                                            </div>
-                                            <div class="hidden fd-col ml-10 gap-20 mb-10"
-                                                id="tender-portal_paying_config">
-                                                <p className="title_h5 quote">
-                                                    Настройки под тендерный портал
+                                            </div> -->
+
+                                            <div class="hidden fd-col ml-10 gap-20 mb-10" id="tender-portal_paying_config">
+                                                <p class="title_h5 quote">
+                                                    Настройки под тендерный портал закупок
                                                 </p>
 
                                                 <!-- Ядро системы с защитой данных -->
