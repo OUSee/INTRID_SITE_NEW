@@ -3943,6 +3943,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
+document.querySelectorAll("[data-total-switch]").forEach((button) => {
+	button.addEventListener("click", (e) => {
+		const state = e.currentTarget.dataset.totalSwitch;
+
+		toggleAuthScreen(state);
+	});
+});
+
 function toggleAuthScreen(state) {
 	let wrapper = document.querySelector("#calculator-total.total");
 
