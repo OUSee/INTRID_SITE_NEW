@@ -2944,10 +2944,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (option.selectId === "tender-solution-select") {
 				console.log(target.id);
 				resetTenderCheckboxes(toggles, target);
-				document?.querySelector("#tender-accordion").scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-				});
 			}
 			target.current_value += option.price;
 			if (option.reveal) showElement(option.reveal);
@@ -3055,6 +3051,14 @@ document.addEventListener("DOMContentLoaded", () => {
 					toggle.id === "tenders_toggle");
 			if (isTenderSelected) {
 				deactivateAllAccordions();
+				setTimeout(() => {
+					document
+						?.querySelector("#tender-accordion")
+						.scrollIntoView({
+							behavior: "smooth",
+							block: "start",
+						});
+				}, 600);
 			} else if (toggle && toggle.elementref.checked) {
 				activateAllAccordions();
 			}
@@ -3862,7 +3866,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 
 			// Кнопка отправки
-			sentButton?.addEventListener("click", () => {
+			sentButton?.addEventListener("click", (e) => {
 				const checkboxes = toggles
 					.filter(
 						(t) => t.type === "checkbox" && t.elementref.checked,
@@ -3907,6 +3911,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					total: target.current_value,
 				};
 				console.log(review);
+
+				toggleAuthScreen("after");
 			});
 
 			// Кнопка сброса
@@ -3916,8 +3922,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				icon.classList.add("rotateInfinite");
 				sentButton.disabled = true;
 
-				resetCalculator(toggles, counters, target);
-
 				setTimeout(() => {
 					calculator?.scrollIntoView({
 						behavior: "smooth",
@@ -3925,6 +3929,10 @@ document.addEventListener("DOMContentLoaded", () => {
 					});
 					icon.classList.remove("rotateInfinite");
 					sentButton.disabled = false;
+
+					setTimeout(() => {
+						resetCalculator(toggles, counters, target);
+					}, 200);
 				}, 600);
 			});
 
@@ -3934,6 +3942,21 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 });
+
+function toggleAuthScreen(state) {
+	let wrapper = document.querySelector("#calculator-total.total");
+
+	if (wrapper) wrapper.classList.toggle("active");
+
+	// after state = 'after'; before state = 'before';
+	const isActive = wrapper.classList.contains("active");
+
+	if (isActive) {
+		state = "before";
+	} else {
+		state = "after";
+	}
+}
 
 // trigger blocks
 const toggleSection = (
