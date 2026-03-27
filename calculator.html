@@ -2462,13 +2462,11 @@
 
                                 <div id="calculator-total" class="card total">
                                     <div class="total-wrapper">
-                                        <button type="button" class="total-close" aria-label="close-calculator-total"></button>
                                         <div class="total-top">
                                             <div class="total-content">
                                                 <div class="total-header">
-                                                    <button type="button" class="total-close" aria-label="close-calculator-total" total-back-button=""></button>
                                                     <div class="title_h4">
-                                                        Стоимость сайта по выбранным параметрам:
+                                                        Стоимость&nbsp;сайта по <br>выбранным параметрам:
                                                     </div>
                                                 </div>
 
@@ -2482,20 +2480,13 @@
                                                 <button id="reset-options-btn" class="button button-white"><i
                                                     class="icon-reset"></i></button>
                                                 <button id="send-calculator-total"
-                                                    class="button-highlight flex-1 big">
+                                                    class="button-highlight flex-1 big" data-total-switch="after">
                                                     получить проект<span class="br600">сайта</span>
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="total-bottom">
                                             <div class="total-content">
-                                                <div class="total-header">
-                                                    <button type="button" class="total-close" aria-label="close-calculator-total" total-back-button=""></button>
-                                                    <div class="title_h4">
-                                                        Получить проект сайта
-                                                    </div>
-                                                </div>
-
                                                 <div class="total-body">
                                                     <!-- Форма получения проекта сайта -->
                                                     <form class="order-form" action="submit">
@@ -2528,16 +2519,22 @@
                                                                 href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
                                                                 target="_blank">ФЗ&nbsp;№152</a>
                                                         </p>
+
+                                                        <p class="title_h4 m-0">
+                                                            Итого: <span id="calculator-total-cost">0</span>&nbsp;₽
+                                                        </p>
+
                                                         <button type="submit" class="button big button-white mt-10">
                                                             Отправить
                                                         </button>
                                                     </form>
                                                 </div>
                                             </div>
-                                            <div class="total-title d-flex flex-row flex-wrap gap-8 w-100">
-                                                <button type="button" data-total-switch="before">
-                                                    Вернуться в калькулятор
-                                                </button>
+                                            <div class="total-title d-flex justify-center flex-row flex-wrap gap-8 w-100">
+                                                <p class="title_h4">
+                                                    Получить проект сайта
+                                                </p>
+                                                <button type="button" class="total-close" aria-label="close-calculator-total" data-total-switch="before" total-back-button=""></button>
                                             </div>
                                         </div>
                                     </div>

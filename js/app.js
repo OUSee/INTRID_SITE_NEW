@@ -3911,8 +3911,6 @@ document.addEventListener("DOMContentLoaded", () => {
 					total: target.current_value,
 				};
 				console.log(review);
-
-				toggleAuthScreen("after");
 			});
 
 			// Кнопка сброса
@@ -3947,11 +3945,11 @@ document.querySelectorAll("[data-total-switch]").forEach((button) => {
 	button.addEventListener("click", (e) => {
 		const state = e.currentTarget.dataset.totalSwitch;
 
-		toggleAuthScreen(state);
+		setScreen(state);
 	});
 });
 
-function toggleAuthScreen(state) {
+function toggleScreen(state) {
 	let wrapper = document.querySelector("#calculator-total.total");
 
 	if (wrapper) wrapper.classList.toggle("active");
@@ -3963,6 +3961,27 @@ function toggleAuthScreen(state) {
 		state = "before";
 	} else {
 		state = "after";
+	}
+}
+
+function setScreen(state) {
+	let wrapper = document.querySelector("#calculator-total.total"),
+		column = wrapper.closest(".fixed-bottom");
+
+	if (state === "before") {
+		wrapper.classList.remove("active");
+		setTimeout(() => {
+			document.documentElement.classList.remove(
+				"calculator-total-before",
+			);
+			column.classList.remove("expand-to-fullscreen");
+		}, 600);
+	} else {
+		wrapper.classList.add("active");
+		setTimeout(() => {
+			document.documentElement.classList.add("calculator-total-before");
+			column.classList.add("expand-to-fullscreen");
+		}, 600);
 	}
 }
 
