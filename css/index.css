@@ -2083,12 +2083,20 @@ ol li > ol {
 .d-block {
   display: block !important;
 }
+.d-none {
+  display: none !important;
+}
 .d-inline {
   display: inline;
 }
 @media (max-width: 1000px) {
   .d-lg-none {
     display: none !important;
+  }
+}
+@media (max-width: 1000px) {
+  .d-lg-flex {
+    display: flex !important;
   }
 }
 @media (max-width: 720px) {
@@ -6496,6 +6504,17 @@ button:hover svg,
   transform: translate(100%, -50%) scaleX(-1);
 }
 
+.testimonials {
+  color: var(--color-grey);
+}
+.testimonials a {
+  text-decoration: underline dashed !important;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  text-decoration-style: dashed;
+  color: var(--color-white);
+}
+
 .card {
   position: relative;
   z-index: 1;
@@ -8076,16 +8095,6 @@ button:hover svg,
 }
 .card--leaders form .button:hover {
   background-color: var(--color-white);
-}
-.card--leaders .testimonials {
-  color: var(--color-grey);
-}
-.card--leaders .testimonials a {
-  text-decoration: underline dashed !important;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-  text-decoration-style: dashed;
-  color: var(--color-white);
 }
 .card--leaders.minified {
   padding: 20px 16px;
@@ -13393,6 +13402,7 @@ button.next:hover {
 }
 .total-bottom .total-body form {
   max-width: 400px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -13406,7 +13416,6 @@ button.next:hover {
   gap: 8px;
 }
 .form-popup form .form-limitter .testimonials {
-  color: white;
   width: 90%;
 }
 .form-popup form .form-limitter .testimonials > a:hover {

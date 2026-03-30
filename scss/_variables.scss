@@ -1464,6 +1464,10 @@ ol {
 		display: block !important;
 	}
 
+	&-none {
+		display: none !important;
+	}
+
 	&-inline {
 		display: inline;
 	}
@@ -1473,6 +1477,12 @@ ol {
 			// previosly was a 900px
 			@media (max-width: 1000px) {
 				display: none !important;
+			}
+		}
+
+		&-flex {
+			@media (max-width: 1000px) {
+				display: flex !important;
 			}
 		}
 	}
@@ -5276,6 +5286,18 @@ button:hover,
 	}
 }
 
+.testimonials {
+	color: var(--color-grey);
+
+	a {
+		text-decoration: underline dashed !important;
+		text-underline-offset: 4px;
+		text-decoration-thickness: 1px;
+		text-decoration-style: dashed;
+		color: var(--color-white);
+	}
+}
+
 // cards
 .card {
 	position: relative;
@@ -7010,18 +7032,6 @@ button:hover,
 
 			.button:hover {
 				background-color: var(--color-white);
-			}
-		}
-
-		& .testimonials {
-			color: var(--color-grey);
-
-			a {
-				text-decoration: underline dashed !important;
-				text-underline-offset: 4px;
-				text-decoration-thickness: 1px;
-				text-decoration-style: dashed;
-				color: var(--color-white);
 			}
 		}
 

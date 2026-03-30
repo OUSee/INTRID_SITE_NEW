@@ -2480,7 +2480,11 @@
                                                 <button id="reset-options-btn" class="button button-white"><i
                                                     class="icon-reset"></i></button>
                                                 <button id="send-calculator-total"
-                                                    class="button-highlight flex-1 big" data-total-switch="after">
+                                                    class="button-highlight flex-1 big d-flex d-lg-none" data-total-switch="after">
+                                                    получить проект<span class="br600">сайта</span>
+                                                </button>
+                                                <button id="send-total"
+                                                    class="button-highlight flex-1 big d-none d-lg-flex" data-popup="fast-req-form">
                                                     получить проект<span class="br600">сайта</span>
                                                 </button>
                                             </div>
@@ -2659,12 +2663,24 @@
                         <input type="email" name="mail" placeholder="E-mail">
                         <input type="tel" name="phone" placeholder="* Телефон" required>
                         <textarea data-autosize="true" rows="1"
-                            placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
-                        <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
-                                class="text-dashed color-white">обработку
-                                своих персональных
-                                данных</a>
+                            placeholder="Комментарий" name="list"></textarea>
+                        <div class="input-file">
+                            <div class="file-drop-area">
+                                <label>
+                                    <input type="file" multiple="" accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                    <span>Прикрепить ТЗ</span>
+                                    <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                </label>
+                                <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                <div class="file-list" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <p class="testimonials text-center m-center mb-0">
+                            Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://" data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии с <a href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf" target="_blank">ФЗ&nbsp;№152</a>
+                        </p>
+
+                        <p class="title_h4 m-0 text-center">
+                            Итого: <span id="calculator-total-modal">0</span>&nbsp;₽
                         </p>
                         <button type="submit" class="button-white m-center mt-20">Отправить заявку</button>
                     </div>

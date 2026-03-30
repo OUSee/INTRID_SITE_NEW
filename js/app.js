@@ -2578,7 +2578,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const inputs = document
 			.getElementById("calculator-sitebrif")
 			?.querySelectorAll(".accordion-content input");
-		const sentButton = document.getElementById("send-brif-total");
+		const sendButton = document.getElementById("send-brif-total");
 
 		const toggleConverter = (inputs) => {
 			const toggles = [];
@@ -2609,7 +2609,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			return { toggles: toggles, texts: texts };
 		};
 
-		if (inputs && sentButton) {
+		if (inputs && sendButton) {
 			const { toggles, texts } = toggleConverter(inputs);
 			const togglechange = new Event("change");
 
@@ -2651,7 +2651,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				});
 			});
 
-			sentButton.addEventListener("click", () => {
+			sendButton.addEventListener("click", () => {
 				const review = {
 					options: toggles.filter(
 						(toggle) => toggle.elementref.checked,
@@ -2673,7 +2673,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				".accordion-content input, .accordion-content select",
 			);
 		const reset_button = document.getElementById("reset-options-btn");
-		const sentButton = document.getElementById("send-calculator-total");
+		const sendButtonsIds = ["#send-calculator-total", "#send-total"];
+		const sendButtons = document.querySelectorAll(sendButtonsIds);
 		const target = document.getElementById("calculator-total-target");
 		const hash = window.location.hash;
 		const togglechange = new Event("change");
@@ -2692,6 +2693,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			set(val) {
 				this._current_value = val;
 				this.innerText = formatNumber(val);
+				const secondTarget = document.getElementById(
+					"calculator-total-cost",
+				);
+				const modalTarget = document.getElementById(
+					"calculator-total-modal",
+				);
+				if (secondTarget) secondTarget.innerText = formatNumber(val);
+				if (modalTarget) modalTarget.innerText = formatNumber(val);
 			},
 			configurable: true,
 		});
@@ -2942,7 +2951,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		const activateSelectOption = (option, toggles, target) => {
 			if (!option) return;
 			if (option.selectId === "tender-solution-select") {
-				console.log(target.id);
 				resetTenderCheckboxes(toggles, target);
 			}
 			target.current_value += option.price;
@@ -3866,59 +3874,62 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 
 			// Кнопка отправки
-			sentButton?.addEventListener("click", (e) => {
-				const checkboxes = toggles
-					.filter(
-						(t) => t.type === "checkbox" && t.elementref.checked,
-					)
-					.map((t) => ({ id: t.id, price: t.price }));
+			sendButtons?.forEach((button) =>
+				button?.addEventListener("click", (e) => {
+					const checkboxes = toggles
+						.filter(
+							(t) =>
+								t.type === "checkbox" && t.elementref.checked,
+						)
+						.map((t) => ({ id: t.id, price: t.price }));
 
-				const selects = toggles
-					.filter((t) => t.type === "select" && t.currentOption)
-					.map((t) => ({
-						id: t.id,
-						selectedValue: t.currentOption.value,
-						price: t.currentOption.price,
-					}));
+					const selects = toggles
+						.filter((t) => t.type === "select" && t.currentOption)
+						.map((t) => ({
+							id: t.id,
+							selectedValue: t.currentOption.value,
+							price: t.currentOption.price,
+						}));
 
-				const textfields = toggles
-					.filter((t) => t.type === "textfield" && t.active)
-					.map((t) => ({
-						id: t.id,
-						value: t.elementref.value,
-						price: t.price,
-					}));
+					const textfields = toggles
+						.filter((t) => t.type === "textfield" && t.active)
+						.map((t) => ({
+							id: t.id,
+							value: t.elementref.value,
+							price: t.price,
+						}));
 
-				const countersData = counters
-					.filter((c) => c.elementref.value != "")
-					.map((c) => ({
-						id: c.id,
-						value: parseInt(c.elementref.value),
-						price: c.price,
-					}));
+					const countersData = counters
+						.filter((c) => c.elementref.value != "")
+						.map((c) => ({
+							id: c.id,
+							value: parseInt(c.elementref.value),
+							price: c.price,
+						}));
 
-				const extraTexts = texts
-					.filter((t) => t.elementref.value !== "")
-					.map((t) => ({ id: t.id, value: t.elementref.value }));
+					const extraTexts = texts
+						.filter((t) => t.elementref.value !== "")
+						.map((t) => ({ id: t.id, value: t.elementref.value }));
 
-				const review = {
-					checkboxes,
-					selects,
-					textfields,
-					counters: countersData,
-					extra: extraTexts,
-					preprice: target.innerText,
-					total: target.current_value,
-				};
-				console.log(review);
-			});
+					const review = {
+						checkboxes,
+						selects,
+						textfields,
+						counters: countersData,
+						extra: extraTexts,
+						preprice: target.innerText,
+						total: target.current_value,
+					};
+					console.log(review);
+				}),
+			);
 
 			// Кнопка сброса
 			reset_button?.addEventListener("click", (e) => {
 				const calculator = document.getElementById("calculator");
 				let icon = e.currentTarget.querySelector("i");
 				icon.classList.add("rotateInfinite");
-				sentButton.disabled = true;
+				sendButtons?.forEach((button) => (button.disabled = true));
 
 				setTimeout(() => {
 					calculator?.scrollIntoView({
@@ -3926,7 +3937,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						block: "start",
 					});
 					icon.classList.remove("rotateInfinite");
-					sentButton.disabled = false;
+					sendButtons?.forEach((button) => (button.disabled = false));
 
 					setTimeout(() => {
 						resetCalculator(toggles, counters, target);
@@ -3945,26 +3956,11 @@ document.querySelectorAll("[data-total-switch]").forEach((button) => {
 	button.addEventListener("click", (e) => {
 		const state = e.currentTarget.dataset.totalSwitch;
 
-		setScreen(state);
+		setTotalState(state);
 	});
 });
 
-function toggleScreen(state) {
-	let wrapper = document.querySelector("#calculator-total.total");
-
-	if (wrapper) wrapper.classList.toggle("active");
-
-	// after state = 'after'; before state = 'before';
-	const isActive = wrapper.classList.contains("active");
-
-	if (isActive) {
-		state = "before";
-	} else {
-		state = "after";
-	}
-}
-
-function setScreen(state) {
+function setTotalState(state) {
 	let wrapper = document.querySelector("#calculator-total.total"),
 		column = wrapper.closest(".fixed-bottom");
 
