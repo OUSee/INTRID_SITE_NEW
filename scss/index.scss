@@ -3051,6 +3051,20 @@ button.next {
 		}
 	}
 
+	&:is(#calculator-total) {
+		& .total-top {
+			& .total-content {
+				& .total-body {
+					@media (max-width: 1000px) {
+						flex: unset;
+						width: auto;
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+
 	&-close {
 		position: absolute;
 		top: 20px;

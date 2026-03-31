@@ -4229,17 +4229,22 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-document.querySelectorAll("[data-total-switch]").forEach((button) => {
-	button.addEventListener("click", (e) => {
-		const state = e.currentTarget.dataset.totalSwitch;
+// Управление состоянием блока итоговой стоимости сайта
+const totalSwitchButtons = document.querySelectorAll("[data-total-switch]");
 
-		setTotalState(state);
+if (totalSwitchButtons) {
+	totalSwitchButtons?.forEach((button) => {
+		button?.addEventListener("click", (e) => {
+			const state = e.currentTarget.dataset.totalSwitch;
+
+			setTotalState(state);
+		});
 	});
-});
+}
 
+// Передача состояния блока итоговой стоимости селектором
 function setTotalState(state) {
-	let wrapper = document.querySelector("#calculator-total.total"),
-		column = wrapper.closest(".fixed-bottom");
+	let wrapper = document.querySelector("#calculator-total.total");
 
 	if (state === "before") {
 		wrapper.classList.remove("active");
@@ -4247,16 +4252,33 @@ function setTotalState(state) {
 			document.documentElement.classList.remove(
 				"calculator-total-before",
 			);
-			column.classList.remove("expand-to-fullscreen");
 		}, 600);
 	} else {
 		wrapper.classList.add("active");
 		setTimeout(() => {
 			document.documentElement.classList.add("calculator-total-before");
-			column.classList.add("expand-to-fullscreen");
 		}, 600);
 	}
 }
+
+// Сброс состояния блока итоговой стоимости сайта
+function resetTotalState() {
+	let isMobileView = window.innerWidth < 1000,
+		wrapper = document.querySelector("#calculator-total.total");
+
+	if (isMobileView) {
+		wrapper.classList.remove("active");
+		setTimeout(() => {
+			document.documentElement.classList.remove(
+				"calculator-total-before",
+			);
+		}, 600);
+	}
+}
+
+// Ивенты сброса блока состояния итоговой стоимости при загрузке и ресайзе
+document.addEventListener('DOMContentLoaded', resetTotalState);
+window.addEventListener('resize', resetTotalState);
 
 // trigger blocks
 const toggleSection = (
@@ -4378,34 +4400,37 @@ const toggleSection = (
 
 // Инициализация триггеров остается без изменений
 const triggerButtons = document?.querySelectorAll("[data-trigger]");
-triggerButtons?.forEach((button) => {
-	button?.addEventListener("click", (e) => {
-		toggleSection(e, true);
 
-		let calculatorWrapper = document?.querySelector(".calculator-wrapper"),
-			wrapperRight = calculatorWrapper?.querySelector(".right"),
-			calculator = calculatorWrapper?.querySelector(
-				".calculator-calculator",
-			);
+if (triggerButtons) {
+	triggerButtons?.forEach((button) => {
+		button?.addEventListener("click", (e) => {
+			toggleSection(e, true);
 
-		if (
-			!(
-				calculatorWrapper?.classList.contains("active") ||
-				button.dataset.triggerHide === "choose_your_way"
-			)
-		) {
-			setTimeout(() => {
-				wrapperRight?.classList.add("active");
-			}, 600);
-		}
+			let calculatorWrapper = document?.querySelector(".calculator-wrapper"),
+				wrapperRight = calculatorWrapper?.querySelector(".right"),
+				calculator = calculatorWrapper?.querySelector(
+					".calculator-calculator",
+				);
 
-		if (calculator?.classList.contains("show")) {
-			setTimeout(() => {
-				calculatorWrapper?.classList.add("active");
-			}, 600);
-		}
+			if (
+				!(
+					calculatorWrapper?.classList.contains("active") ||
+					button.dataset.triggerHide === "choose_your_way"
+				)
+			) {
+				setTimeout(() => {
+					wrapperRight?.classList.add("active");
+				}, 600);
+			}
+
+			if (calculator?.classList.contains("show")) {
+				setTimeout(() => {
+					calculatorWrapper?.classList.add("active");
+				}, 600);
+			}
+		});
 	});
-});
+}
 
 // input type file logic with drag-n-drop
 document.addEventListener("DOMContentLoaded", function () {
