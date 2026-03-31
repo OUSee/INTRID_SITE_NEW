@@ -235,8 +235,7 @@
                                 Оформить быстрый заказ
                             </p>
                             <form class="order-form">
-                                <input type="text" required="" id="customer-name" name="customer-name"
-                                    placeholder="Ваше имя *">
+                                <input type="text" id="customer-name" name="customer-name" placeholder="Ваше имя">
 
                                 <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
 
@@ -282,11 +281,12 @@
 
                 <!-- Калькулятор -->
                 <div id="calculator-sitebrif" class="calculator-calculator sitebrif">
-                    <div class="flex-layout flex-layout--split centered">
-                        <div class="centered">
-                            <p class="title_h3 w-fit m-center ">
-                                Каким будет <span class="title_h3 underlined">ваш сайт</span>
-                            </p>
+                    <p class="title_h3 w-fit m-center">
+                        Каким будет <span class="title_h3 underlined">ваш сайт</span>
+                    </p>
+
+                    <div class="flex-layout flex-layout--split gap-sm-20">
+                        <div class="left">
                             <div class="accordion">
                                 <!-- general info -->
                                 <div class="accordion-item">
@@ -464,78 +464,78 @@
                                 <!-- / strategy and aims -->
 
                                 <!-- design -->
-                                <div class="accordion-item">
+                                <div class="accordion-item" id="design-accordion">
                                     <input type="checkbox" id="section-design" class="accordion-checkbox">
                                     <label for="section-design" class="accordion-header title_h4">
                                         <img src="./src/icons/brush_icon.svg" alt=""> Дизайн сайта<i
                                             class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="design-landing"
-                                                name="design-landing" data-radio="design-base;design-premium">
-                                            <label for="design-landing">
-                                                <p>
-                                                    LandingPage
-                                                    <span class="tooltip"
-                                                        data-tooltip="Уникальный продуманныйный дизайн посадочной страницы для максимальной конверсии"><i
-                                                            class="icon-tooltip"></i></span>
-
-                                                </p>
-                                            </label>
-                                        </div>
+                                        <!-- Чекбоксы выбора дизайна для всех -->
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="design-base"
-                                                name="design-base" data-radio="design-landing;design-premium">
+                                                name="design-base" data-price="50000" data-radio="design-premium">
                                             <label for="design-base">
                                                 <p>
                                                     Современный уникальный дизайн
                                                     <span class="tooltip"
-                                                        data-tooltip="Предоставляется 1-2 варианта дизайна, возможность внести три последовательные корректировки в выбранный дизайн макет. Включает в себя дизайн главной и двух внутренних страниц"><i
+                                                        data-tooltip="Вы получаете эксклюзивный дизайн, созданный с нуля под ваш бренд. Разрабатываем несколько уникальных концепций с продуманным интерфейсом. После выбора лучшей концепции вносим правки столько, сколько нужно для идеального результата. Работаем до вашего полного удовлетворения. Базовый пакет включает 5 блоков на главной странице и 2 внутренние страницы, но также можно выбрать дополнительные блоки в разделах ниже."><i
                                                             class="icon-tooltip"></i></span>
-
                                                 </p>
                                             </label>
                                         </div>
+
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="design-premium"
-                                                name="design-premium" data-radio="design-landing;design-base">
+                                                name="design-premium" data-price="70000" data-radio="design-base">
                                             <label for="design-premium">
                                                 <p>
                                                     Премиум-дизайн
-                                                    <span class="tooltip"
-                                                        data-tooltip="Неограниченное количество вариантов и правок, до полного одобрения Заказчиком. Включает в себя дизайн главной и двух внутренних страниц"><i
+                                                    <span class="tooltip" data-tooltip="Дизайн от ведущего специалиста с опытом 10+ лет на основе глубокого анализа вашего бизнеса, конкурентов и аудитории. Результат будет на 100% лучше решений конкурентов. Работаем без ограничений по правкам до полного совершенства. Базовый пакет включает 5 блоков на главной странице и 2 внутренние страницы, но также можно выбрать дополнительные блоки в разделах ниже.
+                                                            *Решение для бизнеса, где дизайн - критически важен"><i
                                                             class="icon-tooltip"></i></span>
                                                 </p>
                                             </label>
                                         </div>
-                                        <label for="design-similar_cites" class="title_h5">
-                                            Укажите сайты с понравившемся дизайном, сайты конкурентов
-                                        </label>
-                                        <input type="text" placeholder="Введите текст" id="design-similar_cites">
 
-                                        <p class="title_h5 color-blue quote">
-                                            Дополнительно необходимо разработать:
-                                        </p>
+                                        <!-- change: label -->
+                                        <label for="design-similar_cites">
+                                            <p class="fw-bold">
+                                                Укажите сайты с понравившемся дизайном, сайты конкурентов
+                                            </p>
+                                            <input type="text" placeholder="Введите текст" id="design-similar_cites">
+                                        </label>
+
+                                        <p class="title_h5 quote">Дополнительно необходимо разработать:</p>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
                                                 id="design-additional-logobook" data-price="15000"
                                                 name="design-additional-logobook"
                                                 data-radio="design-additional-firmstyle">
-                                            <label for="design-additional-logobook">Логотип + логобук</label>
+                                            <label for="design-additional-logobook">
+                                                <p>
+                                                    Логотип + логобук
+                                                </p>
+                                            </label>
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
                                                 id="design-additional-firmstyle" data-price="25000"
                                                 name="design-additional-firmstyle"
                                                 data-radio="design-additional-logobook">
-                                            <label for="design-additional-firmstyle">Фирменный стиль + Логотип +
-                                                логобук</label>
+                                            <label for="design-additional-firmstyle">
+                                                <p>
+                                                    Фирменный стиль + Логотип +
+                                                    логобук
+                                                </p>
+                                            </label>
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="design-additional-3d"
                                                 data-price="15000" name="design-additional-3d">
-                                            <label for="design-additional-3d">3D-обьекты</label>
+                                            <label for="design-additional-3d">
+                                                <p>3D-обьекты</p>
+                                            </label>
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="design-additional-vector"
@@ -551,266 +551,418 @@
                                         </div>
                                         <ul class="calculator-list">
                                             <li>
-                                                <a href="./portfolio.html" class="hover-underline">
+                                                <a href="./portfolio/design.html" class="color-white">
                                                     Примеры разработанных нашей компанией логотипов и брендов
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./portfolio.html" class="hover-underline">
+                                                <a href="./logo.html" class="color-white">
                                                     Подробнее об услуге по разработке логотипа и фирменного стиля
                                                 </a>
                                             </li>
                                         </ul>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="design-additional-interaction" data-price="20000"
+                                                name="design-additional-interaction">
+                                            <label for="design-additional-interaction">
+                                                <p>
+                                                    Интерактивность и анимация средствами HTML5/CSS3
+                                                </p>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- / design -->
-                                <!-- management system -->
-                                <div class="accordion-item">
-                                    <input type="checkbox" id="section-management" class="accordion-checkbox">
-                                    <label for="section-management" class="accordion-header title_h4">
-                                        <img src="./src/icons/gear_icon.svg" alt=""> Cистема управления сайтом<i
-                                            class="icon-shevrone"></i>
-                                    </label>
-                                    <div class="accordion-content">
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="management-icms"
-                                                data-radio="management-custom;management-other">
-                                            <label for="management-icms">
-                                                <p>
-                                                    Стандартная система администрирования и управления контентом
-                                                    сайта &nbsp;
-                                                    <a href="https://demo.intrid.ru" target="_blank"
-                                                        class="d-inline hover-undeline"
-                                                        title="Демонстрация системы управления контентом">i-cms</a>
-                                                    <span class="tooltip top"
-                                                        data-tooltip="Удобная и простая в использовании CMS содержит все необходимые функции для администрирования корпоративного сайта"><i
-                                                            class="icon-tooltip"></i></span>
-                                                </p>
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="management-other"
-                                                data-radio="management-custom;management-icms"
-                                                data-reveal="other-cms-extra">
-                                            <label for="management-other">
-                                                <p>
-                                                    Другая система (Bitrix, Drupal и т.д.)
-                                                </p>
-                                            </label>
-                                        </div>
-                                        <input type="text" class="hidden" placeholder="Название системы"
-                                            id="other-cms-extra">
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="management-custom"
-                                                name="management-custom" data-radio="management-icms;management-other"
-                                                data-reveal="custom-cms-extra">
-                                            <label for="management-custom">
-                                                <p>
-                                                    Уникальная разработка под индивидуальные задачи и нестандартные
-                                                    решения любой сложности
-                                                    <span class="tooltip top"
-                                                        data-tooltip="Если у Вас есть нестандартные требования и пожелания к CMS, чтобы Вам было максимально удобно и комфортно управлять сайтом, интегрировать с Вашей бухгалтерией или другими локальными базами данных – это решение для Вас"><i
-                                                            class="icon-tooltip"></i></span>
-                                                </p>
-                                            </label>
-                                        </div>
-                                        <input type="text" class="hidden" placeholder="Опишите требования и пожелания"
-                                            id="custom-cms-extra">
-                                    </div>
-                                </div>
-                                <!-- / management system  -->
+
                                 <!-- structure and functions -->
-                                <div class="accordion-item">
-                                    <input type="checkbox" id="section-functions" class="accordion-checkbox">
-                                    <label for="section-functions" class="accordion-header title_h4">
-                                        <i class="icon-links"></i> Структура и функционал сайта<i
-                                            class="icon-shevrone"></i>
+                                <div class="accordion-item" id="structure-accordion">
+                                    <input type="checkbox" id="section-structure" class="accordion-checkbox">
+                                    <label for="section-structure" class="accordion-header title_h4">
+                                        <img src="./src/icons/pc_icon.svg" alt="">
+                                        Структура сайта
+                                        <i class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <p class="title_h5 color-blue quote">Разделы сайта <span
-                                                class="color-grey">(Выберите
-                                                нужные Вам
-                                                разделы, содержание раздела дополните по своему усмотрению)</span></p>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-section_goods"
-                                                data-price="0" name="functions-section_goods">
-                                            <label for="functions-section_goods">
-                                                Продукция
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_services" data-price="0"
-                                                name="functions-section_services">
-                                            <label for="functions-section_services">
-                                                Услуги
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-section_about"
-                                                data-price="0" name="functions-section_about">
-                                            <label for="functions-section_about">
-                                                О компании
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-section_news"
-                                                data-price="0" name="functions-section_news">
-                                            <label for="functions-section_news">
-                                                Новости
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_gallery" data-price="0"
-                                                name="functions-section_gallery">
-                                            <label for="functions-section_gallery">
-                                                Фотогалерея (Портфолио)
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_tocontributors" data-price="0"
-                                                name="functions-section_tocontributors">
-                                            <label for="functions-section_tocontributors">
-                                                Партенерам
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_toclients" data-price="0"
-                                                name="functions-section_toclients">
-                                            <label for="functions-section_toclients">
-                                                Клиентам
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_payment" data-price="0"
-                                                name="functions-section_payment">
-                                            <label for="functions-section_payment">
-                                                Оплата и доставка
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-section_info"
-                                                data-price="0" name="functions-section_info">
-                                            <label for="functions-section_info">
-                                                Полезная информация
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-section_contacts" data-price="0"
-                                                name="functions-section_contacts">
-                                            <label for="functions-section_contacts">
-                                                Контакты
-                                            </label>
-                                        </div>
-                                        <label for="functions-section_custom" class="title_h5">
-                                            Укажите свои разделы
-                                        </label>
-                                        <input type="text" placeholder="Введите текст" id="functions-section_custom">
 
-                                        <p class="title_h5 color-blue quote">Блоки на главной</p>
+                                        <!-- Блоки на главной -->
+                                        <p class="title_h5 quote">Блоки на главной</p>
+
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_promoslider" data-price="3000"
-                                                name="functions-blocks_promoslider">
-                                            <label for="functions-blocks_promoslider">
-                                                Слайдер с акциями и важной информацией
+                                                id="structure-blocks_mainscreen" data-price="8000"
+                                                name="structure-blocks_mainscreen">
+                                            <label for="structure-blocks_mainscreen">
+                                                <p>
+                                                    Главный экран
+                                                    <span class="tooltip"
+                                                        data-tooltip="Первый крупный блок на веб-странице, который привлекает внимание пользователя">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
+                                                </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_promo"
-                                                data-price="9000" name="functions-blocks_promo">
-                                            <label for="functions-blocks_promo">
-                                                Модуль "Акция, Хит, Новинка"
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_goods"
+                                                data-price="8000" name="structure-blocks_goods">
+                                            <label for="structure-blocks_goods">
+                                                <p>
+                                                    Продукция
+                                                </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_benefits" data-price="4000"
-                                                name="functions-blocks_benefits">
-                                            <label for="functions-blocks_benefits">
-                                                Преимущества компании в виде Инфографики
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_about"
-                                                data-price="3000" name="functions-blocks_about">
-                                            <label for="functions-blocks_about">
-                                                О компании
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_goods"
-                                                data-price="10000" name="functions-blocks_goods">
-                                            <label for="functions-blocks_goods">
-                                                Продукция
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_about"
+                                                data-price="8000" name="structure-blocks_about">
+                                            <label for="structure-blocks_about">
+                                                <p>
+                                                    О компании
+                                                </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_services" data-price="7000"
-                                                name="functions-blocks_services">
-                                            <label for="functions-blocks_services">
-                                                Услуги
+                                                id="structure-blocks_benefits" data-price="8000"
+                                                name="structure-blocks_benefits">
+                                            <label for="structure-blocks_benefits">
+                                                <p>
+                                                    Преимущества компании
+                                                    <span class="tooltip"
+                                                        data-tooltip="Наглядная инфографика для удобного восприятия">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
+                                                </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_reviews"
-                                                data-price="6000" name="functions-blocks_reviews">
-                                            <label for="functions-blocks_reviews">
-                                                Отзывы
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="functions-blocks_news"
-                                                data-price="3000" name="functions-blocks_news">
-                                            <label for="functions-blocks_news">
-                                                Новости
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_reviews"
+                                                data-price="8000" name="structure-blocks_reviews">
+                                            <label for="structure-blocks_reviews">
+                                                <p>
+                                                    Отзывы
+                                                </p>
                                             </label>
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox"
-                                                id="functions-blocks_portfolio" data-price="6000"
-                                                name="functions-blocks_portfolio">
-                                            <label for="functions-blocks_portfolio">
-                                                Портфолио
+                                                id="structure-blocks_services" data-price="8000"
+                                                name="structure-blocks_services">
+                                            <label for="structure-blocks_services">
+                                                <p>
+                                                    Услуги
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_tariffs"
+                                                data-price="8000" name="structure-blocks_tariffs">
+                                            <label for="structure-blocks_tariffs">
+                                                <p>
+                                                    Тарифы
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="structure-blocks_howitworks" data-price="8000"
+                                                name="structure-blocks_howitworks">
+                                            <label for="structure-blocks_howitworks">
+                                                <p>
+                                                    Как это работает
+                                                    <span class="tooltip"
+                                                        data-tooltip="Визуализация этапов работы и того, что делает клиент и что делает исполнитель">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="structure-blocks_portfolio" data-price="8000"
+                                                name="structure-blocks_portfolio">
+                                            <label for="structure-blocks_portfolio">
+                                                <p>
+                                                    Портфолио / Кейсы
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_faq"
+                                                data-price="8000" name="structure-blocks_faq">
+                                            <label for="structure-blocks_faq">
+                                                <p>
+                                                    FAQ
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_promo"
+                                                data-price="8000" name="structure-blocks_promo">
+                                            <label for="structure-blocks_promo">
+                                                <p>
+                                                    Акции / Хиты / Новинки
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blocks_news"
+                                                data-price="8000" name="structure-blocks_news">
+                                            <label for="structure-blocks_news">
+                                                <p>
+                                                    Новости
+                                                </p>
                                             </label>
                                         </div>
 
-                                        <label for="functions-blocks_custom" class="title_h5">
-                                            Укажите свои блоки
+                                        <!-- change: label -->
+                                        <label for="structure-blocks_custom">
+                                            <p class="fw-bold">
+                                                Укажите свои блоки
+                                            </p>
+                                            <input type="text" placeholder="Введите текст" data-price="8000"
+                                                data-calculation-textfield="" id="functions-blocks_custom">
                                         </label>
-                                        <input type="text" placeholder="Введите текст" id="functions-blocks_custom">
+
+
+                                        <!-- Разделы сайта -->
+                                        <p class="title_h5 quote">
+                                            Разделы сайта <span class="tooltip"
+                                                data-tooltip="Выберите нужные Вам разделы, содержание раздела дополните по своему усмотрению">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                        </p>
+
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-section_goods"
+                                                data-price="15000" name="structure-section_goods">
+                                            <label for="structure-section_goods">
+                                                <p>
+                                                    Продукция
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="structure-section_services" data-price="15000"
+                                                name="structure-section_services">
+                                            <label for="structure-section_services">
+                                                <p>
+                                                    Услуги
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-section_about"
+                                                data-price="15000" name="structure-section_about">
+                                            <label for="structure-section_about">
+                                                <p>
+                                                    О компании
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-section_news"
+                                                data-price="15000" name="structure-section_news">
+                                            <label for="structure-section_news">
+                                                <p>
+                                                    Новости
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line toggle-nice">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-blog"
+                                                name="structure-blog" data-select-target="structure-blog-select"
+                                                data-select-option-index="0">
+                                            <label for="structure-blog"></label>
+                                            <div class="nice-wrapper nice-wrapper--simple">
+                                                <select id="structure-blog-select" class="isTextField"
+                                                    data-display="Блог (линейный)" data-price="0">
+                                                    <option value="1" data-price="15000">Блог (линейный)</option>
+                                                    <option value="2" data-price="15000">Блог с подкатегориями</option>
+                                                </select>
+                                            </div>
+                                            <span class="tooltip hidden" id="structure-blog-1"
+                                                data-tooltip="Лента статей, где записи выводятся по дате публикации. Управление контентом осуществляется через административную панель, включая создание, редактирование и удаление публикаций.">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                            <span class="tooltip hidden" id="structure-blog-2"
+                                                data-tooltip="Статьи сортируются по темам и подразделам. Администрирование включает управление разделами. Оптимален для сайтов с разноплановым контентом.">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                        </div>
+                                        <div class="toggle-line toggle-nice">
+                                            <input type="checkbox" class="toggle-checkbox" id="structure-portfolio"
+                                                name="structure-portfolio"
+                                                data-select-target="structure-portfolio-select"
+                                                data-select-option-index="0">
+                                            <label for="structure-portfolio"></label>
+                                            <div class="nice-wrapper nice-wrapper--simple">
+                                                <select id="structure-portfolio-select" class="isTextField"
+                                                    data-display="Простое портфолио (галерея)" data-price="0">
+                                                    <option value="1" data-price="15000">Простое портфолио (галерея)
+                                                    </option>
+                                                    <option value="2" data-price="15000">Расширенное портфолио </option>
+                                                </select>
+                                            </div>
+                                            <span class="tooltip hidden" id="structure-portfolio-1"
+                                                data-tooltip="Классическая презентация ваших работ в виде аккуратной сетки или слайдера. К каждому проекту можно добавить изображение и краткое описание.">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                            <span class="tooltip hidden" id="structure-portfolio-2"
+                                                data-tooltip="Раздел с фильтрами по категориям (услугам, типу проектов). Каждая работа оформляется как детальный кейс с описанием задачи, процесса и результата. Помогает клиентам быстро найти релевантные примеры и глубже познакомиться с вашим опытом.">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="structure-section_toclients" data-price="15000"
+                                                name="structure-section_toclients">
+                                            <label for="structure-section_toclients">
+                                                <p>
+                                                    Клиентам
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="structure-section_tocontributors" data-price="15000"
+                                                name="structure-section_tocontributors">
+                                            <label for="structure-section_tocontributors">
+                                                <p>
+                                                    Партенерам
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="structure-section_contacts" data-price="15000"
+                                                name="structure-section_contacts">
+                                            <label for="structure-section_contacts">
+                                                <p>
+                                                    Контакты
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="structure-section_payment" data-price="15000"
+                                                name="structure-section_payment">
+                                            <label for="structure-section_payment">
+                                                <p>
+                                                    Оплата и доставка
+                                                </p>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="structure-section_vacansies" data-price="15000"
+                                                name="structure-section_vacansies">
+                                            <label for="structure-section_vacansies">
+                                                <p>
+                                                    Вакансии
+                                                </p>
+                                            </label>
+                                        </div>
+
+                                        <!-- change: label -->
+                                        <label for="structure-section_custom">
+                                            <p class="fw-bold">
+                                                Укажите свои разделы
+                                            </p>
+                                            <input type="text" placeholder="Введите текст" id="functions-section_custom"
+                                                data-price="15000" data-calculation-textfield="">
+                                        </label>
                                     </div>
                                 </div>
                                 <!-- / structure and functions -->
-                                <!-- ai -->
-                                <div class="accordion-item">
-                                    <input type="checkbox" id="section-ai" class="accordion-checkbox">
-                                    <label for="section-ai" class="accordion-header title_h4">
-                                        <img src="./src/icons/ai_icon.svg" alt=""> Искусственный интеллект<i
-                                            class="icon-shevrone"></i>
+
+                                <!-- core -->
+                                <div class="accordion-item" id="core-accordion">
+                                    <input type="checkbox" id="section-core" class="accordion-checkbox">
+                                    <label for="section-core" class="accordion-header title_h4">
+                                        <img src="./src/icons/tech-shield.svg" alt="">
+                                        Ядро сайта и CMS
+                                        <i class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <p class="title_h5 color-blue quote">
-                                            Функции искусственного интеллекта <span class="color-grey">(Выберите нужные
-                                                Вам
-                                                функции
-                                                ИИ)</span>
+                                        <p class="title_h5 quote">
+                                            <a href="./icms.html" target="_blank" class="d-inline hover-undeline"
+                                                title="Демонстрация системы управления контентом">iCMS</a> — система
+                                            управления контентом <span class="tooltip top"
+                                                data-tooltip="Удобная и простая в использовании CMS содержит все необходимые функции для администрирования корпоративного сайта"><i
+                                                    class="icon-tooltip"></i></span>
                                         </p>
+
+                                        <div class="toggle-line toggle-nice">
+                                            <input type="checkbox" class="toggle-checkbox" id="core-icms"
+                                                name="core-icms" data-select-target="core-icms-select"
+                                                data-select-option-index="0">
+                                            <label for="core-icms"></label>
+                                            <div class="nice-wrapper nice-wrapper--simple">
+                                                <select id="core-icms-select" class="isTextField"
+                                                    data-display="Стандартное решение" data-price="0">
+                                                    <option value="30000" data-price="30000">Стандартное решение
+                                                    </option>
+                                                    <option value="50000" data-price="50000">Индивидуальная разработка
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <span class="tooltip hidden" id="core-icms-1"
+                                                data-tooltip=" Готовая система администрирования для типовых задач">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                            <span class="tooltip hidden" id="core-icms-2"
+                                                data-tooltip="iCMS, адаптированная под ваши уникальные бизнес-процессы и нестандартные задачи">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="toggle-line toggle-nice">
+                                            <input type="checkbox" class="toggle-checkbox" id="core-site"
+                                                name="core-site" data-select-target="core-site-select"
+                                                data-select-option-index="0">
+                                            <label for="core-site"></label>
+                                            <div class="nice-wrapper nice-wrapper--simple">
+                                                <select id="core-site-select" class="isTextField"
+                                                    data-display="Стандартное защищённое ядро" data-price="0">
+                                                    <option value="30000" data-price="30000">Стандартное защищённое ядро
+                                                    </option>
+                                                    <option value="60000" data-price="60000">Усиленное ядро с
+                                                        шифрованием данных</option>
+                                                </select>
+                                            </div>
+                                            <span class="tooltip hidden" id="core-site-1"
+                                                data-tooltip="Базовый уровень безопасности для проектов с типовыми требованиями">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                            <span class="tooltip hidden" id="core-site-2"
+                                                data-tooltip="Дополнительные уровни сквозного шифрования для конфиденциальных данных, таких как личная информация и детали платежей">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- / core -->
+
+                                <!-- ai -->
+                                <div class="accordion-item" id="ai-accordion">
+                                    <input type="checkbox" id="section-ai" class="accordion-checkbox">
+                                    <label for="section-ai" class="accordion-header title_h4">
+                                        <img src="./src/icons/ai_icon.svg" alt="">
+                                        Искусственный интеллект
+                                        <i class="icon-shevrone"></i>
+                                    </label>
+                                    <div class="accordion-content">
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="ai-design_check"
-                                                name="ai-design_check" data-price="82500">
+                                                name="ai-design_check" data-price="82000">
                                             <label for="ai-design_check">
                                                 <p>
-                                                    Выбор дизайна карточки товара с наибольшей конверсией
+                                                    Подбор дизайна карточки товара с наибольшей конверсией
                                                     <span class="tooltip"
-                                                        data-tooltip="ИИ тестирует несколько дизайнов и форматов карточки товара, показывая их различным пользователям в случайном порядке. Собирает статистику по конверсии и выбирает наилучшую"><i
-                                                            class="icon-tooltip"></i></span>
+                                                        data-tooltip="ИИ тестирует несколько дизайнов и форматов карточки товара, показывая их различным пользователям в случайном порядке. Собирает статистику по конверсии и выбирает наилучшую">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
                                                 </p>
                                             </label>
                                         </div>
@@ -841,24 +993,12 @@
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="ai-competitor_monitor"
-                                                data-price="97500" name="ai-competitor_monitor">
+                                                data-price="98000" name="ai-competitor_monitor">
                                             <label for="ai-competitor_monitor">
                                                 <p>
                                                     Мониторинг конкурентов и выявление сильных сторон
                                                     <span class="tooltip"
                                                         data-tooltip="ИИ отслеживает и отправляет Вам данные о важных изменениях на сайтах ваших конкурентов и предлагает эффективные решения для оптимизации Вашего сайта"><i
-                                                            class="icon-tooltip"></i></span>
-                                                </p>
-                                            </label>
-                                        </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="ai-tg_bot"
-                                                name="ai-tg_bot" data-price="37500">
-                                            <label for="ai-tg_bot">
-                                                <p>
-                                                    Telegram-бот
-                                                    <span class="tooltip"
-                                                        data-tooltip="Взаимодействует с Вашей аудиторией, информирует ее о новых акциях и предложениях, предоставляет доступ к личному кабинету и отслеживанию заказов. Уведомление администратора о поступивших заказах"><i
                                                             class="icon-tooltip"></i></span>
                                                 </p>
                                             </label>
@@ -892,7 +1032,7 @@
                                                 data-price="60000" name="ai-dynamic_pricing">
                                             <label for="ai-dynamic_pricing">
                                                 <p>
-                                                    Динамическое ценообразование
+                                                    Динамическое ценообразование на основе анализа цен конкурентов
                                                     <span class="tooltip"
                                                         data-tooltip="Мониторинг цен конкурентов, динамические предложения на их основе, оптимизация для максимизации прибыли, рекомендации по стратегии"><i
                                                             class="icon-tooltip"></i></span>
@@ -910,9 +1050,6 @@
                                                             class="icon-tooltip"></i></span>
                                                 </p>
                                             </label>
-
-
-
                                         </div>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="ai-order_management"
@@ -929,119 +1066,229 @@
                                     </div>
                                 </div>
                                 <!-- / ai -->
+
                                 <!-- seo n promotion -->
-                                <div class="accordion-item">
+                                <div class="accordion-item" id="seo-accordion">
                                     <input type="checkbox" id="section-promotion" class="accordion-checkbox">
                                     <label for="section-promotion" class="accordion-header title_h4">
-                                        <i class="icon-rocket"></i> Продвижение и раскрутка сайта<i
-                                            class="icon-shevrone"></i>
+                                        <i class="icon-rocket"></i>
+                                        Продвижение и раскрутка сайта
+                                        <i class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
+                                        <!-- SEO-оптимизация -->
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="promotion-seo"
                                                 name="promotion-seo" data-price="0"
-                                                data-radio="promotion-max_start;promotion-max_start_ctr;promotion-max_start_reg"
-                                                data-reveal="promotion-seo_where">
+                                                data-radio="promotion-max;promotion-max-base"
+                                                data-nested="promotion-seo-base:0" data-reveal="promotion-seo_where">
                                             <label for="promotion-seo">
                                                 <p>
-                                                    Базовая SEO-оптимизация
+                                                    SEO-оптимизация сайта
                                                     <span class="tooltip"
-                                                        data-tooltip="Анализ конкурентной среды и интересов целевой аудитории, подбор ключевых словосочетаний, оптимизация кода и структуры сайта, регистрация в основных поисковых системах, настройка сайта для поисковых систем: настройка метатегов, базовая внутренняя оптимизация"><i
-                                                            class="icon-tooltip"></i></span>
+                                                        data-tooltip="Анализ конкурентной среды и интересов целевой аудитории, подбор ключевых словосочетаний, оптимизация кода и структуры сайта, регистрация в основных поисковых системах">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
                                                 </p>
                                             </label>
                                         </div>
                                         <div class="hidden fd-col ml-10 gap-20 mb-10" id="promotion-seo_where">
-                                            <p className="title_h5 color-blue quote">Выберите регион раскрутки</p>
-                                            <div class="toggle-line">
-                                                <input type="checkbox" class="toggle-checkbox" data-price="15000"
-                                                    id="promotion-seo_reg" name="promotion-seo_reg"
-                                                    data-radio="promotion-seo_ctr">
-                                                <label for="promotion-seo_reg">
-                                                    Город, область
-                                                </label>
-                                            </div>
-                                            <div class="toggle-line">
-                                                <input type="checkbox" class="toggle-checkbox" data-price="30000"
-                                                    id="promotion-seo_ctr" name="promotion-seo_ctr"
-                                                    data-radio="promotion-seo_reg">
-                                                <label for="promotion-seo_ctr">
-                                                    По всей России
-                                                </label>
+                                            <p class="title_h5 quote">Выберите регион раскрутки</p>
+                                            <div class="toggle-line toggle-nice">
+                                                <input type="checkbox" class="toggle-checkbox" id="promotion-seo-base"
+                                                    name="promotion-seo-base"
+                                                    data-select-target="promotion-seo-base-select"
+                                                    data-select-option-index="0">
+                                                <!-- <label for="promotion-seo-base"></label> -->
+                                                <div class="nice-wrapper nice-wrapper--simple">
+                                                    <select id="promotion-seo-base-select" class="isTextField"
+                                                        data-display="Город / Область" data-price="0">
+                                                        <option value="15000" data-price="15000">Город / Область
+                                                        </option>
+                                                        <option value="30000" data-price="30000">По всей России</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <!-- Максимальная стартовая раскрутка -->
                                         <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="promotion-max_start"
-                                                data-price="0" name="promotion-max_start"
-                                                data-radio="promotion-seo;promotion-seo_ctr;promotion-seo_reg"
-                                                data-reveal="promotion-max_start_where">
-                                            <label for="promotion-max_start">
+                                            <input type="checkbox" class="toggle-checkbox" id="promotion-max"
+                                                data-price="0" name="promotion-max" data-nested="promotion-max-base:0"
+                                                data-radio="promotion-seo;promotion-seo-base"
+                                                data-reveal="promotion-max_where">
+                                            <label for="promotion-max">
                                                 <p>
-                                                    Полноценное SEO-продвижение
+                                                    Максимальная стартовая раскрутка
                                                     <span class="tooltip"
-                                                        data-tooltip="Комплексная работа с контентом, регулярная аналитика и доработки, включает все необходимые мероприятия. Гарантия выведения сайта в топ10 минимум по половине из списка ключевых запросов"><i
-                                                            class="icon-tooltip"></i></span>
+                                                        data-tooltip="Включает все необходимые мероприятия. Гарантия выведения сайта в топ 10 минимум по половине из списка ключевых запросов">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
                                                 </p>
                                             </label>
                                         </div>
-                                        <div class="hidden fd-col ml-10 gap-20" id="promotion-max_start_where">
-                                            <p className="title_h5 color-blue quote">Выберите регион раскрутки</p>
-                                            <div class="toggle-line">
-                                                <input type="checkbox" class="toggle-checkbox" data-price="30000"
-                                                    id="promotion-max_start_reg" name="promotion-max_start_reg"
-                                                    data-radio="promotion-max_start_ctr">
-                                                <label for="promotion-max_start_reg">
-                                                    Город, область
-                                                </label>
-                                            </div>
-                                            <div class="toggle-line">
-                                                <input type="checkbox" class="toggle-checkbox" data-price="60000"
-                                                    id="promotion-max_start_ctr" name="promotion-max_start_ctr"
-                                                    data-radio="promotion-max_start_reg">
-                                                <label for="promotion-max_start_ctr">
-                                                    По всей России
-                                                </label>
+                                        <div class="hidden fd-col ml-10 gap-20" id="promotion-max_where">
+                                            <p class="title_h5 quote">Выберите регион раскрутки</p>
+                                            <div class="toggle-line toggle-nice">
+                                                <input type="checkbox" class="toggle-checkbox" id="promotion-max-base"
+                                                    name="promotion-max-base"
+                                                    data-select-target="promotion-max-base-select"
+                                                    data-select-option-index="0">
+                                                <!-- <label for="promotion-max-base"></label> -->
+                                                <div class="nice-wrapper nice-wrapper--simple">
+                                                    <select id="promotion-max-base-select" class="isTextField"
+                                                        data-display="Город / Область" data-price="0">
+                                                        <option value="30000" data-price="30000">Город / Область
+                                                        </option>
+                                                        <option value="60000" data-price="60000">По всей России</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <!-- Другие материалы -->
                                         <ul class="calculator-list">
                                             <li>
-                                                <a href="./seo.html" class="hover-underline d-inline">Узнайте больше</a>
+                                                <a href="./seo.html" class="color-white d-inline">
+                                                    Узнайте больше
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <!-- / seo n promotion -->
+
                                 <!-- extra -->
-                                <div class="accordion-item">
+                                <div class="accordion-item" id="extra-accordion">
                                     <input type="checkbox" id="section-extra" class="accordion-checkbox">
                                     <label for="section-extra" class="accordion-header title_h4">
                                         <i class="icon-lightbulb"></i> Дополнительные опции<i class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
+                                        <p class="title_h5 quote">
+                                            Размещение сайта (домен + хостинг)
+                                        </p>
+
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="extra-domain"
-                                                name="extra-domain" data-price="1500">
+                                                name="extra-domain" data-price="0">
                                             <label for="extra-domain">
-                                                Подбор и регистрация домена
+                                                <p>
+                                                    <a href="/domain" target="_blank">
+                                                        Подбор и регистрация домена
+                                                    </a>
+                                                </p>
                                             </label>
                                         </div>
-                                        <div class="toggle-line">
-                                            <input type="checkbox" class="toggle-checkbox" id="extra-hosting"
-                                                name="extra-hosting" data-price="3000">
-                                            <label for="extra-hosting">
-                                                <a href="./hosting-tarify.html" class="hover-underline">Качественный
-                                                    хостинг</a>
-                                            </label>
+
+                                        <div class="toggle-line toggle-nice">
+                                            <input type="checkbox" class="toggle-checkbox" id="extra-server"
+                                                name="extra-server" data-select-target="extra-hosting"
+                                                data-select-option-index="0">
+                                            <label for="extra-server"></label>
+                                            <div class="nice-wrapper nice-wrapper--simple">
+                                                <select id="extra-hosting" class="isTextField"
+                                                    data-display="Хостинг старт (12 месяцев)" data-price="0">
+                                                    <option value="1800" data-price="1800">Хостинг старт (12 месяцев)
+                                                    </option>
+                                                    <option value="3000" data-price="3000">Хостинг стандарт (12 месяцев)
+                                                    </option>
+                                                    <option value="6000" data-price="6000">Виртуальный сервер / VDS (12
+                                                        месяцев)</option>
+                                                </select>
+                                            </div>
+                                            <span class="tooltip hidden" id="extra-hosting-1"
+                                                data-tooltip="4 Gb на диске, защита от спама, ежемесячный резервный бэкап">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                            <span class="tooltip hidden" id="extra-hosting-2"
+                                                data-tooltip="10 Gb на диске, защита от спама и вирусов, еженедельный резервный бэкап">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
+                                            <span class="tooltip hidden" id="extra-hosting-3"
+                                                data-tooltip="25 Gb на диске, защита от спама и вирусов, еженедельный резервный бэкап">
+                                                <i class="icon-tooltip"></i>
+                                            </span>
                                         </div>
+
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="extra-ssl"
-                                                name="extra-ssl" data-price="2500">
+                                                name="extra-ssl" data-price="900">
                                             <label for="extra-ssl">
                                                 <p>
-                                                    Установка / настройка SSL
+                                                    <a href="/ssl">
+                                                        SSL (12 месяцев)
+                                                    </a>
                                                     <span class="tooltip"
-                                                        data-tooltip="SSL - Безопасное соединение между браузером пользователя и сервером. При использовании SSL-протокола информация передается в закодированном виде по HTTPS. Для работы SSL-протокола требуется, чтобы на сервере был установлен SSL-сертификат."><i
-                                                            class="icon-tooltip"></i></span>
+                                                        data-tooltip="SSL - Безопасное соединение между браузером пользователя и сервером. При использовании SSL-протокола информация передается в закодированном виде по HTTPS. Для работы SSL-протокола требуется, чтобы на сервере был установлен SSL-сертификат.">
+                                                        <i class="icon-tooltip"></i>
+                                                    </span>
+                                                </p>
+                                            </label>
+                                        </div>
+
+                                        <p class="title_h5 quote">
+                                            Бесплатные опции
+                                        </p>
+
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox"
+                                                id="extra-management-consulting" name="extra-management-consulting"
+                                                data-price="0">
+                                            <label for="extra-management-consulting">
+                                                <p>
+                                                    Консультирование по работе с сайтом
+                                                </p>
+                                            </label>
+                                        </div>
+
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="extra-creating-favicon"
+                                                name="extra-creating-favicon" data-price="0">
+                                            <label for="extra-creating-favicon">
+                                                <p>
+                                                    Создание уникальной иконки сайта
+                                                </p>
+                                            </label>
+                                        </div>
+
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="extra-integration-social"
+                                                name="extra-integration-social" data-price="0">
+                                            <label for="extra-integration-social">
+                                                <p>
+                                                    Интегрирование с соцсетями (поделиться в различных соцсетях или
+                                                    месенджерах)
+                                                </p>
+                                            </label>
+                                        </div>
+
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="extra-install-ymaps"
+                                                name="extra-install-ymaps" data-price="0">
+                                            <label for="extra-install-ymaps">
+                                                <p>
+                                                    Установка интерактивной карты Яндекс.Карты
+                                                </p>
+                                            </label>
+                                        </div>
+
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="extra-creating-mailing"
+                                                name="extra-creating-mailing" data-price="0">
+                                            <label for="extra-creating-mailing">
+                                                <p>
+                                                    Создание почтовых ящиков, относящихся к сайту
+                                                </p>
+                                            </label>
+                                        </div>
+
+                                        <div class="toggle-line">
+                                            <input type="checkbox" class="toggle-checkbox" id="extra-install-ssl"
+                                                name="extra-install-ssl" data-price="0">
+                                            <label for="extra-install-ssl">
+                                                <p>
+                                                    Установка и настройка защищённого соединения (SSL-сертификат)
                                                 </p>
                                             </label>
                                         </div>
@@ -1049,8 +1296,58 @@
                                 </div>
                                 <!-- / extra -->
                             </div>
+                        </div>
+
+                        <div class="right">
+                            <div class="card card--leaders minified position-sticky d-lg-none">
+                                <p class="title_h4 text-center">
+                                    Получить проект сайта
+                                </p>
+                                <form class="order-form" action="?">
+                                    <input type="text" id="customer-name" name="customer-name" placeholder="Ваше имя">
+
+                                    <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+
+                                    <input type="tel" required="" id="customer-phone" name="customer-phone"
+                                        placeholder="Ваш телефон *">
+
+                                    <textarea data-autosize="true" rows="2" id="customer-comment"
+                                        placeholder="Комментарий" name="list" style="min-height:73px;"></textarea>
+
+                                    <div class="input-file">
+                                        <div class="file-drop-area">
+                                            <label>
+                                                <input type="file" multiple=""
+                                                    accept=".pdf, application/pdf, image/*,
+                                                                                                            application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                                                                                                            application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                                                                                            application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                                                                                                            text/plain,
+                                                                                                            application/rtf,
+                                                                                                            application/vnd.oasis.opendocument.text,
+                                                                                                            application/vnd.oasis.opendocument.spreadsheet,
+                                                                                                            application/vnd.oasis.opendocument.presentation">
+                                                <span>Прикрепить ТЗ</span>
+                                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                            </label>
+                                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                            <div class="file-list" style="display: none;"></div>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials text-center m-center mb-0">
+                                        Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
+                                            data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии с <a
+                                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                            target="_blank">ФЗ&nbsp;№152</a>
+                                    </p>
+                                    <button type="submit" class="button big button-white mt-10">
+                                        Отправить
+                                    </button>
+                                </form>
+                            </div>
+
                             <a href="javascript://" data-popup="fast-req-form"
-                                class="button-highlight big m-center mb-20 mt-20" id="send-brif-total">
+                                class="button-highlight big m-center d-lg-flex d-none" id="send-brif-total">
                                 Сгенерировать форму <span class="br420">для печати</span> <span class="br600">и
                                     отправить</span>
                                 <i class="icon-arrow_wide"></i>
@@ -1173,13 +1470,24 @@
                         <input type="text" name="name" placeholder="Имя">
                         <input type="email" name="mail" placeholder="E-mail">
                         <input type="tel" name="phone" placeholder="* Телефон" required>
-                        <textarea data-autosize="true" rows="1"
-                            placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
-                        <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
-                                class="text-dashed color-white">обработку
-                                своих персональных
-                                данных</a>
+                        <textarea data-autosize="true" rows="1" placeholder="Комментарий" name="list"></textarea>
+                        <div class="input-file">
+                            <div class="file-drop-area">
+                                <label>
+                                    <input type="file" multiple=""
+                                        accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                    <span>Прикрепить ТЗ</span>
+                                    <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                </label>
+                                <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                <div class="file-list" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <p class="testimonials text-center m-center mb-0">
+                            Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
+                                data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии с <a
+                                href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                target="_blank">ФЗ&nbsp;№152</a>
                         </p>
                         <button type="submit" class="button-white m-center mt-20">Отправить заявку</button>
                     </div>

@@ -594,8 +594,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			.catch((error) => {
 				const message =
 					error &&
-					typeof error.message === "string" &&
-					error.message.trim() !== ""
+						typeof error.message === "string" &&
+						error.message.trim() !== ""
 						? error.message
 						: defaultErrorMessage;
 				showNotificationPopup(message, "error");
@@ -649,7 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				const sitekey =
 					item.recaptchaContainer.dataset.sitekey &&
-					item.recaptchaContainer.dataset.sitekey.length > 0
+						item.recaptchaContainer.dataset.sitekey.length > 0
 						? item.recaptchaContainer.dataset.sitekey
 						: defaultSiteKey;
 
@@ -755,8 +755,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				mapData[value].adress +
 				(mapData[value]?.schedule
 					? '<span class="separator">|</span><span> ' +
-						mapData[value].schedule +
-						'</span><span class="separator">|</span>'
+					mapData[value].schedule +
+					'</span><span class="separator">|</span>'
 					: '<span class="separator">|</span>');
 			container.innerHTML = mapData[value].frame;
 
@@ -823,12 +823,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			list.style.setProperty("--list-length", items.length);
 
 			items.forEach((item, index) => {
-				item.querySelector(".tech-tag").style.animation = `list-glow ${
-					items.length * interval
-				}s linear infinite`;
-				item.querySelector(".tech-tag").style.animationDelay = `${
-					index * interval
-				}s`;
+				item.querySelector(".tech-tag").style.animation = `list-glow ${items.length * interval
+					}s linear infinite`;
+				item.querySelector(".tech-tag").style.animationDelay = `${index * interval
+					}s`;
 			});
 		}
 	});
@@ -1157,8 +1155,8 @@ const SliderInIt = () => {
 							: "block";
 					nextButton.style.display =
 						currentIndex === maxIndex ||
-						maxIndex <= 0 ||
-						cards.length <= slidesPerPage
+							maxIndex <= 0 ||
+							cards.length <= slidesPerPage
 							? "none"
 							: "block";
 
@@ -1820,32 +1818,24 @@ function sliderInitialize() {
 
 				prevBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `-100%` : `0`
-						}); left: ${
-							window.innerWidth > 600 ? `25px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+							}); left: ${window.innerWidth > 600 ? `25px` : `-5px`
+							}; color: var(--blue-main);`;
 					} else {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `-100%` : `0`
-						}); left: ${
-							window.innerWidth > 600 ? `15px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
+							}); left: ${window.innerWidth > 600 ? `15px` : `-5px`
+							}; color: var(--blue-main);`;
 					}
 				});
 				nextBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `100%` : `0`
-						}); right: ${
-							window.innerWidth > 600 ? `25px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+							}); right: ${window.innerWidth > 600 ? `25px` : `-5px`
+							}; color: var(--blue-main);`;
 					} else {
-						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-							window.innerWidth > 600 ? `100%` : `0`
-						}); right: ${
-							window.innerWidth > 600 ? `15px` : `-5px`
-						}; color: var(--blue-main);`;
+						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
+							}); right: ${window.innerWidth > 600 ? `15px` : `-5px`
+							}; color: var(--blue-main);`;
 					}
 				});
 			};
@@ -2573,95 +2563,381 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
-// brif
+// brif – полная поддержка select, checkbox, text, textarea с reveal, nested и связкой checkbox→select
 document.addEventListener("DOMContentLoaded", () => {
-	if (document.getElementById("calculator-sitebrif")) {
-		const inputs = document
-			.getElementById("calculator-sitebrif")
-			?.querySelectorAll(".accordion-content input");
-		const sendButton = document.getElementById("send-brif-total");
+	const container = document.getElementById("calculator-sitebrif");
+	if (!container) return;
 
-		const toggleConverter = (inputs) => {
-			const toggles = [];
-			const texts = [];
-			inputs.forEach((input) => {
-				switch (input.type) {
-					case "checkbox": {
-						toggles.push({
-							id: input.id,
-							elementref: input,
-							reveal: document.getElementById(
-								input.dataset.reveal || "",
-							),
-							radioid: input.dataset.radio?.split(";"),
-						});
-						break;
+	const inputs = container.querySelectorAll(
+		".accordion-content input, .accordion-content textarea, .accordion-content select"
+	);
+	const sendButton = document.getElementById("send-brif-total");
+
+	// ---------- вспомогательные функции ----------
+	const showElement = (el) => el && el.classList.remove("hidden");
+	const hideElement = (el) => el && el.classList.add("hidden");
+
+	// парсинг data-nested (формат: "id1:index;id2;id3:index")
+	const parseNested = (str) => {
+		if (!str) return [];
+		return str.split(";").map((item) => {
+			const parts = item.split(":");
+			return parts.length === 2
+				? { id: parts[0], optionIndex: parseInt(parts[1]) }
+				: { id: parts[0], optionIndex: null };
+		});
+	};
+
+	// обновление кастомного селекта (nice-select)
+	const updateNiceSelect = (selectEl) => {
+		const niceSelect = selectEl.nextElementSibling?.classList.contains("nice-select")
+			? selectEl.nextElementSibling
+			: null;
+		if (!niceSelect) return;
+
+		const currentSpan = niceSelect.querySelector(".current");
+		if (currentSpan) {
+			const selectedOption = selectEl.options[selectEl.selectedIndex];
+			currentSpan.textContent = selectedOption
+				? selectedOption.textContent
+				: selectEl.getAttribute("data-display") || "Выберите...";
+		}
+		niceSelect.querySelectorAll(".option").forEach((opt) => opt.classList.remove("selected"));
+		if (selectEl.selectedIndex >= 0) {
+			const selectedLi = niceSelect.querySelectorAll(".option")[selectEl.selectedIndex];
+			if (selectedLi) selectedLi.classList.add("selected");
+		}
+	};
+
+	// обновление тултипов для селекта (полная версия)
+	const updateTooltipsForSelect = (selectEl) => {
+		if (!selectEl) return;
+
+		let prefix = selectEl.getAttribute("data-tooltip-prefix");
+		if (!prefix) {
+			const id = selectEl.id;
+			if (id && id.endsWith("-select")) {
+				prefix = id.slice(0, -7);
+			} else {
+				const container = selectEl.closest(".toggle-line");
+				if (container) {
+					const tooltips = container.querySelectorAll(".tooltip");
+					tooltips.forEach((t) => t.classList.add("hidden"));
+					const idx = selectEl.selectedIndex;
+					if (idx >= 0 && idx < tooltips.length) {
+						tooltips[idx].classList.remove("hidden");
 					}
-					default: {
-						texts.push({
-							id: input.id,
-							elementref: input,
-						});
+				}
+				return;
+			}
+		}
+
+		const tooltips = [];
+		for (let i = 1; ; i++) {
+			const tip = document.getElementById(`${prefix}-${i}`);
+			if (!tip) break;
+			tooltips.push(tip);
+		}
+		tooltips.forEach((t) => t.classList.add("hidden"));
+		const idx = selectEl.selectedIndex;
+		if (idx >= 0 && idx < tooltips.length) {
+			tooltips[idx].classList.remove("hidden");
+		}
+	};
+
+	// ---------- активация / деактивация вложенных элементов (без цены) ----------
+	const activateNestedToggles = (parent, toggles) => {
+		if (!parent.nested || parent.nested.length === 0) return;
+		parent.nested.forEach((nestedItem) => {
+			const nestedToggle = toggles.find((t) => t.id === nestedItem.id);
+			if (nestedToggle && !nestedToggle.elementref.checked) {
+				if (nestedItem.optionIndex !== null) nestedToggle._tempSelectIndex = nestedItem.optionIndex;
+				if (nestedToggle.type === "checkbox") {
+					nestedToggle.elementref.checked = true;
+					nestedToggle.elementref.dispatchEvent(new Event("change"));
+				} else if (nestedToggle.type === "select" && nestedItem.optionIndex !== null) {
+					const selectEl = nestedToggle.elementref;
+					if (selectEl.selectedIndex !== nestedItem.optionIndex) {
+						selectEl.selectedIndex = nestedItem.optionIndex;
+						selectEl.dispatchEvent(new Event("change"));
+					}
+				}
+				activateNestedToggles(nestedToggle, toggles);
+			}
+		});
+	};
+
+	const deactivateNestedToggles = (parent, toggles) => {
+		if (!parent.nested || parent.nested.length === 0) return;
+		parent.nested.forEach((nestedItem) => {
+			const nestedToggle = toggles.find((t) => t.id === nestedItem.id);
+			if (nestedToggle && nestedToggle.elementref.checked) {
+				if (nestedToggle.type === "checkbox") {
+					nestedToggle.elementref.checked = false;
+					nestedToggle.elementref.dispatchEvent(new Event("change"));
+				} else if (nestedToggle.type === "select") {
+					nestedToggle.elementref.selectedIndex = -1;
+					nestedToggle.elementref.dispatchEvent(new Event("change"));
+				}
+				deactivateNestedToggles(nestedToggle, toggles);
+			}
+		});
+	};
+
+	// ---------- активация / деактивация опции селекта (без цены) ----------
+	const activateSelectOption = (option, toggles) => {
+		if (!option) return;
+		if (option.reveal) showElement(option.reveal);
+		if (option.nested && option.nested.length) activateNestedToggles({ nested: option.nested }, toggles);
+	};
+
+	const deactivateSelectOption = (option, toggles) => {
+		if (!option) return;
+		if (option.reveal) hideElement(option.reveal);
+		if (option.nested && option.nested.length) deactivateNestedToggles({ nested: option.nested }, toggles);
+	};
+
+	// ---------- активация / деактивация текстового поля (без цены) ----------
+	const activateTextField = (textToggle, toggles) => {
+		if (textToggle.active) return;
+		if (textToggle.reveal) showElement(textToggle.reveal);
+		if (textToggle.nested && textToggle.nested.length) activateNestedToggles(textToggle, toggles);
+		textToggle.active = true;
+	};
+
+	const deactivateTextField = (textToggle, toggles) => {
+		if (!textToggle.active) return;
+		if (textToggle.reveal) hideElement(textToggle.reveal);
+		if (textToggle.nested && textToggle.nested.length) deactivateNestedToggles(textToggle, toggles);
+		textToggle.active = false;
+	};
+
+	// ---------- конвертация DOM-элементов во внутренние объекты ----------
+	const toggleConverter = (inputs) => {
+		const toggles = []; // элементы, управляющие отображением (checkbox, select, textfield)
+		const texts = [];   // простые текстовые поля без логики (для отправки)
+
+		inputs.forEach((input) => {
+			// --- текстовые поля / textarea с логикой (data-reveal или data-nested) ---
+			if (
+				(input.type === "text" || input.tagName === "TEXTAREA") &&
+				(input.hasAttribute("data-reveal") || input.hasAttribute("data-nested"))
+			) {
+				toggles.push({
+					id: input.id,
+					elementref: input,
+					reveal: document.getElementById(input.dataset.reveal || ""),
+					nested: parseNested(input.dataset.nested),
+					type: "textfield",
+					active: false,
+				});
+				return;
+			}
+
+			// --- select ---
+			if (input.tagName === "SELECT") {
+				const options = [];
+				for (let opt of input.options) {
+					options.push({
+						value: opt.value,
+						reveal: opt.dataset.reveal ? document.getElementById(opt.dataset.reveal) : null,
+						nested: parseNested(opt.dataset.nested),
+						selectId: input.id,
+					});
+				}
+
+				const selectObj = {
+					id: input.id,
+					elementref: input,
+					type: "select",
+					options: options,
+					currentOption: null,
+				};
+
+				// предустановленная опция
+				let hasSelected = false;
+				for (let i = 0; i < input.options.length; i++) {
+					if (input.options[i].hasAttribute("selected")) {
+						hasSelected = true;
 						break;
 					}
 				}
-			});
+				if (hasSelected && input.selectedIndex >= 0) {
+					selectObj.currentOption = options[input.selectedIndex];
+				} else {
+					input.selectedIndex = -1;
+				}
 
-			return { toggles: toggles, texts: texts };
-		};
+				toggles.push(selectObj);
+				return;
+			}
 
-		if (inputs && sendButton) {
-			const { toggles, texts } = toggleConverter(inputs);
-			const togglechange = new Event("change");
+			// --- checkbox ---
+			if (input.type === "checkbox") {
+				toggles.push({
+					id: input.id,
+					elementref: input,
+					reveal: document.getElementById(input.dataset.reveal || ""),
+					radioid: input.dataset.radio ? input.dataset.radio.split(";") : [],
+					nested: parseNested(input.dataset.nested),
+					selectTarget: input.dataset.selectTarget || null,
+					selectOptionIndex: input.dataset.selectOptionIndex ? parseInt(input.dataset.selectOptionIndex) : 0,
+					type: "checkbox",
+				});
+				return;
+			}
 
-			toggles.forEach((toggle) => {
+			// --- прочие поля (обычные текстовые, email, tel и т.д.) ---
+			texts.push({ id: input.id, elementref: input });
+		});
+
+		return { toggles, texts };
+	};
+
+	// ---------- инициализация и обработчики ----------
+	if (inputs.length && sendButton) {
+		const { toggles, texts } = toggleConverter(inputs);
+		const changeEvent = new Event("change");
+
+		// --- обработчики для чекбоксов ---
+		toggles.forEach((toggle) => {
+			if (toggle.type === "checkbox") {
 				toggle.elementref.addEventListener("change", () => {
-					switch (toggle.id) {
-						default: {
-							if (toggle.elementref.checked) {
-								if (toggle.reveal) {
-									toggle.reveal.classList.remove("hidden");
-								}
+					if (toggle.elementref.checked) {
+						// показываем свой reveal
+						if (toggle.reveal) showElement(toggle.reveal);
+						// радио-группа: выключаем другие чекбоксы из этой группы
+						if (toggle.radioid && toggle.radioid.length) {
+							toggles.forEach((other) => {
 								if (
-									toggle.radioid &&
-									toggle.radioid.length > 0
+									other.type === "checkbox" &&
+									toggle.radioid.includes(other.id) &&
+									other !== toggle &&
+									other.elementref.checked
 								) {
-									toggles.map((el) => {
-										toggle.radioid?.forEach((id) => {
-											if (
-												el.id === id &&
-												el.elementref.checked
-											) {
-												el.elementref.checked = false;
-												el.reveal?.classList.add(
-													"hidden",
-												);
-											}
-										});
-									});
+									other.elementref.checked = false;
+									other.elementref.dispatchEvent(changeEvent);
 								}
-								break;
-							} else {
-								if (toggle.reveal) {
-									toggle.reveal.classList.add("hidden");
+							});
+						}
+						// управление связанным селектом
+						if (toggle.selectTarget) {
+							const targetSelect = document.getElementById(toggle.selectTarget);
+							if (targetSelect && targetSelect.tagName === "SELECT") {
+								let index = toggle._tempSelectIndex !== undefined ? toggle._tempSelectIndex : toggle.selectOptionIndex;
+								if (index === undefined) index = 0;
+								if (index >= 0 && index < targetSelect.options.length) {
+									targetSelect.selectedIndex = index;
+									targetSelect.dispatchEvent(new Event("change"));
 								}
-								break;
+								delete toggle._tempSelectIndex;
 							}
 						}
+						// активируем вложенные элементы
+						if (toggle.nested && toggle.nested.length) activateNestedToggles(toggle, toggles);
+					} else {
+						if (toggle.reveal) hideElement(toggle.reveal);
+						// сбрасываем связанный селект
+						if (toggle.selectTarget) {
+							const targetSelect = document.getElementById(toggle.selectTarget);
+							if (targetSelect && targetSelect.tagName === "SELECT") {
+								targetSelect.selectedIndex = -1;
+								targetSelect.dispatchEvent(new Event("change"));
+							}
+						}
+						if (toggle.nested && toggle.nested.length) deactivateNestedToggles(toggle, toggles);
 					}
 				});
-			});
+			}
+		});
 
-			sendButton.addEventListener("click", () => {
-				const review = {
-					options: toggles.filter(
-						(toggle) => toggle.elementref.checked,
-					),
-					extra: texts.filter((text) => text.elementref.value !== ""),
+		// --- обработчики для селектов ---
+		toggles.forEach((toggle) => {
+			if (toggle.type === "select") {
+				toggle.elementref.addEventListener("change", () => {
+					const oldOption = toggle.currentOption;
+					const newIndex = toggle.elementref.selectedIndex;
+					const newOption = newIndex >= 0 ? toggle.options[newIndex] : null;
+
+					if (oldOption === newOption) return;
+
+					if (oldOption) deactivateSelectOption(oldOption, toggles);
+					if (newOption) activateSelectOption(newOption, toggles);
+
+					toggle.currentOption = newOption;
+					updateNiceSelect(toggle.elementref);
+					updateTooltipsForSelect(toggle.elementref);
+				});
+			}
+		});
+
+		// --- обработчики для текстовых полей с логикой ---
+		toggles.forEach((toggle) => {
+			if (toggle.type === "textfield") {
+				const handler = () => {
+					const hasText = toggle.elementref.value.trim() !== "";
+					if (hasText && !toggle.active) activateTextField(toggle, toggles);
+					else if (!hasText && toggle.active) deactivateTextField(toggle, toggles);
 				};
-				console.log(review);
-			});
-		}
+				toggle.elementref.addEventListener("input", handler);
+				toggle.elementref.addEventListener("change", handler);
+			}
+		});
+
+		// --- инициализация уже отмеченных / заполненных элементов ---
+		toggles.forEach((toggle) => {
+			if (toggle.type === "checkbox" && toggle.elementref.checked) {
+				// для уже отмеченных чекбоксов применяем связь с селектом и вложенность
+				if (toggle.selectTarget) {
+					const targetSelect = document.getElementById(toggle.selectTarget);
+					if (targetSelect && targetSelect.tagName === "SELECT") {
+						let index = toggle.selectOptionIndex;
+						if (index === undefined) index = 0;
+						if (index >= 0 && index < targetSelect.options.length) {
+							targetSelect.selectedIndex = index;
+							// дополнительно обновляем nice-select и тултипы
+							updateNiceSelect(targetSelect);
+							updateTooltipsForSelect(targetSelect);
+						}
+					}
+				}
+				if (toggle.nested && toggle.nested.length) activateNestedToggles(toggle, toggles);
+				if (toggle.reveal) showElement(toggle.reveal);
+			}
+			if (toggle.type === "select" && toggle.currentOption) {
+				activateSelectOption(toggle.currentOption, toggles);
+				updateNiceSelect(toggle.elementref);
+				updateTooltipsForSelect(toggle.elementref);
+			}
+			if (toggle.type === "textfield" && toggle.elementref.value.trim() !== "") {
+				activateTextField(toggle, toggles);
+			}
+		});
+
+		// --- кнопка отправки (сбор данных) ---
+		sendButton.addEventListener("click", () => {
+			const review = {
+				options: toggles
+					.filter((t) => t.type === "checkbox" && t.elementref.checked)
+					.map((t) => ({ id: t.id })),
+				selects: toggles
+					.filter((t) => t.type === "select" && t.currentOption)
+					.map((t) => ({
+						id: t.id,
+						selectedValue: t.elementref.options[t.elementref.selectedIndex]?.value,
+					})),
+				textfields: toggles
+					.filter((t) => t.type === "textfield" && t.active)
+					.map((t) => ({
+						id: t.id,
+						value: t.elementref.value,
+					})),
+				extra: texts
+					.filter((t) => t.elementref.value !== "")
+					.map((t) => ({ id: t.id, value: t.elementref.value })),
+			};
+			console.log(review);
+		});
 	}
 });
 
@@ -2793,7 +3069,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (selectEl.selectedIndex >= 0) {
 				const selectedLi =
 					niceSelect.querySelectorAll(".option")[
-						selectEl.selectedIndex
+					selectEl.selectedIndex
 					];
 				if (selectedLi) selectedLi.classList.add("selected");
 			}
@@ -3849,7 +4125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					if (target.current_value < 0) target.current_value = 0;
 					if (
 						counter.elementref.dataset?.intendfor ===
-							"design-landing" &&
+						"design-landing" &&
 						counter.elementref.value < 1
 					) {
 						counter.elementref.value = 1;
@@ -3866,7 +4142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						counter.elementref.value = 0;
 					if (
 						counter.elementref.dataset?.intendfor ===
-							"design-landing" &&
+						"design-landing" &&
 						counter.elementref.value < 1
 					) {
 						counter.elementref.value = 1;
