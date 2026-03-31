@@ -178,7 +178,7 @@
     </header>
     <!-- MAIN PAGE -->
     <main>
-        <section class="main-section container">
+        <section class="calculator-main container">
             <div class="breadcrumbs">
                 <a href="./">Главная</a>
                 <span>-</span>
@@ -188,6 +188,103 @@
                 Бриф на разработку логотипа
                 и фирменного стиля
             </h1>
+
+            <div class="calculator-wrapper">
+                <!-- Привественная часть -->
+                <div class="flex-layout flex-layout--split align-start align-lg-stretch gap-lg-16" id="choose_your_way">
+                    <div class="left">
+                        <div class="card card--outline">
+                            <p class="title_h3 w-fit">
+                                Заполнение брифа
+                            </p>
+                            <p class="mb-30">
+                                <span class="color-blue">Бриф</span>– это анкета, с помощью которой Вы можете отразить
+                                свои
+                                требования и пожелания к Вашему
+                                будущему сайту. Для более четкого определения целей, стоящих перед Вашим будущим сайтом,
+                                необходимо
+                                заполнить анкету максимально подробно. Ваши пожелания, описанные в данной анкете,
+                                обязательно
+                                учитываются при разработке сайта.
+                            </p>
+                            <a data-trigger data-trigger-show="calculator-sitebrif" data-trigger-hide="choose_your_way"
+                                data-should-scroll="false" class="button button-highlight big mt-auto"
+                                class="button-link big mt-auto">
+                                Заполнить <i class="icon-arrow_wide"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="card card--outline h-100" id="calculator-creation-brif">
+                            <p class="title_h4 w-fit">
+                                Оформить быстрый заказ
+                            </p>
+                            <p class="mb-30">
+                                Для тех, кто точно знает, что хочет и представляет, как это выглядит. Просто оставьте
+                                свои
+                                контактные
+                                данные. Свяжемся с Вами любым удобным способом, раскроем все подробности касательно
+                                цены,
+                                сроков
+                                и
+                                других важных аспектов.
+                            </p>
+                            <a href="javascript://" class="button button-highlight big mt-auto" data-trigger
+                                data-trigger-show="calculator-creation" data-trigger-hide="calculator-creation-brif"
+                                data-should-scroll="false">
+                                Быстрый заказ
+                            </a>
+                        </div>
+                        <div class="card card--leaders minified position-sticky" id="calculator-creation">
+                            <p class="title_h4 text-center">
+                                Оформить быстрый заказ
+                            </p>
+                            <form class="order-form">
+                                <input type="text" id="customer-name" name="customer-name" placeholder="Ваше имя">
+
+                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+
+                                <input type="tel" required="" id="customer-phone" name="customer-phone"
+                                    placeholder="Ваш телефон *">
+
+                                <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                                    name="list" style="min-height:73px;"></textarea>
+
+                                <div class="input-file">
+                                    <div class="file-drop-area">
+                                        <label>
+                                            <input type="file" multiple=""
+                                                accept=".pdf, application/pdf, image/*,
+                                                                                                            application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                                                                                                            application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                                                                                            application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                                                                                                            text/plain,
+                                                                                                            application/rtf,
+                                                                                                            application/vnd.oasis.opendocument.text,
+                                                                                                            application/vnd.oasis.opendocument.spreadsheet,
+                                                                                                            application/vnd.oasis.opendocument.presentation">
+                                            <span>Прикрепить ТЗ</span>
+                                            <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                        </label>
+                                        <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                        <div class="file-list" style="display: none;"></div>
+                                    </div>
+                                </div>
+                                <p class="testimonials text-center m-center mb-0">
+                                    Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
+                                        data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии с <a
+                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                        target="_blank">ФЗ&nbsp;№152</a>
+                                </p>
+                                <button type="submit" class="button big button-white mt-10">
+                                    Отправить
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="flex-layout flex-layout--2x gap-20">
                 <div class="card card--outline">
                     <p class="title_h3 w-fit">
@@ -222,6 +319,9 @@
                 </div>
             </div>
         </section>
+
+
+
         <!-- calculator self -->
         <section id="calculator-brif" class="calculator-calculator sitebrif container">
             <div class="calculator-calculator-header d-flex mb-50">
