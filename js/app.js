@@ -2516,7 +2516,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					document.body.appendChild(tooltip);
 				}
 
-				tooltip.textContent = text;
+				tooltip.innerHTML = text;
 				tooltip.classList.add("visible");
 
 				const rect = el.getBoundingClientRect();
