@@ -2565,7 +2565,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // brif – полная поддержка select, checkbox, text, textarea с reveal, nested и связкой checkbox→select
 document.addEventListener("DOMContentLoaded", () => {
-	const container = document.getElementById("calculator-sitebrif");
+	const container = document.getElementById("calculator-sitebrif") || document.getElementById("calculator-brif");
 	if (!container) return;
 
 	const inputs = container.querySelectorAll(

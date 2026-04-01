@@ -13111,42 +13111,6 @@ button.next:hover {
   content: "•";
   color: var(--blue-main);
 }
-.calculator-total {
-  z-index: 3;
-  width: 100%;
-  position: relative;
-  background-color: var(--bg-main);
-  padding: 10px 0px;
-  border-top: 1px solid var(--blue-main);
-  border-top-left-radius: 39px;
-  border-top-right-radius: 39px;
-  transition: all 0s;
-}
-.calculator-total:not(.show) {
-  max-height: 0;
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-}
-.calculator-total:not(.show) * {
-  display: none;
-}
-.calculator-total .button-highlight.big {
-  gap: 4px;
-}
-.calculator-total .container p {
-  margin: 0;
-}
-@media (max-width: 900px) {
-  .calculator-total .container {
-    flex-direction: column;
-    row-gap: 12px;
-    align-items: center;
-  }
-  .calculator-total .container .title_h1 {
-    text-align: center;
-  }
-}
 .calculator-wrapper {
   position: relative;
   z-index: 1;
@@ -13158,6 +13122,11 @@ button.next:hover {
 }
 .calculator-wrapper:not(.active) {
   min-height: 100vh;
+}
+@media (max-width: 1000px) {
+  .calculator-wrapper:not(.active) {
+    min-height: 140vh;
+  }
 }
 .calculator-wrapper:not(.active) > * {
   position: absolute;
@@ -13198,27 +13167,42 @@ button.next:hover {
 
 .sitebrif .logo-preview-grid {
   display: flex;
+  flex-direction: row;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 20px;
 }
 .sitebrif .logo-preview-grid-item {
-  flex: 1 1 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--blue-bg);
-  padding: 20px;
-  border-radius: 25px;
   gap: 20px;
+  flex: 1 0 calc(33.33333% - 13.3333333333px);
+  max-width: calc(33.33333% - 13.3333333333px);
+  width: 100%;
 }
-@media (max-width: 900px) {
+@media (max-width: 1400px) {
   .sitebrif .logo-preview-grid-item {
-    flex: 1 1 45%;
+    flex: 1 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
   }
 }
-@media (max-width: 520px) {
+@media (max-width: 1000px) {
   .sitebrif .logo-preview-grid-item {
-    flex: 1 1 100%;
+    flex: 1 0 calc(33.33333% - 13.3333333333px);
+    max-width: calc(33.33333% - 13.3333333333px);
+  }
+}
+@media (max-width: 800px) {
+  .sitebrif .logo-preview-grid-item {
+    flex: 1 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+@media (max-width: 600px) {
+  .sitebrif .logo-preview-grid-item {
+    flex: 1 0 100%;
+    max-width: 100%;
   }
 }
 .sitebrif .logo-preview-grid-item .img-wrapper {
