@@ -3378,52 +3378,136 @@ document.addEventListener("DOMContentLoaded", () => {
 			// Если выбрана уникальная разработка
 			if (isUniqueSelected) {
 				syncUniqueFields();
+			} else {
+				cleanupUniqueField();
 			}
 		};
 
 		// Функция синхронизации полей для уникальной разработки
 		const syncUniqueFields = () => {
 			const container = document.getElementById('type-unique_form');
-
 			if (!container) return;
 
-			let input = container?.querySelector('input');
+			const textInput = container.querySelector('#type-unique_text');
+			const fileInput = container.querySelector('input[type="file"]');
 
-			let description = input.id === ('type-unique_text'),
-				files = input.type === 'file';
-
-			if (!description && !files) {
-				console.warn('Error, inputs not found!');
+			if (textInput) {
+				textInput.removeEventListener('change', exchangeUniqueFields);
+				textInput.removeEventListener('input', exchangeUniqueFields);
+				textInput.addEventListener('change', (e) => exchangeUniqueFields(e.currentTarget, 'text'));
+				textInput.addEventListener('input', (e) => exchangeUniqueFields(e.currentTarget, 'text'));
 			}
 
-			if (description) {
-				input.addEventListener('change', (e) => {
-					exchangeUniqueFields(e.currentTarget, 'text');
-				});
-
-				input.addEventListener('input', (e) => {
-					exchangeUniqueFields(e.currentTarget, 'text');
-				});
+			if (fileInput) {
+				// Убеждаемся, что у поля есть менеджер
+				if (!fileInput.fileInputManager) {
+					// Передаём коллбэк, который будет вызываться при любом изменении файлов
+					fileInput.fileInputManager = new FileInputManager(fileInput, (changedInput) => {
+						exchangeUniqueFields(changedInput, 'files');
+					});
+				}
+				fileInput.removeEventListener('change', exchangeUniqueFields);
+				fileInput.addEventListener('change', (e) => exchangeUniqueFields(e.currentTarget, 'files'));
 			}
-
-			if (files) {
-				input.addEventListener('change', (e) => {
-					exchangeUniqueFields(e.currentTarget, 'files');
-				});
-			}
-		}
-
+		};
 		const exchangeUniqueFields = (elem, type) => {
-			let forms = ['#calculator-total form', '#fast-req-form form'];
+			const formSelectors = ['#calculator-total form', '#fast-req-form form'];
+			const uniqueFieldSelector = '#type-unique_form input[type="file"]';
 
-			document.querySelectorAll(forms).forEach((form) => {
-				let description = form.querySelector('textarea'),
-					files = form.querySelector('.input-file input');
+			if (type === 'text') {
+				const textValue = elem.value;
+				// Обновляем текстовые поля в формах
+				formSelectors.forEach(selector => {
+					const form = document.querySelector(selector);
+					if (form) {
+						const textarea = form.querySelector('textarea');
+						if (textarea) textarea.value = textValue;
+					}
+				});
+				// Обновляем текстовое поле в основном блоке (если оно не является источником)
+				const uniqueText = document.querySelector('#type-unique_text');
+				if (uniqueText && uniqueText !== elem) uniqueText.value = textValue;
+			}
 
-				if (type === 'text') description.value = elem.value;
-				if (type === 'files') files.value = elem.value;
-			})
-		}
+			if (type === 'files') {
+				const sourceManager = elem.fileInputManager;
+				if (!sourceManager) return;
+
+				const files = sourceManager.getFiles();
+
+				// Собираем все целевые поля (все синхронизируемые поля, кроме текущего)
+				const targetFields = [];
+
+				// Поле из основного блока (если существует и не равно источнику)
+				const uniqueFile = document.querySelector(uniqueFieldSelector);
+				if (uniqueFile && uniqueFile !== elem && uniqueFile.fileInputManager) {
+					targetFields.push(uniqueFile);
+				}
+
+				// Поля в формах
+				formSelectors.forEach(selector => {
+					const form = document.querySelector(selector);
+					if (form) {
+						const targetInput = form.querySelector('.input-file input[type="file"]');
+						if (targetInput && targetInput !== elem && targetInput.fileInputManager) {
+							targetFields.push(targetInput);
+						}
+					}
+				});
+
+				// Обновляем все целевые поля
+				targetFields.forEach(field => {
+					field.fileInputManager.setFiles(files);
+				});
+			}
+		};
+		const cleanupUniqueField = () => {
+			const formSelectors = ['#calculator-total form', '#fast-req-form form'];
+			const blockSelectors = ['#type-unique_form'];
+
+			// Очищаем текстовые поля в формах
+			formSelectors.forEach(selector => {
+				const form = document.querySelector(selector);
+				if (form) {
+					const textarea = form.querySelector('textarea');
+					if (textarea) textarea.value = '';
+				}
+			});
+
+			// Очищаем текстовое поле в исходном блоке
+			blockSelectors.forEach(block => {
+				const blockEl = document.querySelector(block);
+				if (blockEl) {
+					const textarea = blockEl.querySelector('#type-unique_text');
+					if (textarea) textarea.value = '';
+				}
+			});
+
+			// Функция очистки файлового поля
+			const clearFileField = (fileInput) => {
+				if (fileInput && fileInput.fileInputManager) {
+					fileInput.fileInputManager.clearFiles();
+				}
+			};
+
+			// Очищаем файловые поля в формах
+			formSelectors.forEach(selector => {
+				const form = document.querySelector(selector);
+				if (form) {
+					const fileInput = form.querySelector('.input-file input[type="file"]');
+					clearFileField(fileInput);
+				}
+			});
+
+			// Очищаем исходное файловое поле
+			blockSelectors.forEach(block => {
+				const blockEl = document.querySelector(block);
+				if (blockEl) {
+					const fileInput = blockEl.querySelector('input[type="file"]');
+					clearFileField(fileInput);
+				}
+			});
+		};
 
 		// Применение пресета типа сайта
 		const applySiteTypePreset = (
@@ -4509,196 +4593,211 @@ if (triggerButtons) {
 }
 
 // input type file logic with drag-n-drop
-document.addEventListener("DOMContentLoaded", function () {
-	const inputFiles = document.querySelectorAll(
-		".input-file input[type=file]",
-	);
+class FileInputManager {
+	constructor(inputElement, onChangeCallback = null) {
+		this.input = inputElement;
+		this.onChangeCallback = onChangeCallback;
+		this.container = inputElement.closest('.input-file');
+		if (!this.container) {
+			console.warn('FileInputManager: не найден родитель .input-file');
+			return;
+		}
 
-	if (inputFiles.length > 0) {
-		inputFiles.forEach((input) => {
-			const fileDropArea = input
-				.closest(".input-file")
-				.querySelector(".file-drop-area");
-			const fileListContainer = fileDropArea.querySelector(".file-list");
-
-			fileListContainer.style.display = "none";
-
-			// Массив для хранения всех выбранных файлов
-			let allFiles = [];
-
-			// Функция для проверки дубликатов
-			const isDuplicateFile = (newFile, existingFiles) => {
-				return existingFiles.some(
-					(existingFile) =>
-						existingFile.name === newFile.name &&
-						existingFile.size === newFile.size &&
-						existingFile.lastModified === newFile.lastModified,
-				);
-			};
-
-			// Функция обновления отображения файлов
-			const updateFileDisplay = () => {
-				fileListContainer.innerHTML = ""; // Очищаем список
-
-				if (allFiles.length === 0) {
-					fileListContainer.style.display = "none";
-					return;
-				}
-
-				fileListContainer.style.display = "";
-
-				allFiles.forEach((file, index) => {
-					const fileItem = document.createElement("div");
-					fileItem.classList.add("file-item");
-
-					// Создаем элемент span для названия файла
-					const fileNameSpan = document.createElement("span");
-					fileNameSpan.textContent = file.name;
-					fileNameSpan.style.cursor = "pointer";
-
-					// Добавляем обработчик события для открытия файла
-					fileNameSpan.addEventListener("click", () => {
-						const reader = new FileReader();
-						reader.onload = (e) => {
-							const fileUrl = URL.createObjectURL(file);
-							window.open(fileUrl, "_blank");
-						};
-						reader.readAsDataURL(file);
-					});
-
-					const removeButton = document.createElement("span");
-					removeButton.textContent = "✖";
-					removeButton.classList.add("remove-file");
-					removeButton.dataset.index = index;
-
-					fileItem.appendChild(fileNameSpan);
-					fileItem.appendChild(removeButton);
-					fileListContainer.appendChild(fileItem);
-				});
-			};
-
-			// Функция обновления input.files
-			const updateInputFiles = () => {
-				const dataTransfer = new DataTransfer();
-				allFiles.forEach((file) => {
-					dataTransfer.items.add(file);
-				});
-				input.files = dataTransfer.files;
-
-				// Триггерим событие change для обновления формы
-				const event = new Event("change", { bubbles: true });
-				input.dispatchEvent(event);
-			};
-
-			// Функция добавления файлов (общая для input и drag-n-drop)
-			const addFiles = (files) => {
-				const newFiles = Array.from(files);
-				let hasNewFiles = false;
-
-				// Проверяем каждый новый файл на дубликаты
-				newFiles.forEach((file) => {
-					if (!isDuplicateFile(file, allFiles)) {
-						allFiles.push(file);
-						hasNewFiles = true;
-					} else {
-						console.log(`Файл "${file.name}" уже добавлен`);
-						// Можно показать уведомление пользователю
-					}
-				});
-
-				if (hasNewFiles) {
-					// Обновляем input.files
-					updateInputFiles();
-
-					// Обновляем отображение
-					updateFileDisplay();
-				}
-			};
-
-			// Обработчик выбора файлов через input
-			input.addEventListener("change", function () {
-				addFiles(this.files);
-
-				// Сбрасываем значение input, чтобы можно было выбрать тот же файл повторно
-				this.value = "";
-			});
-
-			// Drag-and-drop события
-			fileDropArea.addEventListener("dragover", function (e) {
-				e.preventDefault();
-				e.stopPropagation();
-				this.classList.add("drag-over");
-			});
-
-			fileDropArea.addEventListener("dragleave", function (e) {
-				e.preventDefault();
-				e.stopPropagation();
-				// Проверяем, покинули ли мы именно drop-зону, а не её детей
-				if (!this.contains(e.relatedTarget)) {
-					this.classList.remove("drag-over");
-				}
-			});
-
-			fileDropArea.addEventListener("drop", function (e) {
-				e.preventDefault();
-				e.stopPropagation();
-				this.classList.remove("drag-over");
-
-				// Получаем файлы из события drop
-				const droppedFiles = e.dataTransfer.files;
-
-				if (droppedFiles.length > 0) {
-					addFiles(droppedFiles);
-				}
-			});
-
-			// ВАЖНОЕ ИЗМЕНЕНИЕ: Обработчик клика только для подсказки drag-and-drop
-			// Находим элемент с подсказкой и добавляем обработчик только к нему
-			const dragDropHint = fileDropArea.querySelector(".drag-drop-hint");
-			if (dragDropHint) {
-				dragDropHint.addEventListener("click", function (e) {
-					e.stopPropagation(); // Останавливаем всплытие
-					input.click();
-				});
+		// Создаём .file-drop-area при необходимости
+		let dropArea = this.container.querySelector('.file-drop-area');
+		if (!dropArea) {
+			dropArea = document.createElement('div');
+			dropArea.className = 'file-drop-area';
+			while (this.container.firstChild) {
+				dropArea.appendChild(this.container.firstChild);
 			}
+			this.container.appendChild(dropArea);
+		}
+		this.dropArea = dropArea;
 
-			// Удаление файлов
-			fileListContainer.addEventListener("click", function (e) {
-				if (e.target.classList.contains("remove-file")) {
-					e.stopPropagation(); // Предотвращаем срабатывание клика на fileDropArea
-					const index = parseInt(e.target.dataset.index);
-					allFiles.splice(index, 1); // Удаляем файл из массива
+		this.fileListContainer = this.dropArea.querySelector('.file-list');
+		if (!this.fileListContainer) {
+			this.fileListContainer = document.createElement('div');
+			this.fileListContainer.className = 'file-list';
+			this.dropArea.appendChild(this.fileListContainer);
+		}
 
-					// Обновляем input.files
-					updateInputFiles();
+		this.allFiles = [];
+		this.init();
+	}
 
-					// Обновляем отображение файлов
-					updateFileDisplay();
+	init() {
+		this.fileListContainer.style.display = 'none';
+
+		// Привязываем методы
+		this.addFiles = this.addFiles.bind(this);
+		this.updateDisplay = this.updateDisplay.bind(this);
+		this.updateInputFiles = this.updateInputFiles.bind(this);
+		this.handleDrop = this.handleDrop.bind(this);
+		this.handleFileChange = this.handleFileChange.bind(this);
+		this.handleRemove = this.handleRemove.bind(this);
+		this.handleDragOver = this.handleDragOver.bind(this);
+		this.handleDragLeave = this.handleDragLeave.bind(this);
+		this.preventDefaults = this.preventDefaults.bind(this);
+
+		// Обработчики событий
+		this.input.addEventListener('change', this.handleFileChange);
+		this.dropArea.addEventListener('dragover', this.handleDragOver);
+		this.dropArea.addEventListener('dragleave', this.handleDragLeave);
+		this.dropArea.addEventListener('drop', this.handleDrop);
+		this.fileListContainer.addEventListener('click', this.handleRemove);
+
+		// Клик по подсказке открывает диалог выбора файлов
+		const hint = this.dropArea.querySelector('.drag-drop-hint');
+		if (hint) {
+			hint.addEventListener('click', (e) => {
+				e.stopPropagation();
+				this.input.click();
+			});
+		} else {
+			this.dropArea.addEventListener('click', (e) => {
+				if (!e.target.classList.contains('remove-file') && !e.target.closest('.remove-file')) {
+					this.input.click();
 				}
 			});
+		}
 
-			// Предотвращаем стандартное поведение браузера для drag событий
-			["dragenter", "dragover", "dragleave", "drop"].forEach(
-				(eventName) => {
-					fileDropArea.addEventListener(
-						eventName,
-						preventDefaults,
-						false,
-					);
-					document.body.addEventListener(
-						eventName,
-						preventDefaults,
-						false,
-					);
-				},
-			);
-
-			function preventDefaults(e) {
-				e.preventDefault();
-				e.stopPropagation();
-			}
+		// Глобальные предотвращения для drag‑событий
+		['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+			this.dropArea.addEventListener(eventName, this.preventDefaults);
+			document.body.addEventListener(eventName, this.preventDefaults);
 		});
 	}
+
+	preventDefaults(e) {
+		e.preventDefault();
+		e.stopPropagation();
+	}
+
+	handleDragOver(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.dropArea.classList.add('drag-over');
+	}
+
+	handleDragLeave(e) {
+		if (!e.relatedTarget || !this.dropArea.contains(e.relatedTarget)) {
+			this.dropArea.classList.remove('drag-over');
+		}
+	}
+
+	handleDrop(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.dropArea.classList.remove('drag-over');
+		const files = Array.from(e.dataTransfer.files);
+		if (files.length) this.addFiles(files);
+	}
+
+	handleFileChange(e) {
+		this.addFiles(Array.from(e.target.files));
+		this.input.value = '';
+	}
+
+	handleRemove(e) {
+		if (!e.target.classList.contains('remove-file')) return;
+		e.stopPropagation();
+		const index = parseInt(e.target.dataset.index, 10);
+		this.allFiles.splice(index, 1);
+		this.updateInputFiles();
+		this.updateDisplay();
+		// Уведомляем внешний мир об изменении (если нужен коллбэк)
+		if (this.onChangeCallback) this.onChangeCallback(this.input);
+	}
+
+	isDuplicate(newFile) {
+		return this.allFiles.some(existing =>
+			existing.name === newFile.name &&
+			existing.size === newFile.size &&
+			existing.lastModified === newFile.lastModified
+		);
+	}
+
+	addFiles(filesArray) {
+		let added = false;
+		for (const file of filesArray) {
+			if (!this.isDuplicate(file)) {
+				this.allFiles.push(file);
+				added = true;
+			}
+		}
+		if (added) {
+			this.updateInputFiles();
+			this.updateDisplay();
+			if (this.onChangeCallback) this.onChangeCallback(this.input);
+		}
+	}
+
+	setFiles(filesArray) {
+		this.allFiles = [];
+		if (filesArray.length === 0) {
+			this.updateInputFiles();
+			this.updateDisplay();
+			if (this.onChangeCallback) this.onChangeCallback(this.input);
+		} else {
+			this.addFiles(filesArray);
+		}
+	}
+
+	clearFiles() {
+		this.setFiles([]);
+	}
+
+	getFiles() {
+		return [...this.allFiles];
+	}
+
+	updateInputFiles() {
+		const dt = new DataTransfer();
+		this.allFiles.forEach(file => dt.items.add(file));
+		this.input.files = dt.files;
+		this.input.dispatchEvent(new Event('change', { bubbles: true }));
+	}
+
+	updateDisplay() {
+		this.fileListContainer.innerHTML = '';
+		if (this.allFiles.length === 0) {
+			this.fileListContainer.style.display = 'none';
+			return;
+		}
+		this.fileListContainer.style.display = '';
+		this.allFiles.forEach((file, index) => {
+			const fileItem = document.createElement('div');
+			fileItem.classList.add('file-item');
+
+			const nameSpan = document.createElement('span');
+			nameSpan.textContent = file.name;
+			nameSpan.style.cursor = 'pointer';
+			nameSpan.addEventListener('click', () => {
+				const url = URL.createObjectURL(file);
+				window.open(url, '_blank');
+				URL.revokeObjectURL(url);
+			});
+
+			const removeSpan = document.createElement('span');
+			removeSpan.textContent = '✖';
+			removeSpan.classList.add('remove-file');
+			removeSpan.dataset.index = index;
+
+			fileItem.appendChild(nameSpan);
+			fileItem.appendChild(removeSpan);
+			this.fileListContainer.appendChild(fileItem);
+		});
+	}
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	const fileInputs = document.querySelectorAll(".input-file input[type=file]");
+	fileInputs.forEach(input => {
+		if (!input.fileInputManager) {
+			input.fileInputManager = new FileInputManager(input);
+		}
+	});
 });
 
 document.addEventListener("DOMContentLoaded", () => {
