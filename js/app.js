@@ -4021,6 +4021,54 @@ document.addEventListener("DOMContentLoaded", () => {
 			target.current_value = 0;
 			deactivateAllAccordions();
 
+			const reviewTotal = () => {
+				const checkboxes = toggles
+					.filter(
+						(t) =>
+							t.type === "checkbox" && t.elementref.checked,
+					)
+					.map((t) => ({ id: t.id, price: t.price }));
+
+				const selects = toggles
+					.filter((t) => t.type === "select" && t.currentOption)
+					.map((t) => ({
+						id: t.id,
+						selectedValue: t.currentOption.value,
+						price: t.currentOption.price,
+					}));
+
+				const textfields = toggles
+					.filter((t) => t.type === "textfield" && t.active)
+					.map((t) => ({
+						id: t.id,
+						value: t.elementref.value,
+						price: t.price,
+					}));
+
+				const countersData = counters
+					.filter((c) => c.elementref.value != "")
+					.map((c) => ({
+						id: c.id,
+						value: parseInt(c.elementref.value),
+						price: c.price,
+					}));
+
+				const extraTexts = texts
+					.filter((t) => t.elementref.value !== "")
+					.map((t) => ({ id: t.id, value: t.elementref.value }));
+
+				const review = {
+					checkboxes,
+					selects,
+					textfields,
+					counters: countersData,
+					extra: extraTexts,
+					preprice: target.innerText,
+					total: target.current_value,
+				};
+				console.log(review);
+			}
+
 			// Слушатели для текстовых полей
 			toggles.forEach((toggle) => {
 				if (toggle.type === "textfield") {
@@ -4031,6 +4079,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						} else if (value === "" && toggle.active) {
 							deactivateTextField(toggle, target, toggles);
 						}
+						reviewTotal();
 					});
 					toggle.elementref.addEventListener("change", () => {
 						const value = toggle.elementref.value.trim();
@@ -4039,6 +4088,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						} else if (value === "" && toggle.active) {
 							deactivateTextField(toggle, target, toggles);
 						}
+						reviewTotal();
 					});
 				}
 			});
@@ -4200,6 +4250,8 @@ document.addEventListener("DOMContentLoaded", () => {
 							}
 						}
 
+						reviewTotal();
+
 						if (target.current_value < 0) target.current_value = 0;
 					});
 				} else if (toggle.type === "select") {
@@ -4220,6 +4272,8 @@ document.addEventListener("DOMContentLoaded", () => {
 						toggle.currentOption = newOption;
 						updateNiceSelect(toggle.elementref); // обновляем nice-select
 						updateTooltipsForSelect(toggle.elementref); // <-- добавить вызов
+
+						reviewTotal();
 
 						if (target.current_value < 0) target.current_value = 0;
 					});
@@ -4311,55 +4365,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 
 			// Кнопка отправки
-			sendButtons?.forEach((button) =>
+			sendButtons?.forEach((button) => {
 				button?.addEventListener("click", (e) => {
-					const checkboxes = toggles
-						.filter(
-							(t) =>
-								t.type === "checkbox" && t.elementref.checked,
-						)
-						.map((t) => ({ id: t.id, price: t.price }));
-
-					const selects = toggles
-						.filter((t) => t.type === "select" && t.currentOption)
-						.map((t) => ({
-							id: t.id,
-							selectedValue: t.currentOption.value,
-							price: t.currentOption.price,
-						}));
-
-					const textfields = toggles
-						.filter((t) => t.type === "textfield" && t.active)
-						.map((t) => ({
-							id: t.id,
-							value: t.elementref.value,
-							price: t.price,
-						}));
-
-					const countersData = counters
-						.filter((c) => c.elementref.value != "")
-						.map((c) => ({
-							id: c.id,
-							value: parseInt(c.elementref.value),
-							price: c.price,
-						}));
-
-					const extraTexts = texts
-						.filter((t) => t.elementref.value !== "")
-						.map((t) => ({ id: t.id, value: t.elementref.value }));
-
-					const review = {
-						checkboxes,
-						selects,
-						textfields,
-						counters: countersData,
-						extra: extraTexts,
-						preprice: target.innerText,
-						total: target.current_value,
-					};
-					console.log(review);
-				}),
-			);
+					reviewTotal();
+				});
+			});
 
 			// Кнопка сброса
 			reset_button?.addEventListener("click", (e) => {
@@ -4378,6 +4388,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 					setTimeout(() => {
 						resetCalculator(toggles, counters, target);
+						reviewTotal();
 					}, 200);
 				}, 600);
 			});
