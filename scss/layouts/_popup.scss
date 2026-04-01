@@ -306,6 +306,18 @@
 	&.form-popup {
 		& .popup-wrapper {
 			max-width: 400px;
+
+			& .popup-body {
+				width: 100%;
+
+				@media (max-width: 601px) {
+					width: 100%; 
+				}
+
+				& .form-limitter {
+					width: 100%;
+				}
+			}
 		}
 	}
 }

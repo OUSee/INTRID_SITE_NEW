@@ -3268,7 +3268,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (option.hideAccordionItems)
 				hideAccordionItems(option.hideAccordionItems);
 		};
-
 		const deactivateSelectOption = (option, toggles, target) => {
 			if (!option) return;
 			target.current_value -= option.price;
