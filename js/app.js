@@ -2799,6 +2799,30 @@ document.addEventListener("DOMContentLoaded", () => {
 		const { toggles, texts } = toggleConverter(inputs);
 		const changeEvent = new Event("change");
 
+		const reviewTotal = () => {
+			const review = {
+				options: toggles
+					.filter((t) => t.type === "checkbox" && t.elementref.checked)
+					.map((t) => ({ id: t.id })),
+				selects: toggles
+					.filter((t) => t.type === "select" && t.currentOption)
+					.map((t) => ({
+						id: t.id,
+						selectedValue: t.elementref.options[t.elementref.selectedIndex]?.value,
+					})),
+				textfields: toggles
+					.filter((t) => t.type === "textfield" && t.active)
+					.map((t) => ({
+						id: t.id,
+						value: t.elementref.value,
+					})),
+				extra: texts
+					.filter((t) => t.elementref.value !== "")
+					.map((t) => ({ id: t.id, value: t.elementref.value })),
+			};
+			console.log(review);
+		}
+
 		// --- обработчики для чекбоксов ---
 		toggles.forEach((toggle) => {
 			if (toggle.type === "checkbox") {
@@ -2847,6 +2871,8 @@ document.addEventListener("DOMContentLoaded", () => {
 						}
 						if (toggle.nested && toggle.nested.length) deactivateNestedToggles(toggle, toggles);
 					}
+
+					reviewTotal();
 				});
 			}
 		});
@@ -2867,6 +2893,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					toggle.currentOption = newOption;
 					updateNiceSelect(toggle.elementref);
 					updateTooltipsForSelect(toggle.elementref);
+					reviewTotal();
 				});
 			}
 		});
@@ -2881,6 +2908,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				};
 				toggle.elementref.addEventListener("input", handler);
 				toggle.elementref.addEventListener("change", handler);
+				reviewTotal();
 			}
 		});
 
@@ -2916,27 +2944,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		// --- кнопка отправки (сбор данных) ---
 		sendButton.addEventListener("click", () => {
-			const review = {
-				options: toggles
-					.filter((t) => t.type === "checkbox" && t.elementref.checked)
-					.map((t) => ({ id: t.id })),
-				selects: toggles
-					.filter((t) => t.type === "select" && t.currentOption)
-					.map((t) => ({
-						id: t.id,
-						selectedValue: t.elementref.options[t.elementref.selectedIndex]?.value,
-					})),
-				textfields: toggles
-					.filter((t) => t.type === "textfield" && t.active)
-					.map((t) => ({
-						id: t.id,
-						value: t.elementref.value,
-					})),
-				extra: texts
-					.filter((t) => t.elementref.value !== "")
-					.map((t) => ({ id: t.id, value: t.elementref.value })),
-			};
-			console.log(review);
+			reviewTotal();
+		});
+
+		inputs.forEach((input) => {
+			if (input.type === "text" || input.tagName === "TEXTAREA") {
+				input.addEventListener('change', () => {
+					reviewTotal();
+				});
+
+				input.addEventListener('focus', () => {
+					reviewTotal();
+				});
+			}
 		});
 	}
 });
@@ -4271,7 +4291,7 @@ function resetTotalState() {
 		wrapper = document.querySelector("#calculator-total.total");
 
 	if (isMobileView) {
-		wrapper.classList.remove("active");
+		wrapper?.classList.remove("active");
 		setTimeout(() => {
 			document.documentElement.classList.remove(
 				"calculator-total-before",
