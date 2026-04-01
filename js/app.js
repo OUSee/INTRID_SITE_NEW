@@ -3116,6 +3116,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			// Показываем нужный по индексу
 			const idx = selectEl.selectedIndex;
+			// Принудительно отображаем первую подсказку для всех select
+			if (idx === -1) {
+				tooltips.forEach((t, index) => index === 0 ? t.classList.remove("hidden") : '');
+			}
 			if (idx >= 0 && idx < tooltips.length) {
 				tooltips[idx].classList.remove("hidden");
 			}
