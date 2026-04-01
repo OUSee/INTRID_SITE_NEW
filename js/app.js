@@ -2563,7 +2563,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
-// brif – полная поддержка select, checkbox, text, textarea с reveal, nested и связкой checkbox→select
+// brif
 document.addEventListener("DOMContentLoaded", () => {
 	const container = document.getElementById("calculator-sitebrif") || document.getElementById("calculator-brif");
 	if (!container) return;
@@ -3358,6 +3358,9 @@ document.addEventListener("DOMContentLoaded", () => {
 				(toggle.id === "tender-portal" ||
 					toggle.id === "tender-portal-paying" ||
 					toggle.id === "tenders_toggle");
+
+			const isUniqueSelected = toggle && toggle.elementref.checked && toggle.id === "type-unique";
+
 			if (isTenderSelected) {
 				deactivateAllAccordions();
 				setTimeout(() => {
@@ -3371,7 +3374,56 @@ document.addEventListener("DOMContentLoaded", () => {
 			} else if (toggle && toggle.elementref.checked) {
 				activateAllAccordions();
 			}
+
+			// Если выбрана уникальная разработка
+			if (isUniqueSelected) {
+				syncUniqueFields();
+			}
 		};
+
+		// Функция синхронизации полей для уникальной разработки
+		const syncUniqueFields = () => {
+			const container = document.getElementById('type-unique_form');
+
+			if (!container) return;
+
+			let input = container?.querySelector('input');
+
+			let description = input.id === ('type-unique_text'),
+				files = input.type === 'file';
+
+			if (!description && !files) {
+				console.warn('Error, inputs not found!');
+			}
+
+			if (description) {
+				input.addEventListener('change', (e) => {
+					exchangeUniqueFields(e.currentTarget, 'text');
+				});
+
+				input.addEventListener('input', (e) => {
+					exchangeUniqueFields(e.currentTarget, 'text');
+				});
+			}
+
+			if (files) {
+				input.addEventListener('change', (e) => {
+					exchangeUniqueFields(e.currentTarget, 'files');
+				});
+			}
+		}
+
+		const exchangeUniqueFields = (elem, type) => {
+			let forms = ['#calculator-total form', '#fast-req-form form'];
+
+			document.querySelectorAll(forms).forEach((form) => {
+				let description = form.querySelector('textarea'),
+					files = form.querySelector('.input-file input');
+
+				if (type === 'text') description.value = elem.value;
+				if (type === 'files') files.value = elem.value;
+			})
+		}
 
 		// Применение пресета типа сайта
 		const applySiteTypePreset = (
