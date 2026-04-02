@@ -297,69 +297,94 @@
                                 <div class="accordion-item">
                                     <input type="checkbox" id="section-general" checked class="accordion-checkbox">
                                     <label for="section-general" class="accordion-header title_h4">
-                                        <img src="./src/icons/magnifier_glass.svg" alt=""> Общая информация<i
-                                            class="icon-shevrone"></i>
+                                        <img src="./src/icons/magnifier_glass.svg" alt="">
+                                        Общая информация
+                                        <i class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
-                                        <label for="general-name" class="title_h5">
-                                            Название компании <span class="color-grey">(полное)*</span>
+                                        <label for="general-name">
+                                            <p class="fw-bold">
+                                                Название компании <span class="color-grey">(полное)*</span>
+                                            </p>
+                                            <input type="text" id="general-name">
                                         </label>
-                                        <input type="text" id="general-name">
 
-                                        <label for="general-buisness_type" class="title_h5">
-                                            Область деятельности, направление бизнеса компании
+                                        <label for="general-buisness_type">
+                                            <p class="fw-bold">
+                                                Область деятельности, направление бизнеса компании
+                                            </p>
+                                            <input type="text" id="general-buisness_type">
                                         </label>
-                                        <input type="text" id="general-buisness_type">
 
-                                        <label for="general-competitors" class="title_h5">
-                                            Конкуренты <span class="color-grey">(прямые и косвенные, оставьте ссылки на
-                                                их
-                                                сайты, если
-                                                есть)</span>
-                                        </label>
-                                        <textarea data-autosize="true" rows="1" type="text"
-                                            id="general-competitors"></textarea>
 
-                                        <label for="general-distribution" class="title_h5">
-                                            Способы реализации товаров/услуг<span class="color-grey"> (Опт, розница,
-                                                магазины, офисы, торговые точки, выставочные залы, интернет-магазины и
-                                                т.д.)
-                                            </span>
+                                        <label for="general-competitors">
+                                            <p class="fw-bold">
+                                                Конкуренты <span class="color-grey">(прямые и косвенные, оставьте ссылки
+                                                    на
+                                                    их
+                                                    сайты, если
+                                                    есть)</span>
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="general-competitors"></textarea>
                                         </label>
-                                        <textarea data-autosize="true" rows="1" type="text"
-                                            id="general-distribution"></textarea>
 
-                                        <label for="general-geography" class="title_h5">
-                                            География компании
+                                        <label for="general-distribution">
+                                            <p class="fw-bold">
+                                                Способы реализации товаров/услуг<span class="color-grey"> (Опт, розница,
+                                                    магазины, офисы, торговые точки, выставочные залы, интернет-магазины
+                                                    и
+                                                    т.д.)
+                                                </span>
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="general-distribution"></textarea>
                                         </label>
-                                        <input type="text" id="general-geography">
 
-                                        <label for="general-audience" class="title_h5">
-                                            Целевая аудитория
+                                        <label for="general-geography">
+                                            <p class="fw-bold">
+                                                География компании
+                                            </p>
+                                            <input type="text" id="general-geography">
                                         </label>
-                                        <input type="text" id="general-audience">
 
-                                        <label for="general-services" class="title_h5">
-                                            Основные продукты/услуги
+                                        <label for="general-audience">
+                                            <p class="fw-bold">
+                                                Целевая аудитория
+                                            </p>
+                                            <input type="text" id="general-audience">
                                         </label>
-                                        <input type="text" id="general-services">
 
-                                        <label for="general-slogan" class="title_h5">
-                                            Слоган/девизы
+                                        <label for="general-services">
+                                            <p class="fw-bold">
+                                                Основные продукты/услуги
+                                            </p>
+                                            <input type="text" id="general-services">
                                         </label>
-                                        <input type="text" id="general-slogan">
 
-                                        <label for="general-aims" class="title_h5">
-                                            Маркетинговые цели и задачи
+                                        <label for="general-slogan">
+                                            <p class="fw-bold">
+                                                Слоган/девизы
+                                            </p>
+                                            <input type="text" id="general-slogan">
                                         </label>
-                                        <textarea data-autosize="true" rows="1" type="text"
-                                            id="general-aims"></textarea>
 
-                                        <label for="general-link" class="title_h5">
-                                            Ссылки на текущий сайт/соцсети<span class="color-grey"> (если есть) </span>
+                                        <label for="general-aims">
+                                            <p class="fw-bold">
+                                                Маркетинговые цели и задачи
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="general-aims"></textarea>
                                         </label>
-                                        <textarea data-autosize="true" rows="1" type="text"
-                                            id="general-link"></textarea>
+
+                                        <label for="general-link">
+                                            <p class="fw-bold">
+                                                Ссылки на текущий сайт/соцсети<span class="color-grey"> (если есть)
+                                                </span>
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="general-link"></textarea>
+                                        </label>
                                     </div>
                                 </div>
                                 <!-- / general info -->
@@ -368,8 +393,9 @@
                                 <div class="accordion-item">
                                     <input type="checkbox" id="section-elements" class="accordion-checkbox">
                                     <label for="section-elements" class="accordion-header title_h4">
-                                        <img src="./src/icons/brush_icon.svg" alt=""> Элементы фирменного стиля<i
-                                            class="icon-shevrone"></i>
+                                        <img src="./src/icons/brush_icon.svg" alt="">
+                                        Элементы фирменного стиля
+                                        <i class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
                                         <div class="toggle-line">
@@ -431,23 +457,27 @@
                                             </label>
                                         </div>
 
-                                        <label for="elements-souvenir" class="title_h5">
-                                            Сувенирная продукция
-                                            <span class="color-grey">
-                                                (перечислите элементы)
-                                            </span>
+                                        <label for="elements-souvenir">
+                                            <p class="fw-bold">
+                                                Сувенирная продукция
+                                                <span class="color-grey">
+                                                    (перечислите элементы)
+                                                </span>
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="elements-souvenir"></textarea>
                                         </label>
-                                        <textarea data-autosize="true" rows="1" type="text"
-                                            id="elements-souvenir"></textarea>
 
-                                        <label for="elements-extra" class="title_h5">
-                                            Дополнительные элементы
-                                            <span class="color-grey">
-                                                (перечислите элементы)
-                                            </span>
+                                        <label for="elements-extra">
+                                            <p class="fw-bold">
+                                                Дополнительные элементы
+                                                <span class="color-grey">
+                                                    (перечислите элементы)
+                                                </span>
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="elements-extra"></textarea>
                                         </label>
-                                        <textarea data-autosize="true" rows="1" type="text"
-                                            id="elements-extra"></textarea>
                                     </div>
                                 </div>
                                 <!-- / elements -->
@@ -456,8 +486,10 @@
                                 <div class="accordion-item">
                                     <input type="checkbox" id="section-style" class="accordion-checkbox">
                                     <label for="section-style" class="accordion-header title_h4">
-                                        <img src="./src/icons/gear_icon.svg" alt="">Стилистика логотипа и цветовое
-                                        решение<i class="icon-shevrone"></i>
+                                        <img src="./src/icons/gear_icon.svg" alt="">
+                                        Стилистика логотипа и цветовое
+                                        решение
+                                        <i class="icon-shevrone"></i>
                                     </label>
                                     <div class="accordion-content">
                                         <div class="logo-preview-grid">
@@ -543,15 +575,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <label for="style-colors" class="title_h5">
-                                            Используемые цвета
-                                            <span class="color-grey">
-                                                (перечислите желаемые и не желаемые цвета)
-                                            </span>
+                                        <label for="style-colors">
+                                            <p class="fw-bold">
+                                                Используемые цвета
+                                                <span class="color-grey">
+                                                    (перечислите желаемые и не желаемые цвета)
+                                                </span>
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="style-colors"></textarea>
                                         </label>
-                                        <textarea data-autosize="true" rows="1" type="text"
-                                            id="style-colors"></textarea>
-                                        <p class="title_h5">
+
+                                        <p class="title_h5 quote">
                                             Предпочтительная цветовая гамма
                                         </p>
                                         <div class="toggle-line">
@@ -612,11 +647,15 @@
                                                 </p>
                                             </label>
                                         </div>
-                                        <label for="style-extra" class="title_h5">
-                                            Дополнительные пожелания
+                                        <label for="style-extra">
+                                            <p class="fw-bold">
+                                                Дополнительные пожелания
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="style-extra"></textarea>
                                         </label>
-                                        <textarea data-autosize="true" rows="1" type="text" id="style-extra"></textarea>
-                                        <p class="title_h5">Шрифты логотипа</p>
+
+                                        <p class="title_h5 quote">Шрифты логотипа</p>
                                         <div class="toggle-line">
                                             <input type="checkbox" class="toggle-checkbox" id="style-font_serif"
                                                 name="style-font_serif"
@@ -677,16 +716,21 @@
                                                 </p>
                                             </label>
                                         </div>
-                                        <label for="style-logo_good" class="title_h5">
-                                            Примеры логотипов которые вам нравятся
+
+                                        <label for="style-logo_good">
+                                            <p class="fw-bold">
+                                                Примеры логотипов которые вам нравятся
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="style-logo_good"></textarea>
                                         </label>
-                                        <textarea data-autosize="true" rows="1" type="text"
-                                            id="style-logo_good"></textarea>
-                                        <label for="style-logo_bad" class="title_h5">
-                                            Примеры логотипов которые вам НЕ нравятся
+                                        <label for="style-logo_bad">
+                                            <p class="fw-bold">
+                                                Примеры логотипов которые вам НЕ нравятся
+                                            </p>
+                                            <textarea data-autosize="true" rows="1" type="text"
+                                                id="style-logo_bad"></textarea>
                                         </label>
-                                        <textarea data-autosize="true" rows="1" type="text"
-                                            id="style-logo_bad"></textarea>
                                     </div>
                                 </div>
                                 <!-- / structure -->
@@ -752,9 +796,6 @@
                 </div>
             </div>
         </section>
-
-
-
 
         <!-- footer -->
         <footer class="footer">

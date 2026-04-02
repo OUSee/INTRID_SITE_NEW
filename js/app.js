@@ -3400,7 +3400,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (fileInput) {
 				// Убеждаемся, что у поля есть менеджер
 				if (!fileInput.fileInputManager) {
-					// Передаём коллбэк, который будет вызываться при любом изменении файлов
 					fileInput.fileInputManager = new FileInputManager(fileInput, (changedInput) => {
 						exchangeUniqueFields(changedInput, 'files');
 					});
@@ -3832,6 +3831,14 @@ document.addEventListener("DOMContentLoaded", () => {
 						["calculator", "calculator-total"],
 						["choose_your_way"],
 					);
+
+					// Добавляем active для .calculator-wrapper, чтобы не было абсолютного позиционирования
+					setTimeout(() => {
+						let calculatorWrapper = document?.querySelector(".calculator-wrapper");
+
+						calculatorWrapper?.classList.add("active");
+					}, 600);
+
 					console.log("=> success");
 				} catch (err) {
 					console.log("=> error", err);
@@ -4020,54 +4027,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			target.current_value = 0;
 			deactivateAllAccordions();
 
-			const reviewTotal = () => {
-				const checkboxes = toggles
-					.filter(
-						(t) =>
-							t.type === "checkbox" && t.elementref.checked,
-					)
-					.map((t) => ({ id: t.id, price: t.price }));
-
-				const selects = toggles
-					.filter((t) => t.type === "select" && t.currentOption)
-					.map((t) => ({
-						id: t.id,
-						selectedValue: t.currentOption.value,
-						price: t.currentOption.price,
-					}));
-
-				const textfields = toggles
-					.filter((t) => t.type === "textfield" && t.active)
-					.map((t) => ({
-						id: t.id,
-						value: t.elementref.value,
-						price: t.price,
-					}));
-
-				const countersData = counters
-					.filter((c) => c.elementref.value != "")
-					.map((c) => ({
-						id: c.id,
-						value: parseInt(c.elementref.value),
-						price: c.price,
-					}));
-
-				const extraTexts = texts
-					.filter((t) => t.elementref.value !== "")
-					.map((t) => ({ id: t.id, value: t.elementref.value }));
-
-				const review = {
-					checkboxes,
-					selects,
-					textfields,
-					counters: countersData,
-					extra: extraTexts,
-					preprice: target.innerText,
-					total: target.current_value,
-				};
-				console.log(review);
-			}
-
 			// Слушатели для текстовых полей
 			toggles.forEach((toggle) => {
 				if (toggle.type === "textfield") {
@@ -4078,7 +4037,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						} else if (value === "" && toggle.active) {
 							deactivateTextField(toggle, target, toggles);
 						}
-						reviewTotal();
+						// reviewTotal();
 					});
 					toggle.elementref.addEventListener("change", () => {
 						const value = toggle.elementref.value.trim();
@@ -4087,7 +4046,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						} else if (value === "" && toggle.active) {
 							deactivateTextField(toggle, target, toggles);
 						}
-						reviewTotal();
+						// reviewTotal();
 					});
 				}
 			});
@@ -4249,7 +4208,7 @@ document.addEventListener("DOMContentLoaded", () => {
 							}
 						}
 
-						reviewTotal();
+						// reviewTotal();
 
 						if (target.current_value < 0) target.current_value = 0;
 					});
@@ -4363,6 +4322,19 @@ document.addEventListener("DOMContentLoaded", () => {
 				});
 			});
 
+			// Обработчики для остальных текстовых полей
+			inputs.forEach((input) => {
+				if (input.type === "text" || input.tagName === "TEXTAREA") {
+					input.addEventListener('focus', () => {
+						reviewTotal();
+					});
+				} else {
+					input.addEventListener('change', () => {
+						reviewTotal();
+					});
+				}
+			});
+
 			// Кнопка отправки
 			sendButtons?.forEach((button) => {
 				button?.addEventListener("click", (e) => {
@@ -4394,6 +4366,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			if (hash) {
 				handleToggleByHash(hash, toggles, counters, target);
+			}
+
+			function reviewTotal() {
+				const checkboxes = toggles
+					.filter(
+						(t) =>
+							t.type === "checkbox" && t.elementref.checked,
+					)
+					.map((t) => ({ id: t.id, price: t.price }));
+
+				const selects = toggles
+					.filter((t) => t.type === "select" && t.currentOption)
+					.map((t) => ({
+						id: t.id,
+						selectedValue: t.currentOption.value,
+						price: t.currentOption.price,
+					}));
+
+				const textfields = toggles
+					.filter((t) => t.type === "textfield" && t.active)
+					.map((t) => ({
+						id: t.id,
+						value: t.elementref.value,
+						price: t.price,
+					}));
+
+				const countersData = counters
+					.filter((c) => c.elementref.value != "")
+					.map((c) => ({
+						id: c.id,
+						value: parseInt(c.elementref.value),
+						price: c.price,
+					}));
+
+				const extraTexts = texts
+					.filter((t) => t.elementref.value !== "")
+					.map((t) => ({ id: t.id, value: t.elementref.value }));
+
+				const review = {
+					checkboxes,
+					selects,
+					textfields,
+					counters: countersData,
+					extra: extraTexts,
+					preprice: target.innerText,
+					total: target.current_value,
+				};
+				toggleTotalCost();
+				console.log(review);
+			}
+
+			function toggleTotalCost() {
+				const totalSelectors = ['#calculator-total-cost', '#calculator-total-modal'];
+
+				console.log(target.innerText)
+
+				document.querySelectorAll(totalSelectors).forEach((totalSelector) => {
+					let wrapper = totalSelector.closest('p');
+
+					wrapper.classList.toggle('d-none', target.innerText === '0');
+				});
 			}
 		}
 	}
