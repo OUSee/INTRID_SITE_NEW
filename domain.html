@@ -285,7 +285,7 @@
                             <h3 class="w-fit">
                                 Проверка свободных доменных имен
                             </h3>
-                            
+
                             <form action="/submit/domain" id="test-site-form" class="fd-row w-fill" method="get">
                                 <input type="text" placeholder="Введите домен">
                                 <button type="submit" class="button-highlight big">
@@ -303,33 +303,30 @@
                                 Заполните форму ниже и мы перезвоним в течении дня в рабочее время
                             </p>
                             <form class="order-form">
-                                <input type="text" required id="customer-name" name="customer-name" placeholder="Ваше имя *">
-                    
+                                <input type="text" required id="customer-name" name="customer-name"
+                                    placeholder="Ваше имя *">
+
                                 <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
-                    
-                                <input type="tel" required id="customer-phone" name="customer-phone" placeholder="Ваш телефон *">
-                    
+
+                                <input type="tel" required id="customer-phone" name="customer-phone"
+                                    placeholder="Ваш телефон *">
+
                                 <textarea data-autosize="true" rows="2" id="customer-phone" placeholder="Комментарий"
                                     name="list"></textarea>
-                    
+
                                 <div class="input-file">
-                                    <label>
-                                        <input type="file" multiple=""
-                                            accept=".pdf, application/pdf, image/*,
-                                                                                                                                                                                                                                                                                    application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,
-                                                                                                                                                                                                                                                                                    application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
-                                                                                                                                                                                                                                                                                    application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
-                                                                                                                                                                                                                                                                                    text/plain,
-                                                                                                                                                                                                                                                                                    application/rtf,
-                                                                                                                                                                                                                                                                                    application/vnd.oasis.opendocument.text,
-                                                                                                                                                                                                                                                                                    application/vnd.oasis.opendocument.spreadsheet,
-                                                                                                                                                                                                                                                                                    application/vnd.oasis.opendocument.presentation">
-                                        <span>Прикрепить файл</span>
-                                        <img src="/src/icons/pin.svg" alt="Прикрепить файл">
-                                    </label>
-                                    <div class="file-list"></div>
+                                    <div class="file-drop-area">
+                                        <label>
+                                            <input type="file" multiple=""
+                                                accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                            <span>Прикрепить файл</span>
+                                            <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                        </label>
+                                        <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                        <div class="file-list" style="display: none;"></div>
+                                    </div>
                                 </div>
-                    
+
                                 <button type="submit" class="button big button-white mt-10">
                                     Заказать сайт
                                 </button>
