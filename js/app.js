@@ -4546,7 +4546,7 @@ const toggleSection = (
 					block: "start",
 				});
 				console.log("success scroll to #" + id);
-			}, 600);
+			}, 400);
 		} else if (id === selectorsShowIds[0] && !shouldScroll) {
 			console.log("scroll skipped for #" + id);
 		}
@@ -4578,7 +4578,7 @@ const toggleSection = (
 					selector.style.display = "none";
 				}
 			}, 0);
-		}, 600);
+		}, 100);
 	});
 };
 
@@ -4604,13 +4604,13 @@ if (triggerButtons) {
 			) {
 				setTimeout(() => {
 					wrapperRight?.classList.add("active");
-				}, 600);
+				}, 100);
 			}
 
 			if (calculator?.classList.contains("show")) {
 				setTimeout(() => {
 					calculatorWrapper?.classList.add("active");
-				}, 600);
+				}, 100);
 			}
 		});
 	});
