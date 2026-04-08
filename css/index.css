@@ -11171,6 +11171,30 @@ button.next:hover {
 .main-section--blog h1 {
   margin-bottom: unset;
 }
+.main-section--error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-block {
+  position: relative;
+}
+.error-block .back-text {
+  font-size: 132px;
+  color: var(--blue-main);
+  opacity: 0.2;
+  user-select: none;
+}
+.error-block .front-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
 
 .tab-content-webDev {
   display: flex;

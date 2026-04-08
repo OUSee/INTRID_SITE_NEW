@@ -796,6 +796,35 @@ button.next {
 			margin-bottom: unset;
 		}
 	}
+
+	&--error {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.error {
+	&-block {
+		position: relative;
+
+		& .back-text {
+			font-size: 132px;
+			color: var(--blue-main);
+			opacity: 0.2;
+			user-select: none;
+		}
+
+		& .front-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			z-index: 1;
+			white-space: nowrap;
+			transform: translate(-50%, -50%);
+		}
+	}
 }
 
 // WARNING: LEGACY CODE IS HERE!
