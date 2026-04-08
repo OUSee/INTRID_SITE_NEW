@@ -169,7 +169,6 @@
 }
 
 @keyframes baloon {
-
 	0%,
 	100% {
 		transform: translateY(0) rotate(0deg) scale(1);
@@ -309,7 +308,6 @@
 }
 
 @keyframes eye {
-
 	0%,
 	100% {
 		transform: translateY(-5px) translateX(0px) scale(1);
@@ -356,29 +354,28 @@
 // 	}
 // }
 
-// @keyframes list-glow {
+@keyframes list-glow {
+	0%,
+	100% {
+		box-shadow: none;
+		border: 1px solid transparent;
+	}
 
-// 	0%,
-// 	100% {
-// 		box-shadow: none;
-// 		border: 1px solid transparent;
-// 	}
+	45% {
+		box-shadow: none;
+		border: 1px solid transparent;
+	}
 
-// 	45% {
-// 		box-shadow: none;
-// 		border: 1px solid transparent;
-// 	}
+	50% {
+		border: 1px solid var(--blue-main);
+		box-shadow: 0px 0px 15px var(--blue-main);
+	}
 
-// 	50% {
-// 		border: 1px solid var(--blue-main);
-// 		box-shadow: 0px 0px 15px var(--blue-main);
-// 	}
-
-// 	65% {
-// 		box-shadow: none;
-// 		border: 1px solid transparent;
-// 	}
-// }
+	65% {
+		box-shadow: none;
+		border: 1px solid transparent;
+	}
+}
 
 // @keyframes table-switch {
 // 	0% {

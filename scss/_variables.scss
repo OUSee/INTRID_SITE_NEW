@@ -21,12 +21,10 @@ $tab-main-count: 3;
 	font-family: "INTRID_ICONS";
 	src: url("../src/fonts/icons/fonts/INTRID_ICONS.eot");
 	src:
-		url("../src/fonts/icons/fonts/INTRID_ICONS.eot?#iefix")
-			format("embedded-opentype"),
+		url("../src/fonts/icons/fonts/INTRID_ICONS.eot?#iefix") format("embedded-opentype"),
 		url("../src/fonts/icons/fonts/INTRID_ICONS.woff") format("woff"),
 		url("../src/fonts/icons/fonts/INTRID_ICONS.ttf") format("truetype"),
-		url("../src/fonts/icons/fonts/INTRID_ICONS.svg#INTRID_ICONS")
-			format("svg");
+		url("../src/fonts/icons/fonts/INTRID_ICONS.svg#INTRID_ICONS") format("svg");
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
@@ -736,18 +734,7 @@ i {
 			content: "";
 			display: inline-block;
 			background-color: #fdf41f;
-			clip-path: polygon(
-				50% 0%,
-				61% 35%,
-				98% 35%,
-				68% 57%,
-				79% 91%,
-				50% 70%,
-				21% 91%,
-				32% 57%,
-				2% 35%,
-				39% 35%
-			);
+			clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 		}
 
 		&-4 {
@@ -3267,13 +3254,7 @@ ol {
 				z-index: -1;
 				width: 100%;
 				height: 100%;
-				mask-image: linear-gradient(
-					to bottom,
-					transparent 0%,
-					black 10%,
-					black 90%,
-					transparent 100%
-				);
+				mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 				background-image: url("../src/images/planet-site-bg.webp");
 				background-position: bottom;
 				background-repeat: no-repeat;
@@ -3323,13 +3304,7 @@ ol {
 
 		&::before {
 			left: 0;
-			mask-image: linear-gradient(
-				to bottom,
-				transparent 0%,
-				black 10%,
-				black 90%,
-				transparent 100%
-			);
+			mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 			transform: translate(0, -50%);
 		}
 
@@ -3901,8 +3876,7 @@ form {
 				& label:nth-of-type(#{$i}) {
 					&::after {
 						@media (min-width: 440px) {
-							animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1)
-								$i + 1s infinite;
+							animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) $i + 1s infinite;
 						}
 					}
 				}
@@ -3967,8 +3941,7 @@ form {
 				& label:nth-of-type(#{$i}) {
 					&::after {
 						@media (min-width: 900px) {
-							animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1)
-								$i + 1s infinite;
+							animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) $i + 1s infinite;
 						}
 					}
 				}
@@ -5056,11 +5029,7 @@ button:hover,
 			&:hover {
 				@media (max-width: 1000px) {
 					color: var(--color-white);
-					background: color-mix(
-						in srgb,
-						var(--bg-main) 70%,
-						transparent
-					);
+					background: color-mix(in srgb, var(--bg-main) 70%, transparent);
 					transform: scale(1.125);
 				}
 
@@ -5111,11 +5080,7 @@ button:hover,
 
 				@media (max-width: 1000px) {
 					color: var(--blue-main);
-					background: color-mix(
-						in srgb,
-						var(--bg-main) 70%,
-						transparent
-					);
+					background: color-mix(in srgb, var(--bg-main) 70%, transparent);
 				}
 
 				@media (max-width: 600px) {
@@ -6783,15 +6748,7 @@ button:hover,
 			width: 32px;
 			height: 24px;
 			background-color: var(--blue-main);
-			clip-path: polygon(
-				0 40%,
-				75% 40%,
-				100% 20%,
-				100% 50%,
-				100% 80%,
-				75% 60%,
-				0 60%
-			);
+			clip-path: polygon(0 40%, 75% 40%, 100% 20%, 100% 50%, 100% 80%, 75% 60%, 0 60%);
 			transform: translate(100%, -50%);
 		}
 
@@ -7130,8 +7087,7 @@ button:hover,
 			radial-gradient(
 				60% 60% at 10% 20%,
 				color-mix(in srgb, var(--portfolio-color) 50%, transparent) 0%,
-				color-mix(in srgb, var(--portfolio-color) 50%, transparent)
-					37.79%,
+				color-mix(in srgb, var(--portfolio-color) 50%, transparent) 37.79%,
 				transparent 100%
 			),
 			hsla(0, 0%, 100%, 0.125);
@@ -7881,13 +7837,15 @@ button:hover,
 			}
 		}
 
-		&:hover {
-			background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-			transform: scale(1.03);
+		&:not(.no-hover) {
+			&:hover {
+				background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+				transform: scale(1.03);
 
-			& > .card-icon {
-				& img {
-					transform: scale(1.125);
+				& > .card-icon {
+					& img {
+						transform: scale(1.125);
+					}
 				}
 			}
 		}
