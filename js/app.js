@@ -1147,6 +1147,16 @@ const SliderInIt = () => {
 				const prevButton = document.querySelector(".slider-arrow.prev");
 				const nextButton = document.querySelector(".slider-arrow.next");
 
+				if (prevButton) {
+					prevButton.setAttribute("aria-label", "Предыдущий слайд");
+					prevButton.setAttribute("role", "button");
+				}
+
+				if (nextButton) {
+					nextButton.setAttribute("aria-label", "Следующий слайд");
+					nextButton.setAttribute("role", "button");
+				}
+
 				if (prevButton && nextButton) {
 					// Обновляем видимость кнопок
 					prevButton.style.display =
@@ -1202,6 +1212,16 @@ const SliderInIt = () => {
 				// Добавляем новые обработчики
 				newPrev.addEventListener("click", handlePrevClick);
 				newNext.addEventListener("click", handleNextClick);
+
+				if (newPrev) {
+					newPrev.setAttribute("aria-label", "Предыдущий слайд");
+					newPrev.setAttribute("role", "button");
+				}
+
+				if (newNext) {
+					newNext.setAttribute("aria-label", "Следующий слайд");
+					newNext.setAttribute("role", "button");
+				}
 
 				// Обновляем видимость кнопок
 				updateSlider();
@@ -1636,10 +1656,12 @@ function sliderInitialize() {
 
 		let slides = slider.children;
 		let gap;
+		let visibleWidth;
 		requestAnimationFrame(() => {
 			gap = parseInt(window.getComputedStyle(slider).gap);
+			visibleWidth = slider.parentElement.clientWidth;
 		});
-		const visibleWidth = slider.parentElement.clientWidth;
+		// const visibleWidth = slider.parentElement.clientWidth;
 
 		if (fill) {
 			const breaks = fill.split(",");
