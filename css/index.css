@@ -469,26 +469,6 @@ th {
     display: none;
   }
 }
-@keyframes iris {
-  0%, 100% {
-    transform: rotateX(-10deg) rotateY(15deg) translateZ(68px) scale(0.6);
-  }
-  10% {
-    transform: rotateX(-50deg) rotateY(15deg) translateZ(68px) scale(0.6);
-  }
-  30% {
-    transform: rotateX(-30deg) rotateY(-5deg) translateZ(68px) scale(0.6);
-  }
-  45% {
-    transform: rotateX(-20deg) rotateY(-15deg) translateZ(68px) scale(0.6);
-  }
-  55%, 60% {
-    transform: rotateX(0deg) rotateY(0deg) translateZ(68px) scale(0.6);
-  }
-  90% {
-    transform: rotateX(30deg) rotateY(5deg) translateZ(68px) scale(0.6);
-  }
-}
 @keyframes links-last {
   0% {
     left: 0%;
@@ -523,30 +503,6 @@ th {
     background-position: bottom;
   }
 }
-@keyframes planet2 {
-  0% {
-    background-size: auto 100%;
-    background-position: bottom;
-  }
-  100% {
-    background-size: auto 120%;
-    background-position: bottom;
-  }
-}
-@keyframes popupAppear {
-  0% {
-    display: block;
-    backdrop-filter: blur(0px) brightness(0%);
-  }
-  50% {
-    display: block;
-    backdrop-filter: blur(3px) brightness(30%);
-  }
-  100% {
-    display: block;
-    backdrop-filter: blur(6px) brightness(60%);
-  }
-}
 @keyframes orb-glow {
   0% {
     filter: drop-shadow(0 0 10px var(--blue-main));
@@ -572,17 +528,6 @@ th {
   }
   50% {
     transform: translateY(-15px) rotate(17deg) scale(-1.01, 1.01);
-  }
-}
-@keyframes burger-links-appear {
-  0% {
-    display: flex;
-    opacity: 0;
-    transform: scale(0, 1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1, 1);
   }
 }
 @keyframes ripple {
@@ -615,18 +560,6 @@ th {
   }
   100% {
     box-shadow: 0px 0px 25px 15px var(--blue-clouds);
-  }
-}
-@keyframes priceAppear {
-  0% {
-    transform: translateY(-30px), scale(1, 0);
-    display: block;
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0px), scale(1, 1);
-    display: block;
-    opacity: 1;
   }
 }
 @keyframes appear {
@@ -701,75 +634,10 @@ th {
     transform: translate3d(0, 0, 0);
   }
 }
-@keyframes append-order {
-  0% {
-    color: transparent;
-  }
-  100% {
-    color: var(--color-white);
-  }
-}
-@keyframes list-glow {
-  0%, 100% {
-    box-shadow: none;
-    border: 1px solid transparent;
-  }
-  45% {
-    box-shadow: none;
-    border: 1px solid transparent;
-  }
-  50% {
-    border: 1px solid var(--blue-main);
-    box-shadow: 0px 0px 15px var(--blue-main);
-  }
-  65% {
-    box-shadow: none;
-    border: 1px solid transparent;
-  }
-}
-@keyframes table-switch {
-  0% {
-    color: var(--color-white);
-  }
-  33% {
-    color: transparent;
-  }
-  100% {
-    color: var(--color-white);
-  }
-}
 @keyframes showCard {
   to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-@keyframes loader-rotate {
-  0% {
-    transform: rotate(90deg);
-    box-shadow: 0 10px 20px 0 #fff inset, 0 20px 30px 0 var(--blue-clouds) inset, 0 60px 60px 0 var(--blue-main) inset;
-  }
-  50% {
-    transform: rotate(270deg);
-    box-shadow: 0 10px 20px 0 #fff inset, 0 20px 10px 0 var(--blue-clouds) inset, 0 40px 60px 0 var(--blue-tag) inset;
-  }
-  100% {
-    transform: rotate(450deg);
-    box-shadow: 0 10px 20px 0 #fff inset, 0 20px 30px 0 var(--blue-clouds) inset, 0 60px 60px 0 var(--blue-main) inset;
-  }
-}
-@keyframes loader-letter-anim {
-  0%, 100% {
-    opacity: 0.4;
-    transform: translateY(0);
-  }
-  20% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-  40% {
-    opacity: 0.7;
-    transform: translateY(0);
   }
 }
 @keyframes fadeOutUp {
@@ -779,24 +647,6 @@ th {
   to {
     opacity: 0;
     transform: translate3d(0, -100%, 0);
-  }
-}
-@keyframes fadeOutLeft {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-@keyframes lightSpeedOutLeft {
-  from {
-    opacity: 1;
-  }
-  to {
-    transform: translate3d(-100%, 0, 0) skewX(-30deg);
-    opacity: 0;
   }
 }
 @keyframes fadeInUpForm {
@@ -9237,26 +9087,8 @@ button:hover svg,
   display: block;
 }
 
-.fadeIn {
-  animation: fadeIn 0.6s ease forwards;
-}
-
-.fadeInUp {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
 .fadeOutUp {
   animation: fadeOutUp 0.6s ease forwards;
-  transform-origin: top center;
-}
-
-.fadeOutLeft {
-  animation: fadeOutLeft 0.6s ease forwards;
-  transform-origin: top center;
-}
-
-.lightSpeedOutLeft {
-  animation: lightSpeedOutLeft 0.6s ease forwards;
   transform-origin: top center;
 }
 
