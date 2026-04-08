@@ -1656,12 +1656,11 @@ function sliderInitialize() {
 
 		let slides = slider.children;
 		let gap;
-		let visibleWidth;
 		requestAnimationFrame(() => {
 			gap = parseInt(window.getComputedStyle(slider).gap);
-			visibleWidth = slider.parentElement.clientWidth;
 		});
 		// const visibleWidth = slider.parentElement.clientWidth;
+		const visibleWidth = slider.parentElement.getBoundingClientRect().width;
 
 		if (fill) {
 			const breaks = fill.split(",");
