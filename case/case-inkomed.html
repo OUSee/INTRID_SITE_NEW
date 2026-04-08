@@ -793,34 +793,56 @@
             </div>
         </section>
 
-        <!-- corporate -->
-        <section class="landing-creation" id="case-creation">
+        <!-- feedback-form -->
+        <section>
             <div class="container">
-                <form action="submit">
-                    <div class="form-limitter">
-                        <p class="title_h3 w-fit">
-                            Вам понравился этот кейс?
-                        </p>
-                        <p class="description">
-                            Просто заполните форму ниже, и мы предложим оптимальное решение для Вашего бизнеса!
-                        </p>
-                        <input type="text" name="name" placeholder="Имя">
-                        <input type="email" name="mail" placeholder="E-mail">
-                        <input type="tel" name="phone" placeholder="* Телефон" required="">
-                        <!-- <input type="text" placeholder="URL сайта" name="url"> -->
-                        <input type="text" placeholder="География интересов" name="target">
-                        <textarea data-autosize="true" rows="1"
-                            placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
-                        <button type="submit" class="button-white">Отправить заявку</button>
-                        <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://"
-                                data-popup="privacy-policy">обработку
-                                своих персональных
-                                данных</a>
-                        </p>
+                <div class="card card--leaders wider mw-1000 ml-auto mr-auto" id="case-creation">
+                    <p class="title_h2 mb-10 text-center">
+                        Вам понравился этот кейс?
+                    </p>
+                    <p class="text-center">
+                        Просто заполните форму ниже, и мы предложим оптимальное решение для Вашего бизнеса!
+                    </p>
+                    <div class="form-cols">
+                        <form class="order-form">
+                            <div class="form-inputs">
+                                <input type="text" id="customer-name" name="customer-name" placeholder="Ваше имя">
+
+                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+
+                                <input type="tel" required id="customer-phone" name="customer-phone"
+                                    placeholder="Ваш телефон *">
+
+                                <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                                    name="list"></textarea>
+
+                                <div class="input-file">
+                                    <div class="file-drop-area">
+                                        <label>
+                                            <input type="file" multiple=""
+                                                accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                            <span>Прикрепить файл</span>
+                                            <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                        </label>
+                                        <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                        <div class="file-list" style="display: none;"></div>
+                                    </div>
+                                </div>
+
+                                <p class="testimonials mb-0">
+                                    Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
+                                        data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии с <a
+                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                        target="_blank">ФЗ&nbsp;№152</a>
+                                </p>
+
+                                <button type="submit" class="button big button-white w-100 mt-10">
+                                    Отправить
+                                </button>
+                        </form>
                     </div>
-                    <img src="../src/images/orb-with-logo.webp" alt="orb"="">
-                </form>
+                    <img src="../src/images/orb-with-logo.webp" alt="orb">
+                </div>
             </div>
         </section>
 
