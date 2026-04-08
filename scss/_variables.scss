@@ -1530,21 +1530,21 @@ ol {
 		flex-direction: column;
 	}
 
-	&-sm {
-		&-col {
-			@media (max-width: 600px) {
-				flex-direction: column;
-			}
-		}
-	}
+	// &-sm {
+	// 	&-col {
+	// 		@media (max-width: 600px) {
+	// 			flex-direction: column;
+	// 		}
+	// 	}
+	// }
 
-	&-xs {
-		&-col {
-			@media (max-width: 440px) {
-				flex-direction: column;
-			}
-		}
-	}
+	// &-xs {
+	// 	&-col {
+	// 		@media (max-width: 440px) {
+	// 			flex-direction: column;
+	// 		}
+	// 	}
+	// }
 }
 
 // flex wrapping & sizes
@@ -3767,85 +3767,85 @@ form {
 	}
 }
 
-.ai {
-	&-loader {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		aspect-ratio: 1 / 1;
-		border-radius: 50%;
-		background-color: transparent;
-		animation: loader-rotate 5s linear infinite;
-		z-index: 0;
+// .ai {
+// 	&-loader {
+// 		position: absolute;
+// 		top: 0;
+// 		left: 0;
+// 		width: 100%;
+// 		aspect-ratio: 1 / 1;
+// 		border-radius: 50%;
+// 		background-color: transparent;
+// 		animation: loader-rotate 5s linear infinite;
+// 		z-index: 0;
 
-		&-wrapper {
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 180px;
-			height: 180px;
-			font-family: "Inter", sans-serif;
-			font-size: 1.2em;
-			font-weight: 300;
-			color: white;
-			border-radius: 50%;
-			background-color: transparent;
-			user-select: none;
-		}
+// 		&-wrapper {
+// 			position: relative;
+// 			display: flex;
+// 			align-items: center;
+// 			justify-content: center;
+// 			width: 180px;
+// 			height: 180px;
+// 			font-family: "Inter", sans-serif;
+// 			font-size: 1.2em;
+// 			font-weight: 300;
+// 			color: white;
+// 			border-radius: 50%;
+// 			background-color: transparent;
+// 			user-select: none;
+// 		}
 
-		&-letter {
-			display: inline-block;
-			opacity: 0.4;
-			transform: translateY(0);
-			animation: loader-letter-anim 2s infinite;
-			z-index: 1;
-			border-radius: 50ch;
-			border: none;
+// 		&-letter {
+// 			display: inline-block;
+// 			opacity: 0.4;
+// 			transform: translateY(0);
+// 			animation: loader-letter-anim 2s infinite;
+// 			z-index: 1;
+// 			border-radius: 50ch;
+// 			border: none;
 
-			&:nth-child(1) {
-				animation-delay: 0s;
-			}
+// 			&:nth-child(1) {
+// 				animation-delay: 0s;
+// 			}
 
-			&:nth-child(2) {
-				animation-delay: 0.1s;
-			}
+// 			&:nth-child(2) {
+// 				animation-delay: 0.1s;
+// 			}
 
-			&:nth-child(3) {
-				animation-delay: 0.2s;
-			}
+// 			&:nth-child(3) {
+// 				animation-delay: 0.2s;
+// 			}
 
-			&:nth-child(4) {
-				animation-delay: 0.3s;
-			}
+// 			&:nth-child(4) {
+// 				animation-delay: 0.3s;
+// 			}
 
-			&:nth-child(5) {
-				animation-delay: 0.4s;
-			}
+// 			&:nth-child(5) {
+// 				animation-delay: 0.4s;
+// 			}
 
-			&:nth-child(6) {
-				animation-delay: 0.5s;
-			}
+// 			&:nth-child(6) {
+// 				animation-delay: 0.5s;
+// 			}
 
-			&:nth-child(7) {
-				animation-delay: 0.6s;
-			}
+// 			&:nth-child(7) {
+// 				animation-delay: 0.6s;
+// 			}
 
-			&:nth-child(8) {
-				animation-delay: 0.7s;
-			}
+// 			&:nth-child(8) {
+// 				animation-delay: 0.7s;
+// 			}
 
-			&:nth-child(9) {
-				animation-delay: 0.8s;
-			}
+// 			&:nth-child(9) {
+// 				animation-delay: 0.8s;
+// 			}
 
-			&:nth-child(10) {
-				animation-delay: 0.9s;
-			}
-		}
-	}
-}
+// 			&:nth-child(10) {
+// 				animation-delay: 0.9s;
+// 			}
+// 		}
+// 	}
+// }
 
 // tabs
 .tabs {
@@ -4387,44 +4387,44 @@ form {
 }
 
 // catalog-preview
-.catalogue-preview {
-	padding-left: 10px;
+// .catalogue-preview {
+// 	padding-left: 10px;
 
-	ul {
-		padding-left: 10px;
+// 	ul {
+// 		padding-left: 10px;
 
-		li {
-			padding-left: 6px;
-			margin-bottom: 4px;
+// 		li {
+// 			padding-left: 6px;
+// 			margin-bottom: 4px;
 
-			&.rubric {
-				&::marker {
-					content: "\2022";
-					color: var(--blue-main);
-				}
-			}
+// 			&.rubric {
+// 				&::marker {
+// 					content: "\2022";
+// 					color: var(--blue-main);
+// 				}
+// 			}
 
-			&.podrubric {
-				&::marker {
-					content: "\261b";
-					color: var(--blue-main);
-				}
-			}
+// 			&.podrubric {
+// 				&::marker {
+// 					content: "\261b";
+// 					color: var(--blue-main);
+// 				}
+// 			}
 
-			&.razdel {
-				&::marker {
-					content: "\26AC";
-					color: var(--blue-main);
-				}
-			}
+// 			&.razdel {
+// 				&::marker {
+// 					content: "\26AC";
+// 					color: var(--blue-main);
+// 				}
+// 			}
 
-			&::marker {
-				content: "\2022";
-				color: var(--color-white);
-			}
-		}
-	}
-}
+// 			&::marker {
+// 				content: "\2022";
+// 				color: var(--color-white);
+// 			}
+// 		}
+// 	}
+// }
 
 // orb & ripples
 .flying {
