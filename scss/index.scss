@@ -5693,20 +5693,25 @@ button.next {
 	}
 }
 
-// .slider {
-// 	display: flex;
-// 	flex-direction: column;
-// 	gap: 16px;
+.slider {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 
-// 	&-inner {
-// 		display: flex;
-// 		flex-direction: row;
-// 		align-items: stretch;
+	&-inner {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		gap: 10px;
 
-// 		& > * {
-// 			&.active {
-// 				opacity: 1;
-// 			}
-// 		}
-// 	}
-// }
+		& > * {
+			opacity: 0;
+
+			&.visible {
+				opacity: 1;
+			}
+		}
+	}
+}
