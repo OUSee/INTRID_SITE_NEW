@@ -572,8 +572,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => {
         const message =
           error &&
-          typeof error.message === "string" &&
-          error.message.trim() !== ""
+            typeof error.message === "string" &&
+            error.message.trim() !== ""
             ? error.message
             : defaultErrorMessage;
         showNotificationPopup(message, "error");
@@ -627,7 +627,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const sitekey =
           item.recaptchaContainer.dataset.sitekey &&
-          item.recaptchaContainer.dataset.sitekey.length > 0
+            item.recaptchaContainer.dataset.sitekey.length > 0
             ? item.recaptchaContainer.dataset.sitekey
             : defaultSiteKey;
 
@@ -735,8 +735,8 @@ document.addEventListener("DOMContentLoaded", () => {
         mapData[value].adress +
         (mapData[value]?.schedule
           ? '<span class="separator">|</span><span> ' +
-            mapData[value].schedule +
-            '</span><span class="separator">|</span>'
+          mapData[value].schedule +
+          '</span><span class="separator">|</span>'
           : '<span class="separator">|</span>');
       container.innerHTML = mapData[value].frame;
 
@@ -798,12 +798,10 @@ document.addEventListener("DOMContentLoaded", () => {
       list.style.setProperty("--list-length", items.length);
 
       items.forEach((item, index) => {
-        item.querySelector(".tech-tag").style.animation = `list-glow ${
-          items.length * interval
-        }s linear infinite`;
-        item.querySelector(".tech-tag").style.animationDelay = `${
-          index * interval
-        }s`;
+        item.querySelector(".tech-tag").style.animation = `list-glow ${items.length * interval
+          }s linear infinite`;
+        item.querySelector(".tech-tag").style.animationDelay = `${index * interval
+          }s`;
       });
     }
   });
@@ -847,7 +845,7 @@ class AdaptiveSlider {
       autoplayDelay: 3000,
       pauseOnHover: true,
       swipeThreshold: 20, // минимальное расстояние для свайпа (px)
-      transitionDuration: 200, // длительность анимации (ms)
+      transitionDuration: 300, // длительность анимации (ms)
       breakpoints: { 1200: 4, 900: 3, 600: 2, 0: 1 }, // количество слайдов на разных ширина
       slidesToShow: null, // если не заданы breakpoints, используем это число
       gap: null, // если не указано, берётся из CSS (gap)
@@ -1008,45 +1006,51 @@ class AdaptiveSlider {
    */
   goTo(index, { instant = false, triggerEvent = true } = {}) {
     if (this.isAnimating) return;
-    
+
     let targetIndex = index;
     const maxIndex = this.slides.length - this.slidesPerView;
-    
+
     if (!this.options.infinite) {
       targetIndex = Math.min(Math.max(0, targetIndex), maxIndex);
     } else {
       targetIndex = Math.min(Math.max(0, targetIndex), this.slides.length - this.slidesPerView);
     }
-    
+
     if (targetIndex === this.currentIndex && !instant) return;
-    
+
+    // Обновляем видимые слайды ДО начала анимации (на основе целевого индекса)
+    this.updateVisibleSlidesByIndex(targetIndex);
+
     const offset = targetIndex * (this.slideWidth + this.gap);
-    
     this.sliderInner.style.transition = instant ? 'none' : `transform ${this.options.transitionDuration}ms ease`;
     this.sliderInner.style.transform = `translateX(-${offset}px)`;
-    
+
     if (!instant) {
       this.isAnimating = true;
       setTimeout(() => {
         this.isAnimating = false;
-        
-        // Корректировка для бесконечного режима (остаётся без изменений)
+
+        // Корректировка для бесконечного режима
         if (this.options.infinite && this.cloneCount > 0) {
-          // ... логика перехода для бесконечного режима ...
+          // ... логика перехода для бесконечного режима (если есть) ...
+          // После коррекции индекса обновляем видимые слайды повторно
+          this.updateVisibleSlides();
+        } else {
+          this.currentIndex = targetIndex;
+          // Повторная синхронизация на случай, если что-то изменилось
+          this.updateVisibleSlides();
         }
-        
-        this.currentIndex = targetIndex;
-        this.updateVisibleSlides(); // <-- добавляем обновление активных слайдов
+
         this.updateButtonsState();
         this.updatePaginationActive();
-        
+
         if (triggerEvent && typeof this.options.onSlideChange === 'function') {
           this.options.onSlideChange(this.currentIndex, this.getRealIndex());
         }
       }, this.options.transitionDuration);
     } else {
       this.currentIndex = targetIndex;
-      this.updateVisibleSlides(); // <-- добавляем обновление активных слайдов
+      this.updateVisibleSlides(); // синхронизация (уже обновили выше, но для надёжности)
       this.updateButtonsState();
       this.updatePaginationActive();
     }
@@ -1086,13 +1090,21 @@ class AdaptiveSlider {
    * Обновление класса .visible у слайдов, видимых в данный момент
    */
   updateVisibleSlides() {
+    this.updateVisibleSlidesByIndex(this.currentIndex);
+  }
+
+  /**
+ * Обновление класса .visible у слайдов, которые будут видны при заданном индексе
+ * @param {number} index - индекс, относительно которого вычисляются видимые слайды
+ */
+  updateVisibleSlidesByIndex(index) {
     // Сбросить класс visible у всех слайдов
     this.slides.forEach(slide => slide.classList.remove('visible'));
-    
+
     // Вычислить диапазон видимых слайдов
-    const start = this.currentIndex;
+    const start = index;
     const end = Math.min(start + this.slidesPerView, this.slides.length);
-    
+
     for (let i = start; i < end; i++) {
       if (this.slides[i]) {
         this.slides[i].classList.add('visible');
@@ -1230,19 +1242,19 @@ class AdaptiveSlider {
       this.updateGap();
       this.updateSlidesPerView();
       this.setSlideWidths();
-      
+
       const maxIndex = this.slides.length - this.slidesPerView;
       let newIndex = this.currentIndex;
       if (newIndex > maxIndex) newIndex = Math.max(0, maxIndex);
       if (newIndex < 0) newIndex = 0;
-      
+
       this.goTo(newIndex, { instant: true });
       // updateActiveSlides уже вызовется внутри goTo
-      
+
       if (this.options.pagination) {
         this.setupPagination();
       }
-      
+
       if (typeof this.options.onResize === 'function') {
         this.options.onResize(this);
       }
@@ -1377,7 +1389,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (breakpointsAttr) {
       try {
         breakpoints = JSON.parse(breakpointsAttr);
-      } catch (e) {}
+      } catch (e) { }
     }
 
     new AdaptiveSlider(sliderContainer, {
