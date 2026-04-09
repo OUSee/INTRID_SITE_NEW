@@ -21,8 +21,7 @@ $tab-main-count: 3;
   font-family: "INTRID_ICONS";
   src: url("../src/fonts/icons/fonts/INTRID_ICONS.eot");
   src:
-    url("../src/fonts/icons/fonts/INTRID_ICONS.eot?#iefix")
-      format("embedded-opentype"),
+    url("../src/fonts/icons/fonts/INTRID_ICONS.eot?#iefix") format("embedded-opentype"),
     url("../src/fonts/icons/fonts/INTRID_ICONS.woff") format("woff"),
     url("../src/fonts/icons/fonts/INTRID_ICONS.ttf") format("truetype"),
     url("../src/fonts/icons/fonts/INTRID_ICONS.svg#INTRID_ICONS") format("svg");
@@ -133,257 +132,6 @@ $tab-main-count: 3;
 
     &.active {
       opacity: 1 !important;
-    }
-  }
-
-  &#reviews-slider {
-    width: 100%;
-
-    @media (max-width: 600px) {
-      padding: 0 12px;
-    }
-
-    & > * {
-      flex: 1 0 auto;
-      max-width: 100%;
-      min-width: 100%;
-      width: 100%;
-      opacity: 0;
-
-      &:not(.active) {
-        pointer-events: none;
-      }
-    }
-  }
-
-  &#office-slider,
-  &#testimonials-slider {
-    width: 100%;
-
-    @media (max-width: 600px) {
-      padding: 0 12px;
-    }
-
-    & > * {
-      flex: 1 1 0%;
-      min-width: calc(33.333333% - 24px);
-      width: 100%;
-      opacity: 0;
-
-      @media (max-width: 1000px) {
-        min-width: calc(50% - 16px);
-      }
-
-      @media (max-width: 900px) {
-        min-width: calc(50% - 6px);
-      }
-
-      @media (max-width: 600px) {
-        flex: 1 0 auto;
-        max-width: 100%;
-        min-width: 100%;
-      }
-
-      &:not(.active) {
-        pointer-events: none;
-      }
-    }
-  }
-
-  &#our-team {
-    @media (max-width: 600px) {
-      padding: 0 12px;
-    }
-
-    & > * {
-      flex: 1 0 calc(25% - 4px);
-      max-width: calc(25% - 4px);
-
-      @media (max-width: 1200px) {
-        flex: 1 0 calc(33.333333% - 2px);
-        max-width: calc(33.333333% - 2px);
-      }
-
-      @media (max-width: 1000px) {
-        flex: 1 0 calc(50% - 2px);
-        max-width: calc(50% - 2px);
-      }
-
-      @media (max-width: 600px) {
-        flex: 1 0 auto;
-        max-width: 100%;
-        min-width: 100% !important;
-      }
-    }
-  }
-
-  // &#site-slider,
-  // &#brand-slider,
-  // &#promotion-slider,
-  &#group-slider {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  &#tenders-keys-slider,
-  &#support-slider {
-    & > * {
-      opacity: 0;
-
-      &.active {
-        opacity: 1;
-      }
-    }
-  }
-
-  &#site-slider,
-  &#portfolio-slider,
-  &#portfolio-slider-2,
-  &#design-portfolio-slider,
-  &#ui-portfolio-slider,
-  &#portfolio-web-slider,
-  &#portfolio-corporate-slider,
-  &#portfolio-shop-slider,
-  &#noncommercial-slider {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 4px;
-    width: 100%;
-
-    @media (max-width: 600px) {
-      padding: 0 12px;
-    }
-
-    & > * {
-      flex: 1 1 0%;
-      // min-width: calc(25% - 4px);
-      min-width: calc(33.333333% - 2px);
-      width: 100%;
-      opacity: 0;
-
-      @media (max-width: 1200px) {
-        // min-width: calc(33.333333% - 2px);
-        min-width: calc(50% - 2px);
-      }
-
-      // @media (max-width: 1000px) {
-      // 	min-width: calc(50% - 2px);
-      // }
-
-      @media (max-width: 720px) {
-        flex: 1 0 auto;
-        max-width: 100%;
-        min-width: 100% !important;
-      }
-
-      &:not(.active) {
-        pointer-events: none;
-      }
-
-      &:first-child {
-        border-radius: 30px 0 0 30px;
-      }
-
-      &:not(:first-child, :last-child) {
-        border-radius: 0;
-      }
-
-      &:last-child {
-        border-radius: 0 30px 30px 0;
-      }
-    }
-  }
-
-  &#logo-slider,
-  &#brand-slider,
-  &#awards-slider {
-    & > * {
-      flex: 1 1 0%;
-      min-width: calc(25% - 6px);
-      width: 100%;
-      opacity: 0;
-
-      @media (max-width: 1200px) {
-        min-width: calc(33.333333% - 6px);
-      }
-
-      @media (max-width: 900px) {
-        min-width: calc(50% - 4px);
-      }
-
-      @media (max-width: 440px) {
-        flex: 1 0 auto;
-        max-width: 100%;
-        min-width: 100% !important;
-      }
-
-      &:not(.active) {
-        pointer-events: none;
-      }
-
-      &:first-child {
-        border-radius: 30px 0 0 30px;
-      }
-
-      &:not(:first-child, :last-child) {
-        border-radius: 0;
-      }
-
-      &:last-child {
-        border-radius: 0 30px 30px 0;
-      }
-    }
-  }
-
-  &#promotion-slider,
-  &#group-slider {
-    margin-top: 0;
-
-    & > * {
-      flex: 1 1 calc(25% - 4px);
-      min-width: calc(25% - 4px);
-
-      @media (max-width: 1200px) {
-        flex: 0 0 calc(33.333333% - 4px);
-        opacity: 0;
-      }
-
-      @media (max-width: 1000px) {
-        flex: 1 0 calc(50% - 4px);
-        min-width: calc(50% - 4px);
-      }
-
-      @media (max-width: 600px) {
-        flex: 1 1 0%;
-        min-width: 100% !important;
-      }
-
-      @media (min-width: 1000px) and (max-width: 1440px) {
-        padding: 24px 12px;
-      }
-
-      @media (min-width: 600px) and (max-width: 700px) {
-        padding: 24px 12px;
-      }
-
-      & .card-header {
-        & > div {
-          & > a {
-            white-space: nowrap;
-          }
-        }
-      }
-
-      & .card-body {
-        & > div {
-          & > b {
-            font-size: 20px;
-          }
-        }
-      }
     }
   }
 }
@@ -735,18 +483,7 @@ i {
       content: "";
       display: inline-block;
       background-color: #fdf41f;
-      clip-path: polygon(
-        50% 0%,
-        61% 35%,
-        98% 35%,
-        68% 57%,
-        79% 91%,
-        50% 70%,
-        21% 91%,
-        32% 57%,
-        2% 35%,
-        39% 35%
-      );
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
 
     &-4 {
@@ -763,18 +500,7 @@ i {
             rgb(147, 147, 147) 40%,
             rgb(147, 147, 147) 100%
           );
-          clip-path: polygon(
-            50% 0%,
-            61% 35%,
-            98% 35%,
-            68% 57%,
-            79% 91%,
-            50% 70%,
-            21% 91%,
-            32% 57%,
-            2% 35%,
-            39% 35%
-          );
+          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
       }
 
@@ -791,18 +517,7 @@ i {
             rgb(147, 147, 147) 70%,
             rgb(147, 147, 147) 100%
           );
-          clip-path: polygon(
-            50% 0%,
-            61% 35%,
-            98% 35%,
-            68% 57%,
-            79% 91%,
-            50% 70%,
-            21% 91%,
-            32% 57%,
-            2% 35%,
-            39% 35%
-          );
+          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
       }
     }
@@ -3248,12 +2963,7 @@ ol {
   }
 
   &-icms {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.09) 15%,
-      rgba(10, 10, 10, 0) 30%
-    );
+    background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.09) 15%, rgba(10, 10, 10, 0) 30%);
 
     &--lighten {
       mix-blend-mode: lighten;
@@ -3266,13 +2976,7 @@ ol {
         z-index: -1;
         width: 100%;
         height: 100%;
-        mask-image: linear-gradient(
-          to bottom,
-          transparent 0%,
-          black 10%,
-          black 90%,
-          transparent 100%
-        );
+        mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
         background-image: url("../src/images/planet-site-bg.webp");
         background-position: bottom;
         background-repeat: no-repeat;
@@ -3322,13 +3026,7 @@ ol {
 
     &::before {
       left: 0;
-      mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        black 10%,
-        black 90%,
-        transparent 100%
-      );
+      mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
       transform: translate(0, -50%);
     }
 
@@ -3658,14 +3356,13 @@ form {
   }
 
   &-navigation {
-	&.isCentered {
-
+    &.isCentered {
       & .prev-button,
       & .next-button {
         position: absolute;
         top: calc(50% + 20px);
         z-index: 1;
-		@include pagination-btn;
+        @include pagination-btn;
         transform: translateY(calc(-1 * 50% - 20px));
       }
 
@@ -6193,7 +5890,10 @@ button:hover,
       flex-wrap: nowrap;
       gap: 24px;
       width: 100%;
-      flex: 1;
+
+      @media (min-width: 1000px) {
+        flex: 1;
+      }
 
       @media (max-width: 600px) {
         flex-direction: column-reverse;
@@ -6815,15 +6515,7 @@ button:hover,
       width: 32px;
       height: 24px;
       background-color: var(--blue-main);
-      clip-path: polygon(
-        0 40%,
-        75% 40%,
-        100% 20%,
-        100% 50%,
-        100% 80%,
-        75% 60%,
-        0 60%
-      );
+      clip-path: polygon(0 40%, 75% 40%, 100% 20%, 100% 50%, 100% 80%, 75% 60%, 0 60%);
       transform: translate(100%, -50%);
     }
 

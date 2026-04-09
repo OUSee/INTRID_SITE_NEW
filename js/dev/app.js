@@ -1129,11 +1129,15 @@ class AdaptiveSlider {
 
     if (!this.options.infinite) {
       const maxIndex = this.slides.length - this.slidesPerView;
-      prevBtn.style.display = this.currentIndex <= 0 ? "none" : "";
-      nextBtn.style.display = this.currentIndex >= maxIndex ? "none" : "";
+      prevBtn.style.opacity = this.currentIndex <= 0 ? "0" : "";
+      nextBtn.style.opacity = this.currentIndex >= maxIndex ? "0" : "";
+      prevBtn.style.visibility = this.currentIndex <= 0 ? "hidden" : "";
+      nextBtn.style.visibility = this.currentIndex >= maxIndex ? "hidden" : "";
     } else {
-      prevBtn.style.display = "";
-      nextBtn.style.display = "";
+      prevBtn.style.opacity = "";
+      nextBtn.style.opacity = "";
+      prevBtn.style.visibility = "";
+      nextBtn.style.visibility = "";
     }
   }
 
@@ -1401,6 +1405,16 @@ document.addEventListener("DOMContentLoaded", () => {
       nextButton: sliderContainer.dataset.nextButton || ".next",
       pauseOnHover: true,
     });
+
+    if (sliderContainer.dataset.slider === 'cases-slider-1') {
+      let casesSlider = new AdaptiveSlider(sliderContainer, {
+        breakpoints
+      });
+
+      if (window.innerWidth >= 1000) {
+        casesSlider.destroy();
+      }
+    }
   });
 });
 
