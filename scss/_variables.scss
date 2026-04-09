@@ -3335,48 +3335,6 @@ form {
   }
 }
 
-.slider {
-  &-pagination {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-
-    & .pagination {
-      &-dot {
-        @include pagination-btn;
-
-        &.active {
-          border-color: var(--blue-main);
-          background-color: var(--blue-main);
-        }
-      }
-    }
-  }
-
-  &-navigation {
-    &.isCentered {
-      & .prev-button,
-      & .next-button {
-        position: absolute;
-        top: calc(50% + 20px);
-        z-index: 1;
-        @include pagination-btn;
-        transform: translateY(calc(-1 * 50% - 20px));
-      }
-
-      & .prev-button {
-        left: 0;
-      }
-
-      & .next-button {
-        right: 0;
-      }
-    }
-  }
-}
-
 // contact-block
 .contact-block {
   display: flex;
@@ -5007,6 +4965,101 @@ button:hover,
     text-decoration-thickness: 1px;
     text-decoration-style: dashed;
     color: var(--color-white);
+  }
+}
+
+// slider
+.slider {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 10px;
+
+    & > * {
+      opacity: 0;
+
+      &.visible {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-pagination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    & .pagination {
+      &-dot {
+        @include pagination-btn;
+        --button-size: 5px;
+
+        &.active {
+          border-color: var(--blue-main);
+          background-color: var(--blue-main);
+        }
+      }
+    }
+  }
+
+  &-navigation {
+    &.isCentered {
+      & .prev-button,
+      & .next-button {
+        position: absolute;
+        top: calc(50% + (var(--button-size) / 2));
+        z-index: 1;
+        @include pagination-btn;
+        transform: translateY(calc(-1 * 50% - (var(--button-size) / 2)));
+      }
+
+      & .prev-button {
+        left: calc(-1 * (var(--button-size) / 2));
+      }
+
+      & .next-button {
+        right: calc(-1 * (var(--button-size) / 2));
+      }
+
+      &.outside {
+        & .prev-button {
+          left: calc(-1 * var(--button-size));
+
+          @media (max-width: 600px) {
+            left: calc(-1 * (var(--button-size) / 2));
+          }
+
+          @media (max-width: 440px) {
+            left: calc(-1 * (var(--button-size) / 4));
+          }
+        }
+
+        & .next-button {
+          right: calc(-1 * var(--button-size));
+
+          @media (max-width: 600px) {
+            right: calc(-1 * (var(--button-size) / 2));
+          }
+
+          @media (max-width: 440px) {
+            right: calc(-1 * (var(--button-size) / 4));
+          }
+        }
+      }
+    }
+  }
+
+  &[data-slider] {
+    touch-action: pan-y;
   }
 }
 

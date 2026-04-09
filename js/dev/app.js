@@ -1222,6 +1222,7 @@ class AdaptiveSlider {
       });
       container.appendChild(dot);
     }
+    container.style.visibility = dotsCount <= 1 ? 'hidden' : '';
     this.paginationDots = Array.from(container.children);
     this.updatePaginationActive();
   }
