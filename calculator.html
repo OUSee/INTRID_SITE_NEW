@@ -2585,24 +2585,33 @@
                                             <div class="total-content">
                                                 <div class="total-body">
                                                     <!-- Форма получения проекта сайта -->
-                                                    <form class="order-form" action="submit">
-                                                        <input type="text" id="calculator-form-name"
-                                                            name="calculator-form-name" placeholder="Ваше имя">
+                                                    <form action="/submit/calc" method="POST"
+                                                        class="order-form ajax-form" id="quick-form">
+                                                        <div class="recaptcha-wrapper" style="display: none;">
+                                                            <div class="js-recaptcha"
+                                                                data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                                                data-size="invisible"></div>
+                                                            <input type="hidden" name="g-recaptcha-response"
+                                                                class="js-recaptcha-token">
+                                                        </div>
 
-                                                        <input type="email" id="calculator-form-mail" name="mail"
+                                                        <input type="text" id="calculator-form-name" name="name"
+                                                            placeholder="Ваше имя">
+
+                                                        <input type="email" id="calculator-form-mail" name="email"
                                                             placeholder="E-mail">
 
                                                         <input type="tel" required="" id="calculator-form-phone"
-                                                            name="calculator-form-phone" placeholder="Ваш телефон *">
+                                                            name="tel" placeholder="Ваш телефон *">
 
                                                         <textarea data-autosize="true" rows="2"
                                                             id="calculator-form-comment" placeholder="Комментарий"
-                                                            name="list" style="min-height:73px;"></textarea>
+                                                            name="mess" style="min-height:73px;"></textarea>
 
                                                         <div class="input-file">
                                                             <div class="file-drop-area">
                                                                 <label>
-                                                                    <input type="file" multiple=""
+                                                                    <input type="file" multiple="" name="file[]"
                                                                         accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
                                                                     <span>Прикрепить ТЗ</span>
                                                                     <img src="/src/icons/pin.svg" alt="Прикрепить ТЗ">
