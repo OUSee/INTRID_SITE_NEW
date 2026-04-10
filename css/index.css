@@ -7066,7 +7066,11 @@ button:hover svg,
   flex-wrap: nowrap;
   gap: 24px;
   width: 100%;
-  flex: 1;
+}
+@media (min-width: 1000px) {
+  .card--keys > .card-header {
+    flex: 1;
+  }
 }
 @media (max-width: 600px) {
   .card--keys > .card-header {
@@ -12346,7 +12350,8 @@ button.next:hover {
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button img {
   width: 100px;
-  height: auto;
+  height: 60px;
+  object-fit: contain;
 }
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button p,
 .clients-cases .blocks .cases-tabs .cases-buttons .case-tab-button span.text-unbreakable {
