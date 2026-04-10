@@ -3011,7 +3011,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				document.querySelectorAll(".accordion-item");
 			allAccordionItems.forEach((item) => {
 				if (item.id === "site-types") return;
-				item.classList.add("deactive");
+				// item.classList.add("deactive");
 				const sectionCheckbox = item.querySelector(
 					'input[type="checkbox"][id^="section-"]',
 				);
@@ -3195,7 +3195,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			if (tenderAccordion) {
 				tenderAccordion.classList.add("hidden");
-				tenderAccordion.classList.add("deactive");
+				// tenderAccordion.classList.add("deactive");
 			}
 		};
 
@@ -3501,7 +3501,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			showAllAccordions();
 			if (tenderAccordion) {
 				tenderAccordion.classList.add("hidden");
-				tenderAccordion.classList.add("deactive");
+				// tenderAccordion.classList.add("deactive");
 			}
 
 			selectedToggle.elementref.checked = true;
