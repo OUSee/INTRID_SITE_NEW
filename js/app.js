@@ -3843,7 +3843,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				"type-store",
 				"type-store_ai",
 				"type-portal",
-				"tenders_toggle",
+				// "tenders_toggle",
 				"type-unique",
 			];
 
