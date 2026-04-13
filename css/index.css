@@ -9115,7 +9115,7 @@ button:hover svg,
   transform-origin: top center;
 }
 
-.wr-cookie-cookie-bar {
+.cookie-banner {
   position: fixed;
   bottom: 20px;
   left: 50%;
@@ -9130,7 +9130,7 @@ button:hover svg,
   overflow: hidden;
   transform: translate3d(-50%, 0, 1px);
 }
-.wr-cookie-cookie-bar::before {
+.cookie-banner::before {
   content: "";
   position: absolute;
   top: 10%;
@@ -9143,16 +9143,20 @@ button:hover svg,
   box-shadow: 0px 0px 70px 60px rgba(0, 234, 255, 0.1921568627), inset 0px 0px 70px 2px rgba(0, 234, 255, 0.1921568627);
   transform: translate(-50%, 0%);
 }
-.wr-cookie-message {
+.cookie-banner p {
   margin-bottom: 16px;
   padding-right: 40px;
 }
-.wr-cookie-message a {
+.cookie-banner a {
   color: #00eaff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  text-decoration-skip-ink: none;
 }
-.wr-cookie-close-cb {
+.cookie-banner #cookie-close {
   position: absolute !important;
-  top: 8px;
+  top: 12px;
   right: 16px;
   z-index: 1;
   display: flex;
@@ -9161,12 +9165,19 @@ button:hover svg,
   width: 30px;
   height: 30px;
   padding: 0;
+  border: 0;
+  border-radius: 100%;
+  background-color: transparent;
   color: #00eaff;
   text-align: center;
   cursor: pointer;
   transform: translate(0, 0);
 }
-.wr-cookie-close-cb::before {
+.cookie-banner #cookie-close:hover {
+  background-color: #00eaff;
+  color: #0a0a0a;
+}
+.cookie-banner #cookie-close::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -9177,7 +9188,7 @@ button:hover svg,
   transform-origin: center;
   transform: translate(-50%, -50%) rotate(45deg);
 }
-.wr-cookie-close-cb::after {
+.cookie-banner #cookie-close::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -9188,12 +9199,13 @@ button:hover svg,
   transform-origin: center;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
-.wr-agree-close-cb {
+.cookie-banner #cookie-agree {
   display: block;
   width: 100%;
   padding: 8px 12px;
   border-radius: 1000px;
   background: #00eaff;
+  border: 1px solid #00eaff;
   color: #06272a;
   font-weight: 500;
   font-size: 16px;

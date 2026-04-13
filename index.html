@@ -2822,7 +2822,7 @@
             };
 
             const removeBanner = () => {
-                const banner = document.querySelector('.wr-cookie-cookie-bar');
+                const banner = document.querySelector('.cookie-banner');
                 if (banner) banner.remove();
             };
 
@@ -2835,11 +2835,11 @@
                     return;
                 }
 
-                const banner = document.querySelector('.wr-cookie-cookie-bar');
+                const banner = document.querySelector('.cookie-banner');
                 if (!banner) return;
 
-                const agreeBtn = banner.querySelector('.wr-agree-close-cb');
-                const closeBtn = banner.querySelector('.wr-cookie-close-cb');
+                const agreeBtn = banner.querySelector('#cookie-agree');
+                const closeBtn = banner.querySelector('#cookie-close');
 
                 // Обработчик согласия
                 const onAgree = () => {
@@ -2858,13 +2858,13 @@
         })();
     </script>
 
-    <div class="wr-cookie-cookie-bar">
-        <div class="wr-cookie-message">
+    <div class="cookie-banner">
+        <p>
             <span>Мы используем файлы cookie для вашего удобства пользования сайтом.</span>
-            <a class="wr-cookie-message-a" href="/polytic" target="_blank">Подробнее</a>
-        </div>
-        <div class="wr-agree-close-cb">Согласен</div>
-        <span class="wr-cookie-close-cb"></span>
+            <a href="/polytic" target="_blank">Подробнее</a>
+        </p>
+        <button type="button" id="cookie-agree">Согласен</button>
+        <button type="button" id="cookie-close"></button>
     </div>
 
     <script src="./js/app.js"></script>
