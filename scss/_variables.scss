@@ -8398,3 +8398,113 @@ button:hover,
 // 	animation: lightSpeedOutLeft 0.6s ease forwards;
 // 	transform-origin: top center;
 // }
+
+// intrid cookie-banner
+.wr {
+	&-cookie {
+		&-cookie {
+			&-bar {
+				position: fixed;
+				bottom: 20px;
+				left: 50%;
+				z-index: 5;
+				max-width: 360px;
+				width: 100%;
+				height: fit-content;
+				padding: 16px;
+				background-color: #0a0a0a;
+				color: #ffffff;
+				border-radius: 30px;
+				overflow: hidden;
+				transform: translate3d(-50%, 0, 1px);
+
+				&::before {
+					content: "";
+					position: absolute;
+					top: 10%;
+					left: 50%;
+					z-index: -1;
+					width: 0;
+					height: 0;
+					border-radius: 100%;
+					aspect-ratio: 1 / 1;
+					box-shadow:
+						0px 0px 70px 60px #00eaff31,
+						inset 0px 0px 70px 2px #00eaff31;
+					transform: translate(-50%, 0%);
+				}
+			}
+		}
+
+		&-message {
+			margin-bottom: 16px;
+			padding-right: 40px;
+
+			& a {
+				color: #00eaff;
+			}
+		}
+
+		&-close {
+			&-cb {
+				position: absolute !important;
+				top: 8px;
+				right: 16px;
+				z-index: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 30px;
+				height: 30px;
+				padding: 0;
+				color: #00eaff;
+				text-align: center;
+				cursor: pointer;
+				transform: translate(0, 0);
+
+				&::before {
+					content: "";
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 2px;
+					height: 20px;
+					background-color: currentColor;
+					transform-origin: center;
+					transform: translate(-50%, -50%) rotate(45deg);
+				}
+
+				&::after {
+					content: "";
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 2px;
+					height: 20px;
+					background-color: currentColor;
+					transform-origin: center;
+					transform: translate(-50%, -50%) rotate(-45deg);
+				}
+			}
+		}
+	}
+
+	&-agree {
+		&-close {
+			&-cb {
+				display: block;
+				width: 100%;
+				padding: 8px 12px;
+				border-radius: 1000px;
+				background: #00eaff;
+				color: #06272a;
+				font-weight: 500;
+				font-size: 16px;
+				line-height: 135%;
+				text-align: center;
+				text-transform: uppercase;
+				cursor: pointer;
+			}
+		}
+	}
+}

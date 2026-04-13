@@ -2806,6 +2806,67 @@
             </div>
         </div>
     </dialog>
+
+    <script>
+        (() => {
+            const getCookie = (name) => {
+                const match = document.cookie.match(
+                    new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
+                );
+                return match ? decodeURIComponent(match[1]) : undefined;
+            };
+
+            const setCookie = (name, value) => {
+                const expires = new Date(9999, 0, 1).toUTCString();
+                document.cookie = `${name}=${encodeURIComponent(value)}; path=/; expires=${expires}; SameSite=Lax`;
+            };
+
+            const removeBanner = () => {
+                const banner = document.querySelector('.wr-cookie-cookie-bar');
+                if (banner) banner.remove();
+            };
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const accepted = getCookie('OAuth_cookie_privacy_policy_new');
+                const hidden = getCookie('OAuth_cookie_privacy_policy_hidden');
+
+                if (accepted || hidden) {
+                    removeBanner();
+                    return;
+                }
+
+                const banner = document.querySelector('.wr-cookie-cookie-bar');
+                if (!banner) return;
+
+                const agreeBtn = banner.querySelector('.wr-agree-close-cb');
+                const closeBtn = banner.querySelector('.wr-cookie-close-cb');
+
+                // Обработчик согласия
+                const onAgree = () => {
+                    setCookie('OAuth_cookie_privacy_policy_new', 'accepted');
+                    removeBanner();
+                };
+
+                const onClose = () => {
+                    setCookie('OAuth_cookie_privacy_policy_hidden', 'hidden');
+                    removeBanner();
+                };
+
+                if (agreeBtn) agreeBtn.addEventListener('click', onAgree);
+                if (closeBtn) closeBtn.addEventListener('click', onClose);
+            });
+        })();
+    </script>
+
+    <div class="wr-cookie-cookie-bar">
+        <div class="wr-cookie-message">
+            <span>Мы используем файлы cookie для вашего удобства пользования сайтом.</span>
+            <a class="wr-cookie-message-a" href="/polytic" target="_blank">Подробнее</a>
+        </div>
+        <div class="wr-agree-close-cb">Согласен</div>
+        <span class="wr-cookie-close-cb"></span>
+    </div>
+
     <script src="./js/app.js"></script>
 </body>
 
