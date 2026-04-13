@@ -2822,24 +2822,22 @@
             };
 
             const removeBanner = () => {
-                const banner = document.querySelector('.cookie-banner');
+                const banner = document.querySelector('.cookies');
                 if (banner) banner.remove();
             };
 
             document.addEventListener('DOMContentLoaded', () => {
                 const accepted = getCookie('OAuth_cookie_privacy_policy_new');
-                const hidden = getCookie('OAuth_cookie_privacy_policy_hidden');
 
-                if (accepted || hidden) {
+                if (accepted) {
                     removeBanner();
                     return;
                 }
 
-                const banner = document.querySelector('.cookie-banner');
+                const banner = document.querySelector('.cookies');
                 if (!banner) return;
 
-                const agreeBtn = banner.querySelector('#cookie-agree');
-                const closeBtn = banner.querySelector('#cookie-close');
+                const agreeBtns = banner.querySelectorAll('.close_cookies, .cookies_button');
 
                 // Обработчик согласия
                 const onAgree = () => {
@@ -2847,24 +2845,20 @@
                     removeBanner();
                 };
 
-                const onClose = () => {
-                    setCookie('OAuth_cookie_privacy_policy_hidden', 'hidden');
-                    removeBanner();
-                };
-
-                if (agreeBtn) agreeBtn.addEventListener('click', onAgree);
-                if (closeBtn) closeBtn.addEventListener('click', onClose);
+                if (agreeBtns) {
+                    agreeBtns.forEach((btn) => {
+                        btn.addEventListener('click', onAgree)
+                    });
+                }
             });
         })();
     </script>
 
-    <div class="cookie-banner">
-        <p>
-            <span>Мы используем файлы cookie для вашего удобства пользования сайтом.</span>
-            <a href="/polytic" target="_blank">Подробнее</a>
-        </p>
-        <button type="button" id="cookie-agree">Согласен</button>
-        <button type="button" id="cookie-close"></button>
+    <div class="cookies">
+        <span>Мы используем файлы cookie для вашего удобства.
+            <a href="/polytic" target="_blank">Подробнее</a></span>
+        <div class="close_cookies" title="Согласен, закрыть">&#10005;</div>
+        <button class="cookies_button">ПОНЯТНО</button>
     </div>
 
     <script src="./js/app.js"></script>
