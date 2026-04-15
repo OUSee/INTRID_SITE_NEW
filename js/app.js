@@ -2236,7 +2236,7 @@ window.textarea_autosize = {
 	resize: function (elem) {
 		if (elem) {
 			elem.style.height = "auto";
-			elem.style.minHeight = 50 + "px";
+			elem.style.minHeight = (elem.getAttribute('rows') ? (elem.getAttribute('rows') * 50 / 1.25) : 50) + "px";
 			elem.style.height = elem.scrollHeight + 2 + "px";
 
 			if (elem.getAttribute("data-autosize") !== "true") {
