@@ -89,7 +89,7 @@
 
 	&::-webkit-scrollbar {
 		width: 8px;
-		height: 6px;
+		height: 4px;
 	}
 
 	&::-webkit-scrollbar-track {
@@ -111,7 +111,7 @@
 
 	&::-webkit-scrollbar {
 		width: 8px;
-		height: 6px;
+		height: 4px;
 	}
 
 	&::-webkit-scrollbar-track {
@@ -128,7 +128,7 @@
 @mixin webkit_scrollbar_seo {
 	&::-webkit-scrollbar {
 		width: 10px;
-		padding-right: 6px;
+		padding-right: 4px;
 		background-color: transparent;
 	}
 
@@ -141,8 +141,8 @@
 	}
 
 	&::-webkit-scrollbar-thumb {
-		width: 5px;
-		border-radius: 5px;
+		width: 4px;
+		border-radius: 4px;
 		border: 1px solid transparent;
 		background-color: var(--color-white);
 		background-clip: content-box;
@@ -154,7 +154,7 @@
 	min-height: unset;
 	max-height: unset;
 	height: unset;
-	border-radius: 25px;
+	border-radius: 24px;
 	margin: 0;
 	aspect-ratio: 16 / 9;
 	background-size: cover;
@@ -164,7 +164,7 @@
 	& .play-video-button {
 		width: 100%;
 		height: 100%;
-		border-radius: 25px;
+		border-radius: 24px;
 		background-size: cover;
 		animation: unset;
 	}
@@ -182,12 +182,10 @@
 }
 
 @mixin blogContainer {
-	// max-width: 1440px;
 	max-width: 1170px;
 	margin: 0 auto;
 
 	@media (max-width: 1500px) {
-		// max-width: 100%;
 		margin: 0 auto;
 	}
 
@@ -363,7 +361,6 @@
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
-	// max-width: 100%;
 
 	@media (max-width: 1500px) {
 		max-width: 100%;
@@ -391,10 +388,7 @@
 	margin-bottom: -1px;
 	padding: 16px;
 	background-color: var(--blue-bg);
-	// border-top: 2px solid var(--bg-main);
 	border-top: 2px solid var(--blue-clouds);
-	// border-left: 1px solid transparent;
-	// border-right: 1px solid transparent;
 	border-bottom: 1px solid var(--blue-main);
 	border-top-left-radius: 16px;
 	border-top-right-radius: 16px;
@@ -406,12 +400,9 @@
 	@media (max-width: 1000px) {
 		flex-direction: column;
 		align-items: center;
-		// justify-content: center;
 		gap: 8px;
 		max-height: unset;
 		padding: 8px 4px;
-		// background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-		// border-color: transparent;
 		border-radius: 16px 16px 0 0;
 		text-align: center;
 		transform-origin: center;
@@ -420,7 +411,6 @@
 	@media (max-width: 600px) {
 		gap: 4px;
 		padding: 4px;
-		// background: transparent;
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
 		transform-origin: bottom center;
@@ -430,17 +420,6 @@
 		@media (min-width: 1000px) {
 			background: color-mix(in srgb, var(--blue-main) 15%, transparent);
 		}
-
-		// @media (max-width: 1000px) {
-		// color: var(--color-white);
-		// background: color-mix(in srgb, var(--bg-main) 70%, transparent);
-		//   transform: scale(1.125);
-		// }
-
-		// @media (max-width: 600px) {
-		// border-color: transparent;
-		// transform: none;
-		// }
 
 		& img {
 			@media (max-width: 1000px) {
@@ -490,20 +469,12 @@
 	&:has(:checked),
 	&.active {
 		border-top-color: var(--blue-main);
-		// border-left-color: var(--blue-main);
-		// border-right-color: var(--blue-main);
 		border-bottom-color: var(--bg-main);
 
 		@media (max-width: 1000px) {
-			// box-shadow: 0px 0px 15px var(--blue-main);
 			color: var(--blue-main);
 			background-color: var(--bg-main);
-			// background: color-mix(in srgb, var(--bg-main) 70%, transparent);
 		}
-
-		// @media (max-width: 600px) {
-		// 	box-shadow: unset;
-		// }
 
 		& img {
 			filter: invert(1) grayscale(1) brightness(0);
@@ -624,7 +595,6 @@
 		content: "\64";
 		color: var(--blue-main);
 		transition: all 0.3s ease-in-out;
-		// animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 
 		@media (min-width: 1420px) {
 			top: 52px;
@@ -771,7 +741,7 @@
 
 	@media (max-width: 900px) {
 		flex-basis: unset;
-		margin: 0 10px;
+		margin: 0 12px;
 		padding: 12px 20px;
 		border-radius: 100px 100px;
 		border-top-width: 2px;
@@ -1012,7 +982,6 @@
 	border-top: 2px solid;
 	border-color: var(--bg-main);
 	border-bottom-color: var(--blue-main);
-	// border-bottom: 0;
 	border-top-left-radius: 16px;
 	border-top-right-radius: 16px;
 	overflow: hidden;
@@ -1044,7 +1013,6 @@
 		}
 
 		@media (max-width: 600px) {
-			// border-color: transparent;
 			transform: none;
 		}
 	}
@@ -1080,21 +1048,15 @@
 	&:has(:checked),
 	&.active {
 		@media (max-width: 1000px) {
-			// box-shadow: 0px 0px 15px var(--bg-main);
 			color: var(--bg-main);
 			background: var(--blue-main);
 		}
-
-		// @media (max-width: 600px) {
-		// 	box-shadow: unset;
-		// }
 
 		& img {
 			filter: invert(1) grayscale(1) brightness(0);
 		}
 
 		@media (min-width: 1000px) {
-			// border-color: var(--bg-main);
 			color: var(--bg-main);
 			background: var(--blue-main);
 		}
@@ -1174,10 +1136,6 @@
 			text-wrap: balance;
 			font-size: 13px !important;
 		}
-
-		@media (max-width: 600px) {
-			// font-size: 10px !important;
-		}
 	}
 
 	&:has(:checked),
@@ -1229,7 +1187,6 @@
 	background: rgba(8, 37, 60, 0.35);
 	border: 1px solid rgba(255, 255, 255, 0.25);
 	outline-offset: 4px;
-
 	text-decoration: none !important;
 
 	&:hover {
@@ -1291,7 +1248,7 @@
 			display: flex;
 			flex-direction: column;
 			width: 100%;
-			margin-bottom: 10px;
+			margin-bottom: 12px;
 			background-color: var(--blue-bg);
 			border-radius: 32px;
 			transition: all 0.3s ease-in-out;
@@ -1332,7 +1289,7 @@
 			width: 100%;
 			padding: 16px 32px;
 			background-color: var(--blue-clouds);
-			border-radius: 30px;
+			border-radius: 32px;
 			color: var(--color-white);
 			cursor: pointer;
 			transition: 0.25s ease-in-out;
@@ -1400,23 +1357,6 @@
 			input,
 			textarea {
 				@include input;
-				// // width: 100%;
-				// padding: 12px;
-				// background-color: transparent;
-				// // padding: 15px 30px;
-				// border-radius: 25px;
-				// border: 1px solid var(--color-white);
-				// resize: none;
-				// overflow: hidden;
-
-				// &:focus {
-				// 	border: 1px dashed var(--color-white);
-				// 	outline: none;
-				// }
-
-				// &::placeholder {
-				// 	color: var(--color-grey);
-				// }
 			}
 		}
 
@@ -1447,7 +1387,7 @@
 }
 
 @mixin accordion-help {
-	border-radius: 30px;
+	border-radius: 32px;
 	overflow: hidden;
 
 	&-item {
@@ -1706,7 +1646,7 @@
 		height: unset;
 		border: 1px solid var(--blue-bg);
 		background-color: var(--bg-main);
-		border-radius: 39px;
+		border-radius: 36px;
 		padding: 32px;
 		overflow: hidden;
 		transition: all 0.3s ease-in-out;
