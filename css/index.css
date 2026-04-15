@@ -1792,6 +1792,61 @@ ol li > ol {
 .list.bigger li {
   margin-bottom: 1em;
 }
+.list--leads {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+.list--leads li {
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--blue-bg);
+}
+.list--leads li::marker {
+  font-weight: 600;
+  font-size: 24px;
+}
+@media (max-width: 1000px) {
+  .list--leads li::marker {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .list--leads li::marker {
+    font-size: 16px;
+  }
+}
+.list--leads li::marker {
+  color: var(--blue-main);
+}
+.list--leads li:last-child {
+  border-bottom: none;
+  padding-bottom: unset;
+}
+.list--leads li > p {
+  margin-bottom: 20px;
+}
+.list--leads li > p:last-child {
+  margin-bottom: 0;
+}
+.list--leads:is(ul) {
+  list-style: none;
+}
+.list--leads:is(ol) {
+  padding-left: 30px;
+}
+.list--leads.compact {
+  gap: 12px;
+}
+.list--leads.compact li {
+  gap: 8px;
+  padding-bottom: 15px;
+}
+.list--leads.compact li:last-child {
+  margin-bottom: 0;
+  padding-bottom: unset;
+}
 
 #preloader {
   z-index: 10;
@@ -2932,6 +2987,10 @@ ol li > ol {
   .gap-xl-72 {
     gap: 72px;
   }
+}
+
+.astect-16-9 {
+  aspect-ratio: 16/9;
 }
 
 .align-center {
@@ -5760,6 +5819,7 @@ button,
   max-height: 50px;
   align-items: center;
   cursor: pointer;
+  user-select: none;
   touch-action: manipulation;
 }
 button span,

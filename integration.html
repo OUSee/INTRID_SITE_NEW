@@ -387,10 +387,10 @@
                     Самые популярные категории IT-систем:
                 </h3>
 
-                <div class="sites-leaders-content">
-                    <div class="sites-leaders-content-left">
-                        <div class="card card--leads">
-                            <ul>
+                <div class="flex-layout flex-layout--split align-stretch mt-20">
+                    <div class="left">
+                        <div class="card">
+                            <ul class="list--leads">
                                 <li>
                                     <p class="title_h4 color-blue">
                                         Бухгалтерия
@@ -550,35 +550,52 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="sites-leaders-content-right" id="integration-creation">
-                        <div class="card card--leaders position-sticky">
+                    <div class="right" id="integration-creation">
+                        <div class="card card--leaders minified position-sticky">
                             <p class="title_h4 text-center">
-                                Интегрируем IT-системы в ваш веб-продукт
+                                Обсудить проект
                             </p>
-                            <p class="text-center">
-                                Заполните форму и мы проконсультируем вас в ближайшее время
-                            </p>
-                            <form>
-                                <input type="text" required id="customer-name" name="customer-name"
-                                    placeholder="Ваше имя *">
+                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
 
-                                <input type="tel" required id="customer-phone" name="customer-phone"
+                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                                <input type="tel" required="" id="customer-phone" name="tel"
                                     placeholder="Ваш телефон *">
 
-                                <!-- <input type="text" placeholder="URL сайта" name="url"> -->
+                                <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                                    name="mess" style="height: 70px; min-height: 50px;"></textarea>
 
-                                <textarea data-autosize="true" rows="1" type="text" placeholder="Ваше сообщение"
-                                    id="customer-competitors"></textarea>
-
+                                <div class="input-file">
+                                    <div class="file-drop-area">
+                                        <label>
+                                            <input type="file" multiple="" name="file[]"
+                                                accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                            <span>Прикрепить файл</span>
+                                            <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                        </label>
+                                        <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                        <div class="file-list" style="display: none;"></div>
+                                    </div>
+                                </div>
+                                <p class="testimonials text-center m-center mb-0">
+                                    Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
+                                        data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии с <a
+                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                        target="_blank">ФЗ&nbsp;№152</a>
+                                </p>
                                 <button type="submit" class="button big button-white mt-10">
-                                    Получить консультацию
+                                    Отправить
                                 </button>
+                                <input type="hidden" name="_csrf-frontend"
+                                    value="fi4i6Wetd5U-EMBtUggHZdVq4xk_RJkF6V8jPvMYaZQ8W0mTFPkkrAwlhDQmZzACnz6GYXYR-jzEGlltmnUQow==">
                             </form>
-                            <p class="testimonials text-center">
-                                Отправляя форму, я даю согласие на <a href="javascript://" class="popup-trigger"
-                                    data-popup="privacy-policy">обработку своих персональных
-                                    данных</a>
-                            </p>
                         </div>
                     </div>
                 </div>
