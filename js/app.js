@@ -727,7 +727,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				adress: "г. Воронеж ул. Пятницкого, 40",
 				schedule: "Пн-Пт: 9:00-18:00",
 				phone: "74732540796",
-				wa: "74732540796",
+				wa: "79529540796",
 				tg: "webintrid",
 			},
 		};
