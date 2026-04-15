@@ -28,7 +28,7 @@
 	}
 
 	@media (max-width: 440px) {
-		padding: 60px 10px 10px;
+		padding: 60px 10px 12px;
 	}
 
 	&::before {
@@ -59,8 +59,8 @@
 			min-width: 240px;
 			max-width: 280px;
 			height: fit-content;
-			margin: 50px 0 0 0;
-			padding: 14px 18px;
+			margin: 52px 0 0 0;
+			padding: 16px 20px;
 			background-color: var(--blue-bg);
 			box-shadow: 0px 0px 5px 3px var(--navbar-bg-op);
 			opacity: 0;
@@ -82,10 +82,14 @@
 
 			@media (max-width: 600px) {
 				top: 0;
-				left: 165px;
+				left: 192px;
 				width: 52%;
-				margin: 67px 0 0 0;
+				margin: 68px 0 0 0;
 				padding: 0 10px;
+			}
+
+			@media (max-width: 440px) {
+				left: 172px;
 			}
 
 			&:hover {
@@ -100,7 +104,7 @@
 				z-index: -1;
 				width: 20px;
 				height: 20px;
-				border-radius: 3px;
+				border-radius: 4px;
 				background-color: var(--blue-bg);
 				transform: rotate(45deg);
 
@@ -223,18 +227,19 @@
 		&::after {
 			@media (max-width: 1000px) {
 				content: "»";
-				position: absolute;
-				top: 50%;
-				right: 0;
+				// position: absolute;
+				// top: 50%;
+				// right: 0;
 				color: currentColor;
-				transform: translate(0, -50%);
+				// transform: translate(0, -50%);
+				margin: auto 4px 0;
 			}
 		}
 
 		&:hover {
 			color: var(--blue-main);
 
-			@media (max-width: 1000px) {
+			@media (min-width: 1000px) {
 				text-decoration: underline;
 				text-underline-offset: 3px;
 			}

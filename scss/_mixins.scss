@@ -212,10 +212,10 @@
 @mixin input {
 	position: relative;
 	width: 100%;
-	padding: 14px 22px;
+	padding: 14px 24px;
 	background-color: transparent;
 	color: white;
-	border-radius: 25px;
+	border-radius: 24px;
 	border: 1px solid var(--color-white);
 	font-size: 16px;
 	line-height: 1.25;
@@ -224,6 +224,20 @@
 	@media (max-width: 1000px) {
 		font-size: 15px;
 	}
+
+	&:focus {
+		border: 1px dashed var(--color-white);
+		outline: none;
+	}
+
+	&::placeholder {
+		color: var(--color-grey);
+	}
+}
+
+@mixin input-leaders {
+	background-color: transparent;
+	border: 1px solid var(--color-white);
 
 	&:focus {
 		border: 1px dashed var(--color-white);
@@ -248,7 +262,7 @@
 		gap: 4px;
 		width: 100%;
 		min-height: 5em;
-		padding: 4px 22px;
+		padding: 4px 24px;
 		transition: background-color 0.25s ease-in-out;
 
 		&.drag-over {
@@ -528,7 +542,7 @@
 	gap: 0;
 	flex-grow: 1;
 	flex-basis: 0;
-	padding: 24px 60px 18px 100px;
+	padding: 24px 60px 16px 100px;
 	background-color: var(--blue-bg);
 	border-top: 2px solid var(--bg-main);
 	border-bottom: 1px solid var(--blue-main);
@@ -541,19 +555,19 @@
 	cursor: pointer;
 
 	@media (max-width: 1200px) {
-		padding: 18px 32px 18px 100px;
+		padding: 16px 32px 16px 100px;
 	}
 
 	@media (max-width: 1000px) {
-		padding: 12px 20px 18px 100px;
+		padding: 12px 20px 16px 100px;
 	}
 
 	@media (max-width: 900px) {
-		padding: 18px 12px 18px 90px;
+		padding: 16px 12px 16px 92px;
 	}
 
 	@media (max-width: 720px) {
-		padding: 18px 12px 18px 80px;
+		padding: 16px 12px 16px 80px;
 	}
 
 	@media (max-width: 600px) {
@@ -613,7 +627,7 @@
 		// animation: eye 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 
 		@media (min-width: 1420px) {
-			top: 50px;
+			top: 52px;
 			left: 20px;
 		}
 
@@ -735,7 +749,7 @@
 	gap: 0;
 	flex-grow: 1;
 	flex-basis: 0;
-	padding: 24px 60px 18px 100px;
+	padding: 24px 60px 16px 100px;
 	background-color: var(--blue-bg);
 	border-top: 2px solid var(--bg-main);
 	border-bottom: 1px solid var(--blue-main);
@@ -748,11 +762,11 @@
 	cursor: pointer;
 
 	@media (max-width: 1200px) {
-		padding: 18px 32px 18px 100px;
+		padding: 16px 32px 16px 100px;
 	}
 
 	@media (max-width: 1000px) {
-		padding: 12px 20px 18px 100px;
+		padding: 12px 20px 16px 100px;
 	}
 
 	@media (max-width: 900px) {
@@ -1277,12 +1291,18 @@
 			display: flex;
 			flex-direction: column;
 			width: 100%;
-			// height: 100%;
 			margin-bottom: 10px;
 			background-color: var(--blue-bg);
-			border-radius: 30px;
-			// overflow: hidden;
+			border-radius: 32px;
 			transition: all 0.3s ease-in-out;
+
+			@media (max-width: 1000px) {
+				border-radius: 28px;
+			}
+
+			@media (max-width: 600px) {
+				border-radius: 24px;
+			}
 
 			&.active {
 				& .accordion-content {
@@ -1370,7 +1390,7 @@
 			}
 
 			.title_h5 {
-				margin-top: 10px;
+				margin-top: 12px;
 			}
 
 			& .quote {
@@ -1427,21 +1447,14 @@
 }
 
 @mixin accordion-help {
-	// background-color: var(--blue-clouds);
 	border-radius: 30px;
 	overflow: hidden;
 
 	&-item {
 		counter-increment: helpItems;
-		// margin: 0;
-		// background-color: transparent;
-		// border-radius: 0;
 	}
 
 	&-header {
-		// background-color: transparent;
-		// border-radius: 0;
-
 		& p {
 			position: relative;
 			margin: 0;
@@ -1457,12 +1470,6 @@
 
 	&-content {
 		display: block;
-	}
-
-	&-checkbox {
-		&:checked + .accordion-header {
-			// background-color: var(--blue-clouds);
-		}
 	}
 }
 
@@ -1488,7 +1495,6 @@
 		display: flex;
 		align-items: flex-start;
 		gap: 12px;
-		// width: 100%;
 
 		&::before {
 			margin-right: 0;
@@ -1504,8 +1510,6 @@
 		display: flex;
 		align-items: center;
 		gap: 4px;
-		// max-height: 26px;
-		// margin-left: 14px;
 
 		& > p,
 		& > span {
@@ -1542,14 +1546,14 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			width: 30px;
-			height: 30px;
+			width: 32px;
+			height: 32px;
 			padding: 4px;
 		}
 
 		button,
 		input {
-			height: 30px;
+			height: 32px;
 			padding: 12px;
 		}
 	}
@@ -1571,7 +1575,7 @@
 
 			&:after {
 				background-color: var(--color-white);
-				transform: translateX(26px);
+				transform: translateX(28px);
 			}
 		}
 	}
@@ -1584,24 +1588,22 @@
 		&::before {
 			content: "";
 			display: inline-block;
-			min-width: 50px;
+			min-width: 52px;
 			height: 24px;
-			border-radius: 20px;
+			border-radius: 1000px;
 			background-color: var(--blue-bg);
 			border: 1px solid var(--blue-main);
-			// margin-right: 10px;
 			transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 		}
 
 		&:after {
 			content: "";
-			// top: calc(50% - 10px);
 			top: 3px;
 			left: 3px;
 			position: absolute;
 			width: 20px;
 			height: 20px;
-			border-radius: 20px;
+			border-radius: 1000px;
 			background-color: var(--blue-main);
 			transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 		}
@@ -1644,7 +1646,7 @@
 			display: flex;
 			flex-direction: row;
 			align-items: stretch;
-			height: 26px;
+			height: 24px;
 		}
 
 		&-option {
@@ -1680,7 +1682,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-start;
-	gap: 6px;
+	gap: 8px;
 	color: var(--blue-tag);
 	font-size: 16px;
 
@@ -1705,28 +1707,13 @@
 		border: 1px solid var(--blue-bg);
 		background-color: var(--bg-main);
 		border-radius: 39px;
-		padding: 30px;
+		padding: 32px;
 		overflow: hidden;
 		transition: all 0.3s ease-in-out;
 	}
 
 	& > p {
-		// position: relative;
-		// z-index: 2;
 		color: var(--color-grey);
-
-		// &::before {
-		// 	content: "";
-		// 	position: absolute;
-		// 	top: 50%;
-		// 	left: 50%;
-		// 	z-index: -1;
-		// 	width: 50%;
-		// 	height: 0;
-		// 	box-shadow: 0 0 32px 40px rgba(0, 0, 0, 0.45);
-		// 	border-radius: 100%;
-		// 	transform: translate(-50%, 50%);
-		// }
 	}
 
 	& > b {
@@ -1739,14 +1726,14 @@
 		&::before {
 			font-family: "INTRID_ICONS";
 			content: "\64";
-			height: 77px;
-			width: 77px;
-			font-size: 77px;
-			line-height: 77px;
+			height: 76px;
+			width: 76px;
+			font-size: 76px;
+			line-height: 76px;
 			color: var(--blue-bg-icon);
 			position: absolute;
-			left: -77px;
-			top: -15px;
+			left: -76px;
+			top: -16px;
 		}
 
 		@media (max-width: 1000px) {
@@ -1756,7 +1743,7 @@
 
 		@media (max-width: 1100px) {
 			&::before {
-				left: -38px;
+				left: -36px;
 			}
 		}
 	}
@@ -1768,8 +1755,6 @@
 	border-spacing: 0;
 
 	thead {
-		// background-color: var(--color-white);
-		// color: var(--bg-main);
 		background-color: var(--blue-bg);
 		color: var(--color-white);
 		position: sticky;
@@ -1793,10 +1778,6 @@
 		tr {
 			background-color: rgba(0, 234, 255, 0.25);
 
-			// &:nth-child(even) {
-			// 	background-color: rgba(0, 234, 255, 0.5);
-			// }
-
 			&:hover {
 				& td {
 					&:not(.color_td_PR) {
@@ -1819,16 +1800,13 @@
 	}
 
 	th {
-		padding: 5px;
-		// border: 1px solid rgba(0, 234, 255, 0.65);
-		// border: 1px solid var(--blue-bg);
+		padding: 4px;
 	}
 
 	td {
-		// border: 1px solid var(--blue-main);
 		border: 1px solid var(--blue-clouds);
-		padding: 10px 5px;
-		padding-left: 10px;
+		padding: 12px 4px;
+		padding-left: 12px;
 		transition: 0.25s ease-in-out;
 	}
 }

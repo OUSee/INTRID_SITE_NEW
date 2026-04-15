@@ -6,7 +6,7 @@
 	max-width: 100%;
 	width: 100%;
 	height: 60px;
-	padding: 6px 0;
+	padding: 8px 0;
 	background-color: var(--navbar-bg-op);
 	transition: 0.25s ease-in-out;
 
@@ -38,9 +38,9 @@
 	&-logo {
 		position: relative;
 		z-index: 4;
-		min-width: 29px;
-		max-width: 29px;
-		max-height: 29px;
+		min-width: 28px;
+		max-width: 28px;
+		max-height: 28px;
 		margin-right: 100px;
 		border-radius: 20px;
 		transition: 0.25s ease-in-out;
@@ -79,14 +79,16 @@
 
 		& span {
 			display: block;
-			width: 31px;
-			height: 3px;
-			margin-bottom: 4px;
+			width: 28px;
+			height: 4px;
+			margin-bottom: 2px;
 			position: relative;
 			background: var(--color-white);
-			border-radius: 3px;
+			border-radius: 4px;
 			transform-origin: 4px 0px;
-			transition: transform 0.3s ease, opacity 0.3s ease;
+			transition:
+				transform 0.3s ease,
+				opacity 0.3s ease;
 
 			&:last-child {
 				margin: 0;
@@ -111,9 +113,6 @@
 			span:nth-child(3) {
 				transform: rotate(-45deg) translate(-1px, -2px);
 			}
-		}
-
-		&[data-menu="closed"] {
 		}
 	}
 
@@ -156,7 +155,9 @@
 
 		#lk-link {
 			color: var(--blue-main);
-			transition: color 0.25s ease-in-out, text-shadow 0.25s ease-in-out;
+			transition:
+				color 0.25s ease-in-out,
+				text-shadow 0.25s ease-in-out;
 
 			&:hover {
 				text-shadow: var(--blue-main) 1px 0 10px;

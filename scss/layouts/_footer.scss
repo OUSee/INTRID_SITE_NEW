@@ -5,8 +5,8 @@
 	width: 100%;
 	background-color: var(--bg-main);
 	border-top: 1px solid var(--blue-main);
-	border-top-left-radius: 39px;
-	border-top-right-radius: 39px;
+	border-top-left-radius: 40px;
+	border-top-right-radius: 40px;
 
 	& a {
 		text-decoration: none;
@@ -40,7 +40,7 @@
 		align-items: center;
 		justify-content: flex-start;
 		gap: 20px;
-		padding: 10px 0;
+		padding: 12px 0;
 
 		@media (max-width: 1200px) {
 			align-items: flex-end;
@@ -52,9 +52,9 @@
 	}
 
 	&-logo {
-		min-width: 29px;
-		max-width: 29px;
-		max-height: 29px;
+		min-width: 28px;
+		max-width: 28px;
+		max-height: 28px;
 		margin-right: 100px;
 		border-radius: 20px;
 
@@ -64,7 +64,7 @@
 		}
 
 		@media (max-width: 1200px) {
-			margin-right: 75px;
+			margin-right: 72px;
 
 			& img {
 				width: 100px;
@@ -78,15 +78,6 @@
 			min-width: 24px;
 			margin-right: 76px;
 		}
-
-		@media (max-width: 600px) {
-		}
-
-		// &>* {
-		//     width: 100%;
-		//     height: 100%;
-		//     object-fit: contain;
-		// }
 	}
 
 	&-categories {
@@ -107,7 +98,7 @@
 
 		& > a {
 			position: relative;
-			padding-left: 10px;
+			padding-left: 12px;
 			color: var(--color-white);
 			white-space: nowrap;
 			transition: 0.25s ease-in-out;
@@ -195,12 +186,8 @@
 
 	& .icon-menu {
 		flex-direction: row-reverse;
+		align-self: flex-start;
 		margin-left: auto;
-		margin-bottom: -6px;
-
-		@media (max-width: 1000px) {
-			margin-bottom: -10px;
-		}
 
 		@media (max-width: 576px) {
 			flex-direction: row;
@@ -215,7 +202,7 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: flex-start;
-		padding: 10px 0;
+		padding: 12px 0;
 		background-color: var(--bg-main);
 
 		& > .container {
@@ -238,15 +225,15 @@
 				text-align: left;
 				color: #ffffff;
 				cursor: pointer;
-				padding-left: 34px;
+				padding-left: 32px;
 
 				&::before {
 					content: "";
 					position: absolute;
 					top: 50%;
 					left: 0;
-					width: 26px;
-					height: 26px;
+					width: 28px;
+					height: 28px;
 					background-image: url("../src/images/herb.webp");
 					background-size: contain;
 					background-position: center;
@@ -255,7 +242,7 @@
 				}
 
 				@media (max-width: 576px) {
-					padding-top: 34px;
+					padding-top: 32px;
 					padding-left: 0px;
 					text-align: center;
 
