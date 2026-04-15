@@ -5801,7 +5801,7 @@ progress::-moz-progress-bar {
   display: flex;
   width: 100%;
   min-height: 270px;
-  border-radius: 39px;
+  border-radius: 40px;
   overflow: hidden;
 }
 .map-wrapper iframe {
@@ -5814,18 +5814,18 @@ progress::-moz-progress-bar {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 15px;
+  margin: 0 16px;
 }
 .from-to-arrows i {
   color: var(--blue-main);
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  font-size: 25px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 24px;
 }
 @media (max-width: 600px) {
   .from-to-arrows {
-    margin: 15px 0;
+    margin: 16px 0;
     flex-direction: row;
   }
   .from-to-arrows i {
@@ -5839,7 +5839,7 @@ button,
 .button-highlight,
 .radioButton {
   display: flex;
-  border-radius: 30px;
+  border-radius: 32px;
   background-color: transparent;
   padding: 14px 24px;
   font-weight: 500;
@@ -5898,8 +5898,8 @@ button.big,
 .button-link.big,
 .button-highlight.big,
 .radioButton.big {
-  border-radius: 30px;
-  padding: 16px 24px 14px 24px;
+  border-radius: 32px;
+  padding: 16px 24px;
   justify-content: center;
   align-items: center;
 }
@@ -5968,10 +5968,10 @@ button:disabled, button.disabled,
   color: var(--color-black);
 }
 .button-highlight:hover {
-  box-shadow: 0px 0px 15px var(--blue-main);
+  box-shadow: 0px 0px 16px var(--blue-main);
 }
 .button-highlighted {
-  box-shadow: 0px 0px 15px var(--blue-main);
+  box-shadow: 0px 0px 16px var(--blue-main);
 }
 
 .radioButton input[type=radio] {
@@ -6377,8 +6377,8 @@ button:hover svg,
   flex-direction: column;
   border: 1px solid var(--blue-bg);
   background-color: var(--bg-main);
-  border-radius: 30px;
-  padding: 30px;
+  border-radius: 32px;
+  padding: 32px;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
@@ -6400,12 +6400,12 @@ button:hover svg,
 }
 @media (max-width: 1000px) {
   .card.small {
-    padding: 16px 10px;
+    padding: 16px 8px;
   }
 }
 .card:is(.empty) {
   background-color: var(--blue-clouds);
-  border-radius: 39px;
+  border-radius: 40px;
   padding: 16px 32px;
 }
 @media (max-width: 600px) {
@@ -6433,14 +6433,14 @@ button:hover svg,
 .card--photo::before {
   content: "d";
   position: absolute;
-  right: -50px;
-  bottom: -50px;
+  right: -52px;
+  bottom: -52px;
   z-index: 2;
   font-family: "INTRID_ICONS";
-  height: 177px;
-  width: 177px;
-  font-size: 177px;
-  line-height: 177px;
+  height: 176px;
+  width: 176px;
+  font-size: 176px;
+  line-height: 176px;
   color: var(--blue-clouds);
   pointer-events: none;
 }
@@ -6457,14 +6457,14 @@ button:hover svg,
 .card--testimonials::before {
   content: "d";
   position: absolute;
-  right: -50px;
-  bottom: -50px;
+  right: -52px;
+  bottom: -52px;
   z-index: 2;
   font-family: "INTRID_ICONS";
-  height: 177px;
-  width: 177px;
-  font-size: 177px;
-  line-height: 177px;
+  height: 176px;
+  width: 176px;
+  font-size: 176px;
+  line-height: 176px;
   color: var(--blue-clouds);
   pointer-events: none;
 }
@@ -6515,7 +6515,7 @@ button:hover svg,
 }
 @media (max-width: 600px) {
   .card--testimonials-minified {
-    padding: 10px 14px;
+    padding: 12px 14px;
     border-radius: 25px;
   }
   .card--testimonials-minified::before {
@@ -6537,7 +6537,7 @@ button:hover svg,
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 @media (max-width: 1360px) {
   .card--review .card-header {
@@ -6585,7 +6585,7 @@ button:hover svg,
 .card--review .card-body {
   position: relative;
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   padding-left: 20px;
 }
 .card--review .card-body > p {
@@ -6684,7 +6684,7 @@ button:hover svg,
 }
 .card--recent {
   gap: 20px;
-  padding: 24px 30px;
+  padding: 24px 32px;
   background-color: var(--blue-bg);
   border: 1px solid var(--blue-clouds);
 }
@@ -6717,26 +6717,26 @@ button:hover svg,
 }
 .card--recent:hover {
   outline: 1px solid var(--blue-main);
-  box-shadow: 0px 0px 15px var(--blue-main);
+  box-shadow: 0px 0px 16px var(--blue-main);
 }
 .card--recent img {
-  max-width: 225px;
-  height: 141px;
-  max-height: 141px;
+  max-width: 224px;
+  height: 144px;
+  max-height: 144px;
   object-fit: contain;
   object-position: center;
 }
 @media (max-width: 1250px) {
   .card--recent img {
     width: 100%;
-    max-height: 141px;
+    max-height: 144px;
   }
 }
 .card--recent .card-body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 .card--recent .card-body .card-tag {
   display: flex;
@@ -6753,7 +6753,7 @@ button:hover svg,
 }
 .card--recent .card-body p {
   color: var(--color-grey);
-  min-height: 41px;
+  min-height: 40px;
 }
 .card--recent .card-body b {
   font-weight: 600;
@@ -6828,7 +6828,7 @@ button:hover svg,
   max-width: 100%;
   max-height: unset;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 16px;
   aspect-ratio: 16/10;
 }
 .card--award {
@@ -6907,8 +6907,8 @@ button:hover svg,
   content: "";
   display: flex;
   width: 100%;
-  max-width: 38px;
-  flex: 0 0 38px;
+  max-width: 36px;
+  flex: 0 0 36px;
   height: 100%;
   background-image: url("/src/images/olive-left.webp");
   background-size: contain;
@@ -6974,7 +6974,7 @@ button:hover svg,
 }
 .card--group:hover, .card--group:active, .card--group.nice-select.open {
   outline: 1px solid var(--blue-main);
-  box-shadow: 0px 0px 15px var(--blue-main);
+  box-shadow: 0px 0px 16px var(--blue-main);
 }
 .card--group:focus {
   outline: 1px solid var(--blue-main);
@@ -7112,7 +7112,7 @@ button:hover svg,
 }
 @media (min-width: 1000px) {
   .card--outline.muted:hover {
-    box-shadow: 0px 0px 15px var(--blue-main), 0px 0px 0px 0px var(--blue-clouds), inset 0px 0px 20px 2px var(--blue-clouds);
+    box-shadow: 0px 0px 16px var(--blue-main), 0px 0px 0px 0px var(--blue-clouds), inset 0px 0px 20px 2px var(--blue-clouds);
     transform: scale(1.025);
   }
 }
@@ -7151,7 +7151,7 @@ button:hover svg,
   gap: 20px;
   width: 100%;
   padding: 20px;
-  border-radius: 39px;
+  border-radius: 40px;
   background-color: var(--bg-main);
   overflow: hidden;
 }
@@ -7204,7 +7204,7 @@ button:hover svg,
   flex: 1;
   width: 100%;
   margin-top: auto;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 @media (max-width: 1000px) {
   .card--keys > .card-body {
@@ -7229,7 +7229,7 @@ button:hover svg,
 .card--result {
   display: flex;
   flex-direction: column;
-  border-radius: 30px;
+  border-radius: 36px;
   gap: 0;
   padding: 0;
   background-color: var(--blue-bg);
@@ -7238,8 +7238,8 @@ button:hover svg,
 .card--result .card-header {
   display: flex;
   font-weight: 600;
-  padding: 18px 40px;
-  border-radius: 30px;
+  padding: 16px 40px;
+  border-radius: 32px;
   color: var(--color-white);
   background-color: var(--blue-light-bg);
 }
@@ -7296,7 +7296,7 @@ button:hover svg,
   padding: 0 0 1em;
 }
 .card--result.fields .card-body fieldset legend {
-  padding: 0 10px 5px 5px;
+  padding: 0 12px 4px 4px;
 }
 .card--tariff {
   position: relative;
@@ -7305,7 +7305,7 @@ button:hover svg,
   width: 100%;
   height: 100%;
   background-color: var(--blue-bg);
-  border-radius: 30px;
+  border-radius: 32px;
   transition: all 0.3s ease-in-out;
 }
 .card--tariff > .card-header {
@@ -7313,9 +7313,9 @@ button:hover svg,
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 20px 30px;
+  padding: 20px 32px;
   background-color: var(--blue-clouds);
-  border-radius: 30px;
+  border-radius: 32px;
   color: var(--color-white);
   transition: 0.25s ease-in-out;
 }
@@ -7325,15 +7325,15 @@ button:hover svg,
   justify-content: space-between;
   flex: 1 1 0;
   height: 100%;
-  padding: 30px 10px;
+  padding: 32px 12px;
   transition: 0.25s ease-in-out;
 }
 .card--tariff > .card-body ul {
-  padding-left: 15px;
+  padding-left: 16px;
 }
 .card--tariff > .card-body ul li {
-  padding-left: 10px;
-  margin-bottom: 10px;
+  padding-left: 12px;
+  margin-bottom: 12px;
   color: var(--color-white);
 }
 .card--tariff > .card-body ul li::marker {
@@ -7355,7 +7355,7 @@ button:hover svg,
 }
 .card--tariff.hover-glow:hover .card-header {
   outline: 1px solid var(--blue-main);
-  box-shadow: 0px 5px 15px var(--blue-main);
+  box-shadow: 0px 4px 16px var(--blue-main);
 }
 .card--tariff.compact > .card-body {
   padding: 20px;
@@ -7421,9 +7421,9 @@ button:hover svg,
 }
 .card--support .card-body > div > b {
   min-width: 30%;
-  padding: 10px;
+  padding: 12px;
   background-color: #031618;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
   font-size: 24px;
   white-space: nowrap;
@@ -7451,7 +7451,7 @@ button:hover svg,
 }
 .card--icon {
   min-height: 130px;
-  padding: 30px 30px 30px 100px;
+  padding: 32px 32px 32px 100px;
 }
 @media (max-width: 600px) {
   .card--icon {
@@ -7521,15 +7521,15 @@ button:hover svg,
   left: 20px;
   z-index: 1;
   display: flex;
-  width: 34px;
-  height: 34px;
-  font-size: 34px;
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
   line-height: 1;
   object-fit: contain;
   object-position: center;
 }
 .card--icon ul {
-  padding-left: 15px;
+  padding-left: 16px;
   list-style-type: disc;
 }
 .card--icon ul li::marker {
@@ -7725,7 +7725,7 @@ button:hover svg,
   .card--roadmap::before {
     width: 70px;
     height: 70px;
-    padding: 0px 0px 10px 16px;
+    padding: 0px 0px 8px 16px;
     clip-path: ellipse(50% 50% at 20% 40%);
     font-size: 52px;
   }
@@ -7733,13 +7733,13 @@ button:hover svg,
 @media (max-width: 600px) {
   .card--roadmap::before {
     top: 20px;
-    left: 15px;
+    left: 16px;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     padding: 0;
     background-color: transparent;
-    font-size: 30px;
+    font-size: 32px;
     clip-path: none;
   }
 }
@@ -7768,12 +7768,12 @@ button:hover svg,
 }
 @media (max-width: 600px) {
   .card--achievement {
-    min-width: 150px;
+    min-width: 152px;
   }
 }
 .card--achievement > p {
   color: var(--color-white);
-  margin-top: 10px;
+  margin-top: 12px;
   margin-bottom: unset;
   text-align: center;
 }
@@ -7787,7 +7787,7 @@ button:hover svg,
   background-color: var(--blue-bg);
   border-radius: 52px;
   align-items: center;
-  max-width: 370px;
+  max-width: 372px;
   max-height: 52px;
 }
 @media (max-width: 600px) {
@@ -7802,7 +7802,7 @@ button:hover svg,
   text-wrap: nowrap;
   flex-basis: 30%;
   flex-grow: 1;
-  max-height: 54px;
+  max-height: 52px;
   font-size: 30px;
   font-weight: 600;
 }
@@ -7826,10 +7826,10 @@ button:hover svg,
 }
 .card--leads {
   z-index: 2;
-  padding: 30px;
+  padding: 32px;
   color: var(--color-grey);
   background-color: var(--bg-main);
-  border-radius: 30px;
+  border-radius: 32px;
   border-color: var(--bg-main);
 }
 .card--leads ul, .card--leads ol {
@@ -7840,7 +7840,7 @@ button:hover svg,
   padding: 0;
 }
 .card--leads ul li, .card--leads ol li {
-  padding-bottom: 30px;
+  padding-bottom: 32px;
   border-bottom: 1px solid var(--blue-bg);
 }
 .card--leads ul li::marker, .card--leads ol li::marker {
@@ -7874,14 +7874,14 @@ button:hover svg,
   list-style: none;
 }
 .card--leads ol {
-  padding-left: 30px;
+  padding-left: 32px;
 }
 .card--leads.compact ul {
   gap: 12px;
 }
 .card--leads.compact ul li {
   gap: 8px;
-  padding-bottom: 15px;
+  padding-bottom: 16px;
 }
 .card--leads.compact ul li:last-child {
   margin-bottom: 0;
@@ -7889,7 +7889,7 @@ button:hover svg,
 }
 .card--leaders {
   padding: 28px 52px;
-  border-radius: 30px;
+  border-radius: 32px;
   background-color: var(--blue-tag);
 }
 @media (max-width: 1280px) {
@@ -7899,7 +7899,7 @@ button:hover svg,
 }
 @media (max-width: 900px) {
   .card--leaders {
-    padding: 28px 62px;
+    padding: 28px 60px;
   }
 }
 @media (max-width: 600px) {
@@ -8044,7 +8044,7 @@ button:hover svg,
   gap: 0;
   padding: 0;
   border: 0;
-  border-radius: 30px;
+  border-radius: 32px;
   background: radial-gradient(60% 60% at 10% 20%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 0%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 37.79%, transparent 100%), hsla(0, 0%, 100%, 0.125);
   overflow: hidden;
 }
@@ -8263,7 +8263,7 @@ button:hover svg,
   object-position: center;
 }
 .card--portfolio.isMain {
-  max-width: 570px;
+  max-width: 572px;
 }
 @media (max-width: 600px) {
   .card--portfolio.isMain {
@@ -8375,8 +8375,8 @@ button:hover svg,
   flex-wrap: wrap;
   gap: 12px;
   margin: 0 auto;
-  border-radius: 30px;
-  padding: 20px 50px;
+  border-radius: 32px;
+  padding: 20px 52px;
   color: var(--color-grey);
   background-color: var(--blue-bg);
 }
@@ -8445,17 +8445,17 @@ button:hover svg,
   margin: 0;
 }
 .card--prices img {
-  width: 190px;
+  width: 192px;
   height: auto;
   object-fit: contain;
   object-position: center;
   margin-right: 40px;
-  margin-top: -50px;
+  margin-top: -52px;
   user-select: none;
 }
 @media (max-width: 900px) {
   .card--prices img {
-    width: 127px;
+    width: 128px;
     margin-top: -20px;
     margin-right: unset;
   }
@@ -8580,7 +8580,7 @@ button:hover svg,
 }
 @media (min-width: 1200px) {
   .card--service:hover {
-    padding: 165px 20px 32px 20px;
+    padding: 164px 20px 32px 20px;
     margin-top: -20px;
     margin-bottom: -20px;
   }
@@ -8595,7 +8595,7 @@ button:hover svg,
 }
 @media (max-width: 1200px) {
   .card--service.use {
-    padding: 105px 20px 12px 20px;
+    padding: 104px 20px 12px 20px;
   }
 }
 @media (max-width: 600px) {
@@ -8657,11 +8657,11 @@ button:hover svg,
   transform: scale(1.125);
 }
 .card--service.docs {
-  padding: 125px 10px 32px 10px;
+  padding: 124px 10px 32px 10px;
 }
 @media (max-width: 1200px) {
   .card--service.docs {
-    padding: 105px 20px 12px 20px;
+    padding: 104px 20px 12px 20px;
   }
 }
 @media (max-width: 600px) {
@@ -8715,7 +8715,7 @@ button:hover svg,
   display: none;
 }
 .card--tab {
-  padding: 60px 30px 30px;
+  padding: 60px 32px 32px;
   background-color: transparent;
   color: var(--color-white);
   border: none;
@@ -8724,7 +8724,7 @@ button:hover svg,
 @media (max-width: 1000px) {
   .card--tab {
     padding: 52px 20px 20px;
-    border-radius: 25px;
+    border-radius: 24px;
   }
 }
 .card--tab.selected {
@@ -8845,12 +8845,12 @@ button:hover svg,
 .card--team {
   position: relative;
   z-index: 1;
-  padding: 30px;
+  padding: 32px;
 }
 @media (max-width: 1000px) {
   .card--team {
     padding: 20px;
-    border-radius: 25px;
+    border-radius: 24px;
   }
 }
 .card--team::before {
@@ -8869,7 +8869,7 @@ button:hover svg,
   width: 100%;
   height: 260px;
   aspect-ratio: 16/9;
-  border-radius: 25px;
+  border-radius: 24px;
   overflow: hidden;
 }
 @media (max-width: 600px) {
@@ -9010,7 +9010,7 @@ button:hover svg,
 .nice-select {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-color: var(--blue-light-bg);
-  border-radius: 39px;
+  border-radius: 40px;
   border: solid 1px var(--blue-light-bg);
   box-sizing: border-box;
   clear: both;
@@ -9051,7 +9051,7 @@ button:hover svg,
   border-right: 2px solid var(--color-white);
   content: "";
   display: block;
-  height: 5px;
+  height: 4px;
   margin-top: -4px;
   pointer-events: none;
   position: absolute;
@@ -9093,7 +9093,7 @@ button:hover svg,
   top: 100%;
   left: 0;
   transform-origin: 50% 0;
-  transform: scale(0.75) translateY(-21px);
+  transform: scale(0.75) translateY(-20px);
   transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
   z-index: 9;
   color: var(--color-white);
@@ -9106,8 +9106,8 @@ button:hover svg,
   min-height: 40px;
   outline: none;
   margin: 0;
-  padding-left: 18px;
-  padding-right: 29px;
+  padding-left: 16px;
+  padding-right: 28px;
   text-align: left;
   transition: all 0.2s;
   color: var(--color-white);
@@ -9141,15 +9141,15 @@ button:hover svg,
 .nice-select.small {
   font-size: 12px;
   height: 36px;
-  line-height: 34px;
+  line-height: 32px;
 }
 .nice-select.small:after {
   height: 4px;
   width: 4px;
 }
 .nice-select.small .option {
-  line-height: 34px;
-  min-height: 34px;
+  line-height: 36px;
+  min-height: 36px;
 }
 .nice-select.isTextField {
   height: fit-content;
@@ -9166,7 +9166,7 @@ button:hover svg,
 .nice-select.isTextField:after {
   height: 8px;
   width: 8px;
-  margin-top: -6px;
+  margin-top: -4px;
 }
 .nice-select.isTextField .current {
   white-space: unset;
@@ -9179,9 +9179,9 @@ button:hover svg,
 }
 .nice-select.isTextField .list .option {
   min-height: unset;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 18px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 16px;
   font-size: 14px;
   line-height: 1.25;
   white-space: unset;
@@ -10820,11 +10820,6 @@ button.next:hover {
     font-size: 12px !important;
   }
 }
-@media (max-width: 600px) {
-  .nav-tabs--tender .nav-tabs--buttons > * span {
-    font-size: 10px !important;
-  }
-}
 @media (max-width: 1000px) {
   .nav-tabs--tender .nav-tabs--buttons > *:has(:checked), .nav-tabs--tender .nav-tabs--buttons > *.active {
     color: var(--bg-main);
@@ -11733,7 +11728,7 @@ button.next:hover {
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead tr th label {
     display: block;
-    padding: 18px 30px;
+    padding: 16px 28px;
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -11743,7 +11738,7 @@ button.next:hover {
 }
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:first-child td,
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:first-child th label {
-  padding: 18px 30px;
+  padding: 16px 28px;
 }
 @media (max-width: 600px) {
   .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:first-child td,
@@ -11757,11 +11752,12 @@ button.next:hover {
   color: var(--blue-main) !important;
 }
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr:last-child td:not(:first-child) {
-  font-size: 24px;
+  font-size: 20px;
+  white-space: nowrap;
 }
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr td,
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr th label {
-  padding: 10px 30px;
+  padding: 12px 32px;
 }
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr td input,
 .tab-content-webDev.tender .tender-types-group .tender-table tbody tr th label input {
@@ -11797,11 +11793,11 @@ button.next:hover {
   }
   .tab-content-webDev.tender .tender-types-group .tender-table thead {
     position: absolute;
-    top: -42px;
+    top: -44px;
     right: 0;
     width: 100%;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
     display: flex;
     overflow: hidden;
     max-width: 100%;
@@ -11809,7 +11805,7 @@ button.next:hover {
 }
 @media (max-width: 900px) and (max-width: 600px) {
   .tab-content-webDev.tender .tender-types-group .tender-table thead {
-    top: -42px;
+    top: -44px;
   }
 }
 @media (max-width: 900px) {
@@ -11829,7 +11825,7 @@ button.next:hover {
   .tab-content-webDev.tender .tender-types-group .tender-table thead th label {
     cursor: pointer;
     width: 100%;
-    padding: 12px 6px;
+    padding: 12px 8px;
     background-color: var(--blue-clouds);
     order: unset;
   }
@@ -11858,14 +11854,14 @@ button.next:hover {
     color: var(--color-white);
   }
   .tab-content-webDev.tender .tender-types-group .tender-table tr td {
-    padding: 10px !important;
+    padding: 12px !important;
   }
   .tab-content-webDev.tender .tender-types-group .tender-table tr th:first-child {
     display: none;
   }
   .tab-content-webDev.tender .tender-types-group .tender-table tr:last-child {
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
   }
 }
 @media (max-width: 600px) {
@@ -12396,6 +12392,7 @@ button.next:hover {
     width: 100%;
     min-width: 580vw;
     flex: 1 1 0px;
+    margin-top: 32px;
     overflow-x: visible;
   }
 }
@@ -12403,7 +12400,7 @@ button.next:hover {
   display: flex;
   flex: 1 1 80%;
   flex-direction: row;
-  border-radius: 39px;
+  border-radius: 40px;
   background-color: var(--bg-main);
   overflow: hidden;
 }
@@ -12464,8 +12461,8 @@ button.next:hover {
     flex: unset;
     max-width: calc(100vw - 80px - 15px);
     min-width: calc(100vw - 80px - 15px);
-    border-top-right-radius: 39px;
-    border-top-left-radius: 39px;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
     justify-content: center;
   }
 }
@@ -12562,8 +12559,8 @@ button.next:hover {
     max-width: calc(100vw - 80px - 15px);
     min-width: calc(100vw - 80px - 15px);
     background-color: var(--bg-main);
-    border-bottom-right-radius: 39px;
-    border-bottom-left-radius: 39px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
   }
 }
 @media (max-width: 601px) {
@@ -14767,7 +14764,7 @@ button.next:hover {
   position: relative;
   padding: 24px;
   background-color: var(--blue-bg);
-  border-radius: 39px;
+  border-radius: 40px;
   overflow: hidden;
 }
 @media (max-width: 1000px) {
@@ -14786,7 +14783,7 @@ button.next:hover {
   height: 0;
   border-radius: 100%;
   aspect-ratio: 1/1;
-  box-shadow: 0px 0px 70px 60px var(--blue-clouds), inset 0px 0px 70px 2px var(--blue-clouds);
+  box-shadow: 0px 0px 72px 60px var(--blue-clouds), inset 0px 0px 70px 2px var(--blue-clouds);
   transform: translate(-50%, 0%);
 }
 .blog-list > .card:last-child {
