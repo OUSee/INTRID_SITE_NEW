@@ -105,9 +105,6 @@ $tab-main-count: 3;
 		}
 	}
 
-	// &#site-slider,
-	// &#brand-slider,
-	// &#promotion-slider,
 	&#group-slider {
 		display: flex;
 		flex-direction: row;
@@ -147,19 +144,13 @@ $tab-main-count: 3;
 
 		& > * {
 			flex: 1 1 0%;
-			// min-width: calc(25% - 4px);
 			min-width: calc(33.333333% - 2px);
 			width: 100%;
 			opacity: 0;
 
 			@media (max-width: 1200px) {
-				// min-width: calc(33.333333% - 2px);
 				min-width: calc(50% - 2px);
 			}
-
-			// @media (max-width: 1000px) {
-			// 	min-width: calc(50% - 2px);
-			// }
 
 			@media (max-width: 720px) {
 				flex: 1 0 auto;
@@ -172,7 +163,7 @@ $tab-main-count: 3;
 			}
 
 			&:first-child {
-				border-radius: 30px 0 0 30px;
+				border-radius: 20px 0 0 20px;
 			}
 
 			&:not(:first-child, :last-child) {
@@ -180,7 +171,7 @@ $tab-main-count: 3;
 			}
 
 			&:last-child {
-				border-radius: 0 30px 30px 0;
+				border-radius: 0 20px 20px 0;
 			}
 		}
 	}
@@ -211,17 +202,22 @@ $tab-main-count: 3;
 			&:not(.active) {
 				pointer-events: none;
 			}
+		}
 
-			&:first-child {
-				border-radius: 30px 0 0 30px;
-			}
+		&:is(#logo-slider),
+		&:is(#brand-slider) {
+			& > * {
+				&:first-child {
+					border-radius: 20px 0 0 20px;
+				}
 
-			&:not(:first-child, :last-child) {
-				border-radius: 0;
-			}
+				&:not(:first-child, :last-child) {
+					border-radius: 0;
+				}
 
-			&:last-child {
-				border-radius: 0 30px 30px 0;
+				&:last-child {
+					border-radius: 0 20px 20px 0;
+				}
 			}
 		}
 	}
@@ -5559,7 +5555,7 @@ button:hover,
 	&--award {
 		gap: 16px;
 		min-height: 300px;
-		border-radius: 12px;
+		border-radius: 32px;
 		color: var(--color-white);
 		cursor: pointer;
 		transform-origin: bottom center;
