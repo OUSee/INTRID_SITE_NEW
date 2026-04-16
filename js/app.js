@@ -2336,6 +2336,7 @@ function gallerySelector() {
 		});
 	}
 }
+
 document.addEventListener("DOMContentLoaded", gallerySelector);
 
 // NiceSelect
