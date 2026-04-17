@@ -4241,8 +4241,27 @@ button.next {
 .blog_page {
 	padding-top: 0;
 
+	&:not(.wider) {
+		& > .container {
+			@include blogContainer;
+		}
+	}
+
+	&:is(.wider) {
+		& > .container {
+			@media (min-width: 1000px) {
+				display: grid;
+				align-items: flex-start;
+			}
+
+			@media (min-width: 1200px) {
+				grid-template-columns: 300px 1fr;
+				gap: 40px;
+			}
+		}
+	}
+
 	& > .container {
-		@include blogContainer;
 		background: linear-gradient(
 			0deg,
 			rgba(0, 234, 255, 0) 0%,
@@ -4269,7 +4288,7 @@ button.next {
 			display: flex;
 			margin: 52px auto;
 			overflow: hidden;
-			max-width: 600px;
+			max-width: 520px;
 			width: fit-content;
 			border-radius: 25px;
 			display: flex;
