@@ -3668,6 +3668,10 @@ button.next {
 		flex-direction: column;
 		gap: 8px;
 
+		@media (max-width: 900px) {
+			width: 100%;
+		}
+
 		.info-list {
 			margin: 0 auto;
 			margin-top: 32px;
@@ -3716,7 +3720,9 @@ button.next {
 			position: static;
 
 			.info-list {
-				margin-left: 52px;
+				@media (min-width: 900px) {
+					margin-left: 52px;
+				}
 			}
 		}
 
