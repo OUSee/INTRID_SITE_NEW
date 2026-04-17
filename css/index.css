@@ -10505,8 +10505,10 @@ button.next:hover {
     max-width: 85%;
   }
 }
-.achievements-slider div.slides .slide:hover > .cup::before {
-  box-shadow: 0px 0px 40px 40px var(--blue-clouds);
+@media (min-width: 1000px) {
+  .achievements-slider div.slides .slide:hover > .cup::before {
+    box-shadow: 0px 0px 40px 40px var(--blue-clouds);
+  }
 }
 .achievements-slider button {
   color: var(--blue-main);
@@ -10517,9 +10519,11 @@ button.next:hover {
   cursor: pointer;
   transform-origin: center;
 }
-.achievements-slider button:hover {
-  background: transparent;
-  box-shadow: none;
+@media (min-width: 1000px) {
+  .achievements-slider button:hover {
+    background: transparent;
+    box-shadow: none;
+  }
 }
 .achievements-slider button i {
   display: flex;
@@ -10662,9 +10666,11 @@ button.next:hover {
     display: none !important;
   }
 }
-.nav-tabs .slider-arrow:hover {
-  border-color: var(--color-white);
-  color: var(--blue-main);
+@media (min-width: 1000px) {
+  .nav-tabs .slider-arrow:hover {
+    border-color: var(--color-white);
+    color: var(--blue-main);
+  }
 }
 .nav-tabs .slider-arrow i {
   transform: none;
@@ -11948,9 +11954,11 @@ button.next:hover {
   cursor: pointer;
   transition: 0.25s ease-in-out;
 }
-.benefit-card:hover {
-  border: 1px solid var(--blue-main);
-  box-shadow: 0px 0px 15px var(--blue-main);
+@media (min-width: 1000px) {
+  .benefit-card:hover {
+    border: 1px solid var(--blue-main);
+    box-shadow: 0px 0px 15px var(--blue-main);
+  }
 }
 .benefit-card:has(input:checked) {
   border-color: var(--blue-main);
@@ -12291,9 +12299,11 @@ button.next:hover {
   transform-origin: center;
   will-change: transform, opacity, box-shadow;
 }
-.tech-we-use-list li .tech-tag:hover {
-  color: var(--blue-main);
-  border-color: 1px solid var(--blue-main);
+@media (min-width: 1000px) {
+  .tech-we-use-list li .tech-tag:hover {
+    color: var(--blue-main);
+    border-color: 1px solid var(--blue-main);
+  }
 }
 
 .rating {
@@ -12408,7 +12418,7 @@ button.next:hover {
 .clients-cases .blocks .cases-tabs .case-tab-button:not(:last-child) {
   border-bottom: 1px solid rgba(10, 10, 10, 0.25);
 }
-@media (min-width: 901px) {
+@media (min-width: 900px) {
   .clients-cases .blocks .cases-tabs .case-tab-button:has(input:checked) {
     background-color: var(--blue-tag);
     color: var(--color-white);
@@ -13039,7 +13049,7 @@ button.next:hover {
   align-items: center;
   background-color: var(--color-white);
   padding: 20px 32px;
-  border-radius: 15px;
+  border-radius: 16px;
 }
 .logo-preview-grid-item .img-wrapper img {
   width: auto;
@@ -14515,44 +14525,6 @@ button.next:hover {
 }
 .reviews__container > a {
   margin-left: auto;
-}
-.reviews__container > .reviews__wrapper-filter {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 12px;
-  max-width: 100%;
-  width: 100%;
-  justify-content: flex-start;
-}
-@media (max-width: 1000px) {
-  .reviews__container > .reviews__wrapper-filter {
-    justify-content: center;
-    gap: 4px;
-  }
-}
-.reviews__container > .reviews__wrapper-filter > .filter {
-  padding: 4px 8px;
-}
-.reviews__container > .reviews__wrapper-filter > .filter:hover {
-  background-color: transparent;
-  color: var(--blue-main);
-  border: 1px solid var(--blue-main);
-  box-shadow: 0px 0px 15px var(--blue-main);
-}
-.reviews__container > .reviews__wrapper-filter > .filter.active {
-  background-color: var(--blue-main);
-  color: var(--color-black);
-  border: 1px solid var(--blue-main);
-  box-shadow: 0px 0px 15px var(--blue-main);
-}
-.reviews__container > .reviews__wrapper-filter > .filter.active > i::before {
-  background-color: currentColor;
-}
-.reviews__container > .reviews__wrapper-filter > .filter > i {
-  display: flex;
-  margin-left: 4px;
-  pointer-events: none;
 }
 .reviews__list {
   display: flex;
