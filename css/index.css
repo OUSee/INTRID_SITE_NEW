@@ -3776,11 +3776,13 @@ form .button:hover {
   outline-offset: 4px;
   text-decoration: none !important;
 }
-.pagination button:hover {
-  background-color: transparent;
-  box-shadow: none;
-  color: var(--color-white);
-  border: 1px solid var(--color-white);
+@media (min-width: 1000px) {
+  .pagination button:hover {
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+  }
 }
 .pagination button i {
   font-size: 24px;
@@ -3806,11 +3808,13 @@ form .button:hover {
     height: 32px;
   }
 }
-.pagination--prev-btn:hover, .pagination--next-btn:hover {
-  border-color: var(--blue-main);
-  background-color: rgba(26, 123, 255, 0.3);
-  box-shadow: 0 0 18px rgba(33, 159, 255, 0.45);
-  color: var(--color-white);
+@media (min-width: 1000px) {
+  .pagination--prev-btn:hover, .pagination--next-btn:hover {
+    border-color: var(--blue-main);
+    background-color: rgba(26, 123, 255, 0.3);
+    box-shadow: 0 0 18px rgba(33, 159, 255, 0.45);
+    color: var(--color-white);
+  }
 }
 .pagination--prev-btn i, .pagination--next-btn i {
   font-size: 24px;
@@ -4009,7 +4013,11 @@ form .button:hover {
 }
 .contact-block--content > a:hover {
   color: var(--blue-main);
-  text-shadow: var(--blue-main) 0px 0px 10px;
+}
+@media (min-width: 1000px) {
+  .contact-block--content > a:hover {
+    text-shadow: var(--blue-main) 0px 0px 10px;
+  }
 }
 .contact-block--schedule {
   position: relative;
@@ -4290,8 +4298,10 @@ form .button:hover {
     border-color: var(--bg-main);
   }
 }
-.tabs:is(.isMain) .tab-button:hover::before, .tabs:is(.isAi) .tab-button:hover::before {
-  background-color: var(--blue-main);
+@media (min-width: 1000px) {
+  .tabs:is(.isMain) .tab-button:hover::before, .tabs:is(.isAi) .tab-button:hover::before {
+    background-color: var(--blue-main);
+  }
 }
 .tabs:is(.isMain) .tab-button:hover::after, .tabs:is(.isAi) .tab-button:hover::after {
   color: var(--color-white);
@@ -4548,8 +4558,10 @@ form .button:hover {
     border-color: var(--bg-main);
   }
 }
-.tabs:is(.isDesign) .tab-button:hover::before {
-  background-color: var(--blue-main);
+@media (min-width: 1000px) {
+  .tabs:is(.isDesign) .tab-button:hover::before {
+    background-color: var(--blue-main);
+  }
 }
 .tabs:is(.isDesign) .tab-button:hover::after {
   color: var(--color-white);
@@ -4808,8 +4820,10 @@ form .button:hover {
 .table--beauty tbody tr {
   background-color: rgba(0, 234, 255, 0.25);
 }
-.table--beauty tbody tr:hover td:not(.color_td_PR) {
-  background-color: var(--blue-clouds);
+@media (min-width: 1000px) {
+  .table--beauty tbody tr:hover td:not(.color_td_PR) {
+    background-color: var(--blue-clouds);
+  }
 }
 .table--beauty tbody td.color_td_PR {
   font-weight: 600;
@@ -5014,7 +5028,11 @@ form .button:hover {
 }
 .phone-line:hover {
   color: var(--blue-main);
-  text-shadow: var(--blue-main) 0px 0px 12px;
+}
+@media (min-width: 1000px) {
+  .phone-line:hover {
+    text-shadow: var(--blue-main) 0px 0px 12px;
+  }
 }
 .phone-line i {
   display: flex;
@@ -5778,9 +5796,11 @@ form .button:hover {
   background-size: cover;
   background-position: bottom;
 }
-.video-diagramm--block:hover {
-  background-size: cover;
-  background-position: bottom;
+@media (min-width: 1000px) {
+  .video-diagramm--block:hover {
+    background-size: cover;
+    background-position: bottom;
+  }
 }
 
 progress {
@@ -5972,16 +5992,20 @@ button:disabled, button.disabled,
   background-color: var(--color-white);
   color: var(--bg-main);
 }
-.button-white:hover {
-  transform: scale(1.05);
+@media (min-width: 1000px) {
+  .button-white:hover {
+    transform: scale(1.05);
+  }
 }
 .button-highlight {
   border: 1px solid var(--blue-main);
   background-color: var(--blue-main);
   color: var(--color-black);
 }
-.button-highlight:hover {
-  box-shadow: 0px 0px 16px var(--blue-main);
+@media (min-width: 1000px) {
+  .button-highlight:hover {
+    box-shadow: 0px 0px 16px var(--blue-main);
+  }
 }
 .button-highlighted {
   box-shadow: 0px 0px 16px var(--blue-main);
@@ -6014,8 +6038,10 @@ button:disabled, button.disabled,
 .button-link:hover {
   text-decoration: none;
 }
-.button-link:hover i {
-  color: var(--color-black);
+@media (min-width: 1000px) {
+  .button-link:hover i {
+    color: var(--color-black);
+  }
 }
 .button-link input[type=radio],
 .button-link input[type=checkbox] {
@@ -6027,30 +6053,40 @@ button:disabled, button.disabled,
   box-shadow: 0px 0px 16px var(--blue-main);
 }
 
-button:hover,
-.button:hover,
-.radioButton:hover,
-.radioButton:has(input:checked),
-.button-link:hover,
-.button-highlight:hover {
+.radioButton:has(input:checked) {
   border: 1px solid var(--blue-main);
   background-color: var(--blue-main);
   color: var(--color-black);
   box-shadow: 0px 0px 16px var(--blue-main);
 }
-button:hover img,
-button:hover svg,
-.button:hover img,
-.button:hover svg,
-.radioButton:hover img,
-.radioButton:hover svg,
 .radioButton:has(input:checked) img,
-.radioButton:has(input:checked) svg,
-.button-link:hover img,
-.button-link:hover svg,
-.button-highlight:hover img,
-.button-highlight:hover svg {
+.radioButton:has(input:checked) svg {
   filter: invert(1) grayscale(1) brightness(0);
+}
+
+@media (min-width: 1000px) {
+  button:hover,
+  .button:hover,
+  .radioButton:hover,
+  .button-link:hover,
+  .button-highlight:hover {
+    border: 1px solid var(--blue-main);
+    background-color: var(--blue-main);
+    color: var(--color-black);
+    box-shadow: 0px 0px 16px var(--blue-main);
+  }
+  button:hover img,
+  button:hover svg,
+  .button:hover img,
+  .button:hover svg,
+  .radioButton:hover img,
+  .radioButton:hover svg,
+  .button-link:hover img,
+  .button-link:hover svg,
+  .button-highlight:hover img,
+  .button-highlight:hover svg {
+    filter: invert(1) grayscale(1) brightness(0);
+  }
 }
 
 .button-link--tab {
@@ -7799,8 +7835,10 @@ button:hover svg,
   margin-bottom: unset;
   text-align: center;
 }
-.card--achievement:hover > .img-placeholder::before, .card--achievement:hover > .cup::before {
-  box-shadow: 0px 0px 40px 40px var(--blue-clouds);
+@media (min-width: 1000px) {
+  .card--achievement:hover > .img-placeholder::before, .card--achievement:hover > .cup::before {
+    box-shadow: 0px 0px 40px 40px var(--blue-clouds);
+  }
 }
 .card--stripe {
   flex-direction: row;
@@ -10740,8 +10778,10 @@ button.next:hover {
     padding: 4px;
   }
 }
-.nav-tabs--tender .nav-tabs--buttons > *:hover {
-  background: color-mix(in srgb, var(--blue-main) 15%, transparent);
+@media (min-width: 1000px) {
+  .nav-tabs--tender .nav-tabs--buttons > *:hover {
+    background: color-mix(in srgb, var(--blue-main) 15%, transparent);
+  }
 }
 @media (max-width: 1000px) {
   .nav-tabs--tender .nav-tabs--buttons > *:hover {
@@ -10847,8 +10887,10 @@ button.next:hover {
     padding: 4px;
   }
 }
-.nav-tabs--contacts .nav-tabs--buttons > *:hover {
-  background: color-mix(in srgb, var(--blue-main) 15%, transparent);
+@media (min-width: 1000px) {
+  .nav-tabs--contacts .nav-tabs--buttons > *:hover {
+    background: color-mix(in srgb, var(--blue-main) 15%, transparent);
+  }
 }
 @media (max-width: 1000px) {
   .nav-tabs--contacts .nav-tabs--buttons > *:hover {
@@ -13965,8 +14007,10 @@ button.next:hover {
 .seo-table .table-wrapper table tbody tr {
   background-color: rgba(0, 234, 255, 0.25);
 }
-.seo-table .table-wrapper table tbody tr:hover td:not(.color_td_PR) {
-  background-color: var(--blue-clouds);
+@media (min-width: 1000px) {
+  .seo-table .table-wrapper table tbody tr:hover td:not(.color_td_PR) {
+    background-color: var(--blue-clouds);
+  }
 }
 .seo-table .table-wrapper table tbody td.color_td_PR {
   font-weight: 600;
@@ -15744,14 +15788,16 @@ button.next:hover {
     height: 32px;
   }
 }
-.portfolio-block__pagination .pagination--prev-btn:hover,
-.portfolio-block__pagination .pagination--next-btn:hover,
-.pagination-panel .pagination--prev-btn:hover,
-.pagination-panel .pagination--next-btn:hover {
-  border-color: var(--blue-main);
-  background-color: rgba(26, 123, 255, 0.3);
-  box-shadow: 0 0 18px rgba(33, 159, 255, 0.45);
-  color: var(--color-white);
+@media (min-width: 1000px) {
+  .portfolio-block__pagination .pagination--prev-btn:hover,
+  .portfolio-block__pagination .pagination--next-btn:hover,
+  .pagination-panel .pagination--prev-btn:hover,
+  .pagination-panel .pagination--next-btn:hover {
+    border-color: var(--blue-main);
+    background-color: rgba(26, 123, 255, 0.3);
+    box-shadow: 0 0 18px rgba(33, 159, 255, 0.45);
+    color: var(--color-white);
+  }
 }
 .portfolio-block__pagination .pagination--prev-btn i,
 .portfolio-block__pagination .pagination--next-btn i,
