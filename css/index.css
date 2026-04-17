@@ -5891,6 +5891,15 @@ button,
   user-select: none;
   touch-action: manipulation;
 }
+@media (max-width: 600px) {
+  button,
+  .button,
+  .button-link,
+  .button-highlight,
+  .radioButton {
+    max-height: 40px;
+  }
+}
 button span,
 .button span,
 .button-link span,
@@ -5956,7 +5965,6 @@ button.big,
     font-size: 12px;
     padding: 14px 24px;
     gap: 4px;
-    max-height: 52px;
   }
 }
 button.big i.icon-arrow_wide,
@@ -12930,6 +12938,12 @@ button.next:hover {
 @media (max-width: 1000px) {
   #reset-options-btn {
     font-size: 1.75em;
+  }
+}
+@media (max-width: 600px) {
+  #reset-options-btn {
+    width: 40px;
+    height: 40px;
   }
 }
 #reset-options-btn i {
