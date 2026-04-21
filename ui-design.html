@@ -298,26 +298,25 @@
         </section>
 
         <section class="tabs isDesign">
-            <div class="tabs-buttons container">
+            <div class="tabs-buttons container" data-tabs-buttons>
                 <label for="tab-1" class="tab-button">
-                    <input type="radio" name="tab-radio" checked id="tab-1" onchange="sliderInitialize()">
+                    <input type="radio" name="tab-radio" checked id="tab-1">
                     <span class="tab-header title_h5">
                         Для интернет-магазина
                     </span>
                 </label>
                 <label for="tab-2" class="tab-button">
-                    <input type="radio" name="tab-radio" id="tab-2" onchange="sliderInitialize()">
+                    <input type="radio" name="tab-radio" id="tab-2">
                     <span class="tab-header title_h5">Для корпоративного сайта</span>
                 </label>
                 <label for="tab-3" class="tab-button">
-                    <input type="radio" name="tab-radio" id="tab-3" onchange="sliderInitialize()">
+                    <input type="radio" name="tab-radio" id="tab-3">
                     <span class="tab-header title_h5">Для веб-портала</span>
                 </label>
             </div>
             <div class="tabs-content">
                 <label for="mobile-tab-1" class="tab-button mobile">
-                    <input type="checkbox" name="tab-radio-mobile" id="mobile-tab-1" checked
-                        onchange="sliderInitialize()">
+                    <input type="checkbox" name="tab-radio-mobile" id="mobile-tab-1" checked>
                     <span class="tab-header title_h5">Для интернет-магазина</span>
                 </label>
                 <div class="tab-content container">
@@ -428,103 +427,100 @@
                             Наши дизайны интернет-магазинов
                         </p>
 
-                        <div class="sites-portfolio-slider" data-slider="portfolio-shop-slider"
-                            id="portfolio-shop-slider">
-
-                            <div class="card card--portfolio isDev" style="--portfolio-color: #1e4593;">
-                                <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                                    data-site-preview="https://ng-prom.ru/">
-                                    <div class="card-header">
-                                        <img src="https://ng-prom.ru/img/favicon.svg" class="portfolio-logo"
-                                            alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>НГ Пром</b>
+                        <div class="slider mb-50" id="portfolio-shop-slider" data-slider data-infinite="false"
+                            data-autoplay="false" data-pagination="true" data-prev-button="#portfolio-shop-prev"
+                            data-next-button="#portfolio-shop-next" data-pagination-container="#portfolio-shop-dots"
+                            data-breakpoints='{"1200":3,"900":2,"600":1,"0":1}'>
+                            <div class="slider-inner">
+                                <div class="card card--portfolio isDev" style="--portfolio-color: #1e4593;">
+                                    <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                        data-site-preview="https://ng-prom.ru/">
+                                        <div class="card-header">
+                                            <img src="https://ng-prom.ru/img/favicon.svg" class="portfolio-logo"
+                                                alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>НГ Пром</b>
+                                            </div>
                                         </div>
+                                        <img src="/src/images/mockup/ngprom.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>НГ Пром</b>
+                                        <span>31.03.2023</span>
+                                        <a href="https://ng-prom.ru/" target="_blank">ng-prom.ru</a>
                                     </div>
-                                    <img src="/src/images/mockup/ngprom.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>НГ Пром</b>
-                                    <span>31.03.2023</span>
-                                    <a href="https://ng-prom.ru/" target="_blank">ng-prom.ru</a>
+                                </div>
+
+                                <div class="card card--portfolio isDev" style="--portfolio-color: #aa0b0b;">
+                                    <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                        data-site-preview="https://vinlam.ru/">
+                                        <div class="card-header">
+                                            <img src="https://vinlam.ru/favicon.ico" class="portfolio-logo"
+                                                alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>VinLam</b>
+                                            </div>
+                                        </div>
+                                        <img src="/src/images/mockup/vinlam.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>VinLam</b>
+                                        <span>26.12.2024</span>
+                                        <a href="https://vinlam.ru/" target="_blank">vinlam.ru</a>
+                                    </div>
+                                </div>
+
+                                <div class="card card--portfolio isDev" style="--portfolio-color: #2655b8;">
+                                    <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                        data-site-preview="https://s-telekom.ru">
+                                        <div class="card-header">
+                                            <img src="https://s-telekom.ru/assets/favicon.ico" class="portfolio-logo"
+                                                alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>Сервис-Телеком</b>
+                                            </div>
+                                        </div>
+                                        <img src="/src/images/mockup/stelekom.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>Сервис-Телеком</b>
+                                        <span>14.04.2025</span>
+                                        <a href="https://s-telekom.ru" target="_blank">s-telekom.ru</a>
+                                    </div>
+                                </div>
+
+                                <div class="card card--portfolio isDev" style="--portfolio-color: #ef5d5d;">
+                                    <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                        data-site-preview="https://проуход.рф">
+                                        <div class="card-header">
+                                            <img src="https://проуход.рф/frontend/web/img/favicon.svg"
+                                                class="portfolio-logo" alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>PROуход</b>
+                                            </div>
+                                        </div>
+                                        <img src="/src/images/mockup/prouhod.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>PROуход</b>
+                                        <span>28.03.2023</span>
+                                        <a href="https://проуход.рф" target="_blank">проуход.рф</a>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="card card--portfolio isDev" style="--portfolio-color: #aa0b0b;">
-                                <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                                    data-site-preview="https://vinlam.ru/">
-                                    <div class="card-header">
-                                        <img src="https://vinlam.ru/favicon.ico" class="portfolio-logo"
-                                            alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>VinLam</b>
-                                        </div>
-                                    </div>
-                                    <img src="/src/images/mockup/vinlam.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>VinLam</b>
-                                    <span>26.12.2024</span>
-                                    <a href="https://vinlam.ru/" target="_blank">vinlam.ru</a>
-                                </div>
+                            <div id="portfolio-shop-slider-nav" class="slider-navigation isCentered">
+                                <button class="prev-button" id="portfolio-shop-prev">
+                                    <i class="icon-shevrone left"></i>
+                                </button>
+                                <button class="next-button" id="portfolio-shop-next">
+                                    <i class="icon-shevrone"></i>
+                                </button>
                             </div>
-
-                            <div class="card card--portfolio isDev" style="--portfolio-color: #2655b8;">
-                                <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                                    data-site-preview="https://s-telekom.ru">
-                                    <div class="card-header">
-                                        <img src="https://s-telekom.ru/assets/favicon.ico" class="portfolio-logo"
-                                            alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>Сервис-Телеком</b>
-                                        </div>
-                                    </div>
-                                    <img src="/src/images/mockup/stelekom.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>Сервис-Телеком</b>
-                                    <span>14.04.2025</span>
-                                    <a href="https://s-telekom.ru" target="_blank">s-telekom.ru</a>
-                                </div>
-                            </div>
-
-                            <div class="card card--portfolio isDev" style="--portfolio-color: #ef5d5d;">
-                                <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                                    data-site-preview="https://проуход.рф">
-                                    <div class="card-header">
-                                        <img src="https://проуход.рф/frontend/web/img/favicon.svg"
-                                            class="portfolio-logo" alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>PROуход</b>
-                                        </div>
-                                    </div>
-                                    <img src="/src/images/mockup/prouhod.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>PROуход</b>
-                                    <span>28.03.2023</span>
-                                    <a href="https://проуход.рф" target="_blank">проуход.рф</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div id="portfolio-shop-slider" class="pagination mb-50">
-                            <button class="pagination--prev-btn">
-                                <i class="icon-shevrone left"></i>
-                            </button>
-                            <div class="pagination--buttons-dots">
-                                <button class="pagination--btn-dot highlight"></button>
-                                <button class="pagination--btn-dot"></button>
-                                <button class="pagination--btn-dot"></button>
-                            </div>
-                            <button class="pagination--next-btn">
-                                <i class="icon-shevrone"></i>
-                            </button>
                         </div>
 
                         <a href="#crm-creation" class="button-link m-center mt-20 ">
@@ -539,7 +535,7 @@
                 </div>
 
                 <label for="mobile-tab-2" class="tab-button mobile">
-                    <input type="checkbox" name="tab-radio-mobile" id="mobile-tab-2" onchange="sliderInitialize()">
+                    <input type="checkbox" name="tab-radio-mobile" id="mobile-tab-2">
                     <span class="tab-header title_h5">Для корпоративного сайта
                     </span>
                     <span class="tab-button-content">
@@ -657,101 +653,101 @@
                             Наши дизайны корпоративных сайтов
                         </p>
 
-                        <div class="sites-portfolio-slider" data-slider="portfolio-corporate-slider"
-                            id="portfolio-corporate-slider">
-
-                            <div class="card card--portfolio isDev" style="--portfolio-color: #e20400;">
-                                <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                                    data-site-preview="https://technok.ru/">
-                                    <div class="card-header">
-                                        <img src="https://technok.ru/favicon/favicon.ico" class="portfolio-logo"
-                                            alt="portfolio-logo" />
-                                        <div class="card-header-text">
-                                            <b>MEDVED</b>
+                        <div class="slider mb-50" id="portfolio-corporate-slider" data-slider data-infinite="false"
+                            data-autoplay="false" data-pagination="true" data-prev-button="#portfolio-corporate-prev"
+                            data-next-button="#portfolio-corporate-next"
+                            data-pagination-container="#portfolio-corporate-dots"
+                            data-breakpoints='{"1200":3,"900":2,"600":1,"0":1}'>
+                            <div class="slider-inner">
+                                <div class="card card--portfolio isDev" style="--portfolio-color: #e20400;">
+                                    <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                        data-site-preview="https://technok.ru/">
+                                        <div class="card-header">
+                                            <img src="https://technok.ru/favicon/favicon.ico" class="portfolio-logo"
+                                                alt="portfolio-logo" />
+                                            <div class="card-header-text">
+                                                <b>MEDVED</b>
+                                            </div>
                                         </div>
+                                        <img src="/src/images/mockup/technok.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>MEDVED</b>
+                                        <span>05.05.2021</span>
+                                        <a href="https://technok.ru/" target="_blank">technok.ru</a>
                                     </div>
-                                    <img src="/src/images/mockup/technok.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>MEDVED</b>
-                                    <span>05.05.2021</span>
-                                    <a href="https://technok.ru/" target="_blank">technok.ru</a>
+                                </div>
+
+                                <div class="card card--portfolio isDev" style="--portfolio-color: #007aff;">
+                                    <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                        data-site-preview="https://stomatfakel.ru/">
+                                        <div class="card-header">
+                                            <img src="https://stomatfakel.ru/assets/favicon.ico" class="portfolio-logo"
+                                                alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>Стоматология Факел</b>
+                                            </div>
+                                        </div>
+                                        <img src="/src/images/mockup/stomatfakel.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>Стоматология Факел</b>
+                                        <span>15.01.2025</span>
+                                        <a href="https://stomatfakel.ru/" target="_blank">stomatfakel.ru</a>
+                                    </div>
+                                </div>
+
+                                <div class="card card--portfolio isDev" style="--portfolio-color: #da4f41;">
+                                    <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                        data-site-preview="https://tipografiya36.ru/">
+                                        <div class="card-header">
+                                            <img src="https://tipografiya36.ru/assets/favicon.ico"
+                                                class="portfolio-logo" alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>Типография36</b>
+                                            </div>
+                                        </div>
+                                        <img src="/src/images/mockup/tipo.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>Типография36</b>
+                                        <span>10.03.2025</span>
+                                        <a href="https://tipografiya36.ru/" target="_blank">tipografiya36.ru</a>
+                                    </div>
+                                </div>
+
+                                <div class="card card--portfolio isDev" style="--portfolio-color: #e21414;">
+                                    <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                        data-site-preview="https://trastvrn.ru/">
+                                        <div class="card-header">
+                                            <img src="https://trastvrn.ru/favicon.ico" class="portfolio-logo"
+                                                alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>ТРАСТ</b>
+                                            </div>
+                                        </div>
+                                        <img src="/src/images/mockup/trast.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>ТРАСТ</b>
+                                        <span>31.07.2023</span>
+                                        <a href="https://trastvrn.ru/" target="_blank">trastvrn.ru</a>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="card card--portfolio isDev" style="--portfolio-color: #007aff;">
-                                <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                                    data-site-preview="https://stomatfakel.ru/">
-                                    <div class="card-header">
-                                        <img src="https://stomatfakel.ru/assets/favicon.ico" class="portfolio-logo"
-                                            alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>Стоматология Факел</b>
-                                        </div>
-                                    </div>
-                                    <img src="/src/images/mockup/stomatfakel.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>Стоматология Факел</b>
-                                    <span>15.01.2025</span>
-                                    <a href="https://stomatfakel.ru/" target="_blank">stomatfakel.ru</a>
-                                </div>
+                            <div id="portfolio-corporate-slider-nav" class="slider-navigation isCentered">
+                                <button class="prev-button" id="portfolio-corporate-prev">
+                                    <i class="icon-shevrone left"></i>
+                                </button>
+                                <button class="next-button" id="portfolio-corporate-next">
+                                    <i class="icon-shevrone"></i>
+                                </button>
                             </div>
-
-                            <div class="card card--portfolio isDev" style="--portfolio-color: #da4f41;">
-                                <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                                    data-site-preview="https://tipografiya36.ru/">
-                                    <div class="card-header">
-                                        <img src="https://tipografiya36.ru/assets/favicon.ico" class="portfolio-logo"
-                                            alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>Типография36</b>
-                                        </div>
-                                    </div>
-                                    <img src="/src/images/mockup/tipo.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>Типография36</b>
-                                    <span>10.03.2025</span>
-                                    <a href="https://tipografiya36.ru/" target="_blank">tipografiya36.ru</a>
-                                </div>
-                            </div>
-
-                            <div class="card card--portfolio isDev" style="--portfolio-color: #e21414;">
-                                <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                                    data-site-preview="https://trastvrn.ru/">
-                                    <div class="card-header">
-                                        <img src="https://trastvrn.ru/favicon.ico" class="portfolio-logo"
-                                            alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>ТРАСТ</b>
-                                        </div>
-                                    </div>
-                                    <img src="/src/images/mockup/trast.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>ТРАСТ</b>
-                                    <span>31.07.2023</span>
-                                    <a href="https://trastvrn.ru/" target="_blank">trastvrn.ru</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div id="portfolio-corporate-slider" class="pagination mb-50">
-                            <button class="pagination--prev-btn">
-                                <i class="icon-shevrone left"></i>
-                            </button>
-                            <div class="pagination--buttons-dots">
-                                <button class="pagination--btn-dot"></button>
-                            </div>
-                            <button class="pagination--next-btn">
-                                <i class="icon-shevrone"></i>
-                            </button>
                         </div>
 
                         <a href="#crm-creation" class="button-link m-center mt-20 ">
@@ -765,7 +761,7 @@
                 </div>
 
                 <label for="mobile-tab-3" class="tab-button mobile">
-                    <input type="checkbox" name="tab-radio-mobile" id="mobile-tab-3" onchange="sliderInitialize()">
+                    <input type="checkbox" name="tab-radio-mobile" id="mobile-tab-3">
                     <span class="tab-header title_h5">Для веб-портала</span>
                 </label>
                 <div class="tab-content container">
@@ -884,99 +880,99 @@
                             Наши дизайны веб-порталов
                         </p>
 
-                        <div class="sites-portfolio-slider" data-slider="portfolio-web-slider"
-                            id="portfolio-web-slider">
-
-                            <div class="card card--portfolio isDev active" style="--portfolio-color: #146E9A;">
-                                <a href="/case-molvest" class="absolute-link">
-                                    <div class="card-header">
-                                        <img src="https://inko-med.ru/bitrix/templates/inkomed/static/img/favicon.ico"
-                                            class="portfolio-logo" alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>ИНКО-МЕД СЕРВИС</b>
+                        <div class="slider mb-50" id="portfolio-web-slider" data-slider data-infinite="false"
+                            data-autoplay="false" data-pagination="true" data-prev-button="#portfolio-web-prev"
+                            data-next-button="#portfolio-web-next" data-pagination-container="#portfolio-web-dots"
+                            data-breakpoints='{"1200":3,"900":2,"600":1,"0":1}'>
+                            <div class="slider-inner">
+                                <div class="card card--portfolio isDev active" style="--portfolio-color: #146E9A;">
+                                    <a href="/case-molvest" class="absolute-link">
+                                        <div class="card-header">
+                                            <img src="https://inko-med.ru/bitrix/templates/inkomed/static/img/favicon.ico"
+                                                class="portfolio-logo" alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>ИНКО-МЕД СЕРВИС</b>
+                                            </div>
                                         </div>
+                                        <img src="/src/images/mockup/inkomed.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>ИНКО-МЕД СЕРВИС</b>
+                                        <span>29.06.2021</span>
+                                        <a href="https://inko-med.ru/" target="_blank">inko-med.ru</a>
                                     </div>
-                                    <img src="/src/images/mockup/inkomed.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>ИНКО-МЕД СЕРВИС</b>
-                                    <span>29.06.2021</span>
-                                    <a href="https://inko-med.ru/" target="_blank">inko-med.ru</a>
+                                </div>
+
+                                <div class="card card--portfolio isDev active" style="--portfolio-color: #4d4d9f;">
+                                    <a href="/case-molvest" class="absolute-link">
+                                        <div class="card-header">
+                                            <img src="https://tender.molvest.ru/favicon.ico" class="portfolio-logo"
+                                                alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>МОЛВЕСТ</b>
+                                            </div>
+                                        </div>
+                                        <img src="/src/images/mockup/molvest.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>МОЛВЕСТ</b>
+                                        <span>03.06.2022</span>
+                                        <a href="https://tender.molvest.ru/" target="_blank">tender.molvest.ru</a>
+                                    </div>
+                                </div>
+
+                                <div class="card card--portfolio isDev active" style="--portfolio-color: #60a561;">
+                                    <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                        data-site-preview="https://vsya-nedvizhimost.ru">
+                                        <div class="card-header">
+                                            <img src="https://vsya-nedvizhimost.ru/favicon.ico" class="portfolio-logo"
+                                                alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>Вся Недвижимость</b>
+                                            </div>
+                                        </div>
+                                        <img src="/src/images/mockup/vsyanedvizhimost.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>Вся Недвижимость</b>
+                                        <span>07.08.2024</span>
+                                        <a href="https://vsya-nedvizhimost.ru" target="_blank">vsya-nedvizhimost.ru</a>
+                                    </div>
+                                </div>
+
+                                <div class="card card--portfolio isDev" style="--portfolio-color: #FFE586;">
+                                    <a href="/case-spartak" class="absolute-link">
+                                        <div class="card-header">
+                                            <img src="https://kinospartak.ru/favicon.ico" class="portfolio-logo"
+                                                alt="logo company" />
+                                            <div class="card-header-text">
+                                                <b>Кинотеатр «Спартак»</b>
+                                            </div>
+                                        </div>
+                                        <img src="/src/images/mockup/spartak.webp" class="portfolio-site"
+                                            alt="recent-work-demo">
+                                    </a>
+                                    <div class="card-body">
+                                        <b>Кинотеатр «Спартак»</b>
+                                        <span>28.08.2020</span>
+                                        <a href="https://kinospartak.ru" target="_blank">kinospartak.ru</a>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="card card--portfolio isDev active" style="--portfolio-color: #4d4d9f;">
-                                <a href="/case-molvest" class="absolute-link">
-                                    <div class="card-header">
-                                        <img src="https://tender.molvest.ru/favicon.ico" class="portfolio-logo"
-                                            alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>МОЛВЕСТ</b>
-                                        </div>
-                                    </div>
-                                    <img src="/src/images/mockup/molvest.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>МОЛВЕСТ</b>
-                                    <span>03.06.2022</span>
-                                    <a href="https://tender.molvest.ru/" target="_blank">tender.molvest.ru</a>
-                                </div>
+                            <div id="portfolio-web-slider-nav" class="slider-navigation isCentered">
+                                <button class="prev-button" id="portfolio-web-prev">
+                                    <i class="icon-shevrone left"></i>
+                                </button>
+                                <button class="next-button" id="portfolio-web-next">
+                                    <i class="icon-shevrone"></i>
+                                </button>
                             </div>
-
-
-                            <div class="card card--portfolio isDev active" style="--portfolio-color: #60a561;">
-                                <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                                    data-site-preview="https://vsya-nedvizhimost.ru">
-                                    <div class="card-header">
-                                        <img src="https://vsya-nedvizhimost.ru/favicon.ico" class="portfolio-logo"
-                                            alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>Вся Недвижимость</b>
-                                        </div>
-                                    </div>
-                                    <img src="/src/images/mockup/vsyanedvizhimost.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>Вся Недвижимость</b>
-                                    <span>07.08.2024</span>
-                                    <a href="https://vsya-nedvizhimost.ru" target="_blank">vsya-nedvizhimost.ru</a>
-                                </div>
-                            </div>
-
-                            <div class="card card--portfolio isDev" style="--portfolio-color: #FFE586;">
-                                <a href="/case-spartak" class="absolute-link">
-                                    <div class="card-header">
-                                        <img src="https://kinospartak.ru/favicon.ico" class="portfolio-logo"
-                                            alt="logo company" />
-                                        <div class="card-header-text">
-                                            <b>Кинотеатр «Спартак»</b>
-                                        </div>
-                                    </div>
-                                    <img src="/src/images/mockup/spartak.webp" class="portfolio-site"
-                                        alt="recent-work-demo">
-                                </a>
-                                <div class="card-body">
-                                    <b>Кинотеатр «Спартак»</b>
-                                    <span>28.08.2020</span>
-                                    <a href="https://kinospartak.ru" target="_blank">kinospartak.ru</a>
-                                </div>
-                            </div>
-
                         </div>
-                        <div id="portfolio-web-slider" class="pagination mb-50">
-                            <button class="pagination--prev-btn">
-                                <i class="icon-shevrone left"></i>
-                            </button>
-                            <div class="pagination--buttons-dots">
-                                <button class="pagination--btn-dot"></button>
-                            </div>
-                            <button class="pagination--next-btn">
-                                <i class="icon-shevrone"></i>
-                            </button>
-                        </div>
+
                         <a href="#crm-creation" class="button-link m-center mt-20 ">
                             Заказать дизайн
                             <span class="br520">веб-портала</span>
@@ -1093,91 +1089,95 @@
                     Свежие работы
                 </p>
 
-                <div class="sites-portfolio-slider" data-slider="ui-portfolio-slider" id="ui-portfolio-slider">
-                    <div class="card card--portfolio isDev" style="--portfolio-color: #FFE586;">
-                        <a href="/case-spartak" class="absolute-link">
-                            <div class="card-header">
-                                <img src="https://kinospartak.ru/favicon.ico" class="portfolio-logo"
-                                    alt="logo company" />
-                                <div class="card-header-text">
-                                    <b>Кинотеатр «Спартак»</b>
+                <div class="slider" id="ui-test-slider" data-slider data-infinite="false" data-autoplay="false"
+                    data-pagination="true" data-prev-button="#portfolio-prev" data-next-button="#portfolio-next"
+                    data-pagination-container="#portfolio-dots" data-breakpoints='{"1200":3,"900":2,"600":1,"0":1}'>
+                    <div class="slider-inner">
+                        <div class="card card--portfolio isDev" style="--portfolio-color: #FFE586;">
+                            <a href="/case-spartak" class="absolute-link">
+                                <div class="card-header">
+                                    <img src="https://kinospartak.ru/favicon.ico" class="portfolio-logo"
+                                        alt="logo company" />
+                                    <div class="card-header-text">
+                                        <b>Кинотеатр «Спартак»</b>
+                                    </div>
                                 </div>
+                                <img src="/src/images/mockup/spartak.webp" class="portfolio-site"
+                                    alt="recent-work-demo">
+                            </a>
+                            <div class="card-body">
+                                <b>Кинотеатр «Спартак»</b>
+                                <span>28.08.2020</span>
+                                <a href="https://kinospartak.ru" target="_blank">kinospartak.ru</a>
                             </div>
-                            <img src="/src/images/mockup/spartak.webp" class="portfolio-site" alt="recent-work-demo">
-                        </a>
-                        <div class="card-body">
-                            <b>Кинотеатр «Спартак»</b>
-                            <span>28.08.2020</span>
-                            <a href="https://kinospartak.ru" target="_blank">kinospartak.ru</a>
+                        </div>
+                        <div class="card card--portfolio isDev" style="--portfolio-color: #2655b8;">
+                            <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                data-site-preview="https://s-telekom.ru">
+                                <div class="card-header">
+                                    <img src="https://s-telekom.ru/assets/favicon.ico" class="portfolio-logo"
+                                        alt="logo company" />
+                                    <div class="card-header-text">
+                                        <b>Сервис-Телеком</b>
+                                    </div>
+                                </div>
+                                <img src="/src/images/mockup/stelekom.webp" class="portfolio-site"
+                                    alt="recent-work-demo">
+                            </a>
+                            <div class="card-body">
+                                <b>Сервис-Телеком</b>
+                                <span>14.04.2025</span>
+                                <a href="https://s-telekom.ru" target="_blank">s-telekom.ru</a>
+                            </div>
+                        </div>
+                        <div class="card card--portfolio isDev" style="--portfolio-color: #fb8c00;">
+                            <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                data-site-preview="https://продукты-тамбов.рф/">
+                                <div class="card-header">
+                                    <img src="https://продукты-тамбов.рф/favicon.ico" class="portfolio-logo"
+                                        alt="portfolio-logo" />
+                                    <div class="card-header-text">
+                                        <b>ПРО-движение</b>
+                                    </div>
+                                </div>
+                                <img src="/src/images/mockup/prodvizhenie.webp" class="portfolio-site"
+                                    alt="recent-work-demo">
+                            </a>
+                            <div class="card-body">
+                                <b>ПРО-движение</b>
+                                <span>08.11.2023</span>
+                                <a href="https://продукты-тамбов.рф/" target="_blank">продукты-тамбов.рф</a>
+                            </div>
+                        </div>
+                        <div class="card card--portfolio isDev" style="--portfolio-color: #e20400;">
+                            <a href="javascript://" class="absolute-link" data-popup="site-preview"
+                                data-site-preview="https://technok.ru/">
+                                <div class="card-header">
+                                    <img src="https://technok.ru/favicon/favicon.ico" class="portfolio-logo"
+                                        alt="portfolio-logo" />
+                                    <div class="card-header-text">
+                                        <b>MEDVED</b>
+                                    </div>
+                                </div>
+                                <img src="/src/images/mockup/technok.webp" class="portfolio-site"
+                                    alt="recent-work-demo">
+                            </a>
+                            <div class="card-body">
+                                <b>MEDVED</b>
+                                <span>05.05.2021</span>
+                                <a href="https://technok.ru/" target="_blank">technok.ru</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card card--portfolio isDev" style="--portfolio-color: #2655b8;">
-                        <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                            data-site-preview="https://s-telekom.ru">
-                            <div class="card-header">
-                                <img src="https://s-telekom.ru/assets/favicon.ico" class="portfolio-logo"
-                                    alt="logo company" />
-                                <div class="card-header-text">
-                                    <b>Сервис-Телеком</b>
-                                </div>
-                            </div>
-                            <img src="/src/images/mockup/stelekom.webp" class="portfolio-site" alt="recent-work-demo">
-                        </a>
-                        <div class="card-body">
-                            <b>Сервис-Телеком</b>
-                            <span>14.04.2025</span>
-                            <a href="https://s-telekom.ru" target="_blank">s-telekom.ru</a>
-                        </div>
-                    </div>
-                    <div class="card card--portfolio isDev" style="--portfolio-color: #fb8c00;">
-                        <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                            data-site-preview="https://продукты-тамбов.рф/">
-                            <div class="card-header">
-                                <img src="https://продукты-тамбов.рф/favicon.ico" class="portfolio-logo"
-                                    alt="portfolio-logo" />
-                                <div class="card-header-text">
-                                    <b>ПРО-движение</b>
-                                </div>
-                            </div>
-                            <img src="/src/images/mockup/prodvizhenie.webp" class="portfolio-site"
-                                alt="recent-work-demo">
-                        </a>
-                        <div class="card-body">
-                            <b>ПРО-движение</b>
-                            <span>08.11.2023</span>
-                            <a href="https://продукты-тамбов.рф/" target="_blank">продукты-тамбов.рф</a>
-                        </div>
-                    </div>
-                    <div class="card card--portfolio isDev" style="--portfolio-color: #e20400;">
-                        <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                            data-site-preview="https://technok.ru/">
-                            <div class="card-header">
-                                <img src="https://technok.ru/favicon/favicon.ico" class="portfolio-logo"
-                                    alt="portfolio-logo" />
-                                <div class="card-header-text">
-                                    <b>MEDVED</b>
-                                </div>
-                            </div>
-                            <img src="/src/images/mockup/technok.webp" class="portfolio-site" alt="recent-work-demo">
-                        </a>
-                        <div class="card-body">
-                            <b>MEDVED</b>
-                            <span>05.05.2021</span>
-                            <a href="https://technok.ru/" target="_blank">technok.ru</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div id="ui-portfolio-slider" class="pagination mb-50">
-                    <button class="pagination--prev-btn">
-                        <i class="icon-shevrone left"></i>
-                    </button>
-                    <div class="pagination--buttons-dots">
-                        <button class="pagination--btn-dot"></button>
+                    <div id="ui-portfolio-nav" class="slider-navigation isCentered">
+                        <button class="prev-button" id="portfolio-prev">
+                            <i class="icon-shevrone left"></i>
+                        </button>
+                        <button class="next-button" id="portfolio-next">
+                            <i class="icon-shevrone"></i>
+                        </button>
                     </div>
-                    <button class="pagination--next-btn">
-                        <i class="icon-shevrone"></i>
-                    </button>
                 </div>
 
                 <a href="/portfolio" class="button-link m-center mt-20">
@@ -1470,7 +1470,7 @@
             </div>
         </div>
     </dialog>
-    <script src="./js/app.js"></script>
+    <script src="./js/dev/app.js"></script>
 </body>
 
 </html>

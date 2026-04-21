@@ -818,27 +818,36 @@ document.addEventListener("DOMContentLoaded", () => {
  * - плавный touch-свайп без рывков
  */
 class AdaptiveSlider {
-  constructor(container, options = {}) {
-    // container – элемент, внутри которого находится .slider-wrapper и слайды
-    // или сам элемент-слайдер (ul, div с классом slides)
-    this.container = container;
+  // Хранилище активных экземпляров (WeakMap, чтобы не мешать сборщику мусора)
+  static _instances = new WeakMap();
 
-    // Находим внутренний контейнер со слайдами
-    this.sliderInner = container.querySelector(
-      ".slides, .tab-slider, .slider-inner",
-    );
+  /**
+   * Получить существующий экземпляр для контейнера
+   * @param {HTMLElement} container
+   * @returns {AdaptiveSlider|undefined}
+   */
+  static getInstance(container) {
+    return AdaptiveSlider._instances.get(container);
+  }
+
+  constructor(container, options = {}) {
+    // Если для этого контейнера уже есть экземпляр – уничтожаем его (или можно вернуть существующий)
+    const existing = AdaptiveSlider.getInstance(container);
+    if (existing) {
+      console.warn('AdaptiveSlider: повторная инициализация, уничтожаем старый экземпляр', container);
+      existing.destroy();
+    }
+
+    this.container = container;
+    this.sliderInner = container.querySelector('.slides, .tab-slider, .slider-inner');
     if (!this.sliderInner) {
-      console.warn(
-        "AdaptiveSlider: не найден .slides, .tab-slider или .slider-inner",
-      );
+      console.warn('AdaptiveSlider: не найден .slides, .tab-slider или .slider-inner');
       return;
     }
 
-    // Слайды – прямые потомки sliderInner
     this.slides = Array.from(this.sliderInner.children);
     if (this.slides.length === 0) return;
 
-    // Настройки по умолчанию
     const defaultOptions = {
       infinite: false, // бесконечная карусель (с клонами)
       autoplay: false, // автопрокрутка
@@ -853,7 +862,6 @@ class AdaptiveSlider {
       paginationContainer: null, // селектор или элемент для кнопок пагинации
       prevButton: null, // селектор или элемент кнопки "назад"
       nextButton: null, // селектор или элемент кнопки "вперёд"
-      scrollContainer: null, // элемент, который будет скроллиться (обычно sliderInner)
       onInit: null,
       onResize: null,
       onSlideChange: null,
@@ -868,19 +876,20 @@ class AdaptiveSlider {
     this.touchStartY = 0;
     this.resizeTimer = null;
 
-    // Дополнительные внутренние переменные
     this.slideWidth = 0;
     this.gap = 0;
     this.slidesPerView = 1;
     this.totalSlides = this.slides.length;
     this.cloneCount = 0;
+    this.paginationDots = null;
+    this._isDestroyed = false;
+
+    // Регистрируем экземпляр
+    AdaptiveSlider._instances.set(container, this);
 
     this.init();
   }
 
-  /**
-   * Инициализация
-   */
   init() {
     // Если infinite – создаём клоны
     if (this.options.infinite && this.totalSlides > 1) {
@@ -918,8 +927,7 @@ class AdaptiveSlider {
     if (this.options.autoplay) {
       this.startAutoplay();
     }
-
-    if (typeof this.options.onInit === "function") {
+    if (typeof this.options.onInit === 'function') {
       this.options.onInit(this);
     }
   }
@@ -933,15 +941,12 @@ class AdaptiveSlider {
     const cloneLast = this.slides[this.slides.length - 1].cloneNode(true);
     const clonePreLast = this.slides[this.slides.length - 2]?.cloneNode(true);
 
-    // Добавляем клоны в начало и конец
-    if (clonePreLast)
-      this.sliderInner.insertBefore(clonePreLast, this.slides[0]);
+    if (clonePreLast) this.sliderInner.insertBefore(clonePreLast, this.slides[0]);
     this.sliderInner.insertBefore(cloneLast, this.slides[0]);
     this.sliderInner.appendChild(cloneFirst);
     if (cloneSecond) this.sliderInner.appendChild(cloneSecond);
 
-    // Для бесконечного режима стартовый индекс – количество клонов в начале
-    this.cloneCount = 2; // два клона слева
+    this.cloneCount = 2;
     this.currentIndex = this.cloneCount;
   }
 
@@ -971,7 +976,7 @@ class AdaptiveSlider {
     const breakpoints = this.options.breakpoints;
     const sortedBreakpoints = Object.keys(breakpoints)
       .map(Number)
-      .sort((a, b) => b - a); // по убыванию
+      .sort((a, b) => b - a);
 
     for (const bp of sortedBreakpoints) {
       if (width >= bp) {
@@ -1005,7 +1010,7 @@ class AdaptiveSlider {
    * Перемещение к определённому индексу (дополнено вызовом updateVisibleSlides)
    */
   goTo(index, { instant = false, triggerEvent = true } = {}) {
-    if (this.isAnimating) return;
+    if (this.isAnimating || this._isDestroyed) return;
 
     let targetIndex = index;
     const maxIndex = this.slides.length - this.slidesPerView;
@@ -1018,7 +1023,6 @@ class AdaptiveSlider {
 
     if (targetIndex === this.currentIndex && !instant) return;
 
-    // Обновляем видимые слайды ДО начала анимации (на основе целевого индекса)
     this.updateVisibleSlidesByIndex(targetIndex);
 
     const offset = targetIndex * (this.slideWidth + this.gap);
@@ -1030,17 +1034,27 @@ class AdaptiveSlider {
       setTimeout(() => {
         this.isAnimating = false;
 
-        // Корректировка для бесконечного режима
+        // Бесконечный режим: коррекция индекса после анимации
         if (this.options.infinite && this.cloneCount > 0) {
-          // ... логика перехода для бесконечного режима (если есть) ...
-          // После коррекции индекса обновляем видимые слайды повторно
-          this.updateVisibleSlides();
-        } else {
-          this.currentIndex = targetIndex;
-          // Повторная синхронизация на случай, если что-то изменилось
-          this.updateVisibleSlides();
+          const realStart = this.cloneCount;
+          const realEnd = this.slides.length - this.cloneCount - 1;
+          if (targetIndex <= 1) {
+            // Перепрыгиваем в конец
+            const newIndex = realEnd - (this.cloneCount - targetIndex);
+            this.currentIndex = newIndex;
+            this.goTo(this.currentIndex, { instant: true });
+            return;
+          } else if (targetIndex >= this.slides.length - this.cloneCount - 1) {
+            // Перепрыгиваем в начало
+            const newIndex = realStart + (targetIndex - (this.slides.length - this.cloneCount));
+            this.currentIndex = newIndex;
+            this.goTo(this.currentIndex, { instant: true });
+            return;
+          }
         }
 
+        this.currentIndex = targetIndex;
+        this.updateVisibleSlides();
         this.updateButtonsState();
         this.updatePaginationActive();
 
@@ -1050,7 +1064,7 @@ class AdaptiveSlider {
       }, this.options.transitionDuration);
     } else {
       this.currentIndex = targetIndex;
-      this.updateVisibleSlides(); // синхронизация (уже обновили выше, но для надёжности)
+      this.updateVisibleSlides();
       this.updateButtonsState();
       this.updatePaginationActive();
     }
@@ -1072,7 +1086,7 @@ class AdaptiveSlider {
    * Следующий слайд
    */
   next() {
-    if (this.isAnimating) return;
+    if (this.isAnimating || this._isDestroyed) return;
     this.goTo(this.currentIndex + 1);
     this.resetAutoplay();
   }
@@ -1081,7 +1095,7 @@ class AdaptiveSlider {
    * Предыдущий слайд
    */
   prev() {
-    if (this.isAnimating) return;
+    if (this.isAnimating || this._isDestroyed) return;
     this.goTo(this.currentIndex - 1);
     this.resetAutoplay();
   }
@@ -1098,13 +1112,9 @@ class AdaptiveSlider {
  * @param {number} index - индекс, относительно которого вычисляются видимые слайды
  */
   updateVisibleSlidesByIndex(index) {
-    // Сбросить класс visible у всех слайдов
     this.slides.forEach(slide => slide.classList.remove('visible'));
-
-    // Вычислить диапазон видимых слайдов
     const start = index;
     const end = Math.min(start + this.slidesPerView, this.slides.length);
-
     for (let i = start; i < end; i++) {
       if (this.slides[i]) {
         this.slides[i].classList.add('visible');
@@ -1118,26 +1128,26 @@ class AdaptiveSlider {
   updateButtonsState() {
     const prevBtn = this.options.prevButton;
     const nextBtn = this.options.nextButton;
-
-    // Если кнопок нет или они не являются DOM-элементами – выходим
     if (!prevBtn || !nextBtn) return;
-    if (
-      typeof prevBtn.style === "undefined" ||
-      typeof nextBtn.style === "undefined"
-    )
-      return;
+    if (typeof prevBtn.style === 'undefined' || typeof nextBtn.style === 'undefined') return;
 
     if (!this.options.infinite) {
       const maxIndex = this.slides.length - this.slidesPerView;
-      prevBtn.style.opacity = this.currentIndex <= 0 ? "0" : "";
-      nextBtn.style.opacity = this.currentIndex >= maxIndex ? "0" : "";
-      prevBtn.style.visibility = this.currentIndex <= 0 ? "hidden" : "";
-      nextBtn.style.visibility = this.currentIndex >= maxIndex ? "hidden" : "";
+      const isFirst = this.currentIndex <= 0;
+      const isLast = this.currentIndex >= maxIndex;
+      prevBtn.style.opacity = isFirst ? '0' : '';
+      nextBtn.style.opacity = isLast ? '0' : '';
+      prevBtn.style.visibility = isFirst ? 'hidden' : '';
+      nextBtn.style.visibility = isLast ? 'hidden' : '';
+      prevBtn.style.pointerEvents = isFirst ? 'none' : '';
+      nextBtn.style.pointerEvents = isLast ? 'none' : '';
     } else {
-      prevBtn.style.opacity = "";
-      nextBtn.style.opacity = "";
-      prevBtn.style.visibility = "";
-      nextBtn.style.visibility = "";
+      prevBtn.style.opacity = '';
+      nextBtn.style.opacity = '';
+      prevBtn.style.visibility = '';
+      nextBtn.style.visibility = '';
+      prevBtn.style.pointerEvents = '';
+      nextBtn.style.pointerEvents = '';
     }
   }
 
@@ -1145,42 +1155,25 @@ class AdaptiveSlider {
    * Настройка кнопок (поиск в DOM, если переданы селекторы)
    */
   setupButtons() {
-    // Обработка prevButton
-    if (
-      this.options.prevButton &&
-      typeof this.options.prevButton === "string"
-    ) {
+    if (this.options.prevButton && typeof this.options.prevButton === 'string') {
       const el = document.querySelector(this.options.prevButton);
       this.options.prevButton = el || null;
-      if (!el) {
-        console.warn(
-          `AdaptiveSlider: prevButton element not found for selector "${this.options.prevButton}"`,
-        );
-      }
+      if (!el) console.warn(`AdaptiveSlider: prevButton not found: "${this.options.prevButton}"`);
     }
-    // Обработка nextButton
-    if (
-      this.options.nextButton &&
-      typeof this.options.nextButton === "string"
-    ) {
+    if (this.options.nextButton && typeof this.options.nextButton === 'string') {
       const el = document.querySelector(this.options.nextButton);
       this.options.nextButton = el || null;
-      if (!el) {
-        console.warn(
-          `AdaptiveSlider: nextButton element not found for selector "${this.options.nextButton}"`,
-        );
-      }
+      if (!el) console.warn(`AdaptiveSlider: nextButton not found: "${this.options.nextButton}"`);
     }
 
-    // Добавляем слушатели только если элементы существуют и являются DOM-узлами
-    if (this.options.prevButton && this.options.prevButton.addEventListener) {
-      this.options.prevButton.addEventListener("click", (e) => {
+    if (this.options.prevButton?.addEventListener) {
+      this.options.prevButton.addEventListener('click', this._boundPrev = (e) => {
         e.preventDefault();
         this.prev();
       });
     }
-    if (this.options.nextButton && this.options.nextButton.addEventListener) {
-      this.options.nextButton.addEventListener("click", (e) => {
+    if (this.options.nextButton?.addEventListener) {
+      this.options.nextButton.addEventListener('click', this._boundNext = (e) => {
         e.preventDefault();
         this.next();
       });
@@ -1192,15 +1185,17 @@ class AdaptiveSlider {
    */
   setupPagination() {
     let container = this.options.paginationContainer;
-    if (typeof container === "string") {
+    if (typeof container === 'string') {
       container = document.querySelector(container);
     }
     if (!container) {
-      // создаём контейнер автоматически
-      container = document.createElement("div");
-      container.className = "slider-pagination";
+      container = document.createElement('div');
+      container.className = 'slider-pagination';
       this.container.appendChild(container);
       this.options.paginationContainer = container;
+    } else {
+      // Очищаем существующую пагинацию, чтобы не дублировать точки
+      container.innerHTML = '';
     }
 
     const totalReal = this.options.infinite
@@ -1208,12 +1203,11 @@ class AdaptiveSlider {
       : this.totalSlides;
     const dotsCount = Math.max(1, totalReal - this.slidesPerView + 1);
 
-    container.innerHTML = "";
     for (let i = 0; i < dotsCount; i++) {
-      const dot = document.createElement("button");
-      dot.classList.add("pagination-dot");
+      const dot = document.createElement('button');
+      dot.classList.add('pagination-dot');
       dot.dataset.index = i;
-      dot.addEventListener("click", () => {
+      dot.addEventListener('click', () => {
         if (this.options.infinite) {
           this.goTo(i + this.cloneCount);
         } else {
@@ -1229,11 +1223,9 @@ class AdaptiveSlider {
 
   updatePaginationActive() {
     if (!this.paginationDots) return;
-    let activeIndex = this.options.infinite
-      ? this.getRealIndex()
-      : this.currentIndex;
+    let activeIndex = this.options.infinite ? this.getRealIndex() : this.currentIndex;
     this.paginationDots.forEach((dot, idx) => {
-      dot.classList.toggle("active", idx === activeIndex);
+      dot.classList.toggle('active', idx === activeIndex);
     });
   }
 
@@ -1241,53 +1233,39 @@ class AdaptiveSlider {
    * Обработка ресайза (дополнено обновлением активных слайдов)
    */
   handleResize = () => {
+    if (this._isDestroyed) return;
+    // Если слайдер невидим, не пересчитываем (дождёмся refresh при показе)
+    if (this.container.offsetParent === null) return;
+
     clearTimeout(this.resizeTimer);
     this.resizeTimer = setTimeout(() => {
-      const oldSlidesPerView = this.slidesPerView;
       this.updateGap();
       this.updateSlidesPerView();
       this.setSlideWidths();
-
       const maxIndex = this.slides.length - this.slidesPerView;
       let newIndex = this.currentIndex;
       if (newIndex > maxIndex) newIndex = Math.max(0, maxIndex);
       if (newIndex < 0) newIndex = 0;
-
       this.goTo(newIndex, { instant: true });
-      // updateActiveSlides уже вызовется внутри goTo
-
-      if (this.options.pagination) {
-        this.setupPagination();
-      }
-
-      if (typeof this.options.onResize === 'function') {
-        this.options.onResize(this);
-      }
+      if (this.options.pagination) this.setupPagination();
+      if (typeof this.options.onResize === 'function') this.options.onResize(this);
     }, 150);
   };
 
-  /**
-   * Touch-свайп с защитой от рывков
-   */
   handleTouchStart = (e) => {
+    if (this._isDestroyed) return;
     this.touchStartX = e.touches[0].clientX;
     this.touchStartY = e.touches[0].clientY;
   };
 
   handleTouchMove = (e) => {
-    if (!this.touchStartX) return;
+    if (!this.touchStartX || this._isDestroyed) return;
     const deltaX = e.touches[0].clientX - this.touchStartX;
     const deltaY = e.touches[0].clientY - this.touchStartY;
-    if (
-      Math.abs(deltaX) > Math.abs(deltaY) &&
-      Math.abs(deltaX) > this.options.swipeThreshold
-    ) {
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > this.options.swipeThreshold) {
       e.preventDefault();
-      if (deltaX > 0) {
-        this.prev();
-      } else {
-        this.next();
-      }
+      if (deltaX > 0) this.prev();
+      else this.next();
       this.touchStartX = null;
     }
   };
@@ -1301,9 +1279,9 @@ class AdaptiveSlider {
    */
   startAutoplay() {
     if (this.autoScrollInterval) clearInterval(this.autoScrollInterval);
-    if (this.options.autoplay && !this.isPaused) {
+    if (this.options.autoplay && !this.isPaused && !this._isDestroyed) {
       this.autoScrollInterval = setInterval(() => {
-        if (!this.isAnimating) this.next();
+        if (!this.isAnimating && !this._isDestroyed) this.next();
       }, this.options.autoplayDelay);
     }
   }
@@ -1336,88 +1314,167 @@ class AdaptiveSlider {
    * Подписка на события
    */
   bindEvents() {
-    window.addEventListener("resize", this.handleResize);
-    this.sliderInner.addEventListener("touchstart", this.handleTouchStart, {
-      passive: false,
-    });
-    this.sliderInner.addEventListener("touchmove", this.handleTouchMove, {
-      passive: false,
-    });
-    this.sliderInner.addEventListener("touchend", this.handleTouchEnd);
+    window.addEventListener('resize', this.handleResize);
+    this.sliderInner.addEventListener('touchstart', this.handleTouchStart, { passive: false });
+    this.sliderInner.addEventListener('touchmove', this.handleTouchMove, { passive: false });
+    this.sliderInner.addEventListener('touchend', this.handleTouchEnd);
 
     if (this.options.pauseOnHover) {
-      this.container.addEventListener("mouseenter", () => this.pauseAutoplay());
-      this.container.addEventListener("mouseleave", () =>
-        this.resumeAutoplay(),
-      );
+      this.container.addEventListener('mouseenter', () => this.pauseAutoplay());
+      this.container.addEventListener('mouseleave', () => this.resumeAutoplay());
     }
   }
 
-  /**
-   * Обновление слайдов (если содержимое динамически изменилось)
-   */
+  unbindEvents() {
+    window.removeEventListener('resize', this.handleResize);
+    this.sliderInner.removeEventListener('touchstart', this.handleTouchStart);
+    this.sliderInner.removeEventListener('touchmove', this.handleTouchMove);
+    this.sliderInner.removeEventListener('touchend', this.handleTouchEnd);
+    if (this.options.pauseOnHover) {
+      this.container.removeEventListener('mouseenter', this.pauseAutoplay);
+      this.container.removeEventListener('mouseleave', this.resumeAutoplay);
+    }
+    if (this.options.prevButton && this._boundPrev) {
+      this.options.prevButton.removeEventListener('click', this._boundPrev);
+    }
+    if (this.options.nextButton && this._boundNext) {
+      this.options.nextButton.removeEventListener('click', this._boundNext);
+    }
+  }
+
   updateSlides() {
+    if (this._isDestroyed) return;
     this.slides = Array.from(this.sliderInner.children);
     this.totalSlides = this.slides.length;
     this.setSlideWidths();
     this.goTo(this.currentIndex, { instant: true });
     if (this.options.pagination) this.setupPagination();
-    // updateActiveSlides вызовется в goTo
   }
 
   /**
-   * Уничтожение слайдера, очистка событий
-   */
-  destroy() {
-    this.stopAutoplay();
-    window.removeEventListener("resize", this.handleResize);
-    this.sliderInner.removeEventListener("touchstart", this.handleTouchStart);
-    this.sliderInner.removeEventListener("touchmove", this.handleTouchMove);
-    this.sliderInner.removeEventListener("touchend", this.handleTouchEnd);
-    // Удаляем клоны, если они были
-    if (this.options.infinite && this.cloneCount) {
-      // Просто очищаем inner и восстанавливаем оригинальные слайды (лучше пересоздать)
-      // Для простоты оставим как есть – при destroy обычно удаляют весь слайдер.
+ * Обновление слайдера после изменения видимости или ресайза контейнера
+ * (например, при переключении табов)
+ */
+  refresh() {
+    if (this._isDestroyed) return;
+
+    // Пересчитываем gap и количество видимых слайдов
+    this.updateGap();
+    this.updateSlidesPerView();
+
+    // Пересчитываем ширину слайдов
+    this.setSlideWidths();
+
+    // Корректируем текущий индекс, если он выходит за пределы
+    const maxIndex = this.slides.length - this.slidesPerView;
+    let newIndex = this.currentIndex;
+    if (newIndex > maxIndex) newIndex = Math.max(0, maxIndex);
+    if (newIndex < 0) newIndex = 0;
+
+    // Переходим на новую позицию без анимации
+    this.goTo(newIndex, { instant: true });
+
+    // Обновляем пагинацию (количество точек могло измениться)
+    if (this.options.pagination) {
+      this.setupPagination();
     }
+  }
+
+  destroy() {
+    if (this._isDestroyed) return;
+    this._isDestroyed = true;
+    this.stopAutoplay();
+    this.unbindEvents();
+
+    // Удаляем созданные элементы пагинации
+    if (this.options.pagination && this.options.paginationContainer) {
+      const container = this.options.paginationContainer;
+      if (container && container.parentNode) {
+        container.innerHTML = ''; // очищаем точки
+        if (!this.options.paginationContainerWasExternal) {
+          container.remove(); // удаляем только если создали сами
+        }
+      }
+    }
+
+    // Удаляем клоны, если они были
+    if (this.options.infinite && this.cloneCount > 0) {
+      // Проще всего пересоздать внутренний DOM из оригинальных слайдов
+      // Но для простоты удалим только клоны (по индексам)
+      const totalClones = this.cloneCount * 2;
+      for (let i = 0; i < totalClones; i++) {
+        if (this.slides[i] && (i < this.cloneCount || i >= this.slides.length - this.cloneCount)) {
+          this.slides[i].remove();
+        }
+      }
+    }
+
+    // Сбрасываем стили
+    this.sliderInner.style.transform = '';
+    this.sliderInner.style.transition = '';
+    this.slides.forEach(slide => {
+      slide.style.flex = '';
+      slide.style.minWidth = '';
+      slide.style.width = '';
+      slide.classList.remove('visible');
+    });
+
+    // Удаляем ссылку из хранилища
+    AdaptiveSlider._instances.delete(this.container);
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Все слайдеры с data-slider или классом .tab-slider
-  const sliders = document.querySelectorAll("[data-slider], .tab-slider");
+const sliderInitialize = () => {
+  const sliders = document.querySelectorAll('[data-slider], .tab-slider');
   sliders.forEach((sliderContainer) => {
-    // Извлекаем настройки из data-атрибутов
-    const infinite = sliderContainer.dataset.infinite === "true";
-    const autoplay = sliderContainer.dataset.autoplay === "true";
-    const breakpointsAttr = sliderContainer.dataset.breakpoints;
+    // Проверяем, нет ли уже активного экземпляра
+    if (AdaptiveSlider.getInstance(sliderContainer)) {
+      return; // уже инициализирован
+    }
+
+    const infinite = sliderContainer.dataset.infinite === 'true';
+    const autoplay = sliderContainer.dataset.autoplay === 'true';
+    const pagination = sliderContainer.dataset.pagination === 'true';
+    const prevButton = sliderContainer.dataset.prevButton || '.prev';
+    const nextButton = sliderContainer.dataset.nextButton || '.next';
     let breakpoints = { 1200: 4, 900: 3, 600: 2, 0: 1 };
-    if (breakpointsAttr) {
+
+    if (sliderContainer.dataset.breakpoints) {
       try {
-        breakpoints = JSON.parse(breakpointsAttr);
-      } catch (e) { }
+        const parsed = JSON.parse(sliderContainer.dataset.breakpoints);
+        if (parsed && typeof parsed === 'object') breakpoints = parsed;
+      } catch (e) {
+        console.warn('AdaptiveSlider: неверный JSON в data-breakpoints', sliderContainer.dataset.breakpoints);
+      }
     }
 
     new AdaptiveSlider(sliderContainer, {
       infinite,
       autoplay,
       breakpoints,
-      pagination: sliderContainer.dataset.pagination === "true",
-      prevButton: sliderContainer.dataset.prevButton || ".prev",
-      nextButton: sliderContainer.dataset.nextButton || ".next",
+      pagination,
+      prevButton,
+      nextButton,
       pauseOnHover: true,
     });
-
-    if (sliderContainer.dataset.slider === 'cases-slider-1') {
-      let casesSlider = new AdaptiveSlider(sliderContainer, {
-        breakpoints
-      });
-
-      if (window.innerWidth >= 1000) {
-        casesSlider.destroy();
-      }
-    }
   });
+};
+
+// Инициализация при загрузке и при динамическом появлении новых слайдеров
+document.addEventListener('DOMContentLoaded', sliderInitialize);
+
+// Дополнительно: отслеживаем добавление новых слайдеров в DOM (например, при AJAX-загрузке)
+let observer = new MutationObserver((mutations) => {
+  let needInit = false;
+  for (const mutation of mutations) {
+    if (mutation.addedNodes.length) {
+      needInit = true;
+      break;
+    }
+  }
+  if (needInit) sliderInitialize();
 });
+observer.observe(document.body, { childList: true, subtree: true });
 
 // SLIDER LEGACY START
 // SLIDER START
@@ -1697,25 +1754,45 @@ tabSlidersStart();
 // tabs init
 document
   .querySelectorAll(
-    '.prices-block--buttons input[type="radio"], .table-tabs--buttons input[type="radio"], [data-tabs-buttons]  input[type="radio"]',
+    '.prices-block--buttons input[type="radio"], .table-tabs--buttons input[type="radio"], [data-tabs-buttons] input[type="radio"]'
   )
   .forEach((radio) => {
     if (!radio) return;
 
     radio.addEventListener("change", function () {
       const tabId = this.id.replace("btn-", "");
+
+      // Переключаем видимость табов
       document.querySelectorAll('[id^="tab-slide-"]').forEach((tab) => {
         tab.classList.remove("active");
       });
-      document.getElementById(tabId).classList.add("active");
+      const activeTab = document.getElementById(tabId);
+      if (activeTab) {
+        activeTab.classList.add("active");
+
+        // Обновляем слайдеры внутри только что показанного таба
+        setTimeout(() => {
+          const slidersInTab = activeTab.querySelectorAll('[data-slider], .tab-slider');
+          slidersInTab.forEach(container => {
+            const slider = AdaptiveSlider.getInstance(container);
+            if (slider && typeof slider.refresh === 'function') {
+              slider.refresh();
+            }
+          });
+        }, 50); // Небольшая задержка для отрисовки браузером
+      }
     });
 
+    // Активация при загрузке, если радио выбрано
     if (radio.checked === true) {
       const tabId = radio.id.replace("btn-", "");
       document.querySelectorAll('[id^="tab-slide-"]').forEach((tab) => {
         tab.classList.remove("active");
       });
-      document.getElementById(tabId).classList.add("active");
+      const activeTab = document.getElementById(tabId);
+      if (activeTab) {
+        activeTab.classList.add("active");
+      }
     }
   });
 
@@ -4873,7 +4950,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const lazyElements = document.querySelectorAll(".lazyload");
-const observer = new IntersectionObserver(handleIntersection, {
+observer = new IntersectionObserver(handleIntersection, {
   rootMargin: "100px",
 });
 lazyElements.forEach((element) => observer.observe(element));

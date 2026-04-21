@@ -6124,6 +6124,17 @@ button:hover svg,
   border-color: var(--blue-main);
   background-color: var(--blue-main);
 }
+.slider-navigation {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  pointer-events: none;
+}
+.slider-navigation .prev-button, .slider-navigation .next-button {
+  pointer-events: all;
+}
 .slider-navigation.isCentered .prev-button, .slider-navigation.isCentered .next-button {
   position: absolute;
   top: calc(50% + var(--button-size) / 2);

@@ -5012,6 +5012,18 @@ button:hover,
   }
 
   &-navigation {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    pointer-events: none;
+
+    & .prev-button,
+    & .next-button {
+      pointer-events: all;
+    }
+
     &.isCentered {
       & .prev-button,
       & .next-button {
