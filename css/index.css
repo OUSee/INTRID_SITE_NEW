@@ -791,8 +791,21 @@ th {
   content: "q";
 }
 
+:root {
+  --slider-length: 1;
+  --slider-visible-count: 1;
+  --slider-current-index: 0;
+  --slider-slides-gap: 4px;
+  --slider-slide-width: 100%;
+}
+
 [data-slider] {
   transition: all 0.3s ease-in-out;
+}
+@media (max-width: 600px) {
+  [data-slider]:not([data-slider^=tab-slider]) {
+    touch-action: pan-x;
+  }
 }
 [data-slider] > * {
   transition: all 0.3s ease-in-out;
@@ -3794,6 +3807,7 @@ form .button:hover {
   border-radius: 50%;
   background: rgba(8, 37, 60, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--blue-main);
   outline-offset: 4px;
   text-decoration: none !important;
 }
@@ -3806,21 +3820,22 @@ form .button:hover {
   }
 }
 .pagination button i {
-  font-size: 24px;
-  line-height: 24px;
   width: 24px;
   height: 24px;
+  font-size: 24px;
+  line-height: 24px;
   text-decoration: none;
 }
 .pagination--prev-btn, .pagination--next-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(8, 37, 60, 0.35);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--blue-main);
   transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
 }
 @media (max-width: 1000px) {
@@ -3838,10 +3853,10 @@ form .button:hover {
   }
 }
 .pagination--prev-btn i, .pagination--next-btn i {
-  font-size: 24px;
-  line-height: 24px;
   width: 24px;
   height: 24px;
+  font-size: 24px;
+  line-height: 24px;
   text-decoration: none;
 }
 @media (min-width: 1480px) {
@@ -10535,6 +10550,7 @@ button.next:hover {
     height: auto;
     padding: 20px 12px;
     margin: 0 auto;
+    touch-action: pan-x;
   }
 }
 .achievements-slider div.slides {
@@ -11446,6 +11462,14 @@ button.next:hover {
 .tab-content-webDev .tender-diagram .benefits-right {
   height: 470px;
   justify-content: space-between;
+}
+@media (min-width: 1000px) and (max-width: 1250px) {
+  .tab-content-webDev .web-shop-diagram .benefits-left,
+  .tab-content-webDev .web-shop-diagram .benefits-right,
+  .tab-content-webDev .tender-diagram .benefits-left,
+  .tab-content-webDev .tender-diagram .benefits-right {
+    width: 320px;
+  }
 }
 @media (max-width: 1000px) {
   .tab-content-webDev .web-shop-diagram .benefits-left,
@@ -15134,7 +15158,7 @@ button.next:hover {
   max-width: 320px;
 }
 .case_layout#case-molvest-monitor .img-wrapper {
-  margin: 0;
+  margin: 0 auto;
 }
 .case_layout#case-molvest-monitor .filled {
   flex: 1 0 auto;
@@ -15852,14 +15876,15 @@ button.next:hover {
 .portfolio-block__pagination .pagination--next-btn,
 .pagination-panel .pagination--prev-btn,
 .pagination-panel .pagination--next-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(8, 37, 60, 0.35);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--blue-main);
   transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
 }
 @media (max-width: 1000px) {
@@ -15886,10 +15911,10 @@ button.next:hover {
 .portfolio-block__pagination .pagination--next-btn i,
 .pagination-panel .pagination--prev-btn i,
 .pagination-panel .pagination--next-btn i {
-  font-size: 24px;
-  line-height: 24px;
   width: 24px;
   height: 24px;
+  font-size: 24px;
+  line-height: 24px;
   text-decoration: none;
 }
 .portfolio-block__pagination .pagination--buttons-numbers,

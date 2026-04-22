@@ -1724,6 +1724,16 @@ function sliderInitialize() {
 			slides[i].classList.add("active");
 		}
 
+		// const setSliderProperties = () => {
+		// 	// Надстройка для стилей
+		// 	slider.style.setProperty('--slider-length', slides.length);
+		// 	slider.style.setProperty('--slider-visible-count', visibleSlidesCount);
+		// 	slider.style.setProperty('--slider-current-index', currentIndex);
+		// 	slider.style.setProperty('--slider-slide-width', `${(slides[0].offsetWidth) / fill[0]}px`);
+		// 	slider.style.setProperty('--slider-slides-gap', `${parseInt(window.getComputedStyle(slider).gap)
+		// 		}px`);
+		// }
+
 		const updateSlider = () => {
 			const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
 			try {
@@ -1734,22 +1744,22 @@ function sliderInitialize() {
 					if (windowWidth > 1200) {
 						const slideWidth = visibleWidth / breaks[0] - gap / 2;
 						[].forEach.call(slides, function (slide) {
-							slide.style.minWidth = `${slideWidth}px`;
+							slide.style.minWidth = `${slideWidth} px`;
 						});
 					} else if (windowWidth > 900) {
 						const slideWidth = visibleWidth / breaks[1] - gap / 2;
 						[].forEach.call(slides, function (slide) {
-							slide.style.minWidth = `${slideWidth}px`;
+							slide.style.minWidth = `${slideWidth} px`;
 						});
 					} else if (windowWidth > 600) {
 						const slideWidth = visibleWidth / breaks[2] - gap / 2;
 						[].forEach.call(slides, function (slide) {
-							slide.style.minWidth = `${slideWidth}px`;
+							slide.style.minWidth = `${slideWidth} px`;
 						});
 					} else {
 						const slideWidth = visibleWidth / breaks[3] - gap / 2;
 						[].forEach.call(slides, function (slide) {
-							slide.style.minWidth = `${slideWidth}px`;
+							slide.style.minWidth = `${slideWidth} px`;
 						});
 					}
 				}
@@ -1765,6 +1775,8 @@ function sliderInitialize() {
 					slides[i].classList.add("active");
 				}
 				slider.style.transform = `translateX(-${moveAmmount}px)`;
+
+				// setSliderProperties();
 
 				// Disable prev button if at start
 				prevBtn.forEach((btn) => {
@@ -1841,22 +1853,22 @@ function sliderInitialize() {
 					if (slider.id === "gallery-slider") {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
 							}); left: ${window.innerWidth > 600 ? `25px` : `-5px`
-							}; color: var(--blue-main);`;
+							}; color: var(--blue - main); `;
 					} else {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
 							}); left: ${window.innerWidth > 600 ? `15px` : `-5px`
-							}; color: var(--blue-main);`;
+							}; color: var(--blue - main); `;
 					}
 				});
 				nextBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
 							}); right: ${window.innerWidth > 600 ? `25px` : `-5px`
-							}; color: var(--blue-main);`;
+							}; color: var(--blue - main); `;
 					} else {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
 							}); right: ${window.innerWidth > 600 ? `15px` : `-5px`
-							}; color: var(--blue-main);`;
+							}; color: var(--blue - main); `;
 					}
 				});
 			};
@@ -2045,7 +2057,7 @@ function updateSliderDimensions(slider) {
 
 	requestAnimationFrame(() => {
 		Array.from(slides).forEach((slide) => {
-			slide.style.minWidth = `${slideWidth}px`;
+			slide.style.minWidth = `${slideWidth} px`;
 		});
 		// Не обновляем transform - сохраняем текущую позицию
 	});
@@ -2467,7 +2479,7 @@ const niceSelectJS = function (selectName, options) {
 		// Генерируем событие change для калькулятора
 		originalSelect.dispatchEvent(new Event("change"));
 		console.log(
-			`dispatched change on ${originalSelect.id}, value=${originalSelect.value}`,
+			`dispatched change on ${originalSelect.id}, value = ${originalSelect.value} `,
 		);
 	});
 
@@ -2533,8 +2545,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					top = window.scrollY + 8;
 				}
 
-				tooltip.style.top = `${top}px`;
-				tooltip.style.left = `${left}px`;
+				tooltip.style.top = `${top} px`;
+				tooltip.style.left = `${left} px`;
 			});
 		});
 
@@ -2616,7 +2628,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		const tooltips = [];
 		for (let i = 1; ; i++) {
-			const tip = document.getElementById(`${prefix}-${i}`);
+			const tip = document.getElementById(`${prefix} -${i} `);
 			if (!tip) break;
 			tooltips.push(tip);
 		}
@@ -3108,7 +3120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			// Ищем все tooltip'ы, чей id начинается с prefix и тире
 			const tooltips = [];
 			for (let i = 1; ; i++) {
-				const tip = document.getElementById(`${prefix}-${i}`);
+				const tip = document.getElementById(`${prefix} -${i} `);
 				if (!tip) break;
 				tooltips.push(tip);
 			}
@@ -3536,7 +3548,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						}
 
 						const section = document.querySelector(
-							`#section-${nestedToggleId.split("-")?.[0]}`,
+							`#section - ${nestedToggleId.split("-")?.[0]} `,
 						);
 						if (section) section.checked = true;
 					}
@@ -3732,7 +3744,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						); // Вызываем обработчик
 
 						const section = document.querySelector(
-							`#section-${nestedItem.id.split("-")?.[0]}`,
+							`#section - ${nestedItem.id.split("-")?.[0]} `,
 						);
 						if (section) section.checked = true;
 
@@ -3787,7 +3799,7 @@ document.addEventListener("DOMContentLoaded", () => {
 									(t) => t.id === nestedItem.id,
 								);
 								const section = document.querySelector(
-									`#section-${nestedItem.id.split("-")?.[0]}`,
+									`#section - ${nestedItem.id.split("-")?.[0]} `,
 								);
 								if (section) section.checked = true;
 								if (nestedToggle) {
@@ -4526,7 +4538,7 @@ const toggleSection = (
 		const selector = document.getElementById(id);
 
 		if (!selector) {
-			console.warn(`Элемент с id="${id}" не найден`);
+			console.warn(`Элемент с id = "${id}" не найден`);
 			return;
 		}
 
@@ -4558,7 +4570,7 @@ const toggleSection = (
 		const selector = document.getElementById(id);
 
 		if (!selector) {
-			console.warn(`Элемент с id="${id}" не найден`);
+			console.warn(`Элемент с id = "${id}" не найден`);
 			return;
 		}
 
@@ -5237,7 +5249,7 @@ class TableOfContents {
 
 			// Создаем ссылку
 			const link = document.createElement("a");
-			link.href = `#${node.id}`;
+			link.href = `#${node.id} `;
 			link.textContent = node.text;
 			link.className = "hover-underline";
 
@@ -5279,7 +5291,7 @@ class TableOfContents {
 					isVisible: false,
 				});
 			} else {
-				console.warn(`TableOfContents: Не найден элемент с id="${id}"`);
+				console.warn(`TableOfContents: Не найден элемент с id = "${id}"`);
 			}
 		});
 	}

@@ -13,8 +13,22 @@ $step-count: 25;
 //steps: 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100
 $tab-main-count: 3;
 
+:root {
+	--slider-length: 1; // default length
+	--slider-visible-count: 1; // default count
+	--slider-current-index: 0; // default index
+	--slider-slides-gap: 4px; // default gaps
+	--slider-slide-width: 100%; // default slide width
+}
+
 [data-slider] {
 	transition: all 0.3s ease-in-out;
+
+	&:not([data-slider^="tab-slider"]) {
+		@media (max-width: 600px) {
+			touch-action: pan-x;
+		}
+	}
 
 	& > * {
 		transition: all 0.3s ease-in-out;

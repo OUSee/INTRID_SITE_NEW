@@ -106,6 +106,7 @@ button.next {
 		height: auto;
 		padding: 20px 12px;
 		margin: 0 auto;
+		touch-action: pan-x;
 	}
 
 	div.slides {
@@ -862,6 +863,10 @@ button.next {
 		.benefits-right {
 			height: 470px;
 			justify-content: space-between;
+
+			@media (min-width: 1000px) and (max-width: 1250px) {
+				width: 320px;
+			}
 
 			@media (max-width: 1000px) {
 				display: flex;
@@ -4708,7 +4713,7 @@ button.next {
 		}
 
 		& .img-wrapper {
-			margin: 0;
+			margin: 0 auto;
 		}
 
 		& .filled {
