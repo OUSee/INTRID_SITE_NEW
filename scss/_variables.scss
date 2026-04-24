@@ -740,6 +740,10 @@ div.icon-menu {
 			color: var(--blue-main);
 		}
 	}
+
+	& > * {
+		height: 30px;
+	}
 }
 
 // placeholders
@@ -1388,6 +1392,9 @@ ol {
 
 // z-index
 .z {
+	&-1 {
+		z-index: 1;
+	}
 	&-2 {
 		z-index: 2;
 	}
@@ -2530,34 +2537,40 @@ ol {
 		gap: 52px;
 	}
 
-	&-sm {
+	&-xl {
 		&-12 {
-			@media (max-width: 600px) {
+			@media (max-width: 1200px) {
 				gap: 12px;
 			}
 		}
 
 		&-16 {
-			@media (max-width: 600px) {
+			@media (max-width: 1200px) {
 				gap: 16px;
 			}
 		}
 
-		&-20 {
-			@media (max-width: 600px) {
-				gap: 20px;
-			}
-		}
-
 		&-24 {
-			@media (max-width: 600px) {
+			@media (max-width: 1200px) {
 				gap: 24px;
 			}
 		}
 
+		&-32 {
+			@media (max-width: 1200px) {
+				gap: 32px;
+			}
+		}
+
 		&-50 {
-			@media (max-width: 600px) {
+			@media (max-width: 1200px) {
 				gap: 50px;
+			}
+		}
+
+		&-72 {
+			@media (max-width: 1200px) {
+				gap: 72px;
 			}
 		}
 	}
@@ -2606,40 +2619,34 @@ ol {
 		}
 	}
 
-	&-xl {
+	&-sm {
 		&-12 {
-			@media (max-width: 1200px) {
+			@media (max-width: 600px) {
 				gap: 12px;
 			}
 		}
 
 		&-16 {
-			@media (max-width: 1200px) {
+			@media (max-width: 600px) {
 				gap: 16px;
 			}
 		}
 
+		&-20 {
+			@media (max-width: 600px) {
+				gap: 20px;
+			}
+		}
+
 		&-24 {
-			@media (max-width: 1200px) {
+			@media (max-width: 600px) {
 				gap: 24px;
 			}
 		}
 
-		&-32 {
-			@media (max-width: 1200px) {
-				gap: 32px;
-			}
-		}
-
 		&-50 {
-			@media (max-width: 1200px) {
+			@media (max-width: 600px) {
 				gap: 50px;
-			}
-		}
-
-		&-72 {
-			@media (max-width: 1200px) {
-				gap: 72px;
 			}
 		}
 	}
@@ -3223,6 +3230,64 @@ ol {
 // transparency
 .transparent {
 	color: transparent;
+}
+
+// radius
+.radius {
+	&-16 {
+		border-radius: 16px !important;
+	}
+
+	&-20 {
+		border-radius: 20px !important;
+	}
+
+	&-24 {
+		border-radius: 24px !important;
+	}
+
+	&-32 {
+		border-radius: 32px !important;
+	}
+
+	&-sm {
+		&-16 {
+			@media (max-width: 600px) {
+				border-radius: 16px !important;
+			}
+		}
+
+		&-20 {
+			@media (max-width: 600px) {
+				border-radius: 20px !important;
+			}
+		}
+
+		&-24 {
+			@media (max-width: 600px) {
+				border-radius: 24px !important;
+			}
+		}
+
+		&-32 {
+			@media (max-width: 600px) {
+				border-radius: 32px !important;
+			}
+		}
+	}
+}
+
+// croped
+.croped {
+	&-text {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+
+		&--3 {
+			-webkit-line-clamp: 3;
+		}
+	}
 }
 
 // cursors
@@ -5064,6 +5129,10 @@ button:hover,
 	}
 }
 
+.tag {
+	@include tag;
+}
+
 .mobile {
 	&-visible {
 		display: none !important;
@@ -5237,6 +5306,14 @@ button:hover,
 
 		@media (max-width: 1000px) {
 			padding: 16px 8px;
+		}
+	}
+
+	&.thin {
+		padding: 16px;
+
+		@media (max-width: 576px) {
+			padding: 8px 16px;
 		}
 	}
 
