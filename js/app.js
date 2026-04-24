@@ -144,8 +144,6 @@ function moveServiceLinks() {
 moveServiceLinks();
 
 window.addEventListener("resize", () => {
-	moveServiceLinks();
-
 	if (window.innerWidth >= 1000) {
 		closeMenu();
 	}
@@ -223,6 +221,7 @@ function handleResize() {
 			updateMockupPlace();
 			sliderInitialize();
 			SliderInIt();
+			moveServiceLinks();
 			resizeRunning = false;
 		});
 	}, 250);
