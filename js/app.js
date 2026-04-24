@@ -1,6 +1,8 @@
 // header
 const header = document.querySelector(".header");
+const footer = document.querySelector('.footer');
 const preloader = document.getElementById("preloader");
+let lastMobileState = null;
 
 window.addEventListener("scroll", function () {
 	if (window.scrollY > 50) {
@@ -114,7 +116,36 @@ menuCloseButtons?.forEach((menuItem) => {
 	});
 });
 
+// move service-links in footer
+function moveServiceLinks() {
+	if (!footer) return;
+
+	const topMenu = footer.querySelector('.footer-categories');
+	const middleMenu = footer.querySelector('.footer-menu');
+	const serviceLinks = Array.from(footer.querySelectorAll('[data-service-link]'));
+
+	if (!topMenu || !middleMenu || serviceLinks.length === 0) return;
+
+	const currentMobileState = window.innerWidth < 991;
+	if (lastMobileState === currentMobileState) return;
+	lastMobileState = currentMobileState;
+
+	if (currentMobileState) {
+		// Мобильная версия: перемещаем ссылки в middleMenu в конец
+		serviceLinks.forEach(link => middleMenu.appendChild(link));
+	} else {
+		// Десктопная версия: перемещаем ссылки в topMenu в начало
+		serviceLinks.reverse().forEach(link => {
+			topMenu.insertBefore(link, topMenu.firstChild);
+		});
+	}
+}
+
+moveServiceLinks();
+
 window.addEventListener("resize", () => {
+	moveServiceLinks();
+
 	if (window.innerWidth >= 1000) {
 		closeMenu();
 	}
