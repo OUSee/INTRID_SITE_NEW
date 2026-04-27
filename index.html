@@ -2853,13 +2853,15 @@
 
             document.addEventListener('DOMContentLoaded', () => {
                 const accepted = getCookie('OAuth_cookie_privacy_policy_new');
+                const banner = document.querySelector('.cookies');
 
                 if (accepted) {
                     removeBanner();
                     return;
+                } else {
+                    banner.style.display = '';
                 }
 
-                const banner = document.querySelector('.cookies');
                 if (!banner) return;
 
                 const agreeBtns = banner.querySelectorAll('.close_cookies, .cookies_button');
@@ -2879,7 +2881,7 @@
         })();
     </script>
 
-    <div class="cookies">
+    <div class="cookies" style="display: none;">
         <span>Мы используем файлы cookie для вашего удобства.
             <a href="/polytic" target="_blank">Подробнее</a></span>
         <div class="close_cookies" title="Согласен, закрыть">&#10005;</div>
