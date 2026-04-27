@@ -5106,6 +5106,15 @@ main {
 				text-align: left;
 			}
 		}
+
+		&:hover {
+			@media (min-width: 1000px) {
+				& .step-balls--number {
+					background-color: var(--blue-main);
+					color: var(--bg-main);
+				}
+			}
+		}
 	}
 
 	&--number {
@@ -5126,6 +5135,10 @@ main {
 		margin-left: 0;
 		margin-right: auto;
 		backface-visibility: hidden;
+
+		@media (min-width: 1000px) {
+			transition: 0.25s ease-in-out;
+		}
 
 		@media (max-width: 720px) {
 			margin-left: 0;

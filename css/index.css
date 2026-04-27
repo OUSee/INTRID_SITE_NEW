@@ -15645,6 +15645,12 @@ main {
 .step-balls--row:nth-child(even) .step-balls--content {
   text-align: left;
 }
+@media (min-width: 1000px) {
+  .step-balls--row:hover .step-balls--number {
+    background-color: var(--blue-main);
+    color: var(--bg-main);
+  }
+}
 .step-balls--number {
   position: relative;
   z-index: 1;
@@ -15663,6 +15669,11 @@ main {
   margin-left: 0;
   margin-right: auto;
   backface-visibility: hidden;
+}
+@media (min-width: 1000px) {
+  .step-balls--number {
+    transition: 0.25s ease-in-out;
+  }
 }
 @media (max-width: 720px) {
   .step-balls--number {
