@@ -374,90 +374,88 @@
 
                     <div class="right fixed-bottom z-2">
                         <div class="card total position-sticky" id="calculator-total">
-                            <div class="total-wrapper">
-                                <div class="total-top">
-                                    <p class="title_h4 mb-8 text-center">
-                                        Заинтересовала вакансия?
-                                    </p>
+                            <div class="total-top">
+                                <p class="title_h4 mb-8 text-center">
+                                    Заинтересовала вакансия?
+                                </p>
 
-                                    <p class="text-center">
-                                        Свяжитесь с нами любым удобным способом:
-                                    </p>
+                                <p class="text-center">
+                                    Свяжитесь с нами любым удобным способом:
+                                </p>
 
-                                    <div class="d-flex flex-row flex-wrap gap-16 gap-lg-32 gap-sm-12">
-                                        <button id="send-calculator-total"
-                                            class="button-highlight flex-1 d-flex d-lg-none justify-center"
-                                            data-total-switch="after">
-                                            Откликнуться
-                                        </button>
-                                        <button id="send-total"
-                                            class="button-highlight flex-1 d-none d-lg-flex justify-center"
-                                            data-popup="fast-vakansies-form">
-                                            Откликнуться
-                                        </button>
+                                <div class="d-flex flex-row flex-wrap gap-16 gap-lg-32 gap-sm-12">
+                                    <button id="send-calculator-total"
+                                        class="button-highlight flex-1 d-flex d-lg-none justify-center"
+                                        data-total-switch="after">
+                                        Откликнуться
+                                    </button>
+                                    <button id="send-total"
+                                        class="button-highlight flex-1 d-none d-lg-flex justify-center"
+                                        data-popup="fast-vakansies-form">
+                                        Откликнуться
+                                    </button>
 
-                                        <div class="icon-menu">
-                                            <a title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
-                                                <i class="icon-mail title_h3"></i>
-                                            </a>
+                                    <div class="icon-menu">
+                                        <a title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+                                            <i class="icon-mail title_h3"></i>
+                                        </a>
 
-                                            <a title="Whatsapp" href="https://wa.me/74732540796" target="_blank">
-                                                <i class="icon-whatsapp title_h3"></i>
-                                            </a>
+                                        <a title="Whatsapp" href="https://wa.me/74732540796" target="_blank">
+                                            <i class="icon-whatsapp title_h3"></i>
+                                        </a>
 
-                                            <a title="Telegram" href="https://t.me/webintrid" target="_blank">
-                                                <i class="icon-tg title_h3"></i>
-                                            </a>
-                                        </div>
+                                        <a title="Telegram" href="https://t.me/webintrid" target="_blank">
+                                            <i class="icon-tg title_h3"></i>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="total-bottom">
-                                    <p class="title_h4 text-center">
-                                        Оставить отклик
+                            </div>
+                            <div class="total-bottom">
+                                <p class="title_h4 text-center">
+                                    Оставить отклик
+                                </p>
+                                <!-- Форма получения проекта сайта -->
+                                <form action="/submit/kontakt" method="POST" class="order-form ajax-form"
+                                    id="quick-form">
+                                    <div class="recaptcha-wrapper" style="display: none;">
+                                        <div class="js-recaptcha"
+                                            data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                            data-size="invisible"></div>
+                                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                    </div>
+
+                                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                                    <input type="tel" required id="customer-phone" name="tel"
+                                        placeholder="Ваш телефон *">
+
+                                    <textarea data-autosize="true" rows="2" id="customer-comment"
+                                        placeholder="Комментарий" name="mess"></textarea>
+
+                                    <div class="input-file">
+                                        <div class="file-drop-area">
+                                            <label>
+                                                <input type="file" multiple="" name="file[]"
+                                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                                <span>Прикрепить резюме</span>
+                                                <img src="/src/icons/pin.svg" alt="Прикрепить резюме">
+                                            </label>
+                                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                            <div class="file-list" style="display: none;"></div>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials text-center m-center mb-0">
+                                        Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
+                                            data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии
+                                        с <a href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                            target="_blank">ФЗ&nbsp;№152</a>
                                     </p>
-                                    <!-- Форма получения проекта сайта -->
-                                    <form action="/submit/kontakt" method="POST" class="order-form ajax-form"
-                                        id="quick-form">
-                                        <div class="recaptcha-wrapper" style="display: none;">
-                                            <div class="js-recaptcha"
-                                                data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
-                                                data-size="invisible"></div>
-                                            <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
-                                        </div>
-
-                                        <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
-
-                                        <input type="email" id="customer-mail" name="email" placeholder="E-mail">
-
-                                        <input type="tel" required id="customer-phone" name="tel"
-                                            placeholder="Ваш телефон *">
-
-                                        <textarea data-autosize="true" rows="2" id="customer-comment"
-                                            placeholder="Комментарий" name="mess"></textarea>
-
-                                        <div class="input-file">
-                                            <div class="file-drop-area">
-                                                <label>
-                                                    <input type="file" multiple="" name="file[]"
-                                                        accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
-                                                    <span>Прикрепить резюме</span>
-                                                    <img src="/src/icons/pin.svg" alt="Прикрепить резюме">
-                                                </label>
-                                                <div class="drag-drop-hint">или перетащите файлы сюда</div>
-                                                <div class="file-list" style="display: none;"></div>
-                                            </div>
-                                        </div>
-                                        <p class="testimonials text-center m-center mb-0">
-                                            Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
-                                                data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии
-                                            с <a href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
-                                                target="_blank">ФЗ&nbsp;№152</a>
-                                        </p>
-                                        <button type="submit" class="button big button-white mt-12">
-                                            Отправить
-                                        </button>
-                                    </form>
-                                </div>
+                                    <button type="submit" class="button big button-white mt-12">
+                                        Отправить
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

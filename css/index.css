@@ -13243,19 +13243,9 @@ main {
   width: 100%;
   max-height: 100%;
   padding: 0;
-  background: unset;
+  background-color: var(--bg-main);
   transition: 0.6s ease;
   transition-delay: 0.25s;
-}
-.total-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: var(--bg-main);
-  transition: 0.4s ease;
 }
 .total:not(.active) {
   max-height: 240px;
@@ -13270,7 +13260,7 @@ main {
     max-height: 176px;
   }
 }
-.total.active .total-wrapper {
+.total.active {
   background-color: var(--blue-tag);
 }
 .total.active .total-top {

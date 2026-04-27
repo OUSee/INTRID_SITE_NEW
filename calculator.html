@@ -2549,91 +2549,87 @@
                                 </div>
 
                                 <div id="calculator-total" class="card total">
-                                    <div class="total-wrapper">
-                                        <div class="total-top">
-                                            <div class="title_h4">
-                                                Стоимость&nbsp;сайта <span class="d-lg-none">по <br>выбранным
-                                                    параметрам</span>:
-                                            </div>
-
-                                            <p class="title_h1 m-0 color-blue">
-                                                <span class="color-blue title_h1 w-fit"
-                                                    id="calculator-total-target">0</span>&nbsp;₽
-                                            </p>
-                                            <div class="total-title d-flex flex-row flex-wrap gap-8 w-100">
-                                                <button id="reset-options-btn" class="button button-white"
-                                                    title="Сброс"><i class="icon-reset"></i></button>
-                                                <button id="send-calculator-total"
-                                                    class="button-highlight flex-1 big d-flex d-lg-none"
-                                                    data-total-switch="after">
-                                                    получить проект<span class="br600">сайта</span>
-                                                </button>
-                                                <button id="send-total"
-                                                    class="button-highlight flex-1 big d-none d-lg-flex"
-                                                    data-popup="fast-req-form">
-                                                    получить проект<span class="br600">сайта</span>
-                                                </button>
-                                            </div>
+                                    <div class="total-top">
+                                        <div class="title_h4">
+                                            Стоимость&nbsp;сайта <span class="d-lg-none">по <br>выбранным
+                                                параметрам</span>:
                                         </div>
-                                        <div class="total-bottom">
-                                            <p class="title_h4">
-                                                Получить проект сайта
-                                            </p>
-                                            <!-- Форма получения проекта сайта -->
-                                            <form action="/submit/calc" method="POST" class="order-form ajax-form"
-                                                id="quick-form">
-                                                <div class="recaptcha-wrapper" style="display: none;">
-                                                    <div class="js-recaptcha"
-                                                        data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
-                                                        data-size="invisible"></div>
-                                                    <input type="hidden" name="g-recaptcha-response"
-                                                        class="js-recaptcha-token">
-                                                </div>
 
-                                                <input type="text" id="calculator-form-name" name="name"
-                                                    placeholder="Ваше имя">
+                                        <p class="title_h1 m-0 color-blue">
+                                            <span class="color-blue title_h1 w-fit"
+                                                id="calculator-total-target">0</span>&nbsp;₽
+                                        </p>
+                                        <div class="total-title d-flex flex-row flex-wrap gap-8 w-100">
+                                            <button id="reset-options-btn" class="button button-white" title="Сброс"><i
+                                                    class="icon-reset"></i></button>
+                                            <button id="send-calculator-total"
+                                                class="button-highlight flex-1 big d-flex d-lg-none"
+                                                data-total-switch="after">
+                                                получить проект<span class="br600">сайта</span>
+                                            </button>
+                                            <button id="send-total" class="button-highlight flex-1 big d-none d-lg-flex"
+                                                data-popup="fast-req-form">
+                                                получить проект<span class="br600">сайта</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="total-bottom">
+                                        <p class="title_h4">
+                                            Получить проект сайта
+                                        </p>
+                                        <!-- Форма получения проекта сайта -->
+                                        <form action="/submit/calc" method="POST" class="order-form ajax-form"
+                                            id="quick-form">
+                                            <div class="recaptcha-wrapper" style="display: none;">
+                                                <div class="js-recaptcha"
+                                                    data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                                    data-size="invisible"></div>
+                                                <input type="hidden" name="g-recaptcha-response"
+                                                    class="js-recaptcha-token">
+                                            </div>
 
-                                                <input type="email" id="calculator-form-mail" name="email"
-                                                    placeholder="E-mail">
+                                            <input type="text" id="calculator-form-name" name="name"
+                                                placeholder="Ваше имя">
 
-                                                <input type="tel" required="" id="calculator-form-phone" name="tel"
-                                                    placeholder="Ваш телефон *">
+                                            <input type="email" id="calculator-form-mail" name="email"
+                                                placeholder="E-mail">
 
-                                                <textarea data-autosize="true" rows="2" id="calculator-form-comment"
-                                                    placeholder="Комментарий" name="mess"
-                                                    style="min-height:73px;"></textarea>
+                                            <input type="tel" required="" id="calculator-form-phone" name="tel"
+                                                placeholder="Ваш телефон *">
 
-                                                <div class="input-file">
-                                                    <div class="file-drop-area">
-                                                        <label>
-                                                            <input type="file" multiple="" name="file[]"
-                                                                accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
-                                                            <span>Прикрепить ТЗ</span>
-                                                            <img src="/src/icons/pin.svg" alt="Прикрепить ТЗ">
-                                                        </label>
-                                                        <div class="drag-drop-hint">или перетащите файлы сюда
-                                                        </div>
-                                                        <div class="file-list" style="display: none;"></div>
+                                            <textarea data-autosize="true" rows="2" id="calculator-form-comment"
+                                                placeholder="Комментарий" name="mess"
+                                                style="min-height:73px;"></textarea>
+
+                                            <div class="input-file">
+                                                <div class="file-drop-area">
+                                                    <label>
+                                                        <input type="file" multiple="" name="file[]"
+                                                            accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                                        <span>Прикрепить ТЗ</span>
+                                                        <img src="/src/icons/pin.svg" alt="Прикрепить ТЗ">
+                                                    </label>
+                                                    <div class="drag-drop-hint">или перетащите файлы сюда
                                                     </div>
+                                                    <div class="file-list" style="display: none;"></div>
                                                 </div>
-                                                <p class="title_h4 m-0">
-                                                    Итого: <span id="calculator-total-cost">0</span>&nbsp;₽
-                                                </p>
+                                            </div>
+                                            <p class="title_h4 m-0">
+                                                Итого: <span id="calculator-total-cost">0</span>&nbsp;₽
+                                            </p>
 
-                                                <p class="testimonials text-center m-center mb-0">
-                                                    Нажимая кнопку, я выражаю согласие на обработку <a
-                                                        href="javascript://"
-                                                        data-popup="privacy-policy">персональных&nbsp;данных</a>
-                                                    в соответствии с <a
-                                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
-                                                        target="_blank">ФЗ&nbsp;№152</a>
-                                                </p>
+                                            <p class="testimonials text-center m-center mb-0">
+                                                Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
+                                                    data-popup="privacy-policy">персональных&nbsp;данных</a>
+                                                в соответствии с <a
+                                                    href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                                    target="_blank">ФЗ&nbsp;№152</a>
+                                            </p>
 
-                                                <button type="submit" class="button big button-white mt-10">
-                                                    Отправить
-                                                </button>
-                                            </form>
-                                        </div>
+                                            <button type="submit" class="button big button-white mt-10">
+                                                Отправить
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -2680,20 +2680,20 @@ main {
 	width: 100%;
 	max-height: 100%;
 	padding: 0;
-	background: unset;
+	background-color: var(--bg-main);
 	transition: 0.6s ease;
 	transition-delay: 0.25s;
 
-	&-wrapper {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		margin: 0;
-		padding: 0;
-		background-color: var(--bg-main);
-		transition: 0.4s ease;
-	}
+	// &-wrapper {
+	// 	position: relative;
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	width: 100%;
+	// 	margin: 0;
+	// 	padding: 0;
+	// 	background-color: var(--bg-main);
+	// 	transition: 0.4s ease;
+	// }
 
 	&:not(.active) {
 		max-height: 240px;
@@ -2708,12 +2708,10 @@ main {
 	}
 
 	&.active {
-		@media (max-width: 1000px) {
-		}
-
-		& .total-wrapper {
-			background-color: var(--blue-tag);
-		}
+		background-color: var(--blue-tag);
+		// & .total-wrapper {
+		// 	background-color: var(--blue-tag);
+		// }
 
 		& .total-top {
 			position: absolute;
