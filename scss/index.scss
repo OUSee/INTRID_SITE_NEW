@@ -65,31 +65,31 @@ main {
 }
 
 // slider
-button.prev,
-button.next {
-	position: absolute;
-	left: calc(50% - 20px);
-	color: white;
-	border: none;
-	padding: 12px;
-	cursor: pointer;
+// button.prev,
+// button.next {
+// 	position: absolute;
+// 	left: calc(50% - 20px);
+// 	color: white;
+// 	border: none;
+// 	padding: 12px;
+// 	cursor: pointer;
 
-	&:hover {
-		background: transparent;
-		box-shadow: none;
-	}
-}
+// 	&:hover {
+// 		background: transparent;
+// 		box-shadow: none;
+// 	}
+// }
 
-.prev {
-	top: -10px;
-	transform: rotate(270deg);
-}
+// .prev {
+// 	top: -10px;
+// 	transform: rotate(270deg);
+// }
 
-.next {
-	left: 102px;
-	bottom: -10px;
-	transform: rotate(90deg);
-}
+// .next {
+// 	left: 102px;
+// 	bottom: -10px;
+// 	transform: rotate(90deg);
+// }
 
 .achievements-slider {
 	position: relative;
@@ -178,74 +178,7 @@ button.next {
 	}
 
 	button {
-		color: var(--blue-main);
-		position: absolute;
-		left: 100px;
-		border: none;
-		padding: 12px;
-		cursor: pointer;
-		transform-origin: center;
-
-		&:hover {
-			@media (min-width: 1000px) {
-				background: transparent;
-				box-shadow: none;
-			}
-		}
-
-		i {
-			display: flex;
-			color: currentColor;
-			font-size: 30px;
-		}
-
-		&.prev {
-			top: 0;
-			left: 50%;
-			right: unset;
-			bottom: unset;
-			transform: translate(-50%, -30%);
-
-			@media (max-width: 600px) {
-				top: 50%;
-				left: 10px;
-				right: unset;
-				bottom: unset;
-				transform: translate(-50%, -50%);
-			}
-
-			& i {
-				transform: rotate(-90deg);
-
-				@media (max-width: 600px) {
-					transform: rotate(-180deg);
-				}
-			}
-		}
-
-		&.next {
-			top: unset;
-			left: 50%;
-			right: unset;
-			bottom: 0;
-			transform: translate(-50%, 30%);
-
-			@media (max-width: 600px) {
-				top: 50%;
-				left: unset;
-				right: 10px;
-				bottom: unset;
-				transform: translate(50%, -50%);
-			}
-
-			& i {
-				transform: rotate(90deg);
-
-				@media (max-width: 600px) {
-					transform: rotate(0deg);
-				}
-			}
-		}
+		@include achievement-slider-button;
 	}
 }
 
@@ -312,49 +245,7 @@ button.next {
 
 		& .slider {
 			&-arrow {
-				position: absolute;
-				top: 50% !important;
-				z-index: 1;
-				aspect-ratio: 1 / 1;
-				display: block;
-				width: 64px;
-				height: 64px;
-				min-height: unset;
-				max-height: unset;
-				padding: 0;
-				text-align: center;
-				border: 2px solid;
-				border-color: transparent;
-				border-radius: 100%;
-				font-size: 32px;
-				line-height: 0;
-
-				@media (max-width: 1000px) {
-					display: none !important;
-				}
-
-				&:hover {
-					@media (min-width: 1000px) {
-						border-color: var(--color-white);
-						color: var(--blue-main);
-					}
-				}
-
-				& i {
-					transform: none;
-				}
-
-				&.prev {
-					right: unset !important;
-					left: 10px;
-					transform: translate(0%, -50%) rotate(-180deg);
-				}
-
-				&.next {
-					left: unset !important;
-					right: 10px;
-					transform: translate(0%, -50%);
-				}
+				@include tab-slider-button;
 			}
 		}
 

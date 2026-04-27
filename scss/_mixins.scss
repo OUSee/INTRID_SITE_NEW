@@ -1185,6 +1185,126 @@
 	animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+@mixin achievement-slider-button {
+	color: var(--blue-main);
+	position: absolute;
+	left: 100px;
+	border: none;
+	padding: 12px;
+	cursor: pointer;
+	transform-origin: center;
+
+	&:hover {
+		@media (min-width: 1000px) {
+			background: transparent;
+			box-shadow: none;
+		}
+	}
+
+	i {
+		display: flex;
+		color: currentColor;
+		font-size: 30px;
+	}
+
+	&.prev {
+		top: 0;
+		left: 50%;
+		right: unset;
+		bottom: unset;
+		transform: translate(-50%, -30%);
+
+		@media (max-width: 600px) {
+			top: 50%;
+			left: 10px;
+			right: unset;
+			bottom: unset;
+			transform: translate(-50%, -50%);
+		}
+
+		& i {
+			transform: rotate(-90deg);
+
+			@media (max-width: 600px) {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+
+	&.next {
+		top: unset;
+		left: 50%;
+		right: unset;
+		bottom: 0;
+		transform: translate(-50%, 30%);
+
+		@media (max-width: 600px) {
+			top: 50%;
+			left: unset;
+			right: 10px;
+			bottom: unset;
+			transform: translate(50%, -50%);
+		}
+
+		& i {
+			transform: rotate(90deg);
+
+			@media (max-width: 600px) {
+				transform: rotate(0deg);
+			}
+		}
+	}
+}
+
+@mixin tab-slider-button {
+	position: absolute;
+	top: 50%;
+	z-index: 1;
+	aspect-ratio: 1 / 1;
+	width: 64px;
+	height: 64px;
+	min-height: unset;
+	max-height: unset;
+	color: var(--blue-main);
+	border: none;
+	padding: 0;
+	border: 2px solid;
+	border-color: transparent;
+	border-radius: 100%;
+	font-size: 32px;
+	line-height: 0;
+	text-align: center;
+	cursor: pointer;
+
+	@media (max-width: 1000px) {
+		display: none !important;
+	}
+
+	&:hover {
+		@media (min-width: 1000px) {
+			background-color: transparent;
+			border-color: var(--color-white);
+			color: var(--blue-main);
+		}
+	}
+
+	i {
+		color: currentColor;
+	}
+
+	&.prev {
+		right: unset;
+		left: 10px;
+		transform: translate(0%, -50%) rotate(-180deg);
+	}
+
+	&.next {
+		left: unset !important;
+		right: 10px;
+		transform: translate(0%, -50%);
+	}
+}
+
 @mixin pagination-btn {
 	padding: 4px;
 	border-radius: 50%;
