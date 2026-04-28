@@ -5110,6 +5110,11 @@ main {
 				& .step-balls--number {
 					background-color: var(--blue-main);
 					color: var(--bg-main);
+
+					& > img,
+					& > svg {
+						filter: invert(1) grayscale(1) brightness(0);
+					}
 				}
 			}
 		}
