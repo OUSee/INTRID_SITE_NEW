@@ -469,6 +469,14 @@ th {
     display: none;
   }
 }
+@keyframes setBlurToBody {
+  from {
+    filter: none;
+  }
+  to {
+    filter: blur(4px);
+  }
+}
 @keyframes links-last {
   0% {
     left: 0%;
@@ -9393,7 +9401,7 @@ button:disabled, button.disabled,
   overflow: hidden;
 }
 .popup-opened body > :not(dialog) {
-  filter: blur(4px);
+  animation: 0.125s setBlurToBody 0.25s ease forwards;
 }
 .popup-wrapper {
   position: relative;
