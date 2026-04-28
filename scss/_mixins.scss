@@ -333,6 +333,23 @@
 	}
 }
 
+@mixin button-without-hover {
+	background-color: unset;
+	color: currentColor;
+	border: none;
+	box-shadow: unset;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.active {
+		background-color: unset;
+		color: currentColor;
+		border: none;
+		box-shadow: unset;
+	}
+}
+
 @mixin tabs-buttons {
 	position: relative;
 	z-index: 2;
