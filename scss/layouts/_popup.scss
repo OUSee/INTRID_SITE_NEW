@@ -17,7 +17,7 @@
 	transform: scale(1.25);
 	transition: 0.25s ease-in-out;
 
-	video {
+	& video {
 		border-radius: 12px;
 		max-width: 90vw;
 	}
@@ -38,10 +38,14 @@
 		overflow: hidden;
 
 		& body {
-			& > header,
-			& > main,
-			& > section,
-			& > footer {
+			// & > header,
+			// & > main,
+			// & > section,
+			// & > footer {
+			// 	filter: blur(4px);
+			// }
+
+			& > :not(dialog) {
 				filter: blur(4px);
 			}
 		}
@@ -105,12 +109,12 @@
 		margin: auto;
 		color: white;
 
-		hr {
+		& hr {
 			width: 97%;
 			margin: 20px auto;
 		}
 
-		img {
+		& img {
 			width: auto;
 			height: auto;
 			// max-height: 745px;
@@ -122,7 +126,7 @@
 		@media (max-width: 601px) {
 			width: fit-content;
 
-			img {
+			& img {
 				width: 80vw;
 			}
 		}
