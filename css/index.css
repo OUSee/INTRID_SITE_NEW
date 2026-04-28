@@ -5986,8 +5986,7 @@ progress::-moz-progress-bar {
 button,
 .button,
 .button-link,
-.button-highlight,
-.radioButton {
+.button-highlight {
   display: flex;
   border-radius: 32px;
   background-color: transparent;
@@ -6012,24 +6011,21 @@ button,
   button,
   .button,
   .button-link,
-  .button-highlight,
-  .radioButton {
+  .button-highlight {
     max-height: 40px;
   }
 }
 button span,
 .button span,
 .button-link span,
-.button-highlight span,
-.radioButton span {
+.button-highlight span {
   font-size: inherit !important;
   line-height: 1em;
 }
 button img,
 .button img,
 .button-link img,
-.button-highlight img,
-.radioButton img {
+.button-highlight img {
   display: flex;
   transition: all 0.3s ease-in-out;
 }
@@ -6039,24 +6035,20 @@ button i, button svg,
 .button-link i,
 .button-link svg,
 .button-highlight i,
-.button-highlight svg,
-.radioButton i,
-.radioButton svg {
+.button-highlight svg {
   transition: color 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
 button i.icon-arrow_wide,
 .button i.icon-arrow_wide,
 .button-link i.icon-arrow_wide,
-.button-highlight i.icon-arrow_wide,
-.radioButton i.icon-arrow_wide {
+.button-highlight i.icon-arrow_wide {
   font-size: 1.4em;
   line-height: 14px;
 }
 button.big,
 .button.big,
 .button-link.big,
-.button-highlight.big,
-.radioButton.big {
+.button-highlight.big {
   border-radius: 32px;
   padding: 16px 24px;
   justify-content: center;
@@ -6066,8 +6058,7 @@ button.big,
   button.big,
   .button.big,
   .button-link.big,
-  .button-highlight.big,
-  .radioButton.big {
+  .button-highlight.big {
     font-size: 12px;
     padding: 20px 24px;
     gap: 4px;
@@ -6077,8 +6068,7 @@ button.big,
   button.big,
   .button.big,
   .button-link.big,
-  .button-highlight.big,
-  .radioButton.big {
+  .button-highlight.big {
     font-size: 12px;
     padding: 14px 24px;
     gap: 4px;
@@ -6087,8 +6077,7 @@ button.big,
 button.big i.icon-arrow_wide,
 .button.big i.icon-arrow_wide,
 .button-link.big i.icon-arrow_wide,
-.button-highlight.big i.icon-arrow_wide,
-.radioButton.big i.icon-arrow_wide {
+.button-highlight.big i.icon-arrow_wide {
   font-size: 2em;
   line-height: 16px;
   margin-left: 4px;
@@ -6096,8 +6085,7 @@ button.big i.icon-arrow_wide,
 button.no-border,
 .button.no-border,
 .button-link.no-border,
-.button-highlight.no-border,
-.radioButton.no-border {
+.button-highlight.no-border {
   border-color: transparent;
 }
 button:disabled, button.disabled,
@@ -6106,9 +6094,7 @@ button:disabled, button.disabled,
 .button-link:disabled,
 .button-link.disabled,
 .button-highlight:disabled,
-.button-highlight.disabled,
-.radioButton:disabled,
-.radioButton.disabled {
+.button-highlight.disabled {
   pointer-events: none;
   opacity: 0.5;
 }
@@ -6136,27 +6122,6 @@ button:disabled, button.disabled,
   box-shadow: 0px 0px 16px var(--blue-main);
 }
 
-.radioButton input[type=radio] {
-  display: none;
-}
-.radioButton:has(input[type=radio]:checked) {
-  border: 1px solid var(--blue-main);
-  background-color: var(--blue-main);
-  color: var(--color-black);
-}
-.radioButton:has(input[type=radio]:checked) i {
-  color: var(--color-black);
-}
-.radioButton:has(input:checked) {
-  box-shadow: none;
-}
-.radioButton:has(input:checked)::after {
-  font-family: "INTRID_ICONS";
-  content: "I";
-  font-weight: 600;
-  font-size: 14px;
-}
-
 .button-link i {
   color: var(--blue-main);
 }
@@ -6178,21 +6143,9 @@ button:disabled, button.disabled,
   box-shadow: 0px 0px 16px var(--blue-main);
 }
 
-.radioButton:has(input:checked) {
-  border: 1px solid var(--blue-main);
-  background-color: var(--blue-main);
-  color: var(--color-black);
-  box-shadow: 0px 0px 16px var(--blue-main);
-}
-.radioButton:has(input:checked) img,
-.radioButton:has(input:checked) svg {
-  filter: invert(1) grayscale(1) brightness(0);
-}
-
 @media (min-width: 1000px) {
   button:hover,
   .button:hover,
-  .radioButton:hover,
   .button-link:hover,
   .button-highlight:hover {
     border: 1px solid var(--blue-main);
@@ -6204,8 +6157,6 @@ button:disabled, button.disabled,
   button:hover svg,
   .button:hover img,
   .button:hover svg,
-  .radioButton:hover img,
-  .radioButton:hover svg,
   .button-link:hover img,
   .button-link:hover svg,
   .button-highlight:hover img,
