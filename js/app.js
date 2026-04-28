@@ -1849,6 +1849,9 @@ function sliderInitialize() {
 					) {
 						pagination.style.display = "flex";
 					}
+
+					navButtons.forEach(btn => btn.removeAttribute("aria-current"));
+					navButtons[currentIndex].setAttribute("aria-current", "true");
 				}
 			} catch (err) {
 				console.log("=> err", err);
@@ -1910,15 +1913,20 @@ function sliderInitialize() {
 				for (let index = 0; index < btncount; index++) {
 					const btnDot = document.createElement("button");
 					btnDot.classList.add("pagination--btn-dot");
+					btnDot.setAttribute("role", "button");
+					btnDot.setAttribute("aria-label", `Слайд ${index + 1}`);
+					if (index === currentIndex) {
+						btnDot.setAttribute("aria-current", "true");
+					}
 					dotsContainer.appendChild(btnDot);
 				}
-				navButtons = pagination.querySelectorAll(
-					".pagination--btn-dot",
-				);
+				// Обновить navButtons после добавления
+				navButtons = pagination.querySelectorAll(".pagination--btn-dot");
 				navButtons.forEach((button) => {
 					button.classList.remove("highlight");
 				});
 				navButtons[currentIndex].classList.add("highlight");
+
 				if (currentIndex === 0) {
 					prevBtn.forEach((btn) => {
 						if (currentIndex === 0) {
@@ -1967,6 +1975,7 @@ function sliderInitialize() {
 				navButtons.forEach((navbutton) => {
 					navbutton.classList.remove("highlight");
 				});
+
 				button.classList.add("highlight");
 				currentIndex = index;
 				updateSlider();
