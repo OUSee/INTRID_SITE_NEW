@@ -2016,6 +2016,7 @@ function sliderInitialize() {
 		}
 
 		function mouseDownHandler(e) {
+			if (id === `cases-tabs-slider`) return;
 			const slider = e.currentTarget;
 			e.preventDefault();
 			pos = {
@@ -2047,8 +2048,6 @@ function sliderInitialize() {
 					prevSlide();
 				}
 				lastSlideChange = currentTime;
-			} else if (id === `cases-tabs-slider`) {
-				return;
 			} else {
 				return;
 			}
