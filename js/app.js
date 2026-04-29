@@ -1886,22 +1886,22 @@ function sliderInitialize() {
 				prevBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
-							}); left: ${window.innerWidth > 600 ? `25px` : `-5px`
+							}); left: ${window.innerWidth > 600 ? `25px` : `-10px`
 							};`;
 					} else {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
-							}); left: ${window.innerWidth > 600 ? `15px` : `-5px`
+							}); left: ${window.innerWidth > 600 ? `15px` : `-10px`
 							};`;
 					}
 				});
 				nextBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
-							}); right: ${window.innerWidth > 600 ? `25px` : `-5px`
+							}); right: ${window.innerWidth > 600 ? `25px` : `-10px`
 							};`;
 					} else {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
-							}); right: ${window.innerWidth > 600 ? `15px` : `-5px`
+							}); right: ${window.innerWidth > 600 ? `15px` : `-10px`
 							};`;
 					}
 				});
