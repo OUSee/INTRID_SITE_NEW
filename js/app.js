@@ -1959,7 +1959,7 @@ function sliderInitialize() {
 				currentIndex === navButtons.length - 1
 					? navButtons.length - 1
 					: currentIndex + 1;
-			navButtons[currentIndex].classList.add("highlight");
+			navButtons[currentIndex]?.classList.add("highlight");
 			updateSlider();
 		};
 
@@ -1968,7 +1968,7 @@ function sliderInitialize() {
 				navbutton.classList.remove("highlight");
 			});
 			currentIndex = currentIndex > 1 ? currentIndex - 1 : 0;
-			navButtons[currentIndex].classList.add("highlight");
+			navButtons[currentIndex]?.classList.add("highlight");
 			updateSlider();
 		};
 
@@ -2035,9 +2035,14 @@ function sliderInitialize() {
 
 			const dx = e.clientX - pos.x;
 			const dy = e.clientY - pos.y;
+
+			isDragging = true;
+
 			slides = Array.from(slider.children);
 			slides.forEach((slide) => {
-				slide.style.setProperty('pointer-events', 'none');
+				if (isDragging) {
+					slide.style.setProperty('pointer-events', 'none');
+				}
 			});
 
 			if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 70 && currentTime - lastSlideChange > minInterval) {
@@ -2056,9 +2061,12 @@ function sliderInitialize() {
 		};
 
 		function mouseUpHandler() {
+			isDragging = false;
 			slides = Array.from(slider.children);
 			slides.forEach((slide) => {
-				slide.style.setProperty('pointer-events', '');
+				if (!isDragging) {
+					slide.style.setProperty('pointer-events', '');
+				}
 			});
 			document.removeEventListener("mousemove", mouseMoveHandler);
 			document.removeEventListener("mouseup", mouseUpHandler);
