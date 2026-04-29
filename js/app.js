@@ -1141,6 +1141,86 @@ function tabSlidersStart() {
 tabSlidersStart();
 // SLIDER END
 
+function casesToggleTabs(interval = 5000) {
+	const cases = document.querySelector('.cases-tabs');
+	const isMobileView = window.innerWidth < 900;
+
+	// Если cases нет — выходим
+	if (!cases) return;
+
+	// Если мобильный вид — ставим checked на первую кнопку и выходим
+	if (isMobileView) {
+		const buttons = cases.querySelectorAll('.cases-buttons input[type="radio"]');
+		if (buttons.length > 0) {
+			buttons[0].checked = true;
+		}
+		return;
+	}
+
+	// Получаем кнопки
+	const buttons = cases.querySelectorAll('.cases-buttons input[type="radio"]');
+
+	// Если кнопок нет — выходим
+	if (buttons.length === 0) return;
+
+	let currentIndex = 0;
+	let intervalId = null;
+	let isHovered = false;
+
+	// Функция для переключения на следующую кнопку
+	function switchToNextButton() {
+		// Снимаем checked со всех кнопок
+		buttons.forEach(button => {
+			button.checked = false;
+		});
+
+		// Переключаемся на следующую кнопку (с циклом: после последней — первая)
+		currentIndex = (currentIndex + 1) % buttons.length;
+		buttons[currentIndex].checked = true;
+	}
+
+	// Функция запуска автопереключения
+	function startAutoSwitch() {
+		if (!isHovered && !intervalId) {
+			intervalId = setInterval(switchToNextButton, interval);
+		}
+	}
+
+	// Функция остановки автопереключения
+	function stopAutoSwitch() {
+		if (intervalId) {
+			clearInterval(intervalId);
+			intervalId = null;
+		}
+	}
+
+	// Обработчики событий мыши
+	cases.addEventListener('mouseenter', () => {
+		isHovered = true;
+		stopAutoSwitch();
+	});
+
+	cases.addEventListener('mouseleave', () => {
+		isHovered = false;
+		startAutoSwitch();
+	});
+
+	// Запускаем автопереключение изначально
+	startAutoSwitch();
+
+	// Дополнительно: сразу активируем первую кнопку при старте
+	buttons[0].checked = true;
+
+	// Возвращаем функцию для возможности отписки от событий при необходимости
+	return function cleanup() {
+		stopAutoSwitch();
+		cases.removeEventListener('mouseenter', () => { });
+		cases.removeEventListener('mouseleave', () => { });
+	};
+}
+
+casesToggleTabs();
+
 // HORIZONTAL SLIDER
 const SliderInIt = () => {
 	const sliders = document.querySelectorAll(".tab-slider");
