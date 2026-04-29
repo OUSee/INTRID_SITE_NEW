@@ -1880,14 +1880,11 @@ ol li > ol {
 .list--leads:is(ol) {
   padding-left: 30px;
 }
-.list--leads.compact {
+.list--leads.compact li {
   display: grid;
   grid-template-columns: 0.75fr 1fr;
   gap: 8px;
   margin-bottom: 0;
-  padding-bottom: 16px;
-}
-.list--leads.compact li {
   padding-bottom: 16px;
 }
 .list--leads.compact li:last-child {
@@ -3054,6 +3051,11 @@ ol li > ol {
   }
 }
 @media (max-width: 999.98px) {
+  .gap-lg-20 {
+    gap: 20px;
+  }
+}
+@media (max-width: 999.98px) {
   .gap-lg-24 {
     gap: 24px;
   }
@@ -3387,6 +3389,11 @@ ol li > ol {
 }
 .ml-32 {
   margin-left: 32px;
+}
+@media (max-width: 999.98px) {
+  .ml-lg-0 {
+    margin-left: 0;
+  }
 }
 .mr-auto {
   margin-right: auto;
@@ -6075,6 +6082,7 @@ button,
 .button-link,
 .button-highlight {
   display: flex;
+  justify-content: center;
   border-radius: 32px;
   background-color: transparent;
   padding: 12px 24px;

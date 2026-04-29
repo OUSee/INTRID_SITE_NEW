@@ -1187,13 +1187,11 @@ ol {
 		}
 
 		&.compact {
-			display: grid;
-			grid-template-columns: 0.75fr 1fr;
-			gap: 8px;
-			margin-bottom: 0;
-			padding-bottom: 16px;
-
 			& li {
+				display: grid;
+				grid-template-columns: 0.75fr 1fr;
+				gap: 8px;
+				margin-bottom: 0;
 				padding-bottom: 16px;
 
 				&:last-child {
@@ -2648,6 +2646,12 @@ ol {
 			}
 		}
 
+		&-20 {
+			@media (max-width: 999.98px) {
+				gap: 20px;
+			}
+		}
+
 		&-24 {
 			@media (max-width: 999.98px) {
 				gap: 24px;
@@ -3115,6 +3119,14 @@ ol {
 
 		&-32 {
 			margin-left: 32px;
+		}
+
+		&-lg {
+			&-0 {
+				@media (max-width: 999.98px) {
+					margin-left: 0;
+				}
+			}
 		}
 	}
 
@@ -4923,6 +4935,7 @@ button,
 .button-link,
 .button-highlight {
 	display: flex;
+	justify-content: center;
 	border-radius: 32px;
 	background-color: transparent;
 	padding: 12px 24px;
