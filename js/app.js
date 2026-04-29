@@ -1850,6 +1850,7 @@ function sliderInitialize() {
 						pagination.style.display = "flex";
 					}
 
+					// Задание атрибута текущей кнопки
 					navButtons.forEach(btn => btn.removeAttribute("aria-current"));
 					navButtons[currentIndex].setAttribute("aria-current", "true");
 				}
@@ -1886,22 +1887,22 @@ function sliderInitialize() {
 					if (slider.id === "gallery-slider") {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
 							}); left: ${window.innerWidth > 600 ? `25px` : `-5px`
-							}; color: var(--blue - main); `;
+							};`;
 					} else {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `-100%` : `0`
 							}); left: ${window.innerWidth > 600 ? `15px` : `-5px`
-							}; color: var(--blue - main); `;
+							};`;
 					}
 				});
 				nextBtn.forEach((btn) => {
 					if (slider.id === "gallery-slider") {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
 							}); right: ${window.innerWidth > 600 ? `25px` : `-5px`
-							}; color: var(--blue - main); `;
+							};`;
 					} else {
 						btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? `100%` : `0`
 							}); right: ${window.innerWidth > 600 ? `15px` : `-5px`
-							}; color: var(--blue - main); `;
+							};`;
 					}
 				});
 			};

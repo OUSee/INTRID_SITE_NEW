@@ -131,13 +131,25 @@ $tab-main-count: 3;
 		gap: 8px;
 	}
 
-	&#tenders-keys-slider,
 	&#support-slider {
 		& > * {
+			flex: 1 1 0%;
+			min-width: calc(33.333333% - 6px);
+			width: 100%;
 			opacity: 0;
 
-			&.active {
-				opacity: 1;
+			@media (max-width: 999.98px) {
+				min-width: calc(50% - 6px);
+			}
+
+			@media (max-width: 599.98px) {
+				flex: 1 0 auto;
+				max-width: 100%;
+				min-width: 100%;
+			}
+
+			&:not(.active) {
+				pointer-events: none;
 			}
 		}
 	}
@@ -212,7 +224,7 @@ $tab-main-count: 3;
 				min-width: calc(50% - 4px);
 			}
 
-			@media (max-width: 440px) {
+			@media (max-width: 439.98px) {
 				flex: 1 0 auto;
 				max-width: 100%;
 				min-width: 100% !important;
@@ -833,7 +845,7 @@ section {
 		margin: 0px 20px;
 	}
 
-	@media (max-width: 440px) {
+	@media (max-width: 439.98px) {
 		margin: 0 10px;
 	}
 
@@ -849,7 +861,7 @@ section {
 			padding: 0px 20px;
 		}
 
-		@media (max-width: 440px) {
+		@media (max-width: 439.98px) {
 			padding: 0 10px;
 		}
 	}
@@ -872,7 +884,7 @@ section {
 			max-width: 600px;
 		}
 
-		@media (max-width: 440px) {
+		@media (max-width: 439.98px) {
 			margin: 0 10px;
 		}
 	}
@@ -1480,13 +1492,13 @@ ol {
 
 	&-xs {
 		&-none {
-			@media (max-width: 440px) {
+			@media (max-width: 439.98px) {
 				display: none !important;
 			}
 		}
 
 		&-inline {
-			@media (max-width: 440px) {
+			@media (max-width: 439.98px) {
 				display: inline !important;
 			}
 		}
@@ -1543,7 +1555,7 @@ ol {
 		&--4x {
 			gap: 20px;
 
-			@media (max-width: 440px) {
+			@media (max-width: 439.98px) {
 				gap: 12px;
 			}
 
@@ -1561,7 +1573,7 @@ ol {
 					max-width: calc(50% - 10px);
 				}
 
-				@media (max-width: 440px) {
+				@media (max-width: 439.98px) {
 					flex: 1 0 100%;
 					max-width: 100%;
 				}
@@ -2410,7 +2422,7 @@ ol {
 						margin-left: -20px;
 					}
 
-					@media (max-width: 440px) {
+					@media (max-width: 439.98px) {
 						width: calc(100% + 20px);
 						margin-left: -10px;
 					}
@@ -2456,7 +2468,7 @@ ol {
 
 	&-xs {
 		&-column {
-			@media (max-width: 440px) {
+			@media (max-width: 439.98px) {
 				flex-direction: column;
 			}
 		}
@@ -3748,8 +3760,6 @@ form {
 		gap: 8px;
 
 		button {
-			// max-height: 8px;
-			// max-width: 8px;
 			border: 1px solid var(--color-white);
 
 			&.highlight {
@@ -3947,7 +3957,7 @@ form {
 	&:is(.isMain),
 	&:is(.isAi) {
 		& .tabs-content {
-			@media (max-width: 440px) {
+			@media (max-width: 439.98px) {
 				display: flex;
 				flex-direction: column;
 				gap: 8px;
@@ -3962,7 +3972,7 @@ form {
 				}
 			}
 
-			@media (max-width: 440px) {
+			@media (max-width: 439.98px) {
 				& label:has(input:checked) {
 					& + .tab-content {
 						@include tab-content-show;
@@ -3992,7 +4002,7 @@ form {
 				}
 			}
 
-			@media (max-width: 440px) {
+			@media (max-width: 439.98px) {
 				display: none;
 			}
 		}
@@ -4003,7 +4013,7 @@ form {
 			&.mobile {
 				display: none;
 
-				@media (max-width: 440px) {
+				@media (max-width: 439.98px) {
 					display: block;
 				}
 			}
@@ -4975,7 +4985,7 @@ button,
 			gap: 4px;
 		}
 
-		@media (max-width: 440px) {
+		@media (max-width: 439.98px) {
 			font-size: 12px;
 			padding: 14px 24px;
 			gap: 4px;
@@ -7232,7 +7242,7 @@ button:hover,
 				max-width: 100%;
 			}
 
-			@media (max-width: 440px) {
+			@media (max-width: 439.98px) {
 				width: 100%;
 			}
 
