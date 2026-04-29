@@ -361,8 +361,7 @@
                                 </b>
                                 <p>
                                     Сайт должен отражать уровень компании, её ценности и экспертизу. Важны качественный
-                                    контент,
-                                    фирменный стиль и
+                                    контент, фирменный стиль и
                                     продуманная структура, которые формируют доверие у клиентов и партнёров.
                                 </p>
                             </div>
@@ -373,8 +372,7 @@
                                 </b>
                                 <p>
                                     Необходимо разработать не просто визитку, а рабочий инструмент — с подключением CRM,
-                                    ERP
-                                    систем аналитики и других
+                                    ERP систем аналитики и других
                                     сервисов, упрощающих взаимодействие с клиентами.
                                 </p>
                             </div>
@@ -403,22 +401,26 @@
                             <p class="title_h4 text-center">
                                 Обсудить проект
                             </p>
-                            <form class="order-form">
-                                <input type="text" required id="customer-name" name="customer-name"
-                                    placeholder="Ваше имя *">
+                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
 
-                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
 
-                                <input type="tel" required id="customer-phone" name="customer-phone"
-                                    placeholder="Ваш телефон *">
+                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
 
                                 <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
-                                    name="list"></textarea>
+                                    name="mess"></textarea>
 
                                 <div class="input-file">
                                     <div class="file-drop-area">
                                         <label>
-                                            <input type="file" multiple=""
+                                            <input type="file" multiple="" name="file[]"
                                                 accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
                                             <span>Прикрепить файл</span>
                                             <img src="/src/icons/pin.svg" alt="Прикрепить файл">
@@ -433,7 +435,7 @@
                                         href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
                                         target="_blank">ФЗ&nbsp;№152</a>
                                 </p>
-                                <button type="submit" class="button big button-white mt-10">
+                                <button type="submit" class="button big button-white mt-12">
                                     Отправить
                                 </button>
                             </form>
@@ -447,7 +449,7 @@
         <section class="clients-cases bg-planets">
             <div class="container">
                 <h2 class="underlined w-fit m-center text-center">
-                    Кейсы о корпоративных сайтах
+                    Клиенты и кейсы
                 </h2>
 
                 <div id="cases-tabs-slider" data-slider="cases-tabs-slider" class="blocks">
@@ -455,37 +457,37 @@
                         <div class="cases-buttons">
                             <label for="cases-tab-1" class="case-tab-button">
                                 <input type="radio" name="case-radio" id="cases-tab-1" checked>
-                                <img src="/src/images/molvest-logo.webp" alt="logo">
+                                <img src="/src/images/molvest-logo.webp" loading="lazy" alt="logo">
                                 <p>КОМПАНИЯ «МОЛВЕСТ»</p>
                                 <span class="case-number">КЕЙС №1</span>
                             </label>
                             <label for="cases-tab-2" class="case-tab-button">
                                 <input type="radio" name="case-radio" id="cases-tab-2">
-                                <img src="/src/icons/vinlam.svg" alt="logo">
+                                <img src="/src/icons/vinlam.svg" loading="lazy" alt="logo">
                                 <p>КОМПАНИЯ «VINLAM»</p>
                                 <span class="case-number">КЕЙС №2</span>
                             </label>
                             <label for="cases-tab-3" class="case-tab-button">
                                 <input type="radio" name="case-radio" id="cases-tab-3">
-                                <img src="/src/icons/spartak.svg" alt="">
+                                <img src="/src/icons/spartak.svg" loading="lazy" alt="">
                                 <p>КИНОТЕАТР «СПАРТАК»</p>
                                 <span class="case-number">КЕЙС №3</span>
                             </label>
                             <label for="cases-tab-4" class="case-tab-button">
                                 <input type="radio" name="case-radio" id="cases-tab-4">
-                                <img src="/src/icons/ng-prom.svg" alt="logo">
+                                <img src="/src/icons/ng-prom.svg" loading="lazy" alt="logo">
                                 <p>КОМПАНИЯ <span class="text-unbreakable">«НГ-ПРОМ»</span></p>
                                 <span class="case-number">КЕЙС №4</span>
                             </label>
                             <label for="cases-tab-5" class="case-tab-button">
                                 <input type="radio" name="case-radio" id="cases-tab-5">
-                                <img src="/src/icons/svg-incomed.svg" alt="logo">
+                                <img src="/src/icons/svg-incomed.svg" loading="lazy" alt="logo">
                                 <p>МЕДИЦИНСКАЯ КОМПАНИЯ</p>
                                 <span class="case-number">КЕЙС №5</span>
                             </label>
                             <label for="cases-tab-6" class="case-tab-button">
                                 <input type="radio" name="case-radio" id="cases-tab-6">
-                                <img src="/src/icons/krepej.svg" alt="logo">
+                                <img src="/src/icons/krepej.svg" loading="lazy" alt="logo">
                                 <p>КОМПАНИЯ «КРЕПЁЖ СВ»</p>
                                 <span class="case-number">КЕЙС №6</span>
                             </label>
@@ -493,11 +495,15 @@
                         <div class="cases-content">
                             <!-- molvest -->
                             <div class="tab-content">
+                                <div class="case-tab-button">
+                                    <img src="/src/images/molvest-logo.webp" loading="lazy" alt="logo">
+                                    <p>КОМПАНИЯ «МОЛВЕСТ»</p>
+                                </div>
                                 <div class="card--keys big">
                                     <div class="card-header">
                                         <div>
                                             <p class="title_h4 underlined w-fit">
-                                                Экономия более 500 000 рублей в месяц на логистике
+                                                Экономия более 500 000 рублей в&nbsp;месяц на логистике
                                             </p>
                                             <p class="description">
                                                 Разработка и внедрение тендерного портала как способ оптимизировать
@@ -597,6 +603,10 @@
                             </div>
                             <!-- vinlam -->
                             <div class="tab-content">
+                                <div class="case-tab-button">
+                                    <img src="/src/icons/vinlam.svg" loading="lazy" alt="logo">
+                                    <p>КОМПАНИЯ «VINLAM»</p>
+                                </div>
                                 <div class="card--keys big">
                                     <div class="card-header">
                                         <div>
@@ -604,9 +614,9 @@
                                                 Создание интернет-магазина ИИ-рекомендациями
                                             </p>
                                             <p class="description">
-                                                Разработка высококонверсионного сайта с глубокой аналитикой и
-                                                нейросетевыми
-                                                технологиями
+                                                Рост продаж на 40% и сокращение ручных правок при заказах
+                                                Как мы превратили ручной прием заказов и сложный каталог в
+                                                интернет-магазин с умными подсказками и автоматическими проверками
                                             </p>
                                         </div>
                                     </div>
@@ -702,10 +712,18 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- <a href="#" class="button-link">
+                                        Подробнее <i class="icon-arrow_wide"></i>
+                                    </a> -->
                                 </div>
                             </div>
                             <!-- spartak -->
                             <div class="tab-content">
+                                <div class="case-tab-button">
+                                    <img src="/src/icons/spartak.svg" loading="lazy" alt="">
+                                    <p>КИНОТЕАТР «СПАРТАК»</p>
+                                </div>
                                 <div class="card--keys big">
                                     <div class="card-header">
                                         <div>
@@ -823,6 +841,10 @@
                             </div>
                             <!-- ng-prom -->
                             <div class="tab-content">
+                                <div class="case-tab-button">
+                                    <img src="/src/icons/ng-prom.svg" loading="lazy" alt="logo">
+                                    <p>КОМПАНИЯ <span class="text-unbreakable">«НГ-ПРОМ»</span></p>
+                                </div>
                                 <div class="card--keys big">
                                     <div class="card-header">
                                         <div>
@@ -830,10 +852,9 @@
                                                 Автоматизация процессов и круглосуточные продажи в интернет-магазине
                                             </p>
                                             <p class="description">
-                                                Разработка эффективного интернет-магазина запасных частей и материалов
-                                                для
-                                                ремонта
-                                                спецтехники
+                                                Рост межрегиональных заказов на 35%и конверсии - на 25%
+                                                Как интернет-магазин запчастей для спецтехники заменил ручной прием
+                                                заказов и телефонные звонки
                                             </p>
                                         </div>
                                     </div>
@@ -934,10 +955,18 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- <a href="#" class="button-link">
+                                        Подробнее <i class="icon-arrow_wide"></i>
+                                    </a> -->
                                 </div>
                             </div>
                             <!-- inco-med -->
                             <div class="tab-content">
+                                <div class="case-tab-button">
+                                    <img src="/src/icons/svg-incomed.svg" loading="lazy" alt="logo">
+                                    <p>МЕДИЦИНСКАЯ КОМПАНИЯ</p>
+                                </div>
                                 <div class="card--keys big">
                                     <div class="card-header">
                                         <div>
@@ -945,11 +974,7 @@
                                                 Из сайта визитки в корпоративный портал со встрроенной CRM.
                                             </p>
                                             <p class="description">
-                                                Автоматизация помогает секономить очень много времени, как для клиентов,
-                                                так
-                                                и
-                                                для
-                                                администраторов и менеджеров порталов.
+                                                Сокращение ручной работы на 80% и ускорение обработки заявок в 3 раза
                                             </p>
                                         </div>
                                     </div>
@@ -992,8 +1017,7 @@
                                                     </legend>
                                                     <p>
                                                         В виде громоздких и трудночитаемых таблиц, которые <span
-                                                            class="highlight">сложны для
-                                                            понимания</span>
+                                                            class="highlight">сложны для понимания</span>
                                                     </p>
                                                 </fieldset>
                                             </div>
@@ -1044,7 +1068,7 @@
                                                     <p>
                                                         Без громоздких таблиц, <span class="highlight">только удобные
                                                             калькуляторы<span>
-                                                            </span></span></p>
+                                                    </p>
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -1057,11 +1081,15 @@
                             </div>
                             <!-- krepezh -->
                             <div class="tab-content">
+                                <div class="case-tab-button">
+                                    <img src="/src/icons/krepej.svg" loading="lazy" alt="logo">
+                                    <p>КОМПАНИЯ «КРЕПЁЖ СВ»</p>
+                                </div>
                                 <div class="card--keys big">
                                     <div class="card-header">
                                         <div>
                                             <p class="title_h4 underlined w-fit">
-                                                Экономия более <span class="color-blue">500 000 рублей</span> в
+                                                Экономия более <span class="color-blue">500&nbsp;000 рублей</span> в
                                                 месяц
                                                 на
                                                 закупках
@@ -1085,8 +1113,7 @@
                                                     </legend>
                                                     <p>
                                                         <span class="highlight">3</span> менеджера <span
-                                                            class="highlight">вручную</span>
-                                                        обрабатывали
+                                                            class="highlight">вручную</span> обрабатывали
                                                         заказы, что требовало больших временных затрат.
                                                     </p>
                                                 </fieldset>
@@ -1164,27 +1191,27 @@
                             </div>
                         </div>
                     </div>
-                    <aside class="cases-counts">
+                    <aside class="cases-counts lazyload">
                         <!-- <img src="" alt="" class="cases-counts-planet"> -->
-                        <img src="/src/images/logoMain.svg" alt="INTRID">
+                        <img src="/src/images/logoMain.svg" loading="lazy" alt="INTRID">
                         <ul class="cases-counts-list">
                             <li>
-                                <span data-counter-value="[%sites_developed%]">[%sites_developed%]</span>
+                                <span data-counter-value="232">232</span>
                                 <br>
                                 Разработано сайтов
                             </li>
                             <li>
-                                <span data-counter-value="[%brands_developed%]">[%brands_developed%]</span>
+                                <span data-counter-value="89">89</span>
                                 <br>
                                 Создано брендов
                             </li>
                             <li>
-                                <span data-counter-value="[%sites_promoted%]">[%sites_promoted%]</span>
+                                <span data-counter-value="52">52</span>
                                 <br>
                                 Сайтов раскручено
                             </li>
                             <li>
-                                <span data-counter-value="[%tender_portals_built%]">[%tender_portals_built%]</span>
+                                <span data-counter-value="7">7</span>
                                 <br>
                                 Тендерных порталов
                             </li>
@@ -1238,8 +1265,7 @@
                                 Сайт для воронежской стоматологии
                             </p>
                             <span>15.01.2025</span>
-                            <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://stomatfakel.ru/">stomatfakel.ru</a>
+                            <a href="https://stomatfakel.ru/" target="_blank">stomatfakel.ru</a>
                         </div>
                     </div>
                     <div class="card card--portfolio isDev" style="--portfolio-color: #da4f41;">
@@ -1259,8 +1285,7 @@
                                 Стильный сайт для типографии
                             </p>
                             <span>10.03.2025</span>
-                            <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://tipografiya36.ru/">tipografiya36.ru</a>
+                            <a href="https://tipografiya36.ru/" target="_blank">tipografiya36.ru</a>
                         </div>
                     </div>
                     <div class="card card--portfolio isDev" style="--portfolio-color: #e21414;">
@@ -1279,8 +1304,7 @@
                                 Удобный сайт для службы недвижимости
                             </p>
                             <span>31.07.2023</span>
-                            <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://trastvrn.ru/">trastvrn.ru</a>
+                            <a href="https://trastvrn.ru/" target="_blank">trastvrn.ru</a>
                         </div>
                     </div>
                     <div class="card card--portfolio isDev" style="--portfolio-color: #49823d;">
@@ -1301,8 +1325,7 @@
                                 Некоммерческий социально-значимый проект
                             </p>
                             <span>25.03.2020</span>
-                            <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://nasha-priroda.ru/">nasha-priroda.ru</a>
+                            <a href="https://nasha-priroda.ru/" target="_blank">nasha-priroda.ru</a>
                         </div>
                     </div>
                 </div>
@@ -1342,8 +1365,8 @@
 
                 <div class="flex-layout flex-layout--split align-center mt-20">
                     <div class="left">
-                        <div class="card">
-                            <ul class="list--leads">
+                        <div class="card card--leads">
+                            <ul>
                                 <li>
                                     <p class="title_h4 color-blue">
                                         Система Управления Контентом
@@ -1381,7 +1404,7 @@
                         </div>
                     </div>
                     <div class="right">
-                        <div class="card card--leaders minified h-100">
+                        <div class="card card--leaders bg-black minified h-100">
                             <img src="/src/icons/iCMS.svg" alt="herb" class="icms-herb">
 
                             <p class="title_h4 text-center">
@@ -1390,19 +1413,25 @@
 
                             <p class="text-center">
                                 iCMS зарегистрирована в Российском реестре программного обеспечения под
-                                <span class="color-blue">№14267</span>
+                                <a href="https://reestr.digital.gov.ru/reestr/855588/?sphrase_id=6112342"
+                                    target="_blank">
+                                    №14267
+                                </a>
                             </p>
 
-                            <div class="fd-row gap-10 m-center mb-10">
+                            <div class="fd-row gap-12 m-center mb-12">
                                 <a href="https://demo.intrid.ru" target="_blank" class="button-highlight big">Демоверсия
                                     I-CMS</a>
                                 <a href="/icms" class="button-link big">Подробнее</a>
                             </div>
 
                             <p class="text-center">
-                                Так же, по желанию заказчика мы можем использовать и другие системы (Битрикс, WordPress
-                                и
-                                другие)
+                                Мы не используем и не рекомендуем типовые CMS (Битрикс, WordPress и др.). Эти системы
+                                ограничивают бизнес, делая индивидуальные доработки сложными и неэффективными.
+                            </p>
+
+                            <p class="text-center">
+                                <a href="/icms">Почему это так важно?</a>
                             </p>
                         </div>
                     </div>
@@ -1535,6 +1564,7 @@
                 </div>
             </div>
         </section>
+
     </main>
     <!-- /MAIN AREA -->
     <!-- footer -->

@@ -179,7 +179,7 @@
     <main>
         <section class="main-section container">
             <div class="breadcrumbs">
-                <a href="./">Главная</a>
+                <a href="/">Главная</a>
                 <span>-</span>
                 <a href="#" class="link-disabled">ICMS</a>
             </div>
@@ -196,12 +196,12 @@
                     сможете управлять сайтом на iCMS! iCMS - это специализированная Система Управления Контентом,
                     произведенная нашей студией, и разработанная на
                     <a href="https://www.yiiframework.com/" class="hover-underline" target="_blank">платформе
-                        фреймворка&nbsp;Yii2</a>
+                        фреймворка Yii2</a>
                 </p>
 
                 <div class="main-section--actions">
                     <div class="icms-block w-100">
-                        <img src="./src/images/herb.webp" alt="herb">
+                        <img src="/src/images/herb.webp" alt="herb">
                         <p>
                             iCMS зарегистрирована в Российском реестре программного обеспечения под <a
                                 href="javascript://" data-popup="icms-papers" class="color-blue hover-underline">
@@ -210,7 +210,7 @@
                         </p>
                     </div>
 
-                    <a class="button-highlight big" href="#icms-pricelist">
+                    <a class="button-highlight big" href="#icms-creation">
                         Подключить в проект
                         <i class="icon-arrow_wide"></i>
                     </a>
@@ -218,7 +218,7 @@
             </div>
 
             <div class="flying-mockup flying-mockup--icms">
-                <img src="./src/icons/iCMS.svg" alt="">
+                <img src="/src/icons/iCMS.svg" alt="">
                 <div class="water-ripple">
                     <div class="ripple-circle"></div>
                     <div class="ripple-circle"></div>
@@ -235,19 +235,19 @@
                 </h2>
 
                 <div class="flex-layout flex-layout--docs mt-52">
-                    <a href="./src/docs/инструкция_по_установке_icms.pdf" target="_blank"
-                        class="card card--service use docs">
+                    <a href="/src/docs/%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F_%D0%BF%D0%BE_%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B5_icms.pdf"
+                        target="_blank" class="card card--service use docs">
                         <div class="card-icon">
-                            <img src="./src/icons/ai_icon_upload.svg" alt="landig-page">
+                            <img src="/src/icons/ai_icon_upload.svg" alt="landig-page">
                         </div>
                         <b>
                             <span>Инструкция по установке</span>
                         </b>
                     </a>
-                    <a href="./src/docs/инструкция_по_эксплуатации_icms.pdf" target="_blank"
-                        class="card card--service use docs">
+                    <a href="/src/docs/%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F_%D0%BF%D0%BE_%D1%8D%D0%BA%D1%81%D0%BF%D0%BB%D1%83%D0%B0%D1%82%D0%B0%D1%86%D0%B8%D0%B8_icms.pdf"
+                        target="_blank" class="card card--service use docs">
                         <div class="card-icon">
-                            <img src="./src/icons/ai_icon_upload.svg" alt="landig-page">
+                            <img src="/src/icons/ai_icon_upload.svg" alt="landig-page">
                         </div>
                         <b>
                             <span>Инструкция по эксплуатации</span>
@@ -255,7 +255,7 @@
                     </a>
                     <a href="https://demo.intrid.ru/" target="_blank" class="card card--service use docs">
                         <div class="card-icon min">
-                            <img src="./src/icons/corp-site-services.svg" alt="landig-page">
+                            <img src="/src/icons/corp-site-services.svg" alt="landig-page">
                         </div>
                         <b>
                             <span>Демо для корпоративного сайта</span>
@@ -263,7 +263,7 @@
                     </a>
                     <a href="https://shop.intrid.ru/" target="_blank" class="card card--service use docs">
                         <div class="card-icon min">
-                            <img src="./src/icons/web-shop-services.svg" alt="landig-page">
+                            <img src="/src/icons/web-shop-services.svg" alt="landig-page">
                         </div>
                         <b>
                             <span>Демо для интернет-магазина</span>
@@ -355,26 +355,30 @@
                         </div>
                     </div>
                     <div class="right">
-                        <div class="card card--leaders minified position-sticky">
+                        <div class="card card--leaders minified position-sticky" id="icms-creation">
                             <p class="title_h4 text-center">
-                                Оформить быстрый заказ
+                                Получить консультацию
                             </p>
-                            <form class="order-form">
-                                <input type="text" required="" id="customer-name" name="customer-name"
-                                    placeholder="Ваше имя *">
+                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
 
-                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
 
-                                <input type="tel" required="" id="customer-phone" name="customer-phone"
-                                    placeholder="Ваш телефон *">
+                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
 
                                 <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
-                                    name="list"></textarea>
+                                    name="mess"></textarea>
 
                                 <div class="input-file">
                                     <div class="file-drop-area">
                                         <label>
-                                            <input type="file" multiple=""
+                                            <input type="file" multiple="" name="file[]"
                                                 accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
                                             <span>Прикрепить файл</span>
                                             <img src="/src/icons/pin.svg" alt="Прикрепить файл">
@@ -389,94 +393,12 @@
                                         href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
                                         target="_blank">ФЗ&nbsp;№152</a>
                                 </p>
-                                <button type="submit" class="button big button-white mt-10">
+                                <button type="submit" class="button big button-white mt-12">
                                     Отправить
                                 </button>
                             </form>
                         </div>
                     </div>
-                </div>
-
-                <div class="sites-reviews-slider mt-52" data-slider="reviews-slider" id="testimonials-slider">
-                    <div class="card card--testimonials active">
-                        <b>
-                            Максимально автоматизирует бизнес-процессы
-                        </b>
-                        <p>
-                            iCMS полностью подстраивается под требования и особенности Вашего бизнеса, учитывая все
-                            нюансы,
-                            для
-                            достижения самого эффективного результата.
-                        </p>
-                    </div>
-                    <div class="card card--testimonials active">
-                        <b>
-                            Простота эксплуатации
-                        </b>
-                        <p>
-                            С управлением системы сможет справиться любой пользователь. Даже если он имеет только
-                            базовые
-                            навыки
-                            работы в MS Word.
-                        </p>
-                    </div>
-                    <div class="card card--testimonials">
-                        <b>
-                            Безопасность
-                        </b>
-                        <p>
-                            Оснащается надёжной системой защиты от несанкционированного доступа, поэтому Вы можете не
-                            переживать
-                            насчет безопасности.
-                        </p>
-                    </div>
-                    <div class="card card--testimonials">
-                        <b>
-                            Поддерживает внедрение элементов искусственного интеллекта
-                        </b>
-                        <p>
-                            ИИ в интернет-магазинах увеличивает конверсию в продажи в среднем на 20%. Возрастает
-                            вероятность
-                            покупки/заявки, повышается средний чек, улучшается юзабилити, что приводит к росту выручки и
-                            прибыли.
-                        </p>
-                    </div>
-                    <div class="card card--testimonials">
-                        <b>
-                            Модульная система управления контентом.
-                        </b>
-                        <p>
-                            Это позволяет подключать, индвивидуально настраивать и использовать только необходимые
-                            программные
-                            компонетны, чтобы управлять контентом было максимально удобно и просто.
-                        </p>
-                    </div>
-                    <div class="card card--testimonials">
-                        <b>
-                            С iCMS возможно всё!
-                        </b>
-                        <p>
-                            Возможно спроектировать, разрабоатать и внедрить любой программный модуль под нестандартные
-                            задачи,
-                            не зависимо от их сложности.
-                        </p>
-                    </div>
-                </div>
-
-                <div id="sites-reviews-pagination" class="pagination">
-                    <button class="pagination--prev-btn">
-                        <i class="icon-shevrone left"></i>
-                    </button>
-                    <div class="pagination--buttons-dots">
-                        <button class="pagination--btn-dot highlight"></button>
-                        <button class="pagination--btn-dot"></button>
-                        <button class="pagination--btn-dot"></button>
-                        <button class="pagination--btn-dot"></button>
-                        <button class="pagination--btn-dot"></button>
-                    </div>
-                    <button class="pagination--next-btn">
-                        <i class="icon-shevrone"></i>
-                    </button>
                 </div>
             </div>
         </section>
@@ -490,7 +412,7 @@
 
                 <div class="flex-layout flex-layout--advantages justify-center mt-52">
                     <div class="card card--icon">
-                        <img src="./src/icons/tech-pen.svg" alt="">
+                        <img src="/src/icons/tech-pen.svg" alt="">
                         <b>
                             Редактор статичных страниц
                         </b>
@@ -529,7 +451,7 @@
                         </ul>
                     </div>
                     <div class="card card--icon">
-                        <img src="./src/icons/icon_basket.svg" alt="">
+                        <img src="/src/icons/icon_basket.svg" alt="">
                         <b>
                             Администрирование интернет-магазина
                         </b>
@@ -577,7 +499,7 @@
                         </ul>
                     </div>
                     <div class="card card--icon">
-                        <img src="./src/icons/icon_camera.svg" alt="">
+                        <img src="/src/icons/icon_camera.svg" alt="">
                         <b>
                             Управление динамической фотогалереей
                         </b>
@@ -595,7 +517,7 @@
                         </ul>
                     </div>
                     <div class="card card--icon">
-                        <img src="./src/icons/icon_newspaper.svg" alt="">
+                        <img src="/src/icons/icon_newspaper.svg" alt="">
                         <b>
                             Администрирование ленты новостей
                         </b>
@@ -613,7 +535,7 @@
                         </ul>
                     </div>
                     <div class="card card--icon">
-                        <img src="./src/icons/tech-shield.svg" alt="">
+                        <img src="/src/icons/tech-shield.svg" alt="">
                         <b>
                             Модерирование гостевой книги
                         </b>
@@ -682,10 +604,10 @@
                     Стоимость iCMS, версии:
                 </h3>
 
-                <div class="flex-layout flex-layout--service mt-52 mb-52">
-                    <a href="./corporate.html" class="card card--service">
+                <div class="flex-layout flex-layout--service mt-52 mb-0">
+                    <a href="/corporate" class="card card--service">
                         <div class="card-icon">
-                            <img src="./src/images/corp-site.svg" alt="corp-site">
+                            <img src="/src/images/corp-site.svg" alt="corp-site">
                         </div>
                         <b>
                             Корпоративный сайт
@@ -694,9 +616,9 @@
                             от 30 000 ₽
                         </p>
                     </a>
-                    <a href="./store.html" class="card card--service">
+                    <a href="/store" class="card card--service">
                         <div class="card-icon">
-                            <img src="./src/images/web-shop.svg" alt="web-shop">
+                            <img src="/src/images/web-shop.svg" alt="web-shop">
                         </div>
                         <b>
                             Интернет-магазин
@@ -705,9 +627,9 @@
                             от 40 000 ₽
                         </p>
                     </a>
-                    <a href="./internet-magazin-s-ii.html" class="card card--service">
+                    <a href="/internet-magazin-s-ii" class="card card--service">
                         <div class="card-icon">
-                            <img src="./src/icons/shop-ai.svg" alt="ai">
+                            <img src="/src/icons/shop-ai.svg" alt="ai">
                         </div>
                         <b>
                             Искусственный интеллект
@@ -728,33 +650,33 @@
                 </h3>
 
                 <div class="flex-layout flex-layout--use">
-                    <a href="./calculator.html" class="card card--service use">
+                    <a href="/calculator" class="card card--service use">
                         <div class="card-icon">
-                            <img src="./src/icons/site-calc.svg" alt="landig-page">
+                            <img src="/src/icons/site-calc.svg" alt="landig-page">
                         </div>
                         <b>
                             Калькулятор сайта
                         </b>
                     </a>
-                    <a href="./brif-site.html" class="card card--service use">
+                    <a href="/brif-site" class="card card--service use">
                         <div class="card-icon">
-                            <img src="./src/icons/brif-site.svg" alt="landig-page">
+                            <img src="/src/icons/brif-site.svg" alt="landig-page">
                         </div>
                         <b>
                             Бриф на сайт
                         </b>
                     </a>
-                    <a href="./brif-logo.html" class="card card--service use">
+                    <a href="/brif-logo" class="card card--service use">
                         <div class="card-icon">
-                            <img src="./src/icons/brif-logo.svg" alt="landig-page">
+                            <img src="/src/icons/brif-logo.svg" alt="landig-page">
                         </div>
                         <b>
                             Бриф на бренд
                         </b>
                     </a>
-                    <a href="./seo.html#seo_application" class="card card--service use">
+                    <a href="/seo#seo_application" class="card card--service use">
                         <div class="card-icon">
-                            <img src="./src/icons/promotion-request.svg" alt="landig-page">
+                            <img src="/src/icons/promotion-request.svg" alt="landig-page">
                         </div>
                         <b>
                             Заявка на раскрутку
@@ -763,6 +685,7 @@
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- footer -->

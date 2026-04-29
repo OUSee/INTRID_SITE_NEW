@@ -179,9 +179,9 @@
         <!-- hero-section -->
         <section class="main-section container">
             <div class="breadcrumbs">
-                <a href="./">Главная</a>
+                <a href="/">Главная</a>
                 <span>-</span>
-                <a href="./promotion.html">Продвижение</a>
+                <a href="/promotion">Продвижение</a>
                 <span>-</span>
                 <a href="#" class="link-disabled">Улучшение репутации<span class="br420"> в сети</span></a>
             </div>
@@ -215,7 +215,8 @@
             </div>
 
             <div class="flying-mockup">
-                <img src="./src/images/reputation-main-mockup.webp" alt="">
+                <!-- <img src="/src/images/reputation-main-mockup.webp" alt=""> -->
+                <img src="/src/images/mockup/page/dev_reputation_picture.svg" alt="">
                 <div class="water-ripple">
                     <div class="ripple-circle"></div>
                     <div class="ripple-circle"></div>
@@ -283,27 +284,28 @@
                     <div class="right">
                         <div class="card card--leaders minified position-sticky" id="reputation_creation">
                             <p class="title_h4 text-center">
-                                Оформить быстрый заказ
+                                Получить консультацию
                             </p>
-                            <p class="text-center">
-                                Заполните форму ниже и мы перезвоним в течении дня в рабочее время
-                            </p>
-                            <form class="order-form">
-                                <input type="text" required id="customer-name" name="customer-name"
-                                    placeholder="Ваше имя *">
+                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
 
-                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
 
-                                <input type="tel" required id="customer-phone" name="customer-phone"
-                                    placeholder="Ваш телефон *">
+                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
 
-                                <textarea data-autosize="true" rows="2" id="customer-phone" placeholder="Комментарий"
-                                    name="list"></textarea>
+                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                                <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                                    name="mess"></textarea>
 
                                 <div class="input-file">
                                     <div class="file-drop-area">
                                         <label>
-                                            <input type="file" multiple=""
+                                            <input type="file" multiple="" name="file[]"
                                                 accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
                                             <span>Прикрепить файл</span>
                                             <img src="/src/icons/pin.svg" alt="Прикрепить файл">
@@ -312,21 +314,22 @@
                                         <div class="file-list" style="display: none;"></div>
                                     </div>
                                 </div>
-
-                                <button type="submit" class="button big button-white mt-10">
-                                    Заказать сайт
+                                <p class="testimonials text-center m-center mb-0">
+                                    Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
+                                        data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии с <a
+                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                        target="_blank">ФЗ&nbsp;№152</a>
+                                </p>
+                                <button type="submit" class="button big button-white mt-12">
+                                    Отправить
                                 </button>
                             </form>
-                            <p class="testimonials text-center mt-10 mb-0">
-                                Отправляя форму, я даю согласие на <a href="javascript://" class="popup-trigger"
-                                    data-popup="privacy-policy">обработку своих персональных
-                                    данных</a>
-                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <!-- serm why not -->
         <section>
             <div class="container">
@@ -336,20 +339,20 @@
 
                 <ul class="list--cooperate mt-32">
                     <li>
-                        <img src="./src/icons/magnifier_glass.svg" alt="">
+                        <img src="/src/icons/magnifier_glass.svg" alt="">
                         <p>
                             Вы рискуете потерять потенциальных клиентов, которые ищут товар, опираясь на отзывы других
                             покупателей.
                         </p>
                     </li>
                     <li>
-                        <img src="./src/icons/ai_icon_star.svg" alt="">
+                        <img src="/src/icons/ai_icon_star.svg" alt="">
                         <p>
                             Имидж Вашего продукта или бренда не будет защищен от происков недобросовесных конкурентов.
                         </p>
                     </li>
                     <li>
-                        <img src="./src/icons/robot.svg" alt="">
+                        <img src="/src/icons/robot.svg" alt="">
                         <p>
                             Поисковые роботы могут негативно отреагировать на то, что Вас не обсуждают в сети. Вы
                             теряете
@@ -357,7 +360,7 @@
                         </p>
                     </li>
                     <li>
-                        <img src="./src/icons/head.svg" alt="">
+                        <img src="/src/icons/head.svg" alt="">
                         <p>
                             При поиске товаров и услуг человек обязательно ищет отзывы и информацию о компании в
                             интернете.
@@ -460,48 +463,6 @@
             </div>
         </section>
 
-        <!-- corporate -->
-        <section class="landing-creation" id="crm-creation">
-            <div class="container">
-                <form action="submit">
-                    <div class="form-limitter">
-                        <p class="title_h3 w-fit">
-                            Хотите улучшить репутацию в интернете?
-                        </p>
-                        <p class="description">
-                            Мы проведём глубокий анализ и дадим подробный отчёт по репутации вашего бренда или товара в
-                            сети. Всё, что вам для этого нужно — позвонить менеджеру или заполнить бриф.
-                            <br>
-                            <br>
-                            Результат: ТОП-10 результатов поиска по брендовым запросам и запросам в связке «название
-                            фирмы/бренда – отзывы» - это положительные и «человеческие» рекомендации. Они обеспечат
-                            ощутимый
-                            рост доверия среди покупателей, увеличение конверсии сайта, повышение продаж и прибыли!
-                        </p>
-                        <input type="text" name="name" placeholder="Имя">
-                        <input type="email" name="mail" placeholder="E-mail">
-                        <input type="tel" name="phone" placeholder="* Телефон" required="">
-                        <!-- <input type="text" placeholder="URL сайта" name="url"> -->
-                        <input type="text" placeholder="География интересов" name="target">
-                        <textarea placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
-
-                        <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
-                        <!-- <label for="personal-data">
-                            <input type="checkbox" name="agree" id="personal-data" required>
-                            Согласен на обработку персональных данных
-                        </label> -->
-                        <button type="submit" class="button-white">Отправить заявку</button>
-                        <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://"
-                                data-popup="privacy-policy">обработку
-                                своих персональных
-                                данных</a>
-                        </p>
-                    </div>
-                    <img src="./src/images/orb-with-logo.webp" alt="orb"="">
-                </form>
-            </div>
-        </section>
 
         <!-- brif -->
         <section>
@@ -511,33 +472,33 @@
                 </h3>
 
                 <div class="flex-layout flex-layout--use">
-                    <a href="./calculator.html" class="card card--service use">
+                    <a href="/calculator" class="card card--service use">
                         <div class="card-icon">
-                            <img src="./src/icons/site-calc.svg" alt="landig-page">
+                            <img src="/src/icons/site-calc.svg" alt="landig-page">
                         </div>
                         <b>
                             Калькулятор сайта
                         </b>
                     </a>
-                    <a href="./brif-site.html" class="card card--service use">
+                    <a href="/brif-site" class="card card--service use">
                         <div class="card-icon">
-                            <img src="./src/icons/brif-site.svg" alt="landig-page">
+                            <img src="/src/icons/brif-site.svg" alt="landig-page">
                         </div>
                         <b>
                             Бриф на сайт
                         </b>
                     </a>
-                    <a href="./brif-logo.html" class="card card--service use">
+                    <a href="/brif-logo" class="card card--service use">
                         <div class="card-icon">
-                            <img src="./src/icons/brif-logo.svg" alt="landig-page">
+                            <img src="/src/icons/brif-logo.svg" alt="landig-page">
                         </div>
                         <b>
                             Бриф на бренд
                         </b>
                     </a>
-                    <a href="./seo.html#seo_application" class="card card--service use">
+                    <a href="/seo#seo_application" class="card card--service use">
                         <div class="card-icon">
-                            <img src="./src/icons/promotion-request.svg" alt="landig-page">
+                            <img src="/src/icons/promotion-request.svg" alt="landig-page">
                         </div>
                         <b>
                             Заявка на раскрутку
@@ -546,6 +507,7 @@
                 </div>
             </div>
         </section>
+
     </main>
     <!-- footer -->
     <footer class="footer">

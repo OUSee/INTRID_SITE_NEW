@@ -264,8 +264,7 @@
                                 </b>
                                 <p>
                                     Голосовой поиск по каталогу упрощает взаимодействие аудитории с сайтом. Ваши клиенты
-                                    смогут
-                                    найти нужный товар даже
+                                    смогут найти нужный товар даже
                                     тогда, когда заняты руки или нет времени печатать.
                                 </p>
                                 <p class="card-price">
@@ -280,8 +279,7 @@
                                 </b>
                                 <p>
                                     Разработаем и внедрим умные чат-боты, которые смогут отвечать на вопросы
-                                    пользователей и
-                                    помогать с решением типичных и
+                                    пользователей и помогать с решением типичных и
                                     частых проблем.
                                 </p>
                                 <p class="card-price">
@@ -296,8 +294,7 @@
                                 </b>
                                 <p>
                                     Внедрим системы рекомендаций на основе искусственного интеллекта, которые
-                                    анализируют
-                                    поведение пользователей и
+                                    анализируют поведение пользователей и
                                     предлагают персонализированный контент, товары и услуги.
                                 </p>
                                 <p class="card-price">
@@ -312,8 +309,7 @@
                                 </b>
                                 <p>
                                     Внедрим ИИ-решения для автоматизации email-рассылок, таргетированной рекламы и
-                                    других
-                                    маркетинговых активностей.
+                                    других маркетинговых активностей.
                                 </p>
                                 <p class="card-price">
                                     от 60&nbsp;000&nbsp;₽
@@ -327,8 +323,7 @@
                                 </b>
                                 <p>
                                     Искусственный интеллект отследит и отправит вам данные о важных изменениях на сайтах
-                                    ваших
-                                    конкурентов и предложит
+                                    ваших конкурентов и предложит
                                     эффективные решения для оптимизации вашего сайта.
                                 </p>
                                 <p class="card-price">
@@ -343,8 +338,7 @@
                                 </b>
                                 <p>
                                     Искусственный интеллект тестирует различные форматы элементов интерфейса, показывая
-                                    их
-                                    случайным образом разным
+                                    их случайным образом разным
                                     пользователям. Он собирает статистику по конверсии и выбирает наилучший вариант.
                                 </p>
                                 <p class="card-price">
@@ -354,26 +348,30 @@
                         </div>
                     </div>
                     <div class="right">
-                        <div class="card card--leaders minified position-sticky">
+                        <div class="card card--leaders minified position-sticky" id="ai-store-creation">
                             <p class="title_h4 text-center">
                                 Обсудить проект
                             </p>
-                            <form class="order-form">
-                                <input type="text" required id="customer-name" name="customer-name"
-                                    placeholder="Ваше имя *">
+                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
 
-                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
 
-                                <input type="tel" required id="customer-phone" name="customer-phone"
-                                    placeholder="Ваш телефон *">
+                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
 
                                 <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
-                                    name="list"></textarea>
+                                    name="mess"></textarea>
 
                                 <div class="input-file">
                                     <div class="file-drop-area">
                                         <label>
-                                            <input type="file" multiple=""
+                                            <input type="file" multiple="" name="file[]"
                                                 accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
                                             <span>Прикрепить файл</span>
                                             <img src="/src/icons/pin.svg" alt="Прикрепить файл">
@@ -388,7 +386,7 @@
                                         href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
                                         target="_blank">ФЗ&nbsp;№152</a>
                                 </p>
-                                <button type="submit" class="button big button-white mt-10">
+                                <button type="submit" class="button big button-white mt-12">
                                     Отправить
                                 </button>
                             </form>
@@ -558,28 +556,7 @@
                         </div>
                     </div>
 
-                    <div class="card card--portfolio isDev active" style="--portfolio-color: #60a561;">
-                        <a href="javascript://" class="absolute-link" data-popup="site-preview"
-                            data-site-preview="https://transport.chernogolovka.com">
-                            <div class="card-header">
-                                <img src="https://transport.chernogolovka.com/favicon.ico" class="portfolio-logo"
-                                    alt="logo company" />
-                                <div class="card-header-text">
-                                    <b>Черноголовка</b>
-                                </div>
-                            </div>
-                            <img src="/src/images/mockup/chernogolovka.webp" class="portfolio-site"
-                                alt="recent-work-demo">
-                        </a>
-                        <div class="card-body">
-                            <p>
-                                Автоматизированный анализ заявок и выбор победителей тендеров
-                            </p>
-                            <span>13.03.2024</span>
-                            <a href="https://transport.chernogolovka.com"
-                                target="_blank">transport.chernogolovka.com</a>
-                        </div>
-                    </div>
+
 
                     <div class="card card--portfolio isDev active" style="--portfolio-color: #1e4593;">
                         <a href="javascript://" class="absolute-link" data-popup="site-preview"
@@ -652,37 +629,37 @@
                     </div>
                 </div>
                 <!-- <div class="accordion for-buisness-offers-mobile-accordion">
-                                    <div class="accordion-item">
-                                        <input type="checkbox" checked id="offers-1" class="accordion-checkbox">
-                                        <label for="offers-1" class="accordion-header color-blue">
-                                            <span class="title_h4">Для тех, кто ищет выгоду</span>
-                                        </label>
-                                        <div class="accordion-content">
-                                            <p class="description">
-                                                Интернет-магазин с исскуственным интеллектом позволяет задействовать самые новые и
-                                                эффективные
-                                                инструменты продаж. ИИ обеспечивает рост конверсии, увеличение сренего чека, повышает
-                                                вероятность
-                                                покупки, выводит Вас в лидеры рынка и улучшает пользовательский опыт.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <input type="checkbox" checked id="offers-2" class="accordion-checkbox">
-                                        <label for="offers-2" class="accordion-header color-blue">
-                                            <span class="title_h4">Для тех, кто экономит ресурсы</span>
-                                        </label>
-                                        <div class="accordion-content">
-                                            <p class="description">
-                                                Искусственный интеллект дает возможность сэкономить время и сократить колличество ошибок за
-                                            счет
-                                            исключения человеческого фактора. Вам не придется выполнять бесчисленное колличество
-                                            рутинных
-                                            операций и придумывать, как увеличить продажи - Искусственный интеллект сделает это за вас.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div> -->
+                    <div class="accordion-item">
+                        <input type="checkbox" checked id="offers-1" class="accordion-checkbox">
+                        <label for="offers-1" class="accordion-header color-blue">
+                            <span class="title_h4">Для тех, кто ищет выгоду</span>
+                        </label>
+                        <div class="accordion-content">
+                            <p class="description">
+                                Интернет-магазин с исскуственным интеллектом позволяет задействовать самые новые и
+                                эффективные
+                                инструменты продаж. ИИ обеспечивает рост конверсии, увеличение сренего чека, повышает
+                                вероятность
+                                покупки, выводит Вас в лидеры рынка и улучшает пользовательский опыт.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <input type="checkbox" checked id="offers-2" class="accordion-checkbox">
+                        <label for="offers-2" class="accordion-header color-blue">
+                            <span class="title_h4">Для тех, кто экономит ресурсы</span>
+                        </label>
+                        <div class="accordion-content">
+                            <p class="description">
+                                Искусственный интеллект дает возможность сэкономить время и сократить колличество ошибок за
+                            счет
+                            исключения человеческого фактора. Вам не придется выполнять бесчисленное колличество
+                            рутинных
+                            операций и придумывать, как увеличить продажи - Искусственный интеллект сделает это за вас.
+                            </p>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </section>
 
@@ -729,6 +706,7 @@
                 </div>
             </div>
         </section>
+
     </main>
     <!-- footer -->
     <footer class="footer">

@@ -345,7 +345,7 @@
                                                 </span>
                                                 <span class="d-block w-100">(постоянные расходы)
                                                     <span class="tooltip"
-                                                        data-tooltip="Подсказка про затраты на шаблонный сайт">
+                                                        data-tooltip="Вы платите за рекламу каждый месяц, но из‑за низкой конверсии сайта один клиент обходится дорого. Эти расходы не снижаются со временем — они остаются высокими, пока сайт неэффективен.">
                                                         <i class="icon-tooltip"></i>
                                                     </span>
                                                 </span>
@@ -358,7 +358,7 @@
                                                 </span>
                                                 <span class="d-block w-100">(контролируемые инвестиции)
                                                     <span class="tooltip"
-                                                        data-tooltip="Подсказка про затраты на наше решение">
+                                                        data-tooltip="Благодаря высокой конверсии лендинга вы тратите на привлечение одного клиента в 5–10 раз меньше.">
                                                         <i class="icon-tooltip"></i>
                                                     </span>
                                                 </span>
@@ -437,8 +437,7 @@
                                 </b>
                                 <p>
                                     Успешный лендинг строится на глубоком понимании потребностей и поведения
-                                    посетителей. Каждый
-                                    элемент — от заголовков до
+                                    посетителей. Каждый элемент — от заголовков до
                                     структуры — разрабатывается с учётом анализа целевой аудитории и конкурентной среды.
                                 </p>
                             </div>
@@ -449,11 +448,9 @@
                                 </b>
                                 <p>
                                     Эффективная посадочная страница имеет продуманную логику, которая направляет
-                                    пользователя к
-                                    целевому действию.
+                                    пользователя к целевому действию.
                                     Конверсионные элементы, убедительные аргументы и визуальная подача работают как
-                                    единый
-                                    механизм.
+                                    единый механизм.
                                 </p>
                             </div>
 
@@ -463,8 +460,7 @@
                                 </b>
                                 <p>
                                     Качественный лендинг подчёркивает исключительные преимущества продукта через
-                                    оригинальный
-                                    дизайн, контент и
+                                    оригинальный дизайн, контент и
                                     пользовательский опыт, а не использует шаблонные решения.
                                 </p>
                             </div>
@@ -472,8 +468,7 @@
 
                         <p class="description w-fit m-center">
                             Landing page, разработанный с учетом этих 3 правил, будет максимально эффективный, с
-                            минимумом
-                            отказов и <span class="color-blue">высокой конверсией от 10%</span>
+                            минимумом отказов и <span class="color-blue">высокой конверсией от 10%</span>
                         </p>
 
                         <div class="d-flex justify-center m-center">
@@ -488,22 +483,26 @@
                             <p class="title_h4 text-center">
                                 Обсудить проект
                             </p>
-                            <form class="order-form">
-                                <input type="text" required id="customer-name" name="customer-name"
-                                    placeholder="Ваше имя *">
+                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
 
-                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
 
-                                <input type="tel" required id="customer-phone" name="customer-phone"
-                                    placeholder="Ваш телефон *">
+                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
 
                                 <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
-                                    name="list"></textarea>
+                                    name="mess"></textarea>
 
                                 <div class="input-file">
                                     <div class="file-drop-area">
                                         <label>
-                                            <input type="file" multiple=""
+                                            <input type="file" multiple="" name="file[]"
                                                 accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
                                             <span>Прикрепить файл</span>
                                             <img src="/src/icons/pin.svg" alt="Прикрепить файл">
@@ -518,7 +517,7 @@
                                         href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
                                         target="_blank">ФЗ&nbsp;№152</a>
                                 </p>
-                                <button type="submit" class="button big button-white mt-10">
+                                <button type="submit" class="button big button-white mt-12">
                                     Отправить
                                 </button>
                             </form>
@@ -551,8 +550,7 @@
                                 Landing Page о резьбовой шпильке
                             </p>
                             <span>12.09.2018</span>
-                            <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://shpilka.krepezhsv.ru">shpilka.krepezhsv.ru</a>
+                            <a href="https://shpilka.krepezhsv.ru" target="_blank">shpilka.krepezhsv.ru</a>
                         </div>
                     </div>
 
@@ -574,8 +572,7 @@
                                 Ремонт компьютерного оборудования
                             </p>
                             <span>12.12.2017</span>
-                            <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://kompvrn.ru/">kompvrn.ru</a>
+                            <a href="https://kompvrn.ru/" target="_blank">kompvrn.ru</a>
                         </div>
                     </div>
 
@@ -596,8 +593,7 @@
                                 Эксклюзивная отделка помещений
                             </p>
                             <span>11.09.2020</span>
-                            <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://lametr.ru/">lametr.ru</a>
+                            <a href="https://lametr.ru/" target="_blank">lametr.ru</a>
                         </div>
                     </div>
 
@@ -617,8 +613,7 @@
                                 Многоязычный веб-сайт транспортной компании
                             </p>
                             <span>18.12.2006</span>
-                            <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://paromkrym.ru/">paromkrym.ru</a>
+                            <a href="https://paromkrym.ru/" target="_blank">paromkrym.ru</a>
                         </div>
                     </div>
 
@@ -656,7 +651,7 @@
                 </p>
 
                 <div class="mt-52">
-                    <div href="/corporate" class="card card--prices cols hover-glow">
+                    <a href="/corporate" class="card card--prices cols hover-glow">
                         <b>
                             Но если вам нужно:
                         </b>
@@ -680,8 +675,8 @@
                                 </li>
                                 <li style="list-style: none;">
                                     <p class="title_h5">
-                                        …то вам подойдёт <a href="/corporate"
-                                            title="Подробнее о корпоративных сайтах"><b>корпоративный сайт</b></a>
+                                        …то вам подойдёт <span title="Подробнее о корпоративных сайтах"><b>корпоративный
+                                                сайт</b></span>
                                     </p>
                                 </li>
                             </ul>
@@ -694,12 +689,12 @@
                                 клиентов до формирования репутации.
                             </p>
 
-                            <a href="/corporate" class="button button-highlight big"
+                            <button type="button" class="button button-highlight big"
                                 title="Подробнее о корпоративных сайтах">
                                 Подробнее о корпоративных сайтах
-                            </a>
+                            </button>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>

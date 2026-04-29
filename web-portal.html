@@ -259,7 +259,7 @@
                 </h2>
 
                 <div class="flex-layout flex-layout--tab gap-16 mb-20">
-                    <div class="card card--tab">
+                    <div class="card card--tab no-hover">
                         <div class="card-icon">
                             <img src="/src/icons/corpo-portal.svg" alt="img">
                         </div>
@@ -267,14 +267,14 @@
                             Корпоративные порталы
                         </b>
                         <span>
-                            от 350 000 ₽
+                            от 310 000 ₽
                         </span>
                         <p>
                             Внутренние системы для сотрудников (Taskmanager, системы управления
                             документооборотом и т. д.)
                         </p>
                     </div>
-                    <div class="card card--tab">
+                    <div class="card card--tab no-hover">
                         <div class="card-icon">
                             <img src="/src/icons/education-portal.svg" alt="img">
                         </div>
@@ -282,13 +282,13 @@
                             Образовательные платформы
                         </b>
                         <span>
-                            от 350 000 ₽
+                            от 310 000 ₽
                         </span>
                         <p>
                             Порталы для онлайн-курсов, школ и университетов
                         </p>
                     </div>
-                    <div class="card card--tab">
+                    <div class="card card--tab no-hover">
                         <div class="card-icon">
                             <img src="/src/icons/media-portal.svg" alt="img">
                         </div>
@@ -296,14 +296,14 @@
                             Медиа и новостные порталы
                         </b>
                         <span>
-                            от 350 000 ₽
+                            от 310 000 ₽
                         </span>
                         <p>
                             Онлайн-блог, новостные сайты, платформы с подписками и платным
                             контентом и т. д.
                         </p>
                     </div>
-                    <div class="card card--tab">
+                    <div class="card card--tab no-hover">
                         <div class="card-icon">
                             <img src="/src/icons/social-portal.svg" alt="img">
                         </div>
@@ -311,7 +311,7 @@
                             Социальные платформы
                         </b>
                         <span>
-                            от 350 000 ₽
+                            от 310 000 ₽
                         </span>
                         <p>
                             Закрытые сообщества (для бизнеса/клубов), форумы и порталы с
@@ -320,7 +320,7 @@
                     </div>
                 </div>
 
-                <div class="card card--prices hover-glow">
+                <a href="/tender-portal" class="card card--prices hover-glow">
                     <b>
                         Тендерные порталы:
                     </b>
@@ -337,14 +337,14 @@
                         </p>
 
                         <p>
-                            <a href="/tender-portal" class="button-link">
+                            <button type="button" class="button-link">
                                 Подробнее
                                 <span class="br420">о тендерных порталах</span>
                                 <i class="icon-arrow_wide"></i>
-                            </a>
+                            </button>
                         </p>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
 
@@ -501,8 +501,7 @@
                                 </b>
                                 <p>
                                     Портал объединяет разнородный контент (новости, сервисы, базы знаний) в удобной
-                                    структуре с
-                                    продуманной
+                                    структуре с продуманной
                                     навигацией и
                                     поиском, чтобы пользователи быстро находили нужное
                                 </p>
@@ -514,8 +513,7 @@
                                 </b>
                                 <p>
                                     Персонализированные личные кабинеты, система комментариев с модерацией и возможности
-                                    для
-                                    общения между
+                                    для общения между
                                     пользователями
                                     повышают вовлеченность и время пребывания на портале
                                 </p>
@@ -546,22 +544,26 @@
                             <p class="title_h4 text-center">
                                 Обсудить проект
                             </p>
-                            <form class="order-form">
-                                <input type="text" required id="customer-name" name="customer-name"
-                                    placeholder="Ваше имя *">
+                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
 
-                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
 
-                                <input type="tel" required id="customer-phone" name="customer-phone"
-                                    placeholder="Ваш телефон *">
+                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
 
                                 <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
-                                    name="list"></textarea>
+                                    name="mess"></textarea>
 
                                 <div class="input-file">
                                     <div class="file-drop-area">
                                         <label>
-                                            <input type="file" multiple=""
+                                            <input type="file" multiple="" name="file[]"
                                                 accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
                                             <span>Прикрепить файл</span>
                                             <img src="/src/icons/pin.svg" alt="Прикрепить файл">
@@ -576,7 +578,7 @@
                                         href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
                                         target="_blank">ФЗ&nbsp;№152</a>
                                 </p>
-                                <button type="submit" class="button big button-white mt-10">
+                                <button type="submit" class="button big button-white mt-12">
                                     Отправить
                                 </button>
                             </form>
@@ -595,7 +597,7 @@
 
                 <div class="sites-portfolio-slider" data-slider="portfolio-slider" id="portfolio-slider">
                     <div class="card card--portfolio isDev active" style="--portfolio-color: #146E9A;">
-                        <a href="/case-molvest" class="absolute-link">
+                        <a href="/case-inkomed" class="absolute-link">
                             <div class="card-header">
                                 <img src="https://inko-med.ru/bitrix/templates/inkomed/static/img/favicon.ico"
                                     class="portfolio-logo" alt="logo company" />
@@ -630,7 +632,7 @@
                                 Портал для крупного российского производителя и переработчика молока
                             </p>
                             <span>03.06.2022</span>
-                            <a href="https://tender.molvest.ru/">tender.molvest.ru</a>
+                            <a href="https://tender.molvest.ru/" target="_blank">tender.molvest.ru</a>
                         </div>
                     </div>
 
