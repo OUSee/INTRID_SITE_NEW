@@ -802,11 +802,6 @@ th {
 [data-slider] {
   transition: all 0.3s ease-in-out;
 }
-@media (max-width: 599.98px) {
-  [data-slider]:not([data-slider^=tab-slider]) {
-    touch-action: pan-x;
-  }
-}
 [data-slider] > * {
   transition: all 0.3s ease-in-out;
 }
@@ -9442,6 +9437,24 @@ button:disabled, button.disabled,
   background: #112233;
 }
 
+@supports (-moz-appearance: none) {
+  .popup {
+    scrollbar-color: var(--blue-main) var(--bg-main);
+    scrollbar-width: thin;
+  }
+}
+.popup::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
+.popup::-webkit-scrollbar-track {
+  background: var(--bg-main);
+  border-radius: 8px;
+}
+.popup::-webkit-scrollbar-thumb {
+  background: var(--blue-main);
+  border-radius: 8px;
+}
 .popup {
   position: fixed;
   top: 0;

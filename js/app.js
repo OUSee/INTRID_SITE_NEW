@@ -1677,6 +1677,7 @@ function sliderInitialize() {
 		const navLeft = document.getElementById(`navleft_for--${id}`);
 		const navRight = document.getElementById(`navright_for--${id}`);
 		const fill = slider.dataset.fill;
+		let isDragging = false;
 		slider.style.transform = `translateX(-0px)`;
 		let currentIndex = 0;
 
@@ -2014,10 +2015,61 @@ function sliderInitialize() {
 			yDown = null;
 		}
 
+		function mouseDownHandler(e) {
+			const slider = e.currentTarget;
+			e.preventDefault();
+			pos = {
+				x: e.clientX,
+				y: e.clientY,
+			};
+			document.addEventListener("mousemove", mouseMoveHandler);
+			document.addEventListener("mouseup", mouseUpHandler);
+		};
+
+		function mouseMoveHandler(e) {
+			let lastSlideChange = 0;
+			const minInterval = 300;
+
+			const currentTime = Date.now();
+
+			const dx = e.clientX - pos.x;
+			const dy = e.clientY - pos.y;
+			slides = Array.from(slider.children);
+			slides.forEach((slide) => {
+				slide.style.setProperty('pointer-events', 'none');
+			});
+
+			if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 70 && currentTime - lastSlideChange > minInterval) {
+				e.preventDefault();
+				if (dx < 0) {
+					nextSlide();
+				} else {
+					prevSlide();
+				}
+				lastSlideChange = currentTime;
+			} else if (id === `cases-tabs-slider`) {
+				return;
+			} else {
+				return;
+			}
+
+			pos.x = e.clientX;
+		};
+
+		function mouseUpHandler() {
+			slides = Array.from(slider.children);
+			slides.forEach((slide) => {
+				slide.style.setProperty('pointer-events', '');
+			});
+			document.removeEventListener("mousemove", mouseMoveHandler);
+			document.removeEventListener("mouseup", mouseUpHandler);
+		};
+
 		updateSlider();
 
 		slider.addEventListener("touchstart", handleTouchStart, false);
 		slider.addEventListener("touchmove", handleTouchMove, false);
+		slider.addEventListener("mousedown", mouseDownHandler, false);
 
 		prevBtn.forEach((btn) => btn.addEventListener("click", prevSlide));
 		nextBtn.forEach((btn) => btn.addEventListener("click", nextSlide));
