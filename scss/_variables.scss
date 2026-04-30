@@ -6857,6 +6857,19 @@ button:hover,
 			text-align: center;
 		}
 
+		&.horizontal {
+			flex-direction: row;
+			flex-basis: unset;
+			gap: 32px;
+			max-width: 260px;
+			padding-left: 20px;
+
+			& > p {
+				margin-top: unset;
+				text-align: left;
+			}
+		}
+
 		&:hover {
 			& > .img-placeholder,
 			& > .cup {

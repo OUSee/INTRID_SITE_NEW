@@ -8026,6 +8026,17 @@ button:disabled, button.disabled,
   margin-bottom: unset;
   text-align: center;
 }
+.card--achievement.horizontal {
+  flex-direction: row;
+  flex-basis: unset;
+  gap: 32px;
+  max-width: 260px;
+  padding-left: 20px;
+}
+.card--achievement.horizontal > p {
+  margin-top: unset;
+  text-align: left;
+}
 @media (min-width: 1000px) {
   .card--achievement:hover > .img-placeholder::before, .card--achievement:hover > .cup::before {
     box-shadow: 0px 0px 40px 40px var(--blue-clouds);
