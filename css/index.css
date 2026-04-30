@@ -1886,7 +1886,7 @@ ol li > ol {
 }
 .list--leads.compact li {
   display: grid;
-  grid-template-columns: 0.75fr 1fr;
+  grid-template-columns: 0.85fr 1fr;
   gap: 8px;
   margin-bottom: 0;
   padding-bottom: 16px;
@@ -3276,10 +3276,10 @@ ol li > ol {
   width: 100% !important;
 }
 .w-auto {
-  width: auto;
+  width: auto !important;
 }
 .w-100 {
-  width: 100%;
+  width: 100% !important;
 }
 @media (max-width: 999.98px) {
   .w-lg-100 {
@@ -3462,6 +3462,9 @@ ol li > ol {
 }
 .pb-0 {
   padding-bottom: 0 !important;
+}
+.p-8 {
+  padding: 8px !important;
 }
 .p-0 {
   padding: 0 !important;
@@ -3689,6 +3692,12 @@ ol li > ol {
 }
 .bg-black {
   background-color: var(--bg-main) !important;
+}
+.bg-blue-clouds {
+  background-color: var(--blue-clouds) !important;
+}
+.bg-blue-bg {
+  background-color: var(--blue-bg) !important;
 }
 .bg-intrid::after {
   content: "d";
@@ -4109,7 +4118,7 @@ form .button:hover {
     white-space: nowrap;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .contact-block--address a {
     white-space: wrap;
   }
@@ -4130,7 +4139,7 @@ form .button:hover {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .contact-block--address .contact-block--content {
     max-width: 182px;
   }
@@ -6641,9 +6650,17 @@ button:disabled, button.disabled,
 .card.thin {
   padding: 16px;
 }
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .card.thin {
     padding: 8px 16px;
+  }
+}
+.card.compact {
+  padding: 16px;
+}
+@media (max-width: 575.98px) {
+  .card.compact {
+    padding: 16px;
   }
 }
 .card:is(.empty) {

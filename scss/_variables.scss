@@ -1198,7 +1198,7 @@ ol {
 		&.compact {
 			& li {
 				display: grid;
-				grid-template-columns: 0.75fr 1fr;
+				grid-template-columns: 0.85fr 1fr;
 				gap: 8px;
 				margin-bottom: 0;
 				padding-bottom: 16px;
@@ -2964,11 +2964,11 @@ ol {
 	}
 
 	&-auto {
-		width: auto;
+		width: auto !important;
 	}
 
 	&-100 {
-		width: 100%;
+		width: 100% !important;
 	}
 
 	&-lg {
@@ -3233,6 +3233,11 @@ ol {
 			padding-bottom: 0 !important;
 		}
 	}
+
+	&-8 {
+		padding: 8px !important;
+	}
+
 	&-0 {
 		padding: 0 !important;
 	}
@@ -3555,6 +3560,14 @@ ol {
 		background-color: var(--bg-main) !important;
 	}
 
+	&-blue-clouds {
+		background-color: var(--blue-clouds) !important;
+	}
+
+	&-blue-bg {
+		background-color: var(--blue-bg) !important;
+	}
+
 	&-intrid {
 		&::after {
 			content: "\64";
@@ -3835,7 +3848,7 @@ form {
 				white-space: nowrap;
 			}
 
-			@media (max-width: 576px) {
+			@media (max-width: 575.98px) {
 				white-space: wrap;
 			}
 
@@ -3857,7 +3870,7 @@ form {
 			}
 		}
 
-		@media (max-width: 576px) {
+		@media (max-width: 575.98px) {
 			& .contact-block--content {
 				max-width: 182px;
 			}
@@ -5440,8 +5453,16 @@ button:hover,
 	&.thin {
 		padding: 16px;
 
-		@media (max-width: 576px) {
+		@media (max-width: 575.98px) {
 			padding: 8px 16px;
+		}
+	}
+
+	&.compact {
+		padding: 16px;
+
+		@media (max-width: 575.98px) {
+			padding: 16px;
 		}
 	}
 
