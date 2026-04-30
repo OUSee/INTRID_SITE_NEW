@@ -180,7 +180,7 @@ function updateMockupPlace() {
 	} else if (isAboutPage) {
 		const mainSectionRight = document.querySelector(".main-section--right");
 		const mainSectionParagraph = document.querySelector(
-			".main-section--left p"
+			".main-section--left p",
 		);
 		if (!mainSectionRight) return;
 
@@ -218,10 +218,10 @@ function handleResize() {
 		resizeRunning = true;
 
 		requestAnimationFrame(() => {
-			moveServiceLinks();
 			updateMockupPlace();
 			sliderInitialize();
 			SliderInIt();
+			moveServiceLinks();
 			resizeRunning = false;
 		});
 	}, 250);
@@ -249,7 +249,7 @@ emailInputs.forEach((input) => {
 
 function isEmailValid(value) {
 	return value.match(
-		/^(([^<>()[\$\\.,;:\s@\"]+(\.[^<>()[\$\\.,;:\s@\"]+)*)|(\".+\"))@((\$[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\$)|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		/^(([^<>()[\$\\.,;:\s@\"]+(\.[^<>()[\$\\.,;:\s@\"]+)*)|(\".+\"))@((\$[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\$)|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 	);
 }
 
@@ -435,7 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (Array.isArray(payload.data)) {
 				const prepared = payload.data
 					.map((item) =>
-						typeof item === "string" ? item.trim() : ""
+						typeof item === "string" ? item.trim() : "",
 					)
 					.filter((item) => item !== "");
 
@@ -464,7 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (!popup) {
 			const alertMessage = normalizedMessage.replace(
 				/<br\s*\/?>(\s*)/gi,
-				"\n$1"
+				"\n$1",
 			);
 			window.alert(alertMessage);
 			return;
@@ -476,7 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (!body) {
 			const alertMessage = normalizedMessage.replace(
 				/<br\s*\/?>(\s*)/gi,
-				"\n$1"
+				"\n$1",
 			);
 			window.alert(alertMessage);
 			return;
@@ -489,7 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		messageElement.classList.add(
 			type === "error"
 				? "popup-notify__message--error"
-				: "popup-notify__message--success"
+				: "popup-notify__message--success",
 		);
 		messageElement.innerHTML = sanitizeMessage(normalizedMessage);
 
@@ -598,7 +598,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				if (!response.ok) {
 					const errorMessage = extractMessage(
 						parsedData,
-						defaultErrorMessage
+						defaultErrorMessage,
 					);
 					throw new Error(errorMessage);
 				}
@@ -609,7 +609,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				const isSuccess = Boolean(data && data.status);
 				const message = extractMessage(
 					data,
-					isSuccess ? defaultSuccessMessage : defaultErrorMessage
+					isSuccess ? defaultSuccessMessage : defaultErrorMessage,
 				);
 
 				if (isSuccess) {
@@ -634,7 +634,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	forms.forEach((form) => {
 		const recaptchaInput = form.querySelector(
-			'input[name="g-recaptcha-response"]'
+			'input[name="g-recaptcha-response"]',
 		);
 		const recaptchaContainer = form.querySelector(".js-recaptcha");
 
@@ -796,7 +796,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			whatsapp.style.display = mapData[value].wa ? "flex" : "none";
 			whatsapp.setAttribute(
 				"href",
-				"https://wa.me/" + mapData[value]?.wa
+				"https://wa.me/" + mapData[value]?.wa,
 			);
 			whatsapp.setAttribute("target", "_blank");
 
@@ -827,10 +827,10 @@ function sitePreview() {
 			popup.querySelector(".iframe-window").appendChild(iframe);
 			popup.querySelector(".iframe-tab-link").innerText = e.currentTarget
 				.closest(
-					".card--support, .card--recent, .card--portfolio, .card--group"
+					".card--support, .card--recent, .card--portfolio, .card--group",
 				)
 				.querySelector(
-					".card-body b, b, .card-header div span"
+					".card-body b, b, .card-header div span",
 				).innerText;
 			popup.querySelector(".iframe-url-input").innerText =
 				e.currentTarget.dataset.sitePreview;
@@ -864,6 +864,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // SLIDER LEGACY START
 // SLIDER START
+
 function tabSlidersStart() {
 	try {
 		const slidesContainer = document.querySelector(".slides");
@@ -1138,7 +1139,6 @@ function tabSlidersStart() {
 }
 
 tabSlidersStart();
-// document.addEventListener("DOMContentLoaded", tabSlidersStart);
 // SLIDER END
 
 function casesToggleTabs(interval = 5000) {
@@ -1394,7 +1394,7 @@ document.addEventListener("DOMContentLoaded", SliderInIt);
 // tabs init
 document
 	.querySelectorAll(
-		'.prices-block--buttons input[type="radio"], .table-tabs--buttons input[type="radio"], [data-tabs-buttons]  input[type="radio"]'
+		'.prices-block--buttons input[type="radio"], .table-tabs--buttons input[type="radio"], [data-tabs-buttons]  input[type="radio"]',
 	)
 	.forEach((radio) => {
 		if (!radio) return;
@@ -1476,7 +1476,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				const label = input.closest("label");
 				if (!label) {
 					console.error(
-						`Label for input with id "${tabId}" not found`
+						`Label for input with id "${tabId}" not found`,
 					);
 					return;
 				}
@@ -1552,7 +1552,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 
 			const anyChecked = Array.from(inputs).some(
-				(input) => input.checked
+				(input) => input.checked,
 			);
 
 			if (!anyChecked) {
@@ -1570,7 +1570,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		} else {
 			const tenderTarget = tenderDiagram.querySelector(
-				".tender-text-target"
+				".tender-text-target",
 			);
 
 			const setTenderTabContent = (tabId) => {
@@ -1578,9 +1578,9 @@ document.addEventListener("DOMContentLoaded", () => {
 					{
 						id: "tender-radio-1",
 						content: [
-							"Поставщики конкурируют за ваши тендеры и предлагают минимальную цену",
+							"Поставщики конкурируют за ваши тендеры на закупки и предлагают минимальную цену.",
 							"Вы приобретаете сырье и материалы по самым выгодным ценам",
-							"Усредненная экономия - 5% с каждого тендера",
+							"Усредненная экономия - 5% с каждой закупки",
 						],
 					},
 					{
@@ -1596,23 +1596,23 @@ document.addEventListener("DOMContentLoaded", () => {
 						content: [
 							"Полная совместимость с ПО от 1С",
 							"Возможность интеграции с любым другим офисным ПО и БД",
-							"Тендеры выгружаются из БД в один клик, а транспортные компании могут выгружать свои предложения при синхронизации артикулов",
+							"Тендеры выгружаются из БД в один клик, а поставщики могут выгружать свои предложения при синхронизации артикулов",
 						],
 					},
 					{
 						id: "tender-radio-4",
 						content: [
-							"Менеджерам больше не нужно обзванивать сотни поставщиков и изучать их прайсы.",
-							"Автоматическое формирование тендеров под текущие потребности.",
-							"Синхронизация с бухгалтерией поставщиков",
-							"Выбор лучших предложений по цене, срокам и качеству для тысяч товаров от сотен поставщиков",
-							"Автоматическая генерация документов — полностью автоматизированный процесс закупок",
+							"Менеджерам больше не нужно обзванивать сотни поставщиков и изучать их прайсы и КП.",
+							"Формирование тендеров в автоматическом режиме исходя из текущих потребностей компании.",
+							"Синхронизация с бухгалтерией поставщиков.",
+							"Выбор лучших предложений по цене, условиям поставки и качеству продукции для тысяч наименований от сотен поставщиков. ",
+							"Автоматическая генерация документов для полностью автоматизированного процесса закупок",
 						],
 					},
 					{
 						id: "tender-radio-5",
 						content: [
-							"При создании портала учитываются особенности бизнес-процессов и корпоративные требования компании",
+							"При создании портала учитывается каждый бизнес-процесс компании",
 							"Роли пользователей распределяются согласно вашим требованиям",
 							"Максимум эффективности и удобства при эксплуатации",
 						],
@@ -1622,14 +1622,14 @@ document.addEventListener("DOMContentLoaded", () => {
 						content: [
 							"Фиксация и учет всех действий, которые совершались на портале",
 							"Данные станут неопровержимым доказательством при разрешении спорных ситуаций",
-							"Возможность составления необходимых отчетов и графиков по ценам, транспортным компаниям и т. д. в динамике",
+							"Возможность составления необходимых отчетов и графиков по закупкам, ценам, поставщикам и т. д. в динамике",
 						],
 					},
 					{
 						id: "tender-radio-7",
 						content: [
-							"Минимизация количества сотрудников, задействованных в процессе",
-							"Автоматизация всех процессов организации",
+							"Минимизация количества сотрудников, задействованных в процессе закупок",
+							"Автоматизация всех процессов организации закупок",
 							"Сотрудники могут сосредоточиться на стратегических задачах, так как рутинные процессы выполняются системой",
 						],
 					},
@@ -1645,7 +1645,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				];
 
 				const newContent = content.find(
-					(item) => item.id === tabId
+					(item) => item.id === tabId,
 				).content;
 
 				tenderTarget.classList.add("transition");
@@ -1676,7 +1676,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 
 			const anyChecked = Array.from(inputs).some(
-				(input) => input.checked
+				(input) => input.checked,
 			);
 			if (!anyChecked) {
 				setTenderTabContent("tender-radio-1");
@@ -2254,7 +2254,7 @@ window.addEventListener("hashchange", () => {
 			history.replaceState(
 				"",
 				document.title,
-				window.location.pathname + window.location.search
+				window.location.pathname + window.location.search,
 			);
 		}, 3000);
 	}
@@ -2277,7 +2277,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						counter
 							.getAttribute("data-counter-value")
 							.replace(/\s+/g, ""),
-						10
+						10,
 					);
 					const blankValue =
 						counter.getAttribute("data-counter-value").length;
@@ -2334,7 +2334,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				const observer = new IntersectionObserver(
 					observerCallback,
-					observerOptions
+					observerOptions,
 				);
 				observer.observe(counter);
 			});
@@ -2527,6 +2527,7 @@ function gallerySelector() {
 		});
 	}
 }
+
 document.addEventListener("DOMContentLoaded", gallerySelector);
 
 // NiceSelect
@@ -2657,7 +2658,7 @@ const niceSelectJS = function (selectName, options) {
 		// Генерируем событие change для калькулятора
 		originalSelect.dispatchEvent(new Event("change"));
 		console.log(
-			`dispatched change on ${originalSelect.id}, value=${originalSelect.value}`,
+			`dispatched change on ${originalSelect.id}, value = ${originalSelect.value} `,
 		);
 	});
 
@@ -2723,8 +2724,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					top = window.scrollY + 8;
 				}
 
-				tooltip.style.top = `${top}px`;
-				tooltip.style.left = `${left}px`;
+				tooltip.style.top = `${top} px`;
+				tooltip.style.left = `${left} px`;
 			});
 		});
 
@@ -2806,7 +2807,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		const tooltips = [];
 		for (let i = 1; ; i++) {
-			const tip = document.getElementById(`${prefix}-${i}`);
+			const tip = document.getElementById(`${prefix} -${i} `);
 			if (!tip) break;
 			tooltips.push(tip);
 		}
@@ -3298,7 +3299,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			// Ищем все tooltip'ы, чей id начинается с prefix и тире
 			const tooltips = [];
 			for (let i = 1; ; i++) {
-				const tip = document.getElementById(`${prefix}-${i}`);
+				const tip = document.getElementById(`${prefix} -${i} `);
 				if (!tip) break;
 				tooltips.push(tip);
 			}
@@ -3726,7 +3727,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						}
 
 						const section = document.querySelector(
-							`#section-${nestedToggleId.split("-")?.[0]}`,
+							`#section - ${nestedToggleId.split("-")?.[0]} `,
 						);
 						if (section) section.checked = true;
 					}
@@ -3922,7 +3923,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						); // Вызываем обработчик
 
 						const section = document.querySelector(
-							`#section-${nestedItem.id.split("-")?.[0]}`,
+							`#section - ${nestedItem.id.split("-")?.[0]} `,
 						);
 						if (section) section.checked = true;
 
@@ -3977,7 +3978,7 @@ document.addEventListener("DOMContentLoaded", () => {
 									(t) => t.id === nestedItem.id,
 								);
 								const section = document.querySelector(
-									`#section-${nestedItem.id.split("-")?.[0]}`,
+									`#section - ${nestedItem.id.split("-")?.[0]} `,
 								);
 								if (section) section.checked = true;
 								if (nestedToggle) {
@@ -4716,7 +4717,7 @@ const toggleSection = (
 		const selector = document.getElementById(id);
 
 		if (!selector) {
-			console.warn(`Элемент с id="${id}" не найден`);
+			console.warn(`Элемент с id = "${id}" не найден`);
 			return;
 		}
 
@@ -4737,7 +4738,7 @@ const toggleSection = (
 					block: "start",
 				});
 				console.log("success scroll to #" + id);
-			}, 600);
+			}, 400);
 		} else if (id === selectorsShowIds[0] && !shouldScroll) {
 			console.log("scroll skipped for #" + id);
 		}
@@ -4748,7 +4749,7 @@ const toggleSection = (
 		const selector = document.getElementById(id);
 
 		if (!selector) {
-			console.warn(`Элемент с id="${id}" не найден`);
+			console.warn(`Элемент с id = "${id}" не найден`);
 			return;
 		}
 
@@ -4806,162 +4807,6 @@ if (triggerButtons) {
 		});
 	});
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-	const quickForm = document.getElementById('quick-form');
-	const bigForm = document.getElementById('bsite-add'); // Ваша большая форма брифа
-	const bigCalc = document.getElementById('big-calc'); // Ваш калькулятор
-
-	if (quickForm) {
-		quickForm.addEventListener('formdata', (e) => {
-			const fd = e.formData;
-
-			// --- 1. ПЫЛЕСОСИМ ДАННЫЕ ИЗ БОЛЬШОЙ ФОРМЫ ---
-			if (bigForm) {
-				const bigData = new FormData(bigForm);
-
-				// Проходим по всем активным полям большой формы
-				for (let [key, value] of bigData.entries()) {
-					// Игнорируем технические поля (CSRF, Captcha), чтобы не было дублей
-					if (key === '_csrf-frontend' || key === 'g-recaptcha-response') continue;
-
-					// Если значение пустое - пропускаем
-					if (!value) continue;
-
-					// Добавляем в отправку с префиксом data[...]
-					// Например: 'strategy-org_promo' -> 'data[strategy-org_promo]'
-					fd.set(`data[${key}]`, value);
-				}
-			}
-
-			if (bigCalc) {
-				const items = [];
-				const elements = bigCalc.querySelectorAll('input, select, textarea');
-
-				elements.forEach((el) => {
-					const key = el.name || el.id;
-					if (!key) return;
-
-					if (key === '_csrf-frontend' || key === 'g-recaptcha-response') return;
-					if (el.disabled) return;
-					if (el.closest('.hidden')) return;
-
-					let value = null;
-					let price = '0';
-					let label = key;
-
-					// checkbox / radio
-					if (el.matches('input[type="checkbox"], input[type="radio"]')) {
-						if (!el.checked) return;
-
-						const targetId = el.dataset.selectTarget;
-
-						// checkbox + select
-						if (targetId) {
-							const select = document.getElementById(targetId);
-
-							if (select) {
-								const option = select.options[select.selectedIndex];
-
-								label = getLabelText(el) || getGroupTitle(el) || key;
-								value = option?.textContent?.trim() || select.dataset.display || 'Да';
-								price = option?.dataset?.price || select.dataset.price || '0';
-							} else {
-								label = getLabelText(el) || getGroupTitle(el) || key;
-								value = 'Да';
-								price = el.dataset.price || '0';
-							}
-						} else {
-							label = getLabelText(el) || getGroupTitle(el) || key;
-							value = el.value && el.value !== 'on' ? el.value : 'Да';
-							price = el.dataset.price || '0';
-						}
-					}
-					// select
-					else if (el.tagName === 'SELECT') {
-						const linkedCheckbox = bigCalc.querySelector(`[data-select-target="${el.id}"]`);
-						if (linkedCheckbox) return;
-
-						const option = el.options[el.selectedIndex];
-						label = getLabelText(el) || getGroupTitle(el) || key;
-						value = option?.textContent?.trim() || el.value;
-						price = option?.dataset?.price || el.dataset.price || '0';
-					}
-					// text / textarea
-					else {
-						if (!el.value || !String(el.value).trim()) return;
-
-						label = getLabelText(el) || getGroupTitle(el) || key;
-						value = String(el.value).trim();
-						price = el.dataset.price || '0';
-					}
-
-					items.push({
-						key,
-						label,
-						value,
-						price: Number(price) || 0
-					});
-				});
-
-				console.log('Собранные данные из калькулятора:', items);
-				fd.delete('data');
-				fd.append('data', JSON.stringify(items));
-			}
-
-
-			// --- 3. ЧИСТИМ ДУБЛИКАТЫ КАПЧИ (Обязательно!) ---
-			// Так как мы мержим формы, капча может задвоиться
-			const token = fd.get('g-recaptcha-response');
-			// Получаем токен из быстрой формы (он свежий)
-
-			// Удаляем всё, что связано с капчей, чтобы не отправить массив
-			fd.delete('g-recaptcha-response');
-
-			// Возвращаем один правильный токен
-			if (token) fd.append('g-recaptcha-response', token);
-
-			function getLabelText(el) {
-				if (el.id) {
-					const byFor = bigCalc.querySelector(`label[for="${el.id}"] p`) ||
-						bigCalc.querySelector(`label[for="${el.id}"]`);
-					if (byFor) {
-						return byFor.textContent.replace(/\s+/g, ' ').trim();
-					}
-				}
-
-				const wrapLabel = el.closest('label');
-				if (wrapLabel) {
-					const p = wrapLabel.querySelector('p');
-					if (p) return p.textContent.replace(/\s+/g, ' ').trim();
-				}
-
-				return '';
-			}
-			function getGroupTitle(el) {
-				const toggleLine = el.closest('.toggle-line, .nice-wrapper, label, input, select, textarea')?.closest('.toggle-line') || el.closest('.toggle-line');
-				if (!toggleLine) return '';
-
-				let prev = toggleLine.previousElementSibling;
-
-				while (prev) {
-					if (
-						prev.matches('.title_h5.quote') ||
-						prev.matches('.title_h5') ||
-						prev.matches('p.title_h5.quote') ||
-						prev.matches('p.title_h5')
-					) {
-						const text = prev.textContent.replace(/\s+/g, ' ').trim();
-						if (text) return text;
-					}
-					prev = prev.previousElementSibling;
-				}
-
-				return '';
-			}
-		});
-	}
-});
 
 // input type file logic with drag-n-drop
 class FileInputManager {
@@ -5066,10 +4911,8 @@ class FileInputManager {
 	}
 
 	handleFileChange(e) {
-		const files = Array.from(e.target.files);
-		if (files.length) {
-			this.addFiles(files);
-		}
+		this.addFiles(Array.from(e.target.files));
+		this.input.value = '';
 	}
 
 	handleRemove(e) {
@@ -5129,6 +4972,7 @@ class FileInputManager {
 		const dt = new DataTransfer();
 		this.allFiles.forEach(file => dt.items.add(file));
 		this.input.files = dt.files;
+		this.input.dispatchEvent(new Event('change', { bubbles: true }));
 	}
 
 	updateDisplay() {
@@ -5172,7 +5016,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
-// reviews
 document.addEventListener("DOMContentLoaded", () => {
 	const reviewsContainer = document.getElementById("reviews-container");
 
@@ -5305,7 +5148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				.then((res) => {
 					if (res.status) {
 						const popupBody = document.querySelector(
-							"#login-review .popup-body"
+							"#login-review .popup-body",
 						);
 						if (popupBody) {
 							popupBody.innerHTML =
@@ -5343,7 +5186,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				.then((res) => {
 					if (res.status) {
 						const popupBody = document.querySelector(
-							"#login-review .popup-body"
+							"#login-review .popup-body",
 						);
 						if (popupBody) {
 							popupBody.innerHTML =
@@ -5414,7 +5257,7 @@ class TableOfContents {
 		this.nav = document.querySelector(".article-navigation");
 		if (!this.nav) {
 			console.warn(
-				"TableOfContents: Не найден элемент .article-navigation"
+				"TableOfContents: Не найден элемент .article-navigation",
 			);
 			return;
 		}
@@ -5459,7 +5302,7 @@ class TableOfContents {
 		this.setupClickHandlers();
 
 		console.log(
-			`TableOfContents: Инициализировано ${this.sections.length} секций`
+			`TableOfContents: Инициализировано ${this.sections.length} секций`,
 		);
 	}
 
@@ -5495,7 +5338,7 @@ class TableOfContents {
 		this.links = this.navList.querySelectorAll('a[href^="#"]');
 
 		console.log(
-			`TableOfContents: Сгенерировано ${this.links.length} ссылок`
+			`TableOfContents: Сгенерировано ${this.links.length} ссылок`,
 		);
 	}
 
@@ -5585,7 +5428,7 @@ class TableOfContents {
 
 			// Создаем ссылку
 			const link = document.createElement("a");
-			link.href = `#${node.id}`;
+			link.href = `#${node.id} `;
 			link.textContent = node.text;
 			link.className = "hover-underline";
 
@@ -5627,7 +5470,7 @@ class TableOfContents {
 					isVisible: false,
 				});
 			} else {
-				console.warn(`TableOfContents: Не найден элемент с id="${id}"`);
+				console.warn(`TableOfContents: Не найден элемент с id = "${id}"`);
 			}
 		});
 	}
@@ -5799,7 +5642,7 @@ class TableOfContents {
 					const scrollMargin =
 						parseInt(
 							window.getComputedStyle(targetElement)
-								.scrollMarginTop
+								.scrollMarginTop,
 						) || this.options.scrollOffset;
 
 					window.scrollTo({
@@ -5889,7 +5732,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (window.articleTOC && window.articleTOC.getState) {
 		console.log(
 			"TableOfContents: Автоматически инициализирован",
-			window.articleTOC.getState()
+			window.articleTOC.getState(),
 		);
 	}
 });
@@ -5898,16 +5741,6 @@ document.addEventListener("DOMContentLoaded", () => {
 if (typeof module !== "undefined" && module.exports) {
 	module.exports = TableOfContents;
 }
-
-// Автоматическая генерация
-// data-auto-generate="true" (true/false)
-
-// Подсветка нескольких ссылок одновременно
-// data-highlight-strategy="multiple" (можно не указывать)
-// data-highlight-all="true" (true/false)
-
-// Собственный root-margin observer
-// data-root-margin="-15% 0px -65% 0px"
 
 // office-viewer
 const officeImage = (elem) => {
@@ -5928,5 +5761,3 @@ if (photoCards.length > 0) {
 		});
 	});
 }
-
-

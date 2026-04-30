@@ -6695,11 +6695,6 @@ button:disabled, button.disabled,
   height: 100%;
   object-fit: cover;
 }
-.card--testimonials {
-  padding: 24px 40px;
-  background-color: var(--bg-main);
-  border: 1px solid var(--blue-bg);
-}
 .card--testimonials::before {
   content: "d";
   position: absolute;
@@ -9481,6 +9476,7 @@ button:disabled, button.disabled,
   min-width: 200px;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   padding: 20px 12px;
   background-color: rgba(0, 0, 0, 0.85);
   border: none;
@@ -12274,7 +12270,7 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1199.98px) {
   .for-buisness-offers .blocks-wrapper {
     justify-content: center;
     gap: 20px;
@@ -12299,7 +12295,7 @@ main {
   user-select: none;
   transform: translate(-100%, 0);
 }
-@media (max-width: 1100px) {
+@media (max-width: 1199.98px) {
   .for-buisness-offers .blocks-wrapper .orb-bottom {
     display: none;
   }
@@ -12307,8 +12303,12 @@ main {
 .for-buisness-offers .blocks-wrapper .orb-bottom img {
   width: 100%;
   opacity: 1;
-  transform: scale(-1, 1) rotate(-15deg);
-  animation: baloon-right 8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+@media (min-width: 1200px) {
+  .for-buisness-offers .blocks-wrapper .orb-bottom img {
+    transform: scale(-1, 1) rotate(-15deg);
+    animation: baloon-right 8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  }
 }
 .for-buisness-offers .blocks-wrapper.slim {
   align-items: stretch;
@@ -12422,7 +12422,7 @@ main {
   position: relative;
   height: fit-content;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1199.98px) {
   .for-buisness-block {
     padding: 20px 32px;
     background-color: var(--bg-main);
