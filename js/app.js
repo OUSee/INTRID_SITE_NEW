@@ -235,9 +235,9 @@ const emailInputs = document.querySelectorAll('input[type="email"]');
 
 function validate(e) {
 	if (isEmailValid(e.currentTarget.value)) {
-		console.log(e.currentTarget.validationMessage);
+		// console.log(e.currentTarget.validationMessage);
 	} else {
-		console.log(e.currentTarget.validationMessage);
+		// console.log(e.currentTarget.validationMessage);
 	}
 }
 
@@ -804,7 +804,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			telegram.setAttribute("href", "https://t.me/" + mapData[value]?.tg);
 			telegram.setAttribute("target", "_blank");
 
-			console.log(telegram.getAttribute("href"));
+			// console.log(telegram.getAttribute("href"));
 
 			linkBtn.href = mapData[value].link;
 		}
@@ -1707,7 +1707,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 
 		const changeOrderHandler = (button) => {
-			console.log("=> inside");
+			// console.log("=> inside");
 			try {
 				buttons.forEach((item) => {
 					item.style.order = "1";
@@ -1723,7 +1723,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					buttons.forEach((item) => {
 						label = item?.querySelector("label");
 						label?.classList?.remove("fade-out");
-						console.log("-- item.style", item.style.order);
+						// console.log("-- item.style", item.style.order);
 					});
 				}, 400);
 			} catch (error) {
@@ -1737,7 +1737,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function sliderInitialize() {
 	const tabSliderWithPagination = (id) => {
 		if (id === "logo-slider") {
-			console.log("=> init", id);
+			// console.log("=> init", id);
 		}
 
 		if (!id) return;
@@ -2245,20 +2245,6 @@ function updateSliderDimensions(slider) {
 sliderInitialize();
 
 // vakansies
-window.addEventListener("hashchange", () => {
-	console.log("=> ", location.hash);
-	if (location.hash === "#apply") {
-		document.getElementById("apply_link").classList.add("infinite-glow");
-
-		setTimeout(() => {
-			history.replaceState(
-				"",
-				document.title,
-				window.location.pathname + window.location.search
-			);
-		}, 3000);
-	}
-});
 
 // increment numbers
 document.addEventListener("DOMContentLoaded", () => {
@@ -2355,7 +2341,7 @@ function maskPhone(selector, masked = '+7 (___) ___-__-__') {
 		const template = masked,
 			def = template.replace(/\D/g, ""),
 			val = this.value.replace(/\D/g, "");
-		console.log(template);
+		// console.log(template);
 		let i = 0,
 			newValue = template.replace(/[_\d]/g, function (a) {
 				return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
@@ -2496,7 +2482,7 @@ function gallerySelector() {
 		};
 
 		const setUpGallery = (info) => {
-			console.log("=> setUpGallery", info);
+			// console.log("=> setUpGallery", info);
 			clearGallery();
 
 			const source = resolveGallerySource();
@@ -2656,9 +2642,9 @@ const niceSelectJS = function (selectName, options) {
 		originalSelect.value = option.getAttribute("data-value");
 		// Генерируем событие change для калькулятора
 		originalSelect.dispatchEvent(new Event("change"));
-		console.log(
-			`dispatched change on ${originalSelect.id}, value=${originalSelect.value}`,
-		);
+		// console.log(
+		// 	`dispatched change on ${originalSelect.id}, value=${originalSelect.value}`,
+		// );
 	});
 
 	return this;
@@ -2992,7 +2978,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					.filter((t) => t.elementref.value !== "")
 					.map((t) => ({ id: t.id, value: t.elementref.value })),
 			};
-			console.log(review);
+			// console.log(review);
 		}
 
 		// --- обработчики для чекбоксов ---
@@ -4011,7 +3997,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						calculatorWrapper?.classList.add("active");
 					}, 600);
 
-					console.log("=> success");
+					// console.log("=> success");
 				} catch (err) {
 					console.log("=> error", err);
 				}
@@ -4586,13 +4572,13 @@ document.addEventListener("DOMContentLoaded", () => {
 					total: target.current_value,
 				};
 				toggleTotalCost();
-				console.log(review);
+				// console.log(review);
 			}
 
 			function toggleTotalCost() {
 				const totalSelectors = ['#calculator-total-cost', '#calculator-total-modal'];
 
-				console.log(target.innerText)
+				// console.log(target.innerText)
 
 				document.querySelectorAll(totalSelectors).forEach((totalSelector) => {
 					let wrapper = totalSelector.closest('p');
@@ -4904,7 +4890,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					});
 				});
 
-				console.log('Собранные данные из калькулятора:', items);
+				// console.log('Собранные данные из калькулятора:', items);
 				fd.delete('data');
 				fd.append('data', JSON.stringify(items));
 			}
@@ -5458,9 +5444,9 @@ class TableOfContents {
 		this.setupIntersectionObserver();
 		this.setupClickHandlers();
 
-		console.log(
-			`TableOfContents: Инициализировано ${this.sections.length} секций`
-		);
+		// console.log(
+		// 	`TableOfContents: Инициализировано ${this.sections.length} секций`
+		// );
 	}
 
 	/**
@@ -5474,7 +5460,7 @@ class TableOfContents {
 	 * Автоматическая генерация оглавления
 	 */
 	generateTOC() {
-		console.log("TableOfContents: Запуск автоматической генерации...");
+		// console.log("TableOfContents: Запуск автоматической генерации...");
 
 		const headings = document.querySelectorAll(this.options.selector);
 		if (headings.length === 0) {
@@ -5494,9 +5480,9 @@ class TableOfContents {
 		// Получаем ссылки
 		this.links = this.navList.querySelectorAll('a[href^="#"]');
 
-		console.log(
-			`TableOfContents: Сгенерировано ${this.links.length} ссылок`
-		);
+		// console.log(
+		// 	`TableOfContents: Сгенерировано ${this.links.length} ссылок`
+		// );
 	}
 
 	/**
@@ -5886,12 +5872,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	// Дебаг информация в консоль
-	if (window.articleTOC && window.articleTOC.getState) {
-		console.log(
-			"TableOfContents: Автоматически инициализирован",
-			window.articleTOC.getState()
-		);
-	}
+	// if (window.articleTOC && window.articleTOC.getState) {
+	// 	console.log(
+	// 		"TableOfContents: Автоматически инициализирован",
+	// 		window.articleTOC.getState()
+	// 	);
+	// }
 });
 
 // Экспорт для использования в модулях
