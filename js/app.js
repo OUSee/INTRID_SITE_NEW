@@ -9,7 +9,11 @@ const mockup = document.querySelector(".flying-mockup");
 const mainPageSelector = document.querySelector(".main-section--index");
 const aboutPageSelector = document.querySelector(".main-section--about");
 const articleNav = document.querySelector(".article-navigation");
-const techLists = document.querySelectorAll(".tech-we-use-list")
+const techLists = document.querySelectorAll(".tech-we-use-list");
+const reviewsContainer = document.getElementById("reviews-container");
+const webShopDiagram = document.querySelector(".web-shop-diagram");
+const tenderDiagram = document.querySelector(".tender-diagram");
+const mapLinks = document.querySelectorAll(".map-link");
 
 let dropdownClickHandlers = [];
 let outsideClickHandler = null;
@@ -238,7 +242,7 @@ function handleResize() {
 			SliderInIt();
 			resizeRunning = false;
 		});
-	}, 250);
+	}, 350);
 }
 
 // Проверка email-полей на заполнение
@@ -744,13 +748,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // MAP LOGIC
 const mapLinksInit = () => {
-	const mapLinks = document.querySelectorAll(".map-link");
-
-	if (!mapLinks) return;
-
 	try {
-		// console.log('=> links found', mapLinks)
-
 		const mapData = {
 			prague: {
 				frame: '<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A596c110a6e67b7ecf53baf573cb97950916b7bfb81fe164b7ec895af9864ccb8&amp;source=constructor" width="835" height="516" frameborder="0"></iframe>',
@@ -1142,8 +1140,6 @@ function tabSlidersStart() {
 		console.error("Slider error:", err);
 	}
 }
-
-tabSlidersStart();
 // SLIDER LEGACY END
 
 function casesToggleTabs(interval = 5000) {
@@ -1342,7 +1338,6 @@ const SliderInIt = () => {
 		};
 
 		setupButtons();
-		// window.addEventListener("resize", updateSlider);
 		updateSlider();
 	};
 
@@ -1361,7 +1356,6 @@ const SliderInIt = () => {
 			});
 
 			// Инициализация первого слайдера
-			// const firstSlider = document.querySelector("#tab-slide-1");
 			const firstSlider = document.querySelector("[data-slider].active");
 			if (firstSlider) SliderHandler(firstSlider);
 		}
@@ -1383,16 +1377,7 @@ const SliderInIt = () => {
 
 	// Инициализация при загрузке
 	initializeSlider();
-
-	// Дебаунс для resize чтобы избежать множественных вызовов
-	// let resizeTimeout;
-	// window.addEventListener("resize", () => {
-	// 	clearTimeout(resizeTimeout);
-	// 	resizeTimeout = setTimeout(initializeSlider, 100);
-	// });
 };
-
-document.addEventListener("DOMContentLoaded", SliderInIt);
 
 // tabs init
 document
@@ -1419,276 +1404,260 @@ document
 		}
 	});
 
-// main page diagrams
-// in tab webshop content show
-document.addEventListener("DOMContentLoaded", () => {
-	const webShopDiagramHandler = () => {
-		const webShopDiagram = document.querySelector(".web-shop-diagram");
-		if (!webShopDiagram) {
-			return;
-		} else {
-			const webShopTarget =
-				webShopDiagram.querySelector(".store-text-target");
-			// console.log('=> webshop', webShopDiagram, webShopTarget)
+// diagrams
+const webShopDiagramHandler = () => {
+	const webShopTarget =
+		webShopDiagram.querySelector(".store-text-target");
+	// console.log('=> webshop', webShopDiagram, webShopTarget)
 
-			const toggleLineShopAI = (id) => {
-				// console.log('=> enter', )
-				const lines = webShopDiagram.querySelectorAll(".line");
-				// console.log('=> lines', lines)
-				lines.forEach((line) => {
-					line.classList.remove("active-left");
-					line.classList.remove("active-right");
-				});
-				const lastChar = id.slice(-1);
-				switch (lastChar) {
-					default: {
-						lines[1].classList.add("active-left");
-						break;
-					}
-					case "2": {
-						lines[0].classList.add("active-left");
-						break;
-					}
-					case "3": {
-						lines[2].classList.add("active-left");
-						break;
-					}
-					case "4": {
-						lines[2].classList.add("active-right");
-						break;
-					}
-					case "5": {
-						lines[0].classList.add("active-right");
-						break;
-					}
-					case "6": {
-						lines[1].classList.add("active-right");
-						break;
-					}
-				}
-			};
-
-			const setTabContent = (tabId) => {
-				// Пытаемся найти контент в HTML
-				const input = document.getElementById(tabId);
-				if (!input) {
-					console.error(`Input with id "${tabId}" not found`);
-					return;
-				}
-
-				const label = input.closest("label");
-				if (!label) {
-					console.error(
-						`Label for input with id "${tabId}" not found`
-					);
-					return;
-				}
-
-				const hiddenContent = label.querySelector(".content-hidden");
-				let newText;
-				if (hiddenContent) {
-					newText = hiddenContent.textContent;
-				} else {
-					const content = [
-						{
-							id: "ai-benefit-1",
-							content:
-								"ИИ анализирует поведение пользователей и предлагает релевантные товары в нужный момент",
-						},
-						{
-							id: "ai-benefit-2",
-							content:
-								"Персонализированные рекомендации, умный поиск и автоматизированная поддержка выделят вас среди конкурентов",
-						},
-						{
-							id: "ai-benefit-3",
-							content:
-								"Подбирает сопутствующие товары, которые покупатели часто добавляют в корзину, тем самым увеличивают средний чек",
-						},
-						{
-							id: "ai-benefit-4",
-							content:
-								"Умные системы предсказывают потребности клиента и показывают ему именно то, что он ищет",
-						},
-						{
-							id: "ai-benefit-5",
-							content:
-								"Покупатели могут искать товары голосом, что ускоряет процесс и делает магазин удобнее для пользователей смартфонов и умных устройств",
-						},
-						{
-							id: "ai-benefit-6",
-							content:
-								"Телеграм-бот помогает с подбором товаров, оформлением заказов и отвечает на вопросы 24/7, увеличивая вовлеченность и лояльность клиентов",
-						},
-					];
-
-					const foundItem = content.find((item) => item.id === tabId);
-					if (!foundItem) {
-						console.error(`Content for id "${tabId}" not found`);
-						return;
-					}
-					newText = foundItem.content;
-				}
-
-				webShopTarget.classList.add("transition");
-
-				setTimeout(() => {
-					webShopTarget.classList.remove("transition");
-					webShopTarget.innerHTML = newText;
-				}, 250);
-			};
-
-			const inputs = webShopDiagram.querySelectorAll("input");
-
-			inputs.forEach((input) => {
-				input.addEventListener("click", () => {
-					setTabContent(input.id);
-					toggleLineShopAI(input.id);
-				});
-			});
-
-			inputs.forEach((input) => {
-				if (input.checked) {
-					setTabContent(input.id);
-					toggleLineShopAI(input.id);
-				}
-			});
-
-			const anyChecked = Array.from(inputs).some(
-				(input) => input.checked
-			);
-
-			if (!anyChecked) {
-				setTabContent("ai-benefit-1");
-				toggleLineShopAI("1");
+	const toggleLineShopAI = (id) => {
+		// console.log('=> enter', )
+		const lines = webShopDiagram.querySelectorAll(".line");
+		// console.log('=> lines', lines)
+		lines.forEach((line) => {
+			line.classList.remove("active-left");
+			line.classList.remove("active-right");
+		});
+		const lastChar = id.slice(-1);
+		switch (lastChar) {
+			default: {
+				lines[1].classList.add("active-left");
+				break;
+			}
+			case "2": {
+				lines[0].classList.add("active-left");
+				break;
+			}
+			case "3": {
+				lines[2].classList.add("active-left");
+				break;
+			}
+			case "4": {
+				lines[2].classList.add("active-right");
+				break;
+			}
+			case "5": {
+				lines[0].classList.add("active-right");
+				break;
+			}
+			case "6": {
+				lines[1].classList.add("active-right");
+				break;
 			}
 		}
 	};
 
-	webShopDiagramHandler();
-
-	const tenderDiagramHandler = () => {
-		const tenderDiagram = document.querySelector(".tender-diagram");
-		if (!tenderDiagram) {
+	const setTabContent = (tabId) => {
+		// Пытаемся найти контент в HTML
+		const input = document.getElementById(tabId);
+		if (!input) {
+			console.error(`Input with id "${tabId}" not found`);
 			return;
-		} else {
-			const tenderTarget = tenderDiagram.querySelector(
-				".tender-text-target"
-			);
-
-			const setTenderTabContent = (tabId) => {
-				const content = [
-					{
-						id: "tender-radio-1",
-						content: [
-							"Поставщики конкурируют за ваши тендеры и предлагают минимальную цену",
-							"Вы приобретаете сырье и материалы по самым выгодным ценам",
-							"Усредненная экономия - 5% с каждого тендера",
-						],
-					},
-					{
-						id: "tender-radio-2",
-						content: [
-							"Гибкая настройка интерфейса портала под ваши задачи",
-							"Система разрабатывается с учетом навыков обычного пользователя ПК",
-							"Быстрое освоение всего функционала портала",
-						],
-					},
-					{
-						id: "tender-radio-3",
-						content: [
-							"Полная совместимость с ПО от 1С",
-							"Возможность интеграции с любым другим офисным ПО и БД",
-							"Тендеры выгружаются из БД в один клик, а транспортные компании могут выгружать свои предложения при синхронизации артикулов",
-						],
-					},
-					{
-						id: "tender-radio-4",
-						content: [
-							"Менеджерам больше не нужно обзванивать сотни поставщиков и изучать их прайсы.",
-							"Автоматическое формирование тендеров под текущие потребности.",
-							"Синхронизация с бухгалтерией поставщиков",
-							"Выбор лучших предложений по цене, срокам и качеству для тысяч товаров от сотен поставщиков",
-							"Автоматическая генерация документов — полностью автоматизированный процесс закупок",
-						],
-					},
-					{
-						id: "tender-radio-5",
-						content: [
-							"При создании портала учитываются особенности бизнес-процессов и корпоративные требования компании",
-							"Роли пользователей распределяются согласно вашим требованиям",
-							"Максимум эффективности и удобства при эксплуатации",
-						],
-					},
-					{
-						id: "tender-radio-6",
-						content: [
-							"Фиксация и учет всех действий, которые совершались на портале",
-							"Данные станут неопровержимым доказательством при разрешении спорных ситуаций",
-							"Возможность составления необходимых отчетов и графиков по ценам, транспортным компаниям и т. д. в динамике",
-						],
-					},
-					{
-						id: "tender-radio-7",
-						content: [
-							"Минимизация количества сотрудников, задействованных в процессе",
-							"Автоматизация всех процессов организации",
-							"Сотрудники могут сосредоточиться на стратегических задачах, так как рутинные процессы выполняются системой",
-						],
-					},
-
-					{
-						id: "tender-radio-8",
-						content: [
-							"Прозрачная процедура определения победителя тендера",
-							"Защита от несанкционированного вмешательства",
-							"Невозможность использования “откатов” и прочих теневых схем",
-						],
-					},
-				];
-
-				const newContent = content.find(
-					(item) => item.id === tabId
-				).content;
-
-				tenderTarget.classList.add("transition");
-
-				setTimeout(() => {
-					tenderTarget.classList.remove("transition");
-
-					tenderTarget.innerHTML = newContent
-						.map((item) => {
-							return `<li>${item}</li>`;
-						})
-						.join("");
-				}, 250);
-			};
-
-			const inputs = tenderDiagram.querySelectorAll("input");
-
-			inputs.forEach((input) => {
-				input.addEventListener("click", () => {
-					setTenderTabContent(input.id);
-				});
-			});
-
-			inputs.forEach((input) => {
-				if (input.checked) {
-					setTenderTabContent(input.id);
-				}
-			});
-
-			const anyChecked = Array.from(inputs).some(
-				(input) => input.checked
-			);
-			if (!anyChecked) {
-				setTenderTabContent("tender-radio-1");
-			}
 		}
+
+		const label = input.closest("label");
+		if (!label) {
+			console.error(
+				`Label for input with id "${tabId}" not found`
+			);
+			return;
+		}
+
+		const hiddenContent = label.querySelector(".content-hidden");
+		let newText;
+		if (hiddenContent) {
+			newText = hiddenContent.textContent;
+		} else {
+			const content = [
+				{
+					id: "ai-benefit-1",
+					content:
+						"ИИ анализирует поведение пользователей и предлагает релевантные товары в нужный момент",
+				},
+				{
+					id: "ai-benefit-2",
+					content:
+						"Персонализированные рекомендации, умный поиск и автоматизированная поддержка выделят вас среди конкурентов",
+				},
+				{
+					id: "ai-benefit-3",
+					content:
+						"Подбирает сопутствующие товары, которые покупатели часто добавляют в корзину, тем самым увеличивают средний чек",
+				},
+				{
+					id: "ai-benefit-4",
+					content:
+						"Умные системы предсказывают потребности клиента и показывают ему именно то, что он ищет",
+				},
+				{
+					id: "ai-benefit-5",
+					content:
+						"Покупатели могут искать товары голосом, что ускоряет процесс и делает магазин удобнее для пользователей смартфонов и умных устройств",
+				},
+				{
+					id: "ai-benefit-6",
+					content:
+						"Телеграм-бот помогает с подбором товаров, оформлением заказов и отвечает на вопросы 24/7, увеличивая вовлеченность и лояльность клиентов",
+				},
+			];
+
+			const foundItem = content.find((item) => item.id === tabId);
+			if (!foundItem) {
+				console.error(`Content for id "${tabId}" not found`);
+				return;
+			}
+			newText = foundItem.content;
+		}
+
+		webShopTarget.classList.add("transition");
+
+		setTimeout(() => {
+			webShopTarget.classList.remove("transition");
+			webShopTarget.innerHTML = newText;
+		}, 250);
 	};
 
-	tenderDiagramHandler();
-});
+	const inputs = webShopDiagram.querySelectorAll("input");
+
+	inputs.forEach((input) => {
+		input.addEventListener("click", () => {
+			setTabContent(input.id);
+			toggleLineShopAI(input.id);
+		});
+	});
+
+	inputs.forEach((input) => {
+		if (input.checked) {
+			setTabContent(input.id);
+			toggleLineShopAI(input.id);
+		}
+	});
+
+	const anyChecked = Array.from(inputs).some(
+		(input) => input.checked
+	);
+
+	if (!anyChecked) {
+		setTabContent("ai-benefit-1");
+		toggleLineShopAI("1");
+	}
+};
+
+const tenderDiagramHandler = () => {
+	const tenderTarget = tenderDiagram.querySelector(
+		".tender-text-target"
+	);
+
+	const setTenderTabContent = (tabId) => {
+		const content = [
+			{
+				id: "tender-radio-1",
+				content: [
+					"Поставщики конкурируют за ваши тендеры и предлагают минимальную цену",
+					"Вы приобретаете сырье и материалы по самым выгодным ценам",
+					"Усредненная экономия - 5% с каждого тендера",
+				],
+			},
+			{
+				id: "tender-radio-2",
+				content: [
+					"Гибкая настройка интерфейса портала под ваши задачи",
+					"Система разрабатывается с учетом навыков обычного пользователя ПК",
+					"Быстрое освоение всего функционала портала",
+				],
+			},
+			{
+				id: "tender-radio-3",
+				content: [
+					"Полная совместимость с ПО от 1С",
+					"Возможность интеграции с любым другим офисным ПО и БД",
+					"Тендеры выгружаются из БД в один клик, а транспортные компании могут выгружать свои предложения при синхронизации артикулов",
+				],
+			},
+			{
+				id: "tender-radio-4",
+				content: [
+					"Менеджерам больше не нужно обзванивать сотни поставщиков и изучать их прайсы.",
+					"Автоматическое формирование тендеров под текущие потребности.",
+					"Синхронизация с бухгалтерией поставщиков",
+					"Выбор лучших предложений по цене, срокам и качеству для тысяч товаров от сотен поставщиков",
+					"Автоматическая генерация документов — полностью автоматизированный процесс закупок",
+				],
+			},
+			{
+				id: "tender-radio-5",
+				content: [
+					"При создании портала учитываются особенности бизнес-процессов и корпоративные требования компании",
+					"Роли пользователей распределяются согласно вашим требованиям",
+					"Максимум эффективности и удобства при эксплуатации",
+				],
+			},
+			{
+				id: "tender-radio-6",
+				content: [
+					"Фиксация и учет всех действий, которые совершались на портале",
+					"Данные станут неопровержимым доказательством при разрешении спорных ситуаций",
+					"Возможность составления необходимых отчетов и графиков по ценам, транспортным компаниям и т. д. в динамике",
+				],
+			},
+			{
+				id: "tender-radio-7",
+				content: [
+					"Минимизация количества сотрудников, задействованных в процессе",
+					"Автоматизация всех процессов организации",
+					"Сотрудники могут сосредоточиться на стратегических задачах, так как рутинные процессы выполняются системой",
+				],
+			},
+
+			{
+				id: "tender-radio-8",
+				content: [
+					"Прозрачная процедура определения победителя тендера",
+					"Защита от несанкционированного вмешательства",
+					"Невозможность использования “откатов” и прочих теневых схем",
+				],
+			},
+		];
+
+		const newContent = content.find(
+			(item) => item.id === tabId
+		).content;
+
+		tenderTarget.classList.add("transition");
+
+		setTimeout(() => {
+			tenderTarget.classList.remove("transition");
+
+			tenderTarget.innerHTML = newContent
+				.map((item) => {
+					return `<li>${item}</li>`;
+				})
+				.join("");
+		}, 250);
+	};
+
+	const inputs = tenderDiagram.querySelectorAll("input");
+
+	inputs.forEach((input) => {
+		input.addEventListener("click", () => {
+			setTenderTabContent(input.id);
+		});
+	});
+
+	inputs.forEach((input) => {
+		if (input.checked) {
+			setTenderTabContent(input.id);
+		}
+	});
+
+	const anyChecked = Array.from(inputs).some(
+		(input) => input.checked
+	);
+
+	if (!anyChecked) {
+		setTenderTabContent("tender-radio-1");
+	}
+};
 
 // handle change clicks to add smooth change of columns
 const tenderTablesInit = () => {
@@ -2242,10 +2211,6 @@ function updateSliderDimensions(slider) {
 	});
 }
 
-sliderInitialize();
-
-// vakansies
-
 // increment numbers
 const incrementNumbersInit = () => {
 	const counters = document.querySelectorAll("[data-counter-value]");
@@ -2703,6 +2668,28 @@ const showTooltip = (el) => {
 const hideTooltip = () => {
 	let tooltip = document.getElementById("custom-tooltip");
 	if (tooltip) tooltip.classList.remove("visible");
+}
+
+const tooltipEvents = () => {
+	// mouseenter events
+	document.addEventListener('mouseenter', (e) => {
+		const target = e.target;
+		if (target.nodeType !== 1) return;
+
+		const el = e.target.closest('[data-tooltip]');
+
+		if (el) showTooltip(el);
+	}, true);
+
+	// mouseleave events
+	document.addEventListener('mouseleave', (e) => {
+		const target = e.target;
+		if (target.nodeType !== 1) return;
+
+		const el = e.target.closest('[data-tooltip]');
+
+		if (el) hideTooltip();
+	}, true);
 }
 
 // brif
@@ -4574,17 +4561,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-// Управление состоянием блока итоговой стоимости сайта
-if (totalSwitchButtons) {
-	totalSwitchButtons?.forEach((button) => {
-		button?.addEventListener("click", (e) => {
-			const state = e.currentTarget.dataset.totalSwitch;
-
-			setTotalState(state);
-		});
-	});
-}
-
 // Передача состояния блока итоговой стоимости селектором
 function setTotalState(state) {
 	let wrapper = document.querySelector("#calculator-total.total");
@@ -4740,38 +4716,6 @@ const toggleSection = (
 		}, 100);
 	});
 };
-
-// Инициализация триггеров остается без изменений
-if (triggerButtons) {
-	triggerButtons?.forEach((button) => {
-		button?.addEventListener("click", (e) => {
-			toggleSection(e, true);
-
-			let calculatorWrapper = document?.querySelector(".calculator-wrapper"),
-				wrapperRight = calculatorWrapper?.querySelector(".right"),
-				calculator = calculatorWrapper?.querySelector(
-					".calculator-calculator",
-				);
-
-			if (
-				!(
-					calculatorWrapper?.classList.contains("active") ||
-					button.dataset.triggerHide === "choose_your_way"
-				)
-			) {
-				setTimeout(() => {
-					wrapperRight?.classList.add("active");
-				}, 100);
-			}
-
-			if (calculator?.classList.contains("show")) {
-				setTimeout(() => {
-					calculatorWrapper?.classList.add("active");
-				}, 100);
-			}
-		});
-	});
-}
 
 document.addEventListener('DOMContentLoaded', function () {
 	const quickForm = document.getElementById('quick-form');
@@ -5130,106 +5074,102 @@ class FileInputManager {
 }
 
 // reviews
-document.addEventListener("DOMContentLoaded", () => {
-	const reviewsContainer = document.getElementById("reviews-container");
-
-	if (reviewsContainer) {
-		// Функция для сброса анимации перед загрузкой
-		function resetReviewsAnimation() {
-			const wrapper = reviewsContainer.querySelector(".reviews__list");
-			if (wrapper && wrapper.classList.contains("show")) {
-				wrapper.classList.remove("show");
-			}
+const reviewsInit = () => {
+	// Функция для сброса анимации перед загрузкой
+	function resetReviewsAnimation() {
+		const wrapper = reviewsContainer.querySelector(".reviews__list");
+		if (wrapper && wrapper.classList.contains("show")) {
+			wrapper.classList.remove("show");
 		}
-
-		// Функция для запуска анимации после загрузки
-		function animateReviewsBlock() {
-			const wrapper = reviewsContainer.querySelector(".reviews__list");
-			if (wrapper && !wrapper.classList.contains("show")) {
-				// Небольшая задержка для гарантии, что DOM обновлен
-				setTimeout(() => {
-					wrapper.classList.add("show");
-				}, 50);
-			}
-		}
-
-		// Обработчик успешной загрузки PJAX
-		$(document).on("pjax:end", "#reviews-container", function () {
-			// Запускаем анимацию после загрузки контента
-			animateReviewsBlock();
-		});
-
-		// Показываем блок при первой загрузке (если не через PJAX)
-		setTimeout(() => {
-			const wrapper = reviewsContainer.querySelector(".reviews__list");
-			if (wrapper && !wrapper.classList.contains("show")) {
-				wrapper.classList.add("show");
-			}
-		}, 100);
-
-		reviewsContainer.addEventListener("submit", (event) => {
-			if (event.target.matches("form[data-pjax]")) {
-				event.preventDefault();
-
-				// Сбрасываем анимацию перед отправкой
-				resetReviewsAnimation();
-
-				$.pjax.submit(event, "#reviews-container", {
-					push: true,
-					replace: false,
-					timeout: 1000,
-					scrollTo: false,
-				});
-			}
-		});
-
-		// Обработка кликов по пагинации
-		document.addEventListener("click", (event) => {
-			const pageLink = event.target.closest(".pagination a");
-
-			if (pageLink) {
-				event.preventDefault();
-
-				// Сбрасываем анимацию перед загрузкой
-				resetReviewsAnimation();
-
-				$.pjax.reload("#reviews-container", {
-					url: pageLink.href,
-					type: "GET",
-					timeout: 1000,
-					push: false,
-					replace: true,
-					scrollTo: true,
-				});
-
-				return;
-			}
-		});
-
-		document.addEventListener("change", (event) => {
-			const filter = event.target.matches(".reviews__button input")
-				? event.target
-				: null;
-
-			if (filter) {
-				const type = filter.dataset.type;
-
-				// Сбрасываем анимацию перед загрузкой
-				resetReviewsAnimation();
-
-				$.pjax.reload("#reviews-container", {
-					type: "POST",
-					data: { type: type },
-					timeout: 1000,
-					push: false,
-					replace: true,
-				});
-
-				// УБИРАЕМ анимацию отсюда - она будет запущена в pjax:end
-			}
-		});
 	}
-});
+
+	// Функция для запуска анимации после загрузки
+	function animateReviewsBlock() {
+		const wrapper = reviewsContainer.querySelector(".reviews__list");
+		if (wrapper && !wrapper.classList.contains("show")) {
+			// Небольшая задержка для гарантии, что DOM обновлен
+			setTimeout(() => {
+				wrapper.classList.add("show");
+			}, 50);
+		}
+	}
+
+	// Обработчик успешной загрузки PJAX
+	$(document).on("pjax:end", "#reviews-container", function () {
+		// Запускаем анимацию после загрузки контента
+		animateReviewsBlock();
+	});
+
+	// Показываем блок при первой загрузке (если не через PJAX)
+	setTimeout(() => {
+		const wrapper = reviewsContainer.querySelector(".reviews__list");
+		if (wrapper && !wrapper.classList.contains("show")) {
+			wrapper.classList.add("show");
+		}
+	}, 100);
+
+	reviewsContainer.addEventListener("submit", (event) => {
+		if (event.target.matches("form[data-pjax]")) {
+			event.preventDefault();
+
+			// Сбрасываем анимацию перед отправкой
+			resetReviewsAnimation();
+
+			$.pjax.submit(event, "#reviews-container", {
+				push: true,
+				replace: false,
+				timeout: 1000,
+				scrollTo: false,
+			});
+		}
+	});
+
+	// Обработка кликов по пагинации
+	document.addEventListener("click", (event) => {
+		const pageLink = event.target.closest(".pagination a");
+
+		if (pageLink) {
+			event.preventDefault();
+
+			// Сбрасываем анимацию перед загрузкой
+			resetReviewsAnimation();
+
+			$.pjax.reload("#reviews-container", {
+				url: pageLink.href,
+				type: "GET",
+				timeout: 1000,
+				push: false,
+				replace: true,
+				scrollTo: true,
+			});
+
+			return;
+		}
+	});
+
+	document.addEventListener("change", (event) => {
+		const filter = event.target.matches(".reviews__button input")
+			? event.target
+			: null;
+
+		if (filter) {
+			const type = filter.dataset.type;
+
+			// Сбрасываем анимацию перед загрузкой
+			resetReviewsAnimation();
+
+			$.pjax.reload("#reviews-container", {
+				type: "POST",
+				data: { type: type },
+				timeout: 1000,
+				push: false,
+				replace: true,
+			});
+
+			// УБИРАЕМ анимацию отсюда - она будет запущена в pjax:end
+		}
+	});
+}
 
 // comment password and add handling
 document.addEventListener("DOMContentLoaded", () => {
@@ -5869,21 +5809,7 @@ window.addEventListener('scroll', pageIsScrolled, { passive: true });
 // resize events
 window.addEventListener('resize', () => {
 	handleResize();
-});
-
-// mouseenter events
-document.addEventListener('mouseenter', (e) => {
-	const el = e.target.closest('[data-tooltip]');
-
-	if (el) showTooltip(el);
-}, true);
-
-// mouseleave events
-document.addEventListener('mouseleave', (e) => {
-	const el = e.target.closest('[data-tooltip]');
-
-	if (el) hideTooltip();
-}, true);
+}, { passive: true });
 
 // DOMContentLoaded events
 document.addEventListener('DOMContentLoaded', () => {
@@ -5901,7 +5827,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	moveServiceLinks();
 	if (mockup) updateMockupPlace();
 	initPopups();
-	mapLinksInit();
+	if (mapLinks) mapLinksInit();
 
 	textarea_autosize.init();
 	sitePreview();
@@ -5914,6 +5840,18 @@ document.addEventListener('DOMContentLoaded', () => {
 	resetTotalState();
 
 	if (articleNav) articleNavInit();
+
+	tooltipEvents();
+
+	// slider
+	tabSlidersStart();
+	SliderInIt();
+	sliderInitialize();
+
+	if (reviewsContainer) reviewsInit();
+
+	if (webShopDiagram) webShopDiagramHandler();
+	if (tenderDiagram) tenderDiagramHandler();
 
 	// photo cards
 	if (photoCards.length > 0) {
@@ -5931,6 +5869,49 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (!input.fileInputManager) {
 				input.fileInputManager = new FileInputManager(input);
 			}
+		});
+	}
+
+	// Инициализация триггеров остается без изменений
+	if (triggerButtons) {
+		triggerButtons?.forEach((button) => {
+			button?.addEventListener("click", (e) => {
+				toggleSection(e, true);
+
+				let calculatorWrapper = document?.querySelector(".calculator-wrapper"),
+					wrapperRight = calculatorWrapper?.querySelector(".right"),
+					calculator = calculatorWrapper?.querySelector(
+						".calculator-calculator",
+					);
+
+				if (
+					!(
+						calculatorWrapper?.classList.contains("active") ||
+						button.dataset.triggerHide === "choose_your_way"
+					)
+				) {
+					setTimeout(() => {
+						wrapperRight?.classList.add("active");
+					}, 100);
+				}
+
+				if (calculator?.classList.contains("show")) {
+					setTimeout(() => {
+						calculatorWrapper?.classList.add("active");
+					}, 100);
+				}
+			});
+		});
+	}
+
+	// Управление состоянием блока итоговой стоимости сайта
+	if (totalSwitchButtons) {
+		totalSwitchButtons?.forEach((button) => {
+			button?.addEventListener("click", (e) => {
+				const state = e.currentTarget.dataset.totalSwitch;
+
+				setTotalState(state);
+			});
 		});
 	}
 });
