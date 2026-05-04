@@ -144,6 +144,26 @@ menuCloseButtons?.forEach((menuItem) => {
   });
 });
 
+// Обработчик для показа спиннера при отправки формы
+function showButtonLoader(btn) {
+  if (!btn || btn.dataset.loading === "true") return btn.innerHTML;
+  const originalHTML = btn.innerHTML;
+  btn.dataset.originalHTML = originalHTML;
+  btn.innerHTML = '<span class="spinner"></span>';
+  btn.disabled = true;
+  btn.dataset.loading = "true";
+  return originalHTML;
+}
+
+// Обработчик для скрытия спиннера и возврата оригинального текста кнопки после отправки формы
+function hideButtonLoader(btn) {
+  if (!btn || btn.dataset.loading !== "true") return;
+  btn.innerHTML = btn.dataset.originalHTML || btn.innerHTML;
+  btn.disabled = false;
+  delete btn.dataset.loading;
+  delete btn.dataset.originalHTML;
+}
+
 // move service-links in footer
 function moveServiceLinks() {
   if (!footer) return;
@@ -238,6 +258,7 @@ function handleResize() {
       if (mockup) updateMockupPlace();
       sliderInitialize();
       SliderInIt();
+      resetTotalState();
       resizeRunning = false;
     });
   }, 350);
@@ -573,6 +594,11 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const submitAjaxForm = (form) => {
+    const submitBtn = form.querySelector(
+      'button[type="submit"], input[type="submit"]',
+    );
+    showButtonLoader(submitBtn);
+
     const formData = new FormData(form);
 
     return fetch(form.action, {
@@ -622,7 +648,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ? error.message
             : defaultErrorMessage;
         showNotificationPopup(message, "error");
-      });
+      })
+      .finally(() => hideButtonLoader(submitBtn));
   };
 
   forms.forEach((form) => {
@@ -4451,10 +4478,6 @@ function resetTotalState() {
   }
 }
 
-// Ивенты сброса блока состояния итоговой стоимости при загрузке и ресайзе
-// document.addEventListener('DOMContentLoaded', resetTotalState);
-window.addEventListener("resize", resetTotalState);
-
 // trigger blocks
 const toggleSection = (
   trigger,
@@ -4579,6 +4602,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const bigCalc = document.getElementById("big-calc"); // Ваш калькулятор
 
   if (quickForm) {
+    quickForm.addEventListener("submit", function () {
+      const btn = quickForm.querySelector('button[type="submit"]');
+      showButtonLoader(btn);
+    });
+
     quickForm.addEventListener("formdata", (e) => {
       const fd = e.formData;
 
@@ -5058,6 +5086,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (passwordForm) {
     passwordForm.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      const btn = this.querySelector('button[type="submit"]');
+      showButtonLoader(btn);
+
       const url = this.action;
       const data = serializeForm(this);
 
@@ -5084,7 +5116,8 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch((error) => {
           console.error("Error:", error);
-        });
+        })
+        .finally(() => hideButtonLoader(btn));
     });
   }
 
@@ -5093,6 +5126,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (commentForm) {
     commentForm.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      const btn = this.querySelector('button[type="submit"]');
+      showButtonLoader(btn);
+
       const url = this.action;
       const data = serializeForm(this);
 
@@ -5122,7 +5159,8 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch((error) => {
           console.error("Error:", error);
-        });
+        })
+        .finally(() => hideButtonLoader(btn));
     });
   }
 });
@@ -5674,6 +5712,12 @@ const seoAuditInit = () => {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    const submitBtn = form.querySelector(
+      'button[type="submit"], input[type="submit"]',
+    );
+    showButtonLoader(submitBtn);
+
     const url = urlInput.value.trim();
     if (!url) return;
 
@@ -5709,6 +5753,8 @@ const seoAuditInit = () => {
         "Не удалось выполнить проверку. Проверьте адрес сайта или попробуйте позже.";
       errorDiv.style.display = "block";
     } finally {
+      hideButtonLoader(submitBtn);
+
       loader.style.display = "none";
 
       // Включаем поля ввода
@@ -5849,13 +5895,13 @@ const seoAuditInit = () => {
     resultsGrid.innerHTML = "";
     metrics.forEach((metric) => {
       const card = document.createElement("li");
-    //   card.className = `audit-card audit-card--${metric.status.status}`;
+      //   card.className = `audit-card audit-card--${metric.status.status}`;
 
-    //   const iconClass = `status-icon status-${metric.status.status}`;
-    //   let iconSymbol = "";
-    //   if (metric.status.status === "good") iconSymbol = "✔";
-    //   else if (metric.status.status === "warning") iconSymbol = "!";
-    //   else if (metric.status.status === "error") iconSymbol = "✖";
+      //   const iconClass = `status-icon status-${metric.status.status}`;
+      //   let iconSymbol = "";
+      //   if (metric.status.status === "good") iconSymbol = "✔";
+      //   else if (metric.status.status === "warning") iconSymbol = "!";
+      //   else if (metric.status.status === "error") iconSymbol = "✖";
 
       card.innerHTML = `
 	  					<li>
