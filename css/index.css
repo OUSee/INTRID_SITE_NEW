@@ -503,17 +503,6 @@ th {
     background-position: bottom;
   }
 }
-@keyframes orb-glow {
-  0% {
-    filter: drop-shadow(0 0 10px var(--blue-main));
-  }
-  50% {
-    filter: drop-shadow(0 0 50px var(--blue-main));
-  }
-  100% {
-    filter: drop-shadow(0 0 10px var(--blue-main));
-  }
-}
 @keyframes baloon {
   0%, 100% {
     transform: translateY(0) rotate(0deg) scale(1);
@@ -798,6 +787,7 @@ th {
   --slider-current-index: 0;
   --slider-slides-gap: 4px;
   --slider-slide-width: 100%;
+  --orb-glow-size: 30px;
 }
 
 [data-slider] {
@@ -5700,8 +5690,6 @@ form .button:hover {
   width: 230px;
   height: 230px;
   z-index: -1;
-  animation: orb-glow 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
-  filter: drop-shadow(0 0 30px var(--blue-main));
 }
 .flying-mockup {
   position: relative;
@@ -5746,8 +5734,6 @@ form .button:hover {
   width: 0;
   height: 0;
   z-index: -1;
-  animation: orb-glow 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
-  filter: drop-shadow(0 0 30px var(--blue-main));
 }
 @media (max-width: 999.98px) {
   .flying-mockup--icms {
@@ -10545,6 +10531,9 @@ button:disabled, button.disabled,
 }
 
 /* BASE STYLES */
+html {
+  box-sizing: border-box;
+}
 @supports (-moz-appearance: none) {
   html {
     scrollbar-color: var(--blue-main) var(--bg-main);
@@ -10564,12 +10553,12 @@ html::-webkit-scrollbar-thumb {
   border-radius: 8px;
 }
 html {
+  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
 * {
-  box-sizing: border-box !important;
-  scroll-behavior: smooth;
+  box-sizing: inherit;
 }
 
 @media (prefers-reduced-motion: reduce) {

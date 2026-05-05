@@ -20,6 +20,7 @@ $tab-main-count: 3;
   --slider-current-index: 0; // default index
   --slider-slides-gap: 4px; // default gaps
   --slider-slide-width: 100%; // default slide width
+  --orb-glow-size: 30px;
 }
 
 [data-slider] {
@@ -4533,8 +4534,8 @@ form {
       width: 230px;
       height: 230px;
       z-index: -1;
-      animation: orb-glow 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
-      filter: drop-shadow(0 0 30px var(--blue-main));
+      // animation: orb-glow 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      // filter: drop-shadow(0 0 var(--orb-glow-size) var(--blue-main));
     }
   }
 
@@ -4582,8 +4583,8 @@ form {
       width: 0;
       height: 0;
       z-index: -1;
-      animation: orb-glow 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
-      filter: drop-shadow(0 0 30px var(--blue-main));
+      // animation: orb-glow 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      // filter: drop-shadow(0 0 var(--orb-glow-size) var(--blue-main));
     }
 
     &--icms {

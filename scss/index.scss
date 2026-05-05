@@ -13,13 +13,14 @@
 /* BASE STYLES */
 
 html {
+	box-sizing: border-box;
 	@include webkit_scrollbar;
+	scroll-behavior: smooth;
 	overflow-x: hidden;
 }
 
 * {
-	box-sizing: border-box !important;
-	scroll-behavior: smooth;
+	box-sizing: inherit;
 }
 
 @media (prefers-reduced-motion: reduce) {
