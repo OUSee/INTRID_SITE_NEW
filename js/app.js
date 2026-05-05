@@ -256,7 +256,7 @@ function handleResize() {
       initDropdowns();
       if (footer) moveServiceLinks();
       if (mockup) updateMockupPlace();
-      sliderInitialize();
+      // sliderInitialize();
       SliderInIt();
       resetTotalState();
       resizeRunning = false;
@@ -1393,7 +1393,23 @@ document
       document.querySelectorAll('[id^="tab-slide-"]').forEach((tab) => {
         tab.classList.remove("active");
       });
-      document.getElementById(tabId).classList.add("active");
+      const activeTab = document.getElementById(tabId);
+      if (activeTab) {
+        activeTab.classList.add("active");
+        // Даём браузеру применить стили и показать вкладку
+        setTimeout(() => {
+          // Ищем все скрытые слайдеры внутри этой вкладки и принудительно обновляем их
+          const slidersInTab = activeTab.querySelectorAll("[data-slider]");
+          slidersInTab.forEach((slider) => {
+            // Сбрасываем флаг инициализации, чтобы sliderInitialize пересоздала всё заново
+            // (этот подход безопасен, потому что старые обработчики пагинации будут удалены
+            // и пересозданы с актуальными размерами)
+            delete slider.dataset.initialized;
+          });
+          // Вызываем общую переинициализацию — она обновит все видимые слайдеры (в том числе внутри табов)
+          sliderInitialize();
+        }, 50);
+      }
     });
 
     if (radio.checked === true) {
@@ -1700,16 +1716,60 @@ function sliderInitialize() {
     }
 
     if (!id) return;
-
-    let slider = document.getElementById(`${id}`);
-
+    let slider = document.getElementById(id);
     if (!slider) return;
+    if (slider.offsetParent === null) return; // скрытые слайдеры пропускаем
 
-    // Проверяем, был ли уже инициализирован слайдер
+    // ----- Очистка предыдущей инициализации (если была) -----
     if (slider.dataset.initialized === "true") {
-      // Только обновляем размеры, не сбрасываем позицию
-      updateSliderDimensions(slider);
-      return;
+      const parent = slider.parentElement;
+
+      // Удаляем только динамические точки пагинации, если есть
+      const pagination = parent.querySelector(".pagination");
+      if (pagination) {
+        const dotsContainer = pagination.querySelector(
+          ".pagination--buttons-dots",
+        );
+        if (dotsContainer) dotsContainer.innerHTML = "";
+        pagination.style.display = "";
+      }
+
+      // Для статических стрелок навигации – клонируем, чтобы сбросить обработчики
+      if (navLeft) {
+        const newNavLeft = navLeft.cloneNode(true);
+        navLeft.parentNode.replaceChild(newNavLeft, navLeft);
+      }
+      if (navRight) {
+        const newNavRight = navRight.cloneNode(true);
+        navRight.parentNode.replaceChild(newNavRight, navRight);
+      }
+
+      // Также для кнопок внутри пагинации (если они есть) – клонируем
+      if (pagination) {
+        const prevBtnEls = pagination.querySelectorAll(".pagination--prev-btn");
+        const nextBtnEls = pagination.querySelectorAll(".pagination--next-btn");
+        prevBtnEls.forEach((btn) => {
+          const newBtn = btn.cloneNode(true);
+          btn.parentNode.replaceChild(newBtn, btn);
+        });
+        nextBtnEls.forEach((btn) => {
+          const newBtn = btn.cloneNode(true);
+          btn.parentNode.replaceChild(newBtn, btn);
+        });
+      }
+
+      // Сброс обработчика ресайза
+      if (slider._resizeHandler) {
+        window.removeEventListener("resize", slider._resizeHandler);
+        slider._resizeHandler = null;
+      }
+
+      // Визуальный сброс
+      slider.style.transform = "";
+      Array.from(slider.children).forEach((slide) =>
+        slide.classList.remove("active"),
+      );
+      delete slider.dataset.initialized;
     }
 
     const pagination = document.querySelector(`#${id} + .pagination`);
@@ -1724,296 +1784,182 @@ function sliderInitialize() {
     let nextBtn = [];
     let navButtons = [];
 
-    let slides = slider.children;
-    let gap;
-    requestAnimationFrame(() => {
-      gap = parseInt(window.getComputedStyle(slider).gap);
-    });
-    // const visibleWidth = slider.parentElement.clientWidth;
-    const visibleWidth = slider.parentElement.getBoundingClientRect().width;
+    // Преобразуем в массив!
+    let slides = Array.from(slider.children);
+    let gap = 0;
 
+    // Первоначальная установка ширины через fill (будет переопределяться в updateSlider)
     if (fill) {
-      const breaks = fill.split(",");
-      const windowWidth = window.innerWidth;
-
-      if (windowWidth > 1200) {
-        const slideWidth = visibleWidth / breaks[0] - gap / 2;
-        [].forEach.call(slides, function (slide) {
-          slide.style.minWidth = `${slideWidth}px`;
-        });
-      } else if (windowWidth > 900) {
-        const slideWidth = visibleWidth / breaks[1] - gap / 2;
-        [].forEach.call(slides, function (slide) {
-          slide.style.minWidth = `${slideWidth}px`;
-        });
-      } else if (windowWidth > 600) {
-        const slideWidth = visibleWidth / breaks[2] - gap / 2;
-        [].forEach.call(slides, function (slide) {
-          slide.style.minWidth = `${slideWidth}px`;
-        });
-      } else {
-        const slideWidth = visibleWidth / breaks[3] - gap / 2;
-        [].forEach.call(slides, function (slide) {
-          slide.style.minWidth = `${slideWidth}px`;
-        });
-      }
+      const setSlideWidthByFill = () => {
+        const containerWidth =
+          slider.parentElement.getBoundingClientRect().width;
+        const breaks = fill.split(",");
+        const windowWidth = window.innerWidth;
+        let index = 0;
+        if (windowWidth > 1200) index = 0;
+        else if (windowWidth > 900) index = 1;
+        else if (windowWidth > 600) index = 2;
+        else index = 3;
+        const slideWidth = containerWidth / breaks[index] - gap / 2;
+        slides.forEach((s) => (s.style.minWidth = `${slideWidth}px`));
+      };
+      setSlideWidthByFill();
     }
-
-    const visibleSlidesCount = Math.round(visibleWidth / slides[0].offsetWidth);
 
     if (!!navLeft && !!navRight) {
       prevBtn.push(navLeft);
       nextBtn.push(navRight);
-
-      navLeft.style =
-        "position: absolute; left: 5px; top: 50%; transform: translateY(-50%)";
-      navRight.style = `position: absolute; right: 5px; top: 50%; transform: translateY(-50%)`;
-
+      // Базовые стили – позиционирование будет уточнено в handleSliderArrows
+      navLeft.style.position = "absolute";
+      navRight.style.position = "absolute";
       prevBtn.setAttribute("aria-label", "Предыдущий слайд");
       prevBtn.setAttribute("role", "button");
-
       nextBtn.setAttribute("aria-label", "Следующий слайд");
       nextBtn.setAttribute("role", "button");
     }
 
     if (id === `cases-tabs-slider`) {
-      slides = slider.querySelectorAll(".tab-content");
-      gap = parseInt(
-        window.getComputedStyle(slider.querySelector(".cases-content")).gap,
-      );
+      slides = Array.from(slider.querySelectorAll(".tab-content"));
     }
 
-    for (
-      let i = currentIndex;
-      i < currentIndex + visibleSlidesCount && i < slides.length;
-      i++
-    ) {
-      slides[i].classList.add("active");
-    }
+    // Функция для правильного размещения стрелок (восстановлена)
+    const handleSliderArrows = () => {
+      const sliderHeight = slider.offsetHeight / 2 + 40;
+      prevBtn.forEach((btn) => {
+        btn.style.top = "50%";
+        btn.style.transform = `translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? "-100%" : "0"})`;
+        btn.style.left =
+          window.innerWidth > 600
+            ? slider.id === "gallery-slider"
+              ? "25px"
+              : "15px"
+            : "-10px";
+      });
+      nextBtn.forEach((btn) => {
+        btn.style.top = "50%";
+        btn.style.transform = `translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? "100%" : "0"})`;
+        btn.style.right =
+          window.innerWidth > 600
+            ? slider.id === "gallery-slider"
+              ? "25px"
+              : "15px"
+            : "-10px";
+      });
+    };
 
-    // const setSliderProperties = () => {
-    // 	// Надстройка для стилей
-    // 	slider.style.setProperty('--slider-length', slides.length);
-    // 	slider.style.setProperty('--slider-visible-count', visibleSlidesCount);
-    // 	slider.style.setProperty('--slider-current-index', currentIndex);
-    // 	slider.style.setProperty('--slider-slide-width', `${(slides[0].offsetWidth) / fill[0]}px`);
-    // 	slider.style.setProperty('--slider-slides-gap', `${parseInt(window.getComputedStyle(slider).gap)
-    // 		}px`);
-    // }
-
+    // Основная функция обновления – всё пересчитывается динамически
     const updateSlider = () => {
-      const moveAmmount = (slides[0].offsetWidth + gap) * currentIndex;
-      try {
-        if (fill) {
-          const breaks = fill.split(",");
-          const windowWidth = window.innerWidth;
+      const containerWidth = slider.parentElement.getBoundingClientRect().width;
+      gap = parseInt(window.getComputedStyle(slider).gap) || 0;
+      const slideWidth = slides[0].offsetWidth;
+      const visibleSlidesCount = Math.round(containerWidth / slideWidth);
 
-          if (windowWidth > 1200) {
-            const slideWidth = visibleWidth / breaks[0] - gap / 2;
-            [].forEach.call(slides, function (slide) {
-              slide.style.minWidth = `${slideWidth} px`;
-            });
-          } else if (windowWidth > 900) {
-            const slideWidth = visibleWidth / breaks[1] - gap / 2;
-            [].forEach.call(slides, function (slide) {
-              slide.style.minWidth = `${slideWidth} px`;
-            });
-          } else if (windowWidth > 600) {
-            const slideWidth = visibleWidth / breaks[2] - gap / 2;
-            [].forEach.call(slides, function (slide) {
-              slide.style.minWidth = `${slideWidth} px`;
-            });
+      if (fill) {
+        const breaks = fill.split(",");
+        const windowWidth = window.innerWidth;
+        let index = 0;
+        if (windowWidth > 1200) index = 0;
+        else if (windowWidth > 900) index = 1;
+        else if (windowWidth > 600) index = 2;
+        else index = 3;
+        const newWidth = containerWidth / breaks[index] - gap / 2;
+        slides.forEach((s) => (s.style.minWidth = `${newWidth}px`));
+      }
+
+      const moveAmount = (slideWidth + gap) * currentIndex;
+
+      // Активные классы
+      slides.forEach((s) => s.classList.remove("active"));
+      for (
+        let i = currentIndex;
+        i < currentIndex + visibleSlidesCount && i < slides.length;
+        i++
+      ) {
+        slides[i].classList.add("active");
+      }
+
+      slider.style.transform = `translateX(-${moveAmount}px)`;
+
+      // Стрелки видимость и позиционирование
+      prevBtn.forEach((btn) => {
+        btn.style.opacity = currentIndex === 0 ? "0" : "1";
+        btn.style.pointerEvents = currentIndex === 0 ? "none" : "";
+      });
+      nextBtn.forEach((btn) => {
+        const disable = currentIndex + visibleSlidesCount >= slides.length;
+        btn.style.opacity = disable ? "0" : "1";
+        btn.style.pointerEvents = disable ? "none" : "";
+      });
+      handleSliderArrows(); // <-- вызываем позиционирование стрелок при каждом обновлении
+
+      // Пагинация
+      if (pagination) {
+        const maxDots = slides.length - visibleSlidesCount + 1;
+        pagination.style.display = maxDots < 2 ? "none" : "flex";
+        const dotsContainer = pagination.querySelector(
+          ".pagination--buttons-dots",
+        );
+        if (dotsContainer) {
+          if (dotsContainer.children.length !== maxDots) {
+            dotsContainer.innerHTML = "";
+            for (let i = 0; i < maxDots; i++) {
+              const dot = document.createElement("button");
+              dot.className = "pagination--btn-dot";
+              dot.setAttribute("role", "button");
+              dot.setAttribute("aria-label", `Слайд ${i + 1}`);
+              if (i === currentIndex) dot.classList.add("highlight");
+              dot.addEventListener("click", () => {
+                currentIndex = i;
+                updateSlider();
+              });
+              dotsContainer.appendChild(dot);
+            }
+            navButtons = dotsContainer.querySelectorAll(".pagination--btn-dot");
           } else {
-            const slideWidth = visibleWidth / breaks[3] - gap / 2;
-            [].forEach.call(slides, function (slide) {
-              slide.style.minWidth = `${slideWidth} px`;
+            navButtons.forEach((btn, i) => {
+              btn.classList.toggle("highlight", i === currentIndex);
+              if (i === currentIndex) btn.setAttribute("aria-current", "true");
+              else btn.removeAttribute("aria-current");
             });
           }
         }
-        [].forEach.call(slides, function (slide) {
-          slide.classList.remove("active");
-        });
-
-        for (
-          let i = currentIndex;
-          i < currentIndex + visibleSlidesCount && i < slides.length;
-          i++
-        ) {
-          slides[i].classList.add("active");
-        }
-        slider.style.transform = `translateX(-${moveAmmount}px)`;
-
-        // setSliderProperties();
-
-        // Disable prev button if at start
-        prevBtn.forEach((btn) => {
-          if (currentIndex === 0) {
-            btn.style.opacity = "0";
-            btn.style.pointerEvents = "none";
-          } else {
-            btn.style.opacity = "1";
-            btn.style.pointerEvents = "";
-          }
-
-          btn.setAttribute("aria-label", "Предыдущий слайд");
-          btn.setAttribute("role", "button");
-        });
-
-        // Disable next button if at end
-        nextBtn.forEach((btn) => {
-          if (
-            currentIndex + visibleSlidesCount >= slides.length ||
-            currentIndex >= slides.length - 1
-          ) {
-            btn.style.opacity = "0";
-            btn.style.pointerEvents = "none";
-          } else {
-            btn.style.opacity = "1";
-            btn.style.pointerEvents = "";
-          }
-
-          btn.setAttribute("aria-label", "Следующий слайд");
-          btn.setAttribute("role", "button");
-        });
-
-        if (!!pagination) {
-          const btncount = slides.length - (visibleSlidesCount - 1);
-          if (btncount < 2) {
-            pagination.style.display = "none";
-          } else if (pagination.style.display === "none" && btncount > 1) {
-            pagination.style.display = "flex";
-          }
-
-          // Задание атрибута текущей кнопки
-          navButtons.forEach((btn) => btn.removeAttribute("aria-current"));
-          navButtons[currentIndex].setAttribute("aria-current", "true");
-        }
-      } catch (err) {
-        console.log("=> err", err);
       }
     };
 
-    if (!!pagination) {
+    // Инициализация пагинации (первый вызов updateSlider создаст точки)
+    if (pagination) {
       prevBtn = [
         ...prevBtn,
-        ...pagination?.querySelectorAll(".pagination--prev-btn"),
+        ...pagination.querySelectorAll(".pagination--prev-btn"),
       ];
       nextBtn = [
         ...nextBtn,
-        ...pagination?.querySelectorAll(".pagination--next-btn"),
+        ...pagination.querySelectorAll(".pagination--next-btn"),
       ];
       navButtons = pagination.querySelectorAll(".pagination--btn-dot");
-      const dotsContainer = pagination.querySelector(
-        ".pagination--buttons-dots",
-      );
-      const btncount = slides.length - (visibleSlidesCount - 1);
-
-      navButtons.forEach((navbutton) => {
-        navbutton.classList.remove("highlight");
-      });
-
-      navButtons[currentIndex].classList.add("highlight");
-
-      const handleSliderArrows = () => {
-        const sliderHeight = slider.offsetHeight / 2 + 40;
-
-        prevBtn.forEach((btn) => {
-          if (slider.id === "gallery-slider") {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `-100%` : `0`
-            }); left: ${window.innerWidth > 600 ? `25px` : `-10px`};`;
-          } else {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `-100%` : `0`
-            }); left: ${window.innerWidth > 600 ? `15px` : `-10px`};`;
-          }
-        });
-        nextBtn.forEach((btn) => {
-          if (slider.id === "gallery-slider") {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `100%` : `0`
-            }); right: ${window.innerWidth > 600 ? `25px` : `-10px`};`;
-          } else {
-            btn.style = `position: absolute; transform: translateY(-${sliderHeight}px) translateX(${
-              window.innerWidth > 600 ? `100%` : `0`
-            }); right: ${window.innerWidth > 600 ? `15px` : `-10px`};`;
-          }
-        });
-      };
-
-      if (navButtons.length !== btncount && visibleSlidesCount > 0) {
-        navButtons.forEach((button) => dotsContainer.removeChild(button));
-        for (let index = 0; index < btncount; index++) {
-          const btnDot = document.createElement("button");
-          btnDot.classList.add("pagination--btn-dot");
-          btnDot.setAttribute("role", "button");
-          btnDot.setAttribute("aria-label", `Слайд ${index + 1}`);
-          if (index === currentIndex) {
-            btnDot.setAttribute("aria-current", "true");
-          }
-          dotsContainer.appendChild(btnDot);
-        }
-        // Обновить navButtons после добавления
-        navButtons = pagination.querySelectorAll(".pagination--btn-dot");
-        navButtons.forEach((button) => {
-          button.classList.remove("highlight");
-        });
-        navButtons[currentIndex].classList.add("highlight");
-
-        if (currentIndex === 0) {
-          prevBtn.forEach((btn) => {
-            if (currentIndex === 0) {
-              btn.style.opacity = "0";
-              btn.style.pointerEvents = "none";
-            } else {
-              btn.style.opacity = "1";
-              btn.style.pointerEvents = "";
-            }
-          });
-        }
-      }
-      handleSliderArrows();
     }
 
-    const nextSlide = () => {
-      if (
-        navButtons[currentIndex + 1] &&
-        window.getComputedStyle(navButtons[currentIndex + 1]).display === "none"
-      ) {
-        return;
-      }
-      navButtons.forEach((navbutton) => {
-        navbutton.classList.remove("highlight");
-      });
-      currentIndex =
-        currentIndex === navButtons.length - 1
-          ? navButtons.length - 1
-          : currentIndex + 1;
-      navButtons[currentIndex]?.classList.add("highlight");
-      updateSlider();
-    };
-
+    // Обработчики стрелок
     const prevSlide = () => {
-      navButtons.forEach((navbutton) => {
-        navbutton.classList.remove("highlight");
-      });
-      currentIndex = currentIndex > 1 ? currentIndex - 1 : 0;
-      navButtons[currentIndex]?.classList.add("highlight");
-      updateSlider();
-    };
-
-    navButtons.forEach((button, index) => {
-      button.addEventListener("click", () => {
-        navButtons.forEach((navbutton) => {
-          navbutton.classList.remove("highlight");
-        });
-
-        button.classList.add("highlight");
-        currentIndex = index;
+      if (currentIndex > 0) {
+        currentIndex--;
         updateSlider();
-      });
-    });
+      }
+    };
+    const nextSlide = () => {
+      const containerWidth = slider.parentElement.getBoundingClientRect().width;
+      const visibleSlidesCount = Math.round(
+        containerWidth / slides[0].offsetWidth,
+      );
+      if (currentIndex + visibleSlidesCount < slides.length) {
+        currentIndex++;
+        updateSlider();
+      }
+    };
+    prevBtn.forEach((btn) => btn.addEventListener("click", prevSlide));
+    nextBtn.forEach((btn) => btn.addEventListener("click", nextSlide));
 
+    // Touch и mouse события (без изменений, но mouseMoveHandler синхронизирован)
     function handleTouchStart(evt) {
       const firstTouch = evt.touches[0];
       xDown = firstTouch.clientX;
@@ -2021,25 +1967,15 @@ function sliderInitialize() {
     }
 
     function handleTouchMove(evt) {
-      if (!xDown || !yDown) {
-        return;
-      }
-
+      if (!xDown || !yDown) return;
       const xUp = evt.touches[0].clientX;
       const yUp = evt.touches[0].clientY;
-
       const xDiff = xDown - xUp;
       const yDiff = yDown - yUp;
-
       if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 20) {
         evt.preventDefault();
-        if (xDiff > 0) {
-          nextSlide();
-        } else {
-          prevSlide();
-        }
-      } else {
-        return;
+        if (xDiff > 0) nextSlide();
+        else prevSlide();
       }
       xDown = null;
       yDown = null;
@@ -2047,12 +1983,9 @@ function sliderInitialize() {
 
     function mouseDownHandler(e) {
       if (id === `cases-tabs-slider`) return;
-      const slider = e.currentTarget;
+      const sliderEl = e.currentTarget;
       e.preventDefault();
-      pos = {
-        x: e.clientX,
-        y: e.clientY,
-      };
+      pos = { x: e.clientX, y: e.clientY };
       document.addEventListener("mousemove", mouseMoveHandler);
       document.addEventListener("mouseup", mouseUpHandler);
     }
@@ -2060,19 +1993,15 @@ function sliderInitialize() {
     function mouseMoveHandler(e) {
       let lastSlideChange = 0;
       const minInterval = 300;
-
       const currentTime = Date.now();
-
       const dx = e.clientX - pos.x;
       const dy = e.clientY - pos.y;
-
       isDragging = true;
 
+      // Используем актуальный массив слайдов
       slides = Array.from(slider.children);
       slides.forEach((slide) => {
-        if (isDragging) {
-          slide.style.setProperty("pointer-events", "none");
-        }
+        if (isDragging) slide.style.setProperty("pointer-events", "none");
       });
 
       if (
@@ -2081,16 +2010,12 @@ function sliderInitialize() {
         currentTime - lastSlideChange > minInterval
       ) {
         e.preventDefault();
-        if (dx < 0) {
-          nextSlide();
-        } else {
-          prevSlide();
-        }
+        if (dx < 0) nextSlide();
+        else prevSlide();
         lastSlideChange = currentTime;
       } else {
         return;
       }
-
       pos.x = e.clientX;
     }
 
@@ -2098,101 +2023,38 @@ function sliderInitialize() {
       isDragging = false;
       slides = Array.from(slider.children);
       slides.forEach((slide) => {
-        if (!isDragging) {
-          slide.style.setProperty("pointer-events", "");
-        }
+        if (!isDragging) slide.style.setProperty("pointer-events", "");
       });
       document.removeEventListener("mousemove", mouseMoveHandler);
       document.removeEventListener("mouseup", mouseUpHandler);
     }
 
-    updateSlider();
-
     slider.addEventListener("touchstart", handleTouchStart, false);
     slider.addEventListener("touchmove", handleTouchMove, false);
     slider.addEventListener("mousedown", mouseDownHandler, false);
 
-    prevBtn.forEach((btn) => btn.addEventListener("click", prevSlide));
-    nextBtn.forEach((btn) => btn.addEventListener("click", nextSlide));
+    // Первичное обновление + позиционирование
+    handleSliderArrows();
+    updateSlider();
 
-    window.addEventListener("resize", () => {
-      updateSlider();
-    });
+    // Сохраняем обработчик resize
+    if (slider._resizeHandler)
+      window.removeEventListener("resize", slider._resizeHandler);
+    slider._resizeHandler = updateSlider;
+    window.addEventListener("resize", updateSlider);
+
+    slider.dataset.initialized = "true";
   };
 
   const sliders = document.querySelectorAll("[data-slider]");
 
-  window.addEventListener("resize", () => {
-    sliders.forEach((slider) => {
-      try {
-        tabSliderWithPagination(slider.id);
-      } catch (err) {
-        console.warn("=> err seting slider ", slider.id, ":", err);
-      }
-    });
-  });
-
-  window.addEventListener("DOMContentLoaded", () => {
-    sliders.forEach((slider) => {
-      try {
-        tabSliderWithPagination(slider.id);
-      } catch (err) {
-        console.warn("=> err seting slider ", slider.id, ":", err);
-      }
-    });
-  });
-
-  if (sliders) {
-    sliders.forEach((slider) => {
-      try {
-        // Listen for additions or removals of child elements
-        const config = { childList: true };
-
-        let debounceTimeout = null;
-
-        const callback = function (mutationsList, observer) {
-          if (debounceTimeout) clearTimeout(debounceTimeout);
-
-          debounceTimeout = setTimeout(() => {
-            // Check if any mutation is of type 'childList'
-            const hasChildListMutation = mutationsList.some(
-              (mutation) => mutation.type === "childList",
-            );
-            if (hasChildListMutation) {
-              tabSliderWithPagination(slider.id);
-            }
-          }, 250);
-        };
-
-        const observer = new MutationObserver(callback);
-
-        observer.observe(slider, config);
-        // End of listen for additions or removals of child elements
-
-        tabSliderWithPagination(slider.id);
-      } catch (err) {
-        console.warn("=> err seting slider ", slider.id, ":", err);
-      }
-    });
-  }
-}
-
-function updateSliderDimensions(slider) {
-  // Только обновляем размеры без сброса позиции
-  // const computedStyle = window.getComputedStyle(slider);
-  // const gap = parseInt(computedStyle.gap) || 0;
-  // const visibleWidth = slider.parentElement?.clientWidth || 0;
-  const slides = slider.children;
-
-  if (slides.length === 0) return;
-
-  // const slideWidth = calculateSlideWidth(slider, visibleWidth, gap);
-
-  requestAnimationFrame(() => {
-    Array.from(slides).forEach((slide) => {
-      slide.style.minWidth = `${slideWidth} px`;
-    });
-    // Не обновляем transform - сохраняем текущую позицию
+  // Инициализация всех слайдеров на странице
+  sliders.forEach((slider) => {
+    try {
+      tabSliderWithPagination(slider.id);
+    } catch (err) {
+      console.warn("=> err setting slider ", slider.id, ":", err);
+    }
   });
 }
 
