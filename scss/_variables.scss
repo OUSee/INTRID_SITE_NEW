@@ -4096,6 +4096,10 @@ form {
   background-color: transparent;
   border: 1px solid var(--blue-main);
 
+  @media (max-width: 999.98px) {
+    border-radius: 12px;
+  }
+
   & thead {
     background-color: var(--blue-bg);
     color: var(--bg-main);
@@ -4123,7 +4127,7 @@ form {
   }
 
   & td {
-    padding: 4px 12px;
+    padding: 12px;
     border: 1px solid var(--blue-main);
     vertical-align: top;
 
@@ -4142,6 +4146,10 @@ form {
     border-radius: 24px;
     border: 1px solid var(--blue-main);
     overflow: hidden;
+
+    @media (max-width: 999.98px) {
+      border-radius: 12px;
+    }
   }
 
   &--noborder {
@@ -8065,7 +8073,7 @@ button:hover,
     display: flex;
     width: 32px;
     height: 32px;
-	font-weight: 100;
+    font-weight: 100;
     font-size: 32px;
     line-height: 1;
     object-fit: contain;

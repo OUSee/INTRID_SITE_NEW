@@ -3488,7 +3488,6 @@ main {
 .domain {
 	&-table {
 		width: 100%;
-		border-radius: 25px;
 		outline: 1px solid var(--blue-main);
 		background-color: var(--blue-bg);
 
@@ -3501,42 +3500,8 @@ main {
 
 			td,
 			th {
-				padding: 8px 20px;
-
 				&:not(:first-child) {
 					border-left: 1px solid var(--blue-main);
-				}
-
-				& p {
-					margin: 0;
-				}
-			}
-		}
-
-		thead tr {
-
-			td,
-			th {
-				&:first-child {
-					border-top-left-radius: 25px;
-				}
-
-				&:last-child {
-					border-top-right-radius: 25px;
-				}
-
-				& p {
-					margin: 0;
-				}
-
-				@media (max-width: 599.98px) {
-					&:first-child {
-						border-top-left-radius: 15px;
-					}
-
-					&:last-child {
-						border-top-right-radius: 15px;
-					}
 				}
 			}
 		}
@@ -3544,40 +3509,6 @@ main {
 		tbody tr {
 			td {
 				background-color: var(--bg-main);
-			}
-
-			&:last-child {
-				td {
-					&:first-child {
-						border-bottom-left-radius: 25px;
-					}
-
-					&:last-child {
-						border-bottom-right-radius: 25px;
-					}
-
-					@media (max-width: 599.98px) {
-						&:first-child {
-							border-bottom-left-radius: 15px;
-						}
-
-						&:last-child {
-							border-bottom-right-radius: 15px;
-						}
-					}
-				}
-			}
-		}
-
-		@media (max-width: 599.98px) {
-			border-radius: 15px;
-
-			tr {
-
-				td,
-				th {
-					padding: 4px;
-				}
 			}
 		}
 
