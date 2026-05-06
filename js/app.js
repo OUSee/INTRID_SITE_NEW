@@ -166,32 +166,32 @@ function hideButtonLoader(btn) {
 }
 
 // Обработчик для показа сообщения об успешной отправке формы
-function showFormFeedback(btn, message, type = 'success', duration = 4000) {
+function showFormFeedback(btn, message, type = "success", duration = 4000) {
   // Скрываем спиннер
   hideButtonLoader(btn);
   if (!btn || !message) return;
 
   // Удаляем предыдущее сообщение, если висит
-  const existing = document.querySelector('.form-feedback-message');
+  const existing = document.querySelector(".form-feedback-message");
   if (existing) existing.remove();
 
-  const feedback = document.createElement('div');
+  const feedback = document.createElement("div");
   feedback.className = `form-feedback-message form-feedback--${type}`;
   feedback.textContent = message;
-  feedback.setAttribute('role', 'status');
-  feedback.setAttribute('aria-live', 'polite');
+  feedback.setAttribute("role", "status");
+  feedback.setAttribute("aria-live", "polite");
 
   // Вставляем перед кнопкой в тот же контейнер
   btn.parentNode.insertBefore(feedback, btn);
 
   // Принудительный reflow для запуска CSS-перехода
   feedback.offsetHeight;
-  feedback.classList.add('form-feedback-message--visible');
+  feedback.classList.add("form-feedback-message--visible");
 
   // Автоудаление через duration
   const removeTimer = setTimeout(() => {
-    feedback.classList.remove('form-feedback-message--visible');
-    feedback.addEventListener('transitionend', () => {
+    feedback.classList.remove("form-feedback-message--visible");
+    feedback.addEventListener("transitionend", () => {
       if (feedback.parentNode) feedback.remove();
     });
     // Запасное удаление, если transition не сработал
@@ -201,10 +201,10 @@ function showFormFeedback(btn, message, type = 'success', duration = 4000) {
   }, duration);
 
   // Удаление при клике
-  feedback.addEventListener('click', () => {
+  feedback.addEventListener("click", () => {
     clearTimeout(removeTimer);
-    feedback.classList.remove('form-feedback-message--visible');
-    feedback.addEventListener('transitionend', () => {
+    feedback.classList.remove("form-feedback-message--visible");
+    feedback.addEventListener("transitionend", () => {
       if (feedback.parentNode) feedback.remove();
     });
     setTimeout(() => {
@@ -5679,14 +5679,14 @@ const seoAuditInit = () => {
       renderAuditCards(metrics);
       resultsContainer.style.display = "block";
 
-      showFormFeedback(submitBtn, 'Проверка завершена', 'success');
+      showFormFeedback(submitBtn, "Проверка завершена", "success");
     } catch (err) {
       console.error(err);
       errorDiv.textContent =
         "Не удалось выполнить проверку. Проверьте адрес сайта или попробуйте позже.";
       errorDiv.style.display = "block";
 
-      showFormFeedback(submitBtn, 'Не удалось выполнить проверку', 'error');
+      showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
       // hideButtonLoader(submitBtn);
 
@@ -5851,6 +5851,90 @@ const seoAuditInit = () => {
   }
 };
 
+// domain checker
+const domainCheker = () => {
+  const form = document.getElementById("test-site-form");
+  const inputs = form.querySelectorAll("input, button");
+  const domainInput = document.getElementById("domain-name-input");
+  const resultDiv = document.getElementById("domain-result");
+  const loaderDiv = document.getElementById("domain-loader");
+  const errorDiv = document.getElementById("domain-error");
+
+  // Обработчик отправки формы
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitBtn = form.querySelector(
+      'button[type="submit"], input[type="submit"]',
+    );
+    showButtonLoader(submitBtn);
+
+    let domain = domainInput.value.trim();
+    if (!domain) {
+      errorDiv.textContent = "Пожалуйста, введите домен";
+      errorDiv.style.display = "block";
+      resultDiv.style.display = "none";
+      loaderDiv.style.display = "none";
+      showFormFeedback(submitBtn, "Введите домен", "error");
+      return;
+    }
+
+    // Блокируем поля формы на время проверки
+    inputs.forEach((input) => {
+      input.disabled = true;
+    });
+
+    resultDiv.style.display = "none";
+    errorDiv.style.display = "none";
+    loaderDiv.style.display = "block";
+
+    try {
+      const csrfParam =
+        document
+          .querySelector('meta[name="csrf-param"]')
+          ?.getAttribute("content") || "_csrf";
+      const csrfToken = document
+        .querySelector('meta[name="csrf-token"]')
+        ?.getAttribute("content");
+
+      const body = new URLSearchParams();
+      body.append(csrfParam, csrfToken);
+      body.append("domain", domain);
+
+      // Отправляем POST-запрос на серверный экшен /submit/domain
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: body.toString()
+      });
+
+      if (!response.ok) {
+        throw new Error(`Сервер ответил с кодом ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      // Вставляем готовую HTML-разметку от сервера
+      resultDiv.innerHTML = data.text;
+      resultDiv.style.display = "block";
+
+      showFormFeedback(submitBtn, "Проверка завершена", "success");
+    } catch (err) {
+      console.error(err);
+      errorDiv.textContent = "Не удалось проверить домен. Попробуйте позже.";
+      errorDiv.style.display = "block";
+      showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
+    } finally {
+      loaderDiv.style.display = "none";
+      inputs.forEach((input) => {
+        input.disabled = false;
+      });
+    }
+  });
+};
+
 // scroll events
 window.addEventListener("scroll", pageIsScrolled, { passive: true });
 
@@ -5907,6 +5991,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tenderDiagram) tenderDiagramHandler();
 
   if (document.getElementById("audit-form")) seoAuditInit();
+  if (document.getElementById("test-site-form")) domainCheker();
 
   // photo cards
   if (photoCards.length > 0) {

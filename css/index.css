@@ -9155,7 +9155,8 @@ button:disabled, button.disabled,
   object-position: center;
 }
 
-.error-msg {
+.error-msg,
+.error-domain {
   display: inline-block;
   width: 100%;
   padding: 16px;
@@ -9164,11 +9165,30 @@ button:disabled, button.disabled,
   border-radius: 32px;
 }
 @media (max-width: 999.98px) {
-  .error-msg {
+  .error-msg,
+  .error-domain {
     border-radius: 20px;
   }
 }
-.error-msg:empty {
+.error-msg:empty,
+.error-domain:empty {
+  display: none;
+}
+
+.success-domain {
+  display: inline-block;
+  width: 100%;
+  padding: 16px;
+  background-color: rgba(40, 198, 56, 0.25);
+  color: #28c638;
+  border-radius: 32px;
+}
+@media (max-width: 999.98px) {
+  .success-domain {
+    border-radius: 20px;
+  }
+}
+.success-domain:empty {
   display: none;
 }
 

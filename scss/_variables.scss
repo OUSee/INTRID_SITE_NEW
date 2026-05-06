@@ -8171,12 +8171,31 @@ button:hover,
 }
 
 // errors
-.error-msg {
+.error-msg,
+.error-domain {
   display: inline-block;
   width: 100%;
   padding: 16px;
   background-color: rgba(198, 40, 40, 0.25);
   color: #e63b3b;
+  border-radius: 32px;
+
+  @media (max-width: 999.98px) {
+    border-radius: 20px;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+// success
+.success-domain {
+  display: inline-block;
+  width: 100%;
+  padding: 16px;
+  background-color: rgba(40, 198, 56, 0.25);
+  color: #28c638;
   border-radius: 32px;
 
   @media (max-width: 999.98px) {
