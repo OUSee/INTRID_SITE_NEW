@@ -20,6 +20,7 @@ let outsideClickHandler = null;
 let photoCards = document?.querySelectorAll(".card--photo");
 let headerScrolled = false;
 let lastMobileState = null;
+let lastFooterMobileState = null;
 let resizeTimeout;
 let resizeRunning = false;
 
@@ -164,6 +165,54 @@ function hideButtonLoader(btn) {
   delete btn.dataset.originalHTML;
 }
 
+// Обработчик для показа сообщения об успешной отправке формы
+function showFormFeedback(btn, message, type = 'success', duration = 4000) {
+  // Скрываем спиннер
+  hideButtonLoader(btn);
+  if (!btn || !message) return;
+
+  // Удаляем предыдущее сообщение, если висит
+  const existing = document.querySelector('.form-feedback-message');
+  if (existing) existing.remove();
+
+  const feedback = document.createElement('div');
+  feedback.className = `form-feedback-message form-feedback--${type}`;
+  feedback.textContent = message;
+  feedback.setAttribute('role', 'status');
+  feedback.setAttribute('aria-live', 'polite');
+
+  // Вставляем перед кнопкой в тот же контейнер
+  btn.parentNode.insertBefore(feedback, btn);
+
+  // Принудительный reflow для запуска CSS-перехода
+  feedback.offsetHeight;
+  feedback.classList.add('form-feedback-message--visible');
+
+  // Автоудаление через duration
+  const removeTimer = setTimeout(() => {
+    feedback.classList.remove('form-feedback-message--visible');
+    feedback.addEventListener('transitionend', () => {
+      if (feedback.parentNode) feedback.remove();
+    });
+    // Запасное удаление, если transition не сработал
+    setTimeout(() => {
+      if (feedback.parentNode) feedback.remove();
+    }, 600);
+  }, duration);
+
+  // Удаление при клике
+  feedback.addEventListener('click', () => {
+    clearTimeout(removeTimer);
+    feedback.classList.remove('form-feedback-message--visible');
+    feedback.addEventListener('transitionend', () => {
+      if (feedback.parentNode) feedback.remove();
+    });
+    setTimeout(() => {
+      if (feedback.parentNode) feedback.remove();
+    }, 600);
+  });
+}
+
 // move service-links in footer
 function moveServiceLinks() {
   if (!footer) return;
@@ -176,11 +225,11 @@ function moveServiceLinks() {
 
   if (!topMenu || !middleMenu || serviceLinks.length === 0) return;
 
-  const currentMobileState = window.innerWidth < 991;
-  if (lastMobileState === currentMobileState) return;
-  lastMobileState = currentMobileState;
+  const currentFooterMobileState = window.innerWidth < 991;
+  if (lastFooterMobileState === currentFooterMobileState) return;
+  lastFooterMobileState = currentFooterMobileState;
 
-  if (currentMobileState) {
+  if (currentFooterMobileState) {
     // Мобильная версия: перемещаем ссылки в middleMenu в конец
     serviceLinks.forEach((link) => middleMenu.appendChild(link));
   } else {
@@ -775,7 +824,7 @@ const mapLinksInit = () => {
         adress: "г. Воронеж ул. Пятницкого, 40",
         schedule: "Пн-Пт: 9:00-18:00",
         phone: "74732540796",
-        max: "79529540796",
+        max: "u/f9LHodD0cOIK2py_Tk-Zx7kyjPsbUaWzS4eCQ4fOJ48vaPvbEIsQCdftNMk",
         tg: "webintrid",
       },
     };
@@ -5629,13 +5678,17 @@ const seoAuditInit = () => {
       // Строим карточки
       renderAuditCards(metrics);
       resultsContainer.style.display = "block";
+
+      showFormFeedback(submitBtn, 'Проверка завершена', 'success');
     } catch (err) {
       console.error(err);
       errorDiv.textContent =
         "Не удалось выполнить проверку. Проверьте адрес сайта или попробуйте позже.";
       errorDiv.style.display = "block";
+
+      showFormFeedback(submitBtn, 'Не удалось выполнить проверку', 'error');
     } finally {
-      hideButtonLoader(submitBtn);
+      // hideButtonLoader(submitBtn);
 
       loader.style.display = "none";
 
@@ -5786,14 +5839,12 @@ const seoAuditInit = () => {
       //   else if (metric.status.status === "error") iconSymbol = "✖";
 
       card.innerHTML = `
-	  					<li>
                             <img src="/src/icons/status-${metric.status.status}.svg" alt="icon">
 							<div>
-								<b class="title_h4 fw-bold">${metric.title}</b>
-								<p class="m-0"><strong>${metric.status.text}</strong> ${metric.status.value ? "(" + metric.status.value + ")" : ""}</p>
+								<b class="title_h5 fw-bold color-blue">${metric.title}</b>
+								<p class="mb-8"><strong>${metric.status.text}</strong> ${metric.status.value ? "(" + metric.status.value + ")" : ""}</p>
                             	<span>${metric.desc}</span>
 							</div>
-                        </li>
                     `;
       resultsGrid.appendChild(card);
     });
@@ -5824,6 +5875,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   pageIsScrolled();
   initDropdowns();
+  if (footer) moveServiceLinks();
 
   moveServiceLinks();
   if (mockup) updateMockupPlace();

@@ -547,17 +547,17 @@
                         </li>
                     </ul>
 
-                    <div class="card small">
+                    <div class="card thin overflow-visible">
                         <form action="/submit/analiz-site" id="audit-form"
-                            class="d-flex flex-row flex-wrap align-start gap-8">
+                            class="d-flex flex-row flex-sm-wrap align-lg-stretch align-start gap-8">
                             <div class="recaptcha-wrapper" style="display: none;">
                                 <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
                                     data-size="invisible"></div>
                                 <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
                             </div>
 
-                            <input type="text" class="flex-3" id="site-url" placeholder="URL сайта">
-                            <button type="submit" class="big button-highlight flex-1">
+                            <input type="text" id="site-url" placeholder="URL сайта" required="" autocomplete="url">
+                            <button type="submit" class="big button-highlight w-sm-100 h-100" style="min-width: 120px;">
                                 проверить
                             </button>
                         </form>
@@ -573,7 +573,7 @@
                 <!-- Результаты -->
                 <div class="mt-52" id="audit-results" style="display:none;">
                     <h3 class="underlined w-fit">Что показал экспресс‑аудит</h3>
-                    <ul class="list--cooperate mt-32">
+                    <ul class="list--cooperate start mt-32">
                         <!-- Карточки подсасываются динамически -->
                     </ul>
                 </div>
