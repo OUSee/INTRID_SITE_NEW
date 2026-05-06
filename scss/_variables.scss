@@ -1083,7 +1083,7 @@ ol {
 
     &.start {
       align-items: flex-start;
-      
+
       & li {
         align-items: flex-start;
       }
@@ -7620,11 +7620,9 @@ button:hover,
       font-size: 16px;
       line-height: 1.25;
       color: var(--color-white);
-      text-wrap: nowrap;
 
       @media (max-width: 1199.98px) {
         min-height: 2.5em;
-        text-wrap: wrap;
       }
 
       @media (max-width: 400px) {
@@ -7659,26 +7657,31 @@ button:hover,
     }
 
     &:hover {
-      @media (min-width: 1200px) {
-        padding: 164px 20px 32px 20px;
-        margin-top: -20px;
-        margin-bottom: -20px;
+      &:not(.nohover) {
+        @media (min-width: 1200px) {
+          padding: 164px 20px 32px 20px;
+          margin-top: -20px;
+          margin-bottom: -20px;
 
-        & > .card-icon {
-          transform: translate(-50%, 15%);
-        }
+          & > .card-icon {
+            transform: translate(-50%, 15%);
+          }
 
-        & p {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0%);
+          & p {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0%);
+          }
         }
       }
     }
 
     &.use {
+      text-wrap: nowrap;
+
       @media (max-width: 1199.98px) {
         padding: 104px 20px 12px 20px;
+        text-wrap: wrap;
       }
 
       @media (max-width: 599.98px) {

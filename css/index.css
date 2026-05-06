@@ -8660,12 +8660,10 @@ button:disabled, button.disabled,
   font-size: 16px;
   line-height: 1.25;
   color: var(--color-white);
-  text-wrap: nowrap;
 }
 @media (max-width: 1199.98px) {
   .card--service b {
     min-height: 2.5em;
-    text-wrap: wrap;
   }
 }
 @media (max-width: 400px) {
@@ -8700,23 +8698,27 @@ button:disabled, button.disabled,
   margin-bottom: 0;
 }
 @media (min-width: 1200px) {
-  .card--service:hover {
+  .card--service:hover:not(.nohover) {
     padding: 164px 20px 32px 20px;
     margin-top: -20px;
     margin-bottom: -20px;
   }
-  .card--service:hover > .card-icon {
+  .card--service:hover:not(.nohover) > .card-icon {
     transform: translate(-50%, 15%);
   }
-  .card--service:hover p {
+  .card--service:hover:not(.nohover) p {
     opacity: 1;
     visibility: visible;
     transform: translateY(0%);
   }
 }
+.card--service.use {
+  text-wrap: nowrap;
+}
 @media (max-width: 1199.98px) {
   .card--service.use {
     padding: 104px 20px 12px 20px;
+    text-wrap: wrap;
   }
 }
 @media (max-width: 599.98px) {
