@@ -179,6 +179,7 @@
     </header>
     <!-- MAIN PAGE -->
     <main>
+        <!-- hero-section -->
         <section class="main-section container">
             <div class="breadcrumbs">
                 <a href="/">Главная</a>
@@ -197,7 +198,7 @@
                     Гарантия мониторинга состояния виртуального сервера, полную защиту от спама и вирусов, а также
                     проведение бесплатных консультации и помощь в переносе. Предоставляем панель управления ISPManager
                     Lite
-                    5 с полным функционалом и регистрируем корпоративные почтовые ящики с веб-интерфейсом Яндекс.Почта
+                    5 с полным функционалом и регистрируем корпоративные почтовые ящики с веб-интерфейсом Яндекс.Почта.
                 </p>
 
                 <div class="main-section--actions">
@@ -220,59 +221,100 @@
             </div>
         </section>
 
-
-        <!--  -->
+        <!-- Наши тарифы на VDS -->
         <section id="hosting-tariffs">
             <div class="container">
                 <h2 class="w-fit">
                     Наши тарифы на VDS
                 </h2>
 
-                <div class="flex-layout align-center justify-center gap-20 mt-52">
-                    <a href="#vds-creation" class="card--tariff hover-glow mw-500">
-                        <div class="card-header title_h5 justify-center">
+                <div
+                    class="flex-layout flex-layout--2x mw-400 align-stretch justify-center gap-20 mt-52 ml-auto mr-auto">
+                    <a href="#vds-creation" class="card gap-20 thin radius-sm-20 color-white hover-glow"
+                        title="Виртуальный сервер ОПТИМА">
+                        <!-- Заголовок, уровень и теги -->
+                        <!-- Название вакансии -->
+                        <b class="title_h4">
                             Виртуальный сервер ОПТИМА
-                        </div>
-                        <div class="card-body">
-                            <ul class="mb-auto">
+                        </b>
+
+                        <div class="card-body d-flex flex-column gap-16 flex-1">
+                            <ul class="list--leads compact">
                                 <li>
-                                    <p>Место на диске: <span class="color-blue title_h5">25 Gb</span></p>
+                                    <span>
+                                        Место на диске:
+                                    </span>
+                                    <span class="title_h5 color-blue">
+                                        25 Gb
+                                    </span>
                                 </li>
                                 <li>
-                                    <p>Трафик: <span class="color-blue title_h5">без лимита</span></p>
+                                    <span>
+                                        Трафик:
+                                    </span>
+                                    <span class="title_h5 color-blue">
+                                        без лимита
+                                    </span>
                                 </li>
                                 <li>
-                                    <p>Защита: <span class="color-blue title_h5">от спама и вирусов</span></p>
+                                    <span>
+                                        Защита:
+                                    </span>
+                                    <span class="title_h5 color-blue">
+                                        от спама и вирусов
+                                    </span>
                                 </li>
                                 <li>
-                                    <p>Доменов на аккаунте: <span class="color-blue title_h5">10</span></p>
+                                    <span>
+                                        Доменов на аккаунте:
+                                    </span>
+                                    <span class="title_h5 color-blue">
+                                        10
+                                    </span>
                                 </li>
                                 <li>
-                                    <p>Поддоменов: <span class="color-blue title_h5">20</span></p>
+                                    <span>
+                                        Поддоменов:
+                                    </span>
+                                    <span class="title_h5 color-blue">
+                                        20
+                                    </span>
                                 </li>
                                 <li>
-                                    <p>Баз данных: <span class="color-blue title_h5">20</span></p>
+                                    <span>
+                                        Баз данных:
+                                    </span>
+                                    <span class="title_h5 color-blue">
+                                        20
+                                    </span>
                                 </li>
                                 <li>
-                                    <p>Резервный бэкап: <span class="color-blue title_h5">еженедельно</span></p>
+                                    <span>
+                                        Резервный бэкап:
+                                    </span>
+                                    <span class="title_h5 color-blue">
+                                        еженедельно
+                                    </span>
                                 </li>
                             </ul>
-                            <p class="title_h4 color-blue text-center mt-20">
-                                6000 ₽/год
-                                <span class="fw-400">(600 ₽/месяц)</span>
-                            </p>
-                            <hr>
-                            <p class="title_h5 text-center">
-                                <s class="color-blue-tag">7 200 ₽/год</s>
-                                2 месяца бесплатно
-                            </p>
                         </div>
+
+                        <div class="bg-blue-bg radius-20 p-8">
+                            <p class="title_h4 color-blue text-center mb-12">
+                                6000&nbsp;₽/год (600&nbsp;₽/месяц)</p>
+                            <hr>
+                            <p class="title_h5 text-center m-0">7&nbsp;200&nbsp;₽/год 2 месяца бесплатно</p>
+                        </div>
+
+                        <button type="button" class="button-highlight w-100">
+                            Заказать
+                        </button>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!--  -->
+        <!-- Ваша выгода при выборе виртуального сервера INTRID -->
         <section>
             <div class="container">
                 <h2 class="w-fit">
@@ -281,59 +323,81 @@
 
                 <div class="flex-layout flex-layout--split mt-20">
                     <div class="left">
-                        <ul class="tech-list slim">
-                            <li>
-                                <img src="/src/icons/magnifier_glass.svg" alt="icon">
-                                <p>
+                        <div class="flex-layout flex-layout--2x gap-20 mt-16">
+                            <div class="card card--service nohover">
+                                <div class="card-icon">
+                                    <img src="/src/icons/magnifier_glass.svg" alt="icon">
+                                </div>
+                                <b>
                                     Бесплатные консультации и помощь в переносе и установке сайтов
-                                </p>
-                            </li>
-                            <li>
-                                <img src="/src/icons/gear_icon.svg" alt="icon">
-                                <p>
+                                </b>
+                            </div>
+
+                            <div class="card card--service nohover">
+                                <div class="card-icon">
+                                    <img src="/src/icons/gear_icon.svg" alt="icon">
+                                </div>
+                                <b>
                                     Размещение одновременно на двух серверах, расположенных в разных дата-центрах, что
                                     гарантирует устойчивость оборудования
                                     к отказам
-                                </p>
-                            </li>
-                            <li>
-                                <img src="/src/icons/tech-reverse.svg" alt="icon">
-                                <p>
+                                </b>
+                            </div>
+
+                            <div class="card card--service nohover">
+                                <div class="card-icon">
+                                    <img src="/src/icons/tech-reverse.svg" alt="icon">
+                                </div>
+                                <b>
                                     Консультация и помощь в переносе сайтов и установке серверного ПО
-                                </p>
-                            </li>
-                            <li>
-                                <img src="/src/icons/tech-bug.svg" alt="icon">
-                                <p>
-                                    <!--Почтовые ящики типа ИМЯ@Ваш_домен.ru с веб-интерфейсом Яндекс.Почта +--> Защита
-                                    от спама
-                                </p>
-                            </li>
-                            <li>
-                                <img src="/src/icons/tech-shield.svg" alt="icon">
-                                <p>
+                                </b>
+                            </div>
+
+                            <div class="card card--service nohover">
+                                <div class="card-icon">
+                                    <img src="/src/icons/tech-bug.svg" alt="icon">
+                                </div>
+                                <b>
+                                    Защита от спама
+                                </b>
+                            </div>
+
+                            <div class="card card--service nohover">
+                                <div class="card-icon">
+                                    <img src="/src/icons/tech-shield.svg" alt="icon">
+                                </div>
+                                <b>
                                     Круглосуточный мониторинг состояния серверов
-                                </p>
-                            </li>
-                            <li>
-                                <img src="/src/icons/social.svg" alt="icon">
-                                <p>
+                                </b>
+                            </div>
+
+                            <div class="card card--service nohover">
+                                <div class="card-icon">
+                                    <img src="/src/icons/social.svg" alt="icon">
+                                </div>
+                                <b>
                                     Индивидуальная конфигурации PHP, MySQL, CGI, Perl
-                                </p>
-                            </li>
-                            <li>
-                                <img src="/src/icons/tech-key.svg" alt="icon">
-                                <p>
+                                </b>
+                            </div>
+
+                            <div class="card card--service nohover">
+                                <div class="card-icon">
+                                    <img src="/src/icons/tech-key.svg" alt="icon">
+                                </div>
+                                <b>
                                     Система полнотекстового морфологического поиска Sphinx
-                                </p>
-                            </li>
-                            <li>
-                                <img src="/src/icons/tech-pen.svg" alt="icon">
-                                <p>
+                                </b>
+                            </div>
+
+                            <div class="card card--service nohover">
+                                <div class="card-icon">
+                                    <img src="/src/icons/tech-pen.svg" alt="icon">
+                                </div>
+                                <b>
                                     Панель управления ISPManager Lite 5 с полным функционалом (200 ₽/мес.)
-                                </p>
-                            </li>
-                        </ul>
+                                </b>
+                            </div>
+                        </div>
                     </div>
                     <div class="right">
                         <div class="card card--leaders minified position-sticky" id="vds-creation">
@@ -369,7 +433,8 @@
                                     </div>
                                 </div>
                                 <p class="testimonials text-center m-center mb-0">
-                                    Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html" target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                                    Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                                        target="_blank">персональных&nbsp;данных</a> в соответствии с <a
                                         href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
                                         target="_blank">ФЗ&nbsp;№152</a>
                                 </p>
@@ -383,9 +448,7 @@
             </div>
         </section>
 
-
-
-        <!--  -->
+        <!-- Заказать разработку сайта или создание бренда -->
         <section>
             <div class="container">
                 <h3 class="underlined w-fit m-center text-center">
