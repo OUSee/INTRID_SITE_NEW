@@ -775,7 +775,7 @@ const mapLinksInit = () => {
         adress: "г. Воронеж ул. Пятницкого, 40",
         schedule: "Пн-Пт: 9:00-18:00",
         phone: "74732540796",
-        wa: "79529540796",
+        max: "79529540796",
         tg: "webintrid",
       },
     };
@@ -798,6 +798,7 @@ const mapLinksInit = () => {
       const paragraph = map.querySelector("#map-info");
       const social = map.querySelector("#map-social");
       const whatsapp = map.querySelector("#map-whatsapp");
+      const max = map.querySelector("#map-max");
       const telegram = map.querySelector("#map-telegram");
       paragraph.innerHTML =
         mapData[value].adress +
@@ -811,13 +812,32 @@ const mapLinksInit = () => {
       social.style.display =
         mapData[value]?.wa || mapData[value]?.tg ? "flex" : "none";
 
-      whatsapp.style.display = mapData[value].wa ? "flex" : "none";
-      whatsapp.setAttribute("href", "https://wa.me/" + mapData[value]?.wa);
-      whatsapp.setAttribute("target", "_blank");
+      if (max) {
+        max.style.display = mapData[value].max ? "flex" : "none";
+        max.setAttribute(
+          "href",
+          "https://max.ru/" + (mapData[value]?.max || ""),
+        );
+        max.setAttribute("target", "_blank");
+      }
 
-      telegram.style.display = mapData[value].tg ? "flex" : "none";
-      telegram.setAttribute("href", "https://t.me/" + mapData[value]?.tg);
-      telegram.setAttribute("target", "_blank");
+      if (whatsapp) {
+        whatsapp.style.display = mapData[value].wa ? "flex" : "none";
+        whatsapp.setAttribute(
+          "href",
+          "https://wa.me/" + (mapData[value]?.wa || ""),
+        );
+        whatsapp.setAttribute("target", "_blank");
+      }
+
+      if (telegram) {
+        telegram.style.display = mapData[value].tg ? "flex" : "none";
+        telegram.setAttribute(
+          "href",
+          "https://t.me/" + (mapData[value]?.tg || ""),
+        );
+        telegram.setAttribute("target", "_blank");
+      }
 
       // console.log(telegram.getAttribute("href"));
 

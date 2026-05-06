@@ -717,17 +717,22 @@ div.icon-menu {
 
 .icon-menu {
   & i {
+    color: currentColor;
     font-size: 30px;
+    transition: color 0.25s ease-in-out;
+  }
+
+  & > * {
+    height: 30px;
+  }
+
+  & > a {
     color: var(--color-white);
     transition: color 0.25s ease-in-out;
 
     &:hover {
       color: var(--blue-main);
     }
-  }
-
-  & > * {
-    height: 30px;
   }
 }
 
@@ -3773,10 +3778,12 @@ form {
   }
 
   &#cases-pagination {
-    display: none;
-
     @media (max-width: 899.98px) {
       display: flex;
+    }
+
+    @media (min-width: 900px) {
+      display: none !important;
     }
   }
 
@@ -4468,8 +4475,16 @@ form {
     //
   }
 
-  & i {
+  & i,
+  & svg {
     display: flex;
+  }
+
+  & svg,
+  & img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
   }
 
   & span {
