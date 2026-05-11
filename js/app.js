@@ -960,94 +960,79 @@ function tabSlidersStart() {
     slidesContainer.addEventListener("click", (e) => {
       const slide = e.target.closest(".slide");
       if (slide) {
-        // Получаем индекс оригинального слайда
         const allSlides = slidesContainer.querySelectorAll(".slide");
         const slideIndex = Array.from(allSlides).indexOf(slide);
         const realIndex =
           (slideIndex - 2 + originalSlides.length) % originalSlides.length;
-
-        // Вызываем обработчик события для слайда
         handleSlideClick(realIndex, slide);
       }
     });
 
-    // Функция для обработки кликов по слайдам
     function handleSlideClick(index, slideElement) {
-      // console.log("Clicked slide:", index);
       index === 0 ? openPopup(slideElement.dataset.popup) : "";
     }
 
-    // Создаем клоны для плавных переходов
+    // Клонирование слайдов (без изменений)
     const firstClone = originalSlides[0].cloneNode(true);
     const secondClone = originalSlides[1].cloneNode(true);
     const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
     const preLastClone =
       originalSlides[originalSlides.length - 2].cloneNode(true);
 
-    // Добавляем клоны в DOM (2 в начале и 2 в конце)
     slidesContainer.insertBefore(lastClone, originalSlides[0]);
     slidesContainer.insertBefore(preLastClone, originalSlides[0]);
     slidesContainer.appendChild(firstClone);
     slidesContainer.appendChild(secondClone);
 
-    // Получаем все слайды (оригиналы + клоны)
     const allSlides = slidesContainer.querySelectorAll(".slide");
     const realSlideCount = originalSlides.length;
-    let currentIndex = 2; // Начинаем с первого оригинального слайда
+    let currentIndex = 2; // начинаем с первого оригинального слайда
 
-    // Определяем ориентацию слайдера
-    let isHorizontal = false;
-    const checkOrientation = () => {
-      // Используем requestAnimationFrame для безопасного доступа к свойствам DOM
-      requestAnimationFrame(() => {
-        const newIsHorizontal = window.innerWidth <= 600;
-        if (newIsHorizontal !== isHorizontal) {
-          isHorizontal = newIsHorizontal;
-          slidesContainer.style.flexDirection = isHorizontal ? "row" : "column";
-          updateSlider(true); // Принудительное обновление без анимации
-        }
-      });
-    };
-
-    // Настройки автопрокрутки
-    let isAutoScrollPaused = false;
-    let autoScrollIntervalId = null;
-    let isAnimating = false;
+    // ---------- ОПТИМИЗИРОВАННАЯ ОРИЕНТАЦИЯ ----------
+    const mediaQuery = window.matchMedia("(max-width: 600px)");
+    let isHorizontal = mediaQuery.matches; // начальное состояние
+    slidesContainer.style.flexDirection = isHorizontal ? "row" : "column";
 
     // Функция обновления позиции слайдера
     function updateSlider(instant = false) {
-      // Используем requestAnimationFrame для синхронизации с браузером
       requestAnimationFrame(() => {
-        // Проверка на видимость элемента
         if (!slidesContainer.offsetParent) return;
-
-        // Получаем актуальные размеры слайда
         const slideSize = isHorizontal
           ? originalSlides[0].offsetWidth
           : originalSlides[0].offsetHeight;
-
-        // Если размеры нулевые (слайдер скрыт), не обновляем
         if (!slideSize) return;
 
         const translateValue = isHorizontal
           ? `translateX(-${currentIndex * slideSize}px)`
           : `translateY(-${currentIndex * slideSize}px)`;
 
-        if (instant) {
-          slidesContainer.style.transition = "none";
-        } else {
-          slidesContainer.style.transition = "transform 0.5s ease";
-        }
-
+        slidesContainer.style.transition = instant
+          ? "none"
+          : "transform 0.5s ease";
         slidesContainer.style.transform = translateValue;
       });
     }
 
-    // Обработчики навигации
+    // Обработчик изменения ориентации (срабатывает только при пересечении 600px)
+    function handleOrientationChange(e) {
+      const newIsHorizontal = e.matches;
+      if (newIsHorizontal !== isHorizontal) {
+        isHorizontal = newIsHorizontal;
+        slidesContainer.style.flexDirection = isHorizontal ? "row" : "column";
+        updateSlider(true); // мгновенно пересчитываем без анимации
+      }
+    }
+    mediaQuery.addEventListener("change", handleOrientationChange);
+    // ------------------------------------------------
+
+    // Настройки автопрокрутки и флаги
+    let isAutoScrollPaused = false;
+    let autoScrollIntervalId = null;
+    let isAnimating = false;
+
     function goNext() {
       if (isAnimating) return;
       isAnimating = true;
-
       clearInterval(autoScrollIntervalId);
       currentIndex++;
       updateSlider();
@@ -1055,22 +1040,18 @@ function tabSlidersStart() {
       setTimeout(() => {
         isAnimating = false;
       }, 500);
-
-      // Если достигли конца (последний клон), мгновенно переходим к началу
       if (currentIndex >= allSlides.length - 2) {
         setTimeout(() => {
           currentIndex = 2;
           updateSlider(true);
         }, 500);
       }
-
       resetAutoScroll();
     }
 
     function goPrev() {
       if (isAnimating) return;
       isAnimating = true;
-
       clearInterval(autoScrollIntervalId);
       currentIndex--;
       updateSlider();
@@ -1078,22 +1059,17 @@ function tabSlidersStart() {
       setTimeout(() => {
         isAnimating = false;
       }, 500);
-
-      // Если достигли начала (первый клон), мгновенно переходим к концу
       if (currentIndex <= 1) {
         setTimeout(() => {
           currentIndex = allSlides.length - 3;
           updateSlider(true);
         }, 500);
       }
-
       resetAutoScroll();
     }
 
-    // Управление автопрокруткой
     function startAutoScroll() {
       if (isAutoScrollPaused || autoScrollIntervalId) return;
-      // Очищаем предыдущий интервал перед установкой нового
       clearInterval(autoScrollIntervalId);
       autoScrollIntervalId = setInterval(goNext, 3000);
     }
@@ -1101,82 +1077,58 @@ function tabSlidersStart() {
     function stopAutoScroll() {
       if (autoScrollIntervalId) {
         clearInterval(autoScrollIntervalId);
-        autoScrollIntervalId = null; // сбрасываем идентификатор
+        autoScrollIntervalId = null;
       }
     }
 
     function resetAutoScroll() {
       stopAutoScroll();
-      // Добавить задержку перед запуском нового интервала
       setTimeout(() => {
-        if (!isAutoScrollPaused) {
-          startAutoScroll();
-        }
+        if (!isAutoScrollPaused) startAutoScroll();
       }, 10);
     }
 
-    // Обработчики событий
+    // Обработчики кнопок навигации
     nextBtn.addEventListener("click", goNext);
     prevBtn.addEventListener("click", goPrev);
-
     prevBtn.setAttribute("aria-label", "Предыдущий слайд");
     prevBtn.setAttribute("role", "button");
-
     nextBtn.setAttribute("aria-label", "Следующий слайд");
     nextBtn.setAttribute("role", "button");
 
+    // Остановка автопрокрутки при наведении
     slidesContainer.addEventListener("mouseenter", () => {
       isAutoScrollPaused = true;
       stopAutoScroll();
     });
-
     slidesContainer.addEventListener("mouseleave", () => {
       isAutoScrollPaused = false;
       startAutoScroll();
     });
 
-    // Обработчики для управления автопрокруткой при потере фокуса окна/вкладки
     window.addEventListener("blur", stopAutoScroll);
     window.addEventListener("focus", startAutoScroll);
-
-    // Обработчик для события visibilitychange (переключение вкладок)
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        stopAutoScroll();
-      } else {
-        startAutoScroll();
-      }
+      document.hidden ? stopAutoScroll() : startAutoScroll();
     });
 
-    let xDown = null;
-    let yDown = null;
-
+    // Тач-свайпы
+    let xDown = null,
+      yDown = null;
     function handleTouchStart(evt) {
       const firstTouch = evt.touches[0];
       xDown = firstTouch.clientX;
       yDown = firstTouch.clientY;
     }
-
     function handleTouchMove(evt) {
-      if (!xDown || !yDown) {
-        return;
-      }
-
+      if (!xDown || !yDown) return;
       const xUp = evt.touches[0].clientX;
       const yUp = evt.touches[0].clientY;
-
       const xDiff = xDown - xUp;
       const yDiff = yDown - yUp;
-
       if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 20) {
         evt.preventDefault();
-        if (xDiff > 0) {
-          goNext();
-        } else {
-          goPrev();
-        }
-      } else {
-        return;
+        xDiff > 0 ? goNext() : goPrev();
       }
       xDown = null;
       yDown = null;
@@ -1184,25 +1136,20 @@ function tabSlidersStart() {
     slidesContainer.addEventListener("touchstart", handleTouchStart, false);
     slidesContainer.addEventListener("touchmove", handleTouchMove, false);
 
-    // Инициализация
-    checkOrientation();
+    // Инициализация (без checkOrientation)
     updateSlider(true);
     startAutoScroll();
 
-    // Обработка ресайза с троттлингом
+    // Ресайз – только пересчёт размеров, ориентация НЕ проверяется
+    let resizeTimeout;
     let isResizing = false;
     window.addEventListener("resize", () => {
       if (isResizing) return;
       isResizing = true;
-
-      stopAutoScroll(); // останавливаем перед ресайзом
-
+      stopAutoScroll();
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        checkOrientation();
         updateSlider(true);
-
-        // Запускаем с задержкой
         setTimeout(() => {
           startAutoScroll();
           isResizing = false;
@@ -1841,7 +1788,8 @@ function sliderInitialize() {
       delete slider.dataset.initialized;
     }
 
-    const pagination = document.querySelector(`#${id} + .pagination`);
+    // const pagination = document.querySelector(`#${id} + .pagination`);
+    const pagination = document.querySelector(`#${id} ~ .pagination`);
     const navLeft = document.getElementById(`navleft_for--${id}`);
     const navRight = document.getElementById(`navright_for--${id}`);
     const fill = slider.dataset.fill;
@@ -3808,6 +3756,136 @@ document.addEventListener("DOMContentLoaded", () => {
     // Обработка хеша
     const handleToggleByHash = (hash, toggles, counters, target) => {
       const id = hash.replace("#", "");
+
+      const tenderPresets = {
+        // Грузоперевозки
+        "tender-shipping-standard": {
+          tenderToggle: true,
+          solutionSelectIndex: 0, // 0 = грузоперевозки
+          extraToggles: [], // только базовые (включаются через data-nested)
+        },
+        "tender-shipping-extended": {
+          tenderToggle: true,
+          solutionSelectIndex: 0,
+          extraToggles: [
+            "tender-portal_individual-logging",
+            "tender-portal_defender",
+            "tender-portal_telegram-notify",
+            "tender-portal_click",
+            "tender-portal_routes-build",
+            "tender-portal_choose",
+          ],
+        },
+        "tender-shipping-individual": {
+          tenderToggle: true,
+          solutionSelectIndex: 0,
+          extraToggles: [
+            "tender-portal_defender",
+            "tender-portal_telegram-notify",
+            "tender-portal_click",
+            "tender-portal_routes-build",
+            "tender-portal_choose",
+            "tender-portal_ai-on",
+            "tender-portal_i1crm",
+            "tender-portal_long-contracts",
+            "tender-portal_priority",
+            "tender-portal_individual-logging",
+            "tender-portal_match",
+            "tender-portal_individual",
+          ],
+        },
+        // Закупки
+        "tender-purchases-standard": {
+          tenderToggle: true,
+          solutionSelectIndex: 1, // 1 = закупки
+          extraToggles: [],
+        },
+        "tender-purchases-extended": {
+          tenderToggle: true,
+          solutionSelectIndex: 1,
+          extraToggles: [
+            "tender-portal_paying_individual-logging",
+            "tender-portal_paying_telegram-notify",
+            "tender-portal_paying_organize",
+            "tender-portal_paying_click",
+            "tender-portal_paying_choose",
+          ],
+        },
+        "tender-purchases-individual": {
+          tenderToggle: true,
+          solutionSelectIndex: 1,
+          extraToggles: [
+            "tender-portal_paying_telegram-notify",
+            "tender-portal_paying_i1crm",
+            "tender-portal_paying_click",
+            "tender-portal_paying_choose",
+            "tender-portal_paying_ai-on",
+            "tender-portal_paying_match",
+            "tender-portal_paying_organize",
+            "tender-portal_paying_long-contracts",
+            "tender-portal_paying_priority",
+            "tender-portal_paying_individual-logging",
+            "tender-portal_paying_individual",
+          ],
+        },
+      };
+
+      const preset = tenderPresets[id];
+      if (preset) {
+        // 1. Включаем переключатель тендерного портала (tenders_toggle)
+        const tenderToggle = toggles.find((t) => t.id === "tenders_toggle");
+        if (tenderToggle && !tenderToggle.elementref.checked) {
+          tenderToggle.elementref.checked = true;
+          tenderToggle.elementref.dispatchEvent(
+            new Event("change", { bubbles: true }),
+          );
+        }
+
+        // 2. Устанавливаем значение селекта tender-solution-select
+        const solutionSelect = document.getElementById(
+          "tender-solution-select",
+        );
+        if (
+          solutionSelect &&
+          solutionSelect.selectedIndex !== preset.solutionSelectIndex
+        ) {
+          solutionSelect.selectedIndex = preset.solutionSelectIndex;
+          solutionSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+
+        // 3. Включаем дополнительные чекбоксы (если есть)
+        preset.extraToggles.forEach((toggleId) => {
+          const toggle = toggles.find((t) => t.id === toggleId);
+          if (toggle && !toggle.elementref.checked) {
+            // Снимаем disabled, если он есть (некоторые чекбоксы могут быть заблокированы по умолчанию)
+            const wasDisabled = toggle.elementref.disabled;
+            if (wasDisabled) toggle.elementref.disabled = false;
+            toggle.elementref.checked = true;
+            toggle.elementref.dispatchEvent(
+              new Event("change", { bubbles: true }),
+            );
+            if (wasDisabled) toggle.elementref.disabled = true;
+          }
+        });
+
+        // Показать калькулятор, скрыть приветствие
+        toggleSection(
+          null,
+          false,
+          ["calculator", "calculator-total"],
+          ["choose_your_way"],
+        );
+
+        setTimeout(() => {
+          const calculatorWrapper = document.querySelector(
+            ".calculator-wrapper",
+          );
+          calculatorWrapper?.classList.add("active");
+        }, 600);
+
+        return;
+      }
+
       const handle_target = toggles.find((t) => t.id === id);
       if (handle_target) {
         try {
@@ -5907,7 +5985,7 @@ const domainCheker = () => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: body.toString()
+        body: body.toString(),
       });
 
       if (!response.ok) {
