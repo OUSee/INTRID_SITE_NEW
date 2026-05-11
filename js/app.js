@@ -14,6 +14,7 @@ const reviewsContainer = document.getElementById("reviews-container");
 const webShopDiagram = document.querySelector(".web-shop-diagram");
 const tenderDiagram = document.querySelector(".tender-diagram");
 const mapLinks = document.querySelectorAll(".map-link");
+const selects = document.querySelectorAll("select");
 
 let dropdownClickHandlers = [];
 let outsideClickHandler = null;
@@ -6027,9 +6028,11 @@ window.addEventListener(
 
 // DOMContentLoaded events
 document.addEventListener("DOMContentLoaded", () => {
-  let customSelect = niceSelectJS("select", {
-    activeMobile: true,
-  });
+  if (selects) {
+    let customSelect = niceSelectJS("select", {
+      activeMobile: true,
+    });
+  }
 
   setTimeout(() => {
     preloader.remove();
