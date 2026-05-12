@@ -5728,8 +5728,33 @@ const seoAuditInit = () => {
     );
     showButtonLoader(submitBtn);
 
-    const url = urlInput.value.trim();
-    if (!url) return;
+    let url = urlInput.value.trim();
+
+    // 1. Проверка на пустой ввод
+    if (!url) {
+      errorDiv.textContent = "Введите адрес сайта";
+      errorDiv.style.display = "block";
+      hideButtonLoader(submitBtn);
+      return;
+    }
+
+    // 2. Нормализация: если нет протокола, добавляем https://
+    if (!/^https?:\/\//i.test(url)) {
+      url = "https://" + url;
+    }
+
+    // 3. Проверка валидности URL
+    try {
+      new URL(url);
+    } catch (_) {
+      errorDiv.textContent = "Некорректный адрес сайта. Проверьте URL.";
+      errorDiv.style.display = "block";
+      hideButtonLoader(submitBtn);
+      return;
+    }
+
+    // Обновляем значение в поле, если оно изменилось
+    urlInput.value = url;
 
     // Скрываем старые результаты и ошибки
     resultsContainer.style.display = "none";
@@ -5767,8 +5792,6 @@ const seoAuditInit = () => {
 
       showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
-      // hideButtonLoader(submitBtn);
-
       loader.style.display = "none";
 
       // Включаем поля ввода
@@ -5781,7 +5804,6 @@ const seoAuditInit = () => {
   function extractMetrics(data) {
     const audits = data.lighthouseResult.audits;
 
-    // Получаем удобные оценки для 5 параметров
     const getScoreStatus = (score) => {
       if (score === null || score === undefined)
         return { value: "—", status: "warning", text: "Нет данных" };
@@ -5804,7 +5826,6 @@ const seoAuditInit = () => {
       };
     };
 
-    // Скорость загрузки (общий балл производительности)
     const perfScore = data.lighthouseResult.categories.performance.score;
     const speed = {
       title: "Скорость загрузки",
@@ -5812,7 +5833,6 @@ const seoAuditInit = () => {
       desc: "Общий показатель производительности по Core Web Vitals",
     };
 
-    // Безопасность: HTTPS
     const httpsAudit = audits["is-on-https"];
     const security = {
       title: "Безопасность / HTTPS",
@@ -5827,7 +5847,6 @@ const seoAuditInit = () => {
       desc: "Наличие и корректность SSL‑сертификата",
     };
 
-    // Мета-теги: объединяем title и meta-description
     const titleAudit = audits["document-title"];
     const metaAudit = audits["meta-description"];
     let metaStatus;
@@ -5864,7 +5883,6 @@ const seoAuditInit = () => {
       desc: "Корректность заполнения основных мета-тегов",
     };
 
-    // Мобильная версия (адаптивность контента)
     const contentWidthAudit = audits["content-width"];
     const mobile = {
       title: "Мобильная версия",
@@ -5883,7 +5901,6 @@ const seoAuditInit = () => {
       desc: "Проверка того, что контент не выходит за пределы экрана",
     };
 
-    // Технические ошибки (ошибки в консоли)
     const errorsAudit = audits["errors-in-console"];
     const techErrors = {
       title: "Технические ошибки",
@@ -5909,22 +5926,15 @@ const seoAuditInit = () => {
     resultsGrid.innerHTML = "";
     metrics.forEach((metric) => {
       const card = document.createElement("li");
-      //   card.className = `audit-card audit-card--${metric.status.status}`;
-
-      //   const iconClass = `status-icon status-${metric.status.status}`;
-      //   let iconSymbol = "";
-      //   if (metric.status.status === "good") iconSymbol = "✔";
-      //   else if (metric.status.status === "warning") iconSymbol = "!";
-      //   else if (metric.status.status === "error") iconSymbol = "✖";
 
       card.innerHTML = `
-                            <img src="/src/icons/status-${metric.status.status}.svg" alt="icon">
-							<div>
-								<b class="title_h5 fw-bold color-blue">${metric.title}</b>
-								<p class="mb-8"><strong>${metric.status.text}</strong> ${metric.status.value ? "(" + metric.status.value + ")" : ""}</p>
-                            	<span>${metric.desc}</span>
-							</div>
-                    `;
+        <img src="/src/icons/status-${metric.status.status}.svg" alt="icon">
+        <div>
+          <b class="title_h5 fw-bold color-blue">${metric.title}</b>
+          <p class="mb-8"><strong>${metric.status.text}</strong> ${metric.status.value ? "(" + metric.status.value + ")" : ""}</p>
+          <span>${metric.desc}</span>
+        </div>
+      `;
       resultsGrid.appendChild(card);
     });
   }
