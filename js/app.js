@@ -5719,10 +5719,10 @@ const seoAuditInit = () => {
   const resultsContainer = document.getElementById("audit-results");
   const resultsGrid = resultsContainer.querySelector("#audit-cards");
 
-  // Универсальная оценка
+  // Универсальная оценка (возвращает объект {status, text})
   const getStatus = (score, thresholds = { good: 0.9, warn: 0.5 }) => {
     if (score === null || score === undefined) {
-      return { status: "warning", text: "Не удалось проверить" };
+      return { status: "warning", text: "" };
     }
     if (score >= thresholds.good) return { status: "good", text: "" };
     if (score >= thresholds.warn) return { status: "warning", text: "" };
@@ -5779,7 +5779,7 @@ const seoAuditInit = () => {
     let lighthouseData = null;
 
     try {
-      // 1) Получаем SEO-данные с сервера (title, description, h1, h2, wordCount, ssl)
+      // SEO-данные с сервера (title, description, h1, h2, wordCount, ssl)
       const seoResponse = await fetch('/submit/get-seo-data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -5789,17 +5789,16 @@ const seoAuditInit = () => {
       if (!seoResult.success) throw new Error(seoResult.error || "Ошибка получения SEO-данных");
       seoData = seoResult.data;
 
-      // 2) Получаем данные от Google PageSpeed (mobile)
+      // Google PageSpeed (mobile)
       const pagespeedUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${API_KEY}&strategy=mobile`;
       const psResponse = await fetch(pagespeedUrl);
       if (!psResponse.ok) throw new Error(`PageSpeed API error: ${psResponse.status}`);
       lighthouseData = await psResponse.json();
 
-      // Извлекаем нужные аудиты
       const audits = lighthouseData.lighthouseResult?.audits || {};
       const categories = lighthouseData.lighthouseResult?.categories || {};
 
-      // --- Индексация (is-crawlable) ---
+      // ----- 1. Индексация страниц -----
       const crawlScore = audits["is-crawlable"]?.score;
       const crawlStatus = getStatus(crawlScore);
       let indexingText = "";
@@ -5813,12 +5812,12 @@ const seoAuditInit = () => {
         desc: "Проверка доступности страниц для поисковых роботов"
       };
 
-      // --- Скорость загрузки (performance) ---
+      // ----- 2. Скорость загрузки -----
       const perfScore = categories.performance?.score;
       const perfStatus = getStatus(perfScore, { good: 0.9, warn: 0.5 });
       let speedText = "";
       if (perfStatus.status === "good") speedText = "Сайт загружается быстро";
-      else if (perfStatus.status === "error") speedText = "Сайт загружается медленно, особенно на мобильных";
+      else if (perfStatus.status === "error") speedText = "Сайт загружается медленно, особенно на мобильных устройствах";
       else speedText = "Скорость загрузки можно улучшить";
       const speed = {
         category: "speed",
@@ -5827,14 +5826,13 @@ const seoAuditInit = () => {
         desc: "Общая производительность по Core Web Vitals"
       };
 
-      // --- Мета-теги (из серверных данных) ---
+      // ----- 3. Мета-теги (title, description) -----
       const titleOk = seoData.title && seoData.title.trim() !== "";
       const descOk = seoData.description && seoData.description.trim() !== "";
-      let metaStatus = { status: "error", text: "" };
+      let metaStatus = { status: "warning", text: "У части страниц отсутствуют title и description" };
       if (titleOk && descOk) metaStatus = { status: "good", text: "Title и meta-description заполнены" };
-      else if (!titleOk && !descOk) metaStatus = { status: "error", text: "Отсутствуют title и meta-description" };
-      else if (!titleOk) metaStatus = { status: "error", text: "Отсутствует title" };
-      else metaStatus = { status: "error", text: "Отсутствует meta-description" };
+      else if (!titleOk && !descOk) metaStatus = { status: "error", text: "Отсутствуют title и description" };
+      // Если один из них отсутствует — оставляем warning (как на референсе)
       const metaTags = {
         category: "meta",
         title: "Мета-теги",
@@ -5842,14 +5840,20 @@ const seoAuditInit = () => {
         desc: "Корректность заполнения тегов title и meta-description"
       };
 
-      // --- Мобильная версия (viewport + content-width) ---
+      // ----- 4. Мобильная версия -----
       const vpScore = audits["viewport"]?.score;
       const cwScore = audits["content-width"]?.score;
       let mobileText = "";
       let mobileStat = "warning";
-      if (vpScore === 1 && cwScore === 1) { mobileStat = "good"; mobileText = "Сайт адаптирован под мобильные"; }
-      else if (vpScore === 0 || cwScore === 0) { mobileStat = "error"; mobileText = "Сайт не адаптирован для мобильных"; }
-      else mobileText = "Адаптация требует улучшения";
+      if (vpScore === 1 && cwScore === 1) {
+        mobileStat = "good";
+        mobileText = "Сайт адаптирован, но есть зоны для улучшения UX";
+      } else if (vpScore === 0 || cwScore === 0) {
+        mobileStat = "error";
+        mobileText = "Сайт не адаптирован для мобильных";
+      } else {
+        mobileText = "Адаптация требует улучшения";
+      }
       const mobile = {
         category: "mobile",
         title: "Мобильная версия",
@@ -5857,17 +5861,18 @@ const seoAuditInit = () => {
         desc: "Проверка viewport и корректности контента на мобильных"
       };
 
-      // --- Контент и релевантность (из серверных данных) ---
+      // ----- 5. Контент и релевантность -----
       const h1Ok = seoData.h1 && seoData.h1.trim() !== "";
       const h2Count = seoData.h2 ? seoData.h2.length : 0;
       const wordCount = seoData.wordCount || 0;
       const kwOk = seoData.keywords && seoData.keywords.trim() !== "";
-      let contentStatus = { status: "warning", text: "Контент нуждается в улучшении" };
-      if (h1Ok && h2Count >= 1 && wordCount > 300 && kwOk) contentStatus = { status: "good", text: "Контент отличный" };
-      else if (!h1Ok) contentStatus = { status: "error", text: "Отсутствует H1" };
-      else if (wordCount < 100) contentStatus = { status: "error", text: "Критически мало текста" };
-      else if (wordCount < 300) contentStatus = { status: "warning", text: "Мало текста, рекомендуется >300 слов" };
-      else if (h2Count === 0) contentStatus = { status: "warning", text: "Нет подзаголовков H2" };
+      let contentStatus = { status: "warning", text: "Контент недостаточно раскрывает часть поисковых запросов" };
+      if (h1Ok && h2Count >= 1 && wordCount > 300 && kwOk) {
+        contentStatus = { status: "good", text: "Контент отличный: заголовки, объём и ключевые слова в порядке" };
+      } else if (!h1Ok || wordCount < 100) {
+        contentStatus = { status: "error", text: "Критические проблемы с контентом (отсутствие H1 или слишком мало текста)" };
+      }
+      // В остальных случаях остаётся warning с текстом выше
       const contentDesc = `H1: ${h1Ok ? "присутствует" : "отсутствует"}, H2: ${h2Count} шт., слов: ${wordCount}, ключевые слова: ${kwOk ? "заданы" : "не заданы"}`;
       const content = {
         category: "content",
@@ -5876,12 +5881,16 @@ const seoAuditInit = () => {
         desc: contentDesc
       };
 
-      // --- Технические ошибки (errors-in-console) ---
+      // ----- 6. Технические ошибки -----
       const errorsScore = audits["errors-in-console"]?.score;
       let errorsText = "";
       let errorsStat = "error";
-      if (errorsScore === 1) { errorsStat = "good"; errorsText = "Технических ошибок не найдено"; }
-      else errorsText = "Найдены битые ссылки и ошибки 404";
+      if (errorsScore === 1) {
+        errorsStat = "good";
+        errorsText = "Технических ошибок не найдено";
+      } else {
+        errorsText = "Найдены битые ссылки и ошибки 404";
+      }
       const techErrors = {
         category: "errors",
         title: "Технические ошибки",
@@ -5889,7 +5898,7 @@ const seoAuditInit = () => {
         desc: "Наличие ошибок JavaScript и проблем рендеринга"
       };
 
-      // --- Внутренняя перелинковка (link-text) ---
+      // ----- 7. Внутренняя перелинковка -----
       const linkScore = audits["link-text"]?.score;
       const linkStatus = getStatus(linkScore, { good: 0.9, warn: 0.5 });
       let linkText = "";
@@ -5903,14 +5912,15 @@ const seoAuditInit = () => {
         desc: "Описательность текстов внутренних ссылок"
       };
 
-      // --- Безопасность / HTTPS ---
-      // Приоритет: серверный ssl, либо is-on-https из PageSpeed
+      // ----- 8. Безопасность / HTTPS -----
       let sslOk = !!seoData.ssl;
       if (!sslOk && audits["is-on-https"]?.score === 1) sslOk = true;
       const security = {
         category: "security",
         title: "Безопасность / HTTPS",
-        status: sslOk ? { status: "good", text: "SSL подключен, критичных проблем не найдено" } : { status: "error", text: "HTTPS не настроен или ошибки" },
+        status: sslOk 
+          ? { status: "good", text: "SSL подключен, критичных проблем не найдено" }
+          : { status: "error", text: "SSL не подключен или ошибки" },
         desc: "Наличие и корректность SSL-сертификата"
       };
 
