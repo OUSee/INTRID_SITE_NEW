@@ -5718,8 +5718,201 @@ const seoAuditInit = () => {
   const loader = document.getElementById("audit-loader");
   const errorDiv = document.getElementById("audit-error");
   const resultsContainer = document.getElementById("audit-results");
-  const resultsGrid = resultsContainer.querySelector(".list--cooperate");
+  const resultsGrid = resultsContainer.querySelector("#audit-cards");
 
+  // ---------- Универсальная оценка ----------
+  const getStatus = (score, thresholds = { good: 0.9, warn: 0.5 }) => {
+    if (score === null || score === undefined) {
+      return { status: "warning", value: "", text: "Не удалось проверить" };
+    }
+    if (score >= thresholds.good) {
+      return { status: "good", value: Math.round(score * 100) + "%", text: "" };
+    }
+    if (score >= thresholds.warn) {
+      return { status: "warning", value: Math.round(score * 100) + "%", text: "" };
+    }
+    return { status: "error", value: Math.round(score * 100) + "%", text: "" };
+  };
+
+  // ---------- Извлечение 8 метрик ----------
+  function extractMetrics(data) {
+    const lighthouse = data.lighthouseResult;
+    const audits = lighthouse.audits || {};
+    const categories = lighthouse.categories || {};
+
+    // 1. Индексация страниц (is‑crawlable)
+    const crawl = audits["is-crawlable"];
+    const crawlStatus = getStatus(crawl?.score);
+    const indexing = {
+      category: "indexing",
+      title: "Индексация страниц",
+      status: {
+        ...crawlStatus,
+        text:
+          crawlStatus.status === "good"
+            ? "Все важные страницы в индексе"
+            : crawlStatus.status === "error"
+            ? "Сайт не индексируется"
+            : "Часть важных страниц отсутствует в индексе"
+      },
+      desc: "Проверка доступности страниц для поисковых роботов"
+    };
+
+    // 2. Скорость загрузки (общий Performance Score)
+    const perfScore = categories.performance?.score;
+    const perfStatus = getStatus(perfScore, { good: 0.9, warn: 0.5 });
+    const speed = {
+      category: "speed",
+      title: "Скорость загрузки",
+      status: {
+        ...perfStatus,
+        text:
+          perfStatus.status === "good"
+            ? "Сайт загружается быстро"
+            : perfStatus.status === "error"
+            ? "Сайт загружается медленно, особенно на мобильных устройствах"
+            : "Скорость загрузки можно улучшить"
+      },
+      desc: "Общая производительность по Core Web Vitals"
+    };
+
+    // 3. Мета‑теги (title + description) – ИСПРАВЛЕННАЯ ЛОГИКА
+    const titleScore = audits["document-title"]?.score;
+    const descScore = audits["meta-description"]?.score;
+
+    const titleOk = titleScore === 1;
+    const descOk = descScore === 1;
+    const titleMissing = titleScore === 0;
+    const descMissing = descScore === 0;
+
+    let metaStatus;
+    if (titleOk && descOk) {
+      metaStatus = { status: "good", value: "100%", text: "Заголовки и описания в порядке" };
+    } else if (titleMissing && descMissing) {
+      metaStatus = { status: "error", value: "", text: "Отсутствуют title и description" };
+    } else if (titleMissing) {
+      metaStatus = { status: "error", value: "", text: "Отсутствует title" };
+    } else if (descMissing) {
+      metaStatus = { status: "error", value: "", text: "Отсутствует meta-description" };
+    } else {
+      // сюда попадаем, если хотя бы один аудит недоступен (score = null)
+      metaStatus = { status: "warning", value: "", text: "Не удалось проверить мета-теги" };
+    }
+
+    const metaTags = {
+      category: "meta",
+      title: "Мета-теги",
+      status: metaStatus,
+      desc: "Корректность заполнения тегов title и meta-description"
+    };
+
+    // 4. Мобильная версия (viewport + content‑width)
+    const vpScore = audits["viewport"]?.score;
+    const cwScore = audits["content-width"]?.score;
+    let mobileStatus;
+    if (vpScore === 1 && cwScore === 1) {
+      mobileStatus = { status: "good", value: "", text: "Сайт адаптирован под мобильные" };
+    } else if (vpScore === 0 || cwScore === 0) {
+      mobileStatus = { status: "error", value: "", text: "Сайт не адаптирован для мобильных" };
+    } else {
+      mobileStatus = { status: "warning", value: "", text: "Адаптация требует улучшения" };
+    }
+    const mobile = {
+      category: "mobile",
+      title: "Мобильная версия",
+      status: mobileStatus,
+      desc: "Проверка viewport и корректности контента на мобильных"
+    };
+
+    // 5. Контент и релевантность (image‑alt) – смягчённые пороги
+    const altScore = audits["image-alt"]?.score;
+    const altStatus = getStatus(altScore, { good: 0.9, warn: 0.7 });
+    const content = {
+      category: "content",
+      title: "Контент и релевантность",
+      status: {
+        ...altStatus,
+        text:
+          altStatus.status === "good"
+            ? "Контент релевантен запросам"
+            : altStatus.status === "error"
+            ? "Контент недостаточно раскрывает часть поисковых запросов"
+            : "Контент можно дополнить"
+      },
+      desc: "Анализ alt-текстов изображений как индикатор проработанности контента"
+    };
+
+    // 6. Технические ошибки
+    const errorsScore = audits["errors-in-console"]?.score;
+    const techErrors = {
+      category: "errors",
+      title: "Технические ошибки",
+      status:
+        errorsScore === 1
+          ? { status: "good", value: "", text: "Технических ошибок не найдено" }
+          : { status: "error", value: "", text: "Найдены битые ссылки и ошибки 404" },
+      desc: "Наличие ошибок JavaScript и проблем рендеринга"
+    };
+
+    // 7. Внутренняя перелинковка
+    const linkScore = audits["link-text"]?.score;
+    const linkStatus = getStatus(linkScore, { good: 0.9, warn: 0.5 });
+    const internalLinks = {
+      category: "links",
+      title: "Внутренняя перелинковка",
+      status: {
+        ...linkStatus,
+        text:
+          linkStatus.status === "good"
+            ? "Хорошая структура ссылок"
+            : linkStatus.status === "error"
+            ? "Нужно усилить связь между ключевыми страницами"
+            : "Перелинковку можно улучшить"
+      },
+      desc: "Описательность текстов внутренних ссылок"
+    };
+
+    // 8. Безопасность / HTTPS
+    const httpsScore = audits["is-on-https"]?.score;
+    let httpsStatus;
+    if (httpsScore === 1) {
+      httpsStatus = { status: "good", value: "", text: "SSL подключен, критичных проблем не найдено" };
+    } else if (httpsScore === 0) {
+      httpsStatus = { status: "error", value: "", text: "HTTPS не настроен или ошибки" };
+    } else {
+      const finalUrl = lighthouse?.finalUrl || "";
+      const isHttps = /^https:\/\//i.test(finalUrl);
+      httpsStatus = isHttps
+        ? { status: "good", value: "", text: "Сайт использует HTTPS" }
+        : { status: "error", value: "", text: "HTTPS не настроен или ошибки" };
+    }
+    const security = {
+      category: "security",
+      title: "Безопасность / HTTPS",
+      status: httpsStatus,
+      desc: "Наличие и корректность SSL-сертификата"
+    };
+
+    return [indexing, speed, metaTags, mobile, content, techErrors, internalLinks, security];
+  }
+
+  // ---------- Рендеринг ----------
+  function renderAuditCards(metrics) {
+    resultsGrid.innerHTML = "";
+    metrics.forEach((metric) => {
+      const card = document.createElement("div");
+      card.className = `card card--icon ${metric.status.status}`;
+      card.innerHTML = `
+        <img src="/src/icons/metric-${metric.category}.svg" alt="icon">
+        <b>${metric.title}</b>
+        <div class="badge mb-16 ${metric.status.status}">${metric.status.text}</div>
+        <p>${metric.desc}</p>
+      `;
+      resultsGrid.appendChild(card);
+    });
+  }
+
+  // ---------- Отправка формы (с нормализацией URL) ----------
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -5730,7 +5923,6 @@ const seoAuditInit = () => {
 
     let url = urlInput.value.trim();
 
-    // 1. Проверка на пустой ввод
     if (!url) {
       errorDiv.textContent = "Введите адрес сайта";
       errorDiv.style.display = "block";
@@ -5738,12 +5930,10 @@ const seoAuditInit = () => {
       return;
     }
 
-    // 2. Нормализация: если нет протокола, добавляем https://
     if (!/^https?:\/\//i.test(url)) {
       url = "https://" + url;
     }
 
-    // 3. Проверка валидности URL
     try {
       new URL(url);
     } catch (_) {
@@ -5753,20 +5943,16 @@ const seoAuditInit = () => {
       return;
     }
 
-    // Обновляем значение в поле, если оно изменилось
     urlInput.value = url;
 
-    // Скрываем старые результаты и ошибки
     resultsContainer.style.display = "none";
     errorDiv.style.display = "none";
     resultsGrid.innerHTML = "";
 
-    // Отключаем все поля ввода
     inputs.forEach((input) => {
       input.disabled = true;
     });
 
-    // Показываем прелоадер
     loader.style.display = "block";
 
     try {
@@ -5775,11 +5961,7 @@ const seoAuditInit = () => {
       if (!response.ok) throw new Error(`Ошибка API: ${response.status}`);
       const data = await response.json();
 
-      // Извлекаем необходимые аудиты
-      const audits = data.lighthouseResult.audits;
-      const metrics = extractMetrics(data); // Функция для извлечения метрик
-
-      // Строим карточки
+      const metrics = extractMetrics(data);
       renderAuditCards(metrics);
       resultsContainer.style.display = "block";
 
@@ -5792,152 +5974,19 @@ const seoAuditInit = () => {
 
       showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
-      loader.style.display = "none";
+      setTimeout(() => {
+        resultsContainer.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 600);
 
-      // Включаем поля ввода
+      loader.style.display = "none";
       inputs.forEach((input) => {
         input.disabled = false;
       });
     }
   });
-
-  function extractMetrics(data) {
-    const audits = data.lighthouseResult.audits;
-
-    const getScoreStatus = (score) => {
-      if (score === null || score === undefined)
-        return { value: "—", status: "warning", text: "Нет данных" };
-      if (score >= 0.9)
-        return {
-          value: Math.round(score * 100) + "%",
-          status: "good",
-          text: "В порядке",
-        };
-      if (score >= 0.5)
-        return {
-          value: Math.round(score * 100) + "%",
-          status: "warning",
-          text: "Требуется улучшение",
-        };
-      return {
-        value: Math.round(score * 100) + "%",
-        status: "error",
-        text: "Серьёзные проблемы",
-      };
-    };
-
-    const perfScore = data.lighthouseResult.categories.performance.score;
-    const speed = {
-      title: "Скорость загрузки",
-      status: getScoreStatus(perfScore),
-      desc: "Общий показатель производительности по Core Web Vitals",
-    };
-
-    const httpsAudit = audits["is-on-https"];
-    const security = {
-      title: "Безопасность / HTTPS",
-      status:
-        httpsAudit && httpsAudit.score === 1
-          ? { value: "", status: "good", text: "Сайт использует HTTPS" }
-          : {
-              value: "",
-              status: "error",
-              text: "HTTPS не настроен или ошибки",
-            },
-      desc: "Наличие и корректность SSL‑сертификата",
-    };
-
-    const titleAudit = audits["document-title"];
-    const metaAudit = audits["meta-description"];
-    let metaStatus;
-    if (
-      titleAudit &&
-      metaAudit &&
-      titleAudit.score === 1 &&
-      metaAudit.score === 1
-    ) {
-      metaStatus = {
-        value: "",
-        status: "good",
-        text: "Заголовок и описание в порядке",
-      };
-    } else if (
-      (titleAudit && titleAudit.score === 0) ||
-      (metaAudit && metaAudit.score === 0)
-    ) {
-      metaStatus = {
-        value: "",
-        status: "error",
-        text: "Отсутствуют важные мета-теги",
-      };
-    } else {
-      metaStatus = {
-        value: "",
-        status: "warning",
-        text: "Мета-теги требуют доработки",
-      };
-    }
-    const metaTags = {
-      title: "Мета-теги (title/description)",
-      status: metaStatus,
-      desc: "Корректность заполнения основных мета-тегов",
-    };
-
-    const contentWidthAudit = audits["content-width"];
-    const mobile = {
-      title: "Мобильная версия",
-      status:
-        contentWidthAudit && contentWidthAudit.score === 1
-          ? {
-              value: "",
-              status: "good",
-              text: "Контент подстраивается под экран",
-            }
-          : {
-              value: "",
-              status: "warning",
-              text: "Есть проблемы с адаптацией контента",
-            },
-      desc: "Проверка того, что контент не выходит за пределы экрана",
-    };
-
-    const errorsAudit = audits["errors-in-console"];
-    const techErrors = {
-      title: "Технические ошибки",
-      status:
-        errorsAudit && errorsAudit.score === 1
-          ? {
-              value: "",
-              status: "good",
-              text: "Критических ошибок в консоли нет",
-            }
-          : {
-              value: "",
-              status: "error",
-              text: "Обнаружены ошибки в консоли браузера",
-            },
-      desc: "Наличие JavaScript-ошибок и проблем рендеринга",
-    };
-
-    return [speed, security, metaTags, mobile, techErrors];
-  }
-
-  function renderAuditCards(metrics) {
-    resultsGrid.innerHTML = "";
-    metrics.forEach((metric) => {
-      const card = document.createElement("li");
-
-      card.innerHTML = `
-        <img src="/src/icons/status-${metric.status.status}.svg" alt="icon">
-        <div>
-          <b class="title_h5 fw-bold color-blue">${metric.title}</b>
-          <p class="mb-8"><strong>${metric.status.text}</strong> ${metric.status.value ? "(" + metric.status.value + ")" : ""}</p>
-          <span>${metric.desc}</span>
-        </div>
-      `;
-      resultsGrid.appendChild(card);
-    });
-  }
 };
 
 // domain checker
