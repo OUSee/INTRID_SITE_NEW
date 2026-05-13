@@ -5736,7 +5736,12 @@ const seoAuditInit = () => {
     metrics.forEach((metric) => {
       const card = document.createElement("div");
       card.className = `card card--icon ${metric.status.status}`;
-      const statusText = metric.status.status === "good" ? "Хорошо" : (metric.status.status === "warning" ? "Предупреждение" : "Ошибка");
+      const statusText =
+        metric.status.status === "good"
+          ? "Хорошо"
+          : metric.status.status === "warning"
+            ? "Предупреждение"
+            : "Ошибка";
       card.innerHTML = `
         <img src="/src/icons/metric-${metric.category}.svg" alt="icon">
         <b>${metric.title}</b>
@@ -5750,7 +5755,9 @@ const seoAuditInit = () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+    const submitBtn = form.querySelector(
+      'button[type="submit"], input[type="submit"]',
+    );
     showButtonLoader(submitBtn);
 
     let url = urlInput.value.trim();
@@ -5762,7 +5769,9 @@ const seoAuditInit = () => {
     }
 
     if (!/^https?:\/\//i.test(url)) url = "https://" + url;
-    try { new URL(url); } catch (_) {
+    try {
+      new URL(url);
+    } catch (_) {
       errorDiv.textContent = "Некорректный адрес сайта.";
       errorDiv.style.display = "block";
       hideButtonLoader(submitBtn);
@@ -5773,7 +5782,7 @@ const seoAuditInit = () => {
     resultsContainer.style.display = "none";
     errorDiv.style.display = "none";
     resultsGrid.innerHTML = "";
-    inputs.forEach(i => i.disabled = true);
+    inputs.forEach((i) => (i.disabled = true));
     loader.style.display = "block";
 
     let seoData = null;
@@ -5781,19 +5790,21 @@ const seoAuditInit = () => {
 
     try {
       // SEO-данные с сервера (title, description, h1, h2, wordCount, ssl)
-      const seoResponse = await fetch('/submit/get-seo-data', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: url })
+      const seoResponse = await fetch("/submit/get-seo-data", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: url }),
       });
       const seoResult = await seoResponse.json();
-      if (!seoResult.success) throw new Error(seoResult.error || "Ошибка получения SEO-данных");
+      if (!seoResult.success)
+        throw new Error(seoResult.error || "Ошибка получения SEO-данных");
       seoData = seoResult.data;
 
       // Google PageSpeed (mobile)
       const pagespeedUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${API_KEY}&strategy=mobile`;
       const psResponse = await fetch(pagespeedUrl);
-      if (!psResponse.ok) throw new Error(`PageSpeed API error: ${psResponse.status}`);
+      if (!psResponse.ok)
+        throw new Error(`PageSpeed API error: ${psResponse.status}`);
       lighthouseData = await psResponse.json();
 
       const audits = lighthouseData.lighthouseResult?.audits || {};
@@ -5803,14 +5814,16 @@ const seoAuditInit = () => {
       const crawlScore = audits["is-crawlable"]?.score;
       const crawlStatus = getStatus(crawlScore);
       let indexingText = "";
-      if (crawlStatus.status === "good") indexingText = "Все важные страницы в индексе";
-      else if (crawlStatus.status === "error") indexingText = "Сайт не индексируется";
+      if (crawlStatus.status === "good")
+        indexingText = "Все важные страницы в индексе";
+      else if (crawlStatus.status === "error")
+        indexingText = "Сайт не индексируется";
       else indexingText = "Часть важных страниц отсутствует в индексе";
       const indexing = {
         category: "indexing",
         title: "Индексация страниц",
         status: { status: crawlStatus.status, text: indexingText },
-        desc: "Проверка доступности страниц для поисковых роботов"
+        desc: "Проверка доступности страниц для поисковых роботов",
       };
 
       // ----- 2. Скорость загрузки -----
@@ -5818,27 +5831,40 @@ const seoAuditInit = () => {
       const perfStatus = getStatus(perfScore, { good: 0.9, warn: 0.5 });
       let speedText = "";
       if (perfStatus.status === "good") speedText = "Сайт загружается быстро";
-      else if (perfStatus.status === "error") speedText = "Сайт загружается медленно, особенно на мобильных устройствах";
+      else if (perfStatus.status === "error")
+        speedText =
+          "Сайт загружается медленно, особенно на мобильных устройствах";
       else speedText = "Скорость загрузки можно улучшить";
       const speed = {
         category: "speed",
         title: "Скорость загрузки",
         status: { status: perfStatus.status, text: speedText },
-        desc: "Общая производительность по Core Web Vitals"
+        desc: "Общая производительность по Core Web Vitals",
       };
 
       // ----- 3. Мета-теги (title, description) -----
       const titleOk = seoData.title && seoData.title.trim() !== "";
       const descOk = seoData.description && seoData.description.trim() !== "";
-      let metaStatus = { status: "warning", text: "У части страниц отсутствуют title и description" };
-      if (titleOk && descOk) metaStatus = { status: "good", text: "Title и meta-description заполнены" };
-      else if (!titleOk && !descOk) metaStatus = { status: "error", text: "Отсутствуют title и description" };
+      let metaStatus = {
+        status: "warning",
+        text: "У части страниц отсутствуют title и description",
+      };
+      if (titleOk && descOk)
+        metaStatus = {
+          status: "good",
+          text: "Title и meta-description заполнены",
+        };
+      else if (!titleOk && !descOk)
+        metaStatus = {
+          status: "error",
+          text: "Отсутствуют title и description",
+        };
       // Если один из них отсутствует — оставляем warning (как на референсе)
       const metaTags = {
         category: "meta",
         title: "Мета-теги",
         status: metaStatus,
-        desc: "Корректность заполнения тегов title и meta-description"
+        desc: "Корректность заполнения тегов title и meta-description",
       };
 
       // ----- 4. Мобильная версия -----
@@ -5859,7 +5885,7 @@ const seoAuditInit = () => {
         category: "mobile",
         title: "Мобильная версия",
         status: { status: mobileStat, text: mobileText },
-        desc: "Проверка viewport и корректности контента на мобильных"
+        desc: "Проверка viewport и корректности контента на мобильных",
       };
 
       // ----- 5. Контент и релевантность -----
@@ -5867,11 +5893,20 @@ const seoAuditInit = () => {
       const h2Count = seoData.h2 ? seoData.h2.length : 0;
       const wordCount = seoData.wordCount || 0;
       const kwOk = seoData.keywords && seoData.keywords.trim() !== "";
-      let contentStatus = { status: "warning", text: "Контент недостаточно раскрывает часть поисковых запросов" };
+      let contentStatus = {
+        status: "warning",
+        text: "Контент недостаточно раскрывает часть поисковых запросов",
+      };
       if (h1Ok && h2Count >= 1 && wordCount > 300 && kwOk) {
-        contentStatus = { status: "good", text: "Контент отличный: заголовки, объём и ключевые слова в порядке" };
+        contentStatus = {
+          status: "good",
+          text: "Контент отличный: заголовки, объём и ключевые слова в порядке",
+        };
       } else if (!h1Ok || wordCount < 100) {
-        contentStatus = { status: "error", text: "Критические проблемы с контентом (отсутствие H1 или слишком мало текста)" };
+        contentStatus = {
+          status: "error",
+          text: "Критические проблемы с контентом (отсутствие H1 или слишком мало текста)",
+        };
       }
       // В остальных случаях остаётся warning с текстом выше
       const contentDesc = `H1: ${h1Ok ? "присутствует" : "отсутствует"}, H2: ${h2Count} шт., слов: ${wordCount}, ключевые слова: ${kwOk ? "заданы" : "не заданы"}`;
@@ -5879,7 +5914,7 @@ const seoAuditInit = () => {
         category: "content",
         title: "Контент и релевантность",
         status: contentStatus,
-        desc: contentDesc
+        desc: contentDesc,
       };
 
       // ----- 6. Технические ошибки -----
@@ -5896,7 +5931,7 @@ const seoAuditInit = () => {
         category: "errors",
         title: "Технические ошибки",
         status: { status: errorsStat, text: errorsText },
-        desc: "Наличие ошибок JavaScript и проблем рендеринга"
+        desc: "Наличие ошибок JavaScript и проблем рендеринга",
       };
 
       // ----- 7. Внутренняя перелинковка -----
@@ -5904,13 +5939,14 @@ const seoAuditInit = () => {
       const linkStatus = getStatus(linkScore, { good: 0.9, warn: 0.5 });
       let linkText = "";
       if (linkStatus.status === "good") linkText = "Хорошая структура ссылок";
-      else if (linkStatus.status === "error") linkText = "Нужно усилить связь между ключевыми страницами";
+      else if (linkStatus.status === "error")
+        linkText = "Нужно усилить связь между ключевыми страницами";
       else linkText = "Перелинковку можно улучшить";
       const internalLinks = {
         category: "links",
         title: "Внутренняя перелинковка",
         status: { status: linkStatus.status, text: linkText },
-        desc: "Описательность текстов внутренних ссылок"
+        desc: "Описательность текстов внутренних ссылок",
       };
 
       // ----- 8. Безопасность / HTTPS -----
@@ -5919,13 +5955,25 @@ const seoAuditInit = () => {
       const security = {
         category: "security",
         title: "Безопасность / HTTPS",
-        status: sslOk 
-          ? { status: "good", text: "SSL подключен, критичных проблем не найдено" }
+        status: sslOk
+          ? {
+              status: "good",
+              text: "SSL подключен, критичных проблем не найдено",
+            }
           : { status: "error", text: "SSL не подключен или ошибки" },
-        desc: "Наличие и корректность SSL-сертификата"
+        desc: "Наличие и корректность SSL-сертификата",
       };
 
-      const metrics = [indexing, speed, metaTags, mobile, content, techErrors, internalLinks, security];
+      const metrics = [
+        indexing,
+        speed,
+        metaTags,
+        mobile,
+        content,
+        techErrors,
+        internalLinks,
+        security,
+      ];
       renderAuditCards(metrics);
       resultsContainer.style.display = "block";
       showFormFeedback(submitBtn, "Проверка завершена", "success");
@@ -5935,9 +5983,9 @@ const seoAuditInit = () => {
       errorDiv.style.display = "block";
       showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
-      seoAuditFeatures.style.display = '';
+      seoAuditFeatures.style.display = "";
       loader.style.display = "none";
-      inputs.forEach(i => i.disabled = false);
+      inputs.forEach((i) => (i.disabled = false));
 
       setTimeout(() => {
         resultsContainer.scrollIntoView({
@@ -6025,6 +6073,19 @@ const domainCheker = () => {
       errorDiv.style.display = "block";
       showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
+      if (selects) {
+        let customSelect = niceSelectJS("select", {
+          activeMobile: true,
+        });
+      }
+
+      setTimeout(() => {
+        resultDiv.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 600);
+
       loaderDiv.style.display = "none";
       inputs.forEach((input) => {
         input.disabled = false;
