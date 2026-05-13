@@ -5718,6 +5718,7 @@ const seoAuditInit = () => {
   const errorDiv = document.getElementById("audit-error");
   const resultsContainer = document.getElementById("audit-results");
   const resultsGrid = resultsContainer.querySelector("#audit-cards");
+  const seoAuditFeatures = document.getElementById("seo-audit-features");
 
   // Универсальная оценка (возвращает объект {status, text})
   const getStatus = (score, thresholds = { good: 0.9, warn: 0.5 }) => {
@@ -5934,8 +5935,16 @@ const seoAuditInit = () => {
       errorDiv.style.display = "block";
       showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
+      seoAuditFeatures.style.display = '';
       loader.style.display = "none";
       inputs.forEach(i => i.disabled = false);
+
+      setTimeout(() => {
+        resultsContainer.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 600);
     }
   });
 };
