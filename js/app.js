@@ -2470,6 +2470,30 @@ const niceSelectJS = function (selectName, options) {
   return this;
 };
 
+window.updateNiceSelect = function(selectEl) {
+  const niceSelect = selectEl.nextElementSibling?.classList.contains("nice-select")
+    ? selectEl.nextElementSibling
+    : null;
+  if (!niceSelect) return;
+  const currentSpan = niceSelect.querySelector(".current");
+  if (currentSpan) {
+    const selectedOption = selectEl.options[selectEl.selectedIndex];
+    currentSpan.textContent = selectedOption
+      ? selectedOption.textContent
+      : selectEl.getAttribute("data-display") || "Выберите...";
+  }
+  const items = niceSelect.querySelectorAll(".list .option");
+  items.forEach((item, idx) => {
+    if (idx === selectEl.selectedIndex) {
+      item.classList.add("selected");
+      item.setAttribute("aria-selected", "true");
+    } else {
+      item.classList.remove("selected");
+      item.removeAttribute("aria-selected");
+    }
+  });
+};
+
 // tooltip handler
 const showTooltip = (el) => {
   requestAnimationFrame(() => {
@@ -6094,6 +6118,129 @@ const domainCheker = () => {
   });
 };
 
+// Функция обновления тултипов (fallback, если глобальная не определена)
+function updateTooltipsForSelectFallback(select) {
+  let prefix = select.getAttribute("data-tooltip-prefix");
+  if (!prefix) {
+    const id = select.id;
+    if (id && id.endsWith("-select")) {
+      prefix = id.slice(0, -7);
+    } else {
+      const container = select.closest(".toggle-line, .nice-wrapper");
+      if (container) {
+        const tooltips = container.querySelectorAll(".tooltip");
+        tooltips.forEach((t) => t.classList.add("hidden"));
+        const idx = select.selectedIndex;
+        if (idx >= 0 && idx < tooltips.length) {
+          tooltips[idx].classList.remove("hidden");
+        }
+      }
+      return;
+    }
+  }
+  const tooltips = [];
+  for (let i = 1; ; i++) {
+    const tip = document.getElementById(`${prefix}-${i}`);
+    if (!tip) break;
+    tooltips.push(tip);
+  }
+  tooltips.forEach((t) => t.classList.add("hidden"));
+  const idx = select.selectedIndex;
+  if (idx >= 0 && idx < tooltips.length) {
+    tooltips[idx].classList.remove("hidden");
+  }
+}
+
+// 1. Привязка input к select
+function initSelectBindings() {
+  const bindings = document.querySelectorAll("[data-select-target]");
+  bindings.forEach((trigger) => {
+    trigger.removeEventListener("change", handleBindingChange);
+    trigger.addEventListener("change", handleBindingChange);
+
+    // Если чекбокс уже отмечен – вызываем обработчик вручную
+    if (trigger.checked) {
+      handleBindingChange({ currentTarget: trigger });
+    }
+  });
+}
+
+function handleBindingChange(e) {
+  const trigger = e.currentTarget;
+  const targetSelectId = trigger.getAttribute("data-select-target");
+  if (!targetSelectId) return;
+  const targetSelect = document.getElementById(targetSelectId);
+  if (!targetSelect || targetSelect.tagName !== "SELECT") return;
+
+  if (trigger.checked) {
+    let index = trigger.getAttribute("data-select-option-index");
+    if (index !== null) {
+      index = parseInt(index, 10);
+      if (!isNaN(index) && index >= 0 && index < targetSelect.options.length) {
+        targetSelect.selectedIndex = index;
+        targetSelect.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    }
+  } else {
+    const resetOnUncheck =
+      trigger.getAttribute("data-reset-on-uncheck") === "true";
+    if (resetOnUncheck) {
+      targetSelect.selectedIndex = -1;
+      targetSelect.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  }
+}
+
+// 2. Автообновление тултипов при изменении select
+function initSelectTooltips() {
+  const selects = document.querySelectorAll("select");
+  selects.forEach((select) => {
+    select.removeEventListener("change", handleSelectChange);
+    select.addEventListener("change", handleSelectChange);
+    // сразу обновим текущее состояние
+    handleSelectChange({ currentTarget: select });
+  });
+}
+
+function handleSelectChange(e) {
+  const select = e.currentTarget;
+  
+  // 1. Обновляем тултипы
+  if (typeof window.updateTooltipsForSelect === "function") {
+    window.updateTooltipsForSelect(select);
+  } else {
+    updateTooltipsForSelectFallback(select);
+  }
+
+  // 2. Обновляем кастомный селект (nice-select)
+  const niceSelect = select.nextElementSibling?.classList.contains("nice-select")
+    ? select.nextElementSibling
+    : null;
+  if (!niceSelect) return;
+
+  // Обновляем текст кнопки
+  const currentSpan = niceSelect.querySelector(".current");
+  if (currentSpan) {
+    const selectedOption = select.options[select.selectedIndex];
+    currentSpan.textContent = selectedOption
+      ? selectedOption.textContent
+      : select.getAttribute("data-display") || "Выберите...";
+  }
+
+  // Обновляем классы "selected" у пунктов списка
+  const items = niceSelect.querySelectorAll(".list .option");
+  items.forEach((item, idx) => {
+    if (idx === select.selectedIndex) {
+      item.classList.add("selected");
+      // Также можно добавить aria-selected для доступности
+      item.setAttribute("aria-selected", "true");
+    } else {
+      item.classList.remove("selected");
+      item.removeAttribute("aria-selected");
+    }
+  });
+}
+
 // scroll events
 window.addEventListener("scroll", pageIsScrolled, { passive: true });
 
@@ -6216,3 +6363,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Запускаем инициализацию после полной загрузки DOM
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
+    initSelectBindings();
+    initSelectTooltips();
+  });
+} else {
+  initSelectBindings();
+  initSelectTooltips();
+}
