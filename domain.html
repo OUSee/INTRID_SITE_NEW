@@ -341,17 +341,23 @@
                                 </p>
 
                                 <div class="toggle-line toggle-nice w-100">
-                                    <input type="checkbox" class="toggle-checkbox" id="extra-server" name="extra-server"
-                                        data-select-target="extra-hosting" data-select-option-index="0">
-                                    <label for="extra-server"></label>
+                                    <label class="label-checkbox" for="extra-server" data-select-option-index="0">
+                                        <input type="checkbox" id="extra-server" name="extra-server"
+                                            data-select-target="extra-hosting" data-select-option-index="0">
+                                    </label>
+
                                     <div class="nice-wrapper nice-wrapper--simple">
                                         <!-- Изменён select: name="type_hosting", id оставлен для совместимости с data-select-target -->
                                         <select id="extra-hosting" name="type_hosting" class="isTextField"
-                                            data-display="Выберите подходящий хостинг" data-price="0">
-                                            <option value="start" data-price="1800">Хостинг старт (150&nbsp;₽/в месяц)</option>
-                                            <option value="standart" data-price="3000">Хостинг стандарт (250&nbsp;₽/в месяц)
+                                            data-display="Хостинг старт (150&nbsp;₽/в месяц)" data-price="0"
+                                            data-tooltip-prefix="extra-hosting">
+                                            <option value="start" data-price="1800">Хостинг старт (150&nbsp;₽/в месяц)
                                             </option>
-                                            <option value="virtual" data-price="6000">Виртуальный сервер / VDS (600&nbsp;₽/в месяц)</option>
+                                            <option value="standart" data-price="3000">Хостинг стандарт (250&nbsp;₽/в
+                                                месяц)
+                                            </option>
+                                            <option value="virtual" data-price="6000">Виртуальный сервер / VDS
+                                                (600&nbsp;₽/в месяц)</option>
                                         </select>
                                     </div>
                                     <span class="tooltip hidden" id="extra-hosting-1"
@@ -368,13 +374,14 @@
                                     </span>
                                 </div>
 
-                                <div class="toggle-line w-100">
-                                    <input type="checkbox" name="type_ssl" class="toggle-checkbox" value="ДА" id="ssl">
-                                    <label for="ssl">
-                                        <p style="text-align: left;">
+                                <div class="d-flex align-start w-100">
+                                    <label class="label-checkbox" for="ssl">
+                                        <input type="checkbox" name="type_ssl" class="toggle-checkbox" value="ДА"
+                                            id="ssl">
+                                        <span>
                                             Установка / настройка
                                             <a href="/ssl" target="_blank" class="color-white">SSL-сертификата</a>
-                                        </p>
+                                        </span>
                                     </label>
                                 </div>
 

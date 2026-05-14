@@ -3785,12 +3785,10 @@ form {
     position: relative;
     display: inline-block;
     width: fit-content;
-    padding-left: 32px;
+    // padding-left: 20px;
     cursor: pointer;
 
     &:hover {
-      text-shadow: var(--blue-main) 0px 0px 10px;
-
       &:before {
         border: 1px solid var(--blue-main) !important;
         text-decoration-color: transparent;
@@ -3799,12 +3797,12 @@ form {
 
     &:before {
       content: "\2714";
-      position: absolute;
-      top: 0;
-      left: 0;
+      // position: absolute;
+      // top: 0;
+      // left: 0;
       box-sizing: border-box;
       display: inline-block;
-      font-size: 0;
+      font-size: inherit;
       width: 20px;
       height: 20px;
       color: transparent;
@@ -3823,7 +3821,7 @@ form {
 
     &:has(input:checked) {
       &:before {
-        font-size: 0.9em;
+        font-size: 1em;
         width: 20px;
         height: 20px;
         color: var(--color-white);

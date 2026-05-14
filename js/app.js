@@ -6153,42 +6153,52 @@ function updateTooltipsForSelectFallback(select) {
 
 // 1. Привязка input к select
 function initSelectBindings() {
-  const bindings = document.querySelectorAll("[data-select-target]");
-  bindings.forEach((trigger) => {
-    trigger.removeEventListener("change", handleBindingChange);
-    trigger.addEventListener("change", handleBindingChange);
+    const bindings = document.querySelectorAll("[data-select-target]");
+    bindings.forEach((trigger) => {
+        trigger.removeEventListener("change", handleBindingChange);
+        trigger.addEventListener("change", handleBindingChange);
 
-    // Если чекбокс уже отмечен – вызываем обработчик вручную
-    if (trigger.checked) {
-      handleBindingChange({ currentTarget: trigger });
-    }
-  });
+        const targetSelectId = trigger.getAttribute("data-select-target");
+        const targetSelect = targetSelectId ? document.getElementById(targetSelectId) : null;
+        if (targetSelect && targetSelect.tagName === "SELECT") {
+            if (trigger.checked) {
+                // принудительно синхронизируем отмеченный чекбокс
+                handleBindingChange({ currentTarget: trigger });
+            } else {
+                targetSelect.disabled = true;
+                syncNiceSelectDisabled(targetSelect); // синхронизируем disabled
+            }
+        }
+    });
 }
 
 function handleBindingChange(e) {
-  const trigger = e.currentTarget;
-  const targetSelectId = trigger.getAttribute("data-select-target");
-  if (!targetSelectId) return;
-  const targetSelect = document.getElementById(targetSelectId);
-  if (!targetSelect || targetSelect.tagName !== "SELECT") return;
+    const trigger = e.currentTarget;
+    const targetSelectId = trigger.getAttribute("data-select-target");
+    if (!targetSelectId) return;
+    const targetSelect = document.getElementById(targetSelectId);
+    if (!targetSelect || targetSelect.tagName !== "SELECT") return;
 
-  if (trigger.checked) {
-    let index = trigger.getAttribute("data-select-option-index");
-    if (index !== null) {
-      index = parseInt(index, 10);
-      if (!isNaN(index) && index >= 0 && index < targetSelect.options.length) {
-        targetSelect.selectedIndex = index;
-        targetSelect.dispatchEvent(new Event("change", { bubbles: true }));
-      }
+    if (trigger.checked) {
+        targetSelect.disabled = false;
+        syncNiceSelectDisabled(targetSelect); // обновляем кастомный селект
+        let index = trigger.getAttribute("data-select-option-index");
+        if (index !== null) {
+            index = parseInt(index, 10);
+            if (!isNaN(index) && index >= 0 && index < targetSelect.options.length) {
+                targetSelect.selectedIndex = index;
+                targetSelect.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+        }
+    } else {
+        targetSelect.disabled = true;
+        syncNiceSelectDisabled(targetSelect); // обновляем кастомный селект
+        const resetOnUncheck = trigger.getAttribute("data-reset-on-uncheck") === "true";
+        if (resetOnUncheck) {
+            targetSelect.selectedIndex = -1;
+            targetSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        }
     }
-  } else {
-    const resetOnUncheck =
-      trigger.getAttribute("data-reset-on-uncheck") === "true";
-    if (resetOnUncheck) {
-      targetSelect.selectedIndex = -1;
-      targetSelect.dispatchEvent(new Event("change", { bubbles: true }));
-    }
-  }
 }
 
 // 2. Автообновление тултипов при изменении select
@@ -6239,6 +6249,22 @@ function handleSelectChange(e) {
       item.removeAttribute("aria-selected");
     }
   });
+}
+
+// Синхронизация состояния disabled между оригинальным select и кастомным .nice-select
+function syncNiceSelectDisabled(selectEl) {
+    const niceSelect = selectEl.nextElementSibling?.classList.contains("nice-select")
+        ? selectEl.nextElementSibling
+        : null;
+    if (niceSelect) {
+        if (selectEl.disabled) {
+            niceSelect.classList.add("disabled");
+            niceSelect.setAttribute("tabindex", "-1");
+        } else {
+            niceSelect.classList.remove("disabled");
+            niceSelect.setAttribute("tabindex", "0");
+        }
+    }
 }
 
 // scroll events
@@ -6374,3 +6400,16 @@ if (document.readyState === "loading") {
   initSelectBindings();
   initSelectTooltips();
 }
+
+// Предотвращаем открытие disabled кастомного селекта
+document.addEventListener('click', function(e) {
+    const niceSelect = e.target.closest('.nice-select');
+    if (niceSelect && niceSelect.classList.contains('disabled')) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (niceSelect.classList.contains('open')) {
+            niceSelect.classList.remove('open');
+        }
+        return false;
+    }
+}, true);

@@ -3960,11 +3960,7 @@ form input[type=submit] {
   position: relative;
   display: inline-block;
   width: fit-content;
-  padding-left: 32px;
   cursor: pointer;
-}
-.label-checkbox:hover {
-  text-shadow: var(--blue-main) 0px 0px 10px;
 }
 .label-checkbox:hover:before {
   border: 1px solid var(--blue-main) !important;
@@ -3972,12 +3968,9 @@ form input[type=submit] {
 }
 .label-checkbox:before {
   content: "✔";
-  position: absolute;
-  top: 0;
-  left: 0;
   box-sizing: border-box;
   display: inline-block;
-  font-size: 0;
+  font-size: inherit;
   width: 20px;
   height: 20px;
   color: transparent;
@@ -3993,7 +3986,7 @@ form input[type=submit] {
   cursor: pointer;
 }
 .label-checkbox:has(input:checked):before {
-  font-size: 0.9em;
+  font-size: 1em;
   width: 20px;
   height: 20px;
   color: var(--color-white);
