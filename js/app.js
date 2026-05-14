@@ -5738,6 +5738,9 @@ const officeImage = (elem) => {
 const seoAuditInit = () => {
   const API_KEY = "AIzaSyD80rX_LE4YFfFB7uGRucxxZFCZ0j2IBDI";
   const form = document.getElementById("audit-form");
+  // Если форма имеет атрибут data-ajax="false" — не перехватываем отправку
+  if (!form || form.getAttribute("data-ajax") === "false") return;
+
   const inputs = form.querySelectorAll("input, button");
   const urlInput = document.getElementById("site-url");
   const loader = document.getElementById("audit-loader");
@@ -5885,7 +5888,6 @@ const seoAuditInit = () => {
           status: "error",
           text: "Отсутствуют title и description",
         };
-      // Если один из них отсутствует — оставляем warning (как на референсе)
       const metaTags = {
         category: "meta",
         title: "Мета-теги",
@@ -5934,7 +5936,6 @@ const seoAuditInit = () => {
           text: "Критические проблемы с контентом (отсутствие H1 или слишком мало текста)",
         };
       }
-      // В остальных случаях остаётся warning с текстом выше
       const contentDesc = `H1: ${h1Ok ? "присутствует" : "отсутствует"}, H2: ${h2Count} шт., слов: ${wordCount}, ключевые слова: ${kwOk ? "заданы" : "не заданы"}`;
       const content = {
         category: "content",
@@ -6009,10 +6010,9 @@ const seoAuditInit = () => {
       errorDiv.style.display = "block";
       showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
-      seoAuditFeatures.style.display = "";
+      if (seoAuditFeatures) seoAuditFeatures.style.display = "";
       loader.style.display = "none";
       inputs.forEach((i) => (i.disabled = false));
-
       setTimeout(() => {
         resultsContainer.scrollIntoView({
           behavior: "smooth",
