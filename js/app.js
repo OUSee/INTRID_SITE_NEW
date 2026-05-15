@@ -168,48 +168,48 @@ function hideButtonLoader(btn) {
 
 // Обработчик для показа сообщения об успешной отправке формы
 function showFormFeedback(btn, message, type = "success", duration = 4000) {
-  // Скрываем спиннер
+  // Скрываем спиннер на кнопке (важно!)
   hideButtonLoader(btn);
-  if (!btn || !message) return;
+  
+  if (!message) return;
 
-  // Удаляем предыдущее сообщение, если висит
-  const existing = document.querySelector(".form-feedback-message");
+  // Удаляем предыдущий глобальный тост, если есть
+  const existing = document.querySelector(".toast");
   if (existing) existing.remove();
 
-  const feedback = document.createElement("div");
-  feedback.className = `form-feedback-message form-feedback--${type}`;
-  feedback.textContent = message;
-  feedback.setAttribute("role", "status");
-  feedback.setAttribute("aria-live", "polite");
+  // Создаём элемент тоста
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+  toast.setAttribute("role", "status");
+  toast.setAttribute("aria-live", "polite");
+  document.body.appendChild(toast);
 
-  // Вставляем перед кнопкой в тот же контейнер
-  btn.parentNode.insertBefore(feedback, btn);
+  // Принудительный reflow для CSS-перехода
+  toast.offsetHeight;
+  toast.classList.add("show");
 
-  // Принудительный reflow для запуска CSS-перехода
-  feedback.offsetHeight;
-  feedback.classList.add("form-feedback-message--visible");
-
-  // Автоудаление через duration
+  // Автоудаление
   const removeTimer = setTimeout(() => {
-    feedback.classList.remove("form-feedback-message--visible");
-    feedback.addEventListener("transitionend", () => {
-      if (feedback.parentNode) feedback.remove();
+    toast.classList.remove("show");
+    toast.addEventListener("transitionend", () => {
+      if (toast.parentNode) toast.remove();
     });
-    // Запасное удаление, если transition не сработал
+    // Запасное удаление
     setTimeout(() => {
-      if (feedback.parentNode) feedback.remove();
+      if (toast.parentNode) toast.remove();
     }, 600);
   }, duration);
 
-  // Удаление при клике
-  feedback.addEventListener("click", () => {
+  // Удаление при клике на тост
+  toast.addEventListener("click", () => {
     clearTimeout(removeTimer);
-    feedback.classList.remove("form-feedback-message--visible");
-    feedback.addEventListener("transitionend", () => {
-      if (feedback.parentNode) feedback.remove();
+    toast.classList.remove("show");
+    toast.addEventListener("transitionend", () => {
+      if (toast.parentNode) toast.remove();
     });
     setTimeout(() => {
-      if (feedback.parentNode) feedback.remove();
+      if (toast.parentNode) toast.remove();
     }, 600);
   });
 }
@@ -680,14 +680,12 @@ document.addEventListener("DOMContentLoaded", () => {
           data,
           isSuccess ? defaultSuccessMessage : defaultErrorMessage,
         );
-
         if (isSuccess) {
           closeFormPopup(form);
           form.reset();
           resetAutosizeTextareas(form);
         }
-
-        showNotificationPopup(message, isSuccess ? "success" : "error");
+        showFormFeedback(submitBtn, message, isSuccess ? "success" : "error");
         return data;
       })
       .catch((error) => {
@@ -697,7 +695,7 @@ document.addEventListener("DOMContentLoaded", () => {
           error.message.trim() !== ""
             ? error.message
             : defaultErrorMessage;
-        showNotificationPopup(message, "error");
+        showFormFeedback(submitBtn, message, "error");
       })
       .finally(() => hideButtonLoader(submitBtn));
   };
@@ -4632,178 +4630,191 @@ const toggleSection = (
   });
 };
 
+// quick-form
 document.addEventListener("DOMContentLoaded", function () {
   const quickForm = document.getElementById("quick-form");
-  const bigForm = document.getElementById("bsite-add"); // Ваша большая форма брифа
-  const bigCalc = document.getElementById("big-calc"); // Ваш калькулятор
+  const bigForm = document.getElementById("bsite-add");
+  const bigCalc = document.getElementById("big-calc");
 
-  if (quickForm) {
-    quickForm.addEventListener("submit", function () {
-      const btn = quickForm.querySelector('button[type="submit"]');
-      showButtonLoader(btn);
-    });
+  if (!quickForm) return;
 
-    quickForm.addEventListener("formdata", (e) => {
-      const fd = e.formData;
+  // --- Обработчик отправки (AJAX) ---
+  quickForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    e.stopImmediatePropagation(); // гарантия, что другие обработчики не сработают
 
-      // --- 1. ПЫЛЕСОСИМ ДАННЫЕ ИЗ БОЛЬШОЙ ФОРМЫ ---
-      if (bigForm) {
-        const bigData = new FormData(bigForm);
+    const submitBtn = quickForm.querySelector('button[type="submit"]');
+    showButtonLoader(submitBtn);
 
-        // Проходим по всем активным полям большой формы
-        for (let [key, value] of bigData.entries()) {
-          // Игнорируем технические поля (CSRF, Captcha), чтобы не было дублей
-          if (key === "_csrf-frontend" || key === "g-recaptcha-response")
-            continue;
+    // Создаём FormData (обработчик "formdata" сработает автоматически)
+    const formData = new FormData(quickForm);
 
-          // Если значение пустое - пропускаем
-          if (!value) continue;
+    try {
+      const response = await fetch(quickForm.action, {
+        method: "POST",
+        body: formData,
+        credentials: "same-origin",
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      });
 
-          // Добавляем в отправку с префиксом data[...]
-          // Например: 'strategy-org_promo' -> 'data[strategy-org_promo]'
-          fd.set(`data[${key}]`, value);
-        }
-      }
+      // Считаем успехом любой ответ с HTTP-статусом 2xx
+      if (response.ok) {
+        // Сброс стандартных полей формы
+        quickForm.reset();
 
-      if (bigCalc) {
-        const items = [];
-        const elements = bigCalc.querySelectorAll("input, select, textarea");
-
-        elements.forEach((el) => {
-          const key = el.name || el.id;
-          if (!key) return;
-
-          if (key === "_csrf-frontend" || key === "g-recaptcha-response")
-            return;
-          if (el.disabled) return;
-          if (el.closest(".hidden")) return;
-
-          let value = null;
-          let price = "0";
-          let label = key;
-
-          // checkbox / radio
-          if (el.matches('input[type="checkbox"], input[type="radio"]')) {
-            if (!el.checked) return;
-
-            const targetId = el.dataset.selectTarget;
-
-            // checkbox + select
-            if (targetId) {
-              const select = document.getElementById(targetId);
-
-              if (select) {
-                const option = select.options[select.selectedIndex];
-
-                label = getLabelText(el) || getGroupTitle(el) || key;
-                value =
-                  option?.textContent?.trim() || select.dataset.display || "Да";
-                price = option?.dataset?.price || select.dataset.price || "0";
-              } else {
-                label = getLabelText(el) || getGroupTitle(el) || key;
-                value = "Да";
-                price = el.dataset.price || "0";
-              }
-            } else {
-              label = getLabelText(el) || getGroupTitle(el) || key;
-              value = el.value && el.value !== "on" ? el.value : "Да";
-              price = el.dataset.price || "0";
-            }
+        // Сброс кастомных менеджеров файлов
+        const fileInputs = quickForm.querySelectorAll('input[type="file"]');
+        fileInputs.forEach((input) => {
+          if (input.fileInputManager) {
+            input.fileInputManager.clearFiles();
           }
-          // select
-          else if (el.tagName === "SELECT") {
-            const linkedCheckbox = bigCalc.querySelector(
-              `[data-select-target="${el.id}"]`,
-            );
-            if (linkedCheckbox) return;
-
-            const option = el.options[el.selectedIndex];
-            label = getLabelText(el) || getGroupTitle(el) || key;
-            value = option?.textContent?.trim() || el.value;
-            price = option?.dataset?.price || el.dataset.price || "0";
-          }
-          // text / textarea
-          else {
-            if (!el.value || !String(el.value).trim()) return;
-
-            label = getLabelText(el) || getGroupTitle(el) || key;
-            value = String(el.value).trim();
-            price = el.dataset.price || "0";
-          }
-
-          items.push({
-            key,
-            label,
-            value,
-            price: Number(price) || 0,
-          });
         });
 
-        // console.log('Собранные данные из калькулятора:', items);
-        fd.delete("data");
-        fd.append("data", JSON.stringify(items));
+        // Закрыть родительский попап, если есть
+        const popup = quickForm.closest(".popup");
+        if (popup && popup.classList.contains("open")) {
+          const closeBtn = popup.querySelector(".popup-close");
+          if (closeBtn) closeBtn.click();
+          else popup.classList.remove("open");
+          document.documentElement.classList.remove("popup-opened");
+        }
+
+        // Пытаемся извлечь сообщение из JSON, если ответ – JSON
+        let message = "Форма успешно отправлена";
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const result = await response.json();
+          if (result.message) message = result.message;
+        }
+        showFormFeedback(submitBtn, message, "success");
+      } else {
+        // Ошибка HTTP (4xx, 5xx)
+        let errorMsg = "Ошибка отправки формы";
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const result = await response.json();
+          if (result.message) errorMsg = result.message;
+        }
+        showFormFeedback(submitBtn, errorMsg, "error");
       }
+    } catch (error) {
+      console.error("Quick form error:", error);
+      showFormFeedback(submitBtn, "Ошибка соединения с сервером", "error");
+    } finally {
+      hideButtonLoader(submitBtn);
+    }
+  });
 
-      // --- 3. ЧИСТИМ ДУБЛИКАТЫ КАПЧИ (Обязательно!) ---
-      // Так как мы мержим формы, капча может задвоиться
-      const token = fd.get("g-recaptcha-response");
-      // Получаем токен из быстрой формы (он свежий)
+  // --- Обработчик formdata (оставляем без изменений) ---
+  quickForm.addEventListener("formdata", (e) => {
+    const fd = e.formData;
 
-      // Удаляем всё, что связано с капчей, чтобы не отправить массив
-      fd.delete("g-recaptcha-response");
+    // ---- Пылесосим данные из большой формы (bigForm) ----
+    if (bigForm) {
+      const bigData = new FormData(bigForm);
+      for (let [key, value] of bigData.entries()) {
+        if (key === "_csrf-frontend" || key === "g-recaptcha-response") continue;
+        if (!value) continue;
+        fd.set(`data[${key}]`, value);
+      }
+    }
 
-      // Возвращаем один правильный токен
-      if (token) fd.append("g-recaptcha-response", token);
+    // ---- Пылесосим данные из калькулятора (bigCalc) ----
+    if (bigCalc) {
+      const items = [];
+      const elements = bigCalc.querySelectorAll("input, select, textarea");
+      elements.forEach((el) => {
+        const key = el.name || el.id;
+        if (!key) return;
+        if (key === "_csrf-frontend" || key === "g-recaptcha-response") return;
+        if (el.disabled) return;
+        if (el.closest(".hidden")) return;
 
-      function getLabelText(el) {
-        if (el.id) {
-          const byFor =
-            bigCalc.querySelector(`label[for="${el.id}"] p`) ||
-            bigCalc.querySelector(`label[for="${el.id}"]`);
-          if (byFor) {
-            return byFor.textContent.replace(/\s+/g, " ").trim();
+        let value = null;
+        let price = "0";
+        let label = key;
+
+        if (el.matches('input[type="checkbox"], input[type="radio"]')) {
+          if (!el.checked) return;
+          const targetId = el.dataset.selectTarget;
+          if (targetId) {
+            const select = document.getElementById(targetId);
+            if (select) {
+              const option = select.options[select.selectedIndex];
+              label = getLabelText(el) || getGroupTitle(el) || key;
+              value = option?.textContent?.trim() || select.dataset.display || "Да";
+              price = option?.dataset?.price || select.dataset.price || "0";
+            } else {
+              label = getLabelText(el) || getGroupTitle(el) || key;
+              value = "Да";
+              price = el.dataset.price || "0";
+            }
+          } else {
+            label = getLabelText(el) || getGroupTitle(el) || key;
+            value = el.value && el.value !== "on" ? el.value : "Да";
+            price = el.dataset.price || "0";
           }
+        } else if (el.tagName === "SELECT") {
+          const linkedCheckbox = bigCalc.querySelector(`[data-select-target="${el.id}"]`);
+          if (linkedCheckbox) return;
+          const option = el.options[el.selectedIndex];
+          label = getLabelText(el) || getGroupTitle(el) || key;
+          value = option?.textContent?.trim() || el.value;
+          price = option?.dataset?.price || el.dataset.price || "0";
+        } else if (el.type === "text" || el.tagName === "TEXTAREA") {
+          if (!el.value || !String(el.value).trim()) return;
+          label = getLabelText(el) || getGroupTitle(el) || key;
+          value = String(el.value).trim();
+          price = el.dataset.price || "0";
+        } else {
+          return;
         }
 
-        const wrapLabel = el.closest("label");
-        if (wrapLabel) {
-          const p = wrapLabel.querySelector("p");
-          if (p) return p.textContent.replace(/\s+/g, " ").trim();
-        }
+        items.push({ key, label, value, price: Number(price) || 0 });
+      });
 
-        return "";
+      fd.delete("data");
+      fd.append("data", JSON.stringify(items));
+    }
+
+    // ---- Убираем дубликаты капчи ----
+    const token = fd.get("g-recaptcha-response");
+    fd.delete("g-recaptcha-response");
+    if (token) fd.append("g-recaptcha-response", token);
+  });
+
+  // Вспомогательные функции (если не определены глобально)
+  function getLabelText(el) {
+    if (el.id) {
+      const byFor = bigCalc?.querySelector(`label[for="${el.id}"] p`) ||
+                    bigCalc?.querySelector(`label[for="${el.id}"]`);
+      if (byFor) return byFor.textContent.replace(/\s+/g, " ").trim();
+    }
+    const wrapLabel = el.closest("label");
+    if (wrapLabel) {
+      const p = wrapLabel.querySelector("p");
+      if (p) return p.textContent.replace(/\s+/g, " ").trim();
+    }
+    return "";
+  }
+
+  function getGroupTitle(el) {
+    const toggleLine = el.closest(".toggle-line");
+    if (!toggleLine) return "";
+    let prev = toggleLine.previousElementSibling;
+    while (prev) {
+      if (prev.matches(".title_h5.quote, .title_h5, p.title_h5.quote, p.title_h5")) {
+        const text = prev.textContent.replace(/\s+/g, " ").trim();
+        if (text) return text;
       }
-      function getGroupTitle(el) {
-        const toggleLine =
-          el
-            .closest(
-              ".toggle-line, .nice-wrapper, label, input, select, textarea",
-            )
-            ?.closest(".toggle-line") || el.closest(".toggle-line");
-        if (!toggleLine) return "";
-
-        let prev = toggleLine.previousElementSibling;
-
-        while (prev) {
-          if (
-            prev.matches(".title_h5.quote") ||
-            prev.matches(".title_h5") ||
-            prev.matches("p.title_h5.quote") ||
-            prev.matches("p.title_h5")
-          ) {
-            const text = prev.textContent.replace(/\s+/g, " ").trim();
-            if (text) return text;
-          }
-          prev = prev.previousElementSibling;
-        }
-
-        return "";
-      }
-    });
+      prev = prev.previousElementSibling;
+    }
+    return "";
   }
 });
 
-// input type file logic with drag-n-drop
 class FileInputManager {
   constructor(inputElement, onChangeCallback = null) {
     this.input = inputElement;
@@ -5117,84 +5128,124 @@ document.addEventListener("DOMContentLoaded", () => {
     return params.toString();
   }
 
-  // Handle password form submission
+    // Handle password form submission
   const passwordForm = document.querySelector("#form-comment-password");
   if (passwordForm) {
     passwordForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      e.stopImmediatePropagation();
 
       const btn = this.querySelector('button[type="submit"]');
       showButtonLoader(btn);
 
-      const url = this.action;
-      const data = serializeForm(this);
+      const formData = new FormData(this);
 
-      fetch(url, {
+      fetch(this.action, {
         method: "POST",
+        body: formData,
+        credentials: "same-origin",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "X-Requested-With": "XMLHttpRequest",
         },
-        body: data,
       })
-        .then((response) => response.json())
-        .then((res) => {
-          if (res.status) {
-            const popupBody = document.querySelector(
-              "#login-review .popup-body",
-            );
-            if (popupBody) {
-              popupBody.innerHTML =
-                '<p class="mb-20">' + res.data.title + "</p>" + res.data.body;
+        .then(async (response) => {
+          // Пытаемся распарсить JSON, если это возможно
+          let data = null;
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            data = await response.json();
+          }
+
+          if (response.ok) {
+            if (data && data.status) {
+              // Ожидаемая успешная структура
+              const popupBody = document.querySelector("#login-review .popup-body");
+              if (popupBody) {
+                popupBody.innerHTML = '<p class="mb-20">' + data.data.title + "</p>" + data.data.body;
+              }
+              showFormFeedback(btn, "Пароль принят", "success");
+            } else {
+              // Успешный ответ, но без явного status – считаем успехом
+              showFormFeedback(btn, "Пароль принят", "success");
             }
           } else {
-            alert(res.data);
+            // HTTP ошибка
+            const errorMsg = (data && data.message) ? data.message : "Ошибка проверки пароля";
+            showFormFeedback(btn, errorMsg, "error");
           }
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.error("Password form error:", error);
+          showFormFeedback(btn, "Ошибка соединения с сервером", "error");
         })
         .finally(() => hideButtonLoader(btn));
     });
   }
 
-  // Handle comment add form submission
+    // Handle comment add form submission
   const commentForm = document.querySelector("#comment-add");
   if (commentForm) {
     commentForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      e.stopImmediatePropagation();
 
       const btn = this.querySelector('button[type="submit"]');
       showButtonLoader(btn);
 
-      const url = this.action;
-      const data = serializeForm(this);
+      const formData = new FormData(this);
 
-      fetch(url, {
+      fetch(this.action, {
         method: "POST",
+        body: formData,
+        credentials: "same-origin",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "X-Requested-With": "XMLHttpRequest",
         },
-        body: data,
       })
-        .then((response) => response.json())
-        .then((res) => {
-          if (res.status) {
-            const popupBody = document.querySelector(
-              "#login-review .popup-body",
-            );
-            if (popupBody) {
-              popupBody.innerHTML =
-                '<p class="mb-20">' +
-                res.data.title +
-                "</p>" +
-                res.dataEnd.body;
+        .then(async (response) => {
+          let data = null;
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            data = await response.json();
+          }
+
+          if (response.ok) {
+            if (data && data.status) {
+              // Успешная структура от сервера
+              const popupBody = document.querySelector("#login-review .popup-body");
+              if (popupBody) {
+                popupBody.innerHTML = '<p class="mb-20">' + data.data.title + "</p>" + data.data.body;
+              }
+              showFormFeedback(btn, "Комментарий добавлен", "success");
+              
+              // Сброс формы (очищаем поля)
+              commentForm.reset();
+              
+              // Очистка кастомных менеджеров файлов, если они есть в форме
+              const fileInputs = commentForm.querySelectorAll('input[type="file"]');
+              fileInputs.forEach((input) => {
+                if (input.fileInputManager) {
+                  input.fileInputManager.clearFiles();
+                }
+              });
+            } else {
+              // Успешный ответ без явного поля status – считаем успехом
+              showFormFeedback(btn, "Комментарий добавлен", "success");
+              commentForm.reset();
+              const fileInputs = commentForm.querySelectorAll('input[type="file"]');
+              fileInputs.forEach((input) => {
+                if (input.fileInputManager) input.fileInputManager.clearFiles();
+              });
             }
           } else {
-            alert(res.data);
+            // HTTP ошибка (4xx, 5xx)
+            const errorMsg = (data && data.message) ? data.message : "Ошибка добавления комментария";
+            showFormFeedback(btn, errorMsg, "error");
           }
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.error("Comment form error:", error);
+          showFormFeedback(btn, "Ошибка соединения с сервером", "error");
         })
         .finally(() => hideButtonLoader(btn));
     });

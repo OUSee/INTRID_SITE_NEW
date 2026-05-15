@@ -3602,6 +3602,47 @@ ol {
   }
 }
 
+// toast
+.toast {
+  position: fixed;
+  top: auto;
+  bottom: 60px;
+  left: 50%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 320px;
+  width: 100%;
+  height: fit-content;
+  padding: 16px;
+  background-color: var(--bg-main);
+  text-align: center;
+  color: var(--color-white);
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 100%);
+  transition: 0.25s ease-in-out;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+  &.success {
+    border: 1px solid var(--success);
+    color: var(--color-white);
+    background: color-mix(in srgb, var(--success) 50%, var(--bg-main) 50%);
+  }
+  &.error {
+    border: 1px solid var(--error);
+    color: var(--color-white);
+    background: color-mix(in srgb, var(--error) 50%, var(--bg-main) 50%);
+  }
+}
+
 // fieldset
 fieldset {
   border-radius: 10px;
@@ -7269,7 +7310,7 @@ button:hover,
     }
 
     & .title_h4 {
-      margin-bottom: 0.25em;
+      margin-bottom: 0.35em;
     }
   }
 
