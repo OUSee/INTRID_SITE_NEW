@@ -170,7 +170,7 @@ function hideButtonLoader(btn) {
 function showFormFeedback(btn, message, type = "success", duration = 4000) {
   // Скрываем спиннер на кнопке (важно!)
   hideButtonLoader(btn);
-  
+
   if (!message) return;
 
   // Удаляем предыдущий глобальный тост, если есть
@@ -4715,7 +4715,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (bigForm) {
       const bigData = new FormData(bigForm);
       for (let [key, value] of bigData.entries()) {
-        if (key === "_csrf-frontend" || key === "g-recaptcha-response") continue;
+        if (key === "_csrf-frontend" || key === "g-recaptcha-response")
+          continue;
         if (!value) continue;
         fd.set(`data[${key}]`, value);
       }
@@ -4744,7 +4745,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (select) {
               const option = select.options[select.selectedIndex];
               label = getLabelText(el) || getGroupTitle(el) || key;
-              value = option?.textContent?.trim() || select.dataset.display || "Да";
+              value =
+                option?.textContent?.trim() || select.dataset.display || "Да";
               price = option?.dataset?.price || select.dataset.price || "0";
             } else {
               label = getLabelText(el) || getGroupTitle(el) || key;
@@ -4757,7 +4759,9 @@ document.addEventListener("DOMContentLoaded", function () {
             price = el.dataset.price || "0";
           }
         } else if (el.tagName === "SELECT") {
-          const linkedCheckbox = bigCalc.querySelector(`[data-select-target="${el.id}"]`);
+          const linkedCheckbox = bigCalc.querySelector(
+            `[data-select-target="${el.id}"]`,
+          );
           if (linkedCheckbox) return;
           const option = el.options[el.selectedIndex];
           label = getLabelText(el) || getGroupTitle(el) || key;
@@ -4788,8 +4792,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Вспомогательные функции (если не определены глобально)
   function getLabelText(el) {
     if (el.id) {
-      const byFor = bigCalc?.querySelector(`label[for="${el.id}"] p`) ||
-                    bigCalc?.querySelector(`label[for="${el.id}"]`);
+      const byFor =
+        bigCalc?.querySelector(`label[for="${el.id}"] p`) ||
+        bigCalc?.querySelector(`label[for="${el.id}"]`);
       if (byFor) return byFor.textContent.replace(/\s+/g, " ").trim();
     }
     const wrapLabel = el.closest("label");
@@ -4805,7 +4810,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!toggleLine) return "";
     let prev = toggleLine.previousElementSibling;
     while (prev) {
-      if (prev.matches(".title_h5.quote, .title_h5, p.title_h5.quote, p.title_h5")) {
+      if (
+        prev.matches(".title_h5.quote, .title_h5, p.title_h5.quote, p.title_h5")
+      ) {
         const text = prev.textContent.replace(/\s+/g, " ").trim();
         if (text) return text;
       }
@@ -5128,7 +5135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return params.toString();
   }
 
-    // Handle password form submission
+  // Handle password form submission
   const passwordForm = document.querySelector("#form-comment-password");
   if (passwordForm) {
     passwordForm.addEventListener("submit", function (e) {
@@ -5159,9 +5166,15 @@ document.addEventListener("DOMContentLoaded", () => {
           if (response.ok) {
             if (data && data.status) {
               // Ожидаемая успешная структура
-              const popupBody = document.querySelector("#login-review .popup-body");
+              const popupBody = document.querySelector(
+                "#login-review .popup-body",
+              );
               if (popupBody) {
-                popupBody.innerHTML = '<p class="mb-20">' + data.data.title + "</p>" + data.data.body;
+                popupBody.innerHTML =
+                  '<p class="mb-20">' +
+                  data.data.title +
+                  "</p>" +
+                  data.data.body;
               }
               showFormFeedback(btn, "Пароль принят", "success");
             } else {
@@ -5170,7 +5183,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           } else {
             // HTTP ошибка
-            const errorMsg = (data && data.message) ? data.message : "Ошибка проверки пароля";
+            const errorMsg =
+              data && data.message ? data.message : "Ошибка проверки пароля";
             showFormFeedback(btn, errorMsg, "error");
           }
         })
@@ -5182,7 +5196,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    // Handle comment add form submission
+  // Handle comment add form submission
   const commentForm = document.querySelector("#comment-add");
   if (commentForm) {
     commentForm.addEventListener("submit", function (e) {
@@ -5212,17 +5226,24 @@ document.addEventListener("DOMContentLoaded", () => {
           if (response.ok) {
             if (data && data.status) {
               // Успешная структура от сервера
-              const popupBody = document.querySelector("#login-review .popup-body");
+              const popupBody = document.querySelector(
+                "#login-review .popup-body",
+              );
               if (popupBody) {
-                popupBody.innerHTML = '<p class="mb-20">' + data.data.title + "</p>" + data.data.body;
+                popupBody.innerHTML =
+                  '<p class="mb-20">' +
+                  data.data.title +
+                  "</p>" +
+                  data.data.body;
               }
               showFormFeedback(btn, "Комментарий добавлен", "success");
-              
+
               // Сброс формы (очищаем поля)
               commentForm.reset();
-              
+
               // Очистка кастомных менеджеров файлов, если они есть в форме
-              const fileInputs = commentForm.querySelectorAll('input[type="file"]');
+              const fileInputs =
+                commentForm.querySelectorAll('input[type="file"]');
               fileInputs.forEach((input) => {
                 if (input.fileInputManager) {
                   input.fileInputManager.clearFiles();
@@ -5232,14 +5253,18 @@ document.addEventListener("DOMContentLoaded", () => {
               // Успешный ответ без явного поля status – считаем успехом
               showFormFeedback(btn, "Комментарий добавлен", "success");
               commentForm.reset();
-              const fileInputs = commentForm.querySelectorAll('input[type="file"]');
+              const fileInputs =
+                commentForm.querySelectorAll('input[type="file"]');
               fileInputs.forEach((input) => {
                 if (input.fileInputManager) input.fileInputManager.clearFiles();
               });
             }
           } else {
             // HTTP ошибка (4xx, 5xx)
-            const errorMsg = (data && data.message) ? data.message : "Ошибка добавления комментария";
+            const errorMsg =
+              data && data.message
+                ? data.message
+                : "Ошибка добавления комментария";
             showFormFeedback(btn, errorMsg, "error");
           }
         })
@@ -5789,269 +5814,159 @@ const officeImage = (elem) => {
 const seoAuditInit = () => {
   const API_KEY = "AIzaSyD80rX_LE4YFfFB7uGRucxxZFCZ0j2IBDI";
   const form = document.getElementById("audit-form");
-  // Если форма имеет атрибут data-ajax="false" — не перехватываем отправку
-  if (!form || form.getAttribute("data-ajax") === "false") return;
+  if (!form) return;
+
+  const isAjax = form.getAttribute("data-ajax") !== "false";
 
   const inputs = form.querySelectorAll("input, button");
   const urlInput = document.getElementById("site-url");
   const loader = document.getElementById("audit-loader");
   const errorDiv = document.getElementById("audit-error");
   const resultsContainer = document.getElementById("audit-results");
-  const resultsGrid = resultsContainer.querySelector("#audit-cards");
+  const resultsGrid = resultsContainer?.querySelector("#audit-cards");
   const seoAuditFeatures = document.getElementById("seo-audit-features");
 
-  // Универсальная оценка (возвращает объект {status, text})
-  const getStatus = (score, thresholds = { good: 0.9, warn: 0.5 }) => {
-    if (score === null || score === undefined) {
-      return { status: "warning", text: "" };
-    }
-    if (score >= thresholds.good) return { status: "good", text: "" };
-    if (score >= thresholds.warn) return { status: "warning", text: "" };
-    return { status: "error", text: "" };
+  const setFormDisabled = (disabled) => {
+    inputs.forEach((i) => {
+      if (i.disabled !== undefined) i.disabled = disabled;
+    });
   };
 
-  // Рендеринг карточек
-  function renderAuditCards(metrics) {
-    resultsGrid.innerHTML = "";
-    metrics.forEach((metric) => {
-      const card = document.createElement("div");
-      card.className = `card card--icon ${metric.status.status}`;
-      const statusText =
-        metric.status.status === "good"
-          ? "Хорошо"
-          : metric.status.status === "warning"
-            ? "Предупреждение"
-            : "Ошибка";
-      card.innerHTML = `
-        <img src="/src/icons/metric-${metric.category}.svg" alt="icon">
-        <b>${metric.title}</b>
-        <div class="badge mb-16 ${metric.status.status}">${statusText}</div>
-        <p>${metric.status.text || metric.status.message || ""}</p>
-      `;
-      resultsGrid.appendChild(card);
-    });
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const submitBtn = form.querySelector(
-      'button[type="submit"], input[type="submit"]',
-    );
-    showButtonLoader(submitBtn);
-
+  const normalizeAndValidateUrl = () => {
     let url = urlInput.value.trim();
     if (!url) {
       errorDiv.textContent = "Введите адрес сайта";
       errorDiv.style.display = "block";
-      hideButtonLoader(submitBtn);
-      return;
+      return null;
     }
-
     if (!/^https?:\/\//i.test(url)) url = "https://" + url;
     try {
       new URL(url);
+      return url;
     } catch (_) {
       errorDiv.textContent = "Некорректный адрес сайта.";
       errorDiv.style.display = "block";
-      hideButtonLoader(submitBtn);
-      return;
+      return null;
     }
+  };
 
-    urlInput.value = url;
+  // --------------------------------------------------------------
+  // AJAX-рендеринг (data-ajax="true" или отсутствует)
+  // --------------------------------------------------------------
+  const handleAjaxRender = async (submitBtn, url) => {
     resultsContainer.style.display = "none";
     errorDiv.style.display = "none";
-    resultsGrid.innerHTML = "";
-    inputs.forEach((i) => (i.disabled = true));
+    if (resultsGrid) resultsGrid.innerHTML = "";
+    setFormDisabled(true);
     loader.style.display = "block";
 
     let seoData = null;
     let lighthouseData = null;
 
     try {
-      // SEO-данные с сервера (title, description, h1, h2, wordCount, ssl)
       const seoResponse = await fetch("/submit/get-seo-data", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: url }),
       });
       const seoResult = await seoResponse.json();
-      if (!seoResult.success)
-        throw new Error(seoResult.error || "Ошибка получения SEO-данных");
+      if (!seoResult.success) throw new Error(seoResult.error || "Ошибка получения SEO-данных");
       seoData = seoResult.data;
 
-      // Google PageSpeed (mobile)
       const pagespeedUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${API_KEY}&strategy=mobile`;
       const psResponse = await fetch(pagespeedUrl);
-      if (!psResponse.ok)
-        throw new Error(`PageSpeed API error: ${psResponse.status}`);
+      if (!psResponse.ok) throw new Error(`PageSpeed API error: ${psResponse.status}`);
       lighthouseData = await psResponse.json();
 
       const audits = lighthouseData.lighthouseResult?.audits || {};
       const categories = lighthouseData.lighthouseResult?.categories || {};
 
-      // ----- 1. Индексация страниц -----
+      const getStatus = (score, thresholds = { good: 0.9, warn: 0.5 }) => {
+        if (score === null || score === undefined) return { status: "warning", text: "" };
+        if (score >= thresholds.good) return { status: "good", text: "" };
+        if (score >= thresholds.warn) return { status: "warning", text: "" };
+        return { status: "error", text: "" };
+      };
+
+      // ----- Индексация -----
       const crawlScore = audits["is-crawlable"]?.score;
       const crawlStatus = getStatus(crawlScore);
       let indexingText = "";
-      if (crawlStatus.status === "good")
-        indexingText = "Все важные страницы в индексе";
-      else if (crawlStatus.status === "error")
-        indexingText = "Сайт не индексируется";
+      if (crawlStatus.status === "good") indexingText = "Все важные страницы в индексе";
+      else if (crawlStatus.status === "error") indexingText = "Сайт не индексируется";
       else indexingText = "Часть важных страниц отсутствует в индексе";
-      const indexing = {
-        category: "indexing",
-        title: "Индексация страниц",
-        status: { status: crawlStatus.status, text: indexingText },
-        desc: "Проверка доступности страниц для поисковых роботов",
-      };
+      const indexing = { category: "indexing", title: "Индексация страниц", status: { status: crawlStatus.status, text: indexingText }, desc: "Проверка доступности страниц для поисковых роботов" };
 
-      // ----- 2. Скорость загрузки -----
+      // ----- Скорость загрузки -----
       const perfScore = categories.performance?.score;
       const perfStatus = getStatus(perfScore, { good: 0.9, warn: 0.5 });
       let speedText = "";
       if (perfStatus.status === "good") speedText = "Сайт загружается быстро";
-      else if (perfStatus.status === "error")
-        speedText =
-          "Сайт загружается медленно, особенно на мобильных устройствах";
+      else if (perfStatus.status === "error") speedText = "Сайт загружается медленно, особенно на мобильных устройствах";
       else speedText = "Скорость загрузки можно улучшить";
-      const speed = {
-        category: "speed",
-        title: "Скорость загрузки",
-        status: { status: perfStatus.status, text: speedText },
-        desc: "Общая производительность по Core Web Vitals",
-      };
+      const speed = { category: "speed", title: "Скорость загрузки", status: { status: perfStatus.status, text: speedText }, desc: "Общая производительность по Core Web Vitals" };
 
-      // ----- 3. Мета-теги (title, description) -----
+      // ----- Мета-теги -----
       const titleOk = seoData.title && seoData.title.trim() !== "";
       const descOk = seoData.description && seoData.description.trim() !== "";
-      let metaStatus = {
-        status: "warning",
-        text: "У части страниц отсутствуют title и description",
-      };
-      if (titleOk && descOk)
-        metaStatus = {
-          status: "good",
-          text: "Title и meta-description заполнены",
-        };
-      else if (!titleOk && !descOk)
-        metaStatus = {
-          status: "error",
-          text: "Отсутствуют title и description",
-        };
-      const metaTags = {
-        category: "meta",
-        title: "Мета-теги",
-        status: metaStatus,
-        desc: "Корректность заполнения тегов title и meta-description",
-      };
+      let metaStatus = { status: "warning", text: "У части страниц отсутствуют title и description" };
+      if (titleOk && descOk) metaStatus = { status: "good", text: "Title и meta-description заполнены" };
+      else if (!titleOk && !descOk) metaStatus = { status: "error", text: "Отсутствуют title и description" };
+      const metaTags = { category: "meta", title: "Мета-теги", status: metaStatus, desc: "Корректность заполнения тегов title и meta-description" };
 
-      // ----- 4. Мобильная версия -----
+      // ----- Мобильная версия -----
       const vpScore = audits["viewport"]?.score;
       const cwScore = audits["content-width"]?.score;
-      let mobileText = "";
-      let mobileStat = "warning";
-      if (vpScore === 1 && cwScore === 1) {
-        mobileStat = "good";
-        mobileText = "Сайт адаптирован, но есть зоны для улучшения UX";
-      } else if (vpScore === 0 || cwScore === 0) {
-        mobileStat = "error";
-        mobileText = "Сайт не адаптирован для мобильных";
-      } else {
-        mobileText = "Адаптация требует улучшения";
-      }
-      const mobile = {
-        category: "mobile",
-        title: "Мобильная версия",
-        status: { status: mobileStat, text: mobileText },
-        desc: "Проверка viewport и корректности контента на мобильных",
-      };
+      let mobileText = "", mobileStat = "warning";
+      if (vpScore === 1 && cwScore === 1) { mobileStat = "good"; mobileText = "Сайт адаптирован, но есть зоны для улучшения UX"; }
+      else if (vpScore === 0 || cwScore === 0) { mobileStat = "error"; mobileText = "Сайт не адаптирован для мобильных"; }
+      else mobileText = "Адаптация требует улучшения";
+      const mobile = { category: "mobile", title: "Мобильная версия", status: { status: mobileStat, text: mobileText }, desc: "Проверка viewport и корректности контента на мобильных" };
 
-      // ----- 5. Контент и релевантность -----
+      // ----- Контент -----
       const h1Ok = seoData.h1 && seoData.h1.trim() !== "";
       const h2Count = seoData.h2 ? seoData.h2.length : 0;
       const wordCount = seoData.wordCount || 0;
       const kwOk = seoData.keywords && seoData.keywords.trim() !== "";
-      let contentStatus = {
-        status: "warning",
-        text: "Контент недостаточно раскрывает часть поисковых запросов",
-      };
-      if (h1Ok && h2Count >= 1 && wordCount > 300 && kwOk) {
-        contentStatus = {
-          status: "good",
-          text: "Контент отличный: заголовки, объём и ключевые слова в порядке",
-        };
-      } else if (!h1Ok || wordCount < 100) {
-        contentStatus = {
-          status: "error",
-          text: "Критические проблемы с контентом (отсутствие H1 или слишком мало текста)",
-        };
-      }
+      let contentStatus = { status: "warning", text: "Контент недостаточно раскрывает часть поисковых запросов" };
+      if (h1Ok && h2Count >= 1 && wordCount > 300 && kwOk) contentStatus = { status: "good", text: "Контент отличный: заголовки, объём и ключевые слова в порядке" };
+      else if (!h1Ok || wordCount < 100) contentStatus = { status: "error", text: "Критические проблемы с контентом (отсутствие H1 или слишком мало текста)" };
       const contentDesc = `H1: ${h1Ok ? "присутствует" : "отсутствует"}, H2: ${h2Count} шт., слов: ${wordCount}, ключевые слова: ${kwOk ? "заданы" : "не заданы"}`;
-      const content = {
-        category: "content",
-        title: "Контент и релевантность",
-        status: contentStatus,
-        desc: contentDesc,
-      };
+      const content = { category: "content", title: "Контент и релевантность", status: contentStatus, desc: contentDesc };
 
-      // ----- 6. Технические ошибки -----
+      // ----- Технические ошибки -----
       const errorsScore = audits["errors-in-console"]?.score;
-      let errorsText = "";
-      let errorsStat = "error";
-      if (errorsScore === 1) {
-        errorsStat = "good";
-        errorsText = "Технических ошибок не найдено";
-      } else {
-        errorsText = "Найдены битые ссылки и ошибки 404";
-      }
-      const techErrors = {
-        category: "errors",
-        title: "Технические ошибки",
-        status: { status: errorsStat, text: errorsText },
-        desc: "Наличие ошибок JavaScript и проблем рендеринга",
-      };
+      let errorsText = "", errorsStat = "error";
+      if (errorsScore === 1) { errorsStat = "good"; errorsText = "Технических ошибок не найдено"; }
+      else errorsText = "Найдены битые ссылки и ошибки 404";
+      const techErrors = { category: "errors", title: "Технические ошибки", status: { status: errorsStat, text: errorsText }, desc: "Наличие ошибок JavaScript и проблем рендеринга" };
 
-      // ----- 7. Внутренняя перелинковка -----
+      // ----- Перелинковка -----
       const linkScore = audits["link-text"]?.score;
       const linkStatus = getStatus(linkScore, { good: 0.9, warn: 0.5 });
       let linkText = "";
       if (linkStatus.status === "good") linkText = "Хорошая структура ссылок";
-      else if (linkStatus.status === "error")
-        linkText = "Нужно усилить связь между ключевыми страницами";
+      else if (linkStatus.status === "error") linkText = "Нужно усилить связь между ключевыми страницами";
       else linkText = "Перелинковку можно улучшить";
-      const internalLinks = {
-        category: "links",
-        title: "Внутренняя перелинковка",
-        status: { status: linkStatus.status, text: linkText },
-        desc: "Описательность текстов внутренних ссылок",
-      };
+      const internalLinks = { category: "links", title: "Внутренняя перелинковка", status: { status: linkStatus.status, text: linkText }, desc: "Описательность текстов внутренних ссылок" };
 
-      // ----- 8. Безопасность / HTTPS -----
+      // ----- HTTPS -----
       let sslOk = !!seoData.ssl;
       if (!sslOk && audits["is-on-https"]?.score === 1) sslOk = true;
-      const security = {
-        category: "security",
-        title: "Безопасность / HTTPS",
-        status: sslOk
-          ? {
-              status: "good",
-              text: "SSL подключен, критичных проблем не найдено",
-            }
-          : { status: "error", text: "SSL не подключен или ошибки" },
-        desc: "Наличие и корректность SSL-сертификата",
-      };
+      const security = { category: "security", title: "Безопасность / HTTPS", status: sslOk ? { status: "good", text: "SSL подключен, критичных проблем не найдено" } : { status: "error", text: "SSL не подключен или ошибки" }, desc: "Наличие и корректность SSL-сертификата" };
 
-      const metrics = [
-        indexing,
-        speed,
-        metaTags,
-        mobile,
-        content,
-        techErrors,
-        internalLinks,
-        security,
-      ];
+      const metrics = [indexing, speed, metaTags, mobile, content, techErrors, internalLinks, security];
+      const renderAuditCards = (metrics) => {
+        if (!resultsGrid) return;
+        resultsGrid.innerHTML = "";
+        metrics.forEach((metric) => {
+          const card = document.createElement("div");
+          card.className = `card card--icon ${metric.status.status}`;
+          const statusText = metric.status.status === "good" ? "Хорошо" : metric.status.status === "warning" ? "Предупреждение" : "Ошибка";
+          card.innerHTML = `<img src="/src/icons/metric-${metric.category}.svg" alt="icon"><b>${metric.title}</b><div class="badge mb-16 ${metric.status.status}">${statusText}</div><p>${metric.status.text || metric.status.message || ""}</p>`;
+          resultsGrid.appendChild(card);
+        });
+      };
       renderAuditCards(metrics);
       resultsContainer.style.display = "block";
       showFormFeedback(submitBtn, "Проверка завершена", "success");
@@ -6063,13 +5978,40 @@ const seoAuditInit = () => {
     } finally {
       if (seoAuditFeatures) seoAuditFeatures.style.display = "";
       loader.style.display = "none";
-      inputs.forEach((i) => (i.disabled = false));
-      setTimeout(() => {
-        resultsContainer.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 600);
+      setFormDisabled(false);
+      setTimeout(() => resultsContainer?.scrollIntoView({ behavior: "smooth", block: "start" }), 600);
+    }
+  };
+
+  // --------------------------------------------------------------
+  // Режим обычной отправки (data-ajax="false") – редирект без AJAX
+  // --------------------------------------------------------------
+  const handleStandardRedirect = (submitBtn, url) => {
+    // Блокируем поля и показываем спиннер
+    setFormDisabled(true);
+    showButtonLoader(submitBtn);
+    // Перенаправляем на GET-версию экшена с параметром site
+    window.location.href = `/submit/express-seo-audit?site=${encodeURIComponent(url)}`;
+  };
+
+  // --------------------------------------------------------------
+  // Основной обработчик
+  // --------------------------------------------------------------
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+    const url = normalizeAndValidateUrl();
+    if (!url) {
+      if (submitBtn) hideButtonLoader(submitBtn);
+      return;
+    }
+    urlInput.value = url;
+
+    if (isAjax) {
+      handleAjaxRender(submitBtn, url);
+    } else {
+      handleStandardRedirect(submitBtn, url);
     }
   });
 };
