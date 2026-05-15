@@ -515,7 +515,8 @@
                                 Вывести сайт в топ
                             </p>
                             <p class="text-center">
-                                Улучшим позиции сайта, приведём заинтересованных посетителей и конвертируем их в клиентов
+                                Улучшим позиции сайта, приведём заинтересованных посетителей и конвертируем их в
+                                клиентов
                             </p>
                             <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
                                 <div class="recaptcha-wrapper" style="display: none;">
@@ -556,6 +557,82 @@
                                 </button>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Бесплатный аудит сайта -->
+        <section id="audit-section">
+            <div class="container">
+                <h3 class="underlined w-fit">
+                    Бесплатный аудит сайта
+                </h3>
+
+                <p>
+                    Проведите бесплатный экспресс-аудит вашего сайта с помощью нашего онлайн-инструмента, который быстро
+                    проверит данные домена и основные SEO-параметры.
+                </p>
+
+                <div class="flex-layout flex-layout--2x align-start gap-20 mt-52">
+                    <ul class="list--cooperate slim">
+                        <li>
+                            <img src="/src/icons/chart_rate.svg" alt="icon">
+                            <p>
+                                Анализ 30+ основных
+                                SEO-факторов
+                            </p>
+                        </li>
+                        <li>
+                            <img src="/src/icons/magnifier_glass.svg" alt="icon">
+                            <p>
+                                Проверка корректности индексации
+                            </p>
+                        </li>
+                        <li>
+                            <img src="/src/icons/tech-rocket.svg" alt="icon">
+                            <p>
+                                Оценка скорости загрузки
+                            </p>
+                        </li>
+                        <li>
+                            <img src="/src/icons/paper.svg" alt="icon">
+                            <p>
+                                Базовый анализ контента
+                            </p>
+                        </li>
+                    </ul>
+
+                    <div class="card thin overflow-visible">
+                        <form action="/submit/express-seo-audit" id="audit-form"
+                            class="d-flex flex-row flex-sm-wrap align-lg-stretch align-start gap-8" data-ajax="false">
+                            <div class="recaptcha-wrapper" style="display: none;">
+                                <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                    data-size="invisible"></div>
+                                <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                            </div>
+
+                            <input type="text" name="site" id="site-url" placeholder="URL сайта" required=""
+                                autocomplete="url">
+                            <button type="submit" class="big button-highlight w-sm-100 h-100" style="min-width: 120px;">
+                                проверить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Прелоадер локальный (показывается при запросе) -->
+                <div class="preloader" id="audit-loader"></div>
+
+                <!-- Ошибка -->
+                <div class="error-msg text-center mt-32" id="audit-error"></div>
+
+                <!-- Результаты -->
+                <div class="mt-52" id="audit-results" style="display:none;">
+                    <h3 class="underlined w-fit">Что показал экспресс‑аудит</h3>
+                    <div class="flex-layout flex-layout--groups gap-20 align-stretch justify-center mt-32"
+                        id="audit-cards">
+                        <!-- Карточки подсасываются динамически -->
                     </div>
                 </div>
             </div>
