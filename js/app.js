@@ -5963,7 +5963,7 @@ const seoAuditInit = () => {
           const card = document.createElement("div");
           card.className = `card card--icon ${metric.status.status}`;
           const statusText = metric.status.status === "good" ? "Хорошо" : metric.status.status === "warning" ? "Предупреждение" : "Ошибка";
-          card.innerHTML = `<img src="/src/icons/metric-${metric.category}.svg" alt="icon"><b>${metric.title}</b><div class="badge mb-16 ${metric.status.status}">${statusText}</div><p>${metric.status.text || metric.status.message || ""}</p>`;
+          card.innerHTML = `<img src="/src/icons/metric-${metric.category}.svg" alt="icon"><b>${metric.title}</b><div class="badge mb-16 ${metric.status.status}">${statusText}</div>`;
           resultsGrid.appendChild(card);
         });
       };
