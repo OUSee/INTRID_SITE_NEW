@@ -5283,25 +5283,39 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const lazyElements = document.querySelectorAll(".lazyload");
 const observer = new IntersectionObserver(handleIntersection, {
   rootMargin: "100px",
 });
-lazyElements.forEach((element) => observer.observe(element));
 
-// lazyloading for bg-images elements
 function handleIntersection(entries) {
-  entries.map((entry) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      // Item has crossed our observation
-      // threshold - load src from data-src
-      entry.target.src = entry.target.dataset.src;
-      entry.target.classList.remove("lazyload");
-      // Job done for this item - no need to watch it!
+      loadLazyElement(entry.target);
       observer.unobserve(entry.target);
     }
   });
 }
+
+function loadLazyElement(element) {
+  if (!element || !element.dataset.src) {
+    return;
+  }
+
+  element.src = element.dataset.src;
+  element.classList.remove("lazyload");
+}
+
+function observeLazyElements(root = document) {
+  const lazyElements = root.querySelectorAll(".lazyload");
+
+  lazyElements.forEach((element) => {
+    observer.observe(element);
+  });
+}
+
+window.observeLazyElements = observeLazyElements;
+
+observeLazyElements();
 
 /**
  * Единый класс для работы с оглавлением статьи
@@ -6066,7 +6080,7 @@ const seoAuditInit = () => {
               : metric.status.status === "warning"
                 ? "Предупреждение"
                 : "Ошибка";
-          card.innerHTML = `<img src="/src/icons/metric-${metric.category}.svg" alt="icon"><b>${metric.title}</b><div class="badge mb-16 ${metric.status.status}">${statusText}</div>`;
+          card.innerHTML = `<img src="/src/icons/metric-${metric.category}.svg" alt="icon"><b>${metric.title}</b><div class="badge mb-16 ${metric.status.status}">${statusText}</div><p>${metric.desc}</p>`;
           resultsGrid.appendChild(card);
         });
       };

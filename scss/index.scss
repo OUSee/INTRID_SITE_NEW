@@ -3625,7 +3625,8 @@ main {
 // comment
 
 // Отзывы
-.reviews {
+.reviews,
+.blogs {
   @media (max-width: 999.98px) {
     background: linear-gradient(
       0deg,
@@ -3937,6 +3938,19 @@ main {
   }
 }
 
+.blogs {
+  &__list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 20px;
+
+    & .card {
+      flex: unset;
+      width: 100%;
+    }
+  }
+}
+
 // blog_page
 .blog_page {
   padding-top: 0;
@@ -4033,43 +4047,43 @@ main {
 }
 
 // blog-list
-.blog {
-  &-list {
-    position: relative;
-    padding: 24px;
-    background-color: var(--blue-bg);
-    border-radius: 40px;
-    overflow: hidden;
+// .blog {
+//   &-list {
+//     position: relative;
+//     padding: 24px;
+//     background-color: var(--blue-bg);
+//     border-radius: 40px;
+//     overflow: hidden;
 
-    @media (max-width: 999.98px) {
-      padding: 16px;
-      border-radius: 20px;
-    }
+//     @media (max-width: 999.98px) {
+//       padding: 16px;
+//       border-radius: 20px;
+//     }
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      z-index: -1;
-      width: 0;
-      height: 0;
-      border-radius: 100%;
-      aspect-ratio: 1/1;
-      box-shadow:
-        0px 0px 72px 60px var(--blue-clouds),
-        inset 0px 0px 70px 2px var(--blue-clouds);
-      transform: translate(-50%, 0%);
-    }
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       top: 10%;
+//       left: 50%;
+//       z-index: -1;
+//       width: 0;
+//       height: 0;
+//       border-radius: 100%;
+//       aspect-ratio: 1/1;
+//       box-shadow:
+//         0px 0px 72px 60px var(--blue-clouds),
+//         inset 0px 0px 70px 2px var(--blue-clouds);
+//       transform: translate(-50%, 0%);
+//     }
 
-    & > .card {
-      &:last-child {
-        padding-bottom: 0;
-        border-bottom: 0;
-      }
-    }
-  }
-}
+//     & > .card {
+//       &:last-child {
+//         padding-bottom: 0;
+//         border-bottom: 0;
+//       }
+//     }
+//   }
+// }
 
 .ordinary-list {
   .ordinary-list {

@@ -14164,16 +14164,19 @@ main {
 }
 
 @media (max-width: 999.98px) {
-  .reviews {
+  .reviews,
+  .blogs {
     background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.35) 15%, rgba(0, 234, 255, 0.35) 85%, rgba(0, 234, 255, 0) 100%);
   }
 }
-.reviews__inner {
+.reviews__inner,
+.blogs__inner {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.reviews__buttons {
+.reviews__buttons,
+.blogs__buttons {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -14183,19 +14186,23 @@ main {
   width: 100%;
 }
 @media (max-width: 999.98px) {
-  .reviews__buttons {
+  .reviews__buttons,
+  .blogs__buttons {
     gap: 8px;
   }
 }
 @media (max-width: 599.98px) {
-  .reviews__buttons {
+  .reviews__buttons,
+  .blogs__buttons {
     gap: 0;
   }
 }
-.reviews__buttons > * {
+.reviews__buttons > *,
+.blogs__buttons > * {
   flex: 1;
 }
-.reviews__button {
+.reviews__button,
+.blogs__button {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -14214,7 +14221,8 @@ main {
   transition: 0.25s ease-in-out;
 }
 @media (max-width: 999.98px) {
-  .reviews__button {
+  .reviews__button,
+  .blogs__button {
     flex-direction: column;
     align-items: center;
     gap: 8px;
@@ -14226,7 +14234,8 @@ main {
   }
 }
 @media (max-width: 599.98px) {
-  .reviews__button {
+  .reviews__button,
+  .blogs__button {
     gap: 4px;
     padding: 4px;
     border-bottom-left-radius: 0;
@@ -14235,110 +14244,138 @@ main {
   }
 }
 @media (min-width: 1000px) {
-  .reviews__button:hover {
+  .reviews__button:hover,
+  .blogs__button:hover {
     background: color-mix(in srgb, var(--blue-main) 15%, transparent);
   }
 }
 @media (max-width: 999.98px) {
-  .reviews__button:hover img {
+  .reviews__button:hover img,
+  .blogs__button:hover img {
     filter: unset;
   }
 }
-.reviews__button img {
+.reviews__button img,
+.blogs__button img {
   display: flex;
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
 @media (max-width: 999.98px) {
-  .reviews__button img {
+  .reviews__button img,
+  .blogs__button img {
     width: 32px;
     height: 32px;
   }
 }
 @media (max-width: 599.98px) {
-  .reviews__button img {
+  .reviews__button img,
+  .blogs__button img {
     width: 32px;
     height: 32px;
   }
 }
 @media (max-width: 999.98px) {
-  .reviews__button > span:not(.tab-header, .tab-button-content) {
+  .reviews__button > span:not(.tab-header, .tab-button-content),
+  .blogs__button > span:not(.tab-header, .tab-button-content) {
     text-wrap: balance;
     font-size: 12px !important;
   }
-  .reviews__button > span:not(.tab-header, .tab-button-content) > span {
+  .reviews__button > span:not(.tab-header, .tab-button-content) > span,
+  .blogs__button > span:not(.tab-header, .tab-button-content) > span {
     font-size: 12px !important;
   }
 }
 @media (max-width: 599.98px) {
-  .reviews__button > span:not(.tab-header, .tab-button-content) {
+  .reviews__button > span:not(.tab-header, .tab-button-content),
+  .blogs__button > span:not(.tab-header, .tab-button-content) {
     font-size: 11px !important;
   }
-  .reviews__button > span:not(.tab-header, .tab-button-content) > span {
+  .reviews__button > span:not(.tab-header, .tab-button-content) > span,
+  .blogs__button > span:not(.tab-header, .tab-button-content) > span {
     font-size: 11px !important;
   }
 }
-.reviews__button:has(:checked), .reviews__button.active {
+.reviews__button:has(:checked), .reviews__button.active,
+.blogs__button:has(:checked),
+.blogs__button.active {
   border-top-color: var(--blue-main);
   border-bottom-color: var(--bg-main);
 }
 @media (max-width: 999.98px) {
-  .reviews__button:has(:checked), .reviews__button.active {
+  .reviews__button:has(:checked), .reviews__button.active,
+  .blogs__button:has(:checked),
+  .blogs__button.active {
     color: var(--blue-main);
     background-color: var(--bg-main);
   }
 }
-.reviews__button:has(:checked) img, .reviews__button.active img {
+.reviews__button:has(:checked) img, .reviews__button.active img,
+.blogs__button:has(:checked) img,
+.blogs__button.active img {
   filter: invert(1) grayscale(1) brightness(0);
 }
 @media (max-width: 999.98px) {
-  .reviews__button:has(:checked) img, .reviews__button.active img {
+  .reviews__button:has(:checked) img, .reviews__button.active img,
+  .blogs__button:has(:checked) img,
+  .blogs__button.active img {
     filter: unset;
   }
 }
 @media (min-width: 1000px) {
-  .reviews__button:has(:checked), .reviews__button.active {
+  .reviews__button:has(:checked), .reviews__button.active,
+  .blogs__button:has(:checked),
+  .blogs__button.active {
     background-color: var(--bg-main);
     border-top: 2px solid var(--blue-main);
     color: var(--color-white);
   }
-  .reviews__button:has(:checked) img, .reviews__button.active img {
+  .reviews__button:has(:checked) img, .reviews__button.active img,
+  .blogs__button:has(:checked) img,
+  .blogs__button.active img {
     filter: invert(0) grayscale(0) brightness(1);
   }
 }
-.reviews__button input {
+.reviews__button input,
+.blogs__button input {
   display: none;
   width: 0;
   height: 0;
   opacity: 0;
   visibility: hidden;
 }
-.reviews__button {
+.reviews__button,
+.blogs__button {
   transition: 0.25s ease-in-out;
 }
 @media (max-width: 999.98px) {
-  .reviews__button {
+  .reviews__button,
+  .blogs__button {
     justify-content: flex-start;
   }
 }
-.reviews__button i {
+.reviews__button i,
+.blogs__button i {
   display: flex;
   font-size: 32px;
   color: var(--color-white);
   transition: 0.25s ease-in-out;
 }
 @media (max-width: 999.98px) {
-  .reviews__button i {
+  .reviews__button i,
+  .blogs__button i {
     font-size: 32px;
   }
 }
 @media (max-width: 599.98px) {
-  .reviews__button i {
+  .reviews__button i,
+  .blogs__button i {
     font-size: 32px;
   }
 }
-.reviews__button img {
+.reviews__button img,
+.blogs__button img {
   display: flex;
   width: 32px;
   height: 32px;
@@ -14347,49 +14384,64 @@ main {
   transition: 0.25s ease-in-out;
 }
 @media (max-width: 999.98px) {
-  .reviews__button img {
+  .reviews__button img,
+  .blogs__button img {
     width: 48px;
     height: 48px;
   }
 }
 @media (max-width: 599.98px) {
-  .reviews__button img {
+  .reviews__button img,
+  .blogs__button img {
     width: 32px;
     height: 32px;
   }
 }
 @media (max-width: 999.98px) {
-  .reviews__button:hover i {
+  .reviews__button:hover i,
+  .blogs__button:hover i {
     color: var(--blue-main);
   }
 }
 @media (max-width: 999.98px) {
-  .reviews__button:hover img {
+  .reviews__button:hover img,
+  .blogs__button:hover img {
     filter: unset;
   }
 }
-.reviews__button:has(:checked) img, .reviews__button.active img {
+.reviews__button:has(:checked) img, .reviews__button.active img,
+.blogs__button:has(:checked) img,
+.blogs__button.active img {
   filter: invert(1) grayscale(1) brightness(0);
 }
 @media (max-width: 999.98px) {
-  .reviews__button:has(:checked) img, .reviews__button.active img {
+  .reviews__button:has(:checked) img, .reviews__button.active img,
+  .blogs__button:has(:checked) img,
+  .blogs__button.active img {
     filter: unset;
   }
 }
-.reviews__button:has(:checked) i, .reviews__button.active i {
+.reviews__button:has(:checked) i, .reviews__button.active i,
+.blogs__button:has(:checked) i,
+.blogs__button.active i {
   color: var(--blue-main);
 }
 @media (min-width: 1000px) {
-  .reviews__button:has(:checked), .reviews__button.active {
+  .reviews__button:has(:checked), .reviews__button.active,
+  .blogs__button:has(:checked),
+  .blogs__button.active {
     background-color: var(--bg-main);
     border-top: 2px solid var(--blue-main);
     color: var(--color-white);
   }
-  .reviews__button:has(:checked) img, .reviews__button.active img {
+  .reviews__button:has(:checked) img, .reviews__button.active img,
+  .blogs__button:has(:checked) img,
+  .blogs__button.active img {
     filter: invert(0) grayscale(0) brightness(1);
   }
 }
-.reviews__wrapper {
+.reviews__wrapper,
+.blogs__wrapper {
   width: 100%;
   background: rgb(10, 10, 10);
   background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
@@ -14404,7 +14456,8 @@ main {
   background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 82%, rgba(10, 10, 10, 0.8) 91%, rgba(10, 10, 10, 0.6) 96%, rgba(10, 10, 10, 0) 100%);
   transition: 0.25s ease-in-out;
 }
-.reviews__layout {
+.reviews__layout,
+.blogs__layout {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -14413,7 +14466,8 @@ main {
   width: 100%;
 }
 @media (max-width: 999.98px) {
-  .reviews__layout {
+  .reviews__layout,
+  .blogs__layout {
     flex-direction: column;
     align-items: center;
     flex-wrap: unset;
@@ -14421,89 +14475,108 @@ main {
   }
 }
 @media (min-width: 1000px) {
-  .reviews__layout > .reviews__rates {
+  .reviews__layout > .reviews__rates,
+  .blogs__layout > .reviews__rates {
     max-width: 240px;
     flex: 0 0 33%;
     padding-bottom: 100px;
   }
 }
-.reviews__layout > .reviews__container {
+.reviews__layout > .reviews__container,
+.blogs__layout > .reviews__container {
   flex: 1;
   max-width: 100%;
 }
-.reviews__rates {
+.reviews__rates,
+.blogs__rates {
   position: sticky;
   top: 80px;
   width: 100%;
   max-width: 238px;
 }
 @media (max-width: 999.98px) {
-  .reviews__rates {
+  .reviews__rates,
+  .blogs__rates {
     position: relative;
     top: unset;
   }
 }
-.reviews__rates > p {
+.reviews__rates > p,
+.blogs__rates > p {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 0;
 }
-.reviews__rates-container {
+.reviews__rates-container,
+.blogs__rates-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.reviews__rates-container > p {
+.reviews__rates-container > p,
+.blogs__rates-container > p {
   font-size: 64px;
   line-height: 1;
   font-weight: 500;
   margin-bottom: 0;
 }
-.reviews__rates-container--stars {
+.reviews__rates-container--stars,
+.blogs__rates-container--stars {
   margin-left: 4px;
 }
-.reviews__rates-container--stars > p {
+.reviews__rates-container--stars > p,
+.blogs__rates-container--stars > p {
   font-weight: 500;
   width: fit-content;
 }
-.reviews__rates-container--stars > p:first-child {
+.reviews__rates-container--stars > p:first-child,
+.blogs__rates-container--stars > p:first-child {
   margin-bottom: 0;
 }
-.reviews__rates-container--stars > p:last-child {
+.reviews__rates-container--stars > p:last-child,
+.blogs__rates-container--stars > p:last-child {
   margin-bottom: 0;
 }
-.reviews__rates-container--stars > div {
+.reviews__rates-container--stars > div,
+.blogs__rates-container--stars > div {
   display: flex;
   gap: 4px;
 }
-.reviews__rates-container--stars > div > i {
+.reviews__rates-container--stars > div > i,
+.blogs__rates-container--stars > div > i {
   display: flex;
   font-size: 12px;
 }
-.reviews__rates-percentage {
+.reviews__rates-percentage,
+.blogs__rates-percentage {
   margin-top: 32px;
   gap: 12px;
 }
-.reviews__rates-percentage progress {
+.reviews__rates-percentage progress,
+.blogs__rates-percentage progress {
   background-color: var(--neutral45);
   width: 140px;
 }
-.reviews__rates-percentage div {
+.reviews__rates-percentage div,
+.blogs__rates-percentage div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
 }
-.reviews__rates-percentage div p {
+.reviews__rates-percentage div p,
+.blogs__rates-percentage div p {
   margin-bottom: 0;
 }
-.reviews__rates-percentage div p:first-child {
+.reviews__rates-percentage div p:first-child,
+.blogs__rates-percentage div p:first-child {
   width: 11px;
   font-size: 14px;
   line-height: 20.8px;
   color: var(--primary65);
 }
-.reviews__rates-percentage div p:last-child {
+.reviews__rates-percentage div p:last-child,
+.blogs__rates-percentage div p:last-child {
   color: var(--neutral45);
   width: 38px;
   font-size: 14px;
@@ -14511,36 +14584,44 @@ main {
   line-height: 18.8px;
   text-align: right;
 }
-.reviews__rates-percentage div i {
+.reviews__rates-percentage div i,
+.blogs__rates-percentage div i {
   height: 15.5px;
 }
-.reviews__rates-percentage div span {
+.reviews__rates-percentage div span,
+.blogs__rates-percentage div span {
   width: 100%;
   max-width: 137.5px;
   border: 2px solid var(--neutral45);
   border-radius: 2px;
 }
-.reviews__rates-percentage div.active span {
+.reviews__rates-percentage div.active span,
+.blogs__rates-percentage div.active span {
   border-color: var(--primary65);
 }
-.reviews__rates-percentage div.active p:last-child {
+.reviews__rates-percentage div.active p:last-child,
+.blogs__rates-percentage div.active p:last-child {
   color: var(--primary65);
 }
-.reviews__container {
+.reviews__container,
+.blogs__container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
 }
 @media (max-width: 999.98px) {
-  .reviews__container {
+  .reviews__container,
+  .blogs__container {
     gap: 30px;
   }
 }
-.reviews__container > a {
+.reviews__container > a,
+.blogs__container > a {
   margin-left: auto;
 }
-.reviews__list {
+.reviews__list,
+.blogs__list {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -14549,24 +14630,38 @@ main {
   width: 100%;
   transform-origin: top center;
 }
-.reviews__list.show {
+.reviews__list.show,
+.blogs__list.show {
   animation: burgerAppear 0.5s ease-in-out;
 }
-.reviews__list .card {
+.reviews__list .card,
+.blogs__list .card {
   flex: 1 1 360px;
 }
 @media (max-width: 599.98px) {
-  .reviews__list .card-rate > b {
+  .reviews__list .card-rate > b,
+  .blogs__list .card-rate > b {
     display: none;
   }
 }
-.reviews .button-link.big {
+.reviews .button-link.big,
+.blogs .button-link.big {
   position: unset;
   top: unset;
   left: unset;
   right: unset;
   bottom: unset;
   transform: none;
+}
+
+.blogs__list {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+.blogs__list .card {
+  flex: unset;
+  width: 100%;
 }
 
 .blog_page {
@@ -14667,37 +14762,6 @@ main {
 }
 .blog_page > .container > .default-table {
   margin-bottom: 20px;
-}
-
-.blog-list {
-  position: relative;
-  padding: 24px;
-  background-color: var(--blue-bg);
-  border-radius: 40px;
-  overflow: hidden;
-}
-@media (max-width: 999.98px) {
-  .blog-list {
-    padding: 16px;
-    border-radius: 20px;
-  }
-}
-.blog-list::before {
-  content: "";
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  z-index: -1;
-  width: 0;
-  height: 0;
-  border-radius: 100%;
-  aspect-ratio: 1/1;
-  box-shadow: 0px 0px 72px 60px var(--blue-clouds), inset 0px 0px 70px 2px var(--blue-clouds);
-  transform: translate(-50%, 0%);
-}
-.blog-list > .card:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
 }
 
 .ordinary-list .ordinary-list {
