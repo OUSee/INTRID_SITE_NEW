@@ -4312,7 +4312,7 @@ form input[type=submit] {
   transition: 0.25s ease-in-out;
 }
 .contact-block--phone a::before {
-  content: "b";
+  content: "o";
   position: absolute;
   top: 2px;
   left: 0;
@@ -10465,6 +10465,11 @@ button:disabled, button.disabled,
     align-items: flex-start;
     flex: unset;
     max-width: unset;
+  }
+}
+@media (max-width: 999.98px) {
+  .footer-contacts > .contact-block--phone {
+    display: none;
   }
 }
 @media (max-width: 991.98px) {
