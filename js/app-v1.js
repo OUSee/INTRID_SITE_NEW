@@ -644,24 +644,17 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const submitAjaxForm = (form) => {
-    const isQuickForm = form.id === "quick-form";
     const submitBtn = form.querySelector(
       'button[type="submit"], input[type="submit"]',
     );
     showButtonLoader(submitBtn);
 
     const formData = new FormData(form);
-    const requestHeaders = {};
-
-    if (isQuickForm) {
-      requestHeaders["X-Requested-With"] = "XMLHttpRequest";
-    }
 
     return fetch(form.action, {
       method: "POST",
       body: formData,
       credentials: "same-origin",
-      headers: requestHeaders,
     })
       .then(async (response) => {
         let parsedData = null;
@@ -682,34 +675,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return parsedData;
       })
       .then((data) => {
-        const isSuccess = isQuickForm
-          ? true
-          : Boolean(data && data.status);
-
-        let message = extractMessage(
+        const isSuccess = Boolean(data && data.status);
+        const message = extractMessage(
           data,
           isSuccess ? defaultSuccessMessage : defaultErrorMessage,
         );
-
-        if (
-          isQuickForm &&
-          data &&
-          typeof data === "object" &&
-          typeof data.message === "string" &&
-          data.message.trim() !== ""
-        ) {
-          message = data.message;
-        }
-
         if (isSuccess) {
           closeFormPopup(form);
           form.reset();
           resetAutosizeTextareas(form);
-          form.querySelectorAll('input[type="file"]').forEach((input) => {
-            if (input.fileInputManager) {
-              input.fileInputManager.clearFiles();
-            }
-          });
         }
         showFormFeedback(submitBtn, message, isSuccess ? "success" : "error");
         return data;
@@ -747,7 +721,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (formData.widgetId !== null) {
           recaptchaInput.value = "";
-          window.smartCaptcha.execute(formData.widgetId);
+          grecaptcha.reset(formData.widgetId);
+          grecaptcha.execute(formData.widgetId);
         } else {
           formData.pendingSubmit = true;
         }
@@ -763,35 +738,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (recaptchaForms.length > 0) {
-    const initializeSmartCaptcha = () => {
+    const defaultSiteKey = "6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX";
+    const initializeRecaptcha = () => {
       recaptchaForms.forEach((item) => {
-        if (item.initialized || typeof window.smartCaptcha === "undefined") {
+        if (item.initialized || typeof grecaptcha === "undefined") {
           return;
         }
 
-        const globalSitekey =
-          typeof window.SMARTCAPTCHA_SITEKEY === "string"
-            ? window.SMARTCAPTCHA_SITEKEY.trim()
-            : "";
-        const localSitekey =
+        const sitekey =
           item.recaptchaContainer.dataset.sitekey &&
           item.recaptchaContainer.dataset.sitekey.length > 0
-            ? item.recaptchaContainer.dataset.sitekey.trim()
-            : "";
-        const sitekey = globalSitekey || localSitekey;
+            ? item.recaptchaContainer.dataset.sitekey
+            : defaultSiteKey;
 
-        if (!sitekey) {
-          return;
-        }
-
-        const widgetId = window.smartCaptcha.render(item.recaptchaContainer, {
+        const widgetId = grecaptcha.render(item.recaptchaContainer, {
           sitekey,
-          invisible: true,
+          size: item.recaptchaContainer.dataset.size || "invisible",
           callback: (token) => {
             item.recaptchaInput.value = token;
 
             submitAjaxForm(item.form).finally(() => {
               item.recaptchaInput.value = "";
+              grecaptcha.reset(widgetId);
             });
           },
         });
@@ -801,32 +769,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (item.pendingSubmit) {
           item.pendingSubmit = false;
-          window.smartCaptcha.execute(widgetId);
+          grecaptcha.execute(widgetId);
         }
       });
     };
 
-    if (typeof window.smartCaptcha !== "undefined") {
-      initializeSmartCaptcha();
+    if (typeof grecaptcha !== "undefined") {
+      initializeRecaptcha();
     } else {
-      const callbackName = "initAjaxFormSmartCaptcha";
+      const callbackName = "initAjaxFormRecaptcha";
       const previousCallback = window[callbackName];
 
       window[callbackName] = () => {
         if (typeof previousCallback === "function") {
           previousCallback();
         }
-        initializeSmartCaptcha();
+        initializeRecaptcha();
       };
 
-      const scriptId = "yandex-smartcaptcha-script";
+      const scriptId = "google-recaptcha-script";
       if (!document.getElementById(scriptId)) {
         const script = document.createElement("script");
         script.id = scriptId;
         script.src =
-          "https://smartcaptcha.yandexcloud.net/captcha.js?render=onload&onload=" +
+          "https://www.google.com/recaptcha/api.js?onload=" +
           callbackName +
-          "&hl=ru";
+          "&render=explicit";
         script.async = true;
         script.defer = true;
         document.head.appendChild(script);
@@ -4675,6 +4643,75 @@ document.addEventListener("DOMContentLoaded", function () {
   const bigCalc = document.getElementById("big-calc");
 
   if (!quickForm) return;
+
+  // --- Обработчик отправки (AJAX) ---
+  quickForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    e.stopImmediatePropagation(); // гарантия, что другие обработчики не сработают
+
+    const submitBtn = quickForm.querySelector('button[type="submit"]');
+    showButtonLoader(submitBtn);
+
+    // Создаём FormData (обработчик "formdata" сработает автоматически)
+    const formData = new FormData(quickForm);
+
+    try {
+      const response = await fetch(quickForm.action, {
+        method: "POST",
+        body: formData,
+        credentials: "same-origin",
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      });
+
+      // Считаем успехом любой ответ с HTTP-статусом 2xx
+      if (response.ok) {
+        // Сброс стандартных полей формы
+        quickForm.reset();
+
+        // Сброс кастомных менеджеров файлов
+        const fileInputs = quickForm.querySelectorAll('input[type="file"]');
+        fileInputs.forEach((input) => {
+          if (input.fileInputManager) {
+            input.fileInputManager.clearFiles();
+          }
+        });
+
+        // Закрыть родительский попап, если есть
+        const popup = quickForm.closest(".popup");
+        if (popup && popup.classList.contains("open")) {
+          const closeBtn = popup.querySelector(".popup-close");
+          if (closeBtn) closeBtn.click();
+          else popup.classList.remove("open");
+          document.documentElement.classList.remove("popup-opened");
+        }
+
+        // Пытаемся извлечь сообщение из JSON, если ответ – JSON
+        let message = "Форма успешно отправлена";
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const result = await response.json();
+          if (result.message) message = result.message;
+        }
+        showFormFeedback(submitBtn, message, "success");
+      } else {
+        // Ошибка HTTP (4xx, 5xx)
+        let errorMsg = "Ошибка отправки формы";
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const result = await response.json();
+          if (result.message) errorMsg = result.message;
+        }
+        showFormFeedback(submitBtn, errorMsg, "error");
+      }
+    } catch (error) {
+      console.error("Quick form error:", error);
+      showFormFeedback(submitBtn, "Ошибка соединения с сервером", "error");
+    } finally {
+      hideButtonLoader(submitBtn);
+    }
+  });
 
   // --- Обработчик formdata (оставляем без изменений) ---
   quickForm.addEventListener("formdata", (e) => {
