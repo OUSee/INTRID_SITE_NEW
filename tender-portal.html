@@ -407,7 +407,7 @@
 		</section>
 
 		<!-- Варианты решений тендерных порталов -->
-		<section>
+		<section id="tenderPrices">
 			<div class="container">
 				<h2 class="w-fill text-center">
 					Варианты решений тендерных порталов
@@ -415,7 +415,21 @@
 			</div>
 
 			<div class="nav-tabs nav-tabs--tender mt-52">
-				<div class="nav-tabs--buttons justify-center container" id="pricesButtons" data-tabs-buttons="">
+				<div class="container">
+					<div class="nice-wrapper nice-wrapper--simple" data-tabs-buttons="">
+						<div class="nice-select isTextField" tabindex="0">
+							<span class="current">Грузоперевозки</span>
+							<ul class="list">
+								<label data-value="1" for="tab-slide-btn-1" class="option d-flex w-100 h-100 selected"
+									aria-selected="true">Грузоперевозки</label>
+								<label data-value="2" for="tab-slide-btn-2"
+									class="option d-flex w-100 h-100">Закупки</label>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="nav-tabs--buttons justify-center container" id="tenderPricesButtons" data-tabs-buttons="">
 					<label for="tab-slide-btn-1" class="button--tab">
 						<input type="radio" name="tab-slider-radio" id="tab-slide-btn-1" checked="">
 						<img src="./src/images/shipping.svg" alt="icon">

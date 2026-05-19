@@ -1956,6 +1956,11 @@ ol li > ol {
 .text-end {
   text-align: end;
 }
+@media (max-width: 599.98px) {
+  .text-sm-left {
+    text-align: left;
+  }
+}
 .text-decoration-none {
   text-decoration: none !important;
 }
@@ -6067,7 +6072,7 @@ button,
   justify-content: center;
   border-radius: 32px;
   background-color: transparent;
-  padding: 12px 24px;
+  padding: 16px 24px;
   font-weight: 500;
   width: fit-content;
   font-size: 14px;
@@ -6089,7 +6094,9 @@ button,
   .button,
   .button-link,
   .button-highlight {
+    gap: 4px;
     max-height: 40px;
+    padding: 20px 24px;
   }
 }
 button span,
@@ -6121,35 +6128,6 @@ button i.icon-arrow_wide,
 .button-highlight i.icon-arrow_wide {
   font-size: 1.4em;
   line-height: 14px;
-}
-button.big,
-.button.big,
-.button-link.big,
-.button-highlight.big {
-  border-radius: 32px;
-  padding: 16px 24px;
-  justify-content: center;
-  align-items: center;
-}
-@media (max-width: 599.98px) {
-  button.big,
-  .button.big,
-  .button-link.big,
-  .button-highlight.big {
-    font-size: 12px;
-    padding: 20px 24px;
-    gap: 4px;
-  }
-}
-@media (max-width: 439.98px) {
-  button.big,
-  .button.big,
-  .button-link.big,
-  .button-highlight.big {
-    font-size: 12px;
-    padding: 14px 24px;
-    gap: 4px;
-  }
 }
 button.big i.icon-arrow_wide,
 .button.big i.icon-arrow_wide,
@@ -7827,7 +7805,7 @@ button:disabled, button.disabled,
 }
 @media (max-width: 599.98px) {
   .card--roadmap {
-    padding: 20px 20px 20px 50px;
+    padding: 20px;
   }
 }
 .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6 {
@@ -7856,6 +7834,11 @@ button:disabled, button.disabled,
   color: var(--blue-main);
   line-height: 140%;
   margin-bottom: 1em;
+}
+@media (max-width: 599.98px) {
+  .card--roadmap > h1::before, .card--roadmap > h2::before, .card--roadmap > h3::before, .card--roadmap > h4::before, .card--roadmap > h5::before, .card--roadmap > h6::before, .card--roadmap > b::before {
+    content: counter(roadmapItems) ".";
+  }
 }
 .card--roadmap::before {
   content: counter(roadmapItems);
@@ -7887,20 +7870,12 @@ button:disabled, button.disabled,
     height: 70px;
     padding: 0px 0px 8px 16px;
     clip-path: ellipse(50% 50% at 20% 40%);
-    font-size: 52px;
+    font-size: 40px;
   }
 }
 @media (max-width: 599.98px) {
   .card--roadmap::before {
-    top: 20px;
-    left: 16px;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    background-color: transparent;
-    font-size: 32px;
-    clip-path: none;
+    display: none;
   }
 }
 .card--roadmap::after {
@@ -9437,6 +9412,11 @@ button:disabled, button.disabled,
 }
 .cookies .cookies_button:hover {
   background: #112233;
+}
+
+[data-testid=shield],
+.SmartCaptcha-Shield {
+  display: none !important;
 }
 
 @supports (-moz-appearance: none) {
@@ -11663,8 +11643,14 @@ main {
   }
 }
 .tab-content-webDev .benefit-card img {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
+}
+@media (max-width: 999.98px) {
+  .tab-content-webDev .benefit-card img {
+    width: 24px;
+    height: 24px;
+  }
 }
 .tab-content-webDev .video-diagramm .water-ripple-video {
   z-index: 1 !important;
@@ -12165,7 +12151,7 @@ main {
 }
 
 .benefit-card {
-  border-radius: 40px;
+  border-radius: 32px;
   border: 1px solid var(--blue-bg);
   background-color: var(--bg-main);
   position: relative;
@@ -12220,6 +12206,13 @@ main {
   width: 92px;
   height: 92px;
   transform: translate(-15%, -10%);
+}
+@media (max-width: 999.98px) {
+  .benefit-card::before {
+    width: 84px;
+    height: 84px;
+    transform: translate(-20%, -20%);
+  }
 }
 
 .for-buisness-offers {

@@ -820,8 +820,13 @@ main {
     }
 
     img {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
+
+      @media (max-width: 999.98px) {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 
@@ -1506,7 +1511,7 @@ main {
 }
 
 .benefit-card {
-  border-radius: 40px;
+  border-radius: 32px;
   border: 1px solid var(--blue-bg);
   background-color: var(--bg-main);
   position: relative;
@@ -1566,6 +1571,12 @@ main {
     width: 92px;
     height: 92px;
     transform: translate(-15%, -10%);
+
+    @media (max-width: 999.98px) {
+      width: 84px;
+      height: 84px;
+      transform: translate(-20%, -20%);
+    }
   }
 }
 
