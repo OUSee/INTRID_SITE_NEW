@@ -1525,6 +1525,11 @@ main {
   cursor: pointer;
   transition: 0.25s ease-in-out;
 
+  @media (max-width: 999.98px) {
+    align-items: flex-start;
+    min-height: 100%;
+  }
+
   &:hover {
     @media (min-width: 1000px) {
       border: 1px solid var(--blue-main);
@@ -1539,7 +1544,13 @@ main {
   img {
     width: 44px;
     height: 44px;
+    object-fit: contain;
     align-self: flex-start;
+
+    @media (max-width: 999.98px) {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   img,
