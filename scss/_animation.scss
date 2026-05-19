@@ -43,11 +43,6 @@
 		display: block;
 	}
 
-	50% {
-		opacity: 1;
-		display: block;
-	}
-
 	100% {
 		opacity: 0;
 		display: none;
@@ -216,6 +211,20 @@
 	}
 }
 
+@keyframes ripple-mob {
+	0% {
+		border: 8px solid var(--blue-main);
+		transform: scale(0.7);
+		opacity: 0.8;
+	}
+
+	100% {
+		border: 1px solid white;
+		transform: scale(1.125);
+		opacity: 0;
+	}
+}
+
 @keyframes ripple-fill {
 	0% {
 		border: 8px solid var(--blue-main);
@@ -226,6 +235,20 @@
 	100% {
 		border: 1px solid white;
 		transform: scale(1.5);
+		opacity: 0;
+	}
+}
+
+@keyframes ripple-fill-mob {
+	0% {
+		border: 8px solid var(--blue-main);
+		transform: scale(1);
+		opacity: 0.8;
+	}
+
+	100% {
+		border: 1px solid white;
+		transform: scale(1.125);
 		opacity: 0;
 	}
 }

@@ -682,7 +682,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return parsedData;
       })
       .then((data) => {
-        const isSuccess = isQuickForm ? true : Boolean(data && data.status);
+        const isSuccess = isQuickForm
+          ? true
+          : Boolean(data && data.status);
 
         let message = extractMessage(
           data,
@@ -1142,11 +1144,8 @@ function tabSlidersStart() {
     });
 
     // Тач-свайпы
-    let xDown = null;
-    let yDown = null;
-    let pos = { x: 0, y: 0 };
-    let lastSlideChange = 0;
-
+    let xDown = null,
+      yDown = null;
     function handleTouchStart(evt) {
       const firstTouch = evt.touches[0];
       xDown = firstTouch.clientX;
@@ -1768,9 +1767,6 @@ function sliderInitialize() {
     if (!slider) return;
     if (slider.offsetParent === null) return; // скрытые слайдеры пропускаем
 
-    let navLeft = document.getElementById(`navleft_for--${id}`);
-    let navRight = document.getElementById(`navright_for--${id}`);
-
     // ----- Очистка предыдущей инициализации (если была) -----
     if (slider.dataset.initialized === "true") {
       const parent = slider.parentElement;
@@ -1789,13 +1785,10 @@ function sliderInitialize() {
       if (navLeft) {
         const newNavLeft = navLeft.cloneNode(true);
         navLeft.parentNode.replaceChild(newNavLeft, navLeft);
-        navLeft = newNavLeft;
       }
-
       if (navRight) {
         const newNavRight = navRight.cloneNode(true);
         navRight.parentNode.replaceChild(newNavRight, navRight);
-        navRight = newNavRight;
       }
 
       // Также для кнопок внутри пагинации (если они есть) – клонируем
@@ -1828,7 +1821,8 @@ function sliderInitialize() {
 
     // const pagination = document.querySelector(`#${id} + .pagination`);
     const pagination = document.querySelector(`#${id} ~ .pagination`);
-
+    const navLeft = document.getElementById(`navleft_for--${id}`);
+    const navRight = document.getElementById(`navright_for--${id}`);
     const fill = slider.dataset.fill;
     let isDragging = false;
     slider.style.transform = `translateX(-0px)`;
@@ -1866,10 +1860,10 @@ function sliderInitialize() {
       // Базовые стили – позиционирование будет уточнено в handleSliderArrows
       navLeft.style.position = "absolute";
       navRight.style.position = "absolute";
-      navLeft.setAttribute("aria-label", "Предыдущий слайд");
-      navLeft.setAttribute("role", "button");
-      navRight.setAttribute("aria-label", "Следующий слайд");
-      navRight.setAttribute("role", "button");
+      prevBtn.setAttribute("aria-label", "Предыдущий слайд");
+      prevBtn.setAttribute("role", "button");
+      nextBtn.setAttribute("aria-label", "Следующий слайд");
+      nextBtn.setAttribute("role", "button");
     }
 
     if (id === `cases-tabs-slider`) {
@@ -1877,11 +1871,6 @@ function sliderInitialize() {
     }
 
     // Функция для правильного размещения стрелок (восстановлена)
-    let xDown = null;
-    let yDown = null;
-    let pos = { x: 0, y: 0 };
-    let lastSlideChange = 0;
-
     const handleSliderArrows = () => {
       const sliderHeight = slider.offsetHeight / 2 + 40;
       prevBtn.forEach((btn) => {
@@ -2050,6 +2039,7 @@ function sliderInitialize() {
     }
 
     function mouseMoveHandler(e) {
+      let lastSlideChange = 0;
       const minInterval = 300;
       const currentTime = Date.now();
       const dx = e.clientX - pos.x;

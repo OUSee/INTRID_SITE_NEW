@@ -4884,6 +4884,10 @@ form {
       & .ripple-circle {
         animation: ripple-fill 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
 
+        @media (max-width: 999.98px) {
+          animation: ripple-fill-mob 8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         &:nth-child(1) {
           animation-delay: 0s;
         }
@@ -4925,6 +4929,10 @@ form {
   filter: drop-shadow(0 0 10px var(--blue-main));
   transform-origin: center;
   will-change: transform, opacity, box-shadow;
+
+  @media (max-width: 999.98px) {
+    animation: ripple-mob 8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
   &:nth-child(1) {
     animation-delay: 0s;

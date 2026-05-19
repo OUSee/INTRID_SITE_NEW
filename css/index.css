@@ -463,10 +463,6 @@ th {
     opacity: 1;
     display: block;
   }
-  50% {
-    opacity: 1;
-    display: block;
-  }
   100% {
     opacity: 0;
     display: none;
@@ -534,6 +530,18 @@ th {
     opacity: 0;
   }
 }
+@keyframes ripple-mob {
+  0% {
+    border: 8px solid var(--blue-main);
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
+  100% {
+    border: 1px solid white;
+    transform: scale(1.125);
+    opacity: 0;
+  }
+}
 @keyframes ripple-fill {
   0% {
     border: 8px solid var(--blue-main);
@@ -543,6 +551,18 @@ th {
   100% {
     border: 1px solid white;
     transform: scale(1.5);
+    opacity: 0;
+  }
+}
+@keyframes ripple-fill-mob {
+  0% {
+    border: 8px solid var(--blue-main);
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    border: 1px solid white;
+    transform: scale(1.125);
     opacity: 0;
   }
 }
@@ -5790,6 +5810,11 @@ form input[type=submit] {
 .flying-mockup--clients .ripple-circle {
   animation: ripple-fill 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
+@media (max-width: 999.98px) {
+  .flying-mockup--clients .ripple-circle {
+    animation: ripple-fill-mob 8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
 .flying-mockup--clients .ripple-circle:nth-child(1) {
   animation-delay: 0s;
 }
@@ -5824,6 +5849,11 @@ form input[type=submit] {
   filter: drop-shadow(0 0 10px var(--blue-main));
   transform-origin: center;
   will-change: transform, opacity, box-shadow;
+}
+@media (max-width: 999.98px) {
+  .ripple-circle {
+    animation: ripple-mob 8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 .ripple-circle:nth-child(1) {
   animation-delay: 0s;
@@ -13923,8 +13953,12 @@ main {
   flex-wrap: wrap;
   gap: 4px;
   width: 100%;
-  border-radius: 30px;
   overflow: hidden;
+}
+@media (min-width: 1000px) {
+  .portfolio-block__cards {
+    border-radius: 30px;
+  }
 }
 .portfolio-block__cards > * {
   flex: 1 0 calc(33.333333% - 3px);

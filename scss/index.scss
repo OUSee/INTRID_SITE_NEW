@@ -3428,8 +3428,11 @@ main {
       flex-wrap: wrap;
       gap: 4px;
       width: 100%;
-      border-radius: 30px;
       overflow: hidden;
+
+      @media (min-width: 1000px) {
+        border-radius: 30px;
+      }
 
       & > * {
         flex: 1 0 calc(33.333333% - 3px);
