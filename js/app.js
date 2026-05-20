@@ -1169,28 +1169,40 @@ function tabSlidersStart() {
     });
 
     // Тач-свайпы
+    let isDragging = false;
+
     let xDown = null,
-      yDown = null;
+      yDown = null,
+      pos = null;
+
     function handleTouchStart(evt) {
-      const firstTouch = evt.touches[0];
-      xDown = firstTouch.clientX;
-      yDown = firstTouch.clientY;
+      xDown = evt.touches[0].clientX;
+      yDown = evt.touches[0].clientY;
+      isDragging = false;
     }
     function handleTouchMove(evt) {
-      if (!xDown || !yDown) return;
+      if (xDown === null || yDown === null || isDragging || isAnimating) return;
       const xUp = evt.touches[0].clientX;
       const yUp = evt.touches[0].clientY;
       const xDiff = xDown - xUp;
       const yDiff = yDown - yUp;
       if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 20) {
         evt.preventDefault();
+        isDragging = true;
         xDiff > 0 ? goNext() : goPrev();
       }
+      // НЕ обнуляем xDown, yDown здесь!
+    }
+    function handleTouchEnd() {
       xDown = null;
       yDown = null;
+      isDragging = false;
     }
+
     slidesContainer.addEventListener("touchstart", handleTouchStart, false);
-    slidesContainer.addEventListener("touchmove", handleTouchMove, false);
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener("touchend", handleTouchEnd, false);
+    document.addEventListener("touchcancel", handleTouchEnd, false);
 
     // Инициализация (без checkOrientation)
     updateSlider(true);
@@ -1792,6 +1804,10 @@ function sliderInitialize() {
     if (!slider) return;
     if (slider.offsetParent === null) return; // скрытые слайдеры пропускаем
 
+    let isAnimating = false; // блокировка на время анимации
+    let xDown = null,
+      yDown = null;
+
     // ----- Очистка предыдущей инициализации (если была) -----
     if (slider.dataset.initialized === "true") {
       const parent = slider.parentElement;
@@ -2014,44 +2030,57 @@ function sliderInitialize() {
 
     // Обработчики стрелок
     const prevSlide = () => {
+      if (isAnimating) return;
       if (currentIndex > 0) {
+        isAnimating = true;
         currentIndex--;
         updateSlider();
+        setTimeout(() => {
+          isAnimating = false;
+        }, 500);
       }
     };
     const nextSlide = () => {
+      if (isAnimating) return;
       const containerWidth = slider.parentElement.getBoundingClientRect().width;
       const visibleSlidesCount = Math.round(
         containerWidth / slides[0].offsetWidth,
       );
       if (currentIndex + visibleSlidesCount < slides.length) {
+        isAnimating = true;
         currentIndex++;
         updateSlider();
+        setTimeout(() => {
+          isAnimating = false;
+        }, 500);
       }
     };
     prevBtn.forEach((btn) => btn.addEventListener("click", prevSlide));
     nextBtn.forEach((btn) => btn.addEventListener("click", nextSlide));
 
-    // Touch и mouse события (без изменений, но mouseMoveHandler синхронизирован)
+    // Touch и mouse события
     function handleTouchStart(evt) {
-      const firstTouch = evt.touches[0];
-      xDown = firstTouch.clientX;
-      yDown = firstTouch.clientY;
+      xDown = evt.touches[0].clientX;
+      yDown = evt.touches[0].clientY;
+      isDragging = false;
     }
-
     function handleTouchMove(evt) {
-      if (!xDown || !yDown) return;
+      if (xDown === null || yDown === null || isDragging || isAnimating) return;
       const xUp = evt.touches[0].clientX;
       const yUp = evt.touches[0].clientY;
       const xDiff = xDown - xUp;
       const yDiff = yDown - yUp;
       if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 20) {
         evt.preventDefault();
+        isDragging = true;
         if (xDiff > 0) nextSlide();
         else prevSlide();
       }
+    }
+    function handleTouchEnd() {
       xDown = null;
       yDown = null;
+      isDragging = false;
     }
 
     function mouseDownHandler(e) {
@@ -2103,7 +2132,9 @@ function sliderInitialize() {
     }
 
     slider.addEventListener("touchstart", handleTouchStart, false);
-    slider.addEventListener("touchmove", handleTouchMove, false);
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener("touchend", handleTouchEnd, false);
+    document.addEventListener("touchcancel", handleTouchEnd, false);
     slider.addEventListener("mousedown", mouseDownHandler, false);
 
     // Первичное обновление + позиционирование

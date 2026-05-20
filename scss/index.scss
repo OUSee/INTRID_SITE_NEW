@@ -2052,6 +2052,7 @@ main {
           flex-direction: row;
           flex: unset;
           gap: 20px;
+          touch-action: pan-y;
         }
 
         & .tab-content {
@@ -3211,39 +3212,39 @@ main {
     & .pagination {
       margin: 0;
 
-      @media (min-width: 1200px) {
-        display: none;
-      }
+      // @media (min-width: 1200px) {
+      //   display: none;
+      // }
 
-      & .pagination {
-        &--next-btn,
-        &--prev-btn {
-          position: absolute;
-          top: 50%;
-          z-index: 1;
-        }
+      // & .pagination {
+      //   &--next-btn,
+      //   &--prev-btn {
+      //     position: absolute;
+      //     top: 50%;
+      //     z-index: 1;
+      //   }
 
-        &--next-btn {
-          right: 0;
-          transform: translate(50%, -50%);
-        }
+      //   &--next-btn {
+      //     right: 0;
+      //     transform: translate(50%, -50%);
+      //   }
 
-        &--prev-btn {
-          left: 0;
-          transform: translate(-50%, -50%);
-        }
-      }
+      //   &--prev-btn {
+      //     left: 0;
+      //     transform: translate(-50%, -50%);
+      //   }
+      // }
 
-      &--buttons-dots {
-        @media (min-width: 1000px) {
-          width: 0;
-          height: 0;
-          opacity: 0;
-          visibility: hidden;
-          user-select: none;
-          pointer-events: none;
-        }
-      }
+      // &--buttons-dots {
+      //   @media (min-width: 1000px) {
+      //     width: 0;
+      //     height: 0;
+      //     opacity: 0;
+      //     visibility: hidden;
+      //     user-select: none;
+      //     pointer-events: none;
+      //   }
+      // }
     }
 
     & > .container {

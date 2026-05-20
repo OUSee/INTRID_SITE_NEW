@@ -207,18 +207,24 @@ $tab-main-count: 3;
   &#logo-slider,
   &#brand-slider,
   &#awards-slider {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 4px;
+    width: 100%;
+
     & > * {
       flex: 1 1 0%;
-      min-width: calc(25% - 6px);
+      min-width: calc(25% - 2px);
       width: 100%;
       opacity: 0;
 
       @media (max-width: 1199.98px) {
-        min-width: calc(33.333333% - 6px);
+        min-width: calc(33.333333% - 2px);
       }
 
       @media (max-width: 899.98px) {
-        min-width: calc(50% - 4px);
+        min-width: calc(50% - 2px);
       }
 
       @media (max-width: 439.98px) {
