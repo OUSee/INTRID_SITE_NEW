@@ -675,6 +675,16 @@ main {
   }
 }
 
+.main-title {
+  @media (min-width: 1000px) {
+    @include h2;
+
+      & span {
+        font-size: 28px;
+      }
+    }
+}
+
 .error {
   &-block {
     position: relative;
