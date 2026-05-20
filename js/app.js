@@ -15,6 +15,7 @@ const webShopDiagram = document.querySelector(".web-shop-diagram");
 const tenderDiagram = document.querySelector(".tender-diagram");
 const mapLinks = document.querySelectorAll(".map-link");
 const selects = document.querySelectorAll("select");
+const aSlider = document.querySelector("#dynamic-achievements");
 
 let dropdownClickHandlers = [];
 let outsideClickHandler = null;
@@ -22,6 +23,7 @@ let photoCards = document?.querySelectorAll(".card--photo");
 let headerScrolled = false;
 let lastMobileState = null;
 let lastFooterMobileState = null;
+let lastAchievementMobileState = null;
 let resizeTimeout;
 let resizeRunning = false;
 
@@ -241,6 +243,30 @@ function moveServiceLinks() {
   }
 }
 
+// dynamic achievements
+function moveAchievementsSlider() {
+  if (!aSlider) return;
+
+  const sliderPlace = document.querySelector("#slider-place");
+  const mainSection = document.querySelector(
+    ".main-section .main-section--actions",
+  );
+
+  if (!sliderPlace || !mainSection) return;
+
+  const isMobile = window.innerWidth < 612;
+  if (lastAchievementMobileState === isMobile) return;
+  lastAchievementMobileState = isMobile;
+
+  if (isMobile) {
+    // Мобильная версия: в конец mainSection
+    mainSection.insertBefore(aSlider, mainSection.firstChild);
+  } else {
+    // Десктопная версия: в начало sliderPlace
+    sliderPlace.insertBefore(aSlider, sliderPlace.firstChild);
+  }
+}
+
 // dynamic mockup place
 function updateMockupPlace() {
   const isAboutPage = !!aboutPageSelector;
@@ -304,6 +330,7 @@ function handleResize() {
       }
 
       initDropdowns();
+      moveAchievementsSlider();
       if (footer) moveServiceLinks();
       if (mockup) updateMockupPlace();
       // sliderInitialize();
@@ -682,9 +709,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return parsedData;
       })
       .then((data) => {
-        const isSuccess = isQuickForm
-          ? true
-          : Boolean(data && data.status);
+        const isSuccess = isQuickForm ? true : Boolean(data && data.status);
 
         let message = extractMessage(
           data,
@@ -1860,10 +1885,10 @@ function sliderInitialize() {
       // Базовые стили – позиционирование будет уточнено в handleSliderArrows
       navLeft.style.position = "absolute";
       navRight.style.position = "absolute";
-      prevBtn.setAttribute("aria-label", "Предыдущий слайд");
-      prevBtn.setAttribute("role", "button");
-      nextBtn.setAttribute("aria-label", "Следующий слайд");
-      nextBtn.setAttribute("role", "button");
+      navLeft.setAttribute("aria-label", "Предыдущий слайд");
+      navLeft.setAttribute("role", "button");
+      navRight.setAttribute("aria-label", "Следующий слайд");
+      navRight.setAttribute("role", "button");
     }
 
     if (id === `cases-tabs-slider`) {
@@ -6388,8 +6413,8 @@ document.addEventListener("DOMContentLoaded", () => {
   pageIsScrolled();
   initDropdowns();
   if (footer) moveServiceLinks();
+  moveAchievementsSlider();
 
-  moveServiceLinks();
   if (mockup) updateMockupPlace();
   initPopups();
   if (mapLinks) mapLinksInit();

@@ -56,6 +56,7 @@ body {
 
   @media (max-width: 599.98px) {
     // background-image: url("../src/images/bg-main-vert.webp");
+    font-size: 13px;
     background-size: 100% auto;
   }
 }
@@ -819,7 +820,6 @@ main {
         margin-top: 12px;
 
         li {
-          padding-left: 8px;
           margin-top: 4px;
 
           &::marker {
@@ -1521,7 +1521,7 @@ main {
 }
 
 .benefit-card {
-  border-radius: 32px;
+  border-radius: 1000px;
   border: 1px solid var(--blue-bg);
   background-color: var(--bg-main);
   position: relative;
@@ -1535,9 +1535,14 @@ main {
   cursor: pointer;
   transition: 0.25s ease-in-out;
 
+  @media (max-width: 1199.98px) {
+    border-radius: 32px;
+  }
+
   @media (max-width: 999.98px) {
     align-items: flex-start;
     min-height: 100%;
+    border-radius: 32px;
   }
 
   &:hover {
