@@ -4891,6 +4891,22 @@ form input[type=submit] {
     display: none;
   }
 }
+@media (min-width: 1000px) {
+  .tabs-to-select > .nice-wrapper {
+    display: none !important;
+  }
+  .tabs-to-select > [class*=nav-tabs], .tabs-to-select > .tabs-buttons {
+    display: block !important;
+  }
+}
+@media (max-width: 999.98px) {
+  .tabs-to-select > .nice-wrapper {
+    display: block !important;
+  }
+  .tabs-to-select > [class*=nav-tabs], .tabs-to-select > .tabs-buttons {
+    display: none !important;
+  }
+}
 
 .table {
   width: 100%;

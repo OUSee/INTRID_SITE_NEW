@@ -2153,7 +2153,7 @@ function sliderInitialize() {
   const sliders = document.querySelectorAll("[data-slider]");
 
   // Инициализация всех слайдеров на странице
-  sliders.forEach((slider) => {
+  sliders?.forEach((slider) => {
     try {
       tabSliderWithPagination(slider.id);
     } catch (err) {
@@ -6417,6 +6417,91 @@ function syncNiceSelectDisabled(selectEl) {
   }
 }
 
+// Синхронизация связей между табами и селектами
+function initTabsToSelect(root = document) {
+  root.querySelectorAll('[data-tabs-to-select]').forEach((component) => {
+    if (component.dataset.tabsToSelectInited === 'true') return;
+    component.dataset.tabsToSelectInited = 'true';
+
+    const select = component.querySelector('.nice-select');
+    const current = select?.querySelector('.current');
+    const options = [...component.querySelectorAll('[data-tabs-buttons] .option[for]')];
+    const radios = [...component.querySelectorAll('.nav-tabs input[type="radio"][id]')];
+
+    if (!select || !current || !options.length || !radios.length) return;
+
+    const setSelectByRadio = (radio) => {
+      if (!radio) return;
+
+      const option = options.find((item) => item.getAttribute('for') === radio.id);
+      if (!option) return;
+
+      options.forEach((item) => {
+        item.classList.toggle('selected', item === option);
+        item.setAttribute('aria-selected', item === option ? 'true' : 'false');
+      });
+
+      current.textContent = option.textContent.trim();
+    };
+
+    const setRadioByOption = (option) => {
+      const radioId = option.getAttribute('for');
+      const radio = component.querySelector(`#${CSS.escape(radioId)}`);
+
+      if (!radio) return;
+
+      radio.checked = true;
+      radio.dispatchEvent(new Event('change', { bubbles: true }));
+      setSelectByRadio(radio);
+    };
+
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        setRadioByOption(option);
+      });
+    });
+
+    radios.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        if (radio.checked) setSelectByRadio(radio);
+      });
+    });
+
+    const checkedRadio = radios.find((radio) => radio.checked);
+    const selectedOption = options.find((option) => option.classList.contains('selected'));
+
+    if (checkedRadio) {
+      setSelectByRadio(checkedRadio);
+    } else if (selectedOption) {
+      setRadioByOption(selectedOption);
+    } else {
+      radios[0].checked = true;
+      setSelectByRadio(radios[0]);
+    }
+  });
+}
+
+window.syncTabsToSelect = function (root = document) {
+  root.querySelectorAll('[data-tabs-to-select]').forEach((component) => {
+    const current = component.querySelector('.nice-select .current');
+    const options = [...component.querySelectorAll('[data-tabs-buttons] .option[for]')];
+    const checkedRadio = component.querySelector('.nav-tabs input[type="radio"]:checked');
+
+    if (!current || !checkedRadio) return;
+
+    const option = options.find((item) => item.getAttribute('for') === checkedRadio.id);
+    if (!option) return;
+
+    options.forEach((item) => {
+      const isActive = item === option;
+      item.classList.toggle('selected', isActive);
+      item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    current.textContent = option.textContent.trim();
+  });
+};
+
 // scroll events
 window.addEventListener("scroll", pageIsScrolled, { passive: true });
 
@@ -6538,6 +6623,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  initTabsToSelect();
 });
 
 // Запускаем инициализацию после полной загрузки DOM
@@ -6567,3 +6654,8 @@ document.addEventListener(
   },
   true,
 );
+
+// pjax events
+document.addEventListener('pjax:end', () => {
+  initTabsToSelect();
+});

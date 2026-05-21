@@ -4365,6 +4365,32 @@ form {
     // }
     // }
   }
+
+  &-to {
+    &-select {
+      @media (min-width: 1000px) {
+        & > .nice-wrapper {
+          display: none !important;
+        }
+        
+        & > [class*="nav-tabs"],
+        & > .tabs-buttons {
+            display: block !important;
+        }
+      }
+
+      @media (max-width: 999.98px) {
+        & > .nice-wrapper {
+          display: block !important;
+        }
+
+        & > [class*="nav-tabs"],
+        & > .tabs-buttons {
+            display: none !important;
+        }
+      }
+    }
+  }
 }
 
 // table

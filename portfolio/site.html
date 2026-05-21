@@ -191,38 +191,67 @@
                     <span class="title_h1 underlined">Портфолио разработка сайтов</span>
                 </h1>
 
-                <div class="nav-tabs">
-                    <div class="nav-tabs--buttons">
-                        <label for="portfolio-filter-1" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-1"
-                                data-type="landing-page">
-                            <img src="/src/icons/l-page-services.svg" alt="landig-page" loading="lazy">
-                            <span>Landing Page</span>
-                        </label>
-                        <label for="portfolio-filter-2" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-2"
-                                data-type="corporate-website">
-                            <img src="/src/icons/corp-site-services.svg" alt="corp-site" loading="lazy">
-                            <span>Корпоративный сайт</span>
-                        </label>
-                        <label for="portfolio-filter-3" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-3"
-                                data-type="online-store">
-                            <img src="/src/icons/web-shop-services.svg" alt="web-shop" loading="lazy">
-                            <span>Интернет-магазин</span>
-                        </label>
-                        <label for="portfolio-filter-4" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-4"
-                                data-type="informational-portal">
-                            <img src="/src/icons/web-portal-services.svg" alt="img" loading="lazy">
-                            <span>Информационный портал</span>
-                        </label>
-                        <label for="portfolio-filter-5" class="button--tab">
-                            <input type="checkbox" name="portfolio-filter" id="portfolio-filter-5"
-                                data-type="tender-portal">
-                            <img src="/src/icons/tender-services.svg" alt="img" loading="lazy">
-                            <span>Тендерный портал</span>
-                        </label>
+                <div class="tabs-to-select" data-tabs-to-select="">
+                    <!-- select for tabs-buttons -->
+                    <div class="nice-wrapper nice-wrapper--simple mw-400 mb-32" data-tabs-buttons="">
+                        <div class="nice-select w-100" tabindex="0">
+                            <span class="current">Все сайты</span>
+                            <ul class="list">
+                                <label data-value="0" for="portfolio-filter-0" class="option d-flex w-100 h-100"
+                                    data-type="all">Все сайты</label>
+                                <label data-value="1" for="portfolio-filter-1" class="option d-flex w-100 h-100"
+                                    data-type="landig-page">Landing Page</label>
+                                <label data-value="2" for="portfolio-filter-2" class="option d-flex w-100 h-100"
+                                    data-type="corp-site">Корпоративный сайт</label>
+                                <label data-value="3" for="portfolio-filter-3" class="option d-flex w-100 h-100"
+                                    data-type="online-store">Интернет-магазин</label>
+                                <label data-value="4" for="portfolio-filter-4" class="option d-flex w-100 h-100"
+                                    data-type="informational-portal">Информационный портал</label>
+                                <label data-value="5" for="portfolio-filter-5" class="option d-flex w-100 h-100"
+                                    data-type="tender-portal">Тендерный портал</label>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- tabs-buttons -->
+                    <div class="nav-tabs">
+                        <div class="nav-tabs--buttons">
+                            <label for="portfolio-filter-0" class="button--tab">
+                                <input type="radio" name="portfolio-filter" id="portfolio-filter-0" data-type="all">
+                                <img src="/src/images/web-dev-btn.webp" alt="all-site" loading="lazy">
+                                <span>Все сайты</span>
+                            </label>
+                            <label for="portfolio-filter-2" class="button--tab">
+                                <input type="radio" name="portfolio-filter" id="portfolio-filter-2"
+                                    data-type="corporate-website">
+                                <img src="/src/icons/corp-site-services.svg" alt="corp-site" loading="lazy">
+                                <span>Корпоративный сайт</span>
+                            </label>
+                            <label for="portfolio-filter-1" class="button--tab">
+                                <input type="radio" name="portfolio-filter" id="portfolio-filter-1"
+                                    data-type="landing-page">
+                                <img src="/src/icons/l-page-services.svg" alt="landig-page" loading="lazy">
+                                <span>Landing Page</span>
+                            </label>
+                            <label for="portfolio-filter-3" class="button--tab">
+                                <input type="radio" name="portfolio-filter" id="portfolio-filter-3"
+                                    data-type="online-store">
+                                <img src="/src/icons/web-shop-services.svg" alt="web-shop" loading="lazy">
+                                <span>Интернет-магазин</span>
+                            </label>
+                            <label for="portfolio-filter-4" class="button--tab">
+                                <input type="radio" name="portfolio-filter" id="portfolio-filter-4"
+                                    data-type="informational-portal">
+                                <img src="/src/icons/web-portal-services.svg" alt="img" loading="lazy">
+                                <span>Информационный портал</span>
+                            </label>
+                            <label for="portfolio-filter-5" class="button--tab">
+                                <input type="radio" name="portfolio-filter" id="portfolio-filter-5"
+                                    data-type="tender-portal">
+                                <img src="/src/icons/tender-services.svg" alt="img" loading="lazy">
+                                <span>Тендерный портал</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -232,160 +261,395 @@
                 <div class="container">
                     <div class="portfolio-block__cards">
                         <div class="card card--portfolio transparency active corporate-website"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites461/112813.jpg" class="portfolio-site"
-                                alt="КВ Системы">
+                            style="--portfolio-color: #4fac80;">
+                            <a href="javascript://" data-popup="site-preview" data-site-preview="https://pronedvizh.com"
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://pronedvizh.com/favicon.ico" class="portfolio-logo"
+                                        data-src="https://pronedvizh.com/favicon.ico" data-url="https://pronedvizh.com">
+                                    <div class="card-header-text">
+                                        <b>ПроНедвиж</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites467/b768ad3fde-1_500x.jpg"
+                                    class="portfolio-site" alt="ПроНедвиж">
+                            </a>
                             <div class="card-body">
-                                <b>КВ Системы</b>
-                                <p>14.07.2025</p>
-                                <span>https://kwsystems.ru/</span>
+                                <p>testttt</p>
+                                <span>03.04.2026</span>
+                                <a href="https://pronedvizh.com" target="_blank" title="Перейти на сайт">
+                                    pronedvizh.com </a>
                             </div>
+                        </div>
+                        <div class="card card--portfolio transparency active corporate-website"
+                            style="--portfolio-color: #ff7913;">
+                            <a href="javascript://" data-popup="site-preview" data-site-preview="https://mig-vrn.ru/"
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://mig-vrn.ru//favicon.ico" class="portfolio-logo"
+                                        data-src="https://mig-vrn.ru//favicon.ico" data-url="https://mig-vrn.ru/">
+                                    <div class="card-header-text">
+                                        <b>МИГ</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites468/2fe24533c2-1_500x.png"
+                                    class="portfolio-site" alt="МИГ">
+                            </a>
+                            <div class="card-body">
+                                <span>02.03.2026</span>
+                                <a href="https://mig-vrn.ru/" target="_blank" title="Перейти на сайт">
+                                    mig-vrn.ru </a>
+                            </div>
+                        </div>
+                        <div class="card card--portfolio transparency active corporate-website"
+                            style="--portfolio-color: #2f5597;">
+                            <a href="javascript://" data-popup="site-preview" data-site-preview="https://vkmz36.ru/"
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://vkmz36.ru//favicon.svg" class="portfolio-logo"
+                                        data-src="https://vkmz36.ru//favicon.svg" data-url="https://vkmz36.ru/">
+                                    <div class="card-header-text">
+                                        <b>ВКЭМЗ</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites469/545c724fd6-1_500x.png"
+                                    class="portfolio-site" alt="ВКЭМЗ">
+                            </a>
+                            <div class="card-body">
+                                <span>25.02.2026</span>
+                                <a href="https://vkmz36.ru/" target="_blank" title="Перейти на сайт">
+                                    vkmz36.ru </a>
+                            </div>
+                        </div>
+                        <div class="card card--portfolio transparency active online-store"
+                            style="--portfolio-color: #000000;">
+                            <a href="javascript://" data-popup="site-preview" data-site-preview="https://parquetum.ru/"
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://parquetum.ru//img/favicon/favicon.ico" class="portfolio-logo"
+                                        data-src="https://parquetum.ru//img/favicon/favicon.ico"
+                                        data-url="https://parquetum.ru/">
+                                    <div class="card-header-text">
+                                        <b>Parquetum</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites465/9cf7697fa3-2_500x.png"
+                                    class="portfolio-site" alt="Parquetum">
+                            </a>
+                            <div class="card-body">
+                                <span>31.10.2025</span>
+                                <a href="https://parquetum.ru/" target="_blank" title="Перейти на сайт">
+                                    parquetum.ru </a>
+                            </div>
+                        </div>
+                        <div class="card card--portfolio transparency active corporate-website"
+                            style="--portfolio-color: #448ae8;">
+                            <a href="javascript://" data-popup="site-preview"
+                                data-site-preview="https://max-plastik.ru/" class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://max-plastik.ru//assets/favicon.ico" class="portfolio-logo"
+                                        data-src="https://max-plastik.ru//assets/favicon.ico"
+                                        data-url="https://max-plastik.ru/">
+                                    <div class="card-header-text">
+                                        <b>МаксПластик</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites466/27c29639d3-2_500x.png"
+                                    class="portfolio-site" alt="МаксПластик">
+                            </a>
+                            <div class="card-body">
+                                <span>28.10.2025</span>
+                                <a href="https://max-plastik.ru/" target="_blank" title="Перейти на сайт">
+                                    max-plastik.ru </a>
+                            </div>
+                        </div>
+                        <div class="card card--portfolio transparency active corporate-website"
+                            style="--portfolio-color: #ad352a;">
+                            <a href="javascript://" data-popup="site-preview" data-site-preview="https://kmuservice.ru/"
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://kmuservice.ru//assets/favicon.ico" class="portfolio-logo"
+                                        data-src="https://kmuservice.ru//assets/favicon.ico"
+                                        data-url="https://kmuservice.ru/">
+                                    <div class="card-header-text">
+                                        <b>КМУ+Сервис</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites464/1664f722a6-1_500x.png"
+                                    class="portfolio-site" alt="КМУ+Сервис">
+                            </a>
+                            <div class="card-body">
+                                <span>26.08.2025</span>
+                                <a href="https://kmuservice.ru/" target="_blank" title="Перейти на сайт">
+                                    kmuservice.ru </a>
+                            </div>
+                        </div>
+                        <div class="card card--portfolio transparency active corporate-website"
+                            style="--portfolio-color: #65bce7;">
                             <a href="javascript://" data-popup="site-preview" data-site-preview="https://kwsystems.ru/"
-                                class="absolute-link"></a>
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://kwsystems.ru//assets/favicon.ico" class="portfolio-logo"
+                                        data-src="https://kwsystems.ru//assets/favicon.ico"
+                                        data-url="https://kwsystems.ru/">
+                                    <div class="card-header-text">
+                                        <b>КВ Системы</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites461/2db5d291aa-1_500x.png"
+                                    class="portfolio-site" alt="КВ Системы">
+                            </a>
+                            <div class="card-body">
+                                <span>14.07.2025</span>
+                                <a href="https://kwsystems.ru/" target="_blank" title="Перейти на сайт">
+                                    kwsystems.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active corporate-website"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites462/fed877.jpg" class="portfolio-site"
-                                alt="Yamnoe Dynamics">
-                            <div class="card-body">
-                                <b>Yamnoe Dynamics</b>
-                                <p>01.07.2025</p>
-                                <span>https://yadms.ru</span>
-                            </div>
+                            style="--portfolio-color: #201d63;">
                             <a href="javascript://" data-popup="site-preview" data-site-preview="https://yadms.ru"
-                                class="absolute-link"></a>
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://yadms.ru/assets/favicon.ico" class="portfolio-logo"
+                                        data-src="https://yadms.ru/assets/favicon.ico" data-url="https://yadms.ru">
+                                    <div class="card-header-text">
+                                        <b>Yamnoe Dynamics</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites462/2286ed36e0-1_500x.png"
+                                    class="portfolio-site" alt="Yamnoe Dynamics">
+                            </a>
+                            <div class="card-body">
+                                <span>01.07.2025</span>
+                                <a href="https://yadms.ru" target="_blank" title="Перейти на сайт">
+                                    yadms.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active corporate-website"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites463/bd3648.jpg" class="portfolio-site"
-                                alt="Линия Холода">
-                            <div class="card-body">
-                                <b>Линия Холода</b>
-                                <p>20.06.2025</p>
-                                <span>https://lineholod.ru</span>
-                            </div>
+                            style="--portfolio-color: #559ad7;">
                             <a href="javascript://" data-popup="site-preview" data-site-preview="https://lineholod.ru"
-                                class="absolute-link"></a>
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://lineholod.ru/assets/favicon.ico" class="portfolio-logo"
+                                        data-src="https://lineholod.ru/assets/favicon.ico"
+                                        data-url="https://lineholod.ru">
+                                    <div class="card-header-text">
+                                        <b>Линия Холода</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites463/a01b762d32-1_500x.png"
+                                    class="portfolio-site" alt="Линия Холода">
+                            </a>
+                            <div class="card-body">
+                                <span>20.06.2025</span>
+                                <a href="https://lineholod.ru" target="_blank" title="Перейти на сайт">
+                                    lineholod.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active online-store"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites459/760602.jpg" class="portfolio-site"
-                                alt="Сервис-Телеком">
-                            <div class="card-body">
-                                <b>Сервис-Телеком</b>
-                                <p>14.04.2025</p>
-                                <span>https://s-telekom.ru/</span>
-                            </div>
+                            style="--portfolio-color: #ffca57;">
                             <a href="javascript://" data-popup="site-preview" data-site-preview="https://s-telekom.ru/"
-                                class="absolute-link"></a>
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://s-telekom.ru//assets/favicon.ico" class="portfolio-logo"
+                                        data-src="https://s-telekom.ru//assets/favicon.ico"
+                                        data-url="https://s-telekom.ru/">
+                                    <div class="card-header-text">
+                                        <b>Сервис-Телеком</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites459/6b004dad16-1_500x.jpg"
+                                    class="portfolio-site" alt="Сервис-Телеком">
+                            </a>
+                            <div class="card-body">
+                                <span>14.04.2025</span>
+                                <a href="https://s-telekom.ru/" target="_blank" title="Перейти на сайт">
+                                    s-telekom.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active corporate-website"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites458/f04896.jpg" class="portfolio-site"
-                                alt="Типография36">
-                            <div class="card-body">
-                                <b>Типография36</b>
-                                <p>10.03.2025</p>
-                                <span>https://tipo.intrid.ru/</span>
-                            </div>
+                            style="--portfolio-color: #e71730;">
                             <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://tipo.intrid.ru/" class="absolute-link"></a>
+                                data-site-preview="https://tipografiya36.ru/" class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://tipografiya36.ru//assets/favicon.ico" class="portfolio-logo"
+                                        data-src="https://tipografiya36.ru//assets/favicon.ico"
+                                        data-url="https://tipografiya36.ru/">
+                                    <div class="card-header-text">
+                                        <b>Типография36</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites458/d52ebb7dd4-1_500x.jpg"
+                                    class="portfolio-site" alt="Типография36">
+                            </a>
+                            <div class="card-body">
+                                <span>10.03.2025</span>
+                                <a href="https://tipografiya36.ru/" target="_blank" title="Перейти на сайт">
+                                    tipografiya36.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active corporate-website"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites451/7b2b04.jpg" class="portfolio-site"
-                                alt="Стоматология Факел">
-                            <div class="card-body">
-                                <b>Стоматология Факел</b>
-                                <p>15.01.2025</p>
-                                <span>https://stomatfakel.ru/</span>
-                            </div>
+                            style="--portfolio-color: #77abe2;">
                             <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://stomatfakel.ru/" class="absolute-link"></a>
+                                data-site-preview="https://stomatfakel.ru/" class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://stomatfakel.ru//favicon.ico" class="portfolio-logo"
+                                        data-src="https://stomatfakel.ru//favicon.ico"
+                                        data-url="https://stomatfakel.ru/">
+                                    <div class="card-header-text">
+                                        <b>Стоматология Факел</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites451/3498009051-1_500x.png"
+                                    class="portfolio-site" alt="Стоматология Факел">
+                            </a>
+                            <div class="card-body">
+                                <span>15.01.2025</span>
+                                <a href="https://stomatfakel.ru/" target="_blank" title="Перейти на сайт">
+                                    stomatfakel.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active online-store"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites456/31dd45.png" class="portfolio-site"
-                                alt="VinLam">
-                            <div class="card-body">
-                                <b>VinLam</b>
-                                <p>26.12.2024</p>
-                                <span>https://vinlam.ru/</span>
-                            </div>
+                            style="--portfolio-color: #aa0d0e;">
                             <a href="javascript://" data-popup="site-preview" data-site-preview="https://vinlam.ru/"
-                                class="absolute-link"></a>
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://vinlam.ru/img/logo.svg" class="portfolio-logo"
+                                        data-src="https://vinlam.ru/img/logo.svg" data-url="https://vinlam.ru/">
+                                    <div class="card-header-text">
+                                        <b>VinLam</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites456/d0dfafd0d9-1_500x.png"
+                                    class="portfolio-site" alt="VinLam">
+                            </a>
+                            <div class="card-body">
+                                <span>26.12.2024</span>
+                                <a href="https://vinlam.ru/" target="_blank" title="Перейти на сайт">
+                                    vinlam.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active tender-portal"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites452/ccee95.jpg" class="portfolio-site"
-                                alt="Тендер ВКТМ">
-                            <div class="card-body">
-                                <b>Тендер ВКТМ</b>
-                                <p>25.12.2024</p>
-                                <span>https://tender-vktm.ru</span>
-                            </div>
+                            style="--portfolio-color: #7632ae;">
                             <a href="javascript://" data-popup="site-preview" data-site-preview="https://tender-vktm.ru"
-                                class="absolute-link"></a>
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="../../files/image/cache/Sites/Sites452/e12acb152f-1_x64.png"
+                                        class="portfolio-logo" data-src="https://tender-vktm.ru"
+                                        data-url="https://tender-vktm.ru">
+                                    <div class="card-header-text">
+                                        <b>Тендер ВКТМ</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites452/aa55269031-2_500x.jpg"
+                                    class="portfolio-site" alt="Тендер ВКТМ">
+                            </a>
+                            <div class="card-body">
+                                <span>25.12.2024</span>
+                                <a href="https://tender-vktm.ru" target="_blank" title="Перейти на сайт">
+                                    tender-vktm.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active corporate-website"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites454/b724a7.png" class="portfolio-site"
-                                alt="СтройИнтерьер">
-                            <div class="card-body">
-                                <b>СтройИнтерьер</b>
-                                <p>13.12.2024</p>
-                                <span>https://стройинтерер.рф/</span>
-                            </div>
+                            style="--portfolio-color: #51392e;">
                             <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://стройинтерер.рф/" class="absolute-link"></a>
+                                data-site-preview="https://стройинтерер.рф/" class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://стройинтерер.рф/assets/favicon.ico" class="portfolio-logo"
+                                        data-src="https://стройинтерер.рф/assets/favicon.ico"
+                                        data-url="https://стройинтерер.рф/">
+                                    <div class="card-header-text">
+                                        <b>СтройИнтерьер</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites454/ee5333ed36-1_500x.png"
+                                    class="portfolio-site" alt="СтройИнтерьер">
+                            </a>
+                            <div class="card-body">
+                                <span>13.12.2024</span>
+                                <a href="https://стройинтерер.рф/" target="_blank" title="Перейти на сайт">
+                                    стройинтерер.рф </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active corporate-website"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites447/393912.png" class="portfolio-site"
-                                alt="АтомИнфо">
-                            <div class="card-body">
-                                <b>АтомИнфо</b>
-                                <p>07.10.2024</p>
-                                <span>https://atom-info.ru</span>
-                            </div>
+                            style="--portfolio-color: #9e5658;">
                             <a href="javascript://" data-popup="site-preview" data-site-preview="https://atom-info.ru"
-                                class="absolute-link"></a>
+                                class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://atom-info.ru/img/favicon.ico" class="portfolio-logo"
+                                        data-src="https://atom-info.ru/img/favicon.ico" data-url="https://atom-info.ru">
+                                    <div class="card-header-text">
+                                        <b>АтомИнфо</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites447/adcfa871b5-1_500x.png"
+                                    class="portfolio-site" alt="АтомИнфо">
+                            </a>
+                            <div class="card-body">
+                                <span>07.10.2024</span>
+                                <a href="https://atom-info.ru" target="_blank" title="Перейти на сайт">
+                                    atom-info.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active informational-portal"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites453/81bcfa.jpg" class="portfolio-site"
-                                alt="Вся недвижимость">
-                            <div class="card-body">
-                                <b>Вся недвижимость</b>
-                                <p>07.08.2024</p>
-                                <span>https://vsya-nedvizhimost.ru/</span>
-                            </div>
+                            style="--portfolio-color: #faeb0b;">
                             <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://vsya-nedvizhimost.ru/" class="absolute-link"></a>
+                                data-site-preview="https://vsya-nedvizhimost.ru/" class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="../../files/image/cache/Sites/Sites453/e9e416ab3b-1_x64.png"
+                                        class="portfolio-logo" data-src="https://vsya-nedvizhimost.ru/"
+                                        data-url="https://vsya-nedvizhimost.ru/">
+                                    <div class="card-header-text">
+                                        <b>Вся недвижимость</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites453/f75e0c824f-2_500x.jpg"
+                                    class="portfolio-site" alt="Вся недвижимость">
+                            </a>
+                            <div class="card-body">
+                                <span>07.08.2024</span>
+                                <a href="https://vsya-nedvizhimost.ru/" target="_blank" title="Перейти на сайт">
+                                    vsya-nedvizhimost.ru </a>
+                            </div>
                         </div>
                         <div class="card card--portfolio transparency active corporate-website"
-                            style="--portfolio-color: #ffffff">
-                            <img src="/src/images/logoMain.svg" class="portfolio-logo" alt="logo company">
-                            <img src="../../files/image/store/Sites/Sites446/710a10.jpg" class="portfolio-site"
-                                alt="Евразийская Организация Индустрии">
-                            <div class="card-body">
-                                <b>Евразийская Организация Индустрии</b>
-                                <p>26.06.2024</p>
-                                <span>https://eur-asia.org.ru/</span>
-                            </div>
+                            style="--portfolio-color: #243363;">
                             <a href="javascript://" data-popup="site-preview"
-                                data-site-preview="https://eur-asia.org.ru/" class="absolute-link"></a>
+                                data-site-preview="https://eur-asia.org.ru/" class="absolute-link">
+                                <div class="card-header">
+                                    <!-- Здесь должна выводиться либо favicon, либо задаем изображение самостоятельно -->
+                                    <img src="https://eur-asia.org.ru//favicon.ico" class="portfolio-logo"
+                                        data-src="https://eur-asia.org.ru//favicon.ico"
+                                        data-url="https://eur-asia.org.ru/">
+                                    <div class="card-header-text">
+                                        <b>Евразийская Организация Индустрии</b>
+                                    </div>
+                                </div>
+                                <img src="../../files/image/cache/Sites/Sites446/6c54b41e52-1_500x.jpg"
+                                    class="portfolio-site" alt="Евразийская Организация Индустрии">
+                            </a>
+                            <div class="card-body">
+                                <span>26.06.2024</span>
+                                <a href="https://eur-asia.org.ru/" target="_blank" title="Перейти на сайт">
+                                    eur-asia.org.ru </a>
+                            </div>
                         </div>
                     </div>
                     <div class="portfolio-block__pagination pagination-panel">
@@ -446,7 +710,7 @@
             </div>
         </section>
 
-        <!--  -->
+        <!-- brif -->
         <section>
             <div class="container">
                 <h3 class="underlined w-fit m-center text-center">
@@ -454,33 +718,33 @@
                 </h3>
 
                 <div class="flex-layout flex-layout--use">
-                    <a href="../calculator.html" class="card card--service use">
+                    <a href="/calculator" class="card card--service use">
                         <div class="card-icon">
-                            <img src="../src/icons/site-calc.svg" alt="landig-page">
+                            <img src="/src/icons/site-calc.svg" alt="landig-page">
                         </div>
                         <b>
                             Калькулятор сайта
                         </b>
                     </a>
-                    <a href="../brif-site.html" class="card card--service use">
+                    <a href="/brif-site" class="card card--service use">
                         <div class="card-icon">
-                            <img src="../src/icons/brif-site.svg" alt="landig-page">
+                            <img src="/src/icons/brif-site.svg" alt="landig-page">
                         </div>
                         <b>
                             Бриф на сайт
                         </b>
                     </a>
-                    <a href="../brif-logo.html" class="card card--service use">
+                    <a href="/brif-logo" class="card card--service use">
                         <div class="card-icon">
-                            <img src="../src/icons/brif-logo.svg" alt="landig-page">
+                            <img src="/src/icons/brif-logo.svg" alt="landig-page">
                         </div>
                         <b>
                             Бриф на бренд
                         </b>
                     </a>
-                    <a href="../seo.html#seo_application" class="card card--service use">
+                    <a href="/seo#seo_application" class="card card--service use">
                         <div class="card-icon">
-                            <img src="../src/icons/promotion-request.svg" alt="landig-page">
+                            <img src="/src/icons/promotion-request.svg" alt="landig-page">
                         </div>
                         <b>
                             Заявка на раскрутку
