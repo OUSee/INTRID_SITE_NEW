@@ -3120,15 +3120,15 @@ main {
 }
 
 .portfolio {
-  @media (max-width: 999.98px) {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 234, 255, 0) 0%,
-      rgba(0, 234, 255, 0.35) 25%,
-      rgba(0, 234, 255, 0.35) 85%,
-      rgba(0, 234, 255, 0) 100%
-    );
-  }
+  // @media (max-width: 999.98px) {
+  //   background: linear-gradient(
+  //     0deg,
+  //     rgba(0, 234, 255, 0) 0%,
+  //     rgba(0, 234, 255, 0.35) 25%,
+  //     rgba(0, 234, 255, 0.35) 85%,
+  //     rgba(0, 234, 255, 0) 100%
+  //   );
+  // }
 
   &:is(.main-section) {
     display: block;
@@ -3434,8 +3434,10 @@ main {
     }
 
     @media (max-width: 999.98px) {
+      position: relative;
       gap: 8px;
       padding: 32px 0;
+      overflow: hidden;
     }
 
     &:is([data-pjax-container]) {
@@ -3493,6 +3495,25 @@ main {
           }
         }
       }
+
+      &--slider {
+        display: flex;
+        flex-wrap: nowrap;
+        transition: transform 0.35s ease;
+        will-change: transform;
+        overflow: visible;
+
+        & > * {
+          flex: unset;
+          max-width: unset;
+          flex-shrink: 0;
+          box-sizing: border-box;
+
+          &:not(.active) {
+            opacity: 0;
+          }
+        }
+      }
     }
 
     &--buttons {
@@ -3508,6 +3529,57 @@ main {
         gap: 0;
       }
     }
+  }
+
+  &-slider {
+    &-counter {
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    // @media (max-width: 999.98px) {
+    //   &-controls {
+    //     position: absolute;
+    //     inset: 0;
+    //     pointer-events: none;
+    //     z-index: 5;
+
+    //     & .portfolio-slider-prev,
+    //     & .portfolio-slider-next {
+    //       position: absolute;
+    //       top: 50%;
+    //       transform: translateY(-50%);
+    //       pointer-events: all;
+
+    //       width: 44px;
+    //       height: 44px;
+    //       border-radius: 50%;
+
+    //       display: flex;
+    //       align-items: center;
+    //       justify-content: center;
+
+    //       transition:
+    //         opacity 0.25s ease,
+    //         transform 0.25s ease;
+    //     }
+
+    //     & .portfolio-slider-prev {
+    //       left: 8px;
+    //     }
+
+    //     & .portfolio-slider-next {
+    //       right: 8px;
+    //     }
+
+    //     & .portfolio-slider-counter {
+    //       position: absolute;
+    //       left: 50%;
+    //       bottom: -40px;
+    //       transform: translateX(-50%);
+    //     }
+    //   }
+    // }
   }
 }
 

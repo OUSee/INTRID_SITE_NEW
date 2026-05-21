@@ -1792,6 +1792,365 @@ const tenderTablesInit = () => {
   });
 };
 
+// tabs-to-slider into portfolio
+const portfolioCardsSlider = () => {
+  const breakpoint = 1000;
+  const block = document.querySelector("#porfolio-body-content");
+  const slider = block?.querySelector(".portfolio-block__cards");
+
+  if (!block || !slider) return;
+
+  if (slider.dataset.portfolioSliderInitialized === "true") {
+    return;
+  }
+
+  let slides = Array.from(slider.children);
+  let currentIndex = 0;
+  let isAnimating = false;
+  let isDragging = false;
+  let isLoading = false;
+  let xDown = null;
+  let yDown = null;
+  let pos = { x: 0, y: 0 };
+  let lastSlideChange = 0;
+
+  const pagination = block.querySelector(
+    ".pagination, .pagination-block, .pages",
+  );
+
+  const getNextUrl = (root = document) => {
+    const scope = root.querySelector("#porfolio-body-content") || root;
+    const pagination = scope.querySelector(".pagination");
+
+    if (!pagination) return null;
+
+    const nextBtn = pagination.querySelector(".pagination--next-btn[href]");
+
+    if (nextBtn) {
+      return new URL(nextBtn.getAttribute("href"), window.location.origin).href;
+    }
+
+    const activeBtn = pagination.querySelector(
+      ".pagination--btn-num.highlight",
+    );
+
+    if (!activeBtn) return null;
+
+    const currentPage = Number(activeBtn.dataset.page);
+    const nextPage = currentPage + 1;
+
+    const nextPageBtn = pagination.querySelector(
+      `.pagination--btn-num[data-page="${nextPage}"][href]`,
+    );
+
+    return nextPageBtn
+      ? new URL(nextPageBtn.getAttribute("href"), window.location.origin).href
+      : null;
+  };
+
+  let nextUrl = getNextUrl(document);
+
+  const getVisibleSlidesCount = () => {
+    if (window.innerWidth >= 1200) return 3;
+    if (window.innerWidth >= 720) return 2;
+    return 1;
+  };
+
+  const getGap = () => parseInt(window.getComputedStyle(slider).gap) || 0;
+
+  const getControls = () => {
+    let controls = block.querySelector(".portfolio-slider-controls");
+
+    if (!controls) {
+      controls = document.createElement("div");
+      controls.className = "portfolio-slider-controls";
+      controls.innerHTML = `
+        <button type="button" class="portfolio-slider-prev" aria-label="Предыдущий слайд">‹</button>
+        <div class="portfolio-slider-counter">1/1</div>
+        <button type="button" class="portfolio-slider-next" aria-label="Следующий слайд">›</button>
+      `;
+
+      slider.after(controls);
+
+      controls
+        .querySelector(".portfolio-slider-prev")
+        .addEventListener("click", prevSlide);
+      controls
+        .querySelector(".portfolio-slider-next")
+        .addEventListener("click", nextSlide);
+    }
+
+    return controls;
+  };
+
+  const updateCounter = () => {
+    const counter = getControls().querySelector(".portfolio-slider-counter");
+    counter.textContent = `${Math.min(currentIndex + 1, slides.length)}/${slides.length}`;
+  };
+
+  const updateActiveSlides = () => {
+    const visibleSlidesCount = getVisibleSlidesCount();
+
+    slides.forEach((slide) => slide.classList.remove("active"));
+
+    for (
+      let i = currentIndex;
+      i < currentIndex + visibleSlidesCount && i < slides.length;
+      i++
+    ) {
+      slides[i].classList.add("active");
+    }
+  };
+
+  const updateButtons = () => {
+    const controls = getControls();
+    const prevBtn = controls.querySelector(".portfolio-slider-prev");
+    const nextBtn = controls.querySelector(".portfolio-slider-next");
+    const visibleSlidesCount = getVisibleSlidesCount();
+
+    prevBtn.style.opacity = currentIndex === 0 ? "0" : "1";
+    prevBtn.style.pointerEvents = currentIndex === 0 ? "none" : "";
+
+    const isLastVisibleRow = currentIndex + visibleSlidesCount >= slides.length;
+
+    nextBtn.style.opacity = isLastVisibleRow && !nextUrl ? "0" : "1";
+    nextBtn.style.pointerEvents = isLastVisibleRow && !nextUrl ? "none" : "";
+  };
+
+  const updateSlider = () => {
+    if (window.innerWidth >= breakpoint) {
+      destroy();
+      return;
+    }
+
+    slides = Array.from(slider.children);
+
+    const visibleSlidesCount = getVisibleSlidesCount();
+    const gap = getGap();
+    const containerWidth = slider.parentElement.getBoundingClientRect().width;
+    const slideWidth =
+      (containerWidth - gap * (visibleSlidesCount - 1)) / visibleSlidesCount;
+
+    slides.forEach((slide) => {
+      slide.style.minWidth = `${slideWidth}px`;
+      slide.style.maxWidth = `${slideWidth}px`;
+    });
+
+    const maxIndex = Math.max(slides.length - visibleSlidesCount, 0);
+    currentIndex = Math.min(currentIndex, maxIndex);
+
+    slider.style.transform = `translateX(-${(slideWidth + gap) * currentIndex}px)`;
+
+    updateActiveSlides();
+    updateCounter();
+    updateButtons();
+
+    if (currentIndex + visibleSlidesCount >= slides.length) {
+      loadMore();
+    }
+  };
+
+  async function loadMore() {
+    if (isLoading || !nextUrl) return;
+
+    isLoading = true;
+
+    try {
+      const response = await fetch(nextUrl, {
+        headers: {
+          "X-PJAX": "true",
+          "X-PJAX-Container": "#porfolio-body-content",
+        },
+      });
+
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const nextBlock = doc.querySelector("#porfolio-body-content") || doc;
+      const newCards = nextBlock.querySelectorAll(
+        ".portfolio-block__cards > *",
+      );
+
+      newCards.forEach((card) => slider.appendChild(card));
+
+      nextUrl = getNextUrl(doc);
+
+      gallerySelector?.();
+      initPopups?.();
+      sitePreview?.();
+
+      updateSlider();
+    } catch (err) {
+      console.warn("Portfolio slider load more error:", err);
+    } finally {
+      isLoading = false;
+    }
+  }
+
+  function prevSlide() {
+    if (isAnimating || currentIndex === 0) return;
+
+    isAnimating = true;
+    currentIndex--;
+    updateSlider();
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 350);
+  }
+
+  function nextSlide() {
+    if (isAnimating) return;
+
+    const visibleSlidesCount = getVisibleSlidesCount();
+
+    if (currentIndex + visibleSlidesCount >= slides.length) {
+      loadMore();
+      return;
+    }
+
+    isAnimating = true;
+    currentIndex++;
+    updateSlider();
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 350);
+  }
+
+  function handleTouchStart(evt) {
+    xDown = evt.touches[0].clientX;
+    yDown = evt.touches[0].clientY;
+    isDragging = false;
+  }
+
+  function handleTouchMove(evt) {
+    if (xDown === null || yDown === null || isDragging || isAnimating) return;
+
+    const xUp = evt.touches[0].clientX;
+    const yUp = evt.touches[0].clientY;
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 20) {
+      evt.preventDefault();
+      isDragging = true;
+
+      if (xDiff > 0) nextSlide();
+      else prevSlide();
+    }
+  }
+
+  function handleTouchEnd() {
+    xDown = null;
+    yDown = null;
+    isDragging = false;
+  }
+
+  function mouseDownHandler(e) {
+    e.preventDefault();
+
+    pos = {
+      x: e.clientX,
+      y: e.clientY,
+    };
+
+    document.addEventListener("mousemove", mouseMoveHandler);
+    document.addEventListener("mouseup", mouseUpHandler);
+  }
+
+  function mouseMoveHandler(e) {
+    const currentTime = Date.now();
+    const dx = e.clientX - pos.x;
+    const dy = e.clientY - pos.y;
+
+    isDragging = true;
+
+    slides.forEach((slide) => {
+      slide.style.pointerEvents = "none";
+    });
+
+    if (
+      Math.abs(dx) > Math.abs(dy) &&
+      Math.abs(dx) > 70 &&
+      currentTime - lastSlideChange > 300
+    ) {
+      e.preventDefault();
+
+      if (dx < 0) nextSlide();
+      else prevSlide();
+
+      lastSlideChange = currentTime;
+      pos.x = e.clientX;
+    }
+  }
+
+  function mouseUpHandler() {
+    isDragging = false;
+
+    slides.forEach((slide) => {
+      slide.style.pointerEvents = "";
+    });
+
+    document.removeEventListener("mousemove", mouseMoveHandler);
+    document.removeEventListener("mouseup", mouseUpHandler);
+  }
+
+  function init() {
+    if (window.innerWidth >= breakpoint) {
+      destroy();
+      return;
+    }
+
+    slider.dataset.portfolioSliderInitialized = "true";
+    slider.classList.add("portfolio-block__cards--slider");
+
+    if (pagination) {
+      pagination.style.display = "none";
+    }
+
+    getControls();
+
+    slider.addEventListener("touchstart", handleTouchStart, false);
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener("touchend", handleTouchEnd, false);
+    document.addEventListener("touchcancel", handleTouchEnd, false);
+    slider.addEventListener("mousedown", mouseDownHandler, false);
+
+    updateSlider();
+
+    window.addEventListener("resize", updateSlider);
+  }
+
+  function destroy() {
+    slider.classList.remove("portfolio-block__cards--slider");
+    slider.style.transform = "";
+
+    slides.forEach((slide) => {
+      slide.classList.remove("active");
+      slide.style.minWidth = "";
+      slide.style.maxWidth = "";
+      slide.style.pointerEvents = "";
+    });
+
+    if (pagination) {
+      pagination.style.display = "";
+    }
+
+    block.querySelector(".portfolio-slider-controls")?.remove();
+
+    slider.removeEventListener("touchstart", handleTouchStart);
+    document.removeEventListener("touchmove", handleTouchMove);
+    document.removeEventListener("touchend", handleTouchEnd);
+    document.removeEventListener("touchcancel", handleTouchEnd);
+    slider.removeEventListener("mousedown", mouseDownHandler);
+    window.removeEventListener("resize", updateSlider);
+
+    delete slider.dataset.portfolioSliderInitialized;
+  }
+
+  init();
+};
+
 // sliders with pagination
 function sliderInitialize() {
   const tabSliderWithPagination = (id) => {
@@ -2160,6 +2519,8 @@ function sliderInitialize() {
       console.warn("=> err setting slider ", slider.id, ":", err);
     }
   });
+
+  portfolioCardsSlider();
 }
 
 // increment numbers
@@ -6419,56 +6780,64 @@ function syncNiceSelectDisabled(selectEl) {
 
 // Синхронизация связей между табами и селектами
 function initTabsToSelect(root = document) {
-  root.querySelectorAll('[data-tabs-to-select]').forEach((component) => {
-    if (component.dataset.tabsToSelectInited === 'true') return;
-    component.dataset.tabsToSelectInited = 'true';
+  root.querySelectorAll("[data-tabs-to-select]").forEach((component) => {
+    if (component.dataset.tabsToSelectInited === "true") return;
+    component.dataset.tabsToSelectInited = "true";
 
-    const select = component.querySelector('.nice-select');
-    const current = select?.querySelector('.current');
-    const options = [...component.querySelectorAll('[data-tabs-buttons] .option[for]')];
-    const radios = [...component.querySelectorAll('.nav-tabs input[type="radio"][id]')];
+    const select = component.querySelector(".nice-select");
+    const current = select?.querySelector(".current");
+    const options = [
+      ...component.querySelectorAll("[data-tabs-buttons] .option[for]"),
+    ];
+    const radios = [
+      ...component.querySelectorAll('.nav-tabs input[type="radio"][id]'),
+    ];
 
     if (!select || !current || !options.length || !radios.length) return;
 
     const setSelectByRadio = (radio) => {
       if (!radio) return;
 
-      const option = options.find((item) => item.getAttribute('for') === radio.id);
+      const option = options.find(
+        (item) => item.getAttribute("for") === radio.id,
+      );
       if (!option) return;
 
       options.forEach((item) => {
-        item.classList.toggle('selected', item === option);
-        item.setAttribute('aria-selected', item === option ? 'true' : 'false');
+        item.classList.toggle("selected", item === option);
+        item.setAttribute("aria-selected", item === option ? "true" : "false");
       });
 
       current.textContent = option.textContent.trim();
     };
 
     const setRadioByOption = (option) => {
-      const radioId = option.getAttribute('for');
+      const radioId = option.getAttribute("for");
       const radio = component.querySelector(`#${CSS.escape(radioId)}`);
 
       if (!radio) return;
 
       radio.checked = true;
-      radio.dispatchEvent(new Event('change', { bubbles: true }));
+      radio.dispatchEvent(new Event("change", { bubbles: true }));
       setSelectByRadio(radio);
     };
 
     options.forEach((option) => {
-      option.addEventListener('click', () => {
+      option.addEventListener("click", () => {
         setRadioByOption(option);
       });
     });
 
     radios.forEach((radio) => {
-      radio.addEventListener('change', () => {
+      radio.addEventListener("change", () => {
         if (radio.checked) setSelectByRadio(radio);
       });
     });
 
     const checkedRadio = radios.find((radio) => radio.checked);
-    const selectedOption = options.find((option) => option.classList.contains('selected'));
+    const selectedOption = options.find((option) =>
+      option.classList.contains("selected"),
+    );
 
     if (checkedRadio) {
       setSelectByRadio(checkedRadio);
@@ -6482,20 +6851,26 @@ function initTabsToSelect(root = document) {
 }
 
 window.syncTabsToSelect = function (root = document) {
-  root.querySelectorAll('[data-tabs-to-select]').forEach((component) => {
-    const current = component.querySelector('.nice-select .current');
-    const options = [...component.querySelectorAll('[data-tabs-buttons] .option[for]')];
-    const checkedRadio = component.querySelector('.nav-tabs input[type="radio"]:checked');
+  root.querySelectorAll("[data-tabs-to-select]").forEach((component) => {
+    const current = component.querySelector(".nice-select .current");
+    const options = [
+      ...component.querySelectorAll("[data-tabs-buttons] .option[for]"),
+    ];
+    const checkedRadio = component.querySelector(
+      '.nav-tabs input[type="radio"]:checked',
+    );
 
     if (!current || !checkedRadio) return;
 
-    const option = options.find((item) => item.getAttribute('for') === checkedRadio.id);
+    const option = options.find(
+      (item) => item.getAttribute("for") === checkedRadio.id,
+    );
     if (!option) return;
 
     options.forEach((item) => {
       const isActive = item === option;
-      item.classList.toggle('selected', isActive);
-      item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      item.classList.toggle("selected", isActive);
+      item.setAttribute("aria-selected", isActive ? "true" : "false");
     });
 
     current.textContent = option.textContent.trim();
@@ -6656,6 +7031,6 @@ document.addEventListener(
 );
 
 // pjax events
-document.addEventListener('pjax:end', () => {
+document.addEventListener("pjax:end", () => {
   initTabsToSelect();
 });

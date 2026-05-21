@@ -100,6 +100,7 @@ $(function () {
 		gallerySelector();
 		initPopups();
 		sitePreview();
+		sliderInitialize();
 	});
 
 	// Если не было PJAX-загрузки, все равно показываем контент с анимацией
