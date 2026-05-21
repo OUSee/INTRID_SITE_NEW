@@ -3156,9 +3156,13 @@ ol {
     }
 
     &-lg {
-      &-0 {
-        @media (max-width: 999.98px) {
+      @media (max-width: 999.98px) {
+        &-0 {
           margin-left: 0;
+        }
+
+        &-auto {
+          margin-left: auto;
         }
       }
     }
@@ -3206,8 +3210,12 @@ ol {
     }
 
     &-lg {
-      &-0 {
-        @media (max-width: 999.98px) {
+      @media (max-width: 999.98px) {
+        &-auto {
+          margin-right: auto;
+        }
+
+        &-0 {
           margin-right: 0;
         }
       }
@@ -4372,10 +4380,10 @@ form {
         & > .nice-wrapper {
           display: none !important;
         }
-        
+
         & > [class*="nav-tabs"],
         & > .tabs-buttons {
-            display: block !important;
+          display: block !important;
         }
       }
 
@@ -4386,7 +4394,7 @@ form {
 
         & > [class*="nav-tabs"],
         & > .tabs-buttons {
-            display: none !important;
+          display: none !important;
         }
       }
     }
@@ -5284,6 +5292,7 @@ button,
     // max-height: 40px;
     max-height: 44px;
     padding: 14px 16px;
+    font-size: 13px;
     line-height: 1.25;
   }
 
