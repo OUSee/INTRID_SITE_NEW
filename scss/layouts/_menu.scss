@@ -13,13 +13,14 @@
 		align-items: flex-start;
 		width: 100vw;
 		height: 100vh;
-		height: 100svh;
+		height: 100dvh;
 		padding: 60px 40px 20px;
 		background-color: var(--bg-main);
 		opacity: 0;
 		visibility: hidden;
 		overflow: hidden;
 		overflow-y: auto;
+		@include webkit_scrollbar;
 	}
 
 	@media (max-width: 599.98px) {
