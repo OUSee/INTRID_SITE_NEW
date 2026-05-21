@@ -680,10 +680,10 @@ main {
   @media (min-width: 1000px) {
     @include h2;
 
-      & span {
-        font-size: 28px;
-      }
+    & span {
+      font-size: 28px;
     }
+  }
 }
 
 .error {
@@ -1462,6 +1462,12 @@ main {
 
     & > .benefits-bottom {
       order: 3;
+    }
+  }
+
+  & .benefit-card {
+    @media (min-width: 1208px) {
+      border-radius: 32px;
     }
   }
 }
