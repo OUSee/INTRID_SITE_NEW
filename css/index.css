@@ -1865,6 +1865,9 @@ ol li > ol {
   margin-bottom: 0;
   padding-bottom: unset;
 }
+.list--leads.compact.row li {
+  grid-template-columns: 1fr;
+}
 
 #preloader {
   z-index: 10;
@@ -9782,7 +9785,7 @@ button:disabled, button.disabled,
 .header-inner {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   gap: 16px;
   height: 100%;
 }
@@ -9794,6 +9797,7 @@ button:disabled, button.disabled,
 .header-logo {
   position: relative;
   z-index: 4;
+  align-self: center;
   min-width: 28px;
   max-width: 28px;
   max-height: 28px;
@@ -10238,6 +10242,7 @@ button:disabled, button.disabled,
 .burger {
   position: relative;
   display: inline-block;
+  align-self: center;
   border-radius: 0px;
   width: fit-content;
   margin-left: 12px;
