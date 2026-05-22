@@ -1794,6 +1794,9 @@ const tenderTablesInit = () => {
 
 // tabs-to-slider into portfolio
 const portfolioCardsSlider = () => {
+  let isInitialized = false;
+  let resizeTimer = null;
+
   const breakpoint = 1000;
   const block = document.querySelector("#porfolio-body-content");
   const slider = block?.querySelector(".portfolio-block__cards");
@@ -1851,8 +1854,8 @@ const portfolioCardsSlider = () => {
   let nextUrl = getNextUrl(document);
 
   const getVisibleSlidesCount = () => {
-    if (window.innerWidth >= 1200) return 3;
-    if (window.innerWidth >= 720) return 2;
+    if (window.innerWidth >= 1200) return 1;
+    if (window.innerWidth >= 720) return 1;
     return 1;
   };
 
@@ -1865,9 +1868,9 @@ const portfolioCardsSlider = () => {
       controls = document.createElement("div");
       controls.className = "portfolio-slider-controls";
       controls.innerHTML = `
-        <button type="button" class="portfolio-slider-prev" aria-label="Предыдущий слайд">‹</button>
-        <div class="portfolio-slider-counter">1/1</div>
-        <button type="button" class="portfolio-slider-next" aria-label="Следующий слайд">›</button>
+        <button type="button" class="portfolio-slider-prev" aria-label="Предыдущий слайд"><svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.366116 8.32107C-0.122039 8.80923 -0.122039 9.60069 0.366117 10.0888L8.32107 18.0438C8.80923 18.5319 9.60069 18.5319 10.0888 18.0438C10.577 17.5556 10.577 16.7642 10.0888 16.276L3.01777 9.20496L10.0888 2.13388C10.577 1.64573 10.577 0.85427 10.0888 0.366115C9.60067 -0.12204 8.80922 -0.122039 8.32106 0.366117L0.366116 8.32107ZM2.25 9.20496L2.25 7.95496L1.25 7.95496L1.25 9.20496L1.25 10.455L2.25 10.455L2.25 9.20496Z" fill="currentColor"/></svg></button>
+        <div class="portfolio-slider-counter">1 / 1</div>
+        <button type="button" class="portfolio-slider-next" aria-label="Следующий слайд"><svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.0888 10.0888C10.577 9.60068 10.577 8.80923 10.0888 8.32107L2.13389 0.366121C1.64573 -0.122034 0.854277 -0.122034 0.366121 0.366121C-0.122034 0.854277 -0.122034 1.64573 0.366121 2.13389L7.43719 9.20496L0.366121 16.276C-0.122034 16.7642 -0.122034 17.5556 0.366121 18.0438C0.854277 18.5319 1.64573 18.5319 2.13389 18.0438L10.0888 10.0888ZM8.20496 9.20496V10.455H9.20496V9.20496V7.95496H8.20496V9.20496Z" fill="currentColor"/></svg></button>
       `;
 
       slider.after(controls);
@@ -1885,7 +1888,7 @@ const portfolioCardsSlider = () => {
 
   const updateCounter = () => {
     const counter = getControls().querySelector(".portfolio-slider-counter");
-    counter.textContent = `${Math.min(currentIndex + 1, slides.length)}/${slides.length}`;
+    counter.textContent = `${Math.min(currentIndex + 1, slides.length)} / ${slides.length}`;
   };
 
   const updateActiveSlides = () => {
@@ -1917,11 +1920,22 @@ const portfolioCardsSlider = () => {
     nextBtn.style.pointerEvents = isLastVisibleRow && !nextUrl ? "none" : "";
   };
 
+  const updateControlsPosition = () => {
+    const controls = getControls();
+    const prevBtn = controls.querySelector(".portfolio-slider-prev");
+    const nextBtn = controls.querySelector(".portfolio-slider-next");
+
+    const sliderRect = slider.getBoundingClientRect();
+    const controlsRect = controls.getBoundingClientRect();
+
+    const top = sliderRect.top - controlsRect.top + sliderRect.height / 2;
+
+    prevBtn.style.top = `${top}px`;
+    nextBtn.style.top = `${top}px`;
+  };
+
   const updateSlider = () => {
-    if (window.innerWidth >= breakpoint) {
-      destroy();
-      return;
-    }
+    if (!isInitialized) return;
 
     slides = Array.from(slider.children);
 
@@ -1944,6 +1958,7 @@ const portfolioCardsSlider = () => {
     updateActiveSlides();
     updateCounter();
     updateButtons();
+    updateControlsPosition();
 
     if (currentIndex + visibleSlidesCount >= slides.length) {
       loadMore();
@@ -2096,11 +2111,12 @@ const portfolioCardsSlider = () => {
   }
 
   function init() {
-    if (window.innerWidth >= breakpoint) {
-      destroy();
+    if (isInitialized) {
+      updateSlider();
       return;
     }
 
+    isInitialized = true;
     slider.dataset.portfolioSliderInitialized = "true";
     slider.classList.add("portfolio-block__cards--slider");
 
@@ -2117,11 +2133,22 @@ const portfolioCardsSlider = () => {
     slider.addEventListener("mousedown", mouseDownHandler, false);
 
     updateSlider();
+  }
 
-    window.addEventListener("resize", updateSlider);
+  function handleBreakpointChange() {
+    if (window.innerWidth >= breakpoint) {
+      destroy();
+      return;
+    }
+
+    init();
   }
 
   function destroy() {
+    if (!isInitialized) return;
+
+    isInitialized = false;
+
     slider.classList.remove("portfolio-block__cards--slider");
     slider.style.transform = "";
 
@@ -2148,7 +2175,15 @@ const portfolioCardsSlider = () => {
     delete slider.dataset.portfolioSliderInitialized;
   }
 
-  init();
+  handleBreakpointChange();
+
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(() => {
+      handleBreakpointChange();
+    }, 150);
+  });
 };
 
 // sliders with pagination
@@ -6795,6 +6830,30 @@ function initTabsToSelect(root = document) {
 
     if (!select || !current || !options.length || !radios.length) return;
 
+    const setTooltipByRadio = (radio) => {
+      const selectWrapper = component.querySelector("[data-tabs-buttons]");
+      const options = [
+        ...component.querySelectorAll("[data-tabs-buttons] .option[for]"),
+      ];
+
+      if (!selectWrapper || !radio) return;
+
+      const option = options.find(
+        (item) => item.getAttribute("for") === radio.id,
+      );
+      const value = option?.dataset.value;
+
+      selectWrapper.querySelectorAll(".tooltip[id]").forEach((tooltip) => {
+        tooltip.classList.add("hidden");
+      });
+
+      if (!value) return;
+
+      selectWrapper
+        .querySelector(`#${CSS.escape(selectWrapper.id)}-${CSS.escape(value)}`)
+        ?.classList.remove("hidden");
+    };
+
     const setSelectByRadio = (radio) => {
       if (!radio) return;
 
@@ -6809,6 +6868,7 @@ function initTabsToSelect(root = document) {
       });
 
       current.textContent = option.textContent.trim();
+      setTooltipByRadio(radio);
     };
 
     const setRadioByOption = (option) => {
@@ -6838,6 +6898,8 @@ function initTabsToSelect(root = document) {
     const selectedOption = options.find((option) =>
       option.classList.contains("selected"),
     );
+
+    
 
     if (checkedRadio) {
       setSelectByRadio(checkedRadio);

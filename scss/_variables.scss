@@ -4192,6 +4192,7 @@ form {
       transition: 0.25s ease-in-out;
 
       @media (max-width: 599.98px) {
+        width: min-content;
         margin-left: 20px;
         padding-left: 16px;
       }
@@ -4395,6 +4396,30 @@ form {
         & > [class*="nav-tabs"],
         & > .tabs-buttons {
           display: none !important;
+        }
+      }
+
+      &.isTender {
+        @media (min-width: 1000px) {
+          & > .nice-wrapper {
+            display: none !important;
+          }
+
+          & > [class*="nav-tabs"],
+          & > .tabs-buttons {
+            display: flex !important;
+          }
+        }
+
+        @media (max-width: 999.98px) {
+          & > .nice-wrapper {
+            display: flex !important;
+          }
+
+          & > [class*="nav-tabs"],
+          & > .tabs-buttons {
+            display: none !important;
+          }
         }
       }
     }

@@ -4193,12 +4193,15 @@ form input[type=submit] {
     color: var(--color-white);
   }
 }
-.pagination--prev-btn i, .pagination--next-btn i {
+.pagination--prev-btn i, .pagination--prev-btn svg, .pagination--next-btn i, .pagination--next-btn svg {
   width: 24px;
   height: 24px;
   font-size: 24px;
   line-height: 24px;
   text-decoration: none;
+}
+.pagination--prev-btn svg, .pagination--next-btn svg {
+  display: flex;
 }
 @media (min-width: 1480px) {
   .pagination:not([id=gallery-pagination]) .pagination--prev-btn {
@@ -4384,6 +4387,7 @@ form input[type=submit] {
 }
 @media (max-width: 599.98px) {
   .contact-block--content > a {
+    width: min-content;
     margin-left: 20px;
     padding-left: 16px;
   }
@@ -4910,6 +4914,22 @@ form input[type=submit] {
     display: block !important;
   }
   .tabs-to-select > [class*=nav-tabs], .tabs-to-select > .tabs-buttons {
+    display: none !important;
+  }
+}
+@media (min-width: 1000px) {
+  .tabs-to-select.isTender > .nice-wrapper {
+    display: none !important;
+  }
+  .tabs-to-select.isTender > [class*=nav-tabs], .tabs-to-select.isTender > .tabs-buttons {
+    display: flex !important;
+  }
+}
+@media (max-width: 999.98px) {
+  .tabs-to-select.isTender > .nice-wrapper {
+    display: flex !important;
+  }
+  .tabs-to-select.isTender > [class*=nav-tabs], .tabs-to-select.isTender > .tabs-buttons {
     display: none !important;
   }
 }
@@ -11087,6 +11107,10 @@ main {
 .nav-tabs--tender .nav-tabs--buttons > *:has(:checked) img, .nav-tabs--tender .nav-tabs--buttons > *.active img {
   filter: invert(1) grayscale(1) brightness(0);
 }
+.nav-tabs--tender .nav-tabs--buttons > *:has(:checked) .tooltip, .nav-tabs--tender .nav-tabs--buttons > *.active .tooltip {
+  filter: invert(1) grayscale(1);
+  mix-blend-mode: difference;
+}
 @media (min-width: 1000px) {
   .nav-tabs--tender .nav-tabs--buttons > *:has(:checked), .nav-tabs--tender .nav-tabs--buttons > *.active {
     color: var(--bg-main);
@@ -11951,6 +11975,18 @@ main {
 @media (max-width: 1199.98px) {
   .tab-content-webDev.tender .tender-diagram {
     padding: 0px;
+  }
+}
+@media (max-width: 1199.98px) {
+  .tab-content-webDev.tender .tender-diagram .benefit-card::before {
+    width: 72px;
+    height: 72px;
+  }
+}
+@media (max-width: 1199.98px) {
+  .tab-content-webDev.tender .tender-diagram .benefit-card ul.content-hidden {
+    margin-top: 20px;
+    margin-left: -44px;
   }
 }
 .tab-content-webDev.tender > p.title_h4 {
@@ -14003,6 +14039,11 @@ main {
 .portfolio-block:is([data-pjax-container]) {
   display: block !important;
 }
+@media (max-width: 999.98px) {
+  .portfolio-block > .container {
+    margin: 0 !important;
+  }
+}
 .portfolio-block__cards {
   display: flex;
   flex-direction: row;
@@ -14070,8 +14111,36 @@ main {
   flex-shrink: 0;
   box-sizing: border-box;
 }
+.portfolio-block__cards--slider > * .card-header {
+  position: relative;
+  z-index: 2;
+}
+.portfolio-block__cards--slider > * > a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 200%;
+  background-image: var(--portfolio-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  filter: blur(8px);
+  opacity: 0.5;
+}
+.portfolio-block__cards--slider > * .card-body {
+  border: none;
+  background-color: rgba(5, 7, 12, 0.5);
+}
 .portfolio-block__cards--slider > *:not(.active) {
   opacity: 0;
+}
+.portfolio-block__cards--slider > * .portfolio-site {
+  aspect-ratio: unset;
+  object-fit: contain;
+  object-position: center;
 }
 .portfolio-block--buttons {
   display: flex;
@@ -14091,6 +14160,11 @@ main {
 .portfolio-slider-counter {
   margin-top: 16px;
   text-align: center;
+}
+@media (max-width: 999.98px) {
+  .portfolio-slider-controls .portfolio-slider-prev, .portfolio-slider-controls .portfolio-slider-next {
+    display: none !important;
+  }
 }
 
 .seo-table {
@@ -15983,15 +16057,24 @@ main {
     color: var(--color-white);
   }
 }
-.portfolio-block__pagination .pagination--prev-btn i,
+.portfolio-block__pagination .pagination--prev-btn i, .portfolio-block__pagination .pagination--prev-btn svg,
 .portfolio-block__pagination .pagination--next-btn i,
+.portfolio-block__pagination .pagination--next-btn svg,
 .pagination-panel .pagination--prev-btn i,
-.pagination-panel .pagination--next-btn i {
+.pagination-panel .pagination--prev-btn svg,
+.pagination-panel .pagination--next-btn i,
+.pagination-panel .pagination--next-btn svg {
   width: 24px;
   height: 24px;
   font-size: 24px;
   line-height: 24px;
   text-decoration: none;
+}
+.portfolio-block__pagination .pagination--prev-btn svg,
+.portfolio-block__pagination .pagination--next-btn svg,
+.pagination-panel .pagination--prev-btn svg,
+.pagination-panel .pagination--next-btn svg {
+  display: flex;
 }
 .portfolio-block__pagination .pagination--buttons-numbers,
 .pagination-panel .pagination--buttons-numbers {
