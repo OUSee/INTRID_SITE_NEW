@@ -1464,6 +1464,14 @@ ol {
     display: inline !important;
   }
 
+  &-xl {
+    &-none {
+      @media (max-width: 1199.98px) {
+        display: none !important;
+      }
+    }
+  }
+
   &-lg {
     &-none {
       // previosly was a 900px
@@ -4418,6 +4426,28 @@ form {
 
           & > [class*="nav-tabs"],
           & > .tabs-buttons {
+            display: none !important;
+          }
+        }
+      }
+
+      &.isBlogs {
+        @media (min-width: 1000px) {
+          & > .nice-wrapper {
+            display: none !important;
+          }
+
+          & > .blogs__buttons {
+            display: flex !important;
+          }
+        }
+
+        @media (max-width: 999.98px) {
+          & > .nice-wrapper {
+            display: flex !important;
+          }
+
+          & > .blogs__buttons {
             display: none !important;
           }
         }
