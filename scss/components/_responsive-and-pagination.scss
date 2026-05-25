@@ -1,0 +1,265 @@
+.rotateInfinite {
+  animation: rotateInfinite 0.6s linear infinite;
+}
+
+@media (max-width: 1399.98px) {
+  .benefits-left {
+    margin-left: 0;
+  }
+
+  .benefits-right {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .pc-visible {
+    display: none;
+  }
+
+  .flying-orb {
+    top: 270px;
+    left: 60%;
+    right: 300px;
+    width: 176px;
+    height: 176px;
+
+    img {
+      height: 212px;
+      width: auto;
+    }
+
+    &::before {
+      width: 167px;
+      height: 167px;
+    }
+
+    .water-ripple {
+      height: 212px;
+      width: 212px;
+    }
+  }
+
+  .tab-content-webDev {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 999.98px) {
+  .flying-orb {
+    top: 270px;
+    left: 50%;
+    right: 300px;
+    width: 176px;
+    height: 176px;
+
+    img {
+      height: 212px;
+      width: auto;
+    }
+
+    &::before {
+      width: 167px;
+      height: 167px;
+    }
+
+    .water-ripple {
+      height: 212px;
+      width: 212px;
+    }
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899.98px) {
+  .flying-orb {
+    display: none;
+  }
+}
+
+@media (max-width: 599.98px) {
+.tab-content {
+    padding-bottom: 0px;
+
+    .tab-content-webDev {
+      flex-wrap: wrap;
+
+}
+  }
+}
+
+@media (max-width: 539.98px) {
+  #calc-web-price {
+    width: 100%;
+    margin: 16px 0px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 439.98px) {
+  .tabs {
+    & .card--achievement {
+      min-width: 100px;
+    }
+  }
+
+  #calc-web-price {
+    width: 100%;
+    margin: 16px 0px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #more-about-web-dev {
+    margin-bottom: 40px;
+  }
+}
+
+.portfolio-block__pagination,
+.pagination-panel {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+
+  .pagination {
+    margin: 0;
+    gap: 20px;
+    padding: 0 8px;
+
+    @media (max-width: 576px) {
+      gap: 16px;
+    }
+  }
+
+  .pagination--prev-btn,
+  .pagination--next-btn {
+    @include pagination-panel-btn;
+  }
+
+  .pagination--buttons-numbers {
+    display: flex;
+    align-items: flex-start;
+    gap: 0px;
+
+    @media (max-width: 576px) {
+      gap: 0px;
+    }
+  }
+
+  .pagination--btn-num {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 38px;
+    padding: 4px 8px 0;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0;
+    line-height: 1;
+    transition: transform 0.25s ease;
+
+    @media (max-width: 576px) {
+      min-width: 32px;
+      gap: 8px;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    .pagination--btn-dot-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background-color: rgba(255, 255, 255, 0.08);
+      position: relative;
+      display: block;
+      transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: translate(-50%, -50%);
+        transition:
+          transform 0.25s ease,
+          background-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+    }
+
+    .pagination--btn-label {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+      transition: color 0.25s ease;
+    }
+
+    &:hover {
+      .pagination--btn-dot-circle {
+        border-color: var(--blue-main);
+        background-color: rgba(26, 123, 255, 0.2);
+        box-shadow: 0 0 10px rgba(33, 159, 255, 0.45);
+        transform: scale(1.08);
+
+        &::after {
+          background: var(--blue-main);
+          transform: translate(-50%, -50%) scale(1.1);
+          box-shadow: 0 0 10px rgba(33, 159, 255, 0.45);
+        }
+      }
+
+      .pagination--btn-label {
+        color: var(--color-white);
+      }
+    }
+
+    &.highlight {
+      .pagination--btn-dot-circle {
+        border-color: var(--blue-main);
+        background-color: rgba(26, 123, 255, 0.25);
+        box-shadow: 0 0 16px rgba(33, 159, 255, 0.5);
+        transform: scale(1.1);
+
+        &::after {
+          background: var(--blue-main);
+          transform: translate(-50%, -50%) scale(1.2);
+          box-shadow: 0 0 12px rgba(33, 159, 255, 0.6);
+        }
+      }
+
+      .pagination--btn-label {
+        color: var(--color-white);
+      }
+    }
+
+    &:focus-visible {
+      .pagination--btn-dot-circle {
+        box-shadow: 0 0 0 3px rgba(33, 159, 255, 0.35);
+      }
+    }
+  }
+
+  .pagination--btn-dot:not(.pagination--btn-num) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 2px;
+  }
+}
