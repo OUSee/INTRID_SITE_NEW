@@ -1,7 +1,9 @@
+// vendor
 @import "./vendor/normalize";
 
 @import "./variables";
 
+// layouts
 @import "./layouts/popup";
 @import "./layouts/header";
 @import "./layouts/menu";
@@ -43,6 +45,8 @@ body {
   font-size: 14px;
   background-color: var(--bg-main);
   color: var(--color-white);
+  // background-image: url("../src/images/bg-main.webp");
+  // background-size: auto 944px;
   background-image: url("/src/images/stars.jpg");
   background-size: auto 400px;
   background-position: top;
@@ -51,6 +55,7 @@ body {
   overflow-x: clip;
 
   @media (max-width: 599.98px) {
+    // background-image: url("../src/images/bg-main-vert.webp");
     font-size: 13px;
     background-size: 100% auto;
   }
@@ -152,6 +157,7 @@ main {
   }
 }
 
+// non-deprecated styles
 .prices {
   @media (max-width: 999.98px) {
     background: linear-gradient(
@@ -164,6 +170,7 @@ main {
   }
 }
 
+// new styles
 .nav {
   &-tabs {
     &--buttons {
@@ -302,6 +309,7 @@ main {
   }
 }
 
+// styles of main section on a same pages
 .main-section {
   position: relative;
   z-index: 1;
@@ -701,6 +709,7 @@ main {
   }
 }
 
+// WARNING: LEGACY CODE IS HERE!
 .tab-content-webDev {
   display: flex;
   justify-content: space-between;
@@ -1124,11 +1133,13 @@ main {
           tr:last-child
           td:nth-child(4) {
           color: var(--color-white) !important;
+          // background-color: var(--blue-tag);
           background: linear-gradient(
             0deg,
             var(--blue-clouds) 0%,
             var(--blue-tag) 100%
           );
+          // border-bottom: 1px solid var(--blue-tag);
         }
 
         thead {
@@ -1150,6 +1161,7 @@ main {
                     var(--blue-clouds) 0%,
                     var(--blue-tag) 100%
                   );
+                  // background-color: var(--blue-tag);
                   box-shadow:
                     inset -1px 0 0 var(--blue-tag),
                     inset 1px 0 0 var(--blue-tag);
@@ -1161,12 +1173,49 @@ main {
                 padding: 16px 20px;
                 width: 100%;
                 height: 100%;
+                // background-color: transparent;
                 border: none;
                 cursor: pointer;
               }
             }
           }
 
+          // Подсветка ячеек
+          //   &:has(tr th:nth-child(2) input:checked) {
+          //     & + tbody {
+          //       & tr {
+          //         & td {
+          //           &:nth-child(2) {
+          //             background-color: rgba(22, 110, 137, 0.1);
+          //           }
+          //         }
+          //       }
+          //     }
+          //   }
+
+          //   &:has(tr th:nth-child(3) input:checked) {
+          //     & + tbody {
+          //       & tr {
+          //         & td {
+          //           &:nth-child(3) {
+          //             background-color: rgba(22, 110, 137, 0.1);
+          //           }
+          //         }
+          //       }
+          //     }
+          //   }
+
+          //   &:has(tr th:nth-child(4) input:checked) {
+          //     & + tbody {
+          //       & tr {
+          //         & td {
+          //           &:nth-child(4) {
+          //             background-color: rgba(22, 110, 137, 0.1);
+          //           }
+          //         }
+          //       }
+          //     }
+          //   }
         }
 
         tbody tr {
@@ -1225,8 +1274,11 @@ main {
         }
 
         @media (max-width: 899.98px) {
+          // tender tarif table with tabs
           position: relative;
           margin-top: 44px;
+          // border-top-left-radius: 0px;
+          // border-top-right-radius: 0px;
           overflow-x: hidden;
           overflow-y: visible;
 
@@ -1250,6 +1302,8 @@ main {
             top: -44px;
             right: 0;
             width: 100%;
+            // border-top-left-radius: 24px;
+            // border-top-right-radius: 24px;
             display: flex;
             overflow: hidden;
             max-width: 100%;
@@ -1274,6 +1328,7 @@ main {
               cursor: pointer;
               width: 100%;
               padding: 12px 8px;
+              // background-color: var(--blue-clouds);
               order: unset;
 
               &:has(input:checked) {
@@ -1288,7 +1343,9 @@ main {
               }
 
               &.fade-out {
+                // color: transparent;
                 background-color: var(--blue-clouds);
+                // background-color: var(--blue-main);
               }
             }
           }
@@ -1325,6 +1382,10 @@ main {
               display: none;
             }
 
+            // &:last-child {
+            // 	border-bottom-left-radius: 24px;
+            // 	border-bottom-right-radius: 24px;
+            // }
           }
         }
 
@@ -1948,7 +2009,7 @@ main {
         }
 
         &:not(:last-child) {
-          border-bottom: 1px solid rgba(#0a0a0a, 0.25);
+          border-bottom: 1px solid transparentize(#0a0a0a, 0.75);
         }
 
         &:has(input:checked) {
@@ -2097,9 +2158,15 @@ main {
   display: flex;
 }
 
+// pages styles
+
+// PAGES
+
+// sites page
 .sites {
   &-portfolio {
     &-slider {
+      // margin-top: 52px;
       gap: 8px;
       display: flex;
       align-items: stretch;
@@ -2161,6 +2228,11 @@ main {
   }
 }
 
+// landing-page page
+
+//corporate page
+
+//store page
 .store {
   &-ai {
     &.web-shop-diagram {
@@ -2480,6 +2552,13 @@ main {
   }
 }
 
+//web-portal page
+
+//ai page
+
+// it for business
+
+// calculator page
 #reset-options-btn {
   display: flex;
   align-items: center;
@@ -2695,6 +2774,30 @@ main {
     aspect-ratio: 1 / 1;
     @include button-without-hover;
 
+    // &::before {
+    // 	content: "";
+    // 	position: absolute;
+    // 	top: 50%;
+    // 	left: 50%;
+    // 	width: 2px;
+    // 	height: 20px;
+    // 	background-color: currentColor;
+    // 	transform-origin: center;
+    // 	transform: translate(-50%, -50%) rotate(45deg);
+    // }
+
+    // &::after {
+    // 	content: "";
+    // 	position: absolute;
+    // 	top: 50%;
+    // 	left: 50%;
+    // 	width: 2px;
+    // 	height: 20px;
+    // 	background-color: currentColor;
+    // 	transform-origin: center;
+    // 	transform: translate(-50%, -50%) rotate(-45deg);
+    // }
+
     &::before {
       content: "\6d";
       display: flex;
@@ -2791,6 +2894,7 @@ main {
   }
 }
 
+// tech page
 .tech-list {
   display: flex;
   flex-direction: row;
@@ -2895,7 +2999,17 @@ main {
     display: flex;
   }
 
+  & .pagintaion {
+    &--prev,
+    &--next {
+      &-btn {
+        display: none;
+      }
+    }
+  }
 }
+
+// integration popular
 
 .integrations-list {
   display: flex;
@@ -2926,6 +3040,11 @@ main {
   }
 }
 
+// stages of integrations
+
+// integration stack
+
+// tender
 .tenders-keys {
   &--list {
     display: flex;
@@ -3016,6 +3135,15 @@ main {
 }
 
 .portfolio {
+  // @media (max-width: 999.98px) {
+  //   background: linear-gradient(
+  //     0deg,
+  //     rgba(0, 234, 255, 0) 0%,
+  //     rgba(0, 234, 255, 0.35) 25%,
+  //     rgba(0, 234, 255, 0.35) 85%,
+  //     rgba(0, 234, 255, 0) 100%
+  //   );
+  // }
 
   &:is(.main-section) {
     display: block;
@@ -3105,6 +3233,39 @@ main {
     & .pagination {
       margin: 0;
 
+      // @media (min-width: 1200px) {
+      //   display: none;
+      // }
+
+      // & .pagination {
+      //   &--next-btn,
+      //   &--prev-btn {
+      //     position: absolute;
+      //     top: 50%;
+      //     z-index: 1;
+      //   }
+
+      //   &--next-btn {
+      //     right: 0;
+      //     transform: translate(50%, -50%);
+      //   }
+
+      //   &--prev-btn {
+      //     left: 0;
+      //     transform: translate(-50%, -50%);
+      //   }
+      // }
+
+      // &--buttons-dots {
+      //   @media (min-width: 1000px) {
+      //     width: 0;
+      //     height: 0;
+      //     opacity: 0;
+      //     visibility: hidden;
+      //     user-select: none;
+      //     pointer-events: none;
+      //   }
+      // }
     }
 
     & > .container {
@@ -3432,7 +3593,30 @@ main {
     }
 
     @media (max-width: 999.98px) {
+      // &-controls {
+      //   position: relative;
 
+      //   & .portfolio-slider-prev,
+      //   & .portfolio-slider-next {
+      //     position: absolute;
+      //     top: 50%;
+      //     @include pagination-panel-btn;
+      //     padding: 10px;
+      //     transition:
+      //       opacity 0.25s ease,
+      //       transform 0.25s ease;
+      //   }
+
+      //   & .portfolio-slider-prev {
+      //     left: 0;
+      //     transform: translate(-50%, -50%);
+      //   }
+
+      //   & .portfolio-slider-next {
+      //     right: 0;
+      //     transform: translate(50%, -50%);
+      //   }
+      // }
       &-controls {
         & .portfolio-slider-prev,
         & .portfolio-slider-next {
@@ -3535,6 +3719,27 @@ main {
   }
 }
 
+// promotion page
+
+// seo page
+
+// reputation
+
+// seo-audit
+
+// smm
+
+// design-page
+
+// design-site page
+
+// ui design page
+
+// logo page
+
+// hosting page
+
+// domain
 .domain {
   &-table {
     width: 100%;
@@ -3570,6 +3775,19 @@ main {
   }
 }
 
+// ssl
+
+// ai_store page
+
+// o-nas page
+
+// icms page
+
+// kontakts page
+
+// comment
+
+// Отзывы
 .reviews {
   @media (max-width: 999.98px) {
     background: linear-gradient(
@@ -3584,6 +3802,7 @@ main {
 
 .reviews,
 .blogs {
+  // Внутренняя часть
   &__inner {
     display: flex;
     flex-direction: row;
@@ -3667,6 +3886,7 @@ main {
     }
   }
 
+  // rating config
   &__rates {
     position: sticky;
     top: 80px;
@@ -3785,6 +4005,7 @@ main {
     }
   }
 
+  // rating container
   &__container {
     display: flex;
     flex-direction: column;
@@ -3799,6 +4020,50 @@ main {
       margin-left: auto;
     }
 
+    // & > .reviews__wrapper-filter {
+    // 	display: flex;
+    // 	flex-direction: row;
+    // 	flex-wrap: wrap;
+    // 	gap: 12px;
+    // 	max-width: 100%;
+    // 	width: 100%;
+    // 	justify-content: flex-start;
+
+    // 	@media (max-width: 999.98px) {
+    // 		justify-content: center;
+    // 		gap: 4px;
+    // 	}
+
+    // 	& > .filter {
+    // 		padding: 4px 8px;
+
+    // 		&:hover {
+    // 			background-color: transparent;
+    // 			color: var(--blue-main);
+    // 			border: 1px solid var(--blue-main);
+    // 			box-shadow: 0px 0px 15px var(--blue-main);
+    // 		}
+
+    // 		&.active {
+    // 			background-color: var(--blue-main);
+    // 			color: var(--color-black);
+    // 			border: 1px solid var(--blue-main);
+    // 			box-shadow: 0px 0px 15px var(--blue-main);
+
+    // 			& > i {
+    // 				&::before {
+    // 					background-color: currentColor;
+    // 				}
+    // 			}
+    // 		}
+
+    // 		& > i {
+    // 			display: flex;
+    // 			margin-left: 4px;
+    // 			pointer-events: none;
+    // 		}
+    // 	}
+    // }
   }
 
   &__list {
@@ -3851,6 +4116,7 @@ main {
   }
 }
 
+// blog_page
 .blog_page {
   padding-top: 0;
 
@@ -3945,6 +4211,45 @@ main {
   }
 }
 
+// blog-list
+// .blog {
+//   &-list {
+//     position: relative;
+//     padding: 24px;
+//     background-color: var(--blue-bg);
+//     border-radius: 40px;
+//     overflow: hidden;
+
+//     @media (max-width: 999.98px) {
+//       padding: 16px;
+//       border-radius: 20px;
+//     }
+
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       top: 10%;
+//       left: 50%;
+//       z-index: -1;
+//       width: 0;
+//       height: 0;
+//       border-radius: 100%;
+//       aspect-ratio: 1/1;
+//       box-shadow:
+//         0px 0px 72px 60px var(--blue-clouds),
+//         inset 0px 0px 70px 2px var(--blue-clouds);
+//       transform: translate(-50%, 0%);
+//     }
+
+//     & > .card {
+//       &:last-child {
+//         padding-bottom: 0;
+//         border-bottom: 0;
+//       }
+//     }
+//   }
+// }
+
 .ordinary-list {
   .ordinary-list {
     margin-top: 12px;
@@ -3956,6 +4261,7 @@ main {
   }
 }
 
+// help-page
 .help {
   &-faq {
     & .accordion {
@@ -3964,6 +4270,7 @@ main {
   }
 }
 
+// case-page
 .case_page {
   padding-top: 0;
 
@@ -4972,6 +5279,10 @@ main {
   animation: rotateInfinite 0.6s linear infinite;
 }
 
+// pamatka-page
+
+//  BREAKPOINTS: LEGACY
+
 @media (max-width: 1399.98px) {
   .benefits-left {
     margin-left: 0;
@@ -5047,18 +5358,26 @@ main {
 }
 
 @media (max-width: 599.98px) {
-.tab-content {
+  .more-about-web-dev {
+    display: none;
+  }
+
+  .tab-content {
     padding-bottom: 0px;
 
     .tab-content-webDev {
       flex-wrap: wrap;
 
-}
+      .webDev-benefits {
+        width: 100%;
+      }
+    }
   }
 }
 
 @media (max-width: 539.98px) {
-  #calc-web-price {
+  #calc-web-price,
+  .more-about-web-dev {
     width: 100%;
     margin: 16px 0px;
     align-items: center;
@@ -5073,7 +5392,8 @@ main {
     }
   }
 
-  #calc-web-price {
+  #calc-web-price,
+  #more-about-web-dev {
     width: 100%;
     margin: 16px 0px;
     align-items: center;
@@ -5230,6 +5550,7 @@ main {
     justify-content: center;
     width: 30px;
     color: rgba(255, 255, 255, 0.5);
+    // font-size: 16px;
     letter-spacing: 2px;
   }
 }

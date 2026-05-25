@@ -284,6 +284,24 @@
   }
 }
 
+@mixin input-file-slim {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 0;
+
+  & > label {
+    overflow: visible;
+
+    & > span {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-decoration-style: dashed;
+      text-decoration-skip-ink: none;
+      text-underline-offset: 4px;
+    }
+  }
+}
+
 @mixin button-without-hover {
   background-color: unset;
   color: currentColor;
