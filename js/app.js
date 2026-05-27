@@ -6939,6 +6939,108 @@ window.syncTabsToSelect = function (root = document) {
   });
 };
 
+// JS tabs for main/AI sections
+const initMainAiTabs = (root = document) => {
+  const tabSections = root.querySelectorAll(".tabs.isMain, .tabs.isAi");
+  if (!tabSections.length) return;
+
+  const mobileMedia = window.matchMedia("(max-width: 439.98px)");
+
+  const refreshNestedSliders = (container) => {
+    if (!container) return;
+
+    setTimeout(() => {
+      container.querySelectorAll("[data-slider]").forEach((slider) => {
+        delete slider.dataset.initialized;
+      });
+
+      if (typeof sliderInitialize === "function") {
+        sliderInitialize();
+      }
+    }, 50);
+  };
+
+  tabSections.forEach((tabs) => {
+    if (tabs.dataset.mainAiTabsInited === "true") return;
+    tabs.dataset.mainAiTabsInited = "true";
+
+    const desktopControls = [
+      ...tabs.querySelectorAll('.tabs-buttons .tab-button input[type="radio"]'),
+    ];
+    const mobileControls = [
+      ...tabs.querySelectorAll('.tabs-content .tab-button.mobile input[type="checkbox"]'),
+    ];
+    const contents = [
+      ...tabs.querySelectorAll(":scope > .tabs-content > .tab-content"),
+    ];
+
+    if (!contents.length) return;
+
+    const setContentState = (content, isActive) => {
+      if (!content) return;
+      content.classList.toggle("active", isActive);
+      content.setAttribute("aria-hidden", String(!isActive));
+    };
+
+    const syncDesktopTab = (activeIndex) => {
+      contents.forEach((content, index) => {
+        setContentState(content, index === activeIndex);
+      });
+
+      mobileControls.forEach((control, index) => {
+        control.checked = index === activeIndex;
+      });
+
+      refreshNestedSliders(contents[activeIndex]);
+    };
+
+    const syncMobileAccordion = () => {
+      mobileControls.forEach((control, index) => {
+        setContentState(contents[index], control.checked);
+      });
+
+      const firstActiveIndex = mobileControls.findIndex((control) => control.checked);
+      if (firstActiveIndex !== -1) {
+        desktopControls.forEach((control, index) => {
+          control.checked = index === firstActiveIndex;
+        });
+        refreshNestedSliders(contents[firstActiveIndex]);
+      }
+    };
+
+    const applyCurrentMode = () => {
+      if (mobileMedia.matches) {
+        syncMobileAccordion();
+        return;
+      }
+
+      const checkedIndex = desktopControls.findIndex((control) => control.checked);
+      syncDesktopTab(checkedIndex === -1 ? 0 : checkedIndex);
+    };
+
+    desktopControls.forEach((control, index) => {
+      control.addEventListener("change", () => {
+        if (!control.checked) return;
+        syncDesktopTab(index);
+      });
+    });
+
+    mobileControls.forEach((control) => {
+      control.addEventListener("change", () => {
+        syncMobileAccordion();
+      });
+    });
+
+    if (typeof mobileMedia.addEventListener === "function") {
+      mobileMedia.addEventListener("change", applyCurrentMode);
+    } else if (typeof mobileMedia.addListener === "function") {
+      mobileMedia.addListener(applyCurrentMode);
+    }
+
+    applyCurrentMode();
+  });
+};
+
 // scroll events
 window.addEventListener("scroll", pageIsScrolled, { passive: true });
 
@@ -7069,10 +7171,12 @@ if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
     initSelectBindings();
     initSelectTooltips();
+    initMainAiTabs();
   });
 } else {
   initSelectBindings();
   initSelectTooltips();
+  initMainAiTabs();
 }
 
 // Предотвращаем открытие disabled кастомного селекта
@@ -7095,115 +7199,5 @@ document.addEventListener(
 // pjax events
 document.addEventListener("pjax:end", () => {
   initTabsToSelect();
-});
-
-
-// JS tabs for main/AI sections
-const initMainAiTabs = (root = document) => {
-  const tabSections = root.querySelectorAll(".tabs.isMain, .tabs.isAi");
-  if (!tabSections.length) return;
-
-  const mobileMedia = window.matchMedia("(max-width: 439.98px)");
-
-  const refreshNestedSliders = (container) => {
-    if (!container) return;
-
-    setTimeout(() => {
-      container.querySelectorAll("[data-slider]").forEach((slider) => {
-        delete slider.dataset.initialized;
-      });
-
-      if (typeof sliderInitialize === "function") {
-        sliderInitialize();
-      }
-    }, 50);
-  };
-
-  tabSections.forEach((tabs) => {
-    if (tabs.dataset.mainAiTabsInited === "true") return;
-    tabs.dataset.mainAiTabsInited = "true";
-
-    const desktopControls = [
-      ...tabs.querySelectorAll('.tabs-buttons .tab-button input[type="radio"]'),
-    ];
-    const mobileControls = [
-      ...tabs.querySelectorAll('.tabs-content .tab-button.mobile input[type="checkbox"]'),
-    ];
-    const contents = [
-      ...tabs.querySelectorAll(":scope > .tabs-content > .tab-content"),
-    ];
-
-    if (!contents.length) return;
-
-    const setContentState = (content, isActive) => {
-      if (!content) return;
-      content.classList.toggle("active", isActive);
-      content.setAttribute("aria-hidden", String(!isActive));
-    };
-
-    const syncDesktopTab = (activeIndex) => {
-      contents.forEach((content, index) => {
-        setContentState(content, index === activeIndex);
-      });
-
-      mobileControls.forEach((control, index) => {
-        control.checked = index === activeIndex;
-      });
-
-      refreshNestedSliders(contents[activeIndex]);
-    };
-
-    const syncMobileAccordion = () => {
-      mobileControls.forEach((control, index) => {
-        setContentState(contents[index], control.checked);
-      });
-
-      const firstActiveIndex = mobileControls.findIndex((control) => control.checked);
-      if (firstActiveIndex !== -1) {
-        desktopControls.forEach((control, index) => {
-          control.checked = index === firstActiveIndex;
-        });
-        refreshNestedSliders(contents[firstActiveIndex]);
-      }
-    };
-
-    const applyCurrentMode = () => {
-      if (mobileMedia.matches) {
-        syncMobileAccordion();
-        return;
-      }
-
-      const checkedIndex = desktopControls.findIndex((control) => control.checked);
-      syncDesktopTab(checkedIndex === -1 ? 0 : checkedIndex);
-    };
-
-    desktopControls.forEach((control, index) => {
-      control.addEventListener("change", () => {
-        if (!control.checked) return;
-        syncDesktopTab(index);
-      });
-    });
-
-    mobileControls.forEach((control) => {
-      control.addEventListener("change", () => {
-        syncMobileAccordion();
-      });
-    });
-
-    if (typeof mobileMedia.addEventListener === "function") {
-      mobileMedia.addEventListener("change", applyCurrentMode);
-    } else if (typeof mobileMedia.addListener === "function") {
-      mobileMedia.addListener(applyCurrentMode);
-    }
-
-    applyCurrentMode();
-  });
-};
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => initMainAiTabs());
-} else {
   initMainAiTabs();
-}
-
-document.addEventListener("pjax:end", () => initMainAiTabs());
+});
