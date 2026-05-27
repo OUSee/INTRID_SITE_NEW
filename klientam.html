@@ -236,7 +236,8 @@
                         главное, что важно знать на старте:
                     </p>
 
-                    <div class="d-flex flex-column align-center gap-16 flex-1 ml-16 ml-lg-0 text-center">
+                    <div class="d-flex flex-column d-xl-none align-center gap-16 flex-1 ml-32 ml-lg-0 text-center"
+                        style="margin-top: -68px;">
                         <a class="button-highlight w-sm-100" href="/pamatka-zakazciku">
                             Читать подробнее
                             <i class="icon-arrow_wide"></i>
@@ -336,7 +337,7 @@
                                     <p>
                                         iCMS – комплексная программа для администрирования веб-сайта разработанная на
                                         платформе
-                                        Yii 2.0.
+                                        Yii 2.0 и Laravel.
                                     </p>
                                 </li>
                                 <li>
@@ -422,14 +423,23 @@
                                 проверки сайта по данным о домене и основным СЕО-параметрам.
                             </p>
 
-                            <form action="/submit/analiz-site" id="test-site-form" class="d-flex flex-row mb-52"
-                                method="post">
-                                <input type="text" name="site" placeholder="URL сайта" id="audit-test">
-                                <button type="submit" class="button-highlight big">
+                            <form action="/submit/express-seo-audit" id="audit-form"
+                                class="d-flex flex-row flex-sm-wrap align-lg-stretch align-start gap-8"
+                                data-ajax="false">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
+                                <input type="text" name="site" id="site-url" placeholder="URL сайта" required=""
+                                    autocomplete="url">
+                                <button type="submit" class="big button-highlight w-sm-100 h-100"
+                                    style="min-width: 120px;">
                                     проверить
                                 </button>
                             </form>
-
+                        </div>
+                        <div class="card small">
                             <p class="title_h5">
                                 Проверка домена
                             </p>
@@ -438,10 +448,11 @@
                                 Проверка и регистрация свободных доменных имен
                             </p>
 
-                            <form action="/submit/domain" id="test-domain-form" class="d-flex flex-row ajax-form"
+                            <form action="/submit/domain" id="test-domain-form" class="d-flex flex-row flex-sm-wrap align-lg-stretch align-start gap-8 ajax-form"
                                 method="post">
-                                <input type="text" name="domain" placeholder="Введите домен" id="domain-test">
-                                <button type="submit" class="button-highlight big">
+                                <input type="text" name="domain" placeholder="Введите домен" id="domain-test" autocomplete="url">
+                                <button type="submit" class="big button-highlight w-sm-100 h-100"
+                                    style="min-width: 120px;">
                                     проверить
                                 </button>
                             </form>
