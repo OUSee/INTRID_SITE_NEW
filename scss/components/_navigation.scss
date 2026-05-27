@@ -35,11 +35,13 @@
       }
 
       & [id^="tab-slide-"] {
-        display: none;
         transform-origin: top;
 
+        &:not(.active) {
+          display: none;
+        }
+
         &.active {
-          display: flex;
           animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
       }
