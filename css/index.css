@@ -9371,7 +9371,6 @@ button:disabled, button.disabled,
   min-height: 36px;
 }
 .nice-select.isTextField {
-  z-index: 3;
   height: fit-content;
   margin-top: -6px;
   padding-top: 8px;
@@ -9381,6 +9380,7 @@ button:disabled, button.disabled,
   white-space: normal;
 }
 .nice-select.isTextField:not(.open) {
+  z-index: -3;
   background-color: transparent;
   border-color: transparent;
 }
@@ -9409,6 +9409,7 @@ button:disabled, button.disabled,
   padding: 8px;
 }
 .nice-select.isTextField:is(.open) {
+  z-index: 3;
   border: 1px solid var(--blue-main);
   border-color: var(--blue-main);
   border-bottom: 0;
