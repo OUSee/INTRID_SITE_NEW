@@ -920,16 +920,16 @@ ol {
 
     & > li {
       position: relative;
-      padding-left: 65px;
+      // padding-left: 65px;
       counter-increment: num;
 
-      @media (max-width: 999.98px) {
-        padding-left: 60px;
-      }
+      // @media (max-width: 999.98px) {
+      //   padding-left: 60px;
+      // }
 
-      @media (max-width: 599.98px) {
-        padding-left: 35px;
-      }
+      // @media (max-width: 599.98px) {
+      //   padding-left: 35px;
+      // }
 
       &::before {
         content: counter(num);
@@ -956,6 +956,38 @@ ol {
 
       &::marker {
         display: none !important;
+      }
+    }
+
+    &.fix {
+      & > .list-item {
+        position: relative;
+        counter-increment: num;
+
+        &::before {
+            content: counter(num);
+            // position: absolute;
+            // top: 0;
+            // left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            flex: 0 0 52px;
+            background: var(--blue-main);
+            border-radius: 50%;
+            font-size: large;
+            color: var(--bg-main);
+            font-weight: 600;
+            text-align: center;
+
+            @media (max-width: 599.98px) {
+              width: 24px;
+              height: 24px;
+              flex: 0 0 24px;
+            }
+          }
       }
     }
   }

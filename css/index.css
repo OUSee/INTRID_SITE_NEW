@@ -1620,18 +1620,7 @@ ol li > ol {
 }
 .list--crm > li {
   position: relative;
-  padding-left: 65px;
   counter-increment: num;
-}
-@media (max-width: 999.98px) {
-  .list--crm > li {
-    padding-left: 60px;
-  }
-}
-@media (max-width: 599.98px) {
-  .list--crm > li {
-    padding-left: 35px;
-  }
 }
 .list--crm > li::before {
   content: counter(num);
@@ -1658,6 +1647,32 @@ ol li > ol {
 }
 .list--crm > li::marker {
   display: none !important;
+}
+.list--crm.fix > .list-item {
+  position: relative;
+  counter-increment: num;
+}
+.list--crm.fix > .list-item::before {
+  content: counter(num);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  background: var(--blue-main);
+  border-radius: 50%;
+  font-size: large;
+  color: var(--bg-main);
+  font-weight: 600;
+  text-align: center;
+}
+@media (max-width: 599.98px) {
+  .list--crm.fix > .list-item::before {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+  }
 }
 .list--cooperate {
   display: flex;
