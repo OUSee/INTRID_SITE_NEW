@@ -1494,6 +1494,12 @@ ol {
         display: none !important;
       }
     }
+
+    &-block {
+      @media (max-width: 599.98px) {
+        display: block !important;
+      }
+    }
   }
 
   &-xs {
@@ -2406,7 +2412,7 @@ ol {
   }
 
   &-row {
-    flex-direction: row;
+    flex-direction: row !important;
   }
 
   &-column {
@@ -2414,49 +2420,21 @@ ol {
   }
 
   &-nowrap {
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
   }
 
   &-wrap {
-    flex-wrap: wrap;
+    flex-wrap: wrap !important;
   }
 
   &-50 {
     flex: 1 1 40%;
   }
 
-  &-md {
+  &-xl {
     &-column {
-      @media (max-width: 719.98px) {
-        flex-direction: column;
-      }
-    }
-  }
-
-  &-xs {
-    &-column {
-      @media (max-width: 439.98px) {
-        flex-direction: column;
-      }
-    }
-  }
-
-  &-sm {
-    &-wrap {
-      @media (max-width: 599.98px) {
-        flex-wrap: wrap;
-      }
-    }
-
-    &-column {
-      @media (max-width: 599.98px) {
-        flex-direction: column;
-      }
-
-      &-reverse {
-        @media (max-width: 599.98px) {
-          flex-direction: column-reverse !important;
-        }
+      @media (max-width: 1199.98px) {
+        flex-direction: column !important;
       }
     }
   }
@@ -2481,10 +2459,38 @@ ol {
     }
   }
 
-  &-xl {
+  &-md {
     &-column {
-      @media (max-width: 1199.98px) {
-        flex-direction: column;
+      @media (max-width: 719.98px) {
+        flex-direction: column !important;
+      }
+    }
+  }
+
+  &-sm {
+    &-wrap {
+      @media (max-width: 599.98px) {
+        flex-wrap: wrap !important;
+      }
+    }
+
+    &-column {
+      @media (max-width: 599.98px) {
+        flex-direction: column !important;
+      }
+
+      &-reverse {
+        @media (max-width: 599.98px) {
+          flex-direction: column-reverse !important;
+        }
+      }
+    }
+  }
+
+  &-xs {
+    &-column {
+      @media (max-width: 439.98px) {
+        flex-direction: column !important;
       }
     }
   }
@@ -2654,6 +2660,12 @@ ol {
   }
 
   &-lg {
+    &-0 {
+      @media (max-width: 999.98px) {
+        gap: 0px !important;
+      }
+    }
+
     &-8 {
       @media (max-width: 999.98px) {
         gap: 8px !important;
@@ -2742,11 +2754,11 @@ ol {
   }
 
   &-baseline {
-    align-items: baseline;
+    align-items: baseline !important;
   }
 
   &-bottom {
-    align-items: flex-end;
+    align-items: flex-end !important;
   }
 
   &-self {
@@ -2762,10 +2774,22 @@ ol {
       align-self: flex-end;
     }
 
+    &-center {
+      align-self: center;
+    }
+
     &-lg {
       &-center {
         @media (max-width: 999.98px) {
           align-self: center;
+        }
+      }
+    }
+
+    &-md {
+      @media (max-width: 719.98px) {
+        &-stretch {
+          align-self: stretch;
         }
       }
     }
@@ -2780,21 +2804,27 @@ ol {
   }
 
   &-stretch {
-    align-items: stretch;
+    align-items: stretch !important;
   }
 
   &-start {
-    align-items: flex-start;
+    align-items: flex-start !important;
   }
 
   &-end {
-    align-items: flex-end;
+    align-items: flex-end !important;
   }
 
   &-md {
     &-center {
       @media (max-width: 719.98px) {
-        align-items: center;
+        align-items: center !important;
+      }
+    }
+
+    &-stretch {
+      @media (max-width: 719.98px) {
+        align-items: stretch !important;
       }
     }
   }
@@ -2802,13 +2832,13 @@ ol {
   &-lg {
     &-center {
       @media (max-width: 999.98px) {
-        align-items: center;
+        align-items: center !important;
       }
     }
 
     &-stretch {
       @media (max-width: 999.98px) {
-        align-items: stretch;
+        align-items: stretch !important;
       }
     }
   }
@@ -2816,13 +2846,13 @@ ol {
   &-xl {
     &-start {
       @media (max-width: 1199.98px) {
-        align-self: flex-start;
+        align-self: flex-start !important;
       }
     }
 
     &-center {
       @media (max-width: 1199.98px) {
-        align-items: center;
+        align-items: center !important;
       }
     }
   }
@@ -8320,7 +8350,7 @@ button:hover,
   &:active,
   &:focus {
     border-color: transparent;
-    
+
     &:not(.isTextField) {
       transform: scale(0.999999);
     }
@@ -8341,7 +8371,6 @@ button:hover,
     transform-origin: 66% 66%;
     transform: rotate(45deg);
     transition: all 0.15s ease-in-out;
-    
   }
 
   &.open {
