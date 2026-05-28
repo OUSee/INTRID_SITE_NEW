@@ -842,7 +842,8 @@
                                 Получить консультацию
                             </p>
                             <p class="text-center">
-                                Улучшим позиции сайта, приведём заинтересованных посетителей и конвертируем их в клиентов
+                                Улучшим позиции сайта, приведём заинтересованных посетителей и конвертируем их в
+                                клиентов
                             </p>
                             <form class="order-form" action="/submit/analiz-form" method="post">
                                 <div class="recaptcha-wrapper" style="display: none;">
@@ -858,21 +859,17 @@
                                 <input type="tel" required="" id="customer-phone" name="tel"
                                     placeholder="Ваш телефон *">
 
+                                <input type="text" id="customer-url" placeholder="URL сайта" name="url">
+
+                                <input type="text" id="customer-target" placeholder="География интересов" name="target">
+
+                                <textarea data-autosize="true" rows="2"
+                                    placeholder="Перечислите Ваших прямых и косвенных конкурентов"
+                                    name="list"></textarea>
+
                                 <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
                                     name="mess" style="min-height:73px;"></textarea>
 
-                                <div class="input-file">
-                                    <div class="file-drop-area">
-                                        <label>
-                                            <input type="file" multiple="" name="file[]"
-                                                accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
-                                            <span>Прикрепить файл</span>
-                                            <img src="/src/icons/pin.svg" alt="Прикрепить файл">
-                                        </label>
-                                        <div class="drag-drop-hint">или перетащите файлы сюда</div>
-                                        <div class="file-list" style="display: none;"></div>
-                                    </div>
-                                </div>
                                 <p class="testimonials text-center m-center mb-0">
                                     Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
                                         target="_blank">персональных&nbsp;данных</a> в соответствии с <a
