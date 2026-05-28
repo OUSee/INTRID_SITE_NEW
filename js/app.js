@@ -6560,11 +6560,121 @@ const seoAuditInit = () => {
 // domain checker
 const domainCheker = () => {
   const form = document.getElementById("test-site-form");
+  if (!form) return;
+
   const inputs = form.querySelectorAll("input, button");
   const domainInput = document.getElementById("domain-name-input");
   const resultDiv = document.getElementById("domain-result");
   const loaderDiv = document.getElementById("domain-loader");
   const errorDiv = document.getElementById("domain-error");
+
+  const escapeHTML = (value = "") =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  const normalizeWhoisValue = (value) => {
+    if (value === null || value === undefined || value === "") return [];
+    return Array.isArray(value) ? value.filter(Boolean) : [value];
+  };
+
+  // Поддерживает и объект, и "сырой" WHOIS-текст:
+  // nserver ns1.beget.com.
+  // registrar BEGET-RU
+  // created 2022-09-22T11
+  const parseWhoisText = (whoisText = "") => {
+    const result = {};
+
+    String(whoisText)
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .forEach((line) => {
+        const match = line.match(/^([a-z0-9_-]+)\s*[:\t ]\s*(.+)$/i);
+        if (!match) return;
+
+        const key = match[1].toLowerCase();
+        const value = match[2].trim();
+
+        if (!result[key]) result[key] = [];
+        result[key].push(value);
+      });
+
+    return result;
+  };
+
+  const buildDomainDetailsHTML = (details = {}) => {
+    const fields = [
+      ["nserver", "NS-серверы"],
+      ["state", "Статус"],
+      ["person", "Владелец"],
+      ["registrar", "Регистратор"],
+      ["admin-contact", "Контакт администратора"],
+      ["created", "Создан"],
+      ["paid-till", "Оплачен до"],
+      ["free-date", "Дата освобождения"],
+    ];
+
+    const rows = fields
+      .map(([key, label]) => {
+        const values = normalizeWhoisValue(details[key]);
+        if (!values.length) return "";
+
+        return `
+          <tr>
+            <th>${escapeHTML(label)}</th>
+            <td>${values.map(escapeHTML).join("<br>")}</td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    if (!rows) return "";
+
+    return `
+      <div class="domain-whois">
+        <h3>Данные WHOIS</h3>
+        <table class="domain-whois__table">
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+  };
+
+  const getDomainDetails = (data = {}) => {
+    // Вариант 1: сервер вернул структурированные данные
+    const details =
+      data.domainInfo ||
+      data.domain_info ||
+      data.whoisData ||
+      data.whois_data ||
+      data.details ||
+      data.info;
+
+    if (details && typeof details === "object") {
+      return details;
+    }
+
+    // Вариант 2: сервер вернул сырой WHOIS-текст
+    const whoisText = data.whois || data.rawWhois || data.raw_whois || data.raw;
+    if (typeof whoisText === "string") {
+      return parseWhoisText(whoisText);
+    }
+
+    return {};
+  };
+
+  const domainIsBusy = (data = {}) => {
+    if (typeof data.available === "boolean") return !data.available;
+    if (typeof data.isAvailable === "boolean") return !data.isAvailable;
+    if (typeof data.free === "boolean") return !data.free;
+
+    const status = String(data.status || data.state || "").toLowerCase();
+    return /registered|delegated|занят|busy|taken/.test(status);
+  };
 
   // Обработчик отправки формы
   form.addEventListener("submit", async (event) => {
@@ -6621,9 +6731,12 @@ const domainCheker = () => {
       }
 
       const data = await response.json();
+      const details = getDomainDetails(data);
+      const detailsHTML = domainIsBusy(data) ? buildDomainDetailsHTML(details) : "";
 
-      // Вставляем готовую HTML-разметку от сервера
-      resultDiv.innerHTML = data.text;
+      // Вставляем готовую HTML-разметку от сервера + расширенные WHOIS-данные,
+      // если сервер их вернул и домен занят.
+      resultDiv.innerHTML = `${data.text || ""}${detailsHTML}`;
       resultDiv.style.display = "block";
 
       showFormFeedback(submitBtn, "Проверка завершена", "success");
