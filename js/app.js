@@ -7040,6 +7040,56 @@ function initTabsToSelect(root = document) {
   });
 }
 
+function initBlogTabsToSelect(root = document) {
+  root.querySelectorAll(".tabs-to-select.isBlogs").forEach((component) => {
+    if (component.dataset.blogTabsInited === "true") return;
+    component.dataset.blogTabsInited = "true";
+
+    const current = component.querySelector(".nice-select .current");
+    const selectOptions = [...component.querySelectorAll(".nice-select .option")];
+    const inputs = [...component.querySelectorAll("input[data-url]")];
+
+    if (!current || !selectOptions.length || !inputs.length) return;
+
+    const syncByUrl = (url) => {
+      const activeOption = selectOptions.find((option) => {
+        const input = option.querySelector("input[data-url]");
+        return input?.dataset.url === url;
+      });
+
+      if (!activeOption) return;
+
+      selectOptions.forEach((option) => {
+        const input = option.querySelector("input[data-url]");
+        const isActive = input?.dataset.url === url;
+
+        option.classList.toggle("selected", isActive);
+        option.classList.toggle("checked", isActive);
+
+        if (input) input.checked = isActive;
+      });
+
+      inputs.forEach((input) => {
+        input.checked = input.dataset.url === url;
+      });
+
+      current.textContent = activeOption.textContent.trim();
+    };
+
+    inputs.forEach((input) => {
+      input.addEventListener("change", () => {
+        if (!input.checked) return;
+        syncByUrl(input.dataset.url);
+      });
+    });
+
+    const checkedInput = inputs.find((input) => input.checked);
+    if (checkedInput) {
+      syncByUrl(checkedInput.dataset.url);
+    }
+  });
+}
+
 window.syncTabsToSelect = function (root = document) {
   root.querySelectorAll("[data-tabs-to-select]").forEach((component) => {
     const current = component.querySelector(".nice-select .current");
@@ -7296,6 +7346,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initTabsToSelect();
+  initBlogTabsToSelect();
 });
 
 // Запускаем инициализацию после полной загрузки DOM
@@ -7331,5 +7382,6 @@ document.addEventListener(
 // pjax events
 document.addEventListener("pjax:end", () => {
   initTabsToSelect();
+  initBlogTabsToSelect();
   initMainAiTabs();
 });
