@@ -454,14 +454,24 @@ th {
     offset-distance: 100%;
   }
 }
+@keyframes flyToCenter {
+  0% {
+    transform: translate(-100%, -100%) scale(0.1) rotate(0deg);
+  }
+  40% {
+    transform: translate(-25%, -75%) scale(1) rotate(-60deg);
+  }
+  100% {
+    /* Центрирование: сдвиг на половину окна минус половина элемента */
+    transform: translate(-50%, -50%) scale(1) rotate(-360deg);
+  }
+}
 @keyframes onload {
   0% {
     opacity: 1;
-    display: block;
   }
   100% {
     opacity: 0;
-    display: none;
   }
 }
 @keyframes links-last {
@@ -3167,6 +3177,10 @@ section:first-of-type {
 .position-relative {
   position: relative !important;
 }
+.position-sticky {
+  position: sticky !important;
+  top: 80px;
+}
 
 ul {
   list-style-type: disc;
@@ -3502,12 +3516,46 @@ ol li > ol {
   background-repeat: repeat;
   overflow: hidden;
   animation: onload 2.5s forwards;
+  animation-delay: 1s;
+}
+@media (max-width: 999.98px) {
+  #preloader {
+    animation-delay: 2s;
+  }
 }
 #preloader .flying-orb {
   offset-path: path("M -100 -100 Q 200 0, 133 139");
   offset-distance: 0%;
   transform: scale(1);
-  animation: onload-orb 2.5s ease-out forwards;
+  animation: onload-orb 2.5s forwards;
+}
+@media (max-width: 1199.98px) {
+  #preloader .flying-orb {
+    width: 270px;
+    height: 270px;
+  }
+}
+@media (max-width: 999.98px) {
+  #preloader .flying-orb {
+    top: 50%;
+    left: 50%;
+    offset-path: unset;
+    offset-distance: unset;
+    transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
+    animation: flyToCenter 2.5s forwards;
+  }
+}
+#preloader .flying-orb::before {
+  width: 0;
+  height: 0;
+}
+#preloader .flying-orb img {
+  width: 100%;
+  height: 100%;
+}
+#preloader .flying-orb .water-ripple {
+  width: 100%;
+  height: 100%;
 }
 
 .tooltip {
@@ -3787,14 +3835,6 @@ ol li > ol {
   .br520 {
     display: none;
   }
-}
-
-.position-sticky {
-  position: sticky !important;
-  top: 80px;
-}
-.position-relative {
-  position: relative;
 }
 
 .radius-16 {
@@ -15973,11 +16013,6 @@ main {
   .flying-orb .water-ripple {
     height: 212px;
     width: 212px;
-  }
-}
-@media (min-width: 600px) and (max-width: 899.98px) {
-  .flying-orb {
-    display: none;
   }
 }
 @media (max-width: 599.98px) {

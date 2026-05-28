@@ -800,6 +800,11 @@ section {
   &-relative {
     position: relative !important;
   }
+
+  &-sticky {
+    position: sticky !important;
+    top: 80px;
+  }
 }
 
 ul {
@@ -1176,16 +1181,49 @@ ol {
   background-position: top;
   background-repeat: repeat;
   overflow: hidden;
-
   animation: onload 2.5s forwards;
+  animation-delay: 1s;
+  
+  @media (max-width: 999.98px) {
+    animation-delay: 2s;
+  }
 
   .flying-orb {
     offset-path: path(
       "M -100 -100 Q 200 0, 133 139"
-    ); // Example cubic Bezier; replace with your hyperbola approximation
+    );
     offset-distance: 0%;
     transform: scale(1);
-    animation: onload-orb 2.5s ease-out forwards;
+    animation: onload-orb 2.5s forwards;
+
+    @media (max-width: 1199.98px) {
+      width: 270px;
+      height: 270px;
+    }
+
+    @media (max-width: 999.98px) {
+      top: 50%;
+      left: 50%;
+      offset-path: unset;
+      offset-distance: unset;
+      transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
+      animation: flyToCenter 2.5s forwards;
+    }
+
+    &::before {
+      width: 0;
+      height: 0;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+
+    & .water-ripple {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -1567,17 +1605,6 @@ ol {
     @media (max-width: 519.98px) {
       display: none;
     }
-  }
-}
-
-.position {
-  &-sticky {
-    position: sticky !important;
-    top: 80px;
-  }
-
-  &-relative {
-    position: relative;
   }
 }
 

@@ -35,6 +35,21 @@ const menuCloseButtons = document.querySelectorAll("[data-menu-close]");
 const totalSwitchButtons = document.querySelectorAll("[data-total-switch]");
 const triggerButtons = document?.querySelectorAll("[data-trigger]");
 
+function preloaderInit() {
+  const orb = preloader?.querySelector(".flying-orb");
+  const rect = orb?.getBoundingClientRect();
+  const centerX = window.innerWidth / 2 - rect?.width / 2;
+  const centerY = window.innerHeight / 2 - rect?.height / 2;
+
+  // Предположим, начало пути (0,0) соответствует left:0; top:0
+  const path = `M 0 0 Q 200 0, ${centerX} ${centerY}`;
+  // orb.style.offsetPath = `path('${path}')`;
+
+  setTimeout(() => {
+    preloader.remove();
+  }, 3000);
+}
+
 function pageIsScrolled() {
   const should = window.scrollY > 50;
   if (should !== headerScrolled) {
@@ -6732,7 +6747,9 @@ const domainCheker = () => {
 
       const data = await response.json();
       const details = getDomainDetails(data);
-      const detailsHTML = domainIsBusy(data) ? buildDomainDetailsHTML(details) : "";
+      const detailsHTML = domainIsBusy(data)
+        ? buildDomainDetailsHTML(details)
+        : "";
 
       // Вставляем готовую HTML-разметку от сервера + расширенные WHOIS-данные,
       // если сервер их вернул и домен занят.
@@ -7012,8 +7029,6 @@ function initTabsToSelect(root = document) {
       option.classList.contains("selected"),
     );
 
-    
-
     if (checkedRadio) {
       setSelectByRadio(checkedRadio);
     } else if (selectedOption) {
@@ -7081,7 +7096,9 @@ const initMainAiTabs = (root = document) => {
       ...tabs.querySelectorAll('.tabs-buttons .tab-button input[type="radio"]'),
     ];
     const mobileControls = [
-      ...tabs.querySelectorAll('.tabs-content .tab-button.mobile input[type="checkbox"]'),
+      ...tabs.querySelectorAll(
+        '.tabs-content .tab-button.mobile input[type="checkbox"]',
+      ),
     ];
     const contents = [
       ...tabs.querySelectorAll(":scope > .tabs-content > .tab-content"),
@@ -7112,7 +7129,9 @@ const initMainAiTabs = (root = document) => {
         setContentState(contents[index], control.checked);
       });
 
-      const firstActiveIndex = mobileControls.findIndex((control) => control.checked);
+      const firstActiveIndex = mobileControls.findIndex(
+        (control) => control.checked,
+      );
       if (firstActiveIndex !== -1) {
         desktopControls.forEach((control, index) => {
           control.checked = index === firstActiveIndex;
@@ -7127,7 +7146,9 @@ const initMainAiTabs = (root = document) => {
         return;
       }
 
-      const checkedIndex = desktopControls.findIndex((control) => control.checked);
+      const checkedIndex = desktopControls.findIndex(
+        (control) => control.checked,
+      );
       syncDesktopTab(checkedIndex === -1 ? 0 : checkedIndex);
     };
 
@@ -7174,9 +7195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  setTimeout(() => {
-    preloader.remove();
-  }, 3000);
+  preloaderInit();
 
   pageIsScrolled();
   initDropdowns();

@@ -1,325 +1,337 @@
 @keyframes infinite-glow {
-	0% {
-		color: var(--blue-main);
-		text-shadow: 0px 0px 10px var(--blue-main);
-	}
+  0% {
+    color: var(--blue-main);
+    text-shadow: 0px 0px 10px var(--blue-main);
+  }
 
-	15% {
-		color: var(--color-white);
-		text-shadow: 0px 0px 8px var(--color-white);
-	}
+  15% {
+    color: var(--color-white);
+    text-shadow: 0px 0px 8px var(--color-white);
+  }
 
-	30% {
-		color: var(--blue-main);
-		text-shadow: 0px 0px 10px var(--blue-main);
-	}
+  30% {
+    color: var(--blue-main);
+    text-shadow: 0px 0px 10px var(--blue-main);
+  }
 
-	100% {
-		color: var(--blue-main);
-		text-shadow: 0px 0px 8px var(--blue-main);
-	}
+  100% {
+    color: var(--blue-main);
+    text-shadow: 0px 0px 8px var(--blue-main);
+  }
 }
 
 @keyframes onload-orb {
-	0% {
-		transform: scale(0.1);
-		offset-distance: 0%;
-	}
+  0% {
+    transform: scale(0.1);
+    offset-distance: 0%;
+  }
 
-	50% {
-		transform: scale(1) rotate(-120deg);
-		offset-distance: 100%;
-	}
+  50% {
+    transform: scale(1) rotate(-120deg);
+    offset-distance: 100%;
+  }
 
-	100% {
-		transform: scale(1) rotate(-120deg);
-		offset-distance: 100%;
-	}
+  100% {
+    transform: scale(1) rotate(-120deg);
+    offset-distance: 100%;
+  }
+}
+
+@keyframes flyToCenter {
+  0% {
+    transform: translate(-100%, -100%) scale(0.1) rotate(0deg);
+  }
+  40% {
+    transform: translate(-25%, -75%) scale(1) rotate(-60deg);
+  }
+  100% {
+    /* Центрирование: сдвиг на половину окна минус половина элемента */
+    transform: translate(-50%, -50%) scale(1)
+      rotate(-360deg);
+  }
 }
 
 @keyframes onload {
-	0% {
-		opacity: 1;
-		display: block;
-	}
+  0% {
+    opacity: 1;
+  }
 
-	100% {
-		opacity: 0;
-		display: none;
-	}
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes links-last {
-	0% {
-		left: 0%;
-	}
+  0% {
+    left: 0%;
+  }
 
-	100% {
-		left: 100%;
-	}
+  100% {
+    left: 100%;
+  }
 }
 
 @keyframes links-before {
-	0% {
-		left: 50%;
-	}
+  0% {
+    left: 50%;
+  }
 
-	100% {
-		left: 0%;
-	}
+  100% {
+    left: 0%;
+  }
 }
 
 @keyframes links-after {
-	0% {
-		right: 50%;
-	}
+  0% {
+    right: 50%;
+  }
 
-	100% {
-		right: 0%;
-	}
+  100% {
+    right: 0%;
+  }
 }
 
 @keyframes planet {
-	0% {
-		background-size: auto 240px;
-		background-position: bottom;
-	}
+  0% {
+    background-size: auto 240px;
+    background-position: bottom;
+  }
 
-	100% {
-		background-size: auto 300px;
-		background-position: bottom;
-	}
+  100% {
+    background-size: auto 300px;
+    background-position: bottom;
+  }
 }
 
 @keyframes baloon {
-	0%,
-	100% {
-		transform: translateY(0) rotate(0deg) scale(1);
-	}
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
 
-	50% {
-		transform: translateY(-15px) rotate(2deg) scale(1.01);
-	}
+  50% {
+    transform: translateY(-15px) rotate(2deg) scale(1.01);
+  }
 }
 
 @keyframes baloon-right {
-	100% {
-		transform: translateY(0) rotate(15deg) scale(-1, 1);
-	}
+  100% {
+    transform: translateY(0) rotate(15deg) scale(-1, 1);
+  }
 
-	50% {
-		transform: translateY(-15px) rotate(17deg) scale(-1.01, 1.01);
-	}
+  50% {
+    transform: translateY(-15px) rotate(17deg) scale(-1.01, 1.01);
+  }
 }
 
 @keyframes ripple {
-	0% {
-		border: 8px solid var(--blue-main);
-		transform: scale(0.7);
-		opacity: 0.8;
-	}
+  0% {
+    border: 8px solid var(--blue-main);
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
 
-	100% {
-		border: 1px solid white;
-		transform: scale(1.5);
-		opacity: 0;
-	}
+  100% {
+    border: 1px solid white;
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
 @keyframes ripple-mob {
-	0% {
-		border: 8px solid var(--blue-main);
-		transform: scale(0.7);
-		opacity: 0.8;
-	}
+  0% {
+    border: 8px solid var(--blue-main);
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
 
-	100% {
-		border: 1px solid white;
-		transform: scale(1.125);
-		opacity: 0;
-	}
+  100% {
+    border: 1px solid white;
+    transform: scale(1.125);
+    opacity: 0;
+  }
 }
 
 @keyframes ripple-fill {
-	0% {
-		border: 8px solid var(--blue-main);
-		transform: scale(1);
-		opacity: 0.8;
-	}
+  0% {
+    border: 8px solid var(--blue-main);
+    transform: scale(1);
+    opacity: 0.8;
+  }
 
-	100% {
-		border: 1px solid white;
-		transform: scale(1.5);
-		opacity: 0;
-	}
+  100% {
+    border: 1px solid white;
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
 @keyframes ripple-fill-mob {
-	0% {
-		border: 8px solid var(--blue-main);
-		transform: scale(1);
-		opacity: 0.8;
-	}
+  0% {
+    border: 8px solid var(--blue-main);
+    transform: scale(1);
+    opacity: 0.8;
+  }
 
-	100% {
-		border: 1px solid white;
-		transform: scale(1.125);
-		opacity: 0;
-	}
+  100% {
+    border: 1px solid white;
+    transform: scale(1.125);
+    opacity: 0;
+  }
 }
 
 @keyframes logo-hover {
-	0% {
-		box-shadow: none;
-	}
+  0% {
+    box-shadow: none;
+  }
 
-	100% {
-		box-shadow: 0px 0px 25px 15px var(--blue-clouds);
-	}
+  100% {
+    box-shadow: 0px 0px 25px 15px var(--blue-clouds);
+  }
 }
 
 @keyframes appear {
-	0% {
-		opacity: 0;
-		transform: scale(1, 0);
-	}
+  0% {
+    opacity: 0;
+    transform: scale(1, 0);
+  }
 
-	100% {
-		opacity: 1;
-		transform: scale(1, 1);
-	}
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
 }
 
 @keyframes flex-appear {
-	0% {
-		display: flex;
-		opacity: 0;
-		transform: scale(1, 0);
-	}
+  0% {
+    display: flex;
+    opacity: 0;
+    transform: scale(1, 0);
+  }
 
-	100% {
-		display: flex;
-		opacity: 1;
-		transform: scale(1, 1);
-	}
+  100% {
+    display: flex;
+    opacity: 1;
+    transform: scale(1, 1);
+  }
 }
 
 @keyframes burgerAppear {
-	0% {
-		display: block;
-		opacity: 0;
-		transform: scale(1, 0);
-	}
+  0% {
+    display: block;
+    opacity: 0;
+    transform: scale(1, 0);
+  }
 
-	100% {
-		opacity: 1;
-		transform: scale(1, 1);
-	}
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
 }
 
 @keyframes burgerAppearUp {
-	0% {
-		opacity: 1;
-		transform: scale(1, 1);
-	}
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
 
-	100% {
-		opacity: 0;
-		transform: scale(1, 0);
-	}
+  100% {
+    opacity: 0;
+    transform: scale(1, 0);
+  }
 }
 
 @keyframes eye {
-	0%,
-	100% {
-		transform: translateY(-5px) translateX(0px) scale(1);
-	}
+  0%,
+  100% {
+    transform: translateY(-5px) translateX(0px) scale(1);
+  }
 
-	50% {
-		transform: translateY(-7px) translateX(5px) scale(1.01);
-	}
+  50% {
+    transform: translateY(-7px) translateX(5px) scale(1.01);
+  }
 
-	75% {
-		transform: translateY(-5px) translateX(0px) scale(1.01);
-	}
+  75% {
+    transform: translateY(-5px) translateX(0px) scale(1.01);
+  }
 }
 
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
+  from {
+    opacity: 0;
+  }
 
-	to {
-		opacity: 1;
-	}
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translate3d(0, 100%, 0);
-	}
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
 
-	to {
-		opacity: 1;
-		transform: translate3d(0, 0, 0);
-	}
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes list-glow {
-	0%,
-	100% {
-		box-shadow: none;
-		border: 1px solid transparent;
-	}
+  0%,
+  100% {
+    box-shadow: none;
+    border: 1px solid transparent;
+  }
 
-	45% {
-		box-shadow: none;
-		border: 1px solid transparent;
-	}
+  45% {
+    box-shadow: none;
+    border: 1px solid transparent;
+  }
 
-	50% {
-		border: 1px solid var(--blue-main);
-		box-shadow: 0px 0px 15px var(--blue-main);
-	}
+  50% {
+    border: 1px solid var(--blue-main);
+    box-shadow: 0px 0px 15px var(--blue-main);
+  }
 
-	65% {
-		box-shadow: none;
-		border: 1px solid transparent;
-	}
+  65% {
+    box-shadow: none;
+    border: 1px solid transparent;
+  }
 }
 
 @keyframes showCard {
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes fadeOutUp {
-	from {
-		opacity: 1;
-	}
+  from {
+    opacity: 1;
+  }
 
-	to {
-		opacity: 0;
-		transform: translate3d(0, -100%, 0);
-	}
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
 }
 
 @keyframes fadeInUpForm {
-	0% {
-		display: flex;
-		transform: translate3d(0, 100%, 0);
-	}
+  0% {
+    display: flex;
+    transform: translate3d(0, 100%, 0);
+  }
 
-	100% {
-		transform: translate3d(0, 0, 0);
-	}
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes rotateInfinite {
-	to {
-		transform: rotate(-360deg);
-	}
+  to {
+    transform: rotate(-360deg);
+  }
 }
