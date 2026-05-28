@@ -4,6 +4,14 @@
     grid-template-columns: auto;
     grid-template-rows: auto;
 
+    &--2x {
+      grid-template-columns: repeat(2, 1fr);
+
+      @media (max-width: 750px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
     &--3x {
       grid-template-columns: repeat(3, 1fr);
 

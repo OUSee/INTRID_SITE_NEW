@@ -227,9 +227,8 @@
                 </h2>
 
                 <div
-                    class="flex-layout flex-layout--2x mw-900 align-stretch justify-center gap-20 mt-52 ml-auto mr-auto">
-                    <a href="#hosting-creation" class="card gap-20 thin radius-sm-20 color-white hover-glow"
-                        title="Хостинг СТАРТ">
+                    class="grid-layout grid-layout--2x mw-900 align-stretch justify-center gap-20 gap-lg-52 mt-52 ml-auto mr-auto">
+                    <div class="card gap-20 thin radius-sm-20 color-white hover-glow" title="Хостинг СТАРТ">
                         <!-- Заголовок, уровень и теги -->
                         <!-- Название вакансии -->
                         <b class="title_h4">
@@ -304,12 +303,12 @@
                             <p class="title_h5 text-center m-0">2 месяца бесплатно + 1&nbsp;500&nbsp;₽ за год</p>
                         </div>
 
-                        <button type="button" class="button-highlight w-100">
+                        <a href="#hosting-creation" class="button-highlight w-100" data-hosting="Хостинг СТАРТ">
                             Заказать
-                        </button>
-                    </a>
-                    <a href="#hosting-creation" class="card gap-20 thin radius-sm-20 color-white hover-glow"
-                        title="Хостинг СТАНДАРТ">
+                        </a>
+                    </div>
+
+                    <div class="card gap-20 thin radius-sm-20 color-white hover-glow" title="Хостинг СТАНДАРТ">
                         <!-- Заголовок, уровень и теги -->
                         <!-- Название вакансии -->
                         <b class="title_h4">
@@ -384,14 +383,14 @@
                             <p class="title_h5 text-center m-0">2 месяца бесплатно + 2&nbsp;500&nbsp;₽ за год</p>
                         </div>
 
-                        <button type="button" class="button-highlight w-100">
+                        <a href="#hosting-creation" class="button-highlight w-100" data-hosting="Хостинг СТАРТ">
                             Заказать
-                        </button>
-                    </a>
+                        </a>
+                    </div>
                 </div>
 
-                <h2 class="w-fit title_h3 mt-32 m-center text-center"><span class="underlined">Нужно больше
-                        ресурсов?</span> – <a href="/vds" title="Виртуальный сервер (VDS)">виртуальный сервер (VDS)</a>
+                <h2 class="d-flex flex-column align-center gap-24 w-fit title_h3 mt-52 mb-52 m-center text-center"><span class="underlined">Нужно больше
+                        ресурсов?</span> <span class="d-lg-none">–</span> <a href="/vds" title="Виртуальный сервер (VDS)">виртуальный сервер (VDS)</a>
                 </h2>
 
                 <div class="card card--prices hover-glow">
@@ -416,9 +415,9 @@
                                 от&nbsp;14&nbsp;000&nbsp;₽
                             </span>
 
-                            <a href="#hosting-creation" class="button button-highlight big w-sm-100"
-                                title="Заказать хостинг с шифрованием ПД">
-                                Заказать хостинг с шифрованием
+                            <a href="/encryption" class="button button-highlight big w-sm-100"
+                                title="Подробнее о шифровании">
+                                Подробнее о шифровании
                             </a>
                         </div>
                     </div>
@@ -515,6 +514,7 @@
                             <p class="title_h4 text-center">
                                 Запустить сайт на надёжном хостинге
                             </p>
+                            <p class="text-center title_h5">Тариф: Хостинг СТАНДАРТ</p>
                             <p class="text-center">
                                 Обеспечьте сайту надёжный хостинг с доступностью 24/7
                             </p>
