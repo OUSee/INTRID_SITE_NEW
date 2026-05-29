@@ -958,8 +958,8 @@ ol {
     padding: 0;
 
     @media (max-width: 999.98px) {
-    //   flex-wrap: wrap;
-    //   justify-content: center;
+      //   flex-wrap: wrap;
+      //   justify-content: center;
       column-gap: 20px;
       row-gap: 30px;
     }
@@ -1071,6 +1071,16 @@ ol {
 
       & li {
         align-items: flex-start;
+      }
+    }
+
+    &.column {
+      grid-template-columns: 1fr;
+
+      & li {
+        & p {
+          max-width: 100%;
+        }
       }
     }
   }
@@ -1187,9 +1197,7 @@ ol {
   animation-delay: 1s;
 
   .flying-orb {
-    offset-path: path(
-      "M -100 -100 Q 200 0, 133 139"
-    );
+    offset-path: path("M -100 -100 Q 200 0, 133 139");
     offset-distance: 0%;
     transform: scale(1);
     animation: onload-orb 2.5s forwards;
