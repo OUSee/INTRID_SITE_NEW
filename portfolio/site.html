@@ -260,7 +260,7 @@
                 data-pjax-timeout="1000">
                 <div class="container">
                     <div class="portfolio-block__cards">
-                        <div class="card card--portfolio transparency active corporate-website"
+                        <div class="card card--portfolio hasKeys transparency active corporate-website"
                             style="--portfolio-color: #4fac80;">
                             <a href="javascript://" data-popup="site-preview" data-site-preview="https://pronedvizh.com"
                                 class="absolute-link">
@@ -278,8 +278,15 @@
                             <div class="card-body">
                                 <p>testttt</p>
                                 <span>03.04.2026</span>
-                                <a href="https://pronedvizh.com" target="_blank" title="Перейти на сайт">
-                                    pronedvizh.com </a>
+                                <!-- Если есть кейс, то эта часть оборачивается в div и добавляем ссылку на кейс -->
+                                <div class="links">
+                                    <a href="https://pronedvizh.com/" target="_blank" title="Перейти на сайт">
+                                        pronedvizh.com
+                                    </a>
+                                    <a href="#" class="card-key-icon" target="_blank" title="Подробнее о Название кейса">
+                                        <img src="/src/icons/book.svg" alt="Читать подробнее" />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="card card--portfolio transparency active corporate-website"
@@ -704,6 +711,17 @@
 
                             <a class="pagination--next-btn" href="/portfolio/site?page=2&amp;per-page=12"
                                 data-link-page="site"><i class="icon-shevrone"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Зайобная-area для отображения кейсов -->
+                    <div class="card-key-area d-none d-lg-flex flex-column align-center">
+                        <div class="card card--benefit slim flex-column portfolio-key-card">
+                            <p>Кейс: Название кейса</p>
+                            <a href="javascript://" class="button-link">
+                                Подробнее
+                                <i class="icon-arrow_wide"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

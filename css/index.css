@@ -8525,6 +8525,26 @@ button:disabled, button.disabled,
   margin-left: auto;
   margin-right: 0;
 }
+.card--portfolio.hasKeys .card-body > .links {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  max-width: 60%;
+  width: fit-content;
+  margin-left: auto;
+}
+.card--portfolio.hasKeys .card-key-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+.card--portfolio.hasKeys .card-key-icon > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 @media (min-width: 1000px) {
   .card--portfolio:hover .portfolio-logo, .card--portfolio:hover .card-header-text {
     transform: scale(90%) translateZ(0) rotate(0.001deg);
@@ -14197,7 +14217,7 @@ main {
 .portfolio-block__cards--slider > * .portfolio-site {
   aspect-ratio: unset;
   object-fit: contain;
-  object-position: center;
+  object-position: top center;
 }
 .portfolio-block--buttons {
   display: flex;
