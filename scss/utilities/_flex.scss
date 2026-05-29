@@ -906,6 +906,12 @@
         flex-direction: column !important;
       }
     }
+
+    &-wrap {
+      @media (max-width: 1199.98px) {
+        flex-wrap: wrap !important;
+      }
+    }
   }
 
   &-lg {
@@ -926,12 +932,24 @@
         flex-wrap: wrap !important;
       }
     }
+
+    &-nowrap {
+      @media (max-width: 999.98px) {
+        flex-wrap: nowrap !important;
+      }
+    }
   }
 
   &-md {
     &-column {
       @media (max-width: 719.98px) {
         flex-direction: column !important;
+      }
+    }
+
+    &-wrap {
+      @media (max-width: 719.98px) {
+        flex-wrap: wrap !important;
       }
     }
   }

@@ -6787,6 +6787,121 @@ const domainCheker = () => {
   });
 };
 
+// Расчет упущенной выгоды
+const lostProfitInit = () => {
+  const form = document.getElementById("lost-profit-form");
+  if (!form) return;
+
+  const inputs = form.querySelectorAll("input, button");
+  const companyInput = document.getElementById("company-name");
+  const checkInput = document.getElementById("average-check");
+  const marginInput = document.getElementById("margin-percent");
+  const loader = document.getElementById("lost-profit-loader");
+  const errorDiv = document.getElementById("lost-profit-error");
+  const resultDiv = document.getElementById("lost-profit-result");
+
+  const setDisabled = (disabled) => {
+    inputs.forEach((el) => (el.disabled = disabled));
+  };
+
+  const formatRub = (value) =>
+    new Intl.NumberFormat("ru-RU", {
+      style: "currency",
+      currency: "RUB",
+      maximumFractionDigits: 0,
+    }).format(value);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector(
+      'button[type="submit"], input[type="submit"]',
+    );
+
+    const company = companyInput.value.trim();
+    const averageCheck = Number(checkInput.value);
+    const margin = Number(marginInput.value);
+
+    errorDiv.style.display = "none";
+    resultDiv.style.display = "none";
+    resultDiv.innerHTML = "";
+
+    if (!company || averageCheck <= 0 || margin <= 0) {
+      errorDiv.textContent =
+        "Заполните название компании, средний чек и маржинальность.";
+      errorDiv.style.display = "block";
+      return;
+    }
+
+    setDisabled(true);
+    loader.style.display = "block";
+    if (submitBtn) showButtonLoader(submitBtn);
+
+    try {
+      const csrfParam =
+        document
+          .querySelector('meta[name="csrf-param"]')
+          ?.getAttribute("content") || "_csrf";
+      const csrfToken = document
+        .querySelector('meta[name="csrf-token"]')
+        ?.getAttribute("content");
+
+      const body = new URLSearchParams();
+      if (csrfToken) body.append(csrfParam, csrfToken);
+      body.append("company", company);
+      body.append("average_check", averageCheck);
+      body.append("margin", margin);
+
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: body.toString(),
+      });
+
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || "Не удалось выполнить расчет");
+      }
+
+      resultDiv.innerHTML = `
+        <div class="card card--leaders minified mw-400 ml-auto mr-auto mt-32">
+          <p class="title_h4 text-center">Потенциальная упущенная прибыль</p>
+          <p><b>Запрос:</b> ${data.query}</p>
+          <p><b>Частота в месяц:</b> ${data.frequency}</p>
+          // <p><b>Средний чек:</b> ${formatRub(data.average_check)}</p>
+          // <p><b>Маржинальность:</b> ${data.margin}%</p>
+          <div class="bg-blue-bg radius-20 p-8 mt-16 mb-16 w-fit mw-100 ml-auto mr-auto">
+            <p class="title_h4 m-0">${formatRub(data.lost_profit)}</p>
+          </div>
+          <a href="#reputation_creation" class="button-highlight ml-auto mr-auto">Заказать улучшение репутации</a>
+        </div>
+      `;
+
+      resultDiv.style.display = "block";
+      showFormFeedback(submitBtn, "Расчет завершен", "success");
+
+      setTimeout(() => {
+        resultDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    } catch (err) {
+      console.error(err);
+      errorDiv.textContent =
+        err.message || "Не удалось выполнить расчет. Попробуйте позже.";
+      errorDiv.style.display = "block";
+      showFormFeedback(submitBtn, "Ошибка расчета", "error");
+    } finally {
+      loader.style.display = "none";
+      setDisabled(false);
+      if (submitBtn) hideButtonLoader(submitBtn);
+    }
+  });
+};
+
 // Функция обновления тултипов (fallback, если глобальная не определена)
 function updateTooltipsForSelectFallback(select) {
   let prefix = select.getAttribute("data-tooltip-prefix");
@@ -7046,7 +7161,9 @@ function initBlogTabsToSelect(root = document) {
     component.dataset.blogTabsInited = "true";
 
     const current = component.querySelector(".nice-select .current");
-    const selectOptions = [...component.querySelectorAll(".nice-select .option")];
+    const selectOptions = [
+      ...component.querySelectorAll(".nice-select .option"),
+    ];
     const inputs = [...component.querySelectorAll("input[data-url]")];
 
     if (!current || !selectOptions.length || !inputs.length) return;
@@ -7282,6 +7399,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (document.getElementById("audit-form")) seoAuditInit();
   if (document.getElementById("test-site-form")) domainCheker();
+  if (document.getElementById("lost-profit-form")) lostProfitInit();
 
   // photo cards
   if (photoCards.length > 0) {
