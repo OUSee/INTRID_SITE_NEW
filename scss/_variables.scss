@@ -6165,9 +6165,14 @@ button:hover,
         transition: 0.25s ease-in-out;
       }
 
+      & > p {
+        margin-bottom: unset;
+      }
+
       & > span {
-        @include h5;
         margin-top: auto;
+        font-size: 14px;
+        color: var(--blue-clouds);
       }
     }
 
@@ -6190,6 +6195,10 @@ button:hover,
       border-radius: 0;
       outline: 0;
       background-color: transparent;
+
+      @media (max-width: 599.98px) {
+        padding: 0 0 8px 0;
+      }
 
       &::before {
         display: none;

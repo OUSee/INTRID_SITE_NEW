@@ -9134,17 +9134,13 @@ button:disabled, button.disabled,
   margin-bottom: unset;
   transition: 0.25s ease-in-out;
 }
-.card--blog .card-body > span {
-  font-weight: 600;
-  font-size: 16px;
-}
-@media (max-width: 999.98px) {
-  .card--blog .card-body > span {
-    font-size: 16px;
-  }
+.card--blog .card-body > p {
+  margin-bottom: unset;
 }
 .card--blog .card-body > span {
   margin-top: auto;
+  font-size: 14px;
+  color: var(--blue-clouds);
 }
 @media (min-width: 1000px) {
   .card--blog:hover .card-body > h3, .card--blog:hover .card-body > b {
@@ -9159,6 +9155,11 @@ button:disabled, button.disabled,
   border-radius: 0;
   outline: 0;
   background-color: transparent;
+}
+@media (max-width: 599.98px) {
+  .card--blog-stacked {
+    padding: 0 0 8px 0;
+  }
 }
 .card--blog-stacked::before {
   display: none;
@@ -11133,6 +11134,7 @@ main {
 
 .nice-wrapper {
   position: relative;
+  z-index: 3;
   display: flex;
   height: 52px;
 }
