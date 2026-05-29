@@ -1949,6 +1949,18 @@ const portfolioCardsSlider = () => {
     nextBtn.style.top = `${top}px`;
   };
 
+  const updateKeyCard = () => {
+    const keyArea = block.querySelector(".card-key-area");
+
+    if (!keyArea) return;
+
+    const currentSlide = slides[currentIndex];
+
+    keyArea.style.display = currentSlide?.classList.contains("hasKeys")
+      ? ""
+      : "none";
+  };
+
   const updateSlider = () => {
     if (!isInitialized) return;
 
@@ -1971,6 +1983,7 @@ const portfolioCardsSlider = () => {
     slider.style.transform = `translateX(-${(slideWidth + gap) * currentIndex}px)`;
 
     updateActiveSlides();
+    updateKeyCard();
     updateCounter();
     updateButtons();
     updateControlsPosition();

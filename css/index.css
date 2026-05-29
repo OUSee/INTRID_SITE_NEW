@@ -8540,6 +8540,11 @@ button:disabled, button.disabled,
   width: 18px;
   height: 18px;
 }
+@media (max-width: 999.98px) {
+  .card--portfolio.hasKeys .card-key-icon {
+    display: none;
+  }
+}
 .card--portfolio.hasKeys .card-key-icon > img {
   width: 100%;
   height: 100%;
@@ -14109,12 +14114,17 @@ main {
     position: relative;
     z-index: -1;
     gap: 8px;
-    padding: 32px 0;
+    padding: 32px 0 0 0;
     overflow: hidden;
   }
 }
 .portfolio-block:is([data-pjax-container]) {
   display: block !important;
+}
+@media (max-width: 999.98px) {
+  .portfolio-block:is([data-pjax-container])#porfolio-body-content .pagination-panel {
+    display: none;
+  }
 }
 @media (max-width: 999.98px) {
   .portfolio-block > .container {
