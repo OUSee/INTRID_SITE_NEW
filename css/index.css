@@ -3322,25 +3322,15 @@ ol li > ol {
   }
 }
 .list--cooperate {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 12px;
   padding: 0;
 }
 @media (max-width: 999.98px) {
   .list--cooperate {
-    flex-wrap: wrap;
-    justify-content: center;
     column-gap: 20px;
     row-gap: 30px;
-  }
-}
-@media (max-width: 599.98px) {
-  .list--cooperate {
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: nowrap;
   }
 }
 .list--cooperate li {
@@ -3350,14 +3340,8 @@ ol li > ol {
   gap: 16px;
   margin: 0;
 }
-@media (max-width: 999.98px) {
-  .list--cooperate li {
-    flex: 1 1 45%;
-  }
-}
 @media (max-width: 599.98px) {
   .list--cooperate li {
-    flex: unset;
     width: 100%;
   }
 }
@@ -3391,30 +3375,18 @@ ol li > ol {
   padding: 0;
 }
 .list--cooperate.slim li {
-  flex: 1 0 calc(50% - 20px);
-  max-width: calc(50% - 20px);
   margin: 0;
   padding: 0;
 }
 .list--cooperate.stashed {
-  flex-direction: column;
-  justify-content: space-evenly;
   gap: 24px;
 }
 @media (max-width: 999.98px) {
   .list--cooperate.stashed {
-    flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
   }
 }
-@media (max-width: 599.98px) {
-  .list--cooperate.stashed {
-    flex-direction: column;
-  }
-}
 .list--cooperate.stashed li {
-  flex: unset;
   max-width: 100%;
   align-items: center;
 }
@@ -13335,7 +13307,7 @@ main {
   }
 }
 .store-integration-schema .block .title_h5 {
-  flex: 1 1 90%;
+  flex: 1 1 100%;
   margin: 0 auto;
 }
 .store-integration-schema .block .item {

@@ -7168,6 +7168,15 @@ function initBlogTabsToSelect(root = document) {
 
     if (!current || !selectOptions.length || !inputs.length) return;
 
+    const closeSelect = (component) => {
+      const select = component.querySelector(".nice-select");
+
+      if (!select) return;
+
+      select.classList.remove("open");
+      select.setAttribute("aria-expanded", "false");
+    };
+
     const syncByUrl = (url) => {
       const activeOption = selectOptions.find((option) => {
         const input = option.querySelector("input[data-url]");
@@ -7197,6 +7206,7 @@ function initBlogTabsToSelect(root = document) {
       input.addEventListener("change", () => {
         if (!input.checked) return;
         syncByUrl(input.dataset.url);
+        closeSelect(component);
       });
     });
 

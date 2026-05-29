@@ -949,27 +949,29 @@ ol {
   }
 
   &--cooperate {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-between;
     gap: 12px;
     padding: 0;
 
     @media (max-width: 999.98px) {
-      flex-wrap: wrap;
-      justify-content: center;
+    //   flex-wrap: wrap;
+    //   justify-content: center;
       column-gap: 20px;
       row-gap: 30px;
     }
 
-    @media (max-width: 599.98px) {
-      flex-direction: column;
-      align-items: center;
-      flex-wrap: nowrap;
-      // width: 80%;
-      // margin-left: auto;
-      // margin-right: auto;
-    }
+    // @media (max-width: 599.98px) {
+    //   flex-direction: column;
+    //   align-items: center;
+    //   flex-wrap: nowrap;
+    //   // width: 80%;
+    //   // margin-left: auto;
+    //   // margin-right: auto;
+    // }
 
     & li {
       display: flex;
@@ -978,12 +980,12 @@ ol {
       gap: 16px;
       margin: 0;
 
-      @media (max-width: 999.98px) {
-        flex: 1 1 45%;
-      }
+      // @media (max-width: 999.98px) {
+      //   flex: 1 1 45%;
+      // }
 
       @media (max-width: 599.98px) {
-        flex: unset;
+        // flex: unset;
         width: 100%;
       }
 
@@ -1024,30 +1026,30 @@ ol {
       padding: 0;
 
       & li {
-        flex: 1 0 calc(50% - 20px);
-        max-width: calc(50% - 20px);
+        // flex: 1 0 calc(50% - 20px);
+        // max-width: calc(50% - 20px);
         margin: 0;
         padding: 0;
       }
     }
 
     &.stashed {
-      flex-direction: column;
-      justify-content: space-evenly;
+      // flex-direction: column;
+      // justify-content: space-evenly;
       gap: 24px;
 
       @media (max-width: 999.98px) {
-        flex-direction: row;
-        flex-wrap: wrap;
+        // flex-direction: row;
+        // flex-wrap: wrap;
         align-items: center;
       }
 
-      @media (max-width: 599.98px) {
-        flex-direction: column;
-      }
+      // @media (max-width: 599.98px) {
+      //   flex-direction: column;
+      // }
 
       & li {
-        flex: unset;
+        // flex: unset;
         max-width: 100%;
         align-items: center;
 
