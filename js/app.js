@@ -1516,7 +1516,7 @@ document
       document.querySelectorAll('[id^="tab-slide-"]').forEach((tab) => {
         tab.classList.remove("active");
       });
-      document.getElementById(tabId).classList.add("active");
+      document.getElementById(tabId)?.classList.add("active");
     }
   });
 
