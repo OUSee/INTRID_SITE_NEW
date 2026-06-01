@@ -2568,6 +2568,7 @@ form {
       max-height: 600px;
       margin-top: -20px;
       margin-bottom: 20px;
+      margin-right: -44px;
 
       &:has(#nav-trigger:checked) {
         & .nav-list {
@@ -2582,12 +2583,14 @@ form {
           }
         }
       }
+    }
 
-      & .nav-trigger {
-        & p {
-          display: none;
-        }
-      }
+    @media (max-width: 599.98px) {
+      margin-right: -26px;
+    }
+
+    @media (max-width: 439.98px) {
+      margin-right: -18px;
     }
 
     @media (min-width: 1200px) {
@@ -2652,16 +2655,24 @@ form {
         gap: 8px;
 
         @media (max-width: 1199.98px) {
-          width: fit-content;
+          width: 40px;
           height: 40px;
-          padding: 14px 24px;
+          padding: 14px;
           border-radius: 32px;
           background-color: var(--blue-light-bg);
           cursor: pointer;
         }
 
+        @media (max-width: 599.98px) {
+          padding: 10px;
+        }
+
         & p {
           margin: 0;
+
+          @media (max-width: 1199.98px) {
+            display: none;
+          }
         }
 
         & i {

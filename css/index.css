@@ -5218,6 +5218,7 @@ form input[type=submit] {
     max-height: 600px;
     margin-top: -20px;
     margin-bottom: 20px;
+    margin-right: -44px;
   }
   .article-navigation:has(#nav-trigger:checked) .nav-list {
     max-height: 60vh;
@@ -5227,8 +5228,15 @@ form input[type=submit] {
   .article-navigation:has(#nav-trigger:checked) .nav-trigger i {
     transform: rotate(-90deg);
   }
-  .article-navigation .nav-trigger p {
-    display: none;
+}
+@media (max-width: 599.98px) {
+  .article-navigation {
+    margin-right: -26px;
+  }
+}
+@media (max-width: 439.98px) {
+  .article-navigation {
+    margin-right: -18px;
   }
 }
 @media (min-width: 1200px) {
@@ -5309,16 +5317,26 @@ form input[type=submit] {
 }
 @media (max-width: 1199.98px) {
   .article-navigation .nav-trigger {
-    width: fit-content;
+    width: 40px;
     height: 40px;
-    padding: 14px 24px;
+    padding: 14px;
     border-radius: 32px;
     background-color: var(--blue-light-bg);
     cursor: pointer;
   }
 }
+@media (max-width: 599.98px) {
+  .article-navigation .nav-trigger {
+    padding: 10px;
+  }
+}
 .article-navigation .nav-trigger p {
   margin: 0;
+}
+@media (max-width: 1199.98px) {
+  .article-navigation .nav-trigger p {
+    display: none;
+  }
 }
 .article-navigation .nav-trigger i {
   display: none;
