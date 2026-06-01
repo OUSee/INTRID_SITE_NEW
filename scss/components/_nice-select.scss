@@ -52,7 +52,8 @@
     border-color: transparent;
 
     &:not(.isTextField) {
-      transform: scale(0.999999);
+      transform: scaleZ(1);
+      // transform: scale(0.999999);
     }
   }
 
@@ -75,6 +76,8 @@
 
   &.open {
     @extend :active;
+    border-color: transparent;
+    background-color: transparent;
 
     &:after {
       transform: rotate(-135deg);
@@ -249,6 +252,39 @@
 
       & .list {
         border-color: var(--blue-main);
+      }
+    }
+  }
+
+  &.isInput {
+    background-color: transparent;
+    border-color: var(--color-white);
+    border-style: solid;
+    padding-left: 24px;
+
+    & span {
+      color: var(--color-grey);
+      font-size: 16px;
+      line-height: 1.25;
+
+      @media (max-width: 999.98px) {
+        font-size: 15px;
+      }
+    }
+
+    &.open {
+      border-color: transparent;
+      background-color: transparent;
+    }
+
+    .option {
+      font-size: 16px;
+      line-height: 1.25;
+      padding-left: 24px;
+      padding-right: 24px;
+
+      @media (max-width: 999.98px) {
+        font-size: 15px;
       }
     }
   }

@@ -303,7 +303,7 @@
                             <p class="title_h5 text-center m-0">2 месяца бесплатно + 1&nbsp;500&nbsp;₽ за год</p>
                         </div>
 
-                        <a href="#hosting-creation" class="button-highlight w-100" data-tariff-change="Хостинг СТАРТ">
+                        <a href="#hosting-creation" class="button-highlight w-100" data-tariff-change="Хостинг Старт">
                             Заказать
                         </a>
                     </div>
@@ -383,7 +383,7 @@
                             <p class="title_h5 text-center m-0">2 месяца бесплатно + 2&nbsp;500&nbsp;₽ за год</p>
                         </div>
 
-                        <a href="#hosting-creation" class="button-highlight w-100" data-tariff-change="Хостинг СТАРТ">
+                        <a href="#hosting-creation" class="button-highlight w-100" data-tariff-change="Хостинг Стандарт">
                             Заказать
                         </a>
                     </div>
@@ -511,6 +511,15 @@
                                     <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
                                 </div>
 
+                                <div class="nice-wrapper nice-wrapper--simple w-100">
+                                    <!-- Изменён select: name="type_hosting", id оставлен для совместимости с data-select-target -->
+                                    <select id="join-encryption" name="type_hosting" class="isInput w-100"
+                                        data-display="Хостинг Старт" style="display: none;">
+                                        <option value="start">Хостинг Старт</option>
+                                        <option value="standart">Хостинг Стандарт</option>
+                                    </select>
+                                </div>
+
                                 <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
 
                                 <input type="email" id="customer-mail" name="email" placeholder="E-mail">
@@ -591,7 +600,6 @@
                 </div>
             </div>
         </section>
-
     </main>
     <!-- footer -->
     <footer class="footer">

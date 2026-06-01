@@ -404,7 +404,7 @@
                         </p>
 
                         <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                            <a href="#encrypt_application" class="button button-highlight flex-1 justify-center"
+                            <a href="#encryption_creation" class="button button-highlight flex-1 justify-center"
                                 data-tariff-change="Базовое хеширование">
                                 Заказать
                             </a>
@@ -431,7 +431,7 @@
                         </p>
 
                         <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                            <a href="#encrypt_application" class="button button-highlight flex-1 justify-center"
+                            <a href="#encryption_creation" class="button button-highlight flex-1 justify-center"
                                 data-tariff-change="Хеширование с поиском по полному полю">
                                 Заказать
                             </a>
@@ -460,7 +460,7 @@
                         </p>
 
                         <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                            <a href="#encrypt_application" class="button button-highlight flex-1 justify-center"
+                            <a href="#encryption_creation" class="button button-highlight flex-1 justify-center"
                                 data-tariff-change="Хеширование с поиском по любой части поля">
                                 Заказать
                             </a>
@@ -486,8 +486,8 @@
                         </p>
 
                         <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                            <a href="#encrypt_application" class="button button-highlight flex-1 justify-center"
-                                data-tariff-change="Защита канала обмена данными с 1С">
+                            <a href="#encryption_creation" class="button button-highlight flex-1 justify-center"
+                                data-tariff-change="Защита канала обмена данными с 1С (односторонний / двусторонний обмен)">
                                 Заказать
                             </a>
                         </div>
@@ -546,7 +546,7 @@
                         </div>
                     </div>
                     <div class="right">
-                        <div class="card card--leaders minified position-sticky" id="reputation_creation">
+                        <div class="card card--leaders minified position-sticky" id="encryption_creation">
                             <p class="title_h4 text-center">
                                 Закажите шифрование персональных данных
                             </p>
@@ -559,6 +559,22 @@
                                     <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
                                         data-size="invisible"></div>
                                     <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
+
+                                <div class="nice-wrapper nice-wrapper--simple w-100">
+                                    <!-- Изменён select: name="type_hosting", id оставлен для совместимости с data-select-target -->
+                                    <select id="join-encryption" name="type_hosting" class="isInput w-100"
+                                        data-display="Базовое хеширование" style="display: none;">
+                                        <option value="base">Базовое хеширование</option>
+                                        <option value="hash-full">Хеширование с поиском по полному
+                                            полю
+                                        </option>
+                                        <option value="hash-partial">Хеширование с поиском по любой
+                                            части
+                                            поля</option>
+                                        <option value="defend-1c">Защита канала обмена данными с 1С
+                                            (односторонний / двусторонний обмен)</option>
+                                    </select>
                                 </div>
 
                                 <input type="text" id="customer-name" name="name" placeholder="Ваше имя">

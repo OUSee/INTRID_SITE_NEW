@@ -7151,6 +7151,137 @@ function syncNiceSelectDisabled(selectEl) {
   }
 }
 
+
+// Выбор тарифа в форме по клику на кнопку с data-tariff-change
+function initTariffChangeButtons() {
+  if (document.documentElement.dataset.tariffChangeInited === "true") return;
+  document.documentElement.dataset.tariffChangeInited = "true";
+
+  const normalizeTariffText = (value) =>
+    String(value || "")
+      .replace(/\u00a0/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+
+  const findTargetForm = (trigger) => {
+    const href = trigger.getAttribute("href");
+
+    if (href && href.startsWith("#") && href.length > 1) {
+      const target = document.querySelector(href);
+
+      if (target) {
+        if (target.matches("form")) {
+          return target;
+        }
+
+        const formInsideTarget = target.querySelector(
+          "form.order-form, form#quick-form, form",
+        );
+
+        if (formInsideTarget) {
+          return formInsideTarget;
+        }
+      }
+    }
+
+    return document.querySelector("form.order-form, form#quick-form");
+  };
+
+  const findTariffSelect = (form) => {
+    if (!form) return null;
+
+    return (
+      form.querySelector("[data-tariff-select]") ||
+      form.querySelector('select[name*="tariff" i]') ||
+      form.querySelector('select[name*="hosting" i]') ||
+      form.querySelector("select")
+    );
+  };
+
+  const createNiceSelectOption = (select, option) => {
+    const niceSelect = select.nextElementSibling?.classList.contains(
+      "nice-select",
+    )
+      ? select.nextElementSibling
+      : null;
+
+    const list = niceSelect?.querySelector(".list");
+    if (!list) return;
+
+    const item = document.createElement("li");
+    item.className = "option";
+    item.textContent = option.textContent;
+    item.setAttribute("data-value", option.value);
+
+    if (option.hasAttribute("data-price")) {
+      item.setAttribute("data-price", option.getAttribute("data-price"));
+    }
+
+    list.appendChild(item);
+  };
+
+  const getOrCreateTariffOption = (select, tariffName) => {
+    const normalizedTariffName = normalizeTariffText(tariffName);
+    const options = Array.from(select.options);
+
+    const existingOption = options.find((option) => {
+      const normalizedValue = normalizeTariffText(option.value);
+      const normalizedText = normalizeTariffText(option.textContent);
+
+      return (
+        normalizedValue === normalizedTariffName ||
+        normalizedText === normalizedTariffName
+      );
+    });
+
+    if (existingOption) {
+      return existingOption;
+    }
+
+    const option = document.createElement("option");
+    option.value = tariffName;
+    option.textContent = tariffName;
+    select.appendChild(option);
+    createNiceSelectOption(select, option);
+
+    return option;
+  };
+
+  const setTariffSelectValue = (select, tariffName) => {
+    const option = getOrCreateTariffOption(select, tariffName);
+    select.disabled = false;
+    select.value = option.value;
+    select.selectedIndex = option.index;
+
+    if (typeof syncNiceSelectDisabled === "function") {
+      syncNiceSelectDisabled(select);
+    }
+
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+
+    if (typeof window.updateNiceSelect === "function") {
+      window.updateNiceSelect(select);
+    }
+  };
+
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-tariff-change]");
+    if (!trigger) return;
+
+    const tariffName = trigger.dataset.tariffChange;
+    if (!tariffName) return;
+
+    const form = findTargetForm(trigger);
+    const select = findTariffSelect(form);
+
+    if (!select || select.tagName !== "SELECT") return;
+
+    setTariffSelectValue(select, tariffName);
+  });
+}
+
+
 // Синхронизация связей между табами и селектами
 function initTabsToSelect(root = document) {
   root.querySelectorAll("[data-tabs-to-select]").forEach((component) => {
@@ -7464,6 +7595,8 @@ document.addEventListener("DOMContentLoaded", () => {
       activeMobile: true,
     });
   }
+
+  initTariffChangeButtons();
 
   preloaderInit();
 

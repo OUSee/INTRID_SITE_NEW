@@ -11183,7 +11183,7 @@ main {
   border-color: transparent;
 }
 .nice-select:active:not(.isTextField), .nice-select.open:not(.isTextField), .nice-select:focus:not(.isTextField) {
-  transform: scale(0.999999);
+  transform: scaleZ(1);
 }
 .nice-select:after {
   content: "";
@@ -11200,6 +11200,10 @@ main {
   transform-origin: 66% 66%;
   transform: rotate(45deg);
   transition: all 0.15s ease-in-out;
+}
+.nice-select.open {
+  border-color: transparent;
+  background-color: transparent;
 }
 .nice-select.open:after {
   transform: rotate(-135deg);
@@ -11348,6 +11352,37 @@ main {
 }
 .nice-select.isTextField:is(.open) .list {
   border-color: var(--blue-main);
+}
+.nice-select.isInput {
+  background-color: transparent;
+  border-color: var(--color-white);
+  border-style: solid;
+  padding-left: 24px;
+}
+.nice-select.isInput span {
+  color: var(--color-grey);
+  font-size: 16px;
+  line-height: 1.25;
+}
+@media (max-width: 999.98px) {
+  .nice-select.isInput span {
+    font-size: 15px;
+  }
+}
+.nice-select.isInput.open {
+  border-color: transparent;
+  background-color: transparent;
+}
+.nice-select.isInput .option {
+  font-size: 16px;
+  line-height: 1.25;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+@media (max-width: 999.98px) {
+  .nice-select.isInput .option {
+    font-size: 15px;
+  }
 }
 
 .no-csspointerevents .nice-select .list {
