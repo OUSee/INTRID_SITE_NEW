@@ -1846,9 +1846,57 @@ const tenderDiagramHandler = () => {
 // handle tariff column selection by clicking the whole column
 const tenderTablesInit = () => {
   tenderTables.forEach((table) => {
-    if (!table) return;
+    if (!table || table.dataset.tenderTableInitialized === "true") return;
 
-    const headers = table.querySelectorAll("thead th");
+    table.dataset.tenderTableInitialized = "true";
+
+    const headers = Array.from(table.querySelectorAll("thead th"));
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+
+    const setActiveColumn = (columnIndex) => {
+      if (columnIndex <= 0) return;
+
+      table.dataset.activeColumn = String(columnIndex + 1);
+
+      headers.forEach((header, index) => {
+        const isActive = index === columnIndex;
+        header.classList.toggle("is-active", isActive);
+        header.setAttribute("aria-selected", String(isActive));
+      });
+
+      rows.forEach((row) => {
+        Array.from(row.children).forEach((cell, index) => {
+          cell.classList.toggle("is-active", index === columnIndex);
+        });
+      });
+    };
+
+    const updateMobilePriceRow = (table, activeIndex) => {
+      const lastRow = table.querySelector("tbody tr:last-child");
+
+      if (!lastRow) return;
+
+      const cells = [...lastRow.children];
+
+      cells.forEach((td) => {
+        td.removeAttribute("colspan");
+      });
+
+      const activeCell = cells[activeIndex];
+
+      if (activeCell && window.innerWidth < 1000) {
+        activeCell.setAttribute("colspan", "2");
+      }
+    };
+
+    const getCheckedColumnIndex = () => {
+      const checkedInput = table.querySelector(
+        'thead input[type="radio"]:checked',
+      );
+      const checkedHeader = checkedInput?.closest("th");
+
+      return checkedHeader ? checkedHeader.cellIndex : 1;
+    };
 
     const selectColumn = (columnIndex) => {
       if (columnIndex <= 0) return;
@@ -1856,11 +1904,26 @@ const tenderTablesInit = () => {
       const header = headers[columnIndex];
       const input = header?.querySelector('input[type="radio"]');
 
-      if (!input || input.checked) return;
+      if (!input) return;
 
-      input.checked = true;
-      input.dispatchEvent(new Event("change", { bubbles: true }));
+      if (!input.checked) {
+        input.checked = true;
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+
+      setActiveColumn(columnIndex);
+      updateMobilePriceRow(table, columnIndex);
     };
+
+    headers.forEach((header, columnIndex) => {
+      const input = header.querySelector('input[type="radio"]');
+
+      if (!input) return;
+
+      input.addEventListener("change", () => {
+        if (input.checked) setActiveColumn(columnIndex);
+      });
+    });
 
     table.querySelectorAll("thead th, tbody td").forEach((cell) => {
       const columnIndex = cell.cellIndex;
@@ -1870,14 +1933,16 @@ const tenderTablesInit = () => {
       cell.addEventListener("click", (event) => {
         const target = event.target;
 
-        if (target?.closest?.('a, button, input, select, textarea')) return;
+        if (target?.closest?.("a, button, input, select, textarea")) return;
 
         selectColumn(columnIndex);
       });
     });
+
+    setActiveColumn(getCheckedColumnIndex());
+    updateMobilePriceRow(table, 1);
   });
 };
-
 
 // tabs-to-slider into portfolio
 const portfolioCardsSlider = () => {
@@ -7144,7 +7209,6 @@ function syncNiceSelectDisabled(selectEl) {
   }
 }
 
-
 // Выбор тарифа в форме по клику на кнопку с data-tariff-change
 function initTariffChangeButtons() {
   if (document.documentElement.dataset.tariffChangeInited === "true") return;
@@ -7273,7 +7337,6 @@ function initTariffChangeButtons() {
     setTariffSelectValue(select, tariffName);
   });
 }
-
 
 // Синхронизация связей между табами и селектами
 function initTabsToSelect(root = document) {

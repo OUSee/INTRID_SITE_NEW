@@ -15924,7 +15924,7 @@ table.tender-table,
   border: 1px solid var(--blue-clouds) !important;
   background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%) !important;
   box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-  overflow: auto !important;
+  overflow: auto;
 }
 @media (max-width: 999.98px) {
   .table-block,
@@ -16094,7 +16094,7 @@ table th {
   border: 1px solid var(--blue-clouds) !important;
   background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%) !important;
   box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-  overflow: auto !important;
+  overflow: auto;
 }
 @media (max-width: 999.98px) {
   .seo-table .table-wrapper {
@@ -16278,6 +16278,20 @@ table th {
   color: var(--color-grey) !important;
   font-weight: 400 !important;
 }
+.tender-table th.is-active {
+  color: var(--color-white) !important;
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
+  box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag) !important;
+}
+.tender-table tbody tr td.is-active {
+  color: var(--color-white) !important;
+  background: rgba(0, 234, 255, 0.12) !important;
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+}
+.tender-table tbody tr:last-child td.is-active {
+  color: var(--color-white) !important;
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
+}
 .tender-table:has(thead th:nth-child(2) label input:checked) thead th:nth-child(2) {
   color: var(--color-white) !important;
   background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
@@ -16286,7 +16300,7 @@ table th {
 .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2) {
   color: var(--color-white) !important;
   background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 rvar(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
 }
 .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr:last-child td:nth-child(2) {
   color: var(--color-white) !important;
@@ -16300,7 +16314,7 @@ table th {
 .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3) {
   color: var(--color-white) !important;
   background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 rvar(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
 }
 .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr:last-child td:nth-child(3) {
   color: var(--color-white) !important;
@@ -16314,7 +16328,7 @@ table th {
 .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
   color: var(--color-white) !important;
   background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 rvar(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
 }
 .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr:last-child td:nth-child(4) {
   color: var(--color-white) !important;
@@ -16328,7 +16342,7 @@ table th {
 .tender-table:has(thead th:nth-child(5) label input:checked) tbody tr td:nth-child(5) {
   color: var(--color-white) !important;
   background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 rvar(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
 }
 .tender-table:has(thead th:nth-child(5) label input:checked) tbody tr:last-child td:nth-child(5) {
   color: var(--color-white) !important;
@@ -16342,7 +16356,7 @@ table th {
 .tender-table:has(thead th:nth-child(6) label input:checked) tbody tr td:nth-child(6) {
   color: var(--color-white) !important;
   background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 rvar(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
 }
 .tender-table:has(thead th:nth-child(6) label input:checked) tbody tr:last-child td:nth-child(6) {
   color: var(--color-white) !important;
@@ -16350,41 +16364,156 @@ table th {
 }
 @media (max-width: 899.98px) {
   .tender-table {
-    position: static !important;
+    display: block !important;
+    min-width: 0 !important;
     margin-top: 0 !important;
-    overflow: auto !important;
+    overflow: clip !important;
+    table-layout: fixed !important;
   }
   .tender-table thead {
-    position: static !important;
-    top: auto !important;
-    right: auto !important;
-    display: table-header-group !important;
-    width: auto !important;
+    display: block !important;
+    width: 100% !important;
     overflow: visible !important;
-    max-width: none !important;
+    background: transparent !important;
   }
   .tender-table thead tr {
-    display: table-row !important;
+    display: flex !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    background: transparent !important;
+    scrollbar-width: none;
+  }
+  .tender-table thead tr::-webkit-scrollbar {
+    display: none;
+  }
+  .tender-table thead th {
+    display: block !important;
     width: auto !important;
-    max-width: none !important;
+    flex: 1 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-align: center !important;
+  }
+  .tender-table thead th:first-child {
+    display: none !important;
+  }
+  .tender-table thead th label {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 44px !important;
+    padding: 10px 16px !important;
+    border: 1px solid rgba(0, 234, 255, 0.18) !important;
+    background: rgba(255, 255, 255, 0.035) !important;
+    color: var(--color-grey) !important;
+    white-space: nowrap !important;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
+  }
+  .tender-table thead th.is-active, .tender-table thead th:has(input[type=radio]:checked) {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .tender-table thead th.is-active label, .tender-table thead th:has(input[type=radio]:checked) label {
+    border-color: var(--blue-tag) !important;
+    color: var(--color-white) !important;
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
+    box-shadow: 0 10px 24px rgba(0, 234, 255, 0.16) !important;
+  }
+  .tender-table tbody {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
   }
   .tender-table tbody tr {
+    position: sticky;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    top: auto;
     display: table-row !important;
-    width: auto !important;
-    max-width: none !important;
+    width: 100% !important;
   }
-  .tender-table tbody tr td:not(:first-child) {
-    display: table-cell !important;
-    width: auto !important;
-    max-width: none !important;
-    color: inherit !important;
+  .tender-table tbody tr td {
+    display: none !important;
+    width: 20% !important;
+    padding: 12px 10px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
   }
-  .tender-table th,
-  .tender-table td,
-  .tender-table tbody tr td:not(:first-child) {
+  .tender-table tbody tr td:first-child {
     display: table-cell !important;
-    width: auto !important;
-    max-width: none !important;
-    color: inherit !important;
+    width: 80% !important;
+    text-align: left !important;
+    color: var(--color-grey) !important;
+  }
+  .tender-table tbody tr td.is-active {
+    display: table-cell !important;
+  }
+  .tender-table tbody tr:last-child td:first-child {
+    display: none !important;
+  }
+  .tender-table tbody tr:last-child td.is-active {
+    display: table-cell !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .tender-table[data-active-column="2"] tbody tr td:nth-child(2), .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2) {
+    display: table-cell !important;
+  }
+  .tender-table[data-active-column="2"] tbody tr:last-child, .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) var(--bg-main) !important;
+  }
+  .tender-table[data-active-column="2"] tbody tr:last-child td:nth-child(2), .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr:last-child td:nth-child(2) {
+    display: table-cell !important;
+    width: 100% !important;
+  }
+  .tender-table[data-active-column="3"] tbody tr td:nth-child(3), .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3) {
+    display: table-cell !important;
+  }
+  .tender-table[data-active-column="3"] tbody tr:last-child, .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) var(--bg-main) !important;
+  }
+  .tender-table[data-active-column="3"] tbody tr:last-child td:nth-child(3), .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr:last-child td:nth-child(3) {
+    display: table-cell !important;
+    width: 100% !important;
+  }
+  .tender-table[data-active-column="4"] tbody tr td:nth-child(4), .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
+    display: table-cell !important;
+  }
+  .tender-table[data-active-column="4"] tbody tr:last-child, .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) var(--bg-main) !important;
+  }
+  .tender-table[data-active-column="4"] tbody tr:last-child td:nth-child(4), .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr:last-child td:nth-child(4) {
+    display: table-cell !important;
+    width: 100% !important;
+  }
+  .tender-table[data-active-column="5"] tbody tr td:nth-child(5), .tender-table:has(thead th:nth-child(5) label input:checked) tbody tr td:nth-child(5) {
+    display: table-cell !important;
+  }
+  .tender-table[data-active-column="5"] tbody tr:last-child, .tender-table:has(thead th:nth-child(5) label input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) var(--bg-main) !important;
+  }
+  .tender-table[data-active-column="5"] tbody tr:last-child td:nth-child(5), .tender-table:has(thead th:nth-child(5) label input:checked) tbody tr:last-child td:nth-child(5) {
+    display: table-cell !important;
+    width: 100% !important;
+  }
+  .tender-table[data-active-column="6"] tbody tr td:nth-child(6), .tender-table:has(thead th:nth-child(6) label input:checked) tbody tr td:nth-child(6) {
+    display: table-cell !important;
+  }
+  .tender-table[data-active-column="6"] tbody tr:last-child, .tender-table:has(thead th:nth-child(6) label input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) var(--bg-main) !important;
+  }
+  .tender-table[data-active-column="6"] tbody tr:last-child td:nth-child(6), .tender-table:has(thead th:nth-child(6) label input:checked) tbody tr:last-child td:nth-child(6) {
+    display: table-cell !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 899.98px) {
+  .table-block:has(.tender-table) {
+    overflow: visible !important;
   }
 }
