@@ -1872,6 +1872,8 @@ const tenderTablesInit = () => {
     };
 
     const updateMobilePriceRow = (table, activeIndex) => {
+      if (!table.classList.contains("tender-table")) return;
+
       const lastRow = table.querySelector("tbody tr:last-child");
 
       if (!lastRow) return;
@@ -1921,7 +1923,10 @@ const tenderTablesInit = () => {
       if (!input) return;
 
       input.addEventListener("change", () => {
-        if (input.checked) setActiveColumn(columnIndex);
+        if (input.checked) {
+          setActiveColumn(columnIndex);
+          updateMobilePriceRow(table, columnIndex);
+        }
       });
     });
 
@@ -1939,8 +1944,10 @@ const tenderTablesInit = () => {
       });
     });
 
-    setActiveColumn(getCheckedColumnIndex());
-    updateMobilePriceRow(table, 1);
+    const initialColumn = getCheckedColumnIndex();
+
+    setActiveColumn(initialColumn);
+    updateMobilePriceRow(table, initialColumn);
   });
 };
 
