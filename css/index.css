@@ -16324,3 +16324,441 @@ main {
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 2px;
 }
+
+/* New unified table design */
+.table-block,
+.default-table,
+table.table,
+table.tender-table,
+.table--wrap {
+  border-radius: 18px !important;
+  border: 1px solid var(--blue-clouds) !important;
+  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%) !important;
+  box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  overflow: auto !important;
+}
+@media (max-width: 999.98px) {
+  .table-block,
+  .default-table,
+  table.table,
+  table.tender-table,
+  .table--wrap {
+    border-radius: 12px !important;
+  }
+}
+
+table {
+  width: 100% !important;
+  min-width: 720px;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  table-layout: auto;
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--color-grey);
+}
+@media (max-width: 899.98px) {
+  table {
+    min-width: 640px;
+  }
+}
+table thead {
+  position: static !important;
+  background: transparent !important;
+  color: var(--color-white) !important;
+  border: 0 !important;
+}
+table thead tr {
+  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
+  border: 0 !important;
+}
+table tbody tr {
+  border: 0 !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  transition: 0.25s ease !important;
+}
+table tbody tr:nth-child(even) {
+  background: rgba(0, 234, 255, 0.055) !important;
+}
+table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+@media (min-width: 1000px) {
+  table tbody tr:hover {
+    background: rgba(0, 234, 255, 0.12) !important;
+  }
+}
+table tbody td {
+  color: var(--color-grey) !important;
+}
+table th,
+table td {
+  border: 0 !important;
+  border-right: 1px solid rgba(0, 234, 255, 0.14) !important;
+  border-bottom: 1px solid rgba(0, 234, 255, 0.12) !important;
+  padding: 16px 20px !important;
+  vertical-align: middle !important;
+  background: transparent !important;
+  color: inherit !important;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
+}
+table th:last-child,
+table td:last-child {
+  border-right: 0 !important;
+}
+table th p,
+table td p {
+  margin: 0 !important;
+}
+@media (max-width: 999.98px) {
+  table th,
+  table td {
+    padding: 12px 14px !important;
+  }
+}
+table th {
+  font-weight: 700 !important;
+  text-align: left;
+  color: var(--color-white) !important;
+  background: transparent !important;
+}
+
+.table {
+  width: 100% !important;
+  min-width: 720px;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  table-layout: auto;
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--color-grey);
+}
+@media (max-width: 899.98px) {
+  .table {
+    min-width: 640px;
+  }
+}
+.table thead {
+  position: static !important;
+  background: transparent !important;
+  color: var(--color-white) !important;
+  border: 0 !important;
+}
+.table thead tr {
+  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
+  border: 0 !important;
+}
+.table tbody tr {
+  border: 0 !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  transition: 0.25s ease !important;
+}
+.table tbody tr:nth-child(even) {
+  background: rgba(0, 234, 255, 0.055) !important;
+}
+.table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+@media (min-width: 1000px) {
+  .table tbody tr:hover {
+    background: rgba(0, 234, 255, 0.12) !important;
+  }
+}
+.table tbody td {
+  color: var(--color-grey) !important;
+}
+.table th,
+.table td {
+  border: 0 !important;
+  border-right: 1px solid rgba(0, 234, 255, 0.14) !important;
+  border-bottom: 1px solid rgba(0, 234, 255, 0.12) !important;
+  padding: 16px 20px !important;
+  vertical-align: middle !important;
+  background: transparent !important;
+  color: inherit !important;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
+}
+.table th:last-child,
+.table td:last-child {
+  border-right: 0 !important;
+}
+.table th p,
+.table td p {
+  margin: 0 !important;
+}
+@media (max-width: 999.98px) {
+  .table th,
+  .table td {
+    padding: 12px 14px !important;
+  }
+}
+.table th {
+  font-weight: 700 !important;
+  text-align: left;
+  color: var(--color-white) !important;
+  background: transparent !important;
+}
+.table--noborder,
+.table--noborder thead,
+.table--noborder tbody,
+.table--noborder th,
+.table--noborder tr,
+.table--noborder td {
+  border-color: rgba(0, 234, 255, 0.12) !important;
+}
+.table--beauty tbody td.color_td_PR {
+  color: var(--blue-main) !important;
+  font-weight: 700 !important;
+  background: rgba(0, 234, 255, 0.08) !important;
+}
+
+.seo-table .table-wrapper {
+  border-radius: 18px !important;
+  border: 1px solid var(--blue-clouds) !important;
+  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%) !important;
+  box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  overflow: auto !important;
+}
+@media (max-width: 999.98px) {
+  .seo-table .table-wrapper {
+    border-radius: 12px !important;
+  }
+}
+.seo-table .table-wrapper table {
+  width: 100% !important;
+  min-width: 720px;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  table-layout: auto;
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--color-grey);
+}
+@media (max-width: 899.98px) {
+  .seo-table .table-wrapper table {
+    min-width: 640px;
+  }
+}
+.seo-table .table-wrapper table thead {
+  position: static !important;
+  background: transparent !important;
+  color: var(--color-white) !important;
+  border: 0 !important;
+}
+.seo-table .table-wrapper table thead tr {
+  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
+  border: 0 !important;
+}
+.seo-table .table-wrapper table tbody tr {
+  border: 0 !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  transition: 0.25s ease !important;
+}
+.seo-table .table-wrapper table tbody tr:nth-child(even) {
+  background: rgba(0, 234, 255, 0.055) !important;
+}
+.seo-table .table-wrapper table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+@media (min-width: 1000px) {
+  .seo-table .table-wrapper table tbody tr:hover {
+    background: rgba(0, 234, 255, 0.12) !important;
+  }
+}
+.seo-table .table-wrapper table tbody td {
+  color: var(--color-grey) !important;
+}
+.seo-table .table-wrapper table th,
+.seo-table .table-wrapper table td {
+  border: 0 !important;
+  border-right: 1px solid rgba(0, 234, 255, 0.14) !important;
+  border-bottom: 1px solid rgba(0, 234, 255, 0.12) !important;
+  padding: 16px 20px !important;
+  vertical-align: middle !important;
+  background: transparent !important;
+  color: inherit !important;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
+}
+.seo-table .table-wrapper table th:last-child,
+.seo-table .table-wrapper table td:last-child {
+  border-right: 0 !important;
+}
+.seo-table .table-wrapper table th p,
+.seo-table .table-wrapper table td p {
+  margin: 0 !important;
+}
+@media (max-width: 999.98px) {
+  .seo-table .table-wrapper table th,
+  .seo-table .table-wrapper table td {
+    padding: 12px 14px !important;
+  }
+}
+.seo-table .table-wrapper table th {
+  font-weight: 700 !important;
+  text-align: left;
+  color: var(--color-white) !important;
+  background: transparent !important;
+}
+.seo-table .table-wrapper table tbody td.color_td_PR {
+  color: var(--blue-main) !important;
+  font-weight: 700 !important;
+  background: rgba(0, 234, 255, 0.08) !important;
+}
+
+.tender-table {
+  width: 100% !important;
+  min-width: 720px;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  table-layout: auto;
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--color-grey);
+}
+@media (max-width: 899.98px) {
+  .tender-table {
+    min-width: 640px;
+  }
+}
+.tender-table thead {
+  position: static !important;
+  background: transparent !important;
+  color: var(--color-white) !important;
+  border: 0 !important;
+}
+.tender-table thead tr {
+  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
+  border: 0 !important;
+}
+.tender-table tbody tr {
+  border: 0 !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  transition: 0.25s ease !important;
+}
+.tender-table tbody tr:nth-child(even) {
+  background: rgba(0, 234, 255, 0.055) !important;
+}
+.tender-table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+@media (min-width: 1000px) {
+  .tender-table tbody tr:hover {
+    background: rgba(0, 234, 255, 0.12) !important;
+  }
+}
+.tender-table tbody td {
+  color: var(--color-grey) !important;
+}
+.tender-table th,
+.tender-table td {
+  border: 0 !important;
+  border-right: 1px solid rgba(0, 234, 255, 0.14) !important;
+  border-bottom: 1px solid rgba(0, 234, 255, 0.12) !important;
+  padding: 16px 20px !important;
+  vertical-align: middle !important;
+  background: transparent !important;
+  color: inherit !important;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
+}
+.tender-table th:last-child,
+.tender-table td:last-child {
+  border-right: 0 !important;
+}
+.tender-table th p,
+.tender-table td p {
+  margin: 0 !important;
+}
+@media (max-width: 999.98px) {
+  .tender-table th,
+  .tender-table td {
+    padding: 12px 14px !important;
+  }
+}
+.tender-table th {
+  font-weight: 700 !important;
+  text-align: left;
+  color: var(--color-white) !important;
+  background: transparent !important;
+}
+.tender-table label {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  cursor: default !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.tender-table label input {
+  display: none !important;
+}
+.tender-table tbody tr:last-child td:not(:first-child) {
+  color: var(--blue-main) !important;
+  font-weight: 700 !important;
+  background: rgba(0, 234, 255, 0.08) !important;
+}
+.tender-table:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2) {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.tender-table:has(thead th:nth-child(2) label input:checked) tbody tr:last-child td:nth-child(2) {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.tender-table:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3) {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.tender-table:has(thead th:nth-child(3) label input:checked) tbody tr:last-child td:nth-child(3) {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.tender-table:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.tender-table:has(thead th:nth-child(4) label input:checked) tbody tr:last-child td:nth-child(4) {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+@media (max-width: 899.98px) {
+  .tender-table {
+    position: static !important;
+    margin-top: 0 !important;
+    overflow: auto !important;
+  }
+  .tender-table thead {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    display: table-header-group !important;
+    width: auto !important;
+    overflow: visible !important;
+    max-width: none !important;
+  }
+  .tender-table thead tr {
+    display: table-row !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+  .tender-table tbody tr {
+    display: table-row !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+  .tender-table tbody tr td:not(:first-child) {
+    display: table-cell !important;
+    width: auto !important;
+    max-width: none !important;
+    color: inherit !important;
+  }
+  .tender-table th,
+  .tender-table td,
+  .tender-table tbody tr td:not(:first-child) {
+    display: table-cell !important;
+    width: auto !important;
+    max-width: none !important;
+    color: inherit !important;
+  }
+}

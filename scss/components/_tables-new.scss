@@ -1,0 +1,297 @@
+/* New unified table design */
+@mixin table-shell-new {
+  border-radius: 18px !important;
+  border: 1px solid var(--blue-clouds) !important;
+  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%) !important;
+  box-shadow:
+    0 20px 45px rgba(0, 234, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  overflow: auto !important;
+
+  @media (max-width: 999.98px) {
+    border-radius: 12px !important;
+  }
+}
+
+@mixin table-core-new {
+  width: 100% !important;
+  min-width: 720px;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  table-layout: auto;
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--color-grey);
+
+  @media (max-width: 899.98px) {
+    min-width: 640px;
+  }
+
+  thead {
+    position: static !important;
+    background: transparent !important;
+    color: var(--color-white) !important;
+    border: 0 !important;
+
+    tr {
+      background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
+      border: 0 !important;
+    }
+  }
+
+  tbody {
+    tr {
+      border: 0 !important;
+      background: rgba(255, 255, 255, 0.035) !important;
+      transition: 0.25s ease !important;
+
+      &:nth-child(even) {
+        background: rgba(0, 234, 255, 0.055) !important;
+      }
+
+      &:last-child {
+        td {
+          border-bottom: 0 !important;
+        }
+      }
+
+      @media (min-width: 1000px) {
+        &:hover {
+          background: rgba(0, 234, 255, 0.12) !important;
+        }
+      }
+    }
+
+    td {
+      color: var(--color-grey) !important;
+
+      a {
+        // color: var(--blue-main) !important;
+      }
+    }
+  }
+
+  th,
+  td {
+    border: 0 !important;
+    border-right: 1px solid rgba(0, 234, 255, 0.14) !important;
+    border-bottom: 1px solid rgba(0, 234, 255, 0.12) !important;
+    padding: 16px 20px !important;
+    vertical-align: middle !important;
+    background: transparent !important;
+    color: inherit !important;
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease,
+      box-shadow 0.25s ease !important;
+
+    &:last-child {
+      border-right: 0 !important;
+    }
+
+    p {
+      margin: 0 !important;
+    }
+
+    @media (max-width: 999.98px) {
+      padding: 12px 14px !important;
+    }
+  }
+
+  th {
+    font-weight: 700 !important;
+    text-align: left;
+    color: var(--color-white) !important;
+    background: transparent !important;
+  }
+}
+
+.table-block,
+.default-table,
+table.table,
+table.tender-table,
+.table--wrap {
+  @include table-shell-new;
+}
+
+table {
+  @include table-core-new;
+}
+
+.table {
+  @include table-core-new;
+
+  &--noborder {
+    &,
+    thead,
+    tbody,
+    th,
+    tr,
+    td {
+      border-color: rgba(0, 234, 255, 0.12) !important;
+    }
+  }
+
+  &--beauty {
+    tbody {
+      td {
+        &.color_td_PR {
+          color: var(--blue-main) !important;
+          font-weight: 700 !important;
+          background: rgba(0, 234, 255, 0.08) !important;
+        }
+      }
+    }
+  }
+}
+
+.seo-table {
+  .table-wrapper {
+    @include table-shell-new;
+
+    table {
+      @include table-core-new;
+
+      tbody {
+        td {
+          &.color_td_PR {
+            color: var(--blue-main) !important;
+            font-weight: 700 !important;
+            background: rgba(0, 234, 255, 0.08) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tender-table {
+  @include table-core-new;
+
+  label {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    cursor: default !important;
+    background: transparent !important;
+    box-shadow: none !important;
+
+    input {
+      display: none !important;
+    }
+  }
+
+  tbody {
+    tr {
+      &:last-child {
+        td:not(:first-child) {
+          color: var(--blue-main) !important;
+          font-weight: 700 !important;
+          background: rgba(0, 234, 255, 0.08) !important;
+        }
+      }
+    }
+  }
+
+  &:has(thead th:nth-child(2) label input:checked) {
+    tbody {
+      tr {
+        td:nth-child(2) {
+          box-shadow: none !important;
+          background: transparent !important;
+        }
+
+        &:last-child {
+          td:nth-child(2) {
+            box-shadow: none !important;
+            background: transparent !important;
+          }
+        }
+      }
+    }
+  }
+
+  &:has(thead th:nth-child(3) label input:checked) {
+    tbody {
+      tr {
+        td:nth-child(3) {
+          box-shadow: none !important;
+          background: transparent !important;
+        }
+
+        &:last-child {
+          td:nth-child(3) {
+            box-shadow: none !important;
+            background: transparent !important;
+          }
+        }
+      }
+    }
+  }
+
+  &:has(thead th:nth-child(4) label input:checked) {
+    tbody {
+      tr {
+        td:nth-child(4) {
+          box-shadow: none !important;
+          background: transparent !important;
+        }
+
+        &:last-child {
+          td:nth-child(4) {
+            box-shadow: none !important;
+            background: transparent !important;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 899.98px) {
+    position: static !important;
+    margin-top: 0 !important;
+    overflow: auto !important;
+
+    thead {
+      position: static !important;
+      top: auto !important;
+      right: auto !important;
+      display: table-header-group !important;
+      width: auto !important;
+      overflow: visible !important;
+      max-width: none !important;
+
+      tr {
+        display: table-row !important;
+        width: auto !important;
+        max-width: none !important;
+      }
+    }
+
+    tbody {
+      tr {
+        display: table-row !important;
+        width: auto !important;
+        max-width: none !important;
+
+        td:not(:first-child) {
+          display: table-cell !important;
+          width: auto !important;
+          max-width: none !important;
+          color: inherit !important;
+        }
+      }
+    }
+
+    th,
+    td,
+    tbody tr td:not(:first-child) {
+      display: table-cell !important;
+      width: auto !important;
+      max-width: none !important;
+      color: inherit !important;
+    }
+  }
+}
