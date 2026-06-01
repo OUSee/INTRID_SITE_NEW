@@ -1,0 +1,268 @@
+#reset-options-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  font-size: 2em;
+
+  @media (max-width: 999.98px) {
+    font-size: 1.75em;
+  }
+
+  @media (max-width: 599.98px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  & i {
+    display: flex;
+  }
+}
+
+.calculator {
+  &-calculator {
+    width: 100%;
+
+    & .accordion {
+      &-item {
+        height: unset;
+      }
+    }
+
+    & .hidden {
+      display: none !important;
+    }
+
+    &:not(.show) {
+      display: none !important;
+      max-height: 0;
+      opacity: 0;
+    }
+
+    &:is(.show) {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+  }
+
+  &-list {
+    padding-left: 32px;
+
+    & li {
+      padding-left: 12px;
+      margin-bottom: 12px;
+
+      &::marker {
+        content: "\2022";
+        color: var(--blue-main);
+      }
+    }
+  }
+
+  &-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 100%;
+    transition: min-height 0.6s ease-in-out;
+
+    & #choose_your_way {
+      @media (min-width: 1000px) {
+        min-height: 300px;
+
+        & > .left,
+        & > .right {
+          & > .card--outline {
+            min-height: 300px;
+          }
+        }
+      }
+    }
+  }
+}
+
+#calculator-creation {
+  &:is(.show) {
+    animation: fadeInUpForm 0.6s ease forwards;
+    transform-origin: center bottom;
+  }
+
+  &:not(.show) {
+    display: none;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+}
+
+.logo-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  @media (max-width: 1399.98px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 999.98px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 799.98px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 599.98px) {
+    grid-template-columns: 1fr;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+
+    & .img-wrapper {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--color-white);
+      padding: 20px 32px;
+      border-radius: 16px;
+
+      & img {
+        width: auto;
+        height: auto;
+        max-height: 160px;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.total {
+  display: flex;
+  width: 100%;
+  max-height: 100%;
+  padding: 0;
+  background-color: var(--bg-main);
+  transition: 0.6s ease;
+  transition-delay: 0.25s;
+
+  &:not(.active) {
+    max-height: 240px;
+
+    @media (max-width: 999.98px) {
+      max-height: 212px;
+    }
+
+    @media (max-width: 519.98px) {
+      max-height: 176px;
+    }
+  }
+
+  &.active {
+    background-color: var(--blue-tag);
+
+    & .total-top {
+      position: absolute;
+      height: auto;
+      transform: translateY(-100%);
+    }
+
+    & .total-bottom {
+      position: relative;
+      transform: translateY(0);
+    }
+  }
+
+  &:is(#calculator-total) {
+    & .total-top {
+      & .total-content {
+        & .total-body {
+          @media (max-width: 999.98px) {
+            flex: unset;
+            width: auto;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 12px;
+    aspect-ratio: 1 / 1;
+    @include button-without-hover;
+
+    &::before {
+      content: "\6d";
+      display: flex;
+      font-family: "INTRID_ICONS" !important;
+      font-style: normal !important;
+      font-weight: normal !important;
+      font-variant: normal !important;
+      font-size: 20px;
+      text-transform: none !important;
+      transform-origin: center;
+      transform: rotate(180deg);
+    }
+  }
+
+  &-title {
+    padding: 0;
+    transition: 0.6s ease;
+  }
+
+  &-top,
+  &-bottom {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    flex: 1 0 auto;
+    padding: 20px 16px;
+    transform: translateY(0);
+    transition: 0.6s ease;
+  }
+
+  &-top {
+    position: relative;
+    transform: translateY(0);
+  }
+
+  &-bottom {
+    position: absolute;
+    transform: translateY(100%);
+
+    & .total-title {
+      @include h4;
+      margin-block-end: 1em;
+      order: -1;
+
+      @media (max-width: 999.98px) {
+        padding-top: 16px;
+      }
+    }
+  }
+}

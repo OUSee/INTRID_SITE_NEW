@@ -2381,9 +2381,171 @@ form {
   }
 }
 
-// Table visual styles moved to components/_tables-new.scss.
-// Keep page-specific table wrappers/modifiers there to avoid duplicate CSS.
+.table {
+  width: 100%;
+  border-radius: 24px;
+  border-collapse: collapse;
+  background-color: transparent;
+  border: 1px solid var(--blue-main);
 
+  @media (max-width: 999.98px) {
+    border-radius: 12px;
+  }
+
+  & thead {
+    background-color: var(--blue-bg);
+    color: var(--bg-main);
+    border: 1px solid var(--blue-main);
+  }
+
+  & tbody {
+    border: 1px solid var(--blue-main);
+
+    & td {
+      & span {
+        font-size: inherit;
+      }
+    }
+  }
+
+  & th {
+    padding: 4px 12px;
+    border: 1px solid var(--blue-main);
+    vertical-align: top;
+
+    & p {
+      margin: 0;
+    }
+  }
+
+  & td {
+    padding: 12px;
+    border: 1px solid var(--blue-main);
+    vertical-align: top;
+
+    & p {
+      margin: 0;
+    }
+  }
+
+  & tr {
+    border: 1px solid var(--blue-main);
+  }
+
+  &-block {
+    display: block;
+    width: 100%;
+    border-radius: 24px;
+    border: 1px solid var(--blue-main);
+    overflow: hidden;
+
+    @media (max-width: 999.98px) {
+      border-radius: 12px;
+    }
+  }
+
+  &--noborder {
+    border: none;
+
+    & thead,
+    & tbody,
+    & th,
+    & tr,
+    & td {
+      border: none;
+    }
+
+    & thead {
+      border: 1px solid var(--blue-main);
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+
+      & th {
+        border: 1px solid var(--blue-main);
+        border-top: 0;
+        border-bottom: 0;
+        border-left: 0;
+
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+
+    & tbody {
+      & tr {
+        border: 1px solid var(--blue-main);
+        border-left: 0;
+        border-right: 0;
+
+        &:first-child {
+          border-bottom: 0;
+        }
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        & td {
+          border: 1px solid var(--blue-main);
+          border-top: 0;
+          border-bottom: 0;
+          border-left: 0;
+
+          &:first-child {
+            border-left: 0;
+          }
+
+          &:last-child {
+            border-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &--wrap {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+  &--responsive {
+    table-layout: auto;
+    overflow: visible;
+  }
+
+  &--beauty {
+    @include seo-table;
+
+    & th {
+      text-align: center;
+      vertical-align: middle;
+
+      & p {
+        margin: auto;
+      }
+    }
+
+    & thead {
+      & tr {
+        border: none;
+      }
+    }
+
+    & tbody {
+      & tr {
+        border: 1px solid var(--blue-clouds);
+
+        & td {
+          border-color: var(--blue-clouds);
+        }
+      }
+    }
+  }
+}
 
 .article {
   &-navigation {

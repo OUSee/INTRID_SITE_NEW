@@ -362,8 +362,286 @@
         margin: 40px 0;
       }
 
-      // Tender table visual and interaction styles live in components/_tables-new.scss.
+      .tender-table {
+        width: 100%;
+        background-color: var(--blue-bg);
+        overflow: hidden;
 
+        @media (min-width: 900px) {
+          & label {
+            position: relative;
+
+            & input {
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 1;
+              display: block;
+              width: 100%;
+              height: 200vh;
+              opacity: 0;
+              cursor: pointer;
+            }
+          }
+        }
+
+        & tr,
+        & th,
+        & td {
+          transition: 0.4s ease;
+        }
+
+        &:has(thead th:nth-child(2) label input:checked)
+          tbody
+          tr
+          td:nth-child(2),
+        &:has(thead th:nth-child(3) label input:checked)
+          tbody
+          tr
+          td:nth-child(3),
+        &:has(thead th:nth-child(4) label input:checked)
+          tbody
+          tr
+          td:nth-child(4) {
+          box-shadow:
+            inset -1px 0 0 var(--blue-tag),
+            inset 1px 0 0 var(--blue-tag);
+        }
+
+        &:has(thead th:nth-child(2) label input:checked)
+          tbody
+          tr:last-child
+          td:nth-child(2),
+        &:has(thead th:nth-child(3) label input:checked)
+          tbody
+          tr:last-child
+          td:nth-child(3),
+        &:has(thead th:nth-child(4) label input:checked)
+          tbody
+          tr:last-child
+          td:nth-child(4) {
+          color: var(--color-white) !important;
+          background: linear-gradient(
+            0deg,
+            var(--blue-clouds) 0%,
+            var(--blue-tag) 100%
+          );
+        }
+
+        thead {
+          @media (min-width: 900px) {
+            tr {
+              td,
+              th {
+                padding: 0;
+                background-color: var(--blue-clouds);
+                color: var(--color-white);
+
+                &:not(:first-child) {
+                  cursor: pointer;
+                }
+
+                &:has(input:checked) {
+                  background: linear-gradient(
+                    0deg,
+                    var(--blue-clouds) 0%,
+                    var(--blue-tag) 100%
+                  );
+                  box-shadow:
+                    inset -1px 0 0 var(--blue-tag),
+                    inset 1px 0 0 var(--blue-tag);
+                }
+              }
+
+              th label {
+                display: block;
+                padding: 16px 20px;
+                width: 100%;
+                height: 100%;
+                border: none;
+                cursor: pointer;
+              }
+            }
+          }
+
+        }
+
+        tbody tr {
+          &:first-child {
+            th label {
+              padding: 16px 28px;
+
+              @media (max-width: 599.98px) {
+                padding: 8px 16px;
+              }
+            }
+          }
+
+          &:last-child {
+            td {
+              text-align: end;
+              color: var(--blue-main) !important;
+            }
+
+            td:not(:first-child) {
+              font-size: 20px;
+              white-space: nowrap;
+            }
+          }
+
+          td,
+          th label {
+            padding: 12px 20px;
+
+            input {
+              display: none;
+            }
+          }
+
+          th label {
+            cursor: pointer;
+          }
+
+          td:not(:first-child) {
+            color: var(--blue-main);
+            text-align: center;
+
+            &.nothing {
+              color: var(--color-grey);
+            }
+          }
+
+          &:nth-child(even) td,
+          th label {
+            background-color: var(--blue-clouds);
+          }
+
+          &:nth-child(odd) td {
+            background-color: var(--blue-bg);
+          }
+        }
+
+        @media (max-width: 899.98px) {
+          position: relative;
+          margin-top: 44px;
+          overflow-x: hidden;
+          overflow-y: visible;
+
+          &:has(thead th:nth-child(2) label input:checked)
+            tbody
+            tr
+            td:nth-child(2),
+          &:has(thead th:nth-child(3) label input:checked)
+            tbody
+            tr
+            td:nth-child(3),
+          &:has(thead th:nth-child(4) label input:checked)
+            tbody
+            tr
+            td:nth-child(4) {
+            display: table-cell !important;
+          }
+
+          thead {
+            position: absolute;
+            top: -44px;
+            right: 0;
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+            max-width: 100%;
+
+            tr {
+              max-width: 100%;
+              width: 100%;
+              display: flex;
+
+              td {
+                padding: 2px 0;
+              }
+            }
+
+            th {
+              display: flex;
+              flex-grow: 1;
+              width: 100%;
+            }
+
+            th label {
+              cursor: pointer;
+              width: 100%;
+              padding: 12px 8px;
+              order: unset;
+
+              &:has(input:checked) {
+                background: linear-gradient(
+                  0deg,
+                  var(--blue-clouds) 0%,
+                  var(--blue-tag) 100%
+                );
+                box-shadow:
+                  inset -1px 0 0 var(--blue-tag),
+                  inset 1px 0 0 var(--blue-tag);
+              }
+
+              &.fade-out {
+                background-color: var(--blue-clouds);
+              }
+            }
+          }
+
+          tbody {
+            tr {
+              max-width: 100%;
+
+              td:not(:first-child) {
+                display: none;
+                width: 50%;
+                max-width: 50%;
+                color: var(--color-white);
+              }
+
+              &:nth-child(even) td:not(:first-child) {
+                background-color: var(--blue-tag);
+                color: var(--color-white) !important;
+              }
+
+              &:nth-child(odd) td {
+                background-color: var(--blue-bg);
+                color: var(--color-white);
+              }
+            }
+          }
+
+          tr {
+            td {
+              padding: 12px !important;
+            }
+
+            th:first-child {
+              display: none;
+            }
+
+          }
+        }
+
+        @media (max-width: 599.98px) {
+          thead {
+            @include webkit_scrollbar;
+            overflow-x: auto;
+          }
+          tr:last-child {
+            td {
+              text-align: end;
+              color: var(--blue-main) !important;
+            }
+
+            td:not(:first-child) {
+              font-size: 12px;
+            }
+          }
+        }
+      }
     }
   }
 }

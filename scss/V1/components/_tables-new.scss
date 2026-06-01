@@ -179,7 +179,6 @@ table {
   th:not(:first-child),
   td:not(:first-child) {
     cursor: pointer;
-    text-align: center;
   }
 
   label {
@@ -204,10 +203,6 @@ table {
           color: var(--blue-main) !important;
           font-weight: 700 !important;
           background: rgba(0, 234, 255, 0.08) !important;
-
-          & span {
-            white-space: nowrap;
-          }
         }
       }
 
@@ -228,41 +223,54 @@ table {
     }
   }
 
-  @for $column from 2 through 6 {
-    &:has(thead th:nth-child(#{$column}) label input:checked) {
-      thead {
-        th:nth-child(#{$column}) {
-          color: var(--color-white) !important;
-          background: linear-gradient(
-            180deg,
-            var(--blue-clouds) 0%,
-            var(--blue-tag) 100%
-          ) !important;
-          box-shadow:
-            inset 1px 0 0 var(--blue-tag),
-            inset -1px 0 0 var(--blue-tag) !important;
+  &:has(thead th:nth-child(2) label input:checked) {
+    tbody {
+      tr {
+        td:nth-child(2) {
+          box-shadow: none !important;
+          background: transparent !important;
+        }
+
+        &:last-child {
+          td:nth-child(2) {
+            box-shadow: none !important;
+            background: transparent !important;
+          }
         }
       }
+    }
+  }
 
-      tbody {
-        tr {
-          td:nth-child(#{$column}) {
-            color: var(--color-white) !important;
-            background: rgba(0, 234, 255, 0.12) !important;
-            box-shadow:
-              inset 1px 0 0 rvar(--blue-light-bg),
-              inset -1px 0 0 var(--blue-light-bg) !important;
+  &:has(thead th:nth-child(3) label input:checked) {
+    tbody {
+      tr {
+        td:nth-child(3) {
+          box-shadow: none !important;
+          background: transparent !important;
+        }
+
+        &:last-child {
+          td:nth-child(3) {
+            box-shadow: none !important;
+            background: transparent !important;
           }
+        }
+      }
+    }
+  }
 
-          &:last-child {
-            td:nth-child(#{$column}) {
-              color: var(--color-white) !important;
-              background: linear-gradient(
-                180deg,
-                var(--blue-clouds) 0%,
-                var(--blue-tag) 100%
-              ) !important;
-            }
+  &:has(thead th:nth-child(4) label input:checked) {
+    tbody {
+      tr {
+        td:nth-child(4) {
+          box-shadow: none !important;
+          background: transparent !important;
+        }
+
+        &:last-child {
+          td:nth-child(4) {
+            box-shadow: none !important;
+            background: transparent !important;
           }
         }
       }

@@ -1843,41 +1843,48 @@ const tenderDiagramHandler = () => {
   }
 };
 
-// handle tariff column selection by clicking the whole column
+// handle change clicks to add smooth change of columns
 const tenderTablesInit = () => {
   tenderTables.forEach((table) => {
-    if (!table) return;
-
-    const headers = table.querySelectorAll("thead th");
-
-    const selectColumn = (columnIndex) => {
-      if (columnIndex <= 0) return;
-
-      const header = headers[columnIndex];
-      const input = header?.querySelector('input[type="radio"]');
-
-      if (!input || input.checked) return;
-
-      input.checked = true;
-      input.dispatchEvent(new Event("change", { bubbles: true }));
-    };
-
-    table.querySelectorAll("thead th, tbody td").forEach((cell) => {
-      const columnIndex = cell.cellIndex;
-
-      if (columnIndex <= 0) return;
-
-      cell.addEventListener("click", (event) => {
-        const target = event.target;
-
-        if (target?.closest?.('a, button, input, select, textarea')) return;
-
-        selectColumn(columnIndex);
-      });
+    if (!table) {
+      return;
+    }
+    const buttons = table.querySelectorAll("th");
+    buttons.forEach((button, index) => {
+      if (index > 0) {
+        input = button.querySelector("input");
+        input.addEventListener("click", (e) => {
+          changeOrderHandler(button);
+        });
+      }
     });
+
+    const changeOrderHandler = (button) => {
+      // console.log("=> inside");
+      try {
+        buttons.forEach((item) => {
+          item.style.order = "1";
+          label = item?.querySelector("label");
+          label?.classList?.add("fade-out");
+        });
+
+        setTimeout(() => {
+          button.style.order = "3";
+        }, 350);
+
+        setTimeout(() => {
+          buttons.forEach((item) => {
+            label = item?.querySelector("label");
+            label?.classList?.remove("fade-out");
+            // console.log("-- item.style", item.style.order);
+          });
+        }, 400);
+      } catch (error) {
+        console.log("=> err", error);
+      }
+    };
   });
 };
-
 
 // tabs-to-slider into portfolio
 const portfolioCardsSlider = () => {

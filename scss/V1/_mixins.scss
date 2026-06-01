@@ -1797,8 +1797,69 @@
   }
 }
 
-// Old seo table mixin removed: unified styles live in components/_tables-new.scss.
+@mixin seo-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 
+  thead {
+    background-color: var(--blue-bg);
+    color: var(--color-white);
+    position: sticky;
+    top: 0;
+    border-color: var(--bg-main);
+
+    & tr {
+      & th {
+        border: 1px solid var(--blue-clouds);
+
+        & .yandex {
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+
+  tbody {
+    border-color: var(--blue-bg);
+
+    tr {
+      background-color: rgba(0, 234, 255, 0.25);
+
+      &:hover {
+        @media (min-width: 1000px) {
+          & td {
+            &:not(.color_td_PR) {
+              background-color: var(--blue-clouds);
+            }
+          }
+        }
+      }
+    }
+
+    & td {
+      &.color_td_PR {
+        font-weight: 600;
+        background-color: rgba(0, 234, 255, 0.5);
+      }
+
+      & span {
+        font-size: inherit;
+      }
+    }
+  }
+
+  th {
+    padding: 8px;
+  }
+
+  td {
+    border: 1px solid var(--blue-clouds);
+    padding: 12px 8px;
+    padding-left: 12px;
+    transition: 0.25s ease-in-out;
+  }
+}
 
 @mixin tag {
   position: relative;
