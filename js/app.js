@@ -1028,7 +1028,16 @@ function tabSlidersStart() {
     }
 
     // Делегирование событий для кликов по слайдам
+    let preventSlideClick = false;
+
     slidesContainer.addEventListener("click", (e) => {
+      if (preventSlideClick) {
+        e.preventDefault();
+        e.stopPropagation();
+        preventSlideClick = false;
+        return;
+      }
+
       const slide = e.target.closest(".slide");
       if (slide) {
         const allSlides = slidesContainer.querySelectorAll(".slide");
@@ -1100,6 +1109,12 @@ function tabSlidersStart() {
     let isAutoScrollPaused = false;
     let autoScrollIntervalId = null;
     let isAnimating = false;
+
+    function setSlidesPointerEvents(value) {
+      slidesContainer.querySelectorAll(".slide").forEach((slide) => {
+        slide.style.setProperty("pointer-events", value);
+      });
+    }
 
     function goNext() {
       if (isAnimating) return;
@@ -1218,6 +1233,65 @@ function tabSlidersStart() {
     document.addEventListener("touchmove", handleTouchMove, { passive: false });
     document.addEventListener("touchend", handleTouchEnd, false);
     document.addEventListener("touchcancel", handleTouchEnd, false);
+
+    // Mouse drag for desktop / mobile layouts
+    let mouseDown = false;
+    let mouseStartX = null;
+    let mouseStartY = null;
+
+    function handleMouseDown(e) {
+      if (isAnimating || e.button !== 0) return;
+
+      mouseDown = true;
+      mouseStartX = e.clientX;
+      mouseStartY = e.clientY;
+      isDragging = false;
+
+      stopAutoScroll();
+      e.preventDefault();
+    }
+
+    function handleMouseMove(e) {
+      if (!mouseDown || mouseStartX === null || mouseStartY === null || isAnimating) {
+        return;
+      }
+
+      const xDiff = mouseStartX - e.clientX;
+      const yDiff = mouseStartY - e.clientY;
+      const diff = isHorizontal ? xDiff : yDiff;
+      const crossDiff = isHorizontal ? yDiff : xDiff;
+
+      if (Math.abs(diff) > Math.abs(crossDiff) && Math.abs(diff) > 20) {
+        e.preventDefault();
+        isDragging = true;
+        preventSlideClick = true;
+        setSlidesPointerEvents("none");
+
+        diff > 0 ? goNext() : goPrev();
+
+        mouseDown = false;
+        mouseStartX = null;
+        mouseStartY = null;
+      }
+    }
+
+    function handleMouseUp() {
+      if (isDragging) {
+        setTimeout(() => {
+          setSlidesPointerEvents("");
+        }, 0);
+      }
+
+      mouseDown = false;
+      mouseStartX = null;
+      mouseStartY = null;
+      isDragging = false;
+    }
+
+    slidesContainer.addEventListener("mousedown", handleMouseDown, false);
+    document.addEventListener("mousemove", handleMouseMove, false);
+    document.addEventListener("mouseup", handleMouseUp, false);
+    document.addEventListener("mouseleave", handleMouseUp, false);
 
     // Инициализация (без checkOrientation)
     updateSlider(true);
