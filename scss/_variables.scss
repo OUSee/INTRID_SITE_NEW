@@ -2559,7 +2559,7 @@ form {
 
     @media (max-width: 1199.98px) {
       position: sticky;
-      top: 80px;
+      top: 70px;
       left: 100%;
       right: 0;
       z-index: 3;
@@ -2577,11 +2577,15 @@ form {
         }
 
         & .nav-trigger {
-          @media (max-width: 1199.98px) {
-            & i {
-              transform: rotate(-90deg);
-            }
+          & i {
+            transform: rotate(-90deg);
           }
+        }
+      }
+
+      & .nav-trigger {
+        & p {
+          display: none;
         }
       }
     }

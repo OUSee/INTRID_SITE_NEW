@@ -1252,7 +1252,12 @@ function tabSlidersStart() {
     }
 
     function handleMouseMove(e) {
-      if (!mouseDown || mouseStartX === null || mouseStartY === null || isAnimating) {
+      if (
+        !mouseDown ||
+        mouseStartX === null ||
+        mouseStartY === null ||
+        isAnimating
+      ) {
         return;
       }
 
@@ -6237,22 +6242,23 @@ class TableOfContents {
     this.links.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
+
         const targetId = link.getAttribute("href");
         const targetElement = document.querySelector(targetId);
 
-        if (targetElement) {
-          // Используем scroll-margin-top из CSS или настройки
-          const scrollMargin =
-            parseInt(window.getComputedStyle(targetElement).scrollMarginTop) ||
-            this.options.scrollOffset;
+        if (!targetElement) return;
 
-          window.scrollTo({
-            top: targetElement.offsetTop - scrollMargin,
-            behavior: "smooth",
-          });
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
 
-          // Обновляем URL
-          history.pushState(null, null, targetId);
+        history.pushState(null, null, targetId);
+
+        const navTrigger = this.nav.querySelector('input[type="checkbox"]');
+
+        if (navTrigger && window.innerWidth < 768) {
+          navTrigger.checked = false;
         }
       });
     });
