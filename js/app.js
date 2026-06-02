@@ -2369,19 +2369,20 @@ const portfolioCardsSlider = () => {
   });
 };
 
-
-
 const portfolioSeoSlider = () => {
   let isInitialized = false;
   let resizeTimer = null;
 
   const breakpoint = 900;
-  const slider = document.querySelector('.seo-wrapper');
+  const slider = document.querySelector(".seo-wrapper");
 
-  if (!slider || slider.dataset.portfolioSeoSliderInitialized === 'true') return;
+  if (!slider || slider.dataset.portfolioSeoSliderInitialized === "true")
+    return;
 
-  const block = slider.closest('.main-section') || slider.parentElement;
-  let slides = Array.from(slider.querySelectorAll(':scope > .portfolio-seo-card'));
+  const block = slider.closest(".main-section") || slider.parentElement;
+  let slides = Array.from(
+    slider.querySelectorAll(":scope > .portfolio-seo-card"),
+  );
   let currentIndex = 0;
   let isAnimating = false;
   let isDragging = false;
@@ -2391,12 +2392,19 @@ const portfolioSeoSlider = () => {
   let pos = { x: 0, y: 0 };
   let lastSlideChange = 0;
 
-  const getSliderPagination = () => slider.querySelector(':scope > .pagination-panel, :scope > .pagination, :scope > .pagination-block, :scope > .pages');
-  const pagination = block.querySelector('.pagination-panel, .pagination, .pagination-block, .pages');
+  const getSliderPagination = () =>
+    slider.querySelector(
+      ":scope > .pagination-panel, :scope > .pagination, :scope > .pagination-block, :scope > .pages",
+    );
+  const pagination = block.querySelector(
+    ".pagination-panel, .pagination, .pagination-block, .pages",
+  );
 
   const normalizeSlidesOrder = () => {
     const paginationInSlider = getSliderPagination();
-    const cards = Array.from(slider.querySelectorAll(':scope > .portfolio-seo-card'));
+    const cards = Array.from(
+      slider.querySelectorAll(":scope > .portfolio-seo-card"),
+    );
 
     if (!paginationInSlider) return;
 
@@ -2406,28 +2414,33 @@ const portfolioSeoSlider = () => {
   };
 
   const getNextUrl = (root = document) => {
-    const wrapper = root.querySelector('.seo-wrapper');
+    const wrapper = root.querySelector(".seo-wrapper");
     const scope = wrapper?.parentElement || root;
-    const pagination = scope.querySelector('.pagination') || root.querySelector('.pagination');
+    const pagination =
+      scope.querySelector(".pagination") || root.querySelector(".pagination");
 
     if (!pagination) return null;
 
-    const nextBtn = pagination.querySelector('.pagination--next-btn[href]');
+    const nextBtn = pagination.querySelector(".pagination--next-btn[href]");
 
     if (nextBtn) {
-      return new URL(nextBtn.getAttribute('href'), window.location.origin).href;
+      return new URL(nextBtn.getAttribute("href"), window.location.origin).href;
     }
 
-    const activeBtn = pagination.querySelector('.pagination--btn-num.highlight');
+    const activeBtn = pagination.querySelector(
+      ".pagination--btn-num.highlight",
+    );
 
     if (!activeBtn) return null;
 
     const currentPage = Number(activeBtn.dataset.page);
     const nextPage = currentPage + 1;
-    const nextPageBtn = pagination.querySelector(`.pagination--btn-num[data-page="${nextPage}"][href]`);
+    const nextPageBtn = pagination.querySelector(
+      `.pagination--btn-num[data-page="${nextPage}"][href]`,
+    );
 
     return nextPageBtn
-      ? new URL(nextPageBtn.getAttribute('href'), window.location.origin).href
+      ? new URL(nextPageBtn.getAttribute("href"), window.location.origin).href
       : null;
   };
 
@@ -2438,11 +2451,11 @@ const portfolioSeoSlider = () => {
   const getGap = () => parseInt(window.getComputedStyle(slider).gap) || 0;
 
   const getControls = () => {
-    let controls = block.querySelector('.portfolio-seo-slider-controls');
+    let controls = block.querySelector(".portfolio-seo-slider-controls");
 
     if (!controls) {
-      controls = document.createElement('div');
-      controls.className = 'portfolio-seo-slider-controls';
+      controls = document.createElement("div");
+      controls.className = "portfolio-seo-slider-controls";
       controls.innerHTML = `
         <button type="button" class="portfolio-slider-prev pagination--prev-btn" aria-label="Предыдущий слайд"><i class="icon-shevrone left"></i></button>
         <div class="portfolio-slider-counter">1 / 1</div>
@@ -2451,15 +2464,21 @@ const portfolioSeoSlider = () => {
 
       slider.after(controls);
 
-      controls.querySelector('.portfolio-slider-prev').addEventListener('click', prevSlide);
-      controls.querySelector('.portfolio-slider-next').addEventListener('click', nextSlide);
+      controls
+        .querySelector(".portfolio-slider-prev")
+        .addEventListener("click", prevSlide);
+      controls
+        .querySelector(".portfolio-slider-next")
+        .addEventListener("click", nextSlide);
     }
 
     return controls;
   };
 
   const getTotalSlidesCount = () => {
-    const totalFromData = Number(slider.dataset.totalCount || slider.dataset.total || slider.dataset.count);
+    const totalFromData = Number(
+      slider.dataset.totalCount || slider.dataset.total || slider.dataset.count,
+    );
 
     if (Number.isFinite(totalFromData) && totalFromData > 0) {
       return totalFromData;
@@ -2469,42 +2488,42 @@ const portfolioSeoSlider = () => {
   };
 
   const updateCounter = () => {
-    const counter = getControls().querySelector('.portfolio-slider-counter');
+    const counter = getControls().querySelector(".portfolio-slider-counter");
     counter.textContent = `${Math.min(currentIndex + 1, slides.length)} / ${getTotalSlidesCount()}`;
   };
 
   const updateActiveSlides = () => {
     slides.forEach((slide) => {
-      slide.classList.remove('active');
-      slide.style.opacity = '0';
+      slide.classList.remove("active");
+      slide.style.opacity = "0";
     });
 
     if (slides[currentIndex]) {
-      slides[currentIndex].classList.add('active');
-      slides[currentIndex].style.opacity = '1';
+      slides[currentIndex].classList.add("active");
+      slides[currentIndex].style.opacity = "1";
     }
   };
 
   const updateButtons = () => {
     const controls = getControls();
-    const prevBtn = controls.querySelector('.portfolio-slider-prev');
-    const nextBtn = controls.querySelector('.portfolio-slider-next');
+    const prevBtn = controls.querySelector(".portfolio-slider-prev");
+    const nextBtn = controls.querySelector(".portfolio-slider-next");
     const isLastSlide = currentIndex + getVisibleSlidesCount() >= slides.length;
 
-    prevBtn.style.opacity = currentIndex === 0 ? '0' : '1';
-    prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : '';
-    nextBtn.style.opacity = isLastSlide && !nextUrl ? '0' : '1';
-    nextBtn.style.pointerEvents = isLastSlide && !nextUrl ? 'none' : '';
+    prevBtn.style.opacity = currentIndex === 0 ? "0" : "1";
+    prevBtn.style.pointerEvents = currentIndex === 0 ? "none" : "";
+    nextBtn.style.opacity = isLastSlide && !nextUrl ? "0" : "1";
+    nextBtn.style.pointerEvents = isLastSlide && !nextUrl ? "none" : "";
   };
 
   const updateControlsPosition = () => {
     if (!isInitialized) return;
 
     const controls = getControls();
-    const prevBtn = controls.querySelector('.portfolio-slider-prev');
-    const nextBtn = controls.querySelector('.portfolio-slider-next');
+    const prevBtn = controls.querySelector(".portfolio-slider-prev");
+    const nextBtn = controls.querySelector(".portfolio-slider-next");
     const activeSlide = slides[currentIndex] || slider;
-    const infoPanel = activeSlide.querySelector('.info-panel') || activeSlide;
+    const infoPanel = activeSlide.querySelector(".info-panel") || activeSlide;
     const targetRect = infoPanel.getBoundingClientRect();
     const controlsRect = controls.getBoundingClientRect();
     const top = targetRect.top - controlsRect.top + targetRect.height / 2;
@@ -2526,12 +2545,15 @@ const portfolioSeoSlider = () => {
   const updateSlider = () => {
     if (!isInitialized) return;
 
-    slides = Array.from(slider.querySelectorAll(':scope > .portfolio-seo-card'));
+    slides = Array.from(
+      slider.querySelectorAll(":scope > .portfolio-seo-card"),
+    );
 
     const visibleSlidesCount = getVisibleSlidesCount();
     const gap = getGap();
     const containerWidth = slider.parentElement.getBoundingClientRect().width;
-    const slideWidth = (containerWidth - gap * (visibleSlidesCount - 1)) / visibleSlidesCount;
+    const slideWidth =
+      (containerWidth - gap * (visibleSlidesCount - 1)) / visibleSlidesCount;
 
     slides.forEach((slide) => {
       slide.style.minWidth = `${slideWidth}px`;
@@ -2561,15 +2583,17 @@ const portfolioSeoSlider = () => {
     try {
       const response = await fetch(nextUrl, {
         headers: {
-          'X-PJAX': 'true',
-          'X-PJAX-Container': '#porfolio-body-content',
+          "X-PJAX": "true",
+          "X-PJAX-Container": "#porfolio-body-content",
         },
       });
 
       const html = await response.text();
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      const nextWrapper = doc.querySelector('.seo-wrapper') || doc;
-      const newCards = nextWrapper.querySelectorAll(':scope > .portfolio-seo-card');
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const nextWrapper = doc.querySelector(".seo-wrapper") || doc;
+      const newCards = nextWrapper.querySelectorAll(
+        ":scope > .portfolio-seo-card",
+      );
 
       const paginationInSlider = getSliderPagination();
 
@@ -2580,12 +2604,12 @@ const portfolioSeoSlider = () => {
       nextUrl = getNextUrl(doc);
 
       initPortfolioSeoTables?.();
-      if (typeof window.syncPortfolioSeoTables === 'function') {
+      if (typeof window.syncPortfolioSeoTables === "function") {
         window.syncPortfolioSeoTables();
       }
       updateSlider();
     } catch (err) {
-      console.warn('Portfolio SEO slider load more error:', err);
+      console.warn("Portfolio SEO slider load more error:", err);
     } finally {
       isLoading = false;
     }
@@ -2650,13 +2674,13 @@ const portfolioSeoSlider = () => {
   }
 
   function mouseDownHandler(e) {
-    if (e.target.closest('a, button, label, input, table')) return;
+    if (e.target.closest("a, button, label, input, table")) return;
 
     e.preventDefault();
     pos = { x: e.clientX, y: e.clientY };
 
-    document.addEventListener('mousemove', mouseMoveHandler);
-    document.addEventListener('mouseup', mouseUpHandler);
+    document.addEventListener("mousemove", mouseMoveHandler);
+    document.addEventListener("mouseup", mouseUpHandler);
   }
 
   function mouseMoveHandler(e) {
@@ -2667,7 +2691,7 @@ const portfolioSeoSlider = () => {
     isDragging = true;
 
     slides.forEach((slide) => {
-      slide.style.pointerEvents = 'none';
+      slide.style.pointerEvents = "none";
     });
 
     if (
@@ -2689,11 +2713,11 @@ const portfolioSeoSlider = () => {
     isDragging = false;
 
     slides.forEach((slide) => {
-      slide.style.pointerEvents = '';
+      slide.style.pointerEvents = "";
     });
 
-    document.removeEventListener('mousemove', mouseMoveHandler);
-    document.removeEventListener('mouseup', mouseUpHandler);
+    document.removeEventListener("mousemove", mouseMoveHandler);
+    document.removeEventListener("mouseup", mouseUpHandler);
   }
 
   function init() {
@@ -2703,21 +2727,24 @@ const portfolioSeoSlider = () => {
     }
 
     isInitialized = true;
-    slider.dataset.portfolioSeoSliderInitialized = 'true';
-    slider.classList.add('seo-wrapper--slider');
+    slider.dataset.portfolioSeoSliderInitialized = "true";
+    slider.classList.add("seo-wrapper--slider");
 
     if (pagination) {
-      pagination.style.display = 'none';
+      pagination.style.display = "none";
     }
 
     getControls();
 
-    slider.addEventListener('touchstart', handleTouchStart, false);
-    document.addEventListener('touchmove', handleTouchMove, { passive: false });
-    document.addEventListener('touchend', handleTouchEnd, false);
-    document.addEventListener('touchcancel', handleTouchEnd, false);
-    slider.addEventListener('mousedown', mouseDownHandler, false);
-    document.addEventListener('portfolioSeoTablesStateChanged', scheduleControlsPositionUpdate);
+    slider.addEventListener("touchstart", handleTouchStart, false);
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener("touchend", handleTouchEnd, false);
+    document.addEventListener("touchcancel", handleTouchEnd, false);
+    slider.addEventListener("mousedown", mouseDownHandler, false);
+    document.addEventListener(
+      "portfolioSeoTablesStateChanged",
+      scheduleControlsPositionUpdate,
+    );
 
     updateSlider();
   }
@@ -2727,30 +2754,35 @@ const portfolioSeoSlider = () => {
 
     isInitialized = false;
     normalizeSlidesOrder();
-    slides = Array.from(slider.querySelectorAll(':scope > .portfolio-seo-card'));
-    slider.classList.remove('seo-wrapper--slider');
-    slider.style.transform = '';
+    slides = Array.from(
+      slider.querySelectorAll(":scope > .portfolio-seo-card"),
+    );
+    slider.classList.remove("seo-wrapper--slider");
+    slider.style.transform = "";
 
     slides.forEach((slide) => {
-      slide.classList.remove('active');
-      slide.style.minWidth = '';
-      slide.style.maxWidth = '';
-      slide.style.opacity = '';
-      slide.style.pointerEvents = '';
+      slide.classList.remove("active");
+      slide.style.minWidth = "";
+      slide.style.maxWidth = "";
+      slide.style.opacity = "";
+      slide.style.pointerEvents = "";
     });
 
     if (pagination) {
-      pagination.style.display = '';
+      pagination.style.display = "";
     }
 
-    block.querySelector('.portfolio-seo-slider-controls')?.remove();
+    block.querySelector(".portfolio-seo-slider-controls")?.remove();
 
-    slider.removeEventListener('touchstart', handleTouchStart);
-    document.removeEventListener('touchmove', handleTouchMove);
-    document.removeEventListener('touchend', handleTouchEnd);
-    document.removeEventListener('touchcancel', handleTouchEnd);
-    slider.removeEventListener('mousedown', mouseDownHandler);
-    document.removeEventListener('portfolioSeoTablesStateChanged', scheduleControlsPositionUpdate);
+    slider.removeEventListener("touchstart", handleTouchStart);
+    document.removeEventListener("touchmove", handleTouchMove);
+    document.removeEventListener("touchend", handleTouchEnd);
+    document.removeEventListener("touchcancel", handleTouchEnd);
+    slider.removeEventListener("mousedown", mouseDownHandler);
+    document.removeEventListener(
+      "portfolioSeoTablesStateChanged",
+      scheduleControlsPositionUpdate,
+    );
 
     delete slider.dataset.portfolioSeoSliderInitialized;
   }
@@ -2766,7 +2798,7 @@ const portfolioSeoSlider = () => {
 
   handleBreakpointChange();
 
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(handleBreakpointChange, 150);
   });
@@ -7143,12 +7175,28 @@ const seoAuditInit = () => {
       handleStandardRedirect(submitBtn, url);
     }
   });
+
+  if (form.dataset.autoRun === "true" && urlInput?.value.trim()) {
+    const url = normalizeAndValidateUrl();
+
+    if (url) {
+      urlInput.value = url;
+
+      const submitBtn = form.querySelector(
+        'button[type="submit"], input[type="submit"]',
+      );
+
+      handleAjaxRender(submitBtn, url);
+    }
+  }
 };
 
 // domain checker
 const domainCheker = () => {
   const form = document.getElementById("test-site-form");
   if (!form) return;
+
+  const isAjax = form.getAttribute("data-ajax") !== "false";
 
   const inputs = form.querySelectorAll("input, button");
   const domainInput = document.getElementById("domain-name-input");
@@ -7271,9 +7319,9 @@ const domainCheker = () => {
     const submitBtn = form.querySelector(
       'button[type="submit"], input[type="submit"]',
     );
-    showButtonLoader(submitBtn);
 
     let domain = domainInput.value.trim();
+
     if (!domain) {
       errorDiv.textContent = "Пожалуйста, введите домен";
       errorDiv.style.display = "block";
@@ -7282,6 +7330,13 @@ const domainCheker = () => {
       showFormFeedback(submitBtn, "Введите домен", "error");
       return;
     }
+
+    if (!isAjax) {
+      window.location.href = `/domain?domain=${encodeURIComponent(domain)}`;
+      return;
+    }
+
+    showButtonLoader(submitBtn);
 
     // Блокируем поля формы на время проверки
     inputs.forEach((input) => {
@@ -7358,22 +7413,54 @@ const domainCheker = () => {
       });
     }
   });
+
+  const params = new URLSearchParams(window.location.search);
+  const queryDomain = params.get("domain");
+
+  if (queryDomain && domainInput) {
+    domainInput.value = queryDomain;
+
+    setTimeout(() => {
+      form.dispatchEvent(
+        new Event("submit", {
+          cancelable: true,
+          bubbles: true,
+        }),
+      );
+
+      setTimeout(
+        () =>
+          resultsContainer?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          }),
+        200,
+      );
+    }, 100);
+  }
+
+  if (form.dataset.autoRun === "true" && domainInput?.value.trim()) {
+    form.dispatchEvent(
+      new Event("submit", { cancelable: true, bubbles: true }),
+    );
+  }
 };
 
 // Расчет упущенной выгоды
 
 const initPortfolioSeoTables = () => {
-  const wrapper = document.querySelector('.seo-wrapper');
-  const block = wrapper?.closest('.main-section') || wrapper?.parentElement;
+  const wrapper = document.querySelector(".seo-wrapper");
+  const block = wrapper?.closest(".main-section") || wrapper?.parentElement;
 
-  const getSectionIsOpen = () => wrapper?.classList.contains('table-is-open') || false;
+  const getSectionIsOpen = () =>
+    wrapper?.classList.contains("table-is-open") || false;
 
   const setToggleText = (card, isOpen) => {
-    const toggleButton = card?.querySelector('.seo-table__toggle-button');
-    const toggleText = card?.querySelector('.seo-table__toggle-text');
+    const toggleButton = card?.querySelector(".seo-table__toggle-button");
+    const toggleText = card?.querySelector(".seo-table__toggle-text");
 
     if (toggleText) {
-      toggleText.textContent = isOpen ? 'Скрыть позиции' : 'Показать позиции';
+      toggleText.textContent = isOpen ? "Скрыть позиции" : "Показать позиции";
       return;
     }
 
@@ -7384,28 +7471,30 @@ const initPortfolioSeoTables = () => {
     );
 
     if (textNode) {
-      textNode.textContent = isOpen ? 'Скрыть позиции ' : 'Показать позиции ';
+      textNode.textContent = isOpen ? "Скрыть позиции " : "Показать позиции ";
     }
   };
 
   const setAllTablesState = (isOpen) => {
-    wrapper?.classList.toggle('table-is-open', isOpen);
-    block?.classList.toggle('table-is-open', isOpen);
+    wrapper?.classList.toggle("table-is-open", isOpen);
+    block?.classList.toggle("table-is-open", isOpen);
 
-    document.querySelectorAll('.portfolio-seo-card').forEach((card) => {
-      const toggle = card.querySelector('.seo-table__toggle');
+    document.querySelectorAll(".portfolio-seo-card").forEach((card) => {
+      const toggle = card.querySelector(".seo-table__toggle");
 
       if (toggle) {
         toggle.checked = isOpen;
       }
 
-      card.classList.toggle('table-is-open', isOpen);
+      card.classList.toggle("table-is-open", isOpen);
       setToggleText(card, isOpen);
     });
 
-    document.dispatchEvent(new CustomEvent('portfolioSeoTablesStateChanged', {
-      detail: { isOpen },
-    }));
+    document.dispatchEvent(
+      new CustomEvent("portfolioSeoTablesStateChanged", {
+        detail: { isOpen },
+      }),
+    );
   };
 
   window.syncPortfolioSeoTables = () => {
@@ -7418,8 +7507,10 @@ const initPortfolioSeoTables = () => {
 
   window.portfolioSeoTablesInitialized = true;
 
-  document.addEventListener('change', (event) => {
-    const toggle = event.target.closest('.portfolio-seo-card .seo-table__toggle');
+  document.addEventListener("change", (event) => {
+    const toggle = event.target.closest(
+      ".portfolio-seo-card .seo-table__toggle",
+    );
 
     if (!toggle) return;
 
