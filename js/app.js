@@ -2032,9 +2032,13 @@ const portfolioCardsSlider = () => {
       controls = document.createElement("div");
       controls.className = "portfolio-slider-controls";
       controls.innerHTML = `
-        <button type="button" class="portfolio-slider-prev" aria-label="Предыдущий слайд"><svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.366116 8.32107C-0.122039 8.80923 -0.122039 9.60069 0.366117 10.0888L8.32107 18.0438C8.80923 18.5319 9.60069 18.5319 10.0888 18.0438C10.577 17.5556 10.577 16.7642 10.0888 16.276L3.01777 9.20496L10.0888 2.13388C10.577 1.64573 10.577 0.85427 10.0888 0.366115C9.60067 -0.12204 8.80922 -0.122039 8.32106 0.366117L0.366116 8.32107ZM2.25 9.20496L2.25 7.95496L1.25 7.95496L1.25 9.20496L1.25 10.455L2.25 10.455L2.25 9.20496Z" fill="currentColor"/></svg></button>
+        <button type="button" class="pagination--prev-btn portfolio-slider-prev" aria-label="Предыдущий слайд">
+          <i class="icon-shevrone left"></i>
+        </button>
         <div class="portfolio-slider-counter">1 / 1</div>
-        <button type="button" class="portfolio-slider-next" aria-label="Следующий слайд"><svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.0888 10.0888C10.577 9.60068 10.577 8.80923 10.0888 8.32107L2.13389 0.366121C1.64573 -0.122034 0.854277 -0.122034 0.366121 0.366121C-0.122034 0.854277 -0.122034 1.64573 0.366121 2.13389L7.43719 9.20496L0.366121 16.276C-0.122034 16.7642 -0.122034 17.5556 0.366121 18.0438C0.854277 18.5319 1.64573 18.5319 2.13389 18.0438L10.0888 10.0888ZM8.20496 9.20496V10.455H9.20496V9.20496V7.95496H8.20496V9.20496Z" fill="currentColor"/></svg></button>
+        <button type="button" class="pagination--next-btn portfolio-slider-next" aria-label="Следующий слайд">
+          <i class="icon-shevrone"></i>
+        </button>
       `;
 
       slider.after(controls);
@@ -2360,6 +2364,369 @@ const portfolioCardsSlider = () => {
     resizeTimer = setTimeout(() => {
       handleBreakpointChange();
     }, 150);
+  });
+};
+
+
+
+const portfolioSeoSlider = () => {
+  let isInitialized = false;
+  let resizeTimer = null;
+
+  const breakpoint = 1000;
+  const slider = document.querySelector('.seo-wrapper');
+
+  if (!slider || slider.dataset.portfolioSeoSliderInitialized === 'true') return;
+
+  const block = slider.closest('.main-section') || slider.parentElement;
+  let slides = Array.from(slider.querySelectorAll(':scope > .portfolio-seo-card'));
+  let currentIndex = 0;
+  let isAnimating = false;
+  let isDragging = false;
+  let isLoading = false;
+  let xDown = null;
+  let yDown = null;
+  let pos = { x: 0, y: 0 };
+  let lastSlideChange = 0;
+
+  const pagination = slider.querySelector('.pagination-panel, .pagination, .pagination-block, .pages');
+
+  const getNextUrl = (root = document) => {
+    const scope = root.querySelector('.seo-wrapper') || root;
+    const pagination = scope.querySelector('.pagination');
+
+    if (!pagination) return null;
+
+    const nextBtn = pagination.querySelector('.pagination--next-btn[href]');
+
+    if (nextBtn) {
+      return new URL(nextBtn.getAttribute('href'), window.location.origin).href;
+    }
+
+    const activeBtn = pagination.querySelector('.pagination--btn-num.highlight');
+
+    if (!activeBtn) return null;
+
+    const currentPage = Number(activeBtn.dataset.page);
+    const nextPage = currentPage + 1;
+    const nextPageBtn = pagination.querySelector(`.pagination--btn-num[data-page="${nextPage}"][href]`);
+
+    return nextPageBtn
+      ? new URL(nextPageBtn.getAttribute('href'), window.location.origin).href
+      : null;
+  };
+
+  let nextUrl = getNextUrl(document);
+
+  const getVisibleSlidesCount = () => 1;
+  const getGap = () => parseInt(window.getComputedStyle(slider).gap) || 0;
+
+  const getControls = () => {
+    let controls = block.querySelector('.portfolio-seo-slider-controls');
+
+    if (!controls) {
+      controls = document.createElement('div');
+      controls.className = 'portfolio-seo-slider-controls';
+      controls.innerHTML = `
+        <button type="button" class="portfolio-slider-prev" aria-label="Предыдущий слайд"><svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.366116 8.32107C-0.122039 8.80923 -0.122039 9.60069 0.366117 10.0888L8.32107 18.0438C8.80923 18.5319 9.60069 18.5319 10.0888 18.0438C10.577 17.5556 10.577 16.7642 10.0888 16.276L3.01777 9.20496L10.0888 2.13388C10.577 1.64573 10.577 0.85427 10.0888 0.366115C9.60067 -0.12204 8.80922 -0.122039 8.32106 0.366117L0.366116 8.32107ZM2.25 9.20496L2.25 7.95496L1.25 7.95496L1.25 9.20496L1.25 10.455L2.25 10.455L2.25 9.20496Z" fill="currentColor"/></svg></button>
+        <div class="portfolio-slider-counter">1 / 1</div>
+        <button type="button" class="portfolio-slider-next" aria-label="Следующий слайд"><svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.0888 10.0888C10.577 9.60068 10.577 8.80923 10.0888 8.32107L2.13389 0.366121C1.64573 -0.122034 0.854277 -0.122034 0.366121 0.366121C-0.122034 0.854277 -0.122034 1.64573 0.366121 2.13389L7.43719 9.20496L0.366121 16.276C-0.122034 16.7642 -0.122034 17.5556 0.366121 18.0438C0.854277 18.5319 1.64573 18.5319 2.13389 18.0438L10.0888 10.0888ZM8.20496 9.20496V10.455H9.20496V9.20496V7.95496H8.20496V9.20496Z" fill="currentColor"/></svg></button>
+      `;
+
+      slider.after(controls);
+
+      controls.querySelector('.portfolio-slider-prev').addEventListener('click', prevSlide);
+      controls.querySelector('.portfolio-slider-next').addEventListener('click', nextSlide);
+    }
+
+    return controls;
+  };
+
+  const getTotalSlidesCount = () => {
+    const totalFromData = Number(slider.dataset.totalCount || slider.dataset.total || slider.dataset.count);
+
+    if (Number.isFinite(totalFromData) && totalFromData > 0) {
+      return totalFromData;
+    }
+
+    return slides.length;
+  };
+
+  const updateCounter = () => {
+    const counter = getControls().querySelector('.portfolio-slider-counter');
+    counter.textContent = `${Math.min(currentIndex + 1, slides.length)} / ${getTotalSlidesCount()}`;
+  };
+
+  const updateActiveSlides = () => {
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+      slide.style.opacity = '0';
+    });
+
+    if (slides[currentIndex]) {
+      slides[currentIndex].classList.add('active');
+      slides[currentIndex].style.opacity = '1';
+    }
+  };
+
+  const updateButtons = () => {
+    const controls = getControls();
+    const prevBtn = controls.querySelector('.portfolio-slider-prev');
+    const nextBtn = controls.querySelector('.portfolio-slider-next');
+    const isLastSlide = currentIndex + getVisibleSlidesCount() >= slides.length;
+
+    prevBtn.style.opacity = currentIndex === 0 ? '0' : '1';
+    prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : '';
+    nextBtn.style.opacity = isLastSlide && !nextUrl ? '0' : '1';
+    nextBtn.style.pointerEvents = isLastSlide && !nextUrl ? 'none' : '';
+  };
+
+  const updateControlsPosition = () => {
+    const controls = getControls();
+    const prevBtn = controls.querySelector('.portfolio-slider-prev');
+    const nextBtn = controls.querySelector('.portfolio-slider-next');
+    const activeSlide = slides[currentIndex] || slider;
+    const slideRect = activeSlide.getBoundingClientRect();
+    const controlsRect = controls.getBoundingClientRect();
+    const top = slideRect.top - controlsRect.top + slideRect.height / 2;
+
+    prevBtn.style.top = `${top}px`;
+    nextBtn.style.top = `${top}px`;
+  };
+
+  const updateSlider = () => {
+    if (!isInitialized) return;
+
+    slides = Array.from(slider.querySelectorAll(':scope > .portfolio-seo-card'));
+
+    const visibleSlidesCount = getVisibleSlidesCount();
+    const gap = getGap();
+    const containerWidth = slider.parentElement.getBoundingClientRect().width;
+    const slideWidth = (containerWidth - gap * (visibleSlidesCount - 1)) / visibleSlidesCount;
+
+    slides.forEach((slide) => {
+      slide.style.minWidth = `${slideWidth}px`;
+      slide.style.maxWidth = `${slideWidth}px`;
+    });
+
+    const maxIndex = Math.max(slides.length - visibleSlidesCount, 0);
+    currentIndex = Math.min(currentIndex, maxIndex);
+    slider.style.transform = `translateX(-${(slideWidth + gap) * currentIndex}px)`;
+
+    updateActiveSlides();
+    updateCounter();
+    updateButtons();
+    updateControlsPosition();
+
+    if (currentIndex + visibleSlidesCount >= slides.length) {
+      loadMore();
+    }
+  };
+
+  async function loadMore() {
+    if (isLoading || !nextUrl) return;
+
+    isLoading = true;
+
+    try {
+      const response = await fetch(nextUrl, {
+        headers: {
+          'X-PJAX': 'true',
+          'X-PJAX-Container': '#porfolio-body-content',
+        },
+      });
+
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const nextWrapper = doc.querySelector('.seo-wrapper') || doc;
+      const newCards = nextWrapper.querySelectorAll(':scope > .portfolio-seo-card');
+
+      newCards.forEach((card) => slider.appendChild(card));
+      nextUrl = getNextUrl(doc);
+
+      initPortfolioSeoTables?.();
+      updateSlider();
+    } catch (err) {
+      console.warn('Portfolio SEO slider load more error:', err);
+    } finally {
+      isLoading = false;
+    }
+  }
+
+  function prevSlide() {
+    if (isAnimating || currentIndex === 0) return;
+
+    isAnimating = true;
+    currentIndex--;
+    updateSlider();
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 350);
+  }
+
+  function nextSlide() {
+    if (isAnimating) return;
+
+    if (currentIndex + getVisibleSlidesCount() >= slides.length) {
+      loadMore();
+      return;
+    }
+
+    isAnimating = true;
+    currentIndex++;
+    updateSlider();
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 350);
+  }
+
+  function handleTouchStart(evt) {
+    xDown = evt.touches[0].clientX;
+    yDown = evt.touches[0].clientY;
+    isDragging = false;
+  }
+
+  function handleTouchMove(evt) {
+    if (xDown === null || yDown === null || isDragging || isAnimating) return;
+
+    const xUp = evt.touches[0].clientX;
+    const yUp = evt.touches[0].clientY;
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 20) {
+      evt.preventDefault();
+      isDragging = true;
+
+      if (xDiff > 0) nextSlide();
+      else prevSlide();
+    }
+  }
+
+  function handleTouchEnd() {
+    xDown = null;
+    yDown = null;
+    isDragging = false;
+  }
+
+  function mouseDownHandler(e) {
+    if (e.target.closest('a, button, label, input, table')) return;
+
+    e.preventDefault();
+    pos = { x: e.clientX, y: e.clientY };
+
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+  }
+
+  function mouseMoveHandler(e) {
+    const currentTime = Date.now();
+    const dx = e.clientX - pos.x;
+    const dy = e.clientY - pos.y;
+
+    isDragging = true;
+
+    slides.forEach((slide) => {
+      slide.style.pointerEvents = 'none';
+    });
+
+    if (
+      Math.abs(dx) > Math.abs(dy) &&
+      Math.abs(dx) > 70 &&
+      currentTime - lastSlideChange > 300
+    ) {
+      e.preventDefault();
+
+      if (dx < 0) nextSlide();
+      else prevSlide();
+
+      lastSlideChange = currentTime;
+      pos.x = e.clientX;
+    }
+  }
+
+  function mouseUpHandler() {
+    isDragging = false;
+
+    slides.forEach((slide) => {
+      slide.style.pointerEvents = '';
+    });
+
+    document.removeEventListener('mousemove', mouseMoveHandler);
+    document.removeEventListener('mouseup', mouseUpHandler);
+  }
+
+  function init() {
+    if (isInitialized) {
+      updateSlider();
+      return;
+    }
+
+    isInitialized = true;
+    slider.dataset.portfolioSeoSliderInitialized = 'true';
+    slider.classList.add('seo-wrapper--slider');
+
+    if (pagination) {
+      pagination.style.display = 'none';
+    }
+
+    getControls();
+
+    slider.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchend', handleTouchEnd, false);
+    document.addEventListener('touchcancel', handleTouchEnd, false);
+    slider.addEventListener('mousedown', mouseDownHandler, false);
+
+    updateSlider();
+  }
+
+  function destroy() {
+    if (!isInitialized) return;
+
+    isInitialized = false;
+    slider.classList.remove('seo-wrapper--slider');
+    slider.style.transform = '';
+
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+      slide.style.minWidth = '';
+      slide.style.maxWidth = '';
+      slide.style.opacity = '';
+      slide.style.pointerEvents = '';
+    });
+
+    if (pagination) {
+      pagination.style.display = '';
+    }
+
+    block.querySelector('.portfolio-seo-slider-controls')?.remove();
+
+    slider.removeEventListener('touchstart', handleTouchStart);
+    document.removeEventListener('touchmove', handleTouchMove);
+    document.removeEventListener('touchend', handleTouchEnd);
+    document.removeEventListener('touchcancel', handleTouchEnd);
+    slider.removeEventListener('mousedown', mouseDownHandler);
+
+    delete slider.dataset.portfolioSeoSliderInitialized;
+  }
+
+  function handleBreakpointChange() {
+    if (window.innerWidth >= breakpoint) {
+      destroy();
+      return;
+    }
+
+    init();
+  }
+
+  handleBreakpointChange();
+
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(handleBreakpointChange, 150);
   });
 };
 
@@ -2733,6 +3100,7 @@ function sliderInitialize() {
   });
 
   portfolioCardsSlider();
+  portfolioSeoSlider();
 }
 
 // increment numbers
@@ -6953,30 +7321,42 @@ const domainCheker = () => {
 // Расчет упущенной выгоды
 
 const initPortfolioSeoTables = () => {
-  const cards = document.querySelectorAll(".portfolio-seo-card");
+  const updateTableState = (toggle) => {
+    const card = toggle.closest('.portfolio-seo-card');
+    const toggleButton = card?.querySelector('.seo-table__toggle-button');
+    const toggleText = card?.querySelector('.seo-table__toggle-text');
 
-  if (!cards.length) return;
+    if (!card) return;
 
-  cards.forEach((card) => {
-    const toggle = card.querySelector(".seo-table__toggle");
-    const toggleText = card.querySelector(".seo-table__toggle-text");
+    const isOpen = toggle.checked;
 
-    if (!toggle || toggle.dataset.portfolioSeoTableInitialized === "true") return;
+    card.classList.toggle('table-is-open', isOpen);
 
-    toggle.dataset.portfolioSeoTableInitialized = "true";
+    if (toggleText) {
+      toggleText.textContent = isOpen ? 'Скрыть позиции' : 'Показать позиции';
+    } else if (toggleButton) {
+      const textNode = Array.from(toggleButton.childNodes).find(
+        (node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim(),
+      );
 
-    const setTableState = () => {
-      const isOpen = toggle.checked;
-
-      card.classList.toggle("table-is-open", isOpen);
-
-      if (toggleText) {
-        toggleText.textContent = isOpen ? "Скрыть таблицу" : "Показать таблицу";
+      if (textNode) {
+        textNode.textContent = isOpen ? 'Скрыть позиции ' : 'Показать позиции ';
       }
-    };
+    }
+  };
 
-    setTableState();
-    toggle.addEventListener("change", setTableState);
+  document.querySelectorAll('.portfolio-seo-card .seo-table__toggle').forEach(updateTableState);
+
+  if (window.portfolioSeoTablesInitialized === true) return;
+
+  window.portfolioSeoTablesInitialized = true;
+
+  document.addEventListener('change', (event) => {
+    const toggle = event.target.closest('.portfolio-seo-card .seo-table__toggle');
+
+    if (!toggle) return;
+
+    updateTableState(toggle);
   });
 };
 
@@ -7799,6 +8179,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTabsToSelect();
   initBlogTabsToSelect();
   initPortfolioSeoTables();
+  portfolioSeoSlider();
 });
 
 // Запускаем инициализацию после полной загрузки DOM
@@ -7837,4 +8218,5 @@ document.addEventListener("pjax:end", () => {
   initBlogTabsToSelect();
   initMainAiTabs();
   initPortfolioSeoTables();
+  portfolioSeoSlider();
 });

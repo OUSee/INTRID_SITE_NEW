@@ -304,3 +304,61 @@
     }
   }
 }
+
+.seo-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 52px;
+
+  &--slider {
+    flex-direction: row;
+    gap: 24px;
+    transition: transform 0.35s ease-in-out;
+    will-change: transform;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    .portfolio-seo-card {
+      flex-shrink: 0;
+    }
+  }
+}
+
+.portfolio-seo-slider-controls {
+  position: relative;
+
+  .portfolio-slider-prev,
+    .portfolio-slider-next {
+      display: none;
+    }
+
+  @media (max-width: 899.98px) {
+    .portfolio-slider-prev,
+    .portfolio-slider-next {
+      position: absolute;
+      display: flex;
+      @include pagination-btn;
+      @include pagination-panel-btn;
+
+      & svg {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
+      }
+    }
+
+    .portfolio-slider-prev {
+      left: 0;
+      transform: translateX(-50%);
+    }
+
+    .portfolio-slider-next {
+      right: 0;
+      transform: translateX(50%);
+    }
+  }
+}
