@@ -14076,6 +14076,197 @@ main {
   }
 }
 
+/* Unified portfolio/SEO cards */
+.card--group .card-footer {
+  align-items: center;
+}
+.card--group .button-link--icon {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  justify-content: center;
+}
+.card--group .card-footer__chevron i {
+  display: inline-flex;
+  transform: rotate(90deg);
+}
+
+.seo-table__toggle-button i {
+  display: inline-flex;
+  transform: rotate(90deg);
+}
+
+.portfolio-seo-card {
+  align-items: stretch;
+  gap: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 24px;
+  max-height: 608px;
+  overflow: hidden;
+}
+.portfolio-seo-card .info-panel {
+  flex: 0 0 360px;
+  width: 360px;
+  padding: 24px 36px;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-main);
+  border: 1px solid var(--blue-bg);
+  border-radius: 24px 0 0 24px;
+  overflow: hidden;
+}
+.portfolio-seo-card .info-panel > .color-blue:first-child {
+  order: 1;
+  margin: 0;
+  color: var(--color-white);
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 700;
+  text-align: left;
+}
+.portfolio-seo-card .info-panel > .title_h5 {
+  order: 2;
+  margin: 2px 0 0;
+  color: var(--color-white);
+  text-align: left;
+}
+.portfolio-seo-card .info-panel > a {
+  order: 3;
+  max-width: 100%;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.portfolio-seo-card .info-panel .info-list {
+  order: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+  margin: 20px 0 0;
+  padding: 0;
+}
+.portfolio-seo-card .info-panel .info-list li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  min-height: 2em;
+  height: 4em;
+  margin: 0;
+}
+.portfolio-seo-card .info-panel .info-list li i,
+.portfolio-seo-card .info-panel .info-list li img {
+  display: flex;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  object-fit: contain;
+  color: var(--blue-main);
+  font-size: 32px;
+  line-height: 1;
+}
+.portfolio-seo-card .info-panel .info-list li p {
+  margin: 0;
+}
+.portfolio-seo-card .info-panel .info-list li .title_h5 {
+  margin-left: auto;
+  padding: 10px;
+  background-color: #031618;
+  border-radius: 10px;
+  color: var(--color-white);
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+.portfolio-seo-card .info-panel > .text-end {
+  order: 5;
+  margin-top: 20px;
+}
+.portfolio-seo-card .seo-table__actions {
+  order: 6;
+  display: none;
+  margin-top: auto;
+  padding-top: 16px;
+}
+.portfolio-seo-card .seo-table__toggle-button {
+  user-select: none;
+}
+.portfolio-seo-card .table-wrapper {
+  flex: 1 1 auto;
+  background-color: var(--bg-main);
+  border: 1px solid var(--blue-bg);
+  border-left: 0;
+  border-radius: 0 24px 24px 0;
+}
+@media (min-width: 900px) {
+  .portfolio-seo-card {
+    background-color: var(--bg-main);
+    border: 1px solid var(--blue-bg);
+  }
+  .portfolio-seo-card .info-panel {
+    border: 0;
+  }
+}
+
+@media (min-width: 1000px) {
+  .portfolio-seo-card .info-panel:hover {
+    z-index: 2;
+  }
+}
+@media (max-width: 899.98px) {
+  .portfolio-seo-card {
+    display: flex;
+    flex-direction: column;
+    max-height: unset;
+    overflow: visible;
+  }
+  .portfolio-seo-card.table-is-open .info-panel {
+    border-radius: 24px 24px 0 0;
+  }
+  .portfolio-seo-card .info-panel {
+    position: static;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+  .portfolio-seo-card .info-panel .info-list li .title_h5 {
+    font-size: 16px;
+  }
+  .portfolio-seo-card .seo-table__actions {
+    display: flex;
+  }
+  .portfolio-seo-card .table-wrapper {
+    height: auto;
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0 0 24px 24px;
+    transition: max-height 0.35s ease-in-out, margin-top 0.35s ease-in-out, border-width 0.35s ease-in-out, opacity 0.35s ease-in-out;
+  }
+  .portfolio-seo-card .seo-table__toggle:checked ~ .table-wrapper {
+    max-height: 500px;
+    margin-top: -12px;
+    opacity: 1;
+    overflow-y: auto;
+    border: 1px solid var(--blue-bg);
+    border-top: 0;
+  }
+  .portfolio-seo-card .seo-table__toggle:checked ~ .info-panel .seo-table__toggle-button i {
+    transform: rotate(-90deg);
+  }
+}
 .domain-table {
   width: 100%;
   outline: 1px solid var(--blue-main);

@@ -6951,6 +6951,35 @@ const domainCheker = () => {
 };
 
 // Расчет упущенной выгоды
+
+const initPortfolioSeoTables = () => {
+  const cards = document.querySelectorAll(".portfolio-seo-card");
+
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    const toggle = card.querySelector(".seo-table__toggle");
+    const toggleText = card.querySelector(".seo-table__toggle-text");
+
+    if (!toggle || toggle.dataset.portfolioSeoTableInitialized === "true") return;
+
+    toggle.dataset.portfolioSeoTableInitialized = "true";
+
+    const setTableState = () => {
+      const isOpen = toggle.checked;
+
+      card.classList.toggle("table-is-open", isOpen);
+
+      if (toggleText) {
+        toggleText.textContent = isOpen ? "Скрыть таблицу" : "Показать таблицу";
+      }
+    };
+
+    setTableState();
+    toggle.addEventListener("change", setTableState);
+  });
+};
+
 const lostProfitInit = () => {
   const form = document.getElementById("lost-profit-form");
   if (!form) return;
@@ -7769,6 +7798,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initTabsToSelect();
   initBlogTabsToSelect();
+  initPortfolioSeoTables();
 });
 
 // Запускаем инициализацию после полной загрузки DOM
@@ -7806,4 +7836,5 @@ document.addEventListener("pjax:end", () => {
   initTabsToSelect();
   initBlogTabsToSelect();
   initMainAiTabs();
+  initPortfolioSeoTables();
 });
