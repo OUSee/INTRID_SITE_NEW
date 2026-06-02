@@ -1948,6 +1948,11 @@ const tenderTablesInit = () => {
 
     setActiveColumn(initialColumn);
     updateMobilePriceRow(table, initialColumn);
+
+    window.addEventListener("resize", () => {
+      const activeColumn = getCheckedColumnIndex();
+      updateMobilePriceRow(table, activeColumn);
+    });
   });
 };
 
