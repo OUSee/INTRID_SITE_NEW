@@ -2391,7 +2391,19 @@ const portfolioSeoSlider = () => {
   let pos = { x: 0, y: 0 };
   let lastSlideChange = 0;
 
+  const getSliderPagination = () => slider.querySelector(':scope > .pagination-panel, :scope > .pagination, :scope > .pagination-block, :scope > .pages');
   const pagination = block.querySelector('.pagination-panel, .pagination, .pagination-block, .pages');
+
+  const normalizeSlidesOrder = () => {
+    const paginationInSlider = getSliderPagination();
+    const cards = Array.from(slider.querySelectorAll(':scope > .portfolio-seo-card'));
+
+    if (!paginationInSlider) return;
+
+    cards.forEach((card) => {
+      slider.insertBefore(card, paginationInSlider);
+    });
+  };
 
   const getNextUrl = (root = document) => {
     const wrapper = root.querySelector('.seo-wrapper');
@@ -2559,7 +2571,12 @@ const portfolioSeoSlider = () => {
       const nextWrapper = doc.querySelector('.seo-wrapper') || doc;
       const newCards = nextWrapper.querySelectorAll(':scope > .portfolio-seo-card');
 
-      newCards.forEach((card) => slider.appendChild(card));
+      const paginationInSlider = getSliderPagination();
+
+      newCards.forEach((card) => {
+        slider.insertBefore(card, paginationInSlider || null);
+      });
+
       nextUrl = getNextUrl(doc);
 
       initPortfolioSeoTables?.();
@@ -2709,6 +2726,8 @@ const portfolioSeoSlider = () => {
     if (!isInitialized) return;
 
     isInitialized = false;
+    normalizeSlidesOrder();
+    slides = Array.from(slider.querySelectorAll(':scope > .portfolio-seo-card'));
     slider.classList.remove('seo-wrapper--slider');
     slider.style.transform = '';
 
