@@ -344,10 +344,8 @@
       @include pagination-btn;
       @include pagination-panel-btn;
 
-      & svg {
-        width: 14px;
-        height: 14px;
-        object-fit: contain;
+      & i {
+        display: inline-flex;
       }
     }
 
@@ -360,5 +358,22 @@
       right: 0;
       transform: translateX(50%);
     }
+  }
+}
+
+@media (min-width: 900px) {
+  .seo-wrapper {
+    transform: none !important;
+
+    .portfolio-seo-card {
+      opacity: 1 !important;
+      min-width: 0 !important;
+      max-width: none !important;
+      pointer-events: auto !important;
+    }
+  }
+
+  .portfolio-seo-slider-controls {
+    display: none !important;
   }
 }

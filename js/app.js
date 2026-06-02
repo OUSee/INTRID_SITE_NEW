@@ -1961,7 +1961,7 @@ const portfolioCardsSlider = () => {
   let isInitialized = false;
   let resizeTimer = null;
 
-  const breakpoint = 1000;
+  const breakpoint = 900;
   const block = document.querySelector("#porfolio-body-content");
   const slider = block?.querySelector(".portfolio-block__cards");
 
@@ -2015,6 +2015,7 @@ const portfolioCardsSlider = () => {
       : null;
   };
 
+  const loadedSeoPortfolioUrls = new Set();
   let nextUrl = getNextUrl(document);
 
   const getVisibleSlidesCount = () => {
@@ -2147,8 +2148,9 @@ const portfolioCardsSlider = () => {
   };
 
   async function loadMore() {
-    if (isLoading || !nextUrl) return;
+    if (isLoading || !nextUrl || loadedSeoPortfolioUrls.has(nextUrl)) return;
 
+    loadedSeoPortfolioUrls.add(nextUrl);
     isLoading = true;
 
     try {
@@ -2373,7 +2375,7 @@ const portfolioSeoSlider = () => {
   let isInitialized = false;
   let resizeTimer = null;
 
-  const breakpoint = 1000;
+  const breakpoint = 900;
   const slider = document.querySelector('.seo-wrapper');
 
   if (!slider || slider.dataset.portfolioSeoSliderInitialized === 'true') return;
@@ -2389,11 +2391,12 @@ const portfolioSeoSlider = () => {
   let pos = { x: 0, y: 0 };
   let lastSlideChange = 0;
 
-  const pagination = slider.querySelector('.pagination-panel, .pagination, .pagination-block, .pages');
+  const pagination = block.querySelector('.pagination-panel, .pagination, .pagination-block, .pages');
 
   const getNextUrl = (root = document) => {
-    const scope = root.querySelector('.seo-wrapper') || root;
-    const pagination = scope.querySelector('.pagination');
+    const wrapper = root.querySelector('.seo-wrapper');
+    const scope = wrapper?.parentElement || root;
+    const pagination = scope.querySelector('.pagination') || root.querySelector('.pagination');
 
     if (!pagination) return null;
 
@@ -2416,6 +2419,7 @@ const portfolioSeoSlider = () => {
       : null;
   };
 
+  const loadedSeoUrls = new Set();
   let nextUrl = getNextUrl(document);
 
   const getVisibleSlidesCount = () => 1;
@@ -2428,9 +2432,9 @@ const portfolioSeoSlider = () => {
       controls = document.createElement('div');
       controls.className = 'portfolio-seo-slider-controls';
       controls.innerHTML = `
-        <button type="button" class="portfolio-slider-prev" aria-label="Предыдущий слайд"><svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.366116 8.32107C-0.122039 8.80923 -0.122039 9.60069 0.366117 10.0888L8.32107 18.0438C8.80923 18.5319 9.60069 18.5319 10.0888 18.0438C10.577 17.5556 10.577 16.7642 10.0888 16.276L3.01777 9.20496L10.0888 2.13388C10.577 1.64573 10.577 0.85427 10.0888 0.366115C9.60067 -0.12204 8.80922 -0.122039 8.32106 0.366117L0.366116 8.32107ZM2.25 9.20496L2.25 7.95496L1.25 7.95496L1.25 9.20496L1.25 10.455L2.25 10.455L2.25 9.20496Z" fill="currentColor"/></svg></button>
+        <button type="button" class="portfolio-slider-prev pagination--prev-btn" aria-label="Предыдущий слайд"><i class="icon-shevrone left"></i></button>
         <div class="portfolio-slider-counter">1 / 1</div>
-        <button type="button" class="portfolio-slider-next" aria-label="Следующий слайд"><svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.0888 10.0888C10.577 9.60068 10.577 8.80923 10.0888 8.32107L2.13389 0.366121C1.64573 -0.122034 0.854277 -0.122034 0.366121 0.366121C-0.122034 0.854277 -0.122034 1.64573 0.366121 2.13389L7.43719 9.20496L0.366121 16.276C-0.122034 16.7642 -0.122034 17.5556 0.366121 18.0438C0.854277 18.5319 1.64573 18.5319 2.13389 18.0438L10.0888 10.0888ZM8.20496 9.20496V10.455H9.20496V9.20496V7.95496H8.20496V9.20496Z" fill="currentColor"/></svg></button>
+        <button type="button" class="portfolio-slider-next pagination--next-btn" aria-label="Следующий слайд"><i class="icon-shevrone"></i></button>
       `;
 
       slider.after(controls);
@@ -2524,8 +2528,9 @@ const portfolioSeoSlider = () => {
   };
 
   async function loadMore() {
-    if (isLoading || !nextUrl) return;
+    if (isLoading || !nextUrl || loadedSeoUrls.has(nextUrl)) return;
 
+    loadedSeoUrls.add(nextUrl);
     isLoading = true;
 
     try {
