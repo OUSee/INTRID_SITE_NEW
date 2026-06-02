@@ -154,6 +154,16 @@ table {
 
     table {
       @include table-core-new;
+      
+      @media (max-width: 899.98px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 599.98px) {
+        th, td {
+          padding: 12px 4px !important;
+        }
+      }
 
       thead {
         position: sticky !important;
@@ -171,6 +181,10 @@ table {
             color: var(--blue-main) !important;
             font-weight: 700 !important;
             background: rgba(0, 234, 255, 0.08) !important;
+          }
+
+          &:not(:first-child) {
+            text-align: center !important;
           }
         }
       }
