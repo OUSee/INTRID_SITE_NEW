@@ -160,6 +160,16 @@ table {
     table {
       @include table-core-new;
 
+      thead {
+        position: sticky !important;
+        top: 0;
+        left: 0;
+
+        th {
+          background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
+        }
+      }
+
       tbody {
         td {
           &.color_td_PR {
