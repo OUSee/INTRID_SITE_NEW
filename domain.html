@@ -218,7 +218,7 @@
                     Стоимость регистрации домена
                 </h2>
 
-                <div class="flex-layout flex-lg-column gap-20 align-stretch mt-20">
+                <div class="flex-layout flex-lg-column gap-20 align-start align-lg-stretch mt-20">
                     <div class="left flex-1 gap-0">
                         <div class="table-block table--beauty table--wrap overflow-hidden h-100">
                             <table class="table table--noborder table--responsive h-100">
@@ -283,7 +283,8 @@
 
                         <div class="card thin overflow-visible">
                             <form action="/submit/domain" id="test-site-form"
-                                class="d-flex flex-row flex-sm-column align-stretch w-fill" method="get">
+                                class="d-flex flex-row flex-sm-column align-stretch w-fill" method="get"
+                                data-auto-run="true">
                                 <div class="recaptcha-wrapper" style="display: none;">
                                     <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
                                         data-size="invisible"></div>
@@ -298,115 +299,18 @@
                                 </button>
                             </form>
                         </div>
+
+                        <!-- Блок для вывода результата -->
+                        <div id="domain-result" class="info-msg mt-16 text-center" style="display: none;"></div>
+
+                        <!-- Прелоадер (показывается при запросе) -->
+                        <div class="preloader mt-16 text-center" id="domain-loader" style="display: none;">
+                        </div>
+
+                        <!-- Ошибка -->
+                        <div class="error-msg mt-16 text-center" id="domain-error" style="display: none;"></div>
                     </div>
                 </div>
-
-                <!-- Блок для вывода результата -->
-                <div id="domain-result" class="info-msg mt-16 text-center">
-                    <!-- Пример карточки регистрации домена -->
-                    <div class="card card--leaders minified mw-400 ml-auto mr-auto mt-32" id="domain-order">
-                        <p class="title_h4 text-center">
-                            Заказать домен notegram.io
-                        </p>
-                        <p class="text-center">
-                            Заполните форму, и мы подготовим индивидуальное предложение для вашего проекта!
-                        </p>
-
-                        <form id="form-domain" class="order-form ajax-form form-vertical kv-form-bs3"
-                            action="/submit/host-domain" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="_csrf-frontend"
-                                value="pjPek86zqiK0OzJPGtu4Aa31F_SqGFRJQV69PsCoUwPAcpfqhfn8Go11enxjnuA5xpxuweVKMB8OBuhJjMUGVg==">
-                            <div class="d-flex flex-column align-center gap-8">
-                                <!-- Контактное лицо -->
-                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
-
-                                <!-- E-mail -->
-                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
-
-                                <!-- Телефон с маской ввода цифр -->
-                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
-
-                                <!-- Блок тарифов хостинга -->
-                                <p class="mt-16 mb-8 text-center">
-                                    <b>
-                                        Дополнительные услуги для вашего домена:
-                                    </b>
-                                </p>
-
-                                <div class="toggle-line toggle-nice w-100">
-                                    <label class="label-checkbox" for="extra-server" data-select-option-index="0">
-                                        <input type="checkbox" id="extra-server" name="extra-server"
-                                            data-select-target="extra-hosting" data-select-option-index="0">
-                                    </label>
-
-                                    <div class="nice-wrapper nice-wrapper--simple">
-                                        <!-- Изменён select: name="type_hosting", id оставлен для совместимости с data-select-target -->
-                                        <select id="extra-hosting" name="type_hosting" class="isTextField"
-                                            data-display="Хостинг старт (150&nbsp;₽/в месяц)" data-price="0"
-                                            data-tooltip-prefix="extra-hosting">
-                                            <option value="start" data-price="1800">Хостинг старт (150&nbsp;₽/в месяц)
-                                            </option>
-                                            <option value="standart" data-price="3000">Хостинг стандарт (250&nbsp;₽/в
-                                                месяц)
-                                            </option>
-                                            <option value="virtual" data-price="6000">Виртуальный сервер / VDS
-                                                (600&nbsp;₽/в месяц)</option>
-                                        </select>
-                                    </div>
-                                    <span class="tooltip hidden" id="extra-hosting-1"
-                                        data-tooltip="4 Gb на диске, защита от спама, ежемесячный резервный бэкап">
-                                        <i class="icon-tooltip"></i>
-                                    </span>
-                                    <span class="tooltip hidden" id="extra-hosting-2"
-                                        data-tooltip="10 Gb на диске, защита от спама и вирусов, еженедельный резервный бэкап">
-                                        <i class="icon-tooltip"></i>
-                                    </span>
-                                    <span class="tooltip hidden" id="extra-hosting-3"
-                                        data-tooltip="25 Gb на диске, защита от спама и вирусов, еженедельный резервный бэкап">
-                                        <i class="icon-tooltip"></i>
-                                    </span>
-                                </div>
-
-                                <div class="d-flex align-start w-100">
-                                    <label class="label-checkbox" for="ssl">
-                                        <input type="checkbox" name="type_ssl" class="toggle-checkbox" value="ДА"
-                                            id="ssl">
-                                        <span>
-                                            Установка / настройка
-                                            <a href="/ssl" target="_blank" class="color-white">SSL-сертификата</a>
-                                        </span>
-                                    </label>
-                                </div>
-
-                                <!-- Согласие на обработку ПД -->
-                                <p class="testimonials text-center m-center mb-0">
-                                    Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
-                                        target="_blank">персональных&nbsp;данных</a> в соответствии с <a
-                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
-                                        target="_blank">ФЗ&nbsp;№152</a>
-                                </p>
-
-                                <!-- Скрытое поле с доменом -->
-                                <input type="hidden" name="domain-name" value="notegram.io" hidden="">
-
-                                <!-- Контейнер для сообщения об успехе -->
-                                <div class="form-status text-center mt-12"></div>
-
-                                <!-- Кнопка отправки -->
-                                <button type="submit" class="button big button-white w-100 mt-12">
-                                    Отправить
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Прелоадер (показывается при запросе) -->
-                <div class="preloader mt-16 text-center" id="domain-loader" style="display: none;">
-                </div>
-
-                <!-- Ошибка -->
-                <div class="error-msg mt-16 text-center" id="domain-error" style="display: none;"></div>
             </div>
         </section>
 
