@@ -2486,16 +2486,29 @@ const portfolioSeoSlider = () => {
   };
 
   const updateControlsPosition = () => {
+    if (!isInitialized) return;
+
     const controls = getControls();
     const prevBtn = controls.querySelector('.portfolio-slider-prev');
     const nextBtn = controls.querySelector('.portfolio-slider-next');
     const activeSlide = slides[currentIndex] || slider;
-    const slideRect = activeSlide.getBoundingClientRect();
+    const infoPanel = activeSlide.querySelector('.info-panel') || activeSlide;
+    const targetRect = infoPanel.getBoundingClientRect();
     const controlsRect = controls.getBoundingClientRect();
-    const top = slideRect.top - controlsRect.top + slideRect.height / 2;
+    const top = targetRect.top - controlsRect.top + targetRect.height / 2;
 
     prevBtn.style.top = `${top}px`;
     nextBtn.style.top = `${top}px`;
+  };
+
+  const scheduleControlsPositionUpdate = () => {
+    if (!isInitialized) return;
+
+    updateControlsPosition();
+    requestAnimationFrame(updateControlsPosition);
+    setTimeout(updateControlsPosition, 80);
+    setTimeout(updateControlsPosition, 180);
+    setTimeout(updateControlsPosition, 360);
   };
 
   const updateSlider = () => {
@@ -2550,6 +2563,9 @@ const portfolioSeoSlider = () => {
       nextUrl = getNextUrl(doc);
 
       initPortfolioSeoTables?.();
+      if (typeof window.syncPortfolioSeoTables === 'function') {
+        window.syncPortfolioSeoTables();
+      }
       updateSlider();
     } catch (err) {
       console.warn('Portfolio SEO slider load more error:', err);
@@ -2684,6 +2700,7 @@ const portfolioSeoSlider = () => {
     document.addEventListener('touchend', handleTouchEnd, false);
     document.addEventListener('touchcancel', handleTouchEnd, false);
     slider.addEventListener('mousedown', mouseDownHandler, false);
+    document.addEventListener('portfolioSeoTablesStateChanged', scheduleControlsPositionUpdate);
 
     updateSlider();
   }
@@ -2714,6 +2731,7 @@ const portfolioSeoSlider = () => {
     document.removeEventListener('touchend', handleTouchEnd);
     document.removeEventListener('touchcancel', handleTouchEnd);
     slider.removeEventListener('mousedown', mouseDownHandler);
+    document.removeEventListener('portfolioSeoTablesStateChanged', scheduleControlsPositionUpdate);
 
     delete slider.dataset.portfolioSeoSliderInitialized;
   }
@@ -7326,31 +7344,56 @@ const domainCheker = () => {
 // Расчет упущенной выгоды
 
 const initPortfolioSeoTables = () => {
-  const updateTableState = (toggle) => {
-    const card = toggle.closest('.portfolio-seo-card');
+  const wrapper = document.querySelector('.seo-wrapper');
+  const block = wrapper?.closest('.main-section') || wrapper?.parentElement;
+
+  const getSectionIsOpen = () => wrapper?.classList.contains('table-is-open') || false;
+
+  const setToggleText = (card, isOpen) => {
     const toggleButton = card?.querySelector('.seo-table__toggle-button');
     const toggleText = card?.querySelector('.seo-table__toggle-text');
 
-    if (!card) return;
-
-    const isOpen = toggle.checked;
-
-    card.classList.toggle('table-is-open', isOpen);
-
     if (toggleText) {
       toggleText.textContent = isOpen ? 'Скрыть позиции' : 'Показать позиции';
-    } else if (toggleButton) {
-      const textNode = Array.from(toggleButton.childNodes).find(
-        (node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim(),
-      );
+      return;
+    }
 
-      if (textNode) {
-        textNode.textContent = isOpen ? 'Скрыть позиции ' : 'Показать позиции ';
-      }
+    if (!toggleButton) return;
+
+    const textNode = Array.from(toggleButton.childNodes).find(
+      (node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim(),
+    );
+
+    if (textNode) {
+      textNode.textContent = isOpen ? 'Скрыть позиции ' : 'Показать позиции ';
     }
   };
 
-  document.querySelectorAll('.portfolio-seo-card .seo-table__toggle').forEach(updateTableState);
+  const setAllTablesState = (isOpen) => {
+    wrapper?.classList.toggle('table-is-open', isOpen);
+    block?.classList.toggle('table-is-open', isOpen);
+
+    document.querySelectorAll('.portfolio-seo-card').forEach((card) => {
+      const toggle = card.querySelector('.seo-table__toggle');
+
+      if (toggle) {
+        toggle.checked = isOpen;
+      }
+
+      card.classList.toggle('table-is-open', isOpen);
+      setToggleText(card, isOpen);
+    });
+
+    document.dispatchEvent(new CustomEvent('portfolioSeoTablesStateChanged', {
+      detail: { isOpen },
+    }));
+  };
+
+  window.syncPortfolioSeoTables = () => {
+    setAllTablesState(getSectionIsOpen());
+  };
+
+  window.syncPortfolioSeoTables();
 
   if (window.portfolioSeoTablesInitialized === true) return;
 
@@ -7361,7 +7404,7 @@ const initPortfolioSeoTables = () => {
 
     if (!toggle) return;
 
-    updateTableState(toggle);
+    setAllTablesState(toggle.checked);
   });
 };
 
