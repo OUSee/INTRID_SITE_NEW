@@ -14238,6 +14238,8 @@ main {
   }
   .portfolio-seo-card .seo-table__actions {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .portfolio-seo-card .table-wrapper {
     height: auto;
@@ -14365,11 +14367,9 @@ main {
   .portfolio-seo-slider-controls .portfolio-slider-next svg {
     display: flex;
   }
-  .portfolio-seo-slider-controls .portfolio-slider-prev svg,
-  .portfolio-seo-slider-controls .portfolio-slider-next svg {
-    width: 14px;
-    height: 14px;
-    object-fit: contain;
+  .portfolio-seo-slider-controls .portfolio-slider-prev i,
+  .portfolio-seo-slider-controls .portfolio-slider-next i {
+    display: inline-flex;
   }
   .portfolio-seo-slider-controls .portfolio-slider-prev {
     left: 0;
@@ -14381,6 +14381,20 @@ main {
   }
 }
 
+@media (min-width: 900px) {
+  .seo-wrapper {
+    transform: none !important;
+  }
+  .seo-wrapper .portfolio-seo-card {
+    opacity: 1 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    pointer-events: auto !important;
+  }
+  .portfolio-seo-slider-controls {
+    display: none !important;
+  }
+}
 .domain-table {
   width: 100%;
   outline: 1px solid var(--blue-main);
