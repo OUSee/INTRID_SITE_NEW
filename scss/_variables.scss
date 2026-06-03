@@ -950,12 +950,16 @@ ol {
 
   &--cooperate {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     // display: flex;
     // flex-direction: row;
     // justify-content: space-between;
     gap: 12px;
     padding: 0;
+
+    @media (max-width: 1199.98px) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
 
     @media (max-width: 999.98px) {
       //   flex-wrap: wrap;

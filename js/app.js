@@ -3169,7 +3169,7 @@ function sliderInitialize() {
     try {
       tabSliderWithPagination(slider.id);
     } catch (err) {
-      console.warn("=> err setting slider ", slider.id, ":", err);
+      // console.warn("=> err setting slider ", slider.id, ":", err);
     }
   });
 
