@@ -70,9 +70,9 @@ $tab-main-count: 3;
   &#testimonials-slider {
     width: 100%;
 
-    @media (max-width: 599.98px) {
-      padding: 0 12px;
-    }
+    // @media (max-width: 599.98px) {
+    //   padding: 0 12px;
+    // }
 
     & > * {
       flex: 1 1 0%;
@@ -165,7 +165,10 @@ $tab-main-count: 3;
   &#portfolio-web-slider,
   &#portfolio-corporate-slider,
   &#portfolio-shop-slider,
-  &#noncommercial-slider {
+  &#noncommercial-slider,
+  &#tender-portals-sites-slider,
+  &#internet-shop-sites-slider,
+  &#corporate-sites-slider {
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -1025,9 +1028,12 @@ ol {
 
     &.slim {
       flex-wrap: wrap;
-      gap: 40px;
       margin: 0;
       padding: 0;
+
+      @media (min-width: 1000px) {
+        gap: 40px;
+      }
 
       & li {
         // flex: 1 0 calc(50% - 20px);
@@ -1104,7 +1110,8 @@ ol {
             max-width: calc(50% - 16px);
           }
 
-          @media (max-width: 575.98px) {
+          @media (max-width: 599.98px) {
+            align-items: center;
             flex: 1 0 auto;
             max-width: 100%;
           }
