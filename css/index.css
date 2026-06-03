@@ -7988,6 +7988,9 @@ button:disabled, button.disabled,
 .card--leaders {
   background-color: var(--blue-tag);
 }
+.card--leaders:not(.bg-color-black) {
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) var(--blue-light-bg);
+}
 .card--leaders img {
   width: 148px;
   margin: auto;
@@ -13284,7 +13287,7 @@ main {
   }
 }
 .total.active {
-  background-color: var(--blue-tag);
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) var(--blue-light-bg);
 }
 .total.active .total-top {
   position: absolute;

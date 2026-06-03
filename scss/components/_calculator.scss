@@ -168,7 +168,13 @@
   }
 
   &.active {
-    background-color: var(--blue-tag);
+    // background-color: var(--blue-tag);
+    background: linear-gradient(
+          180deg,
+          var(--blue-clouds) 0%,
+          var(--blue-tag) 100%
+        )
+        var(--blue-light-bg);
 
     & .total-top {
       position: absolute;

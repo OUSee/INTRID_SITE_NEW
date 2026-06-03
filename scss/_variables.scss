@@ -5038,6 +5038,15 @@ button:hover,
   &--leaders {
     background-color: var(--blue-tag);
 
+    &:not(.bg-color-black) {
+      background: linear-gradient(
+          180deg,
+          var(--blue-clouds) 0%,
+          var(--blue-tag) 100%
+        )
+        var(--blue-light-bg);
+    }
+
     & img {
       width: 148px;
       margin: auto;
