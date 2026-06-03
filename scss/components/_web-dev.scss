@@ -266,15 +266,15 @@
 
         .tender-text {
           position: relative;
-          width: 400px;
-          height: 400px;
+          width: 432px;
+          height: 432px;
           padding: 70px;
           background-color: var(--blue-main);
           color: var(--bg-main);
           border-radius: 50%;
           z-index: 2;
-          top: -80px;
-          left: -80px;
+          top: -94px;
+          left: -94px;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -327,6 +327,23 @@
         }
       }
 
+      @media (max-width: 1299.98px) {
+        .benefits-right {
+          margin-right: 0;
+        }
+
+        .benefits-left {
+          margin-left: 0;
+        }
+      }
+
+      @media (min-width: 1200px) and (max-width: 1299.98px) {
+        .benefits-left,
+        .benefits-right {
+          max-width: 332px;
+        }
+      }
+
       @media (max-width: 1199.98px) {
         padding: 0px;
       }
@@ -339,9 +356,11 @@
           }
         }
         & ul.content-hidden {
+          padding: 0;
+
           @media (max-width: 1199.98px) {
             margin-top: 20px;
-            margin-left: -44px;
+            // margin-left: -44px;
           }
         }
       }
@@ -363,7 +382,6 @@
       }
 
       // Tender table visual and interaction styles live in components/_tables-new.scss.
-
     }
   }
 }
