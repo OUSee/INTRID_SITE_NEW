@@ -390,7 +390,7 @@
   position: relative;
   margin-bottom: 340px;
 
-  @media (max-width: 999.98px) {
+  @media (max-width: 1199.98px) {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -456,9 +456,23 @@
     }
   }
 
+  & .benefits {
+    &-left,
+    &-right {
+      @media (min-width: 1200px) {
+        margin-top: 20px;
+      }
+    }
+  }
+
   & .benefit-card {
-    @media (min-width: 1208px) {
+    @media (min-width: 1200px) {
+      align-items: flex-start;
       border-radius: 32px;
+    }
+
+    @media (max-width: 1199.98px) {
+      @include card-mobile-unified;
     }
   }
 }
@@ -528,7 +542,8 @@
   gap: 32px;
   max-width: 380px;
   align-items: center;
-  min-height: 150px;
+  min-height: 132px;
+  // min-height: 150px;
   cursor: pointer;
   transition: 0.25s ease-in-out;
 

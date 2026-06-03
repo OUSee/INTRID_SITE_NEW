@@ -41,6 +41,8 @@
             width: 100%;
             max-width: unset;
             margin: 0;
+
+            @include card-mobile-unified;
           }
         }
       }
@@ -78,9 +80,9 @@
       cursor: default;
 
       &:has(input:checked) {
-        img {
-          filter: brightness(0.3);
-        }
+        // img {
+        //   filter: brightness(0.3);
+        // }
 
         &::before {
           background-color: var(--blue-main);
@@ -109,6 +111,11 @@
       img {
         width: 34px;
         height: 34px;
+
+        @media (max-width: 999.98px) {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
 
