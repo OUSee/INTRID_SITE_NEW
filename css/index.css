@@ -10773,7 +10773,6 @@ main {
   background-color: var(--blue-bg);
   border-top: 2px solid;
   border-color: var(--bg-main);
-  border-bottom-color: var(--blue-main);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   overflow: hidden;
@@ -10856,6 +10855,26 @@ main {
     color: var(--bg-main);
     background: var(--blue-main);
   }
+}
+.nav-tabs--tender .nav-tabs--buttons > * {
+  color: var(--color-white);
+  background: var(--blue-bg);
+}
+@media (min-width: 1000px) {
+  .nav-tabs--tender .nav-tabs--buttons > *:hover {
+    background: color-mix(in srgb, var(--blue-main) 25%, transparent);
+  }
+}
+.nav-tabs--tender .nav-tabs--buttons > *:has(:checked), .nav-tabs--tender .nav-tabs--buttons > *.active {
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) var(--blue-light-bg) !important;
+  color: var(--color-white);
+}
+.nav-tabs--tender .nav-tabs--buttons > *:has(:checked) img, .nav-tabs--tender .nav-tabs--buttons > *.active img {
+  filter: invert(1) grayscale(1) brightness(10);
+}
+.nav-tabs--tender .nav-tabs--buttons > *:has(:checked) .tooltip, .nav-tabs--tender .nav-tabs--buttons > *.active .tooltip {
+  filter: invert(1) grayscale(1) brightness(5);
+  mix-blend-mode: color-dodge;
 }
 .nav-tabs--tender .nav-tabs--buttons > * {
   flex: 1 1 0%;
