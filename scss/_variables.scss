@@ -1087,6 +1087,30 @@ ol {
         }
       }
     }
+
+    &.flexible {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      &.wide {
+        justify-content: center;
+
+        & li {
+          flex: 1 1 0%;
+
+          @media (max-width: 999.98px) {
+            flex: 1 0 calc(50% - 16px);
+            max-width: calc(50% - 16px);
+          }
+
+          @media (max-width: 575.98px) {
+            flex: 1 0 auto;
+            max-width: 100%;
+          }
+        }
+      }
+    }
   }
 
   &--ai {
@@ -2387,7 +2411,6 @@ form {
 
 // Table visual styles moved to components/_tables-new.scss.
 // Keep page-specific table wrappers/modifiers there to avoid duplicate CSS.
-
 
 .article {
   &-navigation {

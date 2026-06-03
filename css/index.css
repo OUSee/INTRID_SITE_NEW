@@ -3417,6 +3417,29 @@ ol li > ol {
 .list--cooperate.column li p {
   max-width: 100%;
 }
+.list--cooperate.flexible {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.list--cooperate.flexible.wide {
+  justify-content: center;
+}
+.list--cooperate.flexible.wide li {
+  flex: 1 1 0%;
+}
+@media (max-width: 999.98px) {
+  .list--cooperate.flexible.wide li {
+    flex: 1 0 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+  }
+}
+@media (max-width: 575.98px) {
+  .list--cooperate.flexible.wide li {
+    flex: 1 0 auto;
+    max-width: 100%;
+  }
+}
 .list--ai {
   display: flex;
   flex-direction: column;
