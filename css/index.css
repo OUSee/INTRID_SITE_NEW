@@ -3245,7 +3245,6 @@ ul.generic-list > li::marker {
 
 ul,
 ol {
-  margin: 0;
   padding: 0;
   padding-left: 16px;
 }
@@ -12799,7 +12798,7 @@ main {
 
 .cases-counts {
   flex-basis: 20%;
-  padding: 32px 44px;
+  padding: 32px 44px 20px;
   border-radius: 40px;
   background-color: var(--bg-main);
   display: flex;
@@ -16564,6 +16563,27 @@ table th {
   background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
   box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag);
 }
+.tender-table--price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+@media (max-width: 899.98px) {
+  .tender-table--price {
+    flex-direction: row;
+  }
+}
+.tender-table--price > *:is([class^=button]) {
+  width: 100%;
+}
+@media (max-width: 899.98px) {
+  .tender-table--price > *:is([class^=button]) {
+    width: 60%;
+    max-width: 240px;
+  }
+}
 .tender-table:has(thead th:nth-child(2) input:checked) tbody td:nth-child(2) {
   background: rgba(0, 234, 255, 0.12);
   box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
@@ -16717,25 +16737,4 @@ table th {
   .table-block:has(.tender-table) {
     overflow: visible;
   }
-}
-/* Domain tables */
-.domain-table {
-  outline: 1px solid var(--blue-main);
-  background-color: var(--blue-bg);
-}
-.domain-table tr {
-  border-bottom: 1px solid var(--blue-main);
-}
-.domain-table tr:last-child {
-  border-bottom: 0;
-}
-.domain-table td:not(:first-child),
-.domain-table th:not(:first-child) {
-  border-left: 1px solid var(--blue-main);
-}
-.domain-table tbody td {
-  background-color: var(--bg-main);
-}
-.domain-table.start tr {
-  vertical-align: top;
 }
