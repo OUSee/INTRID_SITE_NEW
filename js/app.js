@@ -1886,7 +1886,7 @@ const tenderTablesInit = () => {
 
       const activeCell = cells[activeIndex];
 
-      if (activeCell && window.innerWidth < 1000) {
+      if (activeCell && window.innerWidth < 900) {
         activeCell.setAttribute("colspan", "2");
       }
     };

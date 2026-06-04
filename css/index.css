@@ -6212,6 +6212,22 @@ button i.icon-arrow_wide,
   font-size: 1.4em;
   line-height: 14px;
 }
+button.small,
+.button.small,
+.button-link.small,
+.button-highlight.small {
+  min-height: 44px;
+  padding: 8px 16px;
+  line-height: 1.2;
+}
+button.small i.icon-arrow_wide,
+.button.small i.icon-arrow_wide,
+.button-link.small i.icon-arrow_wide,
+.button-highlight.small i.icon-arrow_wide {
+  font-size: 1.2em;
+  line-height: 1.2;
+  margin-left: 2px;
+}
 button.big i.icon-arrow_wide,
 .button.big i.icon-arrow_wide,
 .button-link.big i.icon-arrow_wide,
@@ -16390,6 +16406,12 @@ table {
   table-layout: auto;
   background: transparent;
   color: var(--color-grey);
+  border-radius: 18px;
+}
+@media (max-width: 999.98px) {
+  table {
+    border-radius: 12px;
+  }
 }
 table thead {
   position: static;
@@ -16470,9 +16492,12 @@ table th {
     border-radius: 12px;
   }
 }
+.seo-table table {
+  font-size: 14px;
+}
 @media (max-width: 899.98px) {
   .seo-table table {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 @media (max-width: 599.98px) {
@@ -16501,19 +16526,6 @@ table th {
 }
 
 /* Tender price tables */
-.table-block:has(.tender-table) {
-  border: 1px solid var(--blue-clouds);
-  border-radius: 18px;
-  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%);
-  box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  overflow: auto;
-}
-@media (max-width: 999.98px) {
-  .table-block:has(.tender-table) {
-    border-radius: 12px;
-  }
-}
-
 .tender-table th:not(:first-child),
 .tender-table td:not(:first-child) {
   cursor: pointer;
@@ -16552,17 +16564,7 @@ table th {
   background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
   box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag);
 }
-.tender-table tbody td.is-active {
-  color: var(--color-white);
-  background: rgba(0, 234, 255, 0.12);
-  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
-}
-.tender-table tbody tr:last-child td.is-active {
-  color: var(--color-white);
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
-}
 .tender-table:has(thead th:nth-child(2) input:checked) tbody td:nth-child(2) {
-  color: var(--color-white);
   background: rgba(0, 234, 255, 0.12);
   box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
 }
@@ -16571,7 +16573,6 @@ table th {
   background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
 }
 .tender-table:has(thead th:nth-child(3) input:checked) tbody td:nth-child(3) {
-  color: var(--color-white);
   background: rgba(0, 234, 255, 0.12);
   box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
 }
@@ -16580,29 +16581,10 @@ table th {
   background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
 }
 .tender-table:has(thead th:nth-child(4) input:checked) tbody td:nth-child(4) {
-  color: var(--color-white);
   background: rgba(0, 234, 255, 0.12);
   box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
 }
 .tender-table:has(thead th:nth-child(4) input:checked) tbody tr:last-child td:nth-child(4) {
-  color: var(--color-white);
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
-}
-.tender-table:has(thead th:nth-child(5) input:checked) tbody td:nth-child(5) {
-  color: var(--color-white);
-  background: rgba(0, 234, 255, 0.12);
-  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
-}
-.tender-table:has(thead th:nth-child(5) input:checked) tbody tr:last-child td:nth-child(5) {
-  color: var(--color-white);
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
-}
-.tender-table:has(thead th:nth-child(6) input:checked) tbody td:nth-child(6) {
-  color: var(--color-white);
-  background: rgba(0, 234, 255, 0.12);
-  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
-}
-.tender-table:has(thead th:nth-child(6) input:checked) tbody tr:last-child td:nth-child(6) {
   color: var(--color-white);
   background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
 }
@@ -16648,7 +16630,7 @@ table th {
     align-items: center;
     justify-content: center;
     min-height: 44px;
-    padding: 10px 16px;
+    padding: 10px 4px;
     border: 1px solid rgba(0, 234, 255, 0.18);
     background: rgba(255, 255, 255, 0.035);
     color: var(--color-grey);
@@ -16694,23 +16676,12 @@ table th {
   .tender-table tbody tr:last-child td:first-child {
     display: none;
   }
-  .tender-table tbody tr:last-child td.is-active {
-    display: table-cell;
-    width: 100%;
-    text-align: center;
-  }
-  .tender-table[data-active-column="2"] tbody tr td:nth-child(2), .tender-table:has(thead th:nth-child(2) input:checked) tbody tr td:nth-child(2) {
-    display: table-cell;
-  }
   .tender-table[data-active-column="2"] tbody tr:last-child, .tender-table:has(thead th:nth-child(2) input:checked) tbody tr:last-child {
     background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
   }
   .tender-table[data-active-column="2"] tbody tr:last-child td:nth-child(2), .tender-table:has(thead th:nth-child(2) input:checked) tbody tr:last-child td:nth-child(2) {
     display: table-cell;
     width: 100%;
-  }
-  .tender-table[data-active-column="3"] tbody tr td:nth-child(3), .tender-table:has(thead th:nth-child(3) input:checked) tbody tr td:nth-child(3) {
-    display: table-cell;
   }
   .tender-table[data-active-column="3"] tbody tr:last-child, .tender-table:has(thead th:nth-child(3) input:checked) tbody tr:last-child {
     background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
@@ -16719,9 +16690,6 @@ table th {
     display: table-cell;
     width: 100%;
   }
-  .tender-table[data-active-column="4"] tbody tr td:nth-child(4), .tender-table:has(thead th:nth-child(4) input:checked) tbody tr td:nth-child(4) {
-    display: table-cell;
-  }
   .tender-table[data-active-column="4"] tbody tr:last-child, .tender-table:has(thead th:nth-child(4) input:checked) tbody tr:last-child {
     background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
   }
@@ -16729,18 +16697,12 @@ table th {
     display: table-cell;
     width: 100%;
   }
-  .tender-table[data-active-column="5"] tbody tr td:nth-child(5), .tender-table:has(thead th:nth-child(5) input:checked) tbody tr td:nth-child(5) {
-    display: table-cell;
-  }
   .tender-table[data-active-column="5"] tbody tr:last-child, .tender-table:has(thead th:nth-child(5) input:checked) tbody tr:last-child {
     background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
   }
   .tender-table[data-active-column="5"] tbody tr:last-child td:nth-child(5), .tender-table:has(thead th:nth-child(5) input:checked) tbody tr:last-child td:nth-child(5) {
     display: table-cell;
     width: 100%;
-  }
-  .tender-table[data-active-column="6"] tbody tr td:nth-child(6), .tender-table:has(thead th:nth-child(6) input:checked) tbody tr td:nth-child(6) {
-    display: table-cell;
   }
   .tender-table[data-active-column="6"] tbody tr:last-child, .tender-table:has(thead th:nth-child(6) input:checked) tbody tr:last-child {
     background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);

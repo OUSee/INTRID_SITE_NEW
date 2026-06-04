@@ -20,6 +20,11 @@
   table-layout: auto;
   background: transparent;
   color: var(--color-grey);
+  border-radius: 18px;
+
+  @media (max-width: 999.98px) {
+    border-radius: 12px;
+  }
 
   thead {
     position: static;
@@ -29,7 +34,11 @@
 
     tr {
       border: 0;
-      background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%);
+      background: linear-gradient(
+        180deg,
+        var(--blue-light-bg) 0%,
+        var(--blue-bg) 100%
+      );
     }
   }
 
@@ -121,8 +130,10 @@ table {
   }
 
   table {
+    font-size: 14px;
+
     @media (max-width: 899.98px) {
-      font-size: 14px;
+      font-size: 13px;
     }
 
     @media (max-width: 599.98px) {
@@ -141,7 +152,11 @@ table {
     z-index: 1;
 
     th {
-      background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%);
+      background: linear-gradient(
+        180deg,
+        var(--blue-light-bg) 0%,
+        var(--blue-bg) 100%
+      );
     }
   }
 
@@ -159,10 +174,6 @@ table {
 }
 
 /* Tender price tables */
-.table-block:has(.tender-table) {
-  @include table-shell;
-}
-
 .tender-table {
   th:not(:first-child),
   td:not(:first-child) {
@@ -209,30 +220,34 @@ table {
   th.is-active,
   &:has(thead input:checked) th:has(input:checked) {
     color: var(--color-white);
-    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
+    background: linear-gradient(
+      180deg,
+      var(--blue-clouds) 0%,
+      var(--blue-tag) 100%
+    );
     box-shadow:
       inset 1px 0 0 var(--blue-tag),
       inset -1px 0 0 var(--blue-tag);
   }
 
-  tbody td.is-active {
-    color: var(--color-white);
-    background: rgba(0, 234, 255, 0.12);
-    box-shadow:
-      inset 1px 0 0 var(--blue-light-bg),
-      inset -1px 0 0 var(--blue-light-bg);
-  }
+  // tbody td.is-active {
+  //   color: var(--color-white);
+  //   background: rgba(0, 234, 255, 0.12);
+  //   box-shadow:
+  //     inset 1px 0 0 var(--blue-light-bg),
+  //     inset -1px 0 0 var(--blue-light-bg);
+  // }
 
-  tbody tr:last-child td.is-active {
-    color: var(--color-white);
-    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
-  }
+  // tbody tr:last-child td.is-active {
+  //   color: var(--color-white);
+  //   background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
+  // }
 
-  @for $column from 2 through 6 {
+  @for $column from 2 through 4 {
     &:has(thead th:nth-child(#{$column}) input:checked) {
       tbody {
         td:nth-child(#{$column}) {
-          color: var(--color-white);
+          // color: var(--color-white);
           background: rgba(0, 234, 255, 0.12);
           box-shadow:
             inset 1px 0 0 var(--blue-light-bg),
@@ -241,7 +256,11 @@ table {
 
         tr:last-child td:nth-child(#{$column}) {
           color: var(--color-white);
-          background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
+          background: linear-gradient(
+            180deg,
+            var(--blue-clouds) 0%,
+            var(--blue-tag) 100%
+          );
         }
       }
     }
@@ -291,7 +310,7 @@ table {
           align-items: center;
           justify-content: center;
           min-height: 44px;
-          padding: 10px 16px;
+          padding: 10px 4px;
           border: 1px solid rgba(0, 234, 255, 0.18);
           background: rgba(255, 255, 255, 0.035);
           color: var(--color-grey);
@@ -302,7 +321,11 @@ table {
         &:has(input[type="radio"]:checked) label {
           border-color: var(--blue-tag);
           color: var(--color-white);
-          background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
+          background: linear-gradient(
+            180deg,
+            var(--blue-clouds) 0%,
+            var(--blue-tag) 100%
+          );
           box-shadow: 0 10px 24px rgba(0, 234, 255, 0.16);
         }
       }
@@ -347,11 +370,11 @@ table {
             display: none;
           }
 
-          td.is-active {
-            display: table-cell;
-            width: 100%;
-            text-align: center;
-          }
+          // td.is-active {
+          //   display: table-cell;
+          //   width: 100%;
+          //   text-align: center;
+          // }
         }
       }
     }
@@ -360,12 +383,17 @@ table {
       &[data-active-column="#{$column}"],
       &:has(thead th:nth-child(#{$column}) input:checked) {
         tbody tr {
-          td:nth-child(#{$column}) {
-            display: table-cell;
-          }
+          // td:nth-child(#{$column}) {
+          //   display: table-cell;
+          // }
 
           &:last-child {
-            background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
+            background: linear-gradient(
+                180deg,
+                var(--blue-clouds) 0%,
+                var(--bg-main) 100%
+              )
+              var(--bg-main);
 
             td:nth-child(#{$column}) {
               display: table-cell;
