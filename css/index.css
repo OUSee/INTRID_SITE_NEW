@@ -590,6 +590,16 @@ th {
     transform: scale(1, 1);
   }
 }
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
 @keyframes flex-appear {
   0% {
     display: flex;
@@ -16553,6 +16563,9 @@ table th {
 .tender-table label input {
   display: none;
 }
+.tender-table tbody {
+  animation: none;
+}
 .tender-table tbody tr:not(:last-child) td:not(:first-child):not(.nothing) {
   color: var(--blue-main);
 }
@@ -16571,7 +16584,11 @@ table th {
 .tender-table th.is-active, .tender-table:has(thead input:checked) th:has(input:checked) {
   color: var(--color-white);
   background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
-  box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag);
+}
+@media (min-width: 900px) {
+  .tender-table th.is-active, .tender-table:has(thead input:checked) th:has(input:checked) {
+    box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag);
+  }
 }
 .tender-table--price {
   display: flex;
@@ -16803,27 +16820,41 @@ table th {
     table-layout: fixed;
   }
   .tender-table thead {
+    position: relative;
     display: block;
     width: 100%;
     overflow: visible;
+    border: 0;
+    border-radius: 0;
     background: transparent;
+    box-shadow: none;
+  }
+  .tender-table thead::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-main);
+    mix-blend-mode: overlay;
   }
   .tender-table thead tr {
     display: flex;
+    gap: 8px;
     width: 100%;
-    overflow-x: auto;
+    overflow: visible;
+    border-radius: 0;
     background: transparent;
-    scrollbar-width: none;
-  }
-  .tender-table thead tr::-webkit-scrollbar {
-    display: none;
   }
   .tender-table thead th {
     display: block;
-    flex: 1;
+    flex: 1 1 0;
+    min-width: 0;
     width: auto;
     padding: 0;
     border: 0;
+    border-right: 1px solid rgba(0, 234, 255, 0.18);
     background: transparent;
     box-shadow: none;
     text-align: center;
@@ -16831,22 +16862,43 @@ table th {
   .tender-table thead th:first-child {
     display: none;
   }
+  .tender-table thead th:last-child {
+    border-right: 0;
+  }
   .tender-table thead th label {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 44px;
     padding: 10px 4px;
     border: 1px solid rgba(0, 234, 255, 0.18);
+    border-bottom: 0;
     background: rgba(255, 255, 255, 0.035);
+    border-radius: 12px 12px 0 0;
     color: var(--color-grey);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
     white-space: nowrap;
+    box-shadow: none;
+    text-shadow: none;
+    transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
+}
+@media (max-width: 899.98px) and (max-width: 419.98px) {
+  .tender-table thead th label {
+    font-size: 12px;
+  }
+}
+@media (max-width: 899.98px) {
   .tender-table thead th.is-active label, .tender-table thead th:has(input[type=radio]:checked) label {
+    z-index: 1;
     border-color: var(--blue-tag);
     color: var(--color-white);
     background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
-    box-shadow: 0 10px 24px rgba(0, 234, 255, 0.16);
+    box-shadow: 0 10px 24px rgba(0, 234, 255, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
   .tender-table tbody {
     display: table;
@@ -16875,6 +16927,7 @@ table th {
     width: 80%;
     text-align: left;
     color: var(--color-grey);
+    border-left: 1px solid rgba(0, 234, 255, 0.18);
   }
   .tender-table tbody tr td.is-active {
     display: table-cell;
@@ -16921,6 +16974,7 @@ table th {
 
 @media (max-width: 899.98px) {
   .table-block:has(.tender-table) {
+    border: none;
     overflow: visible;
   }
 }

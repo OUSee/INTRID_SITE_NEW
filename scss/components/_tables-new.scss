@@ -173,7 +173,6 @@ table {
   }
 }
 
-
 /* Tender table should not use the common table shell on desktop: visual columns draw their own cards. */
 @media (min-width: 900px) {
   .table-block:has(> .tender-table) {
@@ -208,6 +207,8 @@ table {
   }
 
   tbody {
+    animation: none;
+
     tr:not(:last-child) td:not(:first-child):not(.nothing) {
       color: var(--blue-main);
     }
@@ -236,9 +237,12 @@ table {
       var(--blue-clouds) 0%,
       var(--blue-tag) 100%
     );
-    box-shadow:
-      inset 1px 0 0 var(--blue-tag),
-      inset -1px 0 0 var(--blue-tag);
+
+    @media (min-width: 900px) {
+      box-shadow:
+        inset 1px 0 0 var(--blue-tag),
+        inset -1px 0 0 var(--blue-tag);
+    }
   }
 
   &--price {
@@ -297,8 +301,6 @@ table {
       }
     }
   }
-
-
 
   // Desktop tender table: split every column into a separate visual panel
   // without changing the table markup. Real table cells stay transparent;
@@ -484,7 +486,10 @@ table {
           background: $tender-cell-bg-hover;
         }
 
-        thead th:nth-child(#{$column}):not(.is-active):not(:has(input:checked))::before {
+        thead
+          th:nth-child(#{$column}):not(.is-active):not(
+            :has(input:checked)
+          )::before {
           background: $tender-header-hover-bg;
         }
 
@@ -512,29 +517,43 @@ table {
     table-layout: fixed;
 
     thead {
+      position: relative;
       display: block;
       width: 100%;
       overflow: visible;
+      border: 0;
+      border-radius: 0;
       background: transparent;
+      box-shadow: none;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-main);
+        mix-blend-mode: overlay;
+      }
 
       tr {
         display: flex;
+        gap: 8px;
         width: 100%;
-        overflow-x: auto;
+        overflow: visible;
+        border-radius: 0;
         background: transparent;
-        scrollbar-width: none;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
       }
 
       th {
         display: block;
-        flex: 1;
+        flex: 1 1 0;
+        min-width: 0;
         width: auto;
         padding: 0;
         border: 0;
+        border-right: 1px solid rgba(0, 234, 255, 0.18);
         background: transparent;
         box-shadow: none;
         text-align: center;
@@ -543,20 +562,43 @@ table {
           display: none;
         }
 
+        &:last-child {
+          border-right: 0;
+        }
+
         label {
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
           min-height: 44px;
           padding: 10px 4px;
           border: 1px solid rgba(0, 234, 255, 0.18);
+          border-bottom: 0;
           background: rgba(255, 255, 255, 0.035);
+          border-radius: 12px 12px 0 0;
           color: var(--color-grey);
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 1.2;
+          text-align: center;
           white-space: nowrap;
+          box-shadow: none;
+          text-shadow: none;
+          transition:
+            color 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            box-shadow 0.25s ease;
+
+          @media (max-width: 419.98px) {
+            font-size: 12px;
+          }
         }
 
         &.is-active label,
         &:has(input[type="radio"]:checked) label {
+          z-index: 1;
           border-color: var(--blue-tag);
           color: var(--color-white);
           background: linear-gradient(
@@ -564,7 +606,9 @@ table {
             var(--blue-clouds) 0%,
             var(--blue-tag) 100%
           );
-          box-shadow: 0 10px 24px rgba(0, 234, 255, 0.16);
+          box-shadow:
+            0 10px 24px rgba(0, 234, 255, 0.16),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
       }
     }
@@ -596,6 +640,7 @@ table {
             width: 80%;
             text-align: left;
             color: var(--color-grey);
+            border-left: 1px solid rgba(0, 234, 255, 0.18);
           }
 
           &.is-active {
@@ -621,6 +666,7 @@ table {
       &[data-active-column="#{$column}"],
       &:has(thead th:nth-child(#{$column}) input:checked) {
         tbody tr {
+
           // td:nth-child(#{$column}) {
           //   display: table-cell;
           // }
@@ -646,6 +692,7 @@ table {
 
 @media (max-width: 899.98px) {
   .table-block:has(.tender-table) {
+    border: none;
     overflow: visible;
   }
 }
