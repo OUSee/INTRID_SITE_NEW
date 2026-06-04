@@ -14237,9 +14237,6 @@ main {
     max-height: 500px;
     overflow-y: scroll;
   }
-  .seo-table .table-wrapper table {
-    width: 100%;
-  }
   .seo-table .table-wrapper::-webkit-scrollbar {
     width: 12px;
     padding-right: 4px;
@@ -14552,28 +14549,6 @@ main {
     display: none !important;
   }
 }
-.domain-table {
-  width: 100%;
-  outline: 1px solid var(--blue-main);
-  background-color: var(--blue-bg);
-}
-.domain-table tr {
-  border-bottom: 1px solid var(--blue-main);
-}
-.domain-table tr:last-child {
-  border-bottom: none;
-}
-.domain-table tr td:not(:first-child),
-.domain-table tr th:not(:first-child) {
-  border-left: 1px solid var(--blue-main);
-}
-.domain-table tbody tr td {
-  background-color: var(--bg-main);
-}
-.domain-table.start tr {
-  vertical-align: top;
-}
-
 @media (max-width: 999.98px) {
   .reviews {
     background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.35) 15%, rgba(0, 234, 255, 0.35) 85%, rgba(0, 234, 255, 0) 100%);
@@ -16390,627 +16365,415 @@ main {
   letter-spacing: 2px;
 }
 
-/* New unified table design */
 .table-block,
 .default-table,
-table.table,
-table.tender-table,
 .table--wrap {
-  border-radius: 18px !important;
-  border: 1px solid var(--blue-clouds) !important;
-  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%) !important;
-  box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid var(--blue-clouds);
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%);
+  box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: auto;
 }
 @media (max-width: 999.98px) {
   .table-block,
   .default-table,
-  table.table,
-  table.tender-table,
   .table--wrap {
-    border-radius: 12px !important;
+    border-radius: 12px;
   }
 }
 
 table {
-  width: 100% !important;
-  border-collapse: separate !important;
-  border-spacing: 0 !important;
+  width: 100%;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0;
   table-layout: auto;
-  background: transparent !important;
-  border: 0 !important;
+  background: transparent;
   color: var(--color-grey);
 }
 table thead {
   position: static;
+  border: 0;
   background: transparent;
-  color: var(--color-white) !important;
-  border: 0 !important;
+  color: var(--color-white);
 }
 table thead tr {
-  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
-  border: 0 !important;
+  border: 0;
+  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%);
 }
 table tbody tr {
-  border: 0 !important;
-  background: rgba(255, 255, 255, 0.035) !important;
-  transition: 0.25s ease !important;
+  border: 0;
+  background: rgba(255, 255, 255, 0.035);
+  transition: background-color 0.25s ease;
 }
 table tbody tr:nth-child(even) {
-  background: rgba(0, 234, 255, 0.055) !important;
+  background: rgba(0, 234, 255, 0.055);
 }
 table tbody tr:last-child td {
-  border-bottom: 0 !important;
+  border-bottom: 0;
 }
 @media (min-width: 1000px) {
   table tbody tr:hover {
-    background: rgba(0, 234, 255, 0.12) !important;
+    background: rgba(0, 234, 255, 0.12);
   }
 }
 table tbody td {
-  color: var(--color-grey) !important;
+  color: var(--color-grey);
 }
 table th,
 table td {
-  border: 0 !important;
-  border-right: 1px solid rgba(0, 234, 255, 0.14) !important;
-  border-bottom: 1px solid rgba(0, 234, 255, 0.12) !important;
-  padding: 16px 20px !important;
-  vertical-align: middle !important;
-  background: transparent !important;
-  color: inherit !important;
-  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
+  padding: 16px 20px;
+  border: 0;
+  border-right: 1px solid rgba(0, 234, 255, 0.14);
+  border-bottom: 1px solid rgba(0, 234, 255, 0.12);
+  vertical-align: middle;
+  background: transparent;
+  color: inherit;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 table th:last-child,
 table td:last-child {
-  border-right: 0 !important;
+  border-right: 0;
 }
 table th p,
 table td p {
-  margin: 0 !important;
+  margin: 0;
 }
 @media (max-width: 999.98px) {
   table th,
   table td {
-    padding: 12px 14px !important;
+    padding: 12px 14px;
   }
 }
 table th {
-  font-weight: 700 !important;
+  font-weight: 700;
   text-align: left;
-  color: var(--color-white) !important;
-  background: transparent !important;
+  color: var(--color-white);
 }
 
-.table {
-  width: 100% !important;
-  border-collapse: separate !important;
-  border-spacing: 0 !important;
-  table-layout: auto;
-  background: transparent !important;
-  border: 0 !important;
-  color: var(--color-grey);
-}
-.table thead {
-  position: static;
-  background: transparent;
-  color: var(--color-white) !important;
-  border: 0 !important;
-}
-.table thead tr {
-  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
-  border: 0 !important;
-}
-.table tbody tr {
-  border: 0 !important;
-  background: rgba(255, 255, 255, 0.035) !important;
-  transition: 0.25s ease !important;
-}
-.table tbody tr:nth-child(even) {
-  background: rgba(0, 234, 255, 0.055) !important;
-}
-.table tbody tr:last-child td {
-  border-bottom: 0 !important;
-}
-@media (min-width: 1000px) {
-  .table tbody tr:hover {
-    background: rgba(0, 234, 255, 0.12) !important;
-  }
-}
-.table tbody td {
-  color: var(--color-grey) !important;
-}
-.table th,
-.table td {
-  border: 0 !important;
-  border-right: 1px solid rgba(0, 234, 255, 0.14) !important;
-  border-bottom: 1px solid rgba(0, 234, 255, 0.12) !important;
-  padding: 16px 20px !important;
-  vertical-align: middle !important;
-  background: transparent !important;
-  color: inherit !important;
-  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
-}
-.table th:last-child,
-.table td:last-child {
-  border-right: 0 !important;
-}
-.table th p,
-.table td p {
-  margin: 0 !important;
-}
-@media (max-width: 999.98px) {
-  .table th,
-  .table td {
-    padding: 12px 14px !important;
-  }
-}
-.table th {
-  font-weight: 700 !important;
-  text-align: left;
-  color: var(--color-white) !important;
-  background: transparent !important;
-}
-.table--noborder,
-.table--noborder thead,
-.table--noborder tbody,
-.table--noborder th,
-.table--noborder tr,
-.table--noborder td {
-  border-color: rgba(0, 234, 255, 0.12) !important;
-}
 .table--beauty tbody td.color_td_PR {
-  color: var(--blue-main) !important;
-  font-weight: 700 !important;
-  background: rgba(0, 234, 255, 0.08) !important;
+  color: var(--blue-main);
+  font-weight: 700;
+  background: rgba(0, 234, 255, 0.08);
 }
 
+/* SEO/portfolio tables */
 .seo-table .table-wrapper {
-  border-radius: 18px !important;
-  border: 1px solid var(--blue-clouds) !important;
-  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%) !important;
-  box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid var(--blue-clouds);
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%);
+  box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: auto;
 }
 @media (max-width: 999.98px) {
   .seo-table .table-wrapper {
-    border-radius: 12px !important;
+    border-radius: 12px;
   }
-}
-.seo-table .table-wrapper table {
-  width: 100% !important;
-  border-collapse: separate !important;
-  border-spacing: 0 !important;
-  table-layout: auto;
-  background: transparent !important;
-  border: 0 !important;
-  color: var(--color-grey);
-}
-.seo-table .table-wrapper table thead {
-  position: static;
-  background: transparent;
-  color: var(--color-white) !important;
-  border: 0 !important;
-}
-.seo-table .table-wrapper table thead tr {
-  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
-  border: 0 !important;
-}
-.seo-table .table-wrapper table tbody tr {
-  border: 0 !important;
-  background: rgba(255, 255, 255, 0.035) !important;
-  transition: 0.25s ease !important;
-}
-.seo-table .table-wrapper table tbody tr:nth-child(even) {
-  background: rgba(0, 234, 255, 0.055) !important;
-}
-.seo-table .table-wrapper table tbody tr:last-child td {
-  border-bottom: 0 !important;
-}
-@media (min-width: 1000px) {
-  .seo-table .table-wrapper table tbody tr:hover {
-    background: rgba(0, 234, 255, 0.12) !important;
-  }
-}
-.seo-table .table-wrapper table tbody td {
-  color: var(--color-grey) !important;
-}
-.seo-table .table-wrapper table th,
-.seo-table .table-wrapper table td {
-  border: 0 !important;
-  border-right: 1px solid rgba(0, 234, 255, 0.14) !important;
-  border-bottom: 1px solid rgba(0, 234, 255, 0.12) !important;
-  padding: 16px 20px !important;
-  vertical-align: middle !important;
-  background: transparent !important;
-  color: inherit !important;
-  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
-}
-.seo-table .table-wrapper table th:last-child,
-.seo-table .table-wrapper table td:last-child {
-  border-right: 0 !important;
-}
-.seo-table .table-wrapper table th p,
-.seo-table .table-wrapper table td p {
-  margin: 0 !important;
-}
-@media (max-width: 999.98px) {
-  .seo-table .table-wrapper table th,
-  .seo-table .table-wrapper table td {
-    padding: 12px 14px !important;
-  }
-}
-.seo-table .table-wrapper table th {
-  font-weight: 700 !important;
-  text-align: left;
-  color: var(--color-white) !important;
-  background: transparent !important;
 }
 @media (max-width: 899.98px) {
-  .seo-table .table-wrapper table {
+  .seo-table table {
     font-size: 14px;
   }
 }
 @media (max-width: 599.98px) {
-  .seo-table .table-wrapper table th, .seo-table .table-wrapper table td {
-    padding: 12px 4px !important;
+  .seo-table table th,
+  .seo-table table td {
+    padding-right: 4px;
+    padding-left: 4px;
   }
 }
-.seo-table .table-wrapper table thead {
-  position: sticky !important;
+.seo-table thead {
+  position: sticky;
   top: 0;
   left: 0;
+  z-index: 1;
 }
-.seo-table .table-wrapper table thead th {
-  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
+.seo-table thead th {
+  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%);
 }
-.seo-table .table-wrapper table tbody td.color_td_PR {
-  color: var(--blue-main) !important;
-  font-weight: 700 !important;
-  background: rgba(0, 234, 255, 0.08) !important;
+.seo-table tbody td.color_td_PR {
+  color: var(--blue-main);
+  font-weight: 700;
+  background: rgba(0, 234, 255, 0.08);
 }
-.seo-table .table-wrapper table tbody td:not(:first-child) {
-  text-align: center !important;
+.seo-table tbody td:not(:first-child) {
+  text-align: center;
 }
 
-.tender-table {
-  width: 100% !important;
-  border-collapse: separate !important;
-  border-spacing: 0 !important;
-  table-layout: auto;
-  background: transparent !important;
-  border: 0 !important;
-  color: var(--color-grey);
-}
-.tender-table thead {
-  position: static;
-  background: transparent;
-  color: var(--color-white) !important;
-  border: 0 !important;
-}
-.tender-table thead tr {
-  background: linear-gradient(180deg, var(--blue-light-bg) 0%, var(--blue-bg) 100%) !important;
-  border: 0 !important;
-}
-.tender-table tbody tr {
-  border: 0 !important;
-  background: rgba(255, 255, 255, 0.035) !important;
-  transition: 0.25s ease !important;
-}
-.tender-table tbody tr:nth-child(even) {
-  background: rgba(0, 234, 255, 0.055) !important;
-}
-.tender-table tbody tr:last-child td {
-  border-bottom: 0 !important;
-}
-@media (min-width: 1000px) {
-  .tender-table tbody tr:hover {
-    background: rgba(0, 234, 255, 0.12) !important;
-  }
-}
-.tender-table tbody td {
-  color: var(--color-grey) !important;
-}
-.tender-table th,
-.tender-table td {
-  border: 0 !important;
-  border-right: 1px solid rgba(0, 234, 255, 0.14) !important;
-  border-bottom: 1px solid rgba(0, 234, 255, 0.12) !important;
-  padding: 16px 20px !important;
-  vertical-align: middle !important;
-  background: transparent !important;
-  color: inherit !important;
-  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
-}
-.tender-table th:last-child,
-.tender-table td:last-child {
-  border-right: 0 !important;
-}
-.tender-table th p,
-.tender-table td p {
-  margin: 0 !important;
+/* Tender price tables */
+.table-block:has(.tender-table) {
+  border: 1px solid var(--blue-clouds);
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%);
+  box-shadow: 0 20px 45px rgba(0, 234, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: auto;
 }
 @media (max-width: 999.98px) {
-  .tender-table th,
-  .tender-table td {
-    padding: 12px 14px !important;
+  .table-block:has(.tender-table) {
+    border-radius: 12px;
   }
 }
-.tender-table th {
-  font-weight: 700 !important;
-  text-align: left;
-  color: var(--color-white) !important;
-  background: transparent !important;
-}
+
 .tender-table th:not(:first-child),
 .tender-table td:not(:first-child) {
   cursor: pointer;
   text-align: center;
 }
 .tender-table label {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  padding: 0 !important;
-  border: 0 !important;
-  cursor: pointer !important;
-  background: transparent !important;
-  box-shadow: none !important;
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  box-shadow: none;
 }
 .tender-table label input {
-  display: none !important;
+  display: none;
+}
+.tender-table tbody tr:not(:last-child) td:not(:first-child):not(.nothing) {
+  color: var(--blue-main);
+}
+.tender-table tbody tr:not(:last-child) td:not(:first-child).nothing {
+  color: var(--color-grey);
+  font-weight: 400;
 }
 .tender-table tbody tr:last-child td:not(:first-child) {
-  color: var(--blue-main) !important;
-  font-weight: 700 !important;
-  background: rgba(0, 234, 255, 0.08) !important;
+  color: var(--blue-main);
+  font-weight: 700;
+  background: rgba(0, 234, 255, 0.08);
 }
 .tender-table tbody tr:last-child td:not(:first-child) span {
   white-space: nowrap;
 }
-.tender-table tbody tr:not(:last-child) td:not(:first-child):not(.nothing) {
-  color: var(--blue-main) !important;
+.tender-table th.is-active, .tender-table:has(thead input:checked) th:has(input:checked) {
+  color: var(--color-white);
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
+  box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag);
 }
-.tender-table tbody tr:not(:last-child) td:not(:first-child):is(.nothing) {
-  color: var(--color-grey) !important;
-  font-weight: 400 !important;
-}
-.tender-table th.is-active {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
-  box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag) !important;
-}
-.tender-table tbody tr td.is-active {
-  color: var(--color-white) !important;
-  background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+.tender-table tbody td.is-active {
+  color: var(--color-white);
+  background: rgba(0, 234, 255, 0.12);
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
 }
 .tender-table tbody tr:last-child td.is-active {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
+  color: var(--color-white);
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
 }
-.tender-table:has(thead th:nth-child(2) label input:checked) thead th:nth-child(2) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
-  box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag) !important;
+.tender-table:has(thead th:nth-child(2) input:checked) tbody td:nth-child(2) {
+  color: var(--color-white);
+  background: rgba(0, 234, 255, 0.12);
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
 }
-.tender-table:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2) {
-  color: var(--color-white) !important;
-  background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+.tender-table:has(thead th:nth-child(2) input:checked) tbody tr:last-child td:nth-child(2) {
+  color: var(--color-white);
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
 }
-.tender-table:has(thead th:nth-child(2) label input:checked) tbody tr:last-child td:nth-child(2) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
+.tender-table:has(thead th:nth-child(3) input:checked) tbody td:nth-child(3) {
+  color: var(--color-white);
+  background: rgba(0, 234, 255, 0.12);
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
 }
-.tender-table:has(thead th:nth-child(3) label input:checked) thead th:nth-child(3) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
-  box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag) !important;
+.tender-table:has(thead th:nth-child(3) input:checked) tbody tr:last-child td:nth-child(3) {
+  color: var(--color-white);
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
 }
-.tender-table:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3) {
-  color: var(--color-white) !important;
-  background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+.tender-table:has(thead th:nth-child(4) input:checked) tbody td:nth-child(4) {
+  color: var(--color-white);
+  background: rgba(0, 234, 255, 0.12);
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
 }
-.tender-table:has(thead th:nth-child(3) label input:checked) tbody tr:last-child td:nth-child(3) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
+.tender-table:has(thead th:nth-child(4) input:checked) tbody tr:last-child td:nth-child(4) {
+  color: var(--color-white);
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
 }
-.tender-table:has(thead th:nth-child(4) label input:checked) thead th:nth-child(4) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
-  box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag) !important;
+.tender-table:has(thead th:nth-child(5) input:checked) tbody td:nth-child(5) {
+  color: var(--color-white);
+  background: rgba(0, 234, 255, 0.12);
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
 }
-.tender-table:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
-  color: var(--color-white) !important;
-  background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
+.tender-table:has(thead th:nth-child(5) input:checked) tbody tr:last-child td:nth-child(5) {
+  color: var(--color-white);
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
 }
-.tender-table:has(thead th:nth-child(4) label input:checked) tbody tr:last-child td:nth-child(4) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
+.tender-table:has(thead th:nth-child(6) input:checked) tbody td:nth-child(6) {
+  color: var(--color-white);
+  background: rgba(0, 234, 255, 0.12);
+  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg);
 }
-.tender-table:has(thead th:nth-child(5) label input:checked) thead th:nth-child(5) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
-  box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag) !important;
-}
-.tender-table:has(thead th:nth-child(5) label input:checked) tbody tr td:nth-child(5) {
-  color: var(--color-white) !important;
-  background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
-}
-.tender-table:has(thead th:nth-child(5) label input:checked) tbody tr:last-child td:nth-child(5) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
-}
-.tender-table:has(thead th:nth-child(6) label input:checked) thead th:nth-child(6) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
-  box-shadow: inset 1px 0 0 var(--blue-tag), inset -1px 0 0 var(--blue-tag) !important;
-}
-.tender-table:has(thead th:nth-child(6) label input:checked) tbody tr td:nth-child(6) {
-  color: var(--color-white) !important;
-  background: rgba(0, 234, 255, 0.12) !important;
-  box-shadow: inset 1px 0 0 var(--blue-light-bg), inset -1px 0 0 var(--blue-light-bg) !important;
-}
-.tender-table:has(thead th:nth-child(6) label input:checked) tbody tr:last-child td:nth-child(6) {
-  color: var(--color-white) !important;
-  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
+.tender-table:has(thead th:nth-child(6) input:checked) tbody tr:last-child td:nth-child(6) {
+  color: var(--color-white);
+  background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
 }
 @media (max-width: 899.98px) {
   .tender-table {
-    display: block !important;
-    min-width: 0 !important;
-    margin-top: 0 !important;
-    overflow: clip !important;
-    table-layout: fixed !important;
+    display: block;
+    min-width: 0;
+    margin-top: 0;
+    overflow: clip;
+    table-layout: fixed;
   }
   .tender-table thead {
-    display: block !important;
-    width: 100% !important;
-    overflow: visible !important;
-    background: transparent !important;
+    display: block;
+    width: 100%;
+    overflow: visible;
+    background: transparent;
   }
   .tender-table thead tr {
-    display: flex !important;
-    width: 100% !important;
-    overflow-x: auto !important;
-    background: transparent !important;
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    background: transparent;
     scrollbar-width: none;
   }
   .tender-table thead tr::-webkit-scrollbar {
     display: none;
   }
   .tender-table thead th {
-    display: block !important;
-    width: auto !important;
-    flex: 1 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    text-align: center !important;
+    display: block;
+    flex: 1;
+    width: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
   }
   .tender-table thead th:first-child {
-    display: none !important;
+    display: none;
   }
   .tender-table thead th label {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-height: 44px !important;
-    padding: 10px 16px !important;
-    border: 1px solid rgba(0, 234, 255, 0.18) !important;
-    background: rgba(255, 255, 255, 0.035) !important;
-    color: var(--color-grey) !important;
-    white-space: nowrap !important;
-    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease !important;
-  }
-  .tender-table thead th.is-active, .tender-table thead th:has(input[type=radio]:checked) {
-    background: transparent !important;
-    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid rgba(0, 234, 255, 0.18);
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--color-grey);
+    white-space: nowrap;
   }
   .tender-table thead th.is-active label, .tender-table thead th:has(input[type=radio]:checked) label {
-    border-color: var(--blue-tag) !important;
-    color: var(--color-white) !important;
-    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) !important;
-    box-shadow: 0 10px 24px rgba(0, 234, 255, 0.16) !important;
+    border-color: var(--blue-tag);
+    color: var(--color-white);
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
+    box-shadow: 0 10px 24px rgba(0, 234, 255, 0.16);
   }
   .tender-table tbody {
-    display: table !important;
-    width: 100% !important;
-    border-collapse: separate !important;
-    border-spacing: 0 !important;
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
   }
   .tender-table tbody tr {
     position: sticky;
-    bottom: 0px;
-    left: 0;
-    right: 0;
     top: auto;
-    display: table-row !important;
-    width: 100% !important;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: table-row;
+    width: 100%;
   }
   .tender-table tbody tr td {
-    display: none !important;
-    width: 20% !important;
-    padding: 12px 10px !important;
-    text-align: center !important;
-    vertical-align: middle !important;
+    display: none;
+    width: 20%;
+    padding: 12px 10px;
+    text-align: center;
+    vertical-align: middle;
   }
   .tender-table tbody tr td:first-child {
-    display: table-cell !important;
-    width: 80% !important;
-    text-align: left !important;
-    color: var(--color-grey) !important;
+    display: table-cell;
+    width: 80%;
+    text-align: left;
+    color: var(--color-grey);
   }
   .tender-table tbody tr td.is-active {
-    display: table-cell !important;
+    display: table-cell;
   }
   .tender-table tbody tr:last-child td:first-child {
-    display: none !important;
+    display: none;
   }
   .tender-table tbody tr:last-child td.is-active {
-    display: table-cell !important;
-    width: 100% !important;
-    text-align: center !important;
+    display: table-cell;
+    width: 100%;
+    text-align: center;
   }
-  .tender-table[data-active-column="2"] tbody tr td:nth-child(2), .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr td:nth-child(2) {
-    display: table-cell !important;
+  .tender-table[data-active-column="2"] tbody tr td:nth-child(2), .tender-table:has(thead th:nth-child(2) input:checked) tbody tr td:nth-child(2) {
+    display: table-cell;
   }
-  .tender-table[data-active-column="2"] tbody tr:last-child, .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr:last-child {
-    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main) !important;
+  .tender-table[data-active-column="2"] tbody tr:last-child, .tender-table:has(thead th:nth-child(2) input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
   }
-  .tender-table[data-active-column="2"] tbody tr:last-child td:nth-child(2), .tender-table:has(thead th:nth-child(2) label input:checked) tbody tr:last-child td:nth-child(2) {
-    display: table-cell !important;
-    width: 100% !important;
+  .tender-table[data-active-column="2"] tbody tr:last-child td:nth-child(2), .tender-table:has(thead th:nth-child(2) input:checked) tbody tr:last-child td:nth-child(2) {
+    display: table-cell;
+    width: 100%;
   }
-  .tender-table[data-active-column="3"] tbody tr td:nth-child(3), .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr td:nth-child(3) {
-    display: table-cell !important;
+  .tender-table[data-active-column="3"] tbody tr td:nth-child(3), .tender-table:has(thead th:nth-child(3) input:checked) tbody tr td:nth-child(3) {
+    display: table-cell;
   }
-  .tender-table[data-active-column="3"] tbody tr:last-child, .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr:last-child {
-    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main) !important;
+  .tender-table[data-active-column="3"] tbody tr:last-child, .tender-table:has(thead th:nth-child(3) input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
   }
-  .tender-table[data-active-column="3"] tbody tr:last-child td:nth-child(3), .tender-table:has(thead th:nth-child(3) label input:checked) tbody tr:last-child td:nth-child(3) {
-    display: table-cell !important;
-    width: 100% !important;
+  .tender-table[data-active-column="3"] tbody tr:last-child td:nth-child(3), .tender-table:has(thead th:nth-child(3) input:checked) tbody tr:last-child td:nth-child(3) {
+    display: table-cell;
+    width: 100%;
   }
-  .tender-table[data-active-column="4"] tbody tr td:nth-child(4), .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr td:nth-child(4) {
-    display: table-cell !important;
+  .tender-table[data-active-column="4"] tbody tr td:nth-child(4), .tender-table:has(thead th:nth-child(4) input:checked) tbody tr td:nth-child(4) {
+    display: table-cell;
   }
-  .tender-table[data-active-column="4"] tbody tr:last-child, .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr:last-child {
-    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main) !important;
+  .tender-table[data-active-column="4"] tbody tr:last-child, .tender-table:has(thead th:nth-child(4) input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
   }
-  .tender-table[data-active-column="4"] tbody tr:last-child td:nth-child(4), .tender-table:has(thead th:nth-child(4) label input:checked) tbody tr:last-child td:nth-child(4) {
-    display: table-cell !important;
-    width: 100% !important;
+  .tender-table[data-active-column="4"] tbody tr:last-child td:nth-child(4), .tender-table:has(thead th:nth-child(4) input:checked) tbody tr:last-child td:nth-child(4) {
+    display: table-cell;
+    width: 100%;
   }
-  .tender-table[data-active-column="5"] tbody tr td:nth-child(5), .tender-table:has(thead th:nth-child(5) label input:checked) tbody tr td:nth-child(5) {
-    display: table-cell !important;
+  .tender-table[data-active-column="5"] tbody tr td:nth-child(5), .tender-table:has(thead th:nth-child(5) input:checked) tbody tr td:nth-child(5) {
+    display: table-cell;
   }
-  .tender-table[data-active-column="5"] tbody tr:last-child, .tender-table:has(thead th:nth-child(5) label input:checked) tbody tr:last-child {
-    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main) !important;
+  .tender-table[data-active-column="5"] tbody tr:last-child, .tender-table:has(thead th:nth-child(5) input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
   }
-  .tender-table[data-active-column="5"] tbody tr:last-child td:nth-child(5), .tender-table:has(thead th:nth-child(5) label input:checked) tbody tr:last-child td:nth-child(5) {
-    display: table-cell !important;
-    width: 100% !important;
+  .tender-table[data-active-column="5"] tbody tr:last-child td:nth-child(5), .tender-table:has(thead th:nth-child(5) input:checked) tbody tr:last-child td:nth-child(5) {
+    display: table-cell;
+    width: 100%;
   }
-  .tender-table[data-active-column="6"] tbody tr td:nth-child(6), .tender-table:has(thead th:nth-child(6) label input:checked) tbody tr td:nth-child(6) {
-    display: table-cell !important;
+  .tender-table[data-active-column="6"] tbody tr td:nth-child(6), .tender-table:has(thead th:nth-child(6) input:checked) tbody tr td:nth-child(6) {
+    display: table-cell;
   }
-  .tender-table[data-active-column="6"] tbody tr:last-child, .tender-table:has(thead th:nth-child(6) label input:checked) tbody tr:last-child {
-    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main) !important;
+  .tender-table[data-active-column="6"] tbody tr:last-child, .tender-table:has(thead th:nth-child(6) input:checked) tbody tr:last-child {
+    background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--bg-main) 100%) var(--bg-main);
   }
-  .tender-table[data-active-column="6"] tbody tr:last-child td:nth-child(6), .tender-table:has(thead th:nth-child(6) label input:checked) tbody tr:last-child td:nth-child(6) {
-    display: table-cell !important;
-    width: 100% !important;
+  .tender-table[data-active-column="6"] tbody tr:last-child td:nth-child(6), .tender-table:has(thead th:nth-child(6) input:checked) tbody tr:last-child td:nth-child(6) {
+    display: table-cell;
+    width: 100%;
   }
 }
 
 @media (max-width: 899.98px) {
   .table-block:has(.tender-table) {
-    overflow: visible !important;
+    overflow: visible;
   }
+}
+/* Domain tables */
+.domain-table {
+  outline: 1px solid var(--blue-main);
+  background-color: var(--blue-bg);
+}
+.domain-table tr {
+  border-bottom: 1px solid var(--blue-main);
+}
+.domain-table tr:last-child {
+  border-bottom: 0;
+}
+.domain-table td:not(:first-child),
+.domain-table th:not(:first-child) {
+  border-left: 1px solid var(--blue-main);
+}
+.domain-table tbody td {
+  background-color: var(--bg-main);
+}
+.domain-table.start tr {
+  vertical-align: top;
 }
