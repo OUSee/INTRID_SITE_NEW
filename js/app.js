@@ -2055,9 +2055,21 @@ const portfolioCardsSlider = () => {
     return controls;
   };
 
+  const getTotalSlidesCount = () => {
+    const totalFromData = Number(
+      slider.dataset.totalCount || slider.dataset.total || slider.dataset.count,
+    );
+
+    if (Number.isFinite(totalFromData) && totalFromData > 0) {
+      return totalFromData;
+    }
+
+    return slides.length;
+  };
+
   const updateCounter = () => {
     const counter = getControls().querySelector(".portfolio-slider-counter");
-    counter.textContent = `${Math.min(currentIndex + 1, slides.length)} / ${slides.length}`;
+    counter.textContent = `${Math.min(currentIndex + 1, getTotalSlidesCount())} / ${getTotalSlidesCount()}`;
   };
 
   const updateActiveSlides = () => {

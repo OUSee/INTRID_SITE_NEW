@@ -3065,6 +3065,16 @@ p.p_big {
   }
 }
 
+p.small {
+  font-weight: 400;
+  font-size: 13px;
+}
+@media (max-width: 999.98px) {
+  p.small {
+    font-size: 12px;
+  }
+}
+
 p,
 .p {
   font-weight: 400;
@@ -11085,6 +11095,9 @@ main {
 .nice-wrapper--simple {
   height: auto;
 }
+.nice-wrapper--portfolio .list .option:not(:first-child) {
+  padding-left: 28px;
+}
 
 .nice-select {
   position: relative;
@@ -14434,7 +14447,7 @@ main {
     transition: max-height 0.35s ease-in-out, margin-top 0.35s ease-in-out, border-width 0.35s ease-in-out, opacity 0.35s ease-in-out;
   }
   .portfolio-seo-card .seo-table__toggle:checked ~ .table-wrapper {
-    height: 60vh;
+    height: 75vh;
     max-height: 500px;
     margin-top: -12px;
     opacity: 1;
