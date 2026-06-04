@@ -16,6 +16,7 @@ const tenderDiagram = document.querySelector(".tender-diagram");
 const mapLinks = document.querySelectorAll(".map-link");
 const selects = document.querySelectorAll("select");
 const aSlider = document.querySelector("#dynamic-achievements");
+const toc = document.querySelector(".article-navigation");
 
 let dropdownClickHandlers = [];
 let outsideClickHandler = null;
@@ -26,6 +27,8 @@ let lastFooterMobileState = null;
 let lastAchievementMobileState = null;
 let resizeTimeout;
 let resizeRunning = false;
+let articleNavScrolled = false;
+let articleNavOffsetTop = 0;
 
 // mobile-menu
 const mainMenu = document.querySelector(".menu");
@@ -8223,8 +8226,37 @@ const initMainAiTabs = (root = document) => {
   });
 };
 
+function updateArticleNavOffset() {
+  if (!articleNav) return;
+
+  const stickyTop = parseFloat(getComputedStyle(articleNav).top) || 0;
+  articleNavOffsetTop =
+    articleNav.getBoundingClientRect().top + window.scrollY - stickyTop;
+}
+
+function articleNavIsScrolled() {
+  if (!articleNav) return;
+
+  if (!articleNavOffsetTop) {
+    updateArticleNavOffset();
+  }
+
+  const should = window.scrollY > articleNavOffsetTop;
+  if (should !== articleNavScrolled) {
+    articleNav.classList.toggle("is-scrolled", should);
+    articleNavScrolled = should;
+  }
+}
+
 // scroll events
-window.addEventListener("scroll", pageIsScrolled, { passive: true });
+window.addEventListener(
+  "scroll",
+  () => {
+    pageIsScrolled();
+    if (toc) articleNavIsScrolled();
+  },
+  { passive: true },
+);
 
 // resize events
 window.addEventListener(
@@ -8248,6 +8280,9 @@ document.addEventListener("DOMContentLoaded", () => {
   preloaderInit();
 
   pageIsScrolled();
+  if (toc) updateArticleNavOffset();
+  if (toc) articleNavIsScrolled();
+
   initDropdowns();
   if (footer) moveServiceLinks();
   moveAchievementsSlider();
