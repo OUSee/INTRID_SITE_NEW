@@ -5912,6 +5912,14 @@ button:hover,
       box-shadow: 0px 0px 10px 5px var(--blue-clouds);
     }
 
+    &:has(.card-header) {
+      padding: 32px;
+
+      @media (max-width: 999.98px) {
+        padding: 20px;
+      }
+    }
+
     & .card-icon {
       position: relative;
       display: flex;
@@ -5980,6 +5988,11 @@ button:hover,
 
       &>.card-icon {
         margin: 0;
+
+        @media (max-width: 999.98px) {
+          width: 44px;
+          height: 44px;
+        }
       }
     }
 

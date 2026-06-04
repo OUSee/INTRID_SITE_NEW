@@ -8881,6 +8881,14 @@ button:disabled, button.disabled,
 .card--tab.selected {
   box-shadow: 0px 0px 10px 5px var(--blue-clouds);
 }
+.card--tab:has(.card-header) {
+  padding: 32px;
+}
+@media (max-width: 999.98px) {
+  .card--tab:has(.card-header) {
+    padding: 20px;
+  }
+}
 .card--tab .card-icon {
   position: relative;
   display: flex;
@@ -8943,6 +8951,12 @@ button:disabled, button.disabled,
 }
 .card--tab .card-header > .card-icon {
   margin: 0;
+}
+@media (max-width: 999.98px) {
+  .card--tab .card-header > .card-icon {
+    width: 44px;
+    height: 44px;
+  }
 }
 .card--tab b {
   font-weight: 600;
