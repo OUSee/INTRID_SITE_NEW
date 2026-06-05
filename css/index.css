@@ -5639,6 +5639,9 @@ form input[type=submit] {
   opacity: 1;
   pointer-events: all;
 }
+.toggle-nice > input:is(:checked) + label + *.nice-wrapper:has(.nice-select.open) {
+  z-index: 9;
+}
 .toggle-nice .tooltip {
   align-self: center;
 }
@@ -9121,7 +9124,7 @@ button:disabled, button.disabled,
 .card--blog .card-body > span {
   margin-top: auto;
   font-size: 14px;
-  color: var(--blue-clouds);
+  color: var(--blue-tag);
 }
 @media (min-width: 1000px) {
   .card--blog:hover .card-body > h3, .card--blog:hover .card-body > b {

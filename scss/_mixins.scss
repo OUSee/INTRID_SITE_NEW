@@ -1723,6 +1723,10 @@
         & + * {
           opacity: 1;
           pointer-events: all;
+
+          &.nice-wrapper:has(.nice-select.open) {
+            z-index: 9;
+          }
         }
       }
     }
@@ -1845,28 +1849,28 @@
 }
 
 @mixin card-mobile-unified {
-    position: relative;
-    gap: 20px;
-    padding: 20px;
-    min-height: auto;
+  position: relative;
+  gap: 20px;
+  padding: 20px;
+  min-height: auto;
 
-    &::before {
-        display: none;
+  &::before {
+    display: none;
+  }
+
+  .card__icon,
+  .benefit-card__icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+
+    img,
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
-
-    .card__icon,
-    .benefit-card__icon {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-
-        img,
-        svg {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-    }
+  }
 }
 
 // Old seo table mixin removed: unified styles live in components/_tables-new.scss.
