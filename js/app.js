@@ -43,19 +43,25 @@ function preloaderInit() {
   const target = document.querySelector(".main-section .flying-mockup");
 
   setTimeout(() => {
-    preloader.remove();
+    preloader?.remove();
   }, 3000);
 
-  if (!preloader || !orb || !target) return;
+  if (!preloader || !orb) return;
 
   const orbRect = orb.getBoundingClientRect();
-  const targetRect = target.getBoundingClientRect();
 
   const startX = -orbRect.width;
   const startY = -orbRect.height;
 
-  const endX = targetRect.left + targetRect.width / 2 - orbRect.width / 2;
-  const endY = targetRect.top + targetRect.height / 2 - orbRect.height / 2;
+  const targetRect = target?.getBoundingClientRect();
+
+  const endX = targetRect
+    ? targetRect.left + targetRect.width / 2 - orbRect.width / 2
+    : window.innerWidth / 2 - orbRect.width / 2;
+
+  const endY = targetRect
+    ? targetRect.top + targetRect.height / 2 - orbRect.height / 2
+    : window.innerHeight / 2 - orbRect.height / 2;
 
   const dx = endX - startX;
   const dy = endY - startY;
@@ -509,6 +515,22 @@ const openPopup = (id) => {
       iframe ? iframe.remove() : false;
     }
   });
+};
+
+const closePopup = (id) => {
+  const popup = document.getElementById(id);
+
+  let buttonClose;
+
+  // Закрываем окно
+  popup.classList.remove("open");
+
+  if (buttonClose) {
+    buttonClose.remove();
+  }
+
+  // Возвращаем прокрутку страницы, когда окно закрыто
+  document.documentElement.classList.remove("popup-opened");
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -5535,24 +5557,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Кнопка сброса
       reset_button?.addEventListener("click", (e) => {
+        let acceptResetButton = document.querySelector("[data-accept-reset]"),
+          cancelResetButton = document.querySelector("[data-cancel-reset]");
+
         const calculator = document.getElementById("calculator");
         let icon = e.currentTarget.querySelector("i");
-        icon.classList.add("rotateInfinite");
-        sendButtons?.forEach((button) => (button.disabled = true));
 
-        setTimeout(() => {
-          calculator?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-          icon.classList.remove("rotateInfinite");
-          sendButtons?.forEach((button) => (button.disabled = false));
+        openPopup("accept-reset");
+
+        acceptResetButton?.addEventListener("click", () => {
+          closePopup("accept-reset");
+
+          icon.classList.add("rotateInfinite");
+          sendButtons?.forEach((button) => (button.disabled = true));
 
           setTimeout(() => {
-            resetCalculator(toggles, counters, target);
-            reviewTotal();
-          }, 200);
-        }, 600);
+            calculator?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            icon.classList.remove("rotateInfinite");
+            sendButtons?.forEach((button) => (button.disabled = false));
+
+            setTimeout(() => {
+              resetCalculator(toggles, counters, target);
+              reviewTotal();
+            }, 200);
+          }, 600);
+        });
+
+        cancelResetButton?.addEventListener("click", () => {
+          closePopup("accept-reset");
+
+          icon.classList.remove("rotateInfinite");
+          sendButtons?.forEach((button) => (button.disabled = false));
+        });
       });
 
       if (hash) {
