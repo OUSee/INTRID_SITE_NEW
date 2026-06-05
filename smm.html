@@ -192,12 +192,14 @@
                 </h1>
 
                 <p>
-                    За счет точного попадания в Вашу целевую аудиторию и прямого взаимодействия с ней, повысим
+                    За счет <span class="color-blue">точного попадания</span> в Вашу целевую аудиторию и прямого
+                    взаимодействия с ней, повысим
                     лояльность
                     клиентов и создадим условия для их удержания. Вы получите не только продвижение бренда в социальных
-                    сетях, но и дополнительный трафик на сайт, продающий и вызывающий доверие контент в соответствии с
+                    сетях, но и <span class="color-blue">дополнительный трафик на сайт</span>, продающий и вызывающий
+                    доверие контент в соответствии с
                     Вашим
-                    фирменным стилем и подписчиков, готовых распространять его самостоятельно.
+                    фирменным стилем, и подписчиков, готовых распространять его самостоятельно.
                 </p>
 
                 <div class="main-section--actions">
@@ -285,7 +287,7 @@
                                 от&nbsp;25&nbsp;000&nbsp;₽
                             </span>
 
-                            <a class="button-highlight big flex-1" href="#smm-creation">
+                            <a class="button-highlight big flex-1" href="#smm-creation" data-tariff-change="Базовый">
                                 Заказать
                                 <i class="icon-arrow_wide"></i>
                             </a>
@@ -334,7 +336,7 @@
                                 от&nbsp;45&nbsp;000&nbsp;₽
                             </span>
 
-                            <a class="button-highlight big flex-1" href="#smm-creation">
+                            <a class="button-highlight big flex-1" href="#smm-creation" data-tariff-change="Стандарт">
                                 Заказать
                                 <i class="icon-arrow_wide"></i>
                             </a>
@@ -383,7 +385,7 @@
                                 от&nbsp;60&nbsp;000&nbsp;₽
                             </span>
 
-                            <a class="button-highlight big flex-1" href="#smm-creation">
+                            <a class="button-highlight big flex-1" href="#smm-creation" data-tariff-change="Премиум">
                                 Заказать
                                 <i class="icon-arrow_wide"></i>
                             </a>
@@ -499,19 +501,26 @@
                                     <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
                                 </div>
 
+                                <div class="nice-wrapper nice-wrapper--simple w-100">
+                                    <!-- Изменён select: name="type_smm", id оставлен для совместимости с data-select-target -->
+                                    <select id="join-smm" name="type_smm" class="isInput w-100"
+                                        data-display="Выберите тарифный план" style="display: none;">
+                                        <option value="base">Базовый</option>
+                                        <option value="standart">Стандарт</option>
+                                        <option value="premium">Премиум</option>
+                                    </select>
+                                </div>
+
                                 <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
 
                                 <input type="email" id="customer-mail" name="email" placeholder="E-mail">
 
                                 <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
 
-                                <input type="text" id="customer-url" placeholder="URL сайта" name="url">
+                                <input type="text" id="customer-url" placeholder="URL сайта *" name="url" required>
 
-                                <input type="text" id="customer-target" placeholder="География интересов" name="target">
-
-                                <textarea data-autosize="true" rows="2"
-                                    placeholder="Перечислите Ваших прямых и косвенных конкурентов"
-                                    name="list"></textarea>
+                                <input type="text" id="customer-target" placeholder="Регион продвижения *" name="target"
+                                    required>
 
                                 <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
                                     name="mess"></textarea>

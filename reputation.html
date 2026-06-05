@@ -257,7 +257,7 @@
                         <div class="error-msg mt-16 text-center" id="lost-profit-error" style="display:none;"></div>
                         <div class="info-msg text-center" id="lost-profit-result" style="display:none;"></div>
                     </div>
-                    
+
                     <div class="right">
                         <div class="card thin">
                             <p class="title_h4 text-center">
@@ -361,13 +361,9 @@
 
                                 <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
 
-                                <input type="text" id="customer-url" placeholder="URL сайта" name="url">
+                                <input type="text" id="customer-url" placeholder="URL сайта *" name="url" required>
 
-                                <input type="text" id="customer-target" placeholder="География интересов" name="target">
-
-                                <textarea data-autosize="true" rows="2"
-                                    placeholder="Перечислите Ваших прямых и косвенных конкурентов"
-                                    name="list"></textarea>
+                                <input type="text" id="customer-target" placeholder="Регион продвижения *" name="target" required>
 
                                 <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
                                     name="mess"></textarea>
@@ -565,6 +561,7 @@
                 </div>
             </div>
         </section>
+
     </main>
     <!-- footer -->
     <footer class="footer">
