@@ -6976,6 +6976,150 @@ const seoAuditInit = () => {
     }
   };
 
+  const escapeHTML = (value = "") =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  const normalizeArray = (value) => {
+    if (!value) return [];
+    if (Array.isArray(value)) return value.filter(Boolean);
+    return [value].filter(Boolean);
+  };
+
+  const scoreToPoints = (score) =>
+    score === null || score === undefined ? null : Math.round(score * 100);
+
+  const getStatusByPoints = (points, thresholds = { good: 90, warn: 50 }) => {
+    if (points === null || points === undefined) return "warning";
+    if (points >= thresholds.good) return "good";
+    if (points >= thresholds.warn) return "warning";
+    return "error";
+  };
+
+  const auditHasExplicitError = (audit) =>
+    audit?.score !== null && audit?.score !== undefined && audit.score !== 1;
+
+  const auditIsPassedOrUnknown = (audit) =>
+    !audit || audit.score === null || audit.score === undefined || audit.score === 1;
+
+  const getBadgeText = (status) =>
+    status === "good" ? "Хорошо" : status === "warning" ? "Предупреждение" : "Ошибка";
+
+  const formatPoints = (points) =>
+    points === null || points === undefined ? null : `${points}/100`;
+
+  const getAudit = (lighthouseData, auditName) =>
+    lighthouseData?.lighthouseResult?.audits?.[auditName] || null;
+
+  const getCategoryScore = (lighthouseData, categoryName) =>
+    lighthouseData?.lighthouseResult?.categories?.[categoryName]?.score;
+
+  const getAuditItems = (audit) => audit?.details?.items || [];
+
+  const buildPageSpeedUrl = (url, strategy) =>
+    `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${API_KEY}&strategy=${strategy}`;
+
+  const fetchPageSpeed = async (url, strategy) => {
+    const response = await fetch(buildPageSpeedUrl(url, strategy));
+    if (!response.ok) throw new Error(`PageSpeed API error: ${response.status}`);
+    return response.json();
+  };
+
+  const getLengthStatus = (length, min, max) => {
+    if (!length) return "error";
+    if (length >= min && length <= max) return "good";
+    return "warning";
+  };
+
+  const getTextFromSeoData = (seoData = {}) =>
+    seoData.text || seoData.content || seoData.bodyText || seoData.plainText || "";
+
+  const getWordDensity = (text = "") => {
+    const stopWords = new Set([
+      "и", "в", "во", "на", "с", "со", "по", "для", "от", "до", "из", "за", "о", "об", "а", "но", "как", "что", "это", "или", "мы", "вы", "он", "она", "они", "не", "да", "к", "у", "же", "ли", "то", "при", "бы", "быть", "the", "and", "for", "with", "that", "this", "you", "your", "are", "was", "were", "from"
+    ]);
+    const words = String(text)
+      .toLowerCase()
+      .replace(/ё/g, "е")
+      .match(/[a-zа-я0-9]{3,}/gi) || [];
+
+    const filtered = words.filter((word) => !stopWords.has(word));
+    if (!filtered.length) return null;
+
+    const map = filtered.reduce((acc, word) => {
+      acc[word] = (acc[word] || 0) + 1;
+      return acc;
+    }, {});
+    const top = Object.entries(map).sort((a, b) => b[1] - a[1])[0];
+    return {
+      word: top[0],
+      count: top[1],
+      percent: Math.round((top[1] / filtered.length) * 1000) / 10,
+    };
+  };
+
+  const getInternalLinksCount = (seoData = {}, checkedUrl = "") => {
+    const links = normalizeArray(seoData.links || seoData.internalLinks || seoData.anchors);
+    if (!links.length) return null;
+
+    try {
+      const currentHost = new URL(checkedUrl).host.replace(/^www\./, "");
+      return links.filter((item) => {
+        const href = typeof item === "string" ? item : item.href || item.url || "";
+        if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return false;
+        if (href.startsWith("/")) return true;
+        try {
+          return new URL(href).host.replace(/^www\./, "") === currentHost;
+        } catch (_) {
+          return false;
+        }
+      }).length;
+    } catch (_) {
+      return links.length;
+    }
+  };
+
+  const getHeadingOrderStatus = (seoData = {}) => {
+    const headings = normalizeArray(seoData.headings || seoData.headers || seoData.headingStructure);
+    if (!headings.length) return null;
+
+    const levels = headings
+      .map((item) => {
+        const tag = typeof item === "string" ? item : item.tag || item.level || item.name;
+        const match = String(tag).match(/h([1-6])/i);
+        return match ? Number(match[1]) : null;
+      })
+      .filter(Boolean);
+
+    if (!levels.length) return null;
+
+    let hasSkip = false;
+    for (let i = 1; i < levels.length; i++) {
+      if (levels[i] - levels[i - 1] > 1) {
+        hasSkip = true;
+        break;
+      }
+    }
+
+    return hasSkip ? "Есть пропуски уровней" : "Порядок соблюдён";
+  };
+
+  const buildCard = (metric) => {
+    const statusText = getBadgeText(metric.status.status);
+    const text = metric.text || metric.summary || metric.status.text || "";
+
+    return `
+      <img src="/src/icons/metric-${metric.category}.svg" alt="icon">
+      <b>${escapeHTML(metric.title)}</b>
+      <div class="badge mb-16 ${metric.status.status}">${statusText}</div>
+      ${text ? `<p class="audit-card__summary">${escapeHTML(text)}</p>` : ""}
+    `;
+  };
+
   // --------------------------------------------------------------
   // AJAX-рендеринг (data-ajax="true" или отсутствует)
   // --------------------------------------------------------------
@@ -6986,9 +7130,6 @@ const seoAuditInit = () => {
     setFormDisabled(true);
     loader.style.display = "block";
 
-    let seoData = null;
-    let lighthouseData = null;
-
     try {
       const seoResponse = await fetch("/submit/get-seo-data", {
         method: "POST",
@@ -6998,170 +7139,186 @@ const seoAuditInit = () => {
       const seoResult = await seoResponse.json();
       if (!seoResult.success)
         throw new Error(seoResult.error || "Ошибка получения SEO-данных");
-      seoData = seoResult.data;
 
-      const pagespeedUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${API_KEY}&strategy=mobile`;
-      const psResponse = await fetch(pagespeedUrl);
-      if (!psResponse.ok)
-        throw new Error(`PageSpeed API error: ${psResponse.status}`);
-      lighthouseData = await psResponse.json();
-
-      const audits = lighthouseData.lighthouseResult?.audits || {};
-      const categories = lighthouseData.lighthouseResult?.categories || {};
-
-      const getStatus = (score, thresholds = { good: 0.9, warn: 0.5 }) => {
-        if (score === null || score === undefined)
-          return { status: "warning", text: "" };
-        if (score >= thresholds.good) return { status: "good", text: "" };
-        if (score >= thresholds.warn) return { status: "warning", text: "" };
-        return { status: "error", text: "" };
-      };
+      const seoData = seoResult.data || {};
+      const [desktopData, mobileData] = await Promise.all([
+        fetchPageSpeed(url, "desktop"),
+        fetchPageSpeed(url, "mobile"),
+      ]);
 
       // ----- Индексация -----
-      const crawlScore = audits["is-crawlable"]?.score;
-      const crawlStatus = getStatus(crawlScore);
-      let indexingText = "";
-      if (crawlStatus.status === "good")
-        indexingText = "Все важные страницы в индексе";
-      else if (crawlStatus.status === "error")
-        indexingText = "Сайт не индексируется";
-      else indexingText = "Часть важных страниц отсутствует в индексе";
+      const crawlAudit = getAudit(desktopData, "is-crawlable") || getAudit(mobileData, "is-crawlable");
+      const canonicalAudit = getAudit(desktopData, "canonical") || getAudit(mobileData, "canonical");
+      const robotsTxtAudit = getAudit(desktopData, "robots-txt") || getAudit(mobileData, "robots-txt");
+      const hasIndexingError = [crawlAudit, canonicalAudit, robotsTxtAudit].some(auditHasExplicitError);
+      const crawlStatus = hasIndexingError ? "error" : "good";
       const indexing = {
         category: "indexing",
         title: "Индексация страниц",
-        status: { status: crawlStatus.status, text: indexingText },
-        desc: "Проверка доступности страниц для поисковых роботов",
+        status: {
+          status: crawlStatus,
+          text: crawlStatus === "good" ? "Страница доступна для поисковых систем" : "Страница закрыта от поисковых систем",
+        },
+        summary: crawlStatus === "good" ? "Страница доступна для поисковых систем" : "Страницу нужно открыть для поисковых систем",
+        details: [
+          `Сканирование: ${crawlStatus === "good" ? "разрешено" : "ограничено"}`,
+          canonicalAudit?.score !== undefined ? `Canonical: ${canonicalAudit.score === 1 ? "настроен" : "требует проверки"}` : "",
+          robotsTxtAudit?.score !== undefined ? `Robots.txt: ${robotsTxtAudit.score === 1 ? "без критичных ошибок" : "требует проверки"}` : "",
+        ],
+        advice: crawlStatus === "good"
+          ? "Следите, чтобы важные страницы были добавлены в карту сайта."
+          : "Проверьте запреты в robots.txt и настройках страницы.",
       };
 
       // ----- Скорость загрузки -----
-      const perfScore = categories.performance?.score;
-      const perfStatus = getStatus(perfScore, { good: 0.9, warn: 0.5 });
-      let speedText = "";
-      if (perfStatus.status === "good") speedText = "Сайт загружается быстро";
-      else if (perfStatus.status === "error")
-        speedText =
-          "Сайт загружается медленно, особенно на мобильных устройствах";
-      else speedText = "Скорость загрузки можно улучшить";
+      const desktopPoints = scoreToPoints(getCategoryScore(desktopData, "performance"));
+      const mobilePoints = scoreToPoints(getCategoryScore(mobileData, "performance"));
+      const averagePoints = desktopPoints !== null && mobilePoints !== null
+        ? Math.round((desktopPoints + mobilePoints) / 2)
+        : desktopPoints ?? mobilePoints;
+      const speedStatus = getStatusByPoints(averagePoints, { good: 90, warn: 50 });
       const speed = {
         category: "speed",
         title: "Скорость загрузки",
-        status: { status: perfStatus.status, text: speedText },
-        desc: "Общая производительность по Core Web Vitals",
+        status: {
+          status: speedStatus,
+          text: speedStatus === "good" ? "Сайт загружается быстро" : speedStatus === "warning" ? "Скорость загрузки можно улучшить" : "Сайт загружается медленно",
+        },
+        text: speedStatus === "good"
+          ? `Средняя оценка скорости — ${formatPoints(averagePoints) || "—"}. Сайт загружается стабильно, важно сохранить этот уровень при дальнейших обновлениях.`
+          : `Средняя оценка скорости — ${formatPoints(averagePoints) || "—"}. Рекомендуем оптимизировать изображения, скрипты и критические ресурсы страницы, чтобы сайт открывался быстрее.`,
       };
 
       // ----- Мета-теги -----
-      const titleOk = seoData.title && seoData.title.trim() !== "";
-      const descOk = seoData.description && seoData.description.trim() !== "";
-      let metaStatus = {
-        status: "warning",
-        text: "У части страниц отсутствуют title и description",
-      };
-      if (titleOk && descOk)
-        metaStatus = {
-          status: "good",
-          text: "Title и meta-description заполнены",
-        };
-      else if (!titleOk && !descOk)
-        metaStatus = {
-          status: "error",
-          text: "Отсутствуют title и description",
-        };
+      const title = String(seoData.title || "").trim();
+      const description = String(seoData.description || "").trim();
+      const titleLength = title.length;
+      const descLength = description.length;
+      const titleStatus = getLengthStatus(titleLength, 30, 65);
+      const descStatus = getLengthStatus(descLength, 70, 160);
+      const metaStatusValue = titleStatus === "good" && descStatus === "good"
+        ? "good"
+        : titleStatus === "error" || descStatus === "error"
+          ? "error"
+          : "warning";
       const metaTags = {
         category: "meta",
         title: "Мета-теги",
-        status: metaStatus,
-        desc: "Корректность заполнения тегов title и meta-description",
+        status: {
+          status: metaStatusValue,
+          text: metaStatusValue === "good" ? "Title и Description заполнены корректно" : metaStatusValue === "warning" ? "Title и Description требуют доработки" : "Title или Description не заполнены",
+        },
+        text: metaStatusValue === "good"
+          ? "Заголовок и описание страницы заполнены корректно: они помогают поисковым системам и пользователям понять содержание страницы."
+          : metaStatusValue === "warning"
+            ? "Заголовок и описание страницы стоит доработать: сделайте их точнее, понятнее и ближе к пользе для пользователя."
+            : "Для страницы нужно заполнить заголовок и описание: без них сайт хуже выглядит в поисковой выдаче и менее понятно раскрывает содержание страницы.",
       };
 
       // ----- Мобильная версия -----
-      const vpScore = audits["viewport"]?.score;
-      const cwScore = audits["content-width"]?.score;
-      let mobileText = "",
-        mobileStat = "warning";
-      if (vpScore === 1 && cwScore === 1) {
-        mobileStat = "good";
-        mobileText = "Сайт адаптирован, но есть зоны для улучшения UX";
-      } else if (vpScore === 0 || cwScore === 0) {
-        mobileStat = "error";
-        mobileText = "Сайт не адаптирован для мобильных";
-      } else mobileText = "Адаптация требует улучшения";
+      const viewportAudit = getAudit(mobileData, "viewport");
+      const contentWidthAudit = getAudit(mobileData, "content-width");
+      const mobileSpeedPoints = mobilePoints;
+      const mobileAdaptationOk = auditIsPassedOrUnknown(viewportAudit) && auditIsPassedOrUnknown(contentWidthAudit);
+      const mobileStat = mobileAdaptationOk
+        ? getStatusByPoints(mobileSpeedPoints, { good: 90, warn: 50 })
+        : "error";
       const mobile = {
         category: "mobile",
         title: "Мобильная версия",
-        status: { status: mobileStat, text: mobileText },
-        desc: "Проверка viewport и корректности контента на мобильных",
+        status: {
+          status: mobileStat,
+          text: mobileStat === "good" ? "Мобильная версия работает корректно" : mobileStat === "warning" ? "Мобильную версию можно ускорить" : "Мобильная версия требует доработки",
+        },
+        text: mobileStat === "good"
+          ? `Сайт удобно открывается с телефона, а мобильная оценка скорости составляет ${formatPoints(mobileSpeedPoints) || "—"}. При добавлении новых блоков важно сохранить корректное отображение на небольших экранах.`
+          : `Мобильная оценка скорости составляет ${formatPoints(mobileSpeedPoints) || "—"}. Рекомендуем облегчить изображения и скрипты, а также проверить, чтобы все блоки удобно отображались на небольших экранах.`,
       };
 
       // ----- Контент -----
-      const h1Ok = seoData.h1 && seoData.h1.trim() !== "";
-      const h2Count = seoData.h2 ? seoData.h2.length : 0;
-      const wordCount = seoData.wordCount || 0;
-      const kwOk = seoData.keywords && seoData.keywords.trim() !== "";
-      let contentStatus = {
-        status: "warning",
-        text: "Контент недостаточно раскрывает часть поисковых запросов",
-      };
-      if (h1Ok && h2Count >= 1 && wordCount > 300 && kwOk)
-        contentStatus = {
-          status: "good",
-          text: "Контент отличный: заголовки, объём и ключевые слова в порядке",
-        };
-      else if (!h1Ok || wordCount < 100)
-        contentStatus = {
-          status: "error",
-          text: "Критические проблемы с контентом (отсутствие H1 или слишком мало текста)",
-        };
-      const contentDesc = `H1: ${h1Ok ? "присутствует" : "отсутствует"}, H2: ${h2Count} шт., слов: ${wordCount}, ключевые слова: ${kwOk ? "заданы" : "не заданы"}`;
+      const h1 = String(seoData.h1 || "").trim();
+      const h1Count = normalizeArray(seoData.h1).length || (h1 ? 1 : 0);
+      const h2Count = normalizeArray(seoData.h2).length;
+      const wordCount = Number(seoData.wordCount || 0);
+      const headingOrder = getHeadingOrderStatus(seoData);
+      const density = getWordDensity(getTextFromSeoData(seoData));
+      const densityStatus = density ? density.percent <= 5 ? "good" : density.percent <= 8 ? "warning" : "error" : null;
+      const contentStatusValue = !h1 || wordCount < 100 || densityStatus === "error"
+        ? "error"
+        : h2Count >= 1 && wordCount >= 300 && densityStatus !== "warning"
+          ? "good"
+          : "warning";
       const content = {
         category: "content",
         title: "Контент и релевантность",
-        status: contentStatus,
-        desc: contentDesc,
+        status: {
+          status: contentStatusValue,
+          text: contentStatusValue === "good" ? "Структура контента выглядит корректно" : contentStatusValue === "warning" ? "Контент можно усилить" : "Контент требует доработки",
+        },
+        text: contentStatusValue === "good"
+          ? `Страница имеет понятную структуру: основной заголовок найден, подзаголовки помогают разделить содержание, а повторы слов выглядят естественно${headingOrder ? `, порядок заголовков — ${headingOrder.toLowerCase()}` : ""}.`
+          : densityStatus === "error"
+            ? `Контент стоит доработать: некоторые слова повторяются слишком часто${density ? `, самый частый повтор — ${density.percent}%` : ""}. Рекомендуем распределить ключевые фразы равномернее и усилить структуру подзаголовками.`
+            : `Контент можно усилить: проверьте наличие основного заголовка, добавьте полезные подзаголовки и сделайте структуру страницы более понятной для пользователя.`,
       };
 
       // ----- Технические ошибки -----
-      const errorsScore = audits["errors-in-console"]?.score;
-      let errorsText = "",
-        errorsStat = "error";
-      if (errorsScore === 1) {
-        errorsStat = "good";
-        errorsText = "Технических ошибок не найдено";
-      } else errorsText = "Найдены битые ссылки и ошибки 404";
+      const consoleErrorsAudit = getAudit(mobileData, "errors-in-console");
+      const consoleErrorItems = getAuditItems(consoleErrorsAudit);
+      const consoleErrorsCount = consoleErrorsAudit?.score === 1 ? 0 : consoleErrorItems.length;
+      const networkItems = getAuditItems(getAudit(mobileData, "network-requests"));
+      const brokenRequestsCount = networkItems.filter((item) => {
+        const code = Number(item.statusCode || item.status || item.responseCode);
+        return code >= 400;
+      }).length;
+      const techStatus = consoleErrorsCount === 0 && brokenRequestsCount === 0 ? "good" : brokenRequestsCount > 0 ? "error" : "warning";
       const techErrors = {
         category: "errors",
         title: "Технические ошибки",
-        status: { status: errorsStat, text: errorsText },
-        desc: "Наличие ошибок JavaScript и проблем рендеринга",
+        status: {
+          status: techStatus,
+          text: techStatus === "good" ? "Критичных ошибок при загрузке не найдено" : techStatus === "warning" ? "Есть ошибки, которые стоит исправить" : "Найдены ошибки загрузки страницы",
+        },
+        text: techStatus === "good"
+          ? "Страница загружается без критичных технических ошибок. После обновлений сайта стоит повторять проверку, особенно если подключаются новые скрипты или внешние сервисы."
+          : brokenRequestsCount > 0
+            ? `На странице есть ресурсы, которые не загружаются корректно: найдено проблемных запросов — ${brokenRequestsCount}. Рекомендуем исправить битые файлы, изображения или ссылки, чтобы страница работала стабильнее.`
+            : `На странице есть ошибки JavaScript: ${consoleErrorsCount}. Рекомендуем проверить подключённые скрипты, чтобы они не мешали работе интерфейса и аналитики.`,
       };
 
       // ----- Перелинковка -----
-      const linkScore = audits["link-text"]?.score;
-      const linkStatus = getStatus(linkScore, { good: 0.9, warn: 0.5 });
-      let linkText = "";
-      if (linkStatus.status === "good") linkText = "Хорошая структура ссылок";
-      else if (linkStatus.status === "error")
-        linkText = "Нужно усилить связь между ключевыми страницами";
-      else linkText = "Перелинковку можно улучшить";
+      const linkAudit = getAudit(mobileData, "link-text");
+      const linkPoints = scoreToPoints(linkAudit?.score);
+      const linkItems = getAuditItems(linkAudit);
+      const weakLinksCount = linkAudit?.score === 1 ? 0 : linkItems.length;
+      const internalLinksCount = getInternalLinksCount(seoData, url);
+      const linkStatusValue = getStatusByPoints(linkPoints, { good: 90, warn: 50 });
       const internalLinks = {
         category: "links",
         title: "Внутренняя перелинковка",
-        status: { status: linkStatus.status, text: linkText },
-        desc: "Описательность текстов внутренних ссылок",
+        status: {
+          status: linkStatusValue,
+          text: linkStatusValue === "good" ? "Пользователям легко переходить между разделами сайта" : linkStatusValue === "warning" ? "Навигацию по сайту можно улучшить" : "Связи между страницами стоит усилить",
+        },
+        text: linkStatusValue === "good"
+          ? "Пользователям легко переходить между разделами сайта: большинство ссылок имеют понятные названия. Добавьте ссылки на связанные материалы и услуги, чтобы посетители находили больше полезной информации."
+          : weakLinksCount > 0
+            ? `Переходы между страницами можно сделать понятнее: найдено ссылок с общими фразами — ${weakLinksCount}. Замените «Подробнее», «Читать» и похожие подписи на названия, которые сразу объясняют, куда ведёт ссылка.`
+            : "Переходы между страницами можно усилить: добавьте ссылки на связанные услуги, статьи и важные разделы, чтобы пользователям было проще продолжать изучение сайта.",
       };
 
       // ----- HTTPS -----
       let sslOk = !!seoData.ssl;
-      if (!sslOk && audits["is-on-https"]?.score === 1) sslOk = true;
+      if (!sslOk && getAudit(mobileData, "is-on-https")?.score === 1) sslOk = true;
       const security = {
         category: "security",
         title: "Безопасность / HTTPS",
         status: sslOk
-          ? {
-              status: "good",
-              text: "SSL подключен, критичных проблем не найдено",
-            }
-          : { status: "error", text: "SSL не подключен или ошибки" },
-        desc: "Наличие и корректность SSL-сертификата",
+          ? { status: "good", text: "Соединение защищено" }
+          : { status: "error", text: "Соединение требует защиты" },
+        text: sslOk
+          ? "Сайт открывается по защищённому соединению. Важно следить за сроком действия SSL-сертификата, чтобы пользователи не видели предупреждений браузера."
+          : "Для сайта нужно настроить защищённое соединение: подключите SSL-сертификат и настройте открытие страниц по HTTPS.",
       };
 
       const metrics = [
@@ -7174,22 +7331,18 @@ const seoAuditInit = () => {
         internalLinks,
         security,
       ];
+
       const renderAuditCards = (metrics) => {
         if (!resultsGrid) return;
         resultsGrid.innerHTML = "";
         metrics.forEach((metric) => {
           const card = document.createElement("div");
           card.className = `card card--icon ${metric.status.status}`;
-          const statusText =
-            metric.status.status === "good"
-              ? "Хорошо"
-              : metric.status.status === "warning"
-                ? "Предупреждение"
-                : "Ошибка";
-          card.innerHTML = `<img src="/src/icons/metric-${metric.category}.svg" alt="icon"><b>${metric.title}</b><div class="badge mb-16 ${metric.status.status}">${statusText}</div><p>${metric.desc}</p>`;
+          card.innerHTML = buildCard(metric);
           resultsGrid.appendChild(card);
         });
       };
+
       renderAuditCards(metrics);
       resultsContainer.style.display = "block";
       showFormFeedback(submitBtn, "Проверка завершена", "success");
@@ -7261,6 +7414,7 @@ const seoAuditInit = () => {
     }
   }
 };
+
 
 // domain checker
 const domainCheker = () => {
