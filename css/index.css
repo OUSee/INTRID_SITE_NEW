@@ -442,15 +442,11 @@ th {
 }
 @keyframes onload-orb {
   0% {
-    transform: scale(0.1);
+    transform: scale(0.1) rotate(120deg);
     offset-distance: 0%;
   }
-  50% {
-    transform: scale(1) rotate(-120deg);
-    offset-distance: 100%;
-  }
   100% {
-    transform: scale(1) rotate(-120deg);
+    transform: scale(1) rotate(0deg);
     offset-distance: 100%;
   }
 }
@@ -3584,11 +3580,13 @@ ol li > ol {
   background-repeat: repeat;
   overflow: hidden;
   animation: onload 2.5s forwards;
-  animation-delay: 1s;
+  animation-delay: 1.4s;
 }
 #preloader .flying-orb {
-  offset-path: path("M -100 -100 Q 200 0, 133 139");
+  top: 0;
+  left: 0;
   offset-distance: 0%;
+  offset-anchor: center;
   transform: scale(1);
   animation: onload-orb 2.5s forwards;
 }
@@ -3600,25 +3598,9 @@ ol li > ol {
 }
 @media (max-width: 999.98px) {
   #preloader .flying-orb {
-    top: 50%;
-    left: 50%;
-    offset-path: unset;
-    offset-distance: unset;
-    transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
-    animation: flyToCenter 2.5s forwards;
+    width: 240px;
+    height: 240px;
   }
-}
-#preloader .flying-orb::before {
-  width: 0;
-  height: 0;
-}
-#preloader .flying-orb img {
-  width: 100%;
-  height: 100%;
-}
-#preloader .flying-orb .water-ripple {
-  width: 100%;
-  height: 100%;
 }
 
 .tooltip {

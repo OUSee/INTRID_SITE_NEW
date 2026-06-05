@@ -40,17 +40,34 @@ const triggerButtons = document?.querySelectorAll("[data-trigger]");
 
 function preloaderInit() {
   const orb = preloader?.querySelector(".flying-orb");
-  const rect = orb?.getBoundingClientRect();
-  const centerX = window.innerWidth / 2 - rect?.width / 2;
-  const centerY = window.innerHeight / 2 - rect?.height / 2;
-
-  // Предположим, начало пути (0,0) соответствует left:0; top:0
-  const path = `M 0 0 Q 200 0, ${centerX} ${centerY}`;
-  // orb.style.offsetPath = `path('${path}')`;
+  const target = document.querySelector(".main-section .flying-mockup");
 
   setTimeout(() => {
     preloader.remove();
   }, 3000);
+
+  if (!preloader || !orb || !target) return;
+
+  const orbRect = orb.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+
+  const startX = -orbRect.width;
+  const startY = -orbRect.height;
+
+  const endX = targetRect.left + targetRect.width / 2 - orbRect.width / 2;
+  const endY = targetRect.top + targetRect.height / 2 - orbRect.height / 2;
+
+  const dx = endX - startX;
+  const dy = endY - startY;
+
+  const curveOffset = Math.min(window.innerWidth, window.innerHeight) * 0.35;
+
+  const controlX = startX + dx * 0.55 - curveOffset;
+  const controlY = startY + dy * 0.35 + curveOffset;
+
+  const path = `M ${startX} ${startY} Q ${controlX} ${controlY}, ${endX} ${endY}`;
+
+  orb.style.offsetPath = `path("${path}")`;
 }
 
 function pageIsScrolled() {
@@ -8277,6 +8294,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initTariffChangeButtons();
 
+  if (mockup) updateMockupPlace();
   preloaderInit();
 
   pageIsScrolled();
@@ -8287,7 +8305,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (footer) moveServiceLinks();
   moveAchievementsSlider();
 
-  if (mockup) updateMockupPlace();
   initPopups();
   if (mapLinks) mapLinksInit();
 
