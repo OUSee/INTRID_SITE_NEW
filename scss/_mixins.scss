@@ -296,6 +296,20 @@
   }
 }
 
+@mixin input-mode($symbol) {
+  &::after {
+    content: $symbol;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    font-weight: 600;
+    font-size: inherit;
+    user-select: none;
+    pointer-events: none;
+    transform: translate(0, -50%);
+  }
+}
+
 @mixin button-without-hover {
   background-color: unset;
   color: currentColor;

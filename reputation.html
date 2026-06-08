@@ -341,11 +341,15 @@
                                 <input type="text" id="company-name" name="company" placeholder="Название компании"
                                     required>
 
-                                <input type="number" id="average-check" name="average_check"
-                                    placeholder="Средний чек, ₽" min="0" step="1" required>
+                                <div class="input-mode rubles w-100">
+                                    <input type="text" id="average-check" class="w-100" name="average_check"
+                                        placeholder="Средний чек" inputmode="numeric" autocomplete="off" required>
+                                </div>
 
-                                <input type="number" id="margin-percent" name="margin" placeholder="Маржинальность, %"
-                                    min="0" max="100" step="0.1" required>
+                                <div class="input-mode percent w-100">
+                                    <input type="text" id="margin-percent" class="w-100" name="margin" placeholder="Маржинальность"
+                                        inputmode="decimal" autocomplete="off" required>
+                                </div>
 
                                 <button type="submit" class="big button-highlight w-sm-100 h-100 ml-auto">
                                     рассчитать

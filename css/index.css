@@ -4200,6 +4200,34 @@ form input[type=submit] {
   user-select: none;
   cursor: pointer;
 }
+.input-mode {
+  position: relative;
+}
+.input-mode > input {
+  padding-right: 36px;
+}
+.input-mode.rubles::after {
+  content: "₽";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  font-weight: 600;
+  font-size: inherit;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(0, -50%);
+}
+.input-mode.percent::after {
+  content: "%";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  font-weight: 600;
+  font-size: inherit;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(0, -50%);
+}
 
 .label-checkbox {
   position: relative;
