@@ -178,6 +178,7 @@
     <!-- MAIN PAGE -->
     <!--  -->
     <main>
+        <!-- hero-section -->
         <section class="main-section main-section--about container">
             <div class="breadcrumbs">
                 <a href="/">Главная</a>
@@ -191,8 +192,8 @@
                 </h1>
 
                 <p>
-                    Особое внимание мы уделяем <span class="color-blue">разработке собственного функционального
-                        программного
+                    Особое внимание мы уделяем разработке собственного функционального
+                        <span class="color-blue">программного
                         обеспечения</span> и
                     интерактивных сервисов для сайтов и порталов. За нашими плечами более <span class="color-blue">280
                         созданных веб-проектов</span>,
@@ -201,12 +202,12 @@
                     порталы, справочные агрегаторы и т.п.
                 </p>
                 <p>
-                    Мы <span class="color-blue">являемся аккредитованной компанией в области информационных
-                        технологий</span>. Так же мы разработали
+                    Мы являемся <span class="color-blue">аккредитованной IT-компанией</span> в области информационных
+                        технологий. Так же мы разработали
                     собственную iCMS, которая зарегистрирована в Российском реестре программного обеспечения.
                 </p>
                 <p>
-                    Для продвижения проектов <span class="color-blue">используем все современные инструменты
+                    Для продвижения проектов используем все современные <span class="color-blue">инструменты
                         интернет-маркетинга:</span> SEO-оптимизация,
                     контекстная и таргетированная реклама, SERM, SMM, интеграция с Яндекс.Маркет/Google.Merchant
                     и
@@ -224,7 +225,7 @@
                         <span data-counter-value="11">11</span>
                         <p>разработчиков в штате</p>
                     </div>
-                    <a class="button-highlight big w-sm-100" href="/kontakty#contact-form">
+                    <a class="button-highlight big w-sm-100" href="/kontakty#contacts-creation">
                         Связаться с нами
                     </a>
                 </div>
@@ -232,7 +233,7 @@
 
             <div class="main-section--right">
                 <div class="flying-mockup">
-                    <img src="/src/images/orb-with-logo.webp" alt="">
+                    <img src="/src/images/orb-with-logo.webp" alt="INTRID logo">
                     <div class="water-ripple">
                         <div class="ripple-circle"></div>
                         <div class="ripple-circle"></div>
@@ -279,10 +280,10 @@
                         <a href="/portfolio/tender-portal" class="slide popup-trigger">
                             <div class="cup isNumber">
                                 <div class="cup-number">
-                                    9
+                                    %tender_portals_built%
                                 </div>
                             </div>
-                            <p>Разработано 9 корпоративных тендерных порталов для крупного бизнеса России</p>
+                            <p>Разработано %tender_portals_built% корпоративных тендерных порталов для крупного бизнеса России</p>
                         </a>
                         <a href="/icms" class="slide">
                             <div class="cup isNumber">
@@ -302,19 +303,19 @@
             <div class="main-section--block">
                 <div class="main-section--numbers">
                     <div class="portfolio-count-number">
-                        <b class="title_h1 color-blue" data-counter-value="214">214</b>
+                        <b class="title_h1 color-blue" data-counter-value="%sites_developed%">%sites_developed%</b>
                         <span>Разработано сайтов</span>
                     </div>
                     <div class="portfolio-count-number">
-                        <b class="title_h1 color-blue" data-counter-value="86">86</b>
+                        <b class="title_h1 color-blue" data-counter-value="%brands_developed%">%brands_developed%</b>
                         <span>Создано брендов</span>
                     </div>
                     <div class="portfolio-count-number">
-                        <b class="title_h1 color-blue" data-counter-value="48">48</b>
+                        <b class="title_h1 color-blue" data-counter-value="%sites_promoted%">%sites_promoted%</b>
                         <span>Сайтов раскручено</span>
                     </div>
                     <div class="portfolio-count-number">
-                        <b class="title_h1 color-blue" data-counter-value="9">9</b>
+                        <b class="title_h1 color-blue" data-counter-value="%tender_portals_built%">%tender_portals_built%</b>
                         <span>Тендерных порталов</span>
                     </div>
                 </div>
@@ -406,21 +407,26 @@
                             <p class="title_h4 text-center">
                                 Получить консультацию
                             </p>
-                            <form class="order-form">
-                                <input type="text" id="customer-name" name="customer-name" placeholder="Ваше имя">
+                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
 
-                                <input type="email" id="customer-mail" name="mail" placeholder="E-mail">
+                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
 
-                                <input type="tel" required id="customer-phone" name="customer-phone"
-                                    placeholder="Ваш телефон *">
+                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
 
-                                <textarea data-autosize="true" rows="2" id="customer-phone" placeholder="Комментарий"
-                                    name="list"></textarea>
+                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                                <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                                    name="mess"></textarea>
 
                                 <div class="input-file">
                                     <div class="file-drop-area">
                                         <label>
-                                            <input type="file" multiple=""
+                                            <input type="file" multiple="" name="file[]"
                                                 accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
                                             <span>Прикрепить файл</span>
                                             <img src="/src/icons/pin.svg" alt="Прикрепить файл">
@@ -429,16 +435,13 @@
                                         <div class="file-list" style="display: none;"></div>
                                     </div>
                                 </div>
-
                                 <p class="testimonials text-center m-center mb-0">
-                                    Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
-                                        target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                                    Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html" target="_blank">персональных&nbsp;данных</a> в соответствии с <a
                                         href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
                                         target="_blank">ФЗ&nbsp;№152</a>
                                 </p>
-
-                                <button type="submit" class="button big button-white mt-10">
-                                    Заказать сайт
+                                <button type="submit" class="button big button-white mt-12">
+                                    Отправить
                                 </button>
                             </form>
                         </div>
@@ -457,7 +460,7 @@
                 <div class="sites-portfolio-slider" id="our-team" data-slider="portfolio-slider" data-fill="4,3,2,1">
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/timur-photo.webp" alt="img">
+                            <img src="/src/images/timur-photo.webp" alt="Тимур – Менеджер проектов">
                         </div>
                         <b>
                             Тимур
@@ -474,7 +477,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/viktoria-photo.webp" alt="img">
+                            <img src="/src/images/viktoria-photo.webp" alt="Виктория – Бухгалтер">
                         </div>
                         <b>
                             Виктория
@@ -490,7 +493,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/irina_manager.webp" alt="img">
+                            <img src="/src/images/irina_manager.webp" alt="Ирина – Менеджер проектов">
                         </div>
                         <b>
                             Ирина
@@ -508,7 +511,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/artem-frontend.webp" alt="img">
+                            <img src="/src/images/artem-frontend.webp" alt="Aртем – Frontend-разработчик">
                         </div>
                         <b>
                             Aртем
@@ -526,7 +529,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/maxim-seo.webp" alt="img">
+                            <img src="/src/images/maxim-seo.webp" alt="Максим – SEO-специалист">
                         </div>
                         <b>
                             Максим
@@ -543,7 +546,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/evgen-python.webp" alt="img">
+                            <img src="/src/images/evgen-python.webp" alt="Евгений – Python-разработчик">
                         </div>
                         <b>
                             Евгений
@@ -561,7 +564,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/vlad-backend.webp" alt="img">
+                            <img src="/src/images/vlad-backend.webp" alt="Владислав – Backend-разработчик">
                         </div>
                         <b>
                             Владислав
@@ -578,7 +581,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/olga-designer.webp" alt="img">
+                            <img src="/src/images/olga-designer.webp" alt="Ольга – Web-дизайнер">
                         </div>
                         <b>
                             Ольга
@@ -596,7 +599,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/anjella-copyriter.webp" alt="img">
+                            <img src="/src/images/anjella-copyriter.webp" alt="Анжелика – Копирайтер">
                         </div>
                         <b>
                             Анжелика
@@ -612,7 +615,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/alexandra.webp" alt="img">
+                            <img src="/src/images/alexandra.webp" alt="Александра – Стажер">
                         </div>
                         <b>
                             Александра
@@ -628,7 +631,7 @@
                     </div>
                     <div class="card card--tab card--team">
                         <div class="card-icon">
-                            <img src="/src/images/sergey.webp" alt="img">
+                            <img src="/src/images/sergey.webp" alt="Сергей – Frontend-разработчик">
                         </div>
                         <b>
                             Сергей
@@ -674,7 +677,7 @@
                 <div class="sites-portfolio-slider" data-slider="portfolio-slider" id="awards-slider">
                     <div class="card card--award active" data-popup="sert-web-dev-1-magazine">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: Разработка интернет-магазинов" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -705,7 +708,7 @@
 
                     <div class="card card--award active" data-popup="sert-web-dev-1-base-ai">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: Разработка решений на базе ИИ" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -736,7 +739,7 @@
 
                     <div class="card card--award active" data-popup="sert-web-dev-1-create-promotion">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: Разработка и продвижение сайтов" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -767,7 +770,7 @@
 
                     <div class="card card--award active" data-popup="sert-web-dev-2">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: Разработка сайтов и веб-сервисов" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -798,7 +801,7 @@
 
                     <div class="card card--award active" data-popup="sert-web-dev-2-design-agency">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: Дизайн" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -829,7 +832,7 @@
 
                     <div class="card card--award active" data-popup="sert-web-support-3">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: Поддержка и развитие сайтов" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -860,7 +863,7 @@
 
                     <div class="card card--award active" data-popup="sert-web-dev-18-base-ai">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: Разработка решений на базе ИИ" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -891,7 +894,7 @@
 
                     <div class="card card--award active" data-popup="serificate-create_N_promotion-view">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: Разработка и продвижение сайтов" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -922,7 +925,7 @@
 
                     <div class="card card--award active" data-popup="sertificate-seo-view">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: SEO (поисковое продвижение)" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -953,7 +956,7 @@
 
                     <div class="card card--award active" data-popup="sertificate-webStore-view">
                         <div class="card-header">
-                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета" />
+                            <img src="/src/icons/reviews/rating_runet-blue.svg" alt="Рейтинг Рунета: Разработка интернет-магазинов" />
                             <span>
                                 Рейтинг Рунета
                             </span>
@@ -1025,7 +1028,7 @@
                             data-site-preview="https://nasha-priroda.ru/">
                             <div class="card-header">
                                 <img src="/src/images/logos/nasha-priroda.webp" class="portfolio-logo"
-                                    alt="logo company" />
+                                    alt="Наша природа" />
                                 <div class="card-header-text">
                                     <b>Наша природа</b>
                                 </div>
@@ -1043,7 +1046,7 @@
                         <a href="javascript://" class="absolute-link" data-popup="site-preview"
                             data-site-preview="https://burovrn.ru/">
                             <div class="card-header">
-                                <img src="/src/images/logos/burovrn.webp" class="portfolio-logo" alt="logo company">
+                                <img src="/src/images/logos/burovrn.webp" class="portfolio-logo" alt="Бюро находок Воронеж">
                                 <div class="card-header-text">
                                     <b>Бюро находок Воронеж</b>
                                 </div>
@@ -1062,7 +1065,7 @@
                         <a href="javascript://" class="absolute-link" data-popup="site-preview"
                             data-site-preview="https://antoniyvrn.ru/">
                             <div class="card-header">
-                                <img src="/src/images/logos/antoniyvrn.webp" class="portfolio-logo" alt="logo company">
+                                <img src="/src/images/logos/antoniyvrn.webp" class="portfolio-logo" alt="Храм А. Великого">
                                 <div class="card-header-text">
                                     <b>Храм А. Великого</b>
                                 </div>
@@ -1081,7 +1084,7 @@
                             data-site-preview="https://web-d.intrid.ru/">
                             <div class="card-header">
                                 <img src="https://web-d.intrid.ru/images/logo_intrid.gif" class="portfolio-logo"
-                                    alt="logo company">
+                                    alt="Конкурс Web-design Воронеж 2005">
                                 <div class="card-header-text">
                                     <b>Конкурс Web-design Воронеж 2005</b>
                                 </div>
@@ -1100,7 +1103,7 @@
                         <a href="javascript://" class="absolute-link" data-popup="site-preview"
                             data-site-preview="https://tes-basis.ru/">
                             <div class="card-header">
-                                <img src="https://tes-basis.ru/favicon.ico" class="portfolio-logo" alt="logo company">
+                                <img src="https://tes-basis.ru/favicon.ico" class="portfolio-logo" alt="Теория единства субстанции. Основа.">
                                 <div class="card-header-text">
                                     <b>Теория единства субстанции. Основа.</b>
                                 </div>
@@ -1214,292 +1217,9 @@
         </section>
 
         <!-- Отзывы клиентов -->
-        <section class="sites-reviews">
-            <div class="container position-relative">
-                <div class="d-flex flex-wrap align-center justify-between justify-lg-center gap-16">
-                    <h3 class="underlined w-fit">
-                        Отзывы клиентов
-                    </h3>
-                    <div class="flex-layout justify-between gap-4 w-100 mw-500">
-                        <a target="_blank"
-                            href="https://yandex.ru/maps/org/intrid/1027741955/reviews/?ll=39.211769%2C51.667971&z=15"
-                            class="rating-item">
-                            <img src="./src/images/yandex-big-logo.webp" alt="Яндекс">
-                            <div class="d-flex flex-row align-center flex-nowrap gap-4">
-                                <p class="m-0">4.4</p>
-                                <div class="rating-item-stars">
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star-4_4"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <a target="_blank" href="https://2gis.ru/voronezh/firm/4363390420259033/tab/reviews"
-                            class="rating-item">
-                            <img src="./src/images/2-gis-big-logo.webp" alt="2ГИС">
-                            <div class="d-flex flex-row align-center flex-nowrap gap-4">
-                                <p class="m-0">4.7</p>
-                                <div class="rating-item-stars">
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star-4_7"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <a target="_blank"
-                            href="https://ratingruneta.ru/agency-intrid/reviews-web/?ysclid=m8wwzkik8c133596851"
-                            class="rating-item">
-                            <img src="./src/images/runet-big-logo.webp" alt="Рунет">
-                            <div class="d-flex flex-row align-center flex-nowrap gap-4">
-                                <p class="m-0">5.0</p>
-                                <div class="rating-item-stars">
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+        %site_reviews%
 
-                <div class="sites-reviews-slider mt-32" data-slider="reviews-slider" id="reviews-slider">
-                    <div class="card card--review">
-                        <div class="card-header">
-                            <div class="card-name">
-                                <b>СтронгМэн</b>
-                                <p>Директор</p>
-                            </div>
-                            <div class="card-rate">
-                                <b>5.0</b>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <p>
-                                Работаем с компанией Intrid более полугода. Разработали для меня интернет магазин.
-                                Качеством я остался доволен. Очень
-                                профессиональный подход и весьма ориентированы на клиента. Желаю им больших успехов и
-                                хороших заказов)
-                            </p>
-                        </div>
-
-                        <div class="card-footer">
-                            <a target="_blank" href="https://strongmanpro.ru"
-                                class="color-blue mr-10 hover-underline">https://strongmanpro.ru</a>
-                            <div class="card-date">
-                                <p>01.20.22</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card--review">
-                        <div class="card-header">
-                            <div class="card-name">
-                                <b>Понкратов Олег Васильевич</b>
-                                <p>Директор EVKKA – Автоковрики</p>
-                            </div>
-                            <div class="card-rate">
-                                <b>5.0</b>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <p>
-                                Для меня ребята делали сайте https://evkka.ru/, авто аксессуары (чехлы, ковры, накидки,
-                                шторки), работа проделана
-                                огромная, сил а самое главное терпения вложено не меньше))))))Хочу сказать спасибо и
-                                пожелать удачи на проф. поприще.
-                                Кстати работу со студией продолжаю до сих пор, почти каждый меся внедряем новый товар
-                                (причем новый товар представляется
-                                как новый онлайн-конструк) Всем рекомендую!!! Спасибо!!!
-                            </p>
-                        </div>
-
-                        <div class="card-footer">
-                            <a target="_blank" href="https://new.evkka.ru"
-                                class="color-blue mr-10 hover-underline">https://new.evkka.ru</a>
-                            <div class="card-date">
-                                <p>20.01.22</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card--review">
-                        <div class="card-header">
-                            <div class="card-name">
-                                <b>Иванова С.В.</b>
-                                <p>Руководитель</p>
-                            </div>
-                            <div class="card-rate">
-                                <b>5.0</b>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <p>
-                                Искала веб-студию для разработки интернет-магазина, решила остановиться на этой
-                                организации, опираясь на прочитанные
-                                отзывы, и не ошиблась. Работа была выполнена оперативно и в срок, в процессе разработки
-                                каждое пожелание было учитано и
-                                исполнено в самом лучшем варианте, сайтом полностью довольны. Дополнительно были
-                                предоставлены скидки, что очень
-                                порадовало. Отдельное спасибо Тимуру за полное сопровождение в процессе разработки, и
-                                всей организации за
-                                клиентоориентированный подход. Если Вы хотите крутой, современный и функциональный сайт,
-                                то Вам в INTRID.
-                            </p>
-                        </div>
-
-                        <div class="card-footer">
-                            <a target="_blank" href="https://space-love.ru/"
-                                class="color-blue mr-10 hover-underline">https://space-love.ru/</a>
-                            <div class="card-date">
-                                <p>21.09.21</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card--review">
-                        <div class="card-header">
-                            <div class="card-name">
-                                <b>Ульяна</b>
-                                <p>Руководитель</p>
-                            </div>
-                            <div class="card-rate">
-                                <b>5.0</b>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <p>
-                                Разрабатывали сайт агентства индивидуальных экскурсий по Европе . Cделали всё точь в
-                                точь как я просила за 1 месяц с
-                                небольшим. Очень довольны работой, рекомендую данную студию.
-                            </p>
-                        </div>
-
-                        <div class="card-footer">
-                            <a target="_blank" href="https://vk.com/gidy_v_evrope"
-                                class="color-blue mr-10 hover-underline">https://vk.com/gidy_v_evrope</a>
-                            <div class="card-date">
-                                <p>11.06.19</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card--review">
-                        <div class="card-header">
-                            <div class="card-name">
-                                <b>Алабовский Дмитрий Владимирович</b>
-                                <p>Директор Стоматология «Факел»</p>
-                            </div>
-                            <div class="card-rate">
-                                <b>5.0</b>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <p>
-                                Руководство Стоматологии "Факел" благодарит коллектив web-студии INTRID за помощь в
-                                разработке и создании сайта!
-                                Профессиональная команда ответственно и добросовестно отнеслась к выполнению заказа ,мы
-                                остались очень довольны их
-                                работой! Спасибо Вам за понимание, терпение, труд и воплощение наших идей! Надеемся на
-                                дальнейшее сотрудничество по
-                                продвижению и совершенствованию сайта!
-                            </p>
-                        </div>
-
-                        <div class="card-footer">
-                            <a target="_blank" href="https://stomatfakel.ru/"
-                                class="color-blue mr-10 hover-underline">https://stomatfakel.ru/</a>
-                            <div class="card-date">
-                                <p>15.08.18</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card--review">
-                        <div class="card-header">
-                            <div class="card-name">
-                                <b>Бородин Вадим Валерьевич</b>
-                                <p>Директор Компания «Ригель»</p>
-                            </div>
-                            <div class="card-rate">
-                                <b>5.0</b>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <p>
-                                Больше 10 лет сотрудничаем с компанией Интрид, никогда нас не подводили, качественный
-                                сайт, раскрученный до первых мест
-                                в поисковиках очень помогает в работе.
-                            </p>
-                        </div>
-
-                        <div class="card-footer">
-                            <a target="_blank" href="http://www.rigelvrn.ru"
-                                class="color-blue mr-10 hover-underline">http://www.rigelvrn.ru</a>
-                            <div class="card-date">
-                                <p>15.08.18</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="sites-reviews-pagination" class="pagination">
-                    <button class="pagination--prev-btn">
-                        <i class="icon-shevrone left"></i>
-                    </button>
-                    <div class="pagination--buttons-dots">
-                        <button class="pagination--btn-dot highlight"></button>
-                        <button class="pagination--btn-dot"></button>
-                    </div>
-                    <button class="pagination--next-btn">
-                        <i class="icon-shevrone"></i>
-                    </button>
-                </div>
-
-                <a href="/comment" class="button-link big">
-                    смотреть все отзывы
-                    <i class="icon-arrow_wide"></i>
-                </a>
-            </div>
-        </section>
-
-        <!-- BRIFFFS -->
+        <!-- Заказать разработку сайта или создание бренда -->
         <section>
             <div class="container">
                 <h3 class="underlined w-fit m-center text-center">
@@ -1509,7 +1229,7 @@
                 <div class="flex-layout flex-layout--use">
                     <a href="/calculator" class="card card--service use">
                         <div class="card-icon">
-                            <img src="/src/icons/site-calc.svg" alt="landig-page">
+                            <img src="/src/icons/site-calc.svg" alt="Калькулятор сайта">
                         </div>
                         <b>
                             Калькулятор сайта
@@ -1517,7 +1237,7 @@
                     </a>
                     <a href="/brif-site" class="card card--service use">
                         <div class="card-icon">
-                            <img src="/src/icons/brif-site.svg" alt="landig-page">
+                            <img src="/src/icons/brif-site.svg" alt="Бриф на сайт">
                         </div>
                         <b>
                             Бриф на сайт
@@ -1525,7 +1245,7 @@
                     </a>
                     <a href="/brif-logo" class="card card--service use">
                         <div class="card-icon">
-                            <img src="/src/icons/brif-logo.svg" alt="landig-page">
+                            <img src="/src/icons/brif-logo.svg" alt="Бриф на бренд">
                         </div>
                         <b>
                             Бриф на бренд
@@ -1533,7 +1253,7 @@
                     </a>
                     <a href="/seo#seo_application" class="card card--service use">
                         <div class="card-icon">
-                            <img src="/src/icons/promotion-request.svg" alt="landig-page">
+                            <img src="/src/icons/promotion-request.svg" alt="Заявка на раскрутку">
                         </div>
                         <b>
                             Заявка на раскрутку
