@@ -4572,14 +4572,11 @@ button:hover,
       top: 0;
       left: 0;
       z-index: -1;
-      // width: 120px;
-      // height: 120px;
       width: 92px;
       height: 92px;
       display: flex;
       background-color: var(--blue-bg);
       border-radius: 50%;
-      // transform: translate(-25%, -25%);
       transform: translate(-15%, -15%);
 
       @media (max-width: 599.98px) {
@@ -4621,7 +4618,6 @@ button:hover,
     }
 
     & ul {
-      // padding-left: 16px;
       margin-top: 0;
       padding-left: 0;
       list-style-type: disc;
@@ -4753,20 +4749,6 @@ button:hover,
   &--roadmap {
     overflow: unset;
 
-    padding: 32px 32px 32px 100px;
-
-    @media (max-width: 999.98px) {
-      padding: 20px 20px 20px 100px;
-    }
-
-    @media (max-width: 599.98px) {
-      padding: 20px 20px 20px 70px;
-    }
-
-    // @media (max-width: 599.98px) {
-    //   padding: 20px;
-    // }
-
     & > h1,
     & > h2,
     & > h3,
@@ -4793,7 +4775,6 @@ button:hover,
     & > h6,
     & > b {
       &::before {
-        // content: counter(roadmapItems) ".";
         content: counter(roadmapItems);
         position: absolute;
         top: 20px;
@@ -4816,43 +4797,6 @@ button:hover,
         }
       }
     }
-
-    // &::before {
-    // content: counter(roadmapItems);
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // z-index: -1;
-    // display: flex;
-    // align-items: center;
-    // justify-content: flex-start;
-    // width: 100px;
-    // height: 100px;
-    // padding: 0px 0px 20px 26px;
-    // aspect-ratio: 1/1;
-    // background-color: var(--blue-bg);
-    // border-radius: 0;
-    // border-top-left-radius: 32px;
-    // clip-path: ellipse(50% 50% at 20% 35%);
-    // text-align: center;
-    // line-height: 1;
-    // color: var(--blue-main);
-    // font-size: 44px;
-    // font-weight: 600;
-    // transform: translate(0, 0);
-
-    // @media (max-width: 999.98px) {
-    //   width: 70px;
-    //   height: 70px;
-    //   padding: 0px 0px 8px 16px;
-    //   clip-path: ellipse(50% 50% at 20% 40%);
-    //   font-size: 32px;
-    // }
-
-    // @media (max-width: 599.98px) {
-    //   display: none;
-    // }
-    // }
 
     &::before {
       content: "";
