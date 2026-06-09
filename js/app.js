@@ -2979,27 +2979,44 @@ function sliderInitialize() {
 
     // Функция для правильного размещения стрелок (восстановлена)
     const handleSliderArrows = () => {
-      const sliderHeight = slider.offsetHeight / 2 + 40;
-      prevBtn.forEach((btn) => {
-        btn.style.top = "50%";
-        btn.style.transform = `translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? "-100%" : "0"})`;
-        btn.style.left =
-          window.innerWidth > 600
-            ? slider.id === "gallery-slider"
-              ? "25px"
-              : "15px"
-            : "-10px";
-      });
-      nextBtn.forEach((btn) => {
-        btn.style.top = "50%";
-        btn.style.transform = `translateY(-${sliderHeight}px) translateX(${window.innerWidth > 600 ? "100%" : "0"})`;
-        btn.style.right =
-          window.innerWidth > 600
-            ? slider.id === "gallery-slider"
-              ? "25px"
-              : "15px"
-            : "-10px";
-      });
+      const setArrowPosition = (btn, side) => {
+        const btnParent = btn.offsetParent || btn.parentElement;
+        const parentRect = btnParent.getBoundingClientRect();
+        const sliderRect = slider.getBoundingClientRect();
+
+        const top = sliderRect.top - parentRect.top + sliderRect.height / 2;
+
+        btn.style.position = "absolute";
+        btn.style.top = `${top}px`;
+        btn.style.transform = `translateY(-50%) translateX(${
+          window.innerWidth > 600 ? (side === "left" ? "-100%" : "100%") : "0"
+        })`;
+
+        if (side === "left") {
+          btn.style.left =
+            window.innerWidth > 600
+              ? slider.id === "gallery-slider"
+                ? "25px"
+                : "15px"
+              : "-10px";
+
+          btn.style.right = "";
+        }
+
+        if (side === "right") {
+          btn.style.right =
+            window.innerWidth > 600
+              ? slider.id === "gallery-slider"
+                ? "25px"
+                : "15px"
+              : "-10px";
+
+          btn.style.left = "";
+        }
+      };
+
+      prevBtn.forEach((btn) => setArrowPosition(btn, "left"));
+      nextBtn.forEach((btn) => setArrowPosition(btn, "right"));
     };
 
     // Основная функция обновления – всё пересчитывается динамически
