@@ -7616,6 +7616,11 @@ button:disabled, button.disabled,
   min-height: 130px;
   padding: 32px 32px 32px 100px;
 }
+@media (max-width: 999.98px) {
+  .card--icon {
+    padding: 20px 20px 20px 100px;
+  }
+}
 @media (max-width: 599.98px) {
   .card--icon {
     min-height: 100px;
@@ -7628,12 +7633,12 @@ button:disabled, button.disabled,
   top: 0;
   left: 0;
   z-index: -1;
-  width: 120px;
-  height: 120px;
+  width: 92px;
+  height: 92px;
   display: flex;
   background-color: var(--blue-bg);
   border-radius: 50%;
-  transform: translate(-25%, -25%);
+  transform: translate(-15%, -15%);
 }
 @media (max-width: 599.98px) {
   .card--icon::before {
@@ -7680,6 +7685,7 @@ button:disabled, button.disabled,
   object-position: center;
 }
 .card--icon ul {
+  margin-top: 0;
   padding-left: 0;
   list-style-type: disc;
 }
@@ -7794,15 +7800,16 @@ button:disabled, button.disabled,
 }
 .card--roadmap {
   overflow: unset;
+  padding: 32px 32px 32px 100px;
 }
 @media (max-width: 999.98px) {
   .card--roadmap {
-    padding: 20px 20px 20px 70px;
+    padding: 20px 20px 20px 100px;
   }
 }
 @media (max-width: 599.98px) {
   .card--roadmap {
-    padding: 20px;
+    padding: 20px 20px 20px 70px;
   }
 }
 .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6 {
@@ -7832,43 +7839,48 @@ button:disabled, button.disabled,
   line-height: 140%;
   margin-bottom: 1em;
 }
-@media (max-width: 599.98px) {
-  .card--roadmap > h1::before, .card--roadmap > h2::before, .card--roadmap > h3::before, .card--roadmap > h4::before, .card--roadmap > h5::before, .card--roadmap > h6::before, .card--roadmap > b::before {
-    content: counter(roadmapItems) ".";
-  }
-}
-.card--roadmap::before {
+.card--roadmap > h1::before, .card--roadmap > h2::before, .card--roadmap > h3::before, .card--roadmap > h4::before, .card--roadmap > h5::before, .card--roadmap > h6::before, .card--roadmap > b::before {
   content: counter(roadmapItems);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 20px;
+  left: 20px;
   z-index: -1;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 100px;
-  height: 100px;
-  padding: 0px 0px 20px 26px;
-  aspect-ratio: 1/1;
-  background-color: var(--blue-bg);
-  border-radius: 0;
-  border-top-left-radius: 32px;
-  clip-path: ellipse(50% 50% at 20% 35%);
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   text-align: center;
   line-height: 1;
   color: var(--blue-main);
-  font-size: 44px;
+  font-size: 32px;
   font-weight: 600;
   transform: translate(0, 0);
 }
-@media (max-width: 999.98px) {
-  .card--roadmap::before {
-    width: 70px;
-    height: 70px;
-    padding: 0px 0px 8px 16px;
-    clip-path: ellipse(50% 50% at 20% 40%);
-    font-size: 32px;
+@media (max-width: 599.98px) {
+  .card--roadmap > h1::before, .card--roadmap > h2::before, .card--roadmap > h3::before, .card--roadmap > h4::before, .card--roadmap > h5::before, .card--roadmap > h6::before, .card--roadmap > b::before {
+    top: 22px;
   }
+}
+.card--roadmap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 92px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-bg);
+  clip-path: ellipse(48px 48px at 30% 35%);
+  border-radius: 32px 0 0 0;
+  text-align: center;
+  line-height: 1;
+  color: var(--blue-main);
+  font-size: 32px;
+  font-weight: 600;
+  transform: translate(0, 0);
 }
 @media (max-width: 599.98px) {
   .card--roadmap::before {
@@ -11759,6 +11771,9 @@ main {
     border-radius: 1000px;
   }
 }
+.tab-content-webDev.store-ai .benefits-left, .tab-content-webDev.store-ai .benefits-right {
+  top: 50px;
+}
 @media (min-width: 1000px) {
   .tab-content-webDev.store .benefit-card .benefit-card-info > p:first-child {
     margin: 0;
@@ -11843,7 +11858,6 @@ main {
 }
 .tab-content-webDev .benefit-card {
   width: 100%;
-  padding: 20px;
   min-height: unset;
   transition: 0.25s ease-in-out;
 }
@@ -12057,12 +12071,6 @@ main {
     padding: 0px;
   }
 }
-@media (max-width: 1199.98px) {
-  .tab-content-webDev.tender .tender-diagram .benefit-card::before {
-    width: 72px;
-    height: 72px;
-  }
-}
 .tab-content-webDev.tender .tender-diagram .benefit-card ul.content-hidden {
   padding: 0;
 }
@@ -12147,29 +12155,9 @@ main {
     align-items: flex-start;
     border-radius: 32px;
   }
-}
-@media (max-width: 1199.98px) {
-  .benefits-n-video .benefit-card {
-    gap: 20px;
-    padding: 20px;
-    min-height: auto;
-  }
-  .benefits-n-video .benefit-card::before {
-    display: none;
-  }
-  .benefits-n-video .benefit-card .card__icon,
-  .benefits-n-video .benefit-card .benefit-card__icon {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-  }
-  .benefits-n-video .benefit-card .card__icon img,
-  .benefits-n-video .benefit-card .card__icon svg,
-  .benefits-n-video .benefit-card .benefit-card__icon img,
-  .benefits-n-video .benefit-card .benefit-card__icon svg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  .benefits-n-video .benefit-card img {
+    top: 16px;
+    transform: none;
   }
 }
 
@@ -12226,7 +12214,7 @@ main {
   gap: 32px;
   max-width: 380px;
   min-height: 132px;
-  padding: 20px;
+  padding: 20px 20px 20px 100px;
   border-radius: 1000px;
   border: 1px solid var(--blue-bg);
   background-color: var(--bg-main);
@@ -12234,11 +12222,41 @@ main {
   overflow: hidden;
   transition: 0.25s ease-in-out;
 }
+.benefit-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 92px;
+  height: 92px;
+  display: flex;
+  background-color: var(--blue-bg);
+  border-radius: 50%;
+  transform: translate(-15%, -15%);
+}
+@media (max-width: 599.98px) {
+  .benefit-card::before {
+    display: none;
+  }
+}
 .benefit-card img {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  z-index: 1;
   width: 32px;
   height: 32px;
   object-fit: contain;
   align-self: flex-start;
+}
+.benefit-card .benefit-card-info {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+.benefit-card p:last-of-type {
+  margin: 0;
 }
 @media (min-width: 1000px) {
   .benefit-card:hover {
@@ -12249,6 +12267,12 @@ main {
 @media (max-width: 999.98px) {
   .benefit-card {
     border-radius: 32px;
+  }
+}
+@media (max-width: 599.98px) {
+  .benefit-card {
+    min-height: 100px;
+    padding: 20px 20px 20px 72px;
   }
 }
 @media (min-width: 1000px) {
@@ -12270,65 +12294,8 @@ main {
 }
 @media (max-width: 999.98px) {
   .benefit-card {
-    gap: 20px;
-    padding: 20px;
-    min-height: auto;
-  }
-  .benefit-card::before {
-    display: none;
-  }
-  .benefit-card .card__icon,
-  .benefit-card .benefit-card__icon {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-  }
-  .benefit-card .card__icon img,
-  .benefit-card .card__icon svg,
-  .benefit-card .benefit-card__icon img,
-  .benefit-card .benefit-card__icon svg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .benefit-card {
     align-items: flex-start;
     min-height: 100%;
-  }
-}
-.benefit-card img {
-  position: relative;
-  z-index: 1;
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  align-self: flex-start;
-}
-.benefit-card div {
-  position: relative;
-  z-index: 1;
-  flex: 1;
-}
-.benefit-card p:last-of-type {
-  margin: 0;
-}
-.benefit-card::before {
-  content: "";
-  z-index: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: var(--blue-bg);
-  border-radius: 50%;
-  width: 92px;
-  height: 92px;
-  transform: translate(-15%, -10%);
-}
-@media (max-width: 999.98px) {
-  .benefit-card::before {
-    width: 84px;
-    height: 84px;
-    transform: translate(-20%, -20%);
   }
 }
 

@@ -13,6 +13,13 @@
           border-radius: 1000px;
         }
       }
+
+      & .benefits {
+        &-left,
+        &-right {
+          top: 50px;
+        }
+      }
     }
 
     & .benefit-card {
@@ -104,7 +111,7 @@
 
   .benefit-card {
     width: 100%;
-    padding: 20px;
+    // padding: 20px;
     min-height: unset;
     transition: 0.25s ease-in-out;
 
@@ -358,12 +365,12 @@
       }
 
       & .benefit-card {
-        &::before {
-          @media (max-width: 1199.98px) {
-            width: 72px;
-            height: 72px;
-          }
-        }
+        // &::before {
+        //   @media (max-width: 1199.98px) {
+        //     width: 72px;
+        //     height: 72px;
+        //   }
+        // }
         & ul.content-hidden {
           padding: 0;
 
@@ -479,11 +486,16 @@
     @media (min-width: 1200px) {
       align-items: flex-start;
       border-radius: 32px;
+
+      & img {
+        top: 16px;
+        transform: none;
+      }
     }
 
-    @media (max-width: 1199.98px) {
-      @include card-mobile-unified;
-    }
+    // @media (max-width: 1199.98px) {
+      // @include card-mobile-unified;
+    // }
   }
 }
 
@@ -549,48 +561,26 @@
   }
 
   @media (max-width: 999.98px) {
-    @include card-mobile-unified;
     align-items: flex-start;
     min-height: 100%;
   }
 
-  img {
-    position: relative;
-    z-index: 1;
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    align-self: flex-start;
-  }
+  // &::before {
+  //   content: "";
+  //   z-index: 0;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   background-color: var(--blue-bg);
+  //   border-radius: 50%;
+  //   width: 92px;
+  //   height: 92px;
+  //   transform: translate(-15%, -10%);
 
-  div {
-    position: relative;
-    z-index: 1;
-    flex: 1;
-  }
-
-  p {
-    &:last-of-type {
-      margin: 0;
-    }
-  }
-
-  &::before {
-    content: "";
-    z-index: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: var(--blue-bg);
-    border-radius: 50%;
-    width: 92px;
-    height: 92px;
-    transform: translate(-15%, -10%);
-
-    @media (max-width: 999.98px) {
-      width: 84px;
-      height: 84px;
-      transform: translate(-20%, -20%);
-    }
-  }
+  //   @media (max-width: 999.98px) {
+  //     width: 84px;
+  //     height: 84px;
+  //     transform: translate(-20%, -20%);
+  //   }
+  // }
 }

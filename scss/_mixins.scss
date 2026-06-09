@@ -1869,7 +1869,8 @@
   gap: 32px;
   max-width: 380px;
   min-height: 132px;
-  padding: 20px;
+  // padding: 20px;
+  padding: 20px 20px 20px 100px;
   border-radius: 1000px;
   border: 1px solid var(--blue-bg);
   background-color: var(--bg-main);
@@ -1877,11 +1878,45 @@
   overflow: hidden;
   transition: 0.25s ease-in-out;
 
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 92px;
+    height: 92px;
+    display: flex;
+    background-color: var(--blue-bg);
+    border-radius: 50%;
+    transform: translate(-15%, -15%);
+
+    @media (max-width: 599.98px) {
+      display: none;
+    }
+  }
+
   & img {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    z-index: 1;
     width: 32px;
     height: 32px;
     object-fit: contain;
     align-self: flex-start;
+  }
+
+  & .benefit-card-info {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+
+  p {
+    &:last-of-type {
+      margin: 0;
+    }
   }
 
   &:hover {
@@ -1893,6 +1928,11 @@
 
   @media (max-width: 999.98px) {
     border-radius: 32px;
+  }
+
+  @media (max-width: 599.98px) {
+    min-height: 100px;
+    padding: 20px 20px 20px 72px;
   }
 
   @media (min-width: 1000px) {
