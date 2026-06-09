@@ -4554,95 +4554,7 @@ button:hover,
   }
 
   &--icon {
-    min-height: 130px;
-    padding: 32px 32px 32px 100px;
-
-    @media (max-width: 999.98px) {
-      padding: 20px 20px 20px 100px;
-    }
-
-    @media (max-width: 599.98px) {
-      min-height: 100px;
-      padding: 20px 20px 20px 72px;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 92px;
-      height: 92px;
-      display: flex;
-      background-color: var(--blue-bg);
-      border-radius: 50%;
-      transform: translate(-15%, -15%);
-
-      @media (max-width: 599.98px) {
-        display: none;
-      }
-    }
-
-    & > h1,
-    & > h2,
-    & > h3,
-    & > h4,
-    & > h5,
-    & > h6,
-    & > b {
-      @include h5;
-      color: var(--color-white);
-      line-height: 140%;
-    }
-
-    & > b {
-      @include h5;
-      margin-bottom: 1em;
-      color: var(--blue-main);
-    }
-
-    & > img,
-    & > i {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 1;
-      display: flex;
-      width: 32px;
-      height: 32px;
-      font-size: 32px;
-      line-height: 1;
-      object-fit: contain;
-      object-position: center;
-    }
-
-    & ul {
-      margin-top: 0;
-      padding-left: 0;
-      list-style-type: disc;
-
-      & li {
-        &::marker {
-          color: var(--blue-tag);
-        }
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-
-    & > .card-price {
-      @include h5;
-      margin-top: auto;
-      margin-bottom: unset;
-      color: var(--blue-main);
-    }
-
-    & > p {
-      color: var(--color-grey);
-    }
+    @include card-icon;
   }
 
   &--benefit {
@@ -4755,15 +4667,10 @@ button:hover,
     & > h4,
     & > h5,
     & > h6 {
-      @include h5;
       color: var(--blue-main);
-      line-height: 140%;
     }
 
     & > b {
-      @include h5;
-      color: var(--blue-main);
-      line-height: 140%;
       margin-bottom: 1em;
     }
 

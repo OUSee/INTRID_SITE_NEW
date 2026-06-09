@@ -7802,30 +7802,9 @@ button:disabled, button.disabled,
   overflow: unset;
 }
 .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6 {
-  font-weight: 600;
-  font-size: 16px;
-}
-@media (max-width: 999.98px) {
-  .card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6 {
-    font-size: 16px;
-  }
-}
-.card--roadmap > h1, .card--roadmap > h2, .card--roadmap > h3, .card--roadmap > h4, .card--roadmap > h5, .card--roadmap > h6 {
   color: var(--blue-main);
-  line-height: 140%;
 }
 .card--roadmap > b {
-  font-weight: 600;
-  font-size: 16px;
-}
-@media (max-width: 999.98px) {
-  .card--roadmap > b {
-    font-size: 16px;
-  }
-}
-.card--roadmap > b {
-  color: var(--blue-main);
-  line-height: 140%;
   margin-bottom: 1em;
 }
 .card--roadmap > h1::before, .card--roadmap > h2::before, .card--roadmap > h3::before, .card--roadmap > h4::before, .card--roadmap > h5::before, .card--roadmap > h6::before, .card--roadmap > b::before {
@@ -12056,6 +12035,11 @@ main {
     padding: 0px;
   }
 }
+@media (max-width: 1199.98px) {
+  .tab-content-webDev.tender .tender-diagram .benefit-card {
+    border-radius: 32px;
+  }
+}
 .tab-content-webDev.tender .tender-diagram .benefit-card ul.content-hidden {
   padding: 0;
 }
@@ -12108,6 +12092,7 @@ main {
     width: 100%;
     margin-left: unset;
     margin-right: unset;
+    border-radius: 32px;
   }
   .benefits-n-video .benefits-left > .benefit-card:first-child, .benefits-n-video .benefits-left > .benefit-card:last-child, .benefits-n-video .benefits-right > .benefit-card:first-child, .benefits-n-video .benefits-right > .benefit-card:last-child, .benefits-n-video .benefits-bottom > .benefit-card:first-child, .benefits-n-video .benefits-bottom > .benefit-card:last-child {
     margin-left: unset;
@@ -12270,11 +12255,6 @@ main {
   .benefit-card:has(input:checked)::before {
     background-color: var(--blue-main);
     transition: 0.25s ease-in-out;
-  }
-}
-@media (max-width: 1199.98px) {
-  .benefit-card {
-    border-radius: 32px;
   }
 }
 @media (max-width: 999.98px) {

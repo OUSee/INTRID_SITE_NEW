@@ -342,6 +342,10 @@
       }
 
       & .benefit-card {
+        @media (max-width: 1199.98px) {
+          border-radius: 32px;
+        }
+
         & ul.content-hidden {
           padding: 0;
         }
@@ -406,6 +410,7 @@
           width: 100%;
           margin-left: unset;
           margin-right: unset;
+          border-radius: 32px;
 
           &:first-child,
           &:last-child {
@@ -517,9 +522,9 @@
 .benefit-card {
   @include benefit-card;
 
-  @media (max-width: 1199.98px) {
-    border-radius: 32px;
-  }
+  // @media (max-width: 1199.98px) {
+  //   border-radius: 32px;
+  // }
 
   @media (max-width: 999.98px) {
     align-items: flex-start;
