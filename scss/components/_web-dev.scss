@@ -6,6 +6,26 @@
 
   &.store {
     row-gap: 48px;
+
+    &-ai {
+      & .benefit-card {
+        @media (min-width: 999.98px) {
+          border-radius: 1000px;
+        }
+      }
+    }
+
+    & .benefit-card {
+      & .benefit-card-info {
+        & > p {
+          &:first-child {
+            @media (min-width: 1000px) {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
   }
 
   .web-shop-diagram,
@@ -33,11 +53,11 @@
       }
 
       @media (max-width: 999.98px) {
-        display: flex;
+        // display: flex;
         position: static;
         height: fit-content;
         justify-content: unset;
-        gap: 32px;
+        gap: 16px;
         width: 100%;
         margin: 0;
 
@@ -51,7 +71,7 @@
 
     .benefits-left {
       @media (max-width: 999.98px) {
-        margin-bottom: 32px;
+        margin-bottom: 16px;
       }
     }
   }
@@ -67,7 +87,7 @@
 
   .benefits-left {
     order: 2;
-    margin-bottom: 32px;
+    // margin-bottom: 32px;
   }
 
   .benefits-right {
@@ -88,31 +108,20 @@
     min-height: unset;
     transition: 0.25s ease-in-out;
 
-    &:has(input:checked) {
-      img {
-        filter: brightness(0.3);
-      }
-
-      &::before {
-        background-color: var(--blue-main);
-        transition: 0.25s ease-in-out;
-      }
-    }
-
     .content-hidden {
       display: none;
 
       @media (max-width: 999.98px) {
         display: block;
         color: var(--color-grey);
-        margin-top: 12px;
+        // margin-top: 12px;
 
         li {
-          margin-top: 4px;
+          // margin-top: 4px;
 
-          &::marker {
-            content: "\2022";
-          }
+          // &::marker {
+          //   content: "\2022";
+          // }
         }
       }
     }
@@ -121,10 +130,10 @@
       width: 32px;
       height: 32px;
 
-      @media (max-width: 999.98px) {
-        width: 24px;
-        height: 24px;
-      }
+      // @media (max-width: 999.98px) {
+      //   width: 24px;
+      //   height: 24px;
+      // }
     }
   }
 
@@ -191,10 +200,10 @@
           position: static;
           height: fit-content;
           justify-content: unset;
-          gap: 32px;
+          gap: 16px;
           width: 100%;
           margin: 0;
-          margin-top: 32px;
+          margin-top: 16px;
 
           .benefit-card {
             width: 100%;
@@ -218,10 +227,10 @@
           position: static;
           height: fit-content;
           justify-content: unset;
-          gap: 32px;
+          gap: 16px;
           width: 100%;
           margin: 0;
-          margin-top: 32px;
+          margin-top: 16px;
 
           .benefit-card {
             width: 100%;
@@ -238,14 +247,14 @@
       .benefits-left,
       .benefits-right {
         @media (max-width: 1199.98px) {
-          display: flex;
+          // display: flex;
           position: static;
           height: fit-content;
           justify-content: unset;
-          gap: 32px;
+          gap: 16px;
           width: 100%;
           margin: 0;
-          margin-top: 32px;
+          margin-top: 16px;
 
           .benefit-card {
             width: 100%;
@@ -358,10 +367,10 @@
         & ul.content-hidden {
           padding: 0;
 
-          @media (max-width: 1199.98px) {
-            margin-top: 20px;
+          // @media (max-width: 1199.98px) {
+            // margin-top: 20px;
             // margin-left: -44px;
-          }
+          // }
         }
       }
     }
@@ -388,7 +397,8 @@
 
 .benefits-n-video {
   position: relative;
-  margin-bottom: 340px;
+  // margin-bottom: 340px;
+  margin-bottom: 280px;
 
   @media (max-width: 1199.98px) {
     display: flex;
@@ -532,69 +542,36 @@
 }
 
 .benefit-card {
-  border-radius: 1000px;
-  border: 1px solid var(--blue-bg);
-  background-color: var(--bg-main);
-  position: relative;
-  padding: 20px 12px;
-  overflow: hidden;
-  display: flex;
-  gap: 32px;
-  max-width: 380px;
-  align-items: center;
-  min-height: 132px;
-  // min-height: 150px;
-  cursor: pointer;
-  transition: 0.25s ease-in-out;
+  @include benefit-card;
 
   @media (max-width: 1199.98px) {
     border-radius: 32px;
   }
 
   @media (max-width: 999.98px) {
+    @include card-mobile-unified;
     align-items: flex-start;
     min-height: 100%;
-    border-radius: 32px;
-  }
-
-  &:hover {
-    @media (min-width: 1000px) {
-      border: 1px solid var(--blue-main);
-      box-shadow: 0px 0px 15px var(--blue-main);
-    }
-  }
-
-  &:has(input:checked) {
-    border-color: var(--blue-main);
   }
 
   img {
-    width: 44px;
-    height: 44px;
+    position: relative;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
     align-self: flex-start;
-
-    @media (max-width: 999.98px) {
-      width: 32px;
-      height: 32px;
-    }
   }
 
-  img,
   div {
     position: relative;
     z-index: 1;
-  }
-
-  div {
     flex: 1;
   }
 
   p {
-    margin: 0;
-
-    @media (min-width: 440px) and (max-width: 1199.98px) {
-      margin-block-end: 0.25em;
+    &:last-of-type {
+      margin: 0;
     }
   }
 
