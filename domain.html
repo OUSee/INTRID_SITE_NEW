@@ -221,8 +221,8 @@
 
                 <div class="flex-layout flex-layout--split mt-20 mb-20">
                     <div class="left flex-1 gap-0">
-                        <div class="table-block h-100 mb-16">
-                            <table class="table h-100">
+                        <div class="table-block mb-16">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>
@@ -239,7 +239,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            .ru, .su
+                                            .ru, .рф, .su
                                         </td>
                                         <td>
                                             600 ₽/год
@@ -346,14 +346,8 @@
                         </div>
                     </div>
                     <div class="right flex-1">
-                        <p>
-                            Введите интересующий вас домен в поле ниже и сможете увидеть, свободен он или занят. В
-                            первом случае сможете оставить заявку на регистрацию, во втором — посмотреть основную
-                            информацию о домене.
-                        </p>
-                        <p>
-                            Мы регистрируем домены в популярных зонах по цене регистратора, следим за продлением и
-                            напоминаем о сроках.
+                        <p class="title_h5 mb-0">
+                            Проверить домен и зарегистрировать
                         </p>
 
                         <div class="card thin overflow-visible">
@@ -366,14 +360,19 @@
                                     <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
                                 </div>
 
-                                <input type="text" id="domain-name-input" name="domain" placeholder="Введите домен"
-                                    required="">
+                                <input type="text" id="domain-name-input" name="domain"
+                                    placeholder="Введите домен" required="">
                                 <button type="submit" class="big button-highlight w-sm-100 h-100"
                                     style="min-width: 120px;">
                                     проверить
                                 </button>
                             </form>
                         </div>
+
+                        <p>
+                            Мы регистрируем домены в популярных зонах по цене регистратора, следим за продлением и
+                            напоминаем о сроках.
+                        </p>
 
                         <!-- Блок для вывода результата -->
                         <div id="domain-result" class="info-msg mt-16 text-center" style="display: none;"></div>
