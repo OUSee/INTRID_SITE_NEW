@@ -11827,7 +11827,6 @@ main {
 .tab-content-webDev .benefit-card {
   width: 100%;
   min-height: unset;
-  transition: 0.25s ease-in-out;
 }
 .tab-content-webDev .benefit-card .content-hidden {
   display: none;
@@ -12236,6 +12235,8 @@ main {
 }
 @media (max-width: 999.98px) {
   .benefit-card {
+    align-items: flex-start;
+    min-height: 100%;
     border-radius: 32px;
   }
 }
@@ -12255,12 +12256,6 @@ main {
   .benefit-card:has(input:checked)::before {
     background-color: var(--blue-main);
     transition: 0.25s ease-in-out;
-  }
-}
-@media (max-width: 999.98px) {
-  .benefit-card {
-    align-items: flex-start;
-    min-height: 100%;
   }
 }
 
