@@ -809,6 +809,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   forms.forEach((form) => {
+    form.dataset.ajaxFormInitialized = "true";
+
     const recaptchaInput = form.querySelector(
       'input[name="g-recaptcha-response"]',
     );
@@ -842,6 +844,19 @@ document.addEventListener("DOMContentLoaded", () => {
         submitAjaxForm(form);
       });
     }
+  });
+
+  document.addEventListener("submit", (event) => {
+    const form = event.target;
+
+    if (!(form instanceof HTMLFormElement)) return;
+    if (!form.classList.contains("ajax-form")) return;
+    if (form.dataset.ajaxFormInitialized === "true") return;
+
+    event.preventDefault();
+
+    form.dataset.ajaxFormInitialized = "true";
+    submitAjaxForm(form);
   });
 
   if (recaptchaForms.length > 0) {
@@ -7783,6 +7798,8 @@ const domainCheker = () => {
       // если сервер их вернул и домен занят.
       resultDiv.innerHTML = `${data.text || ""}${detailsHTML}`;
       resultDiv.style.display = "block";
+
+      maskPhone('input[type="tel"]', "+7 (___) ___-__-__");
 
       showFormFeedback(submitBtn, "Проверка завершена", "success");
     } catch (err) {
