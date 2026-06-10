@@ -219,9 +219,9 @@
                     Стоимость регистрации домена
                 </h2>
 
-                <div class="flex-layout flex-lg-column gap-20 align-start align-lg-stretch mt-20">
+                <div class="flex-layout flex-layout--split mt-20 mb-20">
                     <div class="left flex-1 gap-0">
-                        <div class="table-block h-100">
+                        <div class="table-block h-100 mb-16">
                             <table class="table h-100">
                                 <thead>
                                     <tr>
@@ -270,6 +270,80 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <input type="checkbox" id="section1" class="accordion-checkbox" checked>
+                                <label for="section1" class="accordion-header m-center title_h5">
+                                    Как понять, какой домен лучше выбрать для сайта?
+                                    <i class="icon-shevrone"></i>
+                                </label>
+                                <div class="accordion-content">
+                                    <p>
+                                        Лучше выбирать короткое и легко запоминающееся имя. Хороший домен должен быть
+                                        связан с названием компании, брендом, продуктом. Если основной вариант уже
+                                        занят, можно подобрать альтернативу: использовать сокращение, добавить город,
+                                        сферу деятельности или выбрать другую доменную зону.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <input type="checkbox" id="section2" class="accordion-checkbox">
+                                <label for="section2" class="accordion-header m-center title_h5">
+                                    В какой доменной зоне лучше регистрировать сайт: .ru, .com или другой?
+                                    <i class="icon-shevrone"></i>
+                                </label>
+                                <div class="accordion-content">
+                                    <p>
+                                        Для российского бизнеса чаще всего подходит зона .ru, потому что она привычна
+                                        пользователям и хорошо воспринимается локальной аудиторией. Зона .com подходит
+                                        для международных проектов и брендов, которые планируют работать за пределами
+                                        России.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <input type="checkbox" id="section4" class="accordion-checkbox">
+                                <label for="section4" class="accordion-header m-center title_h5">
+                                    Можно ли зарегистрировать домен без сайта?
+                                    <i class="icon-shevrone"></i>
+                                </label>
+                                <div class="accordion-content">
+                                    <p>
+                                        Да, домен можно зарегистрировать заранее, даже если сайт ещё находится в
+                                        разработке. Это особенно полезно, если найдено удачное свободное имя: его можно
+                                        закрепить за компанией и позже использовать для сайта и корпоративной почты
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Кейс -->
+                        <div class="card card--prices cols overflow-visible">
+                            <b>
+                                Что входит в регистрацию домена?
+                            </b>
+                            <img src="/src/images/www.svg" alt="Что входит в регистрацию домена?">
+                            <div>
+                                <ul class="m-0">
+                                    <li>
+                                        Регистрация домена на ваше имя
+                                    </li>
+                                    <li>
+                                        Напоминание о продлении
+                                    </li>
+                                    <li>
+                                        Помощь с настройкой DNS
+                                    </li>
+                                    <li>
+                                        Бесплатная консультация специалистов
+                                    </li>
+                                    <li>
+                                        Подключение домена к сайту или почте
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="right flex-1">
                         <p>
@@ -292,8 +366,8 @@
                                     <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
                                 </div>
 
-                                <input type="text" id="domain-name-input" name="domain"
-                                    placeholder="Введите домен (например, example.ru)" required="">
+                                <input type="text" id="domain-name-input" name="domain" placeholder="Введите домен"
+                                    required="">
                                 <button type="submit" class="big button-highlight w-sm-100 h-100"
                                     style="min-width: 120px;">
                                     проверить
@@ -310,6 +384,97 @@
 
                         <!-- Ошибка -->
                         <div class="error-msg mt-16 text-center" id="domain-error" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Дополнительные опции -->
+        <section>
+            <div class="container">
+                <h2 class="underlined w-fit">
+                    Дополнительные опции
+                </h2>
+
+                <div class="flex-layout flex-layout--tab gap-20">
+                    <div class="card card--tab no-hover">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <img src="/src/icons/hosting-services.svg" alt="Бюджетный хостинг" loading="lazy">
+                            </div>
+                            <div class="card-header--content">
+                                <b>
+                                    Бюджетный хостинг
+                                </b>
+                                <span>
+                                    от&nbsp;1&nbsp;800&nbsp;₽/год
+                                </span>
+                            </div>
+                        </div>
+                        <p>
+                            Качественный хостинг с гарантией бесперебойной работы сайтов и размещением на двух
+                            серверах, расположенных в разных дата-центрах. Это обеспечивает устойчивость
+                            оборудования к отказам при обесточивании и разрывах соединения. Консультации и
+                            помощь в
+                            переносе сайтов предоставим бесплатно.
+                        </p>
+                        <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
+                            <a href="/hosting-tarify#hosting-creation"
+                                class="button button-highlight flex-1 justify-center">Заказать</a>
+                            <a href="/hosting-tarify" class="button button-link flex-1 justify-center">Подробнее</a>
+                        </div>
+                    </div>
+                    <div class="card card--tab no-hover">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <img src="/src/icons/vds-services.svg" alt="VDS – виртуальный сервер" loading="lazy">
+                            </div>
+                            <div class="card-header--content">
+                                <b>
+                                    VDS – виртуальный сервер
+                                </b>
+                                <span>
+                                    от&nbsp;7&nbsp;200&nbsp;₽/год
+                                </span>
+                            </div>
+                        </div>
+                        <p>
+                            Гарантия мониторинга состояния виртуального сервера, полную защиту от спама и
+                            вирусов, а
+                            также проведение бесплатных консультации и помощь в переносе. Предоставляем панель
+                            управления ISPManager Lite 5 с полным функционалом.
+                        </p>
+                        <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
+                            <a href="/vds#vds-creation"
+                                class="button button-highlight flex-1 justify-center">Заказать</a>
+                            <a href="/vds" class="button button-link flex-1 justify-center">Подробнее</a>
+                        </div>
+                    </div>
+                    <div class="card card--tab no-hover">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <img src="/src/icons/ssl-services.svg" alt="SSL-сертификаты" loading="lazy">
+                            </div>
+                            <div class="card-header--content">
+                                <b>
+                                    SSL-сертификаты
+                                </b>
+                                <span>
+                                    от&nbsp;900&nbsp;₽/год
+                                </span>
+                            </div>
+                        </div>
+                        <p>
+                            SSL-сертификат обеспечивает защищённое соединение Вашего сайта с устройствами
+                            посетителей. Тем самым обеспечивается защита данных от злоумышленников.
+                            Современные браузеры помечают сайты, работающие по https-протоколу, как безопасные.
+                            А поисковые системы в результатах поиска отдают предпочтения защищённым сайтам.
+                        </p>
+                        <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
+                            <a href="/ssl#ssl-creation"
+                                class="button button-highlight flex-1 justify-center">Заказать</a>
+                            <a href="/ssl" class="button button-link flex-1 justify-center">Подробнее</a>
+                        </div>
                     </div>
                 </div>
             </div>
