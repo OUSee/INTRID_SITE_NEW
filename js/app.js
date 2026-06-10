@@ -5223,6 +5223,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
           }
 
+          const selectController = input
+            .closest(".toggle-nice")
+            ?.querySelector(`[data-select-target="${input.id}"]`);
+          const isToggleNiceSelect = Boolean(selectController);
+
           const selectObj = {
             id: input.id,
             elementref: input,
@@ -5232,6 +5237,8 @@ document.addEventListener("DOMContentLoaded", () => {
               selectId: input.id,
             })),
             currentOption: null,
+            controlledByCheckbox: isToggleNiceSelect,
+            controllerId: selectController?.id || null,
           };
 
           // Определяем, есть ли предустановленная опция
@@ -5246,8 +5253,12 @@ document.addEventListener("DOMContentLoaded", () => {
           if (hasSelectedOption) {
             const selectedIndex = input.selectedIndex;
             if (selectedIndex >= 0 && options[selectedIndex]) {
-              selectObj.currentOption = options[selectedIndex];
+              selectObj.currentOption = isToggleNiceSelect
+                ? null
+                : options[selectedIndex];
             }
+          } else if (isToggleNiceSelect) {
+            input.selectedIndex = input.selectedIndex >= 0 ? input.selectedIndex : 0;
           } else {
             input.selectedIndex = -1;
           }
@@ -5446,20 +5457,23 @@ document.addEventListener("DOMContentLoaded", () => {
               const targetSelect = document.getElementById(toggle.selectTarget);
               if (targetSelect && targetSelect.tagName === "SELECT") {
                 if (toggle.elementref.checked) {
-                  // Используем временный индекс, если он есть, иначе стандартный
+                  // Не перетираем выбор пользователя. Индекс из nested/пресета
+                  // используем только когда у select ещё нет выбранного пункта.
                   let index =
-                    toggle._tempSelectIndex !== undefined
-                      ? toggle._tempSelectIndex
-                      : toggle.selectOptionIndex;
-                  if (index === undefined) index = 0; // по умолчанию
+                    targetSelect.selectedIndex >= 0
+                      ? targetSelect.selectedIndex
+                      : toggle._tempSelectIndex !== undefined
+                        ? toggle._tempSelectIndex
+                        : toggle.selectOptionIndex;
+                  if (index === undefined) index = 0;
                   if (index >= 0 && index < targetSelect.options.length) {
                     targetSelect.selectedIndex = index;
-                    targetSelect.dispatchEvent(new Event("change"));
                   }
-                  // Сбрасываем временный индекс после использования
+                  targetSelect.dispatchEvent(new Event("change"));
                   delete toggle._tempSelectIndex;
                 } else {
-                  targetSelect.selectedIndex = -1;
+                  // При выключении услуги цену снимаем через change,
+                  // но выбранный пункт в select сохраняем.
                   targetSelect.dispatchEvent(new Event("change"));
                 }
               }
@@ -5473,18 +5487,30 @@ document.addEventListener("DOMContentLoaded", () => {
           toggle.elementref.addEventListener("change", (e) => {
             const oldOption = toggle.currentOption;
             const newIndex = toggle.elementref.selectedIndex;
-            const newOption = toggle.options[newIndex];
+            const newOption = newIndex >= 0 ? toggle.options[newIndex] : null;
 
-            if (oldOption === newOption) return;
+            const controller = toggle.controllerId
+              ? toggles.find((t) => t.id === toggle.controllerId)
+              : null;
+            const shouldCountSelect = !toggle.controlledByCheckbox ||
+              Boolean(controller?.elementref.checked);
 
-            if (oldOption) {
+            if (oldOption && oldOption !== newOption) {
               deactivateSelectOption(oldOption, toggles, target);
             }
-            if (newOption) {
-              activateSelectOption(newOption, toggles, target);
+
+            if (shouldCountSelect) {
+              if (newOption && oldOption !== newOption) {
+                activateSelectOption(newOption, toggles, target);
+              }
+              toggle.currentOption = newOption;
+            } else {
+              if (oldOption) {
+                deactivateSelectOption(oldOption, toggles, target);
+              }
+              toggle.currentOption = null;
             }
 
-            toggle.currentOption = newOption;
             updateNiceSelect(toggle.elementref); // обновляем nice-select
             updateTooltipsForSelect(toggle.elementref); // <-- добавить вызов
 
@@ -8121,12 +8147,15 @@ function initSelectBindings() {
       ? document.getElementById(targetSelectId)
       : null;
     if (targetSelect && targetSelect.tagName === "SELECT") {
+      // Селект должен быть доступен всегда. Чекбокс только включает/выключает
+      // участие выбранной опции в расчёте стоимости.
+      targetSelect.disabled = false;
+      syncNiceSelectDisabled(targetSelect);
+
+      // Для уже отмеченных чекбоксов сразу пересчитываем выбранную опцию,
+      // но не перетираем выбранный пользователем/предустановленный пункт.
       if (trigger.checked) {
-        // принудительно синхронизируем отмеченный чекбокс
         handleBindingChange({ currentTarget: trigger });
-      } else {
-        targetSelect.disabled = true;
-        syncNiceSelectDisabled(targetSelect); // синхронизируем disabled
       }
     }
   });
@@ -8139,27 +8168,15 @@ function handleBindingChange(e) {
   const targetSelect = document.getElementById(targetSelectId);
   if (!targetSelect || targetSelect.tagName !== "SELECT") return;
 
-  if (trigger.checked) {
-    targetSelect.disabled = false;
-    syncNiceSelectDisabled(targetSelect); // обновляем кастомный селект
-    let index = trigger.getAttribute("data-select-option-index");
-    if (index !== null) {
-      index = parseInt(index, 10);
-      if (!isNaN(index) && index >= 0 && index < targetSelect.options.length) {
-        targetSelect.selectedIndex = index;
-        targetSelect.dispatchEvent(new Event("change", { bubbles: true }));
-      }
-    }
-  } else {
-    targetSelect.disabled = true;
-    syncNiceSelectDisabled(targetSelect); // обновляем кастомный селект
-    const resetOnUncheck =
-      trigger.getAttribute("data-reset-on-uncheck") === "true";
-    if (resetOnUncheck) {
-      targetSelect.selectedIndex = -1;
-      targetSelect.dispatchEvent(new Event("change", { bubbles: true }));
-    }
-  }
+  // Не блокируем select через disabled: пользователь может выбрать пункт до того,
+  // как включит услугу чекбоксом. Выбор сохраняется при включении/выключении.
+  targetSelect.disabled = false;
+  syncNiceSelectDisabled(targetSelect);
+
+  // Просто отправляем change, чтобы логика калькулятора пересчитала цену:
+  // если чекбокс включён — выбранная опция попадёт в стоимость,
+  // если выключен — стоимость выбранной опции будет снята.
+  targetSelect.dispatchEvent(new Event("change", { bubbles: true }));
 }
 
 // 2. Автообновление тултипов при изменении select

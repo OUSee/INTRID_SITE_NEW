@@ -1723,13 +1723,17 @@
   & > input {
     @include toggle-checkbox;
 
-    &:not(:checked) {
-      & + label {
-        & + * {
-          pointer-events: none;
-          opacity: 0.5;
-        }
-      }
+    // &:not(:checked) {
+    //   & + label {
+    //     & + * {
+    //       pointer-events: none;
+    //       opacity: 0.5;
+    //     }
+    //   }
+    // }
+
+    & ~ .nice-wrapper {
+      z-index: unset;
     }
 
     &:is(:checked) {
