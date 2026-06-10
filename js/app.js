@@ -7072,7 +7072,7 @@ const seoAuditInit = () => {
       ? "Хорошо"
       : status === "warning"
         ? "Предупреждение"
-        : "Ошибка";
+        : "Плохо";
 
   const formatPoints = (points) =>
     points === null || points === undefined ? null : `${points}/100`;
@@ -7099,6 +7099,138 @@ const seoAuditInit = () => {
     if (!length) return "error";
     if (length >= min && length <= max) return "good";
     return "warning";
+  };
+
+  const getMetaWords = (value = "") =>
+    String(value)
+      .toLowerCase()
+      .replace(/ё/g, "е")
+      .match(/[a-zа-я0-9]{3,}/gi) || [];
+
+  const hasSameMetaMeaning = (first = "", second = "") => {
+    const firstWords = new Set(getMetaWords(first));
+    const secondWords = new Set(getMetaWords(second));
+
+    if (!firstWords.size || !secondWords.size) return false;
+
+    const commonWords = [...firstWords].filter((word) => secondWords.has(word));
+    const similarity =
+      commonWords.length / Math.min(firstWords.size, secondWords.size);
+
+    return similarity >= 0.8;
+  };
+
+  const hasGenericMetaText = (value = "") => {
+    const text = String(value).toLowerCase();
+    const genericPhrases = [
+      "главная страница",
+      "добро пожаловать",
+      "официальный сайт",
+      "лучшие цены",
+      "широкий ассортимент",
+      "индивидуальный подход",
+      "высокое качество",
+      "компания предлагает",
+      "на нашем сайте",
+      "купить недорого",
+    ];
+
+    return genericPhrases.some((phrase) => text.includes(phrase));
+  };
+
+  const hasMetaWordRepeats = (value = "") => {
+    const ignoredWords = new Set([
+      "для",
+      "как",
+      "что",
+      "это",
+      "или",
+      "при",
+      "the",
+      "and",
+      "for",
+      "with",
+      "your",
+    ]);
+    const words = getMetaWords(value).filter((word) => !ignoredWords.has(word));
+    const repeatedWords = words.reduce((acc, word) => {
+      acc[word] = (acc[word] || 0) + 1;
+      return acc;
+    }, {});
+
+    return Object.values(repeatedWords).some((count) => count >= 3);
+  };
+
+  const analyzeMetaTags = (rawTitle = "", rawDescription = "") => {
+    const title = String(rawTitle || "").trim();
+    const description = String(rawDescription || "").trim();
+    const issues = [];
+
+    if (!title) issues.push("missingTitle");
+    if (!description) issues.push("missingDescription");
+
+    if (issues.length) {
+      return {
+        status: "error",
+        text: "Title или Description не заполнены",
+        summary:
+          "Для страницы нужно заполнить заголовок и описание: так пользователю будет понятнее содержание страницы ещё до перехода из поиска.",
+      };
+    }
+
+    if (title.length < 25) issues.push("shortTitle");
+    if (title.length > 75) issues.push("longTitle");
+    if (description.length < 70) issues.push("shortDescription");
+    if (description.length > 180) issues.push("longDescription");
+    if (title.toLowerCase() === description.toLowerCase())
+      issues.push("sameText");
+    else if (hasSameMetaMeaning(title, description))
+      issues.push("similarText");
+    if (hasGenericMetaText(title) || hasGenericMetaText(description))
+      issues.push("genericText");
+    if (hasMetaWordRepeats(title) || hasMetaWordRepeats(description))
+      issues.push("wordRepeats");
+
+    if (!issues.length) {
+      return {
+        status: "good",
+        text: "Title и Description заполнены корректно",
+        summary:
+          "Заголовок и описание выглядят информативно: они не дублируют друг друга и достаточно точно раскрывают содержание страницы.",
+      };
+    }
+
+    const recommendations = [];
+
+    if (issues.includes("shortTitle") || issues.includes("shortDescription")) {
+      recommendations.push("сделать формулировки более содержательными");
+    }
+
+    if (issues.includes("longTitle") || issues.includes("longDescription")) {
+      recommendations.push("сократить слишком длинные формулировки");
+    }
+
+    if (issues.includes("sameText") || issues.includes("similarText")) {
+      recommendations.push("не дублировать один и тот же смысл в заголовке и описании");
+    }
+
+    if (issues.includes("genericText")) {
+      recommendations.push("заменить общие фразы на конкретное описание страницы");
+    }
+
+    if (issues.includes("wordRepeats")) {
+      recommendations.push("убрать заметные повторы слов");
+    }
+
+    const summaryEnding = recommendations.length
+      ? `: ${recommendations.join(", ")}.`
+      : ".";
+
+    return {
+      status: "warning",
+      text: "Title и Description требуют доработки",
+      summary: `Мета-теги заполнены, но их стоит улучшить${summaryEnding}`,
+    };
   };
 
   const getTextFromSeoData = (seoData = {}) =>
@@ -7353,36 +7485,15 @@ const seoAuditInit = () => {
       };
 
       // ----- Мета-теги -----
-      const title = String(seoData.title || "").trim();
-      const description = String(seoData.description || "").trim();
-      const titleLength = title.length;
-      const descLength = description.length;
-      const titleStatus = getLengthStatus(titleLength, 30, 65);
-      const descStatus = getLengthStatus(descLength, 70, 160);
-      const metaStatusValue =
-        titleStatus === "good" && descStatus === "good"
-          ? "good"
-          : titleStatus === "error" || descStatus === "error"
-            ? "error"
-            : "warning";
+      const metaAudit = analyzeMetaTags(seoData.title, seoData.description);
       const metaTags = {
         category: "meta",
         title: "Мета-теги",
         status: {
-          status: metaStatusValue,
-          text:
-            metaStatusValue === "good"
-              ? "Title и Description заполнены корректно"
-              : metaStatusValue === "warning"
-                ? "Title и Description требуют доработки"
-                : "Title или Description не заполнены",
+          status: metaAudit.status,
+          text: metaAudit.text,
         },
-        text:
-          metaStatusValue === "good"
-            ? "Заголовок и описание страницы заполнены корректно: они помогают поисковым системам и пользователям понять содержание страницы."
-            : metaStatusValue === "warning"
-              ? "Заголовок и описание страницы стоит доработать: сделайте их точнее, понятнее и ближе к пользе для пользователя."
-              : "Для страницы нужно заполнить заголовок и описание: без них сайт хуже выглядит в поисковой выдаче и менее понятно раскрывает содержание страницы.",
+        text: metaAudit.summary,
       };
 
       // ----- Мобильная версия -----
