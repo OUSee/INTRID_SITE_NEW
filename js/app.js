@@ -972,6 +972,7 @@ const mapLinksInit = () => {
 
       const container = map.querySelector(".map-container");
       const linkBtn = map.querySelector(".button-link");
+      const phone = map.querySelector('#map-phone');
       const paragraph = map.querySelector("#map-info");
       const social = map.querySelector("#map-social");
       const whatsapp = map.querySelector("#map-whatsapp");
@@ -985,6 +986,15 @@ const mapLinksInit = () => {
             '</span><span class="separator">|</span>'
           : '<span class="separator">|</span>');
       container.innerHTML = mapData[value].frame;
+
+      if (phone) {
+        phone.style.display = mapData[value].phone ? "" : "none";
+        phone.setAttribute(
+          "href",
+          "+" + (mapData[value]?.phone || ""),
+        );
+        phone.querySelector('span').innerHTML = `+${mapData[value].phone}`;
+      } 
 
       social.style.display =
         mapData[value]?.wa || mapData[value]?.tg ? "flex" : "none";
