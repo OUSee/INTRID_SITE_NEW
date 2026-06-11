@@ -211,16 +211,55 @@ function hideButtonLoader(btn) {
 
 // Обработчик для показа сообщения об успешной отправке формы
 function showFormFeedback(btn, message, type = "success", duration = 4000) {
-  // Скрываем спиннер на кнопке (важно!)
   hideButtonLoader(btn);
 
   if (!message) return;
 
-  // Удаляем предыдущий глобальный тост, если есть
+  const form = btn?.closest("form");
+  const shouldShowInButton = form?.id === "quick-form";
+
+  if (shouldShowInButton) {
+    const originalHTML =
+      btn.dataset.feedbackOriginalHTML ||
+      btn.dataset.originalHTML ||
+      btn.innerHTML;
+
+    btn.dataset.feedbackOriginalHTML = originalHTML;
+
+    clearTimeout(btn.feedbackTimer);
+
+    btn.classList.remove("is-feedback-success", "is-feedback-error");
+    btn.classList.add("is-feedback");
+    btn.classList.add(
+      type === "success" ? "is-feedback-success" : "is-feedback-error",
+    );
+
+    btn.disabled = true;
+
+    btn.innerHTML =
+      type === "success"
+        ? "Ваше сообщение успешно отправлено"
+        : "Ошибка отправки";
+
+    btn.feedbackTimer = setTimeout(() => {
+      btn.innerHTML = btn.dataset.feedbackOriginalHTML || originalHTML;
+      btn.classList.remove(
+        "is-feedback",
+        "is-feedback-success",
+        "is-feedback-error",
+      );
+      btn.disabled = false;
+
+      delete btn.dataset.feedbackOriginalHTML;
+      delete btn.feedbackTimer;
+    }, duration);
+
+    return;
+  }
+
   const existing = document.querySelector(".toast");
   if (existing) existing.remove();
 
-  // Создаём элемент тоста
   const toast = document.createElement("div");
   toast.className = `toast ${type}`;
   toast.textContent = message;
@@ -228,32 +267,26 @@ function showFormFeedback(btn, message, type = "success", duration = 4000) {
   toast.setAttribute("aria-live", "polite");
   document.body.appendChild(toast);
 
-  // Принудительный reflow для CSS-перехода
   toast.offsetHeight;
   toast.classList.add("show");
 
-  // Автоудаление
-  const removeTimer = setTimeout(() => {
+  const removeToast = () => {
     toast.classList.remove("show");
+
     toast.addEventListener("transitionend", () => {
       if (toast.parentNode) toast.remove();
     });
-    // Запасное удаление
+
     setTimeout(() => {
       if (toast.parentNode) toast.remove();
     }, 600);
-  }, duration);
+  };
 
-  // Удаление при клике на тост
+  const removeTimer = setTimeout(removeToast, duration);
+
   toast.addEventListener("click", () => {
     clearTimeout(removeTimer);
-    toast.classList.remove("show");
-    toast.addEventListener("transitionend", () => {
-      if (toast.parentNode) toast.remove();
-    });
-    setTimeout(() => {
-      if (toast.parentNode) toast.remove();
-    }, 600);
+    removeToast();
   });
 }
 

@@ -3167,6 +3167,25 @@ button,
     pointer-events: none;
     opacity: 0.5;
   }
+
+  &.is-feedback {
+    min-height: 52px;
+    white-space: normal;
+    text-align: center;
+    pointer-events: none;
+
+    &-success {
+      background: var(--color-white);
+      border-color: var(--color-white);
+      color: var(--bg-main);
+    }
+
+    &-error {
+      background: color-mix(in srgb, var(--error) 35%, transparent);
+      border-color: color-mix(in srgb, var(--error) 35%, transparent);
+      color: var(--color-white);
+    }
+  }
 }
 
 .button {

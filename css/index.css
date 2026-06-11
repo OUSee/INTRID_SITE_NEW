@@ -6318,6 +6318,31 @@ button:disabled, button.disabled,
   pointer-events: none;
   opacity: 0.5;
 }
+button.is-feedback,
+.button.is-feedback,
+.button-link.is-feedback,
+.button-highlight.is-feedback {
+  min-height: 52px;
+  white-space: normal;
+  text-align: center;
+  pointer-events: none;
+}
+button.is-feedback-success,
+.button.is-feedback-success,
+.button-link.is-feedback-success,
+.button-highlight.is-feedback-success {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--bg-main);
+}
+button.is-feedback-error,
+.button.is-feedback-error,
+.button-link.is-feedback-error,
+.button-highlight.is-feedback-error {
+  background: color-mix(in srgb, var(--error) 35%, transparent);
+  border-color: color-mix(in srgb, var(--error) 35%, transparent);
+  color: var(--color-white);
+}
 
 .button-white {
   background-color: var(--color-white);
