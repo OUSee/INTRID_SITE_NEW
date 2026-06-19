@@ -190,6 +190,19 @@
 
   &:is(#calculator-total) {
     & .total-top {
+      @media (max-width: 999.98px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0 4px;
+        padding-top: 12px;
+
+        & .total-title {
+          flex: 1 0 auto;
+          width: 100%;
+        }
+      }
       & .total-content {
         & .total-body {
           @media (max-width: 999.98px) {
