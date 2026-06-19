@@ -974,7 +974,7 @@ const mapLinksInit = () => {
           '<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A596c110a6e67b7ecf53baf573cb97950916b7bfb81fe164b7ec895af9864ccb8&amp;source=constructor" width="835" height="516" frameborder="0"></iframe>',
         link: "https://yandex.ru/maps/-/CHvuzWlD",
         adress: "Poděbradská 52, 19000 Praha 9",
-        phone: "420777749719",
+        phone: "420 777 749 719",
         wa: "79518587172",
         tg: "lionvdv",
       },
@@ -984,7 +984,7 @@ const mapLinksInit = () => {
         link: "https://yandex.com/maps/-/CHfmvO6X",
         adress: "г. Воронеж ул. Пятницкого, 40",
         schedule: "Пн-Пт: 9:00-18:00",
-        phone: "74732540796",
+        phone: "7 (473) 254 07 96",
         max: "u/f9LHodD0cOIK2py_Tk-Zx7kyjPsbUaWzS4eCQ4fOJ48vaPvbEIsQCdftNMk",
         tg: "webintrid",
       },
@@ -1024,7 +1024,7 @@ const mapLinksInit = () => {
         phone.style.display = mapData[value].phone ? "" : "none";
         phone.setAttribute(
           "href",
-          "+" + (mapData[value]?.phone || ""),
+          "tel:+" + (mapData[value]?.phone || ""),
         );
         phone.querySelector('span').innerHTML = `+${mapData[value].phone}`;
       } 
