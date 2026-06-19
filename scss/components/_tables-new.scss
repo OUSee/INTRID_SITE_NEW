@@ -123,6 +123,151 @@ table {
   }
 }
 
+
+
+/* Landing page comparison table */
+.table-block--landing-comparison {
+  @media (min-width: 700px) {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+}
+
+.landing-comparison-table {
+  @media (min-width: 700px) {
+    $landing-column-gap: 6px;
+    $landing-column-radius: 14px;
+    $landing-cell-bg-odd: linear-gradient(
+      90deg,
+      rgba(3, 30, 35, 0.96) 0%,
+      rgba(7, 63, 71, 0.48) 52%,
+      rgba(3, 30, 35, 0.96) 100%
+    );
+    $landing-cell-bg-even: linear-gradient(
+      90deg,
+      rgba(5, 45, 52, 0.96) 0%,
+      rgba(10, 83, 92, 0.48) 52%,
+      rgba(5, 45, 52, 0.96) 100%
+    );
+    $landing-cell-bg-featured: linear-gradient(
+      90deg,
+      rgba(5, 58, 66, 0.98) 0%,
+      rgba(12, 100, 111, 0.74) 52%,
+      rgba(5, 58, 66, 0.98) 100%
+    );
+    $landing-header-bg: linear-gradient(
+      180deg,
+      rgba(7, 54, 62, 0.96) 0%,
+      rgba(3, 30, 35, 0.98) 100%
+    );
+    $landing-header-featured-bg: linear-gradient(
+      180deg,
+      var(--blue-clouds) 0%,
+      var(--blue-tag) 100%
+    );
+    $landing-border: rgba(0, 234, 255, 0.28);
+    $landing-border-featured: rgba(0, 234, 255, 0.48);
+    $landing-row-border: rgba(0, 234, 255, 0.15);
+
+    border-collapse: separate;
+    border-spacing: 0;
+    background: transparent;
+    box-shadow: none;
+
+    thead,
+    tbody,
+    tr,
+    thead tr,
+    tbody tr,
+    tbody tr:nth-child(even),
+    tbody tr:hover {
+      background: transparent;
+    }
+
+    th,
+    td {
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+      isolation: isolate;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    th::before,
+    td::before {
+      content: "";
+      position: absolute;
+      inset: 0 $landing-column-gap;
+      z-index: -1;
+      border-bottom: 1px solid $landing-row-border;
+      background: $landing-cell-bg-odd;
+      box-shadow:
+        inset 1px 0 0 $landing-border,
+        inset -1px 0 0 $landing-border;
+    }
+
+    tbody tr:nth-child(even) td::before {
+      background: $landing-cell-bg-even;
+    }
+
+    thead th::before {
+      border-top: 1px solid $landing-border;
+      border-radius: $landing-column-radius $landing-column-radius 0 0;
+      background: $landing-header-bg;
+    }
+
+    tbody tr:last-child td::before {
+      border-bottom: 1px solid $landing-border;
+      border-radius: 0 0 $landing-column-radius $landing-column-radius;
+    }
+
+    &.landing-comparison-table--highlight-solution {
+      thead th:nth-child(3) {
+        color: var(--color-white);
+      }
+
+      thead th:nth-child(3)::before {
+        background: $landing-header-featured-bg;
+        box-shadow:
+          inset 1px 0 0 var(--blue-tag),
+          inset -1px 0 0 var(--blue-tag),
+          0 12px 28px rgba(0, 234, 255, 0.14);
+      }
+
+      tbody td:nth-child(3)::before {
+        background: $landing-cell-bg-featured;
+        box-shadow:
+          inset 1px 0 0 $landing-border-featured,
+          inset -1px 0 0 $landing-border-featured;
+      }
+
+      tbody tr:nth-child(even) td:nth-child(3)::before {
+        background: $landing-cell-bg-featured;
+      }
+    }
+  }
+
+  @media (max-width: 699.98px) {
+    th:nth-child(3),
+    td:nth-child(3) {
+      color: var(--color-white);
+      background: rgba(0, 234, 255, 0.1);
+    }
+
+    th:nth-child(3) {
+      background: linear-gradient(
+        180deg,
+        var(--blue-clouds) 0%,
+        var(--blue-tag) 100%
+      );
+    }
+  }
+}
+
 /* SEO/portfolio tables */
 .seo-table {
   .table-wrapper {
