@@ -6268,6 +6268,7 @@ button i.icon-arrow_wide,
 .button i.icon-arrow_wide,
 .button-link i.icon-arrow_wide,
 .button-highlight i.icon-arrow_wide {
+  display: flex;
   font-size: 1.4em;
   line-height: 14px;
 }
@@ -8793,6 +8794,11 @@ button.is-feedback-error,
 }
 .card--service.no-arrow b::after {
   display: none;
+}
+.card--service.no-hidden-p p {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
 }
 .card--tab {
   padding: 60px 32px 32px;
