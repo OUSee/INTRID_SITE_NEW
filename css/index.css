@@ -1056,7 +1056,7 @@ th {
 .flex-layout--2x > * {
   flex: 1 0 calc(50% - 10px);
 }
-@media (max-width: 750px) {
+@media (max-width: 719.98px) {
   .flex-layout--2x > * {
     flex: 1 0 100%;
     width: 100%;
@@ -1065,12 +1065,12 @@ th {
 .flex-layout--3x > * {
   flex: 1 0 30%;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1099.98px) {
   .flex-layout--3x > * {
     flex: 1 0 48%;
   }
 }
-@media (max-width: 750px) {
+@media (max-width: 719.98px) {
   .flex-layout--3x > * {
     flex: 1 0 100%;
     width: 100%;
@@ -2335,6 +2335,24 @@ th {
 @media (max-width: 750px) {
   .grid-layout--3x {
     grid-template-columns: 1fr;
+  }
+}
+.grid-layout--team {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1199.98px) {
+  .grid-layout--team {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 839.98px) {
+  .grid-layout--team {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 599.98px) {
+  .grid-layout--team {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 .grid-cols-3 {
@@ -8972,6 +8990,7 @@ button.is-feedback-error,
   position: relative;
   z-index: 1;
   padding: 32px;
+  overflow: hidden;
 }
 @media (max-width: 999.98px) {
   .card--team {
@@ -8994,7 +9013,6 @@ button.is-feedback-error,
 .card--team > .card-icon {
   width: 100%;
   height: 260px;
-  aspect-ratio: 16/9;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -13344,7 +13362,7 @@ main {
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 100px 20px;
+  gap: 60px 20px;
   width: 100%;
   margin-top: 52px;
   padding: 0;
@@ -15858,8 +15876,8 @@ main {
   padding: 4px 24px;
   background-color: rgba(255, 255, 255, 0.2);
   clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   overflow: hidden;
 }
 .iframe-url {
