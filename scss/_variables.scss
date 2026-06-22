@@ -795,15 +795,17 @@ hr {
   }
 }
 
-section {
-  padding: 62px 0;
+main {
+  section {
+    padding: 62px 0;
 
-  &:first-of-type {
-    padding-top: 160px;
-    padding-bottom: 20px;
+    &:first-of-type {
+      padding-top: 160px;
+      padding-bottom: 20px;
 
-    @media (max-width: 599.98px) {
-      padding-top: 100px;
+      @media (max-width: 599.98px) {
+        padding-top: 100px;
+      }
     }
   }
 }
@@ -1887,6 +1889,7 @@ form {
 .breadcrumbs {
   position: absolute;
   top: 80px;
+  left: 0;
   display: flex;
   gap: 8px;
   width: 100%;
@@ -1913,6 +1916,13 @@ form {
       text-decoration: underline;
     }
   }
+}
+
+.breadcrumbs-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0;
 }
 
 .badge {
