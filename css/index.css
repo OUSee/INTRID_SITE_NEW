@@ -13135,11 +13135,13 @@ main {
   }
 }
 
-#calculator-creation:is(.show) {
+#calculator-creation:is(.show),
+#tech-creation-wrapper:is(.show) {
   animation: fadeInUpForm 0.6s ease forwards;
   transform-origin: center bottom;
 }
-#calculator-creation:not(.show) {
+#calculator-creation:not(.show),
+#tech-creation-wrapper:not(.show) {
   display: none;
   max-height: 0;
   opacity: 0;
