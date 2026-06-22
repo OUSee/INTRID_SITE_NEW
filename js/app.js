@@ -922,6 +922,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             submitAjaxForm(item.form).finally(() => {
               item.recaptchaInput.value = "";
+
+              if (
+                typeof window.smartCaptcha !== "undefined" &&
+                typeof window.smartCaptcha.reset === "function"
+              ) {
+                window.smartCaptcha.reset(item.widgetId);
+              }
             });
           },
         });
@@ -1005,7 +1012,7 @@ const mapLinksInit = () => {
 
       const container = map.querySelector(".map-container");
       const linkBtn = map.querySelector(".button-link");
-      const phone = map.querySelector('#map-phone');
+      const phone = map.querySelector("#map-phone");
       const paragraph = map.querySelector("#map-info");
       const social = map.querySelector("#map-social");
       const whatsapp = map.querySelector("#map-whatsapp");
@@ -1022,12 +1029,9 @@ const mapLinksInit = () => {
 
       if (phone) {
         phone.style.display = mapData[value].phone ? "" : "none";
-        phone.setAttribute(
-          "href",
-          "tel:+" + (mapData[value]?.phone || ""),
-        );
-        phone.querySelector('span').innerHTML = `+${mapData[value].phone}`;
-      } 
+        phone.setAttribute("href", "tel:+" + (mapData[value]?.phone || ""));
+        phone.querySelector("span").innerHTML = `+${mapData[value].phone}`;
+      }
 
       social.style.display =
         mapData[value]?.wa || mapData[value]?.tg ? "flex" : "none";
@@ -5301,7 +5305,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 : options[selectedIndex];
             }
           } else if (isToggleNiceSelect) {
-            input.selectedIndex = input.selectedIndex >= 0 ? input.selectedIndex : 0;
+            input.selectedIndex =
+              input.selectedIndex >= 0 ? input.selectedIndex : 0;
           } else {
             input.selectedIndex = -1;
           }
@@ -5535,7 +5540,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const controller = toggle.controllerId
               ? toggles.find((t) => t.id === toggle.controllerId)
               : null;
-            const shouldCountSelect = !toggle.controlledByCheckbox ||
+            const shouldCountSelect =
+              !toggle.controlledByCheckbox ||
               Boolean(controller?.elementref.checked);
 
             if (oldOption && oldOption !== newOption) {
@@ -7227,8 +7233,7 @@ const seoAuditInit = () => {
     if (description.length > 180) issues.push("longDescription");
     if (title.toLowerCase() === description.toLowerCase())
       issues.push("sameText");
-    else if (hasSameMetaMeaning(title, description))
-      issues.push("similarText");
+    else if (hasSameMetaMeaning(title, description)) issues.push("similarText");
     if (hasGenericMetaText(title) || hasGenericMetaText(description))
       issues.push("genericText");
     if (hasMetaWordRepeats(title) || hasMetaWordRepeats(description))
@@ -7254,11 +7259,15 @@ const seoAuditInit = () => {
     }
 
     if (issues.includes("sameText") || issues.includes("similarText")) {
-      recommendations.push("не дублировать один и тот же смысл в заголовке и описании");
+      recommendations.push(
+        "не дублировать один и тот же смысл в заголовке и описании",
+      );
     }
 
     if (issues.includes("genericText")) {
-      recommendations.push("заменить общие фразы на конкретное описание страницы");
+      recommendations.push(
+        "заменить общие фразы на конкретное описание страницы",
+      );
     }
 
     if (issues.includes("wordRepeats")) {
