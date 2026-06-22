@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no" />
+    <link rel="icon" type="x-icon" href="./src/images/favicon.ico">
+    <title>
+        Формы
+    </title>
+    <link rel="stylesheet" href="./css/index.min.css">
+</head>
+
+<body>
+    <h1>Формы обратной связи для маскирования</h1>
+    <ul>
+        <li>
+            <h2>О нас (/o-nas):</h2>
+
+            <div class="card card--leaders minified position-sticky ml-auto mr-auto" id="contacts-creation">
+                <p class="title_h4 text-center">
+                    Получить консультацию
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Клиентам (/klientam):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="clients-creation">
+                <p class="title_h4 text-center">
+                    Получить консультацию
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Дизайн (/design):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="design-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Логотип (/logo):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="logo-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Бренд (/brand):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="brand-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Хостинг тарифы (/hosting-tarify):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="hosting-creation">
+                <p class="title_h4 text-center">
+                    Запустить сайт на надёжном хостинге
+                </p>
+                <p class="text-center">
+                    Обеспечьте сайту надёжный хостинг с доступностью 24/7
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <div class="nice-wrapper nice-wrapper--simple w-100">
+                        <!-- Изменён select: name="type_hosting", id оставлен для совместимости с data-select-target -->
+                        <select id="join-encryption" name="type_hosting" class="isInput w-100"
+                            data-display="Хостинг Старт" style="display: none;">
+                            <option value="start">Хостинг Старт</option>
+                            <option value="standart">Хостинг Стандарт</option>
+                        </select>
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Виртуальный сервер (/vds):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="vds-creation">
+                <p class="title_h4 text-center">
+                    Арендовать VDS
+                </p>
+                <p class="text-center">
+                    Обеспечьте проекту надёжный VDS с доступностью 24/7
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Регистрация доменов (/domain):</h2>
+
+            <p>Своя форма в беке</p>
+        </li>
+
+        <li>
+            <h2>SSL (/ssl):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="ssl-creation">
+                <p class="title_h4 text-center">
+                    Установить SSL
+                </p>
+                <p class="text-center">
+                    Обезопасим сайт от злоумышленников, повысим доверие пользователей и поисковых систем
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Кейсы (кореец, мир климата и другие):</h2>
+
+            <section>
+                <div class="container">
+                    <div class="card card--leaders wider mw-1000 ml-auto mr-auto" id="case-creation">
+                        <p class="title_h2 mb-12 text-center">
+                            Вам понравился этот кейс?
+                        </p>
+                        <p class="text-center">
+                            Просто заполните форму ниже, и мы предложим оптимальное решение для Вашего бизнеса!
+                        </p>
+                        <div class="form-cols">
+                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div>
+                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                </div>
+                                <div class="form-inputs">
+                                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                                    <input type="tel" required id="customer-phone" name="tel"
+                                        placeholder="Ваш телефон *">
+
+                                    <textarea data-autosize="true" rows="2" id="customer-comment"
+                                        placeholder="Комментарий" name="mess"></textarea>
+
+                                    <div class="input-file">
+                                        <div class="file-drop-area">
+                                            <label>
+                                                <input type="file" multiple="" name="file[]"
+                                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                                <span>Прикрепить файл</span>
+                                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                            </label>
+                                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                            <div class="file-list" style="display: none;"></div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonials mb-0">
+                                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                            target="_blank">ФЗ&nbsp;№152</a>
+                                    </p>
+
+                                    <button type="submit" class="button big button-white w-100 mt-12">
+                                        Отправить
+                                    </button>
+                            </form>
+                        </div>
+                        <img src="../src/images/orb-with-logo.webp" alt="orb">
+                    </div>
+                </div>
+            </section>
+        </li>
+
+        <li>
+            <h2>Контакты (/kontakty):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="contacts-creation">
+                <p class="title_h4 text-center">
+                    Получить консультацию
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Разработка сайтов (/site):</h2>
+
+            <div class="card card--leaders minified position-sticky">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Корпоративный сайт (/corporate):</h2>
+
+            <div class="card card--leaders minified position-sticky">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Интернет-магазин (/store):</h2>
+
+            <div class="card card--leaders minified position-sticky">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Продвижение и раскрутка (/promotion):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="promotion-creation">
+                <p class="title_h4 text-center">
+                    Вывести сайт в топ
+                </p>
+                <p class="text-center">
+                    Улучшим позиции сайта, приведём заинтересованных посетителей и конвертируем их в
+                    клиентов
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <input type="text" id="customer-url" placeholder="URL сайта *" name="url" required>
+
+                    <input type="text" id="customer-target" placeholder="Регион продвижения *" name="target" required>
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>SEO-оптимизация и раскрутка (/seo):</h2>
+
+            <!-- Форма для проверки -->
+            <div class="card thin overflow-visible">
+                <form action="/submit/express-seo-audit" id="audit-form"
+                    class="d-flex flex-row flex-sm-wrap align-lg-stretch align-start gap-8" data-ajax="false">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" name="site" id="site-url" placeholder="URL сайта" required="" autocomplete="url">
+                    <button type="submit" class="big button-highlight w-sm-100 h-100" style="min-width: 120px;">
+                        проверить
+                    </button>
+                </form>
+            </div>
+
+            <!-- Форма для обратной связи -->
+            <div class="card card--leaders minified position-sticky" id="seo_application">
+                <p class="title_h4 text-center">
+                    Вывести сайт в топ
+                </p>
+                <p class="text-center">
+                    Улучшим позиции сайта, приведём заинтересованных посетителей и конвертируем их в
+                    клиентов
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <input type="text" id="customer-url" placeholder="URL сайта *" name="url" required>
+
+                    <input type="text" id="customer-target" placeholder="Регион продвижения *" name="target" required>
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Улучшение репутации (/reputation):</h2>
+
+            <!-- Форма обратной связи -->
+            <div class="card card--leaders minified position-sticky" id="reputation_creation">
+                <p class="title_h4 text-center">
+                    Получить консультацию
+                </p>
+                <p class="text-center">
+                    Уберём репутационные риски из выдачи и укрепим доверие клиентов
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <input type="text" id="customer-url" placeholder="URL сайта *" name="url" required>
+
+                    <input type="text" id="customer-target" placeholder="Регион продвижения *" name="target" required>
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+
+            <!-- Форма для проверки -->
+            <div class="card thin overflow-visible">
+                <form action="/submit/lost-profit" id="lost-profit-form"
+                    class="d-flex flex-row flex-xl-wrap flex-lg-nowrap flex-md-wrap align-lg-stretch align-start gap-8">
+                    <input type="text" id="company-name" name="company" placeholder="Название компании" required>
+
+                    <div class="input-mode rubles w-100">
+                        <input type="text" id="average-check" class="w-100" name="average_check"
+                            placeholder="Средний чек" inputmode="numeric" autocomplete="off" required>
+                    </div>
+
+                    <div class="input-mode percent w-100">
+                        <input type="text" id="margin-percent" class="w-100" name="margin" placeholder="Маржинальность"
+                            inputmode="decimal" autocomplete="off" required>
+                    </div>
+
+                    <button type="submit" class="big button-highlight w-sm-100 h-100 ml-auto">
+                        рассчитать
+                    </button>
+                </form>
+            </div>
+
+            <div class="preloader mt-16 text-center" id="lost-profit-loader" style="display:none;"></div>
+            <div class="error-msg mt-16 text-center" id="lost-profit-error" style="display:none;"></div>
+            <div class="info-msg text-center" id="lost-profit-result" style="display:none;"></div>
+        </li>
+
+        <li>
+            <h2>Продвижение в социальных сетях (/smm):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="smm-creation">
+                <p class="title_h4 text-center">
+                    Заказать рекламу в соцсетях
+                </p>
+                <p class="text-center">
+                    Настроим таргет так, чтобы клиенты возвращались и рекомендовали вас
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <div class="nice-wrapper nice-wrapper--simple w-100">
+                        <!-- Изменён select: name="type_smm", id оставлен для совместимости с data-select-target -->
+                        <select id="join-smm" name="type_smm" class="isInput w-100"
+                            data-display="Выберите тарифный план" style="display: none;">
+                            <option value="base">Базовый</option>
+                            <option value="standart">Стандарт</option>
+                            <option value="premium">Премиум</option>
+                        </select>
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <input type="text" id="customer-url" placeholder="URL сайта *" name="url" required>
+
+                    <input type="text" id="customer-target" placeholder="Регион продвижения *" name="target" required>
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Интернет магазин с ИИ (/internet-magazin-s-ii):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="ai-store-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>iCMS (/icms):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="icms-creation">
+                <p class="title_h4 text-center">
+                    Получить консультацию
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Разработка веб-порталов под ключ (/web-portal):</h2>
+
+            <div class="card card--leaders minified position-sticky">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>CRM-ERP (/crm-erp):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="crm-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Разработка тендерных площадок и ЭТП (/tender-portal):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="tender-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Интеграция (/integration):</h2>
+
+            <div class="card card--leaders minified position-sticky">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Сопровождение сайтов (/tech):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="tech-creation">
+                <p class="title_h4 text-center">
+                    Получить консультацию
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>SEO-аудиты и аналитика (/seo-audit):</h2>
+
+            <p>Форма в беке</p>
+        </li>
+
+        <li>
+            <h2>Дизайн сайта (/design-site):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="design-site-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>UI design (/ui-design):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="ui-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>IT для бизнеса (/automation-business):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="automation-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Отличия Landing Page от сайта (/landing-page):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="landing-creation">
+                <p class="title_h4 text-center">
+                    Обсудить Ваш проект
+                </p>
+                <p class="text-center">
+                    Мы подготовим коммерческое предложение и поможем в реализации самых смелых идей
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <div class="input-file">
+                        <div class="file-drop-area">
+                            <label>
+                                <input type="file" multiple="" name="file[]"
+                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                <span>Прикрепить файл</span>
+                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                            </label>
+                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                            <div class="file-list" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+
+        <li>
+            <h2>Вакансия PHP-Программист/Дизайнер (/programmist-php-backend-razrabotcik-pythonphp-laravel-yii-20 &
+                /veb-dizajner):</h2>
+
+            <div class="card total position-sticky" id="calculator-total">
+                <div class="total-top">
+                    <p class="title_h4 mb-8 text-center">
+                        Заинтересовала вакансия?
+                    </p>
+
+                    <p class="text-center">
+                        Свяжитесь с нами любым удобным способом:
+                    </p>
+
+                    <div class="d-flex flex-row flex-wrap gap-16 gap-lg-32 gap-sm-12">
+                        <button id="send-calculator-total"
+                            class="button-highlight flex-1 d-flex d-lg-none justify-center" data-total-switch="after">
+                            Откликнуться
+                        </button>
+                        <button id="send-total" class="button-highlight flex-1 d-none d-lg-flex justify-center small"
+                            data-popup="fast-vakansies-form">
+                            Откликнуться
+                        </button>
+
+                        <div class="icon-menu">
+                            <a title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
+                                <i class="icon-mail title_h3"></i>
+                            </a>
+
+                            <a title="Связаться с нами в MAX"
+                                href="https://max.ru/u/f9LHodD0cOIK2py_Tk-Zx7kyjPsbUaWzS4eCQ4fOJ48vaPvbEIsQCdftNMk"
+                                target="_blank">
+                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M13.2149 22.9429C11.2521 22.9429 10.34 22.6551 8.75453 21.504C7.75166 22.799 4.57594 23.8111 4.43743 22.0796C4.43743 20.7798 4.1509 19.6815 3.82616 18.4824C3.43935 17.0051 3 15.36 3 12.9763C3 7.28308 7.65138 3 13.1623 3C18.6781 3 22.9999 7.49411 22.9999 13.029C23.0184 18.4783 18.6406 22.9139 13.2149 22.9429ZM13.2961 7.92097C10.6122 7.78189 8.52051 9.64765 8.05729 12.5734C7.67525 14.9955 8.35338 17.9452 8.93121 18.0987C9.20819 18.1658 9.90543 17.5999 10.34 17.1634C11.0586 17.662 11.8954 17.9614 12.766 18.0315C15.5469 18.1659 17.9231 16.0396 18.1098 13.2497C18.2185 10.4538 16.0773 8.08578 13.2961 7.92578V7.92097Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </a>
+
+                            <a title="Telegram" href="https://t.me/webintrid" target="_blank">
+                                <i class="icon-tg title_h3"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="total-bottom">
+                    <button type="button" class="total-close" onclick="setTotalState('before')"></button>
+                    <p class="title_h4 text-center">
+                        Оставить отклик
+                    </p>
+                    <!-- Форма получения проекта сайта -->
+                    <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                        <div class="recaptcha-wrapper" style="display: none;">
+                            <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                data-size="invisible"></div>
+                            <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                        </div>
+
+                        <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                        <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                        <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                        <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                            name="mess"></textarea>
+
+                        <div class="input-file">
+                            <div class="file-drop-area">
+                                <label>
+                                    <input type="file" multiple="" name="file[]"
+                                        accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                    <span>Прикрепить файл</span>
+                                    <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                </label>
+                                <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                <div class="file-list" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <p class="testimonials text-center m-center mb-0">
+                            Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                                target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                                href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                target="_blank">ФЗ&nbsp;№152</a>
+                        </p>
+                        <button type="submit" class="button big button-white mt-12">
+                            Отправить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <h2>Шифрование данных (encryption):</h2>
+
+            <div class="card card--leaders minified position-sticky" id="encryption_creation">
+                <p class="title_h4 text-center">
+                    Закажите шифрование персональных данных
+                </p>
+                <p class="text-center">
+                    Мы проведём аудит
+                    и подберём оптимальное решение под ваши задачи.
+                </p>
+                <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
+                    <div class="recaptcha-wrapper" style="display: none;">
+                        <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                            data-size="invisible"></div>
+                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                    </div>
+
+                    <div class="nice-wrapper nice-wrapper--simple w-100">
+                        <!-- Изменён select: name="type_hosting", id оставлен для совместимости с data-select-target -->
+                        <select id="join-encryption" name="type_hosting" class="isInput w-100"
+                            data-display="Базовое хеширование" style="display: none;">
+                            <option value="base">Базовое хеширование</option>
+                            <option value="hash-full">Хеширование с поиском по полному
+                                полю
+                            </option>
+                            <option value="hash-partial">Хеширование с поиском по любой
+                                части
+                                поля</option>
+                            <option value="defend-1c">Защита канала обмена данными с 1С
+                                (односторонний / двусторонний обмен)</option>
+                        </select>
+                    </div>
+
+                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                    <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
+
+                    <input type="text" id="customer-url" placeholder="URL сайта" name="url">
+
+                    <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                        name="mess"></textarea>
+
+                    <p class="testimonials text-center m-center mb-0">
+                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                            target="_blank">ФЗ&nbsp;№152</a>
+                    </p>
+                    <button type="submit" class="button big button-white mt-12">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</body>
+
+</html>
