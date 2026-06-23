@@ -1912,15 +1912,17 @@
 
 @mixin card-icon {
   min-height: 130px;
-  padding: 32px 32px 32px 100px;
+  // padding: 32px 32px 32px 100px;
+  padding: 32px 32px 32px 72px;
 
   @media (max-width: 999.98px) {
-    padding: 20px 20px 20px 100px;
+    // padding: 20px 20px 20px 100px;
+    padding: 20px 20px 20px 72px;
   }
 
   @media (max-width: 599.98px) {
     min-height: 100px;
-    padding: 20px 20px 20px 72px;
+    // padding: 20px 20px 20px 72px;
   }
 
   &::before {
@@ -1929,8 +1931,10 @@
     top: 0;
     left: 0;
     z-index: -1;
-    width: 92px;
-    height: 92px;
+    width: 80px;
+    height: 80px;
+    // width: 92px;
+    // height: 92px;
     display: flex;
     background-color: var(--blue-bg);
     border-radius: 50%;
@@ -1962,8 +1966,10 @@
   & > img,
   & > i {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    // top: 20px;
+    // left: 20px;
+    top: 16px;
+    left: 16px;
     z-index: 1;
     display: flex;
     width: 32px;
