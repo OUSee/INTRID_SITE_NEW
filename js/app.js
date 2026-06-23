@@ -2073,7 +2073,7 @@ const portfolioCardsSlider = () => {
   let isInitialized = false;
   let resizeTimer = null;
 
-  const breakpoint = 900;
+  const breakpoint = 1000;
   const block = document.querySelector("#porfolio-body-content");
   const slider = block?.querySelector(".portfolio-block__cards");
 

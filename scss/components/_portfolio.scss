@@ -290,7 +290,9 @@
 
     @media (max-width: 999.98px) {
       & > .container {
-        margin: 0 !important;
+        &:not(.card-key-area) {
+          margin: 0 !important;
+        }
       }
     }
 
@@ -394,7 +396,8 @@
           & .portfolio-site {
             // aspect-ratio: unset;
             aspect-ratio: 21 / 10.5;
-            object-fit: contain;
+            object-fit: cover;
+            // object-fit: contain;
             object-position: top center;
           }
         }
