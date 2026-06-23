@@ -181,16 +181,6 @@
         <!-- Бесплатный аудит сайта -->
         <section>
             <div class="container">
-                <div class="breadcrumbs">
-                    <a href="/">Главная</a>
-                    <span>-</span>
-                    <a href="/seo">Продвижение</a>
-                    <span>-</span>
-                    <a href="/seo-audit">SEO-аудиты <span class="br420">и аналитика</span></a>
-                    <span>-</span>
-                    <a href="#" class="link-disabled">Бесплатный SEO аудит сайта онлайн</a>
-                </div>
-
                 <h1 class="underlined w-fit">
                     Бесплатный SEO аудит сайта онлайн
                 </h1>
@@ -205,26 +195,26 @@
                 <div class="flex-layout flex-layout--2x align-start gap-20 mt-52">
                     <ul class="list--cooperate slim">
                         <li>
-                            <img src="/src/icons/chart_rate.svg" alt="icon">
+                            <img src="/src/icons/chart_rate.svg" alt="Анализ 150+ основных SEO-факторов">
                             <p>
                                 Анализ 150+ основных
                                 SEO-факторов
                             </p>
                         </li>
                         <li>
-                            <img src="/src/icons/magnifier_glass.svg" alt="icon">
+                            <img src="/src/icons/magnifier_glass.svg" alt="Проверка корректности индексации">
                             <p>
                                 Проверка корректности индексации
                             </p>
                         </li>
                         <li>
-                            <img src="/src/icons/tech-rocket.svg" alt="icon">
+                            <img src="/src/icons/tech-rocket.svg" alt="Оценка скорости загрузки">
                             <p>
                                 Оценка скорости загрузки
                             </p>
                         </li>
                         <li>
-                            <img src="/src/icons/paper.svg" alt="icon">
+                            <img src="/src/icons/paper.svg" alt="Базовый анализ контента">
                             <p>
                                 Базовый анализ контента
                             </p>
@@ -259,7 +249,8 @@
                         <?php if (!empty($metrics)): ?>
                         <?php foreach ($metrics as $metric): ?>
                         <div class="card card--icon <?= Html::encode($metric['status']['status']) ?>">
-                            <img src="/src/icons/metric-<?= Html::encode($metric['category']) ?>.svg" alt="icon">
+                            <img src="/src/icons/metric-<?= Html::encode($metric['category']) ?>.svg"
+                                alt="<?= Html::encode($metric['title']) ?>">
                             <b>
                                 <?= Html::encode($metric['title']) ?>
                             </b>
@@ -286,41 +277,52 @@
         </section>
 
         <!-- Закажите комплексный аудит-сайта -->
-        <section id="seo-audit-features">
+        <section id="seo-audit-features" style="<?= empty($metrics) ? 'display: none;' : '' ?>">
             <div class="container">
                 <h3 class="underlined w-fit">
                     Закажите комплексный аудит-сайта
                 </h3>
 
+                <p>
+                    Комплексный аудит сайта помогает найти точки роста, устранить ошибки и увеличить
+                    количество заявок и продаж.
+                </p>
+
+                <div class="flex-layout flex-layout--advantages mb-28">
+                    <div class="card card--icon">
+                        <img src="/src/icons/social.svg" alt="Как подходим к продвижению?" />
+                        <b>
+                            Как подходим к продвижению?
+                        </b>
+                        <p>
+                            Проводим комплексный SEO-аудит по 135 факторам: от технического состояния сайта и качества
+                            контента до удобства страниц, поведения пользователей и анализа конкурентов.
+                        </p>
+                    </div>
+                    <div class="card card--icon">
+                        <img src="/src/icons/magnifier_glass.svg" alt="Что мы проверим" />
+                        <b>
+                            Что мы проверим
+                        </b>
+                        <p>
+                            Покажем, что мешает сайту получать больше трафика и обращений: от технических ошибок и
+                            структуры страниц до контента и удобства для клиентов.
+                        </p>
+                    </div>
+                    <div class="card card--icon">
+                        <img src="/src/icons/map.svg" alt="Что вы получите" />
+                        <b>
+                            Что вы получите
+                        </b>
+                        <p>
+                            Вы получите “дорожную карту” с чёткими рекомендациями по устранению недочётов на сайте и его
+                            модернизации.
+                        </p>
+                    </div>
+                </div>
+
                 <div class="flex-layout flex-layout--split">
                     <div class="left">
-                        <p>
-                            Комплексный аудит сайта помогает найти точки роста, устранить ошибки и увеличить
-                            количество заявок и продаж.
-                        </p>
-
-                        <div class="flex-layout flex-layout--advantages slim mb-28">
-                            <div class="card card--icon">
-                                <img src="/src/icons/map.svg" alt="" />
-                                <b>
-                                    Что вы получите
-                                </b>
-                                <p>
-                                    Подробный отчет с выводами
-                                    и рекомендациями по улучшению сайта
-                                </p>
-                            </div>
-                            <div class="card card--icon">
-                                <img src="/src/icons/clock.svg" alt="" />
-                                <b>
-                                    Сроки подготовки
-                                </b>
-                                <p>
-                                    3-5 рабочих дней
-                                </p>
-                            </div>
-                        </div>
-
                         <p>
                             Аудит охватывает ключевые аспекты сайта и помогает понять, что мешает ему
                             эффективно привлекать клиентов и приносить результат.
@@ -329,7 +331,7 @@
                         <!-- Что будет в полном SEO-аудите -->
                         <div class="flex-layout flex-layout--advantages slim">
                             <div class="card card--icon">
-                                <img src="/src/icons/gear_icon.svg" alt="">
+                                <img src="/src/icons/gear_icon.svg" alt="Технический аудит">
                                 <b>
                                     Технический аудит
                                 </b>
@@ -353,7 +355,7 @@
                             </div>
 
                             <div class="card card--icon">
-                                <img src="/src/icons/paper.svg" alt="">
+                                <img src="/src/icons/paper.svg" alt="Контент-аудит">
                                 <b>
                                     Контент-аудит
                                 </b>
@@ -377,7 +379,7 @@
                             </div>
 
                             <div class="card card--icon">
-                                <img src="/src/icons/money.svg" alt="">
+                                <img src="/src/icons/money.svg" alt="Коммерческие факторы">
                                 <b>
                                     Коммерческие факторы
                                 </b>
@@ -401,7 +403,7 @@
                             </div>
 
                             <div class="card card--icon">
-                                <img src="/src/icons/ux-site.svg" alt="">
+                                <img src="/src/icons/ux-site.svg" alt="Удобство сайта">
                                 <b>
                                     Удобство сайта
                                 </b>
@@ -425,7 +427,7 @@
                             </div>
 
                             <div class="card card--icon">
-                                <img src="/src/icons/handshake.svg" alt="">
+                                <img src="/src/icons/handshake.svg" alt="Поведенческие факторы">
                                 <b>
                                     Поведенческие факторы
                                 </b>
@@ -449,7 +451,7 @@
                             </div>
 
                             <div class="card card--icon">
-                                <img src="/src/icons/users-group.svg" alt="">
+                                <img src="/src/icons/users-group.svg" alt="Внешняя оптимизация">
                                 <b>
                                     Внешняя оптимизация
                                 </b>
@@ -467,8 +469,8 @@
                                 </ul>
                             </div>
 
-                            <div class="card card--icon">
-                                <img src="/src/icons/earth.svg" alt="">
+                            <div class="card card--icon ml-auto mr-auto">
+                                <img src="/src/icons/earth.svg" alt="Анализ конкурентов">
                                 <b>
                                     Анализ конкурентов
                                 </b>
@@ -489,17 +491,6 @@
                                         </p>
                                     </li>
                                 </ul>
-                            </div>
-
-                            <div class="card card--icon">
-                                <img src="/src/icons/map.svg" alt="">
-                                <b>
-                                    После аудита
-                                </b>
-                                <p>
-                                    После анализа мы подготовим дорожную карту
-                                    по развитию сайта с приоритетами и сроками.
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -528,13 +519,10 @@
 
                                 <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
 
-                                <input type="text" id="customer-url" placeholder="URL сайта" name="url">
+                                <input type="text" id="customer-url" placeholder="URL сайта *" name="url" required>
 
-                                <input type="text" id="customer-target" placeholder="География интересов" name="target">
-
-                                <textarea data-autosize="true" rows="2"
-                                    placeholder="Перечислите Ваших прямых и косвенных конкурентов"
-                                    name="list"></textarea>
+                                <input type="text" id="customer-target" placeholder="Регион продвижения *" name="target"
+                                    required>
 
                                 <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
                                     name="mess"></textarea>
@@ -551,50 +539,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Заказать разработку сайта или создание бренда -->
-        <section>
-            <div class="container">
-                <h3 class="underlined w-fit m-center text-center">
-                    Заказать разработку сайта или создание бренда
-                </h3>
-
-                <div class="flex-layout flex-layout--use">
-                    <a href="./calculator.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/site-calc.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Калькулятор сайта
-                        </b>
-                    </a>
-                    <a href="./brif-site.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/brif-site.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Бриф на сайт
-                        </b>
-                    </a>
-                    <a href="./brif-logo.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/brif-logo.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Бриф на бренд
-                        </b>
-                    </a>
-                    <a href="./seo.html#seo_application" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/promotion-request.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Заявка на раскрутку
-                        </b>
-                    </a>
                 </div>
             </div>
         </section>
