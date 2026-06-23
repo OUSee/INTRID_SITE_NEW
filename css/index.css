@@ -2026,24 +2026,8 @@ th {
 .justify-sb {
   justify-content: space-between;
 }
-.justify-self-start {
-  justify-self: start;
-}
-.justify-self-end {
-  justify-self: end;
-}
-@media (max-width: 599.98px) {
-  .justify-sm-center {
-    justify-content: center;
-  }
-}
-@media (max-width: 719.98px) {
-  .justify-md-center {
-    justify-content: center;
-  }
-}
-@media (max-width: 999.98px) {
-  .justify-lg-center {
+@media (max-width: 1360px) {
+  .justify-xxl-center {
     justify-content: center;
   }
 }
@@ -2052,10 +2036,31 @@ th {
     justify-content: center;
   }
 }
-@media (max-width: 1360px) {
-  .justify-xxl-center {
+@media (max-width: 999.98px) {
+  .justify-lg-center {
     justify-content: center;
   }
+}
+@media (max-width: 719.98px) {
+  .justify-md-center {
+    justify-content: center;
+  }
+}
+@media (max-width: 599.98px) {
+  .justify-sm-center {
+    justify-content: center;
+  }
+}
+@media (max-width: 599.98px) {
+  .justify-sm-start {
+    justify-content: flex-start;
+  }
+}
+.justify-self-start {
+  justify-self: start;
+}
+.justify-self-end {
+  justify-self: end;
 }
 
 @font-face {
@@ -8173,6 +8178,7 @@ button.is-feedback-error,
   flex-wrap: nowrap;
   padding: 8px 24px;
   text-decoration: none !important;
+  background: radial-gradient(60% 60% at 10% 20%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 0%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 37.79%, transparent 100%), hsla(0, 0%, 100%, 0.125);
 }
 @media (max-width: 999.98px) {
   .card--portfolio .card-header {
@@ -8931,6 +8937,12 @@ button.is-feedback-error,
     width: 44px;
     height: 44px;
   }
+}
+.card--tab:is(.horizontal) .card-header {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 2em;
 }
 .card--tab b {
   font-weight: 600;
@@ -13968,7 +13980,7 @@ main {
   opacity: 0;
 }
 .portfolio-block__cards--slider > * .portfolio-site {
-  aspect-ratio: unset;
+  aspect-ratio: 21/10.5;
   object-fit: contain;
   object-position: top center;
 }
@@ -13994,6 +14006,14 @@ main {
 @media (max-width: 999.98px) {
   .portfolio-slider-controls .portfolio-slider-prev, .portfolio-slider-controls .portfolio-slider-next {
     display: none !important;
+  }
+}
+.portfolio .hasKeys .keysUrl {
+  display: inline;
+}
+@media (max-width: 999.98px) {
+  .portfolio .hasKeys .keysUrl {
+    display: none;
   }
 }
 

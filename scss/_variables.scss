@@ -5000,6 +5000,7 @@ button:hover,
       flex-wrap: nowrap;
       padding: 8px 24px;
       text-decoration: none !important;
+      background: radial-gradient(60% 60% at 10% 20%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 0%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 37.79%, transparent 100%), hsla(0, 0%, 100%, 0.125);
 
       @media (max-width: 999.98px) {
         padding: 4px 16px;
@@ -5759,6 +5760,15 @@ button:hover,
           width: 44px;
           height: 44px;
         }
+      }
+    }
+
+    &:is(.horizontal) {
+      & .card-header {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 2em;
       }
     }
 

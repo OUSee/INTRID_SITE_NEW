@@ -392,7 +392,8 @@
           }
 
           & .portfolio-site {
-            aspect-ratio: unset;
+            // aspect-ratio: unset;
+            aspect-ratio: 21 / 10.5;
             object-fit: contain;
             object-position: top center;
           }
@@ -427,6 +428,16 @@
         & .portfolio-slider-next {
           display: none !important;
         }
+      }
+    }
+  }
+
+  & .hasKeys {
+    & .keysUrl {
+      display: inline;
+
+      @media (max-width: 999.98px) {
+        display: none;
       }
     }
   }
