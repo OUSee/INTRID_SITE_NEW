@@ -7736,7 +7736,7 @@ const seoAuditInit = () => {
       showFormFeedback(submitBtn, "Проверка завершена", "success");
     } catch (err) {
       console.error(err);
-      errorDiv.textContent = "Не удалось выполнить проверку. Попробуйте позже.";
+      errorDiv.textContent = "Не удалось выполнить проверку.";
       errorDiv.style.display = "block";
       showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
