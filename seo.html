@@ -174,14 +174,6 @@
     <main>
         <!-- hero-section -->
         <section class="main-section container">
-            <div class="breadcrumbs">
-                <a href="/">Главная</a>
-                <span>-</span>
-                <a href="/promotion">Продвижение</a>
-                <span>-</span>
-                <a href="#" class="link-disabled">Раскрутка <span class="br420">с гарантией </span>в сети</a>
-            </div>
-
             <div class="main-section--left">
                 <h1 class="w-fit underlined">
                     SEO-продвижение
@@ -360,18 +352,20 @@
             <div class="nav-tabs">
                 <div class="tabs-to-select isSeo container">
                     <!-- select for tabs-buttons -->
-                    <div class="nice-wrapper nice-wrapper--simple align-center gap-12 mw-400 ml-auto mr-auto mb-32"
+                    <div class="nice-wrapper nice-wrapper--simple nice-wrapper--portfolio align-center gap-12 mw-400 ml-auto mr-auto mb-32"
                         data-tabs-buttons="" id="select-tender">
                         <div class="nice-select w-100" tabindex="0">
-                            <span class="current">По предоплате</span>
+                            <span class="current">Все варианты работы</span>
                             <ul class="list">
-                                <label data-value="1" for="tab-slide-btn-1"
-                                    class="option d-flex w-100 h-100 selected">По предоплате</label>
-                                <label data-value="2" for="tab-slide-btn-2" class="option d-flex w-100 h-100">По
-                                    результату</label>
-                                <label data-value="3" for="tab-slide-btn-3" class="option d-flex w-100 h-100">За позиции
-                                    в ТОП-10</label>
-                                <label data-value="4" for="tab-slide-btn-4" class="option d-flex w-100 h-100">За
+                                <label data-value="0" for="tab-slide-btn-0"
+                                    class="option d-flex w-100 h-100 selected">Все варианты работы</label>
+                                <label data-value="1" for="tab-slide-btn-1" class="option d-flex w-100 h-100">По
+                                    предоплате</label>
+                                <label data-value="2" for="tab-slide-btn-2"
+                                    class="option d-flex w-100 h-100">Постоплата</label>
+                                <label data-value="3" for="tab-slide-btn-3" class="option d-flex w-100 h-100">Оплата за
+                                    ключи в ТОП-10</label>
+                                <label data-value="4" for="tab-slide-btn-4" class="option d-flex w-100 h-100">Отпала за
                                     достижение целей</label>
                             </ul>
                         </div>
@@ -379,31 +373,37 @@
 
                     <!-- tabs-buttons -->
                     <div class="nav-tabs--buttons" data-tabs-buttons="">
+                        <label for="tab-slide-btn-0" class="button--tab justify-center">
+                            <input type="radio" name="tab-prices-radio" id="tab-slide-btn-0" checked>
+                            <span>Все варианты</span>
+                        </label>
                         <label for="tab-slide-btn-1" class="button--tab justify-center">
                             <input type="radio" name="tab-prices-radio" id="tab-slide-btn-1">
                             <span>По предоплате</span>
                         </label>
                         <label for="tab-slide-btn-2" class="button--tab justify-center">
                             <input type="radio" name="tab-prices-radio" id="tab-slide-btn-2">
-                            <span>По результату</span>
+                            <span>Постоплата</span>
                         </label>
                         <label for="tab-slide-btn-3" class="button--tab justify-center">
                             <input type="radio" name="tab-prices-radio" id="tab-slide-btn-3">
-                            <span>За позиции в ТОП-10</span>
+                            <span>Оплата за ключи в ТОП-10</span>
                         </label>
                         <label for="tab-slide-btn-4" class="button--tab justify-center">
                             <input type="radio" name="tab-prices-radio" id="tab-slide-btn-4">
-                            <span>За достижение целей</span>
+                            <span>Отпала за достижение целей</span>
                         </label>
                     </div>
                 </div>
                 <div class="nav-tabs--content">
                     <div class="container">
-                        <div class="tab-content grid-layout grid-layout--3x gap-20 mb-20 active" id="tab-slide-0">
+                        <div class="tab-content flex-layout flex-layout--advantages justify-center mb-20 active"
+                            id="tab-slide-0">
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-subscription.svg" alt="Продвижение по абонентской плате с гарантией результата">
+                                        <img src="/src/icons/seo-subscription.svg"
+                                            alt="Продвижение по абонентской плате с гарантией результата">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -422,7 +422,8 @@
                                     стартовой оптимизации сайта.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -449,7 +450,8 @@
                                     конкуренции.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -457,7 +459,8 @@
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-percentage.svg" alt="Оплата за процент ключевых фраз в ТОП10">
+                                        <img src="/src/icons/seo-percentage.svg"
+                                            alt="Оплата за процент ключевых фраз в ТОП10">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -476,7 +479,8 @@
                                     выше сумма оплаты.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -484,7 +488,8 @@
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-traffic.svg" alt="Оплата только за целевых посетителей из поиска">
+                                        <img src="/src/icons/seo-traffic.svg"
+                                            alt="Оплата только за целевых посетителей из поиска">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -504,7 +509,8 @@
                                     название Вашего бренда.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -512,7 +518,8 @@
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-conversion.svg" alt="Оплата только за целевые действия на сайте (заявки)">
+                                        <img src="/src/icons/seo-conversion.svg"
+                                            alt="Оплата только за целевые действия на сайте (заявки)">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -530,43 +537,20 @@
                                     коллтрекинга.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
                             </div>
-                            <div class="card card--tab no-hover">
-                                <div class="card-header">
-                                    <div class="card-icon">
-                                        <img src="/src/icons/seo-audit.svg" alt="Оплата только за целевые действия на сайте (заявки)">
-                                    </div>
-                                    <div class="card-header--content">
-                                        <b class="flex-1">
-                                            Оплата только за целевые действия на сайте (заявки)
-                                        </b>
-                                    </div>
-                                </div>
-                                <p>
-                                    Если Вы недовольны текущими результатами продвижения, проведите комплексный
-                                    аудит своего
-                                    сайта. По результатам аудита мы сформируем и предложим вам персональное
-                                    предложение со
-                                    скидкой 10%
-                                </p>
-                                <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="/seo-audit#audit-section"
-                                        class="button button-highlight flex-1 justify-center small">
-                                        Экспресс-аудит
-                                        сайта
-                                    </a>
-                                </div>
-                            </div>
                         </div>
-                        <div class="tab-content grid-layout grid-layout--3x gap-20 mb-20" id="tab-slide-1">
+                        <div class="tab-content flex-layout flex-layout--advantages justify-center mb-20"
+                            id="tab-slide-1">
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-subscription.svg" alt="Продвижение по абонентской плате с гарантией результата">
+                                        <img src="/src/icons/seo-subscription.svg"
+                                            alt="Продвижение по абонентской плате с гарантией результата">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -585,39 +569,15 @@
                                     стартовой оптимизации сайта.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
                             </div>
-                            <div class="card card--tab no-hover">
-                                <div class="card-header">
-                                    <div class="card-icon">
-                                        <img src="/src/icons/seo-audit.svg" alt="Оплата только за целевые действия на сайте (заявки)">
-                                    </div>
-                                    <div class="card-header--content">
-                                        <b class="flex-1">
-                                            Оплата только за целевые действия на сайте (заявки)
-                                        </b>
-                                    </div>
-                                </div>
-                                <p>
-                                    Если Вы недовольны текущими результатами продвижения, проведите комплексный
-                                    аудит своего
-                                    сайта. По результатам аудита мы сформируем и предложим вам персональное
-                                    предложение со
-                                    скидкой 10%
-                                </p>
-                                <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="/seo-audit#audit-section"
-                                        class="button button-highlight flex-1 justify-center small">
-                                        Экспресс-аудит
-                                        сайта
-                                    </a>
-                                </div>
-                            </div>
                         </div>
-                        <div class="tab-content grid-layout grid-layout--3x gap-20 mb-20" id="tab-slide-2">
+                        <div class="tab-content flex-layout flex-layout--advantages justify-center mb-20"
+                            id="tab-slide-2">
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
@@ -640,7 +600,8 @@
                                     конкуренции.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -648,7 +609,8 @@
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-percentage.svg" alt="Оплата за процент ключевых фраз в ТОП10">
+                                        <img src="/src/icons/seo-percentage.svg"
+                                            alt="Оплата за процент ключевых фраз в ТОП10">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -667,7 +629,8 @@
                                     выше сумма оплаты.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -675,7 +638,8 @@
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-traffic.svg" alt="Оплата только за целевых посетителей из поиска">
+                                        <img src="/src/icons/seo-traffic.svg"
+                                            alt="Оплата только за целевых посетителей из поиска">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -695,7 +659,8 @@
                                     название Вашего бренда.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -703,7 +668,8 @@
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-conversion.svg" alt="Оплата только за целевые действия на сайте (заявки)">
+                                        <img src="/src/icons/seo-conversion.svg"
+                                            alt="Оплата только за целевые действия на сайте (заявки)">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -721,43 +687,20 @@
                                     коллтрекинга.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
                             </div>
-                            <div class="card card--tab no-hover">
-                                <div class="card-header">
-                                    <div class="card-icon">
-                                        <img src="/src/icons/seo-audit.svg" alt="Оплата только за целевые действия на сайте (заявки)">
-                                    </div>
-                                    <div class="card-header--content">
-                                        <b class="flex-1">
-                                            Оплата только за целевые действия на сайте (заявки)
-                                        </b>
-                                    </div>
-                                </div>
-                                <p>
-                                    Если Вы недовольны текущими результатами продвижения, проведите комплексный
-                                    аудит своего
-                                    сайта. По результатам аудита мы сформируем и предложим вам персональное
-                                    предложение со
-                                    скидкой 10%
-                                </p>
-                                <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="/seo-audit#audit-section"
-                                        class="button button-highlight flex-1 justify-center small">
-                                        Экспресс-аудит
-                                        сайта
-                                    </a>
-                                </div>
-                            </div>
                         </div>
-                        <div class="tab-content grid-layout grid-layout--3x gap-20 mb-20" id="tab-slide-3">
+                        <div class="tab-content flex-layout flex-layout--advantages justify-center mb-20"
+                            id="tab-slide-3">
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-subscription.svg" alt="Продвижение по абонентской плате с гарантией результата">
+                                        <img src="/src/icons/seo-subscription.svg"
+                                            alt="Продвижение по абонентской плате с гарантией результата">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -776,7 +719,8 @@
                                     стартовой оптимизации сайта.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -803,7 +747,8 @@
                                     конкуренции.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -811,7 +756,8 @@
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-percentage.svg" alt="Оплата за процент ключевых фраз в ТОП10">
+                                        <img src="/src/icons/seo-percentage.svg"
+                                            alt="Оплата за процент ключевых фраз в ТОП10">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -830,43 +776,20 @@
                                     выше сумма оплаты.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
                             </div>
-                            <div class="card card--tab no-hover">
-                                <div class="card-header">
-                                    <div class="card-icon">
-                                        <img src="/src/icons/seo-audit.svg" alt="Оплата только за целевые действия на сайте (заявки)">
-                                    </div>
-                                    <div class="card-header--content">
-                                        <b class="flex-1">
-                                            Оплата только за целевые действия на сайте (заявки)
-                                        </b>
-                                    </div>
-                                </div>
-                                <p>
-                                    Если Вы недовольны текущими результатами продвижения, проведите комплексный
-                                    аудит своего
-                                    сайта. По результатам аудита мы сформируем и предложим вам персональное
-                                    предложение со
-                                    скидкой 10%
-                                </p>
-                                <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="/seo-audit#audit-section"
-                                        class="button button-highlight flex-1 justify-center small">
-                                        Экспресс-аудит
-                                        сайта
-                                    </a>
-                                </div>
-                            </div>
                         </div>
-                        <div class="tab-content grid-layout grid-layout--3x gap-20 mb-20" id="tab-slide-4">
+                        <div class="tab-content flex-layout flex-layout--advantages justify-center mb-20"
+                            id="tab-slide-4">
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-traffic.svg" alt="Оплата только за целевых посетителей из поиска">
+                                        <img src="/src/icons/seo-traffic.svg"
+                                            alt="Оплата только за целевых посетителей из поиска">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -886,7 +809,8 @@
                                     название Вашего бренда.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
+                                    <a href="#seo_application"
+                                        class="button button-highlight flex-1 justify-center small">
                                         Заказать
                                     </a>
                                 </div>
@@ -894,7 +818,8 @@
                             <div class="card card--tab no-hover">
                                 <div class="card-header">
                                     <div class="card-icon">
-                                        <img src="/src/icons/seo-conversion.svg" alt="Оплата только за целевые действия на сайте (заявки)">
+                                        <img src="/src/icons/seo-conversion.svg"
+                                            alt="Оплата только за целевые действия на сайте (заявки)">
                                     </div>
                                     <div class="card-header--content">
                                         <b>
@@ -912,34 +837,9 @@
                                     коллтрекинга.
                                 </p>
                                 <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="#seo_application" class="button button-highlight flex-1 justify-center small">
-                                        Заказать
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card card--tab no-hover">
-                                <div class="card-header">
-                                    <div class="card-icon">
-                                        <img src="/src/icons/seo-audit.svg" alt="Оплата только за целевые действия на сайте (заявки)">
-                                    </div>
-                                    <div class="card-header--content">
-                                        <b class="flex-1">
-                                            Оплата только за целевые действия на сайте (заявки)
-                                        </b>
-                                    </div>
-                                </div>
-                                <p>
-                                    Если Вы недовольны текущими результатами продвижения, проведите комплексный
-                                    аудит своего
-                                    сайта. По результатам аудита мы сформируем и предложим вам персональное
-                                    предложение со
-                                    скидкой 10%
-                                </p>
-                                <div class="d-flex align-center flex-wrap gap-8 z-2 mt-auto">
-                                    <a href="/seo-audit#audit-section"
+                                    <a href="#seo_application"
                                         class="button button-highlight flex-1 justify-center small">
-                                        Экспресс-аудит
-                                        сайта
+                                        Заказать
                                     </a>
                                 </div>
                             </div>
@@ -950,20 +850,61 @@
 
             <div class="container">
                 <div class="card card--prices flex-row flex-lg-column align-stretch bg-blue-bg gap-16">
-                    <img src="/src/images/mockup/page/dev_reputation_picture.svg" class="align-self-center mt-0"
-                        alt="Управление репутацией" style="width: 128px; height: 128px;" />
+                    <img src="/src/icons/seo-audit.svg" class="align-self-center mt-0" alt="Смена подрядчика"
+                        style="width: 128px; height: 128px;" />
                     <div
-                        class="d-flex flex-row flex-lg-column align-center align-lg-stretch gap-8 gap-lg-0 justify-between flex-nowrap flex-1">
+                        class="d-flex flex-row flex-lg-column align-center align-lg-stretch gap-16 justify-between flex-nowrap flex-1">
+                        <div>
+                            <p class="title_h5 color-blue">
+                                Смена подрядчика
+                            </p>
+                            <p>
+                                Если Вы недовольны текущими результатами продвижения, проведите комплексный
+                                аудит своего
+                                сайта. По результатам аудита мы сформируем и предложим вам персональное
+                                предложение со
+                                скидкой 10%
+                            </p>
+                        </div>
+
+                        <a href="/seo-audit#audit-section" class="button button-highlight big w-sm-100"
+                            title="Экспресс-аудит сайта">
+                            Экспресс-аудит сайта
+                            <i class="icon-arrow_wide"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- reputation section -->
+        <section>
+            <div class="container">
+                <div class="flex-layout flex-layout--split">
+                    <div class="left">
+                        <h2 class="w-fit underlined">
+                            Не просто трафик, а&nbsp;доверие
+                        </h2>
+
                         <p>
                             Во все тарифы SEO уже включены работы по управлению репутацией: мониторинг отзывов, работа с
                             негативом и формирование положительного образа компании в поисковой выдаче.
                         </p>
-                        <a href="/reputation" class="button button-highlight big w-sm-100"
+
+                        <a href="/reputation" class="button button-link big w-sm-100"
                             title="Подробнее об управлении репутацией">
                             <span class="d-sm-none">Подробнее об управлении репутацией</span>
                             <span class="d-none d-sm-block">Подробнее о репутации</span>
                             <i class="icon-arrow_wide"></i>
                         </a>
+                    </div>
+
+                    <div class="right">
+                        <div class="flying-mockup align-self-end align-self-lg-center">
+                            <img src="/src/images/mockup/page/dev_reputation_picture.svg" alt="Управление репутацией">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1142,50 +1083,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- brif -->
-        <section>
-            <div class="container">
-                <h3 class="underlined w-fit m-center text-center">
-                    Заказать разработку сайта или создание бренда
-                </h3>
-
-                <div class="flex-layout flex-layout--use">
-                    <a href="/calculator" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/site-calc.svg" alt="Калькулятор сайта">
-                        </div>
-                        <b>
-                            Калькулятор сайта
-                        </b>
-                    </a>
-                    <a href="/brif-site" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/brif-site.svg" alt="Бриф на сайт">
-                        </div>
-                        <b>
-                            Бриф на сайт
-                        </b>
-                    </a>
-                    <a href="/brif-logo" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/brif-logo.svg" alt="Бриф на бренд">
-                        </div>
-                        <b>
-                            Бриф на бренд
-                        </b>
-                    </a>
-                    <a href="/seo#seo_application" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/promotion-request.svg" alt="Заявка на раскрутку">
-                        </div>
-                        <b>
-                            Заявка на раскрутку
-                        </b>
-                    </a>
                 </div>
             </div>
         </section>
