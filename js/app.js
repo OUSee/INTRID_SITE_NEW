@@ -42,6 +42,14 @@ function preloaderInit() {
   const orb = preloader?.querySelector(".flying-orb");
   const target = document.querySelector(".main-section .flying-mockup");
 
+  // Ссылки, где необходимо отключить прелоадер
+  let urlsIsOff = ['portfolio'];
+
+  if (window.location.href.indexOf(urlsIsOff) > -1) {
+    preloader.remove();
+    return;
+  }
+
   setTimeout(() => {
     preloader?.remove();
   }, 3000);
