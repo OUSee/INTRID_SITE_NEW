@@ -3597,6 +3597,59 @@ button:hover,
     }
   }
 
+  &-form {
+    &-seo {
+      &-audit {
+        display: grid;
+        grid-template-columns: minmax(25%, 1fr) 1fr;
+        align-items: center;
+        gap: 20px;
+
+        @media (max-width: 899.98px) {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        & > .card-header {
+          align-self: center;
+        }
+
+        & .order-form,
+        & #quick-form,
+        & form {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          & .form-inputs {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(200px, 1fr));
+            gap: 12px;
+
+            @media (max-width: 1279.98px) {
+              grid-template-columns: repeat(2, minmax(200px, 1fr));
+            }
+
+            @media (max-width: 899.98px) {
+              grid-template-columns: 1fr;
+            }
+
+            & .testimonials {
+              @media (min-width: 900px) {
+                grid-area: 3 / 1 / 4 / 3;
+                order: 999;
+              }
+
+              @media (min-width: 1280px) {
+                grid-area: 2 / 1 / 3 / 5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   &[style*="display: none"] {
     height: 0;
     overflow: hidden;
@@ -5003,7 +5056,14 @@ button:hover,
       flex-wrap: nowrap;
       padding: 8px 24px;
       text-decoration: none !important;
-      background: radial-gradient(60% 60% at 10% 20%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 0%, color-mix(in srgb, var(--portfolio-color) 50%, transparent) 37.79%, transparent 100%), hsla(0, 0%, 100%, 0.125);
+      background:
+        radial-gradient(
+          60% 60% at 10% 20%,
+          color-mix(in srgb, var(--portfolio-color) 50%, transparent) 0%,
+          color-mix(in srgb, var(--portfolio-color) 50%, transparent) 37.79%,
+          transparent 100%
+        ),
+        hsla(0, 0%, 100%, 0.125);
 
       @media (max-width: 999.98px) {
         padding: 4px 16px;
