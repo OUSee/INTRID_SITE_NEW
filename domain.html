@@ -338,48 +338,52 @@
                         </div>
                     </div>
                     <div class="right flex-1">
-                        <p class="title_h5 mb-0">
-                            Проверить домен и зарегистрировать
-                        </p>
+                        <div class="position-sticky">
+                            <p class="title_h5">
+                                Проверить домен и зарегистрировать
+                            </p>
 
-                        <div class="card thin overflow-visible">
-                            <form action="/submit/domain" id="test-site-form"
-                                class="d-flex flex-row flex-sm-column align-stretch w-fill" method="get"
-                                data-auto-run="true">
-                                <div class="recaptcha-wrapper" style="display: none;">
-                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
-                                        data-size="invisible"></div>
-                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
-                                </div>
+                            <div class="card thin overflow-visible mb-20">
+                                <form action="/submit/domain" id="test-site-form"
+                                    class="d-flex flex-row flex-sm-column align-stretch w-fill" method="get"
+                                    data-auto-run="true">
+                                    <div class="recaptcha-wrapper" style="display: none;">
+                                        <div class="js-recaptcha"
+                                            data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                            data-size="invisible"></div>
+                                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                    </div>
 
-                                <input type="text" id="domain-name-input" name="domain" placeholder="Введите домен"
-                                    required="">
-                                <button type="submit" class="big button-highlight w-sm-100 h-100"
-                                    style="min-width: 120px;">
-                                    проверить
-                                </button>
-                            </form>
+                                    <input type="text" id="domain-name-input" name="domain" placeholder="Введите домен"
+                                        required="">
+                                    <button type="submit" class="big button-highlight w-sm-100 h-100"
+                                        style="min-width: 120px;">
+                                        проверить
+                                    </button>
+                                </form>
+                            </div>
+
+                            <p>
+                                Мы регистрируем домены в популярных зонах по цене регистратора, следим за продлением и
+                                напоминаем о сроках.
+                            </p>
+
+                            <p>
+                                <a href="https://www.icann.org/resources/pages/benefits-2013-09-16-en"
+                                    target="_blank">Хартия прав и
+                                    обязанностей владельцев регистраций доменов</a>
+                            </p>
+
+                            <!-- Блок для вывода результата -->
+                            <div id="domain-result" class="info-msg mt-16 text-center" style="display: none;"></div>
+
+                            <!-- Прелоадер (показывается при запросе) -->
+                            <div class="preloader mt-16 text-center" id="domain-loader" style="display: none;">
+                            </div>
+
+                            <!-- Ошибка -->
+                            <div class="error-msg mt-16 text-center" id="domain-error" style="display: none;"></div>
                         </div>
-
-                        <p class="m-0">
-                            Мы регистрируем домены в популярных зонах по цене регистратора, следим за продлением и
-                            напоминаем о сроках.
-                        </p>
-
-                        <p>
-                            <a href="https://www.icann.org/resources/pages/benefits-2013-09-16-en" target="_blank">Хартия прав и
-                                обязанностей владельцев регистраций доменов</a>
-                        </p>
-
-                        <!-- Блок для вывода результата -->
-                        <div id="domain-result" class="info-msg mt-16 text-center" style="display: none;"></div>
-
-                        <!-- Прелоадер (показывается при запросе) -->
-                        <div class="preloader mt-16 text-center" id="domain-loader" style="display: none;">
-                        </div>
-
-                        <!-- Ошибка -->
-                        <div class="error-msg mt-16 text-center" id="domain-error" style="display: none;"></div>
                     </div>
                 </div>
             </div>

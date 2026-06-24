@@ -1844,6 +1844,31 @@ th {
     margin-left: -10px;
   }
 }
+.flex-layout--team {
+  gap: 12px;
+}
+.flex-layout--team > * {
+  max-width: calc(25% - 10px);
+  flex: calc(25% - 10px);
+}
+@media (max-width: 1279.98px) {
+  .flex-layout--team > * {
+    max-width: calc(33.33333% - 10px);
+    flex: calc(33.33333% - 10px);
+  }
+}
+@media (max-width: 859.98px) {
+  .flex-layout--team > * {
+    max-width: calc(50% - 10px);
+    flex: calc(50% - 10px);
+  }
+}
+@media (max-width: 599.98px) {
+  .flex-layout--team > * {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
 .flex-row {
   flex-direction: row !important;
 }

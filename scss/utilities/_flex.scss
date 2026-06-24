@@ -5,7 +5,7 @@
     flex-wrap: wrap;
 
     &--2x {
-      &>* {
+      & > * {
         flex: 1 0 calc(50% - 10px);
 
         @media (max-width: 719.98px) {
@@ -16,7 +16,7 @@
     }
 
     &--3x {
-      &>* {
+      & > * {
         flex: 1 0 30%;
 
         @media (max-width: 1099.98px) {
@@ -37,7 +37,7 @@
         gap: 12px;
       }
 
-      &>* {
+      & > * {
         flex: 1 0 calc(25% - 15px);
         max-width: calc(25% - 15px);
 
@@ -59,7 +59,7 @@
     }
 
     &--filled {
-      &>* {
+      & > * {
         flex: 1 1 0;
 
         @media (max-width: 999.98px) {
@@ -74,7 +74,7 @@
     }
 
     &--tab {
-      &>* {
+      & > * {
         flex: 1 1 0;
 
         @media (max-width: 1199.98px) {
@@ -99,7 +99,7 @@
         gap: 12px 8px;
       }
 
-      &>* {
+      & > * {
         flex: 1 0 calc(33.33333% - 22px);
         max-width: calc(33.33333% - 22px);
 
@@ -117,7 +117,7 @@
       &.slim {
         gap: 16px;
 
-        &>* {
+        & > * {
           flex: 1 0 calc(50% - 8px);
           max-width: calc(50% - 8px);
 
@@ -147,7 +147,7 @@
         gap: 8px;
       }
 
-      &>* {
+      & > * {
         counter-increment: roadmapItems;
         flex: 1 0 calc(33.33333% - 22px);
         max-width: calc(33.33333% - 22px);
@@ -175,7 +175,7 @@
       }
 
       &-4x {
-        &>* {
+        & > * {
           @media (min-width: 600px) {
             flex: 1 0 calc(50% - 16px);
             max-width: calc(50% - 16px);
@@ -222,7 +222,7 @@
       }
 
       &-3x {
-        &>* {
+        & > * {
           @media (min-width: 1000px) {
             &:nth-child(6n + 1) {
               --i: 1;
@@ -246,7 +246,7 @@
       }
 
       &-7x {
-        &>* {
+        & > * {
           @media (min-width: 1000px) {
             &:nth-child(6n + 1) {
               --i: 1;
@@ -378,7 +378,7 @@
       }
 
       &-9x {
-        &>* {
+        & > * {
           @media (min-width: 1000px) {
             &:nth-child(6n + 1) {
               --i: 1;
@@ -532,7 +532,7 @@
       &-column {
         flex-direction: column;
 
-        &>* {
+        & > * {
           max-width: 100%;
           flex: 1;
 
@@ -550,7 +550,7 @@
       }
 
       &-nothing {
-        &>* {
+        & > * {
           &::after {
             display: none;
           }
@@ -559,7 +559,7 @@
     }
 
     &--map {
-      &>* {
+      & > * {
         flex: 1 0 40%;
 
         @media (max-width: 899.98px) {
@@ -576,7 +576,7 @@
         gap: 40px;
       }
 
-      &>* {
+      & > * {
         flex: 1 1 40%;
 
         @media (max-width: 750px) {
@@ -591,7 +591,7 @@
       justify-content: center;
       gap: 40px 20px;
 
-      &>* {
+      & > * {
         width: 260px;
 
         @media (max-width: 1499.98px) {
@@ -620,7 +620,7 @@
         gap: 40px 12px;
       }
 
-      &>* {
+      & > * {
         width: 260px;
 
         @media (max-width: 1199.98px) {
@@ -651,7 +651,7 @@
         margin: 45px auto 0;
       }
 
-      &>* {
+      & > * {
         width: 240px;
         flex-basis: 240px;
 
@@ -675,7 +675,7 @@
     &--maximum {
       gap: 48px 20px;
 
-      &>* {
+      & > * {
         flex: 1 1 0;
 
         @media (max-width: 1199.98px) {
@@ -698,7 +698,7 @@
         gap: 12px;
       }
 
-      &>* {
+      & > * {
         flex: 1 1 0;
 
         @media (max-width: 1399.98px) {
@@ -729,7 +729,7 @@
         flex-direction: column;
       }
 
-      &>* {
+      & > * {
         &:first-child {
           max-width: 35%;
           width: 100%;
@@ -759,7 +759,7 @@
     }
 
     &--groups {
-      &>* {
+      & > * {
         flex-direction: column;
         width: 100%;
         max-width: calc(25% - 15px);
@@ -802,7 +802,7 @@
           flex-wrap: nowrap;
         }
 
-        &>.left {
+        & > .left {
           max-width: calc(100% - 430px - 20px);
 
           @media (max-width: 1199.98px) {
@@ -815,7 +815,7 @@
         max-width: 900px;
         margin: 0 auto;
 
-        &>.right {
+        & > .right {
           @media (max-width: 1199.98px) {
             max-width: 400px;
             margin: 0 auto;
@@ -823,7 +823,7 @@
         }
       }
 
-      &>.left {
+      & > .left {
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -835,7 +835,7 @@
         }
       }
 
-      &>.right {
+      & > .right {
         position: relative;
         display: flex;
         flex-direction: column;
@@ -879,6 +879,30 @@
             width: calc(100% + 20px);
             margin-left: -10px;
           }
+        }
+      }
+    }
+
+    &--team {
+      gap: 12px;
+
+      & > * {
+        max-width: calc(25% - 10px);
+        flex: calc(25% - 10px);
+
+        @media (max-width: 1279.98px) {
+          max-width: calc(33.33333% - 10px);
+          flex: calc(33.33333% - 10px);
+        }
+
+        @media (max-width: 859.98px) {
+          max-width: calc(50% - 10px);
+          flex: calc(50% - 10px);
+        }
+
+        @media (max-width: 599.98px) {
+          max-width: 100%;
+          flex: 1 1 100%;
         }
       }
     }
@@ -1192,5 +1216,5 @@
     &-end {
       justify-self: end;
     }
-  }  
+  }
 }
