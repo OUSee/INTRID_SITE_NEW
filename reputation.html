@@ -178,14 +178,6 @@
     <main>
         <!-- hero-section -->
         <section class="main-section container">
-            <div class="breadcrumbs">
-                <a href="/">Главная</a>
-                <span>-</span>
-                <a href="/promotion">Продвижение</a>
-                <span>-</span>
-                <a href="#" class="link-disabled">Улучшение репутации<span class="br420"> в сети</span></a>
-            </div>
-
             <div class="main-section--left">
                 <h1 class="w-fit">
                     Работа с <span class="underlined">отзывами и репутацией</span> в интернете
@@ -193,18 +185,16 @@
 
                 <p>
                     Формируем <span class="color-blue">положительный образ</span> Вашей компании с помощью
-                    SERM-стратегий. На основании глобальной
-                    работы по
-                    отслеживанию упоминаний о Вашем предложении или предприятии в поисковых системах и на внешних
+                    SERM-стратегий. На основании глобальной работы по
+                    отслеживанию упоминаний о Вашем бренде или названию товара/услуги в поисковых системах и на внешних
                     площадках,
                     сформируем естественный положительный образ, вытесним негатив и увеличим конверсию Вашего сайта.
                 </p>
                 <p>
-                    Добиваемся того, чтобы в <span class="color-blue">ТОП-10 выдачи поисковых систем</span> были
-                    положительные отзывы о Вашей компании и
+                    Добиваемся того, чтобы в ТОП-10 выдачи поисковых систем были
+                    <span class="color-blue">только положительные отзывы о Вашей компании (товаре/услуге) </span> и
                     реальные рекомендации на форумах. Как итог: увеличивается доверие клиентов к бренду, растут
-                    показатели
-                    конверсии сайта и поднимается общий уровень продаж.
+                    показатели конверсии сайта и поднимается общий уровень продаж.
                 </p>
 
                 <div class="main-section--actions">
@@ -217,7 +207,8 @@
             </div>
 
             <div class="flying-mockup">
-                <img src="/src/images/mockup/page/dev_reputation_picture.svg" alt="Работа с отзывами и репутацией в интернете">
+                <img src="/src/images/mockup/page/dev_reputation_picture.svg"
+                    alt="Работа с отзывами и репутацией в интернете">
                 <div class="water-ripple">
                     <div class="ripple-circle"></div>
                     <div class="ripple-circle"></div>
@@ -346,8 +337,8 @@
                                 </div>
 
                                 <div class="input-mode percent w-100">
-                                    <input type="text" id="margin-percent" class="w-100" name="margin" placeholder="Маржинальность"
-                                        inputmode="decimal" autocomplete="off" required>
+                                    <input type="text" id="margin-percent" class="w-100" name="margin"
+                                        placeholder="Маржинальность" inputmode="decimal" autocomplete="off" required>
                                 </div>
 
                                 <button type="submit" class="big button-highlight w-sm-100 h-100 ml-auto">
@@ -359,6 +350,21 @@
                         <div class="preloader mt-16 text-center" id="lost-profit-loader" style="display:none;"></div>
                         <div class="error-msg mt-16 text-center" id="lost-profit-error" style="display:none;"></div>
                         <div class="info-msg text-center" id="lost-profit-result" style="display:none;"></div>
+
+                        <div class="info-msg text-center" id="lost-profit-result" style="display: block;">
+                            <div class="card card--leaders minified mw-400 ml-auto mr-auto mt-32">
+                                <p class="title_h4 text-center">Потенциальная упущенная прибыль</p>
+                                <p><b>Запрос:</b> Доска пола отзыв</p>
+                                <p><b>Частота в месяц:</b> 499</p>
+                                // <p><b>Средний чек:</b> 10&nbsp;000&nbsp;₽</p>
+                                // <p><b>Маржинальность:</b> 5%</p>
+                                <div class="bg-blue-bg radius-20 p-8 mt-16 mb-16 w-fit mw-100 ml-auto mr-auto">
+                                    <p class="title_h4 m-0">249&nbsp;500&nbsp;₽</p>
+                                </div>
+                                <a href="#reputation_creation" class="button-highlight ml-auto mr-auto">Заказать
+                                    улучшение репутации</a>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="right">
@@ -405,13 +411,15 @@
                         </p>
                     </li>
                     <li>
-                        <img src="/src/icons/ai_icon_star.svg" alt="Имидж Вашего продукта или бренда не будет защищен от происков недобросовесных конкурентов">
+                        <img src="/src/icons/ai_icon_star.svg"
+                            alt="Имидж Вашего продукта или бренда не будет защищен от происков недобросовесных конкурентов">
                         <p>
                             Имидж Вашего продукта или бренда не будет защищен от происков недобросовесных конкурентов.
                         </p>
                     </li>
                     <li>
-                        <img src="/src/icons/robot.svg" alt="Поисковые роботы могут негативно отреагировать на то, что Вас не обсуждают в сети. Вы теряете позиции в поисковой выдаче">
+                        <img src="/src/icons/robot.svg"
+                            alt="Поисковые роботы могут негативно отреагировать на то, что Вас не обсуждают в сети. Вы теряете позиции в поисковой выдаче">
                         <p>
                             Поисковые роботы могут негативно отреагировать на то, что Вас не обсуждают в сети. Вы
                             теряете
@@ -419,7 +427,8 @@
                         </p>
                     </li>
                     <li>
-                        <img src="/src/icons/head.svg" alt="При поиске товаров и услуг человек обязательно ищет отзывы и информацию о компании в интернете. «Безликая» фирма не вызовет доверие, что оттолкнет покупателей">
+                        <img src="/src/icons/head.svg"
+                            alt="При поиске товаров и услуг человек обязательно ищет отзывы и информацию о компании в интернете. «Безликая» фирма не вызовет доверие, что оттолкнет покупателей">
                         <p>
                             При поиске товаров и услуг человек обязательно ищет отзывы и информацию о компании в
                             интернете.
@@ -519,50 +528,6 @@
                     <button class="pagination--next-btn">
                         <i class="icon-shevrone"></i>
                     </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- brif -->
-        <section>
-            <div class="container">
-                <h3 class="underlined w-fit m-center text-center">
-                    Заказать разработку сайта или создание бренда
-                </h3>
-
-                <div class="flex-layout flex-layout--use">
-                    <a href="/calculator" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/site-calc.svg" alt="Калькулятор сайта">
-                        </div>
-                        <b>
-                            Калькулятор сайта
-                        </b>
-                    </a>
-                    <a href="/brif-site" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/brif-site.svg" alt="Бриф на сайт">
-                        </div>
-                        <b>
-                            Бриф на сайт
-                        </b>
-                    </a>
-                    <a href="/brif-logo" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/brif-logo.svg" alt="Бриф на бренд">
-                        </div>
-                        <b>
-                            Бриф на бренд
-                        </b>
-                    </a>
-                    <a href="/seo#seo_application" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/promotion-request.svg" alt="Заявка на раскрутку">
-                        </div>
-                        <b>
-                            Заявка на раскрутку
-                        </b>
-                    </a>
                 </div>
             </div>
         </section>
