@@ -102,6 +102,29 @@ $tab-main-count: 3;
     }
   }
 
+  // На странице /reputation слайдер помощи бренду на десктопе отображается сеткой,
+  // а поведение слайдера сохраняется только ниже 1000px.
+  &#testimonials-slider {
+    @media (min-width: 1000px) {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+      width: 100%;
+      transform: none !important;
+
+      & > * {
+        min-width: 0;
+        width: 100%;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      & ~ .pagination {
+        display: none !important;
+      }
+    }
+  }
+
   &#our-team {
     @media (max-width: 599.98px) {
       // padding: 0 12px;

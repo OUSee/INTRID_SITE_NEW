@@ -2666,6 +2666,24 @@ th {
 [data-slider]#office-slider > *:not(.active), [data-slider]#testimonials-slider > *:not(.active) {
   pointer-events: none;
 }
+@media (min-width: 1000px) {
+  [data-slider]#testimonials-slider {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    width: 100%;
+    transform: none !important;
+  }
+  [data-slider]#testimonials-slider > * {
+    min-width: 0;
+    width: 100%;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  [data-slider]#testimonials-slider ~ .pagination {
+    display: none !important;
+  }
+}
 @media (max-width: 599.98px) {
   [data-slider]#our-team {
     padding: 0 6px;
