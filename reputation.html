@@ -325,9 +325,9 @@
 
                 <div class="flex-layout flex-layout--split mt-20">
                     <div class="left">
-                        <div class="card thin overflow-visible">
+                        <div class="card thin overflow-visible lost-profit-card">
                             <form action="/submit/lost-profit" id="lost-profit-form"
-                                class="d-flex flex-row flex-xl-wrap flex-lg-nowrap flex-md-wrap align-lg-stretch align-start gap-8">
+                                class="lost-profit-form d-flex flex-row flex-xl-wrap flex-lg-nowrap flex-md-wrap align-lg-stretch align-start gap-8">
                                 <input type="text" id="company-name" name="company" placeholder="Название компании"
                                     required>
 
@@ -345,24 +345,15 @@
                                     рассчитать
                                 </button>
                             </form>
-                        </div>
 
-                        <div class="preloader mt-16 text-center" id="lost-profit-loader" style="display:none;"></div>
-                        <div class="error-msg mt-16 text-center" id="lost-profit-error" style="display:none;"></div>
-                        <div class="info-msg text-center" id="lost-profit-result" style="display:none;"></div>
-
-                        <div class="info-msg text-center" id="lost-profit-result" style="display: block;">
-                            <div class="card card--leaders minified mw-400 ml-auto mr-auto mt-32">
-                                <p class="title_h4 text-center">Потенциальная упущенная прибыль</p>
-                                <p><b>Запрос:</b> Доска пола отзыв</p>
-                                <p><b>Частота в месяц:</b> 499</p>
-                                // <p><b>Средний чек:</b> 10&nbsp;000&nbsp;₽</p>
-                                // <p><b>Маржинальность:</b> 5%</p>
-                                <div class="bg-blue-bg radius-20 p-8 mt-16 mb-16 w-fit mw-100 ml-auto mr-auto">
-                                    <p class="title_h4 m-0">249&nbsp;500&nbsp;₽</p>
+                            <div class="preloader mt-16 text-center" id="lost-profit-loader" style="display:none;">
+                            </div>
+                            <div class="error-msg mt-16 text-center" id="lost-profit-error" style="display:none;"></div>
+                            <div class="info-msg lost-profit-result" id="lost-profit-result">
+                                <div class="lost-profit-empty text-center">
+                                    <p class="title_h4">Результат расчета появится здесь</p>
+                                    <p>Заполните поля выше и нажмите «Рассчитать»</p>
                                 </div>
-                                <a href="#reputation_creation" class="button-highlight ml-auto mr-auto">Заказать
-                                    улучшение репутации</a>
                             </div>
                         </div>
                     </div>

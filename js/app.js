@@ -8261,6 +8261,14 @@ const lostProfitInit = () => {
   const cleanNumberValue = (value) =>
     value.replace(/\s/g, "").replace(",", ".");
 
+  const escapeHtml = (value) =>
+    String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
   const formatNumberWithSpaces = (value, allowDecimal = false) => {
     let cleaned = value.replace(/\s/g, "").replace(",", ".");
 
@@ -8342,19 +8350,67 @@ const lostProfitInit = () => {
         throw new Error(data.error || "Не удалось выполнить расчет");
       }
 
-      resultDiv.innerHTML = `
-        <div class="card card--leaders minified mw-400 ml-auto mr-auto mt-32">
-          <p class="title_h4 text-center">Потенциальная упущенная прибыль</p>
-          <p><b>Запрос:</b> ${data.query}</p>
-          <p><b>Частота в месяц:</b> ${data.frequency}</p>
-          // <p><b>Средний чек:</b> ${formatRub(data.average_check)}</p>
-          // <p><b>Маржинальность:</b> ${data.margin}%</p>
-          <div class="bg-blue-bg radius-20 p-8 mt-16 mb-16 w-fit mw-100 ml-auto mr-auto">
-            <p class="title_h4 m-0">${formatRub(data.lost_profit)}</p>
+      const lostProfit = Number(data.lost_profit) || 0;
+      const frequency = Number(data.frequency) || 0;
+      const query = escapeHtml(data.query || `${company} отзыв`);
+
+      if (lostProfit <= 0 || frequency <= 0) {
+        resultDiv.innerHTML = `
+          <div class="lost-profit-result__content lost-profit-result__content--empty">
+            <div class="lost-profit-result__main lost-profit-result__not-found">
+              <p class="title_h4 m-0">По вашему запросу "${query}" ничего не найдено</p>
+              <p class="m-0">Такое может произойти, если пользователи пока редко ищут отзывы о компании, брендовый спрос еще не сформирован или по запросу недостаточно данных в поисковой статистике. В этом случае стоит усилить SEO-продвижение, чтобы увеличить видимость сайта и привлечь больше целевых клиентов из поиска.</p>
+            </div>
+
+            <div class="lost-profit-result__cta">
+              <div>
+                <p class="title_h5 m-0">Хотите получать больше заявок из поиска?</p>
+                <p class="m-0">Закажите SEO-продвижение: подберем запросы, улучшим позиции сайта и поможем сформировать устойчивый поток клиентов.</p>
+              </div>
+              <a href="/seo#seo_application" class="button-highlight">Заказать SEO-продвижение</a>
+            </div>
           </div>
-          <a href="#reputation_creation" class="button-highlight ml-auto mr-auto">Заказать улучшение репутации</a>
-        </div>
-      `;
+        `;
+      } else {
+        resultDiv.innerHTML = `
+          <div class="lost-profit-result__content">
+            <div class="lost-profit-result__main">
+              <p class="title_h4 m-0">Потенциальная упущенная прибыль</p>
+              <p class="lost-profit-result__query">Запрос: ${query}</p>
+              <div class="lost-profit-result__row">
+                <div class="lost-profit-result__metric">
+                  <span>Частота запросов в месяц (k)</span>
+                  <b>${frequency}</b>
+                </div>
+                <div class="lost-profit-result__divider"></div>
+                <div class="lost-profit-result__metric">
+                  <span>Средний чек (P)</span>
+                  <b>${formatRub(data.average_check)}</b>
+                </div>
+                <div class="lost-profit-result__divider"></div>
+                <div class="lost-profit-result__metric">
+                  <span>Средняя маржа (m)</span>
+                  <b>${escapeHtml(data.margin)}%</b>
+                </div>
+              </div>
+              <p class="lost-profit-result__formula">Расчет: S = k × P × m = ${frequency} × ${formatRub(data.average_check)} × ${escapeHtml(data.margin)}% = ${formatRub(lostProfit)}</p>
+            </div>
+
+            <div class="lost-profit-result__total">
+              <span>Упущенная прибыль в месяц (S)</span>
+              <b>${formatRub(lostProfit)}</b>
+            </div>
+
+            <div class="lost-profit-result__cta">
+              <div>
+                <p class="title_h5 m-0">Готовы улучшить репутацию и увеличить прибыль?</p>
+                <p class="m-0">Закажите улучшение репутации и получайте больше клиентов</p>
+              </div>
+              <a href="#reputation_creation" class="button-highlight">Заказать улучшение репутации</a>
+            </div>
+          </div>
+        `;
+      }
 
       resultDiv.style.display = "block";
       showFormFeedback(submitBtn, "Расчет завершен", "success");
