@@ -7092,6 +7092,81 @@ const seoAuditInit = () => {
   const resultsContainer = document.getElementById("audit-results");
   const resultsGrid = resultsContainer?.querySelector("#audit-cards");
   const seoAuditFeatures = document.getElementById("seo-audit-features");
+  const auditLoaderPhrases = [
+    "Проверяю доступность сайта...",
+    "Смотрю мета-теги...",
+    "Анализирую индексацию...",
+    "Замеряю скорость загрузки...",
+    "Проверяю мобильную версию...",
+    "Ищу технические ошибки...",
+    "Смотрю структуру контента...",
+    "Проверяю внутреннюю перелинковку...",
+    "Собираю результаты аудита...",
+  ];
+  let auditLoaderPhraseTimer = null;
+  let auditLoaderPhraseIndex = 0;
+
+  const getAuditLoaderText = () => {
+    if (!loader) return null;
+
+    let loaderText = loader.nextElementSibling;
+    if (!loaderText?.classList?.contains("audit-loader-text")) {
+      loaderText = document.createElement("div");
+      loaderText.className = "audit-loader-text";
+      loader.insertAdjacentElement("afterend", loaderText);
+    }
+
+    return loaderText;
+  };
+
+  const showAuditLoaderPhrase = () => {
+    const loaderText = getAuditLoaderText();
+    if (!loaderText) return;
+
+    const phrase = auditLoaderPhrases[auditLoaderPhraseIndex];
+    const animationClass =
+      auditLoaderPhraseIndex % 2 === 0
+        ? "audit-loader-text--left"
+        : "audit-loader-text--right";
+
+    loaderText.classList.remove(
+      "audit-loader-text--left",
+      "audit-loader-text--right",
+    );
+    loaderText.textContent = phrase;
+    loaderText.style.display = "block";
+
+    // Перезапускаем CSS-анимацию при каждой смене фразы.
+    void loaderText.offsetWidth;
+    loaderText.classList.add(animationClass);
+
+    auditLoaderPhraseIndex =
+      (auditLoaderPhraseIndex + 1) % auditLoaderPhrases.length;
+  };
+
+  const startAuditLoaderPhrases = () => {
+    stopAuditLoaderPhrases();
+    auditLoaderPhraseIndex = 0;
+    showAuditLoaderPhrase();
+    auditLoaderPhraseTimer = setInterval(showAuditLoaderPhrase, 2200);
+  };
+
+  const stopAuditLoaderPhrases = () => {
+    if (auditLoaderPhraseTimer) {
+      clearInterval(auditLoaderPhraseTimer);
+      auditLoaderPhraseTimer = null;
+    }
+
+    const loaderText = getAuditLoaderText();
+    if (!loaderText) return;
+
+    loaderText.style.display = "none";
+    loaderText.textContent = "";
+    loaderText.classList.remove(
+      "audit-loader-text--left",
+      "audit-loader-text--right",
+    );
+  };
 
   const setFormDisabled = (disabled) => {
     inputs.forEach((i) => {
@@ -7476,6 +7551,7 @@ const seoAuditInit = () => {
     if (resultsGrid) resultsGrid.innerHTML = "";
     setFormDisabled(true);
     loader.style.display = "block";
+    startAuditLoaderPhrases();
 
     try {
       const seoResponse = await fetch("/submit/get-seo-data", {
@@ -7768,6 +7844,7 @@ const seoAuditInit = () => {
     } finally {
       if (seoAuditFeatures) seoAuditFeatures.style.display = "";
       loader.style.display = "none";
+      stopAuditLoaderPhrases();
       setFormDisabled(false);
       setTimeout(
         () =>

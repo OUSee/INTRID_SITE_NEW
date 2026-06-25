@@ -9332,6 +9332,52 @@ button.is-feedback-error,
   margin: 2rem auto;
 }
 
+.audit-loader-text {
+  display: none;
+  max-width: 320px;
+  margin: -1rem auto 2rem;
+  text-align: center;
+  color: var(--blue-main);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  will-change: transform, opacity;
+}
+
+.audit-loader-text--left {
+  animation: auditFadeInLeft 0.45s ease both;
+}
+
+.audit-loader-text--right {
+  animation: auditFadeInRight 0.45s ease both;
+}
+
+@keyframes auditFadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes auditFadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@media (max-width: 767.98px) {
+  .audit-loader-text {
+    max-width: 260px;
+    font-size: 14px;
+  }
+}
 .spinner {
   display: inline-block;
   width: 1em;
