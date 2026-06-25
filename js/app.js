@@ -43,7 +43,7 @@ function preloaderInit() {
   const target = document.querySelector(".main-section .flying-mockup");
 
   // Ссылки, где необходимо отключить прелоадер
-  let urlsIsOff = ['portfolio'];
+  let urlsIsOff = ["portfolio"];
 
   if (window.location.href.indexOf(urlsIsOff) > -1) {
     preloader.remove();
@@ -2227,16 +2227,42 @@ const portfolioCardsSlider = () => {
     nextBtn.style.top = `${top}px`;
   };
 
+  // const updateKeyCard = () => {
+  //   const keyArea = block.querySelector(".card-key-area");
+
+  //   if (!keyArea) return;
+
+  //   const currentSlide = slides[currentIndex];
+
+  //   keyArea.style.display = currentSlide?.classList.contains("hasKeys")
+  //     ? ""
+  //     : "none";
+  // };
+
   const updateKeyCard = () => {
     const keyArea = block.querySelector(".card-key-area");
 
     if (!keyArea) return;
 
+    const keyAreaLink = keyArea.querySelector("a");
     const currentSlide = slides[currentIndex];
+    const caseLink = currentSlide?.querySelector(".keysUrl a");
 
-    keyArea.style.display = currentSlide?.classList.contains("hasKeys")
-      ? ""
-      : "none";
+    if (
+      !currentSlide?.classList.contains("hasKeys") ||
+      !caseLink ||
+      !keyAreaLink
+    ) {
+      keyArea.style.display = "none";
+      keyAreaLink.removeAttribute("href");
+      keyAreaLink.textContent = "";
+      return;
+    }
+
+    keyAreaLink.href = caseLink.href;
+    keyAreaLink.textContent = `Кейс: ${caseLink.textContent.trim()}`;
+    keyAreaLink.title = caseLink.title || "";
+    keyArea.style.display = "";
   };
 
   const updateSlider = () => {
@@ -9040,5 +9066,6 @@ document.addEventListener("pjax:end", () => {
   initBlogTabsToSelect();
   initMainAiTabs();
   initPortfolioSeoTables();
+  portfolioCardsSlider();
   portfolioSeoSlider();
 });
