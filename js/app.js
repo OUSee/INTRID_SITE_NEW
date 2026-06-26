@@ -1086,6 +1086,34 @@ const mapLinksInit = () => {
   }
 };
 
+
+// portfolio http preview links logic
+function portfolioHttpPreviewLinksInit() {
+  if (window.portfolioHttpPreviewLinksInitialized === true) return;
+
+  window.portfolioHttpPreviewLinksInitialized = true;
+
+  document.addEventListener(
+    "click",
+    (e) => {
+      const link = e.target.closest('[data-site-preview]');
+
+      if (!link) return;
+
+      const url = (link.dataset.sitePreview || "").trim();
+
+      if (!url.startsWith("http://")) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    },
+    true,
+  );
+}
+
 // sitePreview logic
 function sitePreview() {
   let popup = document.getElementById("site-preview"),
@@ -9193,6 +9221,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (footer) moveServiceLinks();
   moveAchievementsSlider();
 
+  portfolioHttpPreviewLinksInit();
   initPopups();
   if (mapLinks) mapLinksInit();
 
