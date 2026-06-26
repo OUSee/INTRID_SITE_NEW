@@ -1223,6 +1223,7 @@ ol {
   width: 100vw;
   height: 100vh;
   position: fixed;
+  contain: layout paint style;
   background-image: url("/src/images/stars.jpg");
   background-size: auto 400px;
   background-position: top;
@@ -1230,14 +1231,18 @@ ol {
   overflow: hidden;
   animation: onload 2.5s forwards;
   animation-delay: 1.4s;
+  pointer-events: none;
+  will-change: opacity;
 
   & .flying-orb {
     top: 0;
     left: 0;
-    offset-distance: 0%;
-    offset-anchor: center;
-    transform: scale(1);
+    // offset-distance: 0%;
+    // offset-anchor: center;
+    backface-visibility: hidden;
+    transform: translateZ(0) scale(1);
     animation: onload-orb 2.5s forwards;
+    will-change: transform;
 
     @media (max-width: 1199.98px) {
       width: 270px;
@@ -1247,6 +1252,10 @@ ol {
     @media (max-width: 999.98px) {
       width: 240px;
       height: 240px;
+    }
+
+    & .ripple-circle {
+      display: none !important;
     }
   }
 }

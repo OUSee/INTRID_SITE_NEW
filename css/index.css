@@ -705,11 +705,6 @@ th {
     transform: rotate(-360deg);
   }
 }
-@keyframes displayNone {
-  100% {
-    display: none;
-  }
-}
 .bg-glow {
   border-radius: 50%;
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 10px var(--blue-clouds);
@@ -3674,6 +3669,7 @@ ol li > ol {
   width: 100vw;
   height: 100vh;
   position: fixed;
+  contain: layout paint style;
   background-image: url("/src/images/stars.jpg");
   background-size: auto 400px;
   background-position: top;
@@ -3681,14 +3677,16 @@ ol li > ol {
   overflow: hidden;
   animation: onload 2.5s forwards;
   animation-delay: 1.4s;
+  pointer-events: none;
+  will-change: opacity;
 }
 #preloader .flying-orb {
   top: 0;
   left: 0;
-  offset-distance: 0%;
-  offset-anchor: center;
-  transform: scale(1);
+  backface-visibility: hidden;
+  transform: translateZ(0) scale(1);
   animation: onload-orb 2.5s forwards;
+  will-change: transform;
 }
 @media (max-width: 1199.98px) {
   #preloader .flying-orb {
@@ -3701,6 +3699,9 @@ ol li > ol {
     width: 240px;
     height: 240px;
   }
+}
+#preloader .flying-orb .ripple-circle {
+  display: none !important;
 }
 
 .tooltip {

@@ -50,9 +50,15 @@ function preloaderInit() {
     return;
   }
 
-  setTimeout(() => {
-    preloader?.remove();
-  }, 3000);
+  // setTimeout(() => {
+  //   preloader?.remove();
+  // }, 3000);
+
+  preloader.addEventListener("animationend", (event) => {
+    if (event.animationName === "onload") {
+      preloader.remove();
+    }
+  });
 
   if (!preloader || !orb) return;
 
