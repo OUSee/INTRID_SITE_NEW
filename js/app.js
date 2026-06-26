@@ -7148,7 +7148,7 @@ const seoAuditInit = () => {
     stopAuditLoaderPhrases();
     auditLoaderPhraseIndex = 0;
     showAuditLoaderPhrase();
-    auditLoaderPhraseTimer = setInterval(showAuditLoaderPhrase, 2200);
+    auditLoaderPhraseTimer = setInterval(showAuditLoaderPhrase, 3000);
   };
 
   const stopAuditLoaderPhrases = () => {
@@ -9024,6 +9024,129 @@ function articleNavIsScrolled() {
   }
 }
 
+// Фильтрация карточек стоимости SEO без дублирования табов
+function seoPriceCardsFilterInit(root = document) {
+  const priceBlock = root.querySelector("[data-seo-price-cards]");
+  if (!priceBlock || priceBlock.dataset.seoPriceCardsInited === "true") return;
+
+  const cardsList = priceBlock.querySelector("[data-seo-price-list]");
+  const cards = cardsList
+    ? [...cardsList.querySelectorAll("[data-seo-price-types]")]
+    : [];
+  const radios = [
+    ...root.querySelectorAll(
+      'input[name="tab-prices-radio"][id^="tab-slide-btn-"]',
+    ),
+  ];
+
+  if (!cardsList || !cards.length || !radios.length) return;
+
+  priceBlock.dataset.seoPriceCardsInited = "true";
+
+  const getActiveType = () => {
+    const checkedRadio = radios.find((radio) => radio.checked) || radios[0];
+    return checkedRadio?.id.replace("tab-slide-btn-", "") || "0";
+  };
+
+  const updateCards = () => {
+    const activeType = getActiveType();
+
+    const firstPositions = new Map();
+
+    cards.forEach((card) => {
+      firstPositions.set(card, card.getBoundingClientRect());
+    });
+
+    root.querySelectorAll('[id^="tab-slide-"]').forEach((tab) => {
+      tab.classList.remove("active");
+    });
+
+    cardsList.classList.add("active");
+
+    cards.forEach((card) => {
+      const types = (card.dataset.seoPriceTypes || "")
+        .split(",")
+        .map((type) => type.trim());
+
+      const shouldShow = activeType === "0" || types.includes(activeType);
+
+      if (shouldShow) {
+        card.hidden = false;
+        card.classList.remove("hiding");
+      } else {
+        card.classList.add("hiding");
+      }
+    });
+
+    requestAnimationFrame(() => {
+      cards.forEach((card) => {
+        if (card.classList.contains("hiding")) {
+          card.hidden = true;
+        }
+      });
+
+      const lastPositions = new Map();
+
+      cards.forEach((card) => {
+        if (!card.hidden) {
+          lastPositions.set(card, card.getBoundingClientRect());
+        }
+      });
+
+      cards.forEach((card) => {
+        if (card.hidden) return;
+
+        const first = firstPositions.get(card);
+        const last = lastPositions.get(card);
+
+        if (!first || !last) return;
+
+        const dx = first.left - last.left;
+        const dy = first.top - last.top;
+
+        if (!dx && !dy) return;
+
+        card.animate(
+          [
+            {
+              transform: `translate(${dx}px, ${dy}px)`,
+            },
+            {
+              transform: "translate(0, 0)",
+            },
+          ],
+          {
+            duration: 300,
+            easing: "ease",
+          },
+        );
+      });
+
+      setTimeout(() => {
+        cardsList.querySelectorAll("[data-slider]").forEach((slider) => {
+          delete slider.dataset.initialized;
+        });
+
+        if (typeof sliderInitialize === "function") sliderInitialize();
+      }, 320);
+    });
+  };
+
+  radios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (radio.checked) updateCards();
+    });
+  });
+
+  priceBlock.querySelectorAll(".option[for]").forEach((option) => {
+    option.addEventListener("click", () => {
+      requestAnimationFrame(updateCards);
+    });
+  });
+
+  updateCards();
+}
+
 // scroll events
 window.addEventListener(
   "scroll",
@@ -9158,6 +9281,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initTabsToSelect();
+  seoPriceCardsFilterInit();
   initBlogTabsToSelect();
   initPortfolioSeoTables();
   portfolioSeoSlider();
@@ -9196,6 +9320,7 @@ document.addEventListener(
 // pjax events
 document.addEventListener("pjax:end", () => {
   initTabsToSelect();
+  seoPriceCardsFilterInit();
   initBlogTabsToSelect();
   initMainAiTabs();
   initPortfolioSeoTables();

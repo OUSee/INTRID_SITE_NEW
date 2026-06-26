@@ -705,6 +705,11 @@ th {
     transform: rotate(-360deg);
   }
 }
+@keyframes displayNone {
+  100% {
+    display: none;
+  }
+}
 .bg-glow {
   border-radius: 50%;
   box-shadow: 0px 0px 100px 80px var(--blue-clouds), inset 0px 0px 100px 10px var(--blue-clouds);
@@ -6839,6 +6844,9 @@ button.is-feedback-error,
   opacity: 0;
   transform: scale(0.95);
   pointer-events: none;
+}
+.card[hidden] {
+  display: none;
 }
 .card.showing {
   opacity: 0;
