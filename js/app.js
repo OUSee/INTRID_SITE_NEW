@@ -9211,7 +9211,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTariffChangeButtons();
 
   if (mockup) updateMockupPlace();
-  preloaderInit();
+  if (preloader) preloaderInit();
 
   pageIsScrolled();
   if (toc) updateArticleNavOffset();
