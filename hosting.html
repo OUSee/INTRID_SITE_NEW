@@ -179,10 +179,6 @@
     <main>
         <!-- hero-section -->
         <section class="main-section container">
-            <div class="breadcrumbs">
-                <a href="/">Главная</a><span>-</span><a href="#" class="link-disabled">Хостинг</a>
-            </div>
-
             <div class="main-section--left">
                 <h1 class="underlined w-fit">
                     Услуги хостинга для сайтов и серверов
@@ -199,7 +195,8 @@
             </div>
 
             <div class="flying-mockup">
-                <img src="/src/images/mockup/page/dev_hosting_tarify_picture.svg" alt="Услуги хостинга для сайтов и серверов">
+                <img src="/src/images/mockup/page/dev_hosting_tarify_picture.svg"
+                    alt="Услуги хостинга для сайтов и серверов">
                 <div class="water-ripple">
                     <div class="ripple-circle"></div>
                     <div class="ripple-circle"></div>
@@ -212,7 +209,7 @@
         <!-- Карточки хостинга -->
         <section>
             <div class="container">
-                <div class="flex-layout flex-layout--2x gap-20">
+                <div class="flex-layout flex-layout--2x gap-20 mb-32">
                     <div class="card card--outline muted">
                         <h2>
                             Бюджетный хостинг
@@ -283,21 +280,29 @@
                     </div>
                 </div>
 
-                <div class="card card--prices mt-20">
+                <div class="card card--prices cols">
                     <b>
                         Шифрование персональных данных
                     </b>
                     <img src="/src/icons/tech-shield.svg" alt="Шифрование персональных данных">
-                    <div class="d-flex flex-row justify-between gap-20">
+                    <div>
                         <p>
-                            Даже при взломе базы данных персональная информация клиентов после шифрования остаётся
-                            недоступной для злоумышленников. Обезопасьте свой бизнес от многомиллионных штрафов
-                            Роскомнадзора и шантажам - внедрите шифрование ПД уже сегодня.
+                            SSL-сертификат защищает данные во время передачи на сайт, но после отправки заявки,
+                            регистрации или оформления заказа информация попадает в базу данных. Если базу взломают,
+                            телефоны, email, адреса и другие сведения клиентов могут оказаться у злоумышленников.
                         </p>
 
                         <p>
-                            Это особенно актуально для сайтов с личными кабинетами, формами обратной связи и любыми
-                            другими инструментами, через которые вы собираете персональные данные клиентов.
+                            Сейчас это особенно важно: ответственность за утечки персональных данных стала строже -
+                            штрафы от Роскомнадзора достигают от 3 до 15 млн ₽, а хакеры этим пользуются и
+                            целенаправленно взламывают сайты.
+                        </p>
+
+                        <p>
+                            Шифрование необходимо, чтобы в случае взлома сайта персональные данные клиентов не
+                            превратились в готовую базу для мошенников. Это актуально для интернет-магазинов, сайтов с
+                            личными кабинетами, CRM, формами заявок, онлайн-записью и любыми сервисами, где хранятся
+                            персональные данные пользователей.
                         </p>
 
                         <div class="d-flex flex-row flex-sm-column align-center justify-between gap-20 w-100">
@@ -305,56 +310,12 @@
                                 от&nbsp;14&nbsp;000&nbsp;₽
                             </span>
 
-                            <a href="/encryption" class="button button-highlight big w-sm-100"
-                                title="Заказать шифрование ПД">
-                                Заказать шифрование ПД
+                            <a href="/encryption" class="button button-link big w-sm-100" title="Читать подробнее">
+                                Читать подробнее
+                                <i class="icon-arrow_wide"></i>
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Заказать разработку сайта или создание бренда -->
-        <section>
-            <div class="container">
-                <h3 class="underlined w-fit m-center text-center">
-                    Заказать разработку сайта или создание бренда
-                </h3>
-
-                <div class="flex-layout flex-layout--use">
-                    <a href="/calculator" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/site-calc.svg" alt="Калькулятор сайта">
-                        </div>
-                        <b>
-                            Калькулятор сайта
-                        </b>
-                    </a>
-                    <a href="/brif-site" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/brif-site.svg" alt="Бриф на сайт">
-                        </div>
-                        <b>
-                            Бриф на сайт
-                        </b>
-                    </a>
-                    <a href="/brif-logo" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/brif-logo.svg" alt="Бриф на бренд">
-                        </div>
-                        <b>
-                            Бриф на бренд
-                        </b>
-                    </a>
-                    <a href="/seo#seo_application" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="/src/icons/promotion-request.svg" alt="Заявка на раскрутку">
-                        </div>
-                        <b>
-                            Заявка на раскрутку
-                        </b>
-                    </a>
                 </div>
             </div>
         </section>

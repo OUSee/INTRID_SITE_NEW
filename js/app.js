@@ -996,7 +996,7 @@ const mapLinksInit = () => {
         link: "https://yandex.ru/maps/-/CHvuzWlD",
         adress: "Poděbradská 52, 19000 Praha 9",
         phone: "420 777 749 719",
-        wa: "79518587172",
+        wa: "420777749719",
         tg: "lionvdv",
       },
       vrn: {
