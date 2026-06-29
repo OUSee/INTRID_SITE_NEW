@@ -16619,6 +16619,32 @@ main {
     border-radius: 12px;
   }
 }
+@supports (-moz-appearance: none) {
+  .table-block,
+  .default-table,
+  .table--wrap {
+    scrollbar-color: var(--blue-main) var(--bg-main);
+    scrollbar-width: thin;
+  }
+}
+.table-block::-webkit-scrollbar,
+.default-table::-webkit-scrollbar,
+.table--wrap::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
+.table-block::-webkit-scrollbar-track,
+.default-table::-webkit-scrollbar-track,
+.table--wrap::-webkit-scrollbar-track {
+  background: var(--bg-main);
+  border-radius: 8px;
+}
+.table-block::-webkit-scrollbar-thumb,
+.default-table::-webkit-scrollbar-thumb,
+.table--wrap::-webkit-scrollbar-thumb {
+  background: var(--blue-main);
+  border-radius: 8px;
+}
 
 table {
   width: 100%;
