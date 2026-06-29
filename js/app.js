@@ -43,7 +43,7 @@ function preloaderInit() {
   const target = document.querySelector(".main-section .flying-mockup");
 
   // Ссылки, где необходимо отключить прелоадер
-  let urlsIsOff = ["portfolio", "blog", "case"];
+  let urlsIsOff = ["portfolio", "blog", "case", "comment", "vakansii", "programmist-php-backend-razrabotcik-pythonphp-laravel-yii-20", "veb-dizajner", "kontakty", "pamatka-zakazciku", "calculator", "brif-site", "brif-logo", "modules-help"];
 
   if (urlsIsOff.some(url => window.location.href.indexOf(url) > -1)) {
     preloader.remove();
