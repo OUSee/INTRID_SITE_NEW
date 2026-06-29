@@ -43,9 +43,9 @@ function preloaderInit() {
   const target = document.querySelector(".main-section .flying-mockup");
 
   // Ссылки, где необходимо отключить прелоадер
-  let urlsIsOff = ["portfolio"];
+  let urlsIsOff = ["portfolio", "blog", "case"];
 
-  if (window.location.href.indexOf(urlsIsOff) > -1) {
+  if (urlsIsOff.some(url => window.location.href.indexOf(url) > -1)) {
     preloader.remove();
     return;
   }
