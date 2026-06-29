@@ -230,7 +230,7 @@ function showFormFeedback(btn, message, type = "success", duration = 4000) {
   if (!message) return;
 
   const form = btn?.closest("form");
-  const shouldShowInButton = form?.id === "quick-form";
+  const shouldShowInButton = form?.id === "quick-form" || form?.id === "calculator-quick-form";
 
   if (shouldShowInButton) {
     const originalHTML =
