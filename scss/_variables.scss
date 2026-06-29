@@ -3479,8 +3479,6 @@ button:hover,
     align-items: center;
     justify-content: center;
     width: 100%;
-    font-weight: 600;
-    font-size: 40px;
     line-height: 0.75;
     text-align: center;
     color: var(--blue-main);
@@ -3500,6 +3498,13 @@ button:hover,
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  &:not(.isAdvantage) {
+    & .cup-number {
+      font-weight: 600;
+      font-size: 40px;
+    }
   }
 
   &.isHerb {
@@ -3543,6 +3548,29 @@ button:hover,
         right: 0;
         transform: translate(100%, -50%) scaleX(-1);
       }
+    }
+  }
+
+  &.isAdvantage {
+    & .cup-number {
+      align-items: baseline;
+    }
+
+    & > p {
+      text-align: center;
+    }
+  }
+}
+
+.advantages {
+  &-cups {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    gap: 16px;
+    max-width: 600px;
+
+    @media (max-width: 575.98px) {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

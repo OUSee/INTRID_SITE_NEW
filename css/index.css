@@ -6763,8 +6763,6 @@ button.is-feedback-error,
   align-items: center;
   justify-content: center;
   width: 100%;
-  font-weight: 600;
-  font-size: 40px;
   line-height: 0.75;
   text-align: center;
   color: var(--blue-main);
@@ -6783,6 +6781,10 @@ button.is-feedback-error,
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+.cup:not(.isAdvantage) .cup-number {
+  font-weight: 600;
+  font-size: 40px;
 }
 .cup.isHerb .cup-body {
   width: 42px;
@@ -6813,6 +6815,24 @@ button.is-feedback-error,
 .cup.isArrows .cup-number::after {
   right: 0;
   transform: translate(100%, -50%) scaleX(-1);
+}
+.cup.isAdvantage .cup-number {
+  align-items: baseline;
+}
+.cup.isAdvantage > p {
+  text-align: center;
+}
+
+.advantages-cups {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  gap: 16px;
+  max-width: 600px;
+}
+@media (max-width: 575.98px) {
+  .advantages-cups {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .testimonials {
