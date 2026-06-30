@@ -8422,6 +8422,10 @@ button.is-feedback-error,
     padding: 8px 16px;
   }
 }
+.card--portfolio .card-body:has(.keysUrl) {
+  padding-bottom: 8px;
+  border-bottom: 0;
+}
 .card--portfolio .card-body > b {
   font-weight: 600;
   font-size: 24px;
@@ -8468,6 +8472,24 @@ button.is-feedback-error,
 .card--portfolio .card-body > .card-tag i {
   display: flex;
   font-size: larger;
+}
+.card--portfolio .card-body > .keysUrl {
+  position: relative;
+  padding-top: 8px;
+  color: var(--bg-main);
+}
+.card--portfolio .card-body > .keysUrl::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30px;
+  z-index: -1;
+  width: 100vw;
+  height: 200%;
+  background: var(--blue-main);
+}
+.card--portfolio .card-body > .keysUrl a {
+  color: inherit;
 }
 .card--portfolio > .absolute-link {
   display: flex;

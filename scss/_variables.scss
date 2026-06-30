@@ -5233,6 +5233,11 @@ button:hover,
         padding: 8px 16px;
       }
 
+      &:has(.keysUrl) {
+        padding-bottom: 8px;
+        border-bottom: 0;
+      }
+
       & > b {
         @include h4;
         width: 100%;
@@ -5265,6 +5270,27 @@ button:hover,
 
       & > .card-tag {
         @include card-tag;
+      }
+
+      & > .keysUrl {
+        position: relative;
+        padding-top: 8px;
+        color: var(--bg-main);
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -30px;
+          z-index: -1;
+          width: 100vw;
+          height: 200%;
+          background: var(--blue-main);
+        }
+
+        & a {
+          color: inherit;
+        }
       }
     }
 
