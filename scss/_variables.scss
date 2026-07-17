@@ -656,18 +656,7 @@ i {
       content: "";
       display: inline-block;
       background-color: #fdf41f;
-      clip-path: polygon(
-        50% 0%,
-        61% 35%,
-        98% 35%,
-        68% 57%,
-        79% 91%,
-        50% 70%,
-        21% 91%,
-        32% 57%,
-        2% 35%,
-        39% 35%
-      );
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
 
     &-4 {
@@ -684,18 +673,7 @@ i {
             rgb(147, 147, 147) 40%,
             rgb(147, 147, 147) 100%
           );
-          clip-path: polygon(
-            50% 0%,
-            61% 35%,
-            98% 35%,
-            68% 57%,
-            79% 91%,
-            50% 70%,
-            21% 91%,
-            32% 57%,
-            2% 35%,
-            39% 35%
-          );
+          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
       }
 
@@ -712,18 +690,7 @@ i {
             rgb(147, 147, 147) 70%,
             rgb(147, 147, 147) 100%
           );
-          clip-path: polygon(
-            50% 0%,
-            61% 35%,
-            98% 35%,
-            68% 57%,
-            79% 91%,
-            50% 70%,
-            21% 91%,
-            32% 57%,
-            2% 35%,
-            39% 35%
-          );
+          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
       }
     }
@@ -1384,6 +1351,10 @@ ol {
     &-lg {
       &-center {
         text-align: center;
+      }
+
+      &-left {
+        text-align: left;
       }
     }
   }
@@ -4826,15 +4797,7 @@ button:hover,
       width: 32px;
       height: 24px;
       background-color: var(--blue-main);
-      clip-path: polygon(
-        0 40%,
-        75% 40%,
-        100% 20%,
-        100% 50%,
-        100% 80%,
-        75% 60%,
-        0 60%
-      );
+      clip-path: polygon(0 40%, 75% 40%, 100% 20%, 100% 50%, 100% 80%, 75% 60%, 0 60%);
       transform: translate(100%, -50%);
     }
 
@@ -4940,12 +4903,7 @@ button:hover,
     background-color: var(--blue-tag);
 
     &:not(.bg-color-black) {
-      background: linear-gradient(
-          180deg,
-          var(--blue-clouds) 0%,
-          var(--blue-tag) 100%
-        )
-        var(--blue-light-bg);
+      background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%) var(--blue-light-bg);
     }
 
     & img {
@@ -5517,7 +5475,7 @@ button:hover,
       }
     }
 
-    & img {
+    & > img {
       width: 192px;
       height: auto;
       object-fit: contain;
@@ -5653,7 +5611,7 @@ button:hover,
     &:hover {
       &:not(.nohover) {
         @media (min-width: 1200px) {
-          padding: 164px 20px 32px 20px;
+          padding: 164px 10px 32px 10px;
           margin-top: -20px;
           margin-bottom: -20px;
 
