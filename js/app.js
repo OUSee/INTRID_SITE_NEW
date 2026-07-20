@@ -846,8 +846,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => {
         const message =
           error &&
-          typeof error.message === "string" &&
-          error.message.trim() !== ""
+            typeof error.message === "string" &&
+            error.message.trim() !== ""
             ? error.message
             : defaultErrorMessage;
         showFormFeedback(submitBtn, message, "error");
@@ -919,7 +919,7 @@ document.addEventListener("DOMContentLoaded", () => {
             : "";
         const localSitekey =
           item.recaptchaContainer.dataset.sitekey &&
-          item.recaptchaContainer.dataset.sitekey.length > 0
+            item.recaptchaContainer.dataset.sitekey.length > 0
             ? item.recaptchaContainer.dataset.sitekey.trim()
             : "";
         const sitekey = globalSitekey || localSitekey;
@@ -1036,8 +1036,8 @@ const mapLinksInit = () => {
         mapData[value].adress +
         (mapData[value]?.schedule
           ? '<span class="separator">|</span><span> ' +
-            mapData[value].schedule +
-            '</span><span class="separator">|</span>'
+          mapData[value].schedule +
+          '</span><span class="separator">|</span>'
           : '<span class="separator">|</span>');
       container.innerHTML = mapData[value].frame;
 
@@ -1150,12 +1150,10 @@ const techListInit = () => {
       list.style.setProperty("--list-length", items.length);
 
       items.forEach((item, index) => {
-        item.querySelector(".tech-tag").style.animation = `list-glow ${
-          items.length * interval
-        }s linear infinite`;
-        item.querySelector(".tech-tag").style.animationDelay = `${
-          index * interval
-        }s`;
+        item.querySelector(".tech-tag").style.animation = `list-glow ${items.length * interval
+          }s linear infinite`;
+        item.querySelector(".tech-tag").style.animationDelay = `${index * interval
+          }s`;
       });
     }
   });
@@ -1545,8 +1543,8 @@ function casesToggleTabs(interval = 5000) {
   // Возвращаем функцию для возможности отписки от событий при необходимости
   return function cleanup() {
     stopAutoSwitch();
-    cases.removeEventListener("mouseenter", () => {});
-    cases.removeEventListener("mouseleave", () => {});
+    cases.removeEventListener("mouseenter", () => { });
+    cases.removeEventListener("mouseleave", () => { });
   };
 }
 
@@ -1604,8 +1602,8 @@ const SliderInIt = () => {
               : "block";
           nextButton.style.display =
             currentIndex === maxIndex ||
-            maxIndex <= 0 ||
-            cards.length <= slidesPerPage
+              maxIndex <= 0 ||
+              cards.length <= slidesPerPage
               ? "none"
               : "block";
 
@@ -3118,9 +3116,8 @@ function sliderInitialize() {
 
         btn.style.position = "absolute";
         btn.style.top = `${top}px`;
-        btn.style.transform = `translateY(-50%) translateX(${
-          window.innerWidth > 600 ? (side === "left" ? "-100%" : "100%") : "0"
-        })`;
+        btn.style.transform = `translateY(-50%) translateX(${window.innerWidth > 600 ? (side === "left" ? "-100%" : "100%") : "0"
+          })`;
 
         if (side === "left") {
           btn.style.left =
@@ -8897,6 +8894,14 @@ function initBlogTabsToSelect(root = document) {
     const checkedInput = inputs.find((input) => input.checked);
     if (checkedInput) {
       syncByUrl(checkedInput.dataset.url);
+    }
+
+    const targetContainer = document.getElementById('blogs-blog');
+
+    if (targetContainer) {
+      $(document).on("pjax:end", "#blogs-blog", function () {
+        window.scrollTo({ top: targetContainer.offsetTop, behavior: "smooth" });
+      });
     }
   });
 }
