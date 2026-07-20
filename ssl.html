@@ -339,51 +339,69 @@
                         </div>
                     </div>
                     <div class="right">
-                        <div class="card card--leaders minified position-sticky" id="ssl-creation">
-                            <p class="title_h4 text-center">
-                                Установить SSL
-                            </p>
-                            <p class="text-center">
-                                Обезопасим сайт от злоумышленников, повысим доверие пользователей и поисковых систем
-                            </p>
-                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
-                                <div class="recaptcha-wrapper" style="display: none;">
-                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
-                                        data-size="invisible"></div>
-                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
-                                </div>
-
-                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
-
-                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
-
-                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
-
-                                <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
-                                    name="mess"></textarea>
-
-                                <div class="input-file">
-                                    <div class="file-drop-area">
-                                        <label>
-                                            <input type="file" multiple="" name="file[]"
-                                                accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
-                                            <span>Прикрепить файл</span>
-                                            <img src="/src/icons/pin.svg" alt="Прикрепить файл">
-                                        </label>
-                                        <div class="drag-drop-hint">или перетащите файлы сюда</div>
-                                        <div class="file-list" style="display: none;"></div>
-                                    </div>
-                                </div>
-                                <p class="testimonials text-center m-center mb-0">
-                                    Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
-                                        target="_blank">персональных&nbsp;данных</a> в соответствии с <a
-                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
-                                        target="_blank" rel="nofollow">ФЗ&nbsp;№152</a>
+                        <div class="position-sticky">
+                            <div class="card card--leaders minified" id="ssl-creation">
+                                <p class="title_h4 text-center">
+                                    Установить SSL
                                 </p>
-                                <button type="submit" class="button big button-white mt-12">
-                                    Отправить
-                                </button>
-                            </form>
+                                <p class="text-center">
+                                    Обезопасим сайт от злоумышленников, повысим доверие пользователей и поисковых систем
+                                </p>
+                                <form action="/submit/kontakt" method="POST" class="order-form ajax-form"
+                                    id="quick-form">
+                                    <div class="recaptcha-wrapper" style="display: none;">
+                                        <div class="js-recaptcha"
+                                            data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                            data-size="invisible"></div>
+                                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                    </div>
+
+                                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+
+                                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+
+                                    <input type="tel" required id="customer-phone" name="tel"
+                                        placeholder="Ваш телефон *">
+
+                                    <textarea data-autosize="true" rows="2" id="customer-comment"
+                                        placeholder="Комментарий" name="mess"></textarea>
+
+                                    <div class="input-file">
+                                        <div class="file-drop-area">
+                                            <label>
+                                                <input type="file" multiple="" name="file[]"
+                                                    accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                                <span>Прикрепить файл</span>
+                                                <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                            </label>
+                                            <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                            <div class="file-list" style="display: none;"></div>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials text-center m-center mb-0">
+                                        Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
+                                            target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                                            href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                            target="_blank" rel="nofollow">ФЗ&nbsp;№152</a>
+                                    </p>
+                                    <button type="submit" class="button big button-white mt-12">
+                                        Отправить
+                                    </button>
+                                </form>
+                            </div>
+
+                            <a href="/src/docs/new/hosting_2026_dogovor.pdf" target="_blank"
+                                class="card card--service use docs wider no-arrow nohover mt-52 ml-auto mr-auto w-fit">
+                                <div class="card-icon">
+                                    <img src="/src/icons/ai_icon_upload.svg"
+                                        alt="Договор на регистрацию домена и предоставление хостинга">
+                                </div>
+                                <b>
+                                    <div class="title mb-8">Для ознакомления:</div>
+                                    <span class="color-blue">Договор на регистрацию домена и предоставление
+                                        хостинга</span>
+                                </b>
+                            </a>
                         </div>
                     </div>
                 </div>
