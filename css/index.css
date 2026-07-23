@@ -3817,6 +3817,11 @@ ol li > ol {
     text-align: left;
   }
 }
+@media (max-width: 719.98px) {
+  .text-md-center {
+    text-align: center;
+  }
+}
 @media (max-width: 599.98px) {
   .text-sm-left {
     text-align: left;
@@ -6920,6 +6925,10 @@ button.is-feedback-error,
   gap: 16px;
   padding: 0;
 }
+.card.highlighted {
+  border-color: var(--blue-main);
+  box-shadow: 0px 0px 20px 10px var(--blue-clouds);
+}
 .card-form-seo-audit {
   display: grid;
   grid-template-columns: minmax(25%, 1fr) 1fr;
@@ -8741,6 +8750,84 @@ button.is-feedback-error,
   .card--prices > img {
     width: 96px;
     margin-top: unset;
+  }
+}
+.card--prices.bonus {
+  display: grid;
+  grid-template-columns: 192px 1fr;
+  grid-template-rows: min-content;
+  grid-gap: 0 40px;
+}
+.card--prices.bonus > b {
+  margin: 0 0 1em;
+}
+.card--prices.bonus > img {
+  margin: 0 auto;
+}
+.card--prices.bonus > ul {
+  grid-row-start: 4;
+  order: 3;
+}
+@media (min-width: 900px) {
+  .card--prices.bonus > img {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    align-self: flex-start;
+  }
+  .card--prices.bonus > .description {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+  .card--prices.bonus > ul {
+    grid-column: span 2/span 2;
+  }
+}
+@media (max-width: 899.98px) {
+  .card--prices.bonus {
+    grid-template-columns: 1fr;
+  }
+  .card--prices.bonus > b {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    order: 0;
+  }
+  .card--prices.bonus > img {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    order: 1;
+    align-self: center;
+  }
+  .card--prices.bonus > .description {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    order: 2;
+  }
+  .card--prices.bonus > ul {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}
+@media (max-width: 599.98px) {
+  .card--prices.bonus {
+    gap: 20px;
+  }
+  .card--prices.bonus > b {
+    margin: 0;
+  }
+  .card--prices.bonus > img {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    align-self: center;
+  }
+  .card--prices.bonus > .description {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+  }
+  .card--prices.bonus > ul {
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
 }
 .card--service {
