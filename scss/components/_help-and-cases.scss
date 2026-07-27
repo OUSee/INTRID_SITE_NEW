@@ -73,11 +73,7 @@
     user-select: none;
     pointer-events: none;
     overflow: hidden;
-    mask-image: linear-gradient(
-      to left,
-      rgb(0, 0, 0) 40%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    mask-image: linear-gradient(to left, rgb(0, 0, 0) 40%, rgba(0, 0, 0, 0) 100%);
 
     @media (max-width: 999.98px) {
       display: none;
@@ -878,9 +874,7 @@
     align-self: center;
     justify-content: flex-start;
     gap: 4px;
-    max-width: calc(
-      50% - (var(--number-ball-size) / 2 + var(--number-ball-gap))
-    );
+    max-width: calc(50% - (var(--number-ball-size) / 2 + var(--number-ball-gap)));
     min-height: 100px;
     flex: 1;
     text-align: right;
@@ -890,6 +884,40 @@
     @media (max-width: 719.98px) {
       max-width: 100%;
       text-align: left;
+    }
+  }
+
+  &.horizontal {
+    @media (min-width: 1000px) {
+      flex-direction: row;
+      justify-content: center;
+      gap: var(--number-ball-gap);
+
+      & .step-balls--row {
+        flex-direction: column !important;
+        align-items: center;
+        flex: 0 0 20%;
+
+        &::before {
+          top: 0;
+          bottom: unset;
+          right: 0;
+          bottom: unset;
+          max-width: calc(100% - var(--number-ball-size) + var(--number-ball-size) * 2);
+          width: calc(100% - var(--number-ball-gap) * 2.5);
+          height: 2px;
+          transform: translate(calc(var(--number-ball-size) / 2), calc(var(--number-ball-size) / 2));
+        }
+
+        & .step-balls--number {
+          margin: 0 auto;
+        }
+
+        & .step-balls--content {
+          max-width: 100%;
+          text-align: center;
+        }
+      }
     }
   }
 }
