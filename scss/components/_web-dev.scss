@@ -35,33 +35,6 @@
     }
   }
 
-  &.geo {
-    & .video-diagramm {
-      margin: 210px auto 160px;
-    }
-
-    @media (min-width: 1000px) {
-      .benefits-left {
-        margin-left: 10px;
-      }
-
-      .benefits-right {
-        min-width: 300px;
-        margin-right: 10px;
-      }
-    }
-
-    @media (min-width: 1360px) {
-      .benefits-left {
-        margin-left: 80px;
-      }
-
-      .benefits-right {
-        margin-right: 80px;
-      }
-    }
-  }
-
   .web-shop-diagram,
   .tender-diagram {
     position: relative;
@@ -394,6 +367,45 @@
       }
 
       // Tender table visual and interaction styles live in components/_tables-new.scss.
+    }
+  }
+
+  &.geo {
+    & .video-diagramm {
+      width: 320px;
+      height: 320px;
+      margin: 200px auto 120px;
+    }
+
+    @media (min-width: 1000px) {
+      & .benefits-left,
+      & .benefits-right {
+        height: 520px;
+      }
+
+      & .benefits-left {
+        margin-left: -10px;
+      }
+
+      & .benefits-right {
+        min-width: 300px;
+        margin-right: -10px;
+      }
+    }
+
+    @media (min-width: 1360px) {
+      & .benefits-left,
+      & .benefits-right {
+        height: 520px;
+      }
+
+      & .benefits-left {
+        margin-left: 0;
+      }
+
+      & .benefits-right {
+        margin-right: 0;
+      }
     }
   }
 }
