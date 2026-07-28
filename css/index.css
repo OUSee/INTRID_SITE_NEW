@@ -1497,6 +1497,18 @@ th {
     display: none;
   }
 }
+@media (min-width: 600px) {
+  .flex-layout--roadmap-cycle > *:last-child {
+    --i: 2;
+  }
+  .flex-layout--roadmap-cycle > *:last-child::after {
+    display: block;
+    top: -5px;
+    left: 50%;
+    bottom: auto;
+    transform: translate(-50%, -100%) rotate(270deg);
+  }
+}
 .flex-layout--roadmap-column {
   flex-direction: column;
 }
@@ -1516,6 +1528,9 @@ th {
   }
 }
 .flex-layout--roadmap-nothing > *::after {
+  display: none;
+}
+.flex-layout--roadmap.not-numbers > .card--roadmap > h1::before, .flex-layout--roadmap.not-numbers > .card--roadmap > h2::before, .flex-layout--roadmap.not-numbers > .card--roadmap > h3::before, .flex-layout--roadmap.not-numbers > .card--roadmap > h4::before, .flex-layout--roadmap.not-numbers > .card--roadmap > h5::before, .flex-layout--roadmap.not-numbers > .card--roadmap > h6::before, .flex-layout--roadmap.not-numbers > .card--roadmap > b::before {
   display: none;
 }
 .flex-layout--map > * {

@@ -529,6 +529,24 @@
         }
       }
 
+      &-cycle {
+        & > * {
+          @media (min-width: 600px) {
+            &:last-child {
+              --i: 2;
+
+              &::after {
+                display: block;
+                top: -5px;
+                left: 50%;
+                bottom: auto;
+                transform: translate(-50%, -100%) rotate(270deg);
+              }
+            }
+          }
+        }
+      }
+
       &-column {
         flex-direction: column;
 
@@ -552,6 +570,20 @@
       &-nothing {
         & > * {
           &::after {
+            display: none;
+          }
+        }
+      }
+
+      &.not-numbers {
+        & > .card--roadmap {
+          & > h1::before,
+          & > h2::before,
+          & > h3::before,
+          & > h4::before,
+          & > h5::before,
+          & > h6::before,
+          & > b::before {
             display: none;
           }
         }
