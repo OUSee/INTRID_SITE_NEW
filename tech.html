@@ -185,11 +185,9 @@
 
                 <p>
                     Мы гарантируем <span class="color-blue">стабильную работу</span>, безопасность и актуальность вашего
-                    сайта.
-                    Наша <span class="color-blue">команда профессионалов</span> обеспечит постоянный мониторинг,
-                    оперативное
-                    устранение сбоев, регулярные обновления, администрирование сервера и
-                    квалифицированную поддержку.
+                    сайта. Наша <span class="color-blue">команда профессионалов</span> обеспечит постоянный мониторинг,
+                    оперативное устранение сбоев, регулярные обновления, администрирование сервера и квалифицированную
+                    поддержку.
                 </p>
 
                 <p>
@@ -244,12 +242,12 @@
         <!-- types of technical support -->
         <section>
             <div class="container">
-                <h2 class="w-fit underlined">
-                    Услуги по технической поддержке
-                </h2>
+                <div class="flex-layout flex-layout--split">
+                    <div class="left gap-0">
+                        <h2 class="w-fit underlined">
+                            Услуги по технической поддержке
+                        </h2>
 
-                <div class="flex-layout flex-layout--split mt-20">
-                    <div class="left">
                         <ul class="tech-list slim">
                             <li>
                                 <img src="/src/icons/magnifier_glass.svg"
@@ -264,8 +262,7 @@
                                     Оптимизация верстки и структуры сайта, базы данных и скорости работы сайта
                                 </p>
                             </li>
-                            <li>
-                                <img src="/src/icons/tech-reverse.svg"
+                            <li> <img src="/src/icons/tech-reverse.svg"
                                     alt="Резервное копирование и восстановление данных">
                                 <p>
                                     Резервное копирование и восстановление данных (периодичность – по желанию заказчика)
@@ -303,8 +300,7 @@
                                     alt="Обновление на сайте текстовой и графической информации, предоставленной заказчиком (или нами по согласованию с заказчиком)">
                                 <p>
                                     Обновление на сайте текстовой и графической информации, предоставленной заказчиком
-                                    (или нами по согласованию с
-                                    заказчиком)
+                                    (или нами по согласованию с заказчиком)
                                 </p>
                             </li>
                             <li>
@@ -327,43 +323,32 @@
                             <p class="title_h4 text-center">
                                 Получить консультацию
                             </p>
+
                             <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
                                 <div class="recaptcha-wrapper" style="display: none;">
                                     <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
-                                        data-size="invisible"></div>
-                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
-                                </div>
-
-                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
-
-                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
-
-                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
-
-                                <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
+                                        data-size="invisible"></div> <input type="hidden" name="g-recaptcha-response"
+                                        class="js-recaptcha-token">
+                                </div> <input type="text" id="customer-name" name="name" placeholder="Ваше имя"> <input
+                                    type="email" id="customer-mail" name="email" placeholder="E-mail"> <input type="tel"
+                                    required id="customer-phone" name="tel" placeholder="Ваш телефон *"> <textarea
+                                    data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
                                     name="mess"></textarea>
-
                                 <div class="input-file">
-                                    <div class="file-drop-area">
-                                        <label>
-                                            <input type="file" multiple="" name="file[]"
+                                    <div class="file-drop-area"> <label> <input type="file" multiple="" name="file[]"
                                                 accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
-                                            <span>Прикрепить файл</span>
-                                            <img src="/src/icons/pin.svg" alt="Прикрепить файл">
-                                        </label>
+                                            <span>Прикрепить файл</span> <img src="/src/icons/pin.svg"
+                                                alt="Прикрепить файл"> </label>
                                         <div class="drag-drop-hint">или перетащите файлы сюда</div>
                                         <div class="file-list" style="display: none;"></div>
                                     </div>
                                 </div>
-                                <p class="testimonials text-center m-center mb-0">
-                                    Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
-                                        target="_blank">персональных&nbsp;данных</a> в соответствии с <a
-                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
-                                        target="_blank">ФЗ&nbsp;№152</a>
-                                </p>
-                                <button type="submit" class="button big button-white mt-12">
-                                    Отправить
-                                </button>
+                                <p class="testimonials text-center m-center mb-0"> Нажимая кнопку, я выражаю согласие на
+                                    обработку <a href="/privacy.html" target="_blank">персональных&nbsp;данных</a> в
+                                    соответствии с <a
+                                        href="https://normativ.kontur.ru/document?moduleId=1&documentId=501173&ysclid=ms4giupu7t521197867"
+                                        target="_blank" rel="nofollow">ФЗ&nbsp;№152</a> </p> <button type="submit"
+                                    class="button big button-white mt-12"> Отправить </button>
                             </form>
                         </div>
                     </div>
@@ -381,19 +366,28 @@
                                     <li>
                                         <span>Объем включённых работ:</span>
                                         <span>
-                                            <b>4 часа работы профильного специалиста</b>
+                                            <b>
+                                                4 часа работы профильного
+                                                специалиста
+                                            </b>
                                         </span>
                                     </li>
                                     <li>
                                         <span>Время реагирования:</span>
                                         <span>
-                                            <b>до 24-х рабочих часов</b>
+                                            <b>
+                                                до 24-х рабочих часов
+                                            </b>
                                         </span>
                                     </li>
                                     <li>
-                                        <span>Стоимость часа&nbsp;работ сверх&nbsp;тарифа:</span>
                                         <span>
-                                            <b>2000&nbsp;₽</b>
+                                            Стоимость часа&nbsp;работ сверх&nbsp;тарифа:
+                                        </span>
+                                        <span>
+                                            <b>
+                                                2000&nbsp;₽
+                                            </b>
                                         </span>
                                     </li>
                                 </ul>
@@ -403,9 +397,12 @@
                                 <p class="title_h4 color-blue text-center m-0">
                                     от&nbsp;8000&nbsp;₽&nbsp;/&nbsp;месяц
                                 </p>
+
                                 <hr>
+
                                 <p class="title_h5 text-center m-0">
-                                    При объеме&nbsp;работ от 20&nbsp;часов - скидка&nbsp;10%
+                                    При объеме&nbsp;работ от 20&nbsp;часов -
+                                    скидка&nbsp;10%
                                 </p>
                             </div>
 
@@ -418,78 +415,36 @@
                         </div>
 
                         <!-- Форма заказа для сопровождения сайта -->
-                        <div class="card card--leaders minified position-sticky m-center mw-400" id="tech-creation-wrapper" style="display: none;">
-                            <p class="title_h4 text-center">
-                                Заказать сопровождение сайта
-                            </p>
-                            <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
-                                <div class="recaptcha-wrapper" style="display: none;">
-                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
-                                        data-size="invisible"></div>
-                                    <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
-                                </div>
-
-                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
-
-                                <input type="email" id="customer-mail" name="email" placeholder="E-mail">
-
-                                <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
-
-                                <textarea data-autosize="true" rows="2" id="customer-comment" placeholder="Комментарий"
-                                    name="mess"></textarea>
-
-                                <div class="input-file">
-                                    <div class="file-drop-area">
-                                        <label>
-                                            <input type="file" multiple="" name="file[]"
-                                                accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
-                                            <span>Прикрепить файл</span>
-                                            <img src="/src/icons/pin.svg" alt="Прикрепить файл">
-                                        </label>
-                                        <div class="drag-drop-hint">или перетащите файлы сюда</div>
-                                        <div class="file-list" style="display: none;"></div>
-                                    </div>
-                                </div>
-                                <p class="testimonials text-center m-center mb-0">
-                                    Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
-                                        target="_blank">персональных&nbsp;данных</a> в соответствии с <a
-                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
-                                        target="_blank">ФЗ&nbsp;№152</a>
-                                </p>
-                                <button type="submit" class="button big button-white mt-12">
-                                    Отправить
-                                </button>
-                            </form>
+                        <div class="card card--leaders minified position-sticky m-center mw-400"
+                            id="tech-creation-wrapper" style="display: none;">
+                            %_form_{Обсудить Ваш проект,Мы подготовим
+                            коммерческое предложение и поможем в реализации самых смелых идей,true,false,true}%
                         </div>
                     </div>
 
                     <div class="d-flex flex-column align-center gap-20 mw-400 mw-lg-100 flex-1">
                         <div class="card">
                             <p class="title_h5 color-blue mb-20">
-                                Дополнительные работы по технической поддержке и модернизации
+                                Дополнительные&nbsp;работы по технической&nbsp;поддержке
+                                и&nbsp;модернизации
                             </p>
 
                             <p class="mb-20">
                                 Помимо базового обслуживания, мы готовы выполнить дополнительные работы
-                                по технической
-                                поддержке
-                                и модернизации
-                                веб-сайтов и порталов по вашим индивидуальным требованиям: от добавления
-                                новых модулей
-                                до подключения
-                                искусственного интеллекта!
+                                по&nbsp;технической поддержке и&nbsp;модернизации веб-сайтов и&nbsp;порталов
+                                по&nbsp;вашим индивидуальным
+                                требованиям: от&nbsp;добавления новых модулей до&nbsp;подключения искусственного
+                                интеллекта!
                             </p>
 
                             <p>
-                                Наша команда экспертов поможет вам адаптировать проекты под новые требования,
+                                Наша команда экспертов поможет вам адаптировать проекты под&nbsp;новые требования,
                                 улучшить
-                                функциональность
-                                и обеспечить их соответствие современным стандартам.
+                                функциональность и&nbsp;обеспечить их соответствие современным стандартам.
                             </p>
                         </div>
 
-                        <a href="/src/docs/support_2026.pdf"
-                            class="button-link big" target="_blank"
+                        <a href="/doc/support.pdf" class="button-link big" target="_blank"
                             title="Шаблон договора технической поддержки" download="">
                             Скачать шаблон договора
                             <i class="icon-arrow_wide"></i>
@@ -503,60 +458,71 @@
         <section>
             <div class="container">
                 <h3>
-                    Проекты на нашем <span class="underlined">техническом обслуживании</span>
+                    Проекты на нашем <span class="underlined">техническом&nbsp;обслуживании</span>
                 </h3>
 
                 <div class="support-slider mt-52" id="support-slider" data-slider="support-slider">
-
                     <div class="card card--group minified active">
                         <div class="card-header">
                             <div>
                                 <span class="title_h4">Любятово</span>
                                 <a href="https://transport.lubyatovo.ru/" target="_blank" class="hover-underline"
-                                    title="Любятово">https://transport.lubyatovo.ru/</a>
+                                    title="Любятово" rel="nofollow">
+                                    https://transport.lubyatovo.ru/
+                                </a>
                             </div>
                             <img alt="Любятово" src="/src/images/logos/lubyatovo.webp">
                         </div>
                         <div class="card-body">
                             <div>
-                                <p>писем в день отправляется транспортным компаниям</p>
-                                <b data-counter-value="4780">4780</b>
+                                <p>посещений в месяц</p> <b data-counter-value="1300">1300</b>
                             </div>
                             <div>
-                                <p>ставок в день</p>
-                                <b data-counter-value="376">376</b>
+                                <p>уведомлений в день</p> <b data-counter-value="10300">10300</b>
                             </div>
                             <div>
-                                <p>разыгранных тендера в день</p>
-                                <b data-counter-value="54"> 54</b>
+                                <p>писем в день отправляется транспортным компаниям</p> <b
+                                    data-counter-value="4780">4780</b>
+                            </div>
+                            <div>
+                                <p>ставок в день</p> <b data-counter-value="376">376</b>
+                            </div>
+                            <div>
+                                <p>разыгранных тендеров в день</p> <b data-counter-value="54"> 54</b>
                             </div>
                         </div>
+
                         <a class="absolute-link" data-popup="site-preview"
                             data-site-preview="https://transport.lubyatovo.ru/"></a>
                     </div>
-
 
                     <div class="card card--group minified active">
                         <div class="card-header">
                             <div>
                                 <span class="title_h4">Молвест</span>
                                 <a data-popup="site-preview" data-site-preview="https://tender.molvest.ru/"
-                                    class="hover-underline" title="Молвест">https://tender.molvest.ru/</a>
+                                    class="hover-underline" title="Молвест">
+                                    https://tender.molvest.ru/
+                                </a>
                             </div>
                             <img alt="Молвест" src="/src/images/logos/molvest.webp">
                         </div>
                         <div class="card-body">
                             <div>
-                                <p>писем в день отправляется транспортным компаниям</p>
-                                <b data-counter-value="53810">53 810</b>
+                                <p>посещений в месяц</p> <b data-counter-value="3500">3500</b>
                             </div>
                             <div>
-                                <p>ставок в день</p>
-                                <b data-counter-value="700">700</b>
+                                <p>уведомлений в день</p> <b data-counter-value="111400">111400</b>
                             </div>
                             <div>
-                                <p>разыгранных тендера в день</p>
-                                <b data-counter-value="90"> 90 </b>
+                                <p>писем в день отправляется транспортным компаниям</p> <b data-counter-value="53810">53
+                                    810</b>
+                            </div>
+                            <div>
+                                <p>ставок в день</p> <b data-counter-value="700">700</b>
+                            </div>
+                            <div>
+                                <p>разыгранных тендеров в день</p> <b data-counter-value="90"> 90 </b>
                             </div>
                         </div>
                         <a href="/case-molvest" class="absolute-link"></a>
@@ -567,22 +533,29 @@
                             <div>
                                 <span class="title_h4">Черноголовка</span>
                                 <a href="https://transport.chernogolovka.com" target="_blank" class="hover-underline"
-                                    title="Черноголовка">https://transport.chernogolovka.com</a>
+                                    title="Черноголовка" rel="nofollow">
+                                    https://transport.chernogolovka.com
+                                </a>
                             </div>
                             <img alt="Черноголовка" src="/src/images/logos/chernogolovka.svg">
                         </div>
+
                         <div class="card-body">
                             <div>
-                                <p>писем в день отправляется транспортным компаниям</p>
-                                <b data-counter-value="3280">3280</b>
+                                <p>посещений в месяц</p> <b data-counter-value="2500">2500</b>
                             </div>
                             <div>
-                                <p>ставок в день</p>
-                                <b data-counter-value="630">630</b>
+                                <p>уведомлений в день</p> <b data-counter-value="11180">11180</b>
                             </div>
                             <div>
-                                <p>разыгранных тендера в день</p>
-                                <b data-counter-value="86"> 86</b>
+                                <p>писем в день отправляется транспортным компаниям</p> <b
+                                    data-counter-value="3280">3280</b>
+                            </div>
+                            <div>
+                                <p>ставок в день</p> <b data-counter-value="630">630</b>
+                            </div>
+                            <div>
+                                <p>разыгранных тендеров в день</p> <b data-counter-value="86"> 86</b>
                             </div>
                         </div>
                         <a class="absolute-link" data-popup="site-preview"
@@ -599,6 +572,7 @@
                         <button class="pagination--btn-dot"></button>
                         <button class="pagination--btn-dot"></button>
                     </div>
+
                     <button class="pagination--next-btn">
                         <i class="icon-shevrone"></i>
                     </button>
@@ -610,7 +584,7 @@
         <section>
             <div class="container">
                 <h3 class="underlined w-fit m-center">
-                    Преимущества работы с нами
+                    Преимущества работы с&nbsp;нами
                 </h3>
 
                 <ul class="list--cooperate flexible wide mt-32">
@@ -623,20 +597,22 @@
                     </li>
                     <li>
                         <i class="icon-links"></i>
-                        <p>Используем
-                            <span class="color-blue">современные технологии</span>
-                            и собственные разработки
+                        <p>
+                            Используем <span class="color-blue">современные технологии</span> и собственные разработки
                         </p>
                     </li>
                     <li>
                         <i class="icon-target"></i>
-                        <p>Помогаем клиентам <span class="color-blue">достигать финансовых целей</span>
-                            и быть впереди конкурентов</p>
+                        <p>
+                            Помогаем клиентам <span class="color-blue">достигать финансовых целей</span> и быть впереди
+                            конкурентов
+                        </p>
                     </li>
                     <li>
                         <i class="icon-rocket"></i>
-                        <p><span class="color-blue">Работаем до победы</span>,
-                            пока Вы не сочтёте результат идеальным</p>
+                        <p>
+                            <span class="color-blue">Работаем до победы</span>, пока Вы не сочтёте результат идеальным
+                        </p>
                     </li>
                 </ul>
             </div>
