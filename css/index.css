@@ -3932,6 +3932,9 @@ ol li > ol {
   height: auto !important;
 }
 
+.mw-1100 {
+  max-width: 1100px !important;
+}
 .mw-1000 {
   max-width: 1000px !important;
 }
@@ -8799,6 +8802,11 @@ button.is-feedback-error,
   grid-row-start: 4;
   order: 3;
 }
+.card--prices.bonus > a {
+  grid-row-start: 5;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
 @media (min-width: 900px) {
   .card--prices.bonus > img {
     grid-row-start: 1;
@@ -8846,19 +8854,15 @@ button.is-feedback-error,
     margin: 0;
   }
   .card--prices.bonus > img {
-    grid-column-start: 1;
-    grid-column-end: 2;
     grid-row-start: 2;
     align-self: center;
   }
   .card--prices.bonus > .description {
-    grid-column-start: 1;
-    grid-column-end: 2;
     grid-row-start: 3;
   }
-  .card--prices.bonus > ul {
-    grid-column-start: 1;
-    grid-column-end: 2;
+  .card--prices.bonus > * {
+    grid-column-start: unset !important;
+    grid-column-end: unset !important;
   }
 }
 .card--service {

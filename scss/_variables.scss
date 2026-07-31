@@ -1513,6 +1513,10 @@ ol {
 }
 
 .mw {
+  &-1100 {
+    max-width: 1100px !important;
+  }
+
   &-1000 {
     max-width: 1000px !important;
   }
@@ -5548,6 +5552,12 @@ button:hover,
         order: 3;
       }
 
+      & > a {
+        grid-row-start: 5;
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+
       @media (min-width: 900px) {
         & > img {
           grid-row-start: 1;
@@ -5601,21 +5611,17 @@ button:hover,
         }
 
         & > img {
-          grid-column-start: 1;
-          grid-column-end: 2;
           grid-row-start: 2;
           align-self: center;
         }
 
         & > .description {
-          grid-column-start: 1;
-          grid-column-end: 2;
           grid-row-start: 3;
         }
 
-        & > ul {
-          grid-column-start: 1;
-          grid-column-end: 2;
+        & > * {
+          grid-column-start: unset !important;
+          grid-column-end: unset !important;
         }
       }
     }
