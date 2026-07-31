@@ -4250,10 +4250,9 @@ button:hover,
     }
 
     & .card-header {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(52px, 80px);
       align-items: flex-start;
-      justify-content: space-between;
       gap: 8px;
 
       & > div {
@@ -4261,6 +4260,15 @@ button:hover,
         flex-direction: column;
         align-items: flex-start;
         gap: 2px;
+      }
+
+      & > p {
+        height: 3em;
+        margin: 0;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
 
       & > img {
@@ -4273,6 +4281,16 @@ button:hover,
         min-height: 52px;
         object-fit: contain;
         user-select: none;
+      }
+
+      & > a {
+        display: block;
+        width: 100%;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     }
 
