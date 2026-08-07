@@ -8496,8 +8496,8 @@ const geoAuditInit = () => {
     errorDiv.textContent = state === "error" ? message : "";
 
     resultDiv.style.display = ["empty", "result"].includes(state) ? "block" : "none";
-    if (emptyState) emptyState.hidden = state !== "empty";
-    if (resultContent) resultContent.hidden = state !== "result";
+    if (emptyState) emptyState.style.display = state === "empty" ? "" : "none";
+    if (resultContent) resultContent.style.display = state === "result" ? "" : "none";
   };
 
   const normalizeNetworkValue = (value) => {
@@ -8570,8 +8570,8 @@ const geoAuditInit = () => {
       card.classList.contains("is-success"),
     );
 
-    if (improveCta) improveCta.hidden = allPresent;
-    if (successCta) successCta.hidden = !allPresent;
+    if (improveCta) improveCta.style.display = allPresent ? "none" : "";
+    if (successCta) successCta.style.display = allPresent ? "" : "none";
   };
 
   setState("empty");
