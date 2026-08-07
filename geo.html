@@ -427,9 +427,63 @@
                     <div class="error-msg mt-16 text-center" id="geo-audit-error" style="display:none;"></div>
 
                     <div class="info-msg geo-audit-result" id="geo-audit-result">
-                        <div class="geo-audit-empty text-center">
+                        <div class="geo-audit-empty text-center" hidden>
                             <p class="title_h4">Результат проверки появится здесь</p>
                             <p>Заполните поля выше и нажмите «Проверить присутствие»</p>
+                        </div>
+
+                        <div class="geo-audit-result__content">
+                            <p class="title_h4 geo-audit-result__title">Присутствие в ответах ИИ</p>
+
+                            <div class="geo-audit-networks">
+                                <div class="geo-audit-network is-success">
+                                    <p class="geo-audit-network__name title_h5">
+                                        <img src="/src/icons/gpt.svg" alt="ChatGPT">
+                                        ChatGPT
+                                    </p>
+
+                                    <p class="geo-audit-network__status">
+                                        <span class="geo-audit-network__status-icon" aria-hidden="true"></span>
+                                        <span>Есть</span>
+                                    </p>
+                                </div>
+
+                                <div class="geo-audit-network is-not-found">
+                                    <p class="geo-audit-network__name title_h5">
+                                        <img src="/src/icons/alice.svg" alt="Алиса">
+                                        Алиса
+                                    </p>
+
+                                    <p class="geo-audit-network__status">
+                                        <span class="geo-audit-network__status-icon" aria-hidden="true"></span>
+                                        <span>Нет</span>
+                                    </p>
+                                </div>
+
+                                <div class="geo-audit-network is-success">
+                                    <p class="geo-audit-network__name title_h5">
+                                        <img src="/src/icons/gemini.svg" alt="Gemini">
+                                        Gemini
+                                    </p>
+
+                                    <p class="geo-audit-network__status">
+                                        <span class="geo-audit-network__status-icon" aria-hidden="true"></span>
+                                        <span>Есть</span>
+                                    </p>
+                                </div>
+
+                                <div class="geo-audit-network is-not-found">
+                                    <p class="geo-audit-network__name title_h5">
+                                        <img src="/src/icons/deepseek.svg" alt="DeepSeek">
+                                        DeepSeek
+                                    </p>
+
+                                    <p class="geo-audit-network__status">
+                                        <span class="geo-audit-network__status-icon" aria-hidden="true"></span>
+                                        <span>Нет</span>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -993,7 +1047,7 @@
                             </div>
                             <div class="card-header--content">
                                 <b>
-                                    GEO + <a href="/seo" target="_blank">SEO</a>
+                                    GEO + <a href="/seo" target="_blank" class="title_h5">SEO</a>
                                 </b>
                                 <span>от&nbsp;24&nbsp;000&nbsp;₽/мес</span>
                             </div>

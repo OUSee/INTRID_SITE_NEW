@@ -1,71 +1,171 @@
-.geo-audit-card {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+.geo-audit {
+  &-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
-.geo-audit-form {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
-  gap: 8px;
-  align-items: stretch;
-  width: 100%;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-
-  input {
+  &-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: stretch;
     width: 100%;
-    min-width: 0;
-  }
-}
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 
-.geo-audit-form__submit {
-  height: 100%;
-  margin-left: auto;
-}
+    @media (max-width: 991.98px) {
+      grid-template-columns: 1fr 1fr;
+    }
 
-.geo-audit-result {
-  display: block;
-}
+    @media (max-width: 599.98px) {
+      grid-template-columns: 1fr;
+      padding-bottom: 20px;
+    }
 
-.geo-audit-empty {
-  padding: 40px 16px;
-  border: 1px dashed rgba(255, 255, 255, 0.16);
-  border-radius: 20px;
-  color: var(--color-grey);
+    & input {
+      width: 100%;
+      min-width: 0;
+    }
 
-  .title_h4 {
-    margin: 0 0 8px;
-    color: var(--color-white);
-  }
+    &__submit {
+      height: 100%;
+      margin-left: auto;
 
-  p:last-child {
-    margin: 0;
-  }
-}
+      @media (max-width: 991.98px) {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
 
-@media (max-width: 991.98px) {
-  .geo-audit-form {
-    grid-template-columns: 1fr 1fr;
+      @media (max-width: 599.98px) {
+        grid-column: auto;
+      }
+    }
   }
 
-  .geo-audit-form__submit {
-    grid-column: 1 / -1;
-    width: 100%;
-  }
-}
+  &-result {
+    display: block;
 
-@media (max-width: 599.98px) {
-  .geo-audit-form {
-    grid-template-columns: 1fr;
-    padding-bottom: 20px;
-  }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-  .geo-audit-form__submit {
-    grid-column: auto;
+    &__title {
+      margin: 0;
+    }
   }
 
-  .geo-audit-empty {
-    padding: 32px 16px;
+  &-empty {
+    padding: 40px 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.16);
+    border-radius: 20px;
+    color: var(--color-grey);
+
+    @media (max-width: 599.98px) {
+      padding: 32px 16px;
+    }
+
+    p:last-child {
+      margin: 0;
+    }
+  }
+
+  &-networks {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+
+    @media (max-width: 991.98px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    // @media (max-width: 599.98px) {
+    //   grid-template-columns: 1fr;
+    // }
+  }
+
+  &-network {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 132px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+
+    @media (max-width: 599.98px) {
+      align-items: center;
+      min-height: 112px;
+    }
+
+    &__status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: auto 0 0;
+      font-size: 14px;
+
+      &-icon {
+        position: relative;
+        flex: 0 0 auto;
+        width: 22px;
+        height: 22px;
+        border: 1px solid currentColor;
+        border-radius: 50%;
+
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -54%);
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1;
+        }
+      }
+    }
+
+    &__name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      @media (max-width: 599.98px) {
+        flex-direction: column;
+      }
+    }
+
+    & img {
+      width: 40px;
+      height: 40px;
+      vertical-align: central;
+    }
+
+    &.is-success {
+      border-color: var(--success);
+
+      & .geo-audit-network__status {
+        color: var(--success);
+
+        & .geo-audit-network__status-icon::before {
+          content: "✓";
+        }
+      }
+    }
+
+    &.is-not-found {
+      border-color: var(--error);
+
+      & .geo-audit-network__status {
+        color: #ff5f6d;
+
+        & .geo-audit-network__status-icon::before {
+          content: "×";
+        }
+      }
+    }
   }
 }
