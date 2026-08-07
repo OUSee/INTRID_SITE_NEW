@@ -398,11 +398,49 @@
             </div>
         </section>
 
+        <!-- GEO-аудит присутствия в нейросетях -->
+        <section id="geo-audit">
+            <div class="container">
+                <h2 class="w-fit underlined">
+                    Проверка присутствия компании в нейросетях
+                </h2>
+
+                <p>
+                    Укажите сайт и ключевой запрос — проверим, встречается ли ваш сайт в источниках ответов ChatGPT,
+                    Алисы, Gemini и DeepSeek.
+                </p>
+
+                <div class="card thin geo-audit-card mt-32">
+                    <form action="/submit/geo-audit" id="geo-audit-form" class="geo-audit-form">
+                        <input type="url" id="geo-audit-site" name="site" placeholder="Ссылка на сайт"
+                            autocomplete="url" required>
+
+                        <input type="text" id="geo-audit-query" name="query" placeholder="Ключевой запрос"
+                            autocomplete="off" required>
+
+                        <button type="submit" class="big button-highlight geo-audit-form__submit">
+                            Проверить присутствие
+                        </button>
+                    </form>
+
+                    <div class="preloader mt-16 text-center" id="geo-audit-loader" style="display:none;"></div>
+                    <div class="error-msg mt-16 text-center" id="geo-audit-error" style="display:none;"></div>
+
+                    <div class="info-msg geo-audit-result" id="geo-audit-result">
+                        <div class="geo-audit-empty text-center">
+                            <p class="title_h4">Результат проверки появится здесь</p>
+                            <p>Заполните поля выше и нажмите «Проверить присутствие»</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Чем GEO отличается от SEO -->
         <section>
             <div class="container">
                 <h2 class="underlined w-fit m-center">
-                    Чем GEO-продвижение отличается от <a href="/seo" class="h2" target="_blank">SEO</a>
+                    Чем GEO-продвижение отличается от <a href="/seo" class="title_h2" target="_blank">SEO</a>
                 </h2>
 
                 <div class="table-block table-block--landing-comparison mb-32">

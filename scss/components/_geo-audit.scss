@@ -1,0 +1,71 @@
+.geo-audit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.geo-audit-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: stretch;
+  width: 100%;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+
+  input {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.geo-audit-form__submit {
+  height: 100%;
+  margin-left: auto;
+}
+
+.geo-audit-result {
+  display: block;
+}
+
+.geo-audit-empty {
+  padding: 40px 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  color: var(--color-grey);
+
+  .title_h4 {
+    margin: 0 0 8px;
+    color: var(--color-white);
+  }
+
+  p:last-child {
+    margin: 0;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .geo-audit-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .geo-audit-form__submit {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 599.98px) {
+  .geo-audit-form {
+    grid-template-columns: 1fr;
+    padding-bottom: 20px;
+  }
+
+  .geo-audit-form__submit {
+    grid-column: auto;
+  }
+
+  .geo-audit-empty {
+    padding: 32px 16px;
+  }
+}
