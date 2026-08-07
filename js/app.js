@@ -230,7 +230,10 @@ function showFormFeedback(btn, message, type = "success", duration = 4000) {
   if (!message) return;
 
   const form = btn?.closest("form");
-  const shouldShowInButton = form?.id === "quick-form" || form?.id === "calculator-quick-form";
+  const shouldShowInButton =
+    form?.id === "quick-form" ||
+    form?.id === "calculator-quick-form" ||
+    form?.id === "form-domain";
 
   if (shouldShowInButton) {
     const originalHTML =
@@ -252,7 +255,7 @@ function showFormFeedback(btn, message, type = "success", duration = 4000) {
 
     btn.innerHTML =
       type === "success"
-        ? "Ваше сообщение успешно отправлено"
+        ? "Отправлено"
         : "Ошибка отправки";
 
     btn.feedbackTimer = setTimeout(() => {
