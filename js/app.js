@@ -8684,18 +8684,13 @@ const geoAuditInit = () => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     const site = siteInput.value.trim();
     const query = queryInput.value.trim();
-
-    if (!site || !query) {
-      showGlobalError("Заполните ссылку на сайт и ключевой запрос.");
-      return;
-    }
-
-    if (!siteInput.checkValidity()) {
-      showGlobalError("Укажите корректную ссылку на сайт.");
-      return;
-    }
 
     setDisabled(true);
     showResultsState();
