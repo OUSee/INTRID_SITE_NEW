@@ -411,7 +411,7 @@
                 </p>
 
                 <div class="card thin geo-audit-card mt-32">
-                    <form action="/submit/geo-audit" id="geo-audit-form" class="geo-audit-form">
+                    <form action="/submit/geo-audit" id="geo-audit-form" class="geo-audit-form" novalidate>
                         <input type="url" id="geo-audit-site" name="site" placeholder="Ссылка на сайт"
                             autocomplete="url" required>
 
@@ -427,16 +427,16 @@
                     <div class="error-msg mt-16 text-center" id="geo-audit-error" style="display:none;"></div>
 
                     <div class="info-msg geo-audit-result" id="geo-audit-result">
-                        <div class="geo-audit-empty text-center" hidden>
+                        <div class="geo-audit-empty text-center">
                             <p class="title_h4">Результат проверки появится здесь</p>
                             <p>Заполните поля выше и нажмите «Проверить присутствие»</p>
                         </div>
 
-                        <div class="geo-audit-result__content">
+                        <div class="geo-audit-result__content" hidden>
                             <p class="title_h4 geo-audit-result__title">Присутствие в ответах ИИ</p>
 
                             <div class="geo-audit-networks">
-                                <div class="geo-audit-network is-success">
+                                <div class="geo-audit-network" data-network="chatgpt">
                                     <p class="geo-audit-network__name title_h5">
                                         <img src="/src/icons/gpt.svg" alt="ChatGPT">
                                         ChatGPT
@@ -444,11 +444,11 @@
 
                                     <p class="geo-audit-network__status">
                                         <span class="geo-audit-network__status-icon" aria-hidden="true"></span>
-                                        <span>Есть</span>
+                                        <span data-status-text>—</span>
                                     </p>
                                 </div>
 
-                                <div class="geo-audit-network is-not-found">
+                                <div class="geo-audit-network" data-network="alice">
                                     <p class="geo-audit-network__name title_h5">
                                         <img src="/src/icons/alice.svg" alt="Алиса">
                                         Алиса
@@ -456,11 +456,11 @@
 
                                     <p class="geo-audit-network__status">
                                         <span class="geo-audit-network__status-icon" aria-hidden="true"></span>
-                                        <span>Нет</span>
+                                        <span data-status-text>—</span>
                                     </p>
                                 </div>
 
-                                <div class="geo-audit-network is-success">
+                                <div class="geo-audit-network" data-network="gemini">
                                     <p class="geo-audit-network__name title_h5">
                                         <img src="/src/icons/gemini.svg" alt="Gemini">
                                         Gemini
@@ -468,11 +468,11 @@
 
                                     <p class="geo-audit-network__status">
                                         <span class="geo-audit-network__status-icon" aria-hidden="true"></span>
-                                        <span>Есть</span>
+                                        <span data-status-text>—</span>
                                     </p>
                                 </div>
 
-                                <div class="geo-audit-network is-not-found">
+                                <div class="geo-audit-network" data-network="deepseek">
                                     <p class="geo-audit-network__name title_h5">
                                         <img src="/src/icons/deepseek.svg" alt="DeepSeek">
                                         DeepSeek
@@ -480,12 +480,12 @@
 
                                     <p class="geo-audit-network__status">
                                         <span class="geo-audit-network__status-icon" aria-hidden="true"></span>
-                                        <span>Нет</span>
+                                        <span data-status-text>—</span>
                                     </p>
                                 </div>
                             </div>
 
-                            <div class="geo-audit-cta geo-audit-cta--improve">
+                            <div class="geo-audit-cta geo-audit-cta--improve" hidden>
                                 <div class="geo-audit-cta__content">
                                     <p class="title_h4 geo-audit-cta__title">
                                         Готовы улучшить вашу видимость в нейросетях?

@@ -8466,6 +8466,188 @@ const lostProfitInit = () => {
   });
 };
 
+const geoAuditInit = () => {
+  const form = document.getElementById("geo-audit-form");
+  if (!form) return;
+
+  const siteInput = document.getElementById("geo-audit-site");
+  const queryInput = document.getElementById("geo-audit-query");
+  const loader = document.getElementById("geo-audit-loader");
+  const errorDiv = document.getElementById("geo-audit-error");
+  const resultDiv = document.getElementById("geo-audit-result");
+  const emptyState = resultDiv?.querySelector(".geo-audit-empty");
+  const resultContent = resultDiv?.querySelector(".geo-audit-result__content");
+  const networkCards = resultDiv?.querySelectorAll(".geo-audit-network") || [];
+  const improveCta = resultDiv?.querySelector(".geo-audit-cta--improve");
+  const successCta = resultDiv?.querySelector(".geo-audit-cta--success");
+  const formControls = form.querySelectorAll("input, button");
+
+  if (!siteInput || !queryInput || !loader || !errorDiv || !resultDiv) return;
+
+  const setDisabled = (disabled) => {
+    formControls.forEach((element) => {
+      element.disabled = disabled;
+    });
+  };
+
+  const setState = (state, message = "") => {
+    loader.style.display = state === "loading" ? "block" : "none";
+    errorDiv.style.display = state === "error" ? "block" : "none";
+    errorDiv.textContent = state === "error" ? message : "";
+
+    resultDiv.style.display = ["empty", "result"].includes(state) ? "block" : "none";
+    if (emptyState) emptyState.hidden = state !== "empty";
+    if (resultContent) resultContent.hidden = state !== "result";
+  };
+
+  const normalizeNetworkValue = (value) => {
+    if (typeof value === "boolean") return value;
+    if (typeof value === "number") return value > 0;
+
+    if (typeof value === "string") {
+      const normalized = value.trim().toLowerCase();
+      return [
+        "true",
+        "1",
+        "yes",
+        "found",
+        "present",
+        "success",
+        "есть",
+        "найдено",
+        "присутствует",
+      ].includes(normalized);
+    }
+
+    if (value && typeof value === "object") {
+      if ("found" in value) return normalizeNetworkValue(value.found);
+      if ("present" in value) return normalizeNetworkValue(value.present);
+      if ("success" in value) return normalizeNetworkValue(value.success);
+      if ("status" in value) return normalizeNetworkValue(value.status);
+    }
+
+    return false;
+  };
+
+  const getNetworkResults = (data) => {
+    const source = data?.results || data?.networks || data?.sources || data?.data || {};
+
+    const aliases = {
+      chatgpt: ["chatgpt", "chat_gpt", "gpt"],
+      alice: ["alice", "alisa", "yandex_alice"],
+      gemini: ["gemini", "google_gemini", "google"],
+      deepseek: ["deepseek", "deep_seek"],
+    };
+
+    const results = Object.fromEntries(
+      Object.entries(aliases).map(([network, keys]) => {
+        const key = keys.find((alias) => Object.prototype.hasOwnProperty.call(source, alias));
+
+        if (!key) {
+          throw new Error("Сервер вернул неполный результат проверки.");
+        }
+
+        return [network, normalizeNetworkValue(source[key])];
+      }),
+    );
+
+    return results;
+  };
+
+  const renderResults = (results) => {
+    networkCards.forEach((card) => {
+      const network = card.dataset.network;
+      const isPresent = Boolean(results[network]);
+      const statusText = card.querySelector("[data-status-text]");
+
+      card.classList.toggle("is-success", isPresent);
+      card.classList.toggle("is-not-found", !isPresent);
+
+      if (statusText) statusText.textContent = isPresent ? "Есть" : "Нет";
+    });
+
+    const allPresent = Array.from(networkCards).every((card) =>
+      card.classList.contains("is-success"),
+    );
+
+    if (improveCta) improveCta.hidden = allPresent;
+    if (successCta) successCta.hidden = !allPresent;
+  };
+
+  setState("empty");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const site = siteInput.value.trim();
+    const query = queryInput.value.trim();
+    const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+
+    if (!site || !query) {
+      setState("error", "Заполните ссылку на сайт и ключевой запрос.");
+      return;
+    }
+
+    if (!siteInput.checkValidity()) {
+      setState("error", "Укажите корректную ссылку на сайт.");
+      return;
+    }
+
+    setDisabled(true);
+    setState("loading");
+    if (submitBtn) showButtonLoader(submitBtn);
+
+    try {
+      const csrfParam =
+        document
+          .querySelector('meta[name="csrf-param"]')
+          ?.getAttribute("content") || "_csrf";
+      const csrfToken = document
+        .querySelector('meta[name="csrf-token"]')
+        ?.getAttribute("content");
+
+      const body = new URLSearchParams();
+      if (csrfToken) body.append(csrfParam, csrfToken);
+      body.append("site", site);
+      body.append("query", query);
+
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: body.toString(),
+      });
+
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const data = await response.json();
+
+      if (data?.success === false) {
+        throw new Error(data.error || "Не удалось выполнить проверку.");
+      }
+
+      renderResults(getNetworkResults(data));
+      setState("result");
+
+      setTimeout(() => {
+        resultDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 150);
+    } catch (error) {
+      console.error("GEO audit error:", error);
+      setState(
+        "error",
+        error?.message && !String(error.message).startsWith("HTTP ")
+          ? error.message
+          : "Не удалось выполнить проверку. Попробуйте позже.",
+      );
+    } finally {
+      setDisabled(false);
+      if (submitBtn) hideButtonLoader(submitBtn);
+    }
+  });
+};
+
 // Функция обновления тултипов (fallback, если глобальная не определена)
 function updateTooltipsForSelectFallback(select) {
   let prefix = select.getAttribute("data-tooltip-prefix");
@@ -9260,6 +9442,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("audit-form")) seoAuditInit();
   if (document.getElementById("test-site-form")) domainCheker();
   if (document.getElementById("lost-profit-form")) lostProfitInit();
+  if (document.getElementById("geo-audit-form")) geoAuditInit();
 
   // photo cards
   if (photoCards.length > 0) {
