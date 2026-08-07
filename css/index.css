@@ -15147,6 +15147,26 @@ main {
   height: 40px;
   filter: grayscale(1) brightness(10);
 }
+.geo-audit-network.pending .geo-audit-network__status {
+  color: var(--color-grey);
+}
+.geo-audit-network.pending .geo-audit-network__status .geo-audit-network__status-icon {
+  border-color: rgba(255, 255, 255, 0.2);
+  border-top-color: currentColor;
+  animation: geo-audit-spin 0.8s linear infinite;
+}
+.geo-audit-network.pending .geo-audit-network__status .geo-audit-network__status-icon::before {
+  content: none;
+}
+.geo-audit-network.is-error {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.geo-audit-network.is-error .geo-audit-network__status {
+  color: var(--color-grey);
+}
+.geo-audit-network.is-error .geo-audit-network__status .geo-audit-network__status-icon::before {
+  content: "!";
+}
 .geo-audit-network.is-success {
   border-color: var(--success);
 }
@@ -15183,9 +15203,6 @@ main {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.03);
 }
-.geo-audit-cta[hidden] {
-  display: none;
-}
 @media (max-width: 767.98px) {
   .geo-audit-cta {
     flex-direction: column;
@@ -15213,6 +15230,11 @@ main {
   }
 }
 
+@keyframes geo-audit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 @media (max-width: 999.98px) {
   .reviews {
     background: linear-gradient(0deg, rgba(0, 234, 255, 0) 0%, rgba(0, 234, 255, 0.35) 15%, rgba(0, 234, 255, 0.35) 85%, rgba(0, 234, 255, 0) 100%);
