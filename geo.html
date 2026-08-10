@@ -202,7 +202,7 @@
                         <a class="button-highlight big" href="#geo_application">
                             Заказать GEO-продвижение
                             <i class="icon-arrow_wide"></i>
-                            <a class="button-highlight big" href="/seo" target="_blank">
+                            <a class="button-link big" href="/seo" target="_blank">
                                 Подробнее о SEO-продвижении
                                 <i class="icon-arrow_wide"></i>
                             </a>
@@ -322,9 +322,33 @@
                     <div class="right">
                         <div class="position-sticky">
                             <div class="card card--leaders minified" id="geo_application">
-                                %_form_{Обсудить GEO-продвижение Вашего проекта,Проверим текущую видимость компании,
-                                предложим подходящий формат работы и подготовим коммерческое
-                                предложение,true,false,true}%
+                                <p class="title_h4 text-center"> Обсудить GEO-продвижение </p>
+                                <p class="text-center">
+                                    Проверим текущую видимость бренда и&nbsp;пришлём отчёт с&nbsp;рекомендациями
+                                </p>
+                                <form id="quick-form" class="order-form ajax-form" action="/submit/kontakt"
+                                    method="post">
+                                    <div class="recaptcha-wrapper" style="display: none;">
+                                        <div class="js-recaptcha"
+                                            data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                            data-size="invisible"></div>
+                                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                    </div>
+                                    <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
+                                    <input type="email" id="customer-mail" name="email" placeholder="E-mail">
+                                    <input type="tel" required="" id="customer-phone" name="tel"
+                                        placeholder="Ваш телефон *">
+                                    <input type="text" id="customer-url" placeholder="URL сайта *" name="url" required>
+                                    <input type="text" id="customer-brand" placeholder="Название бренда" name="brand">
+                                    <input type="text" id="customer-target" placeholder="Целевой регион" name="target">
+                                    <p class="testimonials text-center m-center mb-0"> Нажимая кнопку, я выражаю
+                                        согласие на
+                                        обработку <a href="/privacy.html" target="_blank">персональных&nbsp;данных</a> в
+                                        соответствии с <a
+                                            href="https://normativ.kontur.ru/document?moduleId=1&documentId=501173&ysclid=ms4giupu7t521197867"
+                                            target="_blank" rel="nofollow">ФЗ&nbsp;№152</a> </p> <button type="submit"
+                                        class="button big button-white mt-12"> Отправить </button>
+                                </form>
                             </div>
 
                             <a href="/doc/seo.pdf" target="_blank"
