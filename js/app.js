@@ -8486,11 +8486,27 @@ const geoAuditInit = () => {
   if (!siteInput || !queryInput || !errorDiv || !resultDiv || !resultContent) return;
 
   const NETWORK_STATES = ["pending", "is-success", "is-not-found", "is-error"];
+  const TERMINAL_STATES = ["is-success", "is-not-found", "is-error"];
+  const POLL_INTERVAL = 1500;
+  const POLL_TIMEOUT = 60000;
+  const RESULT_REVEAL_DELAY = 250;
+
+  let activeAuditId = null;
+  let pollTimer = null;
+  let pollStartedAt = 0;
+  let isSubmitting = false;
 
   const setDisabled = (disabled) => {
     formControls.forEach((element) => {
       element.disabled = disabled;
     });
+  };
+
+  const clearPolling = () => {
+    if (pollTimer) {
+      clearTimeout(pollTimer);
+      pollTimer = null;
+    }
   };
 
   const showEmptyState = () => {
@@ -8514,7 +8530,6 @@ const geoAuditInit = () => {
   };
 
   const showGlobalError = (message) => {
-    resultDiv.style.display = "none";
     errorDiv.textContent = message;
     errorDiv.style.display = "block";
   };
@@ -8549,6 +8564,35 @@ const geoAuditInit = () => {
     networkCards.forEach((card) => setNetworkState(card, "pending"));
   };
 
+  const captureResultState = () => ({
+    resultDisplay: resultDiv.style.display,
+    emptyDisplay: emptyState?.style.display ?? "",
+    contentDisplay: resultContent.style.display,
+    improveCtaDisplay: improveCta?.style.display ?? "",
+    successCtaDisplay: successCta?.style.display ?? "",
+    networks: networkCards.map((card) => ({
+      card,
+      className: card.className,
+      statusText: card.querySelector("[data-status-text]")?.textContent ?? "",
+    })),
+  });
+
+  const restoreResultState = (snapshot) => {
+    if (!snapshot) return;
+
+    resultDiv.style.display = snapshot.resultDisplay;
+    if (emptyState) emptyState.style.display = snapshot.emptyDisplay;
+    resultContent.style.display = snapshot.contentDisplay;
+    if (improveCta) improveCta.style.display = snapshot.improveCtaDisplay;
+    if (successCta) successCta.style.display = snapshot.successCtaDisplay;
+
+    snapshot.networks.forEach(({ card, className, statusText }) => {
+      card.className = className;
+      const statusElement = card.querySelector("[data-status-text]");
+      if (statusElement) statusElement.textContent = statusText;
+    });
+  };
+
   const normalizeNetworkValue = (value) => {
     if (typeof value === "boolean") return value;
     if (typeof value === "number") return value > 0;
@@ -8571,38 +8615,84 @@ const geoAuditInit = () => {
     if (value && typeof value === "object") {
       if ("found" in value) return normalizeNetworkValue(value.found);
       if ("present" in value) return normalizeNetworkValue(value.present);
-      if ("status" in value) return normalizeNetworkValue(value.status);
+      if ("result" in value) return normalizeNetworkValue(value.result);
     }
 
     return false;
   };
 
-  const getNetworkValue = (data, network) => {
-    if (data?.network && String(data.network).toLowerCase() !== network) {
-      throw new Error("Сервер вернул результат другой нейросети.");
+  const getResultState = (value) => {
+    if (value == null) return null;
+
+    if (typeof value === "object") {
+      const status = String(value.status || "").trim().toLowerCase();
+
+      if (["pending", "processing", "queued", "running"].includes(status)) {
+        return "pending";
+      }
+
+      if (["error", "failed", "unavailable"].includes(status)) {
+        return "is-error";
+      }
+
+      if (["not_found", "not-found", "absent"].includes(status)) {
+        return "is-not-found";
+      }
+
+      if (["found", "success", "completed", "done"].includes(status)) {
+        if ("found" in value || "present" in value || "result" in value) {
+          return normalizeNetworkValue(value) ? "is-success" : "is-not-found";
+        }
+        return "is-success";
+      }
     }
 
-    if (Object.prototype.hasOwnProperty.call(data || {}, "found")) {
-      return normalizeNetworkValue(data.found);
-    }
-
-    if (Object.prototype.hasOwnProperty.call(data || {}, "present")) {
-      return normalizeNetworkValue(data.present);
-    }
-
-    if (Object.prototype.hasOwnProperty.call(data || {}, "result")) {
-      return normalizeNetworkValue(data.result);
-    }
-
-    const source = data?.results || data?.networks || data?.data;
-    if (source && Object.prototype.hasOwnProperty.call(source, network)) {
-      return normalizeNetworkValue(source[network]);
-    }
-
-    throw new Error("Сервер не вернул результат проверки.");
+    return normalizeNetworkValue(value) ? "is-success" : "is-not-found";
   };
 
-  const createRequestBody = (site, query, network) => {
+  const getResultsSource = (data) => data?.results || data?.networks || data?.data || {};
+
+  const applyResults = async (data) => {
+    const source = getResultsSource(data);
+    const updates = [];
+
+    networkCards.forEach((card) => {
+      const network = card.dataset.network;
+      if (!network || !Object.prototype.hasOwnProperty.call(source, network)) return;
+
+      const state = getResultState(source[network]);
+      if (!state || state === "pending") return;
+      if (TERMINAL_STATES.some((className) => card.classList.contains(className))) return;
+
+      updates.push({ card, state });
+    });
+
+    for (const update of updates) {
+      setNetworkState(update.card, update.state);
+      if (updates.length > 1) {
+        await new Promise((resolve) => setTimeout(resolve, RESULT_REVEAL_DELAY));
+      }
+    }
+  };
+
+  const allNetworksFinished = () =>
+    networkCards.length > 0 &&
+    networkCards.every((card) =>
+      TERMINAL_STATES.some((className) => card.classList.contains(className)),
+    );
+
+  const renderCta = () => {
+    if (!allNetworksFinished()) return;
+
+    const allPresent = networkCards.every((card) =>
+      card.classList.contains("is-success"),
+    );
+
+    if (improveCta) improveCta.style.display = allPresent ? "none" : "";
+    if (successCta) successCta.style.display = allPresent ? "" : "none";
+  };
+
+  const createRequestBody = (site, query) => {
     const csrfParam =
       document.querySelector('meta[name="csrf-param"]')?.getAttribute("content") ||
       "_csrf";
@@ -8614,69 +8704,100 @@ const geoAuditInit = () => {
     if (csrfToken) body.append(csrfParam, csrfToken);
     body.append("site", site);
     body.append("query", query);
-    body.append("network", network);
 
     return body;
   };
 
-  const checkNetwork = async (card, site, query) => {
-    const network = card.dataset.network;
+  const parseResponse = async (response) => {
+    let data;
 
     try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: createRequestBody(site, query, network).toString(),
-      });
-
-      if (!response.ok) {
-        const error = new Error(`HTTP ${response.status}`);
-        error.isTransportError = true;
-        throw error;
-      }
-
-      let data;
-      try {
-        data = await response.json();
-      } catch (error) {
-        error.isTransportError = true;
-        throw error;
-      }
-
-      if (data?.success === false) {
-        const error = new Error(data.error || "Не удалось проверить нейросеть.");
-        error.isNetworkResultError = true;
-        throw error;
-      }
-
-      const isPresent = getNetworkValue(data, network);
-      setNetworkState(card, isPresent ? "is-success" : "is-not-found");
-
-      return { network, status: isPresent ? "success" : "not-found" };
+      data = await response.json();
     } catch (error) {
-      console.error(`GEO audit ${network} error:`, error);
-      setNetworkState(card, "is-error");
-
-      return {
-        network,
-        status: "error",
-        transportError: Boolean(
-          error?.isTransportError || error instanceof TypeError,
-        ),
-        message: error?.message,
-      };
+      throw new Error("Сервер вернул некорректный ответ.");
     }
+
+    if (!response.ok || data?.success === false) {
+      const error = new Error(
+        data?.message || data?.error || "Не удалось выполнить GEO-аудит.",
+      );
+      error.status = response.status;
+      throw error;
+    }
+
+    return data;
   };
 
-  const renderCta = () => {
-    const allPresent =
-      networkCards.length > 0 &&
-      networkCards.every((card) => card.classList.contains("is-success"));
+  const getStatusUrl = (data, auditId) => {
+    if (data?.statusUrl) return data.statusUrl;
+    if (data?.status_url) return data.status_url;
 
-    if (improveCta) improveCta.style.display = allPresent ? "none" : "";
-    if (successCta) successCta.style.display = allPresent ? "" : "none";
+    return `/submit/geo-audit-status?id=${encodeURIComponent(auditId)}`;
+  };
+
+  const finishAudit = () => {
+    clearPolling();
+    activeAuditId = null;
+    isSubmitting = false;
+    renderCta();
+    setDisabled(false);
+  };
+
+  const schedulePoll = (url) => {
+    clearPolling();
+    pollTimer = setTimeout(() => pollAudit(url), POLL_INTERVAL);
+  };
+
+  const pollAudit = async (url) => {
+    if (!activeAuditId) return;
+
+    if (Date.now() - pollStartedAt >= POLL_TIMEOUT) {
+      networkCards.forEach((card) => {
+        if (card.classList.contains("pending")) setNetworkState(card, "is-error");
+      });
+      showGlobalError("Не удалось дождаться полного результата проверки. Попробуйте позже.");
+      finishAudit();
+      return;
+    }
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+        cache: "no-store",
+      });
+
+      const data = await parseResponse(response);
+      await applyResults(data);
+
+      const auditStatus = String(data?.status || "").toLowerCase();
+      const completed = ["completed", "done", "success"].includes(auditStatus);
+      const failed = ["error", "failed"].includes(auditStatus);
+
+      if (failed) {
+        networkCards.forEach((card) => {
+          if (card.classList.contains("pending")) setNetworkState(card, "is-error");
+        });
+        showGlobalError(data?.message || "Не удалось завершить GEO-аудит.");
+        finishAudit();
+        return;
+      }
+
+      if (completed || allNetworksFinished()) {
+        networkCards.forEach((card) => {
+          if (card.classList.contains("pending")) setNetworkState(card, "is-error");
+        });
+        finishAudit();
+        return;
+      }
+
+      schedulePoll(url);
+    } catch (error) {
+      console.error("GEO audit polling error:", error);
+      schedulePoll(url);
+    }
   };
 
   showEmptyState();
@@ -8689,9 +8810,15 @@ const geoAuditInit = () => {
       return;
     }
 
+    if (isSubmitting) return;
+
     const site = siteInput.value.trim();
     const query = queryInput.value.trim();
+    const previousResultState = captureResultState();
 
+    isSubmitting = true;
+    clearPolling();
+    activeAuditId = null;
     setDisabled(true);
     showResultsState();
     setAllNetworksPending();
@@ -8700,25 +8827,48 @@ const geoAuditInit = () => {
       resultDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }, 100);
 
-    const settledResults = await Promise.all(
-      networkCards.map((card) => checkNetwork(card, site, query)),
-    );
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Accept: "application/json",
+        },
+        body: createRequestBody(site, query).toString(),
+      });
 
-    const failedResults = settledResults.filter((result) => result.status === "error");
-    const allRequestsFailed =
-      settledResults.length > 0 && failedResults.length === settledResults.length;
-    const allTransportFailed =
-      allRequestsFailed && failedResults.every((result) => result.transportError);
+      const data = await parseResponse(response);
+      await applyResults(data);
 
-    if (allTransportFailed) {
-      showGlobalError(
-        "Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте позже.",
-      );
-    } else {
-      renderCta();
+      const auditStatus = String(data?.status || "").toLowerCase();
+      const auditId = data?.auditId || data?.audit_id || data?.id;
+      const completed = ["completed", "done", "success"].includes(auditStatus);
+
+      if (completed || allNetworksFinished()) {
+        networkCards.forEach((card) => {
+          if (card.classList.contains("pending")) setNetworkState(card, "is-error");
+        });
+        finishAudit();
+        return;
+      }
+
+      if (!auditId) {
+        throw new Error("Сервер не вернул идентификатор GEO-аудита.");
+      }
+
+      activeAuditId = auditId;
+      pollStartedAt = Date.now();
+      schedulePoll(getStatusUrl(data, auditId));
+    } catch (error) {
+      console.error("GEO audit error:", error);
+
+      // Ошибка создания аудита относится ко всей операции, а не к отдельным
+      // нейросетям. Возвращаем карточки в состояние до отправки и показываем
+      // только глобальную ошибку.
+      restoreResultState(previousResultState);
+      showGlobalError(error?.message || "Не удалось выполнить GEO-аудит.");
+      finishAudit();
     }
-
-    setDisabled(false);
   });
 };
 
