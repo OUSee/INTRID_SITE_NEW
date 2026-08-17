@@ -1931,18 +1931,20 @@ form {
     top: 60px;
   }
 
-  & a {
-    color: var(--color-white);
-    text-decoration: none;
+  & > * {
+    &:is(a) {
+      color: var(--color-white);
+      text-decoration: none;
 
-    &.link-disabled {
-      opacity: 0.6;
-      pointer-events: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
+  }
 
-    &:hover {
-      text-decoration: underline;
-    }
+  & .link-disabled {
+    opacity: 0.6;
+    pointer-events: none;
   }
 }
 

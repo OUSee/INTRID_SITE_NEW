@@ -4422,16 +4422,16 @@ form input[type=submit] {
     top: 60px;
   }
 }
-.breadcrumbs a {
+.breadcrumbs > *:is(a) {
   color: var(--color-white);
   text-decoration: none;
 }
-.breadcrumbs a.link-disabled {
+.breadcrumbs > *:is(a):hover {
+  text-decoration: underline;
+}
+.breadcrumbs .link-disabled {
   opacity: 0.6;
   pointer-events: none;
-}
-.breadcrumbs a:hover {
-  text-decoration: underline;
 }
 
 .breadcrumbs-wrapper {
