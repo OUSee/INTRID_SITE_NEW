@@ -2898,6 +2898,50 @@
         </div>
     </dialog>
 
+    <dialog class="popup form-popup" id="calculator-form">
+        <div class="popup-wrapper">
+            <div class="popup-body">
+                <form action="/submit/calc" method="post" class="ajax-form" id="calc-form">
+                    <?= yii\helpers\Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken()) ?>
+                    <div class="form-limitter">
+                        <p class="title_h4 text-center">
+                            Получить проект сайта
+                        </p>
+
+                        <input type="hidden" name="arr">
+                        <input type="hidden" name="calc-sum">
+                        <input type="hidden" name="g-recaptcha-response" value="">
+                        <input type="text" name="data[name]" placeholder="Имя">
+                        <input type="mail" name="data[email]" placeholder="E-mail">
+                        <input type="tel" name="data[tel]" placeholder="* Телефон" required>
+                        <textarea data-autosize="true" rows="1" placeholder="Комментарий"
+                            name="data[textarea]"></textarea>
+                        <div class="input-file">
+                            <div class="file-drop-area">
+                                <label>
+                                    <input type="file" multiple=""
+                                        accept=".pdf, application/pdf, image/*,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/mspowerpoint, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/rtf,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.presentation">
+                                    <span>Прикрепить ТЗ</span>
+                                    <img src="/src/icons/pin.svg" alt="Прикрепить файл">
+                                </label>
+                                <div class="drag-drop-hint">или перетащите файлы сюда</div>
+                                <div class="file-list" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <p class="testimonials text-center m-center mb-0">
+                            Нажимая кнопку, я выражаю согласие на обработку <a href="javascript://"
+                                data-popup="privacy-policy">персональных&nbsp;данных</a> в соответствии с <a
+                                href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                target="_blank">ФЗ&nbsp;№152</a>
+                        </p>
+                        <button type="submit" class="button-white w-100 justify-center m-center mt-20">Отправить
+                            заявку</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
     <!-- cookies -->
     <script>
         (() => {
