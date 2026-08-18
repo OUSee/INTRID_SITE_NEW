@@ -6465,7 +6465,7 @@ document.addEventListener("DOMContentLoaded", () => {
               showFormFeedback(btn, "Пароль принят", "success");
             } else {
               // Успешный ответ, но без явного status – считаем успехом
-              showFormFeedback(btn, "Пароль принят", "success");
+              showFormFeedback(btn, "Неверный пароль", "error");
             }
           } else {
             // HTTP ошибка
