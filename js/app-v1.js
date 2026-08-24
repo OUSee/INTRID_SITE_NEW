@@ -463,79 +463,10 @@ function initPopups() {
   });
 }
 
-const modalRequests = new Map();
-
-function loadModal(id, trigger = null) {
-  const existingPopup = document.getElementById(id);
-  if (existingPopup) {
-    return Promise.resolve(existingPopup);
-  }
-
-  if (modalRequests.has(id)) {
-    return modalRequests.get(id);
-  }
-
-  const container = document.getElementById("deferred-modals");
-  const url = container?.dataset.url;
-  if (!container || !url) {
-    return Promise.reject(new Error("Контейнер диалоговых окон не найден"));
-  }
-
-  const modalUrl = new URL(url, window.location.href);
-  modalUrl.searchParams.set("id", id);
-
-  const request = fetch(modalUrl.toString(), {
-    credentials: "same-origin",
-    headers: {
-      "X-Requested-With": "XMLHttpRequest",
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Не удалось загрузить диалоговое окно: ${id}`);
-      }
-
-      return response.text();
-    })
-    .then((html) => {
-      container.insertAdjacentHTML("beforeend", html.trim());
-
-      const popup = container.lastElementChild;
-      if (!popup || popup.id !== id) {
-        throw new Error(`Некорректная разметка диалогового окна: ${id}`);
-      }
-
-      initPopups();
-      initAjaxForms();
-      initCommentForms();
-      initFileInputs(popup);
-      maskPhone('input[type="tel"]', "+7 (___) ___-__-__");
-      popup.querySelectorAll("textarea[data-autosize]").forEach((textarea) => {
-        window.textarea_autosize?.resize(textarea);
-      });
-      observeLazyElements(popup);
-
-      if (id === "gallery-popup") {
-        gallerySelector(trigger?.dataset.gallery || null);
-      }
-      if (id === "site-preview") {
-        sitePreview();
-      }
-
-      return popup;
-    })
-    .finally(() => modalRequests.delete(id));
-
-  modalRequests.set(id, request);
-  return request;
-}
-
 // Обработчик клика на триггере модального окна
 function handlePopupTriggerClick() {
   const popupId = this.dataset.popup;
-  openPopup(popupId, this).catch((error) => {
-    console.error("Popup loading error:", error);
-  });
+  openPopup(popupId);
 }
 
 // Специально, для видео из кружочка
@@ -558,93 +489,86 @@ const toggleVideoPLay = (videoElement, init) => {
 };
 
 // Открытие окон
-const openPopup = (id, trigger = null) => {
-  const popupRequest = loadModal(id, trigger);
+const openPopup = (id) => {
+  const popup = document.getElementById(id);
+  const onLoad = popup.dataset.onload;
 
-  return popupRequest
-    .catch((error) => {
-      console.error("Popup loading error:", error);
-      return null;
-    })
-    .then((popup) => {
-      if (!popup) {
-        return null;
-      }
+  let buttonClose;
+  let popupVideo = popup.id === "video-circle";
 
-      const onLoad = popup.dataset.onload;
-      let buttonClose;
-      const popupVideo = popup.id === "video-circle";
+  // Проверка на кнопки закрытия
+  if (!popup.querySelector(".popup-close") && typeof popup.id !== "undefined") {
+    buttonClose = document.createElement("button");
+    buttonClose.classList.add("popup-close");
+    buttonClose.setAttribute("data-close-popup", true);
+    buttonClose.setAttribute("aria-label", "close-popup");
+  }
 
-      if (!popup.querySelector(".popup-close")) {
-        buttonClose = document.createElement("button");
-        buttonClose.classList.add("popup-close");
-        buttonClose.setAttribute("data-close-popup", true);
-        buttonClose.setAttribute("aria-label", "close-popup");
-      }
-
-      if (popupVideo) {
-        const popupBody = popup.querySelector(".popup-body");
-        const videoElement = `<video poster="./src/images/video/poster.webp">
+  // Проверка окна с видео + последующая вставка <video></video>
+  if (popupVideo) {
+    let popupBody = popup.querySelector(".popup-body"),
+      videoElement = `<video poster="./src/images/video/poster.webp">
                     <source src="./src/video/video.mp4" type="video/mp4">
                     <source src="./src/video/video.webm" type="video/webm">
                 </video>`;
 
-        popupBody.innerHTML = videoElement;
+    // Вставляем элемент с видео
+    popupBody.innerHTML = videoElement;
+  }
+
+  // Обозначаем видео селектор в popup
+  let videoSelector = popup.querySelector("video");
+
+  // Открываем окно
+  popup.classList.add("open");
+
+  // Вставка кнопки закрытия в зависимости от верстки окон
+  if (typeof buttonClose !== "undefined") {
+    popup.querySelector(".popup-wrapper")
+      ? popup?.querySelector(".popup-wrapper").prepend(buttonClose)
+      : popup.prepend(buttonClose);
+  }
+
+  // Приостанавливаем прокрутку страницы, когда окно открыто
+  document.documentElement.classList.add("popup-opened");
+  videoSelector ? toggleVideoPLay(videoSelector, true) : false;
+
+  if (onLoad) {
+    window[onLoad]();
+  }
+
+  popup.addEventListener("click", (e) => {
+    if (
+      e.target.classList.contains("popup-close") ||
+      e.target.dataset.closePopup ||
+      e.target.classList.contains("popup-wrapper") ||
+      e.target.id == id
+    ) {
+      if (e.target.tagName && e.target.tagName.toLowerCase() !== "a") {
+        e.stopPropagation();
+        e.preventDefault();
       }
 
-      const videoSelector = popup.querySelector("video");
-      popup.classList.add("open");
+      // let videoPopup = popup.querySelector("video");
+      let iframe = popup.querySelector("iframe");
+
+      popup.classList.remove("open");
 
       if (buttonClose) {
-        popup.querySelector(".popup-wrapper")
-          ? popup.querySelector(".popup-wrapper").prepend(buttonClose)
-          : popup.prepend(buttonClose);
+        buttonClose.remove();
       }
 
-      document.documentElement.classList.add("popup-opened");
-      videoSelector ? toggleVideoPLay(videoSelector, true) : false;
+      // Возвращаем прокрутку страницы, когда окно закрыто
+      document.documentElement.classList.remove("popup-opened");
 
-      if (onLoad && typeof window[onLoad] === "function") {
-        window[onLoad]();
-      }
-
-      popup.addEventListener("click", (e) => {
-        if (
-          e.target.classList.contains("popup-close") ||
-          e.target.dataset.closePopup ||
-          e.target.classList.contains("popup-wrapper") ||
-          e.target.id == id
-        ) {
-          if (e.target.tagName && e.target.tagName.toLowerCase() !== "a") {
-            e.stopPropagation();
-            e.preventDefault();
-          }
-
-          const iframe = popup.querySelector("iframe");
-          popup.classList.remove("open");
-
-          if (buttonClose) {
-            buttonClose.remove();
-          }
-
-          document.documentElement.classList.remove("popup-opened");
-          videoSelector ? toggleVideoPLay(videoSelector, false) : false;
-          iframe ? iframe.remove() : false;
-        }
-      });
-
-      return popup;
-    });
+      videoSelector ? toggleVideoPLay(videoSelector, false) : false;
+      iframe ? iframe.remove() : false;
+    }
+  });
 };
-
-window.openPopup = openPopup;
 
 const closePopup = (id) => {
   const popup = document.getElementById(id);
-
-  if (!popup) {
-    return;
-  }
 
   let buttonClose;
 
@@ -659,9 +583,7 @@ const closePopup = (id) => {
   document.documentElement.classList.remove("popup-opened");
 };
 
-window.closePopup = closePopup;
-
-function initAjaxForms() {
+document.addEventListener("DOMContentLoaded", () => {
   const forms = document.querySelectorAll("form.ajax-form");
   const recaptchaForms = [];
   const defaultSuccessMessage = "Форма отправлена";
@@ -744,15 +666,6 @@ function initAjaxForms() {
       typeof message === "string" && message.trim() !== "" ? message : fallback;
 
     if (!popup) {
-      if (typeof window.openPopup === "function") {
-        window.openPopup("notify").then((loadedPopup) => {
-          if (loadedPopup) {
-            showNotificationPopup(message, type);
-          }
-        });
-        return;
-      }
-
       const alertMessage = normalizedMessage.replace(
         /<br\s*\/?>(\s*)/gi,
         "\n$1",
@@ -946,10 +859,6 @@ function initAjaxForms() {
   };
 
   forms.forEach((form) => {
-    if (form.dataset.ajaxFormInitialized === "true") {
-      return;
-    }
-
     form.dataset.ajaxFormInitialized = "true";
 
     const recaptchaInput = form.querySelector(
@@ -987,21 +896,18 @@ function initAjaxForms() {
     }
   });
 
-  if (window.ajaxFormsDelegationInitialized !== true) {
-    document.addEventListener("submit", (event) => {
-      const form = event.target;
+  document.addEventListener("submit", (event) => {
+    const form = event.target;
 
-      if (!(form instanceof HTMLFormElement)) return;
-      if (!form.classList.contains("ajax-form")) return;
-      if (form.dataset.ajaxFormInitialized === "true") return;
+    if (!(form instanceof HTMLFormElement)) return;
+    if (!form.classList.contains("ajax-form")) return;
+    if (form.dataset.ajaxFormInitialized === "true") return;
 
-      event.preventDefault();
+    event.preventDefault();
 
-      form.dataset.ajaxFormInitialized = "true";
-      submitAjaxForm(form);
-    });
-    window.ajaxFormsDelegationInitialized = true;
-  }
+    form.dataset.ajaxFormInitialized = "true";
+    submitAjaxForm(form);
+  });
 
   if (recaptchaForms.length > 0) {
     const initializeSmartCaptcha = () => {
@@ -1081,9 +987,7 @@ function initAjaxForms() {
       }
     }
   }
-}
-
-document.addEventListener("DOMContentLoaded", initAjaxForms);
+});
 
 // MAP LOGIC
 const mapLinksInit = () => {
@@ -1112,7 +1016,7 @@ const mapLinksInit = () => {
 
     mapLinks.forEach((link) => {
       link?.addEventListener("click", (e) => {
-        loadMap(e, link.dataset.map);
+        loadMap(e, e?.target?.dataset.map);
       });
     });
 
@@ -1121,10 +1025,7 @@ const mapLinksInit = () => {
       // console.log('=> enter func loadMap', e, value)
       const map = document.querySelector("#map");
 
-      if (!map) {
-        openPopup("map").then(() => loadMap(e, value));
-        return;
-      }
+      if (!map) return;
 
       const container = map.querySelector(".map-container");
       const linkBtn = map.querySelector(".button-link");
@@ -1218,42 +1119,23 @@ function portfolioHttpPreviewLinksInit() {
 
 // sitePreview logic
 function sitePreview() {
-  const buttons = document.querySelectorAll("[data-site-preview]");
+  let popup = document.getElementById("site-preview"),
+    buttons = document.querySelectorAll("[data-site-preview]"),
+    iframe = document.createElement("iframe");
 
-  if (!buttons.length) return;
+  if (!buttons) return;
 
   buttons.forEach((button) => {
-    if (button.dataset.sitePreviewInitialized === "true") {
-      return;
-    }
-
-    button.dataset.sitePreviewInitialized = "true";
     button.addEventListener("click", (e) => {
-      const trigger = e.currentTarget;
-      const renderPreview = () => {
-        const popup = document.getElementById("site-preview");
-        if (!popup) return;
-
-        const iframe = document.createElement("iframe");
-        iframe.src = trigger.dataset.sitePreview;
-        popup.querySelector(".iframe-window").appendChild(iframe);
-        const card = trigger.closest(
+      iframe.src = e.currentTarget.dataset.sitePreview;
+      popup.querySelector(".iframe-window").appendChild(iframe);
+      popup.querySelector(".iframe-tab-link").innerText = e.currentTarget
+        .closest(
           ".card--support, .card--recent, .card--portfolio, .card--group",
-        );
-        const title = card?.querySelector(
-          ".card-body b, b, .card-header div span",
-        )?.innerText;
-        popup.querySelector(".iframe-tab-link").innerText = title || "";
-        popup.querySelector(".iframe-url-input").innerText =
-          trigger.dataset.sitePreview;
-      };
-
-      if (!document.getElementById("site-preview")) {
-        openPopup("site-preview", trigger).then(renderPreview);
-        return;
-      }
-
-      renderPreview();
+        )
+        .querySelector(".card-body b, b, .card-header div span").innerText;
+      popup.querySelector(".iframe-url-input").innerText =
+        e.currentTarget.dataset.sitePreview;
     });
   });
 }
@@ -3619,11 +3501,6 @@ function maskPhone(selector, masked = "+7 (___) ___-__-__") {
   }
 
   for (const elem of elems) {
-    if (elem.dataset.phoneMaskInitialized === "true") {
-      continue;
-    }
-
-    elem.dataset.phoneMaskInitialized = "true";
     elem.addEventListener("input", mask);
     elem.addEventListener("focus", mask);
     elem.addEventListener("blur", mask);
@@ -3679,13 +3556,10 @@ window.textarea_autosize = {
 };
 
 // gallery selector
-function gallerySelector(initialGallery = null) {
-  const popup = document.getElementById("gallery-popup");
-  if (!popup) {
-    return;
-  }
-
-  const gallery = popup.querySelector("[data-slider]");
+function gallerySelector() {
+  const gallery = document
+    .getElementById("gallery-popup")
+    .querySelector("[data-slider]");
   const triggers = document.querySelectorAll("[data-gallery]");
   const onLoad = gallery.dataset.onload;
 
@@ -3765,10 +3639,6 @@ function gallerySelector(initialGallery = null) {
       setUpGallery(trigger.dataset.gallery);
     });
   });
-
-  if (initialGallery) {
-    setUpGallery(initialGallery);
-  }
 }
 
 // NiceSelect
@@ -5862,40 +5732,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Кнопка сброса
       reset_button?.addEventListener("click", (e) => {
+        let acceptResetButton = document.querySelector("[data-accept-reset]"),
+          cancelResetButton = document.querySelector("[data-cancel-reset]");
+
         const calculator = document.getElementById("calculator");
-        const icon = e.currentTarget.querySelector("i");
+        let icon = e.currentTarget.querySelector("i");
 
-        openPopup("accept-reset").then(() => {
-          const acceptResetButton = document.querySelector("[data-accept-reset]");
-          const cancelResetButton = document.querySelector("[data-cancel-reset]");
+        openPopup("accept-reset");
 
-          acceptResetButton?.addEventListener("click", () => {
-            closePopup("accept-reset");
+        acceptResetButton?.addEventListener("click", () => {
+          closePopup("accept-reset");
 
-            icon.classList.add("rotateInfinite");
-            sendButtons?.forEach((button) => (button.disabled = true));
+          icon.classList.add("rotateInfinite");
+          sendButtons?.forEach((button) => (button.disabled = true));
 
-            setTimeout(() => {
-              calculator?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-              icon.classList.remove("rotateInfinite");
-              sendButtons?.forEach((button) => (button.disabled = false));
-
-              setTimeout(() => {
-                resetCalculator(toggles, counters, target);
-                reviewTotal();
-              }, 200);
-            }, 600);
-          });
-
-          cancelResetButton?.addEventListener("click", () => {
-            closePopup("accept-reset");
-
+          setTimeout(() => {
+            calculator?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
             icon.classList.remove("rotateInfinite");
             sendButtons?.forEach((button) => (button.disabled = false));
-          });
+
+            setTimeout(() => {
+              resetCalculator(toggles, counters, target);
+              reviewTotal();
+            }, 200);
+          }, 600);
+        });
+
+        cancelResetButton?.addEventListener("click", () => {
+          closePopup("accept-reset");
+
+          icon.classList.remove("rotateInfinite");
+          sendButtons?.forEach((button) => (button.disabled = false));
         });
       });
 
@@ -6540,7 +6410,7 @@ const reviewsInit = () => {
 };
 
 // comment password and add handling
-function initCommentForms() {
+document.addEventListener("DOMContentLoaded", () => {
   // Helper function to serialize form data (mimics jQuery's serialize())
   function serializeForm(form) {
     const formData = new FormData(form);
@@ -6553,8 +6423,7 @@ function initCommentForms() {
 
   // Handle password form submission
   const passwordForm = document.querySelector("#form-comment-password");
-  if (passwordForm && passwordForm.dataset.commentFormInitialized !== "true") {
-    passwordForm.dataset.commentFormInitialized = "true";
+  if (passwordForm) {
     passwordForm.addEventListener("submit", function (e) {
       e.preventDefault();
       e.stopImmediatePropagation();
@@ -6615,8 +6484,7 @@ function initCommentForms() {
 
   // Handle comment add form submission
   const commentForm = document.querySelector("#comment-add");
-  if (commentForm && commentForm.dataset.commentFormInitialized !== "true") {
-    commentForm.dataset.commentFormInitialized = "true";
+  if (commentForm) {
     commentForm.addEventListener("submit", function (e) {
       e.preventDefault();
       e.stopImmediatePropagation();
@@ -6693,9 +6561,7 @@ function initCommentForms() {
         .finally(() => hideButtonLoader(btn));
     });
   }
-}
-
-document.addEventListener("DOMContentLoaded", initCommentForms);
+});
 
 const observer = new IntersectionObserver(handleIntersection, {
   rootMargin: "100px",
@@ -6730,14 +6596,6 @@ function observeLazyElements(root = document) {
 window.observeLazyElements = observeLazyElements;
 
 observeLazyElements();
-
-function initFileInputs(root = document) {
-  root.querySelectorAll(".input-file input[type=file]").forEach((input) => {
-    if (!input.fileInputManager) {
-      input.fileInputManager = new FileInputManager(input);
-    }
-  });
-}
 
 /**
  * Единый класс для работы с оглавлением статьи
@@ -7246,11 +7104,11 @@ if (typeof module !== "undefined" && module.exports) {
 
 // office-viewer
 const officeImage = (elem) => {
-  const img = elem.querySelector("img");
-  let link = img?.getAttribute("data-full") || img?.getAttribute("src") || "";
-  const modal = document.getElementById("photo-view");
-  const modalImg = modal?.querySelector("img");
-  if (modalImg) modalImg.setAttribute("src", link);
+  let link = elem.querySelector("img").getAttribute("src"),
+    modal = document.getElementById("photo-view"),
+    img = modal?.querySelector("img");
+
+  img.setAttribute("src", link);
 };
 
 // check url for seo-audit (серверная версия + PageSpeed)
@@ -8608,6 +8466,412 @@ const lostProfitInit = () => {
   });
 };
 
+const geoAuditInit = () => {
+  const form = document.getElementById("geo-audit-form");
+  if (!form) return;
+
+  const siteInput = document.getElementById("geo-audit-site");
+  const queryInput = document.getElementById("geo-audit-query");
+  const errorDiv = document.getElementById("geo-audit-error");
+  const resultDiv = document.getElementById("geo-audit-result");
+  const emptyState = resultDiv?.querySelector(".geo-audit-empty");
+  const resultContent = resultDiv?.querySelector(".geo-audit-result__content");
+  const networkCards = Array.from(
+    resultDiv?.querySelectorAll(".geo-audit-network") || [],
+  );
+  const improveCta = resultDiv?.querySelector(".geo-audit-cta--improve");
+  const successCta = resultDiv?.querySelector(".geo-audit-cta--success");
+  const formControls = form.querySelectorAll("input, button");
+
+  if (!siteInput || !queryInput || !errorDiv || !resultDiv || !resultContent) return;
+
+  const NETWORK_STATES = ["pending", "is-success", "is-not-found", "is-error"];
+  const TERMINAL_STATES = ["is-success", "is-not-found", "is-error"];
+  const POLL_INTERVAL = 1500;
+  const POLL_TIMEOUT = 60000;
+  const RESULT_REVEAL_DELAY = 250;
+
+  let activeAuditId = null;
+  let pollTimer = null;
+  let pollStartedAt = 0;
+  let isSubmitting = false;
+
+  const setDisabled = (disabled) => {
+    formControls.forEach((element) => {
+      element.disabled = disabled;
+    });
+  };
+
+  const clearPolling = () => {
+    if (pollTimer) {
+      clearTimeout(pollTimer);
+      pollTimer = null;
+    }
+  };
+
+  const showEmptyState = () => {
+    errorDiv.style.display = "none";
+    errorDiv.textContent = "";
+    resultDiv.style.display = "block";
+    if (emptyState) emptyState.style.display = "";
+    resultContent.style.display = "none";
+    if (improveCta) improveCta.style.display = "none";
+    if (successCta) successCta.style.display = "none";
+  };
+
+  const showResultsState = () => {
+    errorDiv.style.display = "none";
+    errorDiv.textContent = "";
+    resultDiv.style.display = "block";
+    if (emptyState) emptyState.style.display = "none";
+    resultContent.style.display = "";
+    if (improveCta) improveCta.style.display = "none";
+    if (successCta) successCta.style.display = "none";
+  };
+
+  const showGlobalError = (message) => {
+    errorDiv.textContent = message;
+    errorDiv.style.display = "block";
+  };
+
+  const setNetworkState = (card, state) => {
+    const statusText = card.querySelector("[data-status-text]");
+
+    NETWORK_STATES.forEach((className) => card.classList.remove(className));
+    card.classList.add(state);
+
+    if (!statusText) return;
+
+    if (state === "pending") {
+      statusText.textContent = "";
+      return;
+    }
+
+    if (state === "is-success") {
+      statusText.textContent = "Есть";
+      return;
+    }
+
+    if (state === "is-not-found") {
+      statusText.textContent = "Нет";
+      return;
+    }
+
+    statusText.textContent = "Не удалось проверить";
+  };
+
+  const setAllNetworksPending = () => {
+    networkCards.forEach((card) => setNetworkState(card, "pending"));
+  };
+
+  const captureResultState = () => ({
+    resultDisplay: resultDiv.style.display,
+    emptyDisplay: emptyState?.style.display ?? "",
+    contentDisplay: resultContent.style.display,
+    improveCtaDisplay: improveCta?.style.display ?? "",
+    successCtaDisplay: successCta?.style.display ?? "",
+    networks: networkCards.map((card) => ({
+      card,
+      className: card.className,
+      statusText: card.querySelector("[data-status-text]")?.textContent ?? "",
+    })),
+  });
+
+  const restoreResultState = (snapshot) => {
+    if (!snapshot) return;
+
+    resultDiv.style.display = snapshot.resultDisplay;
+    if (emptyState) emptyState.style.display = snapshot.emptyDisplay;
+    resultContent.style.display = snapshot.contentDisplay;
+    if (improveCta) improveCta.style.display = snapshot.improveCtaDisplay;
+    if (successCta) successCta.style.display = snapshot.successCtaDisplay;
+
+    snapshot.networks.forEach(({ card, className, statusText }) => {
+      card.className = className;
+      const statusElement = card.querySelector("[data-status-text]");
+      if (statusElement) statusElement.textContent = statusText;
+    });
+  };
+
+  const normalizeNetworkValue = (value) => {
+    if (typeof value === "boolean") return value;
+    if (typeof value === "number") return value > 0;
+
+    if (typeof value === "string") {
+      const normalized = value.trim().toLowerCase();
+      return [
+        "true",
+        "1",
+        "yes",
+        "found",
+        "present",
+        "success",
+        "есть",
+        "найдено",
+        "присутствует",
+      ].includes(normalized);
+    }
+
+    if (value && typeof value === "object") {
+      if ("found" in value) return normalizeNetworkValue(value.found);
+      if ("present" in value) return normalizeNetworkValue(value.present);
+      if ("result" in value) return normalizeNetworkValue(value.result);
+    }
+
+    return false;
+  };
+
+  const getResultState = (value) => {
+    if (value == null) return null;
+
+    if (typeof value === "object") {
+      const status = String(value.status || "").trim().toLowerCase();
+
+      if (["pending", "processing", "queued", "running"].includes(status)) {
+        return "pending";
+      }
+
+      if (["error", "failed", "unavailable"].includes(status)) {
+        return "is-error";
+      }
+
+      if (["not_found", "not-found", "absent"].includes(status)) {
+        return "is-not-found";
+      }
+
+      if (["found", "success", "completed", "done"].includes(status)) {
+        if ("found" in value || "present" in value || "result" in value) {
+          return normalizeNetworkValue(value) ? "is-success" : "is-not-found";
+        }
+        return "is-success";
+      }
+    }
+
+    return normalizeNetworkValue(value) ? "is-success" : "is-not-found";
+  };
+
+  const getResultsSource = (data) => data?.results || data?.networks || data?.data || {};
+
+  const applyResults = async (data) => {
+    const source = getResultsSource(data);
+    const updates = [];
+
+    networkCards.forEach((card) => {
+      const network = card.dataset.network;
+      if (!network || !Object.prototype.hasOwnProperty.call(source, network)) return;
+
+      const state = getResultState(source[network]);
+      if (!state || state === "pending") return;
+      if (TERMINAL_STATES.some((className) => card.classList.contains(className))) return;
+
+      updates.push({ card, state });
+    });
+
+    for (const update of updates) {
+      setNetworkState(update.card, update.state);
+      if (updates.length > 1) {
+        await new Promise((resolve) => setTimeout(resolve, RESULT_REVEAL_DELAY));
+      }
+    }
+  };
+
+  const allNetworksFinished = () =>
+    networkCards.length > 0 &&
+    networkCards.every((card) =>
+      TERMINAL_STATES.some((className) => card.classList.contains(className)),
+    );
+
+  const renderCta = () => {
+    if (!allNetworksFinished()) return;
+
+    const allPresent = networkCards.every((card) =>
+      card.classList.contains("is-success"),
+    );
+
+    if (improveCta) improveCta.style.display = allPresent ? "none" : "";
+    if (successCta) successCta.style.display = allPresent ? "" : "none";
+  };
+
+  const createRequestBody = (site, query) => {
+    const csrfParam =
+      document.querySelector('meta[name="csrf-param"]')?.getAttribute("content") ||
+      "_csrf";
+    const csrfToken = document
+      .querySelector('meta[name="csrf-token"]')
+      ?.getAttribute("content");
+
+    const body = new URLSearchParams();
+    if (csrfToken) body.append(csrfParam, csrfToken);
+    body.append("site", site);
+    body.append("query", query);
+
+    return body;
+  };
+
+  const parseResponse = async (response) => {
+    let data;
+
+    try {
+      data = await response.json();
+    } catch (error) {
+      throw new Error("Сервер вернул некорректный ответ.");
+    }
+
+    if (!response.ok || data?.success === false) {
+      const error = new Error(
+        data?.message || data?.error || "Не удалось выполнить GEO-аудит.",
+      );
+      error.status = response.status;
+      throw error;
+    }
+
+    return data;
+  };
+
+  const getStatusUrl = (data, auditId) => {
+    if (data?.statusUrl) return data.statusUrl;
+    if (data?.status_url) return data.status_url;
+
+    return `/submit/geo-audit-status?id=${encodeURIComponent(auditId)}`;
+  };
+
+  const finishAudit = () => {
+    clearPolling();
+    activeAuditId = null;
+    isSubmitting = false;
+    renderCta();
+    setDisabled(false);
+  };
+
+  const schedulePoll = (url) => {
+    clearPolling();
+    pollTimer = setTimeout(() => pollAudit(url), POLL_INTERVAL);
+  };
+
+  const pollAudit = async (url) => {
+    if (!activeAuditId) return;
+
+    if (Date.now() - pollStartedAt >= POLL_TIMEOUT) {
+      networkCards.forEach((card) => {
+        if (card.classList.contains("pending")) setNetworkState(card, "is-error");
+      });
+      showGlobalError("Не удалось дождаться полного результата проверки. Попробуйте позже.");
+      finishAudit();
+      return;
+    }
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+        cache: "no-store",
+      });
+
+      const data = await parseResponse(response);
+      await applyResults(data);
+
+      const auditStatus = String(data?.status || "").toLowerCase();
+      const completed = ["completed", "done", "success"].includes(auditStatus);
+      const failed = ["error", "failed"].includes(auditStatus);
+
+      if (failed) {
+        networkCards.forEach((card) => {
+          if (card.classList.contains("pending")) setNetworkState(card, "is-error");
+        });
+        showGlobalError(data?.message || "Не удалось завершить GEO-аудит.");
+        finishAudit();
+        return;
+      }
+
+      if (completed || allNetworksFinished()) {
+        networkCards.forEach((card) => {
+          if (card.classList.contains("pending")) setNetworkState(card, "is-error");
+        });
+        finishAudit();
+        return;
+      }
+
+      schedulePoll(url);
+    } catch (error) {
+      console.error("GEO audit polling error:", error);
+      schedulePoll(url);
+    }
+  };
+
+  showEmptyState();
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    if (isSubmitting) return;
+
+    const site = siteInput.value.trim();
+    const query = queryInput.value.trim();
+    const previousResultState = captureResultState();
+
+    isSubmitting = true;
+    clearPolling();
+    activeAuditId = null;
+    setDisabled(true);
+    showResultsState();
+    setAllNetworksPending();
+
+    setTimeout(() => {
+      resultDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 100);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Accept: "application/json",
+        },
+        body: createRequestBody(site, query).toString(),
+      });
+
+      const data = await parseResponse(response);
+      await applyResults(data);
+
+      const auditStatus = String(data?.status || "").toLowerCase();
+      const auditId = data?.auditId || data?.audit_id || data?.id;
+      const completed = ["completed", "done", "success"].includes(auditStatus);
+
+      if (completed || allNetworksFinished()) {
+        networkCards.forEach((card) => {
+          if (card.classList.contains("pending")) setNetworkState(card, "is-error");
+        });
+        finishAudit();
+        return;
+      }
+
+      if (!auditId) {
+        throw new Error("Сервер не вернул идентификатор GEO-аудита.");
+      }
+
+      activeAuditId = auditId;
+      pollStartedAt = Date.now();
+      schedulePoll(getStatusUrl(data, auditId));
+    } catch (error) {
+      console.error("GEO audit error:", error);
+
+      // Ошибка создания аудита относится ко всей операции, а не к отдельным
+      // нейросетям. Возвращаем карточки в состояние до отправки и показываем
+      // только глобальную ошибку.
+      restoreResultState(previousResultState);
+      showGlobalError(error?.message || "Не удалось выполнить GEO-аудит.");
+      finishAudit();
+    }
+  });
+};
+
 // Функция обновления тултипов (fallback, если глобальная не определена)
 function updateTooltipsForSelectFallback(select) {
   let prefix = select.getAttribute("data-tooltip-prefix");
@@ -9402,19 +9666,26 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("audit-form")) seoAuditInit();
   if (document.getElementById("test-site-form")) domainCheker();
   if (document.getElementById("lost-profit-form")) lostProfitInit();
+  if (document.getElementById("geo-audit-form")) geoAuditInit();
 
   // photo cards
   if (photoCards.length > 0) {
     photoCards.forEach((item) => {
       item.addEventListener("click", (e) => {
-        const card = e.currentTarget;
-        openPopup("photo-view").then(() => officeImage(card));
+        openPopup("photo-view");
+        officeImage(e.currentTarget);
       });
     });
   }
 
   // files init
-  initFileInputs();
+  if (fileInputs) {
+    fileInputs.forEach((input) => {
+      if (!input.fileInputManager) {
+        input.fileInputManager = new FileInputManager(input);
+      }
+    });
+  }
 
   // Инициализация триггеров остается без изменений
   if (triggerButtons) {
