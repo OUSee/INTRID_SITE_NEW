@@ -271,8 +271,7 @@
         <section>
             <div class="container">
                 <h2 class="underlined w-fit"> Наш офис в Воронеже </h2>
-                <div class="sites-reviews-slider" data-slider="reviews-slider" id="office-slider"
-                    style="transform: translateX(0px);">
+                <div class="sites-reviews-slider" data-slider="reviews-slider" id="office-slider">
                     <div class="card card--photo active"> <img src="/src/images/office-photo-1.webp"
                             data-full="/src/images/office-photo-1.jpg" alt="Фото офиса 1">
                     </div>
@@ -573,10 +572,30 @@
     <dialog class="popup popup-gallery" id="photo-view">
         <div class="popup-wrapper">
             <div class="popup-body">
-                <img src="" alt="Фото офиса">
+                <div class="sites-reviews-slider" data-slider="gallery-slider" id="gallery-slider">
+                </div>
+
+                <div id="gallery-pagination" class="pagination">
+                    <button class="pagination--prev-btn">
+                        <i class="icon-shevrone left"></i>
+                    </button>
+
+                    <div class="pagination--buttons-dots"></div>
+
+                    <button class="pagination--next-btn">
+                        <i class="icon-shevrone"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </dialog>
+    <!-- <dialog class="popup popup-gallery" id="photo-view">
+        <div class="popup-wrapper">
+            <div class="popup-body">
+                <img src="" alt="Фото офиса">
+            </div>
+        </div>
+    </dialog> -->
     <script src="./js/app.js"></script>
 </body>
 

@@ -3108,7 +3108,7 @@ const portfolioSeoSlider = () => {
 };
 
 // sliders with pagination
-function sliderInitialize(targetSliderId = null) {
+function sliderInitialize() {
   const tabSliderWithPagination = (id) => {
     if (id === "logo-slider") {
       // console.log("=> init", id);
@@ -3119,38 +3119,13 @@ function sliderInitialize(targetSliderId = null) {
     if (!slider) return;
     if (slider.offsetParent === null) return; // скрытые слайдеры пропускаем
 
-    // При адресном вызове уже инициализированный слайдер не пересоздаем:
-    // просто переводим его на нужный индекс. Это особенно важно для popup-галереи,
-    // чтобы не накапливать глобальные touch-обработчики при каждом открытии.
-    if (
-      targetSliderId &&
-      slider.dataset.initialized === "true" &&
-      typeof slider._setSlideIndex === "function"
-    ) {
-      slider._setSlideIndex(slider.dataset.startIndex || 0);
-      return;
-    }
-
-    // Если слайдер уже создавался ранее, снимаем его старые глобальные обработчики
-    // независимо от dataset.initialized: в нескольких местах проекта этот флаг
-    // удаляется перед повторным вызовом sliderInitialize().
-    if (typeof slider._sliderCleanup === "function") {
-      slider._sliderCleanup();
-      slider._sliderCleanup = null;
-    }
-
     let isAnimating = false; // блокировка на время анимации
     let xDown = null,
       yDown = null;
 
     // ----- Очистка предыдущей инициализации (если была) -----
-    if (
-      slider.dataset.initialized === "true" ||
-      slider._sliderInitialized === true
-    ) {
+    if (slider.dataset.initialized === "true") {
       const parent = slider.parentElement;
-      const oldNavLeft = document.getElementById(`navleft_for--${id}`);
-      const oldNavRight = document.getElementById(`navright_for--${id}`);
 
       // Удаляем только динамические точки пагинации, если есть
       const pagination = parent.querySelector(".pagination");
@@ -3163,13 +3138,13 @@ function sliderInitialize(targetSliderId = null) {
       }
 
       // Для статических стрелок навигации – клонируем, чтобы сбросить обработчики
-      if (oldNavLeft?.parentNode) {
-        const newNavLeft = oldNavLeft.cloneNode(true);
-        oldNavLeft.parentNode.replaceChild(newNavLeft, oldNavLeft);
+      if (navLeft) {
+        const newNavLeft = navLeft.cloneNode(true);
+        navLeft.parentNode.replaceChild(newNavLeft, navLeft);
       }
-      if (oldNavRight?.parentNode) {
-        const newNavRight = oldNavRight.cloneNode(true);
-        oldNavRight.parentNode.replaceChild(newNavRight, oldNavRight);
+      if (navRight) {
+        const newNavRight = navRight.cloneNode(true);
+        navRight.parentNode.replaceChild(newNavRight, navRight);
       }
 
       // Также для кнопок внутри пагинации (если они есть) – клонируем
@@ -3198,7 +3173,6 @@ function sliderInitialize(targetSliderId = null) {
         slide.classList.remove("active"),
       );
       delete slider.dataset.initialized;
-      slider._sliderInitialized = false;
     }
 
     // const pagination = document.querySelector(`#${id} + .pagination`);
@@ -3208,26 +3182,15 @@ function sliderInitialize(targetSliderId = null) {
     const fill = slider.dataset.fill;
     let isDragging = false;
     slider.style.transform = `translateX(-0px)`;
-    let currentIndex = parseInt(slider.dataset.startIndex, 10);
-    if (Number.isNaN(currentIndex)) currentIndex = 0;
+    let currentIndex = 0;
 
     let prevBtn = [];
     let nextBtn = [];
     let navButtons = [];
 
-    // Всегда получаем актуальный набор слайдов. Это важно для галерей,
-    // которые наполняются динамически только при первом открытии popup.
-    const getSlides = () =>
-      id === "cases-tabs-slider"
-        ? Array.from(slider.querySelectorAll(".tab-content"))
-        : Array.from(slider.children);
-
-    let slides = getSlides();
+    // Преобразуем в массив!
+    let slides = Array.from(slider.children);
     let gap = 0;
-
-    // Пустой динамический слайдер не помечаем инициализированным.
-    // После добавления карточек sliderInitialize(id) сможет собрать его нормально.
-    if (!slides.length) return;
 
     // Первоначальная установка ширины через fill (будет переопределяться в updateSlider)
     if (fill) {
@@ -3259,14 +3222,14 @@ function sliderInitialize(targetSliderId = null) {
       navRight.setAttribute("role", "button");
     }
 
+    if (id === `cases-tabs-slider`) {
+      slides = Array.from(slider.querySelectorAll(".tab-content"));
+    }
+
     // Функция для правильного размещения стрелок (восстановлена)
     const handleSliderArrows = () => {
       const setArrowPosition = (btn, side) => {
-        if (!btn || !btn.isConnected) return;
-
         const btnParent = btn.offsetParent || btn.parentElement;
-        if (!btnParent) return;
-
         const parentRect = btnParent.getBoundingClientRect();
         const sliderRect = slider.getBoundingClientRect();
 
@@ -3306,24 +3269,10 @@ function sliderInitialize(targetSliderId = null) {
 
     // Основная функция обновления – всё пересчитывается динамически
     const updateSlider = () => {
-      if (!slider.parentElement) return;
-
-      // Галерея может быть наполнена после первоначального прохода по DOM,
-      // поэтому не используем устаревший массив из замыкания.
-      slides = getSlides();
-      if (!slides.length) return;
-
       const containerWidth = slider.parentElement.getBoundingClientRect().width;
       gap = parseInt(window.getComputedStyle(slider).gap) || 0;
       const slideWidth = slides[0].offsetWidth;
-
-      // Если браузер ещё не выполнил layout открытого popup, повторный
-      // расчёт произойдёт на следующем кадре/после загрузки изображения.
-      if (!containerWidth || !slideWidth) return;
-
-      const visibleSlidesCount = Math.max(1, Math.round(containerWidth / slideWidth));
-      const maxIndex = Math.max(0, slides.length - visibleSlidesCount);
-      currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+      const visibleSlidesCount = Math.round(containerWidth / slideWidth);
 
       if (fill) {
         const breaks = fill.split(",");
@@ -3519,86 +3468,9 @@ function sliderInitialize(targetSliderId = null) {
     document.addEventListener("touchcancel", handleTouchEnd, false);
     slider.addEventListener("mousedown", mouseDownHandler, false);
 
-    // Сохраняем единый cleanup, чтобы повторная инициализация не оставляла
-    // старые document-level touch/mouse обработчики.
-    slider._sliderCleanup = () => {
-      slider.removeEventListener("touchstart", handleTouchStart, false);
-      document.removeEventListener("touchmove", handleTouchMove);
-      document.removeEventListener("touchend", handleTouchEnd, false);
-      document.removeEventListener("touchcancel", handleTouchEnd, false);
-      slider.removeEventListener("mousedown", mouseDownHandler, false);
-      document.removeEventListener("mousemove", mouseMoveHandler);
-      document.removeEventListener("mouseup", mouseUpHandler);
-
-      if (slider._resizeHandler) {
-        window.removeEventListener("resize", slider._resizeHandler);
-        slider._resizeHandler = null;
-      }
-
-      if (popup) {
-        popup.removeEventListener("transitionend", handlePopupTransitionEnd);
-      }
-
-      imageReadyHandlers.forEach(({ img, handler }) => {
-        img.removeEventListener("load", handler);
-        img.removeEventListener("error", handler);
-        delete img.dataset.sliderImageReadyBound;
-      });
-    };
-
-    // Повторно пересчитываем геометрию после того, как открытый popup
-    // закончит transform-анимацию. getBoundingClientRect() во время scale()
-    // даёт промежуточные координаты, из-за чего стрелки при первом открытии
-    // визуально уходят от центра.
-    const popup = slider.closest(".popup");
-    const handlePopupTransitionEnd = (event) => {
-      if (event.target !== popup || !popup.classList.contains("open")) return;
-      updateSlider();
-    };
-
-    if (popup) {
-      popup.addEventListener("transitionend", handlePopupTransitionEnd);
-    }
-
-    // Полноразмерные изображения офиса создаются только по первому клику.
-    // Если картинка ещё загружается, после load/error делаем новый layout.
-    const imageReadyHandlers = [];
-    const bindImageReadyRefresh = () => {
-      slides = getSlides();
-
-      slides.forEach((slide) => {
-        slide.querySelectorAll("img").forEach((img) => {
-          if (img.complete || img.dataset.sliderImageReadyBound === "true") return;
-
-          img.dataset.sliderImageReadyBound = "true";
-
-          const onReady = () => {
-            img.removeEventListener("load", onReady);
-            img.removeEventListener("error", onReady);
-            delete img.dataset.sliderImageReadyBound;
-
-            requestAnimationFrame(() => {
-              updateSlider();
-            });
-          };
-
-          imageReadyHandlers.push({ img, handler: onReady });
-          img.addEventListener("load", onReady, { once: true });
-          img.addEventListener("error", onReady, { once: true });
-        });
-      });
-    };
-
-    bindImageReadyRefresh();
-
-    // Первый расчёт делаем сразу, затем ещё раз после двух кадров.
-    // Это даёт браузеру применить класс .open и сформировать реальную геометрию popup.
+    // Первичное обновление + позиционирование
+    handleSliderArrows();
     updateSlider();
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        updateSlider();
-      });
-    });
 
     // Сохраняем обработчик resize
     if (slider._resizeHandler)
@@ -3606,31 +3478,12 @@ function sliderInitialize(targetSliderId = null) {
     slider._resizeHandler = updateSlider;
     window.addEventListener("resize", updateSlider);
 
-    // Позволяет повторно открыть popup на конкретной фотографии без
-    // разрушения и повторной сборки экземпляра слайдера.
-    slider._setSlideIndex = (index) => {
-      const parsedIndex = parseInt(index, 10);
-      currentIndex = Number.isNaN(parsedIndex) ? 0 : parsedIndex;
-
-      bindImageReadyRefresh();
-      updateSlider();
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          updateSlider();
-        });
-      });
-    };
-
     slider.dataset.initialized = "true";
-    slider._sliderInitialized = true;
   };
 
-  const sliders = targetSliderId
-    ? [document.getElementById(targetSliderId)].filter(Boolean)
-    : document.querySelectorAll("[data-slider]");
+  const sliders = document.querySelectorAll("[data-slider]");
 
-  // По умолчанию инициализируем все видимые слайдеры. При переданном id — только его.
+  // Инициализация всех слайдеров на странице
   sliders?.forEach((slider) => {
     try {
       tabSliderWithPagination(slider.id);
@@ -3639,10 +3492,8 @@ function sliderInitialize(targetSliderId = null) {
     }
   });
 
-  if (!targetSliderId) {
-    portfolioCardsSlider();
-    portfolioSeoSlider();
-  }
+  portfolioCardsSlider();
+  portfolioSeoSlider();
 }
 
 // increment numbers
@@ -7394,31 +7245,12 @@ if (typeof module !== "undefined" && module.exports) {
 // data-root-margin="-15% 0px -65% 0px"
 
 // office-viewer
-const officeCards = document.querySelectorAll(
-  "#office-slider .card--photo"
-);
-
-const buildOfficeGallery = (gallery) => {
-  if (!gallery || gallery.dataset.officeGalleryBuilt === "true") return;
-
-  officeCards.forEach((card) => {
-    const sourceImg = card.querySelector("img");
-
-    if (!sourceImg) return;
-
-    const slide = document.createElement("div");
-    slide.classList.add("gallery-card");
-
-    const img = document.createElement("img");
-
-    img.src = sourceImg.dataset.full || sourceImg.src;
-    img.alt = sourceImg.alt || "Фото офиса";
-
-    slide.appendChild(img);
-    gallery.appendChild(slide);
-  });
-
-  gallery.dataset.officeGalleryBuilt = "true";
+const officeImage = (elem) => {
+  const img = elem.querySelector("img");
+  let link = img?.getAttribute("data-full") || img?.getAttribute("src") || "";
+  const modal = document.getElementById("photo-view");
+  const modalImg = modal?.querySelector("img");
+  if (modalImg) modalImg.setAttribute("src", link);
 };
 
 // check url for seo-audit (серверная версия + PageSpeed)
@@ -9572,25 +9404,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("lost-profit-form")) lostProfitInit();
 
   // photo cards
-  if (officeCards.length > 0) {
-    officeCards.forEach((item, index) => {
-      item.addEventListener("click", () => {
-        openPopup("photo-view").then((popup) => {
-          if (!popup) return;
-
-          const gallery = popup.querySelector("#gallery-slider");
-
-          if (!gallery) {
-            console.warn("gallery-slider not found in photo-view");
-            return;
-          }
-
-          buildOfficeGallery(gallery);
-
-          gallery.dataset.startIndex = index;
-
-          sliderInitialize("gallery-slider");
-        });
+  if (photoCards.length > 0) {
+    photoCards.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        const card = e.currentTarget;
+        openPopup("photo-view").then(() => officeImage(card));
       });
     });
   }
