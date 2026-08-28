@@ -110,7 +110,6 @@
       max-height: 500px;
       overflow-y: scroll;
 
-
       @include webkit_scrollbar_seo;
     }
   }
@@ -153,7 +152,8 @@
   .info-panel {
     flex: 0 0 360px;
     width: 360px;
-    padding: 24px 36px;
+    // padding: 24px 36px;
+    padding: 24px;
     position: sticky;
     top: 0;
     background-color: var(--bg-main);
@@ -196,6 +196,10 @@
 
         p {
           margin: 0;
+
+          @media (min-width: 1000px) {
+            max-width: 40%;
+          }
         }
 
         b {
@@ -206,6 +210,21 @@
           font-size: 20px;
           text-align: center;
           white-space: nowrap;
+
+          @media (max-width: 999.98px) {
+            font-size: 20px;
+          }
+
+          @media (max-width: 599.98px) {
+            font-size: 16px;
+          }
+        }
+
+        &:first-child {
+          & > b {
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
         }
       }
     }
@@ -331,9 +350,9 @@
   position: relative;
 
   .portfolio-slider-prev,
-    .portfolio-slider-next {
-      display: none;
-    }
+  .portfolio-slider-next {
+    display: none;
+  }
 
   @media (max-width: 899.98px) {
     .portfolio-slider-prev,

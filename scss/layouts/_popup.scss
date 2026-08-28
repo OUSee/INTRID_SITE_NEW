@@ -268,15 +268,26 @@
   }
 
   &-gallery {
-    .popup-body {
+    & .popup-wrapper {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    & .popup-body {
       max-width: 100%;
+      padding: 0;
       background-color: transparent;
 
-      .gallery-card {
-        width: calc(100vw - 60px);
+      & .gallery-card {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex: 1 0 auto;
+        width: 100%;
+
+        &:not(.active) {
+          opacity: 0;
+        }
 
         img {
           margin: 0 auto;
@@ -285,6 +296,24 @@
           width: auto;
           height: auto;
           box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 30px 0px;
+        }
+      }
+
+      & .pagination {
+        @media (min-width: 1000px) {
+          margin-left: 12px;
+          margin-right: 12px;
+        }
+
+        &--prev-btn,
+        &--next-btn {
+          width: 50px;
+          height: 50px;
+
+          @media (max-width: 999.98px) {
+            width: 40px;
+            height: 40px;
+          }
         }
       }
     }
