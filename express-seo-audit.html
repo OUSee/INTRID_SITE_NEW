@@ -195,16 +195,16 @@
                 <div class="flex-layout flex-layout--2x align-start gap-20 mt-52">
                     <ul class="list--cooperate slim">
                         <li>
-                            <img src="/src/icons/chart_rate.svg" alt="Анализ 150+ основных SEO-факторов">
+                            <img src="/src/icons/chart_rate.svg" alt="Анализ основных SEO-факторов">
                             <p>
-                                Анализ 150+ основных
+                                Анализ основных
                                 SEO-факторов
                             </p>
                         </li>
                         <li>
-                            <img src="/src/icons/magnifier_glass.svg" alt="Проверка корректности индексации">
+                            <img src="/src/icons/magnifier_glass.svg" alt="Проверка индексации">
                             <p>
-                                Проверка корректности индексации
+                                Проверка индексации
                             </p>
                         </li>
                         <li>
@@ -279,59 +279,93 @@
         <!-- Закажите комплексный аудит-сайта -->
         <section id="seo-audit-features" style="<?= empty($metrics) ? 'display: none;' : '' ?>">
             <div class="container">
-                <h3 class="underlined w-fit">
-                    Закажите комплексный аудит-сайта
-                </h3>
+                <div class="flex-layout flex-layout--split">
+                    <div class="left">
+                        <h3 class="underlined w-fit">
+                            Закажите комплексный аудит-сайта
+                        </h3>
 
-                <div class="d-flex flex-row flex-lg-column align-start gap-16 flex-wrap mb-28">
-                    <p class="flex-1 m-0">
-                        Комплексный аудит сайта помогает найти точки роста, устранить ошибки и увеличить
-                        количество заявок и продаж.
-                    </p>
-                    <div class="d-flex flex-row align-center gap-16 flex-wrap">
-                        <a href="https://lk.intrid.ru/site/view?token=dvv5-Mlj1-79" target="_blank"
-                            class="button-link">Пример SEO-аудита</a>
-                        <p class="mw-500 m-0 color-grey">
-                            * Реальный пример аудита с вымышленными данными, которые наглядно
-                            демонстрируют структуру, глубину анализа и визуализацию данных
+                        <div class="d-flex flex-row align-center gap-16 flex-wrap">
+                            <p class="w-100 m-0">
+                                Комплексный аудит сайта помогает найти точки роста, устранить ошибки и увеличить
+                                количество заявок и продаж.
+                            </p>
+
+                            <a href="https://lk.intrid.ru/site/view?token=dvv5-Mlj1-79" target="_blank"
+                                class="button-link">Пример SEO-аудита</a>
+                            <p class="mw-500 m-0 color-grey">
+                                * Реальный пример аудита с вымышленными данными, которые наглядно
+                                демонстрируют структуру, глубину анализа и визуализацию данных
+                            </p>
+                        </div>
+
+                        <div class="flex-layout flex-layout--roadmap flex-layout--roadmap-column justify-center mb-16">
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    Как подходим к продвижению?
+                                </b>
+                                <p>
+                                    Проводим комплексный SEO-аудит по 135 факторам: от технического состояния сайта и
+                                    качества
+                                    контента до удобства страниц, поведения пользователей и анализа конкурентов.
+                                </p>
+                            </div>
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    Что мы проверим
+                                </b>
+                                <p>
+                                    Покажем, что мешает сайту получать больше трафика и обращений: от технических ошибок
+                                    и
+                                    структуры страниц до контента и удобства для клиентов.
+                                </p>
+                            </div>
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    Что вы получите
+                                </b>
+                                <p>
+                                    Вы получите “дорожную карту” с чёткими рекомендациями по устранению недочётов на
+                                    сайте и
+                                    его
+                                    модернизации.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p class="m-0">
+                            Аудит охватывает ключевые аспекты сайта и помогает понять, что мешает ему
+                            эффективно привлекать клиентов и приносить результат.
                         </p>
+                    </div>
+
+                    <div class="right">
+                        <div class="card card--leaders minified position-sticky" id="seo-audit-creation">
+                            <p class="title_h4 text-center"> Заказать комплексный SEO-аудит </p>
+                            <p class="text-center"> Улучшим позиции сайта, приведём заинтересованных посетителей и
+                                конвертируем их в клиентов </p>
+                            <form class="order-form" action="/submit/analiz-form" method="post">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div> <input type="hidden" name="g-recaptcha-response"
+                                        class="js-recaptcha-token">
+                                </div> <input type="text" id="customer-name" name="name" placeholder="Ваше имя"> <input
+                                    type="email" id="customer-mail" name="email" placeholder="E-mail"> <input type="tel"
+                                    required="" id="customer-phone" name="tel" placeholder="Ваш телефон *"> <input
+                                    type="text" id="customer-url" placeholder="URL сайта *" name="url" required> <input
+                                    type="text" id="customer-target" placeholder="Регион продвижения *" name="target"
+                                    required> <textarea data-autosize="true" rows="2" id="customer-comment"
+                                    placeholder="Комментарий" name="mess" style="min-height:73px;"></textarea>
+                                <p class="testimonials text-center m-center mb-0"> Нажимая кнопку, я выражаю согласие на
+                                    обработку <a href="/privacy.html" target="_blank">персональных&nbsp;данных</a> в
+                                    соответствии с <a
+                                        href="https://normativ.kontur.ru/document?moduleId=1&documentId=501173&ysclid=ms4giupu7t521197867"
+                                        target="_blank" rel="nofollow">ФЗ&nbsp;№152</a> </p> <button type="submit"
+                                    class="button big button-white mt-12"> Отправить </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-
-                <div class="flex-layout flex-layout--roadmap flex-layout--roadmap-3x justify-center mb-28">
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            Как подходим к продвижению?
-                        </b>
-                        <p>
-                            Проводим комплексный SEO-аудит по 135 факторам: от технического состояния сайта и качества
-                            контента до удобства страниц, поведения пользователей и анализа конкурентов.
-                        </p>
-                    </div>
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            Что мы проверим
-                        </b>
-                        <p>
-                            Покажем, что мешает сайту получать больше трафика и обращений: от технических ошибок и
-                            структуры страниц до контента и удобства для клиентов.
-                        </p>
-                    </div>
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            Что вы получите
-                        </b>
-                        <p>
-                            Вы получите “дорожную карту” с чёткими рекомендациями по устранению недочётов на сайте и его
-                            модернизации.
-                        </p>
-                    </div>
-                </div>
-
-                <p>
-                    Аудит охватывает ключевые аспекты сайта и помогает понять, что мешает ему
-                    эффективно привлекать клиентов и приносить результат.
-                </p>
 
                 <h3 class="w-fit underlined mt-52">
                     Комплексный анализ факторов поискового ранжирования
@@ -478,7 +512,7 @@
                         </ul>
                     </div>
 
-                    <div class="card card--icon">
+                    <div class="card card--icon ml-auto mr-auto">
                         <img src="/src/icons/competitor.svg" alt="Анализ конкурентов">
                         <b>
                             Анализ конкурентов
@@ -551,56 +585,14 @@
                     </div>
                 </div>
 
-                <div class="card card--leaders minified card-form-seo-audit w-100 mt-32" id="seo-audit-creation">
-                    <div class="card-header">
-                        <p class="title_h4 text-center">
-                            Заказать Комплексный SEO-аудит
-                        </p>
-                        <p class="text-center">
-                            Улучшим позиции сайта, приведём заинтересованных посетителей и конвертируем их в
-                            клиентов
-                        </p>
-                    </div>
-                    <form action="/submit/kontakt" method="POST" class="order-form ajax-form" id="quick-form">
-                        <div class="recaptcha-wrapper" style="display: none;">
-                            <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
-                                data-size="invisible"></div>
-                            <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
-                        </div>
-
-                        <!-- <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken()) ?> -->
-
-                        <div class="form-inputs w-100">
-                            <input type="text" id="customer-name" name="name" placeholder="Ваше имя">
-
-                            <!-- <input type="email" id="customer-mail" name="email" placeholder="E-mail"> -->
-
-                            <input type="tel" required id="customer-phone" name="tel" placeholder="Ваш телефон *">
-
-                            <input type="text" id="customer-url" placeholder="URL сайта *" name="url" required>
-
-                            <!-- <input type="text" id="customer-target" placeholder="Регион продвижения *"
-                                        name="target" required> -->
-
-                            <!-- <textarea data-autosize="true" rows="2" id="customer-comment"
-                                        placeholder="Комментарий" name="mess"></textarea> -->
-
-                            <p class="testimonials text-center m-center mb-0">
-                                Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy.html"
-                                    target="_blank">персональных&nbsp;данных</a> в соответствии с <a
-                                    href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
-                                    target="_blank">ФЗ&nbsp;№152</a>
-                            </p>
-
-                            <button type="submit" class="button big button-white">
-                                Отправить
-                            </button>
-                        </div>
-                    </form>
+                <!-- Проверка другого сайта -->
+                <div class="d-flex justify-center mt-16">
+                    <a href="#" class="button button-highlight">Проверить другой сайт</a>
                 </div>
             </div>
         </section>
     </main>
+
     <!-- footer -->
     <footer class="footer">
         <div class="container container-full">
@@ -677,6 +669,7 @@
             </div>
         </div>
     </footer>
+
     <!-- MODAL WINDOWS -->
     <dialog class="popup" id="privacy-policy">
         <div class="popup-wrapper">
