@@ -178,6 +178,7 @@
         </div>
     </header>
     <main>
+        <?php $isExpressAuditPending = !empty($pendingAnalysis) && empty($metrics) && !empty($site); ?>
         <!-- Бесплатный аудит сайта -->
         <section>
             <div class="container">
@@ -222,28 +223,42 @@
                     </ul>
 
                     <div class="card small">
-                        <form action="/submit/express-seo-audit" id="audit-form"
-                            class="d-flex flex-row flex-sm-wrap align-lg-stretch align-start gap-8" method="get"
-                            data-auto-run="<?= !empty($pendingAnalysis) ? 'true' : 'false' ?>">
-                            <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken()) ?>
-                            <input type="text" name="site" id="site-url" placeholder="URL сайта" required=""
-                                autocomplete="url" value="<?= Html::encode($site ?? '') ?>">
-                            <button type="submit" class="big button-highlight w-sm-100 h-100" style="min-width: 120px;">
-                                проверить
-                            </button>
-                        </form>
+                        <div class="express-audit__form-shell"
+                            data-audit-state="<?= $isExpressAuditPending ? 'loading' : 'idle' ?>"
+                            data-has-results="<?= !empty($metrics) ? 'true' : 'false' ?>">
+                            <form action="/submit/express-seo-audit" id="audit-form"
+                                class="d-flex flex-row flex-sm-wrap align-lg-stretch align-start gap-8" method="get"
+                                data-auto-run="<?= !empty($pendingAnalysis) ? 'true' : 'false' ?>"
+                                <?=$isExpressAuditPending ? 'inert' : '' ?>>
+                                <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken()) ?>
+                                <input type="text" name="site" id="site-url" placeholder="URL сайта" required=""
+                                    autocomplete="url" value="<?= Html::encode($site ?? '') ?>">
+                                <button type="submit" class="big button-highlight w-sm-100 h-100"
+                                    style="min-width: 120px;">
+                                    проверить
+                                </button>
+                            </form>
+
+                            <!-- Локальный прелоадер поверх заблокированной формы -->
+                            <div class="express-audit__overlay" id="audit-overlay" role="status" aria-live="polite"
+                                aria-label="Выполняется SEO-аудит">
+                                <div class="preloader" id="audit-loader"></div>
+                                <div class="audit-loader-text" id="audit-loader-text"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Прелоадер локальный (показывается при запросе) -->
-                <div class="preloader" id="audit-loader"></div>
 
                 <!-- Ошибка -->
                 <div class="error-msg text-center mt-32" id="audit-error"></div>
 
                 <!-- Результаты -->
                 <div class="mt-52" id="audit-results" <?=empty($metrics) ? 'style="display:none;"' : '' ?>>
-                    <h2 class="underlined w-fit">Результаты экспресс-аудита</h2>
+                    <h2 class="underlined w-fit">Результаты экспресс-аудита
+                        <span id="audit-result-url" class="express-audit__result-url">
+                            <?= Html::encode($site ?? '') ?>
+                        </span>
+                    </h2>
                     <div class="flex-layout flex-layout--groups gap-20 align-stretch justify-center mt-32"
                         id="audit-cards">
                         <?php if (!empty($metrics)): ?>
@@ -349,7 +364,11 @@
                                     <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
                                         data-size="invisible"></div> <input type="hidden" name="g-recaptcha-response"
                                         class="js-recaptcha-token">
-                                </div> <input type="text" id="customer-name" name="name" placeholder="Ваше имя"> <input
+                                </div>
+
+                                <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken()) ?>
+
+                                <input type="text" id="customer-name" name="name" placeholder="Ваше имя"> <input
                                     type="email" id="customer-mail" name="email" placeholder="E-mail"> <input type="tel"
                                     required="" id="customer-phone" name="tel" placeholder="Ваш телефон *"> <input
                                     type="text" id="customer-url" placeholder="URL сайта *" name="url" required> <input
@@ -587,7 +606,8 @@
 
                 <!-- Проверка другого сайта -->
                 <div class="d-flex justify-center mt-16">
-                    <a href="#" class="button button-highlight">Проверить другой сайт</a>
+                    <a href="/seo-audit#audit-form" id="audit-check-another" class="button button-highlight">Проверить
+                        другой сайт</a>
                 </div>
             </div>
         </section>

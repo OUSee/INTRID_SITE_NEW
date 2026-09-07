@@ -7422,6 +7422,184 @@ const buildOfficeGallery = (gallery) => {
 };
 
 // check url for seo-audit (серверная версия + PageSpeed)
+// Express SEO audit: the source URL and one-shot return intent belong to this tab.
+const expressAuditFlow = (() => {
+  const SOURCE_KEY = "intrid:express-audit:source";
+  const RETURN_KEY = "intrid:express-audit:return";
+  const MAX_AGE = 30 * 60 * 1000;
+
+  const read = (key) => {
+    try {
+      const value = JSON.parse(sessionStorage.getItem(key) || "null");
+      if (!value || !value.createdAt || Date.now() - value.createdAt > MAX_AGE) {
+        sessionStorage.removeItem(key);
+        return null;
+      }
+      return value;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const write = (key, value) => {
+    try {
+      sessionStorage.setItem(key, JSON.stringify(value));
+      return true;
+    } catch (_) {
+      return false;
+    }
+  };
+
+  const remove = (key) => {
+    try {
+      sessionStorage.removeItem(key);
+    } catch (_) {}
+  };
+
+  const isAuditPath = (path) => /(?:^|\/)express-seo-audit(?:\.html)?\/?$/.test(path);
+
+  const safeSourceUrl = (value) => {
+    try {
+      const url = new URL(value, window.location.href);
+      if (url.origin !== window.location.origin || isAuditPath(url.pathname)) {
+        return null;
+      }
+      if (/^\/submit\//.test(url.pathname)) return null;
+      if (!["http:", "https:"].includes(url.protocol)) return null;
+      return url;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const normalizeSite = (site) => {
+    try {
+      return new URL(/^https?:\/\//i.test(site) ? site : `https://${site}`).href;
+    } catch (_) {
+      return String(site || "").trim();
+    }
+  };
+
+  const matchesPage = (sourceUrl) => {
+    const current = new URL(window.location.href);
+    const source = safeSourceUrl(sourceUrl);
+    return source &&
+      source.pathname.replace(/\/$/, "") === current.pathname.replace(/\/$/, "") &&
+      source.search === current.search;
+  };
+
+  const defaultSource = () =>
+    new URL(
+      window.location.pathname.endsWith(".html")
+        ? "./seo-audit.html"
+        : "/seo-audit",
+      window.location.href,
+    );
+
+  const rememberSource = (site) => {
+    const current = safeSourceUrl(window.location.href);
+    if (current) {
+      write(SOURCE_KEY, {
+        url: current.href,
+        site,
+        formId: "audit-form",
+        createdAt: Date.now(),
+      });
+      return;
+    }
+
+    // A new check on the result page keeps the original source.
+    const previous = read(SOURCE_KEY);
+    if (previous && safeSourceUrl(previous.url)) {
+      write(SOURCE_KEY, { ...previous, site, createdAt: Date.now() });
+    }
+  };
+
+  const getSource = (site) => {
+    const stored = read(SOURCE_KEY);
+    if (stored && normalizeSite(stored.site) === normalizeSite(site) &&
+        safeSourceUrl(stored.url)) {
+      return stored;
+    }
+
+    const referrer = safeSourceUrl(document.referrer);
+    const fallback = referrer || defaultSource();
+    return {
+      url: fallback.href,
+      site,
+      formId: "audit-form",
+      createdAt: Date.now(),
+    };
+  };
+
+  const prepareReturn = (site) => {
+    const source = getSource(site);
+    write(RETURN_KEY, { ...source, createdAt: Date.now() });
+    const url = new URL(source.url);
+    url.hash = source.formId || "audit-form";
+    return url.href;
+  };
+
+  const consumeReturn = (form) => {
+    const pending = read(RETURN_KEY);
+    if (!pending || !matchesPage(pending.url)) return false;
+    remove(RETURN_KEY);
+    remove(SOURCE_KEY);
+
+    const input = form.querySelector('[name="site"]');
+    if (!input) return false;
+
+    // Also works when the browser restores a disabled form from bfcache.
+    form.querySelectorAll('input, button, select, textarea').forEach((control) => {
+      if (control.type !== "hidden") control.disabled = false;
+    });
+    form.inert = false;
+    form.removeAttribute("aria-busy");
+    const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+    if (submitBtn) hideButtonLoader(submitBtn);
+    input.value = "";
+    input.setCustomValidity("");
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+
+    const error = document.getElementById("audit-error");
+    if (error) {
+      error.textContent = "";
+      error.style.display = "none";
+    }
+    const loader = document.getElementById("audit-loader");
+    if (loader && !loader.closest(".express-audit__overlay")) {
+      loader.style.display = "none";
+    }
+    const shell = form.closest(".express-audit__form-shell");
+    if (shell) shell.dataset.auditState = "idle";
+
+    const scroll = () => {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        form.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto" : "smooth",
+          block: "center",
+        });
+      }));
+    };
+    if (document.readyState === "complete") scroll();
+    else window.addEventListener("load", scroll, { once: true });
+    return true;
+  };
+
+  const initReturn = (form, onRestore) => {
+    const restore = (event) => {
+      const returned = consumeReturn(form);
+      if (returned || event?.persisted) onRestore?.();
+    };
+    restore();
+    window.addEventListener("pageshow", restore);
+  };
+
+  return { rememberSource, getSource, prepareReturn, initReturn };
+})();
+
 const seoAuditInit = () => {
   const API_KEY = "AIzaSyD80rX_LE4YFfFB7uGRucxxZFCZ0j2IBDI";
   const form = document.getElementById("audit-form");
@@ -7429,8 +7607,14 @@ const seoAuditInit = () => {
 
   const isAjax = form.getAttribute("data-ajax") !== "false";
 
-  const inputs = form.querySelectorAll("input, button");
+  const inputs = form.querySelectorAll('input:not([type="hidden"]), button, select, textarea');
   const urlInput = document.getElementById("site-url");
+  const shell = form.closest(".express-audit__form-shell");
+  const isResultPage = !!shell;
+  const resultUrl = document.getElementById("audit-result-url");
+  const returnLink = document.getElementById("audit-check-another");
+  let auditInProgress = false;
+  let activeAuditUrl = "";
   const loader = document.getElementById("audit-loader");
   const errorDiv = document.getElementById("audit-error");
   const resultsContainer = document.getElementById("audit-results");
@@ -7514,8 +7698,24 @@ const seoAuditInit = () => {
 
   const setFormDisabled = (disabled) => {
     inputs.forEach((i) => {
-      if (i.disabled !== undefined) i.disabled = disabled;
+      i.disabled = disabled;
     });
+    if (isResultPage) form.inert = disabled;
+    form.setAttribute("aria-busy", String(disabled));
+  };
+
+  const setAuditState = (state) => {
+    if (shell) shell.dataset.auditState = state;
+    if (isResultPage) {
+      // The local overlay owns the spinner's visibility.
+      if (loader) loader.style.display = "";
+    } else if (loader) {
+      loader.style.display = state === "loading" ? "block" : "none";
+    }
+  };
+
+  const setResultUrl = (url) => {
+    if (resultUrl) resultUrl.textContent = url;
   };
 
   const normalizeAndValidateUrl = () => {
@@ -7890,11 +8090,19 @@ const seoAuditInit = () => {
   // AJAX-рендеринг (data-ajax="true" или отсутствует)
   // --------------------------------------------------------------
   const handleAjaxRender = async (submitBtn, url) => {
-    resultsContainer.style.display = "none";
-    errorDiv.style.display = "none";
-    if (resultsGrid) resultsGrid.innerHTML = "";
+    if (auditInProgress) return;
+    auditInProgress = true;
+    activeAuditUrl = url;
+    setResultUrl(url);
+    if (resultsContainer) resultsContainer.style.display = "none";
+    if (seoAuditFeatures) seoAuditFeatures.style.display = "none";
+    if (errorDiv) {
+      errorDiv.textContent = "";
+      errorDiv.style.display = "none";
+    }
     setFormDisabled(true);
-    loader.style.display = "block";
+    setAuditState("loading");
+    if (!isResultPage && submitBtn) showButtonLoader(submitBtn);
     startAuditLoaderPhrases();
 
     try {
@@ -8178,26 +8386,27 @@ const seoAuditInit = () => {
       };
 
       renderAuditCards(metrics);
-      resultsContainer.style.display = "block";
+      if (resultsContainer) resultsContainer.style.display = "block";
+      if (seoAuditFeatures) seoAuditFeatures.style.display = "";
+      setAuditState("complete");
       showFormFeedback(submitBtn, "Проверка завершена", "success");
     } catch (err) {
       console.error(err);
       errorDiv.textContent = "Не удалось выполнить проверку.";
       errorDiv.style.display = "block";
+      setAuditState("error");
       showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
-      if (seoAuditFeatures) seoAuditFeatures.style.display = "";
-      loader.style.display = "none";
       stopAuditLoaderPhrases();
+      if (submitBtn) hideButtonLoader(submitBtn);
       setFormDisabled(false);
-      setTimeout(
-        () =>
-          resultsContainer?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          }),
-        600,
-      );
+      auditInProgress = false;
+      if (resultsContainer && resultsContainer.style.display !== "none") {
+        setTimeout(() => resultsContainer.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        }), 200);
+      }
     }
   };
 
@@ -8205,11 +8414,15 @@ const seoAuditInit = () => {
   // Режим обычной отправки (data-ajax="false") – редирект без AJAX
   // --------------------------------------------------------------
   const handleStandardRedirect = (submitBtn, url) => {
-    // Блокируем поля и показываем спиннер
+    if (auditInProgress) return;
+    auditInProgress = true;
+    expressAuditFlow.rememberSource(url);
     setFormDisabled(true);
-    showButtonLoader(submitBtn);
-    // Перенаправляем на GET-версию экшена с параметром site
-    window.location.href = `/submit/express-seo-audit?site=${encodeURIComponent(url)}`;
+    if (submitBtn) showButtonLoader(submitBtn);
+    // Keep the existing GET action and site parameter; do not submit twice.
+    const destination = new URL(form.action, window.location.href);
+    destination.searchParams.set("site", url);
+    window.location.assign(destination.href);
   };
 
   // --------------------------------------------------------------
@@ -8217,6 +8430,7 @@ const seoAuditInit = () => {
   // --------------------------------------------------------------
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    if (auditInProgress) return;
 
     const submitBtn = form.querySelector(
       'button[type="submit"], input[type="submit"]',
@@ -8227,6 +8441,8 @@ const seoAuditInit = () => {
       return;
     }
     urlInput.value = url;
+    activeAuditUrl = url;
+    if (isResultPage) expressAuditFlow.rememberSource(url);
 
     if (isAjax) {
       handleAjaxRender(submitBtn, url);
@@ -8235,17 +8451,55 @@ const seoAuditInit = () => {
     }
   });
 
-  if (form.dataset.autoRun === "true" && urlInput?.value.trim()) {
+  if (isResultPage) {
+    // The server-rendered state is visible before JavaScript initializes.
+    setFormDisabled(shell.dataset.auditState === "loading");
+    if (returnLink) {
+      const updateReturnLink = () => {
+        const source = expressAuditFlow.getSource(
+          activeAuditUrl || urlInput.value.trim(),
+        );
+        const destination = new URL(source.url);
+        destination.hash = source.formId || "audit-form";
+        returnLink.href = destination.href;
+      };
+      updateReturnLink();
+      returnLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.location.assign(expressAuditFlow.prepareReturn(
+          activeAuditUrl || urlInput.value.trim(),
+        ));
+      });
+    }
+  } else {
+    expressAuditFlow.initReturn(form, () => {
+      auditInProgress = false;
+      const submitBtn = form.querySelector(
+        'button[type="submit"], input[type="submit"]',
+      );
+      if (submitBtn) hideButtonLoader(submitBtn);
+      setFormDisabled(false);
+    });
+  }
+
+  if (isResultPage && urlInput?.value.trim()) {
+    setResultUrl(urlInput.value.trim());
+    activeAuditUrl = urlInput.value.trim();
+  }
+
+  if (form.dataset.autoRun === "true" &&
+      shell?.dataset.hasResults !== "true" && urlInput?.value.trim()) {
     const url = normalizeAndValidateUrl();
 
     if (url) {
       urlInput.value = url;
-
       const submitBtn = form.querySelector(
         'button[type="submit"], input[type="submit"]',
       );
-
       handleAjaxRender(submitBtn, url);
+    } else {
+      setAuditState("error");
+      setFormDisabled(false);
     }
   }
 };

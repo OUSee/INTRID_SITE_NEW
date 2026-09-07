@@ -1,0 +1,58 @@
+
+
+/* Express SEO audit: loading state and return-to-form navigation. */
+.express-audit__form-shell {
+  position: relative;
+  min-width: 0;
+}
+.express-audit__form-shell[data-audit-state="loading"] {
+  min-height: 144px;
+}
+.express-audit__form-shell[data-audit-state="loading"] #audit-form {
+  opacity: .4;
+  pointer-events: none;
+}
+.express-audit__overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  text-align: center;
+  border-radius: 24px;
+  background: rgba(10, 10, 10, .85);
+}
+.express-audit__form-shell[data-audit-state="loading"] .express-audit__overlay {
+  display: flex;
+}
+.express-audit__overlay .preloader {
+  display: block;
+  flex: 0 0 40px;
+  margin: 0;
+}
+.express-audit__overlay .audit-loader-text {
+  display: block;
+  max-width: 100%;
+  margin: 0;
+  color: var(--color-white);
+}
+.express-audit__result-url {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+#audit-form,
+#audit-results {
+  scroll-margin-top: 130px;
+}
+@media (max-width: 599.98px) {
+  .express-audit__overlay {
+    padding: 8px;
+  }
+  .express-audit__overlay .audit-loader-text {
+    font-size: 13px;
+  }
+}
