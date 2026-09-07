@@ -7453,7 +7453,7 @@ const expressAuditFlow = (() => {
   const remove = (key) => {
     try {
       sessionStorage.removeItem(key);
-    } catch (_) {}
+    } catch (_) { }
   };
 
   const isAuditPath = (path) => /(?:^|\/)express-seo-audit(?:\.html)?\/?$/.test(path);
@@ -7518,7 +7518,7 @@ const expressAuditFlow = (() => {
   const getSource = (site) => {
     const stored = read(SOURCE_KEY);
     if (stored && normalizeSite(stored.site) === normalizeSite(site) &&
-        safeSourceUrl(stored.url)) {
+      safeSourceUrl(stored.url)) {
       return stored;
     }
 
@@ -7612,6 +7612,7 @@ const seoAuditInit = () => {
   const shell = form.closest(".express-audit__form-shell");
   const isResultPage = !!shell;
   const resultUrl = document.getElementById("audit-result-url");
+  const titleUrl = document.getElementById("audit-title-url");
   const returnLink = document.getElementById("audit-check-another");
   let auditInProgress = false;
   let activeAuditUrl = "";
@@ -7705,7 +7706,13 @@ const seoAuditInit = () => {
   };
 
   const setAuditState = (state) => {
-    if (shell) shell.dataset.auditState = state;
+    if (shell) {
+      shell.dataset.auditState = state;
+      shell.dataset.hasResults = String(state === "complete");
+      // Keep the form and advantages in the DOM for retries and form state,
+      // but remove the entire introduction from the layout after success.
+      shell.hidden = state === "complete";
+    }
     if (isResultPage) {
       // The local overlay owns the spinner's visibility.
       if (loader) loader.style.display = "";
@@ -7715,7 +7722,9 @@ const seoAuditInit = () => {
   };
 
   const setResultUrl = (url) => {
-    if (resultUrl) resultUrl.textContent = url;
+    const displayUrl = url.replace(/^https?:\/\//i, '');
+    if (resultUrl) resultUrl.textContent = displayUrl;
+    if (titleUrl) titleUrl.textContent = displayUrl;
   };
 
   const normalizeAndValidateUrl = () => {
@@ -8422,6 +8431,9 @@ const seoAuditInit = () => {
     // Keep the existing GET action and site parameter; do not submit twice.
     const destination = new URL(form.action, window.location.href);
     destination.searchParams.set("site", url);
+    // PHP needs an explicit origin marker before it can render the H1.
+    // Do not add it for checks started on the express-audit page itself.
+    if (!isResultPage) destination.searchParams.set("audit_origin", "external");
     window.location.assign(destination.href);
   };
 
@@ -8453,6 +8465,8 @@ const seoAuditInit = () => {
 
   if (isResultPage) {
     // The server-rendered state is visible before JavaScript initializes.
+    // Also reconcile the introduction when restoring a page from bfcache.
+    if (shell.dataset.hasResults === "true") setAuditState("complete");
     setFormDisabled(shell.dataset.auditState === "loading");
     if (returnLink) {
       const updateReturnLink = () => {
@@ -8488,7 +8502,7 @@ const seoAuditInit = () => {
   }
 
   if (form.dataset.autoRun === "true" &&
-      shell?.dataset.hasResults !== "true" && urlInput?.value.trim()) {
+    shell?.dataset.hasResults !== "true" && urlInput?.value.trim()) {
     const url = normalizeAndValidateUrl();
 
     if (url) {
