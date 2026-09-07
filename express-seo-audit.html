@@ -181,7 +181,7 @@
         <!-- Бесплатный аудит сайта -->
         <section>
             <div class="container">
-                <h1 class="underlined w-fit">
+                <h1 class="underlined w-fit" id="audit-page-title">
                     <?php if ($isExpressAuditExternal): ?>
                     Результаты экспресс-аудита <span id="audit-title-url" class="express-audit__result-url">
                         <?= Html::encode($site) ?>
@@ -263,7 +263,7 @@
                 <!-- Результаты -->
                 <div class="mt-52" id="audit-results" <?=empty($metrics) ? 'style="display:none;"' : '' ?>>
                     <?php if (!$isExpressAuditExternal): ?>
-                    <h2 class="underlined w-fit">Результаты экспресс-аудита
+                    <h2 class="underlined w-fit" id="audit-result-title">Результаты экспресс-аудита
                         <span id="audit-result-url" class="express-audit__result-url">
                             <?= Html::encode($site ?? '') ?>
                         </span>

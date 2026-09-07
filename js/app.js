@@ -7612,7 +7612,7 @@ const seoAuditInit = () => {
   const shell = form.closest(".express-audit__form-shell");
   const isResultPage = !!shell;
   const resultUrl = document.getElementById("audit-result-url");
-  const titleUrl = document.getElementById("audit-title-url");
+  const pageTitle = document.getElementById("audit-page-title");
   const returnLink = document.getElementById("audit-check-another");
   let auditInProgress = false;
   let activeAuditUrl = "";
@@ -7721,10 +7721,29 @@ const seoAuditInit = () => {
     }
   };
 
+  const getDisplayUrl = (url) => url.replace(/^https?:\/\//i, "");
+
   const setResultUrl = (url) => {
-    const displayUrl = url.replace(/^https?:\/\//i, '');
-    if (resultUrl) resultUrl.textContent = displayUrl;
-    if (titleUrl) titleUrl.textContent = displayUrl;
+    const displayUrl = getDisplayUrl(url);
+    const currentResultUrl = document.getElementById("audit-result-url");
+    const currentTitleUrl = document.getElementById("audit-title-url");
+    if (currentResultUrl) currentResultUrl.textContent = displayUrl;
+    if (currentTitleUrl) currentTitleUrl.textContent = displayUrl;
+  };
+
+  const promoteResultHeading = (url) => {
+    if (!isResultPage || !pageTitle) return;
+
+    const displayUrl = getDisplayUrl(url);
+    pageTitle.textContent = "Результаты экспресс-аудита ";
+
+    const titleUrl = document.createElement("span");
+    titleUrl.id = "audit-title-url";
+    titleUrl.className = "express-audit__result-url";
+    titleUrl.textContent = displayUrl;
+    pageTitle.appendChild(titleUrl);
+
+    document.getElementById("audit-result-title")?.remove();
   };
 
   const normalizeAndValidateUrl = () => {
@@ -8395,6 +8414,7 @@ const seoAuditInit = () => {
       };
 
       renderAuditCards(metrics);
+      promoteResultHeading(url);
       if (resultsContainer) resultsContainer.style.display = "block";
       if (seoAuditFeatures) seoAuditFeatures.style.display = "";
       setAuditState("complete");
