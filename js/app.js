@@ -10057,6 +10057,7 @@ const seoCalculatorInit = () => {
     const audit = $("[data-seo-calculator-audit]");
     const auditLink = $("[data-seo-calculator-audit-link]");
     const parameters = $("[data-seo-calculator-parameters]");
+    const actions = $("[data-seo-calculator-actions]");
     const sitePanel = $("[data-seo-calculator-site-panel]");
     const noSiteLabel = $("[data-seo-calculator-no-site-label]");
     const analyzeButton = $('[data-seo-calculator-action="analyze"]');
@@ -10072,6 +10073,18 @@ const seoCalculatorInit = () => {
     const ageSlider = $("[data-seo-calculator-slider='age_months']");
     const ageLabel = $("[data-seo-calculator-age-label]");
     const ageNote = $("[data-seo-calculator-age-note]");
+    const keywordSlider = $('[data-seo-calculator-slider="keywords"]');
+    const keywordLabel = $('[data-seo-calculator-keywords-label]');
+    // The slider has six discrete tariff categories, not an arbitrary phrase count.
+    // The hidden field retains the existing API and pricing values.
+    const keywordBuckets = [
+      { value: "up-to-20", label: "До 20" },
+      { value: "21-50", label: "21–50" },
+      { value: "51-100", label: "51–100" },
+      { value: "101-300", label: "101–300" },
+      { value: "301-600", label: "301–600" },
+      { value: "over-600", label: "Более 600" },
+    ];
     const fields = Object.fromEntries($$("[data-seo-calculator-field]").map(el => [el.dataset.seoCalculatorField, el]));
     const serviceInputs = $$("[data-seo-calculator-service]");
     const buttons = $$("[data-seo-calculator-action]");
@@ -10088,6 +10101,9 @@ const seoCalculatorInit = () => {
     let captchaWidget = null;
     let captchaComplete = null;
     let scrollFrame = null;
+    let recalculationTimer = null;
+    let recalculationPending = false;
+    const RECALCULATION_DELAY = 400;
     const initialSelections = Object.fromEntries(Object.entries(fields).filter(([, el]) => el.tagName === "SELECT").map(([key, el]) => [key, Array.from(el.options).find(option => option.defaultSelected)?.value ?? el.options[0]?.value ?? ""]));
     const money = (n) => new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 0 }).format(n).replace(/[\u00a0\u202f]/g, " ");
     const priceRange = (range) => range.map(money).join("–");
@@ -10143,6 +10159,14 @@ const seoCalculatorInit = () => {
       number.value = String(n);
       if (maxLabel) maxLabel.textContent = `${money(max)}+`;
     };
+    const setKeywords = (value) => {
+      const index = keywordBuckets.findIndex(bucket => bucket.value === value);
+      if (index < 0) throw new Error("Укажите корректное количество ключевых фраз.");
+      keywordSlider.value = String(index);
+      fields.keywords.value = value;
+      keywordLabel.textContent = keywordBuckets[index].label;
+      keywordSlider.setAttribute("aria-valuetext", keywordBuckets[index].label);
+    };
     const read = () => ({
       site: analyzedSite,
       site_missing: noSite.checked,
@@ -10157,10 +10181,17 @@ const seoCalculatorInit = () => {
       age_category: fields.age_category.value,
       services: Object.fromEntries(serviceInputs.map(el => [el.dataset.seoCalculatorService, el.checked])),
     });
-    const validateParameters = () => {
-      message(notice, "");
-      for (const el of $$("[data-seo-calculator-parameters] select, [data-seo-calculator-number]")) {
-        if (!el.reportValidity()) return false;
+    const validateParameters = ({ report = true } = {}) => {
+      if (report) message(notice, "");
+      for (const el of $$("[data-seo-calculator-parameters] select, [data-seo-calculator-number], [data-seo-calculator-slider='keywords']")) {
+        if (!el.checkValidity()) {
+          if (report) el.reportValidity();
+          return false;
+        }
+      }
+      if (!keywordBuckets.some(bucket => bucket.value === fields.keywords.value)) {
+        if (report) message(notice, "Укажите корректное количество ключевых фраз.");
+        return false;
       }
       return true;
     };
@@ -10182,23 +10213,25 @@ const seoCalculatorInit = () => {
       root.dataset.state = next;
       const work = next !== "start";
       show(sitePanel, next !== "result");
+      show(actions, next === "parameters");
       show(noSiteLabel, next === "start");
       show(parameters, work);
       show(result, work);
-      show(empty, work && next !== "result");
-      show(content, next === "result");
+      show(empty, work && !calculation);
+      show(content, next === "result" && Boolean(calculation));
       show(lead, next === "result");
       show($('[data-seo-calculator-action="reset"]'), next === "result");
-      // One URL row serves both stages: analyze first, calculate with a locked URL second.
+      // The URL row is only an analysis control; parameters have their own calculate button.
       if (analyzeButton) {
-        analyzeButton.dataset.seoCalculatorAction = work ? "calculate" : "analyze";
-        analyzeButton.setAttribute("aria-label", work ? "Рассчитать стоимость SEO-продвижения" : "Проанализировать сайт");
+        analyzeButton.dataset.seoCalculatorAction = "analyze";
+        analyzeButton.setAttribute("aria-label", "Проанализировать сайт");
       }
       $$('[data-seo-calculator-copy]').forEach(el => show(el, el.dataset.seoCalculatorCopy === (work ? "work" : "start")));
       show(demoNote, mode === "mock" && work);
       if (next !== "result") { message(leadStatus, ""); leadSent = false; }
       url.disabled = busy || noSite.checked || work;
       noSite.disabled = busy || work;
+      setBusy(busy);
       if (scroll && changed) scrollToStart();
     };
     const setBusy = (value, kind = "analyze") => {
@@ -10208,7 +10241,11 @@ const seoCalculatorInit = () => {
       url.disabled = value || noSite.checked || state !== "start";
       noSite.disabled = value || state !== "start";
       buttons.filter(el => el.dataset.seoCalculatorAction !== "reset").forEach(el => {
-        el.disabled = value || (el.dataset.seoCalculatorAction === "submit-request" && leadSent);
+        const action = el.dataset.seoCalculatorAction;
+        el.disabled = value
+          || (action === "analyze" && state !== "start")
+          || (action === "calculate" && state !== "parameters")
+          || (action === "submit-request" && (leadSent || recalculationPending));
       });
       if (auditLink) {
         auditLink.style.pointerEvents = noSite.checked ? "none" : "";
@@ -10216,7 +10253,50 @@ const seoCalculatorInit = () => {
         auditLink.setAttribute("aria-disabled", noSite.checked ? "true" : "false");
       }
     };
+    const cancelRecalculation = () => {
+      clearTimeout(recalculationTimer);
+      recalculationTimer = null;
+      recalculationPending = false;
+    };
+    const commitRecalculation = ({ report = false } = {}) => {
+      clearTimeout(recalculationTimer);
+      recalculationTimer = null;
+      if (state !== "result" || !calculation) return false;
+      if (!validateParameters({ report })) {
+        message(notice, "Проверьте параметры расчёта. Предыдущая стоимость сохранена.");
+        setBusy(busy);
+        return false;
+      }
+      try {
+        const updated = seoCalculatorPricing.calculate(read());
+        calculation = updated;
+        render(updated);
+        recalculationPending = false;
+        leadSent = false;
+        message(notice, "");
+        message(leadStatus, "");
+        const sendButton = $('[data-seo-calculator-action="submit-request"]');
+        if (sendButton) sendButton.textContent = "Отправить";
+        setBusy(busy);
+        return true;
+      } catch (error) {
+        message(notice, error.message || "Проверьте параметры расчёта.");
+        setBusy(busy);
+        return false;
+      }
+    };
+    const scheduleRecalculation = () => {
+      if (state !== "result" || !calculation) return;
+      // If a lead is in flight, changing its calculation cancels that stale request.
+      if (busy) abort();
+      clearTimeout(recalculationTimer);
+      recalculationPending = true;
+      message(notice, "");
+      setBusy(busy);
+      recalculationTimer = setTimeout(() => commitRecalculation(), RECALCULATION_DELAY);
+    };
     const abort = () => {
+      cancelRecalculation();
       revision++;
       operation?.abort();
       operation = null;
@@ -10227,9 +10307,13 @@ const seoCalculatorInit = () => {
       setBusy(false);
     };
     const invalidate = () => {
+      if (state === "result" && calculation) {
+        scheduleRecalculation();
+        return;
+      }
+      cancelRecalculation();
       calculation = null;
       leadSent = false;
-      if (state === "result") setState("parameters");
       message(leadStatus, "");
     };
     const normalizeUrl = (value) => {
@@ -10291,19 +10375,22 @@ const seoCalculatorInit = () => {
     const fill = (data, expectedSite, siteMissing) => {
       if (!data || typeof data !== "object") throw new Error("Не удалось получить параметры сайта.");
       const normalized = {};
-      for (const key of ["site_type", "seo_history", "region", "competition", "keywords"]) {
+      for (const key of ["site_type", "seo_history", "region", "competition"]) {
         const value = data[key] ?? (key === "seo_history" ? "unknown" : null);
         if (!Array.from(fields[key].options).some(option => option.value === value)) throw new Error("Сервер вернул неполные параметры сайта.");
         normalized[key] = value;
       }
+      normalized.keywords = data.keywords;
       for (const key of ["sections", "pages"]) {
         const n = Number(data[key]);
         if (!Number.isSafeInteger(n) || n < 1) throw new Error("Сервер вернул некорректное количество страниц или разделов.");
         normalized[key] = n;
       }
+      if (!keywordBuckets.some(bucket => bucket.value === normalized.keywords)) throw new Error("Сервер вернул некорректное количество ключевых фраз.");
       const age = data.age_months;
       if (age !== null && age !== undefined && age !== "" && (!Number.isSafeInteger(Number(age)) || Number(age) < 0)) throw new Error("Сервер вернул некорректный возраст домена.");
       Object.entries(normalized).forEach(([key, value]) => { if (fields[key]?.tagName === "SELECT") setSelect(fields[key], value); });
+      setKeywords(normalized.keywords);
       setRange("sections", normalized.sections);
       setRange("pages", normalized.pages);
       setAge(siteMissing ? 0 : age ?? null);
@@ -10322,7 +10409,7 @@ const seoCalculatorInit = () => {
       $("[data-seo-calculator-lead-source]").value = window.location.href;
     };
     const calculate = () => {
-      if (busy || state === "start" || !validateParameters()) return;
+      if (busy || state !== "parameters" || !validateParameters()) return;
       try {
         calculation = seoCalculatorPricing.calculate(read());
         render(calculation);
@@ -10385,6 +10472,7 @@ const seoCalculatorInit = () => {
       Object.entries(initialSelections).forEach(([key, value]) => setSelect(fields[key], value));
       setRange("sections", 20);
       setRange("pages", 150);
+      setKeywords("21-50");
       setAge(null);
       url.setCustomValidity("");
       url.required = true;
@@ -10447,7 +10535,9 @@ const seoCalculatorInit = () => {
       script.addEventListener("error", () => finish(new Error("CAPTCHA недоступна.")), { once: true });
     });
     const submitRequest = async () => {
-      if (busy || state !== "result" || !calculation || leadSent) return;
+      if (busy || state !== "result" || !calculation) return;
+      if (recalculationPending && !commitRecalculation({ report: true })) return;
+      if (leadSent) return;
       const phone = leadForm.elements.tel;
       const digits = phone.value.replace(/\D/g, "");
       phone.setCustomValidity(!digits || (digits.length === 11 && /^[78]/.test(digits)) ? "" : "Укажите телефон полностью.");
@@ -10498,7 +10588,7 @@ const seoCalculatorInit = () => {
         if (button.dataset.seoCalculatorAction === "reset") reset();
       }
     });
-    form.addEventListener("submit", (event) => { event.preventDefault(); if (state === "start") analyze(); else calculate(); });
+    form.addEventListener("submit", (event) => { event.preventDefault(); if (state === "start") analyze(); else if (state === "parameters") calculate(); });
     leadForm.addEventListener("submit", (event) => { event.preventDefault(); submitRequest(); });
     auditLink?.addEventListener("click", event => { if (noSite.checked) event.preventDefault(); });
     noSite.addEventListener("change", () => {
@@ -10526,23 +10616,17 @@ const seoCalculatorInit = () => {
     Object.entries(fields).forEach(([key, el]) => {
       if (el.tagName === "SELECT") el.addEventListener("change", invalidate);
     });
+    keywordSlider.addEventListener("input", () => {
+      setKeywords(keywordBuckets[Number(keywordSlider.value)].value);
+      invalidate();
+    });
     ["sections", "pages"].forEach(key => {
       const number = $(`[data-seo-calculator-number="${key}"]`);
       const slider = $(`[data-seo-calculator-slider="${key}"]`);
       slider.addEventListener("input", () => { setRange(key, slider.value); invalidate(); });
       number.addEventListener("input", () => { if (number.validity.valid && number.value !== "") setRange(key, number.value); invalidate(); });
     });
-    serviceInputs.forEach(el => el.addEventListener("change", () => {
-      if (state === "result" && calculation) {
-        calculation = seoCalculatorPricing.calculate(read());
-        render(calculation);
-        leadSent = false;
-        message(leadStatus, "");
-        const sendButton = $('[data-seo-calculator-action="submit-request"]');
-        if (sendButton) sendButton.textContent = "Отправить";
-        setBusy(false);
-      }
-    }));
+    serviceInputs.forEach(el => el.addEventListener("change", invalidate));
     leadForm.elements.tel.addEventListener("input", () => leadForm.elements.tel.setCustomValidity(""));
     reset({ scroll: false });
   });

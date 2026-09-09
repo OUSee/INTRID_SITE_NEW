@@ -497,23 +497,33 @@
                                                     id="seo-calculator-pages-limits"><span>1</span><span
                                                         data-seo-calculator-range-max>1000+</span></div>
                                             </div>
-                                            <div class="seo-calculator__field d-flex flex-column gap-8">
-                                                <label for="seo-calculator-keywords">Количество ключевых фраз</label>
-                                                <div class="nice-wrapper nice-wrapper--simple w-100">
-                                                    <select class="wide" data-display="21–50 ключевых фраз"
-                                                        id="seo-calculator-keywords" name="keywords"
-                                                        data-seo-calculator-field="keywords" required>
-                                                        <option value="up-to-20">До 20 ключевых фраз</option>
-                                                        <option selected="" value="21-50">21–50 ключевых фраз</option>
-                                                        <option value="51-100">51–100 ключевых фраз</option>
-                                                        <option value="101-300">101–300 ключевых фраз</option>
-                                                        <option value="301-600">301–600 ключевых фраз</option>
-                                                        <option value="over-600">Более 600 ключевых фраз</option>
-                                                    </select>
+                                            <div class="seo-calculator__field d-flex flex-column gap-8"
+                                                data-seo-calculator-range="keywords"
+                                                data-price-buckets="up-to-20,21-50,51-100,101-300,301-600,over-600">
+                                                <div
+                                                    class="d-flex flex-row align-center justify-between flex-wrap gap-8">
+                                                    <label for="seo-calculator-keywords">Количество ключевых
+                                                        фраз</label>
+                                                    <output id="seo-calculator-keywords-value"
+                                                        for="seo-calculator-keywords"
+                                                        data-seo-calculator-keywords-label>21–50</output>
                                                 </div>
-
+                                                <input id="seo-calculator-keywords" type="range" min="0" max="5"
+                                                    step="1" value="1" data-seo-calculator-slider="keywords"
+                                                    aria-label="Количество ключевых фраз"
+                                                    aria-describedby="seo-calculator-keywords-limits">
+                                                <div class="seo-calculator__range-limits d-flex flex-row justify-between color-grey"
+                                                    id="seo-calculator-keywords-limits">
+                                                    <span>До 20</span><span>600+</span>
+                                                </div>
+                                                <input type="hidden" name="keywords" value="21-50"
+                                                    data-seo-calculator-field="keywords">
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="d-flex flex-column gap-8" data-seo-calculator-actions hidden>
+                                        <button class="button-highlight big w-100" type="button"
+                                            data-seo-calculator-action="calculate">Рассчитать</button>
                                     </div>
                                 </div>
                                 <div class="seo-calculator__extras card thin overflow-visible d-flex flex-column gap-16"
@@ -587,20 +597,6 @@
                                     <p class="seo-calculator__result-price m-0"><strong
                                             data-seo-calculator-output="total-range">—</strong> <span>₽ / мес.</span>
                                     </p>
-                                    <div class="seo-calculator__breakdown d-flex flex-column gap-8"
-                                        aria-label="Расшифровка ежемесячной стоимости">
-                                        <div class="seo-calculator__breakdown-row"><span>SEO-продвижение</span><b
-                                                data-seo-calculator-output="seo-range">—</b></div>
-                                        <div class="seo-calculator__breakdown-row"
-                                            data-seo-calculator-breakdown="reputation" hidden><span>Улучшение
-                                                репутации</span><b>+2 000 ₽/мес.</b></div>
-                                        <div class="seo-calculator__breakdown-row" data-seo-calculator-breakdown="geo"
-                                            hidden><span>Продвижение в нейросетях</span><b>+6 000 ₽/мес.</b></div>
-                                        <div class="seo-calculator__breakdown-row seo-calculator__breakdown-row--total">
-                                            <span>Итого в месяц</span><b
-                                                data-seo-calculator-output="total-range-detail">—</b>
-                                        </div>
-                                    </div>
                                     <p class="m-0 color-grey">Индивидуальное коммерческое предложение подготовим после
                                         анализа сайта, ниши и конкурентной среды.</p>
                                     <div class="seo-calculator__timing grid-layout grid-layout--2x gap-12">
