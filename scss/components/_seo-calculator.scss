@@ -37,9 +37,24 @@
     align-self: center;
   }
 
+  &__parameters {
+    z-index: 2;
+
+    &-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      @media (max-width: 599.98px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
   &__settings,
   &__result {
     min-width: 0;
+    height: 100%;
+    justify-content: center;
   }
 
   &[data-state]:not([data-state="start"]) {
@@ -53,7 +68,8 @@
     }
 
     & .seo-calculator__audit,
-    & .seo-calculator__no-site {
+    & .seo-calculator__site-panel,
+    & .seo-calculator__extras {
       display: none !important;
     }
   }
@@ -93,10 +109,22 @@
     flex: 0 0 auto;
   }
 
-  &__loading .preloader {
-    display: block;
-    flex: 0 0 40px;
-    margin: 8px auto 0;
+  &__loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-main);
+    border-radius: 32px;
+    transform: translate(-50%, -50%);
+
+    .preloader {
+      display: block;
+      flex: 0 0 40px;
+      margin: 8px auto 0;
+    }
   }
 
   &__field {
@@ -135,6 +163,7 @@
     flex: 0 0 auto;
 
     & input {
+      appearance: textfield;
       width: 76px;
       height: 40px;
       padding: 8px;
@@ -147,6 +176,7 @@
   }
 
   &__result-empty {
+    height: 100%;
     min-height: 250px;
   }
 
@@ -192,17 +222,55 @@
     }
   }
 
-  &__lead-fields {
-    width: 100%;
+  &__lead {
+    gap: 0;
+  }
 
-    & > div {
-      flex: 1 1 160px;
+  &__lead-service {
+    min-width: 0;
+
+    & .nice-wrapper {
       min-width: 0;
+    }
+
+    & .tooltip {
+      flex: 0 0 auto;
     }
   }
 
-  &__lead-submit {
-    flex: 0 0 auto;
+  & .card-form-seo-audit--seo-calculator {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    overflow: visible;
+
+    & .form-inputs--seo-calculator {
+      grid-template-columns: minmax(220px, 1.4fr) repeat(3, minmax(150px, 1fr)) auto;
+
+      @media (max-width: 1279.98px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @media (max-width: 599.98px) {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      & .testimonials,
+      & .form-status {
+        grid-column: 1 / -1;
+      }
+
+      & .form-status {
+        margin: 0;
+      }
+
+      & button[type="submit"] {
+        @media (min-width: 600px) and (max-width: 1279.98px) {
+          grid-column: 1/-1;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+      }
+    }
   }
 
   &__sr-only {
@@ -228,6 +296,12 @@
     }
   }
 
+  @media (max-width: 899.98px) {
+    & .card-form-seo-audit--seo-calculator {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
   @media (max-width: 599.98px) {
     padding: 24px 0;
     scroll-margin-top: 80px;
@@ -238,11 +312,6 @@
 
     &__result-empty {
       min-height: 200px;
-    }
-
-    &__lead-fields > div,
-    &__lead-submit {
-      flex: 1 1 100%;
     }
   }
 }

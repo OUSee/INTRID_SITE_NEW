@@ -10065,6 +10065,7 @@ const seoCalculatorInit = () => {
     const loading = $("[data-seo-calculator-loading]");
     const notice = $("[data-seo-calculator-notice]");
     const leadStatus = $("[data-seo-calculator-lead-status]");
+    const leadService = $("#seo-calculator-lead-service");
     const demoNote = $("[data-seo-calculator-demo-note]");
     const ageSlider = $("[data-seo-calculator-slider='age_months']");
     const ageLabel = $("[data-seo-calculator-age-label]");
@@ -10170,7 +10171,8 @@ const seoCalculatorInit = () => {
       show(empty, work && next !== "result");
       show(content, next === "result");
       show(lead, next === "result");
-      show($('[data-seo-calculator-action="reset"]'), work);
+      // show($('[data-seo-calculator-action="reset"]'), work);
+      show($('[data-seo-calculator-action="reset"]'), next === "result");
       $$("[data-seo-calculator-copy]").forEach(el => show(el, el.dataset.seoCalculatorCopy === (work ? "work" : "start")));
       show(demoNote, mode === "mock" && work);
       if (next !== "result") { message(leadStatus, ""); leadSent = false; }
@@ -10334,6 +10336,11 @@ const seoCalculatorInit = () => {
       abort();
       form.reset();
       leadForm.reset();
+      if (leadService) {
+        updateSelect(leadService);
+        if (typeof window.updateTooltipsForSelect === "function") window.updateTooltipsForSelect(leadService);
+        else if (typeof updateTooltipsForSelectFallback === "function") updateTooltipsForSelectFallback(leadService);
+      }
       requestToken = "";
       savedUrl = "";
       analyzedSite = "";
