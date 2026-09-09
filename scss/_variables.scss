@@ -1885,7 +1885,10 @@ form {
     &:before {
       content: "\2714";
       box-sizing: border-box;
-      display: inline-block;
+      // display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-size: inherit;
       width: 20px;
       height: 20px;
@@ -1893,6 +1896,7 @@ form {
       border: 1px solid var(--color-white);
       border-radius: 4px;
       margin-right: 12px;
+      text-align: center;
       transition: all 0.2s ease-in;
     }
 

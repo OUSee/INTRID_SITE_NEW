@@ -1,0 +1,311 @@
+/* SEO-калькулятор. Только компоновка и специфичные состояния.
+   Кнопки, карточки, формы, селекты, чекбоксы, tooltip и preloader — общие компоненты проекта. */
+.seo-calculator {
+  padding: 40px 0;
+  scroll-margin-top: 130px;
+
+  &[hidden],
+  & [hidden] {
+    display: none !important;
+  }
+
+  &__shell {
+    z-index: 3;
+    overflow: visible;
+
+    @media (max-width: 599.98px) {
+      padding: 16px;
+    }
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "intro site" "intro extras";
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+    gap: 20px 32px;
+    margin: 0;
+  }
+
+  &[data-state="parameters"] &__form,
+  &[data-state="result"] &__form {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-areas: "intro site" "params result" "extras result" "actions result";
+    gap: 20px;
+  }
+
+  &__intro {
+    grid-area: intro;
+    min-width: 0;
+    align-self: center;
+  }
+  &__site-panel {
+    grid-area: site;
+    min-width: 0;
+  }
+  &__extras {
+    grid-area: extras;
+    min-width: 0;
+  }
+  &__parameters {
+    grid-area: params;
+    min-width: 0;
+  }
+  &__result {
+    grid-area: result;
+    min-width: 0;
+  }
+  &__actions {
+    grid-area: actions;
+    min-width: 0;
+  }
+
+  &[data-state]:not([data-state="start"]) {
+    & .seo-calculator__audit,
+    & .seo-calculator__no-site {
+      display: none !important;
+    }
+  }
+
+  &__site-row {
+    min-width: 0;
+
+    & input {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+  }
+
+  &__audit:has(input:disabled) {
+    opacity: 0.5;
+
+    & a {
+      pointer-events: none;
+    }
+  }
+
+  &__service-label {
+    min-width: 0;
+    flex: 1 1 auto;
+
+    &::before {
+      flex: 0 0 20px;
+      margin-right: 4px;
+    }
+
+    & > span {
+      min-width: 0;
+    }
+  }
+
+  &__service .tooltip {
+    flex: 0 0 auto;
+  }
+
+  &__loading,
+  &__result-empty {
+    & .preloader {
+      display: block;
+      flex: 0 0 40px;
+      margin: 8px auto 0;
+    }
+  }
+
+  &__parameters-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  &__parameters-column,
+  &__field {
+    min-width: 0;
+  }
+
+  &__field {
+    position: relative;
+
+    & .nice-wrapper {
+      width: 100%;
+    }
+
+    & select {
+      @include input;
+      min-width: 0;
+      height: 52px;
+    }
+
+    & .nice-select {
+      width: 100%;
+    }
+
+    &:has(.nice-select.open) {
+      z-index: 10;
+    }
+
+    & input[type="range"] {
+      appearance: auto;
+      width: 100%;
+      min-width: 0;
+      height: 24px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      accent-color: var(--blue-main);
+    }
+  }
+
+  &__field-top {
+    min-width: 0;
+  }
+
+  &__range-value {
+    flex: 0 0 auto;
+
+    & input {
+      width: 76px;
+      height: 40px;
+      padding: 8px;
+      text-align: center;
+    }
+  }
+
+  &__range-limits {
+    font-size: 12px;
+  }
+
+  &__result-empty {
+    min-height: 250px;
+  }
+
+  &__result-price {
+    color: var(--blue-main);
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+
+    & span {
+      font-size: 14px;
+      color: var(--color-grey);
+    }
+  }
+
+  &__breakdown-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 12px;
+
+    & b {
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    &--total {
+      padding-top: 8px;
+      border-top: 1px solid var(--blue-bg);
+    }
+  }
+
+  &__timing {
+    min-width: 0;
+
+    & > * {
+      min-width: 0;
+    }
+  }
+
+  &__timing-value {
+    color: var(--blue-main);
+
+    & strong {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+  }
+
+  &__lead-form {
+    align-items: stretch;
+  }
+
+  &__lead-fields {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: 12px;
+
+    & > * {
+      min-width: 0;
+    }
+
+    & input {
+      min-width: 0;
+    }
+  }
+
+  &__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 1199.98px) {
+    &__lead-fields {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      & > button {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 999.98px) {
+    &__form,
+    &[data-state="parameters"] &__form,
+    &[data-state="result"] &__form {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "intro" "site" "params" "extras" "result" "actions";
+    }
+
+    &__intro {
+      align-self: start;
+    }
+  }
+
+  @media (max-width: 719.98px) {
+    &__parameters-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 599.98px) {
+    padding: 24px 0;
+    scroll-margin-top: 80px;
+
+    &__form {
+      gap: 16px;
+    }
+
+    &__result-empty {
+      min-height: 200px;
+    }
+
+    &__lead-fields {
+      grid-template-columns: minmax(0, 1fr);
+
+      & > button {
+        grid-column: auto;
+      }
+    }
+  }
+}
