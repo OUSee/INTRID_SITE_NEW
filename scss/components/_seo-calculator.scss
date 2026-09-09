@@ -1,5 +1,5 @@
-/* SEO-калькулятор. Только компоновка и специфичные состояния.
-   Кнопки, карточки, формы, селекты, чекбоксы, tooltip и preloader — общие компоненты проекта. */
+/* SEO-калькулятор: компоновка и собственные состояния.
+   Карточки, формы, кнопки, селекты, чекбоксы и tooltip — компоненты проекта. */
 .seo-calculator {
   padding: 40px 0;
   scroll-margin-top: 130px;
@@ -19,50 +19,39 @@
   }
 
   &__form {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-areas: "intro site" "intro extras";
-    align-items: start;
     width: 100%;
     min-width: 0;
-    gap: 20px 32px;
     margin: 0;
   }
 
-  &[data-state="parameters"] &__form,
-  &[data-state="result"] &__form {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    grid-template-areas: "intro site" "params result" "extras result" "actions result";
-    gap: 20px;
+  &__layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 20px 32px;
+    width: 100%;
   }
 
   &__intro {
-    grid-area: intro;
     min-width: 0;
     align-self: center;
   }
-  &__site-panel {
-    grid-area: site;
-    min-width: 0;
-  }
-  &__extras {
-    grid-area: extras;
-    min-width: 0;
-  }
-  &__parameters {
-    grid-area: params;
-    min-width: 0;
-  }
+
+  &__settings,
   &__result {
-    grid-area: result;
-    min-width: 0;
-  }
-  &__actions {
-    grid-area: actions;
     min-width: 0;
   }
 
   &[data-state]:not([data-state="start"]) {
+    & .seo-calculator__intro {
+      display: none;
+    }
+
+    & .seo-calculator__layout {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 20px;
+    }
+
     & .seo-calculator__audit,
     & .seo-calculator__no-site {
       display: none !important;
@@ -104,30 +93,18 @@
     flex: 0 0 auto;
   }
 
-  &__loading,
-  &__result-empty {
-    & .preloader {
-      display: block;
-      flex: 0 0 40px;
-      margin: 8px auto 0;
-    }
-  }
-
-  &__parameters-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  &__parameters-column,
-  &__field {
-    min-width: 0;
+  &__loading .preloader {
+    display: block;
+    flex: 0 0 40px;
+    margin: 8px auto 0;
   }
 
   &__field {
     position: relative;
+    min-width: 0;
 
-    & .nice-wrapper {
+    & .nice-wrapper,
+    & .nice-select {
       width: 100%;
     }
 
@@ -135,10 +112,6 @@
       @include input;
       min-width: 0;
       height: 52px;
-    }
-
-    & .nice-select {
-      width: 100%;
     }
 
     &:has(.nice-select.open) {
@@ -156,10 +129,6 @@
       background: transparent;
       accent-color: var(--blue-main);
     }
-  }
-
-  &__field-top {
-    min-width: 0;
   }
 
   &__range-value {
@@ -194,9 +163,9 @@
   }
 
   &__breakdown-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: 12px;
 
     & b {
@@ -210,12 +179,8 @@
     }
   }
 
-  &__timing {
+  &__timing > * {
     min-width: 0;
-
-    & > * {
-      min-width: 0;
-    }
   }
 
   &__timing-value {
@@ -227,23 +192,17 @@
     }
   }
 
-  &__lead-form {
-    align-items: stretch;
+  &__lead-fields {
+    width: 100%;
+
+    & > div {
+      flex: 1 1 160px;
+      min-width: 0;
+    }
   }
 
-  &__lead-fields {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
-    align-items: end;
-    gap: 12px;
-
-    & > * {
-      min-width: 0;
-    }
-
-    & input {
-      min-width: 0;
-    }
+  &__lead-submit {
+    flex: 0 0 auto;
   }
 
   &__sr-only {
@@ -258,23 +217,10 @@
     border: 0;
   }
 
-  @media (max-width: 1199.98px) {
-    &__lead-fields {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-
-      & > button {
-        grid-column: 1 / -1;
-        width: 100%;
-      }
-    }
-  }
-
   @media (max-width: 999.98px) {
-    &__form,
-    &[data-state="parameters"] &__form,
-    &[data-state="result"] &__form {
+    &__layout,
+    &[data-state]:not([data-state="start"]) &__layout {
       grid-template-columns: minmax(0, 1fr);
-      grid-template-areas: "intro" "site" "params" "extras" "result" "actions";
     }
 
     &__intro {
@@ -282,17 +228,11 @@
     }
   }
 
-  @media (max-width: 719.98px) {
-    &__parameters-grid {
-      grid-template-columns: minmax(0, 1fr);
-    }
-  }
-
   @media (max-width: 599.98px) {
     padding: 24px 0;
     scroll-margin-top: 80px;
 
-    &__form {
+    &__layout {
       gap: 16px;
     }
 
@@ -300,12 +240,9 @@
       min-height: 200px;
     }
 
-    &__lead-fields {
-      grid-template-columns: minmax(0, 1fr);
-
-      & > button {
-        grid-column: auto;
-      }
+    &__lead-fields > div,
+    &__lead-submit {
+      flex: 1 1 100%;
     }
   }
 }

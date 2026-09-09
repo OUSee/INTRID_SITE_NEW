@@ -9976,3 +9976,533 @@ document.addEventListener("pjax:end", () => {
   portfolioCardsSlider();
   portfolioSeoSlider();
 });
+
+// SEO-калькулятор. Демо-режим включён в HTML через data-seo-calculator-mode="mock".
+// Тарифы: 682e53.xlsx, листы «Стоимость» и «Сроки»; границы разделов уточнены ПМ.
+const seoCalculatorPricing = (() => {
+  const BASE = 12000;
+  const prices = {
+    region: { one: 0, "2-3": 4000, "4-6": 8000, russia: 12000 },
+    site_type: { landing: 3000, corporate: 0, catalog: 3000, store: 4000, portal: 8000 },
+    keywords: { "up-to-20": 0, "21-50": 1000, "51-100": 2000, "101-300": 4000, "301-600": 7000, "over-600": 12000 },
+    competition: { low: 0, medium: 2000, high: 5000 },
+  };
+  const services = { reputation: 2000, geo: 6000 };
+  const ages = {
+    "0-6": { first: [2, 4], top10: [7, 10] },
+    "6-12": { first: [2, 4], top10: [6, 9] },
+    "1-3": { first: [2, 3], top10: [5, 8] },
+    "3+": { first: [2, 3], top10: [4, 7] },
+  };
+  const ageCategory = (months) => {
+    if (months === null || months === undefined || months === "") return "1-3";
+    const n = Number(months);
+    if (!Number.isFinite(n) || n < 0) return "1-3";
+    return n < 6 ? "0-6" : n < 12 ? "6-12" : n <= 36 ? "1-3" : "3+";
+  };
+  const positiveInt = (value) => {
+    const n = Number(value);
+    if (!Number.isSafeInteger(n) || n < 1) throw new Error("Укажите корректное количество страниц и разделов.");
+    return n;
+  };
+  const lookup = (table, key) => {
+    if (!Object.prototype.hasOwnProperty.call(table, key)) throw new Error("Проверьте параметры расчёта.");
+    return table[key];
+  };
+  // Excel ROUND(...,-2): для положительных целых сумм используем целочисленную арифметику.
+  const percentRounded100 = (base, percent) => Math.floor((base * percent + 5000) / 10000) * 100;
+  const calculate = (input) => {
+    const sections = positiveInt(input.sections);
+    const pages = positiveInt(input.pages);
+    const sectionPrice = sections <= 5 ? 0 : sections <= 9 ? 1000 : sections <= 20 ? 2000 : sections <= 50 ? 3000 : 6000;
+    const pagePrice = pages === 1 ? 3000 : pages <= 10 ? 0 : pages <= 50 ? 1000 : pages <= 200 ? 3000 : pages <= 1000 ? 6000 : 8000;
+    const additions = {
+      region: lookup(prices.region, input.region),
+      site_type: lookup(prices.site_type, input.site_type),
+      sections: sectionPrice,
+      pages: pagePrice,
+      keywords: lookup(prices.keywords, input.keywords),
+      competition: lookup(prices.competition, input.competition),
+    };
+    const base = BASE + Object.values(additions).reduce((sum, value) => sum + value, 0);
+    const seo = [percentRounded100(base, 85), percentRounded100(base, 115)];
+    const selected = Object.fromEntries(Object.entries(services).filter(([key]) => input.services?.[key]));
+    const extra = Object.values(selected).reduce((sum, value) => sum + value, 0);
+    const age = lookup(ages, input.age_category || ageCategory(input.age_months));
+    const sectionCorrection = sections <= 100 ? [0, 0] : sections <= 1000 ? [1, 1] : [1, 2];
+    const competitionCorrection = { low: [-1, -1], medium: [0, 0], high: [1, 2] }[input.competition];
+    const timing = (range, correction) => range.map(value => Math.max(1, value + correction));
+    return {
+      version: "excel-2026-09-09-pm-1",
+      base, additions, seo, services: selected,
+      total: seo.map(value => value + extra),
+      first: timing(age.first, sectionCorrection[0] + competitionCorrection[0]),
+      top10: timing(age.top10, sectionCorrection[1] + competitionCorrection[1]),
+    };
+  };
+  return { calculate, ageCategory };
+})();
+
+const seoCalculatorInit = () => {
+  document.querySelectorAll("[data-seo-calculator]").forEach((root) => {
+    if (root.dataset.seoCalculatorInitialized === "true") return;
+    root.dataset.seoCalculatorInitialized = "true";
+    const $ = (selector) => root.querySelector(selector);
+    const $$ = (selector) => Array.from(root.querySelectorAll(selector));
+    const form = $("[data-seo-calculator-form]");
+    const leadForm = $("[data-seo-calculator-lead-form]");
+    if (!form || !leadForm) return;
+    const url = $("[data-seo-calculator-url]");
+    const noSite = $("[data-seo-calculator-no-site]");
+    const audit = $("[data-seo-calculator-audit]");
+    const auditLink = $("[data-seo-calculator-audit-link]");
+    const parameters = $("[data-seo-calculator-parameters]");
+    const actions = $("[data-seo-calculator-actions]");
+    const result = $("[data-seo-calculator-result]");
+    const empty = $("[data-seo-calculator-result-empty]");
+    const content = $("[data-seo-calculator-result-content]");
+    const lead = $("[data-seo-calculator-lead]");
+    const loading = $("[data-seo-calculator-loading]");
+    const notice = $("[data-seo-calculator-notice]");
+    const leadStatus = $("[data-seo-calculator-lead-status]");
+    const demoNote = $("[data-seo-calculator-demo-note]");
+    const ageSlider = $("[data-seo-calculator-slider='age_months']");
+    const ageLabel = $("[data-seo-calculator-age-label]");
+    const ageNote = $("[data-seo-calculator-age-note]");
+    const fields = Object.fromEntries($$("[data-seo-calculator-field]").map(el => [el.dataset.seoCalculatorField, el]));
+    const serviceInputs = $$("[data-seo-calculator-service]");
+    const buttons = $$("[data-seo-calculator-action]");
+    const mode = root.dataset.seoCalculatorMode === "live" ? "live" : "mock";
+    let state = "start";
+    let busy = false;
+    let operation = null;
+    let revision = 0;
+    let analyzedSite = "";
+    let calculation = null;
+    let leadSent = false;
+    let requestToken = "";
+    let savedUrl = "";
+    let captchaWidget = null;
+    let captchaComplete = null;
+    const initialSelections = Object.fromEntries(Object.entries(fields).filter(([, el]) => el.tagName === "SELECT").map(([key, el]) => [key, Array.from(el.options).find(option => option.defaultSelected)?.value ?? el.options[0]?.value ?? ""]));
+    const money = (n) => new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 0 }).format(n).replace(/[\u00a0\u202f]/g, " ");
+    const priceRange = (range) => range.map(money).join("–");
+    const put = (key, value) => { const el = $(`[data-seo-calculator-output="${key}"]`); if (el) el.textContent = value; };
+    const show = (el, visible) => { if (el) el.hidden = !visible; };
+    const message = (el, text) => { if (el) { el.textContent = text || ""; show(el, Boolean(text)); } };
+    const feedback = (text, type = "success") => {
+      if (typeof showFormFeedback === "function") showFormFeedback(null, text, type);
+      else if (typeof window.showNotificationPopup === "function") window.showNotificationPopup(text, type);
+    };
+    const removeMobilePlaceholder = (el) => {
+      const first = el.options[0];
+      if (first && !first.hasAttribute("value") && !first.defaultSelected && first.textContent === el.dataset.display) first.remove();
+    };
+    const updateSelect = (el) => {
+      if (typeof window.updateNiceSelect === "function") window.updateNiceSelect(el);
+      // На мобильных устройствах используется штатный нативный select.
+      const custom = el.nextElementSibling;
+      if (custom?.classList.contains("nice-select")) {
+        custom.classList.toggle("disabled", el.disabled);
+        custom.setAttribute("tabindex", el.disabled ? "-1" : "0");
+      } else {
+        // Штатный нативный select не должен наследовать display:none от старой инициализации.
+        el.style.display = "";
+      }
+    };
+    const setSelect = (el, value) => {
+      if (!el || !Array.from(el.options).some(option => option.value === value)) return;
+      removeMobilePlaceholder(el);
+      el.value = value;
+      updateSelect(el);
+    };
+    const setAge = (months) => {
+      const n = months === null || months === undefined || months === "" ? null : Number(months);
+      const known = n !== null && Number.isFinite(n) && n >= 0;
+      const value = known ? Math.floor(n) : null;
+      fields.age_months.value = known ? String(value) : "";
+      fields.age_category.value = seoCalculatorPricing.ageCategory(value);
+      ageSlider.value = String(Math.min(120, known ? value : 24));
+      ageLabel.textContent = known ? (value < 12 ? `${value} мес.` : `${Math.floor(value / 12)} г. ${value % 12} мес.`) : "Не определён";
+      if (ageNote) ageNote.textContent = known ? "Возраст домена определён автоматически и не редактируется." : "Дата регистрации недоступна. Для расчёта принят возраст 1–3 года.";
+    };
+    const setRange = (key, value) => {
+      const number = $(`[data-seo-calculator-number="${key}"]`);
+      const slider = $(`[data-seo-calculator-slider="${key}"]`);
+      const maxLabel = $(`[data-seo-calculator-range="${key}"] [data-seo-calculator-range-max]`);
+      const n = Number(value);
+      if (!Number.isSafeInteger(n) || n < 1) return;
+      const baseMax = key === "pages" ? 1000 : 100;
+      const max = Math.max(baseMax, Math.ceil(n / (key === "pages" ? 100 : 10)) * (key === "pages" ? 100 : 10));
+      slider.max = String(max);
+      slider.value = String(n);
+      number.value = String(n);
+      if (maxLabel) maxLabel.textContent = `${money(max)}+`;
+    };
+    const read = () => ({
+      site: analyzedSite,
+      site_missing: noSite.checked,
+      site_type: fields.site_type.value,
+      seo_history: fields.seo_history.value,
+      region: fields.region.value,
+      competition: fields.competition.value,
+      keywords: fields.keywords.value,
+      sections: $('[data-seo-calculator-number="sections"]').value,
+      pages: $('[data-seo-calculator-number="pages"]').value,
+      age_months: fields.age_months.value,
+      age_category: fields.age_category.value,
+      services: Object.fromEntries(serviceInputs.map(el => [el.dataset.seoCalculatorService, el.checked])),
+    });
+    const validateParameters = () => {
+      message(notice, "");
+      for (const el of $$("[data-seo-calculator-parameters] select, [data-seo-calculator-number]")) {
+        if (!el.reportValidity()) return false;
+      }
+      return true;
+    };
+    const setState = (next) => {
+      state = next;
+      root.dataset.state = next;
+      const work = next !== "start";
+      show(parameters, work);
+      show(actions, work);
+      show(result, work);
+      show(empty, work && next !== "result");
+      show(content, next === "result");
+      show(lead, next === "result");
+      show($('[data-seo-calculator-action="reset"]'), work);
+      $$("[data-seo-calculator-copy]").forEach(el => show(el, el.dataset.seoCalculatorCopy === (work ? "work" : "start")));
+      show(demoNote, mode === "mock" && work);
+      if (next !== "result") { message(leadStatus, ""); leadSent = false; }
+    };
+    const setBusy = (value, kind = "analyze") => {
+      busy = value;
+      form.setAttribute("aria-busy", value ? "true" : "false");
+      show(loading, value && kind === "analyze");
+      url.disabled = value || noSite.checked;
+      noSite.disabled = value;
+      buttons.filter(el => el.dataset.seoCalculatorAction !== "reset").forEach(el => {
+        el.disabled = value || (el.dataset.seoCalculatorAction === "submit-request" && leadSent);
+      });
+      if (auditLink) {
+        auditLink.style.pointerEvents = noSite.checked ? "none" : "";
+        auditLink.tabIndex = noSite.checked ? -1 : 0;
+        auditLink.setAttribute("aria-disabled", noSite.checked ? "true" : "false");
+      }
+    };
+    const abort = () => {
+      revision++;
+      operation?.abort();
+      operation = null;
+      requestToken = "";
+      busy = false;
+      const sendButton = $('[data-seo-calculator-action="submit-request"]');
+      if (typeof hideButtonLoader === "function") hideButtonLoader(sendButton);
+      setBusy(false);
+    };
+    const invalidate = () => {
+      calculation = null;
+      leadSent = false;
+      if (state === "result") setState("parameters");
+      message(leadStatus, "");
+    };
+    const normalizeUrl = (value) => {
+      let raw = value.trim();
+      if (!raw || /\s/.test(raw)) throw new Error("Укажите корректный адрес сайта.");
+      if (!/^[a-z][a-z\d+.-]*:\/\//i.test(raw)) raw = `https://${raw}`;
+      const parsed = new URL(raw);
+      if (!["http:", "https:"].includes(parsed.protocol) || parsed.username || parsed.password || parsed.port || parsed.hostname.length > 253) throw new Error("Укажите корректный адрес сайта.");
+      const labels = parsed.hostname.replace(/\.$/, "").split(".");
+      if (labels.length < 2 || labels.some(label => !/^(?!-)[a-z\d-]{1,63}(?<!-)$/i.test(label)) || !/^[a-z\d-]{2,63}$/i.test(labels.at(-1)) || /^\d+\.\d+\.\d+\.\d+$/.test(parsed.hostname)) throw new Error("Укажите корректный адрес сайта.");
+      parsed.hash = "";
+      return parsed.href.replace(/\/$/, "");
+    };
+    const validateUrl = () => {
+      if (noSite.checked) return "";
+      let value;
+      try { value = normalizeUrl(url.value); }
+      catch (error) {
+        url.setCustomValidity(error.message);
+        url.reportValidity();
+        return null;
+      }
+      url.setCustomValidity("");
+      url.value = value;
+      return value;
+    };
+    const wait = (ms, signal) => new Promise((resolve, reject) => {
+      if (signal.aborted) return reject(new DOMException("Отменено", "AbortError"));
+      const timer = setTimeout(() => { signal.removeEventListener("abort", cancel); resolve(); }, ms);
+      const cancel = () => { clearTimeout(timer); reject(new DOMException("Отменено", "AbortError")); };
+      signal.addEventListener("abort", cancel, { once: true });
+    });
+    const requestJson = async (endpoint, payload, signal) => {
+      const csrfParam = document.querySelector('meta[name="csrf-param"]')?.content;
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+      const body = { ...payload };
+      if (csrfParam && csrfToken) body[csrfParam] = csrfToken;
+      const response = await fetch(endpoint, {
+        method: "POST", credentials: "same-origin", signal,
+        headers: { "Content-Type": "application/json", "Accept": "application/json", "X-Requested-With": "XMLHttpRequest", ...(csrfToken ? { "X-CSRF-Token": csrfToken } : {}) },
+        body: JSON.stringify(body),
+      });
+      const data = await response.json().catch(() => { throw new Error("Сервер вернул некорректный ответ."); });
+      if (!response.ok || !data || data.success !== true) throw new Error(data.error || data.message || "Не удалось выполнить запрос.");
+      return data.data;
+    };
+    const transport = {
+      analyze: async (payload, signal) => {
+        if (mode === "live") return requestJson(form.dataset.analyzeUrl || form.action, payload, signal);
+        await wait(750, signal);
+        return { site: payload.site, site_missing: payload.site_missing, site_type: payload.site_missing ? "landing" : "corporate", seo_history: "unknown", region: "one", competition: "medium", keywords: "21-50", sections: payload.site_missing ? 5 : 20, pages: payload.site_missing ? 1 : 150, age_months: payload.site_missing ? 0 : 24, age_category: payload.site_missing ? "0-6" : "1-3", source: "mock" };
+      },
+      submit: async (payload, signal) => {
+        if (mode === "live") return requestJson(leadForm.getAttribute("action"), payload, signal);
+        await wait(650, signal);
+        return { status: true, message: "Демонстрационная заявка принята. Данные никуда не отправлялись.", mock: true };
+      },
+    };
+    const fill = (data, expectedSite, siteMissing) => {
+      if (!data || typeof data !== "object") throw new Error("Не удалось получить параметры сайта.");
+      const normalized = {};
+      for (const key of ["site_type", "seo_history", "region", "competition", "keywords"]) {
+        const value = data[key] ?? (key === "seo_history" ? "unknown" : null);
+        if (!Array.from(fields[key].options).some(option => option.value === value)) throw new Error("Сервер вернул неполные параметры сайта.");
+        normalized[key] = value;
+      }
+      for (const key of ["sections", "pages"]) {
+        const n = Number(data[key]);
+        if (!Number.isSafeInteger(n) || n < 1) throw new Error("Сервер вернул некорректное количество страниц или разделов.");
+        normalized[key] = n;
+      }
+      const age = data.age_months;
+      if (age !== null && age !== undefined && age !== "" && (!Number.isSafeInteger(Number(age)) || Number(age) < 0)) throw new Error("Сервер вернул некорректный возраст домена.");
+      Object.entries(normalized).forEach(([key, value]) => { if (fields[key]?.tagName === "SELECT") setSelect(fields[key], value); });
+      setRange("sections", normalized.sections);
+      setRange("pages", normalized.pages);
+      setAge(siteMissing ? 0 : age ?? null);
+      analyzedSite = siteMissing ? "" : expectedSite;
+    };
+    const render = (value) => {
+      put("total-range", priceRange(value.total));
+      put("seo-range", `${priceRange(value.seo)} ₽/мес.`);
+      put("total-range-detail", `${priceRange(value.total)} ₽/мес.`);
+      put("first-results", value.first.join("–"));
+      put("top10", value.top10.join("–"));
+      ["reputation", "geo"].forEach(key => show($(`[data-seo-calculator-breakdown="${key}"]`), Boolean(value.services[key])));
+      const snapshot = { parameters: read(), result: value };
+      $("[data-seo-calculator-lead-site]").value = analyzedSite;
+      $("[data-seo-calculator-lead-calculation]").value = JSON.stringify(snapshot);
+      $("[data-seo-calculator-lead-source]").value = window.location.href;
+    };
+    const calculate = () => {
+      if (busy || state === "start" || !validateParameters()) return;
+      try {
+        calculation = seoCalculatorPricing.calculate(read());
+        render(calculation);
+        if (!leadSent) {
+          const sendButton = $('[data-seo-calculator-action="submit-request"]');
+          if (sendButton) sendButton.textContent = "Отправить";
+        }
+        setState("result");
+      } catch (error) { message(notice, error.message); }
+    };
+    const analyze = async () => {
+      if (busy) return;
+      const site = validateUrl();
+      if (site === null) return;
+      abort();
+      const id = revision;
+      operation = new AbortController();
+      const signal = operation.signal;
+      message(notice, "");
+      invalidate();
+      setState("start");
+      setBusy(true, "analyze");
+      try {
+        const data = await transport.analyze({ site, site_missing: noSite.checked }, signal);
+        if (id !== revision) return;
+        fill(data, site, noSite.checked);
+        setState("parameters");
+      } catch (error) {
+        if (id === revision && error.name !== "AbortError") message(notice, error.message || "Не удалось проанализировать сайт.");
+      } finally {
+        if (id === revision) { operation = null; setBusy(false); }
+      }
+    };
+    const reset = () => {
+      abort();
+      form.reset();
+      leadForm.reset();
+      requestToken = "";
+      savedUrl = "";
+      analyzedSite = "";
+      calculation = null;
+      leadSent = false;
+      Object.entries(initialSelections).forEach(([key, value]) => setSelect(fields[key], value));
+      setRange("sections", 20);
+      setRange("pages", 150);
+      setAge(null);
+      url.setCustomValidity("");
+      url.required = true;
+      message(notice, "");
+      message(leadStatus, "");
+      setState("start");
+      setBusy(false);
+      const sendButton = $('[data-seo-calculator-action="submit-request"]');
+      if (sendButton) sendButton.textContent = "Отправить";
+      $("[data-seo-calculator-lead-calculation]").value = "";
+      $("[data-seo-calculator-lead-site]").value = "";
+      if (typeof window.smartCaptcha?.reset === "function" && captchaWidget !== null) window.smartCaptcha.reset(captchaWidget);
+    };
+    // В live-режиме CAPTCHA выполняется только перед заявкой. Анализ остается публичным.
+    const executeCaptcha = (signal) => new Promise((resolve, reject) => {
+      const captcha = $("[data-seo-calculator-captcha] .js-recaptcha");
+      const sitekey = window.SMARTCAPTCHA_SITEKEY || captcha?.dataset.sitekey;
+      if (!sitekey) return reject(new Error("CAPTCHA не настроена."));
+      let finished = false;
+      let interval = null;
+      let timeout = null;
+      const finish = (error, token) => {
+        if (finished) return;
+        finished = true;
+        clearInterval(interval);
+        clearTimeout(timeout);
+        signal.removeEventListener("abort", cancel);
+        if (captchaComplete === finish) captchaComplete = null;
+        if (error) reject(error); else resolve(token);
+      };
+      const cancel = () => finish(new DOMException("Отменено", "AbortError"));
+      captchaComplete = finish;
+      signal.addEventListener("abort", cancel, { once: true });
+      timeout = setTimeout(() => finish(new Error("Время проверки CAPTCHA истекло.")), 60000);
+      const start = () => {
+        if (finished || !window.smartCaptcha) return;
+        try {
+          if (captchaWidget === null) captchaWidget = window.smartCaptcha.render(captcha, {
+            sitekey, invisible: true,
+            callback: token => captchaComplete?.(null, token),
+            "error-callback": () => captchaComplete?.(new Error("Не удалось проверить CAPTCHA.")),
+          });
+          else window.smartCaptcha.reset(captchaWidget);
+          window.smartCaptcha.execute(captchaWidget);
+        } catch (error) { finish(error); }
+      };
+      if (window.smartCaptcha) return start();
+      let script = document.getElementById("yandex-smartcaptcha-script");
+      if (!script) {
+        script = document.createElement("script");
+        script.id = "yandex-smartcaptcha-script";
+        script.src = "https://smartcaptcha.yandexcloud.net/captcha.js?render=onload&hl=ru";
+        script.async = true;
+        document.head.appendChild(script);
+      }
+      // Скрипт мог быть ранее подключен штатным обработчиком AJAX-форм.
+      interval = setInterval(() => { if (window.smartCaptcha) { clearInterval(interval); interval = null; start(); } }, 100);
+      script.addEventListener("error", () => finish(new Error("CAPTCHA недоступна.")), { once: true });
+    });
+    const submitRequest = async () => {
+      if (busy || state !== "result" || !calculation || leadSent) return;
+      const phone = leadForm.elements.tel;
+      const digits = phone.value.replace(/\D/g, "");
+      phone.setCustomValidity(!digits || (digits.length === 11 && /^[78]/.test(digits)) ? "" : "Укажите телефон полностью.");
+      for (const el of Array.from(leadForm.elements).filter(el => el.willValidate)) {
+        if (!el.reportValidity()) return;
+      }
+      abort();
+      const id = revision;
+      operation = new AbortController();
+      const signal = operation.signal;
+      const sendButton = $('[data-seo-calculator-action="submit-request"]');
+      message(leadStatus, "");
+      if (typeof showButtonLoader === "function") showButtonLoader(sendButton);
+      setBusy(true, "submit");
+      try {
+        if (mode === "live") requestToken = await executeCaptcha(signal);
+        if (id !== revision) return;
+        const payload = Object.fromEntries(new FormData(leadForm).entries());
+        payload["g-recaptcha-response"] = requestToken;
+        payload.calculation = { parameters: read(), result: calculation };
+        const response = await transport.submit(payload, signal);
+        if (id !== revision) return;
+        leadSent = true;
+        message(leadStatus, response.message || "Заявка успешно отправлена.");
+        feedback(response.message || "Заявка успешно отправлена.");
+      } catch (error) {
+        if (id === revision && error.name !== "AbortError") message(leadStatus, error.message || "Не удалось отправить заявку.");
+      } finally {
+        if (id === revision) {
+          operation = null;
+          requestToken = "";
+          if (typeof hideButtonLoader === "function") hideButtonLoader(sendButton);
+          if (leadSent && sendButton) sendButton.textContent = "Отправлено";
+          setBusy(false);
+        }
+      }
+    };
+    form.noValidate = true;
+    leadForm.noValidate = true;
+    root.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-seo-calculator-action]");
+      if (button && root.contains(button)) {
+        event.preventDefault();
+        if (button.dataset.seoCalculatorAction === "analyze") analyze();
+        if (button.dataset.seoCalculatorAction === "calculate") calculate();
+        if (button.dataset.seoCalculatorAction === "submit-request") submitRequest();
+        if (button.dataset.seoCalculatorAction === "reset") reset();
+      }
+    });
+    form.addEventListener("submit", (event) => { event.preventDefault(); if (state === "start") analyze(); else calculate(); });
+    leadForm.addEventListener("submit", (event) => { event.preventDefault(); submitRequest(); });
+    auditLink?.addEventListener("click", event => { if (noSite.checked) event.preventDefault(); });
+    noSite.addEventListener("change", () => {
+      if (busy) return;
+      url.disabled = noSite.checked;
+      url.required = !noSite.checked;
+      url.setCustomValidity("");
+      auditLink?.setAttribute("aria-disabled", noSite.checked ? "true" : "false");
+      if (auditLink) auditLink.tabIndex = noSite.checked ? -1 : 0;
+      if (noSite.checked) {
+        savedUrl = url.value;
+        url.value = "";
+      } else if (!url.value && savedUrl) {
+        url.value = savedUrl;
+      }
+      invalidate();
+      setState("start");
+    });
+    url.addEventListener("input", () => {
+      url.setCustomValidity("");
+      message(notice, "");
+      if (state !== "start") { invalidate(); setState("start"); }
+    });
+    Object.entries(fields).forEach(([key, el]) => {
+      if (el.tagName === "SELECT") el.addEventListener("change", invalidate);
+    });
+    ["sections", "pages"].forEach(key => {
+      const number = $(`[data-seo-calculator-number="${key}"]`);
+      const slider = $(`[data-seo-calculator-slider="${key}"]`);
+      slider.addEventListener("input", () => { setRange(key, slider.value); invalidate(); });
+      number.addEventListener("input", () => { if (number.validity.valid && number.value !== "") setRange(key, number.value); invalidate(); });
+    });
+    serviceInputs.forEach(el => el.addEventListener("change", () => {
+      if (state === "result" && calculation) {
+        calculation = seoCalculatorPricing.calculate(read());
+        render(calculation);
+        leadSent = false;
+        message(leadStatus, "");
+        const sendButton = $('[data-seo-calculator-action="submit-request"]');
+        if (sendButton) sendButton.textContent = "Отправить";
+        setBusy(false);
+      }
+    }));
+    leadForm.elements.tel.addEventListener("input", () => leadForm.elements.tel.setCustomValidity(""));
+    reset();
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", seoCalculatorInit);
+} else {
+  seoCalculatorInit();
+}
