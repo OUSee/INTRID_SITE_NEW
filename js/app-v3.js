@@ -10146,31 +10146,18 @@ const seoCalculatorInit = () => {
       ageLabel.textContent = known ? (value < 12 ? `${value} мес.` : `${Math.floor(value / 12)} г. ${value % 12} мес.`) : "Не определён";
       if (ageNote) ageNote.textContent = known ? "Возраст домена определён автоматически и не редактируется." : "Дата регистрации недоступна. Для расчёта принят возраст 1–3 года.";
     };
-    // The number field retains the exact count; the range is only a fixed-size control.
-    // A range with data-range-open-end reserves its last position for an open tariff bucket.
-    // For pages: 999 -> 999, 1000 -> 1001+; an exact manually entered 1000
-    // remains 1000 and is displayed immediately before the final position.
-    const setRange = (key, value, { fromSlider = false } = {}) => {
+    const setRange = (key, value) => {
       const number = $(`[data-seo-calculator-number="${key}"]`);
       const slider = $(`[data-seo-calculator-slider="${key}"]`);
-      const wrapper = $(`[data-seo-calculator-range="${key}"]`);
+      const maxLabel = $(`[data-seo-calculator-range="${key}"] [data-seo-calculator-range-max]`);
       const n = Number(value);
       if (!Number.isSafeInteger(n) || n < 1) return;
-
-      const max = Number(slider.max);
-      const openEnd = Number(wrapper?.dataset.rangeOpenEnd);
-      const hasOpenEnd = Number.isSafeInteger(openEnd) && openEnd > max;
-      const exact = fromSlider && hasOpenEnd && n === max ? openEnd : n;
-      const position = !fromSlider && hasOpenEnd && exact === max
-        ? max - 1
-        : Math.min(exact, max);
-
-      number.value = String(exact);
-      slider.value = String(position);
-      slider.setAttribute("aria-valuetext",
-        hasOpenEnd && exact >= openEnd
-          ? `${money(exact)} шт., диапазон ${money(max)}+`
-          : `${money(exact)} шт.`);
+      const baseMax = key === "pages" ? 1000 : 100;
+      const max = Math.max(baseMax, Math.ceil(n / (key === "pages" ? 100 : 10)) * (key === "pages" ? 100 : 10));
+      slider.max = String(max);
+      slider.value = String(n);
+      number.value = String(n);
+      if (maxLabel) maxLabel.textContent = `${money(max)}+`;
     };
     const setKeywords = (value) => {
       const index = keywordBuckets.findIndex(bucket => bucket.value === value);
@@ -10636,7 +10623,7 @@ const seoCalculatorInit = () => {
     ["sections", "pages"].forEach(key => {
       const number = $(`[data-seo-calculator-number="${key}"]`);
       const slider = $(`[data-seo-calculator-slider="${key}"]`);
-      slider.addEventListener("input", () => { setRange(key, slider.value, { fromSlider: true }); invalidate(); });
+      slider.addEventListener("input", () => { setRange(key, slider.value); invalidate(); });
       number.addEventListener("input", () => { if (number.validity.valid && number.value !== "") setRange(key, number.value); invalidate(); });
     });
     serviceInputs.forEach(el => el.addEventListener("change", invalidate));
