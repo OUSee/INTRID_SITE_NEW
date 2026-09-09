@@ -10057,7 +10057,9 @@ const seoCalculatorInit = () => {
     const audit = $("[data-seo-calculator-audit]");
     const auditLink = $("[data-seo-calculator-audit-link]");
     const parameters = $("[data-seo-calculator-parameters]");
-    const actions = $("[data-seo-calculator-actions]");
+    const sitePanel = $("[data-seo-calculator-site-panel]");
+    const noSiteLabel = $("[data-seo-calculator-no-site-label]");
+    const analyzeButton = $('[data-seo-calculator-action="analyze"]');
     const result = $("[data-seo-calculator-result]");
     const empty = $("[data-seo-calculator-result-empty]");
     const content = $("[data-seo-calculator-result-content]");
@@ -10085,6 +10087,7 @@ const seoCalculatorInit = () => {
     let savedUrl = "";
     let captchaWidget = null;
     let captchaComplete = null;
+    let scrollFrame = null;
     const initialSelections = Object.fromEntries(Object.entries(fields).filter(([, el]) => el.tagName === "SELECT").map(([key, el]) => [key, Array.from(el.options).find(option => option.defaultSelected)?.value ?? el.options[0]?.value ?? ""]));
     const money = (n) => new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 0 }).format(n).replace(/[\u00a0\u202f]/g, " ");
     const priceRange = (range) => range.map(money).join("–");
@@ -10161,28 +10164,49 @@ const seoCalculatorInit = () => {
       }
       return true;
     };
-    const setState = (next) => {
+    // Scroll only after the new layout has been applied. CSS scroll-margin-top
+    // accounts for the fixed header; reduced-motion preferences are respected.
+    const scrollToStart = () => {
+      if (scrollFrame !== null) cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => {
+        scrollFrame = null;
+        root.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+          block: "start",
+        });
+      });
+    };
+    const setState = (next, { scroll = true } = {}) => {
+      const changed = state !== next;
       state = next;
       root.dataset.state = next;
       const work = next !== "start";
+      show(sitePanel, next !== "result");
+      show(noSiteLabel, next === "start");
       show(parameters, work);
-      show(actions, work);
       show(result, work);
       show(empty, work && next !== "result");
       show(content, next === "result");
       show(lead, next === "result");
-      // show($('[data-seo-calculator-action="reset"]'), work);
       show($('[data-seo-calculator-action="reset"]'), next === "result");
-      $$("[data-seo-calculator-copy]").forEach(el => show(el, el.dataset.seoCalculatorCopy === (work ? "work" : "start")));
+      // One URL row serves both stages: analyze first, calculate with a locked URL second.
+      if (analyzeButton) {
+        analyzeButton.dataset.seoCalculatorAction = work ? "calculate" : "analyze";
+        analyzeButton.setAttribute("aria-label", work ? "Рассчитать стоимость SEO-продвижения" : "Проанализировать сайт");
+      }
+      $$('[data-seo-calculator-copy]').forEach(el => show(el, el.dataset.seoCalculatorCopy === (work ? "work" : "start")));
       show(demoNote, mode === "mock" && work);
       if (next !== "result") { message(leadStatus, ""); leadSent = false; }
+      url.disabled = busy || noSite.checked || work;
+      noSite.disabled = busy || work;
+      if (scroll && changed) scrollToStart();
     };
     const setBusy = (value, kind = "analyze") => {
       busy = value;
       form.setAttribute("aria-busy", value ? "true" : "false");
       show(loading, value && kind === "analyze");
-      url.disabled = value || noSite.checked;
-      noSite.disabled = value;
+      url.disabled = value || noSite.checked || state !== "start";
+      noSite.disabled = value || state !== "start";
       buttons.filter(el => el.dataset.seoCalculatorAction !== "reset").forEach(el => {
         el.disabled = value || (el.dataset.seoCalculatorAction === "submit-request" && leadSent);
       });
@@ -10332,15 +10356,27 @@ const seoCalculatorInit = () => {
         if (id === revision) { operation = null; setBusy(false); }
       }
     };
-    const reset = () => {
-      abort();
-      form.reset();
+    const syncLeadContext = () => {
+      const snapshot = calculation ? { parameters: read(), result: calculation } : null;
+      $("[data-seo-calculator-lead-site]").value = analyzedSite;
+      $("[data-seo-calculator-lead-calculation]").value = snapshot ? JSON.stringify(snapshot) : "";
+      $("[data-seo-calculator-lead-source]").value = snapshot ? window.location.href : "";
+    };
+    const resetLeadForm = () => {
       leadForm.reset();
+      // Native reset does not refresh the project's custom select or its tooltip.
       if (leadService) {
         updateSelect(leadService);
         if (typeof window.updateTooltipsForSelect === "function") window.updateTooltipsForSelect(leadService);
         else if (typeof updateTooltipsForSelectFallback === "function") updateTooltipsForSelectFallback(leadService);
       }
+      const phone = leadForm.elements.tel;
+      if (phone) phone.setCustomValidity("");
+      syncLeadContext();
+    };
+    const reset = ({ scroll = true } = {}) => {
+      abort();
+      form.reset();
       requestToken = "";
       savedUrl = "";
       analyzedSite = "";
@@ -10354,8 +10390,10 @@ const seoCalculatorInit = () => {
       url.required = true;
       message(notice, "");
       message(leadStatus, "");
-      setState("start");
+      setState("start", { scroll: false });
       setBusy(false);
+      resetLeadForm();
+      if (scroll) scrollToStart();
       const sendButton = $('[data-seo-calculator-action="submit-request"]');
       if (sendButton) sendButton.textContent = "Отправить";
       $("[data-seo-calculator-lead-calculation]").value = "";
@@ -10433,6 +10471,7 @@ const seoCalculatorInit = () => {
         const response = await transport.submit(payload, signal);
         if (id !== revision) return;
         leadSent = true;
+        resetLeadForm();
         message(leadStatus, response.message || "Заявка успешно отправлена.");
         feedback(response.message || "Заявка успешно отправлена.");
       } catch (error) {
@@ -10479,6 +10518,7 @@ const seoCalculatorInit = () => {
       setState("start");
     });
     url.addEventListener("input", () => {
+      if (state !== "start") return;
       url.setCustomValidity("");
       message(notice, "");
       if (state !== "start") { invalidate(); setState("start"); }
@@ -10504,7 +10544,7 @@ const seoCalculatorInit = () => {
       }
     }));
     leadForm.elements.tel.addEventListener("input", () => leadForm.elements.tel.setCustomValidity(""));
-    reset();
+    reset({ scroll: false });
   });
 };
 

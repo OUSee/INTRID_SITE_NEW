@@ -328,16 +328,14 @@
                                 </div>
                             </div>
                             <div class="seo-calculator__settings d-flex flex-column gap-20 gap-sm-16">
-                                <div
+                                <div data-seo-calculator-site-panel
                                     class="seo-calculator__site-panel card thin overflow-visible d-flex flex-column gap-16">
-                                    <div
-                                        class="seo-calculator__site-row d-flex flex-row flex-sm-column align-stretch gap-8">
+                                    <div class="seo-calculator__site-row d-flex flex-row align-stretch gap-8">
                                         <input id="seo-calculator-url" type="text" name="site" placeholder="URL сайта"
                                             autocomplete="url" inputmode="url" required data-seo-calculator-url>
-                                        <button class="button-highlight seo-calculator__submit-url w-sm-100"
-                                            type="button" data-seo-calculator-action="analyze"
-                                            aria-label="Проанализировать сайт">
-                                            Рассчитать
+                                        <button class="button-highlight seo-calculator__submit-url" type="button"
+                                            data-seo-calculator-action="analyze" aria-label="Проанализировать сайт">
+                                            <i class="icon-arrow_wide"></i>
                                         </button>
                                     </div>
                                     <label class="label-checkbox seo-calculator__no-site" for="seo-calculator-no-site"
@@ -354,8 +352,6 @@
                                         <div class="preloader" aria-hidden="true"></div>
                                         <p class="m-0 color-grey">Анализируем сайт и подготавливаем параметры…</p>
                                     </div>
-                                    <small class="color-grey" data-seo-calculator-demo-note hidden>Демонстрация:
-                                        параметры сайта и отправка заявки работают на тестовых данных.</small>
                                 </div>
                                 <div class="seo-calculator__parameters card thin overflow-visible d-flex flex-column gap-20"
                                     data-seo-calculator-parameters role="group"
@@ -571,12 +567,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="seo-calculator__actions d-flex flex-row align-center flex-wrap gap-16"
-                                    data-seo-calculator-actions hidden>
-                                    <button class="button-highlight big w-sm-100" type="button"
-                                        data-seo-calculator-action="calculate">Рассчитать</button>
-                                    <p class="m-0 color-grey">Расчёт бесплатный и ни к чему не обязывает</p>
-                                </div>
                             </div>
                             <aside class="seo-calculator__result card thin d-flex flex-column gap-20"
                                 data-seo-calculator-result aria-label="Результат расчёта" hidden>
@@ -710,9 +700,10 @@
                             </div>
                         </form>
                     </div>
-                    <button class="button-link small m-center mt-20" type="button" data-seo-calculator-action="reset"
-                        hidden>Проанализировать другой сайт</button>
                 </div>
+                <button class="button-link small m-center mt-20" type="button" data-seo-calculator-action="reset"
+                    hidden>Проанализировать другой сайт</button>
+            </div>
         </section>
         <!-- /SEO-калькулятор -->
 
