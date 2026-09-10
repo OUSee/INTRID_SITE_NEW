@@ -10014,7 +10014,12 @@ const seoCalculatorPricing = (() => {
   const calculate = (input) => {
     const sections = positiveInt(input.sections);
     const pages = positiveInt(input.pages);
-    const sectionPrice = sections <= 5 ? 0 : sections <= 9 ? 1000 : sections <= 20 ? 2000 : sections <= 50 ? 3000 : 6000;
+    const sectionPrice =
+      sections <= 5 ? 0 :
+      sections <= 9 ? 1000 :
+      sections <= 20 ? 2000 :
+      sections <= 100 ? 3000 :
+      6000;
     const pagePrice = pages === 1 ? 3000 : pages <= 10 ? 0 : pages <= 50 ? 1000 : pages <= 200 ? 3000 : pages <= 1000 ? 6000 : 8000;
     const additions = {
       region: lookup(prices.region, input.region),
@@ -10147,9 +10152,11 @@ const seoCalculatorInit = () => {
       if (ageNote) ageNote.textContent = known ? "Возраст домена определён автоматически и не редактируется." : "Дата регистрации недоступна. Для расчёта принят возраст 1–3 года.";
     };
     // The number field retains the exact count; the range is only a fixed-size control.
-    // A range with data-range-open-end reserves its last position for an open tariff bucket.
-    // For pages: 999 -> 999, 1000 -> 1001+; an exact manually entered 1000
-    // remains 1000 and is displayed immediately before the final position.
+    // A range with data-range-open-end reserves its last position for an open interval.
+    // Sections: the last slider position (100) means 101+; exact manual 100 stays 100.
+    // Pages: the last slider position (1000) means 1001+; exact manual 1000 stays 1000.
+    // Values entered manually above the visual maximum remain exact while the slider
+    // stays at its last position.
     const setRange = (key, value, { fromSlider = false } = {}) => {
       const number = $(`[data-seo-calculator-number="${key}"]`);
       const slider = $(`[data-seo-calculator-slider="${key}"]`);
