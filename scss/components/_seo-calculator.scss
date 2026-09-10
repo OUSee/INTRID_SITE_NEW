@@ -1,0 +1,316 @@
+/* SEO-калькулятор: компоновка и собственные состояния.
+   Карточки, формы, кнопки, селекты, чекбоксы и tooltip — компоненты проекта. */
+.seo-calculator {
+  padding: 40px 0;
+  scroll-margin-top: 130px;
+
+  &[hidden],
+  & [hidden] {
+    display: none !important;
+  }
+
+  &__shell {
+    z-index: 3;
+    overflow: visible;
+
+    @media (max-width: 599.98px) {
+      padding: 16px;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 20px 32px;
+    width: 100%;
+  }
+
+  &__intro {
+    min-width: 0;
+    align-self: center;
+  }
+
+  &__parameters {
+    z-index: 2;
+
+    &-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      @media (max-width: 599.98px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  &__settings,
+  &__result {
+    min-width: 0;
+    height: 100%;
+    justify-content: center;
+  }
+
+  &[data-state]:not([data-state="start"]) {
+    & .seo-calculator__intro {
+      display: none;
+    }
+
+    & .seo-calculator__layout {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 20px;
+    }
+
+    & .seo-calculator__audit,
+    & .seo-calculator__extras {
+      display: none !important;
+    }
+  }
+
+  &__site-row {
+    min-width: 0;
+
+    & input {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+  }
+
+  &__audit:has(input:disabled) {
+    opacity: 0.5;
+
+    & a {
+      pointer-events: none;
+    }
+  }
+
+  &__service-label {
+    min-width: 0;
+    flex: 1 1 auto;
+
+    &::before {
+      flex: 0 0 20px;
+      margin-right: 4px;
+    }
+
+    & > span {
+      min-width: 0;
+    }
+  }
+
+  &__service .tooltip {
+    flex: 0 0 auto;
+  }
+
+  &__loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-main);
+    border-radius: 32px;
+    transform: translate(-50%, -50%);
+
+    .preloader {
+      display: block;
+      flex: 0 0 40px;
+      margin: 8px auto 0;
+    }
+  }
+
+  &__field {
+    position: relative;
+    min-width: 0;
+
+    & .nice-wrapper,
+    & .nice-select {
+      width: 100%;
+    }
+
+    & select {
+      @include input;
+      min-width: 0;
+      height: 52px;
+    }
+
+    &:has(.nice-select.open) {
+      z-index: 10;
+    }
+
+    & input[type="range"] {
+      appearance: auto;
+      width: 100%;
+      min-width: 0;
+      height: 24px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      accent-color: var(--blue-main);
+    }
+  }
+
+  &__range-value {
+    flex: 0 0 auto;
+
+    & input {
+      appearance: textfield;
+      width: 76px;
+      height: 40px;
+      padding: 8px;
+      text-align: center;
+    }
+  }
+
+  &__range-limits {
+    font-size: 12px;
+  }
+
+  &__result-empty {
+    height: 100%;
+    min-height: 250px;
+  }
+
+  &__result-price {
+    color: var(--blue-main);
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+
+    & span {
+      font-size: 14px;
+      color: var(--color-grey);
+    }
+  }
+
+  &__breakdown-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+
+    & b {
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    &--total {
+      padding-top: 8px;
+      border-top: 1px solid var(--blue-bg);
+    }
+  }
+
+  &__timing > * {
+    min-width: 0;
+  }
+
+  &__timing-value {
+    color: var(--blue-main);
+
+    & strong {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+  }
+
+  &__lead {
+    gap: 0;
+  }
+
+  &__lead-service {
+    min-width: 0;
+
+    & .nice-wrapper {
+      min-width: 0;
+    }
+
+    & .tooltip {
+      flex: 0 0 auto;
+    }
+  }
+
+  & .card-form-seo-audit--seo-calculator {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    overflow: visible;
+
+    & .form-inputs--seo-calculator {
+      grid-template-columns: minmax(220px, 1.4fr) repeat(3, minmax(150px, 1fr)) auto;
+
+      @media (max-width: 1279.98px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @media (max-width: 599.98px) {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      & .testimonials,
+      & .form-status {
+        grid-column: 1 / -1;
+      }
+
+      & .form-status {
+        margin: 0;
+      }
+
+      & button[type="submit"] {
+        @media (min-width: 600px) and (max-width: 1279.98px) {
+          grid-column: 1/-1;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  &__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 999.98px) {
+    &__layout,
+    &[data-state]:not([data-state="start"]) &__layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    &__intro {
+      align-self: start;
+    }
+  }
+
+  @media (max-width: 899.98px) {
+    & .card-form-seo-audit--seo-calculator {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 599.98px) {
+    padding: 24px 0;
+    scroll-margin-top: 80px;
+
+    &__layout {
+      gap: 16px;
+    }
+
+    &__result-empty {
+      min-height: 200px;
+    }
+  }
+}
