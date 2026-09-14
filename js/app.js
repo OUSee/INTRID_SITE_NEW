@@ -10233,6 +10233,16 @@ const seoCalculatorInit = () => {
       show(noSiteLabel, isStart);
       show(expressAuditLabel, isStart);
 
+      // Once the user has entered anything into the URL field, the "no site"
+      // scenario is no longer available. Clearing the URL enables it again.
+      if (noSite) {
+        if (hasSite && noSite.checked) {
+          noSite.checked = false;
+          url.required = true;
+        }
+        noSite.disabled = busy || !isStart || hasSite;
+      }
+
       if (expressAudit) {
         const disabled = busy || !isStart || noSite.checked || !hasSite;
         expressAudit.disabled = disabled;
