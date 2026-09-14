@@ -10059,12 +10059,12 @@ const seoCalculatorInit = () => {
     if (!form || !leadForm) return;
     const url = $("[data-seo-calculator-url]");
     const noSite = $("[data-seo-calculator-no-site]");
-    const audit = $("[data-seo-calculator-audit]");
-    const auditLink = $("[data-seo-calculator-audit-link]");
+    const expressAudit = $("[data-seo-calculator-express-audit]");
     const parameters = $("[data-seo-calculator-parameters]");
     const actions = $("[data-seo-calculator-actions]");
     const sitePanel = $("[data-seo-calculator-site-panel]");
     const noSiteLabel = $("[data-seo-calculator-no-site-label]");
+    const expressAuditLabel = $("[data-seo-calculator-express-audit-label]");
     const analyzeButton = $('[data-seo-calculator-action="analyze"]');
     const result = $("[data-seo-calculator-result]");
     const empty = $("[data-seo-calculator-result-empty]");
@@ -10102,7 +10102,6 @@ const seoCalculatorInit = () => {
     let calculation = null;
     let leadSent = false;
     let requestToken = "";
-    let savedUrl = "";
     let captchaWidget = null;
     let captchaComplete = null;
     let scrollFrame = null;
@@ -10227,6 +10226,36 @@ const seoCalculatorInit = () => {
         });
       });
     };
+    const syncStartOptions = () => {
+      const isStart = state === "start";
+      const hasSite = Boolean(url.value.trim());
+
+      show(noSiteLabel, isStart);
+      show(expressAuditLabel, isStart);
+
+      if (expressAudit) {
+        const disabled = busy || !isStart || noSite.checked || !hasSite;
+        expressAudit.disabled = disabled;
+        // A disabled audit must never remain selected when there is no site to audit.
+        if (noSite.checked || !hasSite) expressAudit.checked = false;
+      }
+    };
+    const openExpressAudit = (site) => {
+      if (!expressAudit?.checked || noSite.checked || !site) return;
+
+      // Reuse the same external-audit flow as the regular SEO-audit form.
+      // The navigation is opened synchronously from the user's action so browsers
+      // do not treat the new tab as an unsolicited popup.
+      if (typeof expressAuditFlow?.rememberSource === "function") {
+        expressAuditFlow.rememberSource(site);
+      }
+
+      const destination = new URL("/submit/express-seo-audit", window.location.href);
+      destination.searchParams.set("site", site);
+      destination.searchParams.set("audit_origin", "external");
+      window.open(destination.href, "_blank", "noopener");
+    };
+
     const setState = (next, { scroll = true } = {}) => {
       const changed = state !== next;
       state = next;
@@ -10234,7 +10263,6 @@ const seoCalculatorInit = () => {
       const work = next !== "start";
       show(sitePanel, next !== "result");
       show(actions, next === "parameters");
-      show(noSiteLabel, next === "start");
       show(parameters, work);
       show(result, work);
       show(empty, work && !calculation);
@@ -10249,8 +10277,9 @@ const seoCalculatorInit = () => {
       $$('[data-seo-calculator-copy]').forEach(el => show(el, el.dataset.seoCalculatorCopy === (work ? "work" : "start")));
       show(demoNote, mode === "mock" && work);
       if (next !== "result") { message(leadStatus, ""); leadSent = false; }
-      url.disabled = busy || noSite.checked || work;
+      url.disabled = busy || work;
       noSite.disabled = busy || work;
+      syncStartOptions();
       setBusy(busy);
       if (scroll && changed) scrollToStart();
     };
@@ -10258,7 +10287,7 @@ const seoCalculatorInit = () => {
       busy = value;
       form.setAttribute("aria-busy", value ? "true" : "false");
       show(loading, value && kind === "analyze");
-      url.disabled = value || noSite.checked || state !== "start";
+      url.disabled = value || state !== "start";
       noSite.disabled = value || state !== "start";
       buttons.filter(el => el.dataset.seoCalculatorAction !== "reset").forEach(el => {
         const action = el.dataset.seoCalculatorAction;
@@ -10267,11 +10296,7 @@ const seoCalculatorInit = () => {
           || (action === "calculate" && state !== "parameters")
           || (action === "submit-request" && (leadSent || recalculationPending));
       });
-      if (auditLink) {
-        auditLink.style.pointerEvents = noSite.checked ? "none" : "";
-        auditLink.tabIndex = noSite.checked ? -1 : 0;
-        auditLink.setAttribute("aria-disabled", noSite.checked ? "true" : "false");
-      }
+      syncStartOptions();
     };
     const cancelRecalculation = () => {
       clearTimeout(recalculationTimer);
@@ -10451,6 +10476,7 @@ const seoCalculatorInit = () => {
       message(notice, "");
       invalidate();
       setState("start");
+      openExpressAudit(site);
       setBusy(true, "analyze");
       try {
         const data = await transport.analyze({ site, site_missing: noSite.checked }, signal);
@@ -10485,7 +10511,6 @@ const seoCalculatorInit = () => {
       abort();
       form.reset();
       requestToken = "";
-      savedUrl = "";
       analyzedSite = "";
       calculation = null;
       leadSent = false;
@@ -10610,28 +10635,32 @@ const seoCalculatorInit = () => {
     });
     form.addEventListener("submit", (event) => { event.preventDefault(); if (state === "start") analyze(); else if (state === "parameters") calculate(); });
     leadForm.addEventListener("submit", (event) => { event.preventDefault(); submitRequest(); });
-    auditLink?.addEventListener("click", event => { if (noSite.checked) event.preventDefault(); });
     noSite.addEventListener("change", () => {
       if (busy) return;
-      url.disabled = noSite.checked;
       url.required = !noSite.checked;
       url.setCustomValidity("");
-      auditLink?.setAttribute("aria-disabled", noSite.checked ? "true" : "false");
-      if (auditLink) auditLink.tabIndex = noSite.checked ? -1 : 0;
-      if (noSite.checked) {
-        savedUrl = url.value;
-        url.value = "";
-      } else if (!url.value && savedUrl) {
-        url.value = savedUrl;
+
+      if (noSite.checked && expressAudit) {
+        expressAudit.checked = false;
       }
+
+      syncStartOptions();
       invalidate();
       setState("start");
     });
     url.addEventListener("input", () => {
       if (state !== "start") return;
+
+      // Typing a site means the "no site" scenario is no longer applicable.
+      if (noSite.checked && url.value.trim()) {
+        noSite.checked = false;
+        url.required = true;
+      }
+
       url.setCustomValidity("");
       message(notice, "");
-      if (state !== "start") { invalidate(); setState("start"); }
+      syncStartOptions();
+      invalidate();
     });
     Object.entries(fields).forEach(([key, el]) => {
       if (el.tagName === "SELECT") el.addEventListener("change", invalidate);
