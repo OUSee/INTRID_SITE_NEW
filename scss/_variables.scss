@@ -605,7 +605,8 @@ p.p_big {
   }
 }
 
-p.small {
+p.small,
+.small {
   font-weight: 400;
   font-size: 13px;
 
@@ -1890,12 +1891,14 @@ form {
       align-items: center;
       justify-content: center;
       font-size: inherit;
+      flex: 0 0 20px;
       width: 20px;
       height: 20px;
       color: transparent;
       border: 1px solid var(--color-white);
       border-radius: 4px;
-      margin-right: 12px;
+      // margin-right: 12px;
+      margin-right: 8px;
       text-align: center;
       transition: all 0.2s ease-in;
     }
@@ -1914,6 +1917,13 @@ form {
         height: 20px;
         color: var(--color-white);
       }
+    }
+
+    &:has(input:disabled),
+    &:has(input[disabled]) {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: default;
     }
   }
 }

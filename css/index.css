@@ -3182,12 +3182,14 @@ p.p_big {
   }
 }
 
-p.small {
+p.small,
+.small {
   font-weight: 400;
   font-size: 13px;
 }
 @media (max-width: 999.98px) {
-  p.small {
+  p.small,
+  .small {
     font-size: 12px;
   }
 }
@@ -4387,12 +4389,13 @@ form input[type=submit] {
   align-items: center;
   justify-content: center;
   font-size: inherit;
+  flex: 0 0 20px;
   width: 20px;
   height: 20px;
   color: transparent;
   border: 1px solid var(--color-white);
   border-radius: 4px;
-  margin-right: 12px;
+  margin-right: 8px;
   text-align: center;
   transition: all 0.2s ease-in;
 }
@@ -4407,6 +4410,11 @@ form input[type=submit] {
   width: 20px;
   height: 20px;
   color: var(--color-white);
+}
+.label-checkbox:has(input:disabled), .label-checkbox:has(input[disabled]) {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
 }
 
 .breadcrumbs {
@@ -17931,7 +17939,7 @@ table th {
 }
 @media (max-width: 599.98px) {
   .seo-calculator__parameters-columns {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 .seo-calculator__settings, .seo-calculator__result {
@@ -17964,11 +17972,6 @@ table th {
 }
 .seo-calculator__service-label {
   min-width: 0;
-  flex: 1 1 auto;
-}
-.seo-calculator__service-label::before {
-  flex: 0 0 20px;
-  margin-right: 4px;
 }
 .seo-calculator__service-label > span {
   min-width: 0;
