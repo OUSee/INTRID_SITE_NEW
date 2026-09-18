@@ -1,0 +1,844 @@
+@mixin table-shell {
+  border: 1px solid var(--blue-clouds);
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg-main) 100%);
+  box-shadow:
+    0 20px 45px rgba(0, 234, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: auto;
+
+  @media (max-width: 999.98px) {
+    border-radius: 12px;
+  }
+}
+
+@mixin table-base {
+  width: 100%;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: auto;
+  background: transparent;
+  color: var(--color-grey);
+  border-radius: 18px;
+
+  @media (max-width: 999.98px) {
+    border-radius: 12px;
+  }
+
+  thead {
+    position: static;
+    border: 0;
+    background: transparent;
+    color: var(--color-white);
+
+    tr {
+      border: 0;
+      background: linear-gradient(
+        180deg,
+        var(--blue-light-bg) 0%,
+        var(--blue-bg) 100%
+      );
+    }
+  }
+
+  tbody {
+    tr {
+      border: 0;
+      background: rgba(255, 255, 255, 0.035);
+      transition: background-color 0.25s ease;
+
+      &:nth-child(even) {
+        background: rgba(0, 234, 255, 0.055);
+      }
+
+      &:last-child td {
+        border-bottom: 0;
+      }
+
+      @media (min-width: 1000px) {
+        &:hover {
+          background: rgba(0, 234, 255, 0.12);
+        }
+      }
+    }
+
+    td {
+      color: var(--color-grey);
+    }
+  }
+
+  th,
+  td {
+    padding: 16px 20px;
+    border: 0;
+    border-right: 1px solid rgba(0, 234, 255, 0.14);
+    border-bottom: 1px solid rgba(0, 234, 255, 0.12);
+    vertical-align: middle;
+    background: transparent;
+    color: inherit;
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      box-shadow 0.25s ease;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    @media (max-width: 999.98px) {
+      padding: 12px 14px;
+    }
+  }
+
+  th {
+    font-weight: 700;
+    text-align: left;
+    color: var(--color-white);
+  }
+}
+
+.table-block,
+.default-table,
+.table--wrap {
+  @include table-shell;
+  @include webkit_scrollbar;
+}
+
+table {
+  @include table-base;
+}
+
+.table {
+  &--beauty {
+    tbody td.color_td_PR {
+      color: var(--blue-main);
+      font-weight: 700;
+      background: rgba(0, 234, 255, 0.08);
+    }
+  }
+}
+
+
+
+/* Landing page comparison table */
+.table-block--landing-comparison {
+  @media (min-width: 700px) {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+}
+
+.landing-comparison-table {
+  @media (min-width: 700px) {
+    $landing-column-gap: 6px;
+    $landing-column-radius: 14px;
+    $landing-cell-bg-odd: linear-gradient(
+      90deg,
+      rgba(3, 30, 35, 0.96) 0%,
+      rgba(7, 63, 71, 0.48) 52%,
+      rgba(3, 30, 35, 0.96) 100%
+    );
+    $landing-cell-bg-even: linear-gradient(
+      90deg,
+      rgba(5, 45, 52, 0.96) 0%,
+      rgba(10, 83, 92, 0.48) 52%,
+      rgba(5, 45, 52, 0.96) 100%
+    );
+    $landing-cell-bg-featured: linear-gradient(
+      90deg,
+      rgba(5, 58, 66, 0.98) 0%,
+      rgba(12, 100, 111, 0.74) 52%,
+      rgba(5, 58, 66, 0.98) 100%
+    );
+    $landing-header-bg: linear-gradient(
+      180deg,
+      rgba(7, 54, 62, 0.96) 0%,
+      rgba(3, 30, 35, 0.98) 100%
+    );
+    $landing-header-featured-bg: linear-gradient(
+      180deg,
+      var(--blue-clouds) 0%,
+      var(--blue-tag) 100%
+    );
+    $landing-border: rgba(0, 234, 255, 0.28);
+    $landing-border-featured: rgba(0, 234, 255, 0.48);
+    $landing-row-border: rgba(0, 234, 255, 0.15);
+
+    border-collapse: separate;
+    border-spacing: 0;
+    background: transparent;
+    box-shadow: none;
+
+    thead,
+    tbody,
+    tr,
+    thead tr,
+    tbody tr,
+    tbody tr:nth-child(even),
+    tbody tr:hover {
+      background: transparent;
+    }
+
+    th,
+    td {
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+      isolation: isolate;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    th::before,
+    td::before {
+      content: "";
+      position: absolute;
+      inset: 0 $landing-column-gap;
+      z-index: -1;
+      border-bottom: 1px solid $landing-row-border;
+      background: $landing-cell-bg-odd;
+      box-shadow:
+        inset 1px 0 0 $landing-border,
+        inset -1px 0 0 $landing-border;
+    }
+
+    tbody tr:nth-child(even) td::before {
+      background: $landing-cell-bg-even;
+    }
+
+    thead th::before {
+      border-top: 1px solid $landing-border;
+      border-radius: $landing-column-radius $landing-column-radius 0 0;
+      background: $landing-header-bg;
+    }
+
+    tbody tr:last-child td::before {
+      border-bottom: 1px solid $landing-border;
+      border-radius: 0 0 $landing-column-radius $landing-column-radius;
+    }
+
+    &.landing-comparison-table--highlight-solution {
+      thead th:nth-child(3) {
+        color: var(--color-white);
+      }
+
+      thead th:nth-child(3)::before {
+        background: $landing-header-featured-bg;
+        box-shadow:
+          inset 1px 0 0 var(--blue-tag),
+          inset -1px 0 0 var(--blue-tag),
+          0 12px 28px rgba(0, 234, 255, 0.14);
+      }
+
+      tbody td:nth-child(3)::before {
+        background: $landing-cell-bg-featured;
+        box-shadow:
+          inset 1px 0 0 $landing-border-featured,
+          inset -1px 0 0 $landing-border-featured;
+      }
+
+      tbody tr:nth-child(even) td:nth-child(3)::before {
+        background: $landing-cell-bg-featured;
+      }
+    }
+  }
+
+  @media (max-width: 699.98px) {
+    th:nth-child(3),
+    td:nth-child(3) {
+      color: var(--color-white);
+      background: rgba(0, 234, 255, 0.1);
+    }
+
+    th:nth-child(3) {
+      background: linear-gradient(
+        180deg,
+        var(--blue-clouds) 0%,
+        var(--blue-tag) 100%
+      );
+    }
+  }
+}
+
+/* SEO/portfolio tables */
+.seo-table {
+  .table-wrapper {
+    @include table-shell;
+  }
+
+  table {
+    font-size: 14px;
+
+    @media (max-width: 899.98px) {
+      font-size: 13px;
+    }
+
+    @media (max-width: 599.98px) {
+      th,
+      td {
+        padding-right: 4px;
+        padding-left: 4px;
+      }
+    }
+  }
+
+  thead {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    th {
+      background: linear-gradient(
+        180deg,
+        var(--blue-light-bg) 0%,
+        var(--blue-bg) 100%
+      );
+    }
+  }
+
+  tbody td {
+    &.color_td_PR {
+      color: var(--blue-main);
+      font-weight: 700;
+      background: rgba(0, 234, 255, 0.08);
+    }
+
+    &:not(:first-child) {
+      text-align: center;
+    }
+  }
+}
+
+/* Tender table should not use the common table shell on desktop: visual columns draw their own cards. */
+@media (min-width: 900px) {
+  .table-block:has(> .tender-table) {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+}
+
+/* Tender price tables */
+.tender-table {
+  th:not(:first-child),
+  td:not(:first-child) {
+    cursor: pointer;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: transparent;
+    box-shadow: none;
+
+    input {
+      display: none;
+    }
+  }
+
+  tbody {
+    animation: none;
+
+    tr:not(:last-child) td:not(:first-child):not(.nothing) {
+      color: var(--blue-main);
+    }
+
+    tr:not(:last-child) td:not(:first-child).nothing {
+      color: var(--color-grey);
+      font-weight: 400;
+    }
+
+    tr:last-child td:not(:first-child) {
+      color: var(--blue-main);
+      font-weight: 700;
+      background: rgba(0, 234, 255, 0.08);
+
+      span {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  th.is-active,
+  &:has(thead input:checked) th:has(input:checked) {
+    color: var(--color-white);
+    background: linear-gradient(
+      180deg,
+      var(--blue-clouds) 0%,
+      var(--blue-tag) 100%
+    );
+
+    @media (min-width: 900px) {
+      box-shadow:
+        inset 1px 0 0 var(--blue-tag),
+        inset -1px 0 0 var(--blue-tag);
+    }
+  }
+
+  &--price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    @media (max-width: 899.98px) {
+      flex-direction: row;
+    }
+
+    & > *:is([class^="button"]) {
+      width: 100%;
+
+      @media (max-width: 899.98px) {
+        width: 60%;
+        max-width: 240px;
+      }
+    }
+  }
+
+  // tbody td.is-active {
+  //   color: var(--color-white);
+  //   background: rgba(0, 234, 255, 0.12);
+  //   box-shadow:
+  //     inset 1px 0 0 var(--blue-light-bg),
+  //     inset -1px 0 0 var(--blue-light-bg);
+  // }
+
+  // tbody tr:last-child td.is-active {
+  //   color: var(--color-white);
+  //   background: linear-gradient(180deg, var(--blue-clouds) 0%, var(--blue-tag) 100%);
+  // }
+
+  @for $column from 2 through 4 {
+    &:has(thead th:nth-child(#{$column}) input:checked) {
+      tbody {
+        td:nth-child(#{$column}) {
+          // color: var(--color-white);
+          background: rgba(0, 234, 255, 0.12);
+          box-shadow:
+            inset 1px 0 0 var(--blue-light-bg),
+            inset -1px 0 0 var(--blue-light-bg);
+        }
+
+        tr:last-child td:nth-child(#{$column}) {
+          color: var(--color-white);
+          background: linear-gradient(
+            180deg,
+            var(--blue-clouds) 0%,
+            var(--blue-tag) 100%
+          );
+        }
+      }
+    }
+  }
+
+  // Desktop tender table: split every column into a separate visual panel
+  // without changing the table markup. Real table cells stay transparent;
+  // the visible card-like columns are drawn by ::before layers.
+  @media (min-width: 900px) {
+    $tender-column-gap: 6px;
+    $tender-column-radius: 14px;
+    $tender-cell-bg-odd: linear-gradient(
+      90deg,
+      rgba(3, 30, 35, 0.96) 0%,
+      rgba(7, 63, 71, 0.48) 52%,
+      rgba(3, 30, 35, 0.96) 100%
+    );
+    $tender-cell-bg-even: linear-gradient(
+      90deg,
+      rgba(5, 45, 52, 0.96) 0%,
+      rgba(10, 83, 92, 0.48) 52%,
+      rgba(5, 45, 52, 0.96) 100%
+    );
+    $tender-cell-bg-hover: linear-gradient(
+      90deg,
+      rgba(6, 58, 66, 0.98) 0%,
+      rgba(13, 103, 114, 0.64) 52%,
+      rgba(6, 58, 66, 0.98) 100%
+    );
+    $tender-cell-bg-active: linear-gradient(
+      90deg,
+      rgba(5, 58, 66, 0.98) 0%,
+      rgba(12, 100, 111, 0.74) 52%,
+      rgba(5, 58, 66, 0.98) 100%
+    );
+    $tender-header-bg: linear-gradient(
+      180deg,
+      rgba(7, 54, 62, 0.96) 0%,
+      rgba(3, 30, 35, 0.98) 100%
+    );
+    $tender-header-hover-bg: linear-gradient(
+      180deg,
+      rgba(11, 85, 96, 0.98) 0%,
+      rgba(5, 45, 52, 0.98) 100%
+    );
+    $tender-border: rgba(0, 234, 255, 0.28);
+    $tender-border-hover: rgba(0, 234, 255, 0.48);
+    $tender-row-border: rgba(0, 234, 255, 0.15);
+
+    border-collapse: separate;
+    border-spacing: 0;
+    background: transparent;
+    box-shadow: none;
+
+    thead,
+    tbody,
+    tr,
+    thead tr,
+    tbody tr,
+    tbody tr:nth-child(even),
+    tbody tr:hover {
+      background: transparent;
+    }
+
+    th,
+    td {
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+      isolation: isolate;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      transition:
+        background-image 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    th::before,
+    td::before {
+      content: "";
+      position: absolute;
+      inset: 0 $tender-column-gap;
+      z-index: -1;
+      border-bottom: 1px solid $tender-row-border;
+      background: $tender-cell-bg-odd;
+      box-shadow:
+        inset 1px 0 0 $tender-border,
+        inset -1px 0 0 $tender-border;
+      transition:
+        background-image 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    tbody tr:nth-child(even) td::before {
+      background: $tender-cell-bg-even;
+    }
+
+    thead th::before {
+      border-top: 1px solid $tender-border;
+      border-radius: $tender-column-radius $tender-column-radius 0 0;
+      background: $tender-header-bg;
+    }
+
+    tbody tr:last-child td::before {
+      border-bottom: 1px solid $tender-border;
+      border-radius: 0 0 $tender-column-radius $tender-column-radius;
+    }
+
+    tbody tr:last-child td:not(:first-child) {
+      background: transparent;
+    }
+
+    tbody tr:last-child td:not(:first-child)::before {
+      background: $tender-cell-bg-even;
+    }
+
+    // Active tariff column.
+    th.is-active,
+    &:has(thead input:checked) th:has(input:checked) {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    th.is-active::before,
+    &:has(thead input:checked) th:has(input:checked)::before {
+      background: linear-gradient(
+        180deg,
+        var(--blue-clouds) 0%,
+        var(--blue-tag) 100%
+      );
+      box-shadow:
+        inset 1px 0 0 var(--blue-tag),
+        inset -1px 0 0 var(--blue-tag),
+        0 12px 28px rgba(0, 234, 255, 0.14);
+    }
+
+    @for $column from 2 through 4 {
+      &:has(thead th:nth-child(#{$column}) input:checked) {
+        tbody td:nth-child(#{$column}) {
+          background: transparent;
+          box-shadow: none;
+        }
+
+        tbody td:nth-child(#{$column})::before {
+          background: $tender-cell-bg-active;
+          box-shadow:
+            inset 1px 0 0 $tender-border-hover,
+            inset -1px 0 0 $tender-border-hover;
+        }
+
+        tbody tr:nth-child(even) td:nth-child(#{$column})::before {
+          background: $tender-cell-bg-active;
+        }
+
+        tbody tr:last-child td:nth-child(#{$column}) {
+          color: var(--color-white);
+          background: transparent;
+        }
+
+        tbody tr:last-child td:nth-child(#{$column})::before {
+          background: linear-gradient(
+            180deg,
+            var(--blue-clouds) 0%,
+            var(--blue-tag) 100%
+          );
+          box-shadow:
+            inset 1px 0 0 var(--blue-tag),
+            inset -1px 0 0 var(--blue-tag);
+        }
+      }
+
+      // Hover only tariff columns. The options column is not highlighted.
+      &:has(thead th:nth-child(#{$column}):hover),
+      &:has(tbody td:nth-child(#{$column}):hover) {
+        thead th:nth-child(#{$column})::before,
+        tbody td:nth-child(#{$column})::before {
+          background: $tender-cell-bg-hover;
+          box-shadow:
+            inset 1px 0 0 $tender-border-hover,
+            inset -1px 0 0 $tender-border-hover;
+        }
+
+        tbody tr:nth-child(even) td:nth-child(#{$column})::before {
+          background: $tender-cell-bg-hover;
+        }
+
+        thead
+          th:nth-child(#{$column}):not(.is-active):not(
+            :has(input:checked)
+          )::before {
+          background: $tender-header-hover-bg;
+        }
+
+        thead th:nth-child(#{$column}).is-active::before,
+        thead th:nth-child(#{$column}):has(input:checked)::before {
+          background: linear-gradient(
+            180deg,
+            var(--blue-clouds) 0%,
+            var(--blue-tag) 100%
+          );
+          box-shadow:
+            inset 1px 0 0 var(--blue-tag),
+            inset -1px 0 0 var(--blue-tag),
+            0 12px 28px rgba(0, 234, 255, 0.14);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 899.98px) {
+    display: block;
+    min-width: 0;
+    margin-top: 0;
+    overflow: clip;
+    table-layout: fixed;
+
+    thead {
+      position: relative;
+      display: block;
+      width: 100%;
+      overflow: visible;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-main);
+        mix-blend-mode: overlay;
+      }
+
+      tr {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+        overflow: visible;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      th {
+        display: block;
+        flex: 1 1 0;
+        min-width: 0;
+        width: auto;
+        padding: 0;
+        border: 0;
+        border-right: 1px solid rgba(0, 234, 255, 0.18);
+        background: transparent;
+        box-shadow: none;
+        text-align: center;
+
+        &:first-child {
+          display: none;
+        }
+
+        &:last-child {
+          border-right: 0;
+        }
+
+        label {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 44px;
+          padding: 10px 4px;
+          border: 1px solid rgba(0, 234, 255, 0.18);
+          border-bottom: 0;
+          background: rgba(255, 255, 255, 0.035);
+          border-radius: 12px 12px 0 0;
+          color: var(--color-grey);
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 1.2;
+          text-align: center;
+          white-space: nowrap;
+          box-shadow: none;
+          text-shadow: none;
+          transition:
+            color 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            box-shadow 0.25s ease;
+
+          @media (max-width: 419.98px) {
+            font-size: 12px;
+          }
+        }
+
+        &.is-active label,
+        &:has(input[type="radio"]:checked) label {
+          z-index: 1;
+          border-color: var(--blue-tag);
+          color: var(--color-white);
+          background: linear-gradient(
+            180deg,
+            var(--blue-clouds) 0%,
+            var(--blue-tag) 100%
+          );
+          box-shadow:
+            0 10px 24px rgba(0, 234, 255, 0.16),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+      }
+    }
+
+    tbody {
+      display: table;
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+
+      tr {
+        position: sticky;
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: table-row;
+        width: 100%;
+
+        td {
+          display: none;
+          width: 20%;
+          padding: 12px 10px;
+          text-align: center;
+          vertical-align: middle;
+
+          &:first-child {
+            display: table-cell;
+            width: 80%;
+            text-align: left;
+            color: var(--color-grey);
+            border-left: 1px solid rgba(0, 234, 255, 0.18);
+          }
+
+          &.is-active {
+            display: table-cell;
+          }
+        }
+
+        &:last-child {
+          td:first-child {
+            display: none;
+          }
+
+          // td.is-active {
+          //   display: table-cell;
+          //   width: 100%;
+          //   text-align: center;
+          // }
+        }
+      }
+    }
+
+    @for $column from 2 through 6 {
+      &[data-active-column="#{$column}"],
+      &:has(thead th:nth-child(#{$column}) input:checked) {
+        tbody tr {
+
+          // td:nth-child(#{$column}) {
+          //   display: table-cell;
+          // }
+
+          &:last-child {
+            background: linear-gradient(
+                180deg,
+                var(--blue-clouds) 0%,
+                var(--bg-main) 100%
+              )
+              var(--bg-main);
+
+            td:nth-child(#{$column}) {
+              display: table-cell;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 899.98px) {
+  .table-block:has(.tender-table) {
+    border: none;
+    overflow: visible;
+  }
+}

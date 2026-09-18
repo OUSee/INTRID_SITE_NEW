@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no" />
     <link rel="icon" type="x-icon" href="./src/images/favicon.ico">
     <title>
         Информация для клиентов веб-студии INTRID
@@ -176,52 +177,33 @@
     </header>
     <!-- MAIN PAGE -->
     <main>
+        <!-- hero-section -->
         <section class="main-section container">
-            <div class="breadcrumbs">
-                <a href="./">Главная</a>
-                <span>-</span>
-                <a href="#" class="link-disabled">Клиентам</a>
-            </div>
-
             <div class="main-section--left">
                 <h1 class="w-fit underlined">
                     Информация для клиентов
                 </h1>
 
                 <p>
-                    Ни для кого не секрет, что коммерческий сайт – это современный инструмент бизнеса, позволяющий
-                    получать
-                    большой поток клиентов из сети. Основные задачи сайта: привлекать клиентов, приносить прибыль,
-                    способствовать продвижению торговой марки, улучшать имидж компании, обеспечивать обратную связь с
-                    потребителями и т.д., и т.п. Но, чтобы все эти положительные аспекты воплотились в реальность, в
-                    первую
-                    очередь, самому Заказчику нужно очень серьёзно и ответственно отнестись к процессу разработки
-                    веб-ресурса.
+                    Ни для кого не секрет, что коммерческий сайт – это <span class="color-blue">современный инструмент
+                        бизнеса</span>, позволяющий получать большой поток клиентов из сети. Основные задачи сайта:
+                    привлекать клиентов, приносить прибыль, способствовать продвижению торговой марки, улучшать имидж
+                    компании, обеспечивать обратную связь с потребителями и т.д., и т.п. Но, чтобы все эти <span
+                        class="color-blue">положительные аспекты</span> воплотились в реальность, в первую очередь <span
+                        class="color-blue">самому Заказчику</span> нужно очень серьёзно и ответственно отнестись к
+                    процессу разработки веб-ресурса.
                 </p>
 
                 <div class="main-section--actions">
-                    <div class="d-flex flex-row align-center justify-start gap-20">
-                        <div class="card--employ">
-                            <span>20<span class="color-blue">+</span></span>
-                            <p>лет опыта работы</p>
-                        </div>
-                        <div class="card--employ">
-                            <span>12</span>
-                            <p>разработчиков в штате</p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <a class="button-highlight big" href="./blog/pamatka-zakazciku.html">
-                            Читать подробнее
-                            <i class="icon-arrow_wide"></i>
-                        </a>
-                    </div>
+                    <a class="button-highlight w-sm-100" href="/pamatka-zakazciku">
+                        Памятка заказчику
+                        <i class="icon-arrow_wide"></i>
+                    </a>
                 </div>
             </div>
 
-            <div class="flying-mockup">
-                <img src="./src/images/orb-with-logo.webp" alt="">
+            <div class="flying-mockup flying-mockup--clients">
+                <img src="/src/images/mockup/page/clients_picture.svg" alt="Информация для клиентов">
                 <div class="water-ripple">
                     <div class="ripple-circle"></div>
                     <div class="ripple-circle"></div>
@@ -231,27 +213,136 @@
             </div>
         </section>
 
-        <section class="position-relative bg-icms bg-icms--lighten">
+        <!-- Ключевые принципы совместной разработки -->
+        <section>
             <div class="container">
-                <h2 class="underlined w-fit m-center">
-                    Система управления сайтом iCMS
+                <h2 class="w-fit underlined">
+                    Ключевые принципы совместной разработки
                 </h2>
 
-                <p class="text-center w-900 m-center">
-                    Наша собственная система iCMS обеспечивает удобное управление контентом и функционалом: добавляйте
-                    контент, регулируйте медиа и интерактивные элементы самостоятельно, без привлечения разработчиков!
-                </p>
+                <div class="d-flex flex-row flex-lg-wrap align-start gap-lg-20">
+                    <p>
+                        Разработка сайта — это совместная работа. Мы — эксперты в веб-технологиях, вы — эксперты в своем
+                        бизнесе и продукте. Чтобы процессы были максимально понятными, а результат — эффективным, мы
+                        составили для вас подробный <a href="/pamatka-zakazciku"
+                            title="Читать подробнее памятку заказчику">памятку заказчику</a>. Вот главное, что важно
+                        знать на старте:
+                    </p>
 
-                <div class="sites-leaders-content mt-50 mb-50">
-                    <div class="sites-leaders-content-left">
-                        <div class="card card--leads">
-                            <ul>
+                    <div class="d-flex flex-column d-xl-none align-center gap-16 flex-1 ml-32 ml-lg-0 text-center"
+                        style="margin-top: -68px;"> <a class="button-highlight w-sm-100" href="/pamatka-zakazciku">
+                            Читать подробнее
+                            <i class="icon-arrow_wide"></i>
+                        </a>
+
+                        <p>
+                            Чёткий план, как получить сайт без лишней головной боли
+                        </p>
+                    </div>
+                </div>
+
+                <ul class="tech-list">
+                    <li>
+                        <i class="icon-target align-self-start"></i>
+
+                        <div class="d-flex flex-column gap-20 gap-sm-12">
+                            <b class="title_h5">
+                                Начните с целей и
+                                аудитории
+                            </b>
+
+                            <p>
+                                До начала разработки важно чётко ответить на вопросы: «Для чего вам сайт?» и «Кто ваши
+                                клиенты?». Чёткие цели и портрет целевой аудитории — фундамент успешного проекта.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <img src="/src/icons/handshake.svg" alt="Ответственный подход с обеих сторон"
+                            class="align-self-start">
+
+                        <div class="d-flex flex-column gap-20 gap-sm-12">
+                            <b class="title_h5">
+                                Ответственный подход с
+                                обеих сторон
+                            </b>
+
+                            <p>
+                                Успех проекта зависит от нашей с вами слаженной работы. Со стороны компании мы назначаем
+                                проект-менеджера, а со стороны заказчика — ответственного сотрудника, который знает
+                                продукт и уполномочен принимать решения.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <img src="/src/icons/paper.svg" alt="Договор и техническое задание" class="align-self-start">
+
+                        <div class="d-flex flex-column gap-20 gap-sm-12">
+                            <b class="title_h5">
+                                Договор и техническое
+                                задание
+                            </b>
+
+                            <p>
+                                Это ключевые документы, определяющие ход и условия проекта. В договоре фиксируются этапы
+                                реализации, сроки выполнения работ, стоимость и распределение ответственности между
+                                сторонами, а техническое задание (ТЗ) детально описывает архитектуру, структуру разделов
+                                и функциональных модулей будущего сайта.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="/src/icons/tech-key.svg" alt="Самостоятельное управление сайтом"
+                            class="align-self-start">
+
+                        <div class="d-flex flex-column gap-20 gap-sm-12">
+                            <b class="title_h5">
+                                Самостоятельное
+                                управление сайтом
+                            </b>
+
+                            <p>
+                                По завершении работ заказчик получает учётные данные и инструкции по управлению сайтом.
+                                Сайт не привязан к исполнителю — заказчик может администрировать его самостоятельно или
+                                передать сопровождение третьей стороне.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Система управления сайтом iCMS -->
+        <section class="position-relative bg-gradient">
+            <div class="container">
+                <div class="flex-layout flex-layout--split">
+                    <div class="left gap-0">
+                        <h2 class="underlined w-fit">
+                            Система управления сайтом iCMS
+                        </h2>
+
+                        <p>
+                            Наша собственная система iCMS обеспечивает удобное управление функционалом сайта: добавляйте
+                            контент, регулируйте медиа и интерактивные элементы самостоятельно, без привлечения
+                            разработчиков!
+                        </p>
+
+                        <p>
+                            iCMS подходит для проектов любого типа и масштаба. Интуитивно понятный интерфейс даёт полный
+                            контроль над сайтом без специальных знаний.
+                        </p>
+
+                        <div class="card">
+                            <ul class="list--leads">
                                 <li>
-                                    <p class="title_h4 color-blue">Система Управления Контентом</p>
+                                    <p class="title_h4 color-blue">
+                                        Система Управления Контентом
+                                    </p>
                                     <p>
                                         iCMS – комплексная программа для администрирования веб-сайта разработанная на
-                                        платформе
-                                        Yii 2.0.
+                                        платформе Yii 2.0 и Laravel.
                                     </p>
                                 </li>
                                 <li>
@@ -260,19 +351,22 @@
                                     </p>
                                     <p>
                                         iCMS позволяет оптимально подобрать и индивидуально настроить функционал под
-                                        любые
-                                        веб-ресурсы.
+                                        любые веб-ресурсы.
                                     </p>
                                 </li>
                                 <li>
-                                    <p class="title_h4 color-blue">Удобный интерфейс</p>
+                                    <p class="title_h4 color-blue">
+                                        Удобный интерфейс
+                                    </p>
                                     <p>
                                         iCMS позволяет управлять сайтом администратору без каких-либо специальных
                                         знаний.
                                     </p>
                                 </li>
                                 <li>
-                                    <p class="title_h4 color-blue">Безопасность</p>
+                                    <p class="title_h4 color-blue">
+                                        Безопасность
+                                    </p>
                                     <p>
                                         iCMS имеет комплесную защиту от несанкционированного доступа.
                                     </p>
@@ -280,140 +374,170 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="sites-leaders-content-right">
-                        <div class="card card--leaders h-100">
-                            <img src="./src/icons/iCMS.svg" alt="herb" class="icms-herb">
 
+                    <div class="right">
+                        <div class="card card--leaders bg-color-black minified position-sticky">
+                            <img src="/src/icons/iCMS.svg"
+                                alt="iCMS зарегистрирована в Российском реестре программного обеспечения"
+                                class="icms-herb">
                             <p class="title_h4 text-center">
                                 iCMS
                             </p>
-
                             <p class="text-center">
-                                iCMS зарегистрирована в Российском реестре программного обеспечения под
-                                <span class="color-blue">№14267</span>
+                                iCMS зарегистрирована в Российском реестре программного обеспечения
+                                под
+                                <a href="https://reestr.digital.gov.ru/reestr/855588/?sphrase_id=6112342"
+                                    target="_blank" rel="nofollow">
+                                    №14267
+                                </a>
                             </p>
 
-                            <a class="button button-white m-center" href="./icms.html">
-                                Подробнее об iCMS <i class="icon-arrow_wide"></i>
-                            </a>
+                            <div class="fd-row gap-12 m-center mb-12">
+                                <a href="https://demo.intrid.ru" target="_blank" class="button-highlight small">
+                                    Демоверсия I-CMS
+                                </a>
+
+                                <a href="/icms" class="button-link small">
+                                    Подробнее
+                                </a>
+                            </div>
+
+                            <p class="text-center">
+                                Мы не используем и не рекомендуем типовые CMS (Битрикс, WordPress и
+                                др.). Эти системы ограничивают бизнес, делая индивидуальные доработки сложными и
+                                неэффективными.
+                            </p>
+
+                            <p class="text-center">
+                                <a href="/icms">
+                                    Почему это так важно?
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="d-flex flex-column align-center gap-20">
-                    <p class="text-center w-fill">
-                        Попробовать I-CMS от веб-студии INTRID вы сможете прямо сейчас
-                    </p>
+        <!-- Полезные сервисы -->
+        <section>
+            <div class="container">
+                <div class="flex-layout flex-layout--split">
+                    <div class="left gap-0">
+                        <h2 class="underlined w-fit">
+                            Полезные сервисы
+                        </h2>
 
-                    <div class="fd-row gap-10 m-center">
-                        <a href="https://demo.intrid.ru" target="_blank" class="button-highlight big">Демоверсия
-                            I-CMS</a>
-                        <a href="./icms.html" class="button-link big">Подробнее<i class="icon-arrow_wide"></i></a>
+                        <div class="card small">
+                            <p class="title_h5"> Бесплатный аудит сайта </p>
+                            <p> Попробуйте бесплатный экспресс аудит и проверьте ваш сайт с помощью нашего онлайн
+                                инструмента для быстрой проверки сайта по данным о домене и основным СЕО-параметрам.
+                            </p>
+                            <form action="/submit/express-seo-audit" id="audit-form"
+                                class="d-flex flex-row flex-sm-wrap align-lg-stretch align-start gap-8"
+                                data-ajax="false">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div> <input type="hidden" name="g-recaptcha-response"
+                                        class="js-recaptcha-token">
+                                </div> <input type="text" name="site" id="site-url" placeholder="URL сайта" required=""
+                                    autocomplete="url"> <button type="submit"
+                                    class="big button-highlight w-sm-100 h-100" style="min-width: 120px;"> проверить
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="card small">
+                            <p class="title_h5"> Проверка домена </p>
+                            <p> Проверка и регистрация свободных доменных имен </p>
+                            <form action="/submit/domain" id="test-site-form"
+                                class="d-flex flex-row flex-sm-wrap align-lg-stretch align-start gap-8 ajax-form"
+                                method="get" data-ajax="false">
+                                <div class="recaptcha-wrapper" style="display: none;">
+                                    <div class="js-recaptcha" data-sitekey="6LcHRVkUAAAAANL8BaZHbKeQ5gOJ47gXWgnfDcfX"
+                                        data-size="invisible"></div> <input type="hidden" name="g-recaptcha-response"
+                                        class="js-recaptcha-token">
+                                </div> <input type="text" id="domain-name-input" name="domain"
+                                    placeholder="Введите домен (например, example.ru)" required=""> <button
+                                    type="submit" class="big button-highlight w-sm-100 h-100" style="min-width: 120px;">
+                                    проверить </button>
+                            </form>
+                            <div id="domain-result"></div>
+                            <div class="preloader" id="domain-loader"></div>
+                            <div class="error-msg" id="domain-error"></div>
+                        </div>
                     </div>
 
-                    <p class="text-center w-fill color-grey">
-                        Так же, по желанию заказчика мы можем использовать и другие системы (Битрикс, WordPress и
-                        другие)
-                    </p>
+                    <div class="right">
+                        <div class="card card--leaders minified position-sticky" id="clients-creation">
+                            %_form_{Получить
+                            консультацию,,true,false}%
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <div class="container">
-                <h2 class="underlined w-fit">
-                    Полезные сервисы
-                </h2>
-
-                <p class="title_h5">
-                    Бесплатный аудит сайта
-                </p>
-
-                <p>
-                    Попробуйте бесплатный экспресс аудит и проверьте ваш сайт с помощью нашего онлайн
-                    инструмента
-                    для быстрой
-                    проверки сайта по данным о домене и основным СЕО-параметрам.
-                </p>
-
-                <form action="submit" id="test-site-form" class="fd-row mt-32 mb-50">
-                    <input type="text" placeholder="URL сайта" id="audit-test">
-                    <button type="submit" class="big">
-                        проверить
-                    </button>
-                </form>
-
-                <p class="title_h5">
-                    Проверка домена
-                </p>
-
-                <p>
-                    Проверка и регистрация свободных доменных имен
-                </p>
-
-                <form action="submit" id="test-domain-form" class="fd-row mt-32">
-                    <input type="text" placeholder="Введите домен" id="domain-test">
-                    <button type="submit" class="big">
-                        проверить
-                    </button>
-                </form>
-
-                <a href="./src/docs/Поисковое_ранжирование.pdf" target="_blank"
-                    class="d-flex align-center justify-center w-fit mt-32 ml-auto mr-auto hover-underline">
-                    <img src="./src/icons/ai_icon_upload.svg" alt="">
-                    <span>
-                        Поисковое ранжирование Google <span class="color-white">(29 Мб)</span>
-                    </span>
-                </a>
-            </div>
-        </section>
-
+        <!-- Бланки основных договоров -->
         <section>
             <div class="container">
                 <h3 class="underlined w-fit m-center text-center">
                     Бланки основных договоров
                 </h3>
 
-                <div class="flex-layout flex-layout--docs mt-50">
-                    <a href="./src/docs/договор_на_разработку_сайта.pdf" target="_blank"
-                        class="card card--service use docs no-arrow">
+                <div class="flex-layout flex-layout--docs mt-52">
+                    <a href="/doc/web-site.pdf" target="_blank" class="card card--service use docs no-arrow">
                         <div class="card-icon">
-                            <img src="./src/icons/ai_icon_upload.svg" alt="landig-page">
+                            <img src="/src/icons/ai_icon_upload.svg" alt="Договор на разработку сайта">
                         </div>
                         <b>
-                            <span>Договор на разработку сайта</span>
+                            <span>
+                                Договор на разработку сайта
+                            </span>
                         </b>
                     </a>
-                    <a href="./src/docs/договор_на_раскрутку.pdf" target="_blank"
-                        class="card card--service use docs no-arrow">
+
+                    <a href="/doc/seo.pdf" target="_blank" class="card card--service use docs no-arrow">
                         <div class="card-icon">
-                            <img src="./src/icons/ai_icon_upload.svg" alt="landig-page">
+                            <img src="/src/icons/ai_icon_upload.svg" alt="Договор на продвижение и рекламу сайта">
                         </div>
                         <b>
-                            <span>Договор на продвижение и рекламу сайта</span>
+                            <span>
+                                Договор на раскрутку и
+                                продвижение сайта
+                            </span>
                         </b>
                     </a>
-                    <a href="./src/docs/договор_на_разработку_фирстиля.pdf" target="_blank"
-                        class="card card--service use docs no-arrow">
+
+                    <a href="/doc/fs.pdf" target="_blank" class="card card--service use docs no-arrow">
                         <div class="card-icon">
-                            <img src="./src/icons/ai_icon_upload.svg" alt="landig-page">
+                            <img src="/src/icons/ai_icon_upload.svg" alt="Договор на разработку логотипа и бренда">
                         </div>
                         <b>
-                            <span>Договор на разработку логотипа и бренда</span>
+                            <span>
+                                Договор на разработку
+                                логотипа и бренда
+                            </span>
                         </b>
                     </a>
-                    <a href="./src/docs/договор_домен.pdf" target="_blank" class="card card--service use docs no-arrow">
+
+                    <a href="/doc/domen.pdf" target="_blank" class="card card--service use docs no-arrow">
                         <div class="card-icon">
-                            <img src="./src/icons/ai_icon_upload.svg" alt="landig-page">
+                            <img src="/src/icons/ai_icon_upload.svg"
+                                alt="Договор на регистрацию домена и предоставление хостинга">
                         </div>
                         <b>
-                            <span>Договор на регистрацию домена и предоставление хостинга</span>
+                            <span>
+                                Договор
+                                на регистрацию домена и предоставление хостинга
+                            </span>
                         </b>
                     </a>
                 </div>
             </div>
         </section>
 
+        <!-- Блог веб-разработки -->
         <section>
             <div class="container">
                 <h3 class="w-fit m-center text-center underlined">
@@ -421,9 +545,9 @@
                 </h3>
 
                 <div class="flex-layout flex-layout--tab gap-20 mb-32">
-                    <a href="./blog.html#blog-site" class="card card--tab">
+                    <a href="/blog/blog-site" class="card card--tab">
                         <div class="card-icon">
-                            <img src="./src/icons/corpo-portal.svg" alt="img">
+                            <img src="/src/icons/corpo-portal.svg" alt="Разработка сайтов">
                         </div>
                         <b>
                             Разработка сайтов
@@ -432,34 +556,35 @@
                             Материалы о важнейших и новейших программных разработках в сфере WEB специально для Вас!
                         </p>
                     </a>
-                    <a href="./blog.html#digital-design" class="card card--tab">
+
+                    <a href="/blog/blog-design" class="card card--tab">
                         <div class="card-icon">
-                            <img src="./src/icons/site-design-services.svg" alt="img">
+                            <img src="/src/icons/site-design-services.svg" alt="Digital-дизайн">
                         </div>
                         <b>
                             Digital-дизайн
                         </b>
                         <p>
-                            Раскрываем секреты качественного веб-дизайна и рассказываем о новейших креативных
-                            подходах.
+                            Раскрываем секреты качественного веб-дизайна и рассказываем о новейших креативных подходах.
                         </p>
                     </a>
-                    <a href="./blog.html#seo-promotion" class="card card--tab">
+
+                    <a href="/blog/blog-seo" class="card card--tab">
                         <div class="card-icon">
-                            <img src="./src/icons/seo-services.svg" alt="img">
+                            <img src="/src/icons/seo-services.svg" alt="SEO-продвижение">
                         </div>
                         <b>
                             SEO-продвижение
                         </b>
                         <p>
-                            Полезные материалы о непростом деле SEO-оптимизации кода страницы. Все о продвижении и
-                            ещё
+                            Полезные материалы о непростом деле SEO-оптимизации кода страницы. Все о продвижении и ещё
                             чуть-чуть.
                         </p>
                     </a>
-                    <a href="./blog.html#internet-marketing" class="card card--tab">
+
+                    <a href="/blog/blog-marketing" class="card card--tab">
                         <div class="card-icon">
-                            <img src="./src/icons/social-portal.svg" alt="img">
+                            <img src="/src/icons/social-portal.svg" alt="Интернет-маркетинг">
                         </div>
                         <b>
                             Интернет-маркетинг
@@ -471,54 +596,14 @@
                     </a>
                 </div>
 
-                <a href="./blog.html" class="button-link big m-center">Все статьи <i class="icon-arrow_wide"></i></a>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <h3 class="underlined w-fit m-center text-center">
-                    Заказать разработку сайта или создание бренда
-                </h3>
-
-                <div class="flex-layout flex-layout--use">
-                    <a href="./calculator.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/site-calc.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Калькулятор сайта
-                        </b>
-                    </a>
-                    <a href="./brif-site.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/brif-site.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Бриф на сайт
-                        </b>
-                    </a>
-                    <a href="./brif-logo.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/brif-logo.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Бриф на бренд
-                        </b>
-                    </a>
-                    <a href="./seo.html#seo_application" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/promotion-request.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Заявка на раскрутку
-                        </b>
-                    </a>
-                </div>
+                <a href="/blog" class="button-link big m-center">
+                    Все статьи
+                    <i class="icon-arrow_wide"></i>
+                </a>
             </div>
         </section>
     </main>
-    
+
     <!-- footer -->
     <footer class="footer">
         <div class="container container-full">
@@ -616,7 +701,7 @@
                         </a>
                     </div>
                     <a href="#" target="_blank" class="button-link">
-                        Перейти в карты 
+                        Перейти в карты
                         <i class="icon-arrow_wide"></i>
                     </a>
                 </div>
@@ -628,8 +713,8 @@
             <div class="popup-body">
                 <form action="submit">
                     <div class="form-limitter">
-                        <input type="text" name="name" placeholder="* Имя" required>
-                        <input type="mail" name="mail" placeholder="E-mail">
+                        <input type="text" name="name" placeholder="Имя">
+                        <input type="email" name="mail" placeholder="E-mail">
                         <input type="tel" name="phone" placeholder="* Телефон" required>
                         <textarea data-autosize="true" rows="1"
                             placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
@@ -639,8 +724,7 @@
                             Согласен на обработку персональных данных
                         </label> -->
                         <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
-                                class="text-dashed color-white">обработку
+                            Отправляя форму, я даю согласие на <a href="/privacy.html" target="_blank">обработку
                                 своих персональных
                                 данных</a>
                         </p>
@@ -656,7 +740,7 @@
                 <p class="title_h3 text-center mb-20">
                     Политика конфиденциальности и защиты информации.
                 </p>
-                <p class="text-center mb-50">
+                <p class="text-center mb-52">
                     Оставляя данные на сайте, Вы соглашаетесь с Политикой конфиденциальности и защиты
                     информации.
                 </p>
@@ -737,14 +821,6 @@
         </div>
     </dialog>
     <script src="./js/app.js"></script>
-    <script>
-        window.addEventListener('hashchange', () => {
-            console.log('=> ', location.hash)
-            if (location.hash === '#apply') {
-                document.getElementById('apply_link').classList.add('infinite-glow')
-            }
-        })
-    </script>
 </body>
 
 </html>
