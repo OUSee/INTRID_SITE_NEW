@@ -9977,7 +9977,8 @@ document.addEventListener("pjax:end", () => {
   portfolioSeoSlider();
 });
 
-// SEO-калькулятор. Демо-режим включён в HTML через data-seo-calculator-mode="mock".
+// SEO-калькулятор. Метрики сайта могут загружаться из /submit/get-site-metrics,
+// а режим отправки заявки отдельно управляется data-seo-calculator-mode.
 // Тарифы: 682e53.xlsx, листы «Стоимость» и «Сроки»; границы разделов уточнены ПМ.
 const seoCalculatorPricing = (() => {
   const BASE = 12000;
@@ -10090,10 +10091,38 @@ const seoCalculatorInit = () => {
       { value: "301-600", label: "301–600" },
       { value: "over-600", label: "Более 600" },
     ];
+    const keywordsBucketFromCount = (value) => {
+      const count = Number(value);
+      if (!Number.isSafeInteger(count) || count < 0) throw new Error("Сервер вернул некорректное количество ключевых фраз.");
+      if (count <= 20) return "up-to-20";
+      if (count <= 50) return "21-50";
+      if (count <= 100) return "51-100";
+      if (count <= 300) return "101-300";
+      if (count <= 600) return "301-600";
+      return "over-600";
+    };
+    const analysisDefaults = {
+      site_type: "corporate",
+      seo_history: "unknown",
+      region: "one",
+      competition: "medium",
+      keywords: "21-50",
+      sections: 20,
+      pages: 150,
+      age_months: null,
+    };
+    const noSiteDefaults = {
+      ...analysisDefaults,
+      site_type: "landing",
+      sections: 5,
+      pages: 1,
+      age_months: 0,
+    };
     const fields = Object.fromEntries($$("[data-seo-calculator-field]").map(el => [el.dataset.seoCalculatorField, el]));
     const serviceInputs = $$("[data-seo-calculator-service]");
     const buttons = $$("[data-seo-calculator-action]");
     const mode = root.dataset.seoCalculatorMode === "live" ? "live" : "mock";
+    const metricsMode = root.dataset.seoCalculatorMetricsMode === "live" ? "live" : "mock";
     let state = "start";
     let busy = false;
     let operation = null;
@@ -10415,11 +10444,29 @@ const seoCalculatorInit = () => {
       if (!response.ok || !data || data.success !== true) throw new Error(data.error || data.message || "Не удалось выполнить запрос.");
       return data.data;
     };
+    const requestSiteMetrics = async (endpoint, site, signal) => {
+      const target = new URL(endpoint, window.location.href);
+      target.searchParams.set("url", site);
+      const response = await fetch(target.href, {
+        method: "GET",
+        credentials: "same-origin",
+        signal,
+        headers: { "Accept": "application/json", "X-Requested-With": "XMLHttpRequest" },
+      });
+      const payload = await response.json().catch(() => { throw new Error("Сервер метрик вернул некорректный ответ."); });
+      if (!response.ok || !payload || payload.status !== "success" || !payload.data || typeof payload.data !== "object") {
+        throw new Error(payload?.error || payload?.message || "Не удалось получить параметры сайта.");
+      }
+      return payload.data;
+    };
     const transport = {
       analyze: async (payload, signal) => {
-        if (mode === "live") return requestJson(form.dataset.analyzeUrl || form.action, payload, signal);
+        if (payload.site_missing) return { ...noSiteDefaults, source: "no-site" };
+        if (metricsMode === "live") {
+          return requestSiteMetrics(form.dataset.siteMetricsUrl || form.action, payload.site, signal);
+        }
         await wait(750, signal);
-        return { site: payload.site, site_missing: payload.site_missing, site_type: payload.site_missing ? "landing" : "corporate", seo_history: "unknown", region: "one", competition: "medium", keywords: "21-50", sections: payload.site_missing ? 5 : 20, pages: payload.site_missing ? 1 : 150, age_months: payload.site_missing ? 0 : 24, age_category: payload.site_missing ? "0-6" : "1-3", source: "mock" };
+        return { ...analysisDefaults, age_months: 24, source: "mock" };
       },
       submit: async (payload, signal) => {
         if (mode === "live") return requestJson(leadForm.getAttribute("action"), payload, signal);
@@ -10429,22 +10476,33 @@ const seoCalculatorInit = () => {
     };
     const fill = (data, expectedSite, siteMissing) => {
       if (!data || typeof data !== "object") throw new Error("Не удалось получить параметры сайта.");
+      const defaults = siteMissing ? noSiteDefaults : analysisDefaults;
       const normalized = {};
       for (const key of ["site_type", "seo_history", "region", "competition"]) {
-        const value = data[key] ?? (key === "seo_history" ? "unknown" : null);
-        if (!Array.from(fields[key].options).some(option => option.value === value)) throw new Error("Сервер вернул неполные параметры сайта.");
+        const value = data[key] ?? defaults[key];
+        if (!Array.from(fields[key].options).some(option => option.value === value)) throw new Error("Сервер вернул некорректные параметры сайта.");
         normalized[key] = value;
       }
-      normalized.keywords = data.keywords;
+
+      const rawKeywords = data.keywords ?? defaults.keywords;
+      normalized.keywords = keywordBuckets.some(bucket => bucket.value === rawKeywords)
+        ? rawKeywords
+        : keywordsBucketFromCount(rawKeywords);
+
       for (const key of ["sections", "pages"]) {
-        const n = Number(data[key]);
+        const n = Number(data[key] ?? defaults[key]);
         if (!Number.isSafeInteger(n) || n < 1) throw new Error("Сервер вернул некорректное количество страниц или разделов.");
         normalized[key] = n;
       }
-      if (!keywordBuckets.some(bucket => bucket.value === normalized.keywords)) throw new Error("Сервер вернул некорректное количество ключевых фраз.");
-      const age = data.age_months;
-      if (age !== null && age !== undefined && age !== "" && (!Number.isSafeInteger(Number(age)) || Number(age) < 0)) throw new Error("Сервер вернул некорректный возраст домена.");
-      Object.entries(normalized).forEach(([key, value]) => { if (fields[key]?.tagName === "SELECT") setSelect(fields[key], value); });
+
+      const age = data.age_months ?? defaults.age_months;
+      if (age !== null && age !== undefined && age !== "" && (!Number.isSafeInteger(Number(age)) || Number(age) < 0)) {
+        throw new Error("Сервер вернул некорректный возраст домена.");
+      }
+
+      Object.entries(normalized).forEach(([key, value]) => {
+        if (fields[key]?.tagName === "SELECT") setSelect(fields[key], value);
+      });
       setKeywords(normalized.keywords);
       setRange("sections", normalized.sections);
       setRange("pages", normalized.pages);
