@@ -9977,8 +9977,8 @@ document.addEventListener("pjax:end", () => {
   portfolioSeoSlider();
 });
 
-// SEO-калькулятор. Метрики сайта могут загружаться из /submit/get-site-metrics,
-// а режим отправки заявки отдельно управляется data-seo-calculator-mode.
+// SEO-калькулятор. Метрики сайта загружаются из /submit/get-site-metrics,
+// итоговая заявка отправляется в существующий /submit/kontakt.
 // Тарифы: 682e53.xlsx, листы «Стоимость» и «Сроки»; границы разделов уточнены ПМ.
 const seoCalculatorPricing = (() => {
   const BASE = 12000;
@@ -10430,19 +10430,35 @@ const seoCalculatorInit = () => {
       const cancel = () => { clearTimeout(timer); reject(new DOMException("Отменено", "AbortError")); };
       signal.addEventListener("abort", cancel, { once: true });
     });
-    const requestJson = async (endpoint, payload, signal) => {
+    const requestKontakt = async (endpoint, formData, signal) => {
       const csrfParam = document.querySelector('meta[name="csrf-param"]')?.content;
       const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
-      const body = { ...payload };
-      if (csrfParam && csrfToken) body[csrfParam] = csrfToken;
+      if (csrfParam && csrfToken && !formData.has(csrfParam)) formData.append(csrfParam, csrfToken);
       const response = await fetch(endpoint, {
-        method: "POST", credentials: "same-origin", signal,
-        headers: { "Content-Type": "application/json", "Accept": "application/json", "X-Requested-With": "XMLHttpRequest", ...(csrfToken ? { "X-CSRF-Token": csrfToken } : {}) },
-        body: JSON.stringify(body),
+        method: "POST",
+        credentials: "same-origin",
+        signal,
+        headers: {
+          "Accept": "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          ...(csrfToken ? { "X-CSRF-Token": csrfToken } : {}),
+        },
+        body: formData,
       });
       const data = await response.json().catch(() => { throw new Error("Сервер вернул некорректный ответ."); });
-      if (!response.ok || !data || data.success !== true) throw new Error(data.error || data.message || "Не удалось выполнить запрос.");
-      return data.data;
+      if (!response.ok || !data || data.status !== true) {
+        throw new Error(
+          (typeof data?.data === "string" && data.data)
+          || data?.error
+          || data?.message
+          || "Не удалось отправить заявку."
+        );
+      }
+      return {
+        message: typeof data.data === "string" && data.data
+          ? data.data
+          : "Заявка успешно отправлена.",
+      };
     };
     const requestSiteMetrics = async (endpoint, site, signal) => {
       const target = new URL(endpoint, window.location.href);
@@ -10468,8 +10484,8 @@ const seoCalculatorInit = () => {
         await wait(750, signal);
         return { ...analysisDefaults, age_months: 24, source: "mock" };
       },
-      submit: async (payload, signal) => {
-        if (mode === "live") return requestJson(leadForm.getAttribute("action"), payload, signal);
+      submit: async (formData, signal) => {
+        if (mode === "live") return requestKontakt(leadForm.getAttribute("action"), formData, signal);
         await wait(650, signal);
         return { status: true, message: "Демонстрационная заявка принята. Данные никуда не отправлялись.", mock: true };
       },
@@ -10516,10 +10532,7 @@ const seoCalculatorInit = () => {
       put("first-results", value.first.join("–"));
       put("top10", value.top10.join("–"));
       ["reputation", "geo"].forEach(key => show($(`[data-seo-calculator-breakdown="${key}"]`), Boolean(value.services[key])));
-      const snapshot = { parameters: read(), result: value };
-      $("[data-seo-calculator-lead-site]").value = analyzedSite;
-      $("[data-seo-calculator-lead-calculation]").value = JSON.stringify(snapshot);
-      $("[data-seo-calculator-lead-source]").value = window.location.href;
+      syncLeadContext();
     };
     const calculate = () => {
       if (busy || state !== "parameters" || !validateParameters()) return;
@@ -10533,6 +10546,45 @@ const seoCalculatorInit = () => {
         setState("result");
       } catch (error) { message(notice, error.message); }
     };
+    const selectedOptionText = (select) =>
+      select?.selectedOptions?.[0]?.textContent?.replace(/\s+/g, " ").trim() || "";
+
+    const buildLeadMessage = () => {
+      const parameters = read();
+      const serviceNames = {
+        reputation: "Улучшение репутации в сети",
+        geo: "Продвижение в нейросетях",
+      };
+      const selectedServices = Object.entries(parameters.services)
+        .filter(([, selected]) => selected)
+        .map(([key]) => serviceNames[key] || key);
+      const siteText = parameters.site_missing ? "Сайта нет / в разработке" : (analyzedSite || "Не указан");
+      const ageText = parameters.site_missing
+        ? "Новый сайт"
+        : (ageLabel?.textContent?.trim() || "Не определён");
+
+      return [
+        "Заявка из SEO-калькулятора",
+        "",
+        `Вариант SEO: ${selectedOptionText(leadService) || "Не указан"}`,
+        `Сайт: ${siteText}`,
+        `Тип сайта: ${selectedOptionText(fields.site_type)}`,
+        `SEO-оптимизация в прошлом: ${selectedOptionText(fields.seo_history)}`,
+        `Регион продвижения: ${selectedOptionText(fields.region)}`,
+        `Конкуренция: ${selectedOptionText(fields.competition)}`,
+        `Возраст сайта: ${ageText}`,
+        `Количество разделов: ${parameters.sections}`,
+        `Количество страниц: ${parameters.pages}`,
+        `Количество ключевых фраз: ${keywordLabel?.textContent?.trim() || parameters.keywords}`,
+        "",
+        `Дополнительные услуги: ${selectedServices.length ? selectedServices.join(", ") : "Не выбраны"}`,
+        "",
+        `Предварительная стоимость: ${priceRange(calculation.total)} ₽ / мес.`,
+        `Первые заметные результаты: ${calculation.first.join("–")} мес.`,
+        `50%+ запросов в ТОП-10: ${calculation.top10.join("–")} мес.`,
+      ].join("\n");
+    };
+
     const analyze = async () => {
       if (busy) return;
       const site = validateUrl();
@@ -10558,10 +10610,10 @@ const seoCalculatorInit = () => {
       }
     };
     const syncLeadContext = () => {
-      const snapshot = calculation ? { parameters: read(), result: calculation } : null;
+      const hasCalculation = Boolean(calculation);
       $("[data-seo-calculator-lead-site]").value = analyzedSite;
-      $("[data-seo-calculator-lead-calculation]").value = snapshot ? JSON.stringify(snapshot) : "";
-      $("[data-seo-calculator-lead-source]").value = snapshot ? window.location.href : "";
+      $("[data-seo-calculator-lead-message]").value = hasCalculation ? buildLeadMessage() : "";
+      $("[data-seo-calculator-lead-source]").value = hasCalculation ? window.location.href : "";
     };
     const resetLeadForm = () => {
       leadForm.reset();
@@ -10597,7 +10649,7 @@ const seoCalculatorInit = () => {
       if (scroll) scrollToStart();
       const sendButton = $('[data-seo-calculator-action="submit-request"]');
       if (sendButton) sendButton.textContent = "Отправить";
-      $("[data-seo-calculator-lead-calculation]").value = "";
+      $("[data-seo-calculator-lead-message]").value = "";
       $("[data-seo-calculator-lead-site]").value = "";
       if (typeof window.smartCaptcha?.reset === "function" && captchaWidget !== null) window.smartCaptcha.reset(captchaWidget);
     };
@@ -10668,9 +10720,9 @@ const seoCalculatorInit = () => {
       try {
         if (mode === "live") requestToken = await executeCaptcha(signal);
         if (id !== revision) return;
-        const payload = Object.fromEntries(new FormData(leadForm).entries());
-        payload["g-recaptcha-response"] = requestToken;
-        payload.calculation = { parameters: read(), result: calculation };
+        syncLeadContext();
+        const payload = new FormData(leadForm);
+        payload.set("g-recaptcha-response", requestToken);
         const response = await transport.submit(payload, signal);
         if (id !== revision) return;
         leadSent = true;

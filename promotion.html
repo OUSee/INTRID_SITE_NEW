@@ -292,11 +292,11 @@
 
         <!-- SEO-калькулятор: общий HTML для /promotion и /seo. Логика подключается на следующем этапе. -->
         <section class="seo-calculator" id="seo-calculator" data-seo-calculator data-seo-calculator-mode="live"
-            data-state="start" aria-labelledby="seo-calculator-title">
+            data-seo-calculator-metrics-mode="live" data-state="start" aria-labelledby="seo-calculator-title">
             <div class="container">
                 <div class="seo-calculator__shell card highlighted">
                     <form id="seo-calculator-form" class="seo-calculator__form" action="/submit/get-site-metrics"
-                        method="post" data-seo-calculator-form data-analyze-url="/submit/get-site-metrics">
+                        method="get" data-seo-calculator-form data-site-metrics-url="/submit/get-site-metrics">
                         <div class="seo-calculator__layout">
                             <div class="seo-calculator__intro">
                                 <div>
@@ -315,7 +315,7 @@
                                 <div data-seo-calculator-site-panel
                                     class="seo-calculator__site-panel card thin overflow-visible d-flex flex-column gap-16">
                                     <div class="seo-calculator__site-row d-flex flex-row align-stretch gap-8">
-                                        <input id="seo-calculator-url" type="text" name="site" placeholder="URL сайта"
+                                        <input id="seo-calculator-url" type="text" name="url" placeholder="URL сайта"
                                             autocomplete="url" inputmode="url" required data-seo-calculator-url>
                                         <button class="button-highlight seo-calculator__submit-url" type="button"
                                             data-seo-calculator-action="analyze" aria-label="Проанализировать сайт">
@@ -624,13 +624,13 @@
                                 сайта и конвертируем заинтересованных посетителей в клиентов.</p>
                         </div>
                         <form id="seo-calculator-lead-form" class="order-form seo-calculator__lead-form"
-                            action="/submit/seo-calculator-request" method="post" data-seo-calculator-lead-form>
+                            action="/submit/kontakt" method="post" data-seo-calculator-lead-form>
                             <div class="recaptcha-wrapper" style="display: none;" data-seo-calculator-captcha>
                                 <div class="js-recaptcha" data-sitekey="" data-size="invisible"></div>
                                 <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
                             </div>
-                            <input type="hidden" name="site" value="" data-seo-calculator-lead-site>
-                            <input type="hidden" name="calculation" value="" data-seo-calculator-lead-calculation>
+                            <input type="hidden" name="url" value="" data-seo-calculator-lead-site>
+                            <input type="hidden" name="mess" value="" data-seo-calculator-lead-message>
                             <input type="hidden" name="form_page" value="" data-seo-calculator-lead-source>
 
                             <div class="form-inputs form-inputs--seo-calculator w-100">
@@ -668,8 +668,6 @@
 
                                 <button type="submit" class="button big button-white"
                                     data-seo-calculator-action="submit-request">Отправить</button>
-                                <p class="form-status" data-seo-calculator-lead-status role="status" aria-live="polite"
-                                    hidden></p>
                             </div>
                         </form>
                     </div>
