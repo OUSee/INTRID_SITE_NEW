@@ -10549,40 +10549,9 @@ const seoCalculatorInit = () => {
     const selectedOptionText = (select) =>
       select?.selectedOptions?.[0]?.textContent?.replace(/\s+/g, " ").trim() || "";
 
-    const buildLeadMessage = () => {
-      const parameters = read();
-      const serviceNames = {
-        reputation: "Улучшение репутации в сети",
-        geo: "Продвижение в нейросетях",
-      };
-      const selectedServices = Object.entries(parameters.services)
-        .filter(([, selected]) => selected)
-        .map(([key]) => serviceNames[key] || key);
-      const siteText = parameters.site_missing ? "Сайта нет / в разработке" : (analyzedSite || "Не указан");
-      const ageText = parameters.site_missing
-        ? "Новый сайт"
-        : (ageLabel?.textContent?.trim() || "Не определён");
-
-      return [
-        "Заявка из SEO-калькулятора",
-        "",
-        `Вариант SEO: ${selectedOptionText(leadService) || "Не указан"}`,
-        `Сайт: ${siteText}`,
-        `Тип сайта: ${selectedOptionText(fields.site_type)}`,
-        `SEO-оптимизация в прошлом: ${selectedOptionText(fields.seo_history)}`,
-        `Регион продвижения: ${selectedOptionText(fields.region)}`,
-        `Конкуренция: ${selectedOptionText(fields.competition)}`,
-        `Возраст сайта: ${ageText}`,
-        `Количество разделов: ${parameters.sections}`,
-        `Количество страниц: ${parameters.pages}`,
-        `Количество ключевых фраз: ${keywordLabel?.textContent?.trim() || parameters.keywords}`,
-        "",
-        `Дополнительные услуги: ${selectedServices.length ? selectedServices.join(", ") : "Не выбраны"}`,
-        "",
-        `Предварительная стоимость: ${priceRange(calculation.total)} ₽ / мес.`,
-        `Первые заметные результаты: ${calculation.first.join("–")} мес.`,
-        `50%+ запросов в ТОП-10: ${calculation.top10.join("–")} мес.`,
-      ].join("\n");
+    const setLeadField = (name, value) => {
+      const field = leadForm.elements.namedItem(name);
+      if (field) field.value = value ?? "";
     };
 
     const analyze = async () => {
@@ -10611,9 +10580,49 @@ const seoCalculatorInit = () => {
     };
     const syncLeadContext = () => {
       const hasCalculation = Boolean(calculation);
-      $("[data-seo-calculator-lead-site]").value = analyzedSite;
-      $("[data-seo-calculator-lead-message]").value = hasCalculation ? buildLeadMessage() : "";
-      $("[data-seo-calculator-lead-source]").value = hasCalculation ? window.location.href : "";
+      const parameters = read();
+      const siteMissing = Boolean(parameters.site_missing);
+      const ageText = siteMissing
+        ? "Новый сайт"
+        : (ageLabel?.textContent?.trim() || "Не определён");
+
+      // Общие поля заявки.
+      setLeadField("url", siteMissing ? "" : analyzedSite);
+      setLeadField("form_type", "seo_calculator");
+      setLeadField("form_page", hasCalculation ? window.location.href : "");
+
+      // Параметры SEO-калькулятора. Значения передаются раздельно,
+      // чтобы backend сам определял порядок и HTML-разметку письма.
+      setLeadField("seo_site_missing", siteMissing ? "1" : "0");
+      setLeadField("seo_site_type", hasCalculation ? selectedOptionText(fields.site_type) : "");
+      setLeadField("seo_history", hasCalculation ? selectedOptionText(fields.seo_history) : "");
+      setLeadField("seo_region", hasCalculation ? selectedOptionText(fields.region) : "");
+      setLeadField("seo_competition", hasCalculation ? selectedOptionText(fields.competition) : "");
+      setLeadField("seo_age", hasCalculation ? ageText : "");
+      setLeadField("seo_sections", hasCalculation ? parameters.sections : "");
+      setLeadField("seo_pages", hasCalculation ? parameters.pages : "");
+      setLeadField(
+        "seo_keywords",
+        hasCalculation ? (keywordLabel?.textContent?.trim() || parameters.keywords) : "",
+      );
+
+      // Дополнительные услуги передаются отдельными флагами.
+      setLeadField("seo_reputation", hasCalculation && parameters.services.reputation ? "1" : "0");
+      setLeadField("seo_geo", hasCalculation && parameters.services.geo ? "1" : "0");
+
+      // Результат расчёта — отдельные поля, уже в человекочитаемом виде.
+      setLeadField(
+        "seo_price",
+        hasCalculation ? `${priceRange(calculation.total)} ₽ / мес.` : "",
+      );
+      setLeadField(
+        "seo_first_results",
+        hasCalculation ? `${calculation.first.join("–")} мес.` : "",
+      );
+      setLeadField(
+        "seo_top10",
+        hasCalculation ? `${calculation.top10.join("–")} мес.` : "",
+      );
     };
     const resetLeadForm = () => {
       leadForm.reset();
@@ -10649,7 +10658,6 @@ const seoCalculatorInit = () => {
       if (scroll) scrollToStart();
       const sendButton = $('[data-seo-calculator-action="submit-request"]');
       if (sendButton) sendButton.textContent = "Отправить";
-      $("[data-seo-calculator-lead-message]").value = "";
       $("[data-seo-calculator-lead-site]").value = "";
       if (typeof window.smartCaptcha?.reset === "function" && captchaWidget !== null) window.smartCaptcha.reset(captchaWidget);
     };

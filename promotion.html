@@ -629,9 +629,30 @@
                                 <div class="js-recaptcha" data-sitekey="" data-size="invisible"></div>
                                 <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
                             </div>
+                            <!-- Контекст заявки для /submit/kontakt -->
+                            <input type="hidden" name="form_type" value="seo_calculator">
                             <input type="hidden" name="url" value="" data-seo-calculator-lead-site>
-                            <input type="hidden" name="mess" value="" data-seo-calculator-lead-message>
                             <input type="hidden" name="form_page" value="" data-seo-calculator-lead-source>
+
+                            <!-- Параметры SEO-калькулятора: backend формирует из них отдельные блоки письма -->
+                            <input type="hidden" name="seo_site_missing" value="0">
+                            <input type="hidden" name="seo_site_type" value="">
+                            <input type="hidden" name="seo_history" value="">
+                            <input type="hidden" name="seo_region" value="">
+                            <input type="hidden" name="seo_competition" value="">
+                            <input type="hidden" name="seo_age" value="">
+                            <input type="hidden" name="seo_sections" value="">
+                            <input type="hidden" name="seo_pages" value="">
+                            <input type="hidden" name="seo_keywords" value="">
+
+                            <!-- Дополнительные услуги -->
+                            <input type="hidden" name="seo_reputation" value="0">
+                            <input type="hidden" name="seo_geo" value="0">
+
+                            <!-- Результат расчёта -->
+                            <input type="hidden" name="seo_price" value="">
+                            <input type="hidden" name="seo_first_results" value="">
+                            <input type="hidden" name="seo_top10" value="">
 
                             <div class="form-inputs form-inputs--seo-calculator w-100">
                                 <div class="seo-calculator__lead-service d-flex flex-row align-center gap-8">
