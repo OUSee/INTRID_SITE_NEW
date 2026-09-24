@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no" />
     <link rel="icon" type="x-icon" href="./src/images/favicon.ico">
     <title>
         Купить SSL-сертификат | Надежная защита сайта с SSL
@@ -178,41 +179,48 @@
     </header>
     <!-- MAIN PAGE -->
     <main>
+        <!-- hero-section -->
         <section class="main-section container">
-            <div class="breadcrumbs">
-                <a href="./">Главная</a>
-                <span>-</span>
-                <a href="./hosting.html">Хостинг</a>
-                <span>-</span>
-                <a href="#" class="link-disabled">SSL-сертификаты</a>
-            </div>
-
             <div class="main-section--left">
                 <h1 class="w-fit underlined">
                     SSL-сертификат
                 </h1>
 
                 <p>
-                    Установив SSL-сертификат на сайт, Вы обеспечите пользователям защиту данных от злоумышленников и
-                    заверите их в надежности ресурса. Подберем оптимальный вид сертификата и позаботимся о его
-                    своевременном
-                    продлении, благодаря чему, Ваш сайт будет лучше ранжироваться в поисковых системах
+                    SSL-сертификат — <span class="color-blue">базовая защита</span> современного сайта. Он переводит
+                    ресурс на безопасный протокол HTTPS и шифрует данные, которые пользователи передают через сайт.
+                </p>
+
+                <p>
+                    Без SSL сайт может отображаться в браузере как <span class="color-blue">небезопасный</span>, терять
+                    доверие посетителей и хуже восприниматься поисковыми системами. А если сайт собирает <span
+                        class="color-blue">персональные данные</span>, защищённое соединение становится важной частью
+                    технической безопасности и снижения юридических рисков.
+                </p>
+
+                <p>
+                    Подберем оптимальный вид сертификата, заранее позаботимся о его продлении и проверим корректность
+                    работу сайта.
                 </p>
 
                 <p class="title_h5 color-blue">
-                    Стоимость подключения SSL-сертификата от&nbsp;900&nbsp;руб
+                    Стоимость подключения SSL-сертификата от&nbsp;900&nbsp;₽/год
                 </p>
 
                 <div class="main-section--actions">
                     <a class="button-highlight big" href="#ssl-creation">
-                        Получить КП
+                        Заказать
                         <i class="icon-arrow_wide"></i>
+                    </a>
+
+                    <a class="button-link big" href="/doc/domen.pdf" target="_blank">
+                        Скачать шаблон договора
                     </a>
                 </div>
             </div>
 
             <div class="flying-mockup">
-                <img src="./src/images/ssl-main-mockup.webp" alt="">
+                <img src="/src/images/mockup/page/dev_ssl_picture.svg" alt="SSL-сертификат">
                 <div class="water-ripple">
                     <div class="ripple-circle"></div>
                     <div class="ripple-circle"></div>
@@ -222,178 +230,178 @@
             </div>
         </section>
 
-        <!--  -->
+        <!-- Виды сертификатов -->
         <section>
             <div class="container">
-                <h2 class="w-fit underlined m-center">
-                    Виды сертификатов
-                </h2>
-                <div class="flex-layout flex-layout--roadmap flex-layout--roadmap-3x justify-center mt-50 mb-50">
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            Валидация доменного имени
-                        </b>
-                        <p>
-                            подтверждение доменного имени, защита данных при передаче через протокол https.
-                        </p>
+                <div class="flex-layout flex-layout--split mb-32">
+                    <div class="left gap-0">
+                        <h2 class="w-fit underlined">
+                            Виды сертификатов
+                        </h2>
+
+                        <div class="flex-layout flex-layout--roadmap flex-layout--roadmap-column justify-center mb-32">
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    Валидация доменного имени
+                                </b>
+                                <p>
+                                    подтверждение доменного имени, защита данных при передаче через протокол https. </p>
+                            </div>
+
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    Валидация организации
+                                </b>
+                                <p>
+                                    гарантирует принадлежность доменного имени к конкретной организации.
+                                </p>
+                            </div>
+
+                            <div class="card card--icon card--roadmap">
+                                <b>
+                                    Расширенная Валидация
+                                </b>
+
+                                <p>
+                                    осуществляется детальная налоговая и коммерческая проверка доменного имени.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <input type="checkbox" id="section1" class="accordion-checkbox" checked>
+                                <label for="section1" class="accordion-header m-center title_h5">
+                                    Как
+                                    понять, есть ли на сайте сертификат?
+                                    <i class="icon-shevrone"></i>
+                                </label>
+
+                                <div class="accordion-content">
+                                    <p>
+                                        Посмотрите в адресную строку. Там будет зеленая надпись и значок закрытого
+                                        замочка. Это значит, что сайт под защитой сертификата. Так же к самому адресу
+                                        сайта добавляется «s». Протокол http принимает вид https.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <input type="checkbox" id="section2" class="accordion-checkbox">
+                                <label for="section2" class="accordion-header m-center title_h5">
+                                    Для чего нужно ставить сертификат тем,
+                                    кто не продает через caйт товары?
+                                    <i class="icon-shevrone"></i>
+                                </label>
+
+                                <div class="accordion-content">
+                                    <p>
+                                        Заходя на любой сайт, пользователь оставляет за собой очень много информации.
+                                        Если не будет сертификата, эту информацию могут перехватить. Кроме того, наличие
+                                        сертификата – это показатель того, что на данной странице реально
+                                        лицензированный сайт конкретного владельца, а не клон.
+                                        <br><br>
+                                        Так же наличие
+                                        сертификата влияет на результаты поисковой выдачи. Google, например, понижает их
+                                        в своих рейтингах как небезопасные.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <input type="checkbox" id="section4" class="accordion-checkbox">
+                                <label for="section4" class="accordion-header m-center title_h5">
+                                    Как мы устанавливаем SSL–сертификат на
+                                    ваш сайт?
+                                    <i class="icon-shevrone"></i>
+                                </label>
+
+                                <div class="accordion-content">
+                                    <ul>
+                                        <li>
+                                            <b>Запрашиваем сертификат</b> – отправляем запрос с данными вашего домена
+                                            (система автоматически проверяет, что домен действительно ваш).
+                                        </li>
+                                        <li> <b>Получаем файлы</b> – нам приходят три компонента: сам сертификат,
+                                            закрытый ключ и промежуточная цепочка.
+                                        </li>
+                                        <li>
+                                            <b>Привязываем к сайту</b> – выбираем ваш домен и назначаем ему сертификат,
+                                            после чего включаем принудительный HTTPS.
+                                            <br />
+                                            Вам не придётся ни в чём
+                                            разбираться – мы сами всё подключим, настроим и проверим, а Вы получите
+                                            работающий защищённый сайт.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            Валидация организации
-                        </b>
-                        <p>
-                            гарантирует принадлежность доменного имени к конкретной организации.
-                        </p>
-                    </div>
-                    <div class="card card--icon card--roadmap">
-                        <b>
-                            Расширенная Валидация
-                        </b>
-                        <p>
-                            осуществляется детальная налоговая и коммерческая проверка доменного имени.
-                        </p>
+
+                    <div class="right">
+                        <div class="position-sticky">
+                            <div class="card card--leaders minified" id="ssl-creation">
+                                %_form_{Установить
+                                SSL,Обезопасим сайт от злоумышленников, повысим доверие пользователей и поисковых
+                                систем,true,false,false}%
+                            </div>
+
+                            <a href="/doc/domen.pdf" target="_blank"
+                                class="card card--service use docs wider no-arrow nohover mt-52 ml-auto mr-auto mw-400 sm">
+                                <div class="card-icon">
+                                    <img src="/src/icons/ai_icon_upload.svg"
+                                        alt="Договор на регистрацию домена и предоставление хостинга">
+                                </div>
+                                <b>
+                                    <div class="title mb-8">
+                                        Для ознакомления:
+                                    </div>
+                                    <span class="color-blue">
+                                        Договор на
+                                        регистрацию домена и предоставление хостинга
+                                    </span>
+                                </b>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="ssl-accordions">
-                    <div class="accordion-item">
-                        <input type="checkbox" id="section1" class="accordion-checkbox">
-                        <label for="section1" class="accordion-header m-center title_h4">
-                            Как понять, есть ли на сайте сертификат?<i class="icon-shevrone"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <p>
-                                Посмотрите в адресную строку. Там будет зеленая надпись и значок закрытого замочка. Это
-                                значит,
-                                что сайт под защитой сертификата. Так же к самому адресу сайта добавляется «s». Протокол
-                                http
-                                принимает вид https.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <input type="checkbox" id="section2" class="accordion-checkbox">
-                        <label for="section2" class="accordion-header m-center title_h4">
-                            Для чего нужно ставить сертификат тем, кто не продает через caйт товары?<i
-                                class="icon-shevrone"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <p>
-                                Заходя на любой сайт, пользователь оставляет за собой очень много информации. Если не
-                                будет
-                                сертификата, эту информацию могут перехватить. Кроме того, наличие сертификата – это
-                                показатель
-                                того, что на данной странице реально лицензированный сайт конкретного владельца, а не
-                                клон.
-                                <br><br>
-                                Так же наличие сертификата влияет на результаты поисковой выдачи. Google, например,
-                                понижает
-                                их
-                                в своих рейтингах как небезопасные.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <input type="checkbox" id="section3" class="accordion-checkbox">
-                        <label for="section3" class="accordion-header m-center title_h4">
-                            Как получить сертификат? <i class="icon-shevrone"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <p>
-                                Конечно же, Вы можете воспользоваться и бесплатным сертификатом, но он сгодится только
-                                для
-                                небольших сайтов, где достаточно лишь подтверждения домена. Кроме того, Вы затратите
-                                лишние
-                                деньги на его перезапуск, когда придет время обновлений.
-                                <br><br>
-                                В нашей веб-студии есть услуга по установке SSL сертификата. Мы подберем тот его вид,
-                                который
-                                подходит для Вашего сайта.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- corporate -->
-        <section class="domain-form landing-creation" id="ssl-creation">
-            <div class="container">
-                <form action="submit">
-                    <div class="form-limitter">
-                        <p class="title_h3 w-fit">
-                            Оставьте заявку на SSL сертификат
+                <div class="card card--prices cols">
+                    <b>
+                        Защитите персональные данные клиентов вашего сайта
+                    </b>
+                    <img src="/src/icons/tech-shield.svg" alt="Шифрование персональных данных">
+                    <div>
+                        <p>
+                            SSL-сертификат защищает данные во время передачи на сайт, но после отправки заявки,
+                            регистрации или оформления заказа информация попадает в базу данных. Если базу взломают,
+                            телефоны, email, адреса и другие сведения клиентов могут оказаться у злоумышленников.
                         </p>
-                        <p class="description">
-                            Оставьте заявку и мы бесплатно проконсультируем по всем вопросам и предоставим
-                            развернутое коммерческое
-                            предложение.
-                        </p>
-                        <input type="text" name="name" placeholder="* Имя" required="">
-                        <input type="mail" name="mail" placeholder="E-mail">
-                        <input type="tel" name="phone" placeholder="* Телефон" required="">
-                        <input type="text" placeholder="URL сайта" name="url">
-                        <input type="text" placeholder="География интересов" name="target">
-                        <textarea data-autosize="true" rows="1"
-                            placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
 
-                        <!-- <input type="checkbox" name="agree" id="personal-data" required> -->
-                        <!-- <label for="personal-data">
-                            <input type="checkbox" name="agree" id="personal-data" required>
-                            Согласен на обработку персональных данных
-                        </label> -->
-                        <button type="submit" class="button-white">Отправить заявку</button>
-                        <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://"
-                                data-popup="privacy-policy">обработку
-                                своих персональных
-                                данных</a>
+                        <p>
+                            <span class="color-blue">Сейчас это особенно важно: ответственность за утечки персональных
+                                данных стала строже - штрафы от Роскомнадзора достигают 15 млн ₽, а хакеры этим
+                                пользуются и целенаправленно взламывают сайты. </span>
                         </p>
+
+                        <p>
+                            Шифрование необходимо, чтобы в случае взлома сайта персональные данные клиентов не
+                            превратились в готовую базу для мошенников. Это актуально для интернет-магазинов, сайтов с
+                            личными кабинетами, CRM, формами заявок, онлайн-записью и любыми сервисами, где хранятся
+                            персональные данные пользователей.
+                        </p>
+
+                        <div class="d-flex flex-row flex-sm-column align-center justify-between gap-20 w-100">
+                            <span class="title_h4 color-blue">
+                                от&nbsp;14&nbsp;000&nbsp;₽
+                            </span>
+
+                            <a href="/encryption" class="button button-link big w-sm-100" title="Читать подробнее">
+                                Читать подробнее
+                                <i class="icon-arrow_wide"></i>
+                            </a>
+                        </div>
                     </div>
-                    <img src="./src/images/orb-with-logo.webp" alt="orb"="">
-                </form>
-            </div>
-        </section>
-
-        <!--  -->
-        <section>
-            <div class="container">
-                <h3 class="underlined w-fit m-center text-center">
-                    Заказать разработку сайта или создание бренда
-                </h3>
-
-                <div class="flex-layout flex-layout--use">
-                    <a href="./calculator.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/site-calc.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Калькулятор сайта
-                        </b>
-                    </a>
-                    <a href="./brif-site.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/brif-site.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Бриф на сайт
-                        </b>
-                    </a>
-                    <a href="./brif-logo.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/brif-logo.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Бриф на бренд
-                        </b>
-                    </a>
-                    <a href="./seo.html#seo_application" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/promotion-request.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Заявка на раскрутку
-                        </b>
-                    </a>
                 </div>
             </div>
         </section>
@@ -496,7 +504,7 @@
                         </a>
                     </div>
                     <a href="#" target="_blank" class="button-link">
-                        Перейти в карты 
+                        Перейти в карты
                         <i class="icon-arrow_wide"></i>
                     </a>
                 </div>
@@ -508,14 +516,13 @@
             <div class="popup-body">
                 <form action="submit">
                     <div class="form-limitter">
-                        <input type="text" name="name" placeholder="* Имя" required>
-                        <input type="mail" name="mail" placeholder="E-mail">
+                        <input type="text" name="name" placeholder="Имя">
+                        <input type="email" name="mail" placeholder="E-mail">
                         <input type="tel" name="phone" placeholder="* Телефон" required>
                         <textarea data-autosize="true" rows="1"
                             placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
                         <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
-                                class="text-dashed color-white">обработку
+                            Отправляя форму, я даю согласие на <a href="/privacy.html" target="_blank">обработку
                                 своих персональных
                                 данных</a>
                         </p>
@@ -531,7 +538,7 @@
                 <p class="title_h3 text-center mb-20">
                     Политика конфиденциальности и защиты информации.
                 </p>
-                <p class="text-center mb-50">
+                <p class="text-center mb-52">
                     Оставляя данные на сайте, Вы соглашаетесь с Политикой конфиденциальности и защиты
                     информации.
                 </p>
