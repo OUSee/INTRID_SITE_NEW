@@ -7426,6 +7426,7 @@ const buildOfficeGallery = (gallery) => {
 const expressAuditFlow = (() => {
   const SOURCE_KEY = "intrid:express-audit:source";
   const RETURN_KEY = "intrid:express-audit:return";
+  const RESULT_PREFIX = "intrid:express-audit:result:";
   const MAX_AGE = 30 * 60 * 1000;
 
   const read = (key) => {
@@ -7597,7 +7598,56 @@ const expressAuditFlow = (() => {
     window.addEventListener("pageshow", restore);
   };
 
-  return { rememberSource, getSource, prepareReturn, initReturn };
+  const resultKey = (site) =>
+    `${RESULT_PREFIX}${encodeURIComponent(normalizeSite(site))}`;
+
+  const saveResult = (site, metrics) => {
+    if (!site || !Array.isArray(metrics)) return false;
+
+    try {
+      localStorage.setItem(resultKey(site), JSON.stringify({
+        site: normalizeSite(site),
+        metrics,
+        createdAt: Date.now(),
+      }));
+      return true;
+    } catch (_) {
+      return false;
+    }
+  };
+
+  const getResult = (site) => {
+    if (!site) return null;
+
+    try {
+      const key = resultKey(site);
+      const value = JSON.parse(localStorage.getItem(key) || "null");
+
+      if (
+        !value ||
+        !value.createdAt ||
+        Date.now() - value.createdAt > MAX_AGE ||
+        normalizeSite(value.site) !== normalizeSite(site) ||
+        !Array.isArray(value.metrics)
+      ) {
+        localStorage.removeItem(key);
+        return null;
+      }
+
+      return value;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  return {
+    rememberSource,
+    getSource,
+    prepareReturn,
+    initReturn,
+    saveResult,
+    getResult,
+  };
 })();
 
 const seoAuditInit = () => {
@@ -8114,6 +8164,38 @@ const seoAuditInit = () => {
     `;
   };
 
+  const renderAuditCards = (metrics) => {
+    if (!resultsGrid) return;
+    resultsGrid.innerHTML = "";
+    metrics.forEach((metric) => {
+      const card = document.createElement("div");
+      card.className = `card card--icon ${metric.status.status}`;
+      card.innerHTML = buildCard(metric);
+      resultsGrid.appendChild(card);
+    });
+  };
+
+  const applyAuditResult = (url, metrics) => {
+    renderAuditCards(metrics);
+    promoteResultHeading(url);
+    if (resultsContainer) resultsContainer.style.display = "block";
+    if (seoAuditFeatures) seoAuditFeatures.style.display = "";
+    setAuditState("complete");
+  };
+
+  const notifyAuditHost = (status, site) => {
+    if (window.parent === window) return;
+
+    try {
+      window.parent.postMessage({
+        type: "intrid:express-audit",
+        status,
+        site,
+        resultUrl: window.location.href,
+      }, window.location.origin);
+    } catch (_) { }
+  };
+
   // --------------------------------------------------------------
   // AJAX-рендеринг (data-ajax="true" или отсутствует)
   // --------------------------------------------------------------
@@ -8402,28 +8484,16 @@ const seoAuditInit = () => {
         security,
       ];
 
-      const renderAuditCards = (metrics) => {
-        if (!resultsGrid) return;
-        resultsGrid.innerHTML = "";
-        metrics.forEach((metric) => {
-          const card = document.createElement("div");
-          card.className = `card card--icon ${metric.status.status}`;
-          card.innerHTML = buildCard(metric);
-          resultsGrid.appendChild(card);
-        });
-      };
-
-      renderAuditCards(metrics);
-      promoteResultHeading(url);
-      if (resultsContainer) resultsContainer.style.display = "block";
-      if (seoAuditFeatures) seoAuditFeatures.style.display = "";
-      setAuditState("complete");
+      expressAuditFlow.saveResult?.(url, metrics);
+      applyAuditResult(url, metrics);
+      notifyAuditHost("complete", url);
       showFormFeedback(submitBtn, "Проверка завершена", "success");
     } catch (err) {
       console.error(err);
       errorDiv.textContent = "Не удалось выполнить проверку.";
       errorDiv.style.display = "block";
       setAuditState("error");
+      notifyAuditHost("error", url);
       showFormFeedback(submitBtn, "Не удалось выполнить проверку", "error");
     } finally {
       stopAuditLoaderPhrases();
@@ -8527,13 +8597,24 @@ const seoAuditInit = () => {
 
     if (url) {
       urlInput.value = url;
-      const submitBtn = form.querySelector(
-        'button[type="submit"], input[type="submit"]',
-      );
-      handleAjaxRender(submitBtn, url);
+      const cached = expressAuditFlow.getResult?.(url);
+
+      if (cached?.metrics) {
+        activeAuditUrl = url;
+        setResultUrl(url);
+        applyAuditResult(url, cached.metrics);
+        setFormDisabled(false);
+        notifyAuditHost("complete", url);
+      } else {
+        const submitBtn = form.querySelector(
+          'button[type="submit"], input[type="submit"]',
+        );
+        handleAjaxRender(submitBtn, url);
+      }
     } else {
       setAuditState("error");
       setFormDisabled(false);
+      notifyAuditHost("error", urlInput?.value.trim() || "");
     }
   }
 };
@@ -10066,6 +10147,10 @@ const seoCalculatorInit = () => {
     const sitePanel = $("[data-seo-calculator-site-panel]");
     const noSiteLabel = $("[data-seo-calculator-no-site-label]");
     const expressAuditLabel = $("[data-seo-calculator-express-audit-label]");
+    const expressAuditStatus = $("[data-seo-calculator-audit-status]");
+    const expressAuditLoading = $("[data-seo-calculator-audit-loading]");
+    const expressAuditResult = $("[data-seo-calculator-audit-result]");
+    const expressAuditError = $("[data-seo-calculator-audit-error]");
     const analyzeButton = $('[data-seo-calculator-action="analyze"]');
     const result = $("[data-seo-calculator-result]");
     const empty = $("[data-seo-calculator-result-empty]");
@@ -10136,7 +10221,14 @@ const seoCalculatorInit = () => {
     let scrollFrame = null;
     let recalculationTimer = null;
     let recalculationPending = false;
+    let expressAuditRequested = false;
+    let expressAuditState = "idle";
+    let expressAuditSite = "";
+    let expressAuditResultUrl = "";
+    let expressAuditFrame = null;
+    let expressAuditTimeout = null;
     const RECALCULATION_DELAY = 400;
+    const EXPRESS_AUDIT_TIMEOUT = 120000;
     const initialSelections = Object.fromEntries(Object.entries(fields).filter(([, el]) => el.tagName === "SELECT").map(([key, el]) => [key, Array.from(el.options).find(option => option.defaultSelected)?.value ?? el.options[0]?.value ?? ""]));
     const money = (n) => new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 0 }).format(n).replace(/[\u00a0\u202f]/g, " ");
     const priceRange = (range) => range.map(money).join("–");
@@ -10317,28 +10409,131 @@ const seoCalculatorInit = () => {
         if (noSite.checked || !hasSite) expressAudit.checked = false;
       }
     };
-    const openExpressAudit = (site) => {
-      if (!expressAudit?.checked || noSite.checked || !site) return;
+    const buildExpressAuditUrl = (site) => {
+      const destination = new URL("/submit/express-seo-audit", window.location.href);
+      destination.searchParams.set("site", site);
+      destination.searchParams.set("audit_origin", "external");
+      return destination.href;
+    };
 
-      // Reuse the same external-audit flow as the regular SEO-audit form.
-      // The navigation is opened synchronously from the user's action so browsers
-      // do not treat the new tab as an unsolicited popup.
+    const cleanupExpressAuditWorker = () => {
+      clearTimeout(expressAuditTimeout);
+      expressAuditTimeout = null;
+
+      if (expressAuditFrame) {
+        expressAuditFrame.remove();
+        expressAuditFrame = null;
+      }
+    };
+
+    const updateExpressAuditUi = () => {
+      const visible = expressAuditRequested && state !== "start";
+      show(expressAuditStatus, visible);
+      show(expressAuditLoading, visible && expressAuditState === "loading");
+      show(expressAuditResult, visible && expressAuditState === "complete");
+      show(expressAuditError, visible && expressAuditState === "error");
+
+      if (expressAuditResult && expressAuditResultUrl) {
+        expressAuditResult.href = expressAuditResultUrl;
+      }
+    };
+
+    const resetExpressAudit = () => {
+      cleanupExpressAuditWorker();
+      expressAuditRequested = false;
+      expressAuditState = "idle";
+      expressAuditSite = "";
+      expressAuditResultUrl = "";
+      if (expressAuditResult) expressAuditResult.removeAttribute("href");
+      updateExpressAuditUi();
+    };
+
+    const completeExpressAudit = (status) => {
+      cleanupExpressAuditWorker();
+      expressAuditState = status;
+      updateExpressAuditUi();
+    };
+
+    const startExpressAudit = (site) => {
+      if (!expressAudit?.checked || noSite.checked || !site) {
+        resetExpressAudit();
+        return;
+      }
+
+      cleanupExpressAuditWorker();
+      expressAuditRequested = true;
+      expressAuditState = "loading";
+      expressAuditSite = site;
+      expressAuditResultUrl = buildExpressAuditUrl(site);
+
       if (typeof expressAuditFlow?.rememberSource === "function") {
         expressAuditFlow.rememberSource(site);
       }
 
-      const destination = new URL("/submit/express-seo-audit", window.location.href);
-      destination.searchParams.set("site", site);
-      destination.searchParams.set("audit_origin", "external");
-      window.open(destination.href, "_blank", "noopener");
+      // A recently completed audit can be reused immediately.
+      const cached = expressAuditFlow?.getResult?.(site);
+      if (cached?.metrics) {
+        expressAuditState = "complete";
+        updateExpressAuditUi();
+        return;
+      }
+
+      const frame = document.createElement("iframe");
+      frame.src = expressAuditResultUrl;
+      frame.title = "Фоновый экспресс SEO-аудит";
+      frame.tabIndex = -1;
+      frame.setAttribute("aria-hidden", "true");
+      frame.style.position = "absolute";
+      frame.style.width = "1px";
+      frame.style.height = "1px";
+      frame.style.opacity = "0";
+      frame.style.pointerEvents = "none";
+      frame.style.border = "0";
+      frame.style.left = "-10000px";
+
+      expressAuditFrame = frame;
+      document.body.appendChild(frame);
+
+      expressAuditTimeout = setTimeout(() => {
+        if (expressAuditState === "loading") completeExpressAudit("error");
+      }, EXPRESS_AUDIT_TIMEOUT);
+
+      updateExpressAuditUi();
     };
+
+    const handleExpressAuditMessage = (event) => {
+      if (
+        event.origin !== window.location.origin ||
+        !expressAuditFrame ||
+        event.source !== expressAuditFrame.contentWindow
+      ) {
+        return;
+      }
+
+      const payload = event.data;
+      if (!payload || payload.type !== "intrid:express-audit") return;
+
+      try {
+        if (normalizeUrl(payload.site || "") !== normalizeUrl(expressAuditSite)) return;
+      } catch (_) {
+        return;
+      }
+
+      if (payload.status === "complete") {
+        completeExpressAudit("complete");
+      } else if (payload.status === "error") {
+        completeExpressAudit("error");
+      }
+    };
+
+    window.addEventListener("message", handleExpressAuditMessage);
 
     const setState = (next, { scroll = true } = {}) => {
       const changed = state !== next;
       state = next;
       root.dataset.state = next;
       const work = next !== "start";
-      show(sitePanel, next !== "result");
+      show(sitePanel, next !== "result" || expressAuditRequested);
       show(actions, next === "parameters");
       show(parameters, work);
       show(result, work);
@@ -10357,6 +10552,7 @@ const seoCalculatorInit = () => {
       url.disabled = busy || work;
       noSite.disabled = busy || work;
       syncStartOptions();
+      updateExpressAuditUi();
       setBusy(busy);
       if (scroll && changed) scrollToStart();
     };
@@ -10603,7 +10799,7 @@ const seoCalculatorInit = () => {
       message(notice, "");
       invalidate();
       setState("start");
-      openExpressAudit(site);
+      startExpressAudit(site);
       setBusy(true, "analyze");
       try {
         const data = await transport.analyze({ site, site_missing: noSite.checked }, signal);
@@ -10611,7 +10807,10 @@ const seoCalculatorInit = () => {
         fill(data, site, noSite.checked);
         setState("parameters");
       } catch (error) {
-        if (id === revision && error.name !== "AbortError") message(notice, error.message || "Не удалось проанализировать сайт.");
+        if (id === revision && error.name !== "AbortError") {
+          resetExpressAudit();
+          message(notice, error.message || "Не удалось проанализировать сайт.");
+        }
       } finally {
         if (id === revision) { operation = null; setBusy(false); }
       }
@@ -10676,6 +10875,7 @@ const seoCalculatorInit = () => {
     };
     const reset = ({ scroll = true } = {}) => {
       abort();
+      resetExpressAudit();
       form.reset();
       requestToken = "";
       analyzedSite = "";

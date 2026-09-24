@@ -397,8 +397,7 @@
                                         for="seo-calculator-express-audit" data-seo-calculator-express-audit-label>
                                         <input id="seo-calculator-express-audit" type="checkbox" name="express_audit"
                                             value="1" data-seo-calculator-express-audit disabled>
-                                        <span>Экспресс-аудит <span class="small color-grey">(Откроется в новой
-                                                вкладке)</span></span>
+                                        <span>Экспресс-аудит <span class="small color-grey">(выполним в фоне)</span></span>
                                     </label>
                                     <div class="error-msg" data-seo-calculator-notice role="status" aria-live="polite"
                                         hidden>
@@ -407,6 +406,24 @@
                                         data-seo-calculator-loading role="status" aria-live="polite" hidden>
                                         <div class="preloader" aria-hidden="true"></div>
                                         <p class="m-0 color-grey">Анализируем сайт и подготавливаем параметры…</p>
+                                    </div>
+
+                                    <div class="seo-calculator__audit-status d-flex flex-column gap-8"
+                                        data-seo-calculator-audit-status aria-live="polite" hidden>
+                                        <div class="d-flex flex-row align-center gap-8"
+                                            data-seo-calculator-audit-loading hidden>
+                                            <div class="preloader" aria-hidden="true"
+                                                style="width: 24px; height: 24px; flex: 0 0 24px;"></div>
+                                            <p class="m-0 color-grey">Выполняем экспресс SEO-аудит сайта…</p>
+                                        </div>
+                                        <a class="button-link small w-fit" href="#" target="_blank"
+                                            rel="noopener noreferrer" data-seo-calculator-audit-result hidden>
+                                            Результаты SEO-аудита
+                                            <i class="icon-arrow_wide"></i>
+                                        </a>
+                                        <p class="m-0 color-grey" data-seo-calculator-audit-error hidden>
+                                            Не удалось выполнить экспресс SEO-аудит. Попробуйте запустить его позже.
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="seo-calculator__parameters card thin overflow-visible d-flex flex-column gap-20"
