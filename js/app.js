@@ -7650,6 +7650,19 @@ const expressAuditFlow = (() => {
   };
 })();
 
+const SEO_AUDIT_LOADER_PHRASES = [
+  "Проверяю доступность сайта...",
+  "Смотрю мета-теги...",
+  "Анализирую индексацию...",
+  "Замеряю скорость загрузки...",
+  "Проверяю мобильную версию...",
+  "Ищу технические ошибки...",
+  "Смотрю структуру контента...",
+  "Проверяю внутреннюю перелинковку...",
+  "Собираю результаты аудита...",
+];
+const SEO_AUDIT_LOADER_PHRASE_DELAY = 3000;
+
 const seoAuditInit = () => {
   const API_KEY = "AIzaSyD80rX_LE4YFfFB7uGRucxxZFCZ0j2IBDI";
   const form = document.getElementById("audit-form");
@@ -7671,17 +7684,6 @@ const seoAuditInit = () => {
   const resultsContainer = document.getElementById("audit-results");
   const resultsGrid = resultsContainer?.querySelector("#audit-cards");
   const seoAuditFeatures = document.getElementById("seo-audit-features");
-  const auditLoaderPhrases = [
-    "Проверяю доступность сайта...",
-    "Смотрю мета-теги...",
-    "Анализирую индексацию...",
-    "Замеряю скорость загрузки...",
-    "Проверяю мобильную версию...",
-    "Ищу технические ошибки...",
-    "Смотрю структуру контента...",
-    "Проверяю внутреннюю перелинковку...",
-    "Собираю результаты аудита...",
-  ];
   let auditLoaderPhraseTimer = null;
   let auditLoaderPhraseIndex = 0;
 
@@ -7702,7 +7704,7 @@ const seoAuditInit = () => {
     const loaderText = getAuditLoaderText();
     if (!loaderText) return;
 
-    const phrase = auditLoaderPhrases[auditLoaderPhraseIndex];
+    const phrase = SEO_AUDIT_LOADER_PHRASES[auditLoaderPhraseIndex];
     const animationClass =
       auditLoaderPhraseIndex % 2 === 0
         ? "audit-loader-text--left"
@@ -7720,14 +7722,14 @@ const seoAuditInit = () => {
     loaderText.classList.add(animationClass);
 
     auditLoaderPhraseIndex =
-      (auditLoaderPhraseIndex + 1) % auditLoaderPhrases.length;
+      (auditLoaderPhraseIndex + 1) % SEO_AUDIT_LOADER_PHRASES.length;
   };
 
   const startAuditLoaderPhrases = () => {
     stopAuditLoaderPhrases();
     auditLoaderPhraseIndex = 0;
     showAuditLoaderPhrase();
-    auditLoaderPhraseTimer = setInterval(showAuditLoaderPhrase, 3000);
+    auditLoaderPhraseTimer = setInterval(showAuditLoaderPhrase, SEO_AUDIT_LOADER_PHRASE_DELAY);
   };
 
   const stopAuditLoaderPhrases = () => {
@@ -10149,6 +10151,7 @@ const seoCalculatorInit = () => {
     const expressAuditLabel = $("[data-seo-calculator-express-audit-label]");
     const expressAuditStatus = $("[data-seo-calculator-audit-status]");
     const expressAuditLoading = $("[data-seo-calculator-audit-loading]");
+    const expressAuditLoaderText = $("[data-seo-calculator-audit-loader-text]");
     const expressAuditResult = $("[data-seo-calculator-audit-result]");
     const expressAuditError = $("[data-seo-calculator-audit-error]");
     const analyzeButton = $('[data-seo-calculator-action="analyze"]');
@@ -10227,6 +10230,8 @@ const seoCalculatorInit = () => {
     let expressAuditResultUrl = "";
     let expressAuditFrame = null;
     let expressAuditTimeout = null;
+    let expressAuditLoaderPhraseTimer = null;
+    let expressAuditLoaderPhraseIndex = 0;
     const RECALCULATION_DELAY = 400;
     const EXPRESS_AUDIT_TIMEOUT = 120000;
     const initialSelections = Object.fromEntries(Object.entries(fields).filter(([, el]) => el.tagName === "SELECT").map(([key, el]) => [key, Array.from(el.options).find(option => option.defaultSelected)?.value ?? el.options[0]?.value ?? ""]));
@@ -10426,12 +10431,69 @@ const seoCalculatorInit = () => {
       }
     };
 
+    const showExpressAuditLoaderPhrase = () => {
+      if (!expressAuditLoaderText) return;
+
+      const phrase = SEO_AUDIT_LOADER_PHRASES[expressAuditLoaderPhraseIndex];
+      const animationClass =
+        expressAuditLoaderPhraseIndex % 2 === 0
+          ? "audit-loader-text--left"
+          : "audit-loader-text--right";
+
+      expressAuditLoaderText.classList.remove(
+        "audit-loader-text--left",
+        "audit-loader-text--right",
+      );
+      expressAuditLoaderText.textContent = phrase;
+
+      // Перезапускаем ту же CSS-анимацию, что используется в #audit-loader-text.
+      void expressAuditLoaderText.offsetWidth;
+      expressAuditLoaderText.classList.add(animationClass);
+
+      expressAuditLoaderPhraseIndex =
+        (expressAuditLoaderPhraseIndex + 1) % SEO_AUDIT_LOADER_PHRASES.length;
+    };
+
+    const startExpressAuditLoaderPhrases = () => {
+      if (expressAuditLoaderPhraseTimer || !expressAuditLoaderText) return;
+
+      expressAuditLoaderPhraseIndex = 0;
+      showExpressAuditLoaderPhrase();
+      expressAuditLoaderPhraseTimer = setInterval(
+        showExpressAuditLoaderPhrase,
+        SEO_AUDIT_LOADER_PHRASE_DELAY,
+      );
+    };
+
+    const stopExpressAuditLoaderPhrases = () => {
+      if (expressAuditLoaderPhraseTimer) {
+        clearInterval(expressAuditLoaderPhraseTimer);
+        expressAuditLoaderPhraseTimer = null;
+      }
+
+      if (!expressAuditLoaderText) return;
+
+      expressAuditLoaderText.classList.remove(
+        "audit-loader-text--left",
+        "audit-loader-text--right",
+      );
+      expressAuditLoaderText.textContent = "Выполняем экспресс SEO-аудит сайта…";
+    };
+
     const updateExpressAuditUi = () => {
       const visible = expressAuditRequested && state !== "start";
+      const loadingVisible = visible && expressAuditState === "loading";
+
       show(expressAuditStatus, visible);
-      show(expressAuditLoading, visible && expressAuditState === "loading");
+      show(expressAuditLoading, loadingVisible);
       show(expressAuditResult, visible && expressAuditState === "complete");
       show(expressAuditError, visible && expressAuditState === "error");
+
+      if (loadingVisible) {
+        startExpressAuditLoaderPhrases();
+      } else {
+        stopExpressAuditLoaderPhrases();
+      }
 
       if (expressAuditResult && expressAuditResultUrl) {
         expressAuditResult.href = expressAuditResultUrl;
