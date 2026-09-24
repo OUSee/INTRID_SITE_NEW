@@ -7427,7 +7427,7 @@ const expressAuditFlow = (() => {
   const SOURCE_KEY = "intrid:express-audit:source";
   const RETURN_KEY = "intrid:express-audit:return";
   const RESULT_PREFIX = "intrid:express-audit:result:";
-  const MAX_AGE = 30 * 60 * 1000;
+  const MAX_AGE = 60 * 60 * 1000;
 
   const read = (key) => {
     try {
