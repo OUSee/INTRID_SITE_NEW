@@ -10017,10 +10017,10 @@ const seoCalculatorPricing = (() => {
     const pages = positiveInt(input.pages);
     const sectionPrice =
       sections <= 5 ? 0 :
-      sections <= 9 ? 1000 :
-      sections <= 20 ? 2000 :
-      sections <= 100 ? 3000 :
-      6000;
+        sections <= 9 ? 1000 :
+          sections <= 20 ? 2000 :
+            sections <= 100 ? 3000 :
+              6000;
     const pagePrice = pages === 1 ? 3000 : pages <= 10 ? 0 : pages <= 50 ? 1000 : pages <= 200 ? 3000 : pages <= 1000 ? 6000 : 8000;
     const additions = {
       region: lookup(prices.region, input.region),
@@ -10169,15 +10169,53 @@ const seoCalculatorInit = () => {
       el.value = value;
       updateSelect(el);
     };
+    const formatYears = (years) => {
+      const lastTwo = years % 100;
+      const last = years % 10;
+
+      if (lastTwo >= 11 && lastTwo <= 14) {
+        return `${years} лет`;
+      }
+
+      if (last === 1) {
+        return `${years} год`;
+      }
+
+      if (last >= 2 && last <= 4) {
+        return `${years} года`;
+      }
+
+      return `${years} лет`;
+    };
     const setAge = (months) => {
-      const n = months === null || months === undefined || months === "" ? null : Number(months);
+      const n =
+        months === null || months === undefined || months === ""
+          ? null
+          : Number(months);
+
       const known = n !== null && Number.isFinite(n) && n >= 0;
       const value = known ? Math.floor(n) : null;
+
       fields.age_months.value = known ? String(value) : "";
       fields.age_category.value = seoCalculatorPricing.ageCategory(value);
-      ageSlider.value = String(Math.min(120, known ? value : 24));
-      ageLabel.textContent = known ? (value < 12 ? `${value} мес.` : `${Math.floor(value / 12)} г. ${value % 12} мес.`) : "Не определён";
-      if (ageNote) ageNote.textContent = known ? "Возраст домена определён автоматически и не редактируется." : "Дата регистрации недоступна. Для расчёта принят возраст 1–3 года.";
+
+      ageSlider.value = String(
+        Math.min(120, known ? value : 24)
+      );
+
+      ageLabel.textContent = known
+        ? (
+          value < 12
+            ? `${value} мес.`
+            : formatYears(Math.floor(value / 12))
+        )
+        : "Не определён";
+
+      if (ageNote) {
+        ageNote.textContent = known
+          ? "Возраст домена определён автоматически и не редактируется."
+          : "Дата регистрации недоступна. Для расчёта принят возраст 1–3 года.";
+      }
     };
     // The number field retains the exact count; the range is only a fixed-size control.
     // A range with data-range-open-end reserves its last position for an open interval.
