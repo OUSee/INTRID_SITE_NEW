@@ -10421,6 +10421,7 @@ const seoCalculatorInit = () => {
     };
     const syncStartOptions = () => {
       const hasSite = Boolean(url.value.trim());
+      const sourceLocked = state !== "start" || busy;
 
       show(noSiteLabel, true);
       show(expressAuditLabel, true);
@@ -10430,13 +10431,27 @@ const seoCalculatorInit = () => {
           noSite.checked = false;
           url.required = true;
         }
-        noSite.disabled = busy || hasSite;
+
+        // URL / "Сайта нет" / "Экспресс-аудит" можно менять только
+        // до первого запуска анализа. После расчёта они разблокируются
+        // только через "Проанализировать другой сайт".
+        noSite.disabled = sourceLocked || hasSite;
       }
 
       if (expressAudit) {
-        const disabled = busy || noSite.checked || !hasSite;
+        const disabled =
+          sourceLocked ||
+          noSite.checked ||
+          !hasSite;
+
         expressAudit.disabled = disabled;
-        if (noSite.checked || !hasSite) expressAudit.checked = false;
+
+        // Сбрасываем выбор только на стартовом шаге, когда он объективно
+        // недоступен из-за отсутствия URL или выбранного "Сайта нет".
+        // После запуска анализа состояние чекбокса сохраняем.
+        if (!sourceLocked && (noSite.checked || !hasSite)) {
+          expressAudit.checked = false;
+        }
       }
     };
     const buildExpressAuditUrl = (site) => {
@@ -10641,7 +10656,7 @@ const seoCalculatorInit = () => {
         leadSent = false;
       }
 
-      url.disabled = busy;
+      url.disabled = state !== "start" || busy;
       syncStartOptions();
       updateExpressAuditUi();
       setBusy(busy);
@@ -10651,7 +10666,9 @@ const seoCalculatorInit = () => {
       busy = value;
       form.setAttribute("aria-busy", value ? "true" : "false");
       show(loading, value && kind === "analyze");
-      url.disabled = value && kind === "analyze";
+      // Источник анализа фиксируется с момента запуска расчёта
+      // и остаётся заблокированным в состоянии result.
+      url.disabled = state !== "start" || (value && kind === "analyze");
       buttons.filter(el => el.dataset.seoCalculatorAction !== "reset").forEach(el => {
         const action = el.dataset.seoCalculatorAction;
         el.disabled = value
