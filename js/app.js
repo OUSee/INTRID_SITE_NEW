@@ -10068,6 +10068,8 @@ const seoCalculatorPricing = (() => {
   const prices = {
     region: { one: 0, "2-3": 4000, "4-6": 8000, russia: 12000 },
     site_type: { landing: 3000, corporate: 0, catalog: 3000, store: 4000, portal: 8000 },
+    sections: { "1-5": 0, "6-9": 1000, "10-20": 2000, "21-50": 3000, "51-100": 3000, "101-1000": 6000, "1001+": 6000 },
+    pages: { "1": 3000, "2-10": 0, "11-50": 1000, "51-200": 3000, "201-1000": 6000, "1001+": 8000 },
     keywords: { "up-to-20": 0, "21-50": 1000, "51-100": 2000, "101-300": 4000, "301-600": 7000, "over-600": 12000 },
     competition: { low: 0, medium: 2000, high: 5000 },
   };
@@ -10084,11 +10086,6 @@ const seoCalculatorPricing = (() => {
     if (!Number.isFinite(n) || n < 0) return "1-3";
     return n < 6 ? "0-6" : n < 12 ? "6-12" : n <= 36 ? "1-3" : "3+";
   };
-  const positiveInt = (value) => {
-    const n = Number(value);
-    if (!Number.isSafeInteger(n) || n < 1) throw new Error("Укажите корректное количество страниц и разделов.");
-    return n;
-  };
   const lookup = (table, key) => {
     if (!Object.prototype.hasOwnProperty.call(table, key)) throw new Error("Проверьте параметры расчёта.");
     return table[key];
@@ -10096,15 +10093,8 @@ const seoCalculatorPricing = (() => {
   // Excel ROUND(...,-2): для положительных целых сумм используем целочисленную арифметику.
   const percentRounded100 = (base, percent) => Math.floor((base * percent + 5000) / 10000) * 100;
   const calculate = (input) => {
-    const sections = positiveInt(input.sections);
-    const pages = positiveInt(input.pages);
-    const sectionPrice =
-      sections <= 5 ? 0 :
-        sections <= 9 ? 1000 :
-          sections <= 20 ? 2000 :
-            sections <= 100 ? 3000 :
-              6000;
-    const pagePrice = pages === 1 ? 3000 : pages <= 10 ? 0 : pages <= 50 ? 1000 : pages <= 200 ? 3000 : pages <= 1000 ? 6000 : 8000;
+    const sectionPrice = lookup(prices.sections, input.sections);
+    const pagePrice = lookup(prices.pages, input.pages);
     const additions = {
       region: lookup(prices.region, input.region),
       site_type: lookup(prices.site_type, input.site_type),
@@ -10118,11 +10108,15 @@ const seoCalculatorPricing = (() => {
     const selected = Object.fromEntries(Object.entries(services).filter(([key]) => input.services?.[key]));
     const extra = Object.values(selected).reduce((sum, value) => sum + value, 0);
     const age = lookup(ages, input.age_category || ageCategory(input.age_months));
-    const sectionCorrection = sections <= 100 ? [0, 0] : sections <= 1000 ? [1, 1] : [1, 2];
+    const sectionCorrection = input.sections === "1001+"
+      ? [1, 2]
+      : input.sections === "101-1000"
+        ? [1, 1]
+        : [0, 0];
     const competitionCorrection = { low: [-1, -1], medium: [0, 0], high: [1, 2] }[input.competition];
     const timing = (range, correction) => range.map(value => Math.max(1, value + correction));
     return {
-      version: "excel-2026-09-09-pm-1",
+      version: "excel-2026-09-29-simple-ui-1",
       base, additions, seo, services: selected,
       total: seo.map(value => value + extra),
       first: timing(age.first, sectionCorrection[0] + competitionCorrection[0]),
@@ -10189,6 +10183,33 @@ const seoCalculatorInit = () => {
       if (count <= 600) return "301-600";
       return "over-600";
     };
+    const rangeBuckets = {
+      sections: [
+        { value: "1-5", label: "1–5", max: 5 },
+        { value: "6-9", label: "6–9", max: 9 },
+        { value: "10-20", label: "10–20", max: 20 },
+        { value: "21-50", label: "21–50", max: 50 },
+        { value: "51-100", label: "51–100", max: 100 },
+        { value: "101-1000", label: "101–1000", max: 1000 },
+        { value: "1001+", label: "Более 1000", max: Infinity },
+      ],
+      pages: [
+        { value: "1", label: "1", max: 1 },
+        { value: "2-10", label: "2–10", max: 10 },
+        { value: "11-50", label: "11–50", max: 50 },
+        { value: "51-200", label: "51–200", max: 200 },
+        { value: "201-1000", label: "201–1000", max: 1000 },
+        { value: "1001+", label: "Более 1000", max: Infinity },
+      ],
+    };
+    const rangeBucketFromCount = (key, value) => {
+      const count = Number(value);
+      if (!Number.isSafeInteger(count) || count < 1) {
+        throw new Error("Сервер вернул некорректное количество страниц или разделов.");
+      }
+      return rangeBuckets[key].find(bucket => count <= bucket.max)?.value
+        || rangeBuckets[key].at(-1).value;
+    };
     const analysisDefaults = {
       site_type: "corporate",
       seo_history: "unknown",
@@ -10216,6 +10237,8 @@ const seoCalculatorInit = () => {
     let operation = null;
     let revision = 0;
     let analyzedSite = "";
+    let metricsReady = false;
+    let analyzedAsNoSite = false;
     let calculation = null;
     let leadSent = false;
     let requestToken = "";
@@ -10307,40 +10330,36 @@ const seoCalculatorInit = () => {
             : formatYears(Math.floor(value / 12))
         )
         : "Не определён";
+      ageSlider.setAttribute("aria-valuetext", ageLabel.textContent);
 
       if (ageNote) {
         ageNote.textContent = known
-          ? "Возраст домена определён автоматически и не редактируется."
+          ? "Возраст сайта можно скорректировать вручную."
           : "Дата регистрации недоступна. Для расчёта принят возраст 1–3 года.";
       }
     };
-    // The number field retains the exact count; the range is only a fixed-size control.
-    // A range with data-range-open-end reserves its last position for an open interval.
-    // Sections: the last slider position (100) means 101+; exact manual 100 stays 100.
-    // Pages: the last slider position (1000) means 1001+; exact manual 1000 stays 1000.
-    // Values entered manually above the visual maximum remain exact while the slider
-    // stays at its last position.
     const setRange = (key, value, { fromSlider = false } = {}) => {
-      const number = $(`[data-seo-calculator-number="${key}"]`);
       const slider = $(`[data-seo-calculator-slider="${key}"]`);
-      const wrapper = $(`[data-seo-calculator-range="${key}"]`);
-      const n = Number(value);
-      if (!Number.isSafeInteger(n) || n < 1) return;
+      const label = $(`[data-seo-calculator-range-label="${key}"]`);
+      const buckets = rangeBuckets[key];
+      if (!slider || !label || !buckets) return;
 
-      const max = Number(slider.max);
-      const openEnd = Number(wrapper?.dataset.rangeOpenEnd);
-      const hasOpenEnd = Number.isSafeInteger(openEnd) && openEnd > max;
-      const exact = fromSlider && hasOpenEnd && n === max ? openEnd : n;
-      const position = !fromSlider && hasOpenEnd && exact === max
-        ? max - 1
-        : Math.min(exact, max);
+      let bucketValue = value;
+      if (fromSlider) {
+        const index = Number(value);
+        if (!Number.isSafeInteger(index) || !buckets[index]) return;
+        bucketValue = buckets[index].value;
+      } else if (!buckets.some(bucket => bucket.value === String(value))) {
+        bucketValue = rangeBucketFromCount(key, value);
+      }
 
-      number.value = String(exact);
-      slider.value = String(position);
-      slider.setAttribute("aria-valuetext",
-        hasOpenEnd && exact >= openEnd
-          ? `${money(exact)} шт., диапазон ${money(max)}+`
-          : `${money(exact)} шт.`);
+      const index = buckets.findIndex(bucket => bucket.value === String(bucketValue));
+      if (index < 0) throw new Error("Укажите корректный диапазон страниц или разделов.");
+
+      slider.value = String(index);
+      fields[key].value = buckets[index].value;
+      label.textContent = buckets[index].label;
+      slider.setAttribute("aria-valuetext", buckets[index].label);
     };
     const setKeywords = (value) => {
       const index = keywordBuckets.findIndex(bucket => bucket.value === value);
@@ -10358,15 +10377,15 @@ const seoCalculatorInit = () => {
       region: fields.region.value,
       competition: fields.competition.value,
       keywords: fields.keywords.value,
-      sections: $('[data-seo-calculator-number="sections"]').value,
-      pages: $('[data-seo-calculator-number="pages"]').value,
+      sections: fields.sections.value,
+      pages: fields.pages.value,
       age_months: fields.age_months.value,
       age_category: fields.age_category.value,
       services: Object.fromEntries(serviceInputs.map(el => [el.dataset.seoCalculatorService, el.checked])),
     });
     const validateParameters = ({ report = true } = {}) => {
       if (report) message(notice, "");
-      for (const el of $$("[data-seo-calculator-parameters] select, [data-seo-calculator-number], [data-seo-calculator-slider='keywords']")) {
+      for (const el of $$('[data-seo-calculator-parameters] select, [data-seo-calculator-parameters] input[type="range"]')) {
         if (!el.checkValidity()) {
           if (report) el.reportValidity();
           return false;
@@ -10375,6 +10394,12 @@ const seoCalculatorInit = () => {
       if (!keywordBuckets.some(bucket => bucket.value === fields.keywords.value)) {
         if (report) message(notice, "Укажите корректное количество ключевых фраз.");
         return false;
+      }
+      for (const key of ["sections", "pages"]) {
+        if (!rangeBuckets[key].some(bucket => bucket.value === fields[key].value)) {
+          if (report) message(notice, "Укажите корректный диапазон страниц и разделов.");
+          return false;
+        }
       }
       return true;
     };
@@ -10391,26 +10416,22 @@ const seoCalculatorInit = () => {
       });
     };
     const syncStartOptions = () => {
-      const isStart = state === "start";
       const hasSite = Boolean(url.value.trim());
 
-      show(noSiteLabel, isStart);
-      show(expressAuditLabel, isStart);
+      show(noSiteLabel, true);
+      show(expressAuditLabel, true);
 
-      // Once the user has entered anything into the URL field, the "no site"
-      // scenario is no longer available. Clearing the URL enables it again.
       if (noSite) {
         if (hasSite && noSite.checked) {
           noSite.checked = false;
           url.required = true;
         }
-        noSite.disabled = busy || !isStart || hasSite;
+        noSite.disabled = busy || hasSite;
       }
 
       if (expressAudit) {
-        const disabled = busy || !isStart || noSite.checked || !hasSite;
+        const disabled = busy || noSite.checked || !hasSite;
         expressAudit.disabled = disabled;
-        // A disabled audit must never remain selected when there is no site to audit.
         if (noSite.checked || !hasSite) expressAudit.checked = false;
       }
     };
@@ -10481,7 +10502,7 @@ const seoCalculatorInit = () => {
     };
 
     const updateExpressAuditUi = () => {
-      const visible = expressAuditRequested && state !== "start";
+      const visible = expressAuditRequested;
       const loadingVisible = visible && expressAuditState === "loading";
 
       show(expressAuditStatus, visible);
@@ -10590,29 +10611,20 @@ const seoCalculatorInit = () => {
 
     window.addEventListener("message", handleExpressAuditMessage);
 
-    const setState = (next, { scroll = true } = {}) => {
+    const setState = (next, { scroll = false } = {}) => {
       const changed = state !== next;
       state = next;
       root.dataset.state = next;
-      const work = next !== "start";
-      show(sitePanel, next !== "result" || expressAuditRequested);
-      show(actions, next === "parameters");
-      show(parameters, work);
-      show(result, work);
-      show(empty, work && !calculation);
-      show(content, next === "result" && Boolean(calculation));
-      show(lead, next === "result");
-      show($('[data-seo-calculator-action="reset"]'), next === "result");
-      // The URL row is only an analysis control; parameters have their own calculate button.
-      if (analyzeButton) {
-        analyzeButton.dataset.seoCalculatorAction = "analyze";
-        analyzeButton.setAttribute("aria-label", "Проанализировать сайт");
-      }
-      $$('[data-seo-calculator-copy]').forEach(el => show(el, el.dataset.seoCalculatorCopy === (work ? "work" : "start")));
-      show(demoNote, mode === "mock" && work);
-      if (next !== "result") { message(leadStatus, ""); leadSent = false; }
-      url.disabled = busy || work;
-      noSite.disabled = busy || work;
+      show(sitePanel, true);
+      show(actions, true);
+      show(parameters, true);
+      show(result, true);
+      show(empty, !calculation);
+      show(content, Boolean(calculation));
+      show(lead, Boolean(calculation));
+      show(demoNote, mode === "mock");
+      if (!calculation) { message(leadStatus, ""); leadSent = false; }
+      url.disabled = busy;
       syncStartOptions();
       updateExpressAuditUi();
       setBusy(busy);
@@ -10622,14 +10634,11 @@ const seoCalculatorInit = () => {
       busy = value;
       form.setAttribute("aria-busy", value ? "true" : "false");
       show(loading, value && kind === "analyze");
-      url.disabled = value || state !== "start";
-      noSite.disabled = value || state !== "start";
+      url.disabled = value && kind === "analyze";
       buttons.filter(el => el.dataset.seoCalculatorAction !== "reset").forEach(el => {
         const action = el.dataset.seoCalculatorAction;
         el.disabled = value
-          || (action === "analyze" && state !== "start")
-          || (action === "calculate" && state !== "parameters")
-          || (action === "submit-request" && (leadSent || recalculationPending));
+          || (action === "submit-request" && (!calculation || leadSent));
       });
       syncStartOptions();
     };
@@ -10687,14 +10696,11 @@ const seoCalculatorInit = () => {
       setBusy(false);
     };
     const invalidate = () => {
-      if (state === "result" && calculation) {
-        scheduleRecalculation();
-        return;
-      }
       cancelRecalculation();
       calculation = null;
       leadSent = false;
       message(leadStatus, "");
+      setState("start", { scroll: false });
     };
     const normalizeUrl = (value) => {
       let raw = value.trim();
@@ -10789,37 +10795,34 @@ const seoCalculatorInit = () => {
     const fill = (data, expectedSite, siteMissing) => {
       if (!data || typeof data !== "object") throw new Error("Не удалось получить параметры сайта.");
       const defaults = siteMissing ? noSiteDefaults : analysisDefaults;
-      const normalized = {};
+
       for (const key of ["site_type", "seo_history", "region", "competition"]) {
-        const value = data[key] ?? defaults[key];
-        if (!Array.from(fields[key].options).some(option => option.value === value)) throw new Error("Сервер вернул некорректные параметры сайта.");
-        normalized[key] = value;
+        const value = siteMissing ? defaults[key] : data[key];
+        if (value === undefined || value === null || value === "") continue;
+        if (!Array.from(fields[key].options).some(option => option.value === value)) {
+          throw new Error("Сервер вернул некорректные параметры сайта.");
+        }
+        setSelect(fields[key], value);
       }
 
       const rawKeywords = data.keywords ?? defaults.keywords;
-      normalized.keywords = keywordBuckets.some(bucket => bucket.value === rawKeywords)
+      const keywordValue = keywordBuckets.some(bucket => bucket.value === rawKeywords)
         ? rawKeywords
         : keywordsBucketFromCount(rawKeywords);
+      setKeywords(keywordValue);
 
-      for (const key of ["sections", "pages"]) {
-        const n = Number(data[key] ?? defaults[key]);
-        if (!Number.isSafeInteger(n) || n < 1) throw new Error("Сервер вернул некорректное количество страниц или разделов.");
-        normalized[key] = n;
-      }
+      setRange("sections", data.sections ?? defaults.sections);
+      setRange("pages", data.pages ?? defaults.pages);
 
-      const age = data.age_months ?? defaults.age_months;
+      const age = siteMissing ? 0 : (data.age_months ?? defaults.age_months);
       if (age !== null && age !== undefined && age !== "" && (!Number.isSafeInteger(Number(age)) || Number(age) < 0)) {
         throw new Error("Сервер вернул некорректный возраст домена.");
       }
+      setAge(age ?? null);
 
-      Object.entries(normalized).forEach(([key, value]) => {
-        if (fields[key]?.tagName === "SELECT") setSelect(fields[key], value);
-      });
-      setKeywords(normalized.keywords);
-      setRange("sections", normalized.sections);
-      setRange("pages", normalized.pages);
-      setAge(siteMissing ? 0 : age ?? null);
       analyzedSite = siteMissing ? "" : expectedSite;
+      analyzedAsNoSite = siteMissing;
+      metricsReady = true;
     };
     const render = (value) => {
       put("total-range", priceRange(value.total));
@@ -10830,17 +10833,52 @@ const seoCalculatorInit = () => {
       ["reputation", "geo"].forEach(key => show($(`[data-seo-calculator-breakdown="${key}"]`), Boolean(value.services[key])));
       syncLeadContext();
     };
-    const calculate = () => {
-      if (busy || state !== "parameters" || !validateParameters()) return;
+    const calculate = async () => {
+      if (busy) return;
+      const site = validateUrl();
+      if (site === null || !validateParameters()) return;
+
+      abort();
+      const id = revision;
+      operation = new AbortController();
+      const signal = operation.signal;
+      message(notice, "");
+
+      if (expressAudit?.checked && !noSite.checked && site) {
+        if (!expressAuditRequested || expressAuditSite !== site) startExpressAudit(site);
+      } else if (expressAuditRequested) {
+        resetExpressAudit();
+      }
+
+      setBusy(true, "analyze");
       try {
+        const needsMetrics = noSite.checked
+          ? !metricsReady || !analyzedAsNoSite
+          : !metricsReady || analyzedAsNoSite || analyzedSite !== site;
+
+        if (needsMetrics) {
+          const data = await transport.analyze({ site, site_missing: noSite.checked }, signal);
+          if (id !== revision) return;
+          fill(data, site, noSite.checked);
+        }
+
+        if (id !== revision || !validateParameters({ report: false })) return;
         calculation = seoCalculatorPricing.calculate(read());
         render(calculation);
-        if (!leadSent) {
-          const sendButton = $('[data-seo-calculator-action="submit-request"]');
-          if (sendButton) sendButton.textContent = "Отправить";
+        leadSent = false;
+        const sendButton = $('[data-seo-calculator-action="submit-request"]');
+        if (sendButton) sendButton.textContent = "Отправить";
+        setState("result", { scroll: false });
+      } catch (error) {
+        if (id === revision && error.name !== "AbortError") {
+          message(notice, error.message || "Не удалось выполнить расчёт.");
         }
-        setState("result");
-      } catch (error) { message(notice, error.message); }
+      } finally {
+        if (id === revision) {
+          operation = null;
+          setBusy(false);
+        }
+      }
     };
     const selectedOptionText = (select) =>
       select?.selectedOptions?.[0]?.textContent?.replace(/\s+/g, " ").trim() || "";
@@ -10850,33 +10888,6 @@ const seoCalculatorInit = () => {
       if (field) field.value = value ?? "";
     };
 
-    const analyze = async () => {
-      if (busy) return;
-      const site = validateUrl();
-      if (site === null) return;
-      abort();
-      const id = revision;
-      operation = new AbortController();
-      const signal = operation.signal;
-      message(notice, "");
-      invalidate();
-      setState("start");
-      startExpressAudit(site);
-      setBusy(true, "analyze");
-      try {
-        const data = await transport.analyze({ site, site_missing: noSite.checked }, signal);
-        if (id !== revision) return;
-        fill(data, site, noSite.checked);
-        setState("parameters");
-      } catch (error) {
-        if (id === revision && error.name !== "AbortError") {
-          resetExpressAudit();
-          message(notice, error.message || "Не удалось проанализировать сайт.");
-        }
-      } finally {
-        if (id === revision) { operation = null; setBusy(false); }
-      }
-    };
     const syncLeadContext = () => {
       const hasCalculation = Boolean(calculation);
       const parameters = read();
@@ -10898,8 +10909,14 @@ const seoCalculatorInit = () => {
       setLeadField("seo_region", hasCalculation ? selectedOptionText(fields.region) : "");
       setLeadField("seo_competition", hasCalculation ? selectedOptionText(fields.competition) : "");
       setLeadField("seo_age", hasCalculation ? ageText : "");
-      setLeadField("seo_sections", hasCalculation ? parameters.sections : "");
-      setLeadField("seo_pages", hasCalculation ? parameters.pages : "");
+      setLeadField(
+        "seo_sections",
+        hasCalculation ? ($('[data-seo-calculator-range-label="sections"]')?.textContent?.trim() || parameters.sections) : "",
+      );
+      setLeadField(
+        "seo_pages",
+        hasCalculation ? ($('[data-seo-calculator-range-label="pages"]')?.textContent?.trim() || parameters.pages) : "",
+      );
       setLeadField(
         "seo_keywords",
         hasCalculation ? (keywordLabel?.textContent?.trim() || parameters.keywords) : "",
@@ -10941,6 +10958,8 @@ const seoCalculatorInit = () => {
       form.reset();
       requestToken = "";
       analyzedSite = "";
+      metricsReady = false;
+      analyzedAsNoSite = false;
       calculation = null;
       leadSent = false;
       Object.entries(initialSelections).forEach(([key, value]) => setSelect(fields[key], value));
@@ -11055,36 +11074,40 @@ const seoCalculatorInit = () => {
       const button = event.target.closest("[data-seo-calculator-action]");
       if (button && root.contains(button)) {
         event.preventDefault();
-        if (button.dataset.seoCalculatorAction === "analyze") analyze();
         if (button.dataset.seoCalculatorAction === "calculate") calculate();
         if (button.dataset.seoCalculatorAction === "submit-request") submitRequest();
         if (button.dataset.seoCalculatorAction === "reset") reset();
       }
     });
-    form.addEventListener("submit", (event) => { event.preventDefault(); if (state === "start") analyze(); else if (state === "parameters") calculate(); });
+    form.addEventListener("submit", (event) => { event.preventDefault(); calculate(); });
     leadForm.addEventListener("submit", (event) => { event.preventDefault(); submitRequest(); });
     noSite.addEventListener("change", () => {
       if (busy) return;
       url.required = !noSite.checked;
       url.setCustomValidity("");
+      metricsReady = false;
+      analyzedAsNoSite = false;
+      analyzedSite = "";
+      resetExpressAudit();
 
       if (noSite.checked && expressAudit) {
         expressAudit.checked = false;
+        setAge(0);
       }
 
       syncStartOptions();
       invalidate();
-      setState("start");
     });
     url.addEventListener("input", () => {
-      if (state !== "start") return;
-
-      // Typing a site means the "no site" scenario is no longer applicable.
       if (noSite.checked && url.value.trim()) {
         noSite.checked = false;
         url.required = true;
       }
 
+      metricsReady = false;
+      analyzedAsNoSite = false;
+      analyzedSite = "";
+      resetExpressAudit();
       url.setCustomValidity("");
       message(notice, "");
       syncStartOptions();
@@ -11093,15 +11116,24 @@ const seoCalculatorInit = () => {
     Object.entries(fields).forEach(([key, el]) => {
       if (el.tagName === "SELECT") el.addEventListener("change", invalidate);
     });
+    ageSlider.addEventListener("input", () => {
+      setAge(ageSlider.value);
+      invalidate();
+    });
     keywordSlider.addEventListener("input", () => {
       setKeywords(keywordBuckets[Number(keywordSlider.value)].value);
       invalidate();
     });
     ["sections", "pages"].forEach(key => {
-      const number = $(`[data-seo-calculator-number="${key}"]`);
       const slider = $(`[data-seo-calculator-slider="${key}"]`);
-      slider.addEventListener("input", () => { setRange(key, slider.value, { fromSlider: true }); invalidate(); });
-      number.addEventListener("input", () => { if (number.validity.valid && number.value !== "") setRange(key, number.value); invalidate(); });
+      slider.addEventListener("input", () => {
+        setRange(key, slider.value, { fromSlider: true });
+        invalidate();
+      });
+    });
+    expressAudit?.addEventListener("change", () => {
+      if (!expressAudit.checked) resetExpressAudit();
+      invalidate();
     });
     serviceInputs.forEach(el => el.addEventListener("change", invalidate));
     leadForm.elements.tel.addEventListener("input", () => leadForm.elements.tel.setCustomValidity(""));

@@ -1,4 +1,4 @@
-/* SEO-калькулятор: компоновка и собственные состояния.
+/* SEO-калькулятор: единая форма слева и постоянная область результата справа.
    Карточки, формы, кнопки, селекты, чекбоксы и tooltip — компоненты проекта. */
 .seo-calculator {
   padding: 40px 0;
@@ -26,15 +26,25 @@
 
   &__layout {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
-    gap: 20px 32px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: stretch;
     width: 100%;
   }
 
-  &__intro {
+  &__settings,
+  &__result {
     min-width: 0;
-    align-self: center;
+  }
+
+  &__settings {
+    padding-right: 32px;
+  }
+
+  &__result {
+    min-height: 520px;
+    padding-left: 32px;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+    justify-content: center;
   }
 
   &__parameters {
@@ -50,54 +60,22 @@
     }
   }
 
-  &__settings,
-  &__result {
-    min-width: 0;
-    height: 100%;
-    justify-content: center;
-  }
-
-  &[data-state]:not([data-state="start"]) {
-    & .seo-calculator__intro {
-      display: none;
-    }
-
-    & .seo-calculator__layout {
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-      gap: 20px;
-    }
-
-    & .seo-calculator__audit,
-    & .seo-calculator__extras {
-      display: none !important;
-    }
-  }
-
   &__site-row {
     min-width: 0;
 
     & input {
-      flex: 1 1 auto;
+      width: 100%;
       min-width: 0;
     }
   }
 
-  &__audit:has(input:disabled) {
+  &__no-site:has(input:disabled),
+  &__express-audit:has(input:disabled) {
     opacity: 0.5;
-
-    & a {
-      pointer-events: none;
-    }
   }
 
   &__service-label {
     min-width: 0;
-    // flex: 1 1 auto;
-
-    // &::before {
-    // flex: 0 0 20px;
-    // margin-right: 4px;
-    // }
 
     & > span {
       min-width: 0;
@@ -109,20 +87,14 @@
   }
 
   &__loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background-color: var(--bg-main);
-    border-radius: 32px;
-    transform: translate(-50%, -50%);
+    min-height: 24px;
 
     .preloader {
       display: block;
-      flex: 0 0 40px;
-      margin: 8px auto 0;
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      margin: 0;
     }
   }
 
@@ -158,20 +130,12 @@
     }
   }
 
-  &__range-value {
-    flex: 0 0 auto;
-
-    & input {
-      appearance: textfield;
-      width: 76px;
-      height: 40px;
-      padding: 8px;
-      text-align: center;
-    }
-  }
-
   &__range-limits {
     font-size: 12px;
+  }
+
+  &__actions {
+    padding-top: 4px;
   }
 
   &__result-empty {
@@ -285,13 +249,21 @@
   }
 
   @media (max-width: 999.98px) {
-    &__layout,
-    &[data-state]:not([data-state="start"]) &__layout {
+    &__layout {
       grid-template-columns: minmax(0, 1fr);
     }
 
-    &__intro {
-      align-self: start;
+    &__settings {
+      padding-right: 0;
+      padding-bottom: 24px;
+    }
+
+    &__result {
+      min-height: 260px;
+      padding-top: 24px;
+      padding-left: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      border-left: 0;
     }
   }
 
@@ -304,10 +276,6 @@
   @media (max-width: 599.98px) {
     padding: 24px 0;
     scroll-margin-top: 80px;
-
-    &__layout {
-      gap: 16px;
-    }
 
     &__result-empty {
       min-height: 200px;
