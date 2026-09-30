@@ -1,0 +1,141 @@
+.nav {
+  &-tabs {
+    &--buttons {
+      @include tabs-buttons--nav;
+    }
+
+    &--content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 52px 0;
+      background: linear-gradient(
+        180deg,
+        rgb(10, 10, 10) 0%,
+        rgb(10, 10, 10) 82%,
+        rgba(10, 10, 10, 0.8) 91%,
+        rgba(10, 10, 10, 0.6) 96%,
+        rgba(10, 10, 10, 0) 100%
+      );
+      transition: 0.25s ease-in-out;
+
+      @media (max-width: 999.98px) {
+        gap: 8px;
+        padding: 32px 0;
+      }
+
+      @media (max-width: 599.98px) {
+        margin-top: unset;
+        // padding-top: unset;
+        background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+      }
+
+      & [id^="tab-slide-"] {
+        transform-origin: top;
+
+        &:not(.active) {
+          display: none;
+        }
+
+        &.active {
+          animation: appear 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+      }
+    }
+
+    & .slider {
+      &-arrow {
+        @include tab-slider-button;
+      }
+    }
+
+    &--custom {
+      & .nav-tabs--buttons {
+        & > * {
+          flex: 1 1 0%;
+          max-width: 280px;
+
+          @media (max-width: 599.98px) {
+            flex: 1 0 20%;
+            max-width: 20%;
+          }
+        }
+      }
+
+      & .nav-tabs--content {
+        padding: 32px 0;
+
+        @media (max-width: 999.98px) {
+          padding: 20px 0;
+        }
+      }
+    }
+
+    &--tender {
+      & .nav-tabs--buttons {
+        & > * {
+          @include tab-button-light;
+          @include tab-button-gradient;
+          flex: 1 1 0%;
+          max-width: 45%;
+          margin-bottom: 0;
+
+          @media (max-width: 599.98px) {
+            flex: 1 0 40%;
+            max-width: 40%;
+          }
+        }
+      }
+
+      & .nav-tabs--content {
+        margin: 0;
+        padding: 0;
+        background: unset;
+      }
+    }
+
+    &--contacts {
+      & .nav-tabs--buttons {
+        & > * {
+          @include tab-button-light-outline;
+          flex: 1 1 0%;
+          max-width: 45%;
+
+          @media (max-width: 999.98px) {
+            flex: 1 0 40%;
+            max-width: 40%;
+          }
+
+          & img {
+            @media (max-width: 999.98px) {
+              width: 24px;
+              height: 24px;
+            }
+          }
+        }
+      }
+
+      & .nav-tabs--content {
+        margin: 0;
+        padding: 32px;
+        border: 1px solid var(--blue-main);
+        border-radius: 30px;
+
+        @media (max-width: 599.98px) {
+          padding: 16px;
+          border-radius: 16px;
+        }
+      }
+    }
+
+    &:not(.nav-tabs--tender) {
+      & .nav-tabs--content {
+        @include tabs-content;
+      }
+    }
+  }
+}

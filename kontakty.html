@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no" />
     <link rel="icon" type="x-icon" href="./src/images/favicon.ico">
     <title>
         Контактная информация веб-студии INTRID | Разработка и продвижение сайтов
@@ -123,9 +124,13 @@
                     <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
                         <i class="icon-mail"></i>
                     </a>
-                    <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796"
+                    <a class="nav-icon-link" title="Связаться с нами в MAX" href="https://max.ru/74732540796"
                         target="_blank">
-                        <i class="icon-whatsapp"></i>
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M13.2149 22.9429C11.2521 22.9429 10.34 22.6551 8.75453 21.504C7.75166 22.799 4.57594 23.8111 4.43743 22.0796C4.43743 20.7798 4.1509 19.6815 3.82616 18.4824C3.43935 17.0051 3 15.36 3 12.9763C3 7.28308 7.65138 3 13.1623 3C18.6781 3 22.9999 7.49411 22.9999 13.029C23.0184 18.4783 18.6406 22.9139 13.2149 22.9429ZM13.4028 5.51297C9.37427 5.34031 6.18295 7.61412 5.5 11.9277C4.93673 15.4988 6.11554 20.2852 6.96747 20.5115C7.37585 20.6105 8.40382 19.7761 9.04453 19.1326C10.104 19.8677 11.3377 20.3091 12.6213 20.4125C16.7214 20.6106 20.2247 17.4756 20.5 13.3623C20.6603 9.24022 17.5316 5.68992 13.4028 5.51297Z"
+                                fill="currentColor" />
+                        </svg>
                     </a>
                     <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
                         <i class="icon-tg"></i>
@@ -177,112 +182,83 @@
     </header>
     <!-- MAIN PAGE -->
     <main>
+        <!-- hero-section -->
         <section class="bg-gradient">
             <div class="container">
-                <div class="breadcrumbs">
-                    <a href="./">Главная</a>
-                    <span>-</span>
-                    <a href="#" class="link-disabled">Контакты</a>
-                </div>
-
                 <h1 class="w-fit">
                     <span class="underlined">Веб-студия INTRID</span> - Контактная информация
                 </h1>
-
-                <div class="prices-block prices-block--contacts mt-50">
-                    <div class="prices-block--buttons" id="pricesButtons">
-                        <label for="tab-slide-btn-1" class="button-link button-link--tab">
+                <div class="nav-tabs nav-tabs--contacts">
+                    <div class="nav-tabs--buttons justify-center" id="pricesButtons" data-tabs-buttons="">
+                        <label for="tab-slide-btn-1" class="button--tab">
                             <input type="radio" name="tab-slider-radio" id="tab-slide-btn-1" checked="">
-                            <img src="./src/images/voronezh-icon.webp" alt="icon">
+                            <img src="./src/images/voronezh-icon.webp" alt="Воронеж">
                             <span>Воронеж</span>
-                            <i class="icon-arrow_wide"></i>
                         </label>
-                        <label for="tab-slide-btn-2" class="button-link button-link--tab">
+                        <label for="tab-slide-btn-2" class="button--tab">
                             <input type="radio" name="tab-slider-radio" id="tab-slide-btn-2">
-                            <img src="./src/images/prague-icon.webp" alt="icon">
+                            <img src="./src/images/prague-icon.webp" alt="Прага">
                             <span>Прага</span>
-                            <i class="icon-arrow_wide"></i>
                         </label>
                     </div>
 
-                    <div class="prices-block--content">
-                        <div class="flex-layout flex-layout--branches active" id="tab-slide-1">
+                    <div class="nav-tabs--content">
+                        <div class="flex-layout flex-layout--branches flex-nowrap active" id="tab-slide-1">
                             <div class="d-flex flex-column">
                                 <p class="title_h3 w-fit">Воронеж (главный офис)</p>
-
-                                <a href="https://yandex.com/maps/-/CHfmvO6X" target="_blank"
-                                    class="d-flex align-start gap-6 flex-nowrap link-text">
+                                <a href="https://yandex.com/maps/-/CHfmvO6X" target="_blank" rel="nofollow"
+                                    class="d-flex align-start gap-8 flex-nowrap link-text">
                                     <i class="icon-adress"></i>
-                                    <span class="m-0 d-flex flex-column">
-                                        <span>г. Воронеж ул. Пятницкого, 40</span>
+                                    <span class="m-0 d-flex flex-column"> <span>
+                                            г. Воронеж ул. Пятницкого, 40
+                                        </span>
                                         <span class="color-grey">Пн-Пт: 9:00-18:00</span>
                                     </span>
                                 </a>
-
-                                <a class="fz-20 phone-line gap-6 mt-10" href="tel:+74732540796">
+                                <a class="fz-20 phone-line gap-8 mt-12" href="tel:+74732540796">
                                     <i class="icon-phone color-blue"></i>
-                                    <span class="fw-bold">+7 (473) 254 0796</span>
+                                    <span class="fw-bold">
+                                        +7 (473) 254 0796
+                                    </span>
                                 </a>
-
-                                <p class="w-fit mt-20">
-                                    Единый корпоративный email: <a href="mailto:mail@intrid.ru">mail@intrid.ru</a>
-                                </p>
-
-                                <div class="d-flex flex-column align-start gap-10 mt-10">
-                                    <a class="fz-26 phone-line gap-6" id="map-whatsapp"
-                                        href="tel:+74732540796">
-                                        <i class="icon-whatsapp color-blue"></i>
-                                        <span class="fw-bold">+7 (473) 254 0796</span>
-                                    </a>
-                                    <a class="fz-26 phone-line gap-6" id="map-telegram"
-                                        href="https://t.me/webintrid">
-                                        <i class="icon-tg color-blue"></i>
-                                        <span class="fw-bold">@webintrid</span>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <iframe
+                                <p class="w-fit mt-20"> Единый корпоративный email: <a
+                                        href="mailto:mail@intrid.ru">mail@intrid.ru</a> </p>
+                                <div class="d-flex flex-column align-start gap-12 mt-12"> <a
+                                        class="fz-26 phone-line gap-8" id="map-max"
+                                        href="https://max.ru/u/f9LHodD0cOIK2py_Tk-Zx7kyjPsbUaWzS4eCQ4fOJ48vaPvbEIsQCdftNMk"
+                                        target="_blank" rel="nofollow" title="Связаться с нами в MAX"> <svg width="26"
+                                            height="26" viewBox="0 0 26 26" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.2149 22.9429C11.2521 22.9429 10.34 22.6551 8.75453 21.504C7.75166 22.799 4.57594 23.8111 4.43743 22.0796C4.43743 20.7798 4.1509 19.6815 3.82616 18.4824C3.43935 17.0051 3 15.36 3 12.9763C3 7.28308 7.65138 3 13.1623 3C18.6781 3 22.9999 7.49411 22.9999 13.029C23.0184 18.4783 18.6406 22.9139 13.2149 22.9429ZM13.4028 5.51297C9.37427 5.34031 6.18295 7.61412 5.5 11.9277C4.93673 15.4988 6.11554 20.2852 6.96747 20.5115C7.37585 20.6105 8.40382 19.7761 9.04453 19.1326C10.104 19.8677 11.3377 20.3091 12.6213 20.4125C16.7214 20.6106 20.2247 17.4756 20.5 13.3623C20.6603 9.24022 17.5316 5.68992 13.4028 5.51297Z"
+                                                fill="#00EAFF" />
+                                        </svg> <span class="fw-bold">+7 (952) 954 0796</span> </a> <a
+                                        class="fz-26 phone-line gap-8" id="map-telegram" href="https://t.me/webintrid"
+                                        rel="nofollow"> <i class="icon-tg color-blue"></i> <span
+                                            class="fw-bold">@webintrid</span> </a> </div>
+                            </div> <iframe
                                 src="https://yandex.ru/map-widget/v1/?um=constructor%3Ade02f3d1f93ca59ddbc7669962c5e7f350cec0968beae8e096d86287b227d6b1&amp;source=constructor"
                                 width="674" height="534" frameborder="0"></iframe>
                         </div>
-
-                        <div class="flex-layout flex-layout--branches" id="tab-slide-2">
+                        <div class="flex-layout flex-layout--branches flex-nowrap" id="tab-slide-2">
                             <div class="d-flex flex-column">
-                                <p class="title_h3 w-fit">Прага (филиал)</p>
-
-                                <a href="https://yandex.ru/maps/-/CHvuzWlD" target="_blank"
-                                    class="d-flex align-start gap-6 flex-nowrap link-text">
-                                    <i class="icon-adress"></i>
-                                    <span class="m-0 d-flex flex-column">
-                                        <span>Poděbradská 52, 19000 Praha 9</span>
-                                    </span>
+                                <p class="title_h3 w-fit">Прага (филиал)</p> <a href="https://yandex.ru/maps/-/CHvuzWlD"
+                                    target="_blank" rel="nofollow"
+                                    class="d-flex align-start gap-8 flex-nowrap link-text"> <i class="icon-adress"></i>
+                                    <span class="m-0 d-flex flex-column"> <span>Poděbradská 52, 19000 Praha 9</span>
+                                    </span> </a> <a class="fz-20 phone-line gap-8 mt-12" href="tel:+420777749719"> <i
+                                        class="icon-phone color-blue"></i> <span class="fw-bold">+420 777 749 719</span>
                                 </a>
-
-                                <a class="fz-20 phone-line gap-6 mt-10" href="tel:+420777749719">
-                                    <i class="icon-phone color-blue"></i>
-                                    <span class="fw-bold">+420 777 749 719</span>
-                                </a>
-
-                                <p class="w-fit mt-20">
-                                    Единый корпоративный email: <a href="mailto:mail@intrid.ru">mail@intrid.ru</a>
-                                </p>
-
-                                <div class="d-flex flex-column align-start gap-10 mt-10">
-                                    <a class="fz-26 phone-line gap-6" id="map-whatsapp"
-                                        href="tel:+79518587172">
-                                        <i class="icon-whatsapp color-blue"></i>
-                                        <span class="fw-bold">+7 (951) 858 71-72</span>
-                                    </a>
-                                    <a class="fz-26 phone-line gap-6" id="map-telegram"
-                                        href="https://t.me/lionvdv">
-                                        <i class="icon-tg color-blue"></i>
-                                        <span class="fw-bold">@lionvdv</span>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <iframe
+                                <p class="w-fit mt-20"> Единый корпоративный email: <a
+                                        href="mailto:mail@intrid.ru">mail@intrid.ru</a> </p>
+                                <div class="d-flex flex-column align-start gap-12 mt-12"> <a
+                                        class="fz-26 phone-line gap-8" id="map-whatsapp"
+                                        href="https://wa.me/420777749719" rel="nofollow"> <i
+                                            class="icon-whatsapp color-blue"></i> <span class="fw-bold">+420 777 749
+                                            719</span> </a> <a class="fz-26 phone-line gap-8" id="map-telegram"
+                                        href="https://t.me/lionvdv" rel="nofollow"> <i class="icon-tg color-blue"></i>
+                                        <span class="fw-bold">@lionvdv</span> </a> </div>
+                            </div> <iframe
                                 src="https://yandex.ru/map-widget/v1/?um=constructor%3A596c110a6e67b7ecf53baf573cb97950916b7bfb81fe164b7ec895af9864ccb8&amp;source=constructor"
                                 width="835" height="516" frameborder="0"></iframe>
                         </div>
@@ -291,180 +267,59 @@
             </div>
         </section>
 
-        <!--  -->
+        <!-- Наш офис в Воронеже -->
         <section>
             <div class="container">
-                <h3 class="underlined w-fit">
-                    Наш офис в Воронеже
-                </h3>
-
-                <div class="sites-reviews-slider" data-slider="reviews-slider" id="office-slider"
-                    style="transform: translateX(0px);">
-                    <div class="card card--photo active">
-                        <img src="./src/images/office-photo-1.webp" alt="">
+                <h2 class="underlined w-fit"> Наш офис в Воронеже </h2>
+                <div class="sites-reviews-slider" data-slider="reviews-slider" id="office-slider">
+                    <div class="card card--photo active"> <img src="/src/images/office-photo-1.webp"
+                            data-full="/src/images/office-photo-1.jpg" alt="Фото офиса 1">
                     </div>
-                    <div class="card card--photo active">
-                        <img src="./src/images/office-photo-2.webp" alt="">
+                    <div class="card card--photo active"> <img src="/src/images/office-photo-2.webp"
+                            data-full="/src/images/office-photo-2.jpg" alt="Фото офиса 2">
                     </div>
-                    <div class="card card--photo">
-                        <img src="./src/images/office-photo-3.webp" alt="">
-                    </div>
+                    <div class="card card--photo"> <img src="/src/images/office-photo-3.webp"
+                            data-full="/src/images/office-photo-3.jpg" alt="Фото офиса 3"> </div>
                 </div>
-
-                <div id="sites-reviews-pagination" class="pagination">
-                    <button class="pagination--prev-btn">
-                        <i class="icon-shevrone left"></i>
-                    </button>
-                    <div class="pagination--buttons-dots">
-                        <button class="pagination--btn-dot highlight"></button>
-                        <button class="pagination--btn-dot"></button>
-                        <button class="pagination--btn-dot"></button>
-                        <button class="pagination--btn-dot"></button>
-                        <button class="pagination--btn-dot"></button>
-                    </div>
-                    <button class="pagination--next-btn">
-                        <i class="icon-shevrone"></i>
-                    </button>
+                <div id="sites-reviews-pagination" class="pagination"> <button class="pagination--prev-btn"> <i
+                            class="icon-shevrone left"></i> </button>
+                    <div class="pagination--buttons-dots"> <button class="pagination--btn-dot highlight"></button>
+                        <button class="pagination--btn-dot"></button> <button class="pagination--btn-dot"></button>
+                        <button class="pagination--btn-dot"></button> <button class="pagination--btn-dot"></button>
+                    </div> <button class="pagination--next-btn"> <i class="icon-shevrone"></i> </button>
                 </div>
             </div>
         </section>
-        
-        <!--  -->
-        <section class="position-relative bg-planets">
+
+        <!-- Реквизиты -->
+        <section class="position-relative bg-planets" id="contact-form">
             <div class="container">
-                <div class="sites-leaders-content kontakts">
-                    <!--  -->
-                    <div class="sites-leaders-content-left">
-                        <div class="card card--leaders">
-                            <form action="submit">
-                                <p class="title_h3 w-fit mb-20 align-self-start">Личное обращение</p>
-                                <div class="form-limitter gap-10">
-                                    <input type="text" name="name" placeholder="Имя *" required="">
-                                    <input type="mail" name="mail" placeholder="E-mail *" required="">
-                                    <input type="tel" name="phone" placeholder="Телефон *" required="">
-                                    <textarea data-autosize="true" rows="3" placeholder="Сообщение"
-                                        name="list"></textarea>
-                                    <button type="submit" class="button-white big ml-auto mt-20">Отправить</button>
-                                    <p class="testimonials text-center m-center mt-auto">
-                                        Отправляя форму, я даю согласие на <a href="javascript://"
-                                            class="text-dashed color-white" data-popup="privacy-policy">обработку
-                                            своих персональных
-                                            данных</a>
-                                    </p>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="sites-leaders-content-right">
-                        <div class="card card--leads compact">
-                            <ul>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        Название:
-                                    </span>
-                                    OOO "ИНТРИД"
+                <h2 class="underlined w-fit m-center text-center"> Реквизиты OOO "ИНТРИД" </h2>
+                <div class="flex-layout flex-layout--split mw-900 ml-auto mr-auto">
+                    <div class="left">
+                        <div class="card">
+                            <ul class="list--leads compact">
+                                <li> <span class="title_h5 color-blue"> Название: </span> <span> OOO "ИНТРИД" </span>
                                 </li>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        Юр. адрес:
-                                    </span>
-                                    394050 Воронеж, ул. Каспийская, д. 20
-                                </li>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        Факт. адрес:
-                                    </span>
-                                    394036 Воронеж, ул. Пятницкого д. 40
-                                </li>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        ИНН:
-                                    </span>
-                                    3661172484
-                                </li>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        КПП:
-                                    </span>
-                                    366101001
-                                </li>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        ОГРН:
-                                    </span>
-                                    1193668014561
-                                </li>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        Расчетный счёт:
-                                    </span>
-                                    40702810210000517680
-                                </li>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        Банк:
-                                    </span>
-                                    АО "ТИНЬКОФФ БАНК" г. Москва
-                                </li>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        БИК:
-                                    </span>
-                                    044525974
-                                </li>
-                                <li>
-                                    <span class="title_h5 color-blue">
-                                        Корреспондентский счёт:
-                                    </span>
-                                    30101810145250000974
-                                </li>
+                                <li> <span class="title_h5 color-blue"> Юр. адрес: </span> <span> 394050 Воронеж, ул.
+                                        Каспийская, д. 20 </span> </li>
+                                <li> <span class="title_h5 color-blue"> Факт. адрес: </span> <span> 394036 Воронеж, ул.
+                                        Пятницкого д. 40 </span> </li>
+                                <li> <span class="title_h5 color-blue"> ИНН / КПП: </span> <span> 3661172484 / 366101001
+                                    </span> </li>
+                                <li> <span class="title_h5 color-blue"> ОГРН: </span> <span> 1193668014561 </span> </li>
+                                <li> <span class="title_h5 color-blue"> Расчетный счёт: </span> <span>
+                                        40702810210000517680 </span> </li>
+                                <li> <span class="title_h5 color-blue"> Банк: </span> <span> АО "ТБАНК" г. Москва
+                                    </span> </li>
+                                <li> <span class="title_h5 color-blue"> БИК: </span> <span> 044525974 </span> </li>
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!--  -->
-        <section>
-            <div class="container">
-                <h3 class="underlined w-fit m-center text-center">
-                    Заказать разработку сайта или создание бренда
-                </h3>
-
-                <div class="flex-layout flex-layout--use">
-                    <a href="./calculator.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/site-calc.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Калькулятор сайта
-                        </b>
-                    </a>
-                    <a href="./brif-site.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/brif-site.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Бриф на сайт
-                        </b>
-                    </a>
-                    <a href="./brif-logo.html" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/brif-logo.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Бриф на бренд
-                        </b>
-                    </a>
-                    <a href="./seo.html#seo_application" class="card card--service use">
-                        <div class="card-icon">
-                            <img src="./src/icons/promotion-request.svg" alt="landig-page">
-                        </div>
-                        <b>
-                            Заявка на раскрутку
-                        </b>
-                    </a>
+                    <div class="right">
+                        <div class="card card--leaders minified position-sticky" id="contacts-creation">
+                            %_form_{Получить консультацию,,true,false, true}% </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -523,9 +378,14 @@
                         <a class="nav-icon-link" title="EMAIL" href="mailto:mail@intrid.ru" target="_blank">
                             <i class="icon-mail"></i>
                         </a>
-                        <a class="nav-icon-link color-blue" title="Whatsapp" href="https://wa.me/74732540796"
+                        <a class="nav-icon-link" title="Связаться с нами в MAX" href="https://max.ru/74732540796"
                             target="_blank">
-                            <i class="icon-whatsapp"></i>
+                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M13.2149 22.9429C11.2521 22.9429 10.34 22.6551 8.75453 21.504C7.75166 22.799 4.57594 23.8111 4.43743 22.0796C4.43743 20.7798 4.1509 19.6815 3.82616 18.4824C3.43935 17.0051 3 15.36 3 12.9763C3 7.28308 7.65138 3 13.1623 3C18.6781 3 22.9999 7.49411 22.9999 13.029C23.0184 18.4783 18.6406 22.9139 13.2149 22.9429ZM13.4028 5.51297C9.37427 5.34031 6.18295 7.61412 5.5 11.9277C4.93673 15.4988 6.11554 20.2852 6.96747 20.5115C7.37585 20.6105 8.40382 19.7761 9.04453 19.1326C10.104 19.8677 11.3377 20.3091 12.6213 20.4125C16.7214 20.6106 20.2247 17.4756 20.5 13.3623C20.6603 9.24022 17.5316 5.68992 13.4028 5.51297Z"
+                                    fill="currentColor" />
+                            </svg>
                         </a>
                         <a class="nav-icon" title="Telegram" href="https://t.me/webintrid" target="_blank">
                             <i class="icon-tg"></i>
@@ -559,15 +419,26 @@
                         <span>+7 (473) 254 0796</span>
                     </a>
                     <div class="gap-10" id="map-social">
-                        <a class="title_h5 fz-26 phone-line" id="map-whatsapp" href="tel:+74732540796">
+                        <a class="title_h5 fz-26 phone-line" id="map-whatsapp" href="tel:+74732540796"
+                            style="display: none;">
                             <i class="icon-whatsapp color-blue"></i>
                         </a>
-                        <a class="title_h5 fz-26 phone-line" id="map-telegram" href="https://t.me/webintrid">
+                        <a class="title_h5 fz-26 phone-line" id="map-max" href="https://max.ru/74732540796"
+                            style="display: none;">
+                            <svg class="color-blue" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M13.2149 22.9429C11.2521 22.9429 10.34 22.6551 8.75453 21.504C7.75166 22.799 4.57594 23.8111 4.43743 22.0796C4.43743 20.7798 4.1509 19.6815 3.82616 18.4824C3.43935 17.0051 3 15.36 3 12.9763C3 7.28308 7.65138 3 13.1623 3C18.6781 3 22.9999 7.49411 22.9999 13.029C23.0184 18.4783 18.6406 22.9139 13.2149 22.9429ZM13.2961 7.92097C10.6122 7.78189 8.52051 9.64765 8.05729 12.5734C7.67525 14.9955 8.35338 17.9452 8.93121 18.0987C9.20819 18.1658 9.90543 17.5999 10.34 17.1634C11.0586 17.662 11.8954 17.9614 12.766 18.0315C15.5469 18.1659 17.9231 16.0396 18.1098 13.2497C18.2185 10.4538 16.0773 8.08578 13.2961 7.92578V7.92097Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </a>
+                        <a class="title_h5 fz-26 phone-line" id="map-telegram" href="https://t.me/webintrid"
+                            style="display: none;">
                             <i class="icon-tg color-blue"></i>
                         </a>
                     </div>
                     <a href="#" target="_blank" class="button-link">
-                        Перейти в карты 
+                        Перейти в карты
                         <i class="icon-arrow_wide"></i>
                     </a>
                 </div>
@@ -579,8 +450,8 @@
             <div class="popup-body">
                 <form action="submit">
                     <div class="form-limitter">
-                        <input type="text" name="name" placeholder="* Имя" required>
-                        <input type="mail" name="mail" placeholder="E-mail">
+                        <input type="text" name="name" placeholder="Имя">
+                        <input type="email" name="mail" placeholder="E-mail">
                         <input type="tel" name="phone" placeholder="* Телефон" required>
                         <textarea data-autosize="true" rows="1"
                             placeholder="Перечислите Ваших прямых и косвенных конкурентов" name="list"></textarea>
@@ -590,8 +461,7 @@
                             Согласен на обработку персональных данных
                         </label> -->
                         <p class="testimonials text-center m-center">
-                            Отправляя форму, я даю согласие на <a href="javascript://" data-popup="privacy-policy"
-                                class="text-dashed color-white">обработку
+                            Отправляя форму, я даю согласие на <a href="/privacy.html" target="_blank">обработку
                                 своих персональных
                                 данных</a>
                         </p>
@@ -607,7 +477,7 @@
                 <p class="title_h3 text-center mb-20">
                     Политика конфиденциальности и защиты информации.
                 </p>
-                <p class="text-center mb-50">
+                <p class="text-center mb-52">
                     Оставляя данные на сайте, Вы соглашаетесь с Политикой конфиденциальности и защиты
                     информации.
                 </p>
@@ -699,15 +569,34 @@
             </div>
         </div>
     </dialog>
+    <dialog class="popup popup-gallery" id="photo-view">
+        <div class="popup-wrapper">
+            <div class="popup-body">
+                <div class="sites-reviews-slider" data-slider="gallery-slider" id="gallery-slider">
+                </div>
+
+                <div id="gallery-pagination" class="pagination">
+                    <button class="pagination--prev-btn">
+                        <i class="icon-shevrone left"></i>
+                    </button>
+
+                    <div class="pagination--buttons-dots"></div>
+
+                    <button class="pagination--next-btn">
+                        <i class="icon-shevrone"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    <!-- <dialog class="popup popup-gallery" id="photo-view">
+        <div class="popup-wrapper">
+            <div class="popup-body">
+                <img src="" alt="Фото офиса">
+            </div>
+        </div>
+    </dialog> -->
     <script src="./js/app.js"></script>
-    <script>
-        window.addEventListener('hashchange', () => {
-            console.log('=> ', location.hash)
-            if (location.hash === '#apply') {
-                document.getElementById('apply_link').classList.add('infinite-glow')
-            }
-        })
-    </script>
 </body>
 
 </html>

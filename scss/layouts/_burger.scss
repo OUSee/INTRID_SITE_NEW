@@ -1,28 +1,30 @@
 .burger {
   position: relative;
   display: inline-block;
+  align-self: center;
   border-radius: 0px;
   width: fit-content;
   margin-left: 12px;
   margin-right: 0;
   cursor: pointer;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 999.98px) {
     display: none;
   }
 
   &-content {
     display: block;
     position: absolute;
-    top: 38px;
+    top: 40px;
     right: 0;
+    min-width: 200px;
     height: 0px;
     z-index: 1;
-    padding: 20px 16px;
+    padding: 16px;
     color: var(--color-white);
     background-color: var(--bg-main);
-    border-bottom-left-radius: 46px;
-    border-bottom-right-radius: 46px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
     overflow: hidden;
     transform-origin: top center;
     transition: height 0.5s ease-in-out;
@@ -58,8 +60,8 @@
 
   input[type="checkbox"] {
     position: absolute;
-    width: 30px;
-    height: 25px;
+    width: 32px;
+    height: 24px;
     opacity: 0;
     z-index: 2;
     cursor: pointer;
@@ -67,14 +69,16 @@
 
   span {
     display: block;
-    width: 31px;
-    height: 3px;
-    margin-bottom: 5px;
+    width: 32px;
+    height: 4px;
+    margin-bottom: 4px;
     position: relative;
     background: var(--color-white);
-    border-radius: 3px;
+    border-radius: 4px;
     transform-origin: 4px 0px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
 
     &:last-child {
       margin: 0;
@@ -82,7 +86,7 @@
   }
 
   & #menuToggle:has(input:not(:checked)) {
-    &~.burger-content {
+    & ~ .burger-content {
       height: 0;
       opacity: 0;
       visibility: hidden;
@@ -104,10 +108,10 @@
     }
 
     span:nth-child(4) {
-      transform: rotate(-45deg) translate(-1px, -2px);
+      transform: rotate(-45deg) translate(-2px, -2px);
     }
 
-    &~.burger-content {
+    & ~ .burger-content {
       opacity: 1;
       visibility: visible;
       height: fit-content;
