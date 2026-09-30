@@ -400,7 +400,8 @@
                                             autocomplete="url" inputmode="url" required data-seo-calculator-url>
                                     </div>
 
-                                    <div class="d-flex flex-column gap-8">
+                                    <div
+                                        class="d-flex flex-row flex-sm-column flex-wrap flex-sm-nowrap gap-16 gap-sm-12">
                                         <label class="label-checkbox seo-calculator__no-site"
                                             for="seo-calculator-no-site" data-seo-calculator-no-site-label>
                                             <input id="seo-calculator-no-site" type="checkbox" name="site_missing"
@@ -409,9 +410,11 @@
                                         </label>
                                         <label class="label-checkbox seo-calculator__express-audit"
                                             for="seo-calculator-express-audit" data-seo-calculator-express-audit-label>
-                                            <input id="seo-calculator-express-audit" type="checkbox" name="express_audit"
-                                                value="1" data-seo-calculator-express-audit disabled>
-                                            <span>Экспресс-аудит <span class="small color-grey">(выполним в фоне)</span></span>
+                                            <input id="seo-calculator-express-audit" type="checkbox"
+                                                name="express_audit" value="1" data-seo-calculator-express-audit
+                                                disabled>
+                                            <span>Экспресс-аудит <span class="small color-grey">(выполним в
+                                                    фоне)</span></span>
                                         </label>
                                     </div>
 
@@ -448,7 +451,7 @@
                                 <div class="seo-calculator__parameters" data-seo-calculator-parameters role="group"
                                     aria-label="Параметры для расчёта">
                                     <div class="seo-calculator__parameters-columns gap-20">
-                                        <div class="d-flex flex-column gap-16">
+                                        <div class="seo-calculator__parameters-col gap-16">
                                             <div class="seo-calculator__field d-flex flex-column gap-8">
                                                 <label for="seo-calculator-site_type">Тип сайта</label>
                                                 <div class="nice-wrapper nice-wrapper--simple w-100">
@@ -457,7 +460,8 @@
                                                         data-seo-calculator-field="site_type" required>
                                                         <option value="landing">Landing Page</option>
                                                         <option selected value="corporate">Корпоративный сайт</option>
-                                                        <option value="catalog">Корпоративный сайт (с каталогом товаров / услуг)</option>
+                                                        <option value="catalog">Корпоративный сайт (с каталогом товаров
+                                                            / услуг)</option>
                                                         <option value="store">Интернет-магазин</option>
                                                         <option value="portal">Веб-портал</option>
                                                     </select>
@@ -465,15 +469,18 @@
                                             </div>
 
                                             <div class="seo-calculator__field d-flex flex-column gap-8">
-                                                <label for="seo-calculator-seo_history">SEO-оптимизация в прошлом?</label>
+                                                <label for="seo-calculator-seo_history">SEO-оптимизация в
+                                                    прошлом?</label>
                                                 <div class="nice-wrapper nice-wrapper--simple w-100">
                                                     <select class="wide" data-display="Не знаю / затрудняюсь ответить"
                                                         id="seo-calculator-seo_history" name="seo_history"
                                                         data-seo-calculator-field="seo_history" required>
                                                         <option value="none">Нет, SEO не проводилось</option>
-                                                        <option value="stopped">Проводилось ранее, но сейчас работы остановлены</option>
+                                                        <option value="stopped">Проводилось ранее, но сейчас работы
+                                                            остановлены</option>
                                                         <option value="active">SEO ведётся в настоящее время</option>
-                                                        <option selected value="unknown">Не знаю / затрудняюсь ответить</option>
+                                                        <option selected value="unknown">Не знаю / затрудняюсь ответить
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -507,18 +514,21 @@
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-column gap-16">
+                                        <div class="seo-calculator__parameters-col gap-16"
+                                            data-seo-calculator-advanced-parameters hidden>
                                             <div class="seo-calculator__field d-flex flex-column gap-8"
                                                 data-seo-calculator-age>
-                                                <div class="d-flex flex-row align-center justify-between flex-wrap gap-8">
+                                                <div
+                                                    class="d-flex flex-row align-center justify-between flex-wrap gap-8">
                                                     <label for="seo-calculator-age">Возраст сайта</label>
-                                                    <output for="seo-calculator-age"
-                                                        data-seo-calculator-age-label>Не определён</output>
+                                                    <output for="seo-calculator-age" data-seo-calculator-age-label>Не
+                                                        определён</output>
                                                 </div>
                                                 <input id="seo-calculator-age" type="range" min="0" max="120" step="1"
                                                     value="24" aria-label="Возраст сайта"
                                                     data-seo-calculator-slider="age_months">
-                                                <div class="seo-calculator__range-limits d-flex flex-row justify-between color-grey">
+                                                <div
+                                                    class="seo-calculator__range-limits d-flex flex-row justify-between color-grey">
                                                     <span>0</span><span>10+ лет</span>
                                                 </div>
                                                 <input type="hidden" name="age_months" value=""
@@ -529,15 +539,17 @@
 
                                             <div class="seo-calculator__field d-flex flex-column gap-8"
                                                 data-seo-calculator-range="sections">
-                                                <div class="d-flex flex-row align-center justify-between flex-wrap gap-8">
+                                                <div
+                                                    class="d-flex flex-row align-center justify-between flex-wrap gap-8">
                                                     <label for="seo-calculator-sections">Количество разделов</label>
                                                     <output for="seo-calculator-sections"
                                                         data-seo-calculator-range-label="sections">10–20</output>
                                                 </div>
-                                                <input id="seo-calculator-sections" type="range" min="0" max="6" step="1"
-                                                    value="2" data-seo-calculator-slider="sections"
+                                                <input id="seo-calculator-sections" type="range" min="0" max="6"
+                                                    step="1" value="2" data-seo-calculator-slider="sections"
                                                     aria-label="Количество разделов">
-                                                <div class="seo-calculator__range-limits d-flex flex-row justify-between color-grey">
+                                                <div
+                                                    class="seo-calculator__range-limits d-flex flex-row justify-between color-grey">
                                                     <span>1–5</span><span>1000+</span>
                                                 </div>
                                                 <input type="hidden" name="sections" value="10-20"
@@ -546,7 +558,8 @@
 
                                             <div class="seo-calculator__field d-flex flex-column gap-8"
                                                 data-seo-calculator-range="pages">
-                                                <div class="d-flex flex-row align-center justify-between flex-wrap gap-8">
+                                                <div
+                                                    class="d-flex flex-row align-center justify-between flex-wrap gap-8">
                                                     <label for="seo-calculator-pages">Количество страниц</label>
                                                     <output for="seo-calculator-pages"
                                                         data-seo-calculator-range-label="pages">51–200</output>
@@ -554,7 +567,8 @@
                                                 <input id="seo-calculator-pages" type="range" min="0" max="5" step="1"
                                                     value="3" data-seo-calculator-slider="pages"
                                                     aria-label="Количество страниц">
-                                                <div class="seo-calculator__range-limits d-flex flex-row justify-between color-grey">
+                                                <div
+                                                    class="seo-calculator__range-limits d-flex flex-row justify-between color-grey">
                                                     <span>1</span><span>1000+</span>
                                                 </div>
                                                 <input type="hidden" name="pages" value="51-200"
@@ -563,9 +577,12 @@
 
                                             <div class="seo-calculator__field d-flex flex-column gap-8"
                                                 data-seo-calculator-range="keywords">
-                                                <div class="d-flex flex-row align-center justify-between flex-wrap gap-8">
-                                                    <label for="seo-calculator-keywords">Количество ключевых фраз</label>
-                                                    <output id="seo-calculator-keywords-value" for="seo-calculator-keywords"
+                                                <div
+                                                    class="d-flex flex-row align-center justify-between flex-wrap gap-8">
+                                                    <label for="seo-calculator-keywords">Количество ключевых
+                                                        фраз</label>
+                                                    <output id="seo-calculator-keywords-value"
+                                                        for="seo-calculator-keywords"
                                                         data-seo-calculator-keywords-label>21–50</output>
                                                 </div>
                                                 <input id="seo-calculator-keywords" type="range" min="0" max="5"
@@ -584,19 +601,23 @@
                                 </div>
 
                                 <div class="seo-calculator__extras d-flex flex-column gap-12" data-seo-calculator-extras
-                                    role="group" aria-labelledby="seo-calculator-extras-title">
+                                    role="group" aria-labelledby="seo-calculator-extras-title" hidden>
                                     <h3 class="title_h5 m-0" id="seo-calculator-extras-title">Дополнительные услуги</h3>
-                                    <div class="d-flex flex-column gap-12">
-                                        <div class="seo-calculator__service d-flex flex-column align-start gap-4">
+                                    <div
+                                        class="d-flex flex-row flex-sm-column flex-wrap flex-sm-nowrap align-start gap-16 gap-sm-12">
+                                        <div
+                                            class="seo-calculator__service d-flex flex-row flex-sm-column flex-wrap flex-sm-nowrap align-start gap-4">
                                             <div class="d-flex flex-row align-start gap-8 w-100">
                                                 <label
                                                     class="label-checkbox seo-calculator__service-label d-flex flex-row align-start gap-8"
                                                     for="seo-calculator-service-reputation">
                                                     <input id="seo-calculator-service-reputation" type="checkbox"
                                                         name="services[reputation]" value="1"
-                                                        data-seo-calculator-service="reputation" data-monthly-price="2000">
+                                                        data-seo-calculator-service="reputation"
+                                                        data-monthly-price="2000">
                                                     <span class="d-flex flex-column gap-4">
-                                                        <a class="color-blue fw-bold" href="/reputation">Улучшение репутации в сети</a>
+                                                        <a class="color-blue fw-bold" href="/reputation">Улучшение
+                                                            репутации в сети</a>
                                                     </span>
                                                 </label>
                                                 <span class="tooltip" aria-label="Подробнее: Улучшение репутации в сети"
@@ -613,7 +634,8 @@
                                                         name="services[geo]" value="1" data-seo-calculator-service="geo"
                                                         data-monthly-price="6000">
                                                     <span class="d-flex flex-column gap-4">
-                                                        <a class="color-blue fw-bold" href="/geo">Продвижение в нейросетях</a>
+                                                        <a class="color-blue fw-bold" href="/geo">Продвижение в
+                                                            нейросетях</a>
                                                     </span>
                                                 </label>
                                                 <span class="tooltip" aria-label="Подробнее: Продвижение в нейросетях"
@@ -627,15 +649,18 @@
                                 <div class="seo-calculator__actions" data-seo-calculator-actions>
                                     <button class="button-highlight big w-100" type="submit"
                                         data-seo-calculator-action="calculate">Рассчитать</button>
+                                    <button class="button-link big w-100 justify-center" type="button"
+                                        data-seo-calculator-action="reset" hidden>Проанализировать другой сайт</button>
                                 </div>
                             </div>
 
-                            <aside class="seo-calculator__result d-flex flex-column gap-20"
-                                data-seo-calculator-result aria-label="Результат расчёта">
+                            <aside class="seo-calculator__result d-flex flex-column gap-20" data-seo-calculator-result
+                                aria-label="Результат расчёта">
                                 <div class="seo-calculator__result-empty d-flex flex-column align-center justify-center gap-12 text-center"
                                     data-seo-calculator-result-empty>
                                     <img src="./src/icons/chart_stat.svg" alt="Результат расчёта">
-                                    <h3 class="title_h4 m-0" id="seo-calculator-result-title">Результат расчёта появится здесь</h3>
+                                    <h3 class="title_h4 m-0" id="seo-calculator-result-title">Результат расчёта появится
+                                        здесь</h3>
                                     <p class="m-0 color-grey">Заполните параметры и нажмите «Рассчитать»</p>
                                 </div>
                                 <div class="seo-calculator__result-content d-flex flex-column gap-16"
@@ -644,17 +669,20 @@
                                         <h3 class="title_h4 m-0 text-center" id="seo-calculator-result-heading">
                                             Результат расчёта
                                         </h3>
-                                        <p class="m-0 color-grey text-center">Предварительная стоимость SEO-продвижения</p>
+                                        <p class="m-0 color-grey text-center">Предварительная стоимость SEO-продвижения
+                                        </p>
                                     </div>
                                     <p class="seo-calculator__result-price m-0 text-center"><strong
-                                            data-seo-calculator-output="total-range">—</strong> <span>₽ / мес.</span></p>
+                                            data-seo-calculator-output="total-range">—</strong> <span>₽ / мес.</span>
+                                    </p>
 
                                     <div class="seo-calculator__timing grid-layout grid-layout--2x gap-12">
                                         <div class="d-flex flex-column gap-8">
                                             <h4 class="title_h5 m-0 flex-1">Первые заметные результаты</h4>
                                             <p class="seo-calculator__timing-value m-0"><strong
                                                     data-seo-calculator-output="first-results">—</strong>
-                                                <span>мес.</span></p>
+                                                <span>мес.</span>
+                                            </p>
                                         </div>
                                         <div class="d-flex flex-column gap-8">
                                             <h4 class="title_h5 m-0 flex-1">50%+ запросов в ТОП-10</h4>

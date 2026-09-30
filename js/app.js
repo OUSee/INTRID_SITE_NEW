@@ -10139,7 +10139,11 @@ const seoCalculatorInit = () => {
     const noSite = $("[data-seo-calculator-no-site]");
     const expressAudit = $("[data-seo-calculator-express-audit]");
     const parameters = $("[data-seo-calculator-parameters]");
+    const advancedParameters = $("[data-seo-calculator-advanced-parameters]");
+    const extras = $("[data-seo-calculator-extras]");
     const actions = $("[data-seo-calculator-actions]");
+    const calculateButton = $('[data-seo-calculator-action="calculate"]');
+    const resetButton = $('[data-seo-calculator-action="reset"]');
     const sitePanel = $("[data-seo-calculator-site-panel]");
     const noSiteLabel = $("[data-seo-calculator-no-site-label]");
     const expressAuditLabel = $("[data-seo-calculator-express-audit-label]");
@@ -10615,15 +10619,28 @@ const seoCalculatorInit = () => {
       const changed = state !== next;
       state = next;
       root.dataset.state = next;
+
+      const expanded = next !== "start";
+      const hasResult = next === "result" && Boolean(calculation);
+
       show(sitePanel, true);
       show(actions, true);
       show(parameters, true);
+      show(advancedParameters, expanded);
+      show(extras, expanded);
+      show(calculateButton, next === "start");
+      show(resetButton, expanded);
       show(result, true);
-      show(empty, !calculation);
-      show(content, Boolean(calculation));
-      show(lead, Boolean(calculation));
+      show(empty, !hasResult);
+      show(content, hasResult);
+      show(lead, hasResult);
       show(demoNote, mode === "mock");
-      if (!calculation) { message(leadStatus, ""); leadSent = false; }
+
+      if (!hasResult) {
+        message(leadStatus, "");
+        leadSent = false;
+      }
+
       url.disabled = busy;
       syncStartOptions();
       updateExpressAuditUi();
@@ -10701,6 +10718,14 @@ const seoCalculatorInit = () => {
       leadSent = false;
       message(leadStatus, "");
       setState("start", { scroll: false });
+    };
+
+    const handleParameterChange = () => {
+      if (busy) return;
+
+      if (state === "result" && calculation) {
+        scheduleRecalculation();
+      }
     };
     const normalizeUrl = (value) => {
       let raw = value.trim();
@@ -10843,6 +10868,7 @@ const seoCalculatorInit = () => {
       operation = new AbortController();
       const signal = operation.signal;
       message(notice, "");
+      setState("analysis", { scroll: false });
 
       if (expressAudit?.checked && !noSite.checked && site) {
         if (!expressAuditRequested || expressAuditSite !== site) startExpressAudit(site);
@@ -10871,6 +10897,8 @@ const seoCalculatorInit = () => {
         setState("result", { scroll: false });
       } catch (error) {
         if (id === revision && error.name !== "AbortError") {
+          calculation = null;
+          setState("start", { scroll: false });
           message(notice, error.message || "Не удалось выполнить расчёт.");
         }
       } finally {
@@ -11114,28 +11142,42 @@ const seoCalculatorInit = () => {
       invalidate();
     });
     Object.entries(fields).forEach(([key, el]) => {
-      if (el.tagName === "SELECT") el.addEventListener("change", invalidate);
+      if (el.tagName === "SELECT") {
+        el.addEventListener("change", handleParameterChange);
+      }
     });
+
     ageSlider.addEventListener("input", () => {
       setAge(ageSlider.value);
-      invalidate();
+      handleParameterChange();
     });
+
     keywordSlider.addEventListener("input", () => {
       setKeywords(keywordBuckets[Number(keywordSlider.value)].value);
-      invalidate();
+      handleParameterChange();
     });
+
     ["sections", "pages"].forEach(key => {
       const slider = $(`[data-seo-calculator-slider="${key}"]`);
       slider.addEventListener("input", () => {
         setRange(key, slider.value, { fromSlider: true });
-        invalidate();
+        handleParameterChange();
       });
     });
+
     expressAudit?.addEventListener("change", () => {
-      if (!expressAudit.checked) resetExpressAudit();
-      invalidate();
+      if (!expressAudit.checked) {
+        resetExpressAudit();
+        return;
+      }
+
+      if (state === "result" && calculation && !noSite.checked) {
+        const site = validateUrl();
+        if (site) startExpressAudit(site);
+      }
     });
-    serviceInputs.forEach(el => el.addEventListener("change", invalidate));
+
+    serviceInputs.forEach(el => el.addEventListener("change", handleParameterChange));
     leadForm.elements.tel.addEventListener("input", () => leadForm.elements.tel.setCustomValidity(""));
     reset({ scroll: false });
   });

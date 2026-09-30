@@ -295,7 +295,7 @@
             data-seo-calculator-metrics-mode="live" data-state="start" aria-labelledby="seo-calculator-title">
             <div class="container">
                 <h2 class="title_h2 text-center mb-32" id="seo-calculator-title">
-                    Расчёт стоимости<br><span class="text-nowrap underlined">SEO-продвижения сайта</span>
+                    Расчёт стоимости<br><span class="text-nowrap">SEO-продвижения сайта</span>
                 </h2>
 
                 <div class="seo-calculator__shell card highlighted">
@@ -310,7 +310,8 @@
                                             autocomplete="url" inputmode="url" required data-seo-calculator-url>
                                     </div>
 
-                                    <div class="d-flex flex-column gap-8">
+                                    <div
+                                        class="d-flex flex-row flex-sm-column flex-wrap flex-sm-nowrap gap-16 gap-sm-12">
                                         <label class="label-checkbox seo-calculator__no-site"
                                             for="seo-calculator-no-site" data-seo-calculator-no-site-label>
                                             <input id="seo-calculator-no-site" type="checkbox" name="site_missing"
@@ -360,7 +361,7 @@
                                 <div class="seo-calculator__parameters" data-seo-calculator-parameters role="group"
                                     aria-label="Параметры для расчёта">
                                     <div class="seo-calculator__parameters-columns gap-20">
-                                        <div class="d-flex flex-column gap-16">
+                                        <div class="seo-calculator__parameters-col gap-16">
                                             <div class="seo-calculator__field d-flex flex-column gap-8">
                                                 <label for="seo-calculator-site_type">Тип сайта</label>
                                                 <div class="nice-wrapper nice-wrapper--simple w-100">
@@ -423,7 +424,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-column gap-16">
+                                        <div class="seo-calculator__parameters-col gap-16"
+                                            data-seo-calculator-advanced-parameters hidden>
                                             <div class="seo-calculator__field d-flex flex-column gap-8"
                                                 data-seo-calculator-age>
                                                 <div
@@ -509,10 +511,12 @@
                                 </div>
 
                                 <div class="seo-calculator__extras d-flex flex-column gap-12" data-seo-calculator-extras
-                                    role="group" aria-labelledby="seo-calculator-extras-title">
+                                    role="group" aria-labelledby="seo-calculator-extras-title" hidden>
                                     <h3 class="title_h5 m-0" id="seo-calculator-extras-title">Дополнительные услуги</h3>
-                                    <div class="d-flex flex-column gap-12">
-                                        <div class="seo-calculator__service d-flex flex-column align-start gap-4">
+                                    <div
+                                        class="d-flex flex-row flex-sm-column flex-wrap flex-sm-nowrap align-start gap-16 gap-sm-12">
+                                        <div
+                                            class="seo-calculator__service d-flex flex-row flex-sm-column flex-wrap flex-sm-nowrap align-start gap-4">
                                             <div class="d-flex flex-row align-start gap-8 w-100">
                                                 <label
                                                     class="label-checkbox seo-calculator__service-label d-flex flex-row align-start gap-8"
@@ -555,6 +559,8 @@
                                 <div class="seo-calculator__actions" data-seo-calculator-actions>
                                     <button class="button-highlight big w-100" type="submit"
                                         data-seo-calculator-action="calculate">Рассчитать</button>
+                                    <button class="button-link big w-100 justify-center" type="button"
+                                        data-seo-calculator-action="reset" hidden>Проанализировать другой сайт</button>
                                 </div>
                             </div>
 
