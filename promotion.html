@@ -291,47 +291,46 @@
         </section>
 
         <!-- SEO-калькулятор -->
-        <section class="seo-calculator" id="seo-calculator" data-seo-calculator data-seo-calculator-mode="live"
-            data-seo-calculator-metrics-mode="live" data-state="start" aria-labelledby="seo-calculator-title">
+        <section class="seo-calculator" id="seo-calculator" data-seo-calculator data-seo-calculator-mode="mock"
+            data-seo-calculator-metrics-mode="mock" data-state="start" aria-labelledby="seo-calculator-title">
             <div class="container">
-                <h2 class="title_h2 text-center mb-32" id="seo-calculator-title">
-                    Расчёт стоимости<br><span class="text-nowrap">SEO-продвижения сайта</span>
+                <h2 class="title_h2 w-fit mb-32" id="seo-calculator-title">
+                    Расчёт стоимости <span class="text-nowrap">SEO-продвижения сайта</span>
                 </h2>
 
                 <div class="seo-calculator__shell card highlighted">
-                    <form id="seo-calculator-form" class="seo-calculator__form" action="/submit/get-site-metrics"
-                        method="get" data-seo-calculator-form data-site-metrics-url="/submit/get-site-metrics">
-                        <div class="seo-calculator__layout">
+                    <div class="seo-calculator__layout">
+                        <form id="seo-calculator-form" class="seo-calculator__form" action="/submit/get-site-metrics"
+                            method="get" data-seo-calculator-form data-site-metrics-url="/submit/get-site-metrics">
                             <div class="seo-calculator__settings d-flex flex-column gap-20 gap-sm-16">
                                 <div data-seo-calculator-site-panel
                                     class="seo-calculator__site-panel d-flex flex-column gap-12">
                                     <div class="seo-calculator__site-row">
                                         <input id="seo-calculator-url" type="text" name="url" placeholder="URL сайта"
                                             autocomplete="url" inputmode="url" required data-seo-calculator-url>
-                                    </div>
 
-                                    <div
-                                        class="d-flex flex-row flex-sm-column flex-wrap flex-sm-nowrap gap-16 gap-sm-12">
-                                        <label class="label-checkbox seo-calculator__no-site"
-                                            for="seo-calculator-no-site" data-seo-calculator-no-site-label>
-                                            <input id="seo-calculator-no-site" type="checkbox" name="site_missing"
-                                                value="1" data-seo-calculator-no-site>
-                                            <span>Сайта нет / в разработке</span>
-                                        </label>
-                                        <label class="label-checkbox seo-calculator__express-audit"
-                                            for="seo-calculator-express-audit" data-seo-calculator-express-audit-label>
-                                            <input id="seo-calculator-express-audit" type="checkbox"
-                                                name="express_audit" value="1" data-seo-calculator-express-audit
-                                                disabled>
-                                            <span>Экспресс-аудит <span class="small color-grey">(выполним в
-                                                    фоне)</span></span>
-                                        </label>
+                                        <div class="seo-calculator__primary-services">
+                                            <label class="label-checkbox seo-calculator__no-site"
+                                                for="seo-calculator-no-site" data-seo-calculator-no-site-label>
+                                                <input id="seo-calculator-no-site" type="checkbox" name="site_missing"
+                                                    value="1" data-seo-calculator-no-site>
+                                                <span>Сайта нет / в разработке</span>
+                                            </label>
+                                            <label class="label-checkbox seo-calculator__express-audit"
+                                                for="seo-calculator-express-audit"
+                                                data-seo-calculator-express-audit-label>
+                                                <input id="seo-calculator-express-audit" type="checkbox"
+                                                    name="express_audit" value="1" data-seo-calculator-express-audit
+                                                    disabled>
+                                                <span>Экспресс SEO-аудит</span>
+                                            </label>
+                                        </div>
                                     </div>
 
                                     <div class="error-msg" data-seo-calculator-notice role="status" aria-live="polite"
                                         hidden></div>
 
-                                    <div class="seo-calculator__loading d-flex flex-row align-center gap-8"
+                                    <div class="seo-calculator__loading d-flex flex-row align-center justify-center gap-8"
                                         data-seo-calculator-loading role="status" aria-live="polite" hidden>
                                         <p class="m-0 color-grey">Анализируем сайт и подготавливаем параметры…</p>
                                         <div class="preloader" aria-hidden="true"></div>
@@ -339,7 +338,7 @@
 
                                     <div class="seo-calculator__audit-status d-flex flex-column gap-8"
                                         data-seo-calculator-audit-status aria-live="polite" hidden>
-                                        <div class="d-flex flex-row align-center gap-8"
+                                        <div class="d-flex flex-row align-center justify-center gap-8"
                                             data-seo-calculator-audit-loading hidden>
                                             <p class="m-0 color-grey" data-seo-calculator-audit-loader-text>
                                                 Выполняем экспресс SEO-аудит сайта…
@@ -352,7 +351,7 @@
                                             Результаты SEO-аудита
                                             <i class="icon-arrow_wide"></i>
                                         </a>
-                                        <p class="m-0 color-grey" data-seo-calculator-audit-error hidden>
+                                        <p class="m-0 error-msg" data-seo-calculator-audit-error hidden>
                                             Не удалось выполнить экспресс SEO-аудит. Попробуйте запустить его позже.
                                         </p>
                                     </div>
@@ -510,7 +509,7 @@
                                     </div>
                                 </div>
 
-                                <div class="seo-calculator__extras d-flex flex-column gap-12" data-seo-calculator-extras
+                                <div class="seo-calculator__extras d-flex flex-column gap-16" data-seo-calculator-extras
                                     role="group" aria-labelledby="seo-calculator-extras-title" hidden>
                                     <h3 class="title_h5 m-0" id="seo-calculator-extras-title">Дополнительные услуги</h3>
                                     <div
@@ -519,16 +518,17 @@
                                             class="seo-calculator__service d-flex flex-row flex-sm-column flex-wrap flex-sm-nowrap align-start gap-4">
                                             <div class="d-flex flex-row align-start gap-8 w-100">
                                                 <label
-                                                    class="label-checkbox seo-calculator__service-label d-flex flex-row align-start gap-8"
+                                                    class="label-checkbox seo-calculator__service-label d-flex flex-row align-start gap-4"
                                                     for="seo-calculator-service-reputation">
                                                     <input id="seo-calculator-service-reputation" type="checkbox"
                                                         name="services[reputation]" value="1"
                                                         data-seo-calculator-service="reputation"
                                                         data-monthly-price="2000">
-                                                    <span class="d-flex flex-column gap-4">
-                                                        <a class="color-blue fw-bold" href="/reputation">Улучшение
-                                                            репутации в сети</a>
-                                                    </span>
+                                                    <div class="d-flex flex-column">
+                                                        <span>Улучшение репутации в сети</span>
+                                                        <a class="color-blue fw-bold" href="/reputation">Подробнее</a>
+                                                    </div>
+
                                                 </label>
                                                 <span class="tooltip" aria-label="Подробнее: Улучшение репутации в сети"
                                                     data-tooltip="&lt;p&gt;Собираем и публикуем положительные отзывы о вашей компании, а также стимулируем реальные рекомендации на профильных площадках.&lt;/p&gt;&lt;p&gt;При заказе вместе с SEO-продвижением стоимость составляет &lt;s&gt;6 000 ₽/мес.&lt;/s&gt; &lt;strong&gt;2 000 ₽/мес.&lt;/strong&gt;&lt;/p&gt;"
@@ -538,15 +538,15 @@
                                         <div class="seo-calculator__service d-flex flex-column align-start gap-4">
                                             <div class="d-flex flex-row align-start gap-8 w-100">
                                                 <label
-                                                    class="label-checkbox seo-calculator__service-label d-flex flex-row align-start gap-8"
+                                                    class="label-checkbox seo-calculator__service-label d-flex flex-row align-start gap-4"
                                                     for="seo-calculator-service-geo">
                                                     <input id="seo-calculator-service-geo" type="checkbox"
                                                         name="services[geo]" value="1" data-seo-calculator-service="geo"
                                                         data-monthly-price="6000">
-                                                    <span class="d-flex flex-column gap-4">
-                                                        <a class="color-blue fw-bold" href="/geo">Продвижение в
-                                                            нейросетях</a>
-                                                    </span>
+                                                    <div class="d-flex flex-column">
+                                                        <span>Продвижение в нейросетях</span>
+                                                        <a class="color-blue fw-bold" href="/geo">Подробнее</a>
+                                                    </div>
                                                 </label>
                                                 <span class="tooltip" aria-label="Подробнее: Продвижение в нейросетях"
                                                     data-tooltip="&lt;p&gt;Продвигаем ваш бренд через современные нейросетевые платформы, увеличивая видимость в новых цифровых каналах.&lt;/p&gt;&lt;p&gt;При заказе вместе с SEO-продвижением стоимость составляет &lt;s&gt;18 000 ₽/мес.&lt;/s&gt; &lt;strong&gt;6 000 ₽/мес.&lt;/strong&gt;&lt;/p&gt;"
@@ -563,7 +563,9 @@
                                         data-seo-calculator-action="reset" hidden>Проанализировать другой сайт</button>
                                 </div>
                             </div>
+                        </form>
 
+                        <div class="seo-calculator__right d-flex flex-column gap-20">
                             <aside class="seo-calculator__result d-flex flex-column gap-20" data-seo-calculator-result
                                 aria-label="Результат расчёта">
                                 <div class="seo-calculator__result-empty d-flex flex-column align-center justify-center gap-12 text-center"
@@ -586,102 +588,107 @@
                                             data-seo-calculator-output="total-range">—</strong> <span>₽ / мес.</span>
                                     </p>
 
-                                    <div class="seo-calculator__timing grid-layout grid-layout--2x gap-12">
-                                        <div class="d-flex flex-column gap-8">
+                                    <div
+                                        class="seo-calculator__timing grid-layout grid-layout--2x justify-center gap-12">
+                                        <div class="d-flex flex-column align-center gap-8">
                                             <h4 class="title_h5 m-0 flex-1">Первые заметные результаты</h4>
                                             <p class="seo-calculator__timing-value m-0"><strong
                                                     data-seo-calculator-output="first-results">—</strong>
                                                 <span>мес.</span>
                                             </p>
                                         </div>
-                                        <div class="d-flex flex-column gap-8">
+                                        <div class="d-flex flex-column align-center gap-8">
                                             <h4 class="title_h5 m-0 flex-1">50%+ запросов в ТОП-10</h4>
                                             <p class="seo-calculator__timing-value m-0"><strong
                                                     data-seo-calculator-output="top10">—</strong> <span>мес.</span></p>
                                         </div>
                                     </div>
 
-                                    <p class="m-0 color-grey text-center">Индивидуальное коммерческое предложение
+                                    <p class="m-0 color-grey">Индивидуальное коммерческое предложение
                                         подготовим после анализа сайта, ниши и конкурентной среды.</p>
                                 </div>
                             </aside>
-                        </div>
-                    </form>
-                    <div class="seo-calculator__lead card card--leaders minified card-form-seo-audit card-form-seo-audit--seo-calculator w-100 mt-20"
-                        data-seo-calculator-lead hidden>
-                        <div class="card-header">
-                            <p class="title_h4">Вывести сайт в топ</p>
-                            <p>Подготовим индивидуальное коммерческое предложение, улучшим позиции
-                                сайта и конвертируем заинтересованных посетителей в клиентов.</p>
-                        </div>
-                        <form id="seo-calculator-lead-form" class="order-form seo-calculator__lead-form"
-                            action="/submit/kontakt" method="post" data-seo-calculator-lead-form>
-                            <div class="recaptcha-wrapper" style="display: none;" data-seo-calculator-captcha>
-                                <div class="js-recaptcha" data-sitekey="" data-size="invisible"></div>
-                                <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
-                            </div>
-                            <!-- Контекст заявки для /submit/kontakt -->
-                            <input type="hidden" name="form_type" value="seo_calculator">
-                            <input type="hidden" name="url" value="" data-seo-calculator-lead-site>
-                            <input type="hidden" name="form_page" value="" data-seo-calculator-lead-source>
 
-                            <!-- Параметры SEO-калькулятора: backend формирует из них отдельные блоки письма -->
-                            <input type="hidden" name="seo_site_missing" value="0">
-                            <input type="hidden" name="seo_site_type" value="">
-                            <input type="hidden" name="seo_history" value="">
-                            <input type="hidden" name="seo_region" value="">
-                            <input type="hidden" name="seo_competition" value="">
-                            <input type="hidden" name="seo_age" value="">
-                            <input type="hidden" name="seo_sections" value="">
-                            <input type="hidden" name="seo_pages" value="">
-                            <input type="hidden" name="seo_keywords" value="">
-
-                            <!-- Дополнительные услуги -->
-                            <input type="hidden" name="seo_reputation" value="0">
-                            <input type="hidden" name="seo_geo" value="0">
-
-                            <!-- Результат расчёта -->
-                            <input type="hidden" name="seo_price" value="">
-                            <input type="hidden" name="seo_first_results" value="">
-                            <input type="hidden" name="seo_top10" value="">
-
-                            <div class="form-inputs form-inputs--seo-calculator w-100">
-                                <div class="seo-calculator__lead-service d-flex flex-row align-center gap-8">
-                                    <div class="nice-wrapper w-100">
-                                        <select id="seo-calculator-lead-service" name="service"
-                                            data-tooltip-prefix="seo-calculator-service-tooltip" class="w-100" required>
-                                            <option value="СЕО по предоплате с гарантией результата" selected>СЕО по
-                                                предоплате с гарантией результата</option>
-                                            <option value="Постоплата за вывод ключевых фраз в ТОП-10">Постоплата за
-                                                вывод ключевых фраз в ТОП-10</option>
-                                        </select>
-                                    </div>
-                                    <span id="seo-calculator-service-tooltip-1" class="tooltip"
-                                        data-tooltip="СЕО-продвижение проводим по абонентской плате с гарантией вывода в Топ10 минимум по половине ключевых запросов. Срок раскрутки до достижения стабильного результата – 6 месяцев с момента стартовой оптимизации сайта."><i
-                                            class="icon-tooltip"></i></span>
-                                    <span id="seo-calculator-service-tooltip-2" class="tooltip hidden"
-                                        data-tooltip="Постоплата: Вы оплачиваете только те ключевые фразы, которые попадают в ТОП-10 результатов поиска. Для каждой ключевой фразы цена определяется в зависимости от региона продвижения, частотности и конкуренции."><i
-                                            class="icon-tooltip"></i></span>
+                            <div class="seo-calculator__lead card card--leaders minified card-form-seo-audit--seo-calculator w-100"
+                                data-seo-calculator-lead hidden>
+                                <div class="card-header">
+                                    <p class="title_h4 text-center">Вывести сайт в топ</p>
+                                    <p>Подготовим индивидуальное коммерческое предложение, улучшим позиции
+                                        сайта и конвертируем заинтересованных посетителей в клиентов.</p>
                                 </div>
+                                <form id="seo-calculator-lead-form" class="order-form seo-calculator__lead-form"
+                                    action="/submit/kontakt" method="post" data-seo-calculator-lead-form>
+                                    <div class="recaptcha-wrapper" style="display: none;" data-seo-calculator-captcha>
+                                        <div class="js-recaptcha" data-sitekey="" data-size="invisible"></div>
+                                        <input type="hidden" name="g-recaptcha-response" class="js-recaptcha-token">
+                                    </div>
+                                    <!-- Контекст заявки для /submit/kontakt -->
+                                    <input type="hidden" name="form_type" value="seo_calculator">
+                                    <input type="hidden" name="url" value="" data-seo-calculator-lead-site>
+                                    <input type="hidden" name="form_page" value="" data-seo-calculator-lead-source>
 
-                                <input id="seo-calculator-lead-name" type="text" name="name" placeholder="Ваше имя"
-                                    autocomplete="name">
-                                <input id="seo-calculator-lead-email" type="email" name="email" placeholder="E-mail"
-                                    autocomplete="email">
-                                <input id="seo-calculator-lead-phone" type="tel" name="tel" placeholder="Ваш телефон *"
-                                    autocomplete="tel" required>
+                                    <!-- Параметры SEO-калькулятора: backend формирует из них отдельные блоки письма -->
+                                    <input type="hidden" name="seo_site_missing" value="0">
+                                    <input type="hidden" name="seo_site_type" value="">
+                                    <input type="hidden" name="seo_history" value="">
+                                    <input type="hidden" name="seo_region" value="">
+                                    <input type="hidden" name="seo_competition" value="">
+                                    <input type="hidden" name="seo_age" value="">
+                                    <input type="hidden" name="seo_sections" value="">
+                                    <input type="hidden" name="seo_pages" value="">
+                                    <input type="hidden" name="seo_keywords" value="">
 
-                                <p class="testimonials text-center m-center mb-0">
-                                    Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy"
-                                        target="_blank">персональных&nbsp;данных</a> в соответствии с <a
-                                        href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
-                                        target="_blank" rel="nofollow">ФЗ&nbsp;№152</a>
-                                </p>
+                                    <!-- Дополнительные услуги -->
+                                    <input type="hidden" name="seo_reputation" value="0">
+                                    <input type="hidden" name="seo_geo" value="0">
 
-                                <button type="submit" class="button big button-white"
-                                    data-seo-calculator-action="submit-request">Отправить</button>
+                                    <!-- Результат расчёта -->
+                                    <input type="hidden" name="seo_price" value="">
+                                    <input type="hidden" name="seo_first_results" value="">
+                                    <input type="hidden" name="seo_top10" value="">
+
+                                    <div class="form-inputs form-inputs--seo-calculator w-100">
+                                        <div class="seo-calculator__lead-service d-flex flex-row align-center gap-8">
+                                            <div class="nice-wrapper w-100">
+                                                <select id="seo-calculator-lead-service" name="service"
+                                                    data-tooltip-prefix="seo-calculator-service-tooltip" class="w-100"
+                                                    required>
+                                                    <option value="СЕО по предоплате с гарантией результата" selected>
+                                                        СЕО по
+                                                        предоплате с гарантией результата</option>
+                                                    <option value="Постоплата за вывод ключевых фраз в ТОП-10">
+                                                        Постоплата за
+                                                        вывод ключевых фраз в ТОП-10</option>
+                                                </select>
+                                            </div>
+                                            <span id="seo-calculator-service-tooltip-1" class="tooltip"
+                                                data-tooltip="СЕО-продвижение проводим по абонентской плате с гарантией вывода в Топ10 минимум по половине ключевых запросов. Срок раскрутки до достижения стабильного результата – 6 месяцев с момента стартовой оптимизации сайта."><i
+                                                    class="icon-tooltip"></i></span>
+                                            <span id="seo-calculator-service-tooltip-2" class="tooltip hidden"
+                                                data-tooltip="Постоплата: Вы оплачиваете только те ключевые фразы, которые попадают в ТОП-10 результатов поиска. Для каждой ключевой фразы цена определяется в зависимости от региона продвижения, частотности и конкуренции."><i
+                                                    class="icon-tooltip"></i></span>
+                                        </div>
+
+                                        <input id="seo-calculator-lead-name" type="text" name="name"
+                                            placeholder="Ваше имя" autocomplete="name">
+                                        <input id="seo-calculator-lead-email" type="email" name="email"
+                                            placeholder="E-mail" autocomplete="email">
+                                        <input id="seo-calculator-lead-phone" type="tel" name="tel"
+                                            placeholder="Ваш телефон *" autocomplete="tel" required>
+
+                                        <p class="testimonials text-center m-center mb-0">
+                                            Нажимая кнопку, я выражаю согласие на обработку <a href="/privacy"
+                                                target="_blank">персональных&nbsp;данных</a> в соответствии с <a
+                                                href="https://git78.rostrud.gov.ru/upload/iblock/677/federalnyy_zakon_ot_27_07_2006_n_152_fz_red_ot_08_08_2024.pdf"
+                                                target="_blank" rel="nofollow">ФЗ&nbsp;№152</a>
+                                        </p>
+
+                                        <button type="submit" class="button big button-white"
+                                            data-seo-calculator-action="submit-request">Отправить</button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
